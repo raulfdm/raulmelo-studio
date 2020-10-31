@@ -1,13 +1,11 @@
-import { createContext, useCallback, useMemo } from 'react';
+import { createContext, useMemo } from 'react';
 import { IntlProvider } from 'react-intl';
 import flat from 'flat';
-import useLocalStorage from 'react-use/lib/useLocalStorage';
 
 import { SupportedLanguages } from '@types-app';
 import enMessages from 'src/locales/en.json';
-import ptMessages from 'src/locales/pt-br.json';
-
-const LOCALE_LOCAL_STORAGE_KEY = 'raul-melo.dev__lang';
+import ptMessages from 'src/locales/pt.json';
+import { useRouter } from 'next/router';
 
 export type LocalizationContextType = {
   switchToPortuguese(): void;
@@ -19,55 +17,43 @@ export const LocalizationContext = createContext<
   LocalizationContextType | undefined
 >(undefined);
 
-const supportedLanguagesList: SupportedLanguages[] = ['en', 'pt'];
-
-const getBrowserUrl = (fallback = 'en') => {
-  const sanitizedFallback = fallback.replace(/-.*/, '');
-
-  const isLangSupported = supportedLanguagesList.includes(
-    sanitizedFallback as any,
-  );
-
-  return isLangSupported ? sanitizedFallback : 'en';
-};
-
 const localizedMessages = {
   en: enMessages,
   pt: ptMessages,
 };
 
-type LocalizationProviderProps = {
-  lang?: string;
-};
+export const LocalizationProvider: React.FC = ({ children }) => {
+  const { locale, push, route } = useRouter();
 
-export const LocalizationProvider: React.FC<LocalizationProviderProps> = ({
-  children,
-  lang,
-}) => {
-  const [language, setLanguage] = useLocalStorage<SupportedLanguages>(
-    LOCALE_LOCAL_STORAGE_KEY,
-    getBrowserUrl(lang) as SupportedLanguages,
-  );
+  function switchLocale(nextLocale: SupportedLanguages): void {
+    /**
+     * This is the way Next recommends to switch locale programmatically.
+     * Basically we need to pass the same route we're with the next locale
+     * and Next will handle the logic for us
+     */
 
-  function switchLocale(nextLanguage: SupportedLanguages): void {
-    setLanguage(nextLanguage);
+    push(route, route, { locale: nextLocale });
+  }
+
+  function switchToEnglish(): void {
+    switchLocale('en');
+  }
+
+  function switchToPortuguese(): void {
+    switchLocale('pt');
   }
 
   const messages = useMemo(
-    () => flat(localizedMessages[language!]) as Record<string, string>,
-    [language],
+    () =>
+      flat(localizedMessages[locale! as SupportedLanguages]) as Record<
+        string,
+        string
+      >,
+    [locale],
   );
 
-  const switchToEnglish = useCallback(function switchToEnglish(): void {
-    switchLocale('en');
-  }, []);
-
-  const switchToPortuguese = useCallback(function switchToPortuguese(): void {
-    switchLocale('pt');
-  }, []);
-
   return (
-    <IntlProvider locale={language!} messages={messages}>
+    <IntlProvider locale={locale!} messages={messages}>
       <LocalizationContext.Provider
         value={{ switchToPortuguese, switchToEnglish, switchLocale }}
       >

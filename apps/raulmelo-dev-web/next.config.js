@@ -40,13 +40,4 @@ module.exports = {
 
     return config;
   },
-  async redirects() {
-    return [
-      {
-        source: '/uses',
-        destination: '/uses/en',
-        permanent: false,
-      },
-    ];
-  },
 };

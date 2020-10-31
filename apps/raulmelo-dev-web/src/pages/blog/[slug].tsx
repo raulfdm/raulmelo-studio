@@ -1,23 +1,29 @@
-import React from "react";
-import { useRouter } from "next/router";
-import { GetStaticPaths } from "next";
+import React from 'react';
+import { GetStaticPaths } from 'next';
 
-import { hydrate, renderToString } from "@config/mdx";
-import { Backend } from "@services/Backend";
-import { PostApi, PostsApi } from "src/types/api/posts";
+import { renderToString } from '@config/mdx';
+import { Backend } from '@services/Backend';
+import { PostApi, PostsApi } from 'src/types/api/posts';
 
-const BlogPost = (props) => {
+type BlogProps = {
+  content: any;
+};
+
+const BlogPost: React.FC<BlogProps> = (props) => {
   console.log(props);
-  // const router = useRouter();
-  // const { locale, locales, defaultLocale } = router;
-  // console.log({ locale, locales, defaultLocale });
   return <div>post</div>;
 };
 
-export const getStaticProps = async ({ params }) => {
+type Params = {
+  params: {
+    slug: string;
+  };
+};
+
+export const getStaticProps = async ({ params }: Params) => {
   const post = (await Backend.fetch(
-    "posts",
-    `?slug=${params.slug}`
+    'posts',
+    `?slug=${params.slug}`,
   )) as PostApi;
 
   const mdxSource = await renderToString(post.content);
@@ -32,11 +38,11 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = (await Backend.fetch("posts")) as PostsApi;
+  const posts = (await Backend.fetch('posts')) as PostsApi;
 
   const paths = posts.map((post) => ({
     params: {
-      slug: post["slug"],
+      slug: post['slug'],
     },
   }));
 
