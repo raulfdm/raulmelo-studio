@@ -3,12 +3,28 @@ name: Quality
 on: push
 
 jobs:
-  build:
+  lint_and_test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 12
+      - run: yarn --frozen-lockfile
       - run: yarn lint
       - run: yarn test
+
+  release:
+    name: Release new version
+    if: contains(github.ref, 'master')
+    needs: [lint_and_test]
+    env:
+      CI: true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+      - name: Release
+        run: GH_TOKEN=${{ secrets.GH_TOKEN }} NPM_TOKEN=${{ secrets.NPM_TOKEN }} yarn release --branch=${GITHUB_REF##*/}
