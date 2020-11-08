@@ -6,6 +6,9 @@ module.exports = {
     locales: ['en', 'pt'],
     defaultLocale: 'en',
   },
+  images: {
+    domains: ['res.cloudinary.com'],
+  },
   webpack: (config, { isServer }) => {
     config.resolve.alias = {
       ...config.resolve.alias,
@@ -13,6 +16,7 @@ module.exports = {
       '@config': path.resolve(__dirname, './src/config'),
       '@contexts': path.resolve(__dirname, './src/contexts'),
       '@hooks': path.resolve(__dirname, './src/hooks'),
+      '@models': path.resolve(__dirname, './src/models'),
       '@lib': path.resolve(__dirname, './src/lib'),
       '@screens': path.resolve(__dirname, './src/screens'),
       '@services': path.resolve(__dirname, './src/services'),

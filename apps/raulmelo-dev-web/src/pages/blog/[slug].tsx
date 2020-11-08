@@ -3,14 +3,13 @@ import { GetStaticPaths } from 'next';
 
 import { renderToString } from '@config/mdx';
 import { Backend } from '@services/Backend';
-import { PostApi, PostsApi } from 'src/types/api/posts';
+import { PostApi, PostsApiData } from 'src/types/api/posts';
 
 type BlogProps = {
   content: any;
 };
 
-const BlogPost: React.FC<BlogProps> = (props) => {
-  console.log(props);
+const BlogPost: React.FC<BlogProps> = () => {
   return <div>post</div>;
 };
 
@@ -28,7 +27,6 @@ export const getStaticProps = async ({ params }: Params) => {
 
   const mdxSource = await renderToString(post.content);
 
-  console.log(post);
   return {
     props: {
       content: mdxSource,
@@ -38,7 +36,7 @@ export const getStaticProps = async ({ params }: Params) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = (await Backend.fetch('posts')) as PostsApi;
+  const posts = (await Backend.fetch('posts')) as PostsApiData;
 
   const paths = posts.map((post) => ({
     params: {

@@ -115,6 +115,16 @@ interface ProviderMetadata5 {
   resource_type: string;
 }
 
+interface PostSerie {
+  id: string;
+  _id: string;
+  __v: string;
+  slug: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface PostApi {
   language: string;
   status: string;
@@ -133,6 +143,7 @@ export interface PostApi {
   __v: number;
   featured_image: FeaturedImage;
   id: string;
+  post_serie?: PostSerie;
 }
 
-export type PostsApi = PostApi[];
+export type PostsApiData = PostApi[];
