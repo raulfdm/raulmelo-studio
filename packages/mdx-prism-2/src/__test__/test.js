@@ -1,25 +1,25 @@
-'use strict';
+"use strict";
 
-const rehype = require('rehype');
-const dedent = require('dedent');
-const rehypePrism = require('./index');
+const rehype = require("rehype");
+const dedent = require("dedent");
+const rehypePrism = require("../");
 
 const processHtml = (html, options) => {
   return rehype()
-    .data('settings', { fragment: true })
+    .data("settings", { fragment: true })
     .use(rehypePrism, options)
     .processSync(html)
     .toString();
 };
 
-test('copies the language- class to pre tag', () => {
+test("copies the language- class to pre tag", () => {
   const result = processHtml(dedent`
     <pre><code class="language-css"></code></pre>
   `);
   expect(result).toMatchSnapshot();
 });
 
-test('finds code and highlights', () => {
+test("finds code and highlights", () => {
   const result = processHtml(dedent`
     <div>
       <p>foo</p>
@@ -29,7 +29,7 @@ test('finds code and highlights', () => {
   expect(result).toMatchSnapshot();
 });
 
-test('handles uppercase languages correctly', () => {
+test("handles uppercase languages correctly", () => {
   const result = processHtml(dedent`
     <div>
       <p>foo</p>
@@ -39,14 +39,14 @@ test('handles uppercase languages correctly', () => {
   expect(result).toMatchSnapshot();
 });
 
-test('does nothing to code block without language- class', () => {
+test("does nothing to code block without language- class", () => {
   const result = processHtml(dedent`
     <pre><code>p { color: red }</code></pre>
   `);
   expect(result).toMatchSnapshot();
 });
 
-test('throw error with fake language- class', () => {
+test("throw error with fake language- class", () => {
   expect(() => {
     processHtml(dedent`
       <pre><code class="language-thisisnotalanguage">p { color: red }</code></pre>
@@ -54,7 +54,7 @@ test('throw error with fake language- class', () => {
   }).toThrow(/Unknown language/);
 });
 
-test('with options.ignoreMissing, does nothing to code block with fake language- class', () => {
+test("with options.ignoreMissing, does nothing to code block with fake language- class", () => {
   const html = dedent`
     <pre><code class="language-thisisnotalanguage">p { color: red }</code></pre>
   `;
