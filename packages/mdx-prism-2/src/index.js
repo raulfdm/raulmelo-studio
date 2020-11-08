@@ -1,13 +1,13 @@
-'use strict';
+"use strict";
 
-const rangeParser = require('parse-numeric-range');
-const rehype = require('rehype');
-const visit = require('unist-util-visit');
-const nodeToString = require('hast-util-to-string');
-const unified = require('unified');
-const parse = require('rehype-parse');
-const refractor = require('refractor');
-const addMarkers = require('./add-markers');
+const rangeParser = require("parse-numeric-range");
+const rehype = require("rehype");
+const visit = require("unist-util-visit");
+const nodeToString = require("hast-util-to-string");
+const unified = require("unified");
+const parse = require("rehype-parse");
+const refractor = require("refractor");
+const addMarkers = require("./add-markers");
 
 /**
  * This module walks through the node tree and does:
@@ -23,12 +23,12 @@ const addMarkers = require('./add-markers');
  */
 
 module.exports = (options = {}) => {
-  return tree => {
-    visit(tree, 'element', visitor);
+  return (tree) => {
+    visit(tree, "element", visitor);
   };
 
   function visitor(node, index, parent) {
-    if (!parent || parent.tagName !== 'pre' || node.tagName !== 'code') {
+    if (!parent || parent.tagName !== "pre" || node.tagName !== "code") {
       return;
     }
 
@@ -43,8 +43,9 @@ module.exports = (options = {}) => {
 
     let result;
     try {
-      parent.properties.className = (parent.properties.className || [])
-        .concat('language-' + lang);
+      parent.properties.className = (parent.properties.className || []).concat(
+        "language-" + lang
+      );
 
       result = refractor.highlight(nodeToString(node), lang);
 
@@ -55,11 +56,11 @@ module.exports = (options = {}) => {
 
         // AST to HTML
         let html_ = rehype()
-          .stringify({ type: 'root', children: result })
+          .stringify({ type: "root", children: result })
           .toString();
 
         // Fix JSX issue
-        html_ = html_.replace(PLAIN_TEXT_WITH_LF_TEST, match => {
+        html_ = html_.replace(PLAIN_TEXT_WITH_LF_TEST, (match) => {
           return match.replace(
             /\n/g,
             '</span>\n<span class="token plain-text">'
@@ -86,23 +87,24 @@ module.exports = (options = {}) => {
   }
 };
 
-const parseLineNumberRange = language => {
+const parseLineNumberRange = (language) => {
   if (!language) {
-    return '';
+    return "";
   }
-  if (language.split('{').length > 1) {
-    let [splitLanguage, ...options] = language.split('{');
+
+  if (language.split("{").length > 1) {
+    let [splitLanguage, ...options] = language.split("{");
     let highlightLines = [];
-    options.forEach(option => {
+    options.forEach((option) => {
       option = option.slice(0, -1);
       if (rangeParser.parse(option).length > 0) {
-        highlightLines = rangeParser.parse(option).filter(n => n > 0);
+        highlightLines = rangeParser.parse(option).filter((n) => n > 0);
       }
     });
 
     return {
       splitLanguage,
-      highlightLines
+      highlightLines,
     };
   }
 
@@ -112,15 +114,15 @@ const parseLineNumberRange = language => {
 function getLangClass(node) {
   const className = node.properties.className || [];
   for (const item of className) {
-    if (item.slice(0, 9) === 'language-') {
+    if (item.slice(0, 9) === "language-") {
       return item;
     }
   }
   return null;
 }
 
-function getLanguage(className = '') {
-  if (className.slice(0, 9) === 'language-') {
+function getLanguage(className = "") {
+  if (className.slice(0, 9) === "language-") {
     return className.slice(9).toLowerCase();
   }
 

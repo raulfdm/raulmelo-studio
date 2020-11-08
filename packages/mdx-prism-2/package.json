@@ -1,34 +1,30 @@
 {
-  "name": "mdx-prism",
-  "version": "0.3.1+fork.0.1.0",
-  "description": "A fork of the rehype-prism plugin to highlight code blocks in HTML with Prism and more",
+  "name": "mdx-prism-2",
+  "version": "1.0.0",
+  "description": "A fork of the mdx-prism plugin to highlight code blocks in HTML with Prism and more",
   "main": "index.js",
-  "scripts": {
-    "precommit": "lint-staged",
-    "lint": "eslint .",
-    "format": "prettier --single-quote --write '{,lib/,test/}*.js'",
-    "test-jest": "jest",
-    "pretest": "npm run lint",
-    "test": "jest"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mapbox/rehype-prism.git"
+    "url": "https://github.com/raulfdm/mdx-prism-2"
   },
+  "homepage": "https://github.com/raulfdm/mdx-prism-2#readme",
   "keywords": [
     "rehype",
     "rehype-plugin",
     "mdx-plugin",
+    "mdx-plugin-2",
     "syntax-highlighting",
     "prism",
     "html"
   ],
-  "author": "Juan Olvera <juan@jolvera.dev> (https://jolvera.dev)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/j0lv3r4/mdx-prism/issues"
+    "url": "https://github.com/raulfdm/mdx-prism-2"
   },
-  "homepage": "https://github.com/j0lv3r4/mdx-prism#readme",
+  "scripts": {
+    "lint": "eslint ./src/**/*.js",
+    "test": "jest"
+  },
   "dependencies": {
     "hast-util-to-string": "^1.0.0",
     "parse-numeric-range": "^0.0.2",
@@ -37,31 +33,17 @@
   },
   "devDependencies": {
     "dedent": "^0.7.0",
-    "eslint": "^4.0.0",
-    "eslint-plugin-node": "^5.0.0",
-    "husky": "^0.13.4",
+    "eslint": "^7.13.0",
+    "eslint-plugin-node": "^11.1.0",
+    "husky": "^4.3.0",
     "jest": "^20.0.4",
-    "lint-staged": "^4.0.0",
-    "prettier": "^1.4.4",
+    "prettier": "^2.1.2",
+    "pretty-quick": "^3.1.0",
     "rehype": "^5.0.0"
   },
-  "lint-staged": {
-    "{,lib/,test/}*.js": [
-      "prettier --single-quote --write",
-      "git add"
-    ]
-  },
-  "jest": {
-    "coverageReporters": [
-      "json",
-      "lcov",
-      "text",
-      "html"
-    ],
-    "resetMocks": true,
-    "testRegex": "/test\\.js$"
-  },
-  "engines": {
-    "node": ">=6"
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }

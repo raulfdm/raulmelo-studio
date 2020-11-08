@@ -5,19 +5,19 @@ const lineNumberify = function lineNumberify(ast, lineNum = 1) {
   let lineNumber = lineNum;
   return ast.reduce(
     (result, node) => {
-      if (node.type === 'text') {
-        if (node.value.indexOf('\n') === -1) {
+      if (node.type === "text") {
+        if (node.value.indexOf("\n") === -1) {
           node.lineNumber = lineNumber;
           result.nodes.push(node);
           return result;
         }
 
-        const lines = node.value.split('\n');
+        const lines = node.value.split("\n");
         for (let i = 0; i < lines.length; i++) {
           result.nodes.push({
-            type: 'text',
+            type: "text",
             value: i === lines.length - 1 ? lines[i] : `${lines[i]}\n`,
-            lineNumber: i === 0 ? lineNumber : ++lineNumber
+            lineNumber: i === 0 ? lineNumber : ++lineNumber,
           });
         }
 
@@ -63,13 +63,13 @@ const wrapLines = function wrapLines(ast, markers, options) {
     }
 
     nodes.push({
-      type: 'element',
-      tagName: marker.component || 'div',
+      type: "element",
+      tagName: marker.component || "div",
       properties: marker.component
         ? options
-        : { className: marker.className || 'mdx-marker' },
+        : { className: marker.className || "mdx-marker" },
       children: children,
-      lineNumber: line
+      lineNumber: line,
     });
 
     return nodes;
@@ -82,9 +82,9 @@ const wrapLines = function wrapLines(ast, markers, options) {
   return wrapped;
 };
 
-module.exports = function(ast, options) {
+module.exports = function (ast, options) {
   const markers = options.markers
-    .map(marker => {
+    .map((marker) => {
       return marker.line ? marker : { line: marker };
     })
     .sort((nodeA, nodeB) => {
