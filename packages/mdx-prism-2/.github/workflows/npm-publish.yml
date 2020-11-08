@@ -1,4 +1,4 @@
-name: Quality
+name: Package
 
 on: push
 
@@ -7,12 +7,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: yarn --frozen-lockfile
-      - run: yarn lint
-      - run: yarn test
+
+      - name: Yarn cache directory
+        id: yarn-cache-dir
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Yarn cache
+        uses: actions/cache@v1
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Linting
+        run: yarn lint
+
+      - name: Testing
+        run: yarn test
 
   release:
     name: Release new version
@@ -23,8 +43,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Yarn cache directory
+        id: yarn-cache-dir
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Yarn cache
+        uses: actions/cache@v1
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
       - name: Install dependencies
         run: yarn --frozen-lockfile
+
       - name: Release
-        run: GH_TOKEN=${{ secrets.GH_TOKEN }} NPM_TOKEN=${{ secrets.NPM_TOKEN }} yarn release --branch=${GITHUB_REF##*/}
+        run: yarn release --branch=${GITHUB_REF##*/}
+        env:
+          GH_TOKEN: ${{secrets.GH_TOKEN}}
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
