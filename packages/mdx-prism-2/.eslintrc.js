@@ -4,5 +4,5 @@ module.exports = {
     es6: true,
     jest: true,
   },
-  plugin: ["node"],
+  plugins: ["node"],
 };
