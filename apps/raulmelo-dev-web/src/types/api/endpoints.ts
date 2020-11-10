@@ -4,4 +4,5 @@ export type Endpoints =
   | 'personal-information'
   | 'site'
   | 'uses'
-  | 'posts';
+  | 'posts'
+  | 'post-series';

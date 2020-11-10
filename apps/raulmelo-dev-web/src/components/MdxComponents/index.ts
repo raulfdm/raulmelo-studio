@@ -6,6 +6,8 @@ import { Blockquote } from './Blockquote';
 import * as Headings from './Headings';
 import { Paragraph } from './Paragraph';
 import { CodePen } from './CodePen';
+import { TwitterCard } from './TwitterCard';
+import { Image } from './Image';
 
 export const mdxComponents = {
   BigQuote,
@@ -13,7 +15,9 @@ export const mdxComponents = {
   CodePen,
   YouTubeVideo,
   hr: Divider,
+  Image,
   blockquote: Blockquote,
   p: Paragraph,
+  TwitterCard,
   ...Headings,
 };

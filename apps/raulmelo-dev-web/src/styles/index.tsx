@@ -1,10 +1,10 @@
 import { createGlobalStyle } from '@styles/styled';
 
 import { customGlobals } from '@styles/globals';
-import { FlattenSimpleInterpolation } from 'styled-components';
+import { FlattenInterpolation, ThemeProps } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle<{
-  global?: FlattenSimpleInterpolation;
+  global?: FlattenInterpolation<ThemeProps<any>>;
 }>`
   ${customGlobals};
   ${({ global }) => global};

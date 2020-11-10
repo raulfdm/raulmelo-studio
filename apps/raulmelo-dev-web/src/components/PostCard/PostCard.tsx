@@ -14,24 +14,15 @@ import {
   PostCardWrapper,
 } from './styled';
 import { PostModel } from '@models/Post';
-import { PostApi } from 'src/types/api/posts';
+import { PostApiData } from 'src/types/api/posts';
 
 type PostCardProps = {
   post: PostModel;
-  tags?: PostApi['post_tags'];
+  tags?: PostApiData['post_tags'];
 };
 
 export const PostCard: React.FC<PostCardProps> = ({ post, tags }) => {
-  const {
-    featured_image,
-    title,
-    subtitle,
-    date,
-    // childStrapiPostContent,
-    postUri,
-  } = post!;
-
-  // const { timeToRead } = childStrapiPostContent!.childMdx!;
+  const { featured_image, title, subtitle, date, postUri } = post!;
 
   return (
     <PostCardWrapper>

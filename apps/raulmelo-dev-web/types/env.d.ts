@@ -5,6 +5,7 @@ declare global {
     __theme: SupportedThemes;
     __setPreferredTheme(nextTheme: SupportedThemes): void;
     __onThemeChange(nextTheme: SupportedThemes): void;
+    twttr?: any;
   }
 }
 

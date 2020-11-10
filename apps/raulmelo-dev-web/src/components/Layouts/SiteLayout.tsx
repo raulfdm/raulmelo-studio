@@ -4,7 +4,6 @@ import { MenuBar } from '@components/MenuBar';
 import { Container } from '@components/Ui';
 import { styled, media } from '@styles/styled';
 import { SiteTheme } from '@types-app';
-import { SideMenu } from '@components/SideMenu';
 
 const Main = styled(Container)`
   && {
@@ -23,7 +22,6 @@ export const SiteLayout: FC<{ as?: any }> = ({ children, ...props }) => {
     <>
       <MenuBar />
       <Main {...props}>{children}</Main>
-      <SideMenu />
     </>
   );
 };

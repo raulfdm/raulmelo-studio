@@ -46,7 +46,6 @@ export const CvPage: React.FC<CvApiDataProps> = ({
         title="Curriculum"
         description="Raul Melo is a Software Developer focused on client-side. Have over 5 years of experience building websites and applications. Check my CV for more info."
         url="/cv"
-        lang="en"
       >
         <link
           href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Raleway:wght@400;700&display=swap"

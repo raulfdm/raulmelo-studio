@@ -1,16 +1,47 @@
 import React from 'react';
 import { GetStaticPaths } from 'next';
 
-import { renderToString } from '@config/mdx';
+import { renderToString, hydrate } from '@config/mdx';
 import { Backend } from '@services/Backend';
-import { PostApi, PostsApiData } from 'src/types/api/posts';
+import { PostsApiData } from 'src/types/api/posts';
+import { head } from '@utils/utilities';
+import { BlogPage, BlogPageProps } from '@screens/Blog/BlogPage';
+import { getRelevantPostSerieData } from '@screens/Blog/utils/series';
+import { PostSerieApiData, SiteApiData, SocialApiData } from '@types-api';
+import { getRelevantTranslationData } from '@screens/Blog/utils/translations';
 
-type BlogProps = {
-  content: any;
-};
+const BlogPost: React.FC<BlogPageProps> = ({
+  content,
+  post,
+  series,
+  translation,
+  site,
+  social,
+}) => {
+  /**
+   * For some reason, some times the first load happens
+   * with "mdx" property as undefined. By having that, the hydrate fn
+   * will throw an error because it expects an object.
+   *
+   * The way I found to mitigate that is checking if "mdx" is present
+   * and only than follow the natural flow.
+   */
+  if (!content) {
+    return null;
+  }
 
-const BlogPost: React.FC<BlogProps> = () => {
-  return <div>post</div>;
+  const parsedContent = hydrate(content);
+
+  return (
+    <BlogPage
+      content={parsedContent}
+      post={post}
+      series={series}
+      translation={translation}
+      site={site}
+      social={social}
+    />
+  );
 };
 
 type Params = {
@@ -20,18 +51,42 @@ type Params = {
 };
 
 export const getStaticProps = async ({ params }: Params) => {
-  const post = (await Backend.fetch(
-    'posts',
-    `?slug=${params.slug}`,
-  )) as PostApi;
+  const [postData, social, site]: [
+    PostsApiData,
+    SocialApiData,
+    SiteApiData,
+  ] = await Promise.all([
+    Backend.fetch('posts', `?slug=${params.slug}`),
+    Backend.fetch('social'),
+    Backend.fetch('site'),
+  ]);
 
-  const mdxSource = await renderToString(post.content);
+  const post = head(postData);
+
+  const props: Partial<BlogPageProps> = {
+    post,
+    social,
+    site,
+  };
+
+  if (post.post_serie) {
+    const postSerie = (await Backend.fetch(
+      'post-series',
+      `/${post.post_serie.id}`,
+    )) as PostSerieApiData;
+
+    props.series = getRelevantPostSerieData(postSerie);
+  }
+
+  if (post.translation) {
+    props.translation = getRelevantTranslationData(post);
+  }
+
+  props.content = await renderToString(post.content);
 
   return {
-    props: {
-      content: mdxSource,
-    },
-    revalidate: 1,
+    props,
+    revalidate: 60,
   };
 };
 
@@ -42,6 +97,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     params: {
       slug: post['slug'],
     },
+    locale: post.language,
   }));
 
   return {

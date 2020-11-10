@@ -27,6 +27,7 @@ export const CustomContainer = styled(Container)`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 100%;
 
   ${media.greaterThan('medium')`
     max-width: 90%;

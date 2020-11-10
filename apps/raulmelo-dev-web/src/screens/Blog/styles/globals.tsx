@@ -1,6 +1,6 @@
 import Typography from 'typography';
 
-import { css } from '@styles/styled';
+import { css, media } from '@styles/styled';
 import { FONTS, theme } from '@styles/theme';
 import { headingLinkStyle } from '@components/Ui';
 import { pandaPrismStyles } from './prism-panda-theme';
@@ -87,6 +87,15 @@ export const blogGlobalStyles = css`
   /* Important for code blocks keep language label in the proper place */
   pre {
     position: relative;
+  }
+
+  #__next {
+    padding-top: ${({ theme }) => `calc(35px + ${theme.sizes.menuBar.height})`};
+
+    ${media.greaterThan('medium')`
+      padding-top: ${({ theme }) =>
+        `calc(35px + ${theme.sizes.menuBar.height})`};
+    `}
   }
 
   ${pandaPrismStyles};

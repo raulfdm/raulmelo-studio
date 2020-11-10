@@ -23,7 +23,7 @@ const localizedMessages = {
 };
 
 export const LocalizationProvider: React.FC = ({ children }) => {
-  const { locale, push, route } = useRouter();
+  const { locale = 'en', push, route } = useRouter();
 
   function switchLocale(nextLocale: SupportedLanguages): void {
     /**

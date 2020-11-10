@@ -28,11 +28,10 @@ const messages = defineMessages({
 });
 
 export const SearchPage = () => {
-  const { locale, formatMessage } = useLocalization();
+  const { formatMessage } = useLocalization();
   return (
     <>
       <SEO
-        lang={locale}
         // TODO: fix those values
         siteUrl="http://localhost:3000"
         imageUrl=""

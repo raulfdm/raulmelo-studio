@@ -1,12 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
 
-import { useSetHtmlLang } from '@hooks/useSetHtmlLang';
-
-/* TODO: Fix lang handle
-https://github.com/vercel/next.js/issues/9160
-*/
-
 type SEOProps = {
   title: string;
   siteUrl: string;
@@ -14,7 +8,6 @@ type SEOProps = {
   twitterUrl: string;
   description: string;
   url: string;
-  lang: 'en' | 'pt';
   isBlogPost?: boolean;
   setCanonical?: boolean;
   withDefaultTitle?: boolean;
@@ -27,15 +20,12 @@ export const SEO: React.FC<SEOProps> = (props) => {
     url,
     imageUrl,
     siteUrl,
-    lang,
     isBlogPost = false,
     setCanonical = true,
     withDefaultTitle = false,
     children,
     twitterUrl,
   } = props;
-
-  useSetHtmlLang(lang);
 
   const metaUrl = getCanonicalLink({ siteUrl, uri: url });
 

@@ -1,3 +1,5 @@
+import { SupportedLanguages } from '../app';
+
 interface PostTag {
   _id: string;
   tag: string;
@@ -125,8 +127,8 @@ interface PostSerie {
   updatedAt: string;
 }
 
-export interface PostApi {
-  language: string;
+export interface PostApiData {
+  language: SupportedLanguages;
   status: string;
   post_tags: PostTag[];
   _id: string;
@@ -144,6 +146,7 @@ export interface PostApi {
   featured_image: FeaturedImage;
   id: string;
   post_serie?: PostSerie;
+  translation?: PostApiData;
 }
 
-export type PostsApiData = PostApi[];
+export type PostsApiData = PostApiData[];

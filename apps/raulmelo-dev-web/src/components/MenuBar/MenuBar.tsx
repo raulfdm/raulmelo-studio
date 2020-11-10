@@ -3,9 +3,9 @@ import { useState, useEffect, FC } from 'react';
 import { useViewportScroll, useMotionValue } from 'framer-motion';
 
 import { Logo } from '@components/Logo';
+import { SideMenuNavIcon, SideMenu } from '@components/SideMenu';
 import { ThemeSwitch } from './components/ThemeSwitch';
 import { LanguageSwitch } from './components/LanguageSwitch';
-import { SideMenuNavIcon } from '@components/SideMenu';
 import { CustomContainer, LogoWrapper, MenuBarWrapper } from './styled';
 
 export const MenuBar: FC = () => {
@@ -45,24 +45,27 @@ export const MenuBar: FC = () => {
   };
 
   return (
-    <MenuBarWrapper
-      animate={showMenu ? 'open' : 'closed'}
-      variants={variants}
-      transition={{ duration: 0.3, type: 'tween' }}
-      data-testid="menu-bar"
-    >
-      <CustomContainer>
-        <LogoWrapper data-testid="menu-bar__logo">
-          <Link href="/">
-            <a>
-              <Logo />
-            </a>
-          </Link>
-        </LogoWrapper>
-        <ThemeSwitch />
-        <LanguageSwitch />
-        <SideMenuNavIcon />
-      </CustomContainer>
-    </MenuBarWrapper>
+    <>
+      <MenuBarWrapper
+        animate={showMenu ? 'open' : 'closed'}
+        variants={variants}
+        transition={{ duration: 0.3, type: 'tween' }}
+        data-testid="menu-bar"
+      >
+        <CustomContainer>
+          <LogoWrapper data-testid="menu-bar__logo">
+            <Link href="/">
+              <a>
+                <Logo />
+              </a>
+            </Link>
+          </LogoWrapper>
+          <ThemeSwitch />
+          <LanguageSwitch />
+          <SideMenuNavIcon />
+        </CustomContainer>
+      </MenuBarWrapper>
+      <SideMenu />
+    </>
   );
 };

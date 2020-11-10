@@ -5,3 +5,4 @@ export * from './site';
 export * from './endpoints';
 export * from './uses';
 export * from './posts';
+export * from './post-series';
