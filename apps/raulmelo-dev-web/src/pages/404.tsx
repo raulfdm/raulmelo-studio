@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { FormattedMessage, defineMessage } from 'react-intl';
 
+import { GlobalStyles } from '@styles/index';
+import { MenuBar } from '@components/MenuBar';
 import { useLocalization } from '@hooks/useLocalization';
 import { AppThemeProvider } from '@contexts/AppTheme';
 import Head from 'next/head';
@@ -42,17 +44,17 @@ const Error = () => {
         <title>{formatMessage(pageTitleMessage)}</title>
       </Head>
       <AppThemeProvider>
-        <div>
-          <Wrapper>
-            <Title>Oops!</Title>
-            <Subtitle>
-              <FormattedMessage id="404.subtitle" />
-            </Subtitle>
-            <Description>
-              <FormattedMessage id="404.description" />
-            </Description>
-          </Wrapper>
-        </div>
+        <GlobalStyles />
+        <MenuBar />
+        <Wrapper>
+          <Title>Oops!</Title>
+          <Subtitle>
+            <FormattedMessage id="404.subtitle" />
+          </Subtitle>
+          <Description>
+            <FormattedMessage id="404.description" />
+          </Description>
+        </Wrapper>
       </AppThemeProvider>
     </>
   );
