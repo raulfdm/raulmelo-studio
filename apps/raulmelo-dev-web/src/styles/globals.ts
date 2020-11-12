@@ -1,4 +1,4 @@
-import { css } from '@styles/styled';
+import { css, media } from '@styles/styled';
 
 export const themeBackgroundColor = {
   dark: 'rgb(21, 32, 43)',
@@ -56,6 +56,15 @@ export const customGlobals = css`
 
     transition: background-color 0.2s ease, color 0.2s ease, fill 0.2s ease,
       opacity 0.2s ease, color 0.2s ease, border 0.2s ease;
+  }
+
+  #__next {
+    padding-top: ${({ theme }) => `calc(35px + ${theme.sizes.menuBar.height})`};
+
+    ${media.greaterThan('medium')`
+      padding-top: ${({ theme }) =>
+        `calc(35px + ${theme.sizes.menuBar.height})`};
+    `}
   }
 
   img,

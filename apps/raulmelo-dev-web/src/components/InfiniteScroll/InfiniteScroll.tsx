@@ -49,7 +49,7 @@ export const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
 
     if (
       hasMore &&
-      wardRef.current!.getBoundingClientRect().top - window.innerHeight <
+      wardRef?.current!.getBoundingClientRect().top - window.innerHeight <
         threshold!
     ) {
       onLoadMore();

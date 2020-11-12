@@ -15,14 +15,32 @@ import {
 } from './styled';
 import { PostModel } from '@models/Post';
 import { PostApiData } from 'src/types/api/posts';
+import { getTagUrl } from '@utils/url';
 
 type PostCardProps = {
   post: PostModel;
   tags?: PostApiData['post_tags'];
 };
 
-export const PostCard: React.FC<PostCardProps> = ({ post, tags }) => {
-  const { featured_image, title, subtitle, date, postUri } = post!;
+export const PostCard: React.FC<PostCardProps> = ({ post }) => {
+  const { featured_image, title, subtitle, date, postUri, post_tags } = post!;
+
+  /**
+   * For the tags, every post only has the tags id.
+   * Which is not the case for home page where we have an array of tag objects
+   * with all tag info.
+   */
+  const shouldRenderTag =
+    isNotNilNorEmpty(post_tags) && typeof post_tags[0] !== 'string';
+
+  const tags = shouldRenderTag ? (
+    <Tags>
+      {post_tags!.map((tag) => {
+        const { id, name, slug } = tag!;
+        return <Tag key={id} tag={name!} slug={getTagUrl(slug)} />;
+      })}
+    </Tags>
+  ) : null;
 
   return (
     <PostCardWrapper>
@@ -49,14 +67,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post, tags }) => {
           </time>
         </DateAndTime>
         {subtitle && <Subtitle>{subtitle}</Subtitle>}
-        {isNotNilNorEmpty(tags) && (
-          <Tags>
-            {tags!.map((tag) => {
-              const { id, name, slug } = tag!;
-              return <Tag key={id} tag={name!} slug={slug!} />;
-            })}
-          </Tags>
-        )}
+        {tags}
       </Body>
     </PostCardWrapper>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import * as R from 'ramda';
+import isEmpty from 'ramda/src/isEmpty';
 import { FormattedMessage, defineMessages } from 'react-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -88,7 +88,7 @@ export const Posts: React.FC<PostsProps> = ({
         {customTitle || <FormattedMessage id={filterLocale[filter]} />}
       </PostsTitle>
 
-      {R.isEmpty(posts) ? (
+      {isEmpty(posts) ? (
         <NoPostsMessage>
           <FormattedMessage
             id="home.noPosts"
@@ -119,7 +119,7 @@ export const Posts: React.FC<PostsProps> = ({
                   },
                 }}
               >
-                <PostCard post={post} tags={post.post_tags} />
+                <PostCard post={post} key={post.id} />
               </PostListItem>
             ))}
           </AnimatePresence>

@@ -5,4 +5,5 @@ export type Endpoints =
   | 'site'
   | 'uses'
   | 'posts'
-  | 'post-series';
+  | 'post-series'
+  | 'post-tags';

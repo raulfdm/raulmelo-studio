@@ -72,7 +72,6 @@ export const BlogPage: React.FC<BlogPageProps> = ({
         siteUrl={site.url}
         imageUrl={featured_image.url}
         twitterUrl={social.twitter.url}
-        withDefaultTitle
         title={post.title}
         description={post.description}
         /* TODO: fix that 
