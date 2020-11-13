@@ -1,6 +1,6 @@
 import { AppProps } from 'next/dist/next-server/lib/router/router';
 
-import { LocalizationProvider } from '@contexts/react-intl';
+import { LocalizationProvider } from '@contexts/Localization';
 import { AppContextProvider } from '@contexts/app';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {

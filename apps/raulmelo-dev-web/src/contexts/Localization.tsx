@@ -23,7 +23,7 @@ const localizedMessages = {
 };
 
 export const LocalizationProvider: React.FC = ({ children }) => {
-  const { locale = 'en', push, route } = useRouter();
+  const { locale = 'en', push, pathname, query, asPath } = useRouter();
 
   function switchLocale(nextLocale: SupportedLanguages): void {
     /**
@@ -32,7 +32,7 @@ export const LocalizationProvider: React.FC = ({ children }) => {
      * and Next will handle the logic for us
      */
 
-    push(route, route, { locale: nextLocale });
+    push({ pathname, query }, asPath, { locale: nextLocale });
   }
 
   function switchToEnglish(): void {

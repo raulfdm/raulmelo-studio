@@ -4,7 +4,7 @@ import { IntlShape, useIntl } from 'react-intl';
 import {
   LocalizationContextType,
   LocalizationContext,
-} from '@contexts/react-intl';
+} from '@contexts/Localization';
 import { SupportedLanguages } from '@types-app';
 
 /**
