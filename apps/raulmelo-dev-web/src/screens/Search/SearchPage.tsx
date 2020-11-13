@@ -33,10 +33,7 @@ export const SearchPage = () => {
     <>
       <SEO
         // TODO: fix those values
-        siteUrl="http://localhost:3000"
-        imageUrl=""
-        twitterUrl=""
-        url=""
+        url="/search"
         description={formatMessage(messages.seoDescription)}
         title={formatMessage(messages.seoTitle)}
       />

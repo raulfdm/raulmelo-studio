@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { SEO } from '@components/SEO';
-import { PostApiData, SiteApiData, SocialApiData } from '@types-api';
+import { PostApiData } from '@types-api';
 import { Header } from './components/Header';
 import { FeaturedImage } from './components/FeaturedImage';
 import { AppThemeProvider } from '@contexts/AppTheme';
@@ -18,8 +18,6 @@ import { AvailableTranslations } from './components/AvailableTranslations';
 export type BlogPageProps = {
   content: RenderToStringReturnType;
   post: PostApiData;
-  social: SocialApiData;
-  site: SiteApiData;
   series?: RelevantPostSerieData;
   translation?: RelevantTranslationData;
 };
@@ -29,8 +27,6 @@ export const BlogPage: React.FC<BlogPageProps> = ({
   post,
   series,
   translation,
-  site,
-  social,
 }) => {
   const { featured_image, post_tags } = post;
 
@@ -69,9 +65,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
   return (
     <>
       <SEO
-        siteUrl={site.url}
         imageUrl={featured_image.url}
-        twitterUrl={social.twitter.url}
         title={post.title}
         description={post.description}
         /* TODO: fix that 

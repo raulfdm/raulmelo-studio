@@ -18,22 +18,17 @@ import {
   SocialLink,
   AuthorImageWrapper,
 } from './styled';
-import { PersonalInformationApiData, SocialApiData } from '@types-api';
+import { PersonalInformationApiData } from '@types-api';
+import { siteData } from '@data/siteData';
 
 type Props = {
   fullName: PersonalInformationApiData['full_name'];
   profilePic: PersonalInformationApiData['profile_pic']['url'];
-  linkedIn: SocialApiData['linkedIn'];
-  github: SocialApiData['github'];
-  twitter: SocialApiData['twitter'];
 };
 
 export const AuthorPresentation: React.FC<Props> = ({
   fullName,
   profilePic,
-  linkedIn,
-  github,
-  twitter,
 }) => {
   return (
     <AuthorPresentationWrapper>
@@ -43,13 +38,22 @@ export const AuthorPresentation: React.FC<Props> = ({
           <FormattedMessage id="siteData.description" />
         </AuthorSynopsis>
         <SocialWrapper>
-          <SocialLink href={github.url!} data-testid="author__githubUrl">
+          <SocialLink
+            href={siteData.social.github.url}
+            data-testid="author__githubUrl"
+          >
             <Github size={21} />
           </SocialLink>
-          <SocialLink href={twitter.url!} data-testid="author__twitterUrl">
+          <SocialLink
+            href={siteData.social.twitter.url}
+            data-testid="author__twitterUrl"
+          >
             <Twitter size={21} />
           </SocialLink>
-          <SocialLink href={linkedIn.url!} data-testid="author__linkedInUrl">
+          <SocialLink
+            href={siteData.social.linkedIn.url}
+            data-testid="author__linkedInUrl"
+          >
             <Linkedin size={21} />
           </SocialLink>
         </SocialWrapper>

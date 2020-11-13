@@ -11,12 +11,7 @@ import { useLocalization } from '@hooks/useLocalization';
 import { Posts } from '@screens/Home/components/Posts';
 import { useBlogPostFilters } from '@screens/Home/hooks/useBlogPostFilters';
 import { getTagUrl } from '@utils/url';
-import {
-  PersonalInformationApiData,
-  PostTagApiData,
-  SiteApiData,
-  SocialApiData,
-} from '@types-api';
+import { PersonalInformationApiData, PostTagApiData } from '@types-api';
 
 const messages = defineMessages({
   description: {
@@ -30,16 +25,9 @@ const messages = defineMessages({
 export type TagPageProps = {
   tag: PostTagApiData;
   personalInfo: PersonalInformationApiData;
-  social: SocialApiData;
-  site: SiteApiData;
 };
 
-export const TagPage: React.FC<TagPageProps> = ({
-  tag,
-  personalInfo,
-  social,
-  site,
-}) => {
+export const TagPage: React.FC<TagPageProps> = ({ tag, personalInfo }) => {
   const { formatMessage, locale } = useLocalization();
   const {
     activeFilter,
@@ -59,9 +47,6 @@ export const TagPage: React.FC<TagPageProps> = ({
         )}
         title={formatMessage(messages.title, { tag: tag.name })}
         withDefaultTitle
-        siteUrl={site.url}
-        imageUrl={site.seo_image.url}
-        twitterUrl={social.twitter.url}
         url={getTagUrl(tag.slug)}
       />
       <AppThemeProvider>
@@ -71,9 +56,6 @@ export const TagPage: React.FC<TagPageProps> = ({
           <AuthorPresentation
             fullName={personalInfo.full_name}
             profilePic={personalInfo.profile_pic.url}
-            linkedIn={social.linkedIn}
-            github={social.github}
-            twitter={social.twitter}
           />
           <Posts
             posts={postsToRender(locale)}

@@ -17,12 +17,7 @@ import {
 import { GlobalCVStyles } from './styled';
 import { CvApiDataProps } from './types';
 
-export const CvPage: React.FC<CvApiDataProps> = ({
-  cv,
-  personalInfo,
-  social,
-  site,
-}) => {
+export const CvPage: React.FC<CvApiDataProps> = ({ cv, personalInfo }) => {
   const { moveToTop } = useScrollToTop();
 
   const {
@@ -34,14 +29,9 @@ export const CvPage: React.FC<CvApiDataProps> = ({
     interests,
   } = cv;
 
-  const { seo_image, url: siteUrl } = site;
-
   return (
     <>
       <SEO
-        siteUrl={siteUrl}
-        imageUrl={seo_image.url}
-        twitterUrl={social.twitter.url}
         withDefaultTitle
         title="Curriculum"
         description="Raul Melo is a Software Developer focused on client-side. Have over 5 years of experience building websites and applications. Check my CV for more info."
@@ -55,7 +45,7 @@ export const CvPage: React.FC<CvApiDataProps> = ({
       <GlobalCVStyles />
       <HomeLink href="/">Back to home</HomeLink>
       <CVMain>
-        <Info {...personalInfo} {...social} />
+        <Info {...personalInfo} />
         <CareerSummary summary={summary} />
         <TechnicalSkills technical_skills={technical_skills} />
         <CareerExperience jobs={jobs} />

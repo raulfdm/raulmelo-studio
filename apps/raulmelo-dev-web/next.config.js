@@ -23,6 +23,7 @@ module.exports = {
       '@styles': path.resolve(__dirname, './src/styles'),
       '@types-api': path.resolve(__dirname, './src/types/api/index.ts'),
       '@types-app': path.resolve(__dirname, './src/types/index.ts'),
+      '@data': path.resolve(__dirname, './src/data'),
       '@utils': path.resolve(__dirname, './src/utils'),
     };
 

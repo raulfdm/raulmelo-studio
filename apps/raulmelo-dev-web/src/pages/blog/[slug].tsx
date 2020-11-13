@@ -7,7 +7,7 @@ import { PostsApiData } from 'src/types/api/posts';
 import { head } from '@utils/utilities';
 import { BlogPage, BlogPageProps } from '@screens/Blog/BlogPage';
 import { getRelevantPostSerieData } from '@screens/Blog/utils/series';
-import { PostSerieApiData, SiteApiData, SocialApiData } from '@types-api';
+import { PostSerieApiData } from '@types-api';
 import { getRelevantTranslationData } from '@screens/Blog/utils/translations';
 
 const BlogPost: React.FC<BlogPageProps> = ({
@@ -15,8 +15,6 @@ const BlogPost: React.FC<BlogPageProps> = ({
   post,
   series,
   translation,
-  site,
-  social,
 }) => {
   /**
    * For some reason, some times the first load happens
@@ -38,8 +36,6 @@ const BlogPost: React.FC<BlogPageProps> = ({
       post={post}
       series={series}
       translation={translation}
-      site={site}
-      social={social}
     />
   );
 };
@@ -51,22 +47,15 @@ type Params = {
 };
 
 export const getStaticProps = async ({ params }: Params) => {
-  const [postData, social, site]: [
-    PostsApiData,
-    SocialApiData,
-    SiteApiData,
-  ] = await Promise.all([
-    Backend.fetch('posts', `?slug=${params.slug}`),
-    Backend.fetch('social'),
-    Backend.fetch('site'),
-  ]);
+  const postData = (await Backend.fetch(
+    'posts',
+    `?slug=${params.slug}`,
+  )) as PostsApiData;
 
   const post = head(postData);
 
   const props: Partial<BlogPageProps> = {
     post,
-    social,
-    site,
   };
 
   if (post.post_serie) {

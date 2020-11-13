@@ -1,11 +1,11 @@
 import React from 'react';
 import Head from 'next/head';
 
+import { siteData } from '@data/siteData';
+
 type SEOProps = {
   title: string;
-  siteUrl: string;
-  imageUrl: string;
-  twitterUrl: string;
+  imageUrl?: string;
   description: string;
   url: string;
   isBlogPost?: boolean;
@@ -18,16 +18,14 @@ export const SEO: React.FC<SEOProps> = (props) => {
     title,
     description,
     url,
-    imageUrl,
-    siteUrl,
+    imageUrl = siteData.seoImage.url,
     isBlogPost = false,
     setCanonical = true,
     withDefaultTitle = false,
     children,
-    twitterUrl,
   } = props;
 
-  const metaUrl = getCanonicalLink({ siteUrl, uri: url });
+  const metaUrl = getCanonicalLink({ siteUrl: siteData.url, uri: url });
 
   return (
     <Head>
@@ -48,7 +46,7 @@ export const SEO: React.FC<SEOProps> = (props) => {
 
       {/* Twitter Card tags */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:creator" content={twitterUrl} />
+      <meta name="twitter:creator" content={siteData.social.twitter.url} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />

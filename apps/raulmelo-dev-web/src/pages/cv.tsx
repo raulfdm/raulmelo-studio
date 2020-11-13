@@ -31,14 +31,12 @@ export async function getStaticProps() {
 }
 
 async function fetchCvData(): Promise<CvApiDataProps> {
-  const [cv, personalInfo, social, site] = await Promise.all([
+  const [cv, personalInfo] = await Promise.all([
     Backend.fetch('cv'),
     Backend.fetch('personal-information'),
-    Backend.fetch('social'),
-    Backend.fetch('site'),
   ]);
 
-  return { cv, personalInfo, social, site };
+  return { cv, personalInfo };
 }
 
 export default Cv;
