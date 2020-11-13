@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useLocalization } from '@hooks/useLocalization';
 import { useApp } from '@hooks/useApp';
 import { isBrowserApiAvailable } from '@utils/utilities';
-import { Nav, StyledLink, OpacityLayer } from './styles';
+import { Nav, StyledLink, Overlay } from './styles';
 
 const messages = defineMessage({
   home: {
@@ -93,21 +93,23 @@ export const SideMenu = () => {
           );
         })}
       </Nav>
-      <OpacityLayer
-        style={{
-          pointerEvents: isCollapsed ? 'none' : 'all',
-        }}
-        onClick={hide}
-        animate={animate}
-        variants={{
-          open: {
-            opacity: 1,
-          },
-          closed: {
-            opacity: 0,
-          },
-        }}
-      />
+      {!isCollapsed ? (
+        <Overlay
+          style={{
+            pointerEvents: isCollapsed ? 'none' : 'all',
+          }}
+          onClick={hide}
+          animate={animate}
+          variants={{
+            open: {
+              opacity: 1,
+            },
+            closed: {
+              opacity: 0,
+            },
+          }}
+        />
+      ) : null}
     </>
   );
 };
