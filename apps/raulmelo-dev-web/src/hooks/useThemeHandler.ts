@@ -22,16 +22,16 @@ export function useThemeHandler(initialTheme?: SupportedThemes) {
 
   useEffect(() => {
     if (initialTheme) {
-      toggleTheme({ theme: initialTheme });
+      toggleTheme(initialTheme);
     }
   }, [initialTheme]);
 
-  function toggleTheme(opts?: { theme: SupportedThemes }): void {
-    const nextTheme =
-      opts?.theme || (currentTheme === 'dark' ? 'light' : 'dark');
+  function toggleTheme(theme?: SupportedThemes): void {
+    const nextTheme = theme || (currentTheme === 'dark' ? 'light' : 'dark');
 
     setMetaTheme(nextTheme);
     window.__setPreferredTheme(nextTheme);
+    setCurrentTheme(nextTheme);
   }
 
   return {

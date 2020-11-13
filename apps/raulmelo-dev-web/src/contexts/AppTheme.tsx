@@ -11,7 +11,7 @@ type ThemeProps = {
 };
 
 type ContextType = {
-  toggleTheme: (opt?: { theme: SupportedThemes }) => void;
+  toggleTheme: (theme?: SupportedThemes) => void;
   theme: SiteTheme;
   currentTheme: string;
   isDarkTheme: boolean;
