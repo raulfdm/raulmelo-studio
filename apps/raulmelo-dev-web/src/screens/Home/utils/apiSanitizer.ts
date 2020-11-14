@@ -9,7 +9,7 @@ type SanitizedFeaturedImage = Pick<
 
 type SanitizedTag = Pick<PostApiData['post_tags'][0], 'id' | 'slug' | 'name'>;
 
-type SanitizedPost = Pick<
+export type SanitizedPost = Pick<
   PostApiData,
   'language' | 'slug' | 'date' | 'subtitle' | 'title' | 'description' | 'id'
 > & { featured_image: SanitizedFeaturedImage; post_tags: SanitizedTag[] };
@@ -29,7 +29,7 @@ const pickPostData = R.pick([
 const pickFeaturedImage = R.pick(['width', 'height', 'url']);
 const pickTag = R.pick(['slug', 'id', 'name']);
 
-export function sanitizePosts(posts: PostsApiData): SanitizedPost[] {
+export function sanitizePosts(posts: PostsApiData) {
   return posts.map((post) => {
     const sanitizedPost = pickPostData(post) as SanitizedPost;
 

@@ -11,7 +11,7 @@ type SanitizedPost = Pick<
   'language' | 'slug' | 'date' | 'subtitle' | 'title' | 'description' | 'id'
 > & { featured_image: SanitizedFeaturedImage };
 
-type SanitizedTag = Pick<
+export type SanitizedTag = Pick<
   PostApiData['post_tags'][0],
   'id' | 'slug' | 'name'
 > & {

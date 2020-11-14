@@ -6,6 +6,7 @@
 */
 import * as React from 'react';
 import throttle from 'lodash.throttle';
+import isNil from 'ramda/src/isNil';
 
 export interface InfiniteScrollProps {
   Component: React.ElementType;
@@ -43,7 +44,7 @@ export const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
   const wardRef = React.useRef<HTMLDivElement | null>(null);
 
   function checkWindowScroll(): void {
-    if (isLoading) {
+    if (isLoading || isNil(wardRef.current)) {
       return;
     }
 

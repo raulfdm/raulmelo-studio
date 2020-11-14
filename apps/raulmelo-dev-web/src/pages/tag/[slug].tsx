@@ -1,12 +1,18 @@
 import React from 'react';
 import { GetStaticPaths } from 'next';
 import head from 'ramda/src/head';
+import pipe from 'ramda/src/pipe';
 
 import { Backend } from '@services/Backend';
-import { PersonalInformationApiData, PostsTagApiData } from '@types-api';
+import {
+  PersonalInformationApiData,
+  PostApiData,
+  PostsTagApiData,
+} from '@types-api';
 import { TagPage, TagPageProps } from '@screens/Tag/TagPage';
 import { SupportedLanguages } from '@types-app';
-import { sanitizePostTag } from '@screens/Tag/utils/apiSanitizer';
+import { SanitizedTag, sanitizePostTag } from '@screens/Tag/utils/apiSanitizer';
+import { sortDescPostsByDate } from '@utils/posts';
 
 const Tag = (props: TagPageProps) => <TagPage {...props} />;
 
@@ -15,6 +21,14 @@ type Params = {
     slug: string;
   };
   locale: SupportedLanguages;
+};
+
+const sortTagPosts = (tag: SanitizedTag) => {
+  const newTag = { ...tag };
+
+  newTag.blog_posts = sortDescPostsByDate(newTag.blog_posts as PostApiData[]);
+
+  return newTag;
 };
 
 export const getStaticProps = async ({ params }: Params) => {
@@ -29,7 +43,7 @@ export const getStaticProps = async ({ params }: Params) => {
   const tag = head(tags)!;
 
   return {
-    props: { tag: sanitizePostTag(tag), personalInfo },
+    props: { tag: pipe(sanitizePostTag, sortTagPosts)(tag), personalInfo },
     revalidate: 1,
   };
 };

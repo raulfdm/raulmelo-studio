@@ -1,11 +1,13 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
+import pipe from 'ramda/src/pipe';
 
 import { Backend } from '@services/Backend';
 import { PersonalInformationApiData, SocialApiData } from '@types-api';
 import { PostsApiData } from 'src/types/api/posts';
 import { HomePage, HomePageProps } from '@screens/Home/HomePage';
 import { sanitizePosts } from '@screens/Home/utils/apiSanitizer';
+import { sortDescPostsByDate } from '@utils/posts';
 
 const Home = (props: HomePageProps) => {
   return <HomePage {...props} />;
@@ -26,7 +28,10 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
   return {
     props: {
-      posts: sanitizePosts(posts),
+      // TODO: I really don't know how to fix this type coercion
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      posts: pipe(sanitizePosts, sortDescPostsByDate)(posts),
       locale,
       personalInfo,
       social,
