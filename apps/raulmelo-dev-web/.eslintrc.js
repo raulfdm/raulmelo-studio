@@ -3,14 +3,18 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx'],
       extends: ['plugin:react/recommended', '@sub-tv/eslint-config'],
-      plugins: ['react-hooks'],
+      plugins: ['react-hooks', 'jest'],
       settings: {
         react: {
           version: 'detect',
         },
+        jest: {
+          version: 26,
+        },
       },
       env: {
         browser: true,
+        'jest/globals': true,
       },
       rules: {
         /* This is a NEXTJS project!!11! */
@@ -27,7 +31,6 @@ module.exports = {
             argsIgnorePattern: '^_',
           },
         ],
-        'jest/no-mocks-import': 0,
         '@typescript-eslint/explicit-function-return-type': 0,
       },
     },
@@ -49,6 +52,7 @@ module.exports = {
       },
       rules: {
         '@typescript-eslint/no-explicit-any': 'off',
+        'jest/no-mocks-import': 'off',
       },
     },
   ],

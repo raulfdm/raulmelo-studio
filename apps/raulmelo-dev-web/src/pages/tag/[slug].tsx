@@ -6,10 +6,9 @@ import { Backend } from '@services/Backend';
 import { PersonalInformationApiData, PostsTagApiData } from '@types-api';
 import { TagPage, TagPageProps } from '@screens/Tag/TagPage';
 import { SupportedLanguages } from '@types-app';
+import { sanitizePostTag } from '@screens/Tag/utils/apiSanitizer';
 
-const Tag = ({ tag, personalInfo }: TagPageProps) => {
-  return <TagPage tag={tag} personalInfo={personalInfo} />;
-};
+const Tag = (props: TagPageProps) => <TagPage {...props} />;
 
 type Params = {
   params: {
@@ -27,10 +26,10 @@ export const getStaticProps = async ({ params }: Params) => {
     Backend.fetch('personal-information'),
   ]);
 
-  const tag = head(tags);
+  const tag = head(tags)!;
 
   return {
-    props: { tag, personalInfo },
+    props: { tag: sanitizePostTag(tag), personalInfo },
     revalidate: 1,
   };
 };

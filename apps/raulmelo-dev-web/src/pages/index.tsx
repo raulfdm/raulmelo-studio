@@ -5,6 +5,7 @@ import { Backend } from '@services/Backend';
 import { PersonalInformationApiData, SocialApiData } from '@types-api';
 import { PostsApiData } from 'src/types/api/posts';
 import { HomePage, HomePageProps } from '@screens/Home/HomePage';
+import { sanitizePosts } from '@screens/Home/utils/apiSanitizer';
 
 const Home = (props: HomePageProps) => {
   return <HomePage {...props} />;
@@ -25,7 +26,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
   return {
     props: {
-      posts,
+      posts: sanitizePosts(posts),
       locale,
       personalInfo,
       social,
