@@ -11,6 +11,7 @@ import { algoliaConfig } from '@config/algolia';
 import { HitAlgolia } from '@types-app';
 import { algoliaSearchClient } from './utils';
 import { PoweredBy, SearchWrapper, SearchBoxWrapper } from './styled';
+import { PostCard } from '@components/PostCard';
 
 const messages = defineMessages({
   stats: {
@@ -32,7 +33,6 @@ export const SearchPage = () => {
   return (
     <>
       <SEO
-        // TODO: fix those values
         url="/search"
         description={formatMessage(messages.seoDescription)}
         title={formatMessage(messages.seoTitle)}
@@ -71,14 +71,8 @@ export const SearchPage = () => {
                     childMdx: { excerpt, timeToRead },
                   },
                 };
-                console.log(post);
-                return (
-                  <h2>Hey</h2>
-                  // <Fragment key={hit.objectID}>
-                  //   <PostCard post={post as any} />
-                  //   <br />
-                  // </Fragment>
-                );
+
+                return <PostCard post={post as any} key={hit.objectID} />;
               }}
             />
 

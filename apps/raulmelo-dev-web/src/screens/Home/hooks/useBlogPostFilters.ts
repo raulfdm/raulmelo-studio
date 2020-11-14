@@ -1,7 +1,6 @@
 import { useState, useMemo } from 'react';
 
 import { Posts } from '@models/Posts';
-import { PostModel } from '@models/Post';
 import { PostsApiData } from 'src/types/api/posts';
 import { SupportedLanguages } from '@types-app';
 
@@ -23,7 +22,7 @@ export function useBlogPostFilters(apiPosts: PostsApiData) {
       ? posts.postsByLanguage()[language]
       : posts;
 
-    let postsResult: PostModel[] = [];
+    let postsResult: PostsApiData = [];
 
     if (activeFilter === 'all') {
       postsResult = postsForLanguage.allPosts;

@@ -13,17 +13,24 @@ import {
   Title,
   PostCardWrapper,
 } from './styled';
-import { PostModel } from '@models/Post';
 import { PostApiData } from 'src/types/api/posts';
-import { getTagUrl } from '@utils/url';
+import { getPostUrl, getTagUrl } from '@utils/url';
 
 type PostCardProps = {
-  post: PostModel;
+  post: PostApiData;
   tags?: PostApiData['post_tags'];
 };
 
 export const PostCard: React.FC<PostCardProps> = ({ post }) => {
-  const { featured_image, title, subtitle, date, postUri, post_tags } = post!;
+  const {
+    featured_image,
+    title,
+    subtitle,
+    date,
+    post_tags,
+    slug,
+    language,
+  } = post!;
 
   /**
    * For the tags, every post only has the tags id.
@@ -51,7 +58,11 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
       )}
       <Body>
         <Title>
-          <Link href={postUri} data-testid="post-card">
+          <Link
+            href={getPostUrl(slug)}
+            data-testid="post-card"
+            locale={language}
+          >
             <a>{title}</a>
           </Link>
         </Title>

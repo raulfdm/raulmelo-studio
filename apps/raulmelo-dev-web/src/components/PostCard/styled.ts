@@ -1,6 +1,8 @@
 import { styled, media } from '@styles/styled';
 
-export const PostCardWrapper = styled.article``;
+export const PostCardWrapper = styled.article`
+  margin-bottom: 40px;
+`;
 
 export const ImageContainer = styled.div`
   position: relative;

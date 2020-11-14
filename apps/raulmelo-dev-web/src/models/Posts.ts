@@ -1,12 +1,11 @@
 import { PostsApiData } from '@types-api';
-import { Post, PostModel } from './Post';
 
 type PostList = PostsApiData;
 
 export type PostsModel = ReturnType<typeof Posts>;
 
 export function Posts(posts: PostList) {
-  const _posts = posts.map(Post);
+  const _posts = [...posts];
 
   return {
     allPosts: _posts,
@@ -20,7 +19,7 @@ export function Posts(posts: PostList) {
      * but the ONLY the first article from each serie found.
      */
     get seriesPosts() {
-      const series = {} as { [id: string]: PostModel[] };
+      const series = {} as { [id: string]: PostsApiData };
 
       const postsWithSeries = _posts.filter((p) => p.post_serie);
 
@@ -36,7 +35,7 @@ export function Posts(posts: PostList) {
         }
       }
 
-      const posts: PostModel[] = [];
+      const posts: PostsApiData = [];
 
       for (const serieId in series) {
         /* only the last post */

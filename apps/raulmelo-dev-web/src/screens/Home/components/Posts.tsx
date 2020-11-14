@@ -5,15 +5,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import { styled } from '@styles/styled';
 import { PostFilters } from '@screens/Home/types';
-import { PostModel } from '@models/Post';
 import { SupportedLanguages } from '@types-app';
 import { useLocalization } from '@hooks/useLocalization';
 import { InfiniteScroll } from '@components/InfiniteScroll';
 import { PostCard } from '@components/PostCard';
+import { PostApiData } from '@types-api';
 
 type PostsProps = {
   filter: PostFilters;
-  posts: PostModel[];
+  posts: PostApiData[];
   loadMore: () => void;
   hasMore: boolean;
   customTitle?: string;
