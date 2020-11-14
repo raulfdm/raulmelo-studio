@@ -1,4 +1,4 @@
-import * as R from 'ramda';
+import pick from 'ramda/src/pick';
 
 import { PostApiData, PostsApiData } from '@types-api';
 
@@ -8,13 +8,20 @@ type SanitizedFeaturedImage = Pick<
 >;
 
 type SanitizedTag = Pick<PostApiData['post_tags'][0], 'id' | 'slug' | 'name'>;
-
+type SanitizedSeries = Pick<
+  NonNullable<PostApiData['post_serie']>,
+  'id' | 'name' | 'slug'
+>;
 export type SanitizedPost = Pick<
   PostApiData,
   'language' | 'slug' | 'date' | 'subtitle' | 'title' | 'description' | 'id'
-> & { featured_image: SanitizedFeaturedImage; post_tags: SanitizedTag[] };
+> & {
+  featured_image: SanitizedFeaturedImage;
+  post_tags: SanitizedTag[];
+  post_serie?: SanitizedSeries;
+};
 
-const pickPostData = R.pick([
+const pickPostData = pick([
   'language',
   'slug',
   'date',
@@ -24,10 +31,12 @@ const pickPostData = R.pick([
   'featured_image',
   'id',
   'post_tags',
+  'post_serie',
 ]);
 
-const pickFeaturedImage = R.pick(['width', 'height', 'url']);
-const pickTag = R.pick(['slug', 'id', 'name']);
+const pickFeaturedImage = pick(['width', 'height', 'url']);
+const pickTag = pick(['slug', 'id', 'name']);
+const pickSerie = pick(['slug', 'name', 'post_tags', 'id']);
 
 export function sanitizePosts(posts: PostsApiData) {
   return posts.map((post) => {
@@ -38,6 +47,9 @@ export function sanitizePosts(posts: PostsApiData) {
     );
 
     sanitizedPost.post_tags = sanitizedPost.post_tags.map(pickTag);
+    if (sanitizedPost.post_serie) {
+      sanitizedPost.post_serie = pickSerie(sanitizedPost.post_serie);
+    }
 
     return sanitizedPost;
   });
