@@ -77,6 +77,11 @@ export const BlogPage: React.FC<BlogPageProps> = ({
           href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
           rel="stylesheet"
         />
+        <script
+          async
+          src="https://platform.twitter.com/widgets.js"
+          charSet="utf-8"
+        />
       </SEO>
       <AppThemeProvider>
         <GlobalStyles global={blogGlobalStyles} />
