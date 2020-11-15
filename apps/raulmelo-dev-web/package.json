@@ -6,7 +6,7 @@
     "node": "12.x"
   },
   "scripts": {
-    "dev": "NODE_ICU_DATA=./node_modules/full-icu next",
+    "dev": "NODE_OPTIONS='--inspect' NODE_ICU_DATA=./node_modules/full-icu next",
     "build": "NODE_ICU_DATA=./node_modules/full-icu API_ENDPOINT=https://raulmelo-dev-server.herokuapp.com next build",
     "start": "NODE_ICU_DATA=./node_modules/full-icu API_ENDPOINT=https://raulmelo-dev-server.herokuapp.com next start",
     "type-check": "tsc",

@@ -135,40 +135,37 @@ export const pandaPrismStyles = css`
     padding: 1em 0 1em 3em;
   }
 
-  .line-highlight {
-    position: absolute;
+  /* Line highlight */
+  /* This class come from "mdx-prism" package and these styles are adapted
+  to the way it's rendered.
+  */
+  .mdx-marker {
+    position: relative;
     left: 0;
     right: 0;
-    margin-top: 1em;
     background: rgba(255, 255, 255, 0.2);
     pointer-events: none;
     line-height: inherit;
     white-space: pre;
   }
 
-  .line-highlight:before,
-  .line-highlight[data-end]:after {
+  .mdx-marker:before,
+  .mdx-marker:after {
     content: attr(data-start);
     position: absolute;
-    top: 0.3em;
-    left: 0.6em;
-    min-width: 1em;
-    padding: 0 0.5em;
-    background-color: rgba(255, 255, 255, 0.3);
-    color: #fff;
-    font: 700 65%/1.5 sans-serif;
-    text-align: center;
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
-    border-radius: 8px;
-    text-shadow: none;
+    min-width: 18px;
+    top: 0;
+    background: rgba(255, 255, 255, 0.2);
   }
 
-  .line-highlight[data-end]:after {
-    content: attr(data-end);
-    top: auto;
-    bottom: 0.4em;
+  .mdx-marker:before {
+    left: -18px;
+    border-left: 3px solid var(--prism-rosy);
   }
+  .mdx-marker:after {
+    right: -18px;
+  }
+  /* END Line highlight */
 
   .line-numbers-rows {
     margin: 0;
