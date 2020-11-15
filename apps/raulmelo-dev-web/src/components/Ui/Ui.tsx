@@ -38,8 +38,11 @@ export const headingLinkStyle = css`
   }
 
   .copy-title-icon:after {
-    content: url('/icons/anchor.svg');
+    content: '';
+    mask: url('/icons/anchor.svg') no-repeat;
     width: 20px;
+    height: 30px;
+    background-color: ${({ theme }) => theme?.color?.font};
     display: block;
     visibility: hidden;
     transition: visibility 0.2s ease-in-out;
