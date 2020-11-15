@@ -1,6 +1,12 @@
 import { SupportedLanguages } from '@types-app';
 
-export interface UsesDataShape {
+interface Seo {
+  title: string;
+  description: string;
+  id: string;
+}
+
+export interface UsesApiData {
   language: SupportedLanguages;
   _id: string;
   content: string;
@@ -8,6 +14,5 @@ export interface UsesDataShape {
   updatedAt: Date;
   __v: number;
   id: string;
+  seo: Seo;
 }
-
-export type UsesApiData = UsesDataShape[];

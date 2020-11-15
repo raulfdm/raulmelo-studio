@@ -1,36 +1,32 @@
 import { hydrate, renderToString } from '@config/mdx';
-import { UsesPage } from '@screens/Uses/UsesPage';
+import { UsesPage, UsesPageProps } from '@screens/Uses/UsesPage';
 import { head } from '@utils/utilities';
 import { UsesApiData } from '@types-api';
 import { Backend } from '@services/Backend';
 import { GetStaticProps } from 'next';
 
-type GetStaticPropsReturnType = {
-  props: {
-    usesMd: RenderToStringReturnType;
-  };
-  revalidate: number;
+type Props = UsesPageProps & { usesMd: RenderToStringReturnType };
+
+const Uses = ({ usesMd, seo }: Props) => {
+  const content = hydrate(usesMd);
+
+  return <UsesPage seo={seo}>{content}</UsesPage>;
 };
 
-const Uses = (props: GetStaticPropsReturnType['props']) => {
-  const content = hydrate(props.usesMd);
-
-  return <UsesPage>{content}</UsesPage>;
-};
-
-export const getStaticProps: GetStaticProps = async ({
-  locale,
-}): Promise<GetStaticPropsReturnType> => {
-  const usesMdx = (await Backend.fetch(
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const uses = (await Backend.fetch(
     'uses',
     `?language=${locale}`,
-  )) as UsesApiData;
+  )) as UsesApiData[];
 
-  const mdxSource = await renderToString(head(usesMdx).content);
+  const usesData = head(uses);
+
+  const mdxSource = await renderToString(usesData.content);
 
   return {
     props: {
       usesMd: mdxSource,
+      seo: usesData.seo,
     },
     revalidate: 1,
   };
