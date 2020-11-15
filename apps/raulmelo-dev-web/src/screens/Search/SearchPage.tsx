@@ -3,15 +3,16 @@ import { Algolia } from '@styled-icons/boxicons-logos/Algolia';
 import { defineMessages } from 'react-intl';
 import { InstantSearch, SearchBox, Hits, Stats } from 'react-instantsearch-dom';
 
-import { RegularSiteTheme } from '@components/Themes/RegularSiteTheme';
+import { AppThemeProvider } from '@contexts/AppTheme';
+import { GlobalStyles } from '@styles/index';
 import { SEO } from '@components/SEO';
 import { useLocalization } from '@hooks/useLocalization';
 import { algoliaConfig } from '@config/algolia';
-
 import { HitAlgolia } from '@types-app';
-import { algoliaSearchClient } from './utils';
-import { PoweredBy, SearchWrapper, SearchBoxWrapper } from './styled';
 import { PostCard } from '@components/PostCard';
+import { MenuBar } from '@components/MenuBar';
+import { algoliaDebounceSearchClient } from './utils';
+import { PoweredBy, SearchWrapper, SearchBoxWrapper } from './styled';
 
 const messages = defineMessages({
   stats: {
@@ -37,10 +38,13 @@ export const SearchPage = () => {
         description={formatMessage(messages.seoDescription)}
         title={formatMessage(messages.seoTitle)}
       />
-      <RegularSiteTheme>
-        <SearchWrapper>
+      <AppThemeProvider>
+        <GlobalStyles />
+        <MenuBar />
+
+        <SearchWrapper as="main">
           <InstantSearch
-            searchClient={algoliaSearchClient}
+            searchClient={algoliaDebounceSearchClient}
             indexName={algoliaConfig.indexName}
           >
             <SearchBoxWrapper>
@@ -59,29 +63,40 @@ export const SearchPage = () => {
                   },
                 }}
               />
+              <AlgoliaHits />
             </SearchBoxWrapper>
 
-            <Hits
-              hitComponent={({ hit }: { hit: HitAlgolia }) => {
-                const { timeToRead, excerpt } = hit;
-
-                const post = {
-                  ...hit,
-                  childStrapiPostContent: {
-                    childMdx: { excerpt, timeToRead },
-                  },
-                };
-
-                return <PostCard post={post as any} key={hit.objectID} />;
-              }}
-            />
-
-            <PoweredBy href="https://www.algolia.com/">
-              Powered by <Algolia size="2rem" color="#5468ff" /> Algolia
-            </PoweredBy>
+            <PoweredByAlgolia />
           </InstantSearch>
         </SearchWrapper>
-      </RegularSiteTheme>
+      </AppThemeProvider>
     </>
   );
 };
+
+function PoweredByAlgolia() {
+  return (
+    <PoweredBy href="https://www.algolia.com/">
+      Powered by <Algolia size="2rem" color="#5468ff" /> Algolia
+    </PoweredBy>
+  );
+}
+
+function AlgoliaHits() {
+  return (
+    <Hits
+      hitComponent={({ hit }: { hit: HitAlgolia }) => {
+        const { timeToRead, excerpt } = hit;
+
+        const post = {
+          ...hit,
+          childStrapiPostContent: {
+            childMdx: { excerpt, timeToRead },
+          },
+        };
+
+        return <PostCard post={post as any} key={hit.objectID} />;
+      }}
+    />
+  );
+}

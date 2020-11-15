@@ -1,6 +1,7 @@
+import { Container } from '@components/Ui';
 import { styled, media } from '@styles/styled';
 
-export const SearchWrapper = styled.main`
+export const SearchWrapper = styled(Container)`
   font-family: ${({ theme }) => theme.font.contentSans};
 
   .ais-SearchBox {

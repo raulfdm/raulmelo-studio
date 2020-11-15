@@ -3,7 +3,7 @@ import debounce from 'debounce-promise';
 import { algoliaClient } from '@config/algolia';
 import { RequestsAlgoliaClient } from '@types-app';
 
-export const algoliaSearchClient = {
+export const algoliaDebounceSearchClient = {
   search: debounce((requests: RequestsAlgoliaClient) => {
     if (requests.every(({ params }) => !params.query)) {
       return Promise.resolve({
