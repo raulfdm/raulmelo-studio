@@ -72,7 +72,12 @@ export const BlogPage: React.FC<BlogPageProps> = ({
         It needs to be add the FULL url
         */
         url={`/blog/${post.slug}`}
-      />
+      >
+        <link
+          href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+          rel="stylesheet"
+        />
+      </SEO>
       <AppThemeProvider>
         <GlobalStyles global={blogGlobalStyles} />
         <MenuBar />
