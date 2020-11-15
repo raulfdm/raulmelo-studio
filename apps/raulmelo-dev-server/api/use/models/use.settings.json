@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "uses",
+  "info": {
+    "name": "Use",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "language": {
+      "type": "enumeration",
+      "enum": ["pt", "en"],
+      "required": true
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "uses.seo"
+    }
+  }
+}

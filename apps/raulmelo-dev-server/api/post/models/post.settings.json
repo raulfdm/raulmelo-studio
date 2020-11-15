@@ -1,0 +1,78 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "name": "Blog Post"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date",
+      "private": false,
+      "required": true
+    },
+    "post_tags": {
+      "collection": "post-tag",
+      "via": "blog_posts",
+      "dominant": true
+    },
+    "description": {
+      "type": "text",
+      "required": true,
+      "maxLength": 160,
+      "minLength": 10
+    },
+    "featured_image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": ["images"],
+      "plugin": "upload",
+      "required": true
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "language": {
+      "type": "enumeration",
+      "enum": ["en", "pt"],
+      "required": true
+    },
+    "serie_copy": {
+      "type": "string"
+    },
+    "translation": {
+      "unique": true,
+      "model": "post"
+    },
+    "post_serie": {
+      "model": "post-serie",
+      "via": "blog_posts"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["Draft", "Published", "Archived"],
+      "default": "Draft",
+      "required": true
+    },
+    "featured_image_caption": {
+      "type": "text",
+      "required": false
+    }
+  }
+}

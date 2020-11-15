@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/cv",
+      "handler": "cv.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/cv",
+      "handler": "cv.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/cv",
+      "handler": "cv.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

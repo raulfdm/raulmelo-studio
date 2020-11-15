@@ -1,0 +1,34 @@
+{
+  "name": "@raulmelo.dev/server",
+  "private": true,
+  "version": "1.0.0",
+  "engines": {
+    "yarn": "1.x"
+  },
+  "scripts": {
+    "dev": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "dependencies": {
+    "strapi": "3.3.2",
+    "strapi-admin": "3.3.2",
+    "strapi-connector-mongoose": "3.3.2",
+    "strapi-plugin-content-manager": "3.3.2",
+    "strapi-plugin-content-type-builder": "3.3.2",
+    "strapi-plugin-documentation": "^3.2.5",
+    "strapi-plugin-email": "3.3.2",
+    "strapi-plugin-graphql": "3.3.2",
+    "strapi-plugin-upload": "3.3.2",
+    "strapi-plugin-users-permissions": "3.3.2",
+    "strapi-provider-upload-cloudinary": "3.3.2",
+    "strapi-utils": "3.3.2"
+  },
+  "strapi": {
+    "uuid": "2d2c1cad-7859-4b15-9a5d-cce4568b2bc5"
+  },
+  "devDependencies": {
+    "@sub-tv/prettier-config": "^1.1.0"
+  }
+}

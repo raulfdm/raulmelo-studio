@@ -1,0 +1,37 @@
+{
+  "kind": "singleType",
+  "collectionName": "socials",
+  "info": {
+    "name": "social"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "instagram": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.url-link",
+      "required": true
+    },
+    "linkedIn": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.url-link",
+      "required": true
+    },
+    "twitter": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.url-link",
+      "required": true
+    },
+    "github": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.url-link",
+      "required": true
+    }
+  }
+}
