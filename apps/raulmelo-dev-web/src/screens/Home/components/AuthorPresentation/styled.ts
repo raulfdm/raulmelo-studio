@@ -23,6 +23,7 @@ export const AuthorImageWrapper = styled.div`
 
   img {
     border-radius: 50%;
+    object-fit: cover;
   }
 `;
 

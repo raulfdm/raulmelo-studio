@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { FormattedMessage } from 'react-intl';
+import { defineMessage, FormattedMessage } from 'react-intl';
 /**
  * Keep importing like separately to
  * grasp tree shaking and reduce bundle size.
@@ -20,16 +20,20 @@ import {
 } from './styled';
 import { PersonalInformationApiData } from '@types-api';
 import { siteData } from '@data/siteData';
+import { useLocalization } from '@hooks/useLocalization';
 
 type Props = {
   fullName: PersonalInformationApiData['full_name'];
   profilePic: PersonalInformationApiData['profile_pic']['url'];
 };
 
+const message = defineMessage({ id: 'authorPresentation.profileImageAlt' });
+
 export const AuthorPresentation: React.FC<Props> = ({
   fullName,
   profilePic,
 }) => {
+  const { formatMessage } = useLocalization();
   return (
     <AuthorPresentationWrapper>
       <AuthorDataWrapper>
@@ -59,12 +63,7 @@ export const AuthorPresentation: React.FC<Props> = ({
         </SocialWrapper>
       </AuthorDataWrapper>
       <AuthorImageWrapper>
-        <Image
-          src={profilePic}
-          layout="fill"
-          // TODO: move this to locale
-          alt="Author profile pic"
-        />
+        <Image src={profilePic} layout="fill" alt={formatMessage(message)} />
       </AuthorImageWrapper>
     </AuthorPresentationWrapper>
   );

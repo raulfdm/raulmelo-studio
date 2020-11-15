@@ -1,7 +1,7 @@
 import { Gif } from './Gif';
 import { BigQuote } from './BigQuote';
 import { YouTubeVideo } from './YouTubeVideo';
-import { Divider } from './Divider';
+import { DotDivider } from './DotDivider';
 import { Blockquote } from './Blockquote';
 import * as Headings from './Headings';
 import { Paragraph } from './Paragraph';
@@ -14,7 +14,7 @@ export const mdxComponents = {
   Gif,
   CodePen,
   YouTubeVideo,
-  hr: Divider,
+  hr: DotDivider,
   Image,
   blockquote: Blockquote,
   p: Paragraph,

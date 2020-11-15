@@ -1,7 +1,6 @@
 import { styled } from '@styles/styled';
 
-/* TODO: rename to "DotDivider" */
-export const Divider = styled.hr`
+export const DotDivider = styled.hr`
   position: relative;
   font-style: italic;
   font-size: 28px;

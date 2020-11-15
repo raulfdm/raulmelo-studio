@@ -75,7 +75,6 @@ export const SEO: React.FC<SEOProps> = (props) => {
       <meta name="theme-color" content="#ffffff" />
 
       {/* Monetize my content */}
-      {/* TODO: disable this by default and only enable via props */}
       <meta name="monetization" content="$ilp.uphold.com/Aa8j4MXjnPHg" />
       {children}
     </Head>

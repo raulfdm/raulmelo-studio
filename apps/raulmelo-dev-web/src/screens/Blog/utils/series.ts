@@ -18,7 +18,6 @@ function getPost(post: Post) {
   return {
     id: post.id,
     copy: post.serie_copy,
-    /* TODO: here it might be wrong. I need the the entire URI */
     uri: post.slug,
   };
 }

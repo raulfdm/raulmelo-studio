@@ -9,7 +9,6 @@ export function getRelevantTranslationData(post: PostApiData) {
   const { translation } = post;
   return {
     language: translation!.language,
-    // TODO: Fix this URI
-    uri: `/blog/${translation!.slug}`,
+    uri: translation!.slug,
   };
 }

@@ -96,7 +96,6 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
           >
             {posts!.map((post) => {
               const { id, copy, uri } = post!;
-              /* TODO: fix this animation. It's wacky. */
               return (
                 <Item
                   key={id}
@@ -104,10 +103,6 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
                   data-testid={`post_${id}`}
                   variants={variants.item}
                 >
-                  {/*
-                  To proper work it needs next 10.0.2
-                  https://github.com/vercel/next.js/issues/19007 
-                */}
                   <Link href={uri}>
                     <a>{copy}</a>
                   </Link>

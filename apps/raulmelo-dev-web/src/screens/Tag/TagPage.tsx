@@ -39,9 +39,6 @@ export const TagPage: React.FC<TagPageProps> = ({ tag, personalInfo }) => {
   return (
     <>
       <SEO
-        /* TODO: centralize a single way to do that
-      currently "withDefaultTitle" does something similar 
-      */
         description={titleWithNameAndJobTitle(
           formatMessage(messages.description, { tag: tag.name }),
         )}
