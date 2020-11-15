@@ -42,6 +42,7 @@ module.exports = (options = {}) => {
     }
 
     let result;
+
     try {
       parent.properties.className = (parent.properties.className || []).concat(
         "language-" + lang
@@ -92,9 +93,13 @@ const parseLineNumberRange = (language) => {
     return "";
   }
 
-  if (language.split("{").length > 1) {
+  const lineRegex = /{.*}/g;
+
+  if (lineRegex.test(language)) {
     let [splitLanguage, ...options] = language.split("{");
+
     let highlightLines = [];
+
     options.forEach((option) => {
       option = option.slice(0, -1);
       if (rangeParser.parse(option).length > 0) {
@@ -102,10 +107,12 @@ const parseLineNumberRange = (language) => {
       }
     });
 
-    return {
+    const result = {
       splitLanguage,
       highlightLines,
     };
+
+    return result;
   }
 
   return { splitLanguage: language };
