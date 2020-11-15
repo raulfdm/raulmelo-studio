@@ -1,10 +1,10 @@
 import { defineMessage } from 'react-intl';
 import { useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { useLocalization } from '@hooks/useLocalization';
 import { useApp } from '@hooks/useApp';
-import { isBrowserApiAvailable } from '@utils/utilities';
 import { Nav, StyledLink, Overlay } from './styles';
 
 const messages = defineMessage({
@@ -22,34 +22,32 @@ const messages = defineMessage({
   },
 });
 
-const links = {
-  home: {
-    to: '/',
+const links = [
+  {
+    href: '/',
     localeId: messages.home,
   },
-  search: {
-    to: '/search',
+  {
+    href: '/search',
     localeId: messages.search,
   },
-  uses: {
-    to: '/uses',
+  {
+    href: '/uses',
     localeId: messages.uses,
   },
-  cv: {
-    to: '/cv',
+  {
+    href: '/cv',
     localeId: messages.cv,
   },
-};
+];
 
 export const SideMenu = () => {
   const { sideMenu } = useApp();
-  const { isCollapsed, toggle, hide } = sideMenu;
-
-  const animate = isCollapsed ? 'closed' : 'open';
   const { formatMessage } = useLocalization();
-  const urlPathname = isBrowserApiAvailable.window
-    ? window.location.pathname
-    : '';
+  const { pathname } = useRouter();
+
+  const { isCollapsed, toggle, hide } = sideMenu;
+  const animate = isCollapsed ? 'closed' : 'open';
 
   useEffect(() => {
     const hideOnScroll = (): void => {
@@ -79,15 +77,15 @@ export const SideMenu = () => {
         }}
         data-testid="sideMenu"
       >
-        {Object.entries(links).map(([linkId, config]) => {
+        {links.map(({ href, localeId }) => {
           return (
-            <Link key={linkId} href={config.to}>
+            <Link key={localeId.id} href={href}>
               <StyledLink
-                $isCurrentPage={urlPathname === config.to}
+                $isCurrentPage={pathname === href}
                 onClick={toggle}
-                data-testid={`side-menu-${linkId}-link`}
+                data-testid={`${localeId.id}-link`}
               >
-                {formatMessage(config.localeId)}
+                {formatMessage(localeId)}
               </StyledLink>
             </Link>
           );

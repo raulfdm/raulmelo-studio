@@ -30,6 +30,7 @@ export const StyledLink = styled.a<{ $isCurrentPage?: boolean }>`
   font-family: ${({ theme }) => theme.font.contentSerif};
   font-weight: bold;
   text-decoration: none;
+  cursor: pointer;
 
   ${({ theme, $isCurrentPage }) =>
     $isCurrentPage &&
