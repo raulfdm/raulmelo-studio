@@ -16,18 +16,6 @@ const BlogPost: React.FC<BlogPageProps> = ({
   series,
   translation,
 }) => {
-  /**
-   * For some reason, some times the first load happens
-   * with "mdx" property as undefined. By having that, the hydrate fn
-   * will throw an error because it expects an object.
-   *
-   * The way I found to mitigate that is checking if "mdx" is present
-   * and only than follow the natural flow.
-   */
-  if (!content) {
-    return null;
-  }
-
   const parsedContent = hydrate(content);
 
   return (
@@ -75,7 +63,7 @@ export const getStaticProps = async ({ params }: Params) => {
 
   return {
     props,
-    revalidate: 60,
+    revalidate: 1,
   };
 };
 
@@ -91,7 +79,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
 
