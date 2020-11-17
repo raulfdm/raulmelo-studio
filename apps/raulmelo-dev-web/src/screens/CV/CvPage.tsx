@@ -1,5 +1,7 @@
 import { ArrowheadUp } from '@styled-icons/evaicons-solid/ArrowheadUp';
+import { ThemeProvider } from 'styled-components';
 
+import { theme } from '@screens/CV/styled';
 import { useScrollToTop } from '@hooks/useScrollToTop';
 import { SEO } from '@components/SEO';
 import {
@@ -42,20 +44,22 @@ export const CvPage: React.FC<CvApiDataProps> = ({ cv, personalInfo }) => {
           rel="stylesheet"
         />
       </SEO>
-      <GlobalCVStyles />
-      <HomeLink href="/">Back to home</HomeLink>
-      <CVMain>
-        <Info {...personalInfo} />
-        <CareerSummary summary={summary} />
-        <TechnicalSkills technical_skills={technical_skills} />
-        <CareerExperience jobs={jobs} />
-        <SideProjects side_projects={side_projects} />
-        <Education education={education!} />
-        <Interests interests={interests} />
-        <ScrollToTopButton onClick={moveToTop}>
-          <ArrowheadUp size={21} />
-        </ScrollToTopButton>
-      </CVMain>
+      <ThemeProvider theme={theme}>
+        <GlobalCVStyles />
+        <HomeLink href="/">Back to home</HomeLink>
+        <CVMain>
+          <Info {...personalInfo} />
+          <CareerSummary summary={summary} />
+          <TechnicalSkills technical_skills={technical_skills} />
+          <CareerExperience jobs={jobs} />
+          <SideProjects side_projects={side_projects} />
+          <Education education={education!} />
+          <Interests interests={interests} />
+          <ScrollToTopButton onClick={moveToTop}>
+            <ArrowheadUp size={21} />
+          </ScrollToTopButton>
+        </CVMain>
+      </ThemeProvider>
     </>
   );
 };
