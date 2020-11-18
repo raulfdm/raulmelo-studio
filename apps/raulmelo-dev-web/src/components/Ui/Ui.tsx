@@ -1,4 +1,5 @@
 import { styled, media, css } from '@styles/styled';
+import { getTagUrl } from '@utils/url';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react';
@@ -69,7 +70,7 @@ const StyledTag = styled.li`
 
 export const Tag: React.FC<{ tag: string; slug: string }> = ({ tag, slug }) => (
   <StyledTag>
-    <Link href={slug}>
+    <Link href={getTagUrl(slug)}>
       <a>#{tag}</a>
     </Link>
   </StyledTag>

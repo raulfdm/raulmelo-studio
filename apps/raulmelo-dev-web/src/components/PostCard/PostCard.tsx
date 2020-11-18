@@ -14,7 +14,7 @@ import {
   PostCardWrapper,
 } from './styled';
 import { PostApiData } from 'src/types/api/posts';
-import { getPostUrl, getTagUrl } from '@utils/url';
+import { getPostUrl } from '@utils/url';
 
 type PostCardProps = {
   post: PostApiData;
@@ -42,10 +42,9 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
 
   const tags = shouldRenderTag ? (
     <Tags>
-      {post_tags!.map((tag) => {
-        const { id, name, slug } = tag!;
-        return <Tag key={id} tag={name!} slug={getTagUrl(slug)} />;
-      })}
+      {post_tags!.map(({ id, name, slug }) => (
+        <Tag key={id} tag={name} slug={slug} />
+      ))}
     </Tags>
   ) : null;
 
