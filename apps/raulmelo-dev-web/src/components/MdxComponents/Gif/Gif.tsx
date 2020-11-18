@@ -1,58 +1,51 @@
-import React from 'react';
 import { styled } from '@styles/styled';
-import { CSSObject } from 'styled-components';
+import Image from 'next/image';
+
+type Dimension = string | number;
 
 type GifProps = {
   src: string;
+  width: Dimension;
+  height: Dimension;
   caption?: string;
-  imgStyle?: string | CSSObject;
 };
 
-type FigureProps = {
-  extraStyles?: string;
-  style?: CSSObject;
-};
-
-const Figure = styled.figure<{ extraStyles?: string }>`
+const Figure = styled.figure`
+  position: relative;
   margin: 0 auto;
   margin-bottom: 20px;
-  ${({ extraStyles }) => extraStyles}
+  display: flex;
+  flex-direction: column;
 `;
 
-export const Gif: React.FC<GifProps> = ({ src, caption, imgStyle }) => {
-  const figureStyle: FigureProps = {};
+const Caption = styled.figcaption`
+  text-align: center;
+  width: 100%;
+`;
 
+export const Gif = ({ src, caption, width, height }: GifProps) => {
   /**
-   * Note
-   * I initially had implemented that with string because
-   * at the beginning I was .md files which does not support
-   * JSX syntax.
-   *
-   * Later I migrate to .mdx and now it's possible to pass proper styles.
-   *
-   * I'm a bit concerned to drop imgStyle string support and break some post
-   * which might be using it.
+   * Since we're building pages, errors like this is quite useful to
+   * understand where is failing. In other cases the error that MDX compiler
+   * will give us is almost impossible to know which post has invalid props.
    */
-  if (imgStyle) {
-    if (typeof imgStyle === 'string') {
-      figureStyle.extraStyles = imgStyle;
-    } else {
-      figureStyle.style = imgStyle;
-    }
+  if (!width || !height) {
+    throw new Error(`Width and Height are required: Image src: ${src}`);
   }
 
   return (
-    <Figure data-testid="gif-figure" className="gif-wrapper" {...figureStyle}>
-      <img
-        src={src}
-        alt={caption}
-        style={{ margin: 0, width: '100%' }}
-        data-testid="gif-image"
-      />
+    <Figure
+      data-testid="gif-figure"
+      className="gif-wrapper"
+      style={{
+        maxWidth: width,
+      }}
+    >
+      <Image src={src} alt={caption} width={width} height={height} />
       {caption && (
-        <figcaption className="gif-caption" data-testid="gif-figcaption">
+        <Caption className="gif-caption" data-testid="gif-figcaption">
           {caption}
-        </figcaption>
+        </Caption>
       )}
     </Figure>
   );

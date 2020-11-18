@@ -7,7 +7,7 @@ module.exports = {
     defaultLocale: 'en',
   },
   images: {
-    domains: ['res.cloudinary.com'],
+    domains: ['res.cloudinary.com', 'miro.medium.com', 'media.giphy.com'],
   },
   webpack: (config, { isServer }) => {
     config.resolve.alias = {
