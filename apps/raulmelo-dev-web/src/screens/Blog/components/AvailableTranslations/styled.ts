@@ -3,6 +3,7 @@ import { Container } from '@components/Ui';
 
 export const Wrapper = styled(Container)`
   margin-top: 1rem;
+  margin-bottom: 1rem;
 `;
 
 export const Phrase = styled.p`
