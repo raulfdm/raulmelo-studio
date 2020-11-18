@@ -63,7 +63,13 @@ export const AuthorPresentation: React.FC<Props> = ({
         </SocialWrapper>
       </AuthorDataWrapper>
       <AuthorImageWrapper>
-        <Image src={profilePic} layout="fill" alt={formatMessage(message)} />
+        <Image
+          src={profilePic}
+          layout="fill"
+          alt={formatMessage(message)}
+          quality={100}
+          loading="eager"
+        />
       </AuthorImageWrapper>
     </AuthorPresentationWrapper>
   );

@@ -45,6 +45,7 @@ export const FeaturedImage: React.FC<FeaturedImageProps> = ({
         height={height}
         layout="responsive"
         alt={alt || formatMessage(messages.featuredImageLabel)}
+        loading="eager"
       />
       {alt && (
         <p className="img-caption" data-testid="featured-img-caption">
