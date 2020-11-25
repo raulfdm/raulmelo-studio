@@ -102,8 +102,8 @@ const parseLineNumberRange = (language) => {
 
     options.forEach((option) => {
       option = option.slice(0, -1);
-      if (rangeParser.parse(option).length > 0) {
-        highlightLines = rangeParser.parse(option).filter((n) => n > 0);
+      if (rangeParser(option).length > 0) {
+        highlightLines = rangeParser(option).filter((n) => n > 0);
       }
     });
 

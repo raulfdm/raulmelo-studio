@@ -18,7 +18,7 @@ If you would like to perform syntax highlighting _in the browser_, you should lo
 ## Installation
 
 ```bash
-npm install mdx-prism
+npm install mdx-prism-2
 ```
 
 ## API
@@ -52,7 +52,7 @@ Some examples of how you might do that:
 
 ```js
 const rehype = require("rehype");
-const mdxPrism = require("mdx-prism");
+const mdxPrism = require("mdx-prism-2");
 
 rehype().use(mdxPrism).process(/* some html */);
 ```
@@ -60,7 +60,7 @@ rehype().use(mdxPrism).process(/* some html */);
 ```js
 const unified = require("unified");
 const rehypeParse = require("rehype-parse");
-const mdxPrism = require("mdx-prism");
+const mdxPrism = require("mdx-prism-2");
 
 unified().use(rehypeParse).use(mdxPrism).processSync(/* some html */);
 ```
@@ -71,7 +71,7 @@ If you'd like to get syntax highlighting in Markdown, parse the Markdown (with r
 const unified = require("unified");
 const remarkParse = require("remark-parse");
 const remarkRehype = require("remark-rehype");
-const mdxPrism = require("mdx-prism");
+const mdxPrism = require("mdx-prism-2");
 
 unified()
   .use(remarkParse)
@@ -83,7 +83,7 @@ unified()
 ## FAQ
 
 <details>
-  <summary>Why does mdx-prism copy the <code>language-</code> class to the <code>&lt;pre&gt;</code> tag?</summary>
+  <summary>Why does mdx-prism-2 copy the <code>language-</code> class to the <code>&lt;pre&gt;</code> tag?</summary>
   
   [Prism recommends](https://prismjs.com/#basic-usage) adding the `language-` class to the `<code>` tag like this:
 
@@ -99,7 +99,7 @@ It bases this recommendation on the HTML5 spec. However, an undocumented behavio
 ><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> red <span class="token punctuation">}</span></code></pre>
 ```
 
-This resulted in many [Prism themes](https://github.com/PrismJS/prism-themes) relying on this behavior by using CSS selectors like `pre[class*="language-"]`. So in order for people using mdx-prism to get the most out of these themes, we decided to do the same.
+This resulted in many [Prism themes](https://github.com/PrismJS/prism-themes) relying on this behavior by using CSS selectors like `pre[class*="language-"]`. So in order for people using mdx-prism-2 to get the most out of these themes, we decided to do the same.
 
 </details>
 
