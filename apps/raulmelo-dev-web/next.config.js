@@ -1,6 +1,13 @@
-const path = require('path');
+const isAnalyzerMode = process.env.ANALYZE === 'true';
 
-module.exports = {
+const path = require('path');
+const withPlugins = require('next-compose-plugins');
+const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: isAnalyzerMode,
+});
+
+const nextConfig = {
   target: 'serverless',
   i18n: {
     locales: ['en', 'pt'],
@@ -44,6 +51,34 @@ module.exports = {
       };
     }
 
+    if (isAnalyzerMode) {
+      config.plugins.push(new DuplicatePackageCheckerPlugin());
+    }
+
+    const pluginsToResolve = [
+      '@babel/plugin-syntax-jsx',
+      '@babel/core',
+      '@babel/plugin-proposal-object-rest-spread',
+      '@babel/types',
+      'remark-parse',
+      'has-flag',
+      'unist-util-visit',
+      'unist-util-visit-parents',
+      'unist-util-is',
+      'tslib',
+      'supports-color',
+    ];
+
+    pluginsToResolve.forEach((plugin) => {
+      config.resolve.alias[plugin] = path.resolve(
+        __dirname,
+        'node_modules',
+        plugin,
+      );
+    });
+
     return config;
   },
 };
+
+module.exports = withPlugins([withBundleAnalyzer], nextConfig);

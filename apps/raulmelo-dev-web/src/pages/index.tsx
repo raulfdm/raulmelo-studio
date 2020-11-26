@@ -1,6 +1,5 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
-import pipe from 'ramda/src/pipe';
 
 import { Backend } from '@services/Backend';
 import { PersonalInformationApiData, SocialApiData } from '@types-api';
@@ -8,6 +7,7 @@ import { PostsApiData } from 'src/types/api/posts';
 import { HomePage, HomePageProps } from '@screens/Home/HomePage';
 import { sanitizePosts } from '@screens/Home/utils/apiSanitizer';
 import { sortDescPostsByDate } from '@utils/posts';
+import { pipe } from '@utils/ramda';
 
 const Home = (props: HomePageProps) => {
   return <HomePage {...props} />;

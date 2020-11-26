@@ -6,7 +6,7 @@
 */
 import * as React from 'react';
 import throttle from 'lodash.throttle';
-import isNil from 'ramda/src/isNil';
+import { isNil } from '@utils/ramda';
 
 export interface InfiniteScrollProps {
   Component: React.ElementType;

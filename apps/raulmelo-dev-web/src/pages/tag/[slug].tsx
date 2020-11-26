@@ -1,7 +1,5 @@
 import React from 'react';
 import { GetStaticPaths } from 'next';
-import head from 'ramda/src/head';
-import pipe from 'ramda/src/pipe';
 
 import { Backend } from '@services/Backend';
 import {
@@ -13,6 +11,7 @@ import { TagPage, TagPageProps } from '@screens/Tag/TagPage';
 import { SupportedLanguages } from '@types-app';
 import { SanitizedTag, sanitizePostTag } from '@screens/Tag/utils/apiSanitizer';
 import { sortDescPostsByDate } from '@utils/posts';
+import { head, pipe } from '@utils/ramda';
 
 const Tag = (props: TagPageProps) => <TagPage {...props} />;
 

@@ -1,15 +1,26 @@
-import React from 'react';
+import dynamic from 'next/dynamic';
 import { defineMessages } from 'react-intl';
 
 import { MenuBar } from '@components/MenuBar';
-import { AuthorPresentation } from '@screens/Home/components/AuthorPresentation';
 import { Container } from '@components/Ui';
 import { SEO, titleWithNameAndJobTitle } from '@components/SEO';
 import { useLocalization } from '@hooks/useLocalization';
-import { Posts } from '@screens/Home/components/Posts';
 import { useBlogPostFilters } from '@screens/Home/hooks/useBlogPostFilters';
 import { getTagUrl } from '@utils/url';
 import { PersonalInformationApiData, PostTagApiData } from '@types-api';
+
+import type { Posts as PostsType } from '@screens/Home/components/Posts';
+import type { AuthorPresentation as AuthorPresentationType } from '@screens/Home/components/AuthorPresentation';
+
+const Posts = dynamic(() =>
+  import('@screens/Home/components/Posts').then((mod) => mod.Posts),
+) as typeof PostsType;
+
+const AuthorPresentation = dynamic(() =>
+  import('@screens/Home/components/AuthorPresentation').then(
+    (mod) => mod.AuthorPresentation,
+  ),
+) as typeof AuthorPresentationType;
 
 const messages = defineMessages({
   description: {

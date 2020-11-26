@@ -1,5 +1,4 @@
 import React from 'react';
-import isEmpty from 'ramda/src/isEmpty';
 import { FormattedMessage, defineMessages } from 'react-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -9,6 +8,7 @@ import { useLocalization } from '@hooks/useLocalization';
 import { InfiniteScroll } from '@components/InfiniteScroll';
 import { PostCard } from '@components/PostCard';
 import { PostApiData } from '@types-api';
+import { isEmpty } from '@utils/ramda';
 
 type PostsProps = {
   filter: PostFilters;

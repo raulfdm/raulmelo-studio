@@ -1,4 +1,4 @@
-import * as R from 'ramda';
+import { isEmpty, isNil, not } from './ramda';
 
 export const isBrowserApiAvailable = {
   get window() {
@@ -14,9 +14,9 @@ export function head<T>(arr: T[]) {
 }
 
 export function isNilOrEmpty(param: any) {
-  return R.isNil(param) || R.isEmpty(param);
+  return isNil(param) || isEmpty(param);
 }
 
 export function isNotNilNorEmpty(param: any) {
-  return R.not(isNilOrEmpty(param));
+  return not(isNilOrEmpty(param));
 }

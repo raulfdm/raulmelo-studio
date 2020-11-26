@@ -1,6 +1,5 @@
-import pick from 'ramda/src/pick';
-
 import { PostApiData, PostsApiData } from '@types-api';
+import { pick } from '@utils/ramda';
 
 type SanitizedFeaturedImage = Pick<
   PostApiData['featured_image'],

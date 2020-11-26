@@ -1,18 +1,47 @@
-import { AvailableTranslations } from './components/AvailableTranslations';
-import { DotDivider } from '@components/MdxComponents/DotDivider';
-import { FeaturedImage } from './components/FeaturedImage';
+import dynamic from 'next/dynamic';
+
 import { getPostUrl } from '@utils/url';
 import { Header } from './components/Header';
-import { MenuBar } from '@components/MenuBar';
 import { PostApiData } from '@types-api';
 import { PrismStyles } from './components/PrismStyles';
 import { RelevantPostSerieData } from './utils/series';
 import { RelevantTranslationData } from './utils/translations';
 import { SEO } from '@components/SEO';
-import { SeriesSection } from './components/SeriesSection';
-import { Tags } from '@components/Tags';
 import { useLocalization } from '@hooks/useLocalization';
 import { BlogUiContainer } from './components/BlogUiContainer';
+
+import type { SeriesSection as SeriesSectionType } from './components/SeriesSection';
+import type { FeaturedImage as FeaturedImageType } from './components/FeaturedImage';
+import type { AvailableTranslations as AvailableTranslationsType } from './components/AvailableTranslations';
+import type { MenuBar as MenuBarType } from '@components/MenuBar';
+import type { DotDivider as DotDividerType } from '@components/MdxComponents/DotDivider';
+import type { Tags as TagsType } from '@components/Tags';
+
+const SeriesSection = dynamic(() =>
+  import('./components/SeriesSection').then((mod) => mod.SeriesSection),
+) as typeof SeriesSectionType;
+
+const FeaturedImage = dynamic(() =>
+  import('./components/FeaturedImage').then((mod) => mod.FeaturedImage),
+) as typeof FeaturedImageType;
+
+const AvailableTranslations = dynamic(() =>
+  import('./components/AvailableTranslations').then(
+    (mod) => mod.AvailableTranslations,
+  ),
+) as typeof AvailableTranslationsType;
+
+const MenuBar = dynamic(() =>
+  import('@components/MenuBar').then((mod) => mod.MenuBar),
+) as typeof MenuBarType;
+
+const DotDivider = dynamic(() =>
+  import('@components/MdxComponents/DotDivider').then((mod) => mod.DotDivider),
+) as typeof DotDividerType;
+
+const Tags = dynamic(() =>
+  import('@components/Tags').then((mod) => mod.Tags),
+) as typeof TagsType;
 
 export type BlogPageProps = {
   content: RenderToStringReturnType;

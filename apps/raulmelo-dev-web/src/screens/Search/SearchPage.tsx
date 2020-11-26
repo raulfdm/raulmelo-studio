@@ -1,15 +1,20 @@
 import React from 'react';
 import { defineMessages } from 'react-intl';
 import { InstantSearch, SearchBox, Hits, Stats } from 'react-instantsearch-dom';
+import dynamic from 'next/dynamic';
 
 import { SEO } from '@components/SEO';
 import { useLocalization } from '@hooks/useLocalization';
 import { algoliaConfig } from '@config/algolia';
 import { HitAlgolia } from '@types-app';
-import { PostCard } from '@components/PostCard';
 import { MenuBar } from '@components/MenuBar';
 import { Algolia } from '@icons';
 import { algoliaDebounceSearchClient } from './utils';
+import type { PostCard as PostCardType } from '@components/PostCard';
+
+const PostCard = dynamic(() =>
+  import('@components/PostCard').then((mod) => mod.PostCard),
+) as typeof PostCardType;
 
 const messages = defineMessages({
   stats: {
