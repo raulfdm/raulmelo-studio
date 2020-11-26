@@ -46,9 +46,6 @@ module.exports = {
             css: {
               color: black,
               fontFamily: serif,
-              p: {
-                wordBreak: 'break-all',
-              },
               h2: {
                 fontFamily: sans,
               },
