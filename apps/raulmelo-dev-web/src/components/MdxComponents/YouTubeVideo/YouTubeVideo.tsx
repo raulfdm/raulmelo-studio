@@ -1,21 +1,3 @@
-import { styled } from '@styles/styled';
-
-const ResponsiveIframe = styled.div`
-  margin-bottom: 2rem;
-  padding-bottom: 56.25%;
-  position: relative;
-  height: 0px;
-  overflow: hidden;
-`;
-
-const Iframe = styled.iframe`
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-`;
-
 type YouTubeVideoSrcProps = {
   src: React.HTMLProps<HTMLIFrameElement>['src'];
 };
@@ -49,16 +31,20 @@ export const YouTubeVideo: Overload = (
    *
    * This sucks but it seems a limitation of using first remark, then react-rehype */
   return (
-    <ResponsiveIframe className="gatsby-resp-iframe-wrapper">
-      <Iframe
+    <div
+      className="w-full h-0 relative overflow-hidden"
+      style={{ paddingBottom: '56.25%' }}
+    >
+      <iframe
+        className="absolute top-0 left-0 h-full w-full"
         width="560"
         height="315"
         src={videoSrc}
         frameBorder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
-      ></Iframe>
-    </ResponsiveIframe>
+      ></iframe>
+    </div>
   );
 };
 

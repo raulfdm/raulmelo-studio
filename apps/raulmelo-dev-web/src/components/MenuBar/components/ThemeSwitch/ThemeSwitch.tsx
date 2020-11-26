@@ -1,8 +1,6 @@
-import { Sun } from '@styled-icons/boxicons-solid/Sun';
-import { Moon } from '@styled-icons/boxicons-solid/Moon';
-
 import { MenuButton } from '@components/MenuBar';
 import { useThemeHandler } from '@hooks/useThemeHandler';
+import { Moon, Sun } from '@icons';
 
 export const ThemeSwitch: React.FC = () => {
   const { toggleTheme, currentTheme } = useThemeHandler();
@@ -11,7 +9,7 @@ export const ThemeSwitch: React.FC = () => {
 
   return (
     <MenuButton onClick={() => toggleTheme!()} data-testid="theme-switch">
-      <Icon size={21} />
+      <Icon className="w-5" />
     </MenuButton>
   );
 };

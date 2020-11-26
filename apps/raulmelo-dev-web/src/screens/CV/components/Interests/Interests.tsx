@@ -1,19 +1,11 @@
 import React from 'react';
 
-import { styled } from '@screens/CV/styled';
 import {
   Section,
   SectionTitle,
   SectionBody,
 } from '@screens/CV/components/shared/Section';
 import { CvApiData } from '@types-api';
-
-const InterestItem = styled.li`
-  display: block;
-  ::before {
-    content: '• ';
-  }
-`;
 
 type InterestsProps = Pick<CvApiData, 'interests'>;
 
@@ -22,11 +14,16 @@ export const Interests: React.FC<InterestsProps> = ({ interests }) => {
     <Section>
       <SectionTitle>Interests</SectionTitle>
       <SectionBody>
-        <ul>
+        <ul className="interests">
           {interests!.map((interest) => {
             const { id, name } = interest!;
 
-            return <InterestItem key={id!}>{name}</InterestItem>;
+            return (
+              <li key={id!}>
+                {'• '}
+                {name}
+              </li>
+            );
           })}
         </ul>
       </SectionBody>

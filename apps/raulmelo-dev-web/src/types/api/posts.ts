@@ -1,15 +1,5 @@
 import { SupportedLanguages } from '../app';
-
-interface PostTag {
-  _id: string;
-  tag: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
-  slug: string;
-  name: string;
-  id: string;
-}
+import { PostsTagApiData } from './post-tags';
 
 interface FeaturedImage {
   _id: string;
@@ -130,7 +120,7 @@ interface PostSerie {
 export interface PostApiData {
   language: SupportedLanguages;
   status: string;
-  post_tags: PostTag[];
+  post_tags: PostsTagApiData;
   _id: string;
   is_shown: boolean;
   slug: string;

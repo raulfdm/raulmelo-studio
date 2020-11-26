@@ -2,10 +2,13 @@ import { defineMessage } from 'react-intl';
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
+import classNames from 'classnames';
 
 import { useLocalization } from '@hooks/useLocalization';
 import { useApp } from '@hooks/useApp';
-import { Nav, StyledLink, Overlay } from './styles';
+import { MenuButton } from '@components/MenuBar';
+import { Menu, Close } from '@icons';
 
 const messages = defineMessage({
   home: {
@@ -64,8 +67,21 @@ export const SideMenu = () => {
 
   return (
     <>
-      <Nav
-        isCollapsed={isCollapsed}
+      <motion.nav
+        className={classNames([
+          'fixed',
+          'bottom-0 top-16 right-0',
+          'h-full',
+          'bg-white dark:bg-blue-800',
+          'z-20',
+          'transform translate-x-full',
+          'flex flex-col',
+          'w-32 sm:w-64',
+          'min-w-1/2 sm:min-w-max',
+          'py-2',
+          'space-y-3',
+          'transition-theme duration-200 ease',
+        ])}
         animate={animate}
         variants={{
           open: {
@@ -80,19 +96,31 @@ export const SideMenu = () => {
         {links.map(({ href, localeId }) => {
           return (
             <Link key={localeId.id} href={href}>
-              <StyledLink
-                $isCurrentPage={pathname === href}
+              <a
+                className={classNames([
+                  'cursor-pointer',
+                  'font-serif text-lg font-bold',
+                  'mx-5',
+                  pathname === href &&
+                    'pl-3 border-l-2 border-gray-800 dark:border-gray-300',
+                ])}
                 onClick={toggle}
                 data-testid={`${localeId.id}-link`}
               >
                 {formatMessage(localeId)}
-              </StyledLink>
+              </a>
             </Link>
           );
         })}
-      </Nav>
+      </motion.nav>
       {!isCollapsed ? (
-        <Overlay
+        <motion.div
+          className={classNames([
+            'absolute',
+            'inset-0',
+            'z-10',
+            'bg-black bg-opacity-80',
+          ])}
           style={{
             pointerEvents: isCollapsed ? 'none' : 'all',
           }}
@@ -109,5 +137,16 @@ export const SideMenu = () => {
         />
       ) : null}
     </>
+  );
+};
+
+export const SideMenuNavIcon = () => {
+  const { sideMenu } = useApp();
+
+  const Icon = sideMenu.isCollapsed ? Menu : Close;
+  return (
+    <MenuButton onClick={sideMenu.toggle} data-testid="side-menu-button">
+      <Icon width={21} />
+    </MenuButton>
   );
 };

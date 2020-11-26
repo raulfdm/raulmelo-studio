@@ -1,40 +1,8 @@
 import { GA_TRACKING_ID } from '@config/analytics';
-import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
-  DocumentContext,
-} from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
+import classNames from 'classnames';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 export default class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
-    const sheet = new ServerStyleSheet();
-    const originalRenderPage = ctx.renderPage;
-
-    try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: (App: React.ElementType) => (props: unknown) =>
-            sheet.collectStyles(<App {...props} />),
-        });
-
-      const initialProps = await Document.getInitialProps(ctx);
-      return {
-        ...initialProps,
-        styles: (
-          <>
-            {initialProps.styles}
-            {sheet.getStyleElement()}
-          </>
-        ),
-      };
-    } finally {
-      sheet.seal();
-    }
-  }
-
   render() {
     return (
       <Html>
@@ -45,7 +13,15 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body>
+        <body
+          className={classNames([
+            'h-full',
+            'bg-white dark:bg-blue-900',
+            'text-black dark:text-white',
+            'transition-theme duration-200 ease',
+            'relative',
+          ])}
+        >
           {/* Global Theme handler */}
           <script
             dangerouslySetInnerHTML={{
@@ -55,7 +31,7 @@ export default class MyDocument extends Document {
                 function setTheme(newTheme) {
                   window.__theme = newTheme;
                   preferredTheme = newTheme;
-                  document.body.className = newTheme;
+                  document.querySelector('html').className = newTheme;
                   window.__onThemeChange(newTheme);
                 }
                 var preferredTheme;

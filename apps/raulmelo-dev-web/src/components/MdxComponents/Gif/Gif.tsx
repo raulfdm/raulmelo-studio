@@ -1,4 +1,3 @@
-import { styled } from '@styles/styled';
 import Image from 'next/image';
 
 type Dimension = string | number;
@@ -9,19 +8,6 @@ type GifProps = {
   height: Dimension;
   caption?: string;
 };
-
-const Figure = styled.figure`
-  position: relative;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-`;
-
-const Caption = styled.figcaption`
-  text-align: center;
-  width: 100%;
-`;
 
 export const Gif = ({ src, caption, width, height }: GifProps) => {
   /**
@@ -34,19 +20,19 @@ export const Gif = ({ src, caption, width, height }: GifProps) => {
   }
 
   return (
-    <Figure
+    <figure
+      className="relative mx-auto"
       data-testid="gif-figure"
-      className="gif-wrapper"
       style={{
         maxWidth: width,
       }}
     >
       <Image src={src} alt={caption} width={width} height={height} />
       {caption && (
-        <Caption className="gif-caption" data-testid="gif-figcaption">
+        <figcaption className="w-full text-center" data-testid="gif-figcaption">
           {caption}
-        </Caption>
+        </figcaption>
       )}
-    </Figure>
+    </figure>
   );
 };

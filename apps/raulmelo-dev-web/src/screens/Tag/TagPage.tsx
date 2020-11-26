@@ -1,8 +1,6 @@
 import React from 'react';
 import { defineMessages } from 'react-intl';
 
-import { AppThemeProvider } from '@contexts/AppTheme';
-import { GlobalStyles } from '@styles/index';
 import { MenuBar } from '@components/MenuBar';
 import { AuthorPresentation } from '@screens/Home/components/AuthorPresentation';
 import { Container } from '@components/Ui';
@@ -46,23 +44,21 @@ export const TagPage: React.FC<TagPageProps> = ({ tag, personalInfo }) => {
         withDefaultTitle
         url={getTagUrl(tag.slug)}
       />
-      <AppThemeProvider>
-        <GlobalStyles />
-        <MenuBar />
-        <Container as="main">
-          <AuthorPresentation
-            fullName={personalInfo.full_name}
-            profilePic={personalInfo.profile_pic.url}
-          />
-          <Posts
-            posts={postsToRender(locale)}
-            filter={activeFilter}
-            hasMore={hasMore()}
-            loadMore={loadMorePosts}
-            customTitle={formatMessage(messages.title, { tag: tag.name })}
-          />
-        </Container>
-      </AppThemeProvider>
+
+      <MenuBar />
+      <Container as="main">
+        <AuthorPresentation
+          fullName={personalInfo.full_name}
+          profilePic={personalInfo.profile_pic.url}
+        />
+        <Posts
+          posts={postsToRender(locale)}
+          filter={activeFilter}
+          hasMore={hasMore()}
+          loadMore={loadMorePosts}
+          customTitle={formatMessage(messages.title, { tag: tag.name })}
+        />
+      </Container>
     </>
   );
 };

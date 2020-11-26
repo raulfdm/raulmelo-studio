@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 
-import { themeBackgroundColor } from '@styles/globals';
 import { SupportedThemes } from '@types-app';
 
 function setMetaTheme(theme: SupportedThemes): void {
   document
     .querySelector('meta[name="theme-color"]')
-    ?.setAttribute('content', themeBackgroundColor[theme]);
+    // TODO: fix this color
+    ?.setAttribute('content', theme || '#fff');
 }
 
 export function useThemeHandler(initialTheme?: SupportedThemes) {

@@ -5,4 +5,3 @@ export * from './Education';
 export * from './Interests';
 export * from './SideProjects';
 export * from './TechnicalSkills';
-export * from './UI';

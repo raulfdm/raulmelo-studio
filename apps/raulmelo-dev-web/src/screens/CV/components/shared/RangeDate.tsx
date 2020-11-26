@@ -1,4 +1,3 @@
-import React from 'react';
 import dayjs from 'dayjs';
 
 const formatExperienceDate = (date: string): string => {
@@ -17,7 +16,7 @@ export const RangeDate: React.FC<RangeDateProps> = function RangeDate({
   isActual,
 }) {
   return (
-    <React.Fragment>
+    <>
       <time dateTime={formatExperienceDate(startDate)}>
         {formatExperienceDate(startDate)}
       </time>
@@ -30,6 +29,6 @@ export const RangeDate: React.FC<RangeDateProps> = function RangeDate({
           {formatExperienceDate(endDate)}
         </time>
       ) : null}
-    </React.Fragment>
+    </>
   );
 };

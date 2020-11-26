@@ -11,6 +11,7 @@ module.exports = {
     '^@services/(.*)': '<rootDir>/src/services/$1',
     '^@styles/(.*)': '<rootDir>/src/styles/$1',
     '^@types-api': '<rootDir>/src/types/api/index.ts',
+    '^@icons': '<rootDir>/src/components/Icons/index.ts',
     '^@types-app': '<rootDir>/src/types/index.ts',
     '^@utils/(.*)': '<rootDir>/src/utils/$1',
   },

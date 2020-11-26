@@ -1,19 +1,12 @@
 import { useEffect, useState } from 'react';
+import classnames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 import { Container } from '@components/Ui';
-import { ArrowIosDownwardOutline } from '@styled-icons/evaicons-outline/ArrowIosDownwardOutline';
-import {
-  Card,
-  ExpanderButton,
-  Info,
-  Item,
-  List,
-  MenuFooter,
-  Wrapper,
-} from './styled';
 import { RelevantPostSerieData } from '@screens/Blog/utils/series';
+import { ChevronDown } from '@icons';
 
 interface SeriesSectionProps {
   currentPostId: string;
@@ -85,38 +78,50 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
 
   return (
     <Container data-testid="series-section" as="section">
-      <Card data-testid="series-menu">
-        <Wrapper>
+      <div
+        className="relative bg-white dark:bg-blue-800 rounded shadow my-5"
+        data-testid="series-menu"
+      >
+        <div>
           <Header isOpen={isOpen} toggleSection={toggleSection} name={name} />
-          <List
+          <motion.ul
+            className="m-0"
             initial={false}
             animate={isOpen ? 'open' : 'collapsed'}
             variants={variants.list}
             data-testid="series-post-list"
           >
-            {posts!.map((post) => {
-              const { id, copy, uri } = post!;
+            {posts.map((post) => {
+              const { id, copy, uri } = post;
+              const isCurrentPost = id === currentPostId;
               return (
-                <Item
+                <motion.li
+                  className={classnames([
+                    'cursor-pointer',
+                    'm-0 p-b',
+                    'font-sans text-sm md:text-base',
+                    isCurrentPost
+                      ? 'bg-green-400'
+                      : 'hover:bg-green-400 hover:bg-opacity-50',
+                  ])}
                   key={id}
-                  className={id === currentPostId ? 'active' : ''}
                   data-testid={`post_${id}`}
                   variants={variants.item}
                 >
                   <Link href={uri}>
-                    <a>{copy}</a>
+                    <a className="block no-underline px-4 py-3">{copy}</a>
                   </Link>
-                </Item>
+                </motion.li>
               );
             })}
-          </List>
+          </motion.ul>
           <Footer
             isOpen={isOpen}
             toggleSection={toggleSection}
             amount={amount}
           />
-        </Wrapper>
-      </Card>
+        </div>
+      </div>
     </Container>
   );
 };
@@ -129,9 +134,23 @@ type HeaderProps = {
 
 const Header = ({ isOpen, toggleSection, name }: HeaderProps) => {
   return (
-    <Info expanded={isOpen} onClick={toggleSection} data-testid="expand-button">
-      <span>{name}</span>
-      <ExpanderButton
+    <div
+      className={classnames([
+        'flex content-between',
+        'cursor-pointer',
+        'py-3 px-4',
+        'font-serif text-lg md:text-xl font-bold',
+        'transition-spacing duration-300',
+        isOpen
+          ? 'pb-2.5 border-b border-gray-100 dark:border-gray-600'
+          : 'pb-0 border-none',
+      ])}
+      onClick={toggleSection}
+      data-testid="expand-button"
+    >
+      <span className="flex-1">{name}</span>
+      <motion.button
+        className="flex items-center justify-center w-7 h-7"
         initial="collapsed"
         animate={isOpen ? 'open' : 'collapsed'}
         variants={{
@@ -139,9 +158,9 @@ const Header = ({ isOpen, toggleSection, name }: HeaderProps) => {
           collapsed: { rotate: '180deg' },
         }}
       >
-        <ArrowIosDownwardOutline size={21} />
-      </ExpanderButton>
-    </Info>
+        <ChevronDown className="w-5" />
+      </motion.button>
+    </div>
   );
 };
 
@@ -151,7 +170,19 @@ type FooterProps = Pick<HeaderProps, 'isOpen' | 'toggleSection'> & {
 
 const Footer = ({ isOpen, amount, toggleSection }: FooterProps) => {
   return (
-    <MenuFooter expanded={isOpen} onClick={toggleSection}>
+    <div
+      onClick={toggleSection}
+      className={classnames([
+        'flex content-between',
+        'cursor-pointer',
+        'py-3 px-4',
+        'text-sm md:text-base font-sans',
+        ' transition-spacing duration-300',
+        isOpen
+          ? 'pt-2.5 border-t border-gray-100 dark:border-gray-600'
+          : 'pt-0 border-none',
+      ])}
+    >
       <span>
         <FormattedMessage
           id="series.sectionDescription"
@@ -160,6 +191,6 @@ const Footer = ({ isOpen, amount, toggleSection }: FooterProps) => {
           }}
         />
       </span>
-    </MenuFooter>
+    </div>
   );
 };

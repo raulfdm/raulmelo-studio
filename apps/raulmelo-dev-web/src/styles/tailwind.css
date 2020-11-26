@@ -1,0 +1,24 @@
+@font-face {
+  font-family: Proxima Nova;
+  font-weight: 400;
+  src: url(/fonts/proxima-nova/400-regular.woff) format('woff');
+}
+@font-face {
+  font-family: Proxima Nova;
+  font-weight: 500;
+  src: url(/fonts/proxima-nova/500-medium.woff) format('woff');
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply h-full;
+}
+
+* {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}

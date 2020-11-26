@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import { useState, useEffect, FC } from 'react';
-import { useViewportScroll, useMotionValue } from 'framer-motion';
+import { useViewportScroll, useMotionValue, motion } from 'framer-motion';
 
 import { Logo } from '@components/Logo';
 import { SideMenuNavIcon, SideMenu } from '@components/SideMenu';
 import { ThemeSwitch } from './components/ThemeSwitch';
 import { LanguageSwitch } from './components/LanguageSwitch';
-import { CustomContainer, LogoWrapper, MenuBarWrapper } from './styled';
+import classNames from 'classnames';
 
 export const MenuBar: FC = () => {
   const [showMenu, setShowMenu] = useState(true);
@@ -46,26 +46,55 @@ export const MenuBar: FC = () => {
 
   return (
     <>
-      <MenuBarWrapper
+      <motion.section
+        className={classNames([
+          'fixed',
+          'inset-x-0',
+          'top-0 h-16',
+          'z-20',
+          'shadow',
+          'bg-white dark:bg-blue-800',
+          'transition-theme duration-200 ease',
+        ])}
         animate={showMenu ? 'open' : 'closed'}
         variants={variants}
         transition={{ duration: 0.3, type: 'tween' }}
         data-testid="menu-bar"
       >
-        <CustomContainer>
-          <LogoWrapper data-testid="menu-bar__logo">
+        <div className="flex items-center max-w-7xl mx-auto h-full px-4">
+          <div className="flex-1" data-testid="menu-bar__logo">
             <Link href="/">
               <a>
                 <Logo />
               </a>
             </Link>
-          </LogoWrapper>
-          <ThemeSwitch />
-          <LanguageSwitch />
-          <SideMenuNavIcon />
-        </CustomContainer>
-      </MenuBarWrapper>
+          </div>
+          <div className="flex space-x-3">
+            <ThemeSwitch />
+            <LanguageSwitch />
+            <SideMenuNavIcon />
+          </div>
+        </div>
+      </motion.section>
       <SideMenu />
+      <style global jsx>{`
+        #__next {
+          padding-top: calc(64px + 24px);
+          padding-bottom: 5rem;
+        }
+      `}</style>
     </>
+  );
+};
+
+export const MenuButton = ({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<'button'>) => {
+  return (
+    <button
+      className={classNames(['p-2 flex place-content-center', className])}
+      {...props}
+    />
   );
 };

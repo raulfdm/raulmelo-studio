@@ -1,14 +1,9 @@
-import React from 'react';
-
 import {
   Section,
   SectionTitle,
   SectionBody,
 } from '@screens/CV/components/shared/Section';
-import { CourseList } from '@screens/CV/components/shared/Ui';
 import { RangeDate } from '@screens/CV/components/shared/RangeDate';
-
-import { Company, Period, StyledCourseList } from './styled';
 import { CvApiData } from '@types-api';
 
 type Education = CvApiData['education'];
@@ -23,7 +18,7 @@ export const Education: React.FC<EducationProps> = ({ education }) => {
   return (
     <Section>
       <SectionTitle>Education and Languages</SectionTitle>
-      <SectionBody>
+      <SectionBody className="space-y-1">
         <Formal formal={formal} />
         <Languages languages={languages!} />
       </SectionBody>
@@ -33,7 +28,7 @@ export const Education: React.FC<EducationProps> = ({ education }) => {
 
 function Languages({ languages }: Pick<Education, 'languages'>) {
   return (
-    <StyledCourseList>
+    <ul className="flex flex-col space-y-1">
       {languages!.map((lang) => {
         const { id, name, proficiency } = lang!;
         return (
@@ -42,29 +37,30 @@ function Languages({ languages }: Pick<Education, 'languages'>) {
           </li>
         );
       })}
-    </StyledCourseList>
+    </ul>
   );
 }
 
 function Formal({ formal }: Pick<Education, 'formal'>) {
   return (
-    <CourseList>
+    <ul className="flex flex-col space-y-1">
       {formal!.map((edu) => {
         const { start_date, end_date, foundation, id, is_actual, title } = edu!;
 
         return (
           <li key={id!}>
-            <Period>
+            <span className="inline font-bold">
               <RangeDate
                 endDate={end_date}
                 startDate={start_date}
                 isActual={is_actual!}
               />
-            </Period>
-            <Company>{`${title} - ${foundation}`}</Company>
+            </span>
+            {' - '}
+            <p className="inline">{`${title} - ${foundation}`}</p>
           </li>
         );
       })}
-    </CourseList>
+    </ul>
   );
 }

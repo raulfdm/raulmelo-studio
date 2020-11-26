@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { AppThemeProvider } from '@contexts/AppTheme';
-import { GlobalStyles } from '@styles/index';
 import { SEO } from '@components/SEO';
 import { MenuBar } from '@components/MenuBar';
 import { Container } from '@components/Ui';
@@ -54,26 +52,24 @@ export const HomePage: React.FC<HomePageProps> = ({
         title={formatMessage(messages.title)}
         url="/"
       />
-      <AppThemeProvider>
-        <GlobalStyles />
-        <MenuBar />
-        <Container as="main">
-          <AuthorPresentation
-            fullName={personalInfo.full_name}
-            profilePic={personalInfo.profile_pic.url}
-          />
-          <Filter
-            activeFilter={activeFilter as PostFilters}
-            changeFilter={changeFilter}
-          />
-          <Posts
-            posts={postsToRender(locale)}
-            filter={activeFilter}
-            hasMore={hasMore()}
-            loadMore={loadMorePosts}
-          />
-        </Container>
-      </AppThemeProvider>
+
+      <MenuBar />
+      <Container as="main">
+        <AuthorPresentation
+          fullName={personalInfo.full_name}
+          profilePic={personalInfo.profile_pic.url}
+        />
+        <Filter
+          activeFilter={activeFilter as PostFilters}
+          changeFilter={changeFilter}
+        />
+        <Posts
+          posts={postsToRender(locale)}
+          filter={activeFilter}
+          hasMore={hasMore()}
+          loadMore={loadMorePosts}
+        />
+      </Container>
     </>
   );
 };

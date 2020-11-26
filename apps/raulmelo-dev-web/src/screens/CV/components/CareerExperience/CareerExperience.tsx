@@ -6,20 +6,15 @@ import {
   Section,
   SectionBody,
 } from '@screens/CV/components/shared/Section';
-import { styled } from '@screens/CV/styled';
 import { CvApiData } from '@types-api';
-
-const StyledSection = styled(Section)`
-  page-break-before: always;
-`;
 
 type CareerExperienceProps = Pick<CvApiData, 'jobs'>;
 
 export const CareerExperience: React.FC<CareerExperienceProps> = ({ jobs }) => {
   return (
-    <StyledSection>
+    <Section style={{ pageBreakBefore: 'always' }}>
       <SectionTitle>Career History</SectionTitle>
-      <SectionBody>
+      <SectionBody className="space-y-4 md:space-y-6">
         {jobs!.map((job) => {
           const {
             role,
@@ -44,6 +39,6 @@ export const CareerExperience: React.FC<CareerExperienceProps> = ({ jobs }) => {
           );
         })}
       </SectionBody>
-    </StyledSection>
+    </Section>
   );
 };

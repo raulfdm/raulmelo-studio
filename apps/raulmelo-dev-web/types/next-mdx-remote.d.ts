@@ -9,7 +9,7 @@ type RenderToStringReturnType = {
 };
 
 type Components = {
-  [match: string]: React.ComponentType | StyledComponent;
+  [match: string]: React.ComponentType | any;
 };
 
 declare module 'next-mdx-remote/render-to-string' {

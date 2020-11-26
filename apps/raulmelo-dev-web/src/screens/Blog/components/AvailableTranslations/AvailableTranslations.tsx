@@ -1,8 +1,6 @@
-import React from 'react';
-import Link from 'next/link';
 import { defineMessages, FormattedMessage } from 'react-intl';
+import Link from 'next/link';
 
-import { Phrase, Wrapper } from './styled';
 import { RelevantTranslationData } from '@screens/Blog/utils/translations';
 import { useLocalization } from '@hooks/useLocalization';
 
@@ -22,15 +20,17 @@ export const AvailableTranslations: React.FC<RelevantTranslationData> = ({
   const { formatMessage } = useLocalization();
 
   return (
-    <Wrapper data-testid="blog-available-translations" as="div">
-      <Phrase>
-        <span>
-          <FormattedMessage id="blog.availableTranslations.text" />
-        </span>
+    <div
+      data-testid="blog-available-translations"
+      className="my-4 container mx-auto px-4 md:px-0 max-w-screen-md"
+    >
+      <p className="p-4 bg-yellow-200 bg-opacity-80 rounded-md text-sm">
+        <FormattedMessage id="blog.availableTranslations.text" />
+
         <Link href={uri} locale={language}>
-          <a>{formatMessage(messages[language])}</a>
+          <a className="ml-1 underline">{formatMessage(messages[language])}</a>
         </Link>
-      </Phrase>
-    </Wrapper>
+      </p>
+    </div>
   );
 };

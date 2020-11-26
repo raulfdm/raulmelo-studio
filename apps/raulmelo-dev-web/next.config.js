@@ -22,6 +22,7 @@ module.exports = {
       '@services': path.resolve(__dirname, './src/services'),
       '@styles': path.resolve(__dirname, './src/styles'),
       '@types-api': path.resolve(__dirname, './src/types/api/index.ts'),
+      '@icons': path.resolve(__dirname, './src/components/Icons/index.ts'),
       '@types-app': path.resolve(__dirname, './src/types/index.ts'),
       '@data': path.resolve(__dirname, './src/data'),
       '@utils': path.resolve(__dirname, './src/utils'),

@@ -14,3 +14,15 @@ NEXT_PUBLIC_ALGOLIA_APP_ID=xxx
 NEXT_PUBLIC_ALGOLIA_SEARCH_KEY=xxx
 NEXT_PUBLIC_ALGOLIA_INDEX_NAME=xxx
 ```
+
+## Technologies
+
+- TailwindCSS
+
+## Design
+
+### Theming
+
+- Background:
+  - light: white
+  - dark: blueGray.900

@@ -2,16 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { defineMessages } from 'react-intl';
 
-import { styled } from '@styles/styled';
 import { useLocalization } from '@hooks/useLocalization';
-import { Container } from '@components/Ui';
-
-const ImgWrapper = styled(Container)`
-  && {
-    max-width: 1080px;
-    padding-bottom: 50px;
-  }
-`;
 
 const messages = defineMessages({
   featuredImageLabel: {
@@ -35,7 +26,8 @@ export const FeaturedImage: React.FC<FeaturedImageProps> = ({
   const { formatMessage } = useLocalization();
 
   return (
-    <ImgWrapper
+    <div
+      className="max-w-screen-lg mx-auto my-6"
       role="img"
       aria-label={formatMessage(messages.featuredImageLabel)}
     >
@@ -52,6 +44,6 @@ export const FeaturedImage: React.FC<FeaturedImageProps> = ({
           {alt}
         </p>
       )}
-    </ImgWrapper>
+    </div>
   );
 };
