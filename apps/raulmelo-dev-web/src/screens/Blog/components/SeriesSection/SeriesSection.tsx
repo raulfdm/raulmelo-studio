@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import classNames from 'classnames';
 
 import { Container } from '@components/Ui';
 import { RelevantPostSerieData } from '@screens/Blog/utils/series';
@@ -79,7 +80,14 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
   return (
     <Container data-testid="series-section" as="section">
       <div
-        className="relative bg-white dark:bg-blue-800 rounded shadow my-5"
+        className={classNames([
+          'relative',
+          ' bg-white dark:bg-blue-800',
+          'rounded',
+          'shadow',
+          'my-5',
+          'transition-theme duration-200 ease',
+        ])}
         data-testid="series-menu"
       >
         <div>
