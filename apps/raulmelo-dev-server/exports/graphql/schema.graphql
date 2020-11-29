@@ -345,12 +345,6 @@ enum ENUM_POST_LANGUAGE {
   pt
 }
 
-enum ENUM_POST_STATUS {
-  Draft
-  Published
-  Archived
-}
-
 type Post {
   id: ID!
   _id: ID!
@@ -367,8 +361,8 @@ type Post {
   serie_copy: String
   translation: Post
   post_serie: PostSerie
-  status: ENUM_POST_STATUS!
   featured_image_caption: String
+  published_at: DateTime
   post_tags(sort: String, limit: Int, start: Int, where: JSON): [PostTag]
 }
 
@@ -399,8 +393,8 @@ type PostGroupBy {
   serie_copy: [PostConnectionSerie_copy]
   translation: [PostConnectionTranslation]
   post_serie: [PostConnectionPost_serie]
-  status: [PostConnectionStatus]
   featured_image_caption: [PostConnectionFeatured_image_caption]
+  published_at: [PostConnectionPublished_at]
 }
 
 type PostConnectionId {
@@ -478,13 +472,13 @@ type PostConnectionPost_serie {
   connection: PostConnection
 }
 
-type PostConnectionStatus {
+type PostConnectionFeatured_image_caption {
   key: String
   connection: PostConnection
 }
 
-type PostConnectionFeatured_image_caption {
-  key: String
+type PostConnectionPublished_at {
+  key: DateTime
   connection: PostConnection
 }
 
@@ -501,8 +495,8 @@ input PostInput {
   serie_copy: String
   translation: ID
   post_serie: ID
-  status: ENUM_POST_STATUS
   featured_image_caption: String
+  published_at: DateTime
   created_by: ID
   updated_by: ID
 }
@@ -520,8 +514,8 @@ input editPostInput {
   serie_copy: String
   translation: ID
   post_serie: ID
-  status: ENUM_POST_STATUS
   featured_image_caption: String
+  published_at: DateTime
   created_by: ID
   updated_by: ID
 }
@@ -1433,7 +1427,7 @@ input editComponentUsesSeoInput {
   description: String
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Cv | updateCvPayload | deleteCvPayload | PersonalInformation | updatePersonalInformationPayload | deletePersonalInformationPayload | PostSerie | PostSerieConnection | PostSerieAggregator | PostSerieGroupBy | PostSerieConnectionId | PostSerieConnection_id | PostSerieConnectionCreatedAt | PostSerieConnectionUpdatedAt | PostSerieConnectionName | PostSerieConnectionSlug | createPostSeriePayload | updatePostSeriePayload | deletePostSeriePayload | PostTag | PostTagConnection | PostTagAggregator | PostTagGroupBy | PostTagConnectionId | PostTagConnection_id | PostTagConnectionCreatedAt | PostTagConnectionUpdatedAt | PostTagConnectionName | PostTagConnectionSlug | createPostTagPayload | updatePostTagPayload | deletePostTagPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnection_id | PostConnectionCreatedAt | PostConnectionUpdatedAt | PostConnectionTitle | PostConnectionSubtitle | PostConnectionDate | PostConnectionDescription | PostConnectionFeatured_image | PostConnectionContent | PostConnectionSlug | PostConnectionLanguage | PostConnectionSerie_copy | PostConnectionTranslation | PostConnectionPost_serie | PostConnectionStatus | PostConnectionFeatured_image_caption | createPostPayload | updatePostPayload | deletePostPayload | Site | updateSitePayload | deleteSitePayload | Social | updateSocialPayload | deleteSocialPayload | Use | UseConnection | UseAggregator | UseGroupBy | UseConnectionId | UseConnection_id | UseConnectionCreatedAt | UseConnectionUpdatedAt | UseConnectionLanguage | UseConnectionContent | UseConnectionSeo | createUsePayload | updateUsePayload | deleteUsePayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentCvEducation | ComponentCvFormalCourse | ComponentCvInterest | ComponentCvJob | ComponentCvLanguage | ComponentCvSeo | ComponentCvSideProject | ComponentCvTechSkill | ComponentCvTechnology | ComponentGeneralUrlLink | ComponentUsesSeo
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Cv | updateCvPayload | deleteCvPayload | PersonalInformation | updatePersonalInformationPayload | deletePersonalInformationPayload | PostSerie | PostSerieConnection | PostSerieAggregator | PostSerieGroupBy | PostSerieConnectionId | PostSerieConnection_id | PostSerieConnectionCreatedAt | PostSerieConnectionUpdatedAt | PostSerieConnectionName | PostSerieConnectionSlug | createPostSeriePayload | updatePostSeriePayload | deletePostSeriePayload | PostTag | PostTagConnection | PostTagAggregator | PostTagGroupBy | PostTagConnectionId | PostTagConnection_id | PostTagConnectionCreatedAt | PostTagConnectionUpdatedAt | PostTagConnectionName | PostTagConnectionSlug | createPostTagPayload | updatePostTagPayload | deletePostTagPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnection_id | PostConnectionCreatedAt | PostConnectionUpdatedAt | PostConnectionTitle | PostConnectionSubtitle | PostConnectionDate | PostConnectionDescription | PostConnectionFeatured_image | PostConnectionContent | PostConnectionSlug | PostConnectionLanguage | PostConnectionSerie_copy | PostConnectionTranslation | PostConnectionPost_serie | PostConnectionFeatured_image_caption | PostConnectionPublished_at | createPostPayload | updatePostPayload | deletePostPayload | Site | updateSitePayload | deleteSitePayload | Social | updateSocialPayload | deleteSocialPayload | Use | UseConnection | UseAggregator | UseGroupBy | UseConnectionId | UseConnection_id | UseConnectionCreatedAt | UseConnectionUpdatedAt | UseConnectionLanguage | UseConnectionContent | UseConnectionSeo | createUsePayload | updateUsePayload | deleteUsePayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentCvEducation | ComponentCvFormalCourse | ComponentCvInterest | ComponentCvJob | ComponentCvLanguage | ComponentCvSeo | ComponentCvSideProject | ComponentCvTechSkill | ComponentCvTechnology | ComponentGeneralUrlLink | ComponentUsesSeo
 
 input InputID {
   id: ID!

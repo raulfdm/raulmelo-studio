@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "11/27/2020 8:48:47 AM"
+    "x-generation-date": "11/29/2020 4:58:19 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -6072,8 +6072,7 @@
                 "featured_image",
                 "content",
                 "slug",
-                "language",
-                "status"
+                "language"
               ],
               "properties": {
                 "id": {
@@ -6118,10 +6117,10 @@
                 "post_serie": {
                   "type": "string"
                 },
-                "status": {
+                "featured_image_caption": {
                   "type": "string"
                 },
-                "featured_image_caption": {
+                "published_at": {
                   "type": "string"
                 },
                 "created_by": {
@@ -6188,8 +6187,7 @@
                 "featured_image",
                 "content",
                 "slug",
-                "language",
-                "status"
+                "language"
               ],
               "properties": {
                 "id": {
@@ -6234,10 +6232,10 @@
                 "post_serie": {
                   "type": "string"
                 },
-                "status": {
+                "featured_image_caption": {
                   "type": "string"
                 },
-                "featured_image_caption": {
+                "published_at": {
                   "type": "string"
                 },
                 "created_by": {
@@ -6286,8 +6284,7 @@
           "featured_image",
           "content",
           "slug",
-          "language",
-          "status"
+          "language"
         ],
         "properties": {
           "id": {
@@ -6433,8 +6430,7 @@
               "featured_image",
               "content",
               "slug",
-              "language",
-              "status"
+              "language"
             ],
             "properties": {
               "id": {
@@ -6479,10 +6475,10 @@
               "post_serie": {
                 "type": "string"
               },
-              "status": {
+              "featured_image_caption": {
                 "type": "string"
               },
-              "featured_image_caption": {
+              "published_at": {
                 "type": "string"
               },
               "created_by": {
@@ -6523,17 +6519,12 @@
               }
             }
           },
-          "status": {
-            "type": "string",
-            "default": "Draft",
-            "enum": [
-              "Draft",
-              "Published",
-              "Archived"
-            ]
-          },
           "featured_image_caption": {
             "type": "string"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
@@ -6544,8 +6535,7 @@
           "description",
           "content",
           "slug",
-          "language",
-          "status"
+          "language"
         ],
         "properties": {
           "title": {
@@ -6591,17 +6581,12 @@
           "post_serie": {
             "type": "string"
           },
-          "status": {
-            "type": "string",
-            "default": "Draft",
-            "enum": [
-              "Draft",
-              "Published",
-              "Archived"
-            ]
-          },
           "featured_image_caption": {
             "type": "string"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
           },
           "created_by": {
             "type": "string"

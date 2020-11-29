@@ -523,8 +523,7 @@
           "featured_image",
           "content",
           "slug",
-          "language",
-          "status"
+          "language"
         ],
         "properties": {
           "id": {
@@ -670,8 +669,7 @@
               "featured_image",
               "content",
               "slug",
-              "language",
-              "status"
+              "language"
             ],
             "properties": {
               "id": {
@@ -716,10 +714,10 @@
               "post_serie": {
                 "type": "string"
               },
-              "status": {
+              "featured_image_caption": {
                 "type": "string"
               },
-              "featured_image_caption": {
+              "published_at": {
                 "type": "string"
               },
               "created_by": {
@@ -760,17 +758,12 @@
               }
             }
           },
-          "status": {
-            "type": "string",
-            "default": "Draft",
-            "enum": [
-              "Draft",
-              "Published",
-              "Archived"
-            ]
-          },
           "featured_image_caption": {
             "type": "string"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
@@ -781,8 +774,7 @@
           "description",
           "content",
           "slug",
-          "language",
-          "status"
+          "language"
         ],
         "properties": {
           "title": {
@@ -828,17 +820,12 @@
           "post_serie": {
             "type": "string"
           },
-          "status": {
-            "type": "string",
-            "default": "Draft",
-            "enum": [
-              "Draft",
-              "Published",
-              "Archived"
-            ]
-          },
           "featured_image_caption": {
             "type": "string"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
           },
           "created_by": {
             "type": "string"
