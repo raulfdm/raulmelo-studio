@@ -163,6 +163,7 @@ export const PrismStyles = () => (
     .remark-code-title + pre {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
+      margin-top: 0;
     }
     /* End:Styles for File name */
 
