@@ -35,10 +35,11 @@ type Params = {
 };
 
 export const getStaticProps = async ({ params }: Params) => {
-  const postData = (await Backend.fetch(
-    'posts',
-    `?slug=${params.slug}`,
-  )) as PostsApiData;
+  const postData = (await Backend.fetch('posts', {
+    params: {
+      slug: params.slug,
+    },
+  })) as PostsApiData;
 
   const post = head(postData);
 
@@ -47,10 +48,9 @@ export const getStaticProps = async ({ params }: Params) => {
   };
 
   if (post.post_serie) {
-    const postSerie = (await Backend.fetch(
-      'post-series',
-      `/${post.post_serie.id}`,
-    )) as PostSerieApiData;
+    const postSerie = (await Backend.fetch('post-series', {
+      path: `/${post.post_serie.id}`,
+    })) as PostSerieApiData;
 
     props.series = getRelevantPostSerieData(postSerie);
   }

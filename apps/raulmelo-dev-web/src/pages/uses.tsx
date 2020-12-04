@@ -14,10 +14,11 @@ const Uses = ({ usesMd, seo }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const uses = (await Backend.fetch(
-    'uses',
-    `?language=${locale}`,
-  )) as UsesApiData[];
+  const uses = (await Backend.fetch('uses', {
+    params: {
+      language: locale as string,
+    },
+  })) as UsesApiData[];
 
   const usesData = head(uses);
 

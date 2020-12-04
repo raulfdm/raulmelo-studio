@@ -1,4 +1,7 @@
 import { Endpoints } from '@types-api';
+import { stringify as qsStringify } from 'qs';
+
+import { API_URL, IS_DEVELOPMENT } from '@config/app';
 
 async function fetcher(url: string) {
   const res = await fetch(url);
@@ -6,16 +9,36 @@ async function fetcher(url: string) {
   return await res.json();
 }
 
-export class Backend {
-  private static apiUrl = process.env.API_ENDPOINT || 'http://localhost:1337';
+type HashObject = {
+  [param: string]: string;
+};
 
-  static fetch(endpoint: Endpoints, path?: string) {
-    let url = `${Backend.apiUrl}/${endpoint}`;
+type BackendOptions = {
+  path?: string;
+  params?: HashObject;
+};
 
-    if (path) {
-      url += path;
+export const Backend = {
+  fetch(endpoint: Endpoints, options?: BackendOptions) {
+    let url = `${API_URL}/${endpoint}`;
+
+    if (options?.path) {
+      url += options.path;
+    }
+
+    if (options?.params) {
+      const queryString = qsStringify(options.params, {
+        addQueryPrefix: true,
+        encode: false,
+      });
+
+      url += queryString;
+    }
+
+    if (IS_DEVELOPMENT) {
+      console.log('Fetching data from:', url);
     }
 
     return fetcher(url);
-  }
-}
+  },
+};

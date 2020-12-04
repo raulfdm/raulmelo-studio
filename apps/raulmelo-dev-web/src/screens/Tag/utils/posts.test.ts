@@ -1,4 +1,4 @@
-import { sanitizePostTag } from './apiSanitizer';
+import { sanitizePostTag } from './posts';
 import { data, expectedData } from './__mocks__/tagData';
 
 describe('fn: sanitizePostTag', () => {

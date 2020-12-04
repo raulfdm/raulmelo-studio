@@ -37,7 +37,7 @@ export type TagPageProps = {
 };
 
 export const TagPage: React.FC<TagPageProps> = ({ tag, personalInfo }) => {
-  const { formatMessage, locale } = useLocalization();
+  const { formatMessage } = useLocalization();
   const {
     activeFilter,
     loadMorePosts,
@@ -63,7 +63,7 @@ export const TagPage: React.FC<TagPageProps> = ({ tag, personalInfo }) => {
           profilePic={personalInfo.profile_pic.url}
         />
         <Posts
-          posts={postsToRender(locale)}
+          posts={postsToRender()}
           filter={activeFilter}
           hasMore={hasMore()}
           loadMore={loadMorePosts}

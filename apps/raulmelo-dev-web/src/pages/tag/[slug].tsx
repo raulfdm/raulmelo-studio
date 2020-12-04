@@ -2,18 +2,20 @@ import React from 'react';
 import { GetStaticPaths } from 'next';
 
 import { Backend } from '@services/Backend';
-import {
-  PersonalInformationApiData,
-  PostApiData,
-  PostsTagApiData,
-} from '@types-api';
+import { PersonalInformationApiData, PostsTagApiData } from '@types-api';
 import { TagPage, TagPageProps } from '@screens/Tag/TagPage';
 import { SupportedLanguages } from '@types-app';
-import { SanitizedTag, sanitizePostTag } from '@screens/Tag/utils/apiSanitizer';
-import { sortDescPostsByDate } from '@utils/posts';
-import { head, pipe } from '@utils/ramda';
 
-const Tag = (props: TagPageProps) => <TagPage {...props} />;
+import { head, pipe } from '@utils/ramda';
+import {
+  filterTagPostsFromLocale,
+  sortTagPosts,
+  sanitizePostTag,
+} from '@screens/Tag/utils/posts';
+
+const Tag = (props: TagPageProps) => {
+  return <TagPage {...props} />;
+};
 
 type Params = {
   params: {
@@ -22,27 +24,30 @@ type Params = {
   locale: SupportedLanguages;
 };
 
-const sortTagPosts = (tag: SanitizedTag) => {
-  const newTag = { ...tag };
-
-  newTag.blog_posts = sortDescPostsByDate(newTag.blog_posts as PostApiData[]);
-
-  return newTag;
-};
-
-export const getStaticProps = async ({ params }: Params) => {
+export const getStaticProps = async ({ params, locale }: Params) => {
   const [tags, personalInfo]: [
     PostsTagApiData,
     PersonalInformationApiData,
   ] = await Promise.all([
-    Backend.fetch('post-tags', `?slug=${params.slug}`),
+    Backend.fetch('post-tags', {
+      params: {
+        slug: params.slug,
+      },
+    }),
     Backend.fetch('personal-information'),
   ]);
 
   const tag = head(tags)!;
 
   return {
-    props: { tag: pipe(sanitizePostTag, sortTagPosts)(tag), personalInfo },
+    props: {
+      tag: pipe(
+        sanitizePostTag,
+        sortTagPosts,
+        filterTagPostsFromLocale(locale),
+      )(tag),
+      personalInfo,
+    },
     revalidate: 1,
   };
 };

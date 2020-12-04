@@ -45,12 +45,7 @@ const messages = defineMessages({
   },
 });
 
-export const HomePage: React.FC<HomePageProps> = ({
-  personalInfo,
-
-  posts,
-  locale,
-}) => {
+export const HomePage: React.FC<HomePageProps> = ({ personalInfo, posts }) => {
   const { formatMessage } = useLocalization();
   const {
     activeFilter,
@@ -79,7 +74,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           changeFilter={changeFilter}
         />
         <Posts
-          posts={postsToRender(locale)}
+          posts={postsToRender()}
           filter={activeFilter}
           hasMore={hasMore()}
           loadMore={loadMorePosts}

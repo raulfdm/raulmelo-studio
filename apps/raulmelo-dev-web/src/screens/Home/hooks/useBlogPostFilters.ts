@@ -1,8 +1,7 @@
 import { useState, useMemo } from 'react';
 
 import { Posts } from '@models/Posts';
-import { PostsApiData } from 'src/types/api/posts';
-import { SupportedLanguages } from '@types-app';
+import { PostsApiData } from '@types-api';
 
 const POST_THRESHOLD = 5;
 
@@ -15,28 +14,23 @@ export function useBlogPostFilters(apiPosts: PostsApiData) {
 
   const [activeFilter, setActiveFilter] = useState('all' as PossibleFilters);
 
-  const posts = useMemo(() => Posts(apiPosts), []);
+  const posts = useMemo(() => Posts(apiPosts), [apiPosts]);
 
-  function postsToRender(language?: SupportedLanguages) {
-    const postsForLanguage = language
-      ? posts.postsByLanguage()[language]
-      : posts;
-
+  function postsToRender() {
     let postsResult: PostsApiData = [];
 
     if (activeFilter === 'all') {
-      postsResult = postsForLanguage.allPosts;
+      postsResult = posts.allPosts;
     }
 
     if (activeFilter === 'series') {
-      postsResult = postsForLanguage.seriesPosts;
+      postsResult = posts.seriesPosts;
     }
 
     if (activeFilter === 'single') {
-      postsResult = postsForLanguage.singlePosts;
+      postsResult = posts.singlePosts;
     }
 
-    /* TODO: implement here */
     return postsResult.slice(0, numberOfPostsToShow);
   }
 
@@ -62,25 +56,7 @@ export function useBlogPostFilters(apiPosts: PostsApiData) {
   }
 
   function hasMore() {
-    /**
-     * TODO: fix this logic
-     * When we load more posts, the list of postsToRender is updated.
-     * Then, when "hasMore" is called in the component itself,
-     * we have the following scenario:
-     *
-     * posts.length = 10 (already updated via loadMore)
-     * allPosts.length = 10
-     * 10 < 10 === false
-     *
-     * The test would pass but functionality wise will be broken
-     *
-     * When just returning true, functionality wise it works fine
-     */
-
-    // const posts = postsToRender();
-    // const allPosts = getPostForFilter();
-    // return posts.length <= allPosts.length;
-    return true;
+    return postsToRender().length < apiPosts.length;
   }
 
   return { postsToRender, loadMorePosts, activeFilter, changeFilter, hasMore };

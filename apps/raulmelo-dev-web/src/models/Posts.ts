@@ -45,23 +45,5 @@ export function Posts(posts: PostList) {
 
       return posts;
     },
-
-    postsByLanguage() {
-      const portuguesePosts = [] as PostList;
-      const englishPosts = [] as PostList;
-
-      for (const post of _posts) {
-        if (post.language! === 'en') {
-          englishPosts.push(post);
-        } else {
-          portuguesePosts.push(post);
-        }
-      }
-
-      return {
-        en: Posts(englishPosts),
-        pt: Posts(portuguesePosts),
-      };
-    },
   };
 }
