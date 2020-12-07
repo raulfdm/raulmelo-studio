@@ -4128,6 +4128,11 @@ escape-string-regexp@^2.0.0:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-2.0.0.tgz#a30304e99daa32e23b2fd20f51babd07cffca344"
   integrity sha512-UpzcLCXolUWcNu5HtVMHYdXJjArjsF9C0aNnquZYY4uW/Vu0miy5YoWvbV345HauVvcAUnpRuhMMcqTcGOY2+w==
 
+escape-string-regexp@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz#14ba83a5d373e3d311e5afca29cf5bfad965bf34"
+  integrity sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==
+
 escodegen@^1.14.1:
   version "1.14.3"
   resolved "https://registry.yarnpkg.com/escodegen/-/escodegen-1.14.3.tgz#4e7b81fba61581dc97582ed78cab7f0e8d63f503"
@@ -6531,6 +6536,13 @@ markdown-escapes@^1.0.0:
   resolved "https://registry.yarnpkg.com/markdown-escapes/-/markdown-escapes-1.0.4.tgz#c95415ef451499d7602b91095f3c8e8975f78535"
   integrity sha512-8z4efJYk43E0upd0NbVXwgSTQs6cT3T06etieCMEg7dRbzCbxUCK/GHlX8mhHRDcp+OLlHkPKsvqQTCvsRl2cg==
 
+matcher@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/matcher/-/matcher-3.0.0.tgz#bd9060f4c5b70aa8041ccc6f80368760994f30ca"
+  integrity sha512-OkeDaAZ/bQCxeFAozM55PKcKU0yJMPGifLwV4Qgjitu+5MoAfSQN4lsLJeXZ1b8w0x+/Emda6MZgXS1jvsapng==
+  dependencies:
+    escape-string-regexp "^4.0.0"
+
 md5.js@^1.3.4:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/md5.js/-/md5.js-1.3.5.tgz#b5d07b8e3216e3e27cd728d72f70d1e6a342005f"
@@ -6913,12 +6925,13 @@ next-mdx-remote@^1.0.0:
     "@mdx-js/mdx" "^1.6.16"
     "@mdx-js/react" "^1.6.16"
 
-next-sitemap@^1.3.10:
-  version "1.3.10"
-  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-1.3.10.tgz#56efc4eef4d59cbb184a4a5e1bb3f6975c0428cc"
-  integrity sha512-M70W/GYWt5xqca03jIhx3/362bPsrmCGeVFDqm8asYkXwBQ20k6LpTN+CBMafdad6QaajCfS2efPS98CtUk9Uw==
+next-sitemap@^1.3.14:
+  version "1.3.14"
+  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-1.3.14.tgz#4e3e136d067650592066648027114b3ea08195b5"
+  integrity sha512-eTXDm2LAtpo7w/eqqXqAWbbOn/tXOw4dIv8ug4USWDkqDRr2sZYbxUVhT/CIxYFOtwhzj8pE0wyi2OOSanqvYg==
   dependencies:
     "@corex/deepmerge" "^2.4.24"
+    matcher "^3.0.0"
     minimist "^1.2.5"
 
 next-tick@~1.0.0:
