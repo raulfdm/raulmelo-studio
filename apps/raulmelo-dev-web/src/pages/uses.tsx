@@ -1,11 +1,13 @@
+import { GetStaticProps } from 'next';
+
 import { hydrate, renderToString } from '@config/mdx';
 import { UsesPage, UsesPageProps } from '@screens/Uses/UsesPage';
 import { head } from '@utils/utilities';
 import { UsesApiData } from '@types-api';
 import { Backend } from '@services/Backend';
-import { GetStaticProps } from 'next';
+import { MdxRemoteSource } from '@types-app';
 
-type Props = UsesPageProps & { usesMd: RenderToStringReturnType };
+type Props = UsesPageProps & { usesMd: MdxRemoteSource };
 
 const Uses = ({ usesMd, seo }: Props) => {
   const content = hydrate(usesMd);

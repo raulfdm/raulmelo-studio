@@ -7,8 +7,9 @@ import remarkCodeTitle from 'remark-code-titles';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
 import { mdxComponents } from '@components/MdxComponents';
+import { MdxRemoteSource } from '@types-app';
 
-export function hydrate(source: RenderToStringReturnType) {
+export function hydrate(source: MdxRemoteSource) {
   return mdxRemoteHydrate(source, {
     components: mdxComponents,
   });
@@ -18,7 +19,7 @@ export function renderToString(content: string) {
   return mdxRemoteRenderToString(content, {
     components: mdxComponents,
     mdxOptions: {
-      remarkPlugins: [remarkUnwrapImages, remarkCodeTitle],
+      remarkPlugins: [remarkUnwrapImages, remarkCodeTitle] as never,
       rehypePlugins: [
         [
           mdxPrims,
@@ -36,7 +37,7 @@ export function renderToString(content: string) {
             content: null,
           },
         ],
-      ],
+      ] as never,
     },
   });
 }

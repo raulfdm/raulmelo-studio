@@ -44,14 +44,13 @@ const Tags = dynamic(() =>
 ) as typeof TagsType;
 
 export type BlogPageProps = {
-  content: RenderToStringReturnType;
   post: PostApiData;
   series?: RelevantPostSerieData;
   translation?: RelevantTranslationData;
 };
 
 export const BlogPage: React.FC<BlogPageProps> = ({
-  content,
+  children,
   post,
   series,
   translation,
@@ -106,7 +105,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
       {translations}
       {allSeries}
       {featuredImage}
-      <BlogUiContainer>{content}</BlogUiContainer>
+      <BlogUiContainer>{children}</BlogUiContainer>
       <footer className="container mx-auto px-4 md:px-0 max-w-screen-md">
         {seriesWithDivider}
         <hr className="mt-10 mb-6" />

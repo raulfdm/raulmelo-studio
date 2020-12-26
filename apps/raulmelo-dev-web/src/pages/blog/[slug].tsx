@@ -9,8 +9,13 @@ import { BlogPage, BlogPageProps } from '@screens/Blog/BlogPage';
 import { getRelevantPostSerieData } from '@screens/Blog/utils/series';
 import { PostSerieApiData } from '@types-api';
 import { getRelevantTranslationData } from '@screens/Blog/utils/translations';
+import { MdxRemoteSource } from '@types-app';
 
-const BlogPost: React.FC<BlogPageProps> = ({
+type BlogPostPage = BlogPageProps & {
+  content: MdxRemoteSource;
+};
+
+const BlogPost: React.FC<BlogPostPage> = ({
   content,
   post,
   series,
@@ -19,12 +24,9 @@ const BlogPost: React.FC<BlogPageProps> = ({
   const parsedContent = hydrate(content);
 
   return (
-    <BlogPage
-      content={parsedContent}
-      post={post}
-      series={series}
-      translation={translation}
-    />
+    <BlogPage post={post} series={series} translation={translation}>
+      {parsedContent}
+    </BlogPage>
   );
 };
 
@@ -43,7 +45,7 @@ export const getStaticProps = async ({ params }: Params) => {
 
   const post = head(postData);
 
-  const props: Partial<BlogPageProps> = {
+  const props: Partial<BlogPostPage> = {
     post,
   };
 
