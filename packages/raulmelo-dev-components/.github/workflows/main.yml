@@ -35,7 +35,7 @@ jobs:
 
   release:
     name: Release new version
-    if: contains(github.ref, 'master')
+    if: contains(github.ref, 'main')
     needs: [build]
     env:
       CI: true
