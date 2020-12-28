@@ -62,3 +62,33 @@ jobs:
         env:
           GH_TOKEN: ${{secrets.GH_TOKEN}}
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+
+  deploy-storybook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch code
+        uses: actions/checkout@v2
+
+      - name: Setup nodejs environment
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+
+      - name: Build storybook
+        run: yarn build-storybook
+
+      - name: Deploy Storybook docs to Netlify
+        uses: nwtgck/actions-netlify@v1.1
+        id: deploy
+        with:
+          publish-dir: storybook-static
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          production-branch: main
+          deploy-message: 'Deploy from GitHub Actions - Storybook'
+        env:
+          NODE_ENV: production
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_STORYBOOK_SITE_ID }}
