@@ -1,5 +1,6 @@
 export * from './BigQuote';
 export * from './CodePenIframe';
+export * from './DotDivider';
 export * from './Headings';
 export * from './Icons';
 export * from './ProseContainer';
