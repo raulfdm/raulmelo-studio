@@ -5,3 +5,4 @@ export * from './Tags';
 export * from './Icons';
 export * from './ProseContainer';
 export * from './BigQuote';
+export * from './Headings';
