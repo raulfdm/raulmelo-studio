@@ -43,4 +43,14 @@ describe('<CodePenIframe />', () => {
     expect(container.src).toBe('https://codepen.io/raulfdm/embed/VzmoRM');
     expect(container).toMatchSnapshot();
   });
+
+  it('throws an error if neither "src" nor "directUrl" has been passed', () => {
+    try {
+      render(<CodePenIframe />);
+    } catch (error) {
+      expect(error).toMatchInlineSnapshot(
+        `[Error: CodePenIframe must receive either "src" or "directUrl"]`
+      );
+    }
+  });
 });
