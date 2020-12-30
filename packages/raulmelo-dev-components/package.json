@@ -35,10 +35,14 @@
     "tailwindcss": ">=2"
   },
   "dependencies": {
+    "@emotion/react": "^11.1.4",
+    "@emotion/styled": "^11.0.0",
     "classnames": "^2.2.6"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@emotion/jest": "^11.1.0",
     "@fullhuman/postcss-purgecss": "^3.1.3",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
@@ -86,6 +90,14 @@
     "hooks": {
       "pre-commit": "tsdx lint"
     }
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "snapshotSerializers": [
+      "@emotion/jest/serializer"
+    ]
   },
   "prettier": {
     "printWidth": 80,
