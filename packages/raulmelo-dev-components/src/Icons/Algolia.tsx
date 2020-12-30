@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconProps } from './types';
 
-export const Algolia = (props: IconProps) => {
+export const AlgoliaIcon = (props: IconProps) => {
   return (
     <svg
       viewBox="0 0 24 24"

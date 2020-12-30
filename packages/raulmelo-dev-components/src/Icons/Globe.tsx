@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconProps } from './types';
 
-export const Globe = (props: IconProps) => {
+export const GlobeIcon = (props: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

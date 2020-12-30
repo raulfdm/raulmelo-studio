@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconProps } from './types';
 
-export const Twitter = (props: IconProps) => {
+export const TwitterIcon = (props: IconProps) => {
   return (
     <svg
       viewBox="0 0 24 24"

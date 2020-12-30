@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconProps } from './types';
 
-export const Github = (props: IconProps) => {
+export const GithubIcon = (props: IconProps) => {
   return (
     <svg
       viewBox="0 0 24 24"
