@@ -10,3 +10,4 @@ export * from './Tabs';
 export * from './Tag';
 export * from './Tags';
 export * from './YouTubeIframe';
+export * from './Logo';
