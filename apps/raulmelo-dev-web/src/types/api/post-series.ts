@@ -104,7 +104,7 @@ interface FeaturedImage {
   id: string;
 }
 
-interface BlogPost {
+export interface PostSeriesBlogPost {
   language: string;
   status: string;
   post_tags: string[];
@@ -132,7 +132,7 @@ export interface PostSerieApiData {
   createdAt: Date;
   updatedAt: Date;
   __v: number;
-  blog_posts: BlogPost[];
+  blog_posts: PostSeriesBlogPost[];
   id: string;
 }
 
