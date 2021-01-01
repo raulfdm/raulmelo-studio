@@ -4,10 +4,10 @@ import { FormattedMessage } from 'react-intl';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import classNames from 'classnames';
+import { ChevronDownIcon } from '@raulfdm/blog-components';
 
 import { Container } from '@components/Ui';
 import { RelevantPostSerieData } from '@screens/Blog/utils/series';
-import { ChevronDown } from '@icons';
 
 interface SeriesSectionProps {
   currentPostId: string;
@@ -166,7 +166,7 @@ const Header = ({ isOpen, toggleSection, name }: HeaderProps) => {
           collapsed: { rotate: '180deg' },
         }}
       >
-        <ChevronDown className="w-5" />
+        <ChevronDownIcon className="w-5" />
       </motion.button>
     </div>
   );

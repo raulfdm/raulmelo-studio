@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import { ProseContainer, DotDivider } from '@raulfdm/blog-components';
 
 import { getPostUrl } from '@utils/url';
 import { Header } from './components/Header';
@@ -8,14 +9,12 @@ import { RelevantPostSerieData } from './utils/series';
 import { RelevantTranslationData } from './utils/translations';
 import { SEO } from '@components/SEO';
 import { useLocalization } from '@hooks/useLocalization';
-import { BlogUiContainer } from './components/BlogUiContainer';
 
 import type { SeriesSection as SeriesSectionType } from './components/SeriesSection';
 import type { FeaturedImage as FeaturedImageType } from './components/FeaturedImage';
 import type { AvailableTranslations as AvailableTranslationsType } from './components/AvailableTranslations';
 import type { MenuBar as MenuBarType } from '@components/MenuBar';
-import type { DotDivider as DotDividerType } from '@components/MdxComponents/DotDivider';
-import type { Tags as TagsType } from '@components/Tags';
+import type { PostTags as TagsType } from '@components/PostTags';
 
 const SeriesSection = dynamic(() =>
   import('./components/SeriesSection').then((mod) => mod.SeriesSection),
@@ -35,12 +34,8 @@ const MenuBar = dynamic(() =>
   import('@components/MenuBar').then((mod) => mod.MenuBar),
 ) as typeof MenuBarType;
 
-const DotDivider = dynamic(() =>
-  import('@components/MdxComponents/DotDivider').then((mod) => mod.DotDivider),
-) as typeof DotDividerType;
-
-const Tags = dynamic(() =>
-  import('@components/Tags').then((mod) => mod.Tags),
+const PostTags = dynamic(() =>
+  import('@components/PostTags').then((mod) => mod.PostTags),
 ) as typeof TagsType;
 
 export type BlogPageProps = {
@@ -105,11 +100,11 @@ export const BlogPage: React.FC<BlogPageProps> = ({
       {translations}
       {allSeries}
       {featuredImage}
-      <BlogUiContainer>{children}</BlogUiContainer>
+      <ProseContainer>{children}</ProseContainer>
       <footer className="container mx-auto px-4 md:px-0 max-w-screen-md">
         {seriesWithDivider}
         <hr className="mt-10 mb-6" />
-        {post_tags ? <Tags tags={post_tags} /> : null}
+        {post_tags ? <PostTags tags={post_tags} /> : null}
       </footer>
     </>
   );

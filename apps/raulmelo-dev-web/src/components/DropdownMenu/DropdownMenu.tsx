@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { ClickOutside } from '@components/ClickOutside';
+import { ClickOutside } from '@raulfdm/blog-components';
 import { DropdownMenuProps } from './types';
 
 export const DropdownMenu: React.FC<DropdownMenuProps> = ({
@@ -11,7 +11,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
   const [isVisible, setIsVisible] = React.useState(false);
 
   return (
-    <ClickOutside handleClickOutside={() => setIsVisible(false)}>
+    <ClickOutside onClickOutside={() => setIsVisible(false)}>
       <div className="relative flex items-center content-center">
         {children({
           isVisible,

@@ -5,19 +5,27 @@ import { PostsApiData } from '@types-api';
 
 const POST_THRESHOLD = 5;
 
-type PossibleFilters = 'all' | 'single' | 'series';
+export type PossibleFiltersIndex = keyof typeof filters;
+export type PossibleFilters = 'all' | 'single' | 'series';
+
+const filters = {
+  0: 'all',
+  1: 'single',
+  2: 'series',
+};
 
 export function useBlogPostFilters(apiPosts: PostsApiData) {
   const [numberOfPostsToShow, setNumberOfPostsToShow] = useState(
     POST_THRESHOLD,
   );
 
-  const [activeFilter, setActiveFilter] = useState('all' as PossibleFilters);
+  const [activeTabIndex, setActiveTabIndex] = useState<PossibleFiltersIndex>(0);
 
   const posts = useMemo(() => Posts(apiPosts), [apiPosts]);
 
   function postsToRender() {
     let postsResult: PostsApiData = [];
+    const activeFilter = filters[activeTabIndex];
 
     if (activeFilter === 'all') {
       postsResult = posts.allPosts;
@@ -51,13 +59,20 @@ export function useBlogPostFilters(apiPosts: PostsApiData) {
     });
   };
 
-  function changeFilter(filter: PossibleFilters) {
-    setActiveFilter(filter);
+  function changeFilter(tabIndex: PossibleFiltersIndex) {
+    setActiveTabIndex(tabIndex);
   }
 
   function hasMore() {
     return postsToRender().length < apiPosts.length;
   }
 
-  return { postsToRender, loadMorePosts, activeFilter, changeFilter, hasMore };
+  return {
+    postsToRender,
+    loadMorePosts,
+    activeFilter: filters[activeTabIndex] as PossibleFilters,
+    activeTabIndex,
+    changeFilter,
+    hasMore,
+  };
 }

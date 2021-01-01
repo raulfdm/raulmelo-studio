@@ -1,10 +1,10 @@
 import { FormattedMessage } from 'react-intl';
 import { useRouter } from 'next/router';
+import { GlobeIcon } from '@raulfdm/blog-components';
 
 import { useLocalization } from '@hooks/useLocalization';
 import { DropdownMenu, DropdownMenuItem } from '@components/DropdownMenu';
 import { MenuButton } from '@components/MenuBar';
-import { Globe } from '@icons';
 
 export const LanguageSwitch: React.FC = () => {
   const { switchToEnglish, switchToPortuguese } = useLocalization();
@@ -47,7 +47,7 @@ export const LanguageSwitch: React.FC = () => {
       {({ toggleDropdown }) => {
         return (
           <MenuButton onClick={toggleDropdown} data-testid="language-menu">
-            <Globe className="w-5" />
+            <GlobeIcon className="w-5" />
           </MenuButton>
         );
       }}

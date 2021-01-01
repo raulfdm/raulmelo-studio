@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { useState, useEffect, FC } from 'react';
 import { useViewportScroll, useMotionValue, motion } from 'framer-motion';
+import { Logo } from '@raulfdm/blog-components';
 
-import { Logo } from '@components/Logo';
 import { SideMenuNavIcon, SideMenu } from '@components/SideMenu';
 import { ThemeSwitch } from './components/ThemeSwitch';
 import { LanguageSwitch } from './components/LanguageSwitch';

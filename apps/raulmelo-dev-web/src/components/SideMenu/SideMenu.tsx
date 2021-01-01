@@ -4,11 +4,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import classNames from 'classnames';
+import { MenuIcon, CloseIcon } from '@raulfdm/blog-components';
 
 import { useLocalization } from '@hooks/useLocalization';
 import { useApp } from '@hooks/useApp';
 import { MenuButton } from '@components/MenuBar';
-import { Menu, Close } from '@icons';
 
 const messages = defineMessage({
   home: {
@@ -143,7 +143,7 @@ export const SideMenu = () => {
 export const SideMenuNavIcon = () => {
   const { sideMenu } = useApp();
 
-  const Icon = sideMenu.isCollapsed ? Menu : Close;
+  const Icon = sideMenu.isCollapsed ? MenuIcon : CloseIcon;
   return (
     <MenuButton onClick={sideMenu.toggle} data-testid="side-menu-button">
       <Icon width={21} />

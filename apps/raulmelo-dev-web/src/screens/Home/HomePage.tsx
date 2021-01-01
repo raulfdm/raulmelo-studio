@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import { defineMessages } from 'react-intl';
 
 import { SEO } from '@components/SEO';
 import { MenuBar } from '@components/MenuBar';
@@ -6,9 +7,7 @@ import { Container } from '@components/Ui';
 import { PersonalInformationApiData } from '@types-api';
 import { SupportedLanguages } from '@types-app';
 import { useBlogPostFilters } from './hooks/useBlogPostFilters';
-import { PostFilters } from './types';
 import { PostsApiData } from 'src/types/api/posts';
-import { defineMessages } from 'react-intl';
 import { useLocalization } from '@hooks/useLocalization';
 
 import type { Filter as FilterType } from './components/Filter';
@@ -49,6 +48,7 @@ export const HomePage: React.FC<HomePageProps> = ({ personalInfo, posts }) => {
   const { formatMessage } = useLocalization();
   const {
     activeFilter,
+    activeTabIndex,
     loadMorePosts,
     changeFilter,
     postsToRender,
@@ -69,10 +69,7 @@ export const HomePage: React.FC<HomePageProps> = ({ personalInfo, posts }) => {
           fullName={personalInfo.full_name}
           profilePic={personalInfo.profile_pic.url}
         />
-        <Filter
-          activeFilter={activeFilter as PostFilters}
-          changeFilter={changeFilter}
-        />
+        <Filter activeTabIndex={activeTabIndex} onTabChange={changeFilter} />
         <Posts
           posts={postsToRender()}
           filter={activeFilter}

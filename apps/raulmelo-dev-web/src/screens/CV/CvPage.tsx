@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { useScrollToTop } from '@hooks/useScrollToTop';
 import { SEO } from '@components/SEO';
-import { ChevronDoubleUp } from '@icons';
+import { ChevronDoubleUpIcon } from '@raulfdm/blog-components';
 import {
   Info,
   CareerSummary,
@@ -78,7 +78,7 @@ export const CvPage: React.FC<CvApiDataProps> = ({ cv, personalInfo }) => {
           ])}
           onClick={moveToTop}
         >
-          <ChevronDoubleUp width={21} />
+          <ChevronDoubleUpIcon width={21} />
         </button>
       </main>
 

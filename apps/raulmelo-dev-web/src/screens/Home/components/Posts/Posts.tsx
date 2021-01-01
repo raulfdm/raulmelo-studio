@@ -2,16 +2,16 @@ import React from 'react';
 import { FormattedMessage, defineMessages } from 'react-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import { PostFilters } from '@screens/Home/types';
 import { SupportedLanguages } from '@types-app';
 import { useLocalization } from '@hooks/useLocalization';
 import { InfiniteScroll } from '@components/InfiniteScroll';
 import { PostCard } from '@components/PostCard';
 import { PostApiData } from '@types-api';
 import { isEmpty } from '@utils/ramda';
+import { PossibleFilters } from '@screens/Home/hooks/useBlogPostFilters';
 
 type PostsProps = {
-  filter: PostFilters;
+  filter: PossibleFilters;
   posts: PostApiData[];
   loadMore: () => void;
   hasMore: boolean;

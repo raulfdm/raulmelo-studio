@@ -2,13 +2,13 @@ import React from 'react';
 import { defineMessages } from 'react-intl';
 import { InstantSearch, SearchBox, Hits, Stats } from 'react-instantsearch-dom';
 import dynamic from 'next/dynamic';
+import { AlgoliaIcon } from '@raulfdm/blog-components';
 
 import { SEO } from '@components/SEO';
 import { useLocalization } from '@hooks/useLocalization';
 import { algoliaConfig } from '@config/algolia';
 import { HitAlgolia } from '@types-app';
 import { MenuBar } from '@components/MenuBar';
-import { Algolia } from '@icons';
 import { algoliaDebounceSearchClient } from './utils';
 import type { PostCard as PostCardType } from '@components/PostCard';
 
@@ -77,7 +77,7 @@ function PoweredByAlgolia() {
       className="flex justify-end items-center font-medium font-sans text-base"
       href="https://www.algolia.com/"
     >
-      Powered by <Algolia className="w-8" color="#5468ff" /> Algolia
+      Powered by <AlgoliaIcon className="w-8" color="#5468ff" /> Algolia
     </a>
   );
 }

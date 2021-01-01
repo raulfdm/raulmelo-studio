@@ -5,7 +5,11 @@ import { defineMessage, FormattedMessage } from 'react-intl';
 import { PersonalInformationApiData } from '@types-api';
 import { siteData } from '@data/siteData';
 import { useLocalization } from '@hooks/useLocalization';
-import { Twitter, Github, LinkedIn } from '@icons';
+import {
+  TwitterIcon,
+  GithubIcon,
+  LinkedInIcon,
+} from '@raulfdm/blog-components';
 
 type Props = {
   fullName: PersonalInformationApiData['full_name'];
@@ -54,19 +58,19 @@ export const AuthorPresentation: React.FC<Props> = ({
             href={siteData.social.github.url}
             data-testid="author__githubUrl"
           >
-            <Github />
+            <GithubIcon />
           </SocialLink>
           <SocialLink
             href={siteData.social.twitter.url}
             data-testid="author__twitterUrl"
           >
-            <Twitter />
+            <TwitterIcon />
           </SocialLink>
           <SocialLink
             href={siteData.social.linkedIn.url}
             data-testid="author__linkedInUrl"
           >
-            <LinkedIn />
+            <LinkedInIcon />
           </SocialLink>
         </div>
       </div>

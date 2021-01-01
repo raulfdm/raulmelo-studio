@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { isNotNilNorEmpty } from '@utils/utilities';
 import { getPostUrl } from '@utils/url';
 import { PostApiData } from 'src/types/api/posts';
-import { Tags } from '@components/Tags';
+import { PostTags } from '@components/PostTags';
 
 type PostCardProps = {
   post: PostApiData;
@@ -64,7 +64,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
             {subtitle}
           </p>
         )}
-        {shouldRenderTag && <Tags tags={post_tags} />}
+        {shouldRenderTag && <PostTags tags={post_tags} />}
       </div>
     </article>
   );
