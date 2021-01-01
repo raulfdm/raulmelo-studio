@@ -29,6 +29,7 @@ export const YouTubeIframe = ({ src, videoId }: YouTubeIframeProps) => {
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
         data-testid="youtube-iframe"
+        title="YouTube Video"
       ></iframe>
     </div>
   );
