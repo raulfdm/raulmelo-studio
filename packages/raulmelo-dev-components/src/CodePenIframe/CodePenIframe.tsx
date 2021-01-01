@@ -35,6 +35,7 @@ export const CodePenIframe: React.FC<CodePenProps> = ({
       frameBorder="no"
       allowFullScreen
       data-testid="codepen"
+      title="CodePen demo"
     >
       {children}
     </iframe>
