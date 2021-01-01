@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ImageSlider /> matches snapshot 1`] = `
+.emotion-0.emotion-0 {
+  margin: 0;
+}
+
+<div
+  class="relative p-2"
+  data-testid="image-slider"
+>
+  <figure
+    class="emotion-0"
+    data-sliderfigure="true"
+  >
+    <img
+      alt="random picture"
+      src="https://picsum.photos/300/200"
+    />
+    <figcaption
+      class="text-center"
+      data-testid="caption"
+    >
+      random picture
+    </figcaption>
+  </figure>
+  <div
+    class="flex justify-between absolute right-0 left-0 top-0 h-7 -mx-3"
+    data-testid="actions-wrapper"
+    style="transform: translateY(150px);"
+  >
+    <button
+      class="w-8 h-8 p-2 z-10 shadow flex justify-center items-center text-lg rounded-full bg-white dark:bg-blue-700 transition-theme duration-200 ease"
+      data-testid="prev-image"
+    >
+      <svg
+        fill="none"
+        stroke="currentColor"
+        style="transform: rotate(90deg);"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M19 9l-7 7-7-7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+        />
+      </svg>
+    </button>
+    <button
+      class="w-8 h-8 p-2 z-10 shadow flex justify-center items-center text-lg rounded-full bg-white dark:bg-blue-700 transition-theme duration-200 ease"
+      data-testid="next-image"
+    >
+      <svg
+        fill="none"
+        stroke="currentColor"
+        style="transform: rotate(-90deg);"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M19 9l-7 7-7-7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+        />
+      </svg>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`fn: ImageSliderFactory returns an ImageSlider with custom ImageComponent 1`] = `
+.emotion-0.emotion-0 {
+  margin: 0;
+}
+
+<div
+  class="relative p-2"
+  data-testid="image-slider"
+>
+  <figure
+    class="emotion-0"
+    data-sliderfigure="true"
+  >
+    <img
+      alt="random picture"
+      data-testid="my-very-custom-image-component"
+      src="https://picsum.photos/300/200"
+    />
+    <figcaption
+      class="text-center"
+      data-testid="caption"
+    >
+      random picture
+    </figcaption>
+  </figure>
+  <div
+    class="flex justify-between absolute right-0 left-0 top-0 h-7 -mx-3"
+    data-testid="actions-wrapper"
+    style="transform: translateY(150px);"
+  >
+    <button
+      class="w-8 h-8 p-2 z-10 shadow flex justify-center items-center text-lg rounded-full bg-white dark:bg-blue-700 transition-theme duration-200 ease"
+      data-testid="prev-image"
+    >
+      <svg
+        fill="none"
+        stroke="currentColor"
+        style="transform: rotate(90deg);"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M19 9l-7 7-7-7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+        />
+      </svg>
+    </button>
+    <button
+      class="w-8 h-8 p-2 z-10 shadow flex justify-center items-center text-lg rounded-full bg-white dark:bg-blue-700 transition-theme duration-200 ease"
+      data-testid="next-image"
+    >
+      <svg
+        fill="none"
+        stroke="currentColor"
+        style="transform: rotate(-90deg);"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M19 9l-7 7-7-7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+        />
+      </svg>
+    </button>
+  </div>
+</div>
+`;
