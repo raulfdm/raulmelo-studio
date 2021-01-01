@@ -7,15 +7,18 @@ export const ClickOutside = ({
   const childRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    function handleClickOutside(event: MouseEvent): void {
+      if (
+        childRef.current &&
+        !childRef.current.contains(event.target as Node)
+      ) {
+        onClickOutside(event);
+      }
+    }
+
     document.addEventListener('click', handleClickOutside);
     return () => document.removeEventListener('click', handleClickOutside);
-  }, []);
-
-  function handleClickOutside(event: MouseEvent): void {
-    if (childRef.current && !childRef.current.contains(event.target as Node)) {
-      onClickOutside(event);
-    }
-  }
+  }, [onClickOutside]);
 
   return cloneElement(children as React.ReactElement, { ref: childRef });
 };
