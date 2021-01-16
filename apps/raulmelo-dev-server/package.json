@@ -6,6 +6,7 @@
     "yarn": "1.x"
   },
   "scripts": {
+    "clean": "rimraf build",
     "dev": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
@@ -29,6 +30,7 @@
     "uuid": "2d2c1cad-7859-4b15-9a5d-cce4568b2bc5"
   },
   "devDependencies": {
-    "@sub-tv/prettier-config": "^1.1.0"
+    "@sub-tv/prettier-config": "^1.1.0",
+    "rimraf": "^3.0.2"
   }
 }
