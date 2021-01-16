@@ -8,6 +8,7 @@
   "scripts": {
     "clean": "rimraf build",
     "dev": "strapi develop",
+    "dev-clean": "yarn clean && yarn dev",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi"
