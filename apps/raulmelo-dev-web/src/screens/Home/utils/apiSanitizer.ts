@@ -41,9 +41,11 @@ export function sanitizePosts(posts: PostsApiData) {
   return posts.map((post) => {
     const sanitizedPost = pickPostData(post) as SanitizedPost;
 
-    sanitizedPost.featured_image = pickFeaturedImage(
-      sanitizedPost.featured_image,
-    );
+    if (post.featured_image) {
+      sanitizedPost.featured_image = pickFeaturedImage(
+        sanitizedPost.featured_image,
+      );
+    }
 
     sanitizedPost.post_tags = sanitizedPost.post_tags.map(pickTag);
     if (sanitizedPost.post_serie) {

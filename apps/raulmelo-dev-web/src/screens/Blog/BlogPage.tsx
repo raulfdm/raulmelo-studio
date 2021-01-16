@@ -79,7 +79,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
   return (
     <>
       <SEO
-        imageUrl={featured_image.url}
+        imageUrl={featured_image?.url}
         title={post.title}
         description={post.description}
         url={getPostUrl(post.slug, locale)}
@@ -95,7 +95,11 @@ export const BlogPage: React.FC<BlogPageProps> = ({
         />
       </SEO>
       <MenuBar />
-      <Header title={post.title} subtitle={post.subtitle} />
+      <Header
+        title={post.title}
+        subtitle={post.subtitle}
+        hasBottomMargin={!featuredImage}
+      />
       <PrismStyles />
       {translations}
       {allSeries}
