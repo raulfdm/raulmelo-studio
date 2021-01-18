@@ -38,3 +38,13 @@ export const withTagLinks: Story<TagsProps> = () => (
     </Tag>
   </Tags>
 );
+
+export const withManyItems: Story<TagsProps> = () => (
+  <Tags>
+    <Tag>#JavaScript</Tag>
+    <Tag>#Typescript</Tag>
+    <Tag>#Tooling</Tag>
+    <Tag>#FrontEnd</Tag>
+    <Tag>#CSS</Tag>
+  </Tags>
+);
