@@ -14,7 +14,7 @@ describe('<Tags>', () => {
     const tags = screen.getByRole('list');
     expect(tags).toMatchInlineSnapshot(`
       <ul
-        class="flex flex-row space-x-2 md:space-x-4 mt-2 md:mt-4"
+        class="flex flex-row space-x-2 md:space-x-4 mt-2 md:mt-4 flex-wrap"
       >
         <li>
           hi
