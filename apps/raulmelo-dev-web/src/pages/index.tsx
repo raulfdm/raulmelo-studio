@@ -6,7 +6,6 @@ import { PersonalInformationApiData, SocialApiData } from '@types-api';
 import { PostsApiData } from 'src/types/api/posts';
 import { HomePage, HomePageProps } from '@screens/Home/HomePage';
 import { sanitizePosts } from '@screens/Home/utils/apiSanitizer';
-import { ENV } from '@utils/env';
 
 const Home = (props: HomePageProps) => {
   return <HomePage {...props} />;
@@ -18,7 +17,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       params: {
         _sort: 'date:DESC',
         language: locale as string,
-        status: ENV.isDevelopment ? 'draft' : 'published',
       },
     }),
     Backend.fetch('personal-information'),
