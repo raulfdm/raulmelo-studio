@@ -13,6 +13,15 @@ const nextConfig = {
     locales: ['en', 'pt'],
     defaultLocale: 'en',
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/blog',
+        permanent: false,
+      },
+    ];
+  },
   images: {
     domains: ['res.cloudinary.com', 'miro.medium.com', 'media.giphy.com'],
   },
