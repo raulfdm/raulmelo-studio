@@ -12,8 +12,6 @@ module.exports = {
       sans: `"Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, "Helvetica Neue", sans-serif`,
       serif: `Merriweather, Georgia, Cambria, Times New Roman, Times, serif`,
       title: `"content-title", Georgia, Cambria, "Times New Roman", Times, serif`,
-      'cv-sans': `Raleway, Arial, sans-serif`,
-      'cv-serif': `Lora, Times, serif`,
     },
     extend: {
       colors: {

@@ -1,4 +1,3 @@
-export * from './cv';
 export * from './social';
 export * from './personalInformation';
 export * from './endpoints';
