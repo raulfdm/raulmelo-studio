@@ -22,6 +22,7 @@ module.exports = {
       },
       screens: {
         print: { raw: 'print' },
+        '1/5xl': '1440px',
       },
       transitionProperty: {
         spacing: 'margin, padding',

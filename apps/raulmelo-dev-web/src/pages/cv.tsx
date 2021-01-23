@@ -23,8 +23,9 @@ const CurriculumPage = () => {
         <article
           className={classNames([
             'container',
-            'mx-auto max-w-screen-md',
+            'mx-auto max-w-screen-md 1/5xl:max-w-screen-xl 2xl:max-w-max',
             'pt-6 sm:pt-4',
+            '1/5xl:grid 1/5xl:grid-cols-3 1/5xl:gap-6',
           ])}
         >
           <header className="mb-8 pt-14 md:pt-5 px-4 md:px-0">
@@ -57,7 +58,7 @@ const CurriculumPage = () => {
             </p>
           </header>
 
-          <main className="pb-6">
+          <main className="pb-6 1/5xl:col-span-2">
             <iframe
               src="https://docs.google.com/document/d/e/2PACX-1vRH5F5mV58PwToU2intAbHK7XujvdPyOhWr2gDdCC9YcisCSaJVctuGlzE_28zgEbJt4qEo-CUJl-hb/pub?embedded=true"
               className="max-h-full w-full shadow-xl"
@@ -82,6 +83,15 @@ const CurriculumPage = () => {
 
         .iframe-container iframe {
           height: 75vh;
+        }
+
+        @media (max-width: 1440px) {
+        }
+
+        @media (min-width: 1440px) {
+          .iframe-container iframe {
+            height: 95vh;
+          }
         }
       `}</style>
     </>
