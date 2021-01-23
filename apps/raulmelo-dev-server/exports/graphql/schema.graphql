@@ -41,56 +41,6 @@ type UserPermissionsPasswordPayload {
   ok: Boolean!
 }
 
-type Cv {
-  id: ID!
-  _id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  summary: String!
-  jobs: [ComponentCvJob]
-  technical_skills: [ComponentCvTechSkill]
-  interests: [ComponentCvInterest]
-  side_projects: [ComponentCvSideProject]
-  education: ComponentCvEducation
-  seo: ComponentCvSeo
-}
-
-input CvInput {
-  summary: String!
-  jobs: [ComponentCvJobInput!]
-  technical_skills: [ComponentCvTechSkillInput!]
-  interests: [ComponentCvInterestInput!]
-  side_projects: [ComponentCvSideProjectInput!]
-  education: ComponentCvEducationInput!
-  seo: ComponentCvSeoInput
-  created_by: ID
-  updated_by: ID
-}
-
-input editCvInput {
-  summary: String
-  jobs: [editComponentCvJobInput]
-  technical_skills: [editComponentCvTechSkillInput]
-  interests: [editComponentCvInterestInput]
-  side_projects: [editComponentCvSideProjectInput]
-  education: editComponentCvEducationInput
-  seo: editComponentCvSeoInput
-  created_by: ID
-  updated_by: ID
-}
-
-input updateCvInput {
-  data: editCvInput
-}
-
-type updateCvPayload {
-  cv: Cv
-}
-
-type deleteCvPayload {
-  cv: Cv
-}
-
 type PersonalInformation {
   id: ID!
   _id: ID!
@@ -1203,194 +1153,6 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
-type ComponentCvEducation {
-  id: ID!
-  _id: ID!
-  formal: [ComponentCvFormalCourse]
-  languages: [ComponentCvLanguage]
-}
-
-input ComponentCvEducationInput {
-  formal: [ComponentCvFormalCourseInput]
-  languages: [ComponentCvLanguageInput]
-}
-
-input editComponentCvEducationInput {
-  id: ID
-  formal: [editComponentCvFormalCourseInput]
-  languages: [editComponentCvLanguageInput]
-}
-
-type ComponentCvFormalCourse {
-  id: ID!
-  _id: ID!
-  title: String!
-  foundation: String!
-  is_actual: Boolean!
-  start_date: String!
-  end_date: String
-}
-
-input ComponentCvFormalCourseInput {
-  title: String!
-  foundation: String!
-  is_actual: Boolean
-  start_date: String!
-  end_date: String
-}
-
-input editComponentCvFormalCourseInput {
-  id: ID
-  title: String
-  foundation: String
-  is_actual: Boolean
-  start_date: String
-  end_date: String
-}
-
-type ComponentCvInterest {
-  id: ID!
-  _id: ID!
-  name: String!
-}
-
-input ComponentCvInterestInput {
-  name: String!
-}
-
-input editComponentCvInterestInput {
-  id: ID
-  name: String
-}
-
-type ComponentCvJob {
-  id: ID!
-  _id: ID!
-  role: String!
-  company: String!
-  is_actual: Boolean!
-  description: String!
-  start_date: String!
-  end_date: String
-}
-
-input ComponentCvJobInput {
-  role: String!
-  company: String!
-  is_actual: Boolean
-  description: String!
-  start_date: String!
-  end_date: String
-}
-
-input editComponentCvJobInput {
-  id: ID
-  role: String
-  company: String
-  is_actual: Boolean
-  description: String
-  start_date: String
-  end_date: String
-}
-
-type ComponentCvLanguage {
-  id: ID!
-  _id: ID!
-  name: String!
-  proficiency: String!
-}
-
-input ComponentCvLanguageInput {
-  name: String!
-  proficiency: String!
-}
-
-input editComponentCvLanguageInput {
-  id: ID
-  name: String
-  proficiency: String
-}
-
-type ComponentCvSeo {
-  id: ID!
-  _id: ID!
-  description: String!
-}
-
-input ComponentCvSeoInput {
-  page_title: String
-  description: String!
-}
-
-input editComponentCvSeoInput {
-  id: ID
-  page_title: String
-  description: String
-}
-
-type ComponentCvSideProject {
-  id: ID!
-  _id: ID!
-  name: String!
-  is_ongoing: Boolean!
-  is_visible: Boolean
-  start_date: String!
-  end_date: String
-  description: String
-}
-
-input ComponentCvSideProjectInput {
-  name: String!
-  is_ongoing: Boolean
-  is_visible: Boolean
-  start_date: String!
-  end_date: String
-  description: String
-}
-
-input editComponentCvSideProjectInput {
-  id: ID
-  name: String
-  is_ongoing: Boolean
-  is_visible: Boolean
-  start_date: String
-  end_date: String
-  description: String
-}
-
-type ComponentCvTechSkill {
-  id: ID!
-  _id: ID!
-  name: String!
-  technologies: [ComponentCvTechnology]
-}
-
-input ComponentCvTechSkillInput {
-  name: String!
-  technologies: [ComponentCvTechnologyInput]
-}
-
-input editComponentCvTechSkillInput {
-  id: ID
-  name: String
-  technologies: [editComponentCvTechnologyInput]
-}
-
-type ComponentCvTechnology {
-  id: ID!
-  _id: ID!
-  name: String
-}
-
-input ComponentCvTechnologyInput {
-  name: String
-}
-
-input editComponentCvTechnologyInput {
-  id: ID
-  name: String
-}
-
 type ComponentGeneralUrlLink {
   id: ID!
   _id: ID!
@@ -1427,7 +1189,7 @@ input editComponentUsesSeoInput {
   description: String
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Cv | updateCvPayload | deleteCvPayload | PersonalInformation | updatePersonalInformationPayload | deletePersonalInformationPayload | PostSerie | PostSerieConnection | PostSerieAggregator | PostSerieGroupBy | PostSerieConnectionId | PostSerieConnection_id | PostSerieConnectionCreatedAt | PostSerieConnectionUpdatedAt | PostSerieConnectionName | PostSerieConnectionSlug | createPostSeriePayload | updatePostSeriePayload | deletePostSeriePayload | PostTag | PostTagConnection | PostTagAggregator | PostTagGroupBy | PostTagConnectionId | PostTagConnection_id | PostTagConnectionCreatedAt | PostTagConnectionUpdatedAt | PostTagConnectionName | PostTagConnectionSlug | createPostTagPayload | updatePostTagPayload | deletePostTagPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnection_id | PostConnectionCreatedAt | PostConnectionUpdatedAt | PostConnectionTitle | PostConnectionSubtitle | PostConnectionDate | PostConnectionDescription | PostConnectionFeatured_image | PostConnectionContent | PostConnectionSlug | PostConnectionLanguage | PostConnectionSerie_copy | PostConnectionTranslation | PostConnectionPost_serie | PostConnectionFeatured_image_caption | PostConnectionPublished_at | createPostPayload | updatePostPayload | deletePostPayload | Site | updateSitePayload | deleteSitePayload | Social | updateSocialPayload | deleteSocialPayload | Use | UseConnection | UseAggregator | UseGroupBy | UseConnectionId | UseConnection_id | UseConnectionCreatedAt | UseConnectionUpdatedAt | UseConnectionLanguage | UseConnectionContent | UseConnectionSeo | createUsePayload | updateUsePayload | deleteUsePayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentCvEducation | ComponentCvFormalCourse | ComponentCvInterest | ComponentCvJob | ComponentCvLanguage | ComponentCvSeo | ComponentCvSideProject | ComponentCvTechSkill | ComponentCvTechnology | ComponentGeneralUrlLink | ComponentUsesSeo
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | PersonalInformation | updatePersonalInformationPayload | deletePersonalInformationPayload | PostSerie | PostSerieConnection | PostSerieAggregator | PostSerieGroupBy | PostSerieConnectionId | PostSerieConnection_id | PostSerieConnectionCreatedAt | PostSerieConnectionUpdatedAt | PostSerieConnectionName | PostSerieConnectionSlug | createPostSeriePayload | updatePostSeriePayload | deletePostSeriePayload | PostTag | PostTagConnection | PostTagAggregator | PostTagGroupBy | PostTagConnectionId | PostTagConnection_id | PostTagConnectionCreatedAt | PostTagConnectionUpdatedAt | PostTagConnectionName | PostTagConnectionSlug | createPostTagPayload | updatePostTagPayload | deletePostTagPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnection_id | PostConnectionCreatedAt | PostConnectionUpdatedAt | PostConnectionTitle | PostConnectionSubtitle | PostConnectionDate | PostConnectionDescription | PostConnectionFeatured_image | PostConnectionContent | PostConnectionSlug | PostConnectionLanguage | PostConnectionSerie_copy | PostConnectionTranslation | PostConnectionPost_serie | PostConnectionFeatured_image_caption | PostConnectionPublished_at | createPostPayload | updatePostPayload | deletePostPayload | Site | updateSitePayload | deleteSitePayload | Social | updateSocialPayload | deleteSocialPayload | Use | UseConnection | UseAggregator | UseGroupBy | UseConnectionId | UseConnection_id | UseConnectionCreatedAt | UseConnectionUpdatedAt | UseConnectionLanguage | UseConnectionContent | UseConnectionSeo | createUsePayload | updateUsePayload | deleteUsePayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentGeneralUrlLink | ComponentUsesSeo
 
 input InputID {
   id: ID!
@@ -1446,7 +1208,6 @@ type AdminUser {
 }
 
 type Query {
-  cv(publicationState: PublicationState): Cv
   personalInformation(publicationState: PublicationState): PersonalInformation
   postSerie(id: ID!, publicationState: PublicationState): PostSerie
   postSeries(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [PostSerie]
@@ -1478,8 +1239,6 @@ type Query {
 }
 
 type Mutation {
-  updateCv(input: updateCvInput): updateCvPayload
-  deleteCv: deleteCvPayload
   updatePersonalInformation(input: updatePersonalInformationInput): updatePersonalInformationPayload
   deletePersonalInformation: deletePersonalInformationPayload
   createPostSerie(input: createPostSerieInput): createPostSeriePayload
