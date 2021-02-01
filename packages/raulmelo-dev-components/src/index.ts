@@ -13,3 +13,4 @@ export * from './Tag';
 export * from './Tags';
 export * from './YouTubeIframe';
 export * from './ImageSlider';
+export * from './Pagination';
