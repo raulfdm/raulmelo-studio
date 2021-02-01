@@ -32,7 +32,22 @@ export const LocalizationProvider: React.FC = ({ children }) => {
      * and Next will handle the logic for us
      */
 
-    push({ pathname, query }, asPath, { locale: nextLocale });
+    /**
+     * In this page, I want to prevent while switching locale, persisting the
+     * pagination.
+     *
+     * If the user is in PT page 2 and switch to english, I don't want he/she
+     * seeing page 2 of EN. Instead, I want to reset that to "/"
+     *
+     * It's a bit weak having it here since I'm kinda mixing business logic of
+     * Home (/blog) pagination within the switch locale, but I have to investigate
+     * deeper how can I listen for router changes so I can call this logic there.
+     */
+    const pageRegex = /\?page=\w/gi;
+    const cleanedAsPath = asPath.replace(pageRegex, '');
+    delete query.page;
+
+    push({ pathname, query }, cleanedAsPath, { locale: nextLocale });
   }
 
   function switchToEnglish(): void {

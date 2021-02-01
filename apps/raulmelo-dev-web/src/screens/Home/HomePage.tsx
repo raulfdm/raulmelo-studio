@@ -1,38 +1,24 @@
-import dynamic from 'next/dynamic';
 import { defineMessages } from 'react-intl';
+import { useRouter } from 'next/router';
+import { Pagination, PaginationItem } from '@raulfdm/blog-components';
 
-import { SEO } from '@components/SEO';
-import { MenuBar } from '@components/MenuBar';
 import { Container } from '@components/Ui';
+import { MenuBar } from '@components/MenuBar';
 import { PersonalInformationApiData } from '@types-api';
-import { SupportedLanguages } from '@types-app';
-import { useBlogPostFilters } from './hooks/useBlogPostFilters';
 import { PostsApiData } from 'src/types/api/posts';
+import { SEO } from '@components/SEO';
+import { SupportedLanguages } from '@types-app';
 import { useLocalization } from '@hooks/useLocalization';
-
-import type { Filter as FilterType } from './components/Filter';
-import type { Posts as PostsType } from './components/Posts';
-import type { AuthorPresentation as AuthorPresentationType } from './components/AuthorPresentation';
-
-const Posts = dynamic(() =>
-  import('./components/Posts').then((mod) => mod.Posts),
-) as typeof PostsType;
-
-const AuthorPresentation = dynamic(() =>
-  import('./components/AuthorPresentation').then(
-    (mod) => mod.AuthorPresentation,
-  ),
-) as typeof AuthorPresentationType;
-
-const Filter = dynamic(() =>
-  import('./components/Filter').then((mod) => mod.Filter),
-) as typeof FilterType;
+import { AuthorPresentation } from './components/AuthorPresentation';
+import { usePageQueryReset } from './hooks/usePageQueryReset';
+import { Posts } from './components/Posts';
 
 export type HomePageProps = {
   personalInfo: PersonalInformationApiData;
-
   posts: PostsApiData;
   locale: SupportedLanguages;
+  pageNumber: number;
+  numberOfPages: number;
 };
 
 const messages = defineMessages({
@@ -42,18 +28,25 @@ const messages = defineMessages({
   title: {
     id: 'siteData.title',
   },
+  latests: {
+    id: 'home.title.latests',
+  },
+  page: {
+    id: 'home.title.page',
+  },
 });
 
-export const HomePage: React.FC<HomePageProps> = ({ personalInfo, posts }) => {
+export const HomePage: React.FC<HomePageProps> = ({
+  personalInfo,
+  posts,
+  pageNumber,
+  numberOfPages,
+}) => {
   const { formatMessage } = useLocalization();
-  const {
-    activeFilter,
-    activeTabIndex,
-    loadMorePosts,
-    changeFilter,
-    postsToRender,
-    hasMore,
-  } = useBlogPostFilters(posts);
+  const router = useRouter();
+  usePageQueryReset({ pageNumber, numberOfPages });
+
+  const pageTitle = pageNumber === 1 ? messages.latests : messages.page;
 
   return (
     <>
@@ -69,13 +62,21 @@ export const HomePage: React.FC<HomePageProps> = ({ personalInfo, posts }) => {
           fullName={personalInfo.full_name}
           profilePic={personalInfo.profile_pic.url}
         />
-        <Filter activeTabIndex={activeTabIndex} onTabChange={changeFilter} />
-        <Posts
-          posts={postsToRender()}
-          filter={activeFilter}
-          hasMore={hasMore()}
-          loadMore={loadMorePosts}
-        />
+        <Posts posts={posts} title={formatMessage(pageTitle, { pageNumber })} />
+        {numberOfPages > 1 ? (
+          <Pagination
+            className="flex justify-center mt-6"
+            count={numberOfPages}
+            page={pageNumber}
+            defaultPage={pageNumber}
+            onChange={(_, page) => {
+              router.push(`${router.pathname}?page=${page}`);
+            }}
+            renderItem={(item) => {
+              return <PaginationItem {...item} />;
+            }}
+          />
+        ) : null}
       </Container>
     </>
   );

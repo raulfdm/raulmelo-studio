@@ -1,107 +1,54 @@
-import React from 'react';
-import { FormattedMessage, defineMessages } from 'react-intl';
-import { motion, AnimatePresence } from 'framer-motion';
-
-import { SupportedLanguages } from '@types-app';
-import { useLocalization } from '@hooks/useLocalization';
-import { InfiniteScroll } from '@components/InfiniteScroll';
 import { PostCard } from '@components/PostCard';
-import { PostApiData } from '@types-api';
-import { isEmpty } from '@utils/ramda';
-import { PossibleFilters } from '@screens/Home/hooks/useBlogPostFilters';
+import { PostsApiData } from '@types-api';
+import { AnimatePresence, motion } from 'framer-motion';
 
-type PostsProps = {
-  filter: PossibleFilters;
-  posts: PostApiData[];
-  loadMore: () => void;
-  hasMore: boolean;
-  customTitle?: string;
+const itemsAnimationVariants = {
+  visible: (index: number) => ({
+    scale: 1,
+    opacity: 1,
+    transition: {
+      delay: index * 0.1,
+    },
+  }),
+  hidden: {
+    scale: 0,
+    opacity: 0,
+  },
 };
 
-const messages = defineMessages({
-  pt: {
-    id: 'languages.pt',
-  },
-  en: {
-    id: 'languages.en',
-  },
-});
+type PostsProps = {
+  posts: PostsApiData;
+  title: string;
+};
 
-export const Posts: React.FC<PostsProps> = ({
-  filter,
-  posts,
-  loadMore,
-  hasMore,
-  customTitle,
-}) => {
-  const { locale, formatMessage } = useLocalization();
-
-  if (!posts) return null;
-
-  const filterLocale = {
-    all: 'home.filter.all',
-    series: 'home.filter.series',
-    single: 'home.filter.single',
-  };
-
-  const itemsAnimationVariants = {
-    visible: (index: number) => ({
-      scale: 1,
-      opacity: 1,
-      transition: {
-        delay: index * 0.1,
-      },
-    }),
-    hidden: {
-      scale: 0,
-      opacity: 0,
-    },
-  };
-
+export const Posts = ({ posts, title }: PostsProps) => {
   return (
     <>
-      <h2 className="text-2xl mb-3 font-bold font-sans">
-        {customTitle || <FormattedMessage id={filterLocale[filter]} />}
-      </h2>
-
-      {isEmpty(posts) ? (
-        <p className="text-base font-sans">
-          <FormattedMessage
-            id="home.noPosts"
-            values={{
-              language: formatMessage(messages[locale as SupportedLanguages]),
-            }}
-          />
-        </p>
-      ) : (
-        <InfiniteScroll
-          threshold={500}
-          onLoadMore={loadMore}
-          hasMore={hasMore}
-          Component={motion.ul}
-        >
-          <AnimatePresence initial={false}>
-            {posts.map((post) => (
-              <motion.li
-                className="mb-7"
-                key={post.id}
-                variants={itemsAnimationVariants}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                transition={{
-                  opacity: {
-                    stiffness: 1000,
-                    velocity: -100,
-                  },
-                }}
-              >
-                <PostCard post={post} key={post.id} />
-              </motion.li>
-            ))}
-          </AnimatePresence>
-        </InfiniteScroll>
-      )}
+      <h2 className="text-2xl mb-3 font-bold font-sans">{title}</h2>
+      <motion.ul>
+        <AnimatePresence initial={false}>
+          {posts
+            ? posts.map((post) => (
+                <motion.li
+                  className="mb-7"
+                  key={post.id}
+                  variants={itemsAnimationVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                  transition={{
+                    opacity: {
+                      stiffness: 1000,
+                      velocity: -100,
+                    },
+                  }}
+                >
+                  <PostCard post={post} key={post.id} />
+                </motion.li>
+              ))
+            : null}
+        </AnimatePresence>
+      </motion.ul>
     </>
   );
 };
