@@ -36,7 +36,7 @@ export function PaginationItem(props: PaginationItemProps) {
         'w-6',
         'text-center',
         'cursor-pointer',
-        selected && 'border-black border-b',
+        selected && 'border-black dark:border-white border-b',
         !selected && 'hover:font-bold',
       ])}
       {...other}
