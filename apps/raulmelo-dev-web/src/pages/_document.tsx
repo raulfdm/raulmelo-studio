@@ -37,7 +37,7 @@ export default class MyDocument extends Document {
         </Head>
         <body
           className={classNames([
-            'h-full',
+            'min-h-screen',
             'bg-white dark:bg-blue-900',
             'text-black dark:text-white',
             'transition-theme duration-200 ease',
