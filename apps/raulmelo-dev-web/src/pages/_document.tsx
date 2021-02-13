@@ -12,6 +12,28 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@300;400;700&display=swap"
             rel="stylesheet"
           />
+          {/* Global Theme handler
+            It needs to be in the header to avoid FOUC (flash of unstyled content)
+          */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              (function themeHandler() {
+                if (
+                  window.__theme === 'dark' ||
+                  localStorage.theme === 'dark' ||
+                  (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+                  ) {
+                  document.documentElement.classList.add('dark');
+                  window.__theme = 'dark';
+                } else {
+                  document.documentElement.classList.remove('dark');
+                  window.__theme = 'light'
+                }
+              })()
+            `,
+            }}
+          />
         </Head>
         <body
           className={classNames([
@@ -22,37 +44,6 @@ export default class MyDocument extends Document {
             'relative',
           ])}
         >
-          {/* Global Theme handler */}
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-              (function themeHandler() {
-                window.__onThemeChange = function () {};
-                function setTheme(newTheme) {
-                  window.__theme = newTheme;
-                  preferredTheme = newTheme;
-                  document.querySelector('html').className = newTheme;
-                  window.__onThemeChange(newTheme);
-                }
-                var preferredTheme;
-                try {
-                  preferredTheme = localStorage.getItem('theme');
-                } catch (err) {}
-                window.__setPreferredTheme = function (newTheme) {
-                  setTheme(newTheme);
-                  try {
-                    localStorage.setItem('theme', newTheme);
-                  } catch (err) {}
-                };
-                var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
-                darkQuery.addListener(function (e) {
-                  window.__setPreferredTheme(e.matches ? 'dark' : 'light');
-                });
-                setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
-              })()
-            `,
-            }}
-          />
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             async

@@ -1,37 +1,44 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useLocalStorage } from 'react-use';
 
 import { SupportedThemes } from '@types-app';
 
 function setMetaTheme(theme: SupportedThemes): void {
+  /* TODO: find a way to consume this value from a single source of truth */
+  const colorMap = {
+    light: '#FFFFFF',
+    dark: 'rgb(15, 23, 42)',
+  };
+
   document
     .querySelector('meta[name="theme-color"]')
-    // TODO: fix this color
-    ?.setAttribute('content', theme || '#fff');
+    ?.setAttribute('content', colorMap[theme]);
 }
 
 export function useThemeHandler(initialTheme?: SupportedThemes) {
-  const [currentTheme, setCurrentTheme] = useState<SupportedThemes>(
-    initialTheme || 'light',
-  );
+  const [currentTheme, setTheme] = useLocalStorage('theme', initialTheme, {
+    raw: true,
+  });
 
   useEffect(() => {
-    setCurrentTheme(window.__theme);
-    setMetaTheme(window.__theme);
-    window.__onThemeChange = () => setCurrentTheme(window.__theme);
+    if (window) {
+      setTheme(window.__theme);
+    }
   }, []);
 
-  useEffect(() => {
-    if (initialTheme) {
-      toggleTheme(initialTheme);
-    }
-  }, [initialTheme]);
-
   function toggleTheme(theme?: SupportedThemes): void {
-    const nextTheme = theme || (currentTheme === 'dark' ? 'light' : 'dark');
+    const nextTheme = theme ?? currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(nextTheme);
+
+    if (nextTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+      window.__theme = 'dark';
+    } else {
+      document.documentElement.classList.remove('dark');
+      window.__theme = 'light';
+    }
 
     setMetaTheme(nextTheme);
-    window.__setPreferredTheme(nextTheme);
-    setCurrentTheme(nextTheme);
   }
 
   return {
