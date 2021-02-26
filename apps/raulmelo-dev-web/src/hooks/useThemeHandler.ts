@@ -1,48 +1,89 @@
-import { useEffect } from 'react';
-import { useLocalStorage } from 'react-use';
-
 import { SupportedThemes } from '@types-app';
+import { useMachine } from '@xstate/react/lib/fsm';
+import { useEffect } from 'react';
+import { createMachine } from '@xstate/fsm';
 
-function setMetaTheme(theme: SupportedThemes): void {
-  /* TODO: find a way to consume this value from a single source of truth */
-  const colorMap = {
-    light: '#FFFFFF',
-    dark: 'rgb(15, 23, 42)',
+/* TODO: find a way to consume this value from a single source of truth */
+const colorMap = {
+  light: '#FFFFFF',
+  dark: 'rgb(15, 23, 42)',
+};
+
+type ToggleEvent =
+  | { type: 'TOGGLE' }
+  | { type: 'TURN_LIGHT' }
+  | { type: 'TURN_DARK' };
+
+function removeThemeClass(theme: SupportedThemes) {
+  return () => {
+    document.documentElement.classList.remove(theme);
   };
-
-  document
-    .querySelector('meta[name="theme-color"]')
-    ?.setAttribute('content', colorMap[theme]);
 }
 
-export function useThemeHandler(initialTheme?: SupportedThemes) {
-  const [currentTheme, setTheme] = useLocalStorage('theme', initialTheme, {
-    raw: true,
-  });
+function setThemeClass(theme: SupportedThemes) {
+  return () => {
+    document.documentElement.classList.add(theme);
+    window.__theme = theme;
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute('content', colorMap[theme]);
+  };
+}
+
+function saveThemeOnLocalStorage(theme: SupportedThemes) {
+  return () => {
+    localStorage.setItem('theme', theme);
+  };
+}
+
+const themeMachine = createMachine<never, ToggleEvent>({
+  initial: 'off',
+  states: {
+    off: {
+      on: {
+        TURN_DARK: 'dark',
+        TURN_LIGHT: 'light',
+      },
+    },
+    light: {
+      entry: [
+        setThemeClass('light'),
+        saveThemeOnLocalStorage('light'),
+        removeThemeClass('dark'),
+      ],
+      on: {
+        TOGGLE: {
+          target: 'dark',
+        },
+      },
+    },
+    dark: {
+      entry: [
+        setThemeClass('dark'),
+        saveThemeOnLocalStorage('dark'),
+        removeThemeClass('light'),
+      ],
+      on: {
+        TOGGLE: {
+          target: 'light',
+        },
+      },
+    },
+  },
+});
+
+export function useThemeHandler() {
+  const [current, send] = useMachine(themeMachine);
 
   useEffect(() => {
     if (window) {
-      setTheme(window.__theme);
+      const event = window.__theme === 'dark' ? 'TURN_DARK' : 'TURN_LIGHT';
+      send(event);
     }
   }, []);
 
-  function toggleTheme(theme?: SupportedThemes): void {
-    const nextTheme = theme ?? currentTheme === 'dark' ? 'light' : 'dark';
-    setTheme(nextTheme);
-
-    if (nextTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-      window.__theme = 'dark';
-    } else {
-      document.documentElement.classList.remove('dark');
-      window.__theme = 'light';
-    }
-
-    setMetaTheme(nextTheme);
-  }
-
   return {
-    currentTheme,
-    toggleTheme,
+    currentTheme: current.value as SupportedThemes | 'off',
+    toggleTheme: () => send('TOGGLE'),
   };
 }

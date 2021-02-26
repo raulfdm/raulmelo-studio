@@ -1,22 +1,52 @@
 import React from 'react';
 import classNames from 'classnames';
+import { createMachine } from '@xstate/fsm';
+import { useMachine } from '@xstate/react/lib/fsm';
 
 import { ClickOutside } from '@raulfdm/blog-components';
 import { DropdownMenuProps } from './types';
+
+type ToggleEvent = {
+  type: 'TOGGLE';
+};
+type TurnOffEvent = {
+  type: 'TURN_OFF';
+};
+
+type MachinesEvent = ToggleEvent | TurnOffEvent;
+
+const dropdownMachine = createMachine<never, MachinesEvent>({
+  initial: 'hidden',
+  states: {
+    hidden: {
+      on: {
+        TOGGLE: 'visible',
+      },
+    },
+    visible: {
+      on: {
+        TOGGLE: 'hidden',
+        TURN_OFF: 'hidden',
+      },
+    },
+  },
+});
 
 export const DropdownMenu: React.FC<DropdownMenuProps> = ({
   items,
   children,
 }) => {
-  const [isVisible, setIsVisible] = React.useState(false);
+  const [current, send] = useMachine(dropdownMachine);
+
+  const isVisible = current.matches('visible');
 
   return (
-    <ClickOutside onClickOutside={() => setIsVisible(false)}>
+    <ClickOutside onClickOutside={() => send('TURN_OFF')}>
       <div className="relative flex items-center content-center">
         {children({
           isVisible,
           toggleDropdown: () => {
-            setIsVisible(!isVisible);
+            send('TOGGLE');
           },
         })}
 
@@ -25,7 +55,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
             <ul
               onClick={(event) => {
                 event.persist();
-                setIsVisible(false);
+                send('TURN_OFF');
               }}
               className={classNames([
                 'flex flex-col',

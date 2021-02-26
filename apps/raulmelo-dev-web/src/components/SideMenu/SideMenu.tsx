@@ -49,21 +49,14 @@ export const SideMenu = () => {
   const { formatMessage } = useLocalization();
   const { pathname } = useRouter();
 
-  const { isCollapsed, toggle, hide } = sideMenu;
-  const animate = isCollapsed ? 'closed' : 'open';
+  const { currentState, isClosed, toggle, hide } = sideMenu;
 
   useEffect(() => {
-    const hideOnScroll = (): void => {
-      if (!isCollapsed) {
-        hide();
-      }
-    };
-
-    document.addEventListener('scroll', hideOnScroll);
+    document.addEventListener('scroll', hide);
     return () => {
-      document.removeEventListener('scroll', hideOnScroll);
+      document.removeEventListener('scroll', hide);
     };
-  }, [isCollapsed, hide]);
+  }, [hide]);
 
   return (
     <>
@@ -82,7 +75,7 @@ export const SideMenu = () => {
           'space-y-3',
           'transition-theme duration-200 ease',
         ])}
-        animate={animate}
+        animate={currentState}
         variants={{
           open: {
             transform: `translate3d(0%, 0, 0)`,
@@ -113,29 +106,29 @@ export const SideMenu = () => {
           );
         })}
       </motion.nav>
-      {!isCollapsed ? (
-        <motion.div
-          className={classNames([
-            'absolute',
-            'inset-0',
-            'z-10',
-            'bg-black bg-opacity-80',
-          ])}
-          style={{
-            pointerEvents: isCollapsed ? 'none' : 'all',
-          }}
-          onClick={hide}
-          animate={animate}
-          variants={{
-            open: {
-              opacity: 1,
-            },
-            closed: {
-              opacity: 0,
-            },
-          }}
-        />
-      ) : null}
+      <motion.div
+        className={classNames([
+          'absolute',
+          'inset-0',
+          'z-10',
+          'bg-black bg-opacity-80',
+          'opacity-0',
+        ])}
+        style={{
+          pointerEvents: isClosed ? 'none' : 'all',
+        }}
+        onClick={hide}
+        animate={currentState}
+        transition={{ ease: 'easeOut', duration: 0.2 }}
+        variants={{
+          open: {
+            opacity: 1,
+          },
+          closed: {
+            opacity: 0,
+          },
+        }}
+      />
     </>
   );
 };
@@ -143,7 +136,7 @@ export const SideMenu = () => {
 export const SideMenuNavIcon = () => {
   const { sideMenu } = useApp();
 
-  const Icon = sideMenu.isCollapsed ? MenuIcon : CloseIcon;
+  const Icon = sideMenu.isClosed ? MenuIcon : CloseIcon;
   return (
     <MenuButton onClick={sideMenu.toggle} data-testid="side-menu-button">
       <Icon width={21} />

@@ -1,43 +1,16 @@
 import Link from 'next/link';
-import { useState, useEffect, FC } from 'react';
-import { useViewportScroll, useMotionValue, motion } from 'framer-motion';
+import { FC } from 'react';
+import { motion } from 'framer-motion';
 import { Logo } from '@raulfdm/blog-components';
 
 import { SideMenuNavIcon, SideMenu } from '@components/SideMenu';
 import { ThemeSwitch } from './components/ThemeSwitch';
 import { LanguageSwitch } from './components/LanguageSwitch';
 import classNames from 'classnames';
+import { useHideMenu } from './useHideMenu';
 
 export const MenuBar: FC = () => {
-  const [showMenu, setShowMenu] = useState(true);
-  const previousPosition = useMotionValue(0);
-  const { scrollY } = useViewportScroll();
-
-  useEffect(
-    () =>
-      scrollY.onChange((nextYPosition) => {
-        const yDifference = previousPosition.get() - nextYPosition;
-        /* Converts from negative to positive */
-        const absoluteY = Math.abs(yDifference);
-
-        /* I only want to the computation from 10 by 10
-        Otherwise it'll toggle too fast*/
-        if (absoluteY < 10) {
-          return;
-        }
-
-        /* when previous position - next position is:
-          - negative => it means scrolling down => I want to hide
-          - positive => it means scrolling up => I want to show
-         */
-
-        const shouldShow = yDifference > 0;
-        setShowMenu(shouldShow);
-        /* I need to save nextPosition to the next comparison */
-        previousPosition.set(nextYPosition);
-      }),
-    [scrollY],
-  );
+  const menuState = useHideMenu();
 
   const variants = {
     open: { y: 0 },
@@ -56,7 +29,8 @@ export const MenuBar: FC = () => {
           'bg-white dark:bg-blue-800',
           'transition-theme duration-200 ease',
         ])}
-        animate={showMenu ? 'open' : 'closed'}
+        // animate={current.value}
+        animate={menuState}
         variants={variants}
         transition={{ duration: 0.3, type: 'tween' }}
         data-testid="menu-bar"

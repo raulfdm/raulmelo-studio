@@ -1,23 +1,16 @@
-import { useEffect, useState } from 'react';
-import classnames from 'classnames';
-import { FormattedMessage } from 'react-intl';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import classNames from 'classnames';
-import { ChevronDownIcon } from '@raulfdm/blog-components';
-
 import { Container } from '@components/Ui';
+import { ChevronDownIcon } from '@raulfdm/blog-components';
 import { RelevantPostSerieData } from '@screens/Blog/utils/series';
-
-interface SeriesSectionProps {
-  currentPostId: string;
-  series: RelevantPostSerieData;
-  divider?: boolean;
-}
+import { useMachine } from '@xstate/react/lib/fsm';
+import { default as classnames, default as classNames } from 'classnames';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { FormattedMessage } from 'react-intl';
+import { createMachine } from '@xstate/fsm';
 
 const variants = {
   list: {
-    open: {
+    expanded: {
       height: 'auto',
       opacity: 1,
       transition: {
@@ -42,7 +35,7 @@ const variants = {
     },
   },
   item: {
-    open: {
+    expanded: {
       y: 0,
       height: 'auto',
       opacity: 1,
@@ -62,20 +55,32 @@ const variants = {
   },
 };
 
+const seriesMachine = createMachine<never, SeriesMachineEvent>({
+  initial: 'collapsed',
+  states: {
+    collapsed: {
+      on: {
+        TOGGLE: 'expanded',
+      },
+    },
+    expanded: {
+      on: {
+        TOGGLE: 'collapsed',
+        CLOSE: 'collapsed',
+      },
+    },
+  },
+});
+
 export const SeriesSection: React.FC<SeriesSectionProps> = ({
   series,
   currentPostId,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [current, send] = useMachine(seriesMachine);
   const { name, posts, amount } = series;
+  const currentState = current.value as SeriesMachineState;
 
-  useEffect(() => {
-    if (isOpen) {
-      setIsOpen(false);
-    }
-  }, [currentPostId]);
-
-  const toggleSection = () => setIsOpen(!isOpen);
+  const toggleSection = () => send('TOGGLE');
 
   return (
     <Container data-testid="series-section" as="section">
@@ -91,11 +96,15 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
         data-testid="series-menu"
       >
         <div>
-          <Header isOpen={isOpen} toggleSection={toggleSection} name={name} />
+          <Header
+            toggleSection={toggleSection}
+            name={name}
+            currentState={currentState}
+          />
           <motion.ul
             className="m-0"
             initial={false}
-            animate={isOpen ? 'open' : 'collapsed'}
+            animate={currentState}
             variants={variants.list}
             data-testid="series-post-list"
           >
@@ -124,7 +133,7 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
             })}
           </motion.ul>
           <Footer
-            isOpen={isOpen}
+            currentState={currentState}
             toggleSection={toggleSection}
             amount={amount}
           />
@@ -134,13 +143,7 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
   );
 };
 
-type HeaderProps = {
-  toggleSection: () => void;
-  isOpen: boolean;
-  name: string;
-};
-
-const Header = ({ isOpen, toggleSection, name }: HeaderProps) => {
+const Header = ({ toggleSection, name, currentState }: HeaderProps) => {
   return (
     <div
       className={classnames([
@@ -149,7 +152,7 @@ const Header = ({ isOpen, toggleSection, name }: HeaderProps) => {
         'py-3 px-4',
         'font-serif text-lg md:text-xl font-bold',
         'transition-spacing duration-300',
-        isOpen
+        currentState === 'expanded'
           ? 'pb-2.5 border-b border-gray-100 dark:border-gray-600'
           : 'pb-0 border-none',
       ])}
@@ -160,9 +163,9 @@ const Header = ({ isOpen, toggleSection, name }: HeaderProps) => {
       <motion.button
         className="flex items-center justify-center w-7 h-7"
         initial="collapsed"
-        animate={isOpen ? 'open' : 'collapsed'}
+        animate={currentState}
         variants={{
-          open: { rotate: '0deg' },
+          expanded: { rotate: '0deg' },
           collapsed: { rotate: '180deg' },
         }}
       >
@@ -172,11 +175,7 @@ const Header = ({ isOpen, toggleSection, name }: HeaderProps) => {
   );
 };
 
-type FooterProps = Pick<HeaderProps, 'isOpen' | 'toggleSection'> & {
-  amount: number;
-};
-
-const Footer = ({ isOpen, amount, toggleSection }: FooterProps) => {
+const Footer = ({ amount, toggleSection, currentState }: FooterProps) => {
   return (
     <div
       onClick={toggleSection}
@@ -186,7 +185,7 @@ const Footer = ({ isOpen, amount, toggleSection }: FooterProps) => {
         'py-3 px-4',
         'text-sm md:text-base font-sans',
         ' transition-spacing duration-300',
-        isOpen
+        currentState === 'expanded'
           ? 'pt-2.5 border-t border-gray-100 dark:border-gray-600'
           : 'pt-0 border-none',
       ])}
@@ -202,3 +201,27 @@ const Footer = ({ isOpen, amount, toggleSection }: FooterProps) => {
     </div>
   );
 };
+
+type FooterProps = Pick<HeaderProps, 'toggleSection' | 'currentState'> & {
+  amount: number;
+};
+
+type HeaderProps = {
+  toggleSection: () => void;
+  name: string;
+  currentState: SeriesMachineState;
+};
+
+interface SeriesSectionProps {
+  currentPostId: string;
+  series: RelevantPostSerieData;
+  divider?: boolean;
+}
+
+type SeriesMachineEvent =
+  | {
+      type: 'TOGGLE';
+    }
+  | { type: 'CLOSE' };
+
+type SeriesMachineState = 'expanded' | 'collapsed';
