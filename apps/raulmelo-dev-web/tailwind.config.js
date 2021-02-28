@@ -1,3 +1,5 @@
+'use strict';
+
 const colors = require('tailwindcss/colors');
 
 module.exports = {
@@ -45,6 +47,9 @@ module.exports = {
             css: {
               color: black,
               fontFamily: serif,
+              h1: {
+                fontFamily: serif,
+              },
               h2: {
                 fontFamily: sans,
               },
@@ -75,6 +80,30 @@ module.exports = {
               },
             },
           },
+
+          xl: {
+            css: {
+              h1: {
+                fontSize: '2.2em',
+              },
+              hr: {
+                overflow: 'visible',
+                marginBottom: '3.6rem',
+                marginTop: '3.6rem',
+              },
+            },
+          },
+          '2xl': {
+            css: {
+              /**
+               * 22px
+               */
+              fontSize: '1.375em',
+              h1: {
+                fontSize: '2.4em',
+              },
+            },
+          },
           dark: {
             css: {
               color: white,
@@ -93,8 +122,6 @@ module.exports = {
               },
               h1: {
                 color: white,
-                fontSize: '2.25rem',
-                lineHeight: '1.3',
               },
               h2: {
                 color: white,
@@ -129,7 +156,7 @@ module.exports = {
       transform: ['hover'],
       outline: ['dark'],
     },
-    typography: ['dark'],
+    typography: ['dark', 'responsive'],
   },
   plugins: [require('@tailwindcss/typography')],
 };

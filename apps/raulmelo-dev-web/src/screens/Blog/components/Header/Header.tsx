@@ -21,7 +21,7 @@ export const Header: React.FC<HeaderProps> = React.memo(function Header({
       data-testid="header"
     >
       <h1
-        className="text-3xl md:text-4xl font-bold font-serif tracking-tight"
+        className="text-3xl md:text-4xl lg:text-5xl font-bold font-serif tracking-tight"
         data-testid="header-title"
       >
         {title}

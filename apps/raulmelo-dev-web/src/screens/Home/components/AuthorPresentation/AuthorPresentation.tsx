@@ -48,7 +48,7 @@ export const AuthorPresentation: React.FC<Props> = ({
           {fullName}
         </h1>
         <p
-          className="font-sans text-base font-normal mt-2.5"
+          className="font-sans text-base md:text-lg font-normal mt-2.5"
           data-testid="author__description"
         >
           <FormattedMessage id="siteData.description" />
