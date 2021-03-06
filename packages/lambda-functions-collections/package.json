@@ -1,0 +1,17 @@
+{
+  "name": "raulmelo-dev-webhook-serverless",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Raul Melo",
+  "license": "MIT",
+  "scripts": {
+    "serve": "netlify-lambda serve functions",
+    "build": "netlify-lambda build functions"
+  },
+  "dependencies": {
+    "algoliasearch": "^4.8.5",
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "netlify-lambda": "^2.0.3"
+  }
+}
