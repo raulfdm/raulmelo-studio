@@ -1,0 +1,594 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fn: updateAlgolia When success Algolia calls save 1`] = `
+Array [
+  Array [
+    Object {
+      "date": "2017-05-29",
+      "excerpt": "Fala galera, belezinha? Hoje o nosso bate-papo vai ser sobre uma das principais (e mais útil) funcionalidades das expressões regulares, **classes de caracteres**.
+
+Sem delongas, liga teu _Pomodoro_, pega teu café/chá/chimarrão, me dê a mão (me abraça) e vem comigo!
+
+---
+
+## Classes de caracteres: O que são?
+
+Classe de caracteres é uma maneira de dizer à Regex Engine que queremos pegar um conjunto específico de caracteres. Basicamente, é como se definíssemos que o que **pode** ou **não** aparecer naquele trecho (ou em toda) da expressão. Vamos a um exemplo pra facilitar o entendimento.
+
+Suponhamos que queremos analisar (de uma forma pouco grosseira) se uma data é valida ou não. Sabemos que no formato PT_BR, ela segue o padrão **dia**/**mês**/**ano** (28/05/2017).
+
+Esse padrão segue algumas regras básicas, por exemplo, o dia só pode começar com zero (0), um(1), dois(2) ou três(3). Então, como podemos fazemos então para dizer à Regex que o primeiro número precisa ser um desses 4 dígitos? Se você respondeu com classes de caracteres, parabéns! :D
+
+---
+
+## Expressando uma classe (ou conjunto)
+
+Uma classe de caracteres é expressada de duas maneiras, são elas:
+
+### Colchetes
+
+O símbolo de colchetes (\`[]\`) são usados para indicar quais os caracteres queremos considerar. Voltando no exemplo anterior, para expressar que queremos apenas os números 0, 1, 2 e 3, podemos fazer:
+
+\`\`\`txt
+[0123]
+\`\`\`
+
+#### Hífen mágico
+
+Outra forma de escrever a mesma coisa do exemplo acima, de forma bem bacanuda e mais sucinta, é utilizando o hífen (\`-\`).
+
+Com ele, definimos um um range (alcance), ou seja, um valor inicial e um valor final, que no caso serve para letras e números. Melhorando a expressão anterior, temos:
+
+\`\`\`txt
+[0-3]
+\`\`\`
+
+Temos o mesmo resultado, de uma forma bem mais elegante.
+
+#### Ponto de atenção!
+
+Quando comecei a estudar sobre Regex, me deparei com uma observação sobre o uso hífen dentro de classes que me intrigou bastante.
+
+Fora da classe o hífen é avaliado como hífen mesmo (valor semântico), mas como dito anteriormente, dentro ele é avaliado como um range. Assim, suponhamos que você queira considerar um hífen, ou ponto-e-virgula, ou exclamação em um trecho de texto. Para tal, podemos utilizar classe de carácter:
+
+<Image src=\\"https://res.cloudinary.com/duzei21zt/image/upload/v1598088669/site/regex_part_3_regex101_hyphen_case_1_4d89220816.png\\" width=\\"1082\\" height=\\"133\\" alt=\\"Character range is out of order!\\" /> 
+
+Pois é! Tomamos um erro logo de cara. Mas por que isso?
+
+Bem, o que a engine faz é tentar encontrar o range entre o ponto-e-virgula (\`;\`) e a exclamação (\`!\`). E como isso não faz sentido, o erro acontece.
+
+> Mas e aí? Como fugir disso?
+
+Lembra do [post passado sobre meta-caracteres](/pt-br/2017/05/regex-part-2)? Sim, o hífen é um deles! E para resolver o caso, precisamos apenas passar a nossa amiga barra invertida (\`\\\\\`):
+
+<Image src=\\"https://res.cloudinary.com/duzei21zt/image/upload/v1598088668/site/regex_part_3_regex101_capture_hyphen_323273cd44.png\\" width=\\"654\\" height=\\"135\\" alt=\\"Pegando o hífen!\\" /> 
+
+### Shorthand
+
+A segunda maneira de filtrar uma classe de caracteres é utilizando uma forma abreviada (shorthand) da própria linguagem.
+
+#### Números
+
+Em muitos casos, desejamos pegar números de zero (0) a nove (9). Logo, podemos fazer utilizando o hífen:
+
+<Image src=\\"https://res.cloudinary.com/duzei21zt/image/upload/v1598088671/site/regex_part_3_regex101_using_hyphen_6ec809177a.png\\" width=\\"651\\" height=\\"139\\" alt=\\"Utilizando hífen\\" /> 
+
+Mas podemos simplificar ainda mais utilizando o shorthand \`\\\\d\` que tem exatamente o mesmo significado (números de 0 a 9):
+
+<Image src=\\"https://res.cloudinary.com/duzei21zt/image/upload/v1598088672/site/regex_part_3_regex101_using_shorthand_bbcf675b01.png\\" width=\\"650\\" height=\\"140\\" alt=\\"Utilizando shorthand\\" /> 
+
+#### Letras e números
+
+No caso das letras, podemos definir na classe que queremos de \`a\` até \`z\` maiúsculo ou minúsculo e números de \`0\` a \`9\`, assim, usando **hífen** ficaria:
+
+<Image src=\\"https://res.cloudinary.com/duzei21zt/image/upload/v1598088668/site/regex_part_3_regex101_letters_numbers_hypen_63de714469.png\\" width=\\"648\\" height=\\"133\\" alt=\\"Classe, hífen, números e letras\\" /> 
+
+O _shorthand_ para esse mesmo valor seria o \`\\\\w\`, mas com uma ressalva: ele considera underscore (\`_\`) também:
+
+<Image src=\\"https://res.cloudinary.com/duzei21zt/image/upload/v1598088668/site/regex_part_3_regex101_letters_numbers_a20b561bfb.png\\" width=\\"647\\" height=\\"132\\" alt=\\"Shorthand para números e letras\\" /> 
+
+#### Qualquer carácter
+
+Uma classe muito útil é o ponto (\`.\`). O ponto representa qualquer carácter, e quando eu digo qualquer, é realmente **qualquer** tipo (espaço, números, letras, etc.)
+
+## HANDS ON!
+
+<Gif
+  src=\\"https://miro.medium.com/max/300/1*6Kaa7nN-dwK4F70EYuBInA.gif\\"
+  caption=\\"Bora codar!\\"
+  width={300}
+  height={300}
+/>
+
+> **Licença didática**: Antes de mais nada, gostaria de deixar claro que a validação que faremos a seguir é bem grosseira, ou seja, ela deixará brechas para ",
+      "id": "5f40e7ebd511c2380b097b30",
+      "language": "pt",
+      "objectID": "Post_5f40e7ebd511c2380b097b30",
+      "slug": "entendendo-regex-de-uma-vez-por-todas-parte-3",
+      "subtitle": "Classes de Caractere",
+      "title": "Entendendo de uma vez por todas Expressões Regulares",
+    },
+    Object {
+      "date": "2017-06-26",
+      "excerpt": "Fala meu povo, tudo bem com vocês? Estamos quase fechando a série “Entendendo de uma vez por todas Expressões regulares”.
+
+Hoje iremos abordar um tema que pra mim, é um dos mais difíceis no que tange à Regex: Âncoras.
+
+---
+
+## Mas, o que são?
+
+Bom, no geral, âncoras servem para que você delimite um começo e um fim em uma expressão regular. Basicamente você diz que a correspondência dessa expressão deve começar e terminar daquele jeito, e caso não corresponda, já seja descartada.
+
+Um pouco abstrato né? Vamos olhar esta _string_ de teste bem simples:
+
+\`\`\`txt
+aaa aaaa aaa aa
+\`\`\`
+
+Se quiséssemos filtrar correspondências de 3 “a”, escreveríamos uma regex similar a:
+
+\`\`\`txt
+a{3}
+\`\`\`
+
+Porém, vamos observar o resultado:
+
+<Image src=\\"https://res.cloudinary.com/duzei21zt/image/upload/v1598090620/site/regex_part_6_regex101_1_91073a1b11.png\\" width=\\"976\\" height=\\"142\\" alt=\\"expressão: a{3}\\" /> 
+
+Perceba que filtramos 3 “a” até do segundo conjunto, onde há 4. Mas pegamos apenas 3. E é exatamente nos casos onde não queremos que essa correspondência ocorra que usamos as **âncoras**.
+
+---
+
+## Tipos de âncoras
+
+Existem algumas formas de definir âncoras, mas independentemente de qual o tipo, elas sempre terão um mesmo padrão:
+
+\`\`\`txt
+âncora inicio + expressão + âncora fim
+\`\`\`
+
+### Word boundary
+
+Esse tipo de âncora é definido pela expressão \\\\b . Ela indica que você deseja buscar uma expressão que **não comece** e **nem termine** com letras.
+
+Voltando no nosso exemplo simbólico, podemos usar esse tipo de âncora para resolver o problema:
+
+<Image src=\\"https://res.cloudinary.com/duzei21zt/image/upload/v1598090620/site/regex_part_6_regex101_word_boundaries_dfaa203977.png\\" width=\\"982\\" height=\\"148\\" alt=\\"Word boundaries\\" /> 
+
+Perceba que agora temos exatamente as correspondências que queríamos, pois, agora que definimos que a expressão não pode terminar com uma letra, ele descarta o caso \`aaaa\`.
+
+### O inverso
+
+Como já comentei nos tópicos anteriores, em Regex, geralmente quando queremos fazer uma negação, usamos a letra maiúscula, ou seja, se eu digo que não quero que minha regex comece ou termine com letras e números usamos \`\\\\b\`, mas para dizer o contrário — que sim, queremos — basta utilizarmos o \`\\\\B\`.
+
+Ainda no exemplo anterior, combinado o \`\\\\b\` com \`\\\\B\`, podemos ter o seguinte resultado:
+
+<Image src=\\"https://res.cloudinary.com/duzei21zt/image/upload/v1598090620/site/regex_part_6_regex101_inverse_word_boundaries_e74c2a69cf.png\\" width=\\"983\\" height=\\"136\\" alt=\\"World boundaries inversa\\" /> 
+
+Perceba que agora definimos que a nossa expressão PODE começar com um caractere, mas não pode terminar, tanto isso é verdade que o ultimo conjunto (\`aaaab\`) não é selecionado.
+
+---
+
+## Início e Fim
+
+Ainda temos âncoras que definem um início e um fim em nossas expressões, ou seja, o target (_string_ alvo) avaliado deve começar e terminar daquela forma, caso contrário, não teremos um match.
+
+Esse tipo de âncora é definido por \`^\` e por \`$\`, sendo o primeiro usado no início da expressão e o segundo no fim:
+
+\`\`\`txt
+^<minha-expressão>$
+\`\`\`
+
+Para visualizar melhor o comportamento deste, vamos pensar em um caso hipotético:
+
+Tenho uma aplicação que precisa fazer uma busca em uma pasta cheios de arquivos de extensão TXT, e queremos filtrar um padrão especifico de nomenclatura dos arquivos. Digamos que essa nomenclatura seria algo:
+
+\`\`\`txt
+ano-nome_do_arquivo.txt
+\`\`\`
+
+Quando fazemos a leitura dos arquivos na pasta, receberemos uma lista similar a essa:
+
+\`\`\`txt
+# Target
+
+2017-index_produto.txt
+produtos.txt
+2017-index_clientes.txt
+clientes.txt
+2016-users.txt
+\`\`\`
+
+Bom, como eu sempre gosto de fazer, vamos montar a regex por partes:
+
+- Para pegar o ano: \`\\\\d{4}\`
+- hífen obrigatório: \`-\`
+- Nome do arquivo pode ter letras, números e underline (\`_\`) 1 ou + vezes: \`\\\\w+\`
+- extensão obrigatória: \`.txt\`
+
+Juntando tudo, temos:
+
+\`\`\`txt
+\\\\d{4}-\\\\w+.txt
+\`\`\`
+
+E como resultado:
+
+<Image src=\\"https://res.cloudinary.com/duzei21zt/image/upload/v1598090621/site/regex_part_6_regex101_end_to_end_f749712228.png\\" width=\\"979\\" height=\\"240\\" alt=\\"Tentando pegar somente os nomes\\" /> 
+
+Entretanto, temos uma pequena falha nessa abordagem. Digamos que um arquivo com extensão \`.txts\` seja colocado na pasta. Na hora de buscar os nomes dos arquivos, pegaríamos ele também:
+
+<Image src=\\"https://res.cloudinary.com/duzei21zt/image/upload/v1598090621/site/regex_part_6_regex101_end_to_end_2_551709826c.png\\" width=\\"979\\" height=\\"240\\" alt=\\"Arquivos extensão .txts\\" /> 
+
+Deu ruim!
+
+Bom, não queremos então que os nossos matches comecem e terminem dessa maneira? Nem mais nem menos? Então vamos usar âncoras de **início** e **fim**:
+
+\`\`\`txt
+^\\\\d{4}-\\\\w+.txt$
+\`\`\`
+
+<Image src=\\"https://res.cloudinary.com/duzei21zt/image/upload/v1598090621/site/regex_part_6_regex101_end_to_end_3_9542e41d62.png\\" width=\\"979\\" height=\\"242\\" alt=\\"Ih rapaz… agora não pegou nada\\" /> 
+
+<Image src=\\"https://res.cloudinary.com/duzei21zt/image/upload/v1598090621/site/regex_part_6_wtf_c51cd62a19.jpg\\" width=\\"678\\" height=\\"460\\" alt=\\"Wtf?\\" /> 
+
+Eita… Ca",
+      "featured_image": Object {
+        "height": 1000,
+        "url": "https://res.cloudinary.com/duzei21zt/image/upload/v1598090621/site/regex_part_6_featured_img_d16b918370.jpg",
+        "width": 1500,
+      },
+      "id": "5f40ef03d511c2380b097b53",
+      "language": "pt",
+      "objectID": "Post_5f40ef03d511c2380b097b53",
+      "slug": "entendendo-regex-de-uma-vez-por-todas-parte-6",
+      "subtitle": "Âncoras",
+      "title": "Entendendo de uma vez por todas Expressões Regulares",
+    },
+    Object {
+      "date": "2018-01-29",
+      "excerpt": "
+Fala galera, tudo certo? Hoje vim dividir com vocês um problema que eu estava tendo e acredito ser muito comum, principalmente com iniciantes sobre posicionamento de elementos e estilização.
+
+Percebi que apesar de já ter usado n vezes, eu não entendia afundo as regras dessa regra e tive grandes problemas por não saber, ao tentar criar um component React que seria um input com ícone.
+
+Mas calma, se você é iniciante e não sabe o que é React, nem esquente a cabeça. Neste artigo, e mostrarei o funcionamento do mesmo usando HTML e CSS puros.
+
+---
+
+## O problema
+
+Como já mencionei acima, o problema que eu tive era de criar um componente de input que contivesse um ícone no canto. E já adiantando, eu percebi que há várias estratégias para implementa-lo, inclusive, utilizando pseudo elementos e etc.
+
+Porém, por motivos de aplicabilidade no projeto atual e levando em consideração as futuras possibilidades que eu terei que cobrir, eu optei pela seguinte estratégia:
+
+\`\`\`html
+<div class=\\"input-icon\\">
+  <input type=\\"text\\" class=\\"input\\" />
+  <span class=\\"icon\\"></span>
+</div>
+\`\`\`
+
+Mas, em ~React~ way.
+
+O resultado teria que ser algo do tipo:
+
+<Image src=\\"https://res.cloudinary.com/duzei21zt/image/upload/v1597943440/site/css_basico_position_absolute_e_relative_expected_result_e6b4349b7a.png\\" width=\\"530\\" height=\\"250\\" alt=\\"O que queremos\\" /> 
+
+Mas, dado a estrutura e estilos dos elementos já de cada componente, meu resultado foi esse:
+
+<Image src=\\"https://res.cloudinary.com/duzei21zt/image/upload/v1597943440/site/css_basico_position_absolute_e_relative_first_trial_2bd13809bc.png\\" width=\\"452\\" height=\\"172\\" alt=\\"O resultado... ;/\\" /> 
+
+Para ilustrar melhor, vou simular o ambiente de forma bem simples e usar exemplos direto com Codepen:
+
+<CodePen src=\\"https://codepen.io/yc_raulfdm/embed/MrRdXe?height=265&theme-id=dark&default-tab=result\\">
+  See the Pen{' '}
+  <a href=\\"https://codepen.io/yc_raulfdm/pen/MrRdXe\\">
+    raulfdm-position-absolute-1
+  </a>{' '}
+  by Raul de Melo (<a href=\\"https://codepen.io/yc_raulfdm\\">@yc_raulfdm</a>) on{' '}
+  <a href=\\"https://codepen.io\\">CodePen</a>.
+</CodePen>
+
+---
+
+## Position: Relative
+
+Bom, assim como vários outros temas, eu tinha um conhecimento superficial de como era o funcionamento dessa propriedade.
+
+Então arrisquei um um \`relative\`, afinal sabia que, após definido as coordenadas (top, bottom, left, right), ele se alinharia relativamente à sua posição:
+
+<CodePen src=\\"https://codepen.io/yc_raulfdm/embed/aExrPL?height=380&theme-id=dark&default-tab=result\\">
+  See the Pen{' '}
+  <a href=\\"https://codepen.io/yc_raulfdm/pen/aExrPL\\">
+    raulfdm-position-absolute-2
+  </a>{' '}
+  by Raul de Melo (<a href=\\"https://codepen.io/yc_raulfdm\\">@yc_raulfdm</a>) on{' '}
+  <a href=\\"https://codepen.io\\">CodePen</a>.
+</CodePen>
+
+Tinha dado certo parcialmente, era só fazer uns ajustes no \`width\`, mas… parecia meio estranho. Era como se o elemento estivesse ali, na mesma posição anterior, mas sua exibição fosse descolada.
+
+Bom, é exatamente isso.
+
+Fui correndo para o a documentação da propriedade position no [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/position) e me deparei com esta imagem:
+
+<Image src=\\"https://res.cloudinary.com/duzei21zt/image/upload/v1597943440/site/css_basico_position_absolute_e_relative_position_relative_221786b3e8.png\\" width=\\"584\\" height=\\"326\\" alt=\\"Position relative\\" />
+
+Minha suspeita estava certa, \`relative\` não me serviria.
+
+---
+
+## Position: Absolute
+
+Bom, o fixed eu já sabia que não era, me sobrava o absolute. Tinha que ser ele. Corri no código e fiz a alteração:
+
+<CodePen src=\\"https://codepen.io/yc_raulfdm/embed/eyoaqW?height=265&theme-id=dark&default-tab=result\\">
+  See the Pen{' '}
+  <a href=\\"https://codepen.io/yc_raulfdm/pen/eyoaqW\\">
+    raulfdm-position-absolute-3
+  </a>{' '}
+  by Raul de Melo (<a href=\\"https://codepen.io/yc_raulfdm\\">@yc_raulfdm</a>) on{' '}
+  <a href=\\"https://codepen.io\\">CodePen</a>.
+</CodePen>
+
+<BigQuote>
+  Que? Meu ícone foi parar lá na pqp… O que diabos estou fazendo de errado?
+</BigQuote>
+
+De volta a mesa das pesquisas, voltei no site da MDN e fui ler pra ver se entendia o comportamento do \`absolute\`:
+
+> The element is removed from the normal document flow; no space is created for the element in the page layout. Instead, it is positioned relative to its closest positioned ancestor if any; otherwise, it is placed relative to the initial containing block.[...]
+
+Na tradução livre…
+
+> O elemento é removido da direção normal do documento. Nenhum espaço é criado para esse elemento no layout da página. Ao invés disso, o mesmo é posicionado relativo ao seu ancestral posicionado mais próximo, se houver. Caso contrário, será relativo ao bloco inicial.
+
+E aí eu fiquei tipo:
+
+<Gif
+  src=\\"https://media.giphy.com/media/tu54GM19sqJOw/giphy.gif\\"
+  caption=\\"whaaat\\"
+  width={320}
+  height={218}
+/>
+
+> Mas que merda é um elemento ancestral e pior, o que é um elemento ancestral posicionado?
+
+Ainda na documentação, percebi que havia uma descrição sobre o que era um",
+      "featured_image": Object {
+        "height": 600,
+        "url": "https://res.cloudinary.com/duzei21zt/image/upload/v1597943440/site/css_basico_position_absolute_e_relative_featured_img_714418d9c7.png",
+        "width": 800,
+      },
+      "id": "5f3eaee58d32c410783fbeaa",
+      "language": "pt",
+      "objectID": "Post_5f3eaee58d32c410783fbeaa",
+      "slug": "css-basico-position-absolute-e-relative",
+      "subtitle": "Entendendo como usar position absolute e relative no CSS",
+      "title": "CSS Básico: Position Absolute e Relative",
+    },
+    Object {
+      "date": "2019-03-02",
+      "excerpt": "Fala galera, tudo tranquilo?
+
+Em 2017, escrevi dois artigos mostrando como já era fácil hospedar um aquele seu projeto front-end usando o Github Pages ou Surge.
+
+O tempo passou, eu continuei usando ambas soluções (dependendo do caso) e lembro que no começo do ano passado começou uma agitação por causa de um serviço que vinha ganhando força e popularidade chamado Netlify.
+
+Confesso que no começo eu ouvi e fiquei meio:
+
+> Ahhh… beleza… já tenho minhas soluções aqui. Um dia eu vejo isso.
+
+Pois bem. Há 3 meses esse dia chegou.
+
+Lembrei dessa plataforma e fui dar uma conferida pra ver se era tudo isso mesmo e… sério… consegui compreender o motivo do frenesi.
+
+---
+
+## Sobre a Empresa
+
+Surpreendentemente, a Netlify foi fundada em 2014 e ela veio como um santo salvador para nós, pessoas do Front.
+
+No site deles, a descrição do que eles se propõe a fazer é bem clara:
+
+<BigQuote>
+  “We aim to perfect a unified platform that automates code; creating
+  high-performance, easily-maintainable sites and web-apps. Users simply push
+  their code and let us take care of the rest.”
+</BigQuote>
+
+Se você não manja dos paranauês do inglês, aqui vai uma tradução não oficial:
+
+<BigQuote>
+  “Nosso objetivo é construir uma plataforma perfeita e unificada que automatiza
+  código; criação sites e web-apps de alta performance e de fácil manutenção.
+  Usuários podem simplesmente mandar seu código e deixar a gente tomar conta do
+  resto.”
+</BigQuote>
+
+Em outras palavras, o que ela diz pra você é:
+
+> Você sabe de código e construir sites/web-apps… eu sei de infraestrutura e servidor… me dá o seu repositório aí e deixa comigo e toca pro pai hospedar seu projeto.
+
+E gente… na boa, vocês vão ver quão fácil é.
+
+## Preço
+
+Grátis.
+
+Se você quer subir seus projetos pessoais, ou até mesmo um freela tranquilo que não demande tanta funcionalidade, é 0800.
+
+<Image src=\\"https://res.cloudinary.com/duzei21zt/image/upload/v1597996457/site/pricing_table_f295ddebac.png\\" width=\\"1387\\" height=\\"893\\" alt=\\"Foto da tabela de preços. Retirada em '02/03/2019'\\" /> 
+
+Com a versão free tu vai poder usar em projetos públicos ou privados a funcionalidade de Deploy Continuo, aplicar domínio customizado, ter certificado SSL e prover teu site via HTTPs, e mais.
+
+Sério, tem muita coisa grátis. Sugiro dar uma conferida.
+
+Agora vamos para o que interessa.
+
+---
+
+## Pré-requisitos para o tutorial
+
+Nos outros artigos eu meio que dividi por níveis de dificuldade. Acredito que neste em específico não será necessário. Vocês verão que todo o processo é bem simples.
+
+Utilizarei o Github e consequentemente versionamento com Git, linha de comando (terminal), um gerador de site estático em React chamada Gatsby e npm scripts.
+
+Apesar de ser em React, você não precisa ter nenhum conhecimento prévio. A gente vai ver 0 código. Meu foco é mostrar o uso do Netlify em si.
+
+---
+
+## Escopo
+
+Então sumarizando, neste artigo:
+
+- Criaremos um repositório no Github;
+- Criaremos um site bem básico usando [Gatsby](https://www.gatsbyjs.org/) ([mas pode ser qualquer outro gerador estático / HTML + CSS + JS puro](https://www.staticgen.com/));
+- Conectaremos o nosso repositório no Github com o Netlify para ativar o Deploy Continuo;
+- Veremos a função de deploy preview (Prévia do deploy);
+
+---
+
+## Mãos à obra
+
+Chega de papo, vamos para o que interessa.
+
+### Criando Repositório
+
+Bom, aqui é a parte mais fácil. Usarei o **Github** porque é a plataforma que eu sempre usei ([AGORA COM REPOSITÓRIO PRIVADO DE GRAÇA](https://techcrunch.com/2019/01/07/github-free-users-now-get-unlimited-private-repositories/)) e vou continuar usando, mas, o Netlify permite você conectar sua conta do **Gitlab** ou do **Bitbucket**.
+
+<Image src=\\"https://res.cloudinary.com/duzei21zt/image/upload/v1597996737/site/new_gh_project_b459ef893e.png\\" width=\\"1134\\" height=\\"958\\" alt=\\"Criando o projeto no Github\\" /> 
+
+
+### Iniciando os arquivos
+
+Bom, aqui talvez vá a parte mais avançada do tutorial, mas como eu disse eu disse anteriormente, não precisa ser com Gatsby, pode ser aquele seu projeto com Gulp ou Grunt que você tem que rodar uma tarefa de build para gerar o site final, sabe?
+
+Seguindo o [tutorial mais básico do Gatsby](https://www.gatsbyjs.org/docs/quick-start/), com a ferramenta de linha de comando deles, vou iniciar um projeto novo:
+
+\`\`\`bash
+gatsby new netlify-gatsiby
+\`\`\`
+
+Navegando para dentro da pasta, teremos esses arquivos:
+
+<Image src=\\"https://res.cloudinary.com/duzei21zt/image/upload/v1597996712/site/gatsby_scaffold_1f81f6d7c8.png\\" width=\\"392\\" height=\\"580\\" alt=\\"Árvore de arquivos de um projeto Gatsby\\" /> 
+
+Ao criar um novo repositório, o Github te da o passo-a-passo para mandar seus arquivos. Vamos seguir então as instruções (segunda sessão):
+
+<Image src=\\"https://res.cloudinary.com/duzei21zt/image/upload/v1597996713/site/empty_gh_project_subindo_seu_projeto_front_end_gratuitamente_netlify_090cc410dc.png\\" width=\\"1998\\" height=\\"1324\\" alt=\\"Novo repositório no Github\\" /> 
+
+Nosso projeto ainda não está sendo controlado pelo Git. Entã",
+      "featured_image": Object {
+        "height": 627,
+        "url": "https://res.cloudinary.com/duzei21zt/image/upload/v1597953862/site/netlify_logo_438bc5b319.jpg",
+        "width": 1200,
+      },
+      "id": "5f3ed754d511c2380b097aa3",
+      "language": "pt",
+      "objectID": "Post_5f3ed754d511c2380b097aa3",
+      "slug": "subindo-seu-projeto-front-end-gratuitamente-netlify",
+      "subtitle": "Apresentando: Netlify",
+      "title": "Subindo seu projeto Front-end gratuitamente",
+    },
+    Object {
+      "date": "2020-03-13",
+      "excerpt": "
+Desde que saí do Brasil (há 3 anos), continuo acompanhando as notícias e o que acontece por aí, muito pelo simples fato de os meus (amigos e familiares) continuam vivendo nele.
+
+É um tipo de cordão umbilical que ainda não conseguir romper. Apesar de que, por questões de sanidade mental, reduzi drasticamente o meu envolvimento com o cenário brasileiro pra conseguir ter ânimo e energia para fazer o que eu preciso fazer por aqui (estudar, produzir minhas coisas, trabalhar bem, etc).
+
+Uma coisa que ando percebendo é que pelo fato do \\"continente\\" Brasil (olha o tamanho desse país) ainda não ter tido muitos casos de corona e estar passando por uma crise econômica e política ferrenha, a população brasileira no geral ainda não está consciente do tamanho do problema que é o coronavírus e como ele pode (e vai) impactar no dia-a-dia das pessoas.
+
+Então, este post visa trazer algumas informações bem básicas sobre o vírus e porque este é um problema gigante pro mundo todo.
+
+---
+
+## E a Holanda, como está?
+
+A Holanda é um país deveras turístico. Todos os dias, são milhares e milhares de pessoas indo e vindo de todo o canto do mundo.
+
+Para além das pessoas que chegam aqui de avião, ainda temos trem que vai direto pra Bélgica, França, Alemanha, ou seja, estamos no olho do furacão, sem dúvida.
+
+Na data que escrevo este post (13 de Março 2020), a Holanda está com oficialmente **614** casos.
+
+Ontem (12), o primeiro ministro Mark Rutte e o ministro da saúde Bruno Bruins, baseados nas recomendações dadas pelo Instituto Nacional de Saúde Pública da Holanda (RIVM), decretaram as seguintes medidas:
+
+- Todo mundo na Holanda: em caso de resfriado, tosse, febre ou dor de garganta, devem ficar em casa evitar o contato social. Não ligar para o médico até você sentir uma piora;
+- Encontros com mais de 100 pessoas serão cancelados no país inteiro. Isso também se aplica a lugares públicos como _musea_, concertos, teatros, clubes de esporte e competições esportivas;
+- As pessoas devem trabalhar de casa o quanto puderem ou redistribuir as horas de trabalho. Pessoas vulneráveis (idosos e pessoas com baixa resistência) devem evitar aglomeração e transporte público. No geral, as pessoas devem limitar visitas à pessoas vulneráveis;
+- Faculdades e universidades devem oferecer aulas online ao invés de aulas presenciais;
+- Escolas de educação infantil (primário), fundamental, médio e creches continuarão abertas: se o número de infecções reportadas for menor do que os números internacionais. Além disso, crianças e adolescentes não devem se encontrar com pessoas do grupo de risco. Crianças com resfriado devem permanecer em casa.
+
+> **Essas medidas devem ser aplicadas e mantidas até dia 31 de Março.**
+>
+> Fonte: https://www.rijksoverheid.nl/onderwerpen/coronavirus-covid-19/nieuws/2020/03/12/nieuwe-maatregelen-tegen-verspreiding-coronavirus-in-nederland
+
+Ou seja, a medida agora é criar um isolamento social para evitar que mais pessoas fiquem doentes.
+
+Na área de TI, temos o privilégio de conseguir exercer nossas atividades remotamente com quase zero de impacto na rotina do trabalho.
+
+Sabendo disso, o CEO da empresa que trabalho mandou um email ontem convidando todos a trabalhar de casa até o fim do mês e disse que todas as reuniões deverão ser feitas online.
+
+Ontem mesmo ao voltar pra casa, eu já notava bem menos movimentação nas estações e na rua!
+
+Enfim, que comece a quarentena!
+
+---
+
+## Coronavírus
+
+### É novo?
+
+O coronavírus não é novo. O que é novo é essa \\"versão\\" dele que ta circulando por aí.
+
+Na China, já meio que sabiam sobre essa nova mutação, mas até então, não era um problema sério. Então foi meio que tipo _\\"a gente tem outras coisas mais sérias pra estudar... mas deixa meia dúzia de cientista fazendo produzindo pesquisa sobre isso\\"._
+
+### É letal?
+
+O que se sabe até agora é que sua taxa mortalidade é de 3.5%, ou seja, de cada 100 pessoas, 3.5 morrem (meia pessoa morrer é complicado hein? 😛).
+
+Muita gente usa esse número pra falar que nem é tudo isso, afinal, a gripe está aí matando 0.1% das pessoas que pegam todos os anos.
+
+Porém, amigos, o problema não é esse e você verá logo a seguir.
+
+### Quais os sintômas?
+
+Nos casos simples, parecidos com o da gripe:
+
+- febre;
+- dores de cabeça;
+- dores no corpo;
+- indisposição
+
+Nos casos graves:
+
+- dificuldade para respirar;
+- pneumonia;
+
+### Se não é letal, qual o problema então?
+
+Segundo as estatísticas, 80% das pessoas que contraem o vírus **não terão** os sintomas mais graves. Os outros 20% terão o começo dos sintomas mais sérios. 5% PRECISAM ser hospitalizados na UTI.
+
+Ou seja, estamos falando que TALVEZ, de 100 pessoas, 20 irão no hospital necessariamente e 5 delas ficarão internadas na UTI. Consegue conceber o tamanho disso?
+
+Se a gente jogar esse número para 100 mil pessoas infectadas, a gente tá falando que 20 mil pessoas irão no hospital e 5 mil serão internadas na UTI. Vocês acham que no Brasil (ou qualquer parte do mundo) existe estrutura para suportar todas essas pessoas?
+
+A título de",
+      "featured_image": Object {
+        "height": 512,
+        "url": "https://res.cloudinary.com/duzei21zt/image/upload/v1597942968/site/e_o_coronavirus_hein_featured_image_af5476df22.jpg",
+        "width": 768,
+      },
+      "id": "5f3ead5f8d32c410783fbea3",
+      "language": "pt",
+      "objectID": "Post_5f3ead5f8d32c410783fbea3",
+      "slug": "e-o-coronavirus-hein",
+      "subtitle": "Algumas informações básicas e links para se manter informado",
+      "title": "E o coronavírus, hein?",
+    },
+  ],
+]
+`;

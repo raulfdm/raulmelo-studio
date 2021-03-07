@@ -3,7 +3,14 @@ require("dotenv").config();
 import algolia from "algoliasearch";
 import { Callback, Handler, Context } from "aws-lambda";
 import axios from "axios";
-import { AlgoliaObject, GraphqlResponsePosts, Post, Posts } from "./types";
+import {
+  AlgoliaObject,
+  AlgoliaObjectList,
+  FunctionReturn,
+  GraphqlResponsePosts,
+  Post,
+  Posts,
+} from "./types";
 
 const SETTINGS = {
   algolia: {
@@ -14,20 +21,24 @@ const SETTINGS = {
   apiUrl: `${process.env.API_URL}/graphql`,
 };
 
-export async function updateAlgolia(
-  event: Handler,
-  context: Context,
-  callback: Callback
-) {
-  const posts = await fetchAllPosts();
-  const algoliaObjList = buildAlgoliaObjects(posts);
+export async function updateAlgolia(): Promise<FunctionReturn> {
+  try {
+    const posts = await fetchAllPosts();
+    const algoliaObjList = buildAlgoliaObjects(posts);
+    await pushAlgoliaData(algoliaObjList);
 
-  console.log(algoliaObjList);
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: "Indexes updated!" }),
+    };
+  } catch (error) {
+    console.error(`Error while updating indexes:`, error);
 
-  callback(null, {
-    statusCode: 200,
-    body: JSON.stringify(algoliaObjList),
-  });
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ message: "Something went wrong. Check the logs" }),
+    };
+  }
 }
 
 async function fetchAllPosts(): Promise<Posts> {
@@ -64,7 +75,7 @@ async function fetchAllPosts(): Promise<Posts> {
   return posts as Posts;
 }
 
-function buildAlgoliaObjects(posts: Posts): AlgoliaObject[] {
+function buildAlgoliaObjects(posts: Posts): AlgoliaObjectList {
   return posts.map(objectCreator);
 
   function objectCreator(post: Post): AlgoliaObject {
@@ -83,4 +94,12 @@ function buildAlgoliaObjects(posts: Posts): AlgoliaObject[] {
 
     return result;
   }
+}
+
+function pushAlgoliaData(data: AlgoliaObjectList) {
+  const client = algolia(SETTINGS.algolia.appId!, SETTINGS.algolia.adminKey!);
+
+  const index = client.initIndex(SETTINGS.algolia.indexName!);
+
+  return index.saveObjects(data);
 }

@@ -30,6 +30,8 @@ export type AlgoliaObject = {
   };
 };
 
+export type AlgoliaObjectList = AlgoliaObject[];
+
 export type GraphqlResponsePosts = {
   data: {
     data: {
@@ -37,3 +39,15 @@ export type GraphqlResponsePosts = {
     };
   };
 };
+
+export type SuccessFunctionReturn = {
+  statusCode: 200;
+  body: string;
+};
+
+export type ErrorFunctionReturn = {
+  statusCode: 500;
+  body: string;
+};
+
+export type FunctionReturn = SuccessFunctionReturn | ErrorFunctionReturn;
