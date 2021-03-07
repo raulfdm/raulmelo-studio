@@ -1,8 +1,8 @@
-import "regenerator-runtime/runtime.js";
 require("dotenv").config();
+
 import algolia from "algoliasearch";
-import { Callback, Handler, Context } from "aws-lambda";
 import axios from "axios";
+import "regenerator-runtime/runtime.js";
 import {
   AlgoliaObject,
   AlgoliaObjectList,
@@ -29,14 +29,17 @@ export async function updateAlgolia(): Promise<FunctionReturn> {
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: "Indexes updated!" }),
+      body: JSON.stringify({ message: "Indexes updated!", date: new Date() }),
     };
   } catch (error) {
     console.error(`Error while updating indexes:`, error);
 
     return {
       statusCode: 500,
-      body: JSON.stringify({ message: "Something went wrong. Check the logs" }),
+      body: JSON.stringify({
+        message: "Something went wrong. Check the logs",
+        date: new Date(),
+      }),
     };
   }
 }

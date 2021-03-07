@@ -1,8 +1,9 @@
-import { serverResponse } from "./__fixtures__/serverResponse";
-import { updateAlgolia } from "../.";
-import axios, { AxiosStatic } from "axios";
 import algolia from "algoliasearch";
+import axios, { AxiosStatic } from "axios";
+import MockDate from "mockdate";
+import { updateAlgolia } from "../.";
 import { ErrorFunctionReturn, SuccessFunctionReturn } from "../types";
+import { serverResponse } from "./__fixtures__/serverResponse";
 
 jest.mock("axios");
 jest.mock("algoliasearch");
@@ -17,6 +18,10 @@ const mockSaveObject = jest.fn();
 const mockInitialIndex = jest.fn(() => ({ saveObjects: mockSaveObject }));
 
 describe("fn: updateAlgolia", () => {
+  beforeAll(() => {
+    MockDate.set("2021-03-07");
+  });
+
   describe("When success", () => {
     let result: SuccessFunctionReturn;
 
@@ -49,7 +54,7 @@ describe("fn: updateAlgolia", () => {
     it("returns success object", () => {
       expect(result).toMatchInlineSnapshot(`
         Object {
-          "body": "{\\"message\\":\\"Indexes updated!\\"}",
+          "body": "{\\"message\\":\\"Indexes updated!\\",\\"date\\":\\"2021-03-07T00:00:00.000Z\\"}",
           "statusCode": 200,
         }
       `);
@@ -77,7 +82,7 @@ describe("fn: updateAlgolia", () => {
     it("returns with error response ", () => {
       expect(result).toMatchInlineSnapshot(`
         Object {
-          "body": "{\\"message\\":\\"Something went wrong. Check the logs\\"}",
+          "body": "{\\"message\\":\\"Something went wrong. Check the logs\\",\\"date\\":\\"2021-03-07T00:00:00.000Z\\"}",
           "statusCode": 500,
         }
       `);
