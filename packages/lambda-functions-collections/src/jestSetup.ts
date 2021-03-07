@@ -6,4 +6,5 @@ process.env = Object.assign(process.env, {
   ALGOLIA_ADMIN_KEY: algoliaAdminKey,
   ALGOLIA_INDEX_NAME: algoliaIndexName,
   ALGOLIA_APP_ID: algoliaApiId,
+  AUTH_TOKEN: "token",
 });

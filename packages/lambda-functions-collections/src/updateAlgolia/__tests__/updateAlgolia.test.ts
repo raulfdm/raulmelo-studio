@@ -29,7 +29,7 @@ describe("fn: updateAlgolia", () => {
       mockAxios.mockResolvedValue({ data: serverResponse });
       mockAlgolia.mockReturnValue({ initIndex: mockInitialIndex });
 
-      result = (await updateAlgolia()) as SuccessFunctionReturn;
+      result = (await callConfiguredUpdateAlgolia()) as SuccessFunctionReturn;
     });
 
     describe("Algolia", () => {
@@ -72,7 +72,7 @@ describe("fn: updateAlgolia", () => {
       mockAxios.mockRejectedValue({ error: "Timeout" });
       mockAlgolia.mockReturnValue({ initIndex: mockInitialIndex });
 
-      result = (await updateAlgolia()) as ErrorFunctionReturn;
+      result = (await callConfiguredUpdateAlgolia()) as ErrorFunctionReturn;
     });
 
     afterAll(() => {
@@ -110,3 +110,9 @@ describe("fn: updateAlgolia", () => {
     });
   });
 });
+
+function callConfiguredUpdateAlgolia() {
+  return updateAlgolia({
+    headers: { authorization: process.env.AUTH_TOKEN },
+  } as never);
+}

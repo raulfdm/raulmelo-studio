@@ -2,7 +2,7 @@ require("dotenv").config();
 
 import algolia from "algoliasearch";
 import axios from "axios";
-import "regenerator-runtime/runtime.js";
+import { authMiddleware } from "../utils/authMiddleware";
 import {
   AlgoliaObject,
   AlgoliaObjectList,
@@ -21,28 +21,30 @@ const SETTINGS = {
   apiUrl: `${process.env.API_URL}/graphql`,
 };
 
-export async function updateAlgolia(): Promise<FunctionReturn> {
-  try {
-    const posts = await fetchAllPosts();
-    const algoliaObjList = buildAlgoliaObjects(posts);
-    await pushAlgoliaData(algoliaObjList);
+export const updateAlgolia = authMiddleware(
+  async function updateAlgolia(): Promise<FunctionReturn> {
+    try {
+      const posts = await fetchAllPosts();
+      const algoliaObjList = buildAlgoliaObjects(posts);
+      await pushAlgoliaData(algoliaObjList);
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ message: "Indexes updated!", date: new Date() }),
-    };
-  } catch (error) {
-    console.error(`Error while updating indexes:`, error);
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ message: "Indexes updated!", date: new Date() }),
+      };
+    } catch (error) {
+      console.error(`Error while updating indexes:`, error);
 
-    return {
-      statusCode: 500,
-      body: JSON.stringify({
-        message: "Something went wrong. Check the logs",
-        date: new Date(),
-      }),
-    };
+      return {
+        statusCode: 500,
+        body: JSON.stringify({
+          message: "Something went wrong. Check the logs",
+          date: new Date(),
+        }),
+      };
+    }
   }
-}
+);
 
 async function fetchAllPosts(): Promise<Posts> {
   const query = `
