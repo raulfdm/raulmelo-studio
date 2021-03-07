@@ -3,6 +3,7 @@ require("dotenv").config();
 import algolia from "algoliasearch";
 import { Callback, Handler, Context } from "aws-lambda";
 import axios from "axios";
+import { AlgoliaObject, GraphqlResponsePosts, Post, Posts } from "./types";
 
 const SETTINGS = {
   algolia: {
@@ -19,39 +20,17 @@ export async function updateAlgolia(
   callback: Callback
 ) {
   const posts = await fetchAllPosts();
+  const algoliaObjList = buildAlgoliaObjects(posts);
 
-  console.log(posts);
+  console.log(algoliaObjList);
 
   callback(null, {
     statusCode: 200,
-    body: JSON.stringify(posts),
+    body: JSON.stringify(algoliaObjList),
   });
 }
 
-type Post = {
-  id: string;
-  title: string;
-  subtitle: string;
-  date: string;
-  language: string;
-  slug: string;
-  content: string;
-  featured_image: {
-    width: number;
-    height: number;
-    url: string;
-  };
-};
-
-type GraphqlResponsePosts = {
-  data: {
-    data: {
-      posts: Post[];
-    };
-  };
-};
-
-async function fetchAllPosts(): Promise<Post[]> {
+async function fetchAllPosts(): Promise<Posts> {
   const query = `
   {
     posts {
@@ -82,7 +61,26 @@ async function fetchAllPosts(): Promise<Post[]> {
 
   const { posts } = response.data.data;
 
-  return posts as Post[];
+  return posts as Posts;
 }
 
-function buildAlgoliaObject(posts: Post[]);
+function buildAlgoliaObjects(posts: Posts): AlgoliaObject[] {
+  return posts.map(objectCreator);
+
+  function objectCreator(post: Post): AlgoliaObject {
+    const { id, featured_image, content, ...rest } = post;
+
+    const result: AlgoliaObject = {
+      id,
+      objectID: `Post_${id}`,
+      excerpt: content.slice(0, 5000),
+      ...rest,
+    };
+
+    if (featured_image) {
+      result.featured_image = featured_image;
+    }
+
+    return result;
+  }
+}
