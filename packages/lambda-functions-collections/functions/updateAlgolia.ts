@@ -1,6 +1,7 @@
 require("dotenv").config();
-const algolia = require("algoliasearch");
-const axios = require("axios");
+import algolia from "algoliasearch";
+import { Callback, Handler, Context } from "aws-lambda";
+import axios from "axios";
 
 const SETTINGS = {
   algolia: {
@@ -11,16 +12,11 @@ const SETTINGS = {
   apiUrl: `${process.env.API_URL}/posts`,
 };
 
-exports.handler = (event, context, callback) => {
+export function handler(event: Handler, context: Context, callback: Callback) {
   console.log(SETTINGS);
 
-  console.log("LOL");
   callback(null, {
     statusCode: 200,
     body: "lol",
   });
-
-  // if (event.httpMethod === "GET") {
-  //   // do something
-  // }
-};
+}
