@@ -1,0 +1,94 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    name: Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node: [12]
+        os: [ubuntu-latest]
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Use Node ${{ matrix.node }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Test
+        run: yarn test --ci --coverage --maxWorkers=2
+
+      - name: Build
+        run: yarn build
+
+  release:
+    name: Release new version
+    if: contains(github.ref, 'main')
+    needs: [build]
+    env:
+      CI: true
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node: [12]
+        os: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Release
+        run: yarn release --branch=${GITHUB_REF##*/}
+        env:
+          GH_TOKEN: ${{secrets.GH_TOKEN}}
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+
+  deploy-storybook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch code
+        uses: actions/checkout@v2
+
+      - name: Setup nodejs environment
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+
+      - name: Build storybook
+        run: yarn build-storybook
+
+      - name: Deploy Storybook docs to Netlify
+        uses: nwtgck/actions-netlify@v1.1
+        id: deploy
+        with:
+          publish-dir: storybook-static
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          production-branch: main
+          deploy-message: 'Deploy from GitHub Actions - Storybook'
+        env:
+          NODE_ENV: production
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_STORYBOOK_SITE_ID }}
