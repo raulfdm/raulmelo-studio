@@ -1,0 +1,13 @@
+{
+  "version": "independent",
+  "packages": [
+    "packages/**",
+    "apps/**"
+  ],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "nohoist": [
+    "strapi",
+    "strapi-admin"
+  ]
+}
