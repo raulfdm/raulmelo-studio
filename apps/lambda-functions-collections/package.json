@@ -6,10 +6,10 @@
   "author": "Raul Melo",
   "license": "MIT",
   "scripts": {
-    "serve": "netlify-lambda serve lambdas",
-    "build": "netlify-lambda build lambdas",
-    "test": "jest",
-    "prepare": "husky install"
+    "build": "scripty",
+    "dev": "scripty",
+    "lint": "scripty",
+    "test": "scripty"
   },
   "dependencies": {
     "algoliasearch": "^4.8.5",
