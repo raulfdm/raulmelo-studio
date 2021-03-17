@@ -13,5 +13,6 @@ lerna import ../raulmelo-dev-components --dest=packages --flatten -y
 - [ ] test publishing packages with verdaccio
 - [ ] move some dependencies up in the root
 - [ ] keep the same react, typescript, babel, version
-- [ ] update strapi by resolving missing packages
+- [x] update strapi by resolving missing packages
 - [ ] add scripty
+- [ ] Fix icu for next
