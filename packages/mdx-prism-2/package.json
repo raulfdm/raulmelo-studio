@@ -22,9 +22,8 @@
   },
   "main": "src/index.js",
   "scripts": {
-    "lint": "eslint . --ext .js",
-    "test": "jest",
-    "release": "semantic-release"
+    "lint": "scripty",
+    "test": "scripty"
   },
   "files": [
     "src"
@@ -39,13 +38,9 @@
     "unist-util-visit-parents": "^3.1.1"
   },
   "devDependencies": {
-    "dedent": "^0.7.0",
-    "eslint-plugin-node": "^11.1.0",
-    "prettier": "^2.2.0"
+    "dedent": "^0.7.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
+  "scripty": {
+    "path": "../../scripts/common"
   }
 }
