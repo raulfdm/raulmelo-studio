@@ -21,7 +21,7 @@
     "node": ">=12"
   },
   "scripts": {
-    "start": "tsdx watch",
+    "dev": "tsdx watch",
     "build": "tsdx build",
     "postbuild": "node scripts/copyAssets.js",
     "test": "tsdx test --passWithNoTests",
@@ -31,7 +31,6 @@
     "analyze": "size-limit --why",
     "storybook": "start-storybook -s ./static -p 6006",
     "build-storybook": "NODE_ENV=production build-storybook -s ./static",
-    "release": "semantic-release",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable"
   },
