@@ -26,3 +26,35 @@ lerna import ../raulmelo-dev-components --dest=packages --flatten -y
 - [x] update strapi by resolving missing packages
 - [ ] add scripty
 - [ ] Fix icu for next
+
+NPM SCRIPTS
+
+- mdx-prism-2
+  - [x] test
+  - [x] lint
+- blog-components
+  - [x] lint
+  - [ ] test
+  - [x] build
+  - [x] dev
+  - [x] prepare
+  - [x] size
+  - [x] analyze
+  - [x] storybook
+  - [ ] buildstorybook
+- lambdas
+  - [x] build
+  - [x] dev
+  - [x] test
+- server
+  - [ ] build
+  - [x] clean
+  - [ ] dev
+  - [x] start
+- website
+  - [ ] build
+  - [ ] dev
+  - [ ] lint
+  - [ ] postbuild
+  - [ ] start
+  - [x] test
