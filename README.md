@@ -2,12 +2,12 @@
 
 ## Commands
 
-- clean
-- test
-- lint
 - build
+- clean
 - dev
+- lint
 - start
+- test
 
 <!--
 Scripts to import projects
