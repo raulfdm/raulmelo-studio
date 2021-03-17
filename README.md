@@ -1,5 +1,6 @@
-<!--
+# Raul Melo - Studio
 
+<!--
 Scripts to import projects
 lerna import ../raulmelo-dev-server --dest=apps --flatten -y
 lerna import ../raulmelo-dev-web --dest=apps --flatten -y
@@ -7,7 +8,7 @@ lerna import ../mdx-prism-2 --dest=packages --flatten -y
 lerna import ../raulmelo-dev-components --dest=packages --flatten -y
  -->
 
-# TODOS
+## TODOS
 
 - [ ] fix husky
 - [ ] test publishing packages with verdaccio
