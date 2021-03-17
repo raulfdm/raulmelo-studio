@@ -7,12 +7,12 @@
     "node": "12.x"
   },
   "scripts": {
-    "dev": "scripty",
     "build": "scripty",
+    "dev": "scripty",
+    "lint": "scripty",
     "postbuild": "next-sitemap",
     "start": "scripty",
-    "test": "scripty",
-    "lint": "scripty"
+    "test": "scripty"
   },
   "dependencies": {
     "@raulfdm/blog-components": "^1.6.0",
@@ -71,5 +71,8 @@
   },
   "resolutions": {
     "prismjs": "^1.21.0"
+  },
+  "scripty": {
+    "path": "./scripts"
   }
 }
