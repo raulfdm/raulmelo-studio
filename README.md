@@ -1,5 +1,14 @@
 # Raul Melo - Studio
 
+## Commands
+
+- clean
+- test
+- lint
+- build
+- dev
+- start
+
 <!--
 Scripts to import projects
 lerna import ../raulmelo-dev-server --dest=apps --flatten -y
