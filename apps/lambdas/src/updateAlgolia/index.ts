@@ -103,9 +103,17 @@ function buildAlgoliaObjects(posts: Posts): AlgoliaObjectList {
 }
 
 function pushAlgoliaData(data: AlgoliaObjectList) {
-  const client = algolia(SETTINGS.algolia.appId!, SETTINGS.algolia.adminKey!);
+  if (
+    !SETTINGS.algolia.appId ||
+    !SETTINGS.algolia.adminKey ||
+    !SETTINGS.algolia.indexName
+  ) {
+    throw new Error('App ID, Admin Key or indexName is missing');
+  }
 
-  const index = client.initIndex(SETTINGS.algolia.indexName!);
+  const client = algolia(SETTINGS.algolia.appId, SETTINGS.algolia.adminKey);
+
+  const index = client.initIndex(SETTINGS.algolia.indexName);
 
   return index.saveObjects(data);
 }
