@@ -6,6 +6,5 @@
 module.exports = {
   clearMocks: true,
   modulePathIgnorePatterns: ['.history'],
-  testEnvironment: 'node',
   testMatch: ['**/?(*.)+(spec|test).[tj]s?(x)'],
 };
