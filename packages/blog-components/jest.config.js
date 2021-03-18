@@ -1,4 +1,8 @@
+//@ts-nocheck
+const defaultConfig = require('../../config/jest.config');
+
 module.exports = {
+  ...defaultConfig,
   setupFilesAfterEnv: ['./jest.setup.js'],
   moduleNameMapper: {
     '\\.(css|less)$': 'identity-obj-proxy',

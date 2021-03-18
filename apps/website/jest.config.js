@@ -1,4 +1,7 @@
+const defaultConfig = require('../../config/jest.config');
+
 module.exports = {
+  ...defaultConfig,
   moduleNameMapper: {
     '^@components/(.*)': '<rootDir>/src/components/$1',
     '^@config/(.*)': '<rootDir>/src/config/$1',
