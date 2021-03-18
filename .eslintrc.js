@@ -1,47 +1,30 @@
+const baseTs = {
+  parser: '@typescript-eslint/parser',
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+};
+
+const baseJs = {
+  parser: 'babel-eslint',
+  extends: ['eslint:recommended'],
+};
+
 module.exports = {
   overrides: [
-    {
-      files: ['*.tsx'],
-      extends: ['plugin:react/recommended'],
-      plugins: ['react-hooks', 'jest'],
-      settings: {
-        react: {
-          version: 'detect',
-        },
-        jest: {
-          version: 26,
-        },
-      },
-      rules: {
-        'react/react-in-jsx-scope': 'off',
-        'react/jsx-no-undef': 'off',
-        'react/prop-types': 'off',
-      },
-    },
+    /**
+     * TS Files
+     */
     {
       files: ['*.ts'],
-      extends: [],
-      plugins: ['jest'],
-      settings: {
-        jest: {
-          version: 26,
-        },
-      },
-      env: {
-        browser: true,
-        'jest/globals': true,
-      },
+      ...baseTs,
+    },
+    {
+      files: ['*.test.ts', '**/__test__/**.ts'],
+      ...baseTs,
       rules: {
-        '@typescript-eslint/camelcase': 'off',
-        '@typescript-eslint/explicit-module-boundary-types': 'off',
-        '@typescript-eslint/no-non-null-asserted-optional-chain': 'warn',
-        '@typescript-eslint/no-unused-vars': [
-          'warn',
-          {
-            argsIgnorePattern: '^_',
-          },
-        ],
-        '@typescript-eslint/explicit-function-return-type': 0,
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/ban-types': 'off',
       },
     },
     /**
@@ -49,8 +32,8 @@ module.exports = {
      */
     {
       files: ['*.test.js', '**/__test__/*.js'],
-      extends: ['eslint:recommended'],
-      parser: 'babel-eslint',
+      ...baseJs,
+      plugins: ['jest'],
       env: {
         'jest/globals': true,
       },
@@ -60,23 +43,10 @@ module.exports = {
      */
     {
       files: ['*.js'],
+      ...baseJs,
       env: {
         node: true,
         es6: true,
-      },
-      extends: ['eslint:recommended'],
-      parser: 'babel-eslint',
-    },
-    {
-      extends: ['plugin:jest/recommended'],
-      files: ['*.test.*', '**/__tests__/*.ts'],
-      env: {
-        'jest/globals': true,
-        es6: true,
-      },
-      rules: {
-        '@typescript-eslint/no-explicit-any': 'off',
-        'jest/no-mocks-import': 'off',
       },
     },
   ],

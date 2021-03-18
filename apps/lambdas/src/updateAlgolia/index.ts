@@ -1,8 +1,9 @@
-require("dotenv").config();
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require('dotenv').config();
 
-import algolia from "algoliasearch";
-import axios from "axios";
-import { authMiddleware } from "../utils/authMiddleware";
+import algolia from 'algoliasearch';
+import axios from 'axios';
+import { authMiddleware } from '../utils/authMiddleware';
 import {
   AlgoliaObject,
   AlgoliaObjectList,
@@ -10,7 +11,7 @@ import {
   GraphqlResponsePosts,
   Post,
   Posts,
-} from "./types";
+} from './types';
 
 const SETTINGS = {
   algolia: {
@@ -30,7 +31,7 @@ export const updateAlgolia = authMiddleware(
 
       return {
         statusCode: 200,
-        body: JSON.stringify({ message: "Indexes updated!", date: new Date() }),
+        body: JSON.stringify({ message: 'Indexes updated!', date: new Date() }),
       };
     } catch (error) {
       console.error(`Error while updating indexes:`, error);
@@ -38,12 +39,12 @@ export const updateAlgolia = authMiddleware(
       return {
         statusCode: 500,
         body: JSON.stringify({
-          message: "Something went wrong. Check the logs",
+          message: 'Something went wrong. Check the logs',
           date: new Date(),
         }),
       };
     }
-  }
+  },
 );
 
 async function fetchAllPosts(): Promise<Posts> {
@@ -67,9 +68,9 @@ async function fetchAllPosts(): Promise<Posts> {
   `;
 
   const response = (await axios({
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     url: SETTINGS.apiUrl,
     data: JSON.stringify({ query }),
