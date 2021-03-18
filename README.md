@@ -26,6 +26,8 @@ lerna import ../raulmelo-dev-components --dest=packages --flatten -y
 - [x] update strapi by resolving missing packages
 - [ ] add scripty
 - [ ] Fix icu for next
+- [ ] remove Prettier from subtv
+- [ ] remove eslint from subtv
 
 NPM SCRIPTS
 
