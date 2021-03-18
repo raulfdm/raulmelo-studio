@@ -1,6 +1,5 @@
 const baseTs = {
   parser: '@typescript-eslint/parser',
-  parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
   extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
 };
@@ -12,6 +11,27 @@ const baseJs = {
 
 module.exports = {
   overrides: [
+    /**
+     * React TS
+     */
+    {
+      files: ['*.tsx'],
+      ...baseTs,
+      extends: baseTs.extends.concat('plugin:react/recommended'),
+      plugins: baseTs.plugins.concat('react-hooks'),
+      settings: {
+        react: {
+          version: 'detect',
+        },
+      },
+      rules: {
+        // React 17
+        'react/react-in-jsx-scope': 'off',
+        // This is TypeScript
+        'react/prop-types': 'off',
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+      },
+    },
     /**
      * TS Files
      */

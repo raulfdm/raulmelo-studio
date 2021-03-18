@@ -3,7 +3,7 @@ import { PostSeriesBlogPost } from '@types-api';
 export function sortPostsAscending(
   prevPost: PostSeriesBlogPost,
   nextPost: PostSeriesBlogPost,
-) {
+): number {
   const prevDate = new Date(prevPost.date);
   const nextDate = new Date(nextPost.date);
 

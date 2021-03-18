@@ -23,7 +23,10 @@ jobs:
           install-command: yarn --frozen-lockfile --silent
 
       - name: Setup lerna
-        run: yarn setup-ci
+        run: yarn setup
+
+      - name: Lint Projects
+        run: yarn lint
 
       - name: Test Projects
         run: yarn test

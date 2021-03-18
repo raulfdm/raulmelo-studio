@@ -19,7 +19,10 @@ type BackendOptions = {
 };
 
 export const Backend = {
-  fetch(endpoint: Endpoints, options?: BackendOptions) {
+  fetch(
+    endpoint: Endpoints,
+    options?: BackendOptions,
+  ): ReturnType<typeof fetcher> {
     let url = `${API_URL}/${endpoint}`;
 
     if (options?.path) {

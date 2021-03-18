@@ -1,6 +1,9 @@
 import { SupportedLanguages } from '@types-app';
 
-export function getPostUrl(postSlug: string, locale?: SupportedLanguages) {
+export function getPostUrl(
+  postSlug: string,
+  locale?: SupportedLanguages,
+): string {
   const result = `/blog/${postSlug}`;
 
   /**
@@ -13,6 +16,6 @@ export function getPostUrl(postSlug: string, locale?: SupportedLanguages) {
   return result;
 }
 
-export function getTagUrl(tagSlug: string) {
+export function getTagUrl(tagSlug: string): string {
   return `/tag/${tagSlug}`;
 }
