@@ -80,7 +80,7 @@ const nextConfig = {
     pluginsToResolve.forEach((plugin) => {
       config.resolve.alias[plugin] = path.resolve(
         __dirname,
-        'node_modules',
+        '../../node_modules',
         plugin,
       );
     });
