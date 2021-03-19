@@ -29,7 +29,13 @@ lerna import ../raulmelo-dev-components --dest=packages --flatten -y
 - [ ] remove Prettier from subtv
 - [ ] remove eslint from subtv
 
-NPM SCRIPTS
+### Deploys
+
+- [ ] cms (heroku)
+- [ ] website (vercel)
+- [ ] lambdas (netlify)
+
+### NPM SCRIPTS
 
 - mdx-prism-2
   - [x] test
@@ -48,15 +54,15 @@ NPM SCRIPTS
   - [x] build
   - [x] dev
   - [x] test
-- server
+- cms
   - [x] build
   - [x] clean
   - [x] dev
   - [x] start
 - website
-  - [ ] build
-  - [ ] dev
-  - [ ] lint
-  - [ ] postbuild
-  - [ ] start
+  - [x] build
+  - [x] dev
+  - [x] lint
+  - [x] postbuild
+  - [x] start
   - [x] test
