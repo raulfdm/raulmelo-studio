@@ -12,7 +12,7 @@ jobs:
       - name: Use Node
         uses: actions/setup-node@v2
         with:
-          node-version: '12'
+          node-version: '14'
 
       - name: Install lerna
         run: yarn global add lerna
