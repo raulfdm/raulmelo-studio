@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo "BUILDING....."
-yarn lerna run build --stream
+yarn lerna run build --stream --concurrency=5
