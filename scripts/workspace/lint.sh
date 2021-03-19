@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo "LINTING..."
-yarn lerna run lint --concurrency=5
+yarn lerna run lint --stream --concurrency=5
