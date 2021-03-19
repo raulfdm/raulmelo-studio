@@ -36,22 +36,22 @@ NPM SCRIPTS
   - [x] lint
 - blog-components
   - [x] lint
-  - [ ] test
+  - [x] test
   - [x] build
   - [x] dev
   - [x] prepare
   - [x] size
   - [x] analyze
   - [x] storybook
-  - [ ] buildstorybook
+  - [x] build-storybook
 - lambdas
   - [x] build
   - [x] dev
   - [x] test
 - server
-  - [ ] build
+  - [x] build
   - [x] clean
-  - [ ] dev
+  - [x] dev
   - [x] start
 - website
   - [ ] build
