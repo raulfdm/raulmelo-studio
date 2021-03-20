@@ -37,4 +37,4 @@ jobs:
         run: yarn build --scope='{mdx-prism-2,@raulfdm/blog-components}'
 
       - name: Deploy
-        run: yarn build --scope='{mdx-prism-2,@raulfdm/blog-components}'
+        run: yarn release
