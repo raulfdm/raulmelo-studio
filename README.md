@@ -19,6 +19,13 @@ lerna import ../raulmelo-dev-components --dest=packages --flatten -y
 
 ## TODOS
 
+### FINAL STEPS
+
+- [ ] Move Netlify deploy to the existing repo
+- [ ] Move CMS deploy to the existing repository
+
+### General
+
 - [x] fix husky
 - [ ] test publishing packages with verdaccio
 - [x] move some dependencies up in the root
