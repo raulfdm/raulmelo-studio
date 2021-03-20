@@ -1,11 +1,9 @@
 name: Packages Pipeline
 
-# on:
-#   push:
-#     paths:
-#       - 'apps/lambdas/**'
-
-on: push
+on:
+  push:
+    paths:
+      - 'packages/**'
 
 jobs:
   build:
@@ -28,13 +26,13 @@ jobs:
           install-command: yarn --frozen-lockfile --silent
 
       - name: Lint Projects
-        run: yarn lint --scope='{mdx-prism-2,@raulfdm/blog-components}'
+        run: yarn lint --scope='{mdx-prism-2,@raulfdm/blog-components,@raulmelo/blog-tailwind-preset}'
 
       - name: Test Projects
-        run: yarn test --scope='{mdx-prism-2,@raulfdm/blog-components}'
+        run: yarn test --scope='{mdx-prism-2,@raulfdm/blog-components,@raulmelo/blog-tailwind-preset}'
 
       - name: Build Projects
-        run: yarn build --scope='{mdx-prism-2,@raulfdm/blog-components}'
+        run: yarn build --scope='{mdx-prism-2,@raulfdm/blog-components,@raulmelo/blog-tailwind-preset}'
 
       - name: Deploy
         run: yarn release
