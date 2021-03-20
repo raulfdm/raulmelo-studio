@@ -1,4 +1,4 @@
-name: CI
+name: Lambas Pipeline
 
 # on:
 #   push:
@@ -38,7 +38,7 @@ jobs:
 
       - name: Deploy
         run: yarn deploy --scope=lambdas
-        if: contains('main', github.ref)
+        if: contains('refs/heads/main', github.ref)
         env:
           NETLIFY_AUTH_TOKEN: ${{secrets.NETLIFY_AUTH_TOKEN}}
           NETLIFY_SITE_ID: ${{secrets.LAMBDAS_SITE_ID}}
