@@ -4,6 +4,13 @@ on:
   push:
     paths:
       - 'apps/lambdas/**'
+      - 'scripts/**'
+      - 'config/**'
+      - '.github/workflows/lambdas.yml'
+      - .eslintignore
+      - .eslintrc.js
+      - package.json
+      - yarn.lock
 
 jobs:
   build:

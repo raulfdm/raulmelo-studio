@@ -4,6 +4,13 @@ on:
   push:
     paths:
       - 'apps/website/**'
+      - 'scripts/**'
+      - 'config/**'
+      - '.github/workflows/website.yml'
+      - .eslintignore
+      - .eslintrc.js
+      - package.json
+      - yarn.lock
 
 jobs:
   build:
@@ -30,6 +37,3 @@ jobs:
 
       - name: Test Projects
         run: yarn test --scope=website
-
-      - name: Build Projects
-        run: yarn build --scope=website

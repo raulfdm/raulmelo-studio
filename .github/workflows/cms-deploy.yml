@@ -6,6 +6,9 @@ on:
       - main
     paths:
       - 'apps/cms/**'
+      - 'scripts/**'
+      - 'config/**'
+      - '.github/workflows/cms-deploy.yml'
 
 jobs:
   deploy:
@@ -50,9 +53,9 @@ jobs:
           yarn global add heroku
           heroku container:login
 
-          docker tag raulfdm/raulmelo.dev-cms:latest registry.heroku.com/afternoon-oasis-06315/web
-          docker push registry.heroku.com/afternoon-oasis-06315/web
+          docker tag raulfdm/raulmelo.dev-cms:latest registry.heroku.com/raulmelo-dev-server/web
+          docker push registry.heroku.com/raulmelo-dev-server/web
 
-          heroku container:release web --app afternoon-oasis-06315
+          heroku container:release web --app raulmelo-dev-server
         env:
           HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
