@@ -19,20 +19,20 @@ lerna import ../raulmelo-dev-components --dest=packages --flatten -y
 
 ## TODOS
 
-- [ ] fix husky
+- [x] fix husky
 - [ ] test publishing packages with verdaccio
-- [ ] move some dependencies up in the root
-- [ ] keep the same react, typescript, babel, version
+- [x] move some dependencies up in the root
+- [x] keep the same react, typescript, babel, version
 - [x] update strapi by resolving missing packages
-- [ ] add scripty
-- [ ] Fix icu for next
-- [ ] remove Prettier from subtv
-- [ ] remove eslint from subtv
+- [x] add scripty
+- [x] Fix icu for next
+- [x] remove Prettier from subtv
+- [x] remove eslint from subtv
 
 ### Deploys
 
-- [ ] cms (heroku)
-- [ ] website (vercel)
+- [x] cms (heroku)
+- [x] website (vercel)
 - [ ] lambdas (netlify)
 
 ### NPM SCRIPTS

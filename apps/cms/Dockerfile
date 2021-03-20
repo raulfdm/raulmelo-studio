@@ -1,4 +1,4 @@
-FROM node:14-alpine
+FROM node:14
 
 WORKDIR /app
 
@@ -6,13 +6,14 @@ EXPOSE 1337
 
 COPY package.json .
 COPY yarn.lock .
+COPY lerna.json .
+COPY scripts/ ./scripts/
+COPY apps/cms ./apps/cms
 
 RUN yarn
 
-RUN yarn build
+RUN yarn build --scope=cms
 
-COPY . .
+VOLUME [ "${PWD}/apps/cms/build:/app/build" ]
 
-VOLUME [ "${PWD}/build:/app/build" ]
-
-CMD [ "yarn", "start" ]
+CMD [ "yarn", "start", "--scope=cms" ]

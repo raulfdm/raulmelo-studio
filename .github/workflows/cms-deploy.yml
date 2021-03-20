@@ -1,0 +1,58 @@
+name: CMS deploy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'apps/cms/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          load: true
+          tags: |
+            raulfdm/raulmelo.dev-cms:latest
+          file: ./apps/cms/Dockerfile
+          cache-from: type=registry,ref=raulfdm/raulmelo.dev-cms:latest
+          cache-to: type=inline
+
+      - name: Use Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      # Here I need to write a .netrc file
+      # and use heroku CLI to login with those credentials.
+      # Also, the reason to the all in the same pipeline is to preserve the
+      # credentials
+      - name: Image digest (heroku release)
+        run: |
+          echo "machine api.heroku.com\n  login melo.raulf@gmail.com\n  password $HEROKU_API_KEY\nmachine git.heroku.com\n  login melo.raulf@gmail.com\n  password $HEROKU_API_KEY" >> ~/.netrc
+
+          yarn global add heroku
+          heroku container:login
+
+          docker tag raulfdm/raulmelo.dev-cms:latest registry.heroku.com/afternoon-oasis-06315/web
+          docker push registry.heroku.com/afternoon-oasis-06315/web
+
+          heroku container:release web --app afternoon-oasis-06315
+        env:
+          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
