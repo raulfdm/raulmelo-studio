@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'packages/**'
+      - 'scripts/**'
 
 jobs:
   build:
@@ -34,5 +35,5 @@ jobs:
       - name: Build Projects
         run: yarn build --scope='{mdx-prism-2,@raulfdm/blog-components,@raulmelo/blog-tailwind-preset}'
 
-      - name: Deploy
+      - name: Release Packages
         run: yarn release
