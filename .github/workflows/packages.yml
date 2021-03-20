@@ -1,0 +1,40 @@
+name: Packages Pipeline
+
+# on:
+#   push:
+#     paths:
+#       - 'apps/lambdas/**'
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Use Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install lerna and netlify
+        run: yarn global add lerna netlify-cli
+
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+        with:
+          install-command: yarn --frozen-lockfile --silent
+
+      - name: Lint Projects
+        run: yarn lint --scope='{mdx-prism-2,@raulfdm/blog-components}'
+
+      - name: Test Projects
+        run: yarn test --scope='{mdx-prism-2,@raulfdm/blog-components}'
+
+      - name: Build Projects
+        run: yarn build --scope='{mdx-prism-2,@raulfdm/blog-components}'
+
+      - name: Deploy
+        run: yarn build --scope='{mdx-prism-2,@raulfdm/blog-components}'
