@@ -1,11 +1,9 @@
 name: Lambas Pipeline
 
-# on:
-#   push:
-#     paths:
-#       - 'apps/lambdas'
-
-on: push
+on:
+  push:
+    paths:
+      - 'apps/lambdas/**'
 
 jobs:
   build:
