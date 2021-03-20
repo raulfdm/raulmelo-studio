@@ -43,3 +43,5 @@ jobs:
 
       - name: Release Packages
         run: yarn release
+        env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
