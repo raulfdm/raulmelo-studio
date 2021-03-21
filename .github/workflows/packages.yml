@@ -33,13 +33,13 @@ jobs:
           install-command: yarn --frozen-lockfile --silent
 
       - name: Lint Projects
-        run: yarn lint --scope='{mdx-prism-2,@raulfdm/blog-components,@raulmelo/blog-tailwind-preset}'
+        run: yarn lint --scope='{mdx-prism-2,@raulfdm/blog-components,@raulfdm/blog-tailwind-preset}'
 
       - name: Test Projects
-        run: yarn test --scope='{mdx-prism-2,@raulfdm/blog-components,@raulmelo/blog-tailwind-preset}'
+        run: yarn test --scope='{mdx-prism-2,@raulfdm/blog-components,@raulfdm/blog-tailwind-preset}'
 
       - name: Build Projects
-        run: yarn build --scope='{mdx-prism-2,@raulfdm/blog-components,@raulmelo/blog-tailwind-preset}'
+        run: yarn build --scope='{mdx-prism-2,@raulfdm/blog-components,@raulfdm/blog-tailwind-preset}'
 
       - name: Release Packages
         run: |

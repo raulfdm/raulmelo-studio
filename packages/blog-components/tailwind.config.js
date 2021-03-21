@@ -1,3 +1,3 @@
 module.exports = {
-  presets: [require('@raulmelo/blog-tailwind-preset')],
+  presets: [require('@raulfdm/blog-tailwind-preset')],
 };
