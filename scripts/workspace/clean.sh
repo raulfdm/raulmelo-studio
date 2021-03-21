@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-echo "CLEANING....."
+echo "┏━━━ 🧹 Clean: yarn clean  ━━━━━━━"
+
 yarn lerna run clean --stream --concurrency=5 $1

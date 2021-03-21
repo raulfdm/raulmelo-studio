@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-echo "Checking lib size....."
+echo "┏━━━ 📄 Size: yarn size-limit  ━━━━━━━"
+
 yarn size-limit $1

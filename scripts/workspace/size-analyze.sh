@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-echo "Opening bundle chart analyzer..."
+echo "┏━━━ 📋 Size: analyzer  ━━━━━━━"
+
 scripts/workspace/size.sh --why

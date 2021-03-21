@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-echo "LINTING..."
+echo "┏━━━ 🕵️ Lint: yarn lint  ━━━━━━━"
+
 yarn lerna run lint --stream --concurrency=5 $1

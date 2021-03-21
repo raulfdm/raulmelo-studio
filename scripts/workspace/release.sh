@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-echo "Releasing packages with lerna."
+echo "┏━━━ 🚢 Release: lerna publish packages  ━━━━━━━"
 
 yarn lerna publish --conventional-commits --no-private -y

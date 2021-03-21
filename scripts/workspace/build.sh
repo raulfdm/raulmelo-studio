@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-echo "BUILDING....."
+echo "┏━━━ 📦 Build: yarn build  ━━━━━━━"
+
 yarn lerna run build --stream --concurrency=5 $1

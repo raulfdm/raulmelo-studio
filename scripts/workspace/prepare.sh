@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
-echo "Preparing...."
+echo "┏━━━ 🍳 Prepare: bootstrap and husky  ━━━━━━━"
+
 yarn lerna bootstrap
 husky install

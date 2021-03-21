@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-echo "TESTING..."
+echo "┏━━━ 🧪 Test: yarn test  ━━━━━━━"
+
 yarn lerna run test --stream --concurrency=5 $1

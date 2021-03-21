@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-echo "Preparing...."
+echo "┏━━━ 🚗 Start: yarn start  ━━━━━━━"
+
 yarn lerna run start --stream $1
