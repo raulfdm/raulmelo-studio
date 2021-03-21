@@ -1,12 +1,12 @@
 import { Container } from '@components/Ui';
 import { ChevronDownIcon } from '@raulfdm/blog-components';
 import { RelevantPostSerieData } from '@screens/Blog/utils/series';
+import { createMachine } from '@xstate/fsm';
 import { useMachine } from '@xstate/react/lib/fsm';
 import { default as classnames, default as classNames } from 'classnames';
-import { m } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FormattedMessage } from 'react-intl';
-import { createMachine } from '@xstate/fsm';
 
 const variants = {
   list: {
@@ -101,7 +101,7 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
             name={name}
             currentState={currentState}
           />
-          <m.ul
+          <motion.ul
             className="m-0"
             initial={false}
             animate={currentState}
@@ -112,7 +112,7 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
               const { id, copy, uri } = post;
               const isCurrentPost = id === currentPostId;
               return (
-                <m.li
+                <motion.li
                   className={classnames([
                     'cursor-pointer',
                     'm-0 p-b',
@@ -128,10 +128,10 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
                   <Link href={uri}>
                     <a className="block no-underline px-4 py-3">{copy}</a>
                   </Link>
-                </m.li>
+                </motion.li>
               );
             })}
-          </m.ul>
+          </motion.ul>
           <Footer
             currentState={currentState}
             toggleSection={toggleSection}
@@ -160,7 +160,7 @@ const Header = ({ toggleSection, name, currentState }: HeaderProps) => {
       data-testid="expand-button"
     >
       <span className="flex-1">{name}</span>
-      <m.button
+      <motion.button
         className="flex items-center justify-center w-7 h-7"
         initial="collapsed"
         animate={currentState}
@@ -170,7 +170,7 @@ const Header = ({ toggleSection, name, currentState }: HeaderProps) => {
         }}
       >
         <ChevronDownIcon className="w-5" />
-      </m.button>
+      </motion.button>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { FC } from 'react';
-import { m } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Logo } from '@raulfdm/blog-components';
 
 import { SideMenuNavIcon, SideMenu } from '@components/SideMenu';
@@ -19,7 +19,7 @@ export const MenuBar: FC = () => {
 
   return (
     <>
-      <m.section
+      <motion.section
         className={classNames([
           'fixed',
           'inset-x-0',
@@ -49,7 +49,7 @@ export const MenuBar: FC = () => {
             <SideMenuNavIcon />
           </div>
         </div>
-      </m.section>
+      </motion.section>
       <SideMenu />
       <style global jsx>{`
         #__next {
