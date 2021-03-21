@@ -2,12 +2,12 @@
 
 > A monorepo with a collection of packages and apps
 
-|  Project   |                                                                                Pipeline Status                                                                                |
-| :--------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|    CMS     | [![CMS](https://github.com/raulfdm/raulmelo-studio/actions/workflows/cms-deploy.yml/badge.svg)](https://github.com/raulfdm/raulmelo-studio/actions/workflows/cms-deploy.yml)  |
-|  Website   |  [![Website](https://github.com/raulfdm/raulmelo-studio/actions/workflows/website.yml/badge.svg)](https://github.com/raulfdm/raulmelo-studio/actions/workflows/website.yml)   |
-| Lambda Fns |  [![Lambdas](https://github.com/raulfdm/raulmelo-studio/actions/workflows/lambdas.yml/badge.svg)](https://github.com/raulfdm/raulmelo-studio/actions/workflows/lambdas.yml)   |
-|  Packages  | [![Packages](https://github.com/raulfdm/raulmelo-studio/actions/workflows/packages.yml/badge.svg)](https://github.com/raulfdm/raulmelo-studio/actions/workflows/packages.yml) |
+|                                                                                Pipeline Status                                                                                |
+| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| [![CMS](https://github.com/raulfdm/raulmelo-studio/actions/workflows/cms-deploy.yml/badge.svg)](https://github.com/raulfdm/raulmelo-studio/actions/workflows/cms-deploy.yml)  |
+|  [![Website](https://github.com/raulfdm/raulmelo-studio/actions/workflows/website.yml/badge.svg)](https://github.com/raulfdm/raulmelo-studio/actions/workflows/website.yml)   |
+|  [![Lambdas](https://github.com/raulfdm/raulmelo-studio/actions/workflows/lambdas.yml/badge.svg)](https://github.com/raulfdm/raulmelo-studio/actions/workflows/lambdas.yml)   |
+| [![Packages](https://github.com/raulfdm/raulmelo-studio/actions/workflows/packages.yml/badge.svg)](https://github.com/raulfdm/raulmelo-studio/actions/workflows/packages.yml) |
 
 ## Technologies
 
