@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-echo "Realing...."
+echo "Releasing packages with lerna."
 
-yarn lerna publish from-package --conventional-commits --no-private -y
+yarn lerna publish --conventional-commits --no-private -y
