@@ -5,6 +5,7 @@ import { IconProps } from './types';
 
 const Icons: {
   [iconName: string]: React.ElementType<IconProps>;
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
 } = require('./index');
 
 const meta: Meta = {
@@ -34,7 +35,7 @@ export const allIcons = (args: IconProps) => {
   const iconsEntries = Object.entries(Icons);
 
   return iconsEntries.map(([iconName, Icon]) => (
-    <div className="grid place-items-center">
+    <div className="grid place-items-center" key={iconName}>
       <p>{`<${iconName} />`}</p>
       <Icon {...args} />
     </div>
