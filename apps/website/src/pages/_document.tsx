@@ -1,6 +1,7 @@
 import { GA_TRACKING_ID } from '@config/analytics';
 import classNames from 'classnames';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { domAnimation, LazyMotion } from 'framer-motion';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 export default class MyDocument extends Document {
   render() {
@@ -61,7 +62,9 @@ export default class MyDocument extends Document {
               `,
             }}
           />
-          <Main />
+          <LazyMotion features={domAnimation} strict>
+            <Main />
+          </LazyMotion>
           <NextScript />
         </body>
       </Html>
