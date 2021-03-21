@@ -108,7 +108,9 @@ export const BlogPage: React.FC<BlogPageProps> = ({
       <footer className="container mx-auto px-4 md:px-0 max-w-screen-md">
         {seriesWithDivider}
         <hr className="mt-10 mb-6" />
-        {post_tags ? <PostTags tags={post_tags} /> : null}
+        {post_tags ? (
+          <PostTags tags={post_tags} tagClassName={'text-base lg:text-lg'} />
+        ) : null}
       </footer>
     </>
   );

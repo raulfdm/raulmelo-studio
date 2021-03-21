@@ -3,11 +3,16 @@ import { PostsTagApiData } from '@types-api';
 import { getTagUrl } from '@utils/url';
 import Link from 'next/link';
 
-export const PostTags: React.FC<{ tags: PostsTagApiData }> = ({ tags }) => {
+type PostTags = React.FC<{
+  tags: PostsTagApiData;
+  tagClassName?: string;
+}>;
+
+export const PostTags: PostTags = ({ tags, tagClassName }) => {
   return (
     <Tags>
       {tags.map(({ slug, id, name }) => (
-        <Tag key={id}>
+        <Tag key={id} className={tagClassName}>
           <Link href={getTagUrl(slug)}>
             <a className="underline">#{name}</a>
           </Link>

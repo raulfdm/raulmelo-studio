@@ -28,7 +28,10 @@ export const Header: React.FC<HeaderProps> = React.memo(function Header({
       </h1>
       {subtitle && (
         <p
-          className="text-xl md:text-2xl font-sans text-opacity-50 tracking-tight"
+          className={classNames([
+            'text-xl md:text-2xl font-sans text-opacity-50 tracking-tight',
+            'mt-2 md:mt-4',
+          ])}
           data-testid="header-subtitle"
         >
           {subtitle}
