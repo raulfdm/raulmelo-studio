@@ -2,8 +2,8 @@ name: size
 
 on:
   pull_request:
-    paths:
-      - 'packages/**'
+    paths-ignore:
+      - '**'
 
 jobs:
   size:
