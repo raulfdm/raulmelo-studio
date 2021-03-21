@@ -3,9 +3,5 @@ module.exports = {
     '@commitlint/config-lerna-scopes',
     '@commitlint/config-conventional',
   ],
-  ignores: [
-    (commit) => {
-      return commit.includes('Publish');
-    },
-  ],
+  ignores: [(commit) => commit.match(/publish/)],
 };
