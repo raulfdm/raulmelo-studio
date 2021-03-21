@@ -26,9 +26,6 @@
     "postbuild": "node scripts/copyAssets.js",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
-    "prepare": "yarn build",
-    "size": "size-limit",
-    "analyze": "size-limit --why",
     "storybook": "start-storybook -s ./static -p 6006",
     "build-storybook": "NODE_ENV=production build-storybook -s ./static",
     "prepublishOnly": "pinst --disable",
@@ -51,7 +48,6 @@
   "devDependencies": {
     "@emotion/jest": "^11.2.1",
     "@fullhuman/postcss-purgecss": "~3",
-    "@size-limit/preset-small-lib": "^4.10.1",
     "@storybook/addon-essentials": "^6.1.21",
     "@storybook/addon-info": "^5.3.21",
     "@storybook/addon-links": "^6.1.21",
@@ -73,18 +69,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-is": "^17.0.1",
-    "size-limit": "^4.10.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "tsdx": "^0.14.1"
-  },
-  "size-limit": [
-    {
-      "path": "dist/blog-components.cjs.production.min.js",
-      "limit": "100 KB"
-    },
-    {
-      "path": "dist/blog-components.esm.js",
-      "limit": "100 KB"
-    }
-  ]
+  }
 }
