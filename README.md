@@ -15,11 +15,11 @@ Each project/package uses different technologies because they have different pur
 
 For the root level I'm using:
 
-- Lerna + Yarn Workspaces - Maintain this Monorepo
-- TypeScript - core programming language
-- scripty - Run npm scripts with bash files
-- babel - Parse and bundle together with TSC
-- commitlint - Ensure commit consistency
+- [Lerna](https://lerna.js.org/) + [Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) - Maintain this Monorepo
+- [TypeScript](https://www.typescriptlang.org/) - core programming language
+- [scripty](https://www.npmjs.com/package/scripty) - Run npm scripts with bash files
+- [Babel](https://babeljs.io/) - Parse and bundle together with TSC
+- [commitlint](https://commitlint.js.org/#/) - Ensure commit consistency
 
 ## Structure
 
