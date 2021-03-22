@@ -1,12 +1,11 @@
+import { SideMenu, SideMenuNavIcon } from '@components/SideMenu';
+import { Logo } from '@raulfdm/blog-components';
+import classNames from 'classnames';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FC } from 'react';
-import { motion } from 'framer-motion';
-import { Logo } from '@raulfdm/blog-components';
-
-import { SideMenuNavIcon, SideMenu } from '@components/SideMenu';
-import { ThemeSwitch } from './components/ThemeSwitch';
 import { LanguageSwitch } from './components/LanguageSwitch';
-import classNames from 'classnames';
+import { ThemeSwitch } from './components/ThemeSwitch';
 import { useHideMenu } from './useHideMenu';
 
 export const MenuBar: FC = () => {
@@ -24,7 +23,7 @@ export const MenuBar: FC = () => {
           'fixed',
           'inset-x-0',
           'top-0 h-16',
-          'z-20',
+          'z-40',
           'shadow',
           'bg-white dark:bg-blue-800',
           'transition-theme duration-200 ease',
