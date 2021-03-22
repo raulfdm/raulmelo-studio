@@ -87,6 +87,8 @@ export const SideMenu = () => {
         data-testid="sideMenu"
       >
         {links.map(({ href, localeId }) => {
+          const sanitizedPath = pathname.replace('blog', '');
+
           return (
             <Link key={localeId.id} href={href}>
               <a
@@ -94,7 +96,7 @@ export const SideMenu = () => {
                   'cursor-pointer',
                   'font-serif text-lg font-bold',
                   'mx-5',
-                  pathname === href &&
+                  sanitizedPath === href &&
                     'pl-3 border-l-2 border-gray-800 dark:border-gray-300',
                 ])}
                 onClick={toggle}
