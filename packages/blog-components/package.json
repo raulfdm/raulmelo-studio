@@ -21,15 +21,15 @@
     "node": ">=14"
   },
   "scripts": {
-    "dev": "tsdx watch",
-    "build": "tsdx build",
-    "postbuild": "node scripts/copyAssets.js",
-    "test": "tsdx test --passWithNoTests",
+    "build-storybook": "scripty",
+    "build": "scripty",
+    "clean": "scripty",
+    "dev": "scripty",
     "lint": "scripty",
-    "storybook": "start-storybook -s ./static -p 6006",
-    "build-storybook": "NODE_ENV=production build-storybook -s ./static",
+    "postpublish": "pinst --enable",
     "prepublishOnly": "pinst --disable",
-    "postpublish": "pinst --enable"
+    "storybook": "scripty",
+    "test": "scripty"
   },
   "peerDependencies": {
     "framer-motion": ">=4",
