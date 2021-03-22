@@ -35,14 +35,14 @@ export const MenuBar: FC = () => {
         data-testid="menu-bar"
       >
         <div className="flex items-center max-w-7xl mx-auto h-full px-4">
-          <div className="flex-1" data-testid="menu-bar__logo">
+          <div data-testid="menu-bar__logo">
             <Link href="/">
               <a>
                 <Logo />
               </a>
             </Link>
           </div>
-          <div className="flex space-x-3">
+          <div className="flex flex-1 justify-end space-x-3">
             <ThemeSwitch />
             <LanguageSwitch />
             <SideMenuNavIcon />
