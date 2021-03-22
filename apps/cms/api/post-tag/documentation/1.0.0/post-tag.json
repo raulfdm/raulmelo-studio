@@ -51,9 +51,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Post-tag"
-        ],
+        "tags": ["Post-tag"],
         "parameters": [
           {
             "name": "_limit",
@@ -243,9 +241,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Post-tag"
-        ],
+        "tags": ["Post-tag"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -310,9 +306,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Post-tag"
-        ],
+        "tags": ["Post-tag"],
         "parameters": []
       }
     },
@@ -367,9 +361,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Post-tag"
-        ],
+        "tags": ["Post-tag"],
         "parameters": [
           {
             "name": "id",
@@ -433,9 +425,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Post-tag"
-        ],
+        "tags": ["Post-tag"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -507,9 +497,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Post-tag"
-        ],
+        "tags": ["Post-tag"],
         "parameters": [
           {
             "name": "id",
@@ -528,11 +516,7 @@
   "components": {
     "schemas": {
       "Post-tag": {
-        "required": [
-          "id",
-          "name",
-          "slug"
-        ],
+        "required": ["id", "name", "slug"],
         "properties": {
           "id": {
             "type": "string"
@@ -588,10 +572,7 @@
                 },
                 "language": {
                   "type": "string",
-                  "enum": [
-                    "en",
-                    "pt"
-                  ]
+                  "enum": ["en", "pt"]
                 },
                 "serie_copy": {
                   "type": "string"
@@ -604,6 +585,9 @@
                 },
                 "featured_image_caption": {
                   "type": "string"
+                },
+                "unsplash": {
+                  "type": "component"
                 },
                 "published_at": {
                   "type": "string"
@@ -620,10 +604,7 @@
         }
       },
       "NewPost-tag": {
-        "required": [
-          "name",
-          "slug"
-        ],
+        "required": ["name", "slug"],
         "properties": {
           "name": {
             "type": "string"

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "03/22/2021 9:37:46 PM"
+    "x-generation-date": "03/22/2021 10:15:17 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -5342,6 +5342,9 @@
                 "featured_image_caption": {
                   "type": "string"
                 },
+                "unsplash": {
+                  "type": "component"
+                },
                 "published_at": {
                   "type": "string"
                 },
@@ -5449,6 +5452,9 @@
                 },
                 "featured_image_caption": {
                   "type": "string"
+                },
+                "unsplash": {
+                  "type": "component"
                 },
                 "published_at": {
                   "type": "string"
@@ -5682,6 +5688,9 @@
               "featured_image_caption": {
                 "type": "string"
               },
+              "unsplash": {
+                "type": "component"
+              },
               "published_at": {
                 "type": "string"
               },
@@ -5721,6 +5730,21 @@
           },
           "featured_image_caption": {
             "type": "string"
+          },
+          "unsplash": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "authorName": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            }
           },
           "published_at": {
             "type": "string",
@@ -5780,6 +5804,21 @@
           },
           "featured_image_caption": {
             "type": "string"
+          },
+          "unsplash": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "authorName": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            }
           },
           "published_at": {
             "type": "string",

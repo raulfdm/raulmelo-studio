@@ -37,9 +37,7 @@
     "featured_image": {
       "model": "file",
       "via": "related",
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "plugin": "upload",
       "required": false
     },
@@ -54,10 +52,7 @@
     },
     "language": {
       "type": "enumeration",
-      "enum": [
-        "en",
-        "pt"
-      ],
+      "enum": ["en", "pt"],
       "required": true
     },
     "serie_copy": {
@@ -74,6 +69,11 @@
     "featured_image_caption": {
       "type": "text",
       "required": false
+    },
+    "unsplash": {
+      "type": "component",
+      "repeatable": false,
+      "component": "posts.unsplash-author"
     }
   }
 }

@@ -50,9 +50,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Post"
-        ],
+        "tags": ["Post"],
         "parameters": [
           {
             "name": "_limit",
@@ -238,9 +236,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Post"
-        ],
+        "tags": ["Post"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -305,9 +301,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Post"
-        ],
+        "tags": ["Post"],
         "parameters": []
       }
     },
@@ -358,9 +352,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Post"
-        ],
+        "tags": ["Post"],
         "parameters": [
           {
             "name": "id",
@@ -420,9 +412,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Post"
-        ],
+        "tags": ["Post"],
         "requestBody": {
           "description": "",
           "required": true,
@@ -494,9 +484,7 @@
           }
         },
         "summary": "",
-        "tags": [
-          "Post"
-        ],
+        "tags": ["Post"],
         "parameters": [
           {
             "name": "id",
@@ -541,11 +529,7 @@
           "post_tags": {
             "type": "array",
             "items": {
-              "required": [
-                "id",
-                "name",
-                "slug"
-              ],
+              "required": ["id", "name", "slug"],
               "properties": {
                 "id": {
                   "type": "string"
@@ -651,10 +635,7 @@
           },
           "language": {
             "type": "string",
-            "enum": [
-              "en",
-              "pt"
-            ]
+            "enum": ["en", "pt"]
           },
           "serie_copy": {
             "type": "string"
@@ -702,10 +683,7 @@
               },
               "language": {
                 "type": "string",
-                "enum": [
-                  "en",
-                  "pt"
-                ]
+                "enum": ["en", "pt"]
               },
               "serie_copy": {
                 "type": "string"
@@ -719,6 +697,9 @@
               "featured_image_caption": {
                 "type": "string"
               },
+              "unsplash": {
+                "type": "component"
+              },
               "published_at": {
                 "type": "string"
               },
@@ -731,11 +712,7 @@
             }
           },
           "post_serie": {
-            "required": [
-              "id",
-              "name",
-              "slug"
-            ],
+            "required": ["id", "name", "slug"],
             "properties": {
               "id": {
                 "type": "string"
@@ -762,6 +739,21 @@
           },
           "featured_image_caption": {
             "type": "string"
+          },
+          "unsplash": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "authorName": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            }
           },
           "published_at": {
             "type": "string",
@@ -808,10 +800,7 @@
           },
           "language": {
             "type": "string",
-            "enum": [
-              "en",
-              "pt"
-            ]
+            "enum": ["en", "pt"]
           },
           "serie_copy": {
             "type": "string"
@@ -824,6 +813,21 @@
           },
           "featured_image_caption": {
             "type": "string"
+          },
+          "unsplash": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "authorName": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            }
           },
           "published_at": {
             "type": "string",
