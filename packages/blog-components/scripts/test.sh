@@ -2,4 +2,4 @@
 
 echo "Test..."
 
-yarn tsdx test --passWithNoTests
+yarn tsdx test --passWithNoTests $1
