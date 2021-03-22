@@ -4,13 +4,8 @@ on:
   push:
     paths:
       - 'packages/**'
-      - 'scripts/**'
       - 'config/**'
       - '.github/workflows/packages.yml'
-      - .eslintignore
-      - .eslintrc.js
-      - package.json
-      - yarn.lock
 
 jobs:
   build:
