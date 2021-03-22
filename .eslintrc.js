@@ -40,7 +40,7 @@ module.exports = {
       ...baseTs,
     },
     {
-      files: ['*.test.ts', '**/__test__/**.ts'],
+      files: ['*.test.*', '**/__test__/*.ts', '**/__test__/*.tsx'],
       ...baseTs,
       rules: {
         '@typescript-eslint/no-explicit-any': 'off',

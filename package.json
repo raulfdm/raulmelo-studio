@@ -1,10 +1,16 @@
 {
   "name": "root",
   "private": true,
-  "workspaces": [
-    "packages/*",
-    "apps/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "apps/*"
+    ],
+    "nohoist": [
+      "**/tsdx",
+      "**/tsdx/**"
+    ]
+  },
   "scripts": {
     "build": "scripty",
     "clean": "scripty",
@@ -23,9 +29,9 @@
     "@babel/plugin-transform-runtime": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
     "@babel/preset-typescript": "^7.13.0",
-    "@commitlint/cli": "^12.0.1",
-    "@commitlint/config-conventional": "^12.0.1",
-    "@commitlint/config-lerna-scopes": "^12.0.1",
+    "@commitlint/cli": "^12.1.0",
+    "@commitlint/config-conventional": "^12.1.0",
+    "@commitlint/config-lerna-scopes": "^12.1.0",
     "@size-limit/preset-small-lib": "^4.10.1",
     "@sub-tv/prettier-config": "^1.1.0",
     "@types/jest": "^26.0.20",
@@ -42,7 +48,7 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "fs-extra": "^9.1.0",
-    "husky": "^5.1.3",
+    "husky": "^5.2.0",
     "jest": "^26.6.3",
     "lerna": "^4.0.0",
     "lerna-changelog": "^1.0.1",
@@ -61,6 +67,8 @@
     "path": "./scripts/workspace"
   },
   "resolutions": {
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
     "react": "^17",
     "react-dom": "^17"
   },

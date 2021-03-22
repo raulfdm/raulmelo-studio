@@ -26,23 +26,23 @@ describe('<Gif />', () => {
   it('throws an error if width or height is undefined', () => {
     expect(() =>
       //@ts-ignore
-      render(<Gif width="300" />)
+      render(<Gif width="300" />),
     ).toThrowErrorMatchingInlineSnapshot(
-      `"Width and Height are required: Image src: undefined"`
+      `"Width and Height are required: Image src: undefined"`,
     );
 
     expect(() =>
       //@ts-ignore
-      render(<Gif height="300" />)
+      render(<Gif height="300" />),
     ).toThrowErrorMatchingInlineSnapshot(
-      `"Width and Height are required: Image src: undefined"`
+      `"Width and Height are required: Image src: undefined"`,
     );
 
     expect(() =>
       //@ts-ignore
-      render(<Gif />)
+      render(<Gif />),
     ).toThrowErrorMatchingInlineSnapshot(
-      `"Width and Height are required: Image src: undefined"`
+      `"Width and Height are required: Image src: undefined"`,
     );
   });
 
@@ -68,7 +68,7 @@ describe('<Gif />', () => {
       render(<Gif {...defaultProps} ImageComponent={CustomImage} />);
 
       const container = screen.getByTestId(
-        'very-custom-comp'
+        'very-custom-comp',
       ) as HTMLImageElement;
 
       expect(container).toBeInTheDocument();
@@ -83,11 +83,14 @@ describe('<Gif />', () => {
     });
 
     it('does not render caption with undefined', () => {
+      /**
+       * Removing caption from "custom props"
+       */
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { caption, ...customProps } = defaultProps;
 
       const { queryByRole } = render(<Gif {...customProps} />);
 
-      expect(queryByRole('caption')).not.toBeInTheDocument();
       expect(queryByRole('caption')).not.toBeInTheDocument();
     });
   });

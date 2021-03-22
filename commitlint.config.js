@@ -3,5 +3,13 @@ module.exports = {
     '@commitlint/config-lerna-scopes',
     '@commitlint/config-conventional',
   ],
-  ignores: [(commit) => commit.match(/publish/)],
+  ignores: [
+    (commit) => {
+      if (commit.match(/publish/) || commit.match(/chore\(deps\)/i)) {
+        return true;
+      }
+
+      return false;
+    },
+  ],
 };

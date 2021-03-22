@@ -21,15 +21,15 @@
     "node": ">=14"
   },
   "scripts": {
-    "dev": "tsdx watch",
-    "build": "tsdx build",
-    "postbuild": "node scripts/copyAssets.js",
-    "test": "tsdx test --passWithNoTests",
-    "lint": "tsdx lint",
-    "storybook": "start-storybook -s ./static -p 6006",
-    "build-storybook": "NODE_ENV=production build-storybook -s ./static",
+    "build-storybook": "scripty",
+    "build": "scripty",
+    "clean": "scripty",
+    "dev": "scripty",
+    "lint": "scripty",
+    "postpublish": "pinst --enable",
     "prepublishOnly": "pinst --disable",
-    "postpublish": "pinst --enable"
+    "storybook": "scripty",
+    "test": "scripty"
   },
   "peerDependencies": {
     "framer-motion": ">=4",
@@ -71,5 +71,8 @@
     "react-is": "^17.0.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "tsdx": "^0.14.1"
+  },
+  "scripty": {
+    "path": "./scripts"
   }
 }
