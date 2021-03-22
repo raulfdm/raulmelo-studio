@@ -83,11 +83,14 @@ describe('<Gif />', () => {
     });
 
     it('does not render caption with undefined', () => {
-      const { ...customProps } = defaultProps;
+      /**
+       * Removing caption from "custom props"
+       */
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { caption, ...customProps } = defaultProps;
 
       const { queryByRole } = render(<Gif {...customProps} />);
 
-      expect(queryByRole('caption')).not.toBeInTheDocument();
       expect(queryByRole('caption')).not.toBeInTheDocument();
     });
   });
