@@ -117,6 +117,11 @@ interface PostSerie {
   updatedAt: string;
 }
 
+export interface Unsplash {
+  authorName: string;
+  url: string;
+}
+
 export interface PostApiData {
   language: SupportedLanguages;
   status: string;
@@ -137,6 +142,7 @@ export interface PostApiData {
   id: string;
   post_serie?: PostSerie;
   translation?: PostApiData;
+  unsplash?: Unsplash;
 }
 
 export type PostsApiData = PostApiData[];
