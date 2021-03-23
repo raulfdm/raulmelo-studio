@@ -50,7 +50,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
   series,
   translation,
 }) => {
-  const { featured_image, post_tags } = post;
+  const { featured_image, post_tags, unsplash } = post;
   const { locale } = useLocalization();
 
   const allSeries = series ? (
@@ -69,6 +69,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
       src={featured_image.url}
       width={featured_image.width}
       height={featured_image.height}
+      unsplash={unsplash}
     />
   ) : null;
 

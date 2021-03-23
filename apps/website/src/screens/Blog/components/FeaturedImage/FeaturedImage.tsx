@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { defineMessages } from 'react-intl';
 
 import { useLocalization } from '@hooks/useLocalization';
+import { PostApiData } from '@types-api';
 
 const messages = defineMessages({
   featuredImageLabel: {
@@ -15,6 +16,7 @@ type FeaturedImageProps = {
   alt?: string;
   width: string | number;
   height: string | number;
+  unsplash: PostApiData['unsplash'];
 };
 
 export const FeaturedImage: React.FC<FeaturedImageProps> = ({
@@ -22,12 +24,13 @@ export const FeaturedImage: React.FC<FeaturedImageProps> = ({
   alt,
   width,
   height,
+  unsplash,
 }) => {
   const { formatMessage } = useLocalization();
 
   return (
     <div
-      className="max-w-screen-lg mx-auto my-6"
+      className="max-w-screen-lg mx-auto mt-14 mb-11"
       role="img"
       aria-label={formatMessage(messages.featuredImageLabel)}
     >
@@ -39,11 +42,39 @@ export const FeaturedImage: React.FC<FeaturedImageProps> = ({
         alt={alt || formatMessage(messages.featuredImageLabel)}
         loading="eager"
       />
-      {alt && (
-        <p className="img-caption" data-testid="featured-img-caption">
-          {alt}
-        </p>
-      )}
+      {unsplash ? <UnsplashCaption {...unsplash} /> : null}
+      {!unsplash && alt ? <Caption>{alt}</Caption> : null}
     </div>
   );
 };
+
+type UnsplashCaptionProps = NonNullable<PostApiData['unsplash']>;
+
+function UnsplashCaption({ authorName, url }: UnsplashCaptionProps) {
+  return (
+    <Caption>
+      Photo by{' '}
+      <a href={url} className="underline">
+        {authorName}
+      </a>{' '}
+      at{' '}
+      <a href="https://unsplash.com" className="underline">
+        Unsplash
+      </a>
+    </Caption>
+  );
+}
+
+type CaptionProps = {
+  children: React.ReactNode;
+};
+function Caption({ children }: CaptionProps) {
+  return (
+    <p
+      className="img-caption text-center text-sm mt-2 text-gray-600 dark:text-gray-300"
+      data-testid="featured-img-caption"
+    >
+      {children}
+    </p>
+  );
+}
