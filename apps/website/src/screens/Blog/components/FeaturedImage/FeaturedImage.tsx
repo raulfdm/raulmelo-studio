@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { defineMessages } from 'react-intl';
+import { defineMessages, FormattedMessage } from 'react-intl';
 
 import { useLocalization } from '@hooks/useLocalization';
 import { PostApiData } from '@types-api';
@@ -53,14 +53,21 @@ type UnsplashCaptionProps = NonNullable<PostApiData['unsplash']>;
 function UnsplashCaption({ authorName, url }: UnsplashCaptionProps) {
   return (
     <Caption>
-      Photo by{' '}
-      <a href={url} className="underline">
-        {authorName}
-      </a>{' '}
-      at{' '}
-      <a href="https://unsplash.com" className="underline">
-        Unsplash
-      </a>
+      <FormattedMessage
+        id="blog.unsplashCaption"
+        values={{
+          authorLink: (
+            <a href={url} className="underline">
+              {authorName}
+            </a>
+          ),
+          unsplashLink: (
+            <a href="https://unsplash.com" className="underline">
+              Unsplash
+            </a>
+          ),
+        }}
+      />
     </Caption>
   );
 }
