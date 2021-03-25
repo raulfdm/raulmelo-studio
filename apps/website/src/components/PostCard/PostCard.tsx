@@ -1,15 +1,26 @@
+import { PostTags } from '@components/PostTags';
+import { SupportedLanguages } from '@types-app';
+import { getPostUrl } from '@utils/url';
+import { isNotNilNorEmpty } from '@utils/utilities';
+import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import { FormattedDate } from 'react-intl';
-import Link from 'next/link';
-import Image from 'next/image';
 
-import { isNotNilNorEmpty } from '@utils/utilities';
-import { getPostUrl } from '@utils/url';
-import { PostApiData } from 'src/types/api/posts';
-import { PostTags } from '@components/PostTags';
+type Post = {
+  title: string;
+  subtitle: string;
+  date: string;
+  slug: string;
+  language: SupportedLanguages;
+  post_tags: { id: string; slug: string; name: string }[];
+  featured_image: {
+    url: string;
+  };
+};
 
 type PostCardProps = {
-  post: PostApiData;
+  post: Post;
 };
 
 export const PostCard: React.FC<PostCardProps> = ({ post }) => {
@@ -21,7 +32,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
     post_tags,
     slug,
     language,
-  } = post!;
+  } = post;
 
   /**
    * For the tags, every post only has the tags id.
