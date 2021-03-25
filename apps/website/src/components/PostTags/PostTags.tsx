@@ -1,10 +1,9 @@
 import { Tag, Tags } from '@raulfdm/blog-components';
-import { PostsTagApiData } from '@types-api';
 import { getTagUrl } from '@utils/url';
 import Link from 'next/link';
 
 type PostTags = React.FC<{
-  tags: PostsTagApiData;
+  tags: { id: string; slug: string; name: string }[];
   tagClassName?: string;
 }>;
 

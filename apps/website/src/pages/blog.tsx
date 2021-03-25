@@ -1,13 +1,10 @@
-import React from 'react';
-import { GetStaticProps } from 'next';
-
+import { HomePage } from '@screens/Home/HomePage';
+import { BlogPageGraphQLResponse, HomePageProps } from '@screens/Home/types';
 import { Backend } from '@services/Backend';
-import { PersonalInformationApiData, SocialApiData } from '@types-api';
-import { PostsApiData } from 'src/types/api/posts';
-import { HomePage, HomePageProps } from '@screens/Home/HomePage';
-import { sanitizePosts } from '@screens/Home/utils/apiSanitizer';
-import { useRouter } from 'next/router';
 import chunk from 'lodash.chunk';
+import { GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
+import React from 'react';
 
 const POST_THRESHOLD = 4;
 
@@ -42,23 +39,69 @@ const Home = ({ posts, ...props }: HomePageProps) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ locale, ...props }) => {
-  console.log(props);
-  const [posts, personalInfo, social] = (await Promise.all([
-    Backend.fetch('posts', {
-      params: {
-        _sort: 'date:DESC',
-        language: locale as string,
-      },
-    }),
-    Backend.fetch('personal-information'),
-    Backend.fetch('social'),
-  ])) as [PostsApiData, PersonalInformationApiData, SocialApiData];
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const {
+    posts,
+    social,
+    personalInformation,
+  } = await Backend.graphql<BlogPageGraphQLResponse>(`
+    query Home {
+      posts(where: { language: "${locale}" }, sort: "date:desc") {
+        id
+        language
+        slug
+        date
+        title
+        subtitle
+        description
+        featured_image {
+          width
+          height
+          url
+        }
+        post_serie {
+          slug
+          name
+          id
+        }
+        post_tags {
+          slug
+          id
+          name
+        }
+      }
+      social {
+        instagram {
+          url
+          display_name
+        }
+        linkedIn {
+          url
+          display_name
+        }
+        twitter {
+          url
+          display_name
+        }
+        github {
+          url
+          display_name
+        }
+      }
+    
+      personalInformation {
+        full_name
+        profile_pic {
+          url
+        }
+      }
+    }  
+  `);
 
   return {
     props: {
-      posts: sanitizePosts(posts),
-      personalInfo,
+      posts,
+      personalInformation,
       social,
       numberOfPosts: posts.length,
     },

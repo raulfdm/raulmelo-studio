@@ -1,19 +1,17 @@
-import React from 'react';
-import Image from 'next/image';
-import { defineMessage, FormattedMessage } from 'react-intl';
-
-import { PersonalInformationApiData } from '@types-api';
 import { siteData } from '@data/siteData';
 import { useLocalization } from '@hooks/useLocalization';
 import {
-  TwitterIcon,
   GithubIcon,
   LinkedInIcon,
+  TwitterIcon,
 } from '@raulfdm/blog-components';
+import Image from 'next/image';
+import React from 'react';
+import { defineMessage, FormattedMessage } from 'react-intl';
 
 type Props = {
-  fullName: PersonalInformationApiData['full_name'];
-  profilePic: PersonalInformationApiData['profile_pic']['url'];
+  fullName: string;
+  profilePic: string;
 };
 
 const message = defineMessage({ id: 'authorPresentation.profileImageAlt' });

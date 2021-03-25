@@ -1,5 +1,5 @@
 import { PostCard } from '@components/PostCard';
-import { PostsApiData } from '@types-api';
+import { BlogPageGraphQLResponse } from '@screens/Home/types';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const itemsAnimationVariants = {
@@ -17,7 +17,7 @@ const itemsAnimationVariants = {
 };
 
 type PostsProps = {
-  posts: PostsApiData;
+  posts: BlogPageGraphQLResponse['posts'];
   title: string;
 };
 

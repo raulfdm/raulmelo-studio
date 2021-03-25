@@ -1,11 +1,10 @@
-import { GetStaticProps } from 'next';
-
 import { hydrate, renderToString } from '@config/mdx';
+import { UsesPageStaticPropsResponse } from '@screens/Uses/types';
 import { UsesPage, UsesPageProps } from '@screens/Uses/UsesPage';
-import { head } from '@utils/utilities';
-import { UsesApiData } from '@types-api';
 import { Backend } from '@services/Backend';
 import { MdxRemoteSource } from '@types-app';
+import { head } from '@utils/utilities';
+import { GetStaticProps } from 'next';
 
 type Props = UsesPageProps & { usesMd: MdxRemoteSource };
 
@@ -16,11 +15,18 @@ const Uses = ({ usesMd, seo }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const uses = (await Backend.fetch('uses', {
-    params: {
-      language: locale as string,
-    },
-  })) as UsesApiData[];
+  const { uses } = await Backend.graphql<UsesPageStaticPropsResponse>(`
+    query {
+      uses(where: { language: "${locale}" }) {
+        language
+        content
+        seo {
+          title
+          description
+        }
+      }
+    }  
+  `);
 
   const usesData = head(uses);
 

@@ -1,8 +1,7 @@
-import { defineMessages, FormattedMessage } from 'react-intl';
-import Link from 'next/link';
-
-import { RelevantTranslationData } from '@screens/Blog/utils/translations';
 import { useLocalization } from '@hooks/useLocalization';
+import { SupportedLanguages } from '@types-app';
+import Link from 'next/link';
+import { defineMessages, FormattedMessage } from 'react-intl';
 
 const messages = defineMessages({
   en: {
@@ -13,10 +12,10 @@ const messages = defineMessages({
   },
 });
 
-export const AvailableTranslations: React.FC<RelevantTranslationData> = ({
-  language,
-  uri,
-}) => {
+export const AvailableTranslations: React.FC<{
+  slug: string;
+  language: SupportedLanguages;
+}> = ({ language, slug }) => {
   const { formatMessage } = useLocalization();
 
   return (
@@ -27,7 +26,7 @@ export const AvailableTranslations: React.FC<RelevantTranslationData> = ({
       <p className="p-4 bg-yellow-200 bg-opacity-80 rounded-md text-sm">
         <FormattedMessage id="blog.availableTranslations.text" />
 
-        <Link href={uri} locale={language}>
+        <Link href={slug} locale={language}>
           <a className="ml-1 underline">{formatMessage(messages[language])}</a>
         </Link>
       </p>
