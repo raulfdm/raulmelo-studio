@@ -44,7 +44,8 @@ export const TagPage: React.FC<TagPageProps> = ({ tag, personalInfo }) => {
           profilePic={personalInfo.profile_pic.url}
         />
         <Posts
-          posts={tag.blog_posts}
+          // TODO: fix that
+          posts={tag.blog_posts as any}
           title={formatMessage(messages.title, { tag: tag.name })}
         />
       </Container>
