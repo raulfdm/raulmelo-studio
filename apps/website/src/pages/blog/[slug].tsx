@@ -6,10 +6,10 @@ import {
   BlogPostPage,
 } from '@screens/Blog/types';
 import { Backend } from '@services/Backend';
+import { SupportedLanguages } from '@types-app';
 import { head } from '@utils/utilities';
 import { GetStaticPaths } from 'next';
 import React from 'react';
-import { PostsApiData } from 'src/types/api/posts';
 
 const BlogPost: React.FC<BlogPostPage> = ({ content, post }) => {
   const parsedContent = hydrate(content);
@@ -37,11 +37,21 @@ export const getStaticProps = async ({ params }: Params) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = (await Backend.fetch('posts')) as PostsApiData;
+  type ResponseType = {
+    posts: { slug: string; language: SupportedLanguages }[];
+  };
+  const { posts } = await Backend.graphql<ResponseType>(`
+    query {
+      posts{
+        slug
+        language
+      }
+    }
+  `);
 
   const paths = posts.map((post) => ({
     params: {
-      slug: post['slug'],
+      slug: post.slug,
     },
     locale: post.language,
   }));
