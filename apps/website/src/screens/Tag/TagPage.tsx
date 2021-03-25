@@ -1,13 +1,12 @@
-import { defineMessages } from 'react-intl';
-
-import { Container } from '@components/Ui';
-import { getTagUrl } from '@utils/url';
 import { MenuBar } from '@components/MenuBar';
-import { PersonalInformationApiData, PostTagApiData } from '@types-api';
-import { Posts } from '@screens/Home/components/Posts';
 import { SEO, titleWithNameAndJobTitle } from '@components/SEO';
+import { Container } from '@components/Ui';
 import { useLocalization } from '@hooks/useLocalization';
 import { AuthorPresentation } from '@screens/Home/components/AuthorPresentation';
+import { Posts } from '@screens/Home/components/Posts';
+import { getTagUrl } from '@utils/url';
+import { defineMessages } from 'react-intl';
+import { TagPageProps } from './types';
 
 const messages = defineMessages({
   description: {
@@ -18,12 +17,10 @@ const messages = defineMessages({
   },
 });
 
-export type TagPageProps = {
-  tag: PostTagApiData;
-  personalInfo: PersonalInformationApiData;
-};
-
-export const TagPage: React.FC<TagPageProps> = ({ tag, personalInfo }) => {
+export const TagPage: React.FC<TagPageProps> = ({
+  tag,
+  personalInformation,
+}) => {
   const { formatMessage } = useLocalization();
 
   return (
@@ -40,11 +37,11 @@ export const TagPage: React.FC<TagPageProps> = ({ tag, personalInfo }) => {
       <MenuBar />
       <Container as="main">
         <AuthorPresentation
-          fullName={personalInfo.full_name}
-          profilePic={personalInfo.profile_pic.url}
+          fullName={personalInformation.full_name}
+          profilePic={personalInformation.profile_pic.url}
         />
         <Posts
-          // TODO: fix that
+          //TODO: need to fix that when I start moving those UI components to components package
           posts={tag.blog_posts as any}
           title={formatMessage(messages.title, { tag: tag.name })}
         />

@@ -12,4 +12,5 @@ export interface PostTagApiData {
   blog_posts: PostsApiData;
 }
 
+// TODO: remove that
 export type PostsTagApiData = PostTagApiData[];

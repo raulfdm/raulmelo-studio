@@ -1,61 +1,80 @@
-import React from 'react';
-import { GetStaticPaths } from 'next';
-
-import { Backend } from '@services/Backend';
-import { PersonalInformationApiData, PostsTagApiData } from '@types-api';
-import { TagPage, TagPageProps } from '@screens/Tag/TagPage';
-import { SupportedLanguages } from '@types-app';
-
-import { head, pipe } from '@utils/ramda';
+import { TagPage } from '@screens/Tag/TagPage';
 import {
-  filterTagPostsFromLocale,
-  sortTagPosts,
-  sanitizePostTag,
-} from '@screens/Tag/utils/posts';
+  TagPageParams,
+  TagPageProps,
+  TagPageQueryGraphQLResponse,
+  TagPageStaticPathQuery,
+} from '@screens/Tag/types';
+import { Backend } from '@services/Backend';
+import { SupportedLanguages } from '@types-app';
+import { head } from '@utils/ramda';
+import { GetStaticPaths } from 'next';
+import React from 'react';
 
-const Tag = (props: TagPageProps) => {
-  return <TagPage {...props} />;
-};
+const Tag = (props: TagPageProps) => <TagPage {...props} />;
 
-type Params = {
-  params: {
-    slug: string;
-  };
-  locale: SupportedLanguages;
-};
+export const getStaticProps = async ({ params, locale }: TagPageParams) => {
+  const query = `
+    query TagPage {
+      postTags(where: { slug: "${params.slug}" }) {
+        id
+        slug
+        name
+        blog_posts(sort: "date:desc", where: { language: "${locale}" }) {
+          id
+          language
+          slug
+          date
+          subtitle
+          description
+          featured_image {
+            url
+            height
+            width
+          }
+          post_tags {
+            slug
+            id
+            name
+          }
+        }
+      }
+    
+      personalInformation {
+        full_name
+        profile_pic {
+          url
+        }
+      }
+    }
+  `;
 
-export const getStaticProps = async ({ params, locale }: Params) => {
-  const [tags, personalInfo]: [
-    PostsTagApiData,
-    PersonalInformationApiData,
-  ] = await Promise.all([
-    Backend.fetch('post-tags', {
-      params: {
-        slug: params.slug,
-      },
-    }),
-    Backend.fetch('personal-information'),
-  ]);
+  const {
+    personalInformation,
+    postTags,
+  } = await Backend.graphql<TagPageQueryGraphQLResponse>(query);
 
-  const tag = head(tags)!;
+  const tag = head(postTags);
 
   return {
     props: {
-      tag: pipe(
-        sanitizePostTag,
-        sortTagPosts,
-        filterTagPostsFromLocale(locale),
-      )(tag),
-      personalInfo,
-    },
+      tag,
+      personalInformation,
+    } as TagPageProps,
     revalidate: 1,
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const tags = (await Backend.fetch('post-tags')) as PostsTagApiData;
+  const { postTags } = await Backend.graphql<TagPageStaticPathQuery>(`
+    query{
+      postTags{
+        slug
+      }
+    }
+  `);
 
-  const paths: Params[] = [];
+  const paths: TagPageParams[] = [];
 
   /**
    * Without this generation, when I'm in `/tag/css` for instance
@@ -70,7 +89,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
    */
 
   ['en', 'pt'].forEach((lang) => {
-    tags.forEach((tag) => {
+    postTags.forEach((tag) => {
       paths.push({
         params: {
           slug: tag.slug,
