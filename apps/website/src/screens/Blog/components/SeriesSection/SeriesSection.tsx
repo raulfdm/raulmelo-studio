@@ -1,6 +1,6 @@
 import { Container } from '@components/Ui';
 import { ChevronDownIcon } from '@raulfdm/blog-components';
-import { RelevantPostSerieData } from '@screens/Blog/utils/series';
+import { BlogPostGraphQL } from '@screens/Blog/types';
 import { createMachine } from '@xstate/fsm';
 import { useMachine } from '@xstate/react/lib/fsm';
 import { default as classnames, default as classNames } from 'classnames';
@@ -77,7 +77,7 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
   currentPostId,
 }) => {
   const [current, send] = useMachine(seriesMachine);
-  const { name, posts, amount } = series;
+  const { name, posts } = series;
   const currentState = current.value as SeriesMachineState;
 
   const toggleSection = () => send('TOGGLE');
@@ -135,7 +135,7 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
           <Footer
             currentState={currentState}
             toggleSection={toggleSection}
-            amount={amount}
+            amount={posts.length}
           />
         </div>
       </div>
@@ -214,7 +214,7 @@ type HeaderProps = {
 
 interface SeriesSectionProps {
   currentPostId: string;
-  series: RelevantPostSerieData;
+  series: NonNullable<BlogPostGraphQL['series']>;
   divider?: boolean;
 }
 

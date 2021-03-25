@@ -1,20 +1,16 @@
-import dynamic from 'next/dynamic';
-import { ProseContainer, DotDivider } from '@raulfdm/blog-components';
-
-import { getPostUrl } from '@utils/url';
-import { Header } from './components/Header';
-import { PostApiData } from '@types-api';
-import { PrismStyles } from './components/PrismStyles';
-import { RelevantPostSerieData } from './utils/series';
-import { RelevantTranslationData } from './utils/translations';
-import { SEO } from '@components/SEO';
-import { useLocalization } from '@hooks/useLocalization';
-
-import type { SeriesSection as SeriesSectionType } from './components/SeriesSection';
-import type { FeaturedImage as FeaturedImageType } from './components/FeaturedImage';
-import type { AvailableTranslations as AvailableTranslationsType } from './components/AvailableTranslations';
 import type { MenuBar as MenuBarType } from '@components/MenuBar';
 import type { PostTags as TagsType } from '@components/PostTags';
+import { SEO } from '@components/SEO';
+import { useLocalization } from '@hooks/useLocalization';
+import { DotDivider, ProseContainer } from '@raulfdm/blog-components';
+import { getPostUrl } from '@utils/url';
+import dynamic from 'next/dynamic';
+import type { AvailableTranslations as AvailableTranslationsType } from './components/AvailableTranslations';
+import type { FeaturedImage as FeaturedImageType } from './components/FeaturedImage';
+import { Header } from './components/Header';
+import { PrismStyles } from './components/PrismStyles';
+import type { SeriesSection as SeriesSectionType } from './components/SeriesSection';
+import { BlogPageProps } from './types';
 
 const SeriesSection = dynamic(() =>
   import('./components/SeriesSection').then((mod) => mod.SeriesSection),
@@ -38,19 +34,8 @@ const PostTags = dynamic(() =>
   import('@components/PostTags').then((mod) => mod.PostTags),
 ) as typeof TagsType;
 
-export type BlogPageProps = {
-  post: PostApiData;
-  series?: RelevantPostSerieData;
-  translation?: RelevantTranslationData;
-};
-
-export const BlogPage: React.FC<BlogPageProps> = ({
-  children,
-  post,
-  series,
-  translation,
-}) => {
-  const { featured_image, post_tags, unsplash } = post;
+export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
+  const { featured_image, post_tags, unsplash, series, translation } = post;
   const { locale } = useLocalization();
 
   const allSeries = series ? (
@@ -109,9 +94,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
       <footer className="container mx-auto px-4 md:px-0 max-w-screen-md">
         {seriesWithDivider}
         <hr className="mt-10 mb-6" />
-        {post_tags ? (
-          <PostTags tags={post_tags} tagClassName={'text-base lg:text-lg'} />
-        ) : null}
+        <PostTags tags={post_tags} tagClassName={'text-base lg:text-lg'} />
       </footer>
     </>
   );

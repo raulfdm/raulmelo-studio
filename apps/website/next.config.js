@@ -9,6 +9,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const nextConfig = {
   target: 'serverless',
+  reactStrictMode: true,
   i18n: {
     locales: ['en', 'pt'],
     defaultLocale: 'en',

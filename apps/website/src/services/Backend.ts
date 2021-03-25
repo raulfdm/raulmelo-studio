@@ -3,8 +3,8 @@ import { stringify as qsStringify } from 'qs';
 
 import { API_URL, IS_DEVELOPMENT } from '@config/app';
 
-async function fetcher(url: string) {
-  const res = await fetch(url);
+async function fetcher(url: string, opts?: RequestInit) {
+  const res = await fetch(url, opts);
 
   return await res.json();
 }
@@ -43,5 +43,20 @@ export const Backend = {
     }
 
     return fetcher(url);
+  },
+
+  async graphql<T>(query: string): Promise<T> {
+    const url = `${API_URL}/graphql`;
+
+    const res = await fetcher(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({ query }),
+    });
+
+    return res.data;
   },
 };

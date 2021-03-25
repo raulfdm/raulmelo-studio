@@ -42,8 +42,7 @@ const Home = ({ posts, ...props }: HomePageProps) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ locale, ...props }) => {
-  console.log(props);
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const [posts, personalInfo, social] = (await Promise.all([
     Backend.fetch('posts', {
       params: {
