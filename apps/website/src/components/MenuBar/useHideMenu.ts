@@ -5,7 +5,7 @@ import { useWindowScroll } from 'react-use';
 import { useEffect } from 'react';
 
 export function useHideMenu(): 'open' | 'closed' {
-  const [current, send] = useMachine(scrollMachine2);
+  const [current, send] = useMachine(scrollMachine);
   const { y } = useWindowScroll();
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const initialState: Context = {
   previousY: -1,
 };
 
-const scrollMachine2 = createMachine<Context, MachineEvents>(
+const scrollMachine = createMachine<Context, MachineEvents>(
   {
     initial: 'open',
     context: initialState,
@@ -66,31 +66,46 @@ const scrollMachine2 = createMachine<Context, MachineEvents>(
   },
   {
     actions: {
-      updateDirections: assign(({ currentY }, { y }) => {
-        const nextContext: Partial<Context> = {
-          currentY: y,
-          previousY: currentY,
-        };
+      updateDirections: assign((context, event) => {
+        const { currentY } = context;
 
-        if (y === 0) {
-          nextContext.direction = 'up';
-        } else {
-          nextContext.direction = currentY - y < 0 ? 'down' : 'up';
+        /**
+         * Because of the UNION, event can be typeof "reset"
+         * which does not contains "y".
+         *
+         * GO TYPESCRIPT!!!1!
+         */
+        if ('y' in event) {
+          const { y } = event;
+          const nextContext: Partial<Context> = {
+            currentY: y,
+            previousY: currentY,
+          };
+
+          if (y === 0) {
+            nextContext.direction = 'up';
+          } else {
+            nextContext.direction = currentY - y < 0 ? 'down' : 'up';
+          }
+
+          return nextContext as Context;
         }
 
-        return nextContext as Context;
+        return context;
       }),
       resetMachine: assign(initialState),
     },
   },
 );
 
-type MachineEvents =
-  | {
-      type: 'SCROLL';
-      y: number;
-    }
-  | { type: 'RESET' };
+type ScrollEvent = {
+  type: 'SCROLL';
+  y: number;
+};
+
+type ResetEvent = { type: 'RESET' };
+
+type MachineEvents = ScrollEvent | ResetEvent;
 
 type Context = {
   direction: 'down' | 'up';
