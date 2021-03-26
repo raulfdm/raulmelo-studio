@@ -5,78 +5,110 @@ import { useWindowScroll } from 'react-use';
 import { useEffect } from 'react';
 
 export function useHideMenu(): 'open' | 'closed' {
-  // @ts-ignore
   const [current, send] = useMachine(scrollMachine);
   const { y } = useWindowScroll();
 
   useEffect(() => {
-    send({ type: 'SCROLL', y });
+    if (y === 0) {
+      send({ type: 'RESET' });
+    } else {
+      send({ type: 'SCROLL', y });
+    }
   }, [y]);
 
-  return current.context.menuState ?? 'open';
+  return current.value;
 }
+
+const initialState: Context = {
+  direction: 'up',
+  currentY: 0,
+  previousY: -1,
+};
+
+const scrollMachine = createMachine<Context, MachineEvents>(
+  {
+    initial: 'open',
+    context: initialState,
+    states: {
+      open: {
+        on: {
+          SCROLL: [
+            {
+              target: 'closed',
+              cond: ({ direction }) => direction === 'down',
+            },
+            {
+              target: 'open',
+              actions: 'updateDirections',
+            },
+          ],
+        },
+      },
+      closed: {
+        on: {
+          SCROLL: [
+            {
+              target: 'open',
+              cond: ({ direction }) => direction === 'up',
+            },
+            {
+              target: 'closed',
+              actions: 'updateDirections',
+            },
+          ],
+          RESET: {
+            target: 'open',
+            actions: 'resetMachine',
+          },
+        },
+      },
+    },
+  },
+  {
+    actions: {
+      updateDirections: assign((context, event) => {
+        const { currentY } = context;
+
+        /**
+         * Because of the UNION, event can be typeof "reset"
+         * which does not contains "y".
+         *
+         * GO TYPESCRIPT!!!1!
+         */
+        if ('y' in event) {
+          const { y } = event;
+          const nextContext: Partial<Context> = {
+            currentY: y,
+            previousY: currentY,
+          };
+
+          if (y === 0) {
+            nextContext.direction = 'up';
+          } else {
+            nextContext.direction = currentY - y < 0 ? 'down' : 'up';
+          }
+
+          return nextContext as Context;
+        }
+
+        return context;
+      }),
+      resetMachine: assign(initialState),
+    },
+  },
+);
 
 type ScrollEvent = {
   type: 'SCROLL';
   y: number;
 };
 
+type ResetEvent = { type: 'RESET' };
+
+type MachineEvents = ScrollEvent | ResetEvent;
+
 type Context = {
-  direction: 'down' | 'up' | undefined;
+  direction: 'down' | 'up';
   currentY: number;
-  menuState: 'open' | 'closed' | undefined;
+  previousY: number;
 };
-
-const context = {
-  direction: undefined,
-  currentY: 0,
-  menuState: undefined,
-};
-
-const scrollMachine = createMachine<Context, ScrollEvent>(
-  {
-    initial: 'idle',
-    context,
-    states: {
-      idle: {
-        on: {
-          SCROLL: {
-            target: 'scrolling',
-          },
-        },
-      },
-      scrolling: {
-        on: {
-          SCROLL: {
-            target: 'scrolling',
-            actions: 'updateY',
-          },
-        },
-        // @ts-ignore
-        after: {
-          400: 'idle',
-        },
-        exit: 'setDirection',
-      },
-    },
-  },
-  {
-    delays: {
-      TOGGLE: 400,
-    },
-    actions: {
-      updateY: assign({
-        currentY: (_, event) => event.y,
-        direction: ({ currentY }, { y }) => {
-          const diff = currentY - y;
-          return diff < 0 ? 'down' : 'up';
-        },
-      }),
-      setDirection: assign({
-        menuState: (context) => {
-          return context.direction === 'down' ? 'closed' : 'open';
-        },
-      }),
-    },
-  },
-);
