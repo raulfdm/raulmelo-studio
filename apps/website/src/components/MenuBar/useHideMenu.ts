@@ -5,78 +5,95 @@ import { useWindowScroll } from 'react-use';
 import { useEffect } from 'react';
 
 export function useHideMenu(): 'open' | 'closed' {
-  // @ts-ignore
-  const [current, send] = useMachine(scrollMachine);
+  const [current, send] = useMachine(scrollMachine2);
   const { y } = useWindowScroll();
 
   useEffect(() => {
-    send({ type: 'SCROLL', y });
+    if (y === 0) {
+      send({ type: 'RESET' });
+    } else {
+      send({ type: 'SCROLL', y });
+    }
   }, [y]);
 
-  return current.context.menuState ?? 'open';
+  return current.value;
 }
 
-type ScrollEvent = {
-  type: 'SCROLL';
-  y: number;
-};
-
-type Context = {
-  direction: 'down' | 'up' | undefined;
-  currentY: number;
-  menuState: 'open' | 'closed' | undefined;
-};
-
-const context = {
-  direction: undefined,
+const initialState: Context = {
+  direction: 'up',
   currentY: 0,
-  menuState: undefined,
+  previousY: -1,
 };
 
-const scrollMachine = createMachine<Context, ScrollEvent>(
+const scrollMachine2 = createMachine<Context, MachineEvents>(
   {
-    initial: 'idle',
-    context,
+    initial: 'open',
+    context: initialState,
     states: {
-      idle: {
+      open: {
         on: {
-          SCROLL: {
-            target: 'scrolling',
-          },
+          SCROLL: [
+            {
+              target: 'closed',
+              cond: ({ direction }) => direction === 'down',
+            },
+            {
+              target: 'open',
+              actions: 'updateDirections',
+            },
+          ],
         },
       },
-      scrolling: {
+      closed: {
         on: {
-          SCROLL: {
-            target: 'scrolling',
-            actions: 'updateY',
+          SCROLL: [
+            {
+              target: 'open',
+              cond: ({ direction }) => direction === 'up',
+            },
+            {
+              target: 'closed',
+              actions: 'updateDirections',
+            },
+          ],
+          RESET: {
+            target: 'open',
+            actions: 'resetMachine',
           },
         },
-        // @ts-ignore
-        after: {
-          400: 'idle',
-        },
-        exit: 'setDirection',
       },
     },
   },
   {
-    delays: {
-      TOGGLE: 400,
-    },
     actions: {
-      updateY: assign({
-        currentY: (_, event) => event.y,
-        direction: ({ currentY }, { y }) => {
-          const diff = currentY - y;
-          return diff < 0 ? 'down' : 'up';
-        },
+      updateDirections: assign(({ currentY }, { y }) => {
+        const nextContext: Partial<Context> = {
+          currentY: y,
+          previousY: currentY,
+        };
+
+        if (y === 0) {
+          nextContext.direction = 'up';
+        } else {
+          nextContext.direction = currentY - y < 0 ? 'down' : 'up';
+        }
+
+        return nextContext as Context;
       }),
-      setDirection: assign({
-        menuState: (context) => {
-          return context.direction === 'down' ? 'closed' : 'open';
-        },
-      }),
+      resetMachine: assign(initialState),
     },
   },
 );
+
+type MachineEvents =
+  | {
+      type: 'SCROLL';
+      y: number;
+    }
+  | { type: 'RESET' };
+
+type Context = {
+  direction: 'down' | 'up';
+  currentY: number;
+  previousY: number;
+};

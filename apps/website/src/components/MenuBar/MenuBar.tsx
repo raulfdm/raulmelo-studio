@@ -28,7 +28,6 @@ export const MenuBar: FC = () => {
           'bg-white dark:bg-blue-800',
           'transition-theme duration-200 ease',
         ])}
-        // animate={current.value}
         animate={menuState}
         variants={variants}
         transition={{ duration: 0.3, type: 'tween' }}
