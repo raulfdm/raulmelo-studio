@@ -10,7 +10,7 @@ const meta: Meta = {
 
 export default meta;
 
-export const defaultCase: Story<ProseContainerProps> = () => (
+export const defaultCase: Story = () => (
   <>
     <DropdownMenu
       items={
