@@ -1,5 +1,6 @@
-import { SideMenu, SideMenuNavIcon } from '@components/SideMenu';
-import { Logo } from '@raulfdm/blog-components';
+import { SideMenu } from '@components/SideMenu';
+import { useApp } from '@hooks/useApp';
+import { CloseIcon, Logo, MenuIcon } from '@raulfdm/blog-components';
 import classNames from 'classnames';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -10,6 +11,9 @@ import { useHideMenu } from './useHideMenu';
 
 export const MenuBar: FC = () => {
   const menuState = useHideMenu();
+  const { sideMenu } = useApp();
+
+  const Icon = sideMenu.isClosed ? MenuIcon : CloseIcon;
 
   const variants = {
     open: { y: 0 },
@@ -44,7 +48,12 @@ export const MenuBar: FC = () => {
           <div className="flex flex-1 justify-end space-x-3">
             <ThemeSwitch />
             <LanguageSwitch />
-            <SideMenuNavIcon />
+            <MenuButton
+              onClick={sideMenu.toggle}
+              data-testid="side-menu-button"
+            >
+              <Icon width={21} />
+            </MenuButton>
           </div>
         </div>
       </motion.section>

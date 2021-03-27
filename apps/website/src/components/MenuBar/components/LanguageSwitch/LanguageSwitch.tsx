@@ -1,12 +1,14 @@
-import { FormattedMessage } from 'react-intl';
-import { useRouter } from 'next/router';
-import { GlobeIcon } from '@raulfdm/blog-components';
-
-import { useLocalization } from '@hooks/useLocalization';
-import { DropdownMenu, DropdownMenuItem } from '@components/DropdownMenu';
 import { MenuButton } from '@components/MenuBar';
+import { useLocalization } from '@hooks/useLocalization';
+import {
+  DropdownMenu,
+  DropdownMenuItem,
+  GlobeIcon,
+} from '@raulfdm/blog-components';
+import { useRouter } from 'next/router';
+import { FormattedMessage } from 'react-intl';
 
-export const LanguageSwitch: React.FC = () => {
+export const LanguageSwitch = () => {
   const { switchToEnglish, switchToPortuguese } = useLocalization();
   const { pathname } = useRouter();
 

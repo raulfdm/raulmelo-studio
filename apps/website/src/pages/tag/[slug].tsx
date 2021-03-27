@@ -25,6 +25,7 @@ export const getStaticProps = async ({ params, locale }: TagPageParams) => {
           language
           slug
           date
+          title
           subtitle
           description
           featured_image {

@@ -1,9 +1,8 @@
-import { Container } from '@components/Ui';
-import { ChevronDownIcon } from '@raulfdm/blog-components';
+import { ChevronDownIcon, UiContainer } from '@raulfdm/blog-components';
 import { BlogPostGraphQL } from '@screens/Blog/types';
 import { createMachine } from '@xstate/fsm';
 import { useMachine } from '@xstate/react/lib/fsm';
-import { default as classnames, default as classNames } from 'classnames';
+import classNames from 'classnames';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FormattedMessage } from 'react-intl';
@@ -83,7 +82,7 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
   const toggleSection = () => send('TOGGLE');
 
   return (
-    <Container data-testid="series-section" as="section">
+    <UiContainer data-testid="series-section" as="section">
       <div
         className={classNames([
           'relative',
@@ -113,7 +112,7 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
               const isCurrentPost = id === currentPostId;
               return (
                 <motion.li
-                  className={classnames([
+                  className={classNames([
                     'cursor-pointer',
                     'm-0 p-b',
                     'font-sans text-sm md:text-base',
@@ -139,14 +138,14 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
           />
         </div>
       </div>
-    </Container>
+    </UiContainer>
   );
 };
 
 const Header = ({ toggleSection, name, currentState }: HeaderProps) => {
   return (
     <div
-      className={classnames([
+      className={classNames([
         'flex content-between',
         'cursor-pointer',
         'py-3 px-4',
@@ -179,7 +178,7 @@ const Footer = ({ amount, toggleSection, currentState }: FooterProps) => {
   return (
     <div
       onClick={toggleSection}
-      className={classnames([
+      className={classNames([
         'flex content-between',
         'cursor-pointer',
         'py-3 px-4',
