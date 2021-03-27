@@ -12,9 +12,10 @@ interface PostTag2 {
   name: string;
 }
 
-interface BlogPost {
+export interface BlogPostFromTagPage {
   id: string;
-  language: string;
+  language: SupportedLanguages;
+  title: string;
   slug: string;
   date: string;
   subtitle: string;
@@ -27,7 +28,7 @@ interface PostTag {
   id: string;
   slug: string;
   name: string;
-  blog_posts: BlogPost[];
+  blog_posts: BlogPostFromTagPage[];
 }
 
 interface ProfilePic {

@@ -1,12 +1,12 @@
 import { MenuBar } from '@components/MenuBar';
 import { SEO, titleWithNameAndJobTitle } from '@components/SEO';
-import { Container } from '@components/Ui';
 import { useLocalization } from '@hooks/useLocalization';
 import { AuthorPresentation } from '@screens/Home/components/AuthorPresentation';
 import { Posts } from '@screens/Home/components/Posts';
 import { getTagUrl } from '@utils/url';
 import { defineMessages } from 'react-intl';
 import { TagPageProps } from './types';
+import { UiContainer } from '@raulfdm/blog-components';
 
 const messages = defineMessages({
   description: {
@@ -35,17 +35,16 @@ export const TagPage: React.FC<TagPageProps> = ({
       />
 
       <MenuBar />
-      <Container as="main">
+      <UiContainer as="main">
         <AuthorPresentation
           fullName={personalInformation.full_name}
           profilePic={personalInformation.profile_pic.url}
         />
         <Posts
-          //TODO: need to fix that when I start moving those UI components to components package
-          posts={tag.blog_posts as any}
+          posts={tag.blog_posts}
           title={formatMessage(messages.title, { tag: tag.name })}
         />
-      </Container>
+      </UiContainer>
     </>
   );
 };
