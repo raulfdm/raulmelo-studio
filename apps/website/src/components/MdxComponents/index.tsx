@@ -13,8 +13,7 @@ import {
   ImageSliderFactory,
 } from '@raulfdm/blog-components';
 import NextImage from 'next/image';
-
-import { TwitterCard } from './TwitterCard';
+import { Tweet } from 'react-twitter-widgets';
 import { Image } from './Image';
 
 export const mdxComponents = {
@@ -24,7 +23,9 @@ export const mdxComponents = {
   YouTubeVideo: YouTubeIframe,
   hr: DotDivider,
   Image,
-  TwitterCard,
+  Tweet: function TweetWrapper({ tweetId }: { tweetId: string }) {
+    return <Tweet tweetId={tweetId} options={{ align: 'center' }} />;
+  },
   h1: H1,
   h2: H2,
   h3: H3,

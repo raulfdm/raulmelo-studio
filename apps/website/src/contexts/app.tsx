@@ -1,8 +1,7 @@
 import React, { createContext } from 'react';
+import { useSideMenu, UseSideMenu } from '@raulfdm/blog-components';
 
-import { useSideMenu } from '@hooks/useSideMenu';
-
-type AppContextTypes = { sideMenu: ReturnType<typeof useSideMenu> };
+type AppContextTypes = { sideMenu: UseSideMenu };
 
 export const AppContext = createContext<AppContextTypes | undefined>(undefined);
 

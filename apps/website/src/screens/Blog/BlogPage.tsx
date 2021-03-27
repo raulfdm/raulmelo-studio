@@ -1,12 +1,18 @@
 import type { MenuBar as MenuBarType } from '@components/MenuBar';
-import type { PostTags as TagsType } from '@components/PostTags';
 import { SEO } from '@components/SEO';
 import { useLocalization } from '@hooks/useLocalization';
-import { DotDivider, ProseContainer } from '@raulfdm/blog-components';
-import { getPostUrl } from '@utils/url';
+import {
+  DotDivider,
+  ProseContainer,
+  Tag,
+  Tags,
+} from '@raulfdm/blog-components';
+import { getPostUrl, getTagUrl } from '@utils/url';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import React from 'react';
 import type { AvailableTranslations as AvailableTranslationsType } from './components/AvailableTranslations';
-import type { FeaturedImage as FeaturedImageType } from './components/FeaturedImage';
+import { FeaturedImage } from './components/FeaturedImage';
 import { Header } from './components/Header';
 import { PrismStyles } from './components/PrismStyles';
 import type { SeriesSection as SeriesSectionType } from './components/SeriesSection';
@@ -15,10 +21,6 @@ import { BlogPageProps } from './types';
 const SeriesSection = dynamic(() =>
   import('./components/SeriesSection').then((mod) => mod.SeriesSection),
 ) as typeof SeriesSectionType;
-
-const FeaturedImage = dynamic(() =>
-  import('./components/FeaturedImage').then((mod) => mod.FeaturedImage),
-) as typeof FeaturedImageType;
 
 const AvailableTranslations = dynamic(() =>
   import('./components/AvailableTranslations').then(
@@ -29,10 +31,6 @@ const AvailableTranslations = dynamic(() =>
 const MenuBar = dynamic(() =>
   import('@components/MenuBar').then((mod) => mod.MenuBar),
 ) as typeof MenuBarType;
-
-const PostTags = dynamic(() =>
-  import('@components/PostTags').then((mod) => mod.PostTags),
-) as typeof TagsType;
 
 export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
   const { featured_image, post_tags, unsplash, series, translation } = post;
@@ -94,7 +92,17 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
       <footer className="container mx-auto px-4 md:px-0 max-w-screen-md">
         {seriesWithDivider}
         <hr className="mt-10 mb-6" />
-        <PostTags tags={post_tags} tagClassName={'text-base lg:text-lg'} />
+        <Tags>
+          {post_tags.map((tag) => {
+            return (
+              <Tag key={tag.id} className="text-base lg:text-lg">
+                <Link href={getTagUrl(tag.slug)}>
+                  <a className="underline">#{tag.name}</a>
+                </Link>
+              </Tag>
+            );
+          })}
+        </Tags>
       </footer>
     </>
   );

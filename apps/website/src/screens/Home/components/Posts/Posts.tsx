@@ -1,5 +1,5 @@
-import { PostCard } from '@components/PostCard';
-import { BlogPageGraphQLResponse } from '@screens/Home/types';
+import { PostCardWrapper } from '@components/PostCardWrapper';
+import { BlogPostFromTagPage } from '@screens/Tag/types';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const itemsAnimationVariants = {
@@ -17,7 +17,7 @@ const itemsAnimationVariants = {
 };
 
 type PostsProps = {
-  posts: BlogPageGraphQLResponse['posts'];
+  posts: BlogPostFromTagPage[];
   title: string;
 };
 
@@ -43,7 +43,7 @@ export const Posts = ({ posts, title }: PostsProps) => {
                     },
                   }}
                 >
-                  <PostCard post={post} key={post.id} />
+                  <PostCardWrapper post={post} />
                 </motion.li>
               ))
             : null}
