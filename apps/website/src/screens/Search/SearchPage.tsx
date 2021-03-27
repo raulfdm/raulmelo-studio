@@ -4,7 +4,7 @@ import { SEO } from '@components/SEO';
 import { algoliaConfig } from '@config/algolia';
 import { useLocalization } from '@hooks/useLocalization';
 import { AlgoliaIcon } from '@raulfdm/blog-components';
-import { HitAlgolia, SupportedLanguages } from '@types-app';
+import { HitAlgolia } from '@types-app';
 import React from 'react';
 import { Hits, InstantSearch, SearchBox, Stats } from 'react-instantsearch-dom';
 import { defineMessages } from 'react-intl';
@@ -80,32 +80,8 @@ function AlgoliaHits() {
   return (
     <Hits
       hitComponent={({ hit }: { hit: HitAlgolia }) => {
-        const { timeToRead, excerpt } = hit;
-
-        const post = {
-          ...hit,
-          childStrapiPostContent: {
-            childMdx: { excerpt, timeToRead },
-          },
-        } as PostHit;
-
-        return <PostCardWrapper key={hit.objectID} post={post} />;
+        return <PostCardWrapper key={hit.objectID} post={hit} />;
       }}
     />
   );
 }
-
-type PostHit = {
-  title: string;
-  subtitle?: string;
-  slug: string;
-  language: SupportedLanguages;
-  date: string;
-  featured_image: {
-    url: string;
-  };
-  post_tags: {
-    name: string;
-    slug: string;
-  }[];
-};
