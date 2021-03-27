@@ -25,13 +25,13 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Build storybook
-        run: yarn build-storybook
+        run: yarn lerna run storybook-build --scope="@raulfdm/blog-components" --stream
 
       - name: Deploy Storybook docs to Netlify
         uses: nwtgck/actions-netlify@v1.1
         id: deploy
         with:
-          publish-dir: storybook-static
+          publish-dir: packages/blog-components/storybook-static
           github-token: ${{ secrets.GITHUB_TOKEN }}
           production-branch: main
           deploy-message: 'Deploy from GitHub Actions - Storybook'
