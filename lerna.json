@@ -1,18 +1,16 @@
 {
   "version": "independent",
-  "packages": [
-    "packages/*",
-    "apps/*"
-  ],
+  "packages": ["packages/*", "apps/*"],
   "npmClient": "yarn",
   "useWorkspaces": true,
   "command": {
+    "version": {
+      "allowBranch": "main"
+    },
     "publish": {
       "conventionalCommits": true,
       "message": "chore(release): publish",
-      "ignoreChanges": [
-        "*.md"
-      ]
+      "ignoreChanges": ["*.md", "!packages/**/*"]
     }
   }
 }
