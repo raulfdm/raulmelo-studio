@@ -17,6 +17,10 @@ jobs:
           # pulls all commits (needed for lerna / semantic release to correctly version)
           fetch-depth: '0'
 
+      # pulls all tags (needed for lerna / semantic release to correctly version)
+      - name: Pull all tags
+        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+
       - name: Use Node
         uses: actions/setup-node@v2
         with:
