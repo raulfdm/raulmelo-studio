@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.12](https://github.com/raulfdm/raulmelo-studio/compare/@raulfdm/blog-tailwind-preset@1.0.9...@raulfdm/blog-tailwind-preset@1.0.12) (2021-03-28)
+
+### Bug Fixes
+
+- **blog-tailwind-preset:** decrease font-size and remove h1 override ([4313c8c](https://github.com/raulfdm/raulmelo-studio/commit/4313c8cca13a5f429c383fdf11e743df4e2f8fdf))
+
 ## [1.0.11](https://github.com/raulfdm/raulmelo-studio/compare/@raulfdm/blog-tailwind-preset@1.0.9...@raulfdm/blog-tailwind-preset@1.0.11) (2021-03-28)
 
 **Note:** Version bump only for package @raulfdm/blog-tailwind-preset
