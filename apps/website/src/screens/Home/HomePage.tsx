@@ -1,8 +1,11 @@
 import { MenuBar } from '@components/MenuBar';
 import { SEO } from '@components/SEO';
-import { Container } from '@components/Ui';
 import { useLocalization } from '@hooks/useLocalization';
-import { Pagination, PaginationItem } from '@raulfdm/blog-components';
+import {
+  Pagination,
+  PaginationItem,
+  UiContainer,
+} from '@raulfdm/blog-components';
 import { useRouter } from 'next/router';
 import { defineMessages } from 'react-intl';
 import { AuthorPresentation } from './components/AuthorPresentation';
@@ -46,7 +49,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       />
 
       <MenuBar />
-      <Container as="main">
+      <UiContainer as="main">
         <AuthorPresentation
           fullName={personalInformation.full_name}
           profilePic={personalInformation.profile_pic.url}
@@ -66,7 +69,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             }}
           />
         ) : null}
-      </Container>
+      </UiContainer>
     </>
   );
 };

@@ -1,11 +1,10 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import classNames from 'classnames';
 import omit from 'lodash.omit';
-
-import { ChevronLeftIcon, ChevronRightIcon } from '../Icons';
+import React from 'react';
+import useMeasure from 'react-use-measure';
 import { useCircularIndexes } from '../hooks/useCircularIndexes';
-import { useMeasure } from '../hooks/useMeasure';
+import { ChevronLeftIcon, ChevronRightIcon } from '../Icons';
 import { validations } from './utils';
 
 const Figure = styled.figure`
@@ -21,7 +20,7 @@ export const ImageSlider = ({
 }: ImageSliderProps) => {
   const [figureRefMeasure] = useMeasure();
   const { currentIndex, nextIndex, prevIndex } = useCircularIndexes(
-    images.length
+    images.length,
   );
   const currentImage = images[currentIndex];
   validations(currentImage);

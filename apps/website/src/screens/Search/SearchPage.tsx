@@ -1,20 +1,14 @@
-import React from 'react';
-import { defineMessages } from 'react-intl';
-import { InstantSearch, SearchBox, Hits, Stats } from 'react-instantsearch-dom';
-import dynamic from 'next/dynamic';
-import { AlgoliaIcon } from '@raulfdm/blog-components';
-
-import { SEO } from '@components/SEO';
-import { useLocalization } from '@hooks/useLocalization';
-import { algoliaConfig } from '@config/algolia';
-import { HitAlgolia } from '@types-app';
 import { MenuBar } from '@components/MenuBar';
+import { PostCardWrapper } from '@components/PostCardWrapper';
+import { SEO } from '@components/SEO';
+import { algoliaConfig } from '@config/algolia';
+import { useLocalization } from '@hooks/useLocalization';
+import { AlgoliaIcon } from '@raulfdm/blog-components';
+import { HitAlgolia } from '@types-app';
+import React from 'react';
+import { Hits, InstantSearch, SearchBox, Stats } from 'react-instantsearch-dom';
+import { defineMessages } from 'react-intl';
 import { algoliaDebounceSearchClient } from './utils';
-import type { PostCard as PostCardType } from '@components/PostCard';
-
-const PostCard = dynamic(() =>
-  import('@components/PostCard').then((mod) => mod.PostCard),
-) as typeof PostCardType;
 
 const messages = defineMessages({
   stats: {
@@ -86,16 +80,7 @@ function AlgoliaHits() {
   return (
     <Hits
       hitComponent={({ hit }: { hit: HitAlgolia }) => {
-        const { timeToRead, excerpt } = hit;
-
-        const post = {
-          ...hit,
-          childStrapiPostContent: {
-            childMdx: { excerpt, timeToRead },
-          },
-        };
-
-        return <PostCard post={post as any} key={hit.objectID} />;
+        return <PostCardWrapper key={hit.objectID} post={hit} />;
       }}
     />
   );
