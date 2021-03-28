@@ -45,6 +45,9 @@ module.exports = {
             css: {
               color: black,
               fontFamily: serif,
+              h1: {
+                fontFamily: serif,
+              },
               h2: {
                 fontFamily: sans,
               },
@@ -65,7 +68,6 @@ module.exports = {
               },
             },
           },
-
           lg: {
             css: {
               hr: {
@@ -75,7 +77,6 @@ module.exports = {
               },
             },
           },
-
           xl: {
             css: {
               hr: {
@@ -88,9 +89,9 @@ module.exports = {
           '2xl': {
             css: {
               /**
-               * 22px
+               * 20px
                */
-              fontSize: '1.375rem',
+              fontSize: '1.25rem',
             },
           },
           dark: {
@@ -111,8 +112,6 @@ module.exports = {
               },
               h1: {
                 color: white,
-                fontSize: '2.25rem',
-                lineHeight: '1.3',
               },
               h2: {
                 color: white,
