@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { useMeasure } from '../hooks/useMeasure';
+import useMeasure from 'react-use-measure';
 
 import { ImageSlider, ImageSliderFactory } from '.';
 
-jest.mock('../hooks/useMeasure');
+jest.mock('react-use-measure');
 
 const images = [
   { src: 'https://picsum.photos/300/200', alt: 'random picture' },
@@ -53,9 +53,9 @@ describe('<ImageSlider />', () => {
   describe('Run time validations', () => {
     it('throws error if src is undefined', () => {
       expect(() =>
-        render(<ImageSlider images={[{ alt: 'Foo bar' } as any]} />)
+        render(<ImageSlider images={[{ alt: 'Foo bar' } as any]} />),
       ).toThrowErrorMatchingInlineSnapshot(
-        `"ImageSlider: image requires \\"src\\""`
+        `"ImageSlider: image requires \\"src\\""`,
       );
     });
 
@@ -64,10 +64,10 @@ describe('<ImageSlider />', () => {
         render(
           <ImageSlider
             images={[{ src: 'https://picsum.photos/500/230' } as any]}
-          />
-        )
+          />,
+        ),
       ).toThrowErrorMatchingInlineSnapshot(
-        `"ImageSlider: image requires \\"alt\\""`
+        `"ImageSlider: image requires \\"alt\\""`,
       );
     });
   });
@@ -119,7 +119,7 @@ describe('<ImageSlider />', () => {
               noCaption: true,
             },
           ]}
-        />
+        />,
       );
 
       expect(screen.queryByTestId('caption')).not.toBeInTheDocument();
@@ -135,7 +135,7 @@ describe('<ImageSlider />', () => {
     it('does not render if only has a single image', () => {
       const singleImageList = images.slice(0, 1);
       const { rerender, queryByTestId } = render(
-        <ImageSlider images={singleImageList} />
+        <ImageSlider images={singleImageList} />,
       );
 
       rerender(<ImageSlider images={singleImageList} />);
