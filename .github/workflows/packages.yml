@@ -41,6 +41,7 @@ jobs:
 
       - name: Release Packages
         run: |
+          git checkout HEAD -- yarn.lock
           echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
           yarn release
         if: contains('refs/heads/main', github.ref)
