@@ -1605,7 +1605,7 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@emotion/babel-plugin@^11.1.2", "@emotion/babel-plugin@^11.2.0":
+"@emotion/babel-plugin@11.2.0", "@emotion/babel-plugin@^11.1.2":
   version "11.2.0"
   resolved "https://registry.yarnpkg.com/@emotion/babel-plugin/-/babel-plugin-11.2.0.tgz#f25c6df8ec045dad5ae6ca63df0791673b98c920"
   integrity sha512-lsnQBnl3l4wu/FJoyHnYRpHJeIPNkOBMbtDUIXcO8luulwRKZXPvA10zd2eXVN6dABIWNX4E34en/jkejIg/yA==
@@ -3894,7 +3894,7 @@
     regenerator-runtime "^0.13.7"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-postcss@^2.0.0":
+"@storybook/addon-postcss@2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@storybook/addon-postcss/-/addon-postcss-2.0.0.tgz#ec61cb9bb2662f408072b35c466c7df801c28498"
   integrity sha512-Nt82A7e9zJH4+A+VzLKKswUfru+T6FJTakj4dccP0i8DSn7a0CkzRPrLuZBq8tg4voV6gD74bcDf3gViCVBGtA==
@@ -4657,7 +4657,7 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@tailwindcss/jit@0.1.17", "@tailwindcss/jit@^0.1.17":
+"@tailwindcss/jit@0.1.17":
   version "0.1.17"
   resolved "https://registry.yarnpkg.com/@tailwindcss/jit/-/jit-0.1.17.tgz#0fe54a6bd9473c3c1a5cb622ba771d69117a3d49"
   integrity sha512-Of3NbM2Peex6iPkOap5JBmAPq6oVjKEKMysy6iH/9Vl0TjuEuB094Uc7yzJz8q6j6AQEImlaOGxwF+sdBlG2pw==
@@ -6508,7 +6508,7 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-autoprefixer@10.2.5, autoprefixer@^10.2.5:
+autoprefixer@10.2.5:
   version "10.2.5"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.2.5.tgz#096a0337dbc96c0873526d7fef5de4428d05382d"
   integrity sha512-7H4AJZXvSsn62SqZyJCP+1AWwOuoYpUfK6ot9vm0e87XD6mT8lDywc9D9OTJPMULyGcvmIxzTAMeG2Cc+YX+fA==
@@ -6579,6 +6579,20 @@ babel-eslint@10.1.0, babel-eslint@^10.0.3:
     eslint-visitor-keys "^1.0.0"
     resolve "^1.12.0"
 
+babel-jest@26.6.3, babel-jest@^26.6.3:
+  version "26.6.3"
+  resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-26.6.3.tgz#d87d25cb0037577a0c89f82e5755c5d293c01056"
+  integrity sha512-pl4Q+GAVOHwvjrck6jKjvmGhnO3jHX/xuB9d27f+EJZ/6k+6nMuPjorrYp7s++bKKdANwzElBWnLWaObvTnaZA==
+  dependencies:
+    "@jest/transform" "^26.6.2"
+    "@jest/types" "^26.6.2"
+    "@types/babel__core" "^7.1.7"
+    babel-plugin-istanbul "^6.0.0"
+    babel-preset-jest "^26.6.2"
+    chalk "^4.0.0"
+    graceful-fs "^4.2.4"
+    slash "^3.0.0"
+
 babel-jest@^25.5.1:
   version "25.5.1"
   resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-25.5.1.tgz#bc2e6101f849d6f6aec09720ffc7bc5332e62853"
@@ -6590,20 +6604,6 @@ babel-jest@^25.5.1:
     babel-plugin-istanbul "^6.0.0"
     babel-preset-jest "^25.5.0"
     chalk "^3.0.0"
-    graceful-fs "^4.2.4"
-    slash "^3.0.0"
-
-babel-jest@^26.6.3:
-  version "26.6.3"
-  resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-26.6.3.tgz#d87d25cb0037577a0c89f82e5755c5d293c01056"
-  integrity sha512-pl4Q+GAVOHwvjrck6jKjvmGhnO3jHX/xuB9d27f+EJZ/6k+6nMuPjorrYp7s++bKKdANwzElBWnLWaObvTnaZA==
-  dependencies:
-    "@jest/transform" "^26.6.2"
-    "@jest/types" "^26.6.2"
-    "@types/babel__core" "^7.1.7"
-    babel-plugin-istanbul "^6.0.0"
-    babel-preset-jest "^26.6.2"
-    chalk "^4.0.0"
     graceful-fs "^4.2.4"
     slash "^3.0.0"
 
@@ -18626,6 +18626,15 @@ postcss@8.1.7:
     nanoid "^3.1.16"
     source-map "^0.6.1"
 
+postcss@8.2.8:
+  version "8.2.8"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.2.8.tgz#0b90f9382efda424c4f0f69a2ead6f6830d08ece"
+  integrity sha512-1F0Xb2T21xET7oQV9eKuctbM9S7BC0fetoHCc4H13z0PT6haiRLP4T0ZY4XWh7iLP0usgqykT6p9B2RtOf4FPw==
+  dependencies:
+    colorette "^1.2.2"
+    nanoid "^3.1.20"
+    source-map "^0.6.1"
+
 postcss@8.2.9, postcss@^8.0.2, postcss@^8.1.6, postcss@^8.2.1, postcss@^8.2.8:
   version "8.2.9"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.2.9.tgz#fd95ff37b5cee55c409b3fdd237296ab4096fba3"
@@ -22102,7 +22111,7 @@ strapi-plugin-content-type-builder@3.5.4:
     strapi-utils "3.5.4"
     yup "^0.27.0"
 
-strapi-plugin-documentation@^3.5.4:
+strapi-plugin-documentation@3.5.4:
   version "3.5.4"
   resolved "https://registry.yarnpkg.com/strapi-plugin-documentation/-/strapi-plugin-documentation-3.5.4.tgz#c751aa7e84f537e4b236a42b638bd8f9a6fda7f6"
   integrity sha512-1H/0k/IvIF5ibQtZ4gftuB6tYK56Zm1K1PziN8sfRizugi4yl8iISrp6ddH52t5PtqU6KAFmrFh+BzeICq/pfg==
@@ -22844,7 +22853,7 @@ table@^6.0.4:
     slice-ansi "^4.0.0"
     string-width "^4.2.0"
 
-tailwindcss@2.0.4, tailwindcss@^2.0.4:
+tailwindcss@2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-2.0.4.tgz#cf13e62738c3a27065664e449d93b66ee2945506"
   integrity sha512-WhgR0oiBxGOZ9jY0yVfaJCHnckR7U74Fs/BMsYxGdwGJQ5Hd/HlaKD26bEJFZOvYScJo0QcUj2ImldzedsG7Bw==
