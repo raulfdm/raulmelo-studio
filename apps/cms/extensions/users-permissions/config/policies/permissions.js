@@ -5,55 +5,48 @@ const get = require('lodash.get');
 module.exports = async (ctx, next) => {
   let role;
 
+  const hasUrlToken = () =>
+    Boolean(ctx.request.query && ctx.request.query.token);
+  const hasHeaderAuth = () =>
+    Boolean(
+      ctx.request && ctx.request.header && ctx.request.header.authorization,
+    );
+
   if (ctx.state.user) {
     // request is already authenticated in a different way
     return next();
   }
 
-  if (
-    (ctx.request && ctx.request.header && ctx.request.header.authorization) ||
-    (ctx.request.query && ctx.request.query.token)
-  ) {
-    try {
-      let id;
-
-      if (ctx.request.query && ctx.request.query.token) {
-        // find the token entry that match the token from the request
-        const [token] = await strapi
-          .query('token')
-          .find({ token: ctx.request.query.token });
-
-        if (!token) {
-          throw new Error("Invalid token: This token doesn't exist");
-        } else {
-          if (token.user && typeof token.token === 'string') {
-            id = token.user.id;
-          }
+  if (hasHeaderAuth() || hasUrlToken()) {
+    let id;
+    if (hasUrlToken()) {
+      const [token] = await strapi
+        .query('token')
+        .find({ token: ctx.request.query.token });
+      if (!token) {
+        throw new Error(`Invalid token: This token doesn't exist`);
+      } else {
+        if (token.user && typeof token.token === 'string') {
+          id = token.user.id;
         }
-
-        delete ctx.request.query.token;
-      } else if (
-        ctx.request &&
-        ctx.request.header &&
-        ctx.request.header.authorization
-      ) {
-        const resp = await strapi.plugins[
-          'users-permissions'
-        ].services.jwt.getToken(ctx);
-
-        id = resp.id;
-
-        if (id === undefined) {
-          throw new Error(
-            'Invalid token: Token did not contain required fields',
-          );
-        }
-
-        // fetch authenticated user
-        ctx.state.user = await strapi.plugins[
-          'users-permissions'
-        ].services.user.fetchAuthenticatedUser(id);
       }
+    } else if (hasHeaderAuth()) {
+      const resp = await strapi.plugins[
+        'users-permissions'
+      ].services.jwt.getToken(ctx);
+
+      id = resp.id;
+    }
+
+    try {
+      if (id === undefined) {
+        throw new Error('Invalid token: Token did not contain required fields');
+      }
+
+      // fetch authenticated user
+      ctx.state.user = await strapi.plugins[
+        'users-permissions'
+      ].services.user.fetchAuthenticatedUser(id);
     } catch (err) {
       return handleErrors(ctx, err, 'unauthorized');
     }
