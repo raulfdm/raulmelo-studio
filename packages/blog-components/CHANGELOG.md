@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.8](https://github.com/raulfdm/raulmelo-dev-components/compare/@raulfdm/blog-components@1.12.7...@raulfdm/blog-components@1.12.8) (2021-03-31)
+
+**Note:** Version bump only for package @raulfdm/blog-components
+
 ## [1.12.7](https://github.com/raulfdm/raulmelo-dev-components/compare/@raulfdm/blog-components@1.12.6...@raulfdm/blog-components@1.12.7) (2021-03-30)
 
 **Note:** Version bump only for package @raulfdm/blog-components
