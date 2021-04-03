@@ -6,7 +6,6 @@ import {
   GlobeIcon,
 } from '@raulfdm/blog-components';
 import { useRouter } from 'next/router';
-import { FormattedMessage } from 'react-intl';
 
 export const LanguageSwitch = () => {
   const { switchToEnglish, switchToPortuguese } = useLocalization();
