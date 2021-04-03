@@ -28,7 +28,7 @@ export const FeaturedImage: React.FC<FeaturedImageProps> = ({
 
   return (
     <div
-      className="mt-14 mb-11"
+      className="mb-11 -mx-4 lg:-mx-8 xl:mx-0"
       role="img"
       aria-label={formatMessage(messages.featuredImageLabel)}
     >

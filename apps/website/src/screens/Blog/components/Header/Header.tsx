@@ -18,7 +18,7 @@ export const Header: React.FC<HeaderProps> = React.memo(function Header({
         'container',
         'max-w-screen-lg',
         // 'mx-auto',
-        'px-4 md:px-0',
+        'md:px-0',
         hasBottomMargin && 'mb-8 md:mb-10',
       ])}
       data-testid="header"
@@ -40,6 +40,9 @@ export const Header: React.FC<HeaderProps> = React.memo(function Header({
           {subtitle}
         </p>
       )}
+
+      <p className="my-6 text-right">Published: Fev 26, 2021</p>
+      <hr />
     </header>
   );
 });

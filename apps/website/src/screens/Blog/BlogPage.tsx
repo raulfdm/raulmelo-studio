@@ -6,6 +6,7 @@ import {
   ProseContainer,
   Tag,
   Tags,
+  TwitterIcon,
 } from '@raulfdm/blog-components';
 import { getPostUrl, getTagUrl } from '@utils/url';
 import classNames from 'classnames';
@@ -80,28 +81,52 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
         />
       </SEO>
       <MenuBar />
-      <div className="max-w-screen-xl mx-auto">
+      <div
+        className={classNames([
+          'max-w-screen-xl',
+          'mt-6 lg:mt-8 xl:mt-12',
+          'mx-auto',
+          'px-4 lg:px-8',
+        ])}
+      >
         {featuredImage}
-        <div className="max-w-screen-lg ml-auto p">
-          <Header
-            title={post.title}
-            subtitle={post.subtitle}
-            hasBottomMargin={!featuredImage}
-          />
-          <PrismStyles />
-          {translations}
-          {allSeries}
-          <article
-            className={classNames([
-              'prose dark:prose-dark',
-              'prose-lg 2xl:prose-2xl',
-              'max-w-none',
-              // 'container',
-              'mt-11',
-            ])}
-          >
-            {children}
-          </article>
+
+        <div className="flex justify-between">
+          <div className="hidden md:block max-w-[25%]">
+            <span className="font-bold font-sans text-2xl">Share</span>
+            <div className="mt-6 flex space-x-2">
+              <button className="w-8 h-8">
+                <TwitterIcon width={32} />
+              </button>
+              <button>
+                <TwitterIcon width={32} />
+              </button>
+              <button>
+                <TwitterIcon width={32} />
+              </button>
+            </div>
+          </div>
+          <div className="max-w-full md:max-w-[75%]">
+            <Header
+              title={post.title}
+              subtitle={post.subtitle}
+              hasBottomMargin={!featuredImage}
+            />
+            <PrismStyles />
+            {translations}
+            {allSeries}
+            <article
+              className={classNames([
+                'prose dark:prose-dark',
+                'prose-lg xl:prose-xl',
+                'max-w-none',
+                // 'container',
+                'mt-11',
+              ])}
+            >
+              {children}
+            </article>
+          </div>
           {/* <ProseContainer>{children}</ProseContainer> */}
           {/* <footer className="container mx-auto px-4 md:px-0 max-w-screen-md">
         {seriesWithDivider}
