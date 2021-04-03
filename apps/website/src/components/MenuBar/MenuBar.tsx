@@ -2,27 +2,19 @@ import { SideMenu } from '@components/SideMenu';
 import { useApp } from '@hooks/useApp';
 import { CloseIcon, Logo, MenuIcon } from '@raulfdm/blog-components';
 import classNames from 'classnames';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FC } from 'react';
 import { LanguageSwitch } from './components/LanguageSwitch';
 import { ThemeSwitch } from './components/ThemeSwitch';
-import { useHideMenu } from './useHideMenu';
 
 export const MenuBar: FC = () => {
-  const menuState = useHideMenu();
   const { sideMenu } = useApp();
 
   const Icon = sideMenu.isClosed ? MenuIcon : CloseIcon;
 
-  const variants = {
-    open: { y: 0 },
-    closed: { y: '-100%' },
-  };
-
   return (
     <>
-      <motion.section
+      <section
         className={classNames([
           'fixed',
           'inset-x-0',
@@ -32,9 +24,6 @@ export const MenuBar: FC = () => {
           'bg-white dark:bg-blue-800',
           'transition-theme duration-200 ease',
         ])}
-        animate={menuState}
-        variants={variants}
-        transition={{ duration: 0.3, type: 'tween' }}
         data-testid="menu-bar"
       >
         <div className="flex items-center max-w-7xl mx-auto h-full px-4">
@@ -56,7 +45,7 @@ export const MenuBar: FC = () => {
             </MenuButton>
           </div>
         </div>
-      </motion.section>
+      </section>
       <SideMenu />
       <style global jsx>{`
         #__next {
