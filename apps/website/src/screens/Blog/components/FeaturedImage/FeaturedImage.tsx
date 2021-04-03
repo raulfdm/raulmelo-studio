@@ -30,7 +30,7 @@ export const FeaturedImage: React.FC<FeaturedImageProps> = ({
 
   return (
     <div
-      className="max-w-screen-lg mx-auto mt-14 mb-11"
+      className="mt-14 mb-11"
       role="img"
       aria-label={formatMessage(messages.featuredImageLabel)}
     >

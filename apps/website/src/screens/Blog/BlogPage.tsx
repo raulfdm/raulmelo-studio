@@ -8,6 +8,7 @@ import {
   Tags,
 } from '@raulfdm/blog-components';
 import { getPostUrl, getTagUrl } from '@utils/url';
+import classNames from 'classnames';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import React from 'react';
@@ -79,17 +80,30 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
         />
       </SEO>
       <MenuBar />
-      <Header
-        title={post.title}
-        subtitle={post.subtitle}
-        hasBottomMargin={!featuredImage}
-      />
-      <PrismStyles />
-      {translations}
-      {allSeries}
-      {featuredImage}
-      <ProseContainer>{children}</ProseContainer>
-      <footer className="container mx-auto px-4 md:px-0 max-w-screen-md">
+      <div className="max-w-screen-xl mx-auto">
+        {featuredImage}
+        <div className="max-w-screen-lg ml-auto p">
+          <Header
+            title={post.title}
+            subtitle={post.subtitle}
+            hasBottomMargin={!featuredImage}
+          />
+          <PrismStyles />
+          {translations}
+          {allSeries}
+          <article
+            className={classNames([
+              'prose dark:prose-dark',
+              'prose-lg 2xl:prose-2xl',
+              'max-w-none',
+              // 'container',
+              'mt-11',
+            ])}
+          >
+            {children}
+          </article>
+          {/* <ProseContainer>{children}</ProseContainer> */}
+          {/* <footer className="container mx-auto px-4 md:px-0 max-w-screen-md">
         {seriesWithDivider}
         <hr className="mt-10 mb-6" />
         <Tags>
@@ -103,7 +117,9 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
             );
           })}
         </Tags>
-      </footer>
+      </footer> */}
+        </div>
+      </div>
     </>
   );
 };

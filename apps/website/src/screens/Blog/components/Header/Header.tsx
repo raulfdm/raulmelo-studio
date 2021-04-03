@@ -15,7 +15,10 @@ export const Header: React.FC<HeaderProps> = React.memo(function Header({
   return (
     <header
       className={classNames([
-        'container mx-auto max-w-screen-md px-4 md:px-0',
+        'container',
+        'max-w-screen-lg',
+        // 'mx-auto',
+        'px-4 md:px-0',
         hasBottomMargin && 'mb-8 md:mb-10',
       ])}
       data-testid="header"
