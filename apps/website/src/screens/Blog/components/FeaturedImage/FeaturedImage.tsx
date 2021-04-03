@@ -28,16 +28,18 @@ export const FeaturedImage: React.FC<FeaturedImageProps> = ({
 
   return (
     <div
-      className="mt-14 mb-11 pb-[50%] relative"
+      className="mt-14 mb-11"
       role="img"
       aria-label={formatMessage(messages.featuredImageLabel)}
     >
-      <Image
-        src={src}
-        layout={'fill'}
-        alt={alt || formatMessage(messages.featuredImageLabel)}
-        loading="eager"
-      />
+      <figure className="pb-[50%] relative overflow-hidden h-0">
+        <Image
+          src={src}
+          layout={'fill'}
+          alt={alt || formatMessage(messages.featuredImageLabel)}
+          loading="eager"
+        />
+      </figure>
       {unsplash ? <UnsplashCaption {...unsplash} /> : null}
       {!unsplash && alt ? <Caption>{alt}</Caption> : null}
     </div>
