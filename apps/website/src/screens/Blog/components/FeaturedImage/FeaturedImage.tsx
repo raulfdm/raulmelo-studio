@@ -22,23 +22,19 @@ type FeaturedImageProps = {
 export const FeaturedImage: React.FC<FeaturedImageProps> = ({
   src,
   alt,
-  width,
-  height,
   unsplash,
 }) => {
   const { formatMessage } = useLocalization();
 
   return (
     <div
-      className="mt-14 mb-11"
+      className="mt-14 mb-11 pb-[50%] relative"
       role="img"
       aria-label={formatMessage(messages.featuredImageLabel)}
     >
       <Image
         src={src}
-        width={width}
-        height={height}
-        layout="responsive"
+        layout={'fill'}
         alt={alt || formatMessage(messages.featuredImageLabel)}
         loading="eager"
       />
