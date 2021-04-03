@@ -8,6 +8,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 const nextConfig = {
+  future: {
+    webpack5: true,
+  },
   target: 'serverless',
   reactStrictMode: true,
   i18n: {
@@ -54,10 +57,9 @@ const nextConfig = {
      * https://github.com/vercel/next.js/issues/7755#issuecomment-508633125
      */
     if (!isServer) {
-      config.node = {
-        fs: 'empty',
-        rehype: 'empty',
-      };
+      config.resolve.fallback.fs = false;
+      config.resolve.fallback.rehype = false;
+      config.resolve.fallback.v8 = false;
     }
 
     if (isAnalyzerMode) {
@@ -76,9 +78,23 @@ const nextConfig = {
       'unist-util-is',
       'tslib',
       'supports-color',
+      '@babel/runtime',
+      '@emotion/is-prop-valid',
+      '@emotion/memoize',
+      '@babel/helper-plugin-utils',
+      'escape-string-regexp',
+      'iconv-lite',
+      'semver',
+      'unified',
     ];
 
     pluginsToResolve.forEach((plugin) => {
+      /**
+       * `require.resolve` won't help in this case because because it brings the
+       * entry file from the module (e.g. path/to/module/lib/index.js).
+       *
+       * What I need is only `path/to/module`
+       */
       config.resolve.alias[plugin] = path.resolve(
         __dirname,
         '../../node_modules',
