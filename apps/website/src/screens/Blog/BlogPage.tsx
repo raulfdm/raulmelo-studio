@@ -1,13 +1,7 @@
-import type { MenuBar as MenuBarType } from '@components/MenuBar';
+import { MenuBar } from '@components/MenuBar';
 import { SEO } from '@components/SEO';
 import { useLocalization } from '@hooks/useLocalization';
-import {
-  DotDivider,
-  ProseContainer,
-  Tag,
-  Tags,
-  TwitterIcon,
-} from '@raulfdm/blog-components';
+import { DotDivider, Tag, Tags } from '@raulfdm/blog-components';
 import { getPostUrl, getTagUrl } from '@utils/url';
 import classNames from 'classnames';
 import dynamic from 'next/dynamic';
@@ -30,13 +24,9 @@ const AvailableTranslations = dynamic(() =>
   ),
 ) as typeof AvailableTranslationsType;
 
-const MenuBar = dynamic(() =>
-  import('@components/MenuBar').then((mod) => mod.MenuBar),
-) as typeof MenuBarType;
-
 export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
   const { featured_image, post_tags, unsplash, series, translation } = post;
-  const { locale } = useLocalization();
+  const { locale, formatDate } = useLocalization();
 
   const allSeries = series ? (
     <SeriesSection series={series} currentPostId={post.id} />
@@ -78,10 +68,12 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
       <MenuBar />
       <div
         className={classNames([
+          /* Extract this somewhere as "container class" */
           'max-w-screen-xl',
-          'mt-6 lg:mt-8 xl:mt-12',
           'mx-auto',
           'px-4 lg:px-8',
+          /* end container class */
+          'mt-6 lg:mt-8 xl:mt-12',
         ])}
       >
         {featuredImage}
@@ -89,7 +81,6 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
           {/* <div className="hidden xls:block w-full max-w-[15%]">
             <Share />
           </div> */}
-
           <div
             className={classNames([
               'max-w-full xls:max-w-[80%]',
@@ -100,7 +91,11 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
             <Header
               title={post.title}
               subtitle={post.subtitle}
-              hasBottomMargin={!featuredImage}
+              publishDate={formatDate(new Date(post.date), {
+                year: 'numeric',
+                month: 'long',
+                day: '2-digit',
+              })}
             />
             <PrismStyles />
             {translations}
@@ -116,10 +111,10 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
               {children}
             </article>
             {seriesWithDivider}
-            <hr className="mt-10 mb-6" />
-            <footer className="flex justify-between">
-              <TagsSection post_tags={post_tags} />
-              <Share />
+            <footer>
+              <hr className="mt-10 mb-6" />
+              <TagsSection postTags={post_tags} />
+              {/* <Share /> */}
             </footer>
           </div>
         </div>
@@ -128,31 +123,39 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
   );
 };
 
-const Share = () => {
-  return (
-    <div>
-      <span className="font-bold font-sans text-2xl">Share</span>
-      <div className="mt-6 flex space-x-2">
-        <button className="w-8 h-8">
-          <TwitterIcon width={32} />
-        </button>
-        <button>
-          <TwitterIcon width={32} />
-        </button>
-        <button>
-          <TwitterIcon width={32} />
-        </button>
-      </div>
-    </div>
-  );
-};
+// const Share = () => {
+//   return (
+//     <div>
+//       <span className="font-bold font-sans text-2xl">Share</span>
+//       <div className="mt-6 flex space-x-2">
+//         <button className="w-8 h-8">
+//           <TwitterIcon width={32} />
+//         </button>
+//         <button>
+//           <TwitterIcon width={32} />
+//         </button>
+//         <button>
+//           <TwitterIcon width={32} />
+//         </button>
+//       </div>
+//     </div>
+//   );
+// };
 
-const TagsSection = ({ post_tags }) => {
+const TagsSection = ({
+  postTags,
+}: {
+  postTags: BlogPageProps['post']['post_tags'];
+}) => {
+  if (postTags.length === 0) {
+    return null;
+  }
+
   return (
     <section>
       <span className="font-bold font-sans text-2xl">Tags</span>
       <Tags>
-        {post_tags.map((tag) => {
+        {postTags.map((tag) => {
           return (
             <Tag key={tag.id} className="text-base lg:text-lg">
               <Link href={getTagUrl(tag.slug)}>

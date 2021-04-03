@@ -37,7 +37,7 @@ export const AuthorPresentation: React.FC<Props> = ({
 }) => {
   const { formatMessage } = useLocalization();
   return (
-    <div className="flex flex-col-reverse justify-between md:flex-row mb-7">
+    <div className="flex flex-col-reverse justify-between md:flex-row mb-7 mt-6 lg:mt-8">
       <div className="flex flex-col mt-5 max-w-xl md:mt-0 md:mr-10">
         <h1
           className="text-2xl md:text-4xl font-semibold font-sans"

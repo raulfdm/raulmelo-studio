@@ -26,7 +26,16 @@ export const MenuBar: FC = () => {
         ])}
         data-testid="menu-bar"
       >
-        <div className="flex items-center max-w-7xl mx-auto h-full px-4">
+        <section
+          className={classNames([
+            'flex items-center',
+            'max-w-screen-xl',
+            'mx-auto',
+            'px-4 lg:px-8',
+            'h-full',
+            'px-4',
+          ])}
+        >
           <div data-testid="menu-bar__logo">
             <Link href="/">
               <a>
@@ -44,12 +53,13 @@ export const MenuBar: FC = () => {
               <Icon width={21} />
             </MenuButton>
           </div>
-        </div>
+        </section>
       </section>
       <SideMenu />
       <style global jsx>{`
         #__next {
-          padding-top: calc(64px + 24px);
+          /* Menu Height */
+          padding-top: 64px;
           padding-bottom: 5rem;
         }
       `}</style>

@@ -1,28 +1,20 @@
 import React from 'react';
 import classNames from 'classnames';
+import { FormattedMessage } from 'react-intl';
 
 type HeaderProps = {
   title: string;
+  publishDate: string;
   subtitle?: string;
-  hasBottomMargin: boolean;
 };
 
 export const Header: React.FC<HeaderProps> = React.memo(function Header({
   title,
   subtitle,
-  hasBottomMargin,
+  publishDate,
 }) {
   return (
-    <header
-      className={classNames([
-        'container',
-        'max-w-screen-lg',
-        // 'mx-auto',
-        'md:px-0',
-        hasBottomMargin && 'mb-8 md:mb-10',
-      ])}
-      data-testid="header"
-    >
+    <header className={classNames(['md:px-0'])} data-testid="header">
       <h1
         className="text-3xl md:text-4xl lg:text-5xl font-bold font-serif tracking-tight"
         data-testid="header-title"
@@ -41,7 +33,14 @@ export const Header: React.FC<HeaderProps> = React.memo(function Header({
         </p>
       )}
 
-      <p className="my-6 text-right">Published: Fev 26, 2021</p>
+      <p className="my-6 text-right">
+        <FormattedMessage
+          id="blog.publishedAt"
+          values={{
+            date: publishDate,
+          }}
+        />
+      </p>
       <hr />
     </header>
   );
