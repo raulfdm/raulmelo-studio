@@ -74,11 +74,6 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
           href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
           rel="stylesheet"
         />
-        <script
-          async
-          src="https://platform.twitter.com/widgets.js"
-          charSet="utf-8"
-        />
       </SEO>
       <MenuBar />
       <div
@@ -90,23 +85,18 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
         ])}
       >
         {featuredImage}
-
         <div className="flex justify-between">
-          <div className="hidden md:block max-w-[25%]">
-            <span className="font-bold font-sans text-2xl">Share</span>
-            <div className="mt-6 flex space-x-2">
-              <button className="w-8 h-8">
-                <TwitterIcon width={32} />
-              </button>
-              <button>
-                <TwitterIcon width={32} />
-              </button>
-              <button>
-                <TwitterIcon width={32} />
-              </button>
-            </div>
-          </div>
-          <div className="max-w-full md:max-w-[75%]">
+          {/* <div className="hidden xls:block w-full max-w-[15%]">
+            <Share />
+          </div> */}
+
+          <div
+            className={classNames([
+              'max-w-full xls:max-w-[80%]',
+              /* TODO: Disable the following class when implements share */
+              'mx-auto',
+            ])}
+          >
             <Header
               title={post.title}
               subtitle={post.subtitle}
@@ -118,33 +108,60 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
             <article
               className={classNames([
                 'prose dark:prose-dark',
-                'prose-lg xl:prose-xl',
+                'prose-lg lg:prose-xl',
                 'max-w-none',
-                // 'container',
                 'mt-11',
               ])}
             >
               {children}
             </article>
+            {seriesWithDivider}
+            <hr className="mt-10 mb-6" />
+            <footer className="flex justify-between">
+              <TagsSection post_tags={post_tags} />
+              <Share />
+            </footer>
           </div>
-          {/* <ProseContainer>{children}</ProseContainer> */}
-          {/* <footer className="container mx-auto px-4 md:px-0 max-w-screen-md">
-        {seriesWithDivider}
-        <hr className="mt-10 mb-6" />
-        <Tags>
-          {post_tags.map((tag) => {
-            return (
-              <Tag key={tag.id} className="text-base lg:text-lg">
-                <Link href={getTagUrl(tag.slug)}>
-                  <a className="underline">#{tag.name}</a>
-                </Link>
-              </Tag>
-            );
-          })}
-        </Tags>
-      </footer> */}
         </div>
       </div>
     </>
+  );
+};
+
+const Share = () => {
+  return (
+    <div>
+      <span className="font-bold font-sans text-2xl">Share</span>
+      <div className="mt-6 flex space-x-2">
+        <button className="w-8 h-8">
+          <TwitterIcon width={32} />
+        </button>
+        <button>
+          <TwitterIcon width={32} />
+        </button>
+        <button>
+          <TwitterIcon width={32} />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const TagsSection = ({ post_tags }) => {
+  return (
+    <section>
+      <span className="font-bold font-sans text-2xl">Tags</span>
+      <Tags>
+        {post_tags.map((tag) => {
+          return (
+            <Tag key={tag.id} className="text-base lg:text-lg">
+              <Link href={getTagUrl(tag.slug)}>
+                <a className="underline">#{tag.name}</a>
+              </Link>
+            </Tag>
+          );
+        })}
+      </Tags>
+    </section>
   );
 };

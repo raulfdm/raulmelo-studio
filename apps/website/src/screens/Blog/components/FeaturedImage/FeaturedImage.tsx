@@ -32,10 +32,11 @@ export const FeaturedImage: React.FC<FeaturedImageProps> = ({
       role="img"
       aria-label={formatMessage(messages.featuredImageLabel)}
     >
-      <figure className="pb-[50%] relative overflow-hidden h-0">
+      <figure className="pb-[50%] relative overflow-hidden h-0 shadow">
         <Image
           src={src}
-          layout={'fill'}
+          layout="fill"
+          objectFit="cover"
           alt={alt || formatMessage(messages.featuredImageLabel)}
           loading="eager"
         />

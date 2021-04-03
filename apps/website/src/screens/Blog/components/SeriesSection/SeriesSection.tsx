@@ -89,7 +89,7 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
           ' bg-white dark:bg-blue-800',
           'rounded',
           'shadow',
-          'my-5',
+          'my-6 lg:my-8',
           'transition-theme duration-200 ease',
         ])}
         data-testid="series-menu"
