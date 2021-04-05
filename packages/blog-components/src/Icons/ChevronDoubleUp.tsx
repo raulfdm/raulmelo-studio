@@ -4,17 +4,19 @@ import { IconProps } from './types';
 export const ChevronDoubleUpIcon = (props: IconProps) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
+      width={32}
+      height={32}
+      viewBox="0 0 32 32"
       fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
       <path
+        d="M6 26l10-10 10 10M6 16L16 6l10 10"
+        stroke="currentColor"
+        strokeWidth={2}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
-        d="M5 11l7-7 7 7M5 19l7-7 7 7"
       />
     </svg>
   );
