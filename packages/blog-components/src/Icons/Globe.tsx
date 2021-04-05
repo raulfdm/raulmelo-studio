@@ -4,17 +4,24 @@ import { IconProps } from './types';
 export const GlobeIcon = (props: IconProps) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
       fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
       <path
+        d="M16 28c6.627 0 12-5.373 12-12S22.627 4 16 4 4 9.373 4 16s5.373 12 12 12z"
+        stroke="currentColor"
+        strokeWidth={2}
         strokeLinecap="round"
         strokeLinejoin="round"
+      />
+      <path
+        d="M6.198 22.924l1.46-.88a1.001 1.001 0 00.483-.851l.026-4.517a1 1 0 01.157-.532l2.48-3.887a1 1 0 011.43-.272l2.457 1.78a1 1 0 00.72.181l3.935-.533a1 1 0 00.622-.336l2.77-3.2a1 1 0 00.243-.703l-.146-3.038M23.383 25.46l-1.341-1.344a1 1 0 00-.454-.26l-2.682-.705a1 1 0 01-.736-1.112l.298-2.025a1 1 0 01.606-.778l3.806-1.582a1 1 0 011.059.186l3.112 2.846"
+        stroke="currentColor"
         strokeWidth={2}
-        d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
