@@ -9,9 +9,7 @@ module.exports = {
   darkMode: 'class',
   theme: {
     fontFamily: {
-      sans: `"Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, "Helvetica Neue", sans-serif`,
-      serif: `"IBM Plex Serif", Georgia, Cambria, Times New Roman, Times, serif`,
-      title: `"content-title", Georgia, Cambria, "Times New Roman", Times, serif`,
+      sans: `Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, "Helvetica Neue", sans-serif`,
     },
     extend: {
       colors: {
