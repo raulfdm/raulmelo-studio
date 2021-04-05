@@ -16,4 +16,5 @@ export * from './SideMenuItem';
 export * from './Tag';
 export * from './Tags';
 export * from './UiContainer';
+export * from './Typography';
 export * from './YouTubeIframe';
