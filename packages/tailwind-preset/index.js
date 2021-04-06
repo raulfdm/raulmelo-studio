@@ -8,6 +8,17 @@ module.exports = {
   purge: false,
   darkMode: 'class',
   theme: {
+    fontSize: {
+      xs: ['0.563rem', { lineHeight: 1.3 }],
+      sm: ['0.75rem', { lineHeight: 1.3 }],
+      base: ['1rem', { lineHeight: 1.3 }],
+      md: ['1.125rem', { lineHeight: 1.3 }],
+      lg: ['1.333rem', { lineHeight: 1.3 }],
+      xl: ['1.777rem', { lineHeight: 1.3 }],
+      '2xl': ['2.369rem', { lineHeight: 1.3 }],
+      '3xl': ['3.157rem', { lineHeight: 1.3 }],
+      '4xl': ['4.209rem', { lineHeight: 1.3 }],
+    },
     fontFamily: {
       sans: `Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, "Helvetica Neue", sans-serif`,
     },
