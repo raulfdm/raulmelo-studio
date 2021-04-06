@@ -10,7 +10,7 @@ describe('<Tag>', () => {
     const tags = screen.getByRole('listitem');
     expect(tags).toMatchInlineSnapshot(`
       <li
-        class="text-sm font-sans text-center hover:font-bold cursor-default list-none"
+        class="font-sans text-center hover:font-bold cursor-default list-none"
       >
         #foo
       </li>
@@ -21,7 +21,7 @@ describe('<Tag>', () => {
     render(
       <Tag className="my-class">
         <a href="#">bar</a>
-      </Tag>
+      </Tag>,
     );
 
     const tag = screen.getByRole('listitem');
