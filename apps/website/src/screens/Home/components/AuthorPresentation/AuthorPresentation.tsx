@@ -17,21 +17,6 @@ type Props = {
 
 const message = defineMessage({ id: 'authorPresentation.profileImageAlt' });
 
-const SocialLink = (props: React.ComponentPropsWithoutRef<'a'>) => (
-  <>
-    <a className="mr-4 cursor-pointer relative" {...props} />
-    <style jsx>{`
-      a:not(:last-child):after {
-        content: '·';
-        color: inherit;
-        position: absolute;
-        right: -10px;
-        top: 0;
-      }
-    `}</style>
-  </>
-);
-
 export const AuthorPresentation: React.FC<Props> = ({
   fullName,
   profilePic,
@@ -47,7 +32,7 @@ export const AuthorPresentation: React.FC<Props> = ({
         ])}
       >
         <h1
-          className="font-sans font-bold text-2xl md:text-3xl xl:text-4xl"
+          className="font-sans font-black text-2xl md:text-3xl xl:text-4xl"
           data-testid="author__name"
         >
           {fullName}
@@ -58,25 +43,28 @@ export const AuthorPresentation: React.FC<Props> = ({
         >
           <FormattedMessage id="siteData.description" />
         </p>
-        <div className="flex align-center pt-5 flex-1 text-gray-500 dark:text-gray-100">
-          <SocialLink
-            href={siteData.social.github.url}
-            data-testid="author__githubUrl"
-          >
-            <GithubIcon width={24} />
-          </SocialLink>
-          <SocialLink
+        <div
+          className={classNames([
+            'flex align-center pt-5 flex-1',
+            'text-black opacity-60 dark:text-white dark:opacity-90',
+            'space-x-4',
+          ])}
+        >
+          <a href={siteData.social.github.url} data-testid="author__githubUrl">
+            <GithubIcon className="w-6 lg:w-8" />
+          </a>
+          <a
             href={siteData.social.twitter.url}
             data-testid="author__twitterUrl"
           >
-            <TwitterIcon width={24} />
-          </SocialLink>
-          <SocialLink
+            <TwitterIcon className="w-6 lg:w-8" />
+          </a>
+          <a
             href={siteData.social.linkedIn.url}
             data-testid="author__linkedInUrl"
           >
-            <LinkedInIcon width={24} />
-          </SocialLink>
+            <LinkedInIcon className="w-6 lg:w-8" />
+          </a>
         </div>
       </div>
       <div

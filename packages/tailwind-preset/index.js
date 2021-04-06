@@ -20,7 +20,7 @@ module.exports = {
       '4xl': ['4.209rem', { lineHeight: 1.3 }],
     },
     fontFamily: {
-      sans: `Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, "Helvetica Neue", sans-serif`,
+      sans: `'Nunito Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, "Helvetica Neue", sans-serif`,
     },
     extend: {
       colors: {
