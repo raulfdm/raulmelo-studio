@@ -4,7 +4,7 @@ import React from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '../Icons';
 import { PaginationItemProps } from './types';
 
-const normalizedIcons = {
+const iconsTypeMap = {
   previous: ChevronLeftIcon,
   next: ChevronRightIcon,
 };
@@ -22,7 +22,7 @@ export function PaginationItem(props: PaginationItemProps) {
   let Icon = null;
 
   if (type === 'previous' || type === 'next') {
-    Icon = normalizedIcons[type];
+    Icon = iconsTypeMap[type];
   }
 
   const ItemComponent = component ?? 'button';
@@ -36,14 +36,15 @@ export function PaginationItem(props: PaginationItemProps) {
         'w-6',
         'text-center',
         'cursor-pointer',
-        selected && 'border-black dark:border-white border-b',
+        'text-lg',
+        selected && 'border-black dark:border-white border-b font-bold',
         !selected && 'hover:font-bold',
       ])}
       {...other}
     >
       {type === 'page' && page}
       {Icon ? (
-        <Icon className={classNames([disabled && 'opacity-50'])} width={21} />
+        <Icon className={classNames([disabled && 'opacity-50', 'w-6'])} />
       ) : null}
     </ItemComponent>
   );
