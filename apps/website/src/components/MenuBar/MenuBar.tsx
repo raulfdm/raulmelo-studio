@@ -1,4 +1,5 @@
 import { SideMenu } from '@components/SideMenu';
+import { sharedClasses } from '@components/uiClasses';
 import { useApp } from '@hooks/useApp';
 import { CloseIcon, Logo, MenuIcon } from '@raulfdm/blog-components';
 import classNames from 'classnames';
@@ -37,7 +38,12 @@ export const MenuBar: FC = () => {
         transition={{ duration: 0.3, type: 'tween' }}
         data-testid="menu-bar"
       >
-        <div className="flex items-center max-w-7xl mx-auto h-full px-4">
+        <div
+          className={classNames([
+            'flex items-center h-full',
+            sharedClasses.container,
+          ])}
+        >
           <div data-testid="menu-bar__logo">
             <Link href="/">
               <a>
@@ -45,14 +51,14 @@ export const MenuBar: FC = () => {
               </a>
             </Link>
           </div>
-          <div className="flex flex-1 justify-end space-x-3">
+          <div className="flex flex-1 justify-end space-x-3 pt-">
             <ThemeSwitch />
             <LanguageSwitch />
             <MenuButton
               onClick={sideMenu.toggle}
               data-testid="side-menu-button"
             >
-              <Icon width={21} />
+              <Icon className="w-6" />
             </MenuButton>
           </div>
         </div>
@@ -60,7 +66,6 @@ export const MenuBar: FC = () => {
       <SideMenu />
       <style global jsx>{`
         #__next {
-          padding-top: calc(64px + 24px);
           padding-bottom: 5rem;
         }
       `}</style>

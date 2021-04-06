@@ -1,11 +1,9 @@
 import { MenuBar } from '@components/MenuBar';
 import { SEO } from '@components/SEO';
+import { sharedClasses } from '@components/uiClasses';
 import { useLocalization } from '@hooks/useLocalization';
-import {
-  Pagination,
-  PaginationItem,
-  UiContainer,
-} from '@raulfdm/blog-components';
+import { Pagination, PaginationItem } from '@raulfdm/blog-components';
+import classNames from 'classnames';
 import { useRouter } from 'next/router';
 import { defineMessages } from 'react-intl';
 import { AuthorPresentation } from './components/AuthorPresentation';
@@ -49,7 +47,12 @@ export const HomePage: React.FC<HomePageProps> = ({
       />
 
       <MenuBar />
-      <UiContainer as="main">
+      <main
+        className={classNames([
+          sharedClasses.container,
+          sharedClasses.topSpaceForMenu,
+        ])}
+      >
         <AuthorPresentation
           fullName={personalInformation.full_name}
           profilePic={personalInformation.profile_pic.url}
@@ -69,7 +72,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             }}
           />
         ) : null}
-      </UiContainer>
+      </main>
     </>
   );
 };
