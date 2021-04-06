@@ -3,7 +3,6 @@ import { SEO } from '@components/SEO';
 import { sharedClasses } from '@components/uiClasses';
 import { useLocalization } from '@hooks/useLocalization';
 import { Pagination, PaginationItem } from '@raulfdm/blog-components';
-import classNames from 'classnames';
 import { useRouter } from 'next/router';
 import { defineMessages } from 'react-intl';
 import { AuthorPresentation } from './components/AuthorPresentation';
@@ -47,12 +46,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       />
 
       <MenuBar />
-      <main
-        className={classNames([
-          sharedClasses.container,
-          sharedClasses.topSpaceForMenu,
-        ])}
-      >
+      <main className={sharedClasses.sectionContainer}>
         <AuthorPresentation
           fullName={personalInformation.full_name}
           profilePic={personalInformation.profile_pic.url}

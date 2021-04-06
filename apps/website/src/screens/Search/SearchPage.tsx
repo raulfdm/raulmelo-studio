@@ -1,6 +1,7 @@
 import { MenuBar } from '@components/MenuBar';
 import { PostCardWrapper } from '@components/PostCardWrapper';
 import { SEO } from '@components/SEO';
+import { sharedClasses } from '@components/uiClasses';
 import { algoliaConfig } from '@config/algolia';
 import { useLocalization } from '@hooks/useLocalization';
 import { AlgoliaIcon } from '@raulfdm/blog-components';
@@ -35,7 +36,7 @@ export const SearchPage = () => {
         title={formatMessage(messages.seoTitle)}
       />
       <MenuBar />
-      <main className="font-san container mx-auto px-4 md:px-0 max-w-screen-md">
+      <main className={sharedClasses.sectionContainer}>
         <InstantSearch
           searchClient={algoliaDebounceSearchClient}
           indexName={algoliaConfig.indexName}
@@ -78,10 +79,32 @@ function PoweredByAlgolia() {
 
 function AlgoliaHits() {
   return (
-    <Hits
-      hitComponent={({ hit }: { hit: HitAlgolia }) => {
-        return <PostCardWrapper key={hit.objectID} post={hit} />;
-      }}
-    />
+    <>
+      <Hits
+        hitComponent={({ hit }: { hit: HitAlgolia }) => {
+          return <PostCardWrapper key={hit.objectID} post={hit} />;
+        }}
+      />
+
+      <style jsx global>{`
+        .ais-Hits-list {
+          display: grid;
+          grid-template-columns: repeat(1, minmax(0, 1fr));
+          grid-gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+          .ais-Hits-list {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .ais-Hits-list {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+          }
+        }
+      `}</style>
+    </>
   );
 }

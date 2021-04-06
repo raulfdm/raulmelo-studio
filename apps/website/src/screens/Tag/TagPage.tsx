@@ -5,7 +5,6 @@ import { useLocalization } from '@hooks/useLocalization';
 import { AuthorPresentation } from '@screens/Home/components/AuthorPresentation';
 import { Posts } from '@screens/Home/components/Posts';
 import { getTagUrl } from '@utils/url';
-import classNames from 'classnames';
 import { defineMessages } from 'react-intl';
 import { TagPageProps } from './types';
 
@@ -36,12 +35,7 @@ export const TagPage: React.FC<TagPageProps> = ({
       />
 
       <MenuBar />
-      <main
-        className={classNames(
-          sharedClasses.container,
-          sharedClasses.topSpaceForMenu,
-        )}
-      >
+      <main className={sharedClasses.sectionContainer}>
         <AuthorPresentation
           fullName={personalInformation.full_name}
           profilePic={personalInformation.profile_pic.url}

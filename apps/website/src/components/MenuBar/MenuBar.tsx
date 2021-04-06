@@ -41,7 +41,7 @@ export const MenuBar: FC = () => {
         <div
           className={classNames([
             'flex items-center h-full',
-            sharedClasses.container,
+            sharedClasses.baseContainer,
           ])}
         >
           <div data-testid="menu-bar__logo">
