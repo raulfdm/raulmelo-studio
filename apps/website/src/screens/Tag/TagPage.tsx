@@ -1,12 +1,13 @@
 import { MenuBar } from '@components/MenuBar';
 import { SEO, titleWithNameAndJobTitle } from '@components/SEO';
+import { sharedClasses } from '@components/uiClasses';
 import { useLocalization } from '@hooks/useLocalization';
 import { AuthorPresentation } from '@screens/Home/components/AuthorPresentation';
 import { Posts } from '@screens/Home/components/Posts';
 import { getTagUrl } from '@utils/url';
+import classNames from 'classnames';
 import { defineMessages } from 'react-intl';
 import { TagPageProps } from './types';
-import { UiContainer } from '@raulfdm/blog-components';
 
 const messages = defineMessages({
   description: {
@@ -35,7 +36,12 @@ export const TagPage: React.FC<TagPageProps> = ({
       />
 
       <MenuBar />
-      <UiContainer as="main">
+      <main
+        className={classNames(
+          sharedClasses.container,
+          sharedClasses.topSpaceForMenu,
+        )}
+      >
         <AuthorPresentation
           fullName={personalInformation.full_name}
           profilePic={personalInformation.profile_pic.url}
@@ -44,7 +50,7 @@ export const TagPage: React.FC<TagPageProps> = ({
           posts={tag.blog_posts}
           title={formatMessage(messages.title, { tag: tag.name })}
         />
-      </UiContainer>
+      </main>
     </>
   );
 };
