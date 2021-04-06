@@ -6,7 +6,7 @@ import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import React from 'react';
 
-const POST_THRESHOLD = 4;
+const POST_THRESHOLD = 6;
 
 const Home = ({ posts, ...props }: HomePageProps) => {
   const router = useRouter();
