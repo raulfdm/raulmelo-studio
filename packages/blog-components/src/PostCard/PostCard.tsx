@@ -44,7 +44,7 @@ export const PostCard: React.FC<PostCardProps> = ({
           href={postUrl}
           linkProps={titleLinkProps}
         >
-          <h3 className={classNames(['font-semibold', 'text-xl lg:text-lg'])}>
+          <h3 className={classNames(['font-black', 'text-xl lg:text-lg'])}>
             {title}
           </h3>
         </ConfiguredLink>
@@ -63,7 +63,8 @@ export const PostCard: React.FC<PostCardProps> = ({
           <p
             className={classNames([
               'text-lg lg:text-md',
-              'text-black text-opacity-80 dark:text-gray-200 dark:text-opacity-100',
+              'text-black dark:text-gray-200',
+              'text-opacity-80 dark:text-opacity-100',
             ])}
           >
             {subtitle}
