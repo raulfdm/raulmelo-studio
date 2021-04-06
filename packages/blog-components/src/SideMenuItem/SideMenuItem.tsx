@@ -19,18 +19,26 @@ export const SideMenuItem = ({
 }: SideMenuItemProps) => {
   const ConfiguredLink = configureLink(Link);
 
+  const activeClasses = [
+    'sm:pl-3',
+    'border-b-2 sm:border-l-2 sm:border-b-0',
+    'border-black dark:border-gray-300 border-opacity-80',
+  ];
   return (
-    <ConfiguredLink
-      onClick={onClick}
-      href={href}
-      className={classNames([
-        'cursor-pointer',
-        'font-serif text-lg font-bold',
-        'mx-5',
-        active && 'pl-3 border-l-2 border-gray-800 dark:border-gray-300',
-      ])}
-    >
-      {itemLabel}
-    </ConfiguredLink>
+    <li className={classNames(['px-4 py-2', 'text-center sm:text-left'])}>
+      <ConfiguredLink
+        onClick={onClick}
+        href={href}
+        className={classNames([
+          'cursor-pointer',
+          'font-serif font-black',
+          'text-xl sm:text-lg',
+          'mx-5',
+          active && activeClasses,
+        ])}
+      >
+        {itemLabel}
+      </ConfiguredLink>
+    </li>
   );
 };

@@ -35,11 +35,7 @@ export const SideMenu = ({
           'bg-white dark:bg-blue-800',
           'z-20',
           'transform translate-x-full',
-          'flex flex-col',
-          'w-32 sm:w-64',
-          'min-w-1/2 sm:min-w-max',
-          'py-2',
-          'space-y-3',
+          'min-w-full sm:min-w-max',
           'transition-theme duration-200 ease',
         ])}
         animate={state}
@@ -53,14 +49,16 @@ export const SideMenu = ({
         }}
         data-testid="sideMenu"
       >
-        {items.map((props) => (
-          <SideMenuItem
-            key={props.href}
-            {...props}
-            onClick={onItemClicked}
-            Link={Link}
-          />
-        ))}
+        <ul className={classNames(['py-6', 'flex flex-col'])}>
+          {items.map((props) => (
+            <SideMenuItem
+              key={props.href}
+              {...props}
+              onClick={onItemClicked}
+              Link={Link}
+            />
+          ))}
+        </ul>
       </motion.nav>
       <motion.div
         className={classNames([

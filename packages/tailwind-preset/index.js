@@ -25,6 +25,7 @@ module.exports = {
     extend: {
       colors: {
         blue: colors.blueGray,
+        black: '#2c2c2c',
       },
       textColor: {
         black: '#2c2c2c',
