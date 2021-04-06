@@ -4,8 +4,13 @@ import { sharedClasses } from '@components/uiClasses';
 import classNames from 'classnames';
 import Image from 'next/image';
 import React from 'react';
+import { useBoolean } from 'react-use';
+import { motion } from 'framer-motion';
 
 const CurriculumPage = () => {
+  const [isOpen, setIsOpen] = useBoolean(false);
+  const handleToggle = () => setIsOpen(!isOpen);
+
   return (
     <>
       <SEO
@@ -14,8 +19,6 @@ const CurriculumPage = () => {
         description="Raul Melo is a Software Developer focused on client-side. Have over 5 years of experience building websites and applications. Check my CV for more info."
         url="/cv"
       />
-
-      {/* <div className="w-full iframe-container bg-gray-50 text-black min-h-full"> */}
       <MenuBar />
       <main
         className={classNames([
@@ -71,12 +74,15 @@ const CurriculumPage = () => {
           ])}
         >
           <button
+            onClick={handleToggle}
             className={classNames([
-              'bg-gray-600',
+              'bg-black dark:bg-blue-900',
               'rounded-md',
               'py-4 px-6',
               'z-20',
               'relative',
+              'font-extrabold',
+              'text-white',
             ])}
           >
             Click here to expand
@@ -100,14 +106,72 @@ const CurriculumPage = () => {
             />
           </figure>
         </div>
+        <CvIframe isOpen={isOpen} handleToggle={handleToggle} />
       </main>
-      <iframe
-        style={{ height: 0 }}
-        src="https://docs.google.com/document/d/e/2PACX-1vRH5F5mV58PwToU2intAbHK7XujvdPyOhWr2gDdCC9YcisCSaJVctuGlzE_28zgEbJt4qEo-CUJl-hb/pub?embedded=true"
-        className="max-h-full w-full shadow-xl"
-      />
     </>
   );
 };
+
+function CvIframe({
+  isOpen,
+  handleToggle,
+}: {
+  isOpen: boolean;
+  handleToggle: () => void;
+}) {
+  const openSpring = { type: 'spring', stiffness: 200, damping: 30 };
+  const closeSpring = { type: 'spring', stiffness: 300, damping: 35 };
+
+  return (
+    <>
+      <motion.div
+        animate={isOpen ? 'open' : 'closed'}
+        transition={isOpen ? openSpring : closeSpring}
+        variants={{
+          open: {
+            x: 0,
+            y: 0,
+          },
+          closed: {
+            x: '100%',
+            y: '100%',
+          },
+        }}
+        className={classNames([
+          'bg-gray-100',
+          'absolute',
+          'bottom-0 right-0 left-0 top-0',
+          'z-40',
+          'grid',
+          'place-items-center',
+        ])}
+      >
+        <motion.iframe
+          src="https://docs.google.com/document/d/e/2PACX-1vRH5F5mV58PwToU2intAbHK7XujvdPyOhWr2gDdCC9YcisCSaJVctuGlzE_28zgEbJt4qEo-CUJl-hb/pub?embedded=true"
+          className={classNames(
+            'w-full max-w-3xl shadow-xl mx-auto',
+            ' h-[100vh] md:h-[92vh]',
+          )}
+        />
+        <button
+          onClick={handleToggle}
+          className={classNames([
+            'bg-black',
+            'rounded-md',
+            'py-4 px-6',
+            'z-50',
+            'absolute',
+            'font-extrabold',
+            'text-white',
+            'bottom-5',
+            'right-5',
+          ])}
+        >
+          Close
+        </button>
+      </motion.div>
+    </>
+  );
+}
 
 export default CurriculumPage;
