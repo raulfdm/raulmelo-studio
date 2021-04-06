@@ -51,7 +51,7 @@ export const MenuBar: FC = () => {
               </a>
             </Link>
           </div>
-          <div className="flex flex-1 justify-end space-x-3 pt-">
+          <div className="flex flex-1 justify-end space-x-3">
             <ThemeSwitch />
             <LanguageSwitch />
             <MenuButton
