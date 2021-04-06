@@ -27,7 +27,7 @@ module.exports = {
         blue: colors.blueGray,
       },
       textColor: {
-        black: 'rgba(0,0,0,0.84)',
+        black: '#2c2c2c',
       },
       screens: {
         print: { raw: 'print' },

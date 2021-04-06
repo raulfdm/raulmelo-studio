@@ -47,7 +47,7 @@ export const AuthorPresentation: React.FC<Props> = ({
         ])}
       >
         <h1
-          className="sans font-bold text-2xl md:text-3xl xl:text-4xl"
+          className="font-sans font-bold text-2xl md:text-3xl xl:text-4xl"
           data-testid="author__name"
         >
           {fullName}
