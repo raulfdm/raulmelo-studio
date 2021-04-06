@@ -35,7 +35,7 @@ export const SideMenu = ({
           'bg-white dark:bg-blue-800',
           'z-20',
           'transform translate-x-full',
-          'min-w-full sm:min-w-max',
+          'min-w-full sm:min-w-min sm:w-full sm:max-w-xs',
           'transition-theme duration-200 ease',
         ])}
         animate={state}
