@@ -51,24 +51,24 @@ export const AuthorPresentation: React.FC<Props> = ({
         >
           <FormattedMessage id="siteData.description" />
         </p>
-        <div className="flex align-center pt-5 flex-1 text-gray-500 dark:text-gray-400">
+        <div className="flex align-center pt-5 flex-1 text-gray-500 dark:text-gray-100">
           <SocialLink
             href={siteData.social.github.url}
             data-testid="author__githubUrl"
           >
-            <GithubIcon />
+            <GithubIcon width={24} />
           </SocialLink>
           <SocialLink
             href={siteData.social.twitter.url}
             data-testid="author__twitterUrl"
           >
-            <TwitterIcon />
+            <TwitterIcon width={24} />
           </SocialLink>
           <SocialLink
             href={siteData.social.linkedIn.url}
             data-testid="author__linkedInUrl"
           >
-            <LinkedInIcon />
+            <LinkedInIcon width={24} />
           </SocialLink>
         </div>
       </div>
