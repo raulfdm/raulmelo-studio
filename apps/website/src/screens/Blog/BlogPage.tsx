@@ -37,8 +37,8 @@ const MenuBar = dynamic(() =>
 ) as typeof MenuBarType;
 
 export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
+  const { locale, formatDate } = useLocalization();
   const { featured_image, post_tags, unsplash, series, translation } = post;
-  const { locale } = useLocalization();
 
   const allSeries = series ? (
     <SeriesSection series={series} currentPostId={post.id} />
@@ -107,7 +107,15 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
             </ul>
           </aside>
           <article className={classNames(['w-full md:w-[85%] lg:w-[80%]'])}>
-            <Header title={post.title} subtitle={post.subtitle} />
+            <Header
+              title={post.title}
+              subtitle={post.subtitle}
+              publishedDate={formatDate(new Date(post.date), {
+                year: 'numeric',
+                month: 'short',
+                day: '2-digit',
+              })}
+            />
           </article>
         </section>
       </main>
