@@ -72,7 +72,6 @@ const CurriculumPage = () => {
               'rounded-md',
               'py-2 px-3 md:py-4 md:px-6',
               'text-base md:text-lg',
-              'z-20',
               'font-extrabold',
               'text-white',
               'absolute',
