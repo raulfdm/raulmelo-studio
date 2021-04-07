@@ -1,5 +1,6 @@
 import { MenuBar } from '@components/MenuBar';
 import { SEO } from '@components/SEO';
+import { ExternalLink } from '@raulfdm/blog-components';
 import { sharedClasses } from '@components/uiClasses';
 import classNames from 'classnames';
 import Image from 'next/image';
@@ -78,17 +79,9 @@ const CurriculumPage = () => {
               'absolute',
             ])}
           >
-            Go to the document
-            <svg
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="prefix__StyledIconBase-ea9ulj-0 prefix__jZGNBW w-4 inline-block mb-2"
-            >
-              <title>{'LinkExternal icon'}</title>
-              <path d="M13 3l3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z" />
-              <path d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z" />
-            </svg>
-          </a>{' '}
+            Go to the document{' '}
+            <ExternalLink className="w-4 inline-block mb-2 md:mb-4" />
+          </a>
         </div>
       </main>
     </>
