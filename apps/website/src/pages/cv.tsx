@@ -1,19 +1,17 @@
 import { MenuBar } from '@components/MenuBar';
 import { SEO } from '@components/SEO';
 import { sharedClasses } from '@components/uiClasses';
+import { useMeasure, UseMeasureRect } from '@hooks/useMeasure';
 import classNames from 'classnames';
-import Image from 'next/image';
+import { motion } from 'framer-motion';
 import React from 'react';
 import { useBoolean } from 'react-use';
-import { motion } from 'framer-motion';
 
 const CurriculumPage = () => {
   const [isOpen, setIsOpen] = useBoolean(false);
   const handleToggle = () => setIsOpen(!isOpen);
 
-  const cvRef = React.useRef(null);
-
-  // window.elementzz = cvRef.current;
+  const [cvRef, bounds] = useMeasure();
 
   return (
     <>
@@ -95,7 +93,7 @@ const CurriculumPage = () => {
           <CvIframe
             isOpen={isOpen}
             handleToggle={handleToggle}
-            cardRef={cvRef}
+            rectValues={bounds}
           />
         </div>
       </main>
@@ -103,39 +101,22 @@ const CurriculumPage = () => {
   );
 };
 
+const openSpring = { type: 'spring', stiffness: 200, damping: 30 };
+const closeSpring = { type: 'spring', stiffness: 300, damping: 35 };
+
 function CvIframe({
   isOpen,
   handleToggle,
-  cardRef,
+  rectValues,
 }: {
   isOpen: boolean;
   handleToggle: () => void;
-  cardRef: React.MutableRefObject<null>;
+  rectValues: UseMeasureRect;
 }) {
-  const [el, setEl] = React.useState<HTMLElement | null>(null);
-  const openSpring = { type: 'spring', stiffness: 200, damping: 30 };
-  const closeSpring = { type: 'spring', stiffness: 300, damping: 35 };
-
-  React.useEffect(() => {
-    if (!el) {
-      setEl(cardRef.current);
-    }
-  }, [cardRef.current]);
-
-  if (!el) {
-    return null;
-  }
-
-  const {
-    height,
-    width,
-    left,
-    top,
-    bottom,
-    right,
-  } = el.getBoundingClientRect();
+  const { x, y, ...rect } = rectValues;
 
   const currentAnimation = isOpen ? 'open' : 'closed';
+
   return (
     <>
       <motion.div
@@ -152,12 +133,7 @@ function CvIframe({
             filter: 'none',
           },
           closed: {
-            width,
-            height,
-            left,
-            top,
-            bottom,
-            right,
+            ...rect,
             zIndex: 0,
             filter: 'blur(1px)',
           },
