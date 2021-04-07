@@ -35,7 +35,7 @@ const CurriculumPage = () => {
               'mb-4 md:mb-6',
             ])}
           >
-            Curriculum
+            <FormattedMessage id="sideMenu.cv" />
           </h1>
           <p className="mb-4 text-base md:text-md lg:text-lg">
             <FormattedMessage id="cv.description1" />
