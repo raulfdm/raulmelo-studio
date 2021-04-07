@@ -5,6 +5,7 @@ import { sharedClasses } from '@components/uiClasses';
 import classNames from 'classnames';
 import Image from 'next/image';
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 const CurriculumPage = () => {
   return (
@@ -37,12 +38,10 @@ const CurriculumPage = () => {
             Curriculum
           </h1>
           <p className="mb-4 text-base md:text-md lg:text-lg">
-            To provide a better experience and ease the maintainability of a
-            single source of true, I keep my CV in a public Google Docs file.
+            <FormattedMessage id="cv.description1" />
           </p>
           <p className="mb-4 text-base md:text-md lg:text-lg">
-            From there, you&apos;ll be able to print or export in the extension
-            you need.
+            <FormattedMessage id="cv.description2" />
           </p>
         </header>
 
@@ -79,8 +78,15 @@ const CurriculumPage = () => {
               'absolute',
             ])}
           >
-            Go to the document{' '}
-            <ExternalLink className="w-4 inline-block mb-2 md:mb-4" />
+            <FormattedMessage
+              id="cv.cta"
+              values={{
+                // eslint-disable-next-line react/display-name
+                icon: () => (
+                  <ExternalLink className="w-4 inline-block mb-2 md:mb-4" />
+                ),
+              }}
+            />
           </a>
         </div>
       </main>
