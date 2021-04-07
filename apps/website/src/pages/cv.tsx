@@ -11,6 +11,10 @@ const CurriculumPage = () => {
   const [isOpen, setIsOpen] = useBoolean(false);
   const handleToggle = () => setIsOpen(!isOpen);
 
+  const cvRef = React.useRef(null);
+
+  // window.elementzz = cvRef.current;
+
   return (
     <>
       <SEO
@@ -63,6 +67,7 @@ const CurriculumPage = () => {
         </header>
 
         <div
+          ref={cvRef}
           className={classNames([
             'h-[390px] lg:h-[529px]',
             ' w-full max-w-[280px] lg:max-w-[380px]',
@@ -87,26 +92,12 @@ const CurriculumPage = () => {
           >
             Click here to expand
           </button>
-          <figure
-            className={classNames([
-              'absolute',
-              'w-full',
-              'h-full',
-              'top-0 right-0 left-0 bottom-0',
-              'z-10',
-            ])}
-            style={{
-              filter: 'blur(1px)',
-            }}
-          >
-            <Image
-              src="https://res.cloudinary.com/duzei21zt/image/upload/v1617732749/site/cv_cover_dbad9dd714.png"
-              alt="cv cover"
-              layout="fill"
-            />
-          </figure>
+          <CvIframe
+            isOpen={isOpen}
+            handleToggle={handleToggle}
+            cardRef={cvRef}
+          />
         </div>
-        <CvIframe isOpen={isOpen} handleToggle={handleToggle} />
       </main>
     </>
   );
@@ -115,32 +106,67 @@ const CurriculumPage = () => {
 function CvIframe({
   isOpen,
   handleToggle,
+  cardRef,
 }: {
   isOpen: boolean;
   handleToggle: () => void;
+  cardRef: React.MutableRefObject<null>;
 }) {
+  const [el, setEl] = React.useState<HTMLElement | null>(null);
   const openSpring = { type: 'spring', stiffness: 200, damping: 30 };
   const closeSpring = { type: 'spring', stiffness: 300, damping: 35 };
 
+  React.useEffect(() => {
+    if (!el) {
+      setEl(cardRef.current);
+    }
+  }, [cardRef.current]);
+
+  if (!el) {
+    return null;
+  }
+
+  const {
+    height,
+    width,
+    left,
+    top,
+    bottom,
+    right,
+  } = el.getBoundingClientRect();
+
+  const currentAnimation = isOpen ? 'open' : 'closed';
   return (
     <>
       <motion.div
-        animate={isOpen ? 'open' : 'closed'}
+        animate={currentAnimation}
         transition={isOpen ? openSpring : closeSpring}
         variants={{
           open: {
-            x: 0,
-            y: 0,
+            width: '100vw',
+            height: '100vh',
+            top: 0,
+            bottom: 0,
+            right: 0,
+            left: 0,
+            filter: 'none',
           },
           closed: {
-            x: '100%',
-            y: '100%',
+            width,
+            height,
+            left,
+            top,
+            bottom,
+            right,
+            zIndex: 0,
+            filter: 'blur(1px)',
           },
         }}
         className={classNames([
           'bg-gray-100',
-          'absolute',
+          'fixed',
           'bottom-0 right-0 left-0 top-0',
+          isOpen && 'md:py-8',
           'z-40',
           'grid',
           'place-items-center',
@@ -148,19 +174,28 @@ function CvIframe({
       >
         <motion.iframe
           src="https://docs.google.com/document/d/e/2PACX-1vRH5F5mV58PwToU2intAbHK7XujvdPyOhWr2gDdCC9YcisCSaJVctuGlzE_28zgEbJt4qEo-CUJl-hb/pub?embedded=true"
-          className={classNames(
-            'w-full max-w-3xl shadow-xl mx-auto',
-            ' h-[100vh] md:h-[92vh]',
-          )}
+          className={classNames('w-full h-full max-w-3xl shadow-xl mx-auto')}
+          scrolling={isOpen === false ? 'no' : undefined}
         />
-        <button
+
+        <motion.button
+          animate={currentAnimation}
+          variants={{
+            open: {
+              opacity: 1,
+            },
+            closed: {
+              opacity: 0,
+            },
+          }}
           onClick={handleToggle}
           className={classNames([
+            'opacity-0',
             'bg-black',
             'rounded-md',
             'py-4 px-6',
             'z-50',
-            'absolute',
+            'fixed',
             'font-extrabold',
             'text-white',
             'bottom-5',
@@ -168,7 +203,7 @@ function CvIframe({
           ])}
         >
           Close
-        </button>
+        </motion.button>
       </motion.div>
     </>
   );
