@@ -4,9 +4,11 @@ import { sharedClasses } from '@components/uiClasses';
 import { useLocalization } from '@hooks/useLocalization';
 import {
   DotDivider,
+  LinkedInIcon,
   ProseContainer,
   Tag,
   Tags,
+  TwitterIcon,
 } from '@raulfdm/blog-components';
 import { getPostUrl, getTagUrl } from '@utils/url';
 import classNames from 'classnames';
@@ -85,9 +87,23 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
               'w-full w-[15%]',
             ])}
           >
-            <span>Share</span>
-            <ul>
-              <li>LinkedIn</li>
+            <span
+              className={classNames([
+                'font-extrabold',
+                'text-xl',
+                'block',
+                'mb-6',
+              ])}
+            >
+              Share
+            </span>
+            <ul className={classNames(['flex', 'space-x-4'])}>
+              <li>
+                <LinkedInIcon className={classNames(['w-8'])} />
+              </li>
+              <li>
+                <TwitterIcon className={classNames(['w-8'])} />
+              </li>
             </ul>
           </aside>
           <article className={classNames(['w-full md:w-[85%] lg:w-[80%]'])}>
