@@ -1,17 +1,13 @@
 import { MenuBar } from '@components/MenuBar';
 import { SEO } from '@components/SEO';
 import { sharedClasses } from '@components/uiClasses';
-import { useMeasure, UseMeasureRect } from '@hooks/useMeasure';
 import classNames from 'classnames';
 import { motion } from 'framer-motion';
 import React from 'react';
-import { useBoolean } from 'react-use';
+import { useToggle } from 'react-use';
 
 const CurriculumPage = () => {
-  const [isOpen, setIsOpen] = useBoolean(false);
-  const handleToggle = () => setIsOpen(!isOpen);
-
-  const [cvRef, bounds] = useMeasure();
+  const [isOpen, handleToggle] = useToggle(false);
 
   return (
     <>
@@ -65,10 +61,9 @@ const CurriculumPage = () => {
         </header>
 
         <div
-          ref={cvRef}
           className={classNames([
             'h-[390px] lg:h-[529px]',
-            ' w-full max-w-[280px] lg:max-w-[380px]',
+            'w-full max-w-[280px] lg:max-w-[380px]',
             'shadow-md',
             'bg-white',
             'relative',
@@ -90,57 +85,47 @@ const CurriculumPage = () => {
           >
             Click here to expand
           </button>
-          <CvIframe
-            isOpen={isOpen}
-            handleToggle={handleToggle}
-            rectValues={bounds}
-          />
+          <CvIframe isOpen={isOpen} handleToggle={handleToggle} />
         </div>
       </main>
     </>
   );
 };
 
-const openSpring = { type: 'spring', stiffness: 200, damping: 30 };
-const closeSpring = { type: 'spring', stiffness: 300, damping: 35 };
-
 function CvIframe({
   isOpen,
   handleToggle,
-  rectValues,
 }: {
   isOpen: boolean;
   handleToggle: () => void;
-  rectValues: UseMeasureRect;
 }) {
-  const { x, y, ...rect } = rectValues;
-
   const currentAnimation = isOpen ? 'open' : 'closed';
 
   return (
     <>
       <motion.div
+        layout
+        initial={false}
         animate={currentAnimation}
-        transition={isOpen ? openSpring : closeSpring}
         variants={{
           open: {
-            width: '100vw',
-            height: '100vh',
-            top: 0,
-            bottom: 0,
-            right: 0,
-            left: 0,
-            filter: 'none',
+            filter: 'blur(0px)',
+            zIndex: 50,
           },
           closed: {
-            ...rect,
-            zIndex: 0,
             filter: 'blur(1px)',
+            zIndex: 0,
           },
         }}
         className={classNames([
           'bg-gray-100',
-          'fixed',
+          /**
+           * Set position within the animations does not work.
+           *
+           * The reason for that is because it's "0/1" and it does not have
+           * transitions
+           */
+          isOpen ? 'fixed' : 'absolute',
           'bottom-0 right-0 left-0 top-0',
           isOpen && 'md:py-8',
           'z-40',
@@ -149,12 +134,14 @@ function CvIframe({
         ])}
       >
         <motion.iframe
+          layout
           src="https://docs.google.com/document/d/e/2PACX-1vRH5F5mV58PwToU2intAbHK7XujvdPyOhWr2gDdCC9YcisCSaJVctuGlzE_28zgEbJt4qEo-CUJl-hb/pub?embedded=true"
           className={classNames('w-full h-full max-w-3xl shadow-xl mx-auto')}
           scrolling={isOpen === false ? 'no' : undefined}
         />
 
         <motion.button
+          layout
           animate={currentAnimation}
           variants={{
             open: {
