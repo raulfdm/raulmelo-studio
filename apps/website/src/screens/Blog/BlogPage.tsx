@@ -1,5 +1,6 @@
 import type { MenuBar as MenuBarType } from '@components/MenuBar';
 import { SEO } from '@components/SEO';
+import { sharedClasses } from '@components/uiClasses';
 import { useLocalization } from '@hooks/useLocalization';
 import {
   DotDivider,
@@ -8,6 +9,7 @@ import {
   Tags,
 } from '@raulfdm/blog-components';
 import { getPostUrl, getTagUrl } from '@utils/url';
+import classNames from 'classnames';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import React from 'react';
@@ -47,15 +49,6 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
     </>
   ) : null;
 
-  const featuredImage = featured_image ? (
-    <FeaturedImage
-      src={featured_image.url}
-      width={featured_image.width}
-      height={featured_image.height}
-      unsplash={unsplash}
-    />
-  ) : null;
-
   const translations = translation ? (
     <AvailableTranslations {...translation} />
   ) : null;
@@ -79,15 +72,34 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
         />
       </SEO>
       <MenuBar />
-      <Header
-        title={post.title}
-        subtitle={post.subtitle}
-        hasBottomMargin={!featuredImage}
-      />
-      <PrismStyles />
+      <main className={classNames(sharedClasses.sectionContainer)}>
+        {featured_image ? (
+          <FeaturedImage src={featured_image.url} unsplash={unsplash} />
+        ) : null}
+
+        <section className={classNames(['md:flex', 'justify-between'])}>
+          <aside
+            className={classNames([
+              'hidden md:block',
+              'mr-8',
+              'w-full w-[15%]',
+            ])}
+          >
+            <span>Share</span>
+            <ul>
+              <li>LinkedIn</li>
+            </ul>
+          </aside>
+          <article className={classNames(['w-full md:w-[85%] lg:w-[80%]'])}>
+            <Header title={post.title} subtitle={post.subtitle} />
+          </article>
+        </section>
+      </main>
+      {/*  */}
+      {/* <PrismStyles />
       {translations}
       {allSeries}
-      {featuredImage}
+      
       <ProseContainer>{children}</ProseContainer>
       <footer className="container mx-auto px-4 md:px-0 max-w-screen-md">
         {seriesWithDivider}
@@ -103,7 +115,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
             );
           })}
         </Tags>
-      </footer>
+      </footer> */}
     </>
   );
 };

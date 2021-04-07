@@ -4,6 +4,7 @@ import { defineMessages, FormattedMessage } from 'react-intl';
 
 import { useLocalization } from '@hooks/useLocalization';
 import { PostApiData } from '@types-api';
+import classNames from 'classnames';
 
 const messages = defineMessages({
   featuredImageLabel: {
@@ -14,34 +15,39 @@ const messages = defineMessages({
 type FeaturedImageProps = {
   src: string;
   alt?: string;
-  width: string | number;
-  height: string | number;
   unsplash: PostApiData['unsplash'];
 };
 
 export const FeaturedImage: React.FC<FeaturedImageProps> = ({
   src,
   alt,
-  width,
-  height,
   unsplash,
 }) => {
   const { formatMessage } = useLocalization();
 
   return (
     <div
-      className="max-w-screen-lg mx-auto mt-14 mb-11"
+      className="mb-8 lg:mb-16"
       role="img"
       aria-label={formatMessage(messages.featuredImageLabel)}
     >
-      <Image
-        src={src}
-        width={width}
-        height={height}
-        layout="responsive"
-        alt={alt || formatMessage(messages.featuredImageLabel)}
-        loading="eager"
-      />
+      <figure
+        className={classNames([
+          'pb-[45%]',
+          'relative',
+          'overflow-hidden',
+          'h-0',
+          'shadow',
+        ])}
+      >
+        <Image
+          src={src}
+          layout="fill"
+          objectFit="cover"
+          alt={alt || formatMessage(messages.featuredImageLabel)}
+          loading="eager"
+        />
+      </figure>
       {unsplash ? <UnsplashCaption {...unsplash} /> : null}
       {!unsplash && alt ? <Caption>{alt}</Caption> : null}
     </div>
@@ -75,11 +81,17 @@ function UnsplashCaption({ authorName, url }: UnsplashCaptionProps) {
 type CaptionProps = {
   children: React.ReactNode;
 };
+
 function Caption({ children }: CaptionProps) {
   return (
     <p
-      className="img-caption text-center text-sm mt-2 text-gray-600 dark:text-gray-300"
-      data-testid="featured-img-caption"
+      className={classNames([
+        'img-caption',
+        'text-center',
+        'text-base lg:text-md',
+        'dark:text-gray-300',
+        'mt-4',
+      ])}
     >
       {children}
     </p>
