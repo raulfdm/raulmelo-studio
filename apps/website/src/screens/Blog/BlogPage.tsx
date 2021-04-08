@@ -61,11 +61,6 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
           href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap"
           rel="stylesheet"
         />
-        <script
-          async
-          src="https://platform.twitter.com/widgets.js"
-          charSet="utf-8"
-        />
       </SEO>
       <MenuBar />
       <PrismStyles />
@@ -100,8 +95,10 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
             <ProseContainer className="mt-8">{children}</ProseContainer>
             {seriesWithDivider}
             <hr className="mt-10 mb-6" />
-            <footer className={classNames(['flex', 'justify-between'])}>
-              <PostTags postTags={post_tags} className="mb-4" />
+            <footer
+              className={classNames(['flex', 'justify-between', 'flex-wrap'])}
+            >
+              <PostTags postTags={post_tags} className="mb-4 mr-4" />
               <Share />
             </footer>
           </section>
