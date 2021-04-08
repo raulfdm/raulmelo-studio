@@ -41,18 +41,18 @@ const links = [
 
 export const SideMenu = () => {
   const { sideMenu } = useApp();
+  const { state, handleClose } = sideMenu;
   const { formatMessage } = useLocalization();
   const { pathname } = useRouter();
 
   const sanitizedPath = pathname.replace('blog', '');
-
-  const { state, handleClose } = sideMenu;
 
   return (
     <SideMenuComponent
       Link={Link}
       state={state}
       className="top-16"
+      overlayClassName="top-16"
       handleCloseMenu={handleClose}
       items={links.map(({ href, localeId }) => ({
         itemLabel: formatMessage(localeId),
