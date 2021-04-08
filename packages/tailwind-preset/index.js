@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors');
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   future: {
@@ -20,7 +21,7 @@ module.exports = {
       '4xl': ['4.209rem', { lineHeight: 1.3 }],
     },
     fontFamily: {
-      sans: `'Nunito Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, "Helvetica Neue", sans-serif`,
+      sans: ['Nunito Sans', ...defaultTheme.fontFamily.sans],
     },
     extend: {
       colors: {
