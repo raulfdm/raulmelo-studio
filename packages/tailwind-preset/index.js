@@ -47,63 +47,42 @@ module.exports = {
       typography: (theme) => {
         const white = theme('textColor.white');
         const black = theme('textColor.black');
-        const serif = theme('fontFamily.serif');
         const sans = theme('fontFamily.sans');
 
         return {
+          /**
+           * The defaults will be applied for both Light and Dark theme
+           */
           DEFAULT: {
             css: {
               color: black,
-              fontFamily: serif,
-              h1: {
-                fontFamily: serif,
-              },
-              h2: {
-                fontFamily: sans,
-              },
-              h3: {
-                fontFamily: sans,
-              },
-              h4: {
-                fontFamily: sans,
-              },
-              h5: {
-                fontFamily: sans,
-              },
-              h6: {
-                fontFamily: sans,
-              },
+              fontFamily: sans,
               blockquote: {
                 borderLeftColor: black,
               },
-            },
-          },
-          lg: {
-            css: {
-              hr: {
-                overflow: 'visible',
-                marginBottom: '2.6rem',
-                marginTop: '2.6rem',
+              h1: {
+                fontWeight: 800,
+              },
+              h2: {
+                fontWeight: 800,
+              },
+              h3: {
+                fontWeight: 800,
+              },
+              h4: {
+                fontWeight: 800,
+              },
+              h5: {
+                fontWeight: 800,
+              },
+              h6: {
+                fontWeight: 800,
               },
             },
           },
-          xl: {
-            css: {
-              hr: {
-                overflow: 'visible',
-                marginBottom: '3.6rem',
-                marginTop: '3.6rem',
-              },
-            },
-          },
-          '2xl': {
-            css: {
-              /**
-               * 20px
-               */
-              fontSize: '1.25rem',
-            },
-          },
+          /**
+           * Dark more overrides
+           */
           dark: {
             css: {
               color: white,

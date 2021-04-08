@@ -21,6 +21,11 @@ NEXT_PUBLIC_ALGOLIA_INDEX_NAME=xxx
 
 ## Design
 
+### Fonts
+
+- Fira Code 400,600
+- Nunito Sans 300, 400, 700, 800, 900
+
 ### Theming
 
 - Background:

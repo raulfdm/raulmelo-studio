@@ -64,7 +64,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
         url={getPostUrl(post.slug, locale)}
       >
         <link
-          href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap"
           rel="stylesheet"
         />
         <script
