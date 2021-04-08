@@ -1,32 +1,25 @@
 import classNames from 'classnames';
 import { motion } from 'framer-motion';
-import React from 'react';
+import React, { useRef } from 'react';
+import { useClickAway } from '../hooks';
 import { SideMenuItem, SideMenuItemProps } from '../SideMenuItem';
-
-export type SideMenuProps = {
-  className?: string;
-  handleCloseMenu: () => void;
-  items: SideMenuItemProps[];
-  Link?: React.ElementType;
-  state: 'open' | 'closed';
-};
 
 export const SideMenu = ({
   className,
   handleCloseMenu,
   items,
   Link,
+  overlayClassName,
   state,
 }: SideMenuProps) => {
+  const navRef = useRef(null);
   const isClosed = state === 'closed';
-
-  function onItemClicked() {
-    handleCloseMenu();
-  }
+  useClickAway(navRef, handleCloseMenu);
 
   return (
     <>
       <motion.nav
+        ref={navRef}
         className={classNames([
           className,
           'fixed',
@@ -54,7 +47,7 @@ export const SideMenu = ({
             <SideMenuItem
               key={props.href}
               {...props}
-              onClick={onItemClicked}
+              onClick={handleCloseMenu}
               Link={Link}
             />
           ))}
@@ -67,6 +60,7 @@ export const SideMenu = ({
           'z-10',
           'bg-black bg-opacity-80',
           'opacity-0',
+          overlayClassName,
         ])}
         style={{
           pointerEvents: isClosed ? 'none' : 'all',
@@ -85,4 +79,13 @@ export const SideMenu = ({
       />
     </>
   );
+};
+
+export type SideMenuProps = {
+  className?: string;
+  overlayClassName?: string;
+  handleCloseMenu: () => void;
+  items: SideMenuItemProps[];
+  Link?: React.ElementType;
+  state: 'open' | 'closed';
 };
