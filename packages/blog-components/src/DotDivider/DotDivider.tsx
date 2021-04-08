@@ -43,6 +43,7 @@ export const DotDivider = () => {
   return (
     <div
       role="separator"
+      data-testid="dot-divider"
       className={classNames([
         'flex',
         'justify-center',
