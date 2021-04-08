@@ -3,40 +3,28 @@ import { sharedClasses } from '@components/uiClasses';
 import { useApp } from '@hooks/useApp';
 import { CloseIcon, Logo, MenuIcon } from '@raulfdm/blog-components';
 import classNames from 'classnames';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FC } from 'react';
 import { LanguageSwitch } from './components/LanguageSwitch';
 import { ThemeSwitch } from './components/ThemeSwitch';
-import { useHideMenu } from './useHideMenu';
 
 export const MenuBar: FC = () => {
-  const menuState = useHideMenu();
   const { sideMenu } = useApp();
 
   const Icon = sideMenu.isClosed ? MenuIcon : CloseIcon;
 
-  const variants = {
-    open: { y: 0 },
-    closed: { y: '-100%' },
-  };
-
   return (
     <>
-      <motion.section
+      <section
         className={classNames([
-          'fixed',
           'inset-x-0',
-          'top-0 h-16',
+          'h-16',
           'z-40',
           'shadow',
           'bg-white dark:bg-blue-800',
           'transition-theme duration-200 ease',
+          'mb-8 md:mb-12 lg:mb-18',
         ])}
-        animate={menuState}
-        variants={variants}
-        transition={{ duration: 0.3, type: 'tween' }}
-        data-testid="menu-bar"
       >
         <div
           className={classNames([
@@ -62,13 +50,8 @@ export const MenuBar: FC = () => {
             </MenuButton>
           </div>
         </div>
-      </motion.section>
+      </section>
       <SideMenu />
-      <style global jsx>{`
-        #__next {
-          padding-bottom: 5rem;
-        }
-      `}</style>
     </>
   );
 };
