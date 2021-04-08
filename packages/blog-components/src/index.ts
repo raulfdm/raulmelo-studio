@@ -1,5 +1,4 @@
 export * from './BigQuote';
-export * from './ClickOutside';
 export * from './CodePenIframe';
 export * from './DotDivider';
 export * from './DropdownMenu';
@@ -18,3 +17,4 @@ export * from './Tags';
 export * from './UiContainer';
 export * from './Typography';
 export * from './YouTubeIframe';
+export * from './hooks';
