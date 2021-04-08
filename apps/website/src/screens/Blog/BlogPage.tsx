@@ -74,17 +74,19 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
           <FeaturedImage src={featured_image.url} unsplash={unsplash} />
         ) : null}
 
-        <section className={classNames(['md:flex', 'justify-between'])}>
+        <section
+          className={classNames([
+            'grid grid-cols-4 gap-4 md:grid-cols-12 md:gap-6',
+          ])}
+        >
           <Share
             as="aside"
-            className={classNames([
-              'hidden md:block',
-              'mr-8',
-              'w-full w-[15%]',
-            ])}
+            className={classNames(['hidden md:block', 'col-span-2'])}
           />
 
-          <section className={classNames(['w-full md:w-[85%] lg:w-[80%]'])}>
+          <section
+            className={classNames(['w-full', 'col-span-full md:col-start-3'])}
+          >
             <Header
               title={post.title}
               subtitle={post.subtitle}
