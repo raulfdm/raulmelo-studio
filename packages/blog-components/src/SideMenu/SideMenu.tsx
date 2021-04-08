@@ -14,7 +14,7 @@ export const SideMenu = ({
 }: SideMenuProps) => {
   const navRef = useRef(null);
   const isClosed = state === 'closed';
-  useClickAway(navRef, handleCloseMenu);
+  useClickAway(navRef, handleCloseMenu, ['mouseevent', 'scroll']);
 
   return (
     <>

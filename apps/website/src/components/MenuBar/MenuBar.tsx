@@ -24,6 +24,7 @@ export const MenuBar: FC = () => {
           'bg-white dark:bg-blue-800',
           'transition-theme duration-200 ease',
           'mb-8 md:mb-12 lg:mb-18',
+          !sideMenu.isClosed && 'sticky',
         ])}
       >
         <div
