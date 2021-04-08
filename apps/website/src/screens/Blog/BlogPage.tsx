@@ -81,32 +81,15 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
         ) : null}
 
         <section className={classNames(['md:flex', 'justify-between'])}>
-          <aside
+          <Share
+            as="aside"
             className={classNames([
               'hidden md:block',
               'mr-8',
               'w-full w-[15%]',
             ])}
-          >
-            <span
-              className={classNames([
-                'font-extrabold',
-                'text-xl',
-                'block',
-                'mb-6',
-              ])}
-            >
-              Share
-            </span>
-            <ul className={classNames(['flex', 'space-x-4'])}>
-              <li>
-                <LinkedInIcon className={classNames(['w-8'])} />
-              </li>
-              <li>
-                <TwitterIcon className={classNames(['w-8'])} />
-              </li>
-            </ul>
-          </aside>
+          />
+
           <section className={classNames(['w-full md:w-[85%] lg:w-[80%]'])}>
             <Header
               title={post.title}
@@ -122,18 +105,9 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
               {seriesWithDivider}
             </ProseContainer>
             <hr className="mt-10 mb-6" />
-            <footer>
-              <Tags>
-                {post_tags.map((tag) => {
-                  return (
-                    <Tag key={tag.id} className="text-base lg:text-lg">
-                      <Link href={getTagUrl(tag.slug)}>
-                        <a className="underline">#{tag.name}</a>
-                      </Link>
-                    </Tag>
-                  );
-                })}
-              </Tags>
+            <footer className={classNames(['flex', 'justify-center'])}>
+              <PostTags postTags={post_tags} className="mb-4" />
+              <Share />
             </footer>
           </section>
         </section>
@@ -147,4 +121,68 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
       */}
     </>
   );
+};
+
+const Share = ({ as = 'div', className }: ShareProps) => {
+  const Wrapper = as;
+  return (
+    <Wrapper className={className}>
+      <span
+        className={classNames([
+          'font-extrabold',
+          'text-md md:text-lg lg:text-xl',
+          'block',
+          'mb-4 md:mb-6',
+        ])}
+      >
+        Share
+      </span>
+      <ul className={classNames(['flex', 'space-x-4'])}>
+        <li>
+          <LinkedInIcon className={classNames(['w-6 md:w-8'])} />
+        </li>
+        <li>
+          <TwitterIcon className={classNames(['w-6 md:w-8'])} />
+        </li>
+      </ul>
+    </Wrapper>
+  );
+};
+
+type ShareProps = {
+  as?: React.ElementType;
+  className?: string;
+};
+
+const PostTags = ({ className, postTags }: PostTagsProps) => {
+  return (
+    <div className={classNames([className])}>
+      <span
+        className={classNames([
+          'font-extrabold',
+          'text-md md:text-lg lg:text-xl',
+          'block',
+          'mb-4 md:mb-6',
+        ])}
+      >
+        Tags
+      </span>
+      <Tags>
+        {postTags.map((tag) => {
+          return (
+            <Tag key={tag.id} className="text-base lg:text-lg">
+              <Link href={getTagUrl(tag.slug)}>
+                <a className="underline">#{tag.name}</a>
+              </Link>
+            </Tag>
+          );
+        })}
+      </Tags>
+    </div>
+  );
+};
+
+type PostTagsProps = {
+  className?: string;
+  postTags: BlogPageProps['post']['post_tags'];
 };

@@ -1,17 +1,15 @@
 import React from 'react';
 import classNames from 'classnames';
-import styled from '@emotion/styled';
-
-const Prose = styled.article``;
 
 export const ProseContainer = ({
   children,
   className,
-  as,
+  as = 'article',
 }: ProseContainerProps) => {
+  const Element = as;
+
   return (
-    <Prose
-      as={as}
+    <Element
       className={classNames([
         'prose dark:prose-dark',
         'prose-lg md:prose-xl lg:prose-2xl',
@@ -20,12 +18,12 @@ export const ProseContainer = ({
       ])}
     >
       {children}
-    </Prose>
+    </Element>
   );
 };
 
 export type ProseContainerProps = {
   children: React.ReactNode;
   className?: string;
-  as?: Parameters<typeof Prose>[0]['as'];
+  as?: React.ElementType;
 };
