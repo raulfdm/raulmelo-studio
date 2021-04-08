@@ -74,6 +74,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
         />
       </SEO>
       <MenuBar />
+      <PrismStyles />
       <main className={classNames(sharedClasses.sectionContainer)}>
         {featured_image ? (
           <FeaturedImage src={featured_image.url} unsplash={unsplash} />
@@ -106,7 +107,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
               </li>
             </ul>
           </aside>
-          <article className={classNames(['w-full md:w-[85%] lg:w-[80%]'])}>
+          <section className={classNames(['w-full md:w-[85%] lg:w-[80%]'])}>
             <Header
               title={post.title}
               subtitle={post.subtitle}
@@ -116,30 +117,34 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
                 day: '2-digit',
               })}
             />
-          </article>
+            <ProseContainer className="mt-8">
+              {children}
+              {seriesWithDivider}
+            </ProseContainer>
+            <hr className="mt-10 mb-6" />
+            <footer>
+              <Tags>
+                {post_tags.map((tag) => {
+                  return (
+                    <Tag key={tag.id} className="text-base lg:text-lg">
+                      <Link href={getTagUrl(tag.slug)}>
+                        <a className="underline">#{tag.name}</a>
+                      </Link>
+                    </Tag>
+                  );
+                })}
+              </Tags>
+            </footer>
+          </section>
         </section>
       </main>
-      {/*  */}
-      {/* <PrismStyles />
+
+      {/* 
       {translations}
       {allSeries}
       
-      <ProseContainer>{children}</ProseContainer>
-      <footer className="container mx-auto px-4 md:px-0 max-w-screen-md">
-        {seriesWithDivider}
-        <hr className="mt-10 mb-6" />
-        <Tags>
-          {post_tags.map((tag) => {
-            return (
-              <Tag key={tag.id} className="text-base lg:text-lg">
-                <Link href={getTagUrl(tag.slug)}>
-                  <a className="underline">#{tag.name}</a>
-                </Link>
-              </Tag>
-            );
-          })}
-        </Tags>
-      </footer> */}
+      
+      */}
     </>
   );
 };

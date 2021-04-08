@@ -1,13 +1,31 @@
 import React from 'react';
+import classNames from 'classnames';
+import styled from '@emotion/styled';
 
-export const ProseContainer = ({ children }: ProseContainerProps) => {
+const Prose = styled.article``;
+
+export const ProseContainer = ({
+  children,
+  className,
+  as,
+}: ProseContainerProps) => {
   return (
-    <article className="prose dark:prose-dark prose-lg lg:prose-xl 2xl:prose-2xl container mx-auto px-4 md:px-0 max-w-screen-md">
+    <Prose
+      as={as}
+      className={classNames([
+        'prose dark:prose-dark',
+        'prose-lg md:prose-xl lg:prose-2xl',
+        'max-w-full',
+        className,
+      ])}
+    >
       {children}
-    </article>
+    </Prose>
   );
 };
 
 export type ProseContainerProps = {
   children: React.ReactNode;
+  className?: string;
+  as?: Parameters<typeof Prose>[0]['as'];
 };
