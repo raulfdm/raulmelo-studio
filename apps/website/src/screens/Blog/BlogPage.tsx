@@ -15,7 +15,6 @@ import classNames from 'classnames';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import React from 'react';
-import type { AvailableTranslations as AvailableTranslationsType } from './components/AvailableTranslations';
 import { FeaturedImage } from './components/FeaturedImage';
 import { Header } from './components/Header';
 import { PrismStyles } from './components/PrismStyles';
@@ -26,19 +25,18 @@ const SeriesSection = dynamic(() =>
   import('./components/SeriesSection').then((mod) => mod.SeriesSection),
 ) as typeof SeriesSectionType;
 
-const AvailableTranslations = dynamic(() =>
-  import('./components/AvailableTranslations').then(
-    (mod) => mod.AvailableTranslations,
-  ),
-) as typeof AvailableTranslationsType;
-
 const MenuBar = dynamic(() =>
   import('@components/MenuBar').then((mod) => mod.MenuBar),
 ) as typeof MenuBarType;
 
 export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
   const { locale, formatDate } = useLocalization();
-  const { featured_image, post_tags, unsplash, series, translation } = post;
+  const {
+    featured_image,
+    post_tags,
+    unsplash,
+    series /* translation */,
+  } = post;
 
   const allSeries = series ? (
     <SeriesSection series={series} currentPostId={post.id} />
@@ -49,10 +47,6 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
       <DotDivider />
       {allSeries}
     </>
-  ) : null;
-
-  const translations = translation ? (
-    <AvailableTranslations {...translation} />
   ) : null;
 
   return (
@@ -100,25 +94,17 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
                 day: '2-digit',
               })}
             />
-            <ProseContainer className="mt-8">
-              {children}
-              {seriesWithDivider}
-            </ProseContainer>
+            {allSeries}
+            <ProseContainer className="mt-8">{children}</ProseContainer>
+            {seriesWithDivider}
             <hr className="mt-10 mb-6" />
-            <footer className={classNames(['flex', 'justify-center'])}>
+            <footer className={classNames(['flex', 'justify-between'])}>
               <PostTags postTags={post_tags} className="mb-4" />
               <Share />
             </footer>
           </section>
         </section>
       </main>
-
-      {/* 
-      {translations}
-      {allSeries}
-      
-      
-      */}
     </>
   );
 };
