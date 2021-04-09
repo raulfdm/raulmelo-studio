@@ -33,7 +33,7 @@ export const FeaturedImage: React.FC<FeaturedImageProps> = ({
     >
       <figure
         className={classNames([
-          'pb-[45%]',
+          'aspect-w-12 aspect-h-6',
           'relative',
           'overflow-hidden',
           'h-0',

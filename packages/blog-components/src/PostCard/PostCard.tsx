@@ -23,7 +23,7 @@ export const PostCard: React.FC<PostCardProps> = ({
         className={classNames([
           'relative',
           'rounded-sm shadow-sm',
-          'pb-[56.25%]', // 16:9 aspect ratio
+          'aspect-w-16 aspect-h-9',
         ])}
       >
         {renderImage ? (

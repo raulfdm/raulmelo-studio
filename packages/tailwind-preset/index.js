@@ -129,5 +129,8 @@ module.exports = {
     },
     typography: ['dark', 'responsive'],
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
 };
