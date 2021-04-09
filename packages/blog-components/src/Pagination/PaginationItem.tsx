@@ -33,7 +33,7 @@ export function PaginationItem(props: PaginationItemProps) {
     <ItemComponent
       disabled={disabled}
       className={classNames([
-        'w-6',
+        'min-w-[1.5rem]',
         'text-center',
         'cursor-pointer',
         'text-lg',
