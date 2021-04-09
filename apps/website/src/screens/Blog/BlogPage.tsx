@@ -1,6 +1,5 @@
 import type { MenuBar as MenuBarType } from '@components/MenuBar';
 import { SEO } from '@components/SEO';
-import { sharedClasses } from '@components/uiClasses';
 import { useLocalization } from '@hooks/useLocalization';
 import {
   DotDivider,

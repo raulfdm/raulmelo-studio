@@ -1,6 +1,5 @@
 import { MenuBar } from '@components/MenuBar';
 import { SEO } from '@components/SEO';
-import { sharedClasses } from '@components/uiClasses';
 import { useLocalization } from '@hooks/useLocalization';
 import { Pagination, PaginationItem } from '@raulfdm/blog-components';
 import { useRouter } from 'next/router';
