@@ -8,13 +8,17 @@ describe('<Tags>', () => {
     render(
       <Tags>
         <li>hi</li>
-      </Tags>
+      </Tags>,
     );
 
     const tags = screen.getByRole('list');
     expect(tags).toMatchInlineSnapshot(`
+      .emotion-0>* {
+        margin-right: 1rem;
+      }
+
       <ul
-        class="flex flex-row space-x-2 md:space-x-4 mt-2 md:mt-4 flex-wrap"
+        class="flex flex-row flex-wrap text-base emotion-0"
       >
         <li>
           hi
@@ -30,7 +34,7 @@ describe('<Tags>', () => {
         <li>
           <a href="#">bar</a>
         </li>
-      </Tags>
+      </Tags>,
     );
 
     const tags = screen.getByRole('list');

@@ -1,10 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import useMeasure from 'react-use-measure';
 
 import { ImageSlider, ImageSliderFactory } from '.';
-
-jest.mock('react-use-measure');
 
 const images = [
   { src: 'https://picsum.photos/300/200', alt: 'random picture' },
@@ -36,8 +33,6 @@ describe('<ImageSlider />', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-
-    (useMeasure as jest.Mock).mockReturnValue([jest.fn(), { height: 100 }]);
   });
 
   it('matches snapshot', () => {

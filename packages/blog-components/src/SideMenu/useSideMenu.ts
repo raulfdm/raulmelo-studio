@@ -1,6 +1,5 @@
-import { useMachine } from '@xstate/react/lib/fsm';
 import { createMachine } from '@xstate/fsm';
-import { useEffect } from 'react';
+import { useMachine } from '@xstate/react/lib/fsm';
 
 type CloseMenuEvent = { type: 'CLOSE' };
 type ToggleMenuEvent = { type: 'TOGGLE' };
@@ -30,14 +29,6 @@ export function useSideMenu(): UseSideMenu {
   function handleClose() {
     send('CLOSE');
   }
-
-  useEffect(() => {
-    document.addEventListener('scroll', handleClose);
-
-    return () => {
-      document.removeEventListener('scroll', handleClose);
-    };
-  }, []);
 
   return {
     state: current.value as 'closed' | 'open',
