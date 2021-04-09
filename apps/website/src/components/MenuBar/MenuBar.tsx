@@ -1,5 +1,4 @@
 import { SideMenu } from '@components/SideMenu';
-import { sharedClasses } from '@components/uiClasses';
 import { useApp } from '@hooks/useApp';
 import { CloseIcon, Logo, MenuIcon } from '@raulfdm/blog-components';
 import classNames from 'classnames';
@@ -27,20 +26,15 @@ export const MenuBar: FC = () => {
           !sideMenu.isClosed && 'sticky',
         ])}
       >
-        <div
-          className={classNames([
-            'flex items-center h-full',
-            sharedClasses.baseContainer,
-          ])}
-        >
-          <div data-testid="menu-bar__logo">
+        <div className={classNames(['items-center h-full', 'grid-container'])}>
+          <div data-testid="menu-bar__logo" className="col-span-2">
             <Link href="/">
               <a>
                 <Logo />
               </a>
             </Link>
           </div>
-          <div className="flex flex-1 justify-end space-x-3">
+          <div className="flex justify-end space-x-3 col-span-2 md:col-end-9 lg:col-end-13">
             <ThemeSwitch />
             <LanguageSwitch />
             <MenuButton
