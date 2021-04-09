@@ -1,6 +1,6 @@
 import { MenuBar } from '@components/MenuBar';
 import { SEO } from '@components/SEO';
-import { Share } from '@components/Share';
+import { ShareContent } from '@components/Share';
 import { useLocalization } from '@hooks/useLocalization';
 import { ProseContainer } from '@raulfdm/blog-components';
 import { UsesApiData } from '@types-api';
@@ -26,11 +26,13 @@ export const UsesPage: React.FC<UsesPageProps> = ({ children, seo, title }) => {
       />
       <MenuBar />
       <main className="grid-container">
-        <Share
+        <ShareContent
           as="aside"
           className={classNames([
             'row-start-2 col-span-full md:col-span-1 md:row-auto lg:col-span-2',
           ])}
+          linkedIn={{ title, summary: seo.description }}
+          twitter={{ text: `${title}.\n${seo.description}\b` }}
         />
         <ProseContainer
           as="article"

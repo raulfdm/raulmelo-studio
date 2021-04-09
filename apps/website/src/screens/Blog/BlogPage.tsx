@@ -1,6 +1,6 @@
 import type { MenuBar as MenuBarType } from '@components/MenuBar';
 import { SEO } from '@components/SEO';
-import { Share } from '@components/Share';
+import { ShareContent } from '@components/Share';
 import { useLocalization } from '@hooks/useLocalization';
 import {
   DotDivider,
@@ -67,12 +67,14 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
           <FeaturedImage src={featured_image.url} unsplash={unsplash} />
         ) : null}
 
-        <Share
+        <ShareContent
           as="aside"
           className={classNames([
             'hidden md:block',
             'col-span-1 lg:col-span-2',
           ])}
+          twitter={{ text: `${post.title}. ${post.subtitle}` }}
+          linkedIn={{ title: post.title, summary: post.description }}
         />
 
         <section
@@ -98,7 +100,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
             className={classNames(['flex', 'justify-between', 'flex-wrap'])}
           >
             <PostTags postTags={post_tags} className="mb-4 mr-4" />
-            <Share />
+            <ShareContent />
           </footer>
         </section>
       </main>

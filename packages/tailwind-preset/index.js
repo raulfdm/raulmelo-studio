@@ -54,21 +54,27 @@ module.exports = {
               },
               h1: {
                 fontWeight: 800,
+                color: black,
               },
               h2: {
                 fontWeight: 800,
+                color: black,
               },
               h3: {
                 fontWeight: 800,
+                color: black,
               },
               h4: {
                 fontWeight: 800,
+                color: black,
               },
               h5: {
                 fontWeight: 800,
+                color: black,
               },
               h6: {
                 fontWeight: 800,
+                color: black,
               },
             },
           },
