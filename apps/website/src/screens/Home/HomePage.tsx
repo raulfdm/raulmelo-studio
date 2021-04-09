@@ -46,7 +46,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       />
 
       <MenuBar />
-      <main className={sharedClasses.sectionContainer}>
+      <main className="grid-container">
         <AuthorPresentation
           fullName={personalInformation.full_name}
           profilePic={personalInformation.profile_pic.url}

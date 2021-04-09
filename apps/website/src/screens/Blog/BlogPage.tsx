@@ -64,44 +64,44 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
       </SEO>
       <MenuBar />
       <PrismStyles />
-      <main className={classNames(sharedClasses.sectionContainer)}>
+      <main className="grid-container">
         {featured_image ? (
           <FeaturedImage src={featured_image.url} unsplash={unsplash} />
         ) : null}
 
+        <Share
+          as="aside"
+          className={classNames([
+            'hidden md:block',
+            'col-span-1 lg:col-span-2',
+          ])}
+        />
+
         <section
           className={classNames([
-            'grid grid-cols-4 gap-4 md:grid-cols-12 md:gap-6',
+            'w-full',
+            'col-span-full md:col-start-2 lg:col-start-3',
           ])}
         >
-          <Share
-            as="aside"
-            className={classNames(['hidden md:block', 'col-span-2'])}
+          <Header
+            title={post.title}
+            subtitle={post.subtitle}
+            publishedDate={formatDate(new Date(post.date), {
+              year: 'numeric',
+              month: 'short',
+              day: '2-digit',
+            })}
           />
-
-          <section
-            className={classNames(['w-full', 'col-span-full md:col-start-3'])}
+          {allSeries}
+          <ProseContainer className="mt-8">{children}</ProseContainer>
+          {seriesWithDivider}
+          <hr className="mt-10 mb-6" />
+          <footer
+            className={classNames(['flex', 'justify-between', 'flex-wrap'])}
           >
-            <Header
-              title={post.title}
-              subtitle={post.subtitle}
-              publishedDate={formatDate(new Date(post.date), {
-                year: 'numeric',
-                month: 'short',
-                day: '2-digit',
-              })}
-            />
-            {allSeries}
-            <ProseContainer className="mt-8">{children}</ProseContainer>
-            {seriesWithDivider}
-            <hr className="mt-10 mb-6" />
-            <footer
-              className={classNames(['flex', 'justify-between', 'flex-wrap'])}
-            >
-              <PostTags postTags={post_tags} className="mb-4 mr-4" />
-              <Share />
-            </footer>
-          </section>
+            <PostTags postTags={post_tags} className="mb-4 mr-4" />
+            <Share />
+          </footer>
         </section>
       </main>
     </>

@@ -1,7 +1,6 @@
 import { MenuBar } from '@components/MenuBar';
 import { PostCardWrapper } from '@components/PostCardWrapper';
 import { SEO } from '@components/SEO';
-import { sharedClasses } from '@components/uiClasses';
 import { algoliaConfig } from '@config/algolia';
 import { useLocalization } from '@hooks/useLocalization';
 import { AlgoliaIcon } from '@raulfdm/blog-components';
@@ -36,12 +35,12 @@ export const SearchPage = () => {
         title={formatMessage(messages.seoTitle)}
       />
       <MenuBar />
-      <main className={sharedClasses.sectionContainer}>
+      <main className="grid-container">
         <InstantSearch
           searchClient={algoliaDebounceSearchClient}
           indexName={algoliaConfig.indexName}
         >
-          <div className="pb-5 md:pb-10">
+          <div className="pb-5 md:pb-10 col-span-full">
             <SearchBox
               searchAsYouType
               autoFocus
@@ -69,7 +68,7 @@ export const SearchPage = () => {
 function PoweredByAlgolia() {
   return (
     <a
-      className="flex justify-end items-center font-medium font-sans text-base"
+      className="flex justify-end items-center font-medium font-sans text-base col-span-full"
       href="https://www.algolia.com/"
     >
       Powered by <AlgoliaIcon className="w-8" color="#5468ff" /> Algolia

@@ -24,7 +24,7 @@ type PostsProps = {
 
 export const Posts = ({ posts, title }: PostsProps) => {
   return (
-    <>
+    <section className="col-span-full">
       <h2
         className={classNames([
           'font-sans font-extrabold',
@@ -64,6 +64,6 @@ export const Posts = ({ posts, title }: PostsProps) => {
             : null}
         </AnimatePresence>
       </motion.ul>
-    </>
+    </section>
   );
 };

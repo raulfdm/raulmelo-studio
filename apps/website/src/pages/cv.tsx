@@ -1,7 +1,6 @@
 import { MenuBar } from '@components/MenuBar';
 import { SEO } from '@components/SEO';
 import { ExternalLink } from '@raulfdm/blog-components';
-import { sharedClasses } from '@components/uiClasses';
 import classNames from 'classnames';
 import Image from 'next/image';
 import React from 'react';
@@ -17,17 +16,10 @@ const CurriculumPage = () => {
         url="/cv"
       />
       <MenuBar />
-      <main
-        className={classNames([
-          sharedClasses.sectionContainer,
-          'pb-0',
-          'flex',
-          'justify-center md:justify-between',
-          'items-center md:items-start',
-          'flex-wrap',
-        ])}
-      >
-        <header className={classNames(['leading-normal'])}>
+      <main className={classNames(['grid-container'])}>
+        <header
+          className={classNames(['leading-normal col-span-full lg:col-span-8'])}
+        >
           <h1
             className={classNames([
               'text-2xl md:text-3xl lg:text-4xl',
@@ -47,12 +39,13 @@ const CurriculumPage = () => {
 
         <div
           className={classNames([
+            'col-span-full lg:col-span-4',
             'w-full max-w-[250px] md:max-w-[380px]',
             'shadow-md',
             'bg-white',
             'relative',
             'grid place-items-center',
-            'mt-6 mx-auto',
+            'mx-auto',
           ])}
         >
           <figure className={classNames('relative', 'h-full w-full')}>

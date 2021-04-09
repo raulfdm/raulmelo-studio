@@ -1,6 +1,5 @@
 import { MenuBar } from '@components/MenuBar';
 import { SEO, titleWithNameAndJobTitle } from '@components/SEO';
-import { sharedClasses } from '@components/uiClasses';
 import { useLocalization } from '@hooks/useLocalization';
 import { AuthorPresentation } from '@screens/Home/components/AuthorPresentation';
 import { Posts } from '@screens/Home/components/Posts';
@@ -35,7 +34,7 @@ export const TagPage: React.FC<TagPageProps> = ({
       />
 
       <MenuBar />
-      <main className={sharedClasses.sectionContainer}>
+      <main className="grid-container">
         <AuthorPresentation
           fullName={personalInformation.full_name}
           profilePic={personalInformation.profile_pic.url}
