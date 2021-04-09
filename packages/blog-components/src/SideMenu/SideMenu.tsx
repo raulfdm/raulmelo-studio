@@ -19,6 +19,7 @@ export const SideMenu = ({
   return (
     <>
       <motion.nav
+        aria-hidden={isClosed}
         ref={navRef}
         className={classNames([
           className,
@@ -54,11 +55,12 @@ export const SideMenu = ({
         </ul>
       </motion.nav>
       <motion.div
+        aria-hidden={isClosed}
         className={classNames([
           'absolute',
           'inset-0',
           'z-10',
-          'bg-black bg-opacity-80',
+          'bg-[rgba(0,0,0,0.7)]',
           'opacity-0',
           overlayClassName,
         ])}
