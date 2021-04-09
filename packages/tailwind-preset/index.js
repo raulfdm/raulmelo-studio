@@ -21,7 +21,7 @@ module.exports = {
       '4xl': ['4.209rem', { lineHeight: 1.3 }],
     },
     fontFamily: {
-      sans: ['proxima-nova', ...defaultTheme.fontFamily.sans],
+      sans: ['"proxima-nova"', ...defaultTheme.fontFamily.sans],
     },
     extend: {
       colors: {
@@ -41,7 +41,6 @@ module.exports = {
       typography: (theme) => {
         const white = theme('textColor.white');
         const black = theme('textColor.black');
-        const sans = theme('fontFamily.sans');
 
         return {
           /**
@@ -50,7 +49,6 @@ module.exports = {
           DEFAULT: {
             css: {
               color: black,
-              fontFamily: sans,
               blockquote: {
                 borderLeftColor: black,
               },
