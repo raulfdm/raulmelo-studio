@@ -32,18 +32,11 @@ module.exports = {
         black: '#2c2c2c',
       },
       screens: {
-        print: { raw: 'print' },
-        '1/5xl': '1440px',
+        'ipad-pro': '834px',
       },
       transitionProperty: {
         spacing: 'margin, padding',
         theme: 'background-color, color, fill, opacity, border, shadow',
-      },
-      borderWidth: {
-        10: '10px',
-      },
-      minWidth: {
-        '1/2': '50%',
       },
       typography: (theme) => {
         const white = theme('textColor.white');
