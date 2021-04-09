@@ -6,12 +6,16 @@ import { MdxRemoteSource } from '@types-app';
 import { head } from '@utils/utilities';
 import { GetStaticProps } from 'next';
 
-type Props = UsesPageProps & { usesMd: MdxRemoteSource };
+type Props = UsesPageProps & { usesMd: MdxRemoteSource; title: string };
 
-const Uses = ({ usesMd, seo }: Props) => {
+const Uses = ({ usesMd, seo, title }: Props) => {
   const content = hydrate(usesMd);
 
-  return <UsesPage seo={seo}>{content}</UsesPage>;
+  return (
+    <UsesPage seo={seo} title={title}>
+      {content}
+    </UsesPage>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
@@ -19,6 +23,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     query {
       uses(where: { language: "${locale}" }) {
         language
+        title
         content
         seo {
           title
@@ -36,6 +41,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     props: {
       usesMd: mdxSource,
       seo: usesData.seo,
+      title: usesData.title,
     },
     revalidate: 1,
   };

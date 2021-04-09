@@ -503,7 +503,7 @@
   "components": {
     "schemas": {
       "Use": {
-        "required": ["id", "language", "content"],
+        "required": ["id", "language", "content", "title"],
         "properties": {
           "id": {
             "type": "string"
@@ -531,11 +531,14 @@
                 "minLength": 50
               }
             }
+          },
+          "title": {
+            "type": "string"
           }
         }
       },
       "NewUse": {
-        "required": ["language", "content"],
+        "required": ["language", "content", "title"],
         "properties": {
           "language": {
             "type": "string",
@@ -560,6 +563,9 @@
                 "minLength": 50
               }
             }
+          },
+          "title": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"

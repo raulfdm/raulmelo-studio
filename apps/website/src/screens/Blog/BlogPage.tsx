@@ -1,13 +1,12 @@
 import type { MenuBar as MenuBarType } from '@components/MenuBar';
 import { SEO } from '@components/SEO';
+import { Share } from '@components/Share';
 import { useLocalization } from '@hooks/useLocalization';
 import {
   DotDivider,
-  LinkedInIcon,
   ProseContainer,
   Tag,
   Tags,
-  TwitterIcon,
 } from '@raulfdm/blog-components';
 import { getPostUrl, getTagUrl } from '@utils/url';
 import classNames from 'classnames';
@@ -105,37 +104,6 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
       </main>
     </>
   );
-};
-
-const Share = ({ as = 'div', className }: ShareProps) => {
-  const Wrapper = as;
-  return (
-    <Wrapper className={className}>
-      <span
-        className={classNames([
-          'font-extrabold',
-          'text-md md:text-lg lg:text-xl',
-          'block',
-          'mb-4 md:mb-6',
-        ])}
-      >
-        Share
-      </span>
-      <ul className={classNames(['flex', 'space-x-4'])}>
-        <li>
-          <LinkedInIcon className={classNames(['w-6 md:w-8'])} />
-        </li>
-        <li>
-          <TwitterIcon className={classNames(['w-6 md:w-8'])} />
-        </li>
-      </ul>
-    </Wrapper>
-  );
-};
-
-type ShareProps = {
-  as?: React.ElementType;
-  className?: string;
 };
 
 const PostTags = ({ className, postTags }: PostTagsProps) => {
