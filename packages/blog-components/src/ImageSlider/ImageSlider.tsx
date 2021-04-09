@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import classNames from 'classnames';
 import omit from 'lodash.omit';
 import React from 'react';
-import useMeasure from 'react-use-measure';
 import { useCircularIndexes } from '../hooks/useCircularIndexes';
 import { ChevronLeftIcon, ChevronRightIcon } from '../Icons';
 import { validations } from './utils';
@@ -18,7 +17,6 @@ export const ImageSlider = ({
   images,
   ImageComponent = 'img',
 }: ImageSliderProps) => {
-  const [figureRefMeasure] = useMeasure();
   const { currentIndex, nextIndex, prevIndex } = useCircularIndexes(
     images.length,
   );
@@ -57,7 +55,7 @@ export const ImageSlider = ({
 
   return (
     <div className="relative p-2" data-testid="image-slider">
-      <Figure ref={figureRefMeasure} data-sliderfigure>
+      <Figure data-sliderfigure>
         <ImageComponent {...omit(currentImage, ['noCaption'])} />
         {!currentImage.noCaption ? (
           <figcaption className="text-center" data-testid="caption">

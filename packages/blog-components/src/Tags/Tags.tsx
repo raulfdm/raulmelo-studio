@@ -1,12 +1,21 @@
 import React from 'react';
 import classNames from 'classnames';
 
+import styled from '@emotion/styled';
+
+const TagsUl = styled.ul`
+  > * {
+    margin-right: 1rem;
+  }
+`;
+
 export const Tags = ({ className, ...props }: TagsProps) => {
   return (
-    <ul
+    <TagsUl
       className={classNames([
-        'flex flex-row space-x-2 md:space-x-4 mt-2 md:mt-4',
+        'flex flex-row',
         'flex-wrap',
+        'text-base',
         className,
       ])}
       {...props}
