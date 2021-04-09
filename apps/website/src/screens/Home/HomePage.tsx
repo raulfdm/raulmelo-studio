@@ -53,7 +53,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         <Posts posts={posts} title={formatMessage(pageTitle, { pageNumber })} />
         {numberOfPages > 1 ? (
           <Pagination
-            className="flex justify-center mt-6"
+            className="flex justify-center mt-6 col-span-full"
             count={numberOfPages}
             page={pageNumber}
             defaultPage={pageNumber}
