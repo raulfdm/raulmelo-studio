@@ -19,7 +19,7 @@ export const SideMenu = ({
   return (
     <>
       <motion.nav
-        aria-hidden={isClosed}
+        aria-expanded={!isClosed}
         ref={navRef}
         className={classNames([
           className,
@@ -36,9 +36,11 @@ export const SideMenu = ({
         variants={{
           open: {
             transform: `translate3d(0%, 0, 0)`,
+            display: 'block',
           },
           closed: {
             transform: `translate3d(100%, 0, 0)`,
+            display: 'none',
           },
         }}
         data-testid="sideMenu"
@@ -73,9 +75,11 @@ export const SideMenu = ({
         variants={{
           open: {
             opacity: 1,
+            display: 'block',
           },
           closed: {
             opacity: 0,
+            display: 'none',
           },
         }}
       />
