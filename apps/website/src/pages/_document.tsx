@@ -41,6 +41,10 @@ export default class MyDocument extends Document {
             'text-black dark:text-white',
             'transition-theme duration-200 ease',
             'relative',
+            /**
+             * Ensure padding bottom for the entire application
+             */
+            'pb-12 md:pb-16',
           ])}
         >
           {/* Global Site Tag (gtag.js) - Google Analytics */}
