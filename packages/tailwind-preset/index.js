@@ -21,7 +21,7 @@ module.exports = {
       '4xl': ['4.209rem', { lineHeight: 1.3 }],
     },
     fontFamily: {
-      sans: ['Nunito Sans', ...defaultTheme.fontFamily.sans],
+      sans: ['proxima-nova', ...defaultTheme.fontFamily.sans],
     },
     extend: {
       colors: {
