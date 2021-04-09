@@ -54,6 +54,7 @@ const CurriculumPage = () => {
               layout="responsive"
               width={693}
               height={979}
+              loading="eager"
             />
           </figure>
           <a
