@@ -37,6 +37,7 @@ export function PaginationItem(props: PaginationItemProps) {
         'text-center',
         'cursor-pointer',
         'text-lg',
+        'tabular-nums',
         selected && 'border-black dark:border-white border-b font-bold',
         !selected && 'hover:font-bold',
       ])}
