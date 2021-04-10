@@ -19,7 +19,7 @@ export const ThemeSwitch: React.FC = () => {
 
   return (
     <MenuButton onClick={toggleTheme} data-testid="theme-switch">
-      <Icon className="w-5" />
+      <Icon className="w-6" />
     </MenuButton>
   );
 };

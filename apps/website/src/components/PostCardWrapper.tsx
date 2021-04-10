@@ -30,7 +30,7 @@ export function PostCardWrapper({ post }: PostCardWrapperProps) {
       title={post.title}
       subtitle={post.subtitle}
       Link={Link}
-      renderImage={(props) => <Image {...props} />}
+      renderImage={(props) => <Image {...props} layout="fill" />}
       titleLinkProps={{ locale: post.language }}
       postUrl={getPostUrl(post.slug)}
       publishDate={formatDate(new Date(post.date), {

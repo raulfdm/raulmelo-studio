@@ -1,4 +1,4 @@
-import { ChevronDownIcon, UiContainer } from '@raulfdm/blog-components';
+import { ChevronDownIcon } from '@raulfdm/blog-components';
 import { BlogPostGraphQL } from '@screens/Blog/types';
 import { createMachine } from '@xstate/fsm';
 import { useMachine } from '@xstate/react/lib/fsm';
@@ -40,7 +40,6 @@ const variants = {
       opacity: 1,
       transition: {
         stiffness: 1000,
-        velocity: -200,
       },
     },
     collapsed: {
@@ -82,14 +81,14 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
   const toggleSection = () => send('TOGGLE');
 
   return (
-    <UiContainer data-testid="series-section" as="section">
+    <section>
       <div
         className={classNames([
           'relative',
           ' bg-white dark:bg-blue-800',
           'rounded',
           'shadow',
-          'my-5',
+          'my-8',
           'transition-theme duration-200 ease',
         ])}
         data-testid="series-menu"
@@ -101,6 +100,7 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
             currentState={currentState}
           />
           <motion.ul
+            layout
             className="m-0"
             initial={false}
             animate={currentState}
@@ -112,6 +112,7 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
               const isCurrentPost = id === currentPostId;
               return (
                 <motion.li
+                  layout
                   className={classNames([
                     'cursor-pointer',
                     'm-0 p-b',
@@ -125,7 +126,12 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
                   variants={variants.item}
                 >
                   <Link href={uri}>
-                    <a className="block no-underline px-4 py-3">{copy}</a>
+                    <a
+                      className="block no-underline px-4 py-3"
+                      aria-hidden={currentState === 'collapsed'}
+                    >
+                      {copy}
+                    </a>
                   </Link>
                 </motion.li>
               );
@@ -138,7 +144,7 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
           />
         </div>
       </div>
-    </UiContainer>
+    </section>
   );
 };
 
@@ -182,7 +188,7 @@ const Footer = ({ amount, toggleSection, currentState }: FooterProps) => {
         'flex content-between',
         'cursor-pointer',
         'py-3 px-4',
-        'text-sm md:text-base font-sans',
+        'text-base md:text-md font-sans',
         ' transition-spacing duration-300',
         currentState === 'expanded'
           ? 'pt-2.5 border-t border-gray-100 dark:border-gray-600'

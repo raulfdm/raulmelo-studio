@@ -1,11 +1,7 @@
 import { MenuBar } from '@components/MenuBar';
 import { SEO } from '@components/SEO';
 import { useLocalization } from '@hooks/useLocalization';
-import {
-  Pagination,
-  PaginationItem,
-  UiContainer,
-} from '@raulfdm/blog-components';
+import { Pagination, PaginationItem } from '@raulfdm/blog-components';
 import { useRouter } from 'next/router';
 import { defineMessages } from 'react-intl';
 import { AuthorPresentation } from './components/AuthorPresentation';
@@ -49,7 +45,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       />
 
       <MenuBar />
-      <UiContainer as="main">
+      <main className="grid-container">
         <AuthorPresentation
           fullName={personalInformation.full_name}
           profilePic={personalInformation.profile_pic.url}
@@ -57,7 +53,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         <Posts posts={posts} title={formatMessage(pageTitle, { pageNumber })} />
         {numberOfPages > 1 ? (
           <Pagination
-            className="flex justify-center mt-6"
+            className="flex justify-center mt-6 col-span-full"
             count={numberOfPages}
             page={pageNumber}
             defaultPage={pageNumber}
@@ -69,7 +65,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             }}
           />
         ) : null}
-      </UiContainer>
+      </main>
     </>
   );
 };

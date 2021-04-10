@@ -9,10 +9,8 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;700&display=swap"
-            rel="stylesheet"
-          />
+          {/* Proxima Nova Font */}
+          <link rel="stylesheet" href="https://use.typekit.net/rsd6fwc.css" />
           {/* Global Theme handler
             It needs to be in the header to avoid FOUC (flash of unstyled content)
           */}
@@ -43,6 +41,10 @@ export default class MyDocument extends Document {
             'text-black dark:text-white',
             'transition-theme duration-200 ease',
             'relative',
+            /**
+             * Ensure padding bottom for the entire application
+             */
+            'pb-12 md:pb-16',
           ])}
         >
           {/* Global Site Tag (gtag.js) - Google Analytics */}

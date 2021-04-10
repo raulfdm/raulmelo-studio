@@ -49,7 +49,7 @@ export const LanguageSwitch = () => {
       {({ toggleDropdown }) => {
         return (
           <MenuButton onClick={toggleDropdown} data-testid="language-menu">
-            <GlobeIcon className="w-5" />
+            <GlobeIcon className="w-6" />
           </MenuButton>
         );
       }}
