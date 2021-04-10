@@ -3,7 +3,7 @@
 echo "┏━━━ 🚢 Release: lerna publish packages  ━━━━━━━"
 
 # Setup git globals
-git config --global user.email "melo.raulf@gmail.com"
-git config --global user.name "Raul Melo"
+export GIT_AUTHOR_NAME="Raul Melo"
+export GIT_AUTHOR_EMAIL="melo.raulf@gmail.com"
 
-yarn lerna publish --conventional-commits --no-private -y
+lerna exec --concurrency 1 --scope='{mdx-prism-2,@raulfdm/blog-components,@raulfdm/blog-tailwind-preset}' -- semantic-release -e semantic-release-monorepo --tag-format='${LERNA_PACKAGE_NAME}@\${version}'

@@ -3,10 +3,12 @@ name: Packages
 on:
   push:
     paths:
-      - 'packages/**'
-      - 'config/**'
-      - '.github/workflows/packages.yml'
+      - packages/**
+      - config/**
+      - .github/workflows/packages.yml
+      - scripts/workspace/release.sh
       - package.json
+      - commitlint.config.js
 
 jobs:
   build:
@@ -16,11 +18,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           # pulls all commits (needed for lerna / semantic release to correctly version)
-          fetch-depth: '0'
-
-      # pulls all tags (needed for lerna / semantic release to correctly version)
-      - name: Pull all tags
-        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+          fetch-depth: 0
 
       - name: Use Node
         uses: actions/setup-node@v2
@@ -45,10 +43,12 @@ jobs:
         run: yarn build --scope='{mdx-prism-2,@raulfdm/blog-components,@raulfdm/blog-tailwind-preset}'
 
       - name: Release Packages
-        run: |
-          git checkout HEAD -- yarn.lock
-          echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
-          yarn release
-        if: contains('refs/heads/main', github.ref)
+        run: yarn release
+        # run: |
+        #   git checkout HEAD -- yarn.lock
+        #   echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
+        #   yarn release
+        # if: contains('refs/heads/main', github.ref)
         env:
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+          GH_TOKEN: ${{secrets.GH_TOKEN}}

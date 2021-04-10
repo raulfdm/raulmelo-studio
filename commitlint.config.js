@@ -1,8 +1,5 @@
 module.exports = {
-  extends: [
-    '@commitlint/config-lerna-scopes',
-    '@commitlint/config-conventional',
-  ],
+  extends: ['@commitlint/config-conventional'],
   ignores: [
     (commit) => {
       if (commit.match(/publish/) || commit.match(/chore\(deps\)/i)) {
@@ -12,4 +9,8 @@ module.exports = {
       return false;
     },
   ],
+
+  rules: {
+    'body-max-line-length': [1, 'always', 100],
+  },
 };
