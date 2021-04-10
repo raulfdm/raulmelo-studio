@@ -30,7 +30,6 @@ export const Posts = ({ posts, title }: PostsProps) => {
           'font-sans font-extrabold',
           'text-lg lg:text-xl',
           'mb-4 lg:mb-8',
-          'mt-8 lg:mt-16',
         ])}
       >
         {title}
