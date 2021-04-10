@@ -1,13 +1,29 @@
 import React from 'react';
+import classNames from 'classnames';
 
-export const ProseContainer = ({ children }: ProseContainerProps) => {
+export const ProseContainer = ({
+  children,
+  className,
+  as = 'article',
+}: ProseContainerProps) => {
+  const Element = as;
+
   return (
-    <article className="prose dark:prose-dark prose-lg lg:prose-xl 2xl:prose-2xl container mx-auto px-4 md:px-0 max-w-screen-md">
+    <Element
+      className={classNames([
+        'prose dark:prose-dark',
+        'prose-lg md:prose-xl lg:prose-2xl',
+        'max-w-full',
+        className,
+      ])}
+    >
       {children}
-    </article>
+    </Element>
   );
 };
 
 export type ProseContainerProps = {
   children: React.ReactNode;
+  className?: string;
+  as?: React.ElementType;
 };
