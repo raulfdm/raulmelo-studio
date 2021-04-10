@@ -1,17 +1,32 @@
-@font-face {
-  font-family: Proxima Nova;
-  font-weight: 400;
-  src: url(/fonts/proxima-nova/400-regular.woff) format('woff');
-}
-@font-face {
-  font-family: Proxima Nova;
-  font-weight: 500;
-  src: url(/fonts/proxima-nova/500-medium.woff) format('woff');
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom class for grid */
+@layer utilities {
+  .grid-container {
+    @apply w-full;
+    @apply grid-cols-4;
+    @apply px-4;
+    @apply gap-4;
+    @apply grid;
+    @apply mx-auto;
+  }
+
+  @media (min-width: 768px) {
+    .grid-container {
+      @apply max-w-5xl;
+      @apply grid-cols-6;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid-container {
+      @apply max-w-7xl;
+      @apply grid-cols-12;
+    }
+  }
+}
 
 html {
   @apply h-full;

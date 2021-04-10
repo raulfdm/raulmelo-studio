@@ -5,7 +5,7 @@ export const Tag = ({ className, ...props }: TagProps) => {
   return (
     <li
       className={classNames([
-        'text-sm font-sans text-center hover:font-bold',
+        'font-sans text-center hover:font-bold',
         'cursor-default',
         'list-none',
         className,
