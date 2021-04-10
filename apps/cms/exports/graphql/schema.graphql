@@ -593,6 +593,7 @@ type Use {
   language: ENUM_USE_LANGUAGE!
   content: String!
   seo: ComponentUsesSeo
+  title: String!
 }
 
 type UseConnection {
@@ -614,6 +615,7 @@ type UseGroupBy {
   language: [UseConnectionLanguage]
   content: [UseConnectionContent]
   seo: [UseConnectionSeo]
+  title: [UseConnectionTitle]
 }
 
 type UseConnectionId {
@@ -651,10 +653,16 @@ type UseConnectionSeo {
   connection: UseConnection
 }
 
+type UseConnectionTitle {
+  key: String
+  connection: UseConnection
+}
+
 input UseInput {
   language: ENUM_USE_LANGUAGE!
   content: String!
   seo: ComponentUsesSeoInput
+  title: String!
   created_by: ID
   updated_by: ID
 }
@@ -663,6 +671,7 @@ input editUseInput {
   language: ENUM_USE_LANGUAGE
   content: String
   seo: editComponentUsesSeoInput
+  title: String
   created_by: ID
   updated_by: ID
 }
@@ -1302,6 +1311,7 @@ union Morph =
   | UseConnectionLanguage
   | UseConnectionContent
   | UseConnectionSeo
+  | UseConnectionTitle
   | createUsePayload
   | updateUsePayload
   | deleteUsePayload
