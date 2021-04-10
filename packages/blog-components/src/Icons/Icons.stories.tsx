@@ -21,7 +21,7 @@ const meta: Meta = {
   ],
   argTypes: {
     width: {
-      defaultValue: 20,
+      defaultValue: 24,
       control: {
         type: 'number',
       },
