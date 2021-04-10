@@ -8,24 +8,45 @@ describe('<DotDivider />', () => {
     render(<DotDivider />);
 
     expect(screen.getByTestId('dot-divider')).toMatchInlineSnapshot(`
-      .emotion-0.emotion-0 {
-        border-color: transparent;
-        position: relative;
-        overflow: visible;
-        text-align: center;
+      .emotion-0 {
+        --hr-color: currentColor;
+        background-color: var(--hr-color);
       }
 
-      .emotion-0.emotion-0::before {
-        content: '...';
-        letter-spacing: 0.6em;
-        position: relative;
-        top: -26px;
+      @media screen and (-ms-high-contrast: active) {
+        .emotion-0 {
+          --hr-color: windowText;
+        }
       }
 
-      <hr
-        class="italic text-2xl my-5 emotion-0"
+      @media screen and (forced-colors: active) {
+        .emotion-0 {
+          --hr-color: CanvasText;
+        }
+      }
+
+      .emotion-0+* {
+        margin-top: 0;
+      }
+
+      <div
+        class="flex justify-center space-x-3 my-[3.111em] md:my-[2.8em] lg:my-[3em]"
         data-testid="dot-divider"
-      />
+        role="separator"
+      >
+        <div
+          aria-hidden="true"
+          class="w-1.5 h-1.5 lg:w-[0.475rem] lg:h-[0.475rem] rounded-full emotion-0"
+        />
+        <div
+          aria-hidden="true"
+          class="w-1.5 h-1.5 lg:w-[0.475rem] lg:h-[0.475rem] rounded-full emotion-0"
+        />
+        <div
+          aria-hidden="true"
+          class="w-1.5 h-1.5 lg:w-[0.475rem] lg:h-[0.475rem] rounded-full emotion-0"
+        />
+      </div>
     `);
   });
 });

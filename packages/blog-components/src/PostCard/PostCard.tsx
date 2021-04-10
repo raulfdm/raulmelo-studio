@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React from 'react';
 import { ConfiguredLinkProps, configureLink } from '../ConfiguredLink';
 import { Tag } from '../Tag';
@@ -17,12 +18,17 @@ export const PostCard: React.FC<PostCardProps> = ({
   const ConfiguredLink = configureLink(Link);
 
   return (
-    <article className="mb-10">
-      <div className="relative h-64 sm:h-64 md:h-80 rounded-sm shadow-sm">
+    <section>
+      <div
+        className={classNames([
+          'relative',
+          'rounded-sm shadow-sm',
+          'aspect-w-16 aspect-h-9',
+        ])}
+      >
         {renderImage ? (
           renderImage({
             className: 'object-cover rounded-sm',
-            layout: 'fill',
             src: imageUrl,
           })
         ) : (
@@ -32,25 +38,40 @@ export const PostCard: React.FC<PostCardProps> = ({
           />
         )}
       </div>
-      <div>
+      <div className="my-4 md:my-3">
         <ConfiguredLink
           className="relative inline-block"
           href={postUrl}
           linkProps={titleLinkProps}
         >
-          <h3 className="font-semibold text-xl md:text-3xl mt-3">{title}</h3>
+          <h3 className={classNames(['font-black', 'text-xl lg:text-lg'])}>
+            {title}
+          </h3>
         </ConfiguredLink>
 
-        <span className="block text-sm md:text-lg font-sans mb-2.5">
+        <span
+          className={classNames([
+            'block',
+            'text-md lg:text-base',
+            'font-sans',
+            'mb-2.5',
+          ])}
+        >
           <time dateTime={publishDate}>{publishDate}</time>
         </span>
         {subtitle && (
-          <p className="text-lg md:text-2xl font-medium text-gray-500 dark:text-gray-200">
+          <p
+            className={classNames([
+              'text-lg lg:text-md',
+              'text-black dark:text-gray-200',
+              'text-opacity-80 dark:text-opacity-100',
+            ])}
+          >
             {subtitle}
           </p>
         )}
         {tags ? (
-          <Tags>
+          <Tags className="mt-4">
             {tags.map(({ name, href }) => (
               <Tag key={name}>
                 <ConfiguredLink className="underline" href={href}>
@@ -61,7 +82,7 @@ export const PostCard: React.FC<PostCardProps> = ({
           </Tags>
         ) : null}
       </div>
-    </article>
+    </section>
   );
 };
 
@@ -72,7 +93,6 @@ export type PostCardProps = {
   publishDate: string;
   renderImage?: (renderProps: {
     className: string;
-    layout: 'fill';
     src: string;
   }) => React.ReactNode;
   subtitle?: string;

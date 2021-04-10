@@ -10,10 +10,10 @@ describe('<BigQuote />', () => {
     expect(
       screen.getByRole('blockquote', {
         hidden: true,
-      })
+      }),
     ).toMatchInlineSnapshot(`
       <blockquote
-        class="border-none font-title text-3xl lg:text-4xl text-opacity-60 tracking-tight"
+        class="border-none text-xl md:text-2xl lg:text-4xl font-black text-opacity-60 tracking-normal"
         role="blockquote"
       >
         hey
@@ -27,7 +27,7 @@ describe('<BigQuote />', () => {
     expect(
       screen.getByRole('blockquote', {
         hidden: true,
-      }).classList
+      }).classList,
     ).toContain('my-class');
   });
 });

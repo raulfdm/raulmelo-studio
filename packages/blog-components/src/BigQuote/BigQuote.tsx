@@ -10,9 +10,10 @@ export const BigQuote = ({ className, ...props }: BigQuoteProps) => (
     role="blockquote"
     className={classNames([
       'border-none',
-      'font-title text-3xl lg:text-4xl',
+      'text-xl md:text-2xl lg:text-4xl',
+      'font-black',
       'text-opacity-60',
-      'tracking-tight',
+      'tracking-normal',
       className,
     ])}
     {...props}
