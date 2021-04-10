@@ -1,5 +1,6 @@
 import type { MenuBar as MenuBarType } from '@components/MenuBar';
 import { SEO } from '@components/SEO';
+import { ShareContent } from '@components/ShareContent';
 import { useLocalization } from '@hooks/useLocalization';
 import {
   DotDivider,
@@ -8,10 +9,10 @@ import {
   Tags,
 } from '@raulfdm/blog-components';
 import { getPostUrl, getTagUrl } from '@utils/url';
+import classNames from 'classnames';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import React from 'react';
-import type { AvailableTranslations as AvailableTranslationsType } from './components/AvailableTranslations';
 import { FeaturedImage } from './components/FeaturedImage';
 import { Header } from './components/Header';
 import { PrismStyles } from './components/PrismStyles';
@@ -22,19 +23,18 @@ const SeriesSection = dynamic(() =>
   import('./components/SeriesSection').then((mod) => mod.SeriesSection),
 ) as typeof SeriesSectionType;
 
-const AvailableTranslations = dynamic(() =>
-  import('./components/AvailableTranslations').then(
-    (mod) => mod.AvailableTranslations,
-  ),
-) as typeof AvailableTranslationsType;
-
 const MenuBar = dynamic(() =>
   import('@components/MenuBar').then((mod) => mod.MenuBar),
 ) as typeof MenuBarType;
 
 export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
-  const { featured_image, post_tags, unsplash, series, translation } = post;
-  const { locale } = useLocalization();
+  const { locale, formatDate } = useLocalization();
+  const {
+    featured_image,
+    post_tags,
+    unsplash,
+    series /* translation */,
+  } = post;
 
   const allSeries = series ? (
     <SeriesSection series={series} currentPostId={post.id} />
@@ -47,19 +47,6 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
     </>
   ) : null;
 
-  const featuredImage = featured_image ? (
-    <FeaturedImage
-      src={featured_image.url}
-      width={featured_image.width}
-      height={featured_image.height}
-      unsplash={unsplash}
-    />
-  ) : null;
-
-  const translations = translation ? (
-    <AvailableTranslations {...translation} />
-  ) : null;
-
   return (
     <>
       <SEO
@@ -69,41 +56,80 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
         url={getPostUrl(post.slug, locale)}
       >
         <link
-          href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap"
           rel="stylesheet"
-        />
-        <script
-          async
-          src="https://platform.twitter.com/widgets.js"
-          charSet="utf-8"
         />
       </SEO>
       <MenuBar />
-      <Header
-        title={post.title}
-        subtitle={post.subtitle}
-        hasBottomMargin={!featuredImage}
-      />
       <PrismStyles />
-      {translations}
-      {allSeries}
-      {featuredImage}
-      <ProseContainer>{children}</ProseContainer>
-      <footer className="container mx-auto px-4 md:px-0 max-w-screen-md">
-        {seriesWithDivider}
-        <hr className="mt-10 mb-6" />
-        <Tags>
-          {post_tags.map((tag) => {
-            return (
-              <Tag key={tag.id} className="text-base lg:text-lg">
-                <Link href={getTagUrl(tag.slug)}>
-                  <a className="underline">#{tag.name}</a>
-                </Link>
-              </Tag>
-            );
-          })}
-        </Tags>
-      </footer>
+      <main className="grid-container">
+        {featured_image ? (
+          <FeaturedImage src={featured_image.url} unsplash={unsplash} />
+        ) : null}
+
+        <section
+          className={classNames([
+            'w-full',
+            'col-span-full lg:col-start-2 lg:col-end-12',
+          ])}
+        >
+          <Header
+            title={post.title}
+            subtitle={post.subtitle}
+            publishedDate={formatDate(new Date(post.date), {
+              year: 'numeric',
+              month: 'short',
+              day: '2-digit',
+            })}
+          />
+          {allSeries}
+          <ProseContainer className="mt-8">{children}</ProseContainer>
+          {seriesWithDivider}
+          <hr className="mt-10 mb-6" />
+          <footer
+            className={classNames(['flex', 'justify-between', 'flex-wrap'])}
+          >
+            <PostTags postTags={post_tags} className="mb-4 mr-4" />
+            <ShareContent
+              twitter={{ text: `${post.title}. ${post.subtitle}` }}
+              linkedIn={{ title: post.title, summary: post.description }}
+            />
+          </footer>
+        </section>
+      </main>
     </>
   );
+};
+
+const PostTags = ({ className, postTags }: PostTagsProps) => {
+  return (
+    <div className={classNames([className])}>
+      <span
+        className={classNames([
+          'font-extrabold',
+          'text-md md:text-lg lg:text-xl',
+          'block',
+          'mb-4 md:mb-6',
+        ])}
+      >
+        Tags
+      </span>
+      <Tags>
+        {postTags.map((tag) => {
+          return (
+            <Tag key={tag.id} className="text-base lg:text-lg">
+              <Link href={getTagUrl(tag.slug)}>
+                <a className="underline">#{tag.name}</a>
+              </Link>
+            </Tag>
+          );
+        })}
+      </Tags>
+    </div>
+  );
+};
+
+type PostTagsProps = {
+  className?: string;
+  postTags: BlogPageProps['post']['post_tags'];
 };

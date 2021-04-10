@@ -2,68 +2,51 @@ import { SideMenu } from '@components/SideMenu';
 import { useApp } from '@hooks/useApp';
 import { CloseIcon, Logo, MenuIcon } from '@raulfdm/blog-components';
 import classNames from 'classnames';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FC } from 'react';
 import { LanguageSwitch } from './components/LanguageSwitch';
 import { ThemeSwitch } from './components/ThemeSwitch';
-import { useHideMenu } from './useHideMenu';
 
 export const MenuBar: FC = () => {
-  const menuState = useHideMenu();
   const { sideMenu } = useApp();
 
   const Icon = sideMenu.isClosed ? MenuIcon : CloseIcon;
 
-  const variants = {
-    open: { y: 0 },
-    closed: { y: '-100%' },
-  };
-
   return (
     <>
-      <motion.section
+      <section
         className={classNames([
-          'fixed',
           'inset-x-0',
-          'top-0 h-16',
+          'h-16',
           'z-40',
           'shadow',
           'bg-white dark:bg-blue-800',
           'transition-theme duration-200 ease',
+          'mb-8 md:mb-12 lg:mb-18',
+          !sideMenu.isClosed && 'sticky',
         ])}
-        animate={menuState}
-        variants={variants}
-        transition={{ duration: 0.3, type: 'tween' }}
-        data-testid="menu-bar"
       >
-        <div className="flex items-center max-w-7xl mx-auto h-full px-4">
-          <div data-testid="menu-bar__logo">
+        <div className={classNames(['items-center h-full', 'grid-container'])}>
+          <div data-testid="menu-bar__logo" className="col-span-2">
             <Link href="/">
               <a>
                 <Logo />
               </a>
             </Link>
           </div>
-          <div className="flex flex-1 justify-end space-x-3">
+          <div className="flex justify-end space-x-3 col-span-2 md:col-end-9 lg:col-end-13">
             <ThemeSwitch />
             <LanguageSwitch />
             <MenuButton
               onClick={sideMenu.toggle}
               data-testid="side-menu-button"
             >
-              <Icon width={21} />
+              <Icon className="w-6" />
             </MenuButton>
           </div>
         </div>
-      </motion.section>
+      </section>
       <SideMenu />
-      <style global jsx>{`
-        #__next {
-          padding-top: calc(64px + 24px);
-          padding-bottom: 5rem;
-        }
-      `}</style>
     </>
   );
 };

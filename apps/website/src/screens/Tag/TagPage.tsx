@@ -6,7 +6,6 @@ import { Posts } from '@screens/Home/components/Posts';
 import { getTagUrl } from '@utils/url';
 import { defineMessages } from 'react-intl';
 import { TagPageProps } from './types';
-import { UiContainer } from '@raulfdm/blog-components';
 
 const messages = defineMessages({
   description: {
@@ -35,7 +34,7 @@ export const TagPage: React.FC<TagPageProps> = ({
       />
 
       <MenuBar />
-      <UiContainer as="main">
+      <main className="grid-container">
         <AuthorPresentation
           fullName={personalInformation.full_name}
           profilePic={personalInformation.profile_pic.url}
@@ -44,7 +43,7 @@ export const TagPage: React.FC<TagPageProps> = ({
           posts={tag.blog_posts}
           title={formatMessage(messages.title, { tag: tag.name })}
         />
-      </UiContainer>
+      </main>
     </>
   );
 };

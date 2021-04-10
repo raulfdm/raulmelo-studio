@@ -1,42 +1,55 @@
 import React from 'react';
 import classNames from 'classnames';
+import { FormattedMessage } from 'react-intl';
 
 type HeaderProps = {
   title: string;
+  publishedDate: string;
   subtitle?: string;
-  hasBottomMargin: boolean;
 };
 
 export const Header: React.FC<HeaderProps> = React.memo(function Header({
   title,
   subtitle,
-  hasBottomMargin,
+  publishedDate,
 }) {
   return (
-    <header
-      className={classNames([
-        'container mx-auto max-w-screen-md px-4 md:px-0',
-        hasBottomMargin && 'mb-8 md:mb-10',
-      ])}
-      data-testid="header"
-    >
+    <header className={classNames(['border-b'])}>
       <h1
-        className="text-3xl md:text-4xl lg:text-5xl font-bold font-serif tracking-tight"
-        data-testid="header-title"
+        className={classNames([
+          'text-xl sm:text-2xl lg:text-3xl',
+          'font-black',
+          'tracking-tight',
+        ])}
       >
         {title}
       </h1>
       {subtitle && (
         <p
           className={classNames([
-            'text-xl md:text-2xl font-sans text-opacity-50 tracking-tight',
-            'mt-2 md:mt-4',
+            'tracking-tight',
+            'text-lg sm:text-xl lg:text-2xl',
+            'font-medium opacity-80',
+            'mt-2',
           ])}
-          data-testid="header-subtitle"
         >
           {subtitle}
         </p>
       )}
+      <p
+        className={classNames([
+          'text-right',
+          'text-base lg:text-md',
+          'mt-6 mb-4',
+        ])}
+      >
+        <FormattedMessage
+          id="blog.publishedDate"
+          values={{
+            publishedDate,
+          }}
+        />
+      </p>
     </header>
   );
 });

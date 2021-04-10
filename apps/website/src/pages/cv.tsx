@@ -1,7 +1,10 @@
+import { MenuBar } from '@components/MenuBar';
 import { SEO } from '@components/SEO';
+import { ExternalLink } from '@raulfdm/blog-components';
 import classNames from 'classnames';
-import Link from 'next/link';
+import Image from 'next/image';
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 const CurriculumPage = () => {
   return (
@@ -9,91 +12,77 @@ const CurriculumPage = () => {
       <SEO
         withDefaultTitle
         title="Curriculum"
-        description="Raul Melo is a Software Developer focused on client-side. Have over 5 years of experience building websites and applications. Check my CV for more info."
+        description="Raul Melo is a Software Developer focused on client-side. Have over 5 years of experience building websites and applications. Check his CV for more info."
         url="/cv"
       />
+      <MenuBar />
+      <main className={classNames(['grid-container'])}>
+        <header
+          className={classNames(['leading-normal col-span-full lg:col-span-8'])}
+        >
+          <h1
+            className={classNames([
+              'text-2xl md:text-3xl lg:text-4xl',
+              'font-black',
+              'mb-4 md:mb-6',
+            ])}
+          >
+            <FormattedMessage id="sideMenu.cv" />
+          </h1>
+          <p className="mb-4 text-base md:text-md lg:text-lg">
+            <FormattedMessage id="cv.description1" />
+          </p>
+          <p className="mb-4 text-base md:text-md lg:text-lg">
+            <FormattedMessage id="cv.description2" />
+          </p>
+        </header>
 
-      <div className="w-full iframe-container bg-gray-50 text-black min-h-full">
-        <Link href="/">
-          <a className="underline absolute left-3 top-3 print:hidden z-20">
-            Back to home
-          </a>
-        </Link>
-
-        <article
+        <div
           className={classNames([
-            'container',
-            'mx-auto max-w-screen-md 1/5xl:max-w-screen-xl 2xl:max-w-max',
-            'pt-6 sm:pt-4',
-            '1/5xl:grid 1/5xl:grid-cols-3 1/5xl:gap-6',
+            'col-span-full lg:col-span-4',
+            'w-full max-w-[250px] md:max-w-[380px]',
+            'shadow-md',
+            'bg-white',
+            'relative',
+            'grid place-items-center',
+            'mx-auto',
           ])}
         >
-          <header className="mb-8 pt-14 md:pt-5 px-4 md:px-0">
-            <h1 className="text-center text-5xl font-bold mb-4">Curriculum</h1>
-            <p>
-              This CV is a live version from my Google Docs curriculum. In other
-              words, it&apos;s live updated and contains the most updated
-              version of it.
-            </p>
-            <p>
-              If you want to get a printable version, please{' '}
-              <a
-                href="https://docs.google.com/document/d/1xk0ChmPckqW85xtM1Hizx2tVbo2B61xjcpz-_dAH3f8/edit?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline doc-link"
-              >
-                access the real document
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="prefix__StyledIconBase-ea9ulj-0 prefix__jZGNBW"
-                >
-                  <title>{'LinkExternal icon'}</title>
-                  <path d="M13 3l3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z" />
-                  <path d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z" />
-                </svg>
-              </a>{' '}
-              and select print option.
-            </p>
-          </header>
-
-          <main className="pb-6 1/5xl:col-span-2">
-            <iframe
-              src="https://docs.google.com/document/d/e/2PACX-1vRH5F5mV58PwToU2intAbHK7XujvdPyOhWr2gDdCC9YcisCSaJVctuGlzE_28zgEbJt4qEo-CUJl-hb/pub?embedded=true"
-              className="max-h-full w-full shadow-xl"
+          <figure className={classNames('relative', 'h-full w-full')}>
+            <Image
+              src="https://res.cloudinary.com/duzei21zt/image/upload/v1617789904/site/cv_cover_dbad9dd714.png"
+              layout="responsive"
+              width={693}
+              height={979}
+              loading="eager"
             />
-          </main>
-        </article>
-      </div>
-      <style jsx global>{`
-        #__next {
-          height: 100%;
-        }
-
-        article {
-          max-width: 815px;
-        }
-
-        .doc-link svg {
-          width: 16px;
-          display: inline-block;
-          margin-bottom: 10px;
-        }
-
-        .iframe-container iframe {
-          height: 75vh;
-        }
-
-        @media (max-width: 1440px) {
-        }
-
-        @media (min-width: 1440px) {
-          .iframe-container iframe {
-            height: 95vh;
-          }
-        }
-      `}</style>
+          </figure>
+          <a
+            href="https://docs.google.com/document/d/1xk0ChmPckqW85xtM1Hizx2tVbo2B61xjcpz-_dAH3f8"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={classNames([
+              'bg-black dark:bg-blue-900',
+              'rounded-md',
+              'py-2 px-3 md:py-4 md:px-6',
+              'text-base md:text-lg',
+              'font-extrabold',
+              'text-white',
+              'absolute',
+            ])}
+          >
+            <FormattedMessage
+              id="cv.cta"
+              values={{
+                // eslint-disable-next-line react/display-name
+                icon: () => (
+                  <ExternalLink className="w-4 inline-block mb-2 md:mb-4" />
+                ),
+              }}
+            />
+          </a>
+        </div>
+      </main>
     </>
   );
 };
