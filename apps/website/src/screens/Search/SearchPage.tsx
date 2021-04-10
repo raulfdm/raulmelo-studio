@@ -88,6 +88,10 @@ function AlgoliaHits() {
       <style jsx global>{`
         .ais-SearchBox-form input {
           font-size: 1.5rem;
+          /* disable IOS native input styles */
+          /* https://stackoverflow.com/a/2918716 */
+          border-radius: 0;
+          -webkit-appearance: none;
         }
 
         @media (min-width: 768px) {
