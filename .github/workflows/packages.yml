@@ -3,9 +3,10 @@ name: Packages
 on:
   push:
     paths:
-      - 'packages/**'
-      - 'config/**'
-      - '.github/workflows/packages.yml'
+      - packages/**
+      - config/**
+      - .github/workflows/packages.yml
+      - scripts/workspace/release.sh
       - package.json
 
 jobs:
