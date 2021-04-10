@@ -35,13 +35,13 @@ export const LanguageSwitch = () => {
             onClick={switchToEnglish}
             data-testid="language__english"
           >
-            <FormattedMessage id="languages.en" />
+            English
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={switchToPortuguese}
             data-testid="language__portuguese"
           >
-            <FormattedMessage id="languages.pt" />
+            Português
           </DropdownMenuItem>
         </>
       }
