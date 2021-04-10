@@ -30,6 +30,7 @@ jobs:
         uses: bahmutov/npm-install@v1
         with:
           install-command: yarn --frozen-lockfile --silent
+          useRollingCache: true
 
       - name: Lint Projects
         run: yarn lint --scope=lambdas
