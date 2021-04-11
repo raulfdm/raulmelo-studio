@@ -7,6 +7,7 @@ module.exports = {
     purgeLayersByDefault: true,
   },
   purge: false,
+  mode: 'jit',
   darkMode: 'class',
   theme: {
     fontSize: {
