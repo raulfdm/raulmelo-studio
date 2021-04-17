@@ -1,7 +1,6 @@
 export * from './BigQuote';
 export * from './CodePenIframe';
 export * from './DotDivider';
-export * from './DropdownMenu';
 export * from './Gif';
 export * from './Headings';
 export * from './hooks';
