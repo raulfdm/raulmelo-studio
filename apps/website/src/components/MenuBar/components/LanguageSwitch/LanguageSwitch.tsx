@@ -1,15 +1,29 @@
-import { MenuButton } from '@components/MenuBar';
+import { menuButtonClasses } from '@components/MenuBar';
 import { useLocalization } from '@hooks/useLocalization';
-import {
-  DropdownMenu,
-  DropdownMenuItem,
-  GlobeIcon,
-} from '@raulfdm/blog-components';
+import { GlobeIcon, Popover, usePopper } from '@raulfdm/blog-components';
+import classNames from 'classnames';
 import { useRouter } from 'next/router';
+import { Fragment, useState } from 'react';
 
 export const LanguageSwitch = () => {
   const { switchToEnglish, switchToPortuguese } = useLocalization();
   const { pathname } = useRouter();
+
+  const [referenceElement, setReferenceElement] = useState(null);
+  const [popperElement, setPopperElement] = useState(null);
+  const [arrowElement, setArrowElement] = useState(null);
+  const { styles, attributes } = usePopper(referenceElement, popperElement, {
+    placement: 'bottom-end',
+    modifiers: [
+      {
+        name: 'offset',
+        options: {
+          offset: [0, 12],
+        },
+      },
+      { name: 'arrow', options: { element: arrowElement, padding: 5 } },
+    ],
+  });
 
   /**
    * Having this option in a post Page leads into an undesired behaviour.
@@ -27,31 +41,57 @@ export const LanguageSwitch = () => {
   }
 
   return (
-    <DropdownMenu
-      items={
-        <>
-          <DropdownMenuItem
-            onClick={switchToEnglish}
-            data-testid="language__english"
-          >
-            English
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={switchToPortuguese}
-            data-testid="language__portuguese"
-          >
-            Português
-          </DropdownMenuItem>
-        </>
-      }
-    >
-      {({ toggleDropdown }) => {
-        return (
-          <MenuButton onClick={toggleDropdown} data-testid="language-menu">
-            <GlobeIcon className="w-6" />
-          </MenuButton>
-        );
-      }}
-    </DropdownMenu>
+    <Popover as={Fragment}>
+      <Popover.Button
+        className={menuButtonClasses}
+        ref={setReferenceElement as never}
+      >
+        <GlobeIcon className="w-6" />
+      </Popover.Button>
+
+      <Popover.Panel
+        ref={setPopperElement as never}
+        style={styles.popper}
+        {...attributes.popper}
+        className={classNames([
+          'flex flex-col',
+          'shadow-sm',
+          'max-w-min',
+          'border rounded dark:border-gray-400',
+          'divide-y divide-gray-200 dark:divide-gray-500',
+          'bg-white dark:bg-blue-800',
+          'z-10',
+        ])}
+      >
+        <div
+          ref={setArrowElement as never}
+          className={classNames([
+            'bg-white dark:bg-blue-800',
+            'z-20',
+            'w-4 h-4',
+            'border-l border-t rounded-sm dark:border-gray-400',
+          ])}
+          style={{
+            ...styles.arrow,
+            top: -8,
+            transform: `${styles.arrow.transform} rotate(45deg)`,
+          }}
+        />
+        <button className={itemClasses} onClick={switchToEnglish}>
+          English
+        </button>
+        <button className={itemClasses} onClick={switchToPortuguese}>
+          Português
+        </button>
+      </Popover.Panel>
+    </Popover>
   );
 };
+
+const itemClasses = classNames([
+  'text-base font-sans text-center',
+  'cursor-pointer',
+  'py-2 px-6',
+  'whitespace-nowrap',
+  'flex-1',
+]);
