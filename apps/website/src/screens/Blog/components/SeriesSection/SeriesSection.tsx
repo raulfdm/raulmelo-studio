@@ -1,7 +1,7 @@
 import { ChevronDownIcon } from '@raulfdm/blog-components';
 import { BlogPostGraphQL } from '@screens/Blog/types';
 import { createMachine } from '@xstate/fsm';
-import { useMachine } from '@xstate/react/lib/fsm';
+import { useMachine } from '@xstate/react/fsm';
 import classNames from 'classnames';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
