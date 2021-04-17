@@ -1,4 +1,4 @@
-import { MenuButton } from '@components/MenuBar';
+import { menuButtonClasses } from '@components/MenuBar';
 import { useThemeHandler } from '@hooks/useThemeHandler';
 import { MoonIcon, SunIcon } from '@raulfdm/blog-components';
 
@@ -18,8 +18,12 @@ export const ThemeSwitch: React.FC = () => {
   const Icon = ThemeIconMap[currentTheme];
 
   return (
-    <MenuButton onClick={toggleTheme} data-testid="theme-switch">
+    <button
+      className={menuButtonClasses}
+      onClick={toggleTheme}
+      data-testid="theme-switch"
+    >
       <Icon className="w-6" />
-    </MenuButton>
+    </button>
   );
 };
