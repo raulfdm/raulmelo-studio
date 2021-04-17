@@ -37,12 +37,13 @@ export const MenuBar: FC = () => {
           <div className="flex justify-end space-x-3 col-span-2 md:col-end-9 lg:col-end-13">
             <ThemeSwitch />
             <LanguageSwitch />
-            <MenuButton
+            <button
+              className={menuButtonClasses}
               onClick={sideMenu.toggle}
               data-testid="side-menu-button"
             >
               <Icon className="w-6" />
-            </MenuButton>
+            </button>
           </div>
         </div>
       </section>
@@ -51,14 +52,4 @@ export const MenuBar: FC = () => {
   );
 };
 
-export const MenuButton = ({
-  className,
-  ...props
-}: React.ComponentPropsWithoutRef<'button'>) => {
-  return (
-    <button
-      className={classNames(['p-2 flex place-content-center', className])}
-      {...props}
-    />
-  );
-};
+export const menuButtonClasses = 'p-2 flex place-content-center';
