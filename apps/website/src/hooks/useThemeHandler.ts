@@ -1,5 +1,5 @@
 import { SupportedThemes } from '@types-app';
-import { useMachine } from '@xstate/react/lib/fsm';
+import { useMachine } from '@xstate/react/fsm';
 import { useEffect } from 'react';
 import { createMachine } from '@xstate/fsm';
 

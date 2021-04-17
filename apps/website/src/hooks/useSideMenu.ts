@@ -1,4 +1,4 @@
-import { useMachine } from '@xstate/react/lib/fsm';
+import { useMachine } from '@xstate/react/fsm';
 import { createMachine } from '@xstate/fsm';
 
 type CloseMenuEvent = { type: 'CLOSE' };
