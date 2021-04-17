@@ -1,5 +1,5 @@
 import { createMachine } from '@xstate/fsm';
-import { useMachine } from '@xstate/react/lib/fsm';
+import { useMachine } from '@xstate/react/fsm';
 
 type CloseMenuEvent = { type: 'CLOSE' };
 type ToggleMenuEvent = { type: 'TOGGLE' };
