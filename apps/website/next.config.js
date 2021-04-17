@@ -1,5 +1,6 @@
 const isAnalyzerMode = process.env.ANALYZE === 'true';
 
+const { redirects } = require('./config/redirects');
 const path = require('path');
 const withPlugins = require('next-compose-plugins');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
@@ -17,15 +18,7 @@ const nextConfig = {
     locales: ['en', 'pt'],
     defaultLocale: 'en',
   },
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/blog',
-        permanent: false,
-      },
-    ];
-  },
+  redirects,
   images: {
     domains: ['res.cloudinary.com', 'miro.medium.com', 'media.giphy.com'],
   },
