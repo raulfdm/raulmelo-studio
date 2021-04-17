@@ -1,7 +1,8 @@
 import { Meta, Story } from '@storybook/react';
 import React from 'react';
+import { GlobeIcon } from '..';
 
-import { DropdownMenu, DropdownMenuItem } from './DropdownMenu';
+import { DropdownMenu, Dropdown, dropdownItemClasses } from './DropdownMenu';
 
 const meta: Meta = {
   title: 'components/DropdownMenu',
@@ -10,21 +11,24 @@ const meta: Meta = {
 
 export default meta;
 
-export const defaultCase: Story = () => (
+export const languageMenuExample: Story = () => (
   <>
     <DropdownMenu
+      button={
+        <Dropdown.Button className="p-2 flex place-content-center">
+          <GlobeIcon className="w-6" />
+        </Dropdown.Button>
+      }
       items={
         <>
-          <DropdownMenuItem>Item 1</DropdownMenuItem>
-          <DropdownMenuItem>Item 2</DropdownMenuItem>
-          <DropdownMenuItem>Item 3</DropdownMenuItem>
-          <DropdownMenuItem>Item 4</DropdownMenuItem>
+          <Dropdown.Item>
+            <button className={dropdownItemClasses}>Português</button>
+          </Dropdown.Item>
+          <Dropdown.Item>
+            <button className={dropdownItemClasses}>English</button>
+          </Dropdown.Item>
         </>
       }
-    >
-      {({ toggleDropdown }) => (
-        <button onClick={toggleDropdown}>Click here</button>
-      )}
-    </DropdownMenu>
+    />
   </>
 );
