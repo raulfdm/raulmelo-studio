@@ -1,4 +1,3 @@
-import type { MenuBar as MenuBarType } from '@components/MenuBar';
 import { SEO } from '@components/SEO';
 import { ShareContent } from '@components/ShareContent';
 import { useLocalization } from '@hooks/useLocalization';
@@ -22,10 +21,6 @@ import { BlogPageProps } from './types';
 const SeriesSection = dynamic(() =>
   import('./components/SeriesSection').then((mod) => mod.SeriesSection),
 ) as typeof SeriesSectionType;
-
-const MenuBar = dynamic(() =>
-  import('@components/MenuBar').then((mod) => mod.MenuBar),
-) as typeof MenuBarType;
 
 export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
   const { locale, formatDate } = useLocalization();
