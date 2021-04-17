@@ -3,6 +3,7 @@ import { useLocalization } from '@hooks/useLocalization';
 import { SideMenu as SideMenuComponent } from '@raulfdm/blog-components';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useMemo } from 'react';
 import { defineMessage } from 'react-intl';
 
 const messages = defineMessage({
@@ -20,32 +21,34 @@ const messages = defineMessage({
   },
 });
 
-const links = [
-  {
-    href: '/',
-    localeId: messages.home,
-  },
-  {
-    href: '/search',
-    localeId: messages.search,
-  },
-  {
-    href: '/uses',
-    localeId: messages.uses,
-  },
-  {
-    href: '/cv',
-    localeId: messages.cv,
-  },
-];
-
 export const SideMenu = () => {
   const { sideMenu } = useApp();
   const { state, handleClose } = sideMenu;
-  const { formatMessage } = useLocalization();
+  const { formatMessage, locale } = useLocalization();
   const { pathname } = useRouter();
 
-  const sanitizedPath = pathname.replace('blog', '');
+  const links = useMemo(
+    () => [
+      {
+        href: '/blog',
+        localeId: messages.home,
+        locale,
+      },
+      {
+        href: '/search',
+        localeId: messages.search,
+      },
+      {
+        href: '/uses',
+        localeId: messages.uses,
+      },
+      {
+        href: '/cv',
+        localeId: messages.cv,
+      },
+    ],
+    [locale],
+  );
 
   return (
     <SideMenuComponent
@@ -56,7 +59,7 @@ export const SideMenu = () => {
       handleCloseMenu={handleClose}
       items={links.map(({ href, localeId }) => ({
         itemLabel: formatMessage(localeId),
-        active: sanitizedPath === href,
+        active: pathname === href,
         href,
       }))}
     />
