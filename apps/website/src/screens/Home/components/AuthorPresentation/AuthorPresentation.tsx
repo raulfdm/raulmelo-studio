@@ -23,8 +23,8 @@ export const AuthorPresentation: React.FC<Props> = ({
 }) => {
   const { formatMessage } = useLocalization();
   return (
-    <div className="flex flex-col-reverse justify-between md:flex-row mb-7 col-span-full">
-      <div
+    <header className="flex flex-col-reverse justify-between md:flex-row mb-7 col-span-full">
+      <aside
         className={classNames([
           'flex flex-col',
           'w-full md:max-w-[75%]',
@@ -43,7 +43,7 @@ export const AuthorPresentation: React.FC<Props> = ({
         >
           <FormattedMessage id="siteData.description" />
         </p>
-        <div
+        <section
           className={classNames([
             'flex align-center pt-5 flex-1',
             'text-black opacity-60 dark:text-white dark:opacity-90',
@@ -65,9 +65,9 @@ export const AuthorPresentation: React.FC<Props> = ({
           >
             <LinkedInIcon className="w-6 lg:w-8" />
           </a>
-        </div>
-      </div>
-      <div
+        </section>
+      </aside>
+      <figure
         className={classNames([
           'relative',
           'w-20 md:w-32',
@@ -83,7 +83,7 @@ export const AuthorPresentation: React.FC<Props> = ({
           quality={100}
           loading="eager"
         />
-      </div>
-    </div>
+      </figure>
+    </header>
   );
 };

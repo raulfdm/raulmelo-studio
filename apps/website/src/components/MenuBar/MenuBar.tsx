@@ -1,5 +1,6 @@
 import { SideMenu } from '@components/SideMenu';
 import { useApp } from '@hooks/useApp';
+import { useLocalization } from '@hooks/useLocalization';
 import { CloseIcon, Logo, MenuIcon } from '@raulfdm/blog-components';
 import classNames from 'classnames';
 import Link from 'next/link';
@@ -9,12 +10,13 @@ import { ThemeSwitch } from './components/ThemeSwitch';
 
 export const MenuBar: FC = () => {
   const { sideMenu } = useApp();
+  const { locale } = useLocalization();
 
   const Icon = sideMenu.isClosed ? MenuIcon : CloseIcon;
 
   return (
     <>
-      <section
+      <div
         className={classNames([
           'inset-x-0',
           'h-16',
@@ -26,15 +28,15 @@ export const MenuBar: FC = () => {
           !sideMenu.isClosed && 'sticky',
         ])}
       >
-        <div className={classNames(['items-center h-full', 'grid-container'])}>
-          <div data-testid="menu-bar__logo" className="col-span-2">
-            <Link href="/">
+        <nav className={classNames(['items-center h-full', 'grid-container'])}>
+          <section data-testid="menu-bar__logo" className="col-span-2">
+            <Link href="/blog" locale={locale}>
               <a>
                 <Logo />
               </a>
             </Link>
-          </div>
-          <div className="flex justify-end space-x-3 col-span-2 md:col-end-9 lg:col-end-13">
+          </section>
+          <section className="flex justify-end space-x-3 col-span-2 md:col-end-9 lg:col-end-13">
             <ThemeSwitch />
             <LanguageSwitch />
             <button
@@ -44,9 +46,9 @@ export const MenuBar: FC = () => {
             >
               <Icon className="w-6" />
             </button>
-          </div>
-        </div>
-      </section>
+          </section>
+        </nav>
+      </div>
       <SideMenu />
     </>
   );

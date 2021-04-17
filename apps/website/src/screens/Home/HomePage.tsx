@@ -1,4 +1,3 @@
-import { MenuBar } from '@components/MenuBar';
 import { SEO } from '@components/SEO';
 import { useLocalization } from '@hooks/useLocalization';
 import { Pagination, PaginationItem } from '@raulfdm/blog-components';
@@ -44,28 +43,25 @@ export const HomePage: React.FC<HomePageProps> = ({
         url="/"
       />
 
-      <MenuBar />
-      <main className="grid-container">
-        <AuthorPresentation
-          fullName={personalInformation.full_name}
-          profilePic={personalInformation.profile_pic.url}
+      <AuthorPresentation
+        fullName={personalInformation.full_name}
+        profilePic={personalInformation.profile_pic.url}
+      />
+      <Posts posts={posts} title={formatMessage(pageTitle, { pageNumber })} />
+      {numberOfPages > 1 ? (
+        <Pagination
+          className="flex justify-center mt-6 col-span-full"
+          count={numberOfPages}
+          page={pageNumber}
+          defaultPage={pageNumber}
+          onChange={(_, page) => {
+            router.push(`${router.pathname}?page=${page}`);
+          }}
+          renderItem={(item) => {
+            return <PaginationItem {...item} />;
+          }}
         />
-        <Posts posts={posts} title={formatMessage(pageTitle, { pageNumber })} />
-        {numberOfPages > 1 ? (
-          <Pagination
-            className="flex justify-center mt-6 col-span-full"
-            count={numberOfPages}
-            page={pageNumber}
-            defaultPage={pageNumber}
-            onChange={(_, page) => {
-              router.push(`${router.pathname}?page=${page}`);
-            }}
-            renderItem={(item) => {
-              return <PaginationItem {...item} />;
-            }}
-          />
-        ) : null}
-      </main>
+      ) : null}
     </>
   );
 };
