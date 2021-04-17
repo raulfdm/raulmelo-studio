@@ -1,95 +1,59 @@
-import { createMachine } from '@xstate/fsm';
-import { useMachine } from '@xstate/react/lib/fsm';
+import { Menu as Dropdown, Transition } from '@headlessui/react';
 import classNames from 'classnames';
-import React, { useRef } from 'react';
-import { useClickAway } from '../hooks';
-import { DropdownMenuProps } from './types';
+import React, { Fragment } from 'react';
 
-type ToggleEvent = {
-  type: 'TOGGLE';
-};
+export { Menu as Dropdown } from '@headlessui/react';
 
-type TurnOffEvent = {
-  type: 'HIDE';
-};
-
-type MachinesEvent = ToggleEvent | TurnOffEvent;
-
-const dropdownMachine = createMachine<never, MachinesEvent>({
-  initial: 'hidden',
-  states: {
-    hidden: {
-      on: {
-        TOGGLE: 'visible',
-      },
-    },
-    visible: {
-      on: {
-        TOGGLE: 'hidden',
-        HIDE: 'hidden',
-      },
-    },
-  },
-});
+export const dropdownItemClasses = classNames([
+  'text-base font-sans text-center',
+  'cursor-pointer',
+  'py-2 px-6',
+  'whitespace-nowrap',
+  'flex-1',
+]);
 
 export const DropdownMenu: React.FC<DropdownMenuProps> = ({
   items,
-  children,
+  button,
 }) => {
-  const [current, send] = useMachine(dropdownMachine);
-  const ref = useRef(null);
-
-  useClickAway(ref, () => send('HIDE'));
-
-  const isVisible = current.matches('visible');
-
   return (
-    <div className="relative flex items-center content-center" ref={ref}>
-      {children({
-        isVisible,
-        toggleDropdown: () => {
-          send('TOGGLE');
-        },
-      })}
-
-      {isVisible && (
-        <div className="relative z-20">
-          <ul
-            onClick={(event) => {
-              event.persist();
-              send('HIDE');
-            }}
-            className={classNames([
-              'flex flex-col',
-              'shadow',
-              'max-w-xs',
-              'border rounded dark:border-gray-400',
-              'divide-y divide-gray-200 dark:divide-gray-500',
-              'absolute right-0 top-5',
-              'bg-white dark:bg-blue-800',
-            ])}
-          >
-            {items}
-          </ul>
-        </div>
-      )}
-    </div>
+    <Dropdown>
+      {({ open }) => {
+        return (
+          <>
+            {button}
+            <Transition
+              show={open}
+              as={Fragment}
+              enter="transition ease-out duration-100"
+              enterFrom="transform opacity-0 scale-95"
+              enterTo="transform opacity-100 scale-100"
+              leave="transition ease-in duration-75"
+              leaveFrom="transform opacity-100 scale-100"
+              leaveTo="transform opacity-0 scale-95"
+            >
+              <Dropdown.Items
+                static
+                className={classNames([
+                  'flex flex-col',
+                  'shadow-sm',
+                  'max-w-min',
+                  'border rounded dark:border-gray-400',
+                  'divide-y divide-gray-200 dark:divide-gray-500',
+                  'bg-white dark:bg-blue-800',
+                ])}
+              >
+                {items}
+              </Dropdown.Items>
+            </Transition>
+          </>
+        );
+      }}
+    </Dropdown>
   );
 };
 
-export const DropdownMenuItem = (
-  props: React.ComponentPropsWithoutRef<'li'>,
-) => {
-  return (
-    <li
-      className={classNames([
-        'text-base font-sans text-center',
-        'cursor-pointer',
-        'py-2 px-6',
-        'whitespace-nowrap',
-        'flex-1',
-      ])}
-      {...props}
-    />
-  );
+export type DropdownMenuProps = {
+  items: React.ReactNode;
+  button: React.ReactNode;
 };
