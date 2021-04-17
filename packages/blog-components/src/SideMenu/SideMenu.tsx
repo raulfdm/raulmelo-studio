@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { motion, useAnimation } from 'framer-motion';
 import React, { useEffect, useRef } from 'react';
+import { Disclosure } from '@headlessui/react';
 import { useClickAway } from '../hooks';
 import { SideMenuItem, SideMenuItemProps } from '../SideMenuItem';
 
@@ -38,8 +39,10 @@ export const SideMenu = ({
   }, [isClosed]);
 
   return (
-    <>
-      <motion.nav
+    <Disclosure>
+      <Disclosure.Panel
+        static
+        as={motion.nav}
         aria-expanded={!isClosed}
         ref={navRef}
         className={classNames([
@@ -66,8 +69,10 @@ export const SideMenu = ({
             />
           ))}
         </ul>
-      </motion.nav>
-      <motion.div
+      </Disclosure.Panel>
+      <Disclosure.Panel
+        static
+        as={motion.div}
         aria-hidden={isClosed}
         className={classNames([
           'absolute',
@@ -94,7 +99,7 @@ export const SideMenu = ({
           },
         }}
       />
-    </>
+    </Disclosure>
   );
 };
 
