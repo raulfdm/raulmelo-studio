@@ -1,4 +1,3 @@
-import { MenuBar } from '@components/MenuBar';
 import { SEO, titleWithNameAndJobTitle } from '@components/SEO';
 import { useLocalization } from '@hooks/useLocalization';
 import { AuthorPresentation } from '@screens/Home/components/AuthorPresentation';
@@ -33,17 +32,14 @@ export const TagPage: React.FC<TagPageProps> = ({
         url={getTagUrl(tag.slug)}
       />
 
-      <MenuBar />
-      <main className="grid-container">
-        <AuthorPresentation
-          fullName={personalInformation.full_name}
-          profilePic={personalInformation.profile_pic.url}
-        />
-        <Posts
-          posts={tag.blog_posts}
-          title={formatMessage(messages.title, { tag: tag.name })}
-        />
-      </main>
+      <AuthorPresentation
+        fullName={personalInformation.full_name}
+        profilePic={personalInformation.profile_pic.url}
+      />
+      <Posts
+        posts={tag.blog_posts}
+        title={formatMessage(messages.title, { tag: tag.name })}
+      />
     </>
   );
 };

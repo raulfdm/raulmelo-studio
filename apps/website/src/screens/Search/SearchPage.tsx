@@ -1,4 +1,3 @@
-import { MenuBar } from '@components/MenuBar';
 import { PostCardWrapper } from '@components/PostCardWrapper';
 import { SEO } from '@components/SEO';
 import { algoliaConfig } from '@config/algolia';
@@ -34,33 +33,31 @@ export const SearchPage = () => {
         description={formatMessage(messages.seoDescription)}
         title={formatMessage(messages.seoTitle)}
       />
-      <MenuBar />
-      <main className="grid-container">
-        <InstantSearch
-          searchClient={algoliaDebounceSearchClient}
-          indexName={algoliaConfig.indexName}
-        >
-          <div className="pb-5 md:pb-10 col-span-full">
-            <SearchBox
-              searchAsYouType
-              autoFocus
-              translations={{ placeholder: formatMessage(messages.input) }}
-            />
-            <Stats
-              translations={{
-                stats(results, milliseconds) {
-                  return formatMessage(messages.stats, {
-                    results,
-                    milliseconds,
-                  });
-                },
-              }}
-            />
-            <AlgoliaHits />
-          </div>
-          <PoweredByAlgolia />
-        </InstantSearch>
-      </main>
+
+      <InstantSearch
+        searchClient={algoliaDebounceSearchClient}
+        indexName={algoliaConfig.indexName}
+      >
+        <div className="pb-5 md:pb-10 col-span-full">
+          <SearchBox
+            searchAsYouType
+            autoFocus
+            translations={{ placeholder: formatMessage(messages.input) }}
+          />
+          <Stats
+            translations={{
+              stats(results, milliseconds) {
+                return formatMessage(messages.stats, {
+                  results,
+                  milliseconds,
+                });
+              },
+            }}
+          />
+          <AlgoliaHits />
+        </div>
+        <PoweredByAlgolia />
+      </InstantSearch>
     </>
   );
 };

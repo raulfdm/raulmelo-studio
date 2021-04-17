@@ -60,43 +60,42 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
           rel="stylesheet"
         />
       </SEO>
-      <MenuBar />
-      <PrismStyles />
-      <main className="grid-container">
-        {featured_image ? (
-          <FeaturedImage src={featured_image.url} unsplash={unsplash} />
-        ) : null}
 
-        <section
-          className={classNames([
-            'w-full',
-            'col-span-full lg:col-start-2 lg:col-end-12',
-          ])}
+      <PrismStyles />
+
+      {featured_image ? (
+        <FeaturedImage src={featured_image.url} unsplash={unsplash} />
+      ) : null}
+
+      <section
+        className={classNames([
+          'w-full',
+          'col-span-full lg:col-start-2 lg:col-end-12',
+        ])}
+      >
+        <Header
+          title={post.title}
+          subtitle={post.subtitle}
+          publishedDate={formatDate(new Date(post.date), {
+            year: 'numeric',
+            month: 'short',
+            day: '2-digit',
+          })}
+        />
+        {allSeries}
+        <ProseContainer className="mt-8">{children}</ProseContainer>
+        {seriesWithDivider}
+        <hr className="mt-10 mb-6" />
+        <footer
+          className={classNames(['flex', 'justify-between', 'flex-wrap'])}
         >
-          <Header
-            title={post.title}
-            subtitle={post.subtitle}
-            publishedDate={formatDate(new Date(post.date), {
-              year: 'numeric',
-              month: 'short',
-              day: '2-digit',
-            })}
+          <PostTags postTags={post_tags} className="mb-4 mr-4" />
+          <ShareContent
+            twitter={{ text: `${post.title}. ${post.subtitle}` }}
+            linkedIn={{ title: post.title, summary: post.description }}
           />
-          {allSeries}
-          <ProseContainer className="mt-8">{children}</ProseContainer>
-          {seriesWithDivider}
-          <hr className="mt-10 mb-6" />
-          <footer
-            className={classNames(['flex', 'justify-between', 'flex-wrap'])}
-          >
-            <PostTags postTags={post_tags} className="mb-4 mr-4" />
-            <ShareContent
-              twitter={{ text: `${post.title}. ${post.subtitle}` }}
-              linkedIn={{ title: post.title, summary: post.description }}
-            />
-          </footer>
-        </section>
-      </main>
+        </footer>
+      </section>
     </>
   );
 };

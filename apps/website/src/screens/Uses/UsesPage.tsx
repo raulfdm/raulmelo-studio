@@ -1,4 +1,3 @@
-import { MenuBar } from '@components/MenuBar';
 import { SEO } from '@components/SEO';
 import { ShareContent } from '@components/ShareContent';
 import { useLocalization } from '@hooks/useLocalization';
@@ -24,36 +23,33 @@ export const UsesPage: React.FC<UsesPageProps> = ({ children, seo, title }) => {
         description={seo.description}
         url={getPostUrl('uses', locale)}
       />
-      <MenuBar />
-      <main className="grid-container">
-        <ShareContent
-          as="aside"
+      <ShareContent
+        as="aside"
+        className={classNames([
+          'row-start-2 col-span-full md:col-span-1 md:row-auto lg:col-span-2',
+        ])}
+        linkedIn={{ title, summary: seo.description }}
+        twitter={{ text: `${title}.\n${seo.description}\b` }}
+      />
+      <ProseContainer
+        as="article"
+        className={classNames([
+          'w-full',
+          'col-span-full md:col-start-2 lg:col-start-3',
+        ])}
+      >
+        <h1
           className={classNames([
-            'row-start-2 col-span-full md:col-span-1 md:row-auto lg:col-span-2',
-          ])}
-          linkedIn={{ title, summary: seo.description }}
-          twitter={{ text: `${title}.\n${seo.description}\b` }}
-        />
-        <ProseContainer
-          as="article"
-          className={classNames([
-            'w-full',
-            'col-span-full md:col-start-2 lg:col-start-3',
+            'text-xl sm:text-2xl lg:text-3xl',
+            'font-black',
+            'tracking-tight',
+            'col-span-full',
           ])}
         >
-          <h1
-            className={classNames([
-              'text-xl sm:text-2xl lg:text-3xl',
-              'font-black',
-              'tracking-tight',
-              'col-span-full',
-            ])}
-          >
-            {title}
-          </h1>
-          {children}
-        </ProseContainer>
-      </main>
+          {title}
+        </h1>
+        {children}
+      </ProseContainer>
     </>
   );
 };
