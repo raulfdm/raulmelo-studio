@@ -7,6 +7,7 @@ module.exports = {
       {
         releaseRules: [
           { type: 'chore', release: 'patch' },
+          { type: 'chore', scope: 'deps-dev', release: false },
           { type: 'refactor', release: 'major' },
         ],
       },
