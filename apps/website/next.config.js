@@ -29,15 +29,14 @@ const nextConfig = {
       '@config': path.resolve(__dirname, './src/config'),
       '@contexts': path.resolve(__dirname, './src/contexts'),
       '@hooks': path.resolve(__dirname, './src/hooks'),
-      '@models': path.resolve(__dirname, './src/models'),
       '@lib': path.resolve(__dirname, './src/lib'),
       '@screens': path.resolve(__dirname, './src/screens'),
       '@services': path.resolve(__dirname, './src/services'),
       '@styles': path.resolve(__dirname, './src/styles'),
-      '@types-api': path.resolve(__dirname, './src/types/api/index.ts'),
       '@types-app': path.resolve(__dirname, './src/types/index.ts'),
       '@data': path.resolve(__dirname, './src/data'),
       '@utils': path.resolve(__dirname, './src/utils'),
+      'site-data': path.resolve(__dirname, 'site-data.json'),
     };
 
     /**

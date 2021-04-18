@@ -4,64 +4,24 @@
     "allowJs": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
+    "lib": ["dom", "esnext"],
     "target": "esnext",
     "baseUrl": ".",
     "paths": {
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@data/*": [
-        "src/data/*"
-      ],
-      "@config/*": [
-        "src/config/*"
-      ],
-      "@models/*": [
-        "src/models/*"
-      ],
-      "@contexts/*": [
-        "src/contexts/*"
-      ],
-      "@hooks/*": [
-        "src/hooks/*"
-      ],
-      "@lib/*": [
-        "src/lib/*"
-      ],
-      "@screens/*": [
-        "src/screens/*"
-      ],
-      "@services/*": [
-        "src/services/*"
-      ],
-      "@styles/*": [
-        "src/styles/*"
-      ],
-      "@types-api": [
-        "src/types/api/index.ts"
-      ],
-      "@types-app": [
-        "src/types/index.ts"
-      ],
-      "@utils/*": [
-        "src/utils/*"
-      ],
+      "@components/*": ["src/components/*"],
+      "@config/*": ["src/config/*"],
+      "@contexts/*": ["src/contexts/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@lib/*": ["src/lib/*"],
+      "@screens/*": ["src/screens/*"],
+      "@services/*": ["src/services/*"],
+      "@styles/*": ["src/styles/*"],
+      "@types-app": ["src/types/index.ts"],
+      "@utils/*": ["src/utils/*"],
+      "site-data": ["site-data.json"]
     },
-    "typeRoots": [
-      "node_modules/@types",
-      "../../node_modules/@types",
-      "types"
-    ]
+    "typeRoots": ["node_modules/@types", "../../node_modules/@types", "types"]
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["**/*.ts", "**/*.tsx"]
 }
