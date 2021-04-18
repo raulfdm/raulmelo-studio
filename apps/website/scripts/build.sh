@@ -2,6 +2,7 @@
 
 echo "Build..."
 
-export API_ENDPOINT=https://raulmelo-dev-server.herokuapp.com
+API_ENDPOINT=https://raulmelo-dev-server.herokuapp.com
 
+node ./scripts/fetchConfig.js
 yarn next build
