@@ -1,20 +1,15 @@
-import { SEO } from '@components/SEO';
 import { useLocalization } from '@hooks/useLocalization';
 import { Pagination, PaginationItem } from '@raulfdm/blog-components';
+import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 import { defineMessages } from 'react-intl';
+import siteData from 'site-data';
 import { AuthorPresentation } from './components/AuthorPresentation';
 import { Posts } from './components/Posts';
 import { usePageQueryReset } from './hooks/usePageQueryReset';
 import { HomePageProps } from './types';
 
 const messages = defineMessages({
-  description: {
-    id: 'siteData.description',
-  },
-  title: {
-    id: 'siteData.title',
-  },
   latests: {
     id: 'home.title.latests',
   },
@@ -24,7 +19,6 @@ const messages = defineMessages({
 });
 
 export const HomePage: React.FC<HomePageProps> = ({
-  personalInformation,
   posts,
   pageNumber,
   numberOfPages,
@@ -37,16 +31,10 @@ export const HomePage: React.FC<HomePageProps> = ({
 
   return (
     <>
-      <SEO
-        description={formatMessage(messages.description)}
-        title={formatMessage(messages.title)}
-        url="/"
-      />
+      {/* This enforces the canonical being "/" instead "/blog" (redirect) */}
+      <NextSeo canonical={siteData.site.url} />
 
-      <AuthorPresentation
-        fullName={personalInformation.full_name}
-        profilePic={personalInformation.profile_pic.url}
-      />
+      <AuthorPresentation />
       <Posts posts={posts} title={formatMessage(pageTitle, { pageNumber })} />
       {numberOfPages > 1 ? (
         <Pagination

@@ -1,8 +1,4 @@
 {
-  "siteData": {
-    "title": "Raul Melo - Site pessoal e blog",
-    "description": "Desenvolvedor, escritor nas horas vagas, viciado em tecnologia, amante do open-source e acredita que transformação de vida só acontece com educação."
-  },
   "home": {
     "title": {
       "latests": "Últimos posts",
@@ -30,8 +26,9 @@
     "description": "Parece que a página que você está procurando ou não existe, ou o link que você pegou está quebrado ou inválido. Clica no logo para ir para a página inicial."
   },
   "search": {
+    "pageTitle": "Busca",
     "input": "O que está procurando?",
-    "stats": "{results, plural, one {# resultado} other {# resultados}} encontrados em {milliseconds}ms"
+    "stats": "{results, plural, =0 {# resultados} =1 {# resultado} other {# resultados}} {results, plural, =1 {encontrado} other {encontrados}} em {milliseconds}ms"
   },
   "series": {
     "sectionDescription": "Série em {seriesAmount} partes"

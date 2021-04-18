@@ -40,11 +40,7 @@ const Home = ({ posts, ...props }: HomePageProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const {
-    posts,
-    social,
-    personalInformation,
-  } = await Backend.graphql<BlogPageGraphQLResponse>(`
+  const { posts } = await Backend.graphql<BlogPageGraphQLResponse>(`
     query Home {
       posts(where: { language: "${locale}" }, sort: "date:desc") {
         id
@@ -70,39 +66,12 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
           name
         }
       }
-      social {
-        instagram {
-          url
-          display_name
-        }
-        linkedIn {
-          url
-          display_name
-        }
-        twitter {
-          url
-          display_name
-        }
-        github {
-          url
-          display_name
-        }
-      }
-    
-      personalInformation {
-        full_name
-        profile_pic {
-          url
-        }
-      }
     }  
   `);
 
   return {
     props: {
       posts,
-      personalInformation,
-      social,
       numberOfPosts: posts.length,
     },
   };

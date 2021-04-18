@@ -1,4 +1,3 @@
-import { SEO } from '@components/SEO';
 import { ShareContent } from '@components/ShareContent';
 import { useLocalization } from '@hooks/useLocalization';
 import {
@@ -7,11 +6,15 @@ import {
   Tag,
   Tags,
 } from '@raulfdm/blog-components';
-import { getPostUrl, getTagUrl } from '@utils/url';
+import { getTagUrl } from '@utils/url';
 import classNames from 'classnames';
+import { BlogJsonLd, NextSeo } from 'next-seo';
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import Link from 'next/link';
-import React from 'react';
+import { useRouter } from 'next/router';
+import React, { useMemo } from 'react';
+import siteData from 'site-data';
 import { FeaturedImage } from './components/FeaturedImage';
 import { Header } from './components/Header';
 import { PrismStyles } from './components/PrismStyles';
@@ -23,13 +26,34 @@ const SeriesSection = dynamic(() =>
 ) as typeof SeriesSectionType;
 
 export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
-  const { locale, formatDate } = useLocalization();
+  const { formatDate } = useLocalization();
+  const { asPath } = useRouter();
+
   const {
     featured_image,
     post_tags,
     unsplash,
     series /* translation */,
   } = post;
+
+  const seoInfo = useMemo(() => {
+    const date = new Date(post.date).toISOString();
+    return {
+      title: post.title,
+      description: post.description,
+      url: `${siteData.site.url}${asPath}`,
+      published: date,
+      modified: date,
+      imageUrl: featured_image.url ?? siteData.site.seo_image.url,
+    };
+  }, [
+    post.title,
+    post.description,
+    featured_image.url,
+    post.date,
+    asPath,
+    siteData.site.url,
+  ]);
 
   const allSeries = series ? (
     <SeriesSection series={series} currentPostId={post.id} />
@@ -44,17 +68,46 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
 
   return (
     <>
-      <SEO
-        imageUrl={featured_image?.url}
-        title={post.title}
-        description={post.description}
-        url={getPostUrl(post.slug, locale)}
-      >
+      <Head>
         <link
           href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap"
           rel="stylesheet"
         />
-      </SEO>
+      </Head>
+
+      <BlogJsonLd
+        url={seoInfo.url}
+        title={seoInfo.title}
+        description={seoInfo.description}
+        images={[seoInfo.imageUrl]}
+        datePublished={seoInfo.published}
+        dateModified={seoInfo.modified}
+        authorName={[siteData.personalInformation.full_name]}
+      />
+
+      <NextSeo
+        title={seoInfo.title}
+        description={seoInfo.description}
+        openGraph={{
+          title: seoInfo.title,
+          description: seoInfo.description,
+          type: 'article',
+          url: seoInfo.url,
+          article: {
+            publishedTime: seoInfo.published,
+            modifiedTime: seoInfo.modified,
+            tags: post.post_tags.map((tag) => tag.name),
+          },
+          images: [
+            {
+              url: seoInfo.imageUrl,
+              width: featured_image.width,
+              height: featured_image.height,
+              alt: 'Hero Image',
+            },
+          ],
+        }}
+      />
 
       <PrismStyles />
 

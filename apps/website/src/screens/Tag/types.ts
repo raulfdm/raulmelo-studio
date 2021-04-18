@@ -31,18 +31,8 @@ interface PostTag {
   blog_posts: BlogPostFromTagPage[];
 }
 
-interface ProfilePic {
-  url: string;
-}
-
-interface PersonalInformation {
-  full_name: string;
-  profile_pic: ProfilePic;
-}
-
 export interface TagPageQueryGraphQLResponse {
   postTags: PostTag[];
-  personalInformation: PersonalInformation;
 }
 
 export type TagPageParams = {
@@ -54,7 +44,6 @@ export type TagPageParams = {
 
 export type TagPageProps = {
   tag: PostTag;
-  personalInformation: PersonalInformation;
 };
 
 export interface TagPageStaticPathQuery {

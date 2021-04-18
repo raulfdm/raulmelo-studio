@@ -1,9 +1,9 @@
 import { PostCardWrapper } from '@components/PostCardWrapper';
-import { SEO } from '@components/SEO';
 import { algoliaConfig } from '@config/algolia';
 import { useLocalization } from '@hooks/useLocalization';
 import { AlgoliaIcon } from '@raulfdm/blog-components';
 import { HitAlgolia } from '@types-app';
+import { NextSeo } from 'next-seo';
 import React from 'react';
 import { Hits, InstantSearch, SearchBox, Stats } from 'react-instantsearch-dom';
 import { defineMessages } from 'react-intl';
@@ -16,23 +16,17 @@ const messages = defineMessages({
   input: {
     id: 'search.input',
   },
-  seoDescription: {
-    id: 'siteData.description',
-  },
-  seoTitle: {
-    id: 'siteData.title',
+  pageTitle: {
+    id: 'search.pageTitle',
   },
 });
 
 export const SearchPage = () => {
   const { formatMessage } = useLocalization();
+
   return (
     <>
-      <SEO
-        url="/search"
-        description={formatMessage(messages.seoDescription)}
-        title={formatMessage(messages.seoTitle)}
-      />
+      <NextSeo title={formatMessage(messages.pageTitle)} />
 
       <InstantSearch
         searchClient={algoliaDebounceSearchClient}
