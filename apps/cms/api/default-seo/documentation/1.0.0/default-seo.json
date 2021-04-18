@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/socials": {
+    "/default-seos": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -10,9 +10,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Social"
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
                   }
                 }
               }
@@ -50,7 +51,7 @@
           }
         },
         "summary": "",
-        "tags": ["Social"],
+        "tags": ["Default-seo"],
         "parameters": [
           {
             "name": "_limit",
@@ -199,70 +200,9 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Social"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": ["Social"],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewSocial"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/socials/count": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
                   "properties": {
-                    "count": {
-                      "type": "integer"
+                    "foo": {
+                      "type": "string"
                     }
                   }
                 }
@@ -301,11 +241,21 @@
           }
         },
         "summary": "",
-        "tags": ["Social"],
-        "parameters": []
+        "tags": ["Default-seo"],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewDefault-seo"
+              }
+            }
+          }
+        }
       }
     },
-    "/socials/{id}": {
+    "/default-seos/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -315,7 +265,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Social"
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -352,7 +306,62 @@
           }
         },
         "summary": "",
-        "tags": ["Social"],
+        "tags": ["Default-seo"],
+        "parameters": []
+      }
+    },
+    "/default-seos/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": ["Default-seo"],
         "parameters": [
           {
             "name": "id",
@@ -375,7 +384,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Social"
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -412,14 +425,14 @@
           }
         },
         "summary": "",
-        "tags": ["Social"],
+        "tags": ["Default-seo"],
         "requestBody": {
           "description": "",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewSocial"
+                "$ref": "#/components/schemas/NewDefault-seo"
               }
             }
           }
@@ -484,7 +497,7 @@
           }
         },
         "summary": "",
-        "tags": ["Social"],
+        "tags": ["Default-seo"],
         "parameters": [
           {
             "name": "id",
@@ -502,34 +515,38 @@
   },
   "components": {
     "schemas": {
-      "Social": {
-        "required": ["id", "name", "url", "username"],
+      "Default-seo": {
+        "required": ["id", "language", "description"],
         "properties": {
           "id": {
             "type": "string"
           },
-          "name": {
+          "title": {
             "type": "string"
           },
-          "url": {
-            "type": "string"
+          "language": {
+            "type": "string",
+            "enum": ["en", "pt"]
           },
-          "username": {
-            "type": "string"
+          "description": {
+            "type": "string",
+            "maxLength": 160
           }
         }
       },
-      "NewSocial": {
-        "required": ["name", "url", "username"],
+      "NewDefault-seo": {
+        "required": ["language", "description"],
         "properties": {
-          "name": {
+          "title": {
             "type": "string"
           },
-          "url": {
-            "type": "string"
+          "language": {
+            "type": "string",
+            "enum": ["en", "pt"]
           },
-          "username": {
-            "type": "string"
+          "description": {
+            "type": "string",
+            "maxLength": 160
           },
           "created_by": {
             "type": "string"
@@ -541,9 +558,5 @@
       }
     }
   },
-  "tags": [
-    {
-      "name": "Social"
-    }
-  ]
+  "tags": []
 }

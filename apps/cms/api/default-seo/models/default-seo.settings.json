@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "socials",
+  "collectionName": "default_seos",
   "info": {
-    "name": "social"
+    "name": "default-seo"
   },
   "options": {
     "increments": true,
@@ -10,16 +10,17 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "name": {
-      "type": "string",
+    "title": {
+      "type": "string"
+    },
+    "language": {
+      "type": "enumeration",
+      "enum": ["en", "pt"],
       "required": true
     },
-    "url": {
+    "description": {
       "type": "string",
-      "required": true
-    },
-    "username": {
-      "type": "string",
+      "maxLength": 160,
       "required": true
     }
   }
