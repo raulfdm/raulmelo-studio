@@ -1,6 +1,6 @@
 import { useLocalization } from '@hooks/useLocalization';
 import classNames from 'classnames';
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 import { defineMessage, FormattedMessage } from 'react-intl';
 
 const pageTitleMessage = defineMessage({
@@ -13,9 +13,7 @@ const Error = () => {
 
   return (
     <>
-      <Head>
-        <title>{formatMessage(pageTitleMessage)}</title>
-      </Head>
+      <NextSeo title={formatMessage(pageTitleMessage)} nofollow noindex />
 
       <h1
         className={classNames([

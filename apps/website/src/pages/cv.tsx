@@ -1,6 +1,6 @@
-import { SEO } from '@components/SEO';
 import { ExternalLink } from '@raulfdm/blog-components';
 import classNames from 'classnames';
+import { NextSeo } from 'next-seo';
 import Image from 'next/image';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
@@ -8,11 +8,9 @@ import { FormattedMessage } from 'react-intl';
 const CurriculumPage = () => {
   return (
     <>
-      <SEO
-        withDefaultTitle
+      <NextSeo
         title="Curriculum"
         description="Raul Melo is a Software Developer focused on client-side. Have over 5 years of experience building websites and applications. Check his CV for more info."
-        url="/cv"
       />
 
       <header

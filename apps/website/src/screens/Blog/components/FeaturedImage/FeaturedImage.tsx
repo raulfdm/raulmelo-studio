@@ -3,8 +3,8 @@ import Image from 'next/image';
 import { defineMessages, FormattedMessage } from 'react-intl';
 
 import { useLocalization } from '@hooks/useLocalization';
-import { PostApiData } from '@types-api';
 import classNames from 'classnames';
+import { BlogPostGraphQL } from '@screens/Blog/types';
 
 const messages = defineMessages({
   featuredImageLabel: {
@@ -15,7 +15,7 @@ const messages = defineMessages({
 type FeaturedImageProps = {
   src: string;
   alt?: string;
-  unsplash: PostApiData['unsplash'];
+  unsplash: BlogPostGraphQL['unsplash'];
 };
 
 export const FeaturedImage: React.FC<FeaturedImageProps> = ({
@@ -54,7 +54,7 @@ export const FeaturedImage: React.FC<FeaturedImageProps> = ({
   );
 };
 
-type UnsplashCaptionProps = NonNullable<PostApiData['unsplash']>;
+type UnsplashCaptionProps = NonNullable<BlogPostGraphQL['unsplash']>;
 
 function UnsplashCaption({ authorName, url }: UnsplashCaptionProps) {
   return (

@@ -1,4 +1,4 @@
-interface UsesPage {
+export interface UsesPageApi {
   language: string;
   content: string;
   title: string;
@@ -6,5 +6,5 @@ interface UsesPage {
 }
 
 export interface UsesPageStaticPropsResponse {
-  uses: UsesPage[];
+  uses: UsesPageApi[];
 }

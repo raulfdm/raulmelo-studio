@@ -1,27 +1,25 @@
-import { siteData } from '@data/siteData';
 import { useLocalization } from '@hooks/useLocalization';
 import {
   GithubIcon,
   LinkedInIcon,
   TwitterIcon,
 } from '@raulfdm/blog-components';
+import { getDefaultSeoByLocale, getSocial } from '@utils/seo';
 import classNames from 'classnames';
 import Image from 'next/image';
 import React from 'react';
-import { defineMessage, FormattedMessage } from 'react-intl';
-
-type Props = {
-  fullName: string;
-  profilePic: string;
-};
+import { defineMessage } from 'react-intl';
+import siteData from 'site-data';
 
 const message = defineMessage({ id: 'authorPresentation.profileImageAlt' });
 
-export const AuthorPresentation: React.FC<Props> = ({
-  fullName,
-  profilePic,
-}) => {
-  const { formatMessage } = useLocalization();
+export const AuthorPresentation = () => {
+  const { locale, formatMessage } = useLocalization();
+  const defaultSeo = getDefaultSeoByLocale(locale);
+  const github = getSocial('github');
+  const twitter = getSocial('twitter');
+  const linkedIn = getSocial('linkedin');
+
   return (
     <header className="flex flex-col-reverse justify-between md:flex-row mb-7 col-span-full">
       <aside
@@ -35,13 +33,13 @@ export const AuthorPresentation: React.FC<Props> = ({
           className="font-sans font-black text-2xl md:text-3xl xl:text-4xl"
           data-testid="author__name"
         >
-          {fullName}
+          {siteData.personalInformation.full_name}
         </h1>
         <p
           className="text-md md:text-md xl:text-lg mt-2.5"
           data-testid="author__description"
         >
-          <FormattedMessage id="siteData.description" />
+          {defaultSeo?.description}
         </p>
         <section
           className={classNames([
@@ -50,19 +48,13 @@ export const AuthorPresentation: React.FC<Props> = ({
             'space-x-4',
           ])}
         >
-          <a href={siteData.social.github.url} data-testid="author__githubUrl">
+          <a href={github.url} data-testid="author__githubUrl">
             <GithubIcon className="w-6 lg:w-8" />
           </a>
-          <a
-            href={siteData.social.twitter.url}
-            data-testid="author__twitterUrl"
-          >
+          <a href={twitter.url} data-testid="author__twitterUrl">
             <TwitterIcon className="w-6 lg:w-8" />
           </a>
-          <a
-            href={siteData.social.linkedIn.url}
-            data-testid="author__linkedInUrl"
-          >
+          <a href={linkedIn.url} data-testid="author__linkedInUrl">
             <LinkedInIcon className="w-6 lg:w-8" />
           </a>
         </section>
@@ -77,7 +69,7 @@ export const AuthorPresentation: React.FC<Props> = ({
       >
         <Image
           className="rounded-full object-cover"
-          src={profilePic}
+          src={siteData.personalInformation.profile_pic.url}
           layout="fill"
           alt={formatMessage(message)}
           quality={100}

@@ -40,27 +40,18 @@ export const getStaticProps = async ({ params, locale }: TagPageParams) => {
           }
         }
       }
-    
-      personalInformation {
-        full_name
-        profile_pic {
-          url
-        }
-      }
     }
   `;
 
-  const {
-    personalInformation,
-    postTags,
-  } = await Backend.graphql<TagPageQueryGraphQLResponse>(query);
+  const { postTags } = await Backend.graphql<TagPageQueryGraphQLResponse>(
+    query,
+  );
 
   const tag = head(postTags);
 
   return {
     props: {
       tag,
-      personalInformation,
     } as TagPageProps,
     revalidate: 1,
   };
