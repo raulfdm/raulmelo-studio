@@ -4,5 +4,5 @@ echo "Dev server..."
 
 export NODE_OPTIONS='--inspect'
 
-node ./scripts/fetchConfig.js
+node ./scripts/fetchSiteData.js
 yarn next
