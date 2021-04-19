@@ -26,7 +26,7 @@ export const SearchPage = () => {
 
   return (
     <>
-      <NextSeo title={formatMessage(messages.pageTitle)} />
+      <NextSeo title={formatMessage(messages.pageTitle)} noindex />
 
       <InstantSearch
         searchClient={algoliaDebounceSearchClient}
