@@ -10,57 +10,88 @@
     "timestamps": true,
     "draftAndPublish": true
   },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "subtitle": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "date": {
       "type": "date",
       "private": false,
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "post_tags": {
-      "collection": "post-tag",
       "via": "blog_posts",
+      "collection": "post-tag",
       "dominant": true
     },
     "description": {
       "type": "text",
       "required": true,
       "maxLength": 160,
-      "minLength": 10
+      "minLength": 10,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "featured_image": {
       "model": "file",
       "via": "related",
       "allowedTypes": ["images"],
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "content": {
       "type": "richtext",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "slug": {
       "type": "uid",
       "targetField": "title",
       "required": true
     },
-    "language": {
-      "type": "enumeration",
-      "enum": ["en", "pt"],
-      "required": true
-    },
     "serie_copy": {
-      "type": "string"
-    },
-    "translation": {
-      "unique": true,
-      "model": "post"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "post_serie": {
       "model": "post-serie",
@@ -68,12 +99,22 @@
     },
     "featured_image_caption": {
       "type": "text",
-      "required": false
+      "required": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "unsplash": {
       "type": "component",
       "repeatable": false,
-      "component": "posts.unsplash-author"
+      "component": "posts.unsplash-author",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

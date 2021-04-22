@@ -2,18 +2,30 @@
   "kind": "collectionType",
   "collectionName": "post_tags",
   "info": {
-    "name": "Post Tag"
+    "name": "Post Tag",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
   },
   "attributes": {
     "name": {
       "type": "string",
       "required": true,
       "unique": true,
-      "regex": "^[\\w-_]*"
+      "regex": "^[\\w-_]*",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "slug": {
       "type": "uid",
@@ -21,12 +33,12 @@
       "targetField": "name"
     },
     "blog_posts": {
-      "via": "post_tags",
-      "collection": "post"
+      "collection": "post",
+      "via": "post_tags"
     },
     "til_post": {
-      "via": "tags",
-      "model": "til"
+      "model": "til",
+      "via": "tags"
     }
   }
 }

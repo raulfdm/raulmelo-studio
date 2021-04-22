@@ -1,12 +1,12 @@
 {
   "paths": {
-    "/default-seos": {
+    "/default-seo-2": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find all the default-seo-2's records",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve default-seo-2 document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -51,7 +51,7 @@
           }
         },
         "summary": "",
-        "tags": ["Default-seo"],
+        "tags": ["Default-seo-2"],
         "parameters": [
           {
             "name": "_limit",
@@ -191,196 +191,12 @@
           }
         ]
       },
-      "post": {
-        "deprecated": false,
-        "description": "Create a new record",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": ["Default-seo"],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewDefault-seo"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/default-seos/count": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": ["Default-seo"],
-        "parameters": []
-      }
-    },
-    "/default-seos/{id}": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": ["Default-seo"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a single default-seo-2 record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve default-seo-2 document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -425,37 +241,26 @@
           }
         },
         "summary": "",
-        "tags": ["Default-seo"],
+        "tags": ["Default-seo-2"],
         "requestBody": {
           "description": "",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewDefault-seo"
+                "$ref": "#/components/schemas/NewDefault-seo-2"
               }
             }
           }
         },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
+        "parameters": []
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a single default-seo-2 record",
         "responses": {
           "200": {
-            "description": "deletes a single record based on the ID supplied",
+            "description": "deletes a single default-seo-2 based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -497,26 +302,15 @@
           }
         },
         "summary": "",
-        "tags": ["Default-seo"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
+        "tags": ["Default-seo-2"],
+        "parameters": []
       }
     }
   },
   "components": {
     "schemas": {
-      "Default-seo": {
-        "required": ["id", "language", "description"],
+      "Default-seo-2": {
+        "required": ["id", "title", "description"],
         "properties": {
           "id": {
             "type": "string"
@@ -524,29 +318,74 @@
           "title": {
             "type": "string"
           },
-          "language": {
-            "type": "string",
-            "enum": ["en", "pt"]
-          },
           "description": {
+            "type": "string"
+          },
+          "localizations": {
+            "type": "array",
+            "items": {
+              "required": ["id", "title", "description"],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "localizations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "locale": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "locale": {
+            "type": "string"
+          },
+          "published_at": {
             "type": "string",
-            "maxLength": 160
+            "format": "date-time"
           }
         }
       },
-      "NewDefault-seo": {
-        "required": ["language", "description"],
+      "NewDefault-seo-2": {
+        "required": ["title", "description"],
         "properties": {
           "title": {
             "type": "string"
           },
-          "language": {
-            "type": "string",
-            "enum": ["en", "pt"]
-          },
           "description": {
+            "type": "string"
+          },
+          "localizations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "locale": {
+            "type": "string"
+          },
+          "published_at": {
             "type": "string",
-            "maxLength": 160
+            "format": "date-time"
           },
           "created_by": {
             "type": "string"
