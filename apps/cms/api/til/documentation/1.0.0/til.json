@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/posts": {
+    "/tils": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Post"
+                    "$ref": "#/components/schemas/Til"
                   }
                 }
               }
@@ -50,7 +50,7 @@
           }
         },
         "summary": "",
-        "tags": ["Post"],
+        "tags": ["Til"],
         "parameters": [
           {
             "name": "_limit",
@@ -199,7 +199,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Til"
                 }
               }
             }
@@ -236,21 +236,21 @@
           }
         },
         "summary": "",
-        "tags": ["Post"],
+        "tags": ["Til"],
         "requestBody": {
           "description": "",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPost"
+                "$ref": "#/components/schemas/NewTil"
               }
             }
           }
         }
       }
     },
-    "/posts/count": {
+    "/tils/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -301,11 +301,11 @@
           }
         },
         "summary": "",
-        "tags": ["Post"],
+        "tags": ["Til"],
         "parameters": []
       }
     },
-    "/posts/{id}": {
+    "/tils/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -315,7 +315,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Til"
                 }
               }
             }
@@ -352,7 +352,7 @@
           }
         },
         "summary": "",
-        "tags": ["Post"],
+        "tags": ["Til"],
         "parameters": [
           {
             "name": "id",
@@ -375,7 +375,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Til"
                 }
               }
             }
@@ -412,14 +412,14 @@
           }
         },
         "summary": "",
-        "tags": ["Post"],
+        "tags": ["Til"],
         "requestBody": {
           "description": "",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPost"
+                "$ref": "#/components/schemas/NewTil"
               }
             }
           }
@@ -484,7 +484,7 @@
           }
         },
         "summary": "",
-        "tags": ["Post"],
+        "tags": ["Til"],
         "parameters": [
           {
             "name": "id",
@@ -502,16 +502,8 @@
   },
   "components": {
     "schemas": {
-      "Post": {
-        "required": [
-          "id",
-          "title",
-          "date",
-          "description",
-          "content",
-          "slug",
-          "language"
-        ],
+      "Til": {
+        "required": ["id", "publishedAt", "content", "language", "slug"],
         "properties": {
           "id": {
             "type": "string"
@@ -519,14 +511,11 @@
           "title": {
             "type": "string"
           },
-          "subtitle": {
-            "type": "string"
-          },
-          "date": {
+          "publishedAt": {
             "type": "string",
             "format": "date"
           },
-          "post_tags": {
+          "tags": {
             "type": "array",
             "items": {
               "required": ["id", "name", "slug"],
@@ -558,205 +547,16 @@
               }
             }
           },
-          "description": {
-            "type": "string",
-            "maxLength": 160,
-            "minLength": 10
-          },
-          "featured_image": {
-            "required": [
-              "id",
-              "name",
-              "hash",
-              "mime",
-              "size",
-              "url",
-              "provider"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "alternativeText": {
-                "type": "string"
-              },
-              "caption": {
-                "type": "string"
-              },
-              "width": {
-                "type": "integer"
-              },
-              "height": {
-                "type": "integer"
-              },
-              "formats": {
-                "type": "object"
-              },
-              "hash": {
-                "type": "string"
-              },
-              "ext": {
-                "type": "string"
-              },
-              "mime": {
-                "type": "string"
-              },
-              "size": {
-                "type": "number"
-              },
-              "url": {
-                "type": "string"
-              },
-              "previewUrl": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "provider_metadata": {
-                "type": "object"
-              },
-              "related": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
           "content": {
             "type": "string"
           },
-          "slug": {
-            "type": "uid"
-          },
           "language": {
             "type": "string",
-            "enum": ["en", "pt"]
+            "default": "en",
+            "enum": ["pt", "en"]
           },
-          "serie_copy": {
-            "type": "string"
-          },
-          "translation": {
-            "required": [
-              "id",
-              "title",
-              "date",
-              "description",
-              "content",
-              "slug",
-              "language"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "subtitle": {
-                "type": "string"
-              },
-              "date": {
-                "type": "string"
-              },
-              "post_tags": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "description": {
-                "type": "string"
-              },
-              "featured_image": {
-                "type": "string"
-              },
-              "content": {
-                "type": "string"
-              },
-              "slug": {
-                "type": "uid"
-              },
-              "language": {
-                "type": "string",
-                "enum": ["en", "pt"]
-              },
-              "serie_copy": {
-                "type": "string"
-              },
-              "translation": {
-                "type": "string"
-              },
-              "post_serie": {
-                "type": "string"
-              },
-              "featured_image_caption": {
-                "type": "string"
-              },
-              "unsplash": {
-                "type": "component"
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
-          "post_serie": {
-            "required": ["id", "name", "slug"],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "slug": {
-                "type": "uid"
-              },
-              "blog_posts": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
-          "featured_image_caption": {
-            "type": "string"
-          },
-          "unsplash": {
-            "type": "object",
-            "required": ["id"],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "authorName": {
-                "type": "string"
-              },
-              "url": {
-                "type": "string"
-              }
-            }
+          "slug": {
+            "type": "uid"
           },
           "published_at": {
             "type": "string",
@@ -764,73 +564,32 @@
           }
         }
       },
-      "NewPost": {
-        "required": [
-          "title",
-          "date",
-          "description",
-          "content",
-          "slug",
-          "language"
-        ],
+      "NewTil": {
+        "required": ["publishedAt", "content", "language", "slug"],
         "properties": {
           "title": {
             "type": "string"
           },
-          "subtitle": {
-            "type": "string"
-          },
-          "date": {
+          "publishedAt": {
             "type": "string",
             "format": "date"
           },
-          "post_tags": {
+          "tags": {
             "type": "array",
             "items": {
               "type": "string"
             }
           },
-          "description": {
-            "type": "string",
-            "maxLength": 160,
-            "minLength": 10
-          },
           "content": {
             "type": "string"
           },
-          "slug": {
-            "type": "uid"
-          },
           "language": {
             "type": "string",
-            "enum": ["en", "pt"]
+            "default": "en",
+            "enum": ["pt", "en"]
           },
-          "serie_copy": {
-            "type": "string"
-          },
-          "translation": {
-            "type": "string"
-          },
-          "post_serie": {
-            "type": "string"
-          },
-          "featured_image_caption": {
-            "type": "string"
-          },
-          "unsplash": {
-            "type": "object",
-            "required": ["id"],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "authorName": {
-                "type": "string"
-              },
-              "url": {
-                "type": "string"
-              }
-            }
+          "slug": {
+            "type": "uid"
           },
           "published_at": {
             "type": "string",
@@ -848,7 +607,7 @@
   },
   "tags": [
     {
-      "name": "Post"
+      "name": "Til"
     }
   ]
 }

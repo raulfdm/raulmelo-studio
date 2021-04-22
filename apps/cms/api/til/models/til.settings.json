@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tils",
+  "info": {
+    "name": "til",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "publishedAt": {
+      "type": "date",
+      "required": true
+    },
+    "tags": {
+      "collection": "post-tag",
+      "via": "til_post"
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "language": {
+      "type": "enumeration",
+      "enum": ["pt", "en"],
+      "required": true,
+      "default": "en"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    }
+  }
+}

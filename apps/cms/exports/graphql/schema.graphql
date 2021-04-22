@@ -308,6 +308,7 @@ type PostTag {
   updatedAt: DateTime!
   name: String!
   slug: String!
+  til_post: Til
   blog_posts(sort: String, limit: Int, start: Int, where: JSON): [Post]
 }
 
@@ -329,6 +330,7 @@ type PostTagGroupBy {
   updatedAt: [PostTagConnectionUpdatedAt]
   name: [PostTagConnectionName]
   slug: [PostTagConnectionSlug]
+  til_post: [PostTagConnectionTil_post]
 }
 
 type PostTagConnectionId {
@@ -361,10 +363,16 @@ type PostTagConnectionSlug {
   connection: PostTagConnection
 }
 
+type PostTagConnectionTil_post {
+  key: ID
+  connection: PostTagConnection
+}
+
 input PostTagInput {
   name: String!
   slug: String!
   blog_posts: [ID]
+  til_post: ID
   created_by: ID
   updated_by: ID
 }
@@ -373,6 +381,7 @@ input editPostTagInput {
   name: String
   slug: String
   blog_posts: [ID]
+  til_post: ID
   created_by: ID
   updated_by: ID
 }
@@ -756,6 +765,148 @@ input deleteSocialInput {
 
 type deleteSocialPayload {
   social: Social
+}
+
+enum ENUM_TIL_LANGUAGE {
+  pt
+  en
+}
+
+type Til {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  title: String
+  publishedAt: Date!
+  content: String!
+  language: ENUM_TIL_LANGUAGE!
+  slug: String!
+  published_at: DateTime
+  tags(sort: String, limit: Int, start: Int, where: JSON): [PostTag]
+}
+
+type TilConnection {
+  values: [Til]
+  groupBy: TilGroupBy
+  aggregate: TilAggregator
+}
+
+type TilAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type TilGroupBy {
+  id: [TilConnectionId]
+  _id: [TilConnection_id]
+  createdAt: [TilConnectionCreatedAt]
+  updatedAt: [TilConnectionUpdatedAt]
+  title: [TilConnectionTitle]
+  publishedAt: [TilConnectionPublishedAt]
+  content: [TilConnectionContent]
+  language: [TilConnectionLanguage]
+  slug: [TilConnectionSlug]
+  published_at: [TilConnectionPublished_at]
+}
+
+type TilConnectionId {
+  key: ID
+  connection: TilConnection
+}
+
+type TilConnection_id {
+  key: ID
+  connection: TilConnection
+}
+
+type TilConnectionCreatedAt {
+  key: DateTime
+  connection: TilConnection
+}
+
+type TilConnectionUpdatedAt {
+  key: DateTime
+  connection: TilConnection
+}
+
+type TilConnectionTitle {
+  key: String
+  connection: TilConnection
+}
+
+type TilConnectionPublishedAt {
+  key: ID
+  connection: TilConnection
+}
+
+type TilConnectionContent {
+  key: String
+  connection: TilConnection
+}
+
+type TilConnectionLanguage {
+  key: String
+  connection: TilConnection
+}
+
+type TilConnectionSlug {
+  key: String
+  connection: TilConnection
+}
+
+type TilConnectionPublished_at {
+  key: DateTime
+  connection: TilConnection
+}
+
+input TilInput {
+  title: String
+  publishedAt: Date!
+  tags: [ID]
+  content: String!
+  language: ENUM_TIL_LANGUAGE
+  slug: String!
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editTilInput {
+  title: String
+  publishedAt: Date
+  tags: [ID]
+  content: String
+  language: ENUM_TIL_LANGUAGE
+  slug: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createTilInput {
+  data: TilInput
+}
+
+type createTilPayload {
+  til: Til
+}
+
+input updateTilInput {
+  where: InputID
+  data: editTilInput
+}
+
+type updateTilPayload {
+  til: Til
+}
+
+input deleteTilInput {
+  where: InputID
+}
+
+type deleteTilPayload {
+  til: Til
 }
 
 enum ENUM_USE_LANGUAGE {
@@ -1461,6 +1612,7 @@ union Morph =
   | PostTagConnectionUpdatedAt
   | PostTagConnectionName
   | PostTagConnectionSlug
+  | PostTagConnectionTil_post
   | createPostTagPayload
   | updatePostTagPayload
   | deletePostTagPayload
@@ -1506,6 +1658,23 @@ union Morph =
   | createSocialPayload
   | updateSocialPayload
   | deleteSocialPayload
+  | Til
+  | TilConnection
+  | TilAggregator
+  | TilGroupBy
+  | TilConnectionId
+  | TilConnection_id
+  | TilConnectionCreatedAt
+  | TilConnectionUpdatedAt
+  | TilConnectionTitle
+  | TilConnectionPublishedAt
+  | TilConnectionContent
+  | TilConnectionLanguage
+  | TilConnectionSlug
+  | TilConnectionPublished_at
+  | createTilPayload
+  | updateTilPayload
+  | deleteTilPayload
   | Use
   | UseConnection
   | UseAggregator
@@ -1671,6 +1840,20 @@ type Query {
     start: Int
     where: JSON
   ): SocialConnection
+  til(id: ID!, publicationState: PublicationState): Til
+  tils(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+    publicationState: PublicationState
+  ): [Til]
+  tilsConnection(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): TilConnection
   use(id: ID!, publicationState: PublicationState): Use
   uses(
     sort: String
@@ -1755,6 +1938,9 @@ type Mutation {
   createSocial(input: createSocialInput): createSocialPayload
   updateSocial(input: updateSocialInput): updateSocialPayload
   deleteSocial(input: deleteSocialInput): deleteSocialPayload
+  createTil(input: createTilInput): createTilPayload
+  updateTil(input: updateTilInput): updateTilPayload
+  deleteTil(input: deleteTilInput): deleteTilPayload
   createUse(input: createUseInput): createUsePayload
   updateUse(input: updateUseInput): updateUsePayload
   deleteUse(input: deleteUseInput): deleteUsePayload
