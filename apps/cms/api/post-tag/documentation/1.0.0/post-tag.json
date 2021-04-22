@@ -600,6 +600,45 @@
                 }
               }
             }
+          },
+          "til_post": {
+            "required": ["id", "publishedAt", "content", "language", "slug"],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "publishedAt": {
+                "type": "string"
+              },
+              "tags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "content": {
+                "type": "string"
+              },
+              "language": {
+                "type": "string",
+                "enum": ["pt", "en"]
+              },
+              "slug": {
+                "type": "uid"
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -617,6 +656,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "til_post": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"
