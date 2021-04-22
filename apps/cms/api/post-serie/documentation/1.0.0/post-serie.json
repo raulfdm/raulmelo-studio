@@ -536,8 +536,7 @@
                 "date",
                 "description",
                 "content",
-                "slug",
-                "language"
+                "slug"
               ],
               "properties": {
                 "id": {
@@ -570,14 +569,7 @@
                 "slug": {
                   "type": "uid"
                 },
-                "language": {
-                  "type": "string",
-                  "enum": ["en", "pt"]
-                },
                 "serie_copy": {
-                  "type": "string"
-                },
-                "translation": {
                   "type": "string"
                 },
                 "post_serie": {
@@ -588,6 +580,15 @@
                 },
                 "unsplash": {
                   "type": "component"
+                },
+                "localizations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "locale": {
+                  "type": "string"
                 },
                 "published_at": {
                   "type": "string"

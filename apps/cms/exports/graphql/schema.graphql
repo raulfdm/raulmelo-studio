@@ -41,116 +41,53 @@ type UserPermissionsPasswordPayload {
   ok: Boolean!
 }
 
-enum ENUM_DEFAULTSEO_LANGUAGE {
-  en
-  pt
-}
-
-type DefaultSeo {
+type DefaultSeo2 {
   id: ID!
   _id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
-  title: String
-  language: ENUM_DEFAULTSEO_LANGUAGE!
+  title: String!
   description: String!
+  locale: String
+  published_at: DateTime
+  localizations(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): [DefaultSeo2]
 }
 
-type DefaultSeoConnection {
-  values: [DefaultSeo]
-  groupBy: DefaultSeoGroupBy
-  aggregate: DefaultSeoAggregator
-}
-
-type DefaultSeoAggregator {
-  count: Int
-  totalCount: Int
-}
-
-type DefaultSeoGroupBy {
-  id: [DefaultSeoConnectionId]
-  _id: [DefaultSeoConnection_id]
-  createdAt: [DefaultSeoConnectionCreatedAt]
-  updatedAt: [DefaultSeoConnectionUpdatedAt]
-  title: [DefaultSeoConnectionTitle]
-  language: [DefaultSeoConnectionLanguage]
-  description: [DefaultSeoConnectionDescription]
-}
-
-type DefaultSeoConnectionId {
-  key: ID
-  connection: DefaultSeoConnection
-}
-
-type DefaultSeoConnection_id {
-  key: ID
-  connection: DefaultSeoConnection
-}
-
-type DefaultSeoConnectionCreatedAt {
-  key: DateTime
-  connection: DefaultSeoConnection
-}
-
-type DefaultSeoConnectionUpdatedAt {
-  key: DateTime
-  connection: DefaultSeoConnection
-}
-
-type DefaultSeoConnectionTitle {
-  key: String
-  connection: DefaultSeoConnection
-}
-
-type DefaultSeoConnectionLanguage {
-  key: String
-  connection: DefaultSeoConnection
-}
-
-type DefaultSeoConnectionDescription {
-  key: String
-  connection: DefaultSeoConnection
-}
-
-input DefaultSeoInput {
-  title: String
-  language: ENUM_DEFAULTSEO_LANGUAGE!
+input DefaultSeo2Input {
+  title: String!
   description: String!
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
   created_by: ID
   updated_by: ID
 }
 
-input editDefaultSeoInput {
+input editDefaultSeo2Input {
   title: String
-  language: ENUM_DEFAULTSEO_LANGUAGE
   description: String
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
   created_by: ID
   updated_by: ID
 }
 
-input createDefaultSeoInput {
-  data: DefaultSeoInput
+input updateDefaultSeo2Input {
+  data: editDefaultSeo2Input
 }
 
-type createDefaultSeoPayload {
-  defaultSeo: DefaultSeo
+type updateDefaultSeo2Payload {
+  defaultSeo2: DefaultSeo2
 }
 
-input updateDefaultSeoInput {
-  where: InputID
-  data: editDefaultSeoInput
-}
-
-type updateDefaultSeoPayload {
-  defaultSeo: DefaultSeo
-}
-
-input deleteDefaultSeoInput {
-  where: InputID
-}
-
-type deleteDefaultSeoPayload {
-  defaultSeo: DefaultSeo
+type deleteDefaultSeo2Payload {
+  defaultSeo2: DefaultSeo2
 }
 
 type PersonalInformation {
@@ -309,7 +246,9 @@ type PostTag {
   name: String!
   slug: String!
   til_post: Til
+  locale: String
   blog_posts(sort: String, limit: Int, start: Int, where: JSON): [Post]
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [PostTag]
 }
 
 type PostTagConnection {
@@ -331,6 +270,7 @@ type PostTagGroupBy {
   name: [PostTagConnectionName]
   slug: [PostTagConnectionSlug]
   til_post: [PostTagConnectionTil_post]
+  locale: [PostTagConnectionLocale]
 }
 
 type PostTagConnectionId {
@@ -368,11 +308,18 @@ type PostTagConnectionTil_post {
   connection: PostTagConnection
 }
 
+type PostTagConnectionLocale {
+  key: String
+  connection: PostTagConnection
+}
+
 input PostTagInput {
   name: String!
   slug: String!
   blog_posts: [ID]
   til_post: ID
+  localizations: [ID]
+  locale: String
   created_by: ID
   updated_by: ID
 }
@@ -382,6 +329,8 @@ input editPostTagInput {
   slug: String
   blog_posts: [ID]
   til_post: ID
+  localizations: [ID]
+  locale: String
   created_by: ID
   updated_by: ID
 }
@@ -411,11 +360,6 @@ type deletePostTagPayload {
   postTag: PostTag
 }
 
-enum ENUM_POST_LANGUAGE {
-  en
-  pt
-}
-
 type Post {
   id: ID!
   _id: ID!
@@ -428,14 +372,14 @@ type Post {
   featured_image: UploadFile
   content: String!
   slug: String!
-  language: ENUM_POST_LANGUAGE!
   serie_copy: String
-  translation: Post
   post_serie: PostSerie
   featured_image_caption: String
   unsplash: ComponentPostsUnsplashAuthor
+  locale: String
   published_at: DateTime
   post_tags(sort: String, limit: Int, start: Int, where: JSON): [PostTag]
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [Post]
 }
 
 type PostConnection {
@@ -461,12 +405,11 @@ type PostGroupBy {
   featured_image: [PostConnectionFeatured_image]
   content: [PostConnectionContent]
   slug: [PostConnectionSlug]
-  language: [PostConnectionLanguage]
   serie_copy: [PostConnectionSerie_copy]
-  translation: [PostConnectionTranslation]
   post_serie: [PostConnectionPost_serie]
   featured_image_caption: [PostConnectionFeatured_image_caption]
   unsplash: [PostConnectionUnsplash]
+  locale: [PostConnectionLocale]
   published_at: [PostConnectionPublished_at]
 }
 
@@ -525,18 +468,8 @@ type PostConnectionSlug {
   connection: PostConnection
 }
 
-type PostConnectionLanguage {
-  key: String
-  connection: PostConnection
-}
-
 type PostConnectionSerie_copy {
   key: String
-  connection: PostConnection
-}
-
-type PostConnectionTranslation {
-  key: ID
   connection: PostConnection
 }
 
@@ -555,6 +488,11 @@ type PostConnectionUnsplash {
   connection: PostConnection
 }
 
+type PostConnectionLocale {
+  key: String
+  connection: PostConnection
+}
+
 type PostConnectionPublished_at {
   key: DateTime
   connection: PostConnection
@@ -569,12 +507,12 @@ input PostInput {
   featured_image: ID
   content: String!
   slug: String!
-  language: ENUM_POST_LANGUAGE!
   serie_copy: String
-  translation: ID
   post_serie: ID
   featured_image_caption: String
   unsplash: ComponentPostsUnsplashAuthorInput
+  localizations: [ID]
+  locale: String
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -589,12 +527,12 @@ input editPostInput {
   featured_image: ID
   content: String
   slug: String
-  language: ENUM_POST_LANGUAGE
   serie_copy: String
-  translation: ID
   post_serie: ID
   featured_image_caption: String
   unsplash: editComponentPostsUnsplashAuthorInput
+  localizations: [ID]
+  locale: String
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -782,8 +720,10 @@ type Til {
   content: String!
   language: ENUM_TIL_LANGUAGE!
   slug: String!
+  locale: String
   published_at: DateTime
   tags(sort: String, limit: Int, start: Int, where: JSON): [PostTag]
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [Til]
 }
 
 type TilConnection {
@@ -807,6 +747,7 @@ type TilGroupBy {
   content: [TilConnectionContent]
   language: [TilConnectionLanguage]
   slug: [TilConnectionSlug]
+  locale: [TilConnectionLocale]
   published_at: [TilConnectionPublished_at]
 }
 
@@ -855,6 +796,11 @@ type TilConnectionSlug {
   connection: TilConnection
 }
 
+type TilConnectionLocale {
+  key: String
+  connection: TilConnection
+}
+
 type TilConnectionPublished_at {
   key: DateTime
   connection: TilConnection
@@ -867,6 +813,8 @@ input TilInput {
   content: String!
   language: ENUM_TIL_LANGUAGE
   slug: String!
+  localizations: [ID]
+  locale: String
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -879,6 +827,8 @@ input editTilInput {
   content: String
   language: ENUM_TIL_LANGUAGE
   slug: String
+  localizations: [ID]
+  locale: String
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -1028,6 +978,29 @@ input deleteUseInput {
 
 type deleteUsePayload {
   use: Use
+}
+
+type I18NLocale {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String
+  code: String
+}
+
+input LocaleInput {
+  name: String
+  code: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editLocaleInput {
+  name: String
+  code: String
+  created_by: ID
+  updated_by: ID
 }
 
 type UploadFile {
@@ -1572,20 +1545,9 @@ union Morph =
   | UsersPermissionsMeRole
   | UsersPermissionsLoginPayload
   | UserPermissionsPasswordPayload
-  | DefaultSeo
-  | DefaultSeoConnection
-  | DefaultSeoAggregator
-  | DefaultSeoGroupBy
-  | DefaultSeoConnectionId
-  | DefaultSeoConnection_id
-  | DefaultSeoConnectionCreatedAt
-  | DefaultSeoConnectionUpdatedAt
-  | DefaultSeoConnectionTitle
-  | DefaultSeoConnectionLanguage
-  | DefaultSeoConnectionDescription
-  | createDefaultSeoPayload
-  | updateDefaultSeoPayload
-  | deleteDefaultSeoPayload
+  | DefaultSeo2
+  | updateDefaultSeo2Payload
+  | deleteDefaultSeo2Payload
   | PersonalInformation
   | updatePersonalInformationPayload
   | deletePersonalInformationPayload
@@ -1613,6 +1575,7 @@ union Morph =
   | PostTagConnectionName
   | PostTagConnectionSlug
   | PostTagConnectionTil_post
+  | PostTagConnectionLocale
   | createPostTagPayload
   | updatePostTagPayload
   | deletePostTagPayload
@@ -1631,12 +1594,11 @@ union Morph =
   | PostConnectionFeatured_image
   | PostConnectionContent
   | PostConnectionSlug
-  | PostConnectionLanguage
   | PostConnectionSerie_copy
-  | PostConnectionTranslation
   | PostConnectionPost_serie
   | PostConnectionFeatured_image_caption
   | PostConnectionUnsplash
+  | PostConnectionLocale
   | PostConnectionPublished_at
   | createPostPayload
   | updatePostPayload
@@ -1671,6 +1633,7 @@ union Morph =
   | TilConnectionContent
   | TilConnectionLanguage
   | TilConnectionSlug
+  | TilConnectionLocale
   | TilConnectionPublished_at
   | createTilPayload
   | updateTilPayload
@@ -1690,6 +1653,7 @@ union Morph =
   | createUsePayload
   | updateUsePayload
   | deleteUsePayload
+  | I18NLocale
   | UploadFile
   | UploadFileConnection
   | UploadFileAggregator
@@ -1768,20 +1732,7 @@ type AdminUser {
 }
 
 type Query {
-  defaultSeo(id: ID!, publicationState: PublicationState): DefaultSeo
-  defaultSeos(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-    publicationState: PublicationState
-  ): [DefaultSeo]
-  defaultSeosConnection(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-  ): DefaultSeoConnection
+  defaultSeo2(publicationState: PublicationState, locale: String): DefaultSeo2
   personalInformation(publicationState: PublicationState): PersonalInformation
   postSerie(id: ID!, publicationState: PublicationState): PostSerie
   postSeries(
@@ -1804,12 +1755,14 @@ type Query {
     start: Int
     where: JSON
     publicationState: PublicationState
+    locale: String
   ): [PostTag]
   postTagsConnection(
     sort: String
     limit: Int
     start: Int
     where: JSON
+    locale: String
   ): PostTagConnection
   post(id: ID!, publicationState: PublicationState): Post
   posts(
@@ -1818,12 +1771,14 @@ type Query {
     start: Int
     where: JSON
     publicationState: PublicationState
+    locale: String
   ): [Post]
   postsConnection(
     sort: String
     limit: Int
     start: Int
     where: JSON
+    locale: String
   ): PostConnection
   site(publicationState: PublicationState): Site
   social(id: ID!, publicationState: PublicationState): Social
@@ -1847,12 +1802,14 @@ type Query {
     start: Int
     where: JSON
     publicationState: PublicationState
+    locale: String
   ): [Til]
   tilsConnection(
     sort: String
     limit: Int
     start: Int
     where: JSON
+    locale: String
   ): TilConnection
   use(id: ID!, publicationState: PublicationState): Use
   uses(
@@ -1917,9 +1874,11 @@ type Query {
 }
 
 type Mutation {
-  createDefaultSeo(input: createDefaultSeoInput): createDefaultSeoPayload
-  updateDefaultSeo(input: updateDefaultSeoInput): updateDefaultSeoPayload
-  deleteDefaultSeo(input: deleteDefaultSeoInput): deleteDefaultSeoPayload
+  updateDefaultSeo2(
+    input: updateDefaultSeo2Input
+    locale: String
+  ): updateDefaultSeo2Payload
+  deleteDefaultSeo2(locale: String): deleteDefaultSeo2Payload
   updatePersonalInformation(
     input: updatePersonalInformationInput
   ): updatePersonalInformationPayload
@@ -1979,6 +1938,10 @@ type Mutation {
   Delete an existing user
   """
   deleteUser(input: deleteUserInput): deleteUserPayload
+  createDefaultSeo2Localization(input: updateDefaultSeo2Input!): DefaultSeo2!
+  createPostTagLocalization(input: updatePostTagInput!): PostTag!
+  createPostLocalization(input: updatePostInput!): Post!
+  createTilLocalization(input: updateTilInput!): Til!
   upload(
     refId: ID
     ref: String
