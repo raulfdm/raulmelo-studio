@@ -41,32 +41,32 @@ const Home = ({ posts, ...props }: HomePageProps) => {
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const { posts } = await Backend.graphql<BlogPageGraphQLResponse>(`
-    query Home {
-      posts(where: { language: "${locale}" }, sort: "date:desc") {
-        id
-        language
-        slug
-        date
-        title
-        subtitle
-        description
-        featured_image {
-          width
-          height
-          url
-        }
-        post_serie {
-          slug
-          name
-          id
-        }
-        post_tags {
-          slug
-          id
-          name
-        }
+  query Home {
+    posts(locale: "${locale}", sort: "date:desc") {
+      id
+      language: locale
+      slug
+      date
+      title
+      subtitle
+      description
+      featured_image {
+        width
+        height
+        url
       }
-    }  
+      post_serie {
+        slug
+        name
+        id
+      }
+      post_tags {
+        slug
+        id
+        name
+      }
+    }
+  }
   `);
 
   return {

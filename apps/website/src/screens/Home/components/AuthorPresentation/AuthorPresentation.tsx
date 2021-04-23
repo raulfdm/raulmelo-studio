@@ -4,7 +4,7 @@ import {
   LinkedInIcon,
   TwitterIcon,
 } from '@raulfdm/blog-components';
-import { getDefaultSeoByLocale, getSocial } from '@utils/seo';
+import { getSocial } from '@utils/seo';
 import classNames from 'classnames';
 import Image from 'next/image';
 import React from 'react';
@@ -15,7 +15,7 @@ const message = defineMessage({ id: 'authorPresentation.profileImageAlt' });
 
 export const AuthorPresentation = () => {
   const { locale, formatMessage } = useLocalization();
-  const defaultSeo = getDefaultSeoByLocale(locale);
+  const defaultSeo = siteData.defaultSeo[locale];
   const github = getSocial('github');
   const twitter = getSocial('twitter');
   const linkedIn = getSocial('linkedin');

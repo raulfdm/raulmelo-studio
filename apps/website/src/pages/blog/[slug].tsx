@@ -38,22 +38,23 @@ export const getStaticProps = async ({ params }: Params) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   type ResponseType = {
-    posts: { slug: string; language: SupportedLanguages }[];
+    posts: { slug: string; locale: SupportedLanguages }[];
   };
+
   const { posts } = await Backend.graphql<ResponseType>(`
-    query {
-      posts{
-        slug
-        language
-      }
+  query {
+    posts(locale: "all") {
+      slug
+      locale
     }
+  }
   `);
 
   const paths = posts.map((post) => ({
     params: {
       slug: post.slug,
     },
-    locale: post.language,
+    locale: post.locale,
   }));
 
   return {
@@ -71,8 +72,8 @@ async function fetchPostBySlug(slug: string): Promise<BlogPostGraphQL> {
    * fetch by post slug
    */
   const apiJsonResponse = await Backend.graphql<BlogPostGraphQLResponse>(`
-  query {
-    posts(where: { slug: "${slug}" }) {
+  query BlogPost {
+    posts(where: { slug: "${slug}" }, locale: "all") {
       id
       title
       subtitle
@@ -84,11 +85,6 @@ async function fetchPostBySlug(slug: string): Promise<BlogPostGraphQL> {
         url
       }
       content
-      translation {
-        id
-        language
-        slug
-      }
       featured_image {
         url
         width
@@ -102,7 +98,7 @@ async function fetchPostBySlug(slug: string): Promise<BlogPostGraphQL> {
       }
       series: post_serie {
         name
-        posts: blog_posts (sort:"date:asc"){
+        posts: blog_posts(sort: "date:asc") {
           id
           copy: serie_copy
           uri: slug
@@ -110,7 +106,7 @@ async function fetchPostBySlug(slug: string): Promise<BlogPostGraphQL> {
         }
       }
     }
-  }
+  }  
   `);
 
   const postHead = head(apiJsonResponse.posts);

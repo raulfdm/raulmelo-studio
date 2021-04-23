@@ -12,9 +12,14 @@ if (URL.includes('localhost')) {
 
 const query = `
 query SiteData {
-  defaultSeos {
+  defaultSeoPt: defaultSeo(locale: "pt") {
     title
-    language
+    locale
+    description
+  }
+  defaultSeoEn: defaultSeo(locale: "en") {
+    title
+    locale
     description
   }
   personalInformation {
@@ -48,9 +53,22 @@ fetch(`${URL}/graphql`, {
 })
   .then((res) => res.json())
   .then(async ({ data }) => {
+    const { defaultSeoPt, defaultSeoEn, ...rest } = data;
+
+    /**
+     * Ensure of having both default seo locales
+     */
+    const sanitizedData = {
+      ...rest,
+      defaultSeo: {
+        pt: defaultSeoPt,
+        en: defaultSeoEn,
+      },
+    };
+
     fs.writeFileSync(
       path.resolve(__dirname, '..', 'site-data.json'),
-      JSON.stringify(data, null, 2),
+      JSON.stringify(sanitizedData, null, 2),
     );
   })
   .then(() => console.log('Site data generated!'))

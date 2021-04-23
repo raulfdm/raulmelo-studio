@@ -4,7 +4,7 @@ import { LocalizationProvider } from '@contexts/Localization';
 import '@raulfdm/blog-components/dist/static/css/base.css';
 import '@styles/algolia.css';
 import { SupportedLanguages } from '@types-app';
-import { getDefaultSeoByLocale, getSocial } from '@utils/seo';
+import { getSocial } from '@utils/seo';
 import { motion } from 'framer-motion';
 import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo';
 import { AppProps } from 'next/dist/next-server/lib/router/router';
@@ -13,7 +13,7 @@ import React from 'react';
 import siteData from 'site-data';
 
 const MyApp = ({ Component, pageProps, router }: AppProps) => {
-  const defaultSeo = getDefaultSeoByLocale(router.locale as SupportedLanguages);
+  const defaultSeo = siteData.defaultSeo[router.locale as SupportedLanguages];
 
   const twitterData = getSocial('twitter');
 

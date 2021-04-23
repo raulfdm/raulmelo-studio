@@ -20,17 +20,17 @@ const Uses = ({ usesMd, seo, title }: Props) => {
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const { uses } = await Backend.graphql<UsesPageStaticPropsResponse>(`
-    query {
-      uses(where: { language: "${locale}" }) {
-        language
+  query UsesPage {
+    use(locale: "${locale}") {
+      language: locale
+      title
+      seo {
         title
-        content
-        seo {
-          title
-          description
-        }
+        description
       }
-    }  
+      content
+    }
+  }
   `);
 
   const usesData = head(uses);
