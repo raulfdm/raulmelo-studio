@@ -139,7 +139,9 @@ type PostSerie {
   updatedAt: DateTime!
   name: String!
   slug: String!
+  locale: String
   blog_posts(sort: String, limit: Int, start: Int, where: JSON): [Post]
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [PostSerie]
 }
 
 type PostSerieConnection {
@@ -160,6 +162,7 @@ type PostSerieGroupBy {
   updatedAt: [PostSerieConnectionUpdatedAt]
   name: [PostSerieConnectionName]
   slug: [PostSerieConnectionSlug]
+  locale: [PostSerieConnectionLocale]
 }
 
 type PostSerieConnectionId {
@@ -192,10 +195,17 @@ type PostSerieConnectionSlug {
   connection: PostSerieConnection
 }
 
+type PostSerieConnectionLocale {
+  key: String
+  connection: PostSerieConnection
+}
+
 input PostSerieInput {
   name: String!
   slug: String!
   blog_posts: [ID]
+  localizations: [ID]
+  locale: String
   created_by: ID
   updated_by: ID
 }
@@ -204,6 +214,8 @@ input editPostSerieInput {
   name: String
   slug: String
   blog_posts: [ID]
+  localizations: [ID]
+  locale: String
   created_by: ID
   updated_by: ID
 }
@@ -241,9 +253,7 @@ type PostTag {
   name: String!
   slug: String!
   til_post: Til
-  locale: String
   blog_posts(sort: String, limit: Int, start: Int, where: JSON): [Post]
-  localizations(sort: String, limit: Int, start: Int, where: JSON): [PostTag]
 }
 
 type PostTagConnection {
@@ -265,7 +275,6 @@ type PostTagGroupBy {
   name: [PostTagConnectionName]
   slug: [PostTagConnectionSlug]
   til_post: [PostTagConnectionTil_post]
-  locale: [PostTagConnectionLocale]
 }
 
 type PostTagConnectionId {
@@ -303,18 +312,11 @@ type PostTagConnectionTil_post {
   connection: PostTagConnection
 }
 
-type PostTagConnectionLocale {
-  key: String
-  connection: PostTagConnection
-}
-
 input PostTagInput {
   name: String!
   slug: String!
   blog_posts: [ID]
   til_post: ID
-  localizations: [ID]
-  locale: String
   created_by: ID
   updated_by: ID
 }
@@ -324,8 +326,6 @@ input editPostTagInput {
   slug: String
   blog_posts: [ID]
   til_post: ID
-  localizations: [ID]
-  locale: String
   created_by: ID
   updated_by: ID
 }
@@ -1556,6 +1556,7 @@ union Morph =
   | PostSerieConnectionUpdatedAt
   | PostSerieConnectionName
   | PostSerieConnectionSlug
+  | PostSerieConnectionLocale
   | createPostSeriePayload
   | updatePostSeriePayload
   | deletePostSeriePayload
@@ -1570,7 +1571,6 @@ union Morph =
   | PostTagConnectionName
   | PostTagConnectionSlug
   | PostTagConnectionTil_post
-  | PostTagConnectionLocale
   | createPostTagPayload
   | updatePostTagPayload
   | deletePostTagPayload
@@ -1736,12 +1736,14 @@ type Query {
     start: Int
     where: JSON
     publicationState: PublicationState
+    locale: String
   ): [PostSerie]
   postSeriesConnection(
     sort: String
     limit: Int
     start: Int
     where: JSON
+    locale: String
   ): PostSerieConnection
   postTag(id: ID!, publicationState: PublicationState): PostTag
   postTags(
@@ -1750,14 +1752,12 @@ type Query {
     start: Int
     where: JSON
     publicationState: PublicationState
-    locale: String
   ): [PostTag]
   postTagsConnection(
     sort: String
     limit: Int
     start: Int
     where: JSON
-    locale: String
   ): PostTagConnection
   post(id: ID!, publicationState: PublicationState): Post
   posts(
@@ -1934,7 +1934,7 @@ type Mutation {
   """
   deleteUser(input: deleteUserInput): deleteUserPayload
   createDefaultSeoLocalization(input: updateDefaultSeoInput!): DefaultSeo!
-  createPostTagLocalization(input: updatePostTagInput!): PostTag!
+  createPostSerieLocalization(input: updatePostSerieInput!): PostSerie!
   createPostLocalization(input: updatePostInput!): Post!
   createTilLocalization(input: updateTilInput!): Til!
   upload(
