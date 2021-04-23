@@ -1158,18 +1158,8 @@ type UsersPermissionsRole {
   name: String!
   description: String
   type: String
-  permissions(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-  ): [UsersPermissionsPermission]
-  users(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-  ): [UsersPermissionsUser]
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
 }
 
 type UsersPermissionsRoleConnection {
@@ -1458,168 +1448,7 @@ input editComponentUsesSeoInput {
   description: String
 }
 
-union Morph =
-    UsersPermissionsMe
-  | UsersPermissionsMeRole
-  | UsersPermissionsLoginPayload
-  | UserPermissionsPasswordPayload
-  | DefaultSeo
-  | updateDefaultSeoPayload
-  | deleteDefaultSeoPayload
-  | PersonalInformation
-  | updatePersonalInformationPayload
-  | deletePersonalInformationPayload
-  | PostSerie
-  | PostSerieConnection
-  | PostSerieAggregator
-  | PostSerieGroupBy
-  | PostSerieConnectionId
-  | PostSerieConnection_id
-  | PostSerieConnectionCreatedAt
-  | PostSerieConnectionUpdatedAt
-  | PostSerieConnectionName
-  | PostSerieConnectionSlug
-  | PostSerieConnectionLocale
-  | createPostSeriePayload
-  | updatePostSeriePayload
-  | deletePostSeriePayload
-  | PostTag
-  | PostTagConnection
-  | PostTagAggregator
-  | PostTagGroupBy
-  | PostTagConnectionId
-  | PostTagConnection_id
-  | PostTagConnectionCreatedAt
-  | PostTagConnectionUpdatedAt
-  | PostTagConnectionName
-  | PostTagConnectionSlug
-  | PostTagConnectionTil_post
-  | createPostTagPayload
-  | updatePostTagPayload
-  | deletePostTagPayload
-  | Post
-  | PostConnection
-  | PostAggregator
-  | PostGroupBy
-  | PostConnectionId
-  | PostConnection_id
-  | PostConnectionCreatedAt
-  | PostConnectionUpdatedAt
-  | PostConnectionTitle
-  | PostConnectionSubtitle
-  | PostConnectionDate
-  | PostConnectionDescription
-  | PostConnectionFeatured_image
-  | PostConnectionContent
-  | PostConnectionSlug
-  | PostConnectionSerie_copy
-  | PostConnectionPost_serie
-  | PostConnectionFeatured_image_caption
-  | PostConnectionUnsplash
-  | PostConnectionLocale
-  | PostConnectionPublished_at
-  | createPostPayload
-  | updatePostPayload
-  | deletePostPayload
-  | Site
-  | updateSitePayload
-  | deleteSitePayload
-  | Social
-  | SocialConnection
-  | SocialAggregator
-  | SocialGroupBy
-  | SocialConnectionId
-  | SocialConnection_id
-  | SocialConnectionCreatedAt
-  | SocialConnectionUpdatedAt
-  | SocialConnectionName
-  | SocialConnectionUrl
-  | SocialConnectionUsername
-  | createSocialPayload
-  | updateSocialPayload
-  | deleteSocialPayload
-  | Til
-  | TilConnection
-  | TilAggregator
-  | TilGroupBy
-  | TilConnectionId
-  | TilConnection_id
-  | TilConnectionCreatedAt
-  | TilConnectionUpdatedAt
-  | TilConnectionTitle
-  | TilConnectionPublishedAt
-  | TilConnectionContent
-  | TilConnectionLanguage
-  | TilConnectionSlug
-  | TilConnectionLocale
-  | TilConnectionPublished_at
-  | createTilPayload
-  | updateTilPayload
-  | deleteTilPayload
-  | Uses
-  | updateUsePayload
-  | deleteUsePayload
-  | I18NLocale
-  | UploadFile
-  | UploadFileConnection
-  | UploadFileAggregator
-  | UploadFileAggregatorSum
-  | UploadFileAggregatorAvg
-  | UploadFileAggregatorMin
-  | UploadFileAggregatorMax
-  | UploadFileGroupBy
-  | UploadFileConnectionId
-  | UploadFileConnection_id
-  | UploadFileConnectionCreatedAt
-  | UploadFileConnectionUpdatedAt
-  | UploadFileConnectionName
-  | UploadFileConnectionAlternativeText
-  | UploadFileConnectionCaption
-  | UploadFileConnectionWidth
-  | UploadFileConnectionHeight
-  | UploadFileConnectionFormats
-  | UploadFileConnectionHash
-  | UploadFileConnectionExt
-  | UploadFileConnectionMime
-  | UploadFileConnectionSize
-  | UploadFileConnectionUrl
-  | UploadFileConnectionPreviewUrl
-  | UploadFileConnectionProvider
-  | UploadFileConnectionProvider_metadata
-  | deleteFilePayload
-  | UsersPermissionsPermission
-  | UsersPermissionsRole
-  | UsersPermissionsRoleConnection
-  | UsersPermissionsRoleAggregator
-  | UsersPermissionsRoleGroupBy
-  | UsersPermissionsRoleConnectionId
-  | UsersPermissionsRoleConnection_id
-  | UsersPermissionsRoleConnectionName
-  | UsersPermissionsRoleConnectionDescription
-  | UsersPermissionsRoleConnectionType
-  | createRolePayload
-  | updateRolePayload
-  | deleteRolePayload
-  | UsersPermissionsUser
-  | UsersPermissionsUserConnection
-  | UsersPermissionsUserAggregator
-  | UsersPermissionsUserGroupBy
-  | UsersPermissionsUserConnectionId
-  | UsersPermissionsUserConnection_id
-  | UsersPermissionsUserConnectionCreatedAt
-  | UsersPermissionsUserConnectionUpdatedAt
-  | UsersPermissionsUserConnectionUsername
-  | UsersPermissionsUserConnectionEmail
-  | UsersPermissionsUserConnectionProvider
-  | UsersPermissionsUserConnectionConfirmed
-  | UsersPermissionsUserConnectionBlocked
-  | UsersPermissionsUserConnectionRole
-  | createUserPayload
-  | updateUserPayload
-  | deleteUserPayload
-  | ComponentGeneralUrlLink
-  | ComponentPostsUnsplashAuthor
-  | ComponentUsesSeo
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | DefaultSeo | updateDefaultSeoPayload | deleteDefaultSeoPayload | PersonalInformation | updatePersonalInformationPayload | deletePersonalInformationPayload | PostSerie | PostSerieConnection | PostSerieAggregator | PostSerieGroupBy | PostSerieConnectionId | PostSerieConnection_id | PostSerieConnectionCreatedAt | PostSerieConnectionUpdatedAt | PostSerieConnectionName | PostSerieConnectionSlug | PostSerieConnectionLocale | createPostSeriePayload | updatePostSeriePayload | deletePostSeriePayload | PostTag | PostTagConnection | PostTagAggregator | PostTagGroupBy | PostTagConnectionId | PostTagConnection_id | PostTagConnectionCreatedAt | PostTagConnectionUpdatedAt | PostTagConnectionName | PostTagConnectionSlug | PostTagConnectionTil_post | createPostTagPayload | updatePostTagPayload | deletePostTagPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnection_id | PostConnectionCreatedAt | PostConnectionUpdatedAt | PostConnectionTitle | PostConnectionSubtitle | PostConnectionDate | PostConnectionDescription | PostConnectionFeatured_image | PostConnectionContent | PostConnectionSlug | PostConnectionSerie_copy | PostConnectionPost_serie | PostConnectionFeatured_image_caption | PostConnectionUnsplash | PostConnectionLocale | PostConnectionPublished_at | createPostPayload | updatePostPayload | deletePostPayload | Site | updateSitePayload | deleteSitePayload | Social | SocialConnection | SocialAggregator | SocialGroupBy | SocialConnectionId | SocialConnection_id | SocialConnectionCreatedAt | SocialConnectionUpdatedAt | SocialConnectionName | SocialConnectionUrl | SocialConnectionUsername | createSocialPayload | updateSocialPayload | deleteSocialPayload | Til | TilConnection | TilAggregator | TilGroupBy | TilConnectionId | TilConnection_id | TilConnectionCreatedAt | TilConnectionUpdatedAt | TilConnectionTitle | TilConnectionPublishedAt | TilConnectionContent | TilConnectionLanguage | TilConnectionSlug | TilConnectionLocale | TilConnectionPublished_at | createTilPayload | updateTilPayload | deleteTilPayload | Uses | updateUsePayload | deleteUsePayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentGeneralUrlLink | ComponentPostsUnsplashAuthor | ComponentUsesSeo
 
 input InputID {
   id: ID!
@@ -1641,140 +1470,41 @@ type Query {
   defaultSeo(publicationState: PublicationState, locale: String): DefaultSeo
   personalInformation(publicationState: PublicationState): PersonalInformation
   postSerie(id: ID!, publicationState: PublicationState): PostSerie
-  postSeries(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-    publicationState: PublicationState
-    locale: String
-  ): [PostSerie]
-  postSeriesConnection(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-    locale: String
-  ): PostSerieConnection
+  postSeries(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState, locale: String): [PostSerie]
+  postSeriesConnection(sort: String, limit: Int, start: Int, where: JSON, locale: String): PostSerieConnection
   postTag(id: ID!, publicationState: PublicationState): PostTag
-  postTags(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-    publicationState: PublicationState
-  ): [PostTag]
-  postTagsConnection(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-  ): PostTagConnection
+  postTags(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [PostTag]
+  postTagsConnection(sort: String, limit: Int, start: Int, where: JSON): PostTagConnection
   post(id: ID!, publicationState: PublicationState): Post
-  posts(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-    publicationState: PublicationState
-    locale: String
-  ): [Post]
-  postsConnection(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-    locale: String
-  ): PostConnection
+  posts(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState, locale: String): [Post]
+  postsConnection(sort: String, limit: Int, start: Int, where: JSON, locale: String): PostConnection
   site(publicationState: PublicationState): Site
   social(id: ID!, publicationState: PublicationState): Social
-  socials(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-    publicationState: PublicationState
-  ): [Social]
-  socialsConnection(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-  ): SocialConnection
+  socials(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Social]
+  socialsConnection(sort: String, limit: Int, start: Int, where: JSON): SocialConnection
   til(id: ID!, publicationState: PublicationState): Til
-  tils(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-    publicationState: PublicationState
-    locale: String
-  ): [Til]
-  tilsConnection(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-    locale: String
-  ): TilConnection
+  tils(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState, locale: String): [Til]
+  tilsConnection(sort: String, limit: Int, start: Int, where: JSON, locale: String): TilConnection
   use(publicationState: PublicationState, locale: String): Uses
-  files(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-    publicationState: PublicationState
-  ): [UploadFile]
-  filesConnection(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-  ): UploadFileConnection
+  files(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UploadFile]
+  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
   role(id: ID!, publicationState: PublicationState): UsersPermissionsRole
 
   """
   Retrieve all the existing roles. You can't apply filters on this query.
   """
-  roles(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-    publicationState: PublicationState
-  ): [UsersPermissionsRole]
-  rolesConnection(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-  ): UsersPermissionsRoleConnection
+  roles(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsRole]
+  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
   user(id: ID!, publicationState: PublicationState): UsersPermissionsUser
-  users(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-    publicationState: PublicationState
-  ): [UsersPermissionsUser]
-  usersConnection(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-  ): UsersPermissionsUserConnection
+  users(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsUser]
+  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
   me: UsersPermissionsMe
 }
 
 type Mutation {
-  updateDefaultSeo(
-    input: updateDefaultSeoInput
-    locale: String
-  ): updateDefaultSeoPayload
+  updateDefaultSeo(input: updateDefaultSeoInput, locale: String): updateDefaultSeoPayload
   deleteDefaultSeo(locale: String): deleteDefaultSeoPayload
-  updatePersonalInformation(
-    input: updatePersonalInformationInput
-  ): updatePersonalInformationPayload
+  updatePersonalInformation(input: updatePersonalInformationInput): updatePersonalInformationPayload
   deletePersonalInformation: deletePersonalInformationPayload
   createPostSerie(input: createPostSerieInput): createPostSeriePayload
   updatePostSerie(input: updatePostSerieInput): updatePostSeriePayload
@@ -1796,88 +1526,52 @@ type Mutation {
   updateUse(input: updateUseInput, locale: String): updateUsePayload
   deleteUse(locale: String): deleteUsePayload
 
-  """
-  Delete one file
-  """
+  """Delete one file"""
   deleteFile(input: deleteFileInput): deleteFilePayload
 
-  """
-  Create a new role
-  """
+  """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
 
-  """
-  Update an existing role
-  """
+  """Update an existing role"""
   updateRole(input: updateRoleInput): updateRolePayload
 
-  """
-  Delete an existing role
-  """
+  """Delete an existing role"""
   deleteRole(input: deleteRoleInput): deleteRolePayload
 
-  """
-  Create a new user
-  """
+  """Create a new user"""
   createUser(input: createUserInput): createUserPayload
 
-  """
-  Update an existing user
-  """
+  """Update an existing user"""
   updateUser(input: updateUserInput): updateUserPayload
 
-  """
-  Delete an existing user
-  """
+  """Delete an existing user"""
   deleteUser(input: deleteUserInput): deleteUserPayload
   createDefaultSeoLocalization(input: updateDefaultSeoInput!): DefaultSeo!
   createPostSerieLocalization(input: updatePostSerieInput!): PostSerie!
   createPostLocalization(input: updatePostInput!): Post!
   createTilLocalization(input: updateTilInput!): Til!
   createUseLocalization(input: updateUseInput!): Uses!
-  upload(
-    refId: ID
-    ref: String
-    field: String
-    source: String
-    info: FileInfoInput
-    file: Upload!
-  ): UploadFile!
-  multipleUpload(
-    refId: ID
-    ref: String
-    field: String
-    source: String
-    files: [Upload]!
-  ): [UploadFile]!
+  upload(refId: ID, ref: String, field: String, source: String, info: FileInfoInput, file: Upload!): UploadFile!
+  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
   updateFileInfo(id: ID!, info: FileInfoInput!): UploadFile!
   login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
   register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
   forgotPassword(email: String!): UserPermissionsPasswordPayload
-  resetPassword(
-    password: String!
-    passwordConfirmation: String!
-    code: String!
-  ): UsersPermissionsLoginPayload
+  resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
   emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
 }
 
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
-scalar JSON
-  @specifiedBy(
-    url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf"
-  )
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
 
 """
 A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
 """
 scalar DateTime
 
-"""
-A time string with format: HH:mm:ss.SSS
-"""
+"""A time string with format: HH:mm:ss.SSS"""
 scalar Time
 
 """
@@ -1885,12 +1579,8 @@ A date string, such as 2007-12-03, compliant with the `full-date` format outline
 """
 scalar Date
 
-"""
-The `Long` scalar type represents 52-bit integers
-"""
+"""The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-"""
-The `Upload` scalar type represents a file upload.
-"""
+"""The `Upload` scalar type represents a file upload."""
 scalar Upload
