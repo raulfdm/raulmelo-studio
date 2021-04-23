@@ -1,10 +1,6 @@
-const algoliaAdminKey = "123";
-const algoliaIndexName = "foo";
-const algoliaApiId = "456";
-
 process.env = Object.assign(process.env, {
-  ALGOLIA_ADMIN_KEY: algoliaAdminKey,
-  ALGOLIA_INDEX_NAME: algoliaIndexName,
-  ALGOLIA_APP_ID: algoliaApiId,
-  AUTH_TOKEN: "token",
+  ALGOLIA_ADMIN_KEY: '123',
+  ALGOLIA_APP_ID: '456',
+  AUTH_TOKEN: 'token',
+  API_URL: 'http://localhost:1337',
 });
