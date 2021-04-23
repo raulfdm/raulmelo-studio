@@ -1,12 +1,12 @@
 {
   "paths": {
-    "/default-seo-2": {
+    "/default-seo": {
       "get": {
         "deprecated": false,
-        "description": "Find all the default-seo-2's records",
+        "description": "Find all the default-seo's records",
         "responses": {
           "200": {
-            "description": "Retrieve default-seo-2 document(s)",
+            "description": "Retrieve default-seo document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -51,7 +51,7 @@
           }
         },
         "summary": "",
-        "tags": ["Default-seo-2"],
+        "tags": ["Default-seo"],
         "parameters": [
           {
             "name": "_limit",
@@ -193,10 +193,10 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single default-seo-2 record",
+        "description": "Update a single default-seo record",
         "responses": {
           "200": {
-            "description": "Retrieve default-seo-2 document(s)",
+            "description": "Retrieve default-seo document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -241,14 +241,14 @@
           }
         },
         "summary": "",
-        "tags": ["Default-seo-2"],
+        "tags": ["Default-seo"],
         "requestBody": {
           "description": "",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewDefault-seo-2"
+                "$ref": "#/components/schemas/NewDefault-seo"
               }
             }
           }
@@ -257,10 +257,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single default-seo-2 record",
+        "description": "Delete a single default-seo record",
         "responses": {
           "200": {
-            "description": "deletes a single default-seo-2 based on the ID supplied",
+            "description": "deletes a single default-seo based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -302,14 +302,14 @@
           }
         },
         "summary": "",
-        "tags": ["Default-seo-2"],
+        "tags": ["Default-seo"],
         "parameters": []
       }
     }
   },
   "components": {
     "schemas": {
-      "Default-seo-2": {
+      "Default-seo": {
         "required": ["id", "title", "description"],
         "properties": {
           "id": {
@@ -365,7 +365,7 @@
           }
         }
       },
-      "NewDefault-seo-2": {
+      "NewDefault-seo": {
         "required": ["title", "description"],
         "properties": {
           "title": {
