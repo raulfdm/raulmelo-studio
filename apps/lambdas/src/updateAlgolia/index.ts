@@ -49,13 +49,13 @@ export const updateAlgolia = authMiddleware(
 
 async function fetchAllPosts(): Promise<Posts> {
   const query = `
-  {
+  query AlgoliaSearch {
     posts {
       id
       title
       subtitle
       date
-      language
+      language: locale
       slug
       content
       featured_image {
