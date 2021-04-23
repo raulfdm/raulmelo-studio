@@ -4,7 +4,7 @@ import { PushAlgoliaTuple, AlgoliaObject } from '../types';
 const INDEX_NAME = 'posts';
 const QUERY = `
 query Posts {
-  posts {
+  posts(locale: "all") {
     id
     title
     subtitle
