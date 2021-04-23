@@ -7,4 +7,5 @@ export const SETTINGS = {
     appId: process.env.ALGOLIA_APP_ID,
   },
   apiUrl: `${process.env.API_URL}/graphql`,
+  authToken: process.env.AUTH_TOKEN,
 };

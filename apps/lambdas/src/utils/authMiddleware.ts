@@ -1,5 +1,6 @@
-import { APIGatewayEvent, Context } from "aws-lambda";
-import { Handler } from "../types";
+import { APIGatewayEvent, Context } from 'aws-lambda';
+import { SETTINGS } from '../config';
+import { Handler } from '../types';
 
 /**
  * To prevent my functions being called from unknown people, this function
@@ -7,11 +8,11 @@ import { Handler } from "../types";
  */
 export function authMiddleware(handler: Handler) {
   return async function check(event: APIGatewayEvent, context?: Context) {
-    if (event.headers?.authorization !== process.env.AUTH_TOKEN) {
+    if (event.headers?.authorization !== SETTINGS.authToken) {
       return {
         statusCode: 401,
         body: JSON.stringify({
-          message: "Unauthorized request",
+          message: 'Unauthorized request',
         }),
       };
     }
