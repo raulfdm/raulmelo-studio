@@ -854,125 +854,48 @@ type deleteTilPayload {
   til: Til
 }
 
-enum ENUM_USE_LANGUAGE {
-  pt
-  en
-}
-
-type Use {
+type Uses {
   id: ID!
   _id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
-  language: ENUM_USE_LANGUAGE!
+  Title: String!
+  Seo: ComponentUsesSeo
   content: String!
-  seo: ComponentUsesSeo
-  title: String!
-}
-
-type UseConnection {
-  values: [Use]
-  groupBy: UseGroupBy
-  aggregate: UseAggregator
-}
-
-type UseAggregator {
-  count: Int
-  totalCount: Int
-}
-
-type UseGroupBy {
-  id: [UseConnectionId]
-  _id: [UseConnection_id]
-  createdAt: [UseConnectionCreatedAt]
-  updatedAt: [UseConnectionUpdatedAt]
-  language: [UseConnectionLanguage]
-  content: [UseConnectionContent]
-  seo: [UseConnectionSeo]
-  title: [UseConnectionTitle]
-}
-
-type UseConnectionId {
-  key: ID
-  connection: UseConnection
-}
-
-type UseConnection_id {
-  key: ID
-  connection: UseConnection
-}
-
-type UseConnectionCreatedAt {
-  key: DateTime
-  connection: UseConnection
-}
-
-type UseConnectionUpdatedAt {
-  key: DateTime
-  connection: UseConnection
-}
-
-type UseConnectionLanguage {
-  key: String
-  connection: UseConnection
-}
-
-type UseConnectionContent {
-  key: String
-  connection: UseConnection
-}
-
-type UseConnectionSeo {
-  key: ID
-  connection: UseConnection
-}
-
-type UseConnectionTitle {
-  key: String
-  connection: UseConnection
+  locale: String
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [Uses]
 }
 
 input UseInput {
-  language: ENUM_USE_LANGUAGE!
+  Title: String!
+  Seo: ComponentUsesSeoInput!
   content: String!
-  seo: ComponentUsesSeoInput
-  title: String!
+  localizations: [ID]
+  locale: String
   created_by: ID
   updated_by: ID
 }
 
 input editUseInput {
-  language: ENUM_USE_LANGUAGE
+  Title: String
+  Seo: editComponentUsesSeoInput
   content: String
-  seo: editComponentUsesSeoInput
-  title: String
+  localizations: [ID]
+  locale: String
   created_by: ID
   updated_by: ID
 }
 
-input createUseInput {
-  data: UseInput
-}
-
-type createUsePayload {
-  use: Use
-}
-
 input updateUseInput {
-  where: InputID
   data: editUseInput
 }
 
 type updateUsePayload {
-  use: Use
-}
-
-input deleteUseInput {
-  where: InputID
+  use: Uses
 }
 
 type deleteUsePayload {
-  use: Use
+  use: Uses
 }
 
 type I18NLocale {
@@ -1633,19 +1556,7 @@ union Morph =
   | createTilPayload
   | updateTilPayload
   | deleteTilPayload
-  | Use
-  | UseConnection
-  | UseAggregator
-  | UseGroupBy
-  | UseConnectionId
-  | UseConnection_id
-  | UseConnectionCreatedAt
-  | UseConnectionUpdatedAt
-  | UseConnectionLanguage
-  | UseConnectionContent
-  | UseConnectionSeo
-  | UseConnectionTitle
-  | createUsePayload
+  | Uses
   | updateUsePayload
   | deleteUsePayload
   | I18NLocale
@@ -1806,20 +1717,7 @@ type Query {
     where: JSON
     locale: String
   ): TilConnection
-  use(id: ID!, publicationState: PublicationState): Use
-  uses(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-    publicationState: PublicationState
-  ): [Use]
-  usesConnection(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-  ): UseConnection
+  use(publicationState: PublicationState, locale: String): Uses
   files(
     sort: String
     limit: Int
@@ -1895,9 +1793,8 @@ type Mutation {
   createTil(input: createTilInput): createTilPayload
   updateTil(input: updateTilInput): updateTilPayload
   deleteTil(input: deleteTilInput): deleteTilPayload
-  createUse(input: createUseInput): createUsePayload
-  updateUse(input: updateUseInput): updateUsePayload
-  deleteUse(input: deleteUseInput): deleteUsePayload
+  updateUse(input: updateUseInput, locale: String): updateUsePayload
+  deleteUse(locale: String): deleteUsePayload
 
   """
   Delete one file
@@ -1937,6 +1834,7 @@ type Mutation {
   createPostSerieLocalization(input: updatePostSerieInput!): PostSerie!
   createPostLocalization(input: updatePostInput!): Post!
   createTilLocalization(input: updateTilInput!): Til!
+  createUseLocalization(input: updateUseInput!): Uses!
   upload(
     refId: ID
     ref: String

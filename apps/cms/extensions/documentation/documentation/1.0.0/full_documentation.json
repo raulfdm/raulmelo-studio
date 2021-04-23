@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/23/2021 6:45:02 AM"
+    "x-generation-date": "04/23/2021 6:48:48 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -3482,16 +3482,16 @@
     "/uses": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find all the uses's records",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve uses document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Use"
+                    "$ref": "#/components/schemas/Uses"
                   }
                 }
               }
@@ -3529,7 +3529,7 @@
           }
         },
         "summary": "",
-        "tags": ["Use"],
+        "tags": ["Uses"],
         "parameters": [
           {
             "name": "_limit",
@@ -3669,192 +3669,16 @@
           }
         ]
       },
-      "post": {
-        "deprecated": false,
-        "description": "Create a new record",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Use"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": ["Use"],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewUse"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/uses/count": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "count": {
-                      "type": "integer"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": ["Use"],
-        "parameters": []
-      }
-    },
-    "/uses/{id}": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Use"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": ["Use"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a single uses record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve uses document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Use"
+                  "$ref": "#/components/schemas/Uses"
                 }
               }
             }
@@ -3891,37 +3715,26 @@
           }
         },
         "summary": "",
-        "tags": ["Use"],
+        "tags": ["Uses"],
         "requestBody": {
           "description": "",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewUse"
+                "$ref": "#/components/schemas/NewUses"
               }
             }
           }
         },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
+        "parameters": []
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a single uses record",
         "responses": {
           "200": {
-            "description": "deletes a single record based on the ID supplied",
+            "description": "deletes a single uses based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -3963,19 +3776,8 @@
           }
         },
         "summary": "",
-        "tags": ["Use"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
+        "tags": ["Uses"],
+        "parameters": []
       }
     },
     "/email/": {
@@ -7319,20 +7121,16 @@
           }
         }
       },
-      "Use": {
-        "required": ["id", "language", "content", "title"],
+      "Uses": {
+        "required": ["id", "Title", "Seo", "content"],
         "properties": {
           "id": {
             "type": "string"
           },
-          "language": {
-            "type": "string",
-            "enum": ["pt", "en"]
-          },
-          "content": {
+          "Title": {
             "type": "string"
           },
-          "seo": {
+          "Seo": {
             "type": "object",
             "required": ["id", "title", "description"],
             "properties": {
@@ -7349,22 +7147,56 @@
               }
             }
           },
-          "title": {
+          "content": {
+            "type": "string"
+          },
+          "localizations": {
+            "type": "array",
+            "items": {
+              "required": ["id", "Title", "Seo", "content"],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "Title": {
+                  "type": "string"
+                },
+                "Seo": {
+                  "type": "component"
+                },
+                "content": {
+                  "type": "string"
+                },
+                "localizations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "locale": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "locale": {
             "type": "string"
           }
         }
       },
-      "NewUse": {
-        "required": ["language", "content", "title"],
+      "NewUses": {
+        "required": ["Title", "Seo", "content"],
         "properties": {
-          "language": {
-            "type": "string",
-            "enum": ["pt", "en"]
-          },
-          "content": {
+          "Title": {
             "type": "string"
           },
-          "seo": {
+          "Seo": {
             "type": "object",
             "required": ["id", "title", "description"],
             "properties": {
@@ -7381,7 +7213,16 @@
               }
             }
           },
-          "title": {
+          "content": {
+            "type": "string"
+          },
+          "localizations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "locale": {
             "type": "string"
           },
           "created_by": {
@@ -7666,7 +7507,7 @@
       "name": "Til"
     },
     {
-      "name": "Use"
+      "name": "Uses"
     },
     {
       "name": "Email - Email"
