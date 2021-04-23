@@ -1,7 +1,7 @@
-import { authMiddleware } from "../authMiddleware";
+import { authMiddleware } from '../authMiddleware';
 
-describe("fn: authMiddleware", () => {
-  it("returns 401 if token does not match", async () => {
+describe('fn: authMiddleware', () => {
+  it('returns 401 if token does not match', async () => {
     const guardedFunction = authMiddleware(jest.fn());
 
     expect(await guardedFunction({ headers: {} } as any))
@@ -15,9 +15,9 @@ describe("fn: authMiddleware", () => {
     expect(
       await guardedFunction({
         headers: {
-          authorization: "heheheh",
+          authorization: 'heheheh',
         },
-      } as any)
+      } as any),
     ).toMatchInlineSnapshot(`
     Object {
       "body": "{\\"message\\":\\"Unauthorized request\\"}",
@@ -26,7 +26,7 @@ describe("fn: authMiddleware", () => {
   `);
   });
 
-  it("calls guarded function if token is correct", async () => {
+  it('calls guarded function if token is correct', async () => {
     const lambdaFunction = jest.fn();
 
     const guardedFunction = authMiddleware(lambdaFunction);
@@ -38,7 +38,7 @@ describe("fn: authMiddleware", () => {
     } as any;
 
     const context = {
-      someContext: "123",
+      someContext: '123',
     } as any;
 
     await guardedFunction(event, context);
