@@ -25,11 +25,6 @@ export type BlogPostGraphQL = {
     url: string;
   };
   content: string;
-  translation?: {
-    id: string;
-    language: 'en' | 'pt';
-    slug: string;
-  };
   featured_image: {
     url: string;
     width: number;

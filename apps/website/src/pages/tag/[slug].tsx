@@ -15,32 +15,32 @@ const Tag = (props: TagPageProps) => <TagPage {...props} />;
 
 export const getStaticProps = async ({ params, locale }: TagPageParams) => {
   const query = `
-    query TagPage {
-      postTags(where: { slug: "${params.slug}" }) {
+  query TagPage {
+    postTags(where: { slug: "${params.slug}" }) {
+      id
+      slug
+      name
+      blog_posts(sort: "date:desc", where: { locale: "${locale}" }) {
         id
+        language: locale
         slug
-        name
-        blog_posts(sort: "date:desc", where: { language: "${locale}" }) {
-          id
-          language
+        date
+        title
+        subtitle
+        description
+        featured_image {
+          url
+          height
+          width
+        }
+        post_tags {
           slug
-          date
-          title
-          subtitle
-          description
-          featured_image {
-            url
-            height
-            width
-          }
-          post_tags {
-            slug
-            id
-            name
-          }
+          id
+          name
         }
       }
     }
+  }
   `;
 
   const { postTags } = await Backend.graphql<TagPageQueryGraphQLResponse>(
@@ -59,11 +59,11 @@ export const getStaticProps = async ({ params, locale }: TagPageParams) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { postTags } = await Backend.graphql<TagPageStaticPathQuery>(`
-    query{
-      postTags{
-        slug
-      }
+  query {
+    postTags {
+      slug
     }
+  }
   `);
 
   const paths: TagPageParams[] = [];
