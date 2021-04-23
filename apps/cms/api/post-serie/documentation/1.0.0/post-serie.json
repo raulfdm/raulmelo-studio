@@ -601,6 +601,47 @@
                 }
               }
             }
+          },
+          "localizations": {
+            "type": "array",
+            "items": {
+              "required": ["id", "name", "slug"],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "slug": {
+                  "type": "uid"
+                },
+                "blog_posts": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "localizations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "locale": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "locale": {
+            "type": "string"
           }
         }
       },
@@ -618,6 +659,15 @@
             "items": {
               "type": "string"
             }
+          },
+          "localizations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "locale": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"

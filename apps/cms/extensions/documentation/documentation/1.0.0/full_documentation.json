@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/23/2021 6:28:52 AM"
+    "x-generation-date": "04/23/2021 6:45:02 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -6446,6 +6446,47 @@
                 }
               }
             }
+          },
+          "localizations": {
+            "type": "array",
+            "items": {
+              "required": ["id", "name", "slug"],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "slug": {
+                  "type": "uid"
+                },
+                "blog_posts": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "localizations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "locale": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "locale": {
+            "type": "string"
           }
         }
       },
@@ -6463,6 +6504,15 @@
             "items": {
               "type": "string"
             }
+          },
+          "localizations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "locale": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"
@@ -6606,50 +6656,6 @@
                 "type": "string"
               }
             }
-          },
-          "localizations": {
-            "type": "array",
-            "items": {
-              "required": ["id", "name", "slug"],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "slug": {
-                  "type": "uid"
-                },
-                "blog_posts": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "til_post": {
-                  "type": "string"
-                },
-                "localizations": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "locale": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "locale": {
-            "type": "string"
           }
         }
       },
@@ -6669,15 +6675,6 @@
             }
           },
           "til_post": {
-            "type": "string"
-          },
-          "localizations": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "locale": {
             "type": "string"
           },
           "created_by": {
@@ -6725,15 +6722,6 @@
                   }
                 },
                 "til_post": {
-                  "type": "string"
-                },
-                "localizations": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "locale": {
                   "type": "string"
                 },
                 "created_by": {
@@ -6843,6 +6831,15 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "localizations": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "locale": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"
@@ -7192,15 +7189,6 @@
                   }
                 },
                 "til_post": {
-                  "type": "string"
-                },
-                "localizations": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "locale": {
                   "type": "string"
                 },
                 "created_by": {
