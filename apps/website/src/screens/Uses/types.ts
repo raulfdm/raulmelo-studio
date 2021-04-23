@@ -6,5 +6,5 @@ export interface UsesPageApi {
 }
 
 export interface UsesPageStaticPropsResponse {
-  uses: UsesPageApi[];
+  use: UsesPageApi;
 }

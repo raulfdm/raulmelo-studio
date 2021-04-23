@@ -3,7 +3,6 @@ import { UsesPageStaticPropsResponse } from '@screens/Uses/types';
 import { UsesPage, UsesPageProps } from '@screens/Uses/UsesPage';
 import { Backend } from '@services/Backend';
 import { MdxRemoteSource } from '@types-app';
-import { head } from '@utils/utilities';
 import { GetStaticProps } from 'next';
 
 type Props = UsesPageProps & { usesMd: MdxRemoteSource; title: string };
@@ -19,7 +18,7 @@ const Uses = ({ usesMd, seo, title }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const { uses } = await Backend.graphql<UsesPageStaticPropsResponse>(`
+  const { use: uses } = await Backend.graphql<UsesPageStaticPropsResponse>(`
   query UsesPage {
     use(locale: "${locale}") {
       language: locale
@@ -33,15 +32,13 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   }
   `);
 
-  const usesData = head(uses);
-
-  const mdxSource = await renderToString(usesData.content);
+  const mdxSource = await renderToString(uses.content);
 
   return {
     props: {
       usesMd: mdxSource,
-      seo: usesData.seo,
-      title: usesData.title,
+      seo: uses.seo,
+      title: uses.title,
     },
     revalidate: 1,
   };
