@@ -51,7 +51,9 @@
           }
         },
         "summary": "",
-        "tags": ["Default-seo"],
+        "tags": [
+          "Default-seo"
+        ],
         "parameters": [
           {
             "name": "_limit",
@@ -241,7 +243,9 @@
           }
         },
         "summary": "",
-        "tags": ["Default-seo"],
+        "tags": [
+          "Default-seo"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -302,7 +306,9 @@
           }
         },
         "summary": "",
-        "tags": ["Default-seo"],
+        "tags": [
+          "Default-seo"
+        ],
         "parameters": []
       }
     }
@@ -310,7 +316,11 @@
   "components": {
     "schemas": {
       "Default-seo": {
-        "required": ["id", "title", "description"],
+        "required": [
+          "id",
+          "title",
+          "description"
+        ],
         "properties": {
           "id": {
             "type": "string"
@@ -324,7 +334,11 @@
           "localizations": {
             "type": "array",
             "items": {
-              "required": ["id", "title", "description"],
+              "required": [
+                "id",
+                "title",
+                "description"
+              ],
               "properties": {
                 "id": {
                   "type": "string"
@@ -366,7 +380,10 @@
         }
       },
       "NewDefault-seo": {
-        "required": ["title", "description"],
+        "required": [
+          "title",
+          "description"
+        ],
         "properties": {
           "title": {
             "type": "string"
