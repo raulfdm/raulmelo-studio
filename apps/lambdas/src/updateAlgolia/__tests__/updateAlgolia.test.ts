@@ -1,76 +1,62 @@
-import algolia from "algoliasearch";
-import axios, { AxiosStatic } from "axios";
-import MockDate from "mockdate";
-import { updateAlgolia } from "../.";
-import { ErrorFunctionReturn, SuccessFunctionReturn } from "../types";
-import { serverResponse } from "./__fixtures__/serverResponse";
+import MockDate from 'mockdate';
+import { updateAlgolia } from '../updateAlgolia';
+import { ErrorFunctionReturn, SuccessFunctionReturn } from '../types';
 
-jest.mock("axios");
-jest.mock("algoliasearch");
+import { getPostsToAlgolia } from '../indexes/posts';
+import { getTilsToAlgolia } from '../indexes/tils';
+import { pushAlgoliaData } from '../pushAlgoliaData';
 
-const mockAxios = axios as AxiosStatic & {
-  mockResolvedValue: Function;
-  mockRejectedValue: Function;
-};
-const mockAlgolia = (algolia as unknown) as jest.Mock<any>;
+jest.mock('../indexes/posts');
+jest.mock('../indexes/tils');
+jest.mock('../pushAlgoliaData');
 
-const mockSaveObject = jest.fn();
-const mockInitialIndex = jest.fn(() => ({ saveObjects: mockSaveObject }));
+const mockGetPostsToAlgolia = (getPostsToAlgolia as unknown) as jest.Mock<any>;
+const mockGetTilsToAlgolia = (getTilsToAlgolia as unknown) as jest.Mock<any>;
+const mockPushAlgoliaData = (pushAlgoliaData as unknown) as jest.Mock<any>;
 
-describe("fn: updateAlgolia", () => {
+describe('fn: updateAlgolia', () => {
   beforeAll(() => {
-    MockDate.set("2021-03-07");
+    MockDate.set('2021-03-07');
   });
 
-  describe("When success", () => {
+  describe('When success', () => {
     let result: SuccessFunctionReturn;
 
-    beforeEach(async () => {
-      mockAxios.mockResolvedValue({ data: serverResponse });
-      mockAlgolia.mockReturnValue({ initIndex: mockInitialIndex });
+    const getPostMockData = ['post', [{ id: 1 }]];
+    const getTilsMockData = ['tils', [{ id: 2 }]];
 
+    beforeEach(async () => {
+      mockGetPostsToAlgolia.mockReturnValue(getPostMockData);
+      mockGetTilsToAlgolia.mockReturnValue(getTilsMockData);
       result = (await callConfiguredUpdateAlgolia()) as SuccessFunctionReturn;
     });
 
-    describe("Algolia", () => {
-      it("setups algolia correctly", async () => {
-        expect(mockAlgolia).toHaveBeenCalledWith(
-          process.env.ALGOLIA_APP_ID,
-          process.env.ALGOLIA_ADMIN_KEY
-        );
-
-        expect(mockInitialIndex).toHaveBeenCalledWith(
-          process.env.ALGOLIA_INDEX_NAME
-        );
-      });
-
-      it("calls save", async () => {
-        const [firstCall] = mockSaveObject.mock.calls;
-
-        expect(firstCall).toMatchSnapshot();
-      });
+    it('calls pushAlgoliaData with the index updaters return', () => {
+      expect(mockPushAlgoliaData).toHaveBeenCalledWith(...getPostMockData);
+      expect(mockPushAlgoliaData).toHaveBeenCalledWith(...getTilsMockData);
     });
 
-    it("returns success object", () => {
+    it('returns success object', () => {
       expect(result).toMatchInlineSnapshot(`
-        Object {
-          "body": "{\\"message\\":\\"Indexes updated!\\",\\"date\\":\\"2021-03-07T00:00:00.000Z\\"}",
-          "statusCode": 200,
-        }
-      `);
+            Object {
+              "body": "{\\"message\\":\\"Indexes updated!\\",\\"date\\":\\"2021-03-07T00:00:00.000Z\\"}",
+              "statusCode": 200,
+            }
+          `);
     });
   });
 
-  describe("When error", () => {
+  describe('When error', () => {
     let result: ErrorFunctionReturn;
-    const originalConsoleError = console.error;
 
+    const originalConsoleError = console.error;
     const mockConsoleError = jest.fn();
 
     beforeEach(async () => {
       console.error = mockConsoleError;
-      mockAxios.mockRejectedValue({ error: "Timeout" });
-      mockAlgolia.mockReturnValue({ initIndex: mockInitialIndex });
+      mockGetPostsToAlgolia.mockRejectedValue({
+        error: 'Something went wrong',
+      });
 
       result = (await callConfiguredUpdateAlgolia()) as ErrorFunctionReturn;
     });
@@ -79,34 +65,34 @@ describe("fn: updateAlgolia", () => {
       console.error = originalConsoleError;
     });
 
-    it("returns with error response ", () => {
+    it('returns with error response ', () => {
       expect(result).toMatchInlineSnapshot(`
-        Object {
-          "body": "{\\"message\\":\\"Something went wrong. Check the logs\\",\\"date\\":\\"2021-03-07T00:00:00.000Z\\"}",
-          "statusCode": 500,
-        }
-      `);
+            Object {
+              "body": "{\\"message\\":\\"Something went wrong. Check the logs\\",\\"date\\":\\"2021-03-07T00:00:00.000Z\\"}",
+              "statusCode": 500,
+            }
+          `);
     });
 
-    it("consoles the error", () => {
+    it('consoles the error', () => {
       expect(mockConsoleError).toMatchInlineSnapshot(`
-        [MockFunction] {
-          "calls": Array [
-            Array [
-              "Error while updating indexes:",
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                "Error while updating indexes:",
+                Object {
+                  "error": "Something went wrong",
+                },
+              ],
+            ],
+            "results": Array [
               Object {
-                "error": "Timeout",
+                "type": "return",
+                "value": undefined,
               },
             ],
-          ],
-          "results": Array [
-            Object {
-              "type": "return",
-              "value": undefined,
-            },
-          ],
-        }
-      `);
+          }
+        `);
     });
   });
 });
