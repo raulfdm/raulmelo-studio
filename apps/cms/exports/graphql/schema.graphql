@@ -41,7 +41,7 @@ type UserPermissionsPasswordPayload {
   ok: Boolean!
 }
 
-type DefaultSeo2 {
+type DefaultSeo {
   id: ID!
   _id: ID!
   createdAt: DateTime!
@@ -50,15 +50,10 @@ type DefaultSeo2 {
   description: String!
   locale: String
   published_at: DateTime
-  localizations(
-    sort: String
-    limit: Int
-    start: Int
-    where: JSON
-  ): [DefaultSeo2]
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [DefaultSeo]
 }
 
-input DefaultSeo2Input {
+input DefaultSeoInput {
   title: String!
   description: String!
   localizations: [ID]
@@ -68,7 +63,7 @@ input DefaultSeo2Input {
   updated_by: ID
 }
 
-input editDefaultSeo2Input {
+input editDefaultSeoInput {
   title: String
   description: String
   localizations: [ID]
@@ -78,16 +73,16 @@ input editDefaultSeo2Input {
   updated_by: ID
 }
 
-input updateDefaultSeo2Input {
-  data: editDefaultSeo2Input
+input updateDefaultSeoInput {
+  data: editDefaultSeoInput
 }
 
-type updateDefaultSeo2Payload {
-  defaultSeo2: DefaultSeo2
+type updateDefaultSeoPayload {
+  defaultSeo: DefaultSeo
 }
 
-type deleteDefaultSeo2Payload {
-  defaultSeo2: DefaultSeo2
+type deleteDefaultSeoPayload {
+  defaultSeo: DefaultSeo
 }
 
 type PersonalInformation {
@@ -1545,9 +1540,9 @@ union Morph =
   | UsersPermissionsMeRole
   | UsersPermissionsLoginPayload
   | UserPermissionsPasswordPayload
-  | DefaultSeo2
-  | updateDefaultSeo2Payload
-  | deleteDefaultSeo2Payload
+  | DefaultSeo
+  | updateDefaultSeoPayload
+  | deleteDefaultSeoPayload
   | PersonalInformation
   | updatePersonalInformationPayload
   | deletePersonalInformationPayload
@@ -1732,7 +1727,7 @@ type AdminUser {
 }
 
 type Query {
-  defaultSeo2(publicationState: PublicationState, locale: String): DefaultSeo2
+  defaultSeo(publicationState: PublicationState, locale: String): DefaultSeo
   personalInformation(publicationState: PublicationState): PersonalInformation
   postSerie(id: ID!, publicationState: PublicationState): PostSerie
   postSeries(
@@ -1874,11 +1869,11 @@ type Query {
 }
 
 type Mutation {
-  updateDefaultSeo2(
-    input: updateDefaultSeo2Input
+  updateDefaultSeo(
+    input: updateDefaultSeoInput
     locale: String
-  ): updateDefaultSeo2Payload
-  deleteDefaultSeo2(locale: String): deleteDefaultSeo2Payload
+  ): updateDefaultSeoPayload
+  deleteDefaultSeo(locale: String): deleteDefaultSeoPayload
   updatePersonalInformation(
     input: updatePersonalInformationInput
   ): updatePersonalInformationPayload
@@ -1938,7 +1933,7 @@ type Mutation {
   Delete an existing user
   """
   deleteUser(input: deleteUserInput): deleteUserPayload
-  createDefaultSeo2Localization(input: updateDefaultSeo2Input!): DefaultSeo2!
+  createDefaultSeoLocalization(input: updateDefaultSeoInput!): DefaultSeo!
   createPostTagLocalization(input: updatePostTagInput!): PostTag!
   createPostLocalization(input: updatePostInput!): Post!
   createTilLocalization(input: updateTilInput!): Til!
