@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo "Testing..."
-./../../scripts/common/test.sh
+./../../scripts/common/test.sh $1
