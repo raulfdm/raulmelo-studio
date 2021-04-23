@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/23/2021 6:48:48 AM"
+    "x-generation-date": "04/23/2021 7:10:04 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -7122,15 +7122,15 @@
         }
       },
       "Uses": {
-        "required": ["id", "Title", "Seo", "content"],
+        "required": ["id", "title", "seo", "content"],
         "properties": {
           "id": {
             "type": "string"
           },
-          "Title": {
+          "title": {
             "type": "string"
           },
-          "Seo": {
+          "seo": {
             "type": "object",
             "required": ["id", "title", "description"],
             "properties": {
@@ -7153,15 +7153,15 @@
           "localizations": {
             "type": "array",
             "items": {
-              "required": ["id", "Title", "Seo", "content"],
+              "required": ["id", "title", "seo", "content"],
               "properties": {
                 "id": {
                   "type": "string"
                 },
-                "Title": {
+                "title": {
                   "type": "string"
                 },
-                "Seo": {
+                "seo": {
                   "type": "component"
                 },
                 "content": {
@@ -7191,12 +7191,12 @@
         }
       },
       "NewUses": {
-        "required": ["Title", "Seo", "content"],
+        "required": ["title", "seo", "content"],
         "properties": {
-          "Title": {
+          "title": {
             "type": "string"
           },
-          "Seo": {
+          "seo": {
             "type": "object",
             "required": ["id", "title", "description"],
             "properties": {

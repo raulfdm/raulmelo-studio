@@ -859,16 +859,16 @@ type Uses {
   _id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
-  Title: String!
-  Seo: ComponentUsesSeo
+  title: String!
+  seo: ComponentUsesSeo
   content: String!
   locale: String
   localizations(sort: String, limit: Int, start: Int, where: JSON): [Uses]
 }
 
 input UseInput {
-  Title: String!
-  Seo: ComponentUsesSeoInput!
+  title: String!
+  seo: ComponentUsesSeoInput!
   content: String!
   localizations: [ID]
   locale: String
@@ -877,8 +877,8 @@ input UseInput {
 }
 
 input editUseInput {
-  Title: String
-  Seo: editComponentUsesSeoInput
+  title: String
+  seo: editComponentUsesSeoInput
   content: String
   localizations: [ID]
   locale: String

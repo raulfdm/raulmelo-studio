@@ -305,15 +305,15 @@
   "components": {
     "schemas": {
       "Uses": {
-        "required": ["id", "Title", "Seo", "content"],
+        "required": ["id", "title", "seo", "content"],
         "properties": {
           "id": {
             "type": "string"
           },
-          "Title": {
+          "title": {
             "type": "string"
           },
-          "Seo": {
+          "seo": {
             "type": "object",
             "required": ["id", "title", "description"],
             "properties": {
@@ -336,15 +336,15 @@
           "localizations": {
             "type": "array",
             "items": {
-              "required": ["id", "Title", "Seo", "content"],
+              "required": ["id", "title", "seo", "content"],
               "properties": {
                 "id": {
                   "type": "string"
                 },
-                "Title": {
+                "title": {
                   "type": "string"
                 },
-                "Seo": {
+                "seo": {
                   "type": "component"
                 },
                 "content": {
@@ -374,12 +374,12 @@
         }
       },
       "NewUses": {
-        "required": ["Title", "Seo", "content"],
+        "required": ["title", "seo", "content"],
         "properties": {
-          "Title": {
+          "title": {
             "type": "string"
           },
-          "Seo": {
+          "seo": {
             "type": "object",
             "required": ["id", "title", "description"],
             "properties": {
