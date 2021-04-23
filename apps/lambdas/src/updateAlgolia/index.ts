@@ -1,33 +1,23 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require('dotenv').config();
-
 import algolia from 'algoliasearch';
-import axios from 'axios';
-import { authMiddleware } from '../utils/authMiddleware';
-import {
-  AlgoliaObject,
-  AlgoliaObjectList,
-  FunctionReturn,
-  GraphqlResponsePosts,
-  Post,
-  Posts,
-} from './types';
+import { SETTINGS } from '../config';
 
-const SETTINGS = {
-  algolia: {
-    adminKey: process.env.ALGOLIA_ADMIN_KEY,
-    indexName: process.env.ALGOLIA_INDEX_NAME,
-    appId: process.env.ALGOLIA_APP_ID,
-  },
-  apiUrl: `${process.env.API_URL}/graphql`,
-};
+import { authMiddleware } from '../utils/authMiddleware';
+import { getPostsToAlgolia } from './indexes/posts';
+import { getTilsToAlgolia } from './indexes/tils';
+import { FunctionReturn, AlgoliaObjectList, PushAlgoliaTuple } from './types';
 
 export const updateAlgolia = authMiddleware(
   async function updateAlgolia(): Promise<FunctionReturn> {
     try {
-      const posts = await fetchAllPosts();
-      const algoliaObjList = buildAlgoliaObjects(posts);
-      await pushAlgoliaData(algoliaObjList);
+      const indexesToUpdate: Promise<PushAlgoliaTuple>[] = [
+        getPostsToAlgolia(),
+        getTilsToAlgolia(),
+      ];
+
+      for await (const indexData of indexesToUpdate) {
+        const [indexName, algoliaData] = indexData;
+        await pushAlgoliaData(indexName, algoliaData);
+      }
 
       return {
         statusCode: 200,
@@ -47,73 +37,13 @@ export const updateAlgolia = authMiddleware(
   },
 );
 
-async function fetchAllPosts(): Promise<Posts> {
-  const query = `
-  query AlgoliaSearch {
-    posts {
-      id
-      title
-      subtitle
-      date
-      language: locale
-      slug
-      content
-      featured_image {
-        width
-        height
-        url
-      }
-    }
-  }  
-  `;
-
-  const response = (await axios({
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    url: SETTINGS.apiUrl,
-    data: JSON.stringify({ query }),
-  })) as GraphqlResponsePosts;
-
-  const { posts } = response.data.data;
-
-  return posts as Posts;
-}
-
-function buildAlgoliaObjects(posts: Posts): AlgoliaObjectList {
-  return posts.map(objectCreator);
-
-  function objectCreator(post: Post): AlgoliaObject {
-    const { id, featured_image, content, ...rest } = post;
-
-    const result: AlgoliaObject = {
-      id,
-      objectID: `Post_${id}`,
-      excerpt: content.slice(0, 5000),
-      ...rest,
-    };
-
-    if (featured_image) {
-      result.featured_image = featured_image;
-    }
-
-    return result;
-  }
-}
-
-function pushAlgoliaData(data: AlgoliaObjectList) {
-  if (
-    !SETTINGS.algolia.appId ||
-    !SETTINGS.algolia.adminKey ||
-    !SETTINGS.algolia.indexName
-  ) {
-    throw new Error('App ID, Admin Key or indexName is missing');
+function pushAlgoliaData(indexName: string, data: AlgoliaObjectList) {
+  if (!SETTINGS.algolia.appId || !SETTINGS.algolia.adminKey) {
+    throw new Error('App ID or Admin Key is missing');
   }
 
   const client = algolia(SETTINGS.algolia.appId, SETTINGS.algolia.adminKey);
-
-  const index = client.initIndex(SETTINGS.algolia.indexName);
+  const index = client.initIndex(indexName);
 
   return index.saveObjects(data);
 }
