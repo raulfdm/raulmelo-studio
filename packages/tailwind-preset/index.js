@@ -28,6 +28,8 @@ module.exports = {
       colors: {
         blue: colors.blueGray,
         black: '#2c2c2c',
+        green: '#C0ED40',
+        orange: '#ED4128',
       },
       textColor: {
         black: '#2c2c2c',
