@@ -28,7 +28,7 @@ interface Tag {
 
 export interface ITagBlogPost {
   id: string;
-  language: SupportedLanguages;
+  locale: SupportedLanguages;
   slug: string;
   date: string;
   title: string;

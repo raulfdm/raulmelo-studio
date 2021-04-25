@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   query Home {
     posts(locale: "${locale}", sort: "date:desc") {
       id
-      language: locale
+      locale
       slug
       date
       title

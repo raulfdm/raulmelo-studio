@@ -21,7 +21,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const { use: uses } = await Backend.graphql<UsesPageStaticPropsResponse>(`
   query UsesPage {
     use(locale: "${locale}") {
-      language: locale
+      locale
       title
       seo {
         title

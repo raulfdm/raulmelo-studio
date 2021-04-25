@@ -66,7 +66,7 @@ interface Post {
   title: string;
   subtitle?: string;
   date: string;
-  language: string;
+  locale: string;
   slug: string;
   content: string;
   featured_image: FeaturedImage;

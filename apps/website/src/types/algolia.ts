@@ -6,7 +6,7 @@ export type HitAlgolia = {
   title: string;
   subtitle?: string;
   slug: string;
-  language: SupportedLanguages;
+  locale: SupportedLanguages;
   date: string;
   featured_image: {
     url: string;

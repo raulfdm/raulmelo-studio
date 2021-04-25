@@ -36,7 +36,7 @@ export const getStaticProps = async ({ params, locale }: TagPageParams) => {
       #POSTS
       blog_posts(sort: "date:desc", where: { locale: "${locale}" }) {
         id
-        language: locale
+        locale
         slug
         date
         title

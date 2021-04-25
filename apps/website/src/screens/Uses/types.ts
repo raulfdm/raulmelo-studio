@@ -1,5 +1,7 @@
+import { SupportedLanguages } from '@types-app';
+
 export interface UsesPageApi {
-  language: string;
+  locale: SupportedLanguages;
   content: string;
   title: string;
   seo: { title: string; description: string };
