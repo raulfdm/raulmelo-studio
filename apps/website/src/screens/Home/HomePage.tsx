@@ -3,9 +3,11 @@ import { useLocalization } from '@hooks/useLocalization';
 import { getTilUrl } from '@screens/TilsHome/utils';
 import { getPostUrl } from '@utils/url';
 import classNames from 'classnames';
+import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import React from 'react';
 import { defineMessages } from 'react-intl';
+import siteData from 'site-data';
 import { AuthorPresentation } from './components/AuthorPresentation';
 import { IHomeGraphQLResponse } from './types';
 
@@ -25,9 +27,15 @@ const messages = defineMessages({
 });
 
 export const HomePage: React.FC<IHomeGraphQLResponse> = ({ posts, tils }) => {
-  const { formatMessage } = useLocalization();
+  const { formatMessage, locale } = useLocalization();
+  const defaultSeo = siteData.defaultSeo[locale];
   return (
     <>
+      <NextSeo
+        titleTemplate="%s"
+        title={`${siteData.personalInformation.full_name} · ${defaultSeo.title}`}
+      />
+
       <AuthorPresentation />
       <PostSection
         title={formatMessage(messages.postsTitle)}

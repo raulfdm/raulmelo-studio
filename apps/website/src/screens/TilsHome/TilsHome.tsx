@@ -1,4 +1,7 @@
 import { PostBasic } from '@components/PostBasic';
+import { useLocalization } from '@hooks/useLocalization';
+import { NextSeo } from 'next-seo';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Tils } from './types';
 import { getTilUrl } from './utils';
@@ -8,8 +11,14 @@ type TilsHomeProps = {
 };
 
 export const TilsHome = ({ tils }: TilsHomeProps) => {
+  const { formatMessage } = useLocalization();
   return (
     <>
+      <NextSeo
+        title={formatMessage({ id: 'tilHome.title' })}
+        description={formatMessage({ id: 'tilHome.subtitle' })}
+      />
+
       <header className="col-span-full lg:col-span-10">
         <h1 className="text-3xl md:text-4xl font-extrabold">
           <FormattedMessage id="tilHome.title" />
