@@ -9,7 +9,7 @@ query Posts {
     title
     subtitle
     date
-    language: locale
+    locale
     slug
     content
     featured_image {
