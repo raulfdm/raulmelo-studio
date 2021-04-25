@@ -1,70 +1,54 @@
 import { ShareContent } from '@components/ShareContent';
 import { useLocalization } from '@hooks/useLocalization';
-import {
-  DotDivider,
-  ProseContainer,
-  Tag,
-  Tags,
-} from '@raulfdm/blog-components';
+import { ProseContainer, Tag, Tags } from '@raulfdm/blog-components';
 import { getTagUrl } from '@utils/url';
 import classNames from 'classnames';
-import { BlogJsonLd, NextSeo } from 'next-seo';
-import dynamic from 'next/dynamic';
+import { BlogJsonLd, NextSeo, NextSeoProps } from 'next-seo';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useMemo } from 'react';
 import siteData from 'site-data';
-import { FeaturedImage } from './components/FeaturedImage';
+import { FeaturedImage, FeaturedImageProps } from './components/FeaturedImage';
 import { Header } from './components/Header';
 import { PrismStyles } from './components/PrismStyles';
-import type { SeriesSection as SeriesSectionType } from './components/SeriesSection';
-import { BlogPageProps } from './types';
 
-const SeriesSection = dynamic(() =>
-  import('./components/SeriesSection').then((mod) => mod.SeriesSection),
-) as typeof SeriesSectionType;
-
-export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
+export const MdxPostTemplate: React.FC<MdxPostTemplateProps> = ({
+  children,
+  featuredImage,
+  title,
+  subtitle,
+  description,
+  publishedAt,
+  tags,
+  series,
+  nextSeo,
+}) => {
   const { formatDate } = useLocalization();
   const { asPath } = useRouter();
 
-  const {
-    featured_image,
-    post_tags,
-    unsplash,
-    series /* translation */,
-  } = post;
-
   const seoInfo = useMemo(() => {
-    const date = new Date(post.date).toISOString();
+    const date = new Date(publishedAt).toISOString();
     return {
-      title: post.title,
-      description: post.description,
+      title: title,
+      description: description,
       url: `${siteData.site.url}${asPath}`,
       published: date,
       modified: date,
-      imageUrl: featured_image.url ?? siteData.site.seo_image.url,
+      image: {
+        url: featuredImage?.src ?? siteData.site.seo_image.url,
+        width: featuredImage?.width ?? siteData.site.seo_image.width,
+        height: featuredImage?.height ?? siteData.site.seo_image.height,
+      },
     };
   }, [
-    post.title,
-    post.description,
-    featured_image.url,
-    post.date,
+    title,
+    description,
+    featuredImage?.src,
+    publishedAt,
     asPath,
     siteData.site.url,
   ]);
-
-  const allSeries = series ? (
-    <SeriesSection series={series} currentPostId={post.id} />
-  ) : null;
-
-  const seriesWithDivider = series ? (
-    <>
-      <DotDivider />
-      {allSeries}
-    </>
-  ) : null;
 
   return (
     <>
@@ -79,7 +63,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
         url={seoInfo.url}
         title={seoInfo.title}
         description={seoInfo.description}
-        images={[seoInfo.imageUrl]}
+        images={[seoInfo.image.url]}
         datePublished={seoInfo.published}
         dateModified={seoInfo.modified}
         authorName={[siteData.personalInformation.full_name]}
@@ -96,23 +80,27 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
           article: {
             publishedTime: seoInfo.published,
             modifiedTime: seoInfo.modified,
-            tags: post.post_tags.map((tag) => tag.name),
+            tags: tags?.map((tag) => tag.name),
           },
           images: [
             {
-              url: seoInfo.imageUrl,
-              width: featured_image.width,
-              height: featured_image.height,
+              url: seoInfo.image.url,
+              width: seoInfo.image.width,
+              height: seoInfo.image.height,
               alt: 'Hero Image',
             },
           ],
         }}
+        {...nextSeo}
       />
 
       <PrismStyles />
 
-      {featured_image ? (
-        <FeaturedImage src={featured_image.url} unsplash={unsplash} />
+      {featuredImage ? (
+        <FeaturedImage
+          src={featuredImage.src}
+          unsplash={featuredImage.unsplash}
+        />
       ) : null}
 
       <section
@@ -122,25 +110,25 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
         ])}
       >
         <Header
-          title={post.title}
-          subtitle={post.subtitle}
-          publishedDate={formatDate(new Date(post.date), {
+          title={title}
+          subtitle={subtitle}
+          publishedDate={formatDate(new Date(publishedAt), {
             year: 'numeric',
             month: 'short',
             day: '2-digit',
           })}
         />
-        {allSeries}
+        {series?.top}
         <ProseContainer className="mt-8">{children}</ProseContainer>
-        {seriesWithDivider}
+        {series?.bottom}
         <hr className="mt-10 mb-6" />
         <footer
           className={classNames(['flex', 'justify-between', 'flex-wrap'])}
         >
-          <PostTags postTags={post_tags} className="mb-4 mr-4" />
+          {tags ? <PostTags postTags={tags} /> : null}
           <ShareContent
-            twitter={{ text: `${post.title}. ${post.subtitle}` }}
-            linkedIn={{ title: post.title, summary: post.description }}
+            twitter={{ text: description }}
+            linkedIn={{ title, summary: description }}
           />
         </footer>
       </section>
@@ -148,9 +136,13 @@ export const BlogPage: React.FC<BlogPageProps> = ({ children, post }) => {
   );
 };
 
-const PostTags = ({ className, postTags }: PostTagsProps) => {
+const PostTags = ({
+  postTags,
+}: {
+  postTags: NonNullable<MdxPostTemplateProps['tags']>;
+}) => {
   return (
-    <div className={classNames([className])}>
+    <div className="mb-4 mr-4">
       <span
         className={classNames([
           'font-extrabold',
@@ -176,7 +168,16 @@ const PostTags = ({ className, postTags }: PostTagsProps) => {
   );
 };
 
-type PostTagsProps = {
-  className?: string;
-  postTags: BlogPageProps['post']['post_tags'];
-};
+interface MdxPostTemplateProps {
+  tags?: { id: string; slug: string; name: string }[];
+  featuredImage?: FeaturedImageProps & { width: number; height: number };
+  title: string;
+  description: string;
+  subtitle?: string;
+  publishedAt: string;
+  series?: {
+    top: JSX.Element | null;
+    bottom: JSX.Element | null;
+  };
+  nextSeo?: NextSeoProps;
+}

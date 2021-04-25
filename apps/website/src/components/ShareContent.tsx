@@ -22,7 +22,7 @@ export const ShareContent = ({
           'mb-4 md:mb-6',
         ])}
       >
-        <FormattedMessage id="blog.share" />
+        <FormattedMessage id="blogPost.share" />
       </span>
       <ul className={classNames(['flex', 'space-x-4'])}>
         <ShareItem

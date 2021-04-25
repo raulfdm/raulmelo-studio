@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from '@raulfdm/blog-components';
-import { BlogPostGraphQL } from '@screens/Blog/types';
+import { BlogPostPost } from '@screens/BlogPost';
 import { createMachine } from '@xstate/fsm';
 import { useMachine } from '@xstate/react/fsm';
 import classNames from 'classnames';
@@ -219,7 +219,7 @@ type HeaderProps = {
 
 interface SeriesSectionProps {
   currentPostId: string;
-  series: NonNullable<BlogPostGraphQL['series']>;
+  series: NonNullable<BlogPostPost['series']>;
   divider?: boolean;
 }
 
