@@ -1,17 +1,18 @@
 import { TagPage } from '@screens/Tag/TagPage';
-import {
-  TagPageParams,
-  TagPageProps,
-  TagPageQueryGraphQLResponse,
-  TagPageStaticPathQuery,
-} from '@screens/Tag/types';
+import { IPostTag, ITagPageGraphQLResponse } from '@screens/Tag/types';
 import { Backend } from '@services/Backend';
 import { SupportedLanguages } from '@types-app';
 import { head } from '@utils/ramda';
 import { GetStaticPaths } from 'next';
 import React from 'react';
 
-const Tag = (props: TagPageProps) => <TagPage {...props} />;
+interface TagPageParams {
+  params: {
+    slug: string;
+  };
+  locale: SupportedLanguages;
+}
+const Tag = (props: { tag: IPostTag }) => <TagPage {...props} />;
 
 export const getStaticProps = async ({ params, locale }: TagPageParams) => {
   const query = `
@@ -20,6 +21,19 @@ export const getStaticProps = async ({ params, locale }: TagPageParams) => {
       id
       slug
       name
+  
+      # TIL
+      til_posts {
+        publishedAt
+        id
+        slug
+        title
+        tags {
+          ...postTags
+        }
+      }
+  
+      #POSTS
       blog_posts(sort: "date:desc", where: { locale: "${locale}" }) {
         id
         language: locale
@@ -34,30 +48,35 @@ export const getStaticProps = async ({ params, locale }: TagPageParams) => {
           width
         }
         post_tags {
-          slug
-          id
-          name
+          ...postTags
         }
       }
     }
   }
+  
+  fragment postTags on PostTag {
+    slug
+    id
+    name
+  }
   `;
 
-  const { postTags } = await Backend.graphql<TagPageQueryGraphQLResponse>(
-    query,
-  );
+  const { postTags } = await Backend.graphql<ITagPageGraphQLResponse>(query);
 
   const tag = head(postTags);
 
   return {
     props: {
       tag,
-    } as TagPageProps,
+    },
     revalidate: 1,
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  interface TagPageStaticPathQuery {
+    postTags: { slug: string }[];
+  }
   const { postTags } = await Backend.graphql<TagPageStaticPathQuery>(`
   query {
     postTags {

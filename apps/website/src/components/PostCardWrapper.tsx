@@ -10,7 +10,7 @@ export type PostCardWrapperProps = {
     title: string;
     subtitle?: string;
     slug: string;
-    language: SupportedLanguages;
+    locale: SupportedLanguages;
     date: string;
     featured_image: {
       url: string;
@@ -31,7 +31,7 @@ export function PostCardWrapper({ post }: PostCardWrapperProps) {
       subtitle={post.subtitle}
       Link={Link}
       renderImage={(props) => <Image {...props} layout="fill" />}
-      titleLinkProps={{ locale: post.language }}
+      titleLinkProps={{ locale: post.locale }}
       postUrl={getPostUrl(post.slug)}
       publishDate={formatDate(new Date(post.date), {
         year: 'numeric',

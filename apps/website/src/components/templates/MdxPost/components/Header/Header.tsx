@@ -44,7 +44,7 @@ export const Header: React.FC<HeaderProps> = React.memo(function Header({
         ])}
       >
         <FormattedMessage
-          id="blog.publishedDate"
+          id="blogPost.publishedDate"
           values={{
             publishedDate,
           }}

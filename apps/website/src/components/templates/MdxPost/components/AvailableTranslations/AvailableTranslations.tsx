@@ -24,7 +24,7 @@ export const AvailableTranslations: React.FC<{
       className="my-4 container mx-auto px-4 md:px-0 max-w-screen-md"
     >
       <p className="p-4 bg-yellow-200 bg-opacity-80 rounded-md text-sm">
-        <FormattedMessage id="blog.availableTranslations.text" />
+        <FormattedMessage id="blogPost.availableTranslations.text" />
 
         <Link href={slug} locale={language}>
           <a className="ml-1 underline">{formatMessage(messages[language])}</a>

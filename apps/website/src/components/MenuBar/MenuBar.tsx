@@ -24,13 +24,13 @@ export const MenuBar: FC = () => {
           'shadow',
           'bg-white dark:bg-blue-800',
           'transition-theme duration-200 ease',
-          'mb-8 md:mb-12 lg:mb-18',
+          'mb-8 md:mb-12',
           !sideMenu.isClosed && 'sticky',
         ])}
       >
         <nav className={classNames(['items-center h-full', 'grid-container'])}>
           <section data-testid="menu-bar__logo" className="col-span-2">
-            <Link href="/blog" locale={locale}>
+            <Link href="/" locale={locale}>
               <a>
                 <Logo />
               </a>

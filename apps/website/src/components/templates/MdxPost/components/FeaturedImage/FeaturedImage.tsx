@@ -1,21 +1,20 @@
-import React from 'react';
-import Image from 'next/image';
-import { defineMessages, FormattedMessage } from 'react-intl';
-
 import { useLocalization } from '@hooks/useLocalization';
+import { BlogPostPost } from '@screens/BlogPost';
 import classNames from 'classnames';
-import { BlogPostGraphQL } from '@screens/Blog/types';
+import Image from 'next/image';
+import React from 'react';
+import { defineMessages, FormattedMessage } from 'react-intl';
 
 const messages = defineMessages({
   featuredImageLabel: {
-    id: 'blog.featuredImage',
+    id: 'blogPost.featuredImage',
   },
 });
 
-type FeaturedImageProps = {
+export type FeaturedImageProps = {
   src: string;
   alt?: string;
-  unsplash: BlogPostGraphQL['unsplash'];
+  unsplash: BlogPostPost['unsplash'];
 };
 
 export const FeaturedImage: React.FC<FeaturedImageProps> = ({
@@ -54,13 +53,13 @@ export const FeaturedImage: React.FC<FeaturedImageProps> = ({
   );
 };
 
-type UnsplashCaptionProps = NonNullable<BlogPostGraphQL['unsplash']>;
+type UnsplashCaptionProps = NonNullable<BlogPostPost['unsplash']>;
 
 function UnsplashCaption({ authorName, url }: UnsplashCaptionProps) {
   return (
     <Caption>
       <FormattedMessage
-        id="blog.unsplashCaption"
+        id="blogPost.unsplashCaption"
         values={{
           authorLink: (
             <a href={url} className="underline">

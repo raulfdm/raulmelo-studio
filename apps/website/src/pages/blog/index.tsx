@@ -1,5 +1,4 @@
-import { HomePage } from '@screens/Home/HomePage';
-import { BlogPageGraphQLResponse, HomePageProps } from '@screens/Home/types';
+import { Blog, BlogGraphQLResponse } from '@screens/Blog';
 import { Backend } from '@services/Backend';
 import chunk from 'lodash.chunk';
 import { GetStaticProps } from 'next';
@@ -8,7 +7,9 @@ import React from 'react';
 
 const POST_THRESHOLD = 6;
 
-const Home = ({ posts, ...props }: HomePageProps) => {
+type BlogPageProps = BlogGraphQLResponse & { numberOfPosts: number };
+
+const BlogPage = ({ posts, ...props }: BlogPageProps) => {
   const router = useRouter();
 
   const { page = '1' } = router.query;
@@ -30,7 +31,7 @@ const Home = ({ posts, ...props }: HomePageProps) => {
   const pageIndex = pageNumber - 1;
 
   return (
-    <HomePage
+    <Blog
       {...props}
       posts={postsChunks[pageIndex]}
       pageNumber={pageNumber}
@@ -40,7 +41,7 @@ const Home = ({ posts, ...props }: HomePageProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const { posts } = await Backend.graphql<BlogPageGraphQLResponse>(`
+  const { posts } = await Backend.graphql<BlogGraphQLResponse>(`
   query Home {
     posts(locale: "${locale}", sort: "date:desc") {
       id
@@ -77,4 +78,4 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   };
 };
 
-export default Home;
+export default BlogPage;

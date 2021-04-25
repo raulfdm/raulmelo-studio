@@ -1,20 +1,20 @@
 import { hydrate, renderToString } from '@config/mdx';
-import { BlogPage } from '@screens/Blog/BlogPage';
-import {
-  BlogPostGraphQL,
-  BlogPostGraphQLResponse,
-  BlogPostPage,
-} from '@screens/Blog/types';
 import { Backend } from '@services/Backend';
 import { SupportedLanguages } from '@types-app';
 import { head } from '@utils/utilities';
 import { GetStaticPaths } from 'next';
 import React from 'react';
+import {
+  BlogPost,
+  BlogPostGraphQLResponse,
+  BlogPostPageProps,
+  BlogPostPost,
+} from '@screens/BlogPost';
 
-const BlogPost: React.FC<BlogPostPage> = ({ content, post }) => {
+const BlogPostPage: React.FC<BlogPostPageProps> = ({ content, post }) => {
   const parsedContent = hydrate(content);
 
-  return <BlogPage post={post}>{parsedContent}</BlogPage>;
+  return <BlogPost post={post}>{parsedContent}</BlogPost>;
 };
 
 type Params = {
@@ -63,9 +63,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default BlogPost;
-
-async function fetchPostBySlug(slug: string): Promise<BlogPostGraphQL> {
+async function fetchPostBySlug(slug: string): Promise<BlogPostPost> {
   /**
    * I cannot use `post` schema to fetch this data.
    * The reason is within `post`, I only can filter by post id and I need to
@@ -113,3 +111,5 @@ async function fetchPostBySlug(slug: string): Promise<BlogPostGraphQL> {
 
   return postHead;
 }
+
+export default BlogPostPage;

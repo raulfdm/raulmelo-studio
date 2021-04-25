@@ -10,6 +10,12 @@ const messages = defineMessage({
   home: {
     id: 'sideMenu.home',
   },
+  blog: {
+    id: 'sideMenu.blog',
+  },
+  til: {
+    id: 'sideMenu.til',
+  },
   search: {
     id: 'sideMenu.search',
   },
@@ -30,8 +36,18 @@ export const SideMenu = () => {
   const links = useMemo(
     () => [
       {
-        href: '/blog',
+        href: '/',
         localeId: messages.home,
+        locale,
+      },
+      {
+        href: '/blog',
+        localeId: messages.blog,
+        locale,
+      },
+      {
+        href: '/til',
+        localeId: messages.til,
         locale,
       },
       {

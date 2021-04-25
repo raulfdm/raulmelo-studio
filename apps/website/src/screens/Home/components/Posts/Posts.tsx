@@ -1,5 +1,5 @@
 import { PostCardWrapper } from '@components/PostCardWrapper';
-import { BlogPostFromTagPage } from '@screens/Tag/types';
+import { IHomePost } from '@screens/Home/types';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -18,7 +18,7 @@ const itemsAnimationVariants = {
 };
 
 type PostsProps = {
-  posts: BlogPostFromTagPage[];
+  posts: Omit<IHomePost, 'description'>[];
   title: string;
 };
 

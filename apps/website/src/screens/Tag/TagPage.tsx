@@ -3,10 +3,10 @@ import { AuthorPresentation } from '@screens/Home/components/AuthorPresentation'
 import { Posts } from '@screens/Home/components/Posts';
 import { getTagUrl } from '@utils/url';
 import { NextSeo } from 'next-seo';
-import { defineMessages } from 'react-intl';
-import { TagPageProps } from './types';
-import siteData from 'site-data';
 import { useMemo } from 'react';
+import { defineMessages } from 'react-intl';
+import siteData from 'site-data';
+import { IPostTag } from './types';
 
 const messages = defineMessages({
   description: {
@@ -17,7 +17,7 @@ const messages = defineMessages({
   },
 });
 
-export const TagPage: React.FC<TagPageProps> = ({ tag }) => {
+export const TagPage: React.FC<{ tag: IPostTag }> = ({ tag }) => {
   const { formatMessage } = useLocalization();
 
   const [title, description] = useMemo(
