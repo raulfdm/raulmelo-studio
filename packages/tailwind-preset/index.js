@@ -26,13 +26,23 @@ module.exports = {
     },
     extend: {
       colors: {
+        // TODO: Deprecate this soon
         blue: colors.blueGray,
         black: '#2c2c2c',
-        green: '#C0ED40',
-        orange: '#ED4128',
+
+        primaryDark: '#fff',
+        primaryLight: '#2c2c2c',
+        secondaryDark: '#C0ED40',
+        secondaryLight: '#ED4128',
       },
       textColor: {
+        // TODO: Deprecate this soon
         black: '#2c2c2c',
+
+        primaryDark: '#fff',
+        primaryLight: '#2c2c2c',
+        secondaryDark: '#C0ED40',
+        secondaryLight: '#ED4128',
       },
       screens: {
         'ipad-pro': '834px',
