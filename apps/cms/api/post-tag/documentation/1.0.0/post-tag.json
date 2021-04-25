@@ -51,7 +51,9 @@
           }
         },
         "summary": "",
-        "tags": ["Post-tag"],
+        "tags": [
+          "Post-tag"
+        ],
         "parameters": [
           {
             "name": "_limit",
@@ -241,7 +243,9 @@
           }
         },
         "summary": "",
-        "tags": ["Post-tag"],
+        "tags": [
+          "Post-tag"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -306,7 +310,9 @@
           }
         },
         "summary": "",
-        "tags": ["Post-tag"],
+        "tags": [
+          "Post-tag"
+        ],
         "parameters": []
       }
     },
@@ -361,7 +367,9 @@
           }
         },
         "summary": "",
-        "tags": ["Post-tag"],
+        "tags": [
+          "Post-tag"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -425,7 +433,9 @@
           }
         },
         "summary": "",
-        "tags": ["Post-tag"],
+        "tags": [
+          "Post-tag"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -497,7 +507,9 @@
           }
         },
         "summary": "",
-        "tags": ["Post-tag"],
+        "tags": [
+          "Post-tag"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -516,7 +528,11 @@
   "components": {
     "schemas": {
       "Post-tag": {
-        "required": ["id", "name", "slug"],
+        "required": [
+          "id",
+          "name",
+          "slug"
+        ],
         "properties": {
           "id": {
             "type": "string"
@@ -602,58 +618,65 @@
               }
             }
           },
-          "til_post": {
-            "required": ["id", "publishedAt", "content", "language", "slug"],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "publishedAt": {
-                "type": "string"
-              },
-              "tags": {
-                "type": "array",
-                "items": {
+          "til_posts": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "publishedAt",
+                "content",
+                "slug"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "publishedAt": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "string"
+                },
+                "slug": {
+                  "type": "uid"
+                },
+                "tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "localizations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "locale": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
                   "type": "string"
                 }
-              },
-              "content": {
-                "type": "string"
-              },
-              "language": {
-                "type": "string",
-                "enum": ["pt", "en"]
-              },
-              "slug": {
-                "type": "uid"
-              },
-              "localizations": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "locale": {
-                "type": "string"
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
               }
             }
           }
         }
       },
       "NewPost-tag": {
-        "required": ["name", "slug"],
+        "required": [
+          "name",
+          "slug"
+        ],
         "properties": {
           "name": {
             "type": "string"
@@ -667,8 +690,11 @@
               "type": "string"
             }
           },
-          "til_post": {
-            "type": "string"
+          "til_posts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "created_by": {
             "type": "string"

@@ -50,7 +50,9 @@
           }
         },
         "summary": "",
-        "tags": ["Post"],
+        "tags": [
+          "Post"
+        ],
         "parameters": [
           {
             "name": "_limit",
@@ -236,7 +238,9 @@
           }
         },
         "summary": "",
-        "tags": ["Post"],
+        "tags": [
+          "Post"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -301,7 +305,9 @@
           }
         },
         "summary": "",
-        "tags": ["Post"],
+        "tags": [
+          "Post"
+        ],
         "parameters": []
       }
     },
@@ -352,7 +358,9 @@
           }
         },
         "summary": "",
-        "tags": ["Post"],
+        "tags": [
+          "Post"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -412,7 +420,9 @@
           }
         },
         "summary": "",
-        "tags": ["Post"],
+        "tags": [
+          "Post"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -484,7 +494,9 @@
           }
         },
         "summary": "",
-        "tags": ["Post"],
+        "tags": [
+          "Post"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -503,7 +515,14 @@
   "components": {
     "schemas": {
       "Post": {
-        "required": ["id", "title", "date", "description", "content", "slug"],
+        "required": [
+          "id",
+          "title",
+          "date",
+          "description",
+          "content",
+          "slug"
+        ],
         "properties": {
           "id": {
             "type": "string"
@@ -521,7 +540,11 @@
           "post_tags": {
             "type": "array",
             "items": {
-              "required": ["id", "name", "slug"],
+              "required": [
+                "id",
+                "name",
+                "slug"
+              ],
               "properties": {
                 "id": {
                   "type": "string"
@@ -538,8 +561,11 @@
                     "type": "string"
                   }
                 },
-                "til_post": {
-                  "type": "string"
+                "til_posts": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 "created_by": {
                   "type": "string"
@@ -632,7 +658,11 @@
             "type": "string"
           },
           "post_serie": {
-            "required": ["id", "name", "slug"],
+            "required": [
+              "id",
+              "name",
+              "slug"
+            ],
             "properties": {
               "id": {
                 "type": "string"
@@ -671,7 +701,9 @@
           },
           "unsplash": {
             "type": "object",
-            "required": ["id"],
+            "required": [
+              "id"
+            ],
             "properties": {
               "id": {
                 "type": "string"
@@ -769,7 +801,13 @@
         }
       },
       "NewPost": {
-        "required": ["title", "date", "description", "content", "slug"],
+        "required": [
+          "title",
+          "date",
+          "description",
+          "content",
+          "slug"
+        ],
         "properties": {
           "title": {
             "type": "string"
@@ -809,7 +847,9 @@
           },
           "unsplash": {
             "type": "object",
-            "required": ["id"],
+            "required": [
+              "id"
+            ],
             "properties": {
               "id": {
                 "type": "string"

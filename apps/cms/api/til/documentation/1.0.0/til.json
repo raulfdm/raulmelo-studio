@@ -50,7 +50,9 @@
           }
         },
         "summary": "",
-        "tags": ["Til"],
+        "tags": [
+          "Til"
+        ],
         "parameters": [
           {
             "name": "_limit",
@@ -236,7 +238,9 @@
           }
         },
         "summary": "",
-        "tags": ["Til"],
+        "tags": [
+          "Til"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -301,7 +305,9 @@
           }
         },
         "summary": "",
-        "tags": ["Til"],
+        "tags": [
+          "Til"
+        ],
         "parameters": []
       }
     },
@@ -352,7 +358,9 @@
           }
         },
         "summary": "",
-        "tags": ["Til"],
+        "tags": [
+          "Til"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -412,7 +420,9 @@
           }
         },
         "summary": "",
-        "tags": ["Til"],
+        "tags": [
+          "Til"
+        ],
         "requestBody": {
           "description": "",
           "required": true,
@@ -484,7 +494,9 @@
           }
         },
         "summary": "",
-        "tags": ["Til"],
+        "tags": [
+          "Til"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -503,7 +515,12 @@
   "components": {
     "schemas": {
       "Til": {
-        "required": ["id", "publishedAt", "content", "language", "slug"],
+        "required": [
+          "id",
+          "publishedAt",
+          "content",
+          "slug"
+        ],
         "properties": {
           "id": {
             "type": "string"
@@ -515,10 +532,20 @@
             "type": "string",
             "format": "date"
           },
+          "content": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "uid"
+          },
           "tags": {
             "type": "array",
             "items": {
-              "required": ["id", "name", "slug"],
+              "required": [
+                "id",
+                "name",
+                "slug"
+              ],
               "properties": {
                 "id": {
                   "type": "string"
@@ -535,8 +562,11 @@
                     "type": "string"
                   }
                 },
-                "til_post": {
-                  "type": "string"
+                "til_posts": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 "created_by": {
                   "type": "string"
@@ -547,21 +577,15 @@
               }
             }
           },
-          "content": {
-            "type": "string"
-          },
-          "language": {
-            "type": "string",
-            "default": "en",
-            "enum": ["pt", "en"]
-          },
-          "slug": {
-            "type": "uid"
-          },
           "localizations": {
             "type": "array",
             "items": {
-              "required": ["id", "publishedAt", "content", "language", "slug"],
+              "required": [
+                "id",
+                "publishedAt",
+                "content",
+                "slug"
+              ],
               "properties": {
                 "id": {
                   "type": "string"
@@ -572,21 +596,17 @@
                 "publishedAt": {
                   "type": "string"
                 },
+                "content": {
+                  "type": "string"
+                },
+                "slug": {
+                  "type": "uid"
+                },
                 "tags": {
                   "type": "array",
                   "items": {
                     "type": "string"
                   }
-                },
-                "content": {
-                  "type": "string"
-                },
-                "language": {
-                  "type": "string",
-                  "enum": ["pt", "en"]
-                },
-                "slug": {
-                  "type": "uid"
                 },
                 "localizations": {
                   "type": "array",
@@ -619,7 +639,11 @@
         }
       },
       "NewTil": {
-        "required": ["publishedAt", "content", "language", "slug"],
+        "required": [
+          "publishedAt",
+          "content",
+          "slug"
+        ],
         "properties": {
           "title": {
             "type": "string"
@@ -628,22 +652,17 @@
             "type": "string",
             "format": "date"
           },
+          "content": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "uid"
+          },
           "tags": {
             "type": "array",
             "items": {
               "type": "string"
             }
-          },
-          "content": {
-            "type": "string"
-          },
-          "language": {
-            "type": "string",
-            "default": "en",
-            "enum": ["pt", "en"]
-          },
-          "slug": {
-            "type": "uid"
           },
           "localizations": {
             "type": "array",

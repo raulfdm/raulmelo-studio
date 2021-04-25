@@ -33,24 +33,9 @@
         }
       }
     },
-    "tags": {
-      "via": "til_post",
-      "collection": "post-tag"
-    },
     "content": {
       "type": "richtext",
       "required": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "language": {
-      "type": "enumeration",
-      "enum": ["pt", "en"],
-      "required": true,
-      "default": "en",
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -61,6 +46,10 @@
       "type": "uid",
       "targetField": "title",
       "required": true
+    },
+    "tags": {
+      "via": "til_posts",
+      "collection": "post-tag"
     }
   }
 }
