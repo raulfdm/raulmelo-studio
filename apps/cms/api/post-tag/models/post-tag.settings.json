@@ -28,9 +28,10 @@
       "collection": "post",
       "via": "post_tags"
     },
-    "til_post": {
-      "model": "til",
-      "via": "tags"
+    "til_posts": {
+      "collection": "til",
+      "via": "tags",
+      "dominant": true
     }
   }
 }
