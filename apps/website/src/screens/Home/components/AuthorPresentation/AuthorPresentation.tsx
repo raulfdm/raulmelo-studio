@@ -72,7 +72,6 @@ export const AuthorPresentation = () => {
           src={siteData.personalInformation.profile_pic.url}
           layout="fill"
           alt={formatMessage(message)}
-          quality={100}
           loading="eager"
         />
       </figure>
