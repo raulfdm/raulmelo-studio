@@ -32,7 +32,7 @@ describe('fn: getPostsToAlgolia', () => {
           objectID: expect.any(String),
           id: expect.any(String),
           excerpt: expect.any(String),
-          language: expect.any(String),
+          locale: expect.any(String),
           title: expect.any(String),
           subtitle: expect.any(String),
           featured_image: expect.objectContaining({
