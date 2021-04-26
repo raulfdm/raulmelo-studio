@@ -3,7 +3,6 @@ import { PostCard } from './PostCard';
 import { SupportedLanguages } from '@types-app';
 import { getPostUrl, getTagUrl } from '@utils/url';
 import Image from 'next/image';
-import Link from 'next/link';
 
 export type PostCardWrapperProps = {
   post: {
@@ -29,7 +28,6 @@ export function PostCardWrapper({ post }: PostCardWrapperProps) {
       imageUrl={post.featured_image.url}
       title={post.title}
       subtitle={post.subtitle}
-      Link={Link}
       renderImage={(props) => <Image {...props} layout="fill" />}
       titleLinkProps={{ locale: post.locale }}
       postUrl={getPostUrl(post.slug)}

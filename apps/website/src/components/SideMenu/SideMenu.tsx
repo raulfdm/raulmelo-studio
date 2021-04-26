@@ -1,15 +1,15 @@
+import { Disclosure } from '@headlessui/react';
+//TODO: fix @hooks/index
+import { useClickAway } from '@hooks/index';
 import classNames from 'classnames';
 import { motion, useAnimation } from 'framer-motion';
 import React, { useEffect, useRef } from 'react';
-import { Disclosure } from '@headlessui/react';
-import { useClickAway } from '../hooks';
 import { SideMenuItem, SideMenuItemProps } from '../SideMenuItem';
 
 export const SideMenu = ({
   className,
   handleCloseMenu,
   items,
-  Link,
   overlayClassName,
   state,
 }: SideMenuProps) => {
@@ -65,7 +65,6 @@ export const SideMenu = ({
               key={props.href}
               {...props}
               onClick={handleCloseMenu}
-              Link={Link}
             />
           ))}
         </ul>
@@ -108,6 +107,5 @@ export type SideMenuProps = {
   overlayClassName?: string;
   handleCloseMenu: () => void;
   items: SideMenuItemProps[];
-  Link?: React.ElementType;
   state: 'open' | 'closed';
 };

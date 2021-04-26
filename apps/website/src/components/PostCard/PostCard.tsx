@@ -83,7 +83,6 @@ export const PostCard: React.FC<PostCardProps> = ({
 
 export type PostCardProps = {
   imageUrl: string;
-  Link?: Parameters<typeof configureLink>[0];
   postUrl: string;
   publishDate: string;
   renderImage?: (renderProps: {
@@ -93,5 +92,7 @@ export type PostCardProps = {
   subtitle?: string;
   tags: { href: string; name: string }[];
   title: string;
-  titleLinkProps?: ConfiguredLinkProps['linkProps'];
+  // TODO: fix this type
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  titleLinkProps?: any;
 };
