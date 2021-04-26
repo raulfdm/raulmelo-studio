@@ -1,9 +1,6 @@
 import styled from '@emotion/styled';
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  useCircularIndexes,
-} from '@raulfdm/blog-components';
+import { useCircularIndexes } from '@hooks/useCircularIndexes';
+import { ChevronLeftIcon, ChevronRightIcon } from '@components/Icons';
 import classNames from 'classnames';
 import omit from 'lodash.omit';
 import React from 'react';

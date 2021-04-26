@@ -1,9 +1,5 @@
 import { useLocalization } from '@hooks/useLocalization';
-import {
-  GithubIcon,
-  LinkedInIcon,
-  TwitterIcon,
-} from '@raulfdm/blog-components';
+import { GithubIcon, LinkedInIcon, TwitterIcon } from '@components/Icons';
 import { getSocial } from '@utils/seo';
 import classNames from 'classnames';
 import Image from 'next/image';

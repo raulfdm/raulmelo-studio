@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from '@raulfdm/blog-components';
+import { ChevronDownIcon } from '@components/Icons';
 import { BlogPostPost } from '@screens/BlogPost';
 import { createMachine } from '@xstate/fsm';
 import { useMachine } from '@xstate/react/fsm';

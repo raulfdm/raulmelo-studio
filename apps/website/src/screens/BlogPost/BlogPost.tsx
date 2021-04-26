@@ -1,5 +1,5 @@
 import { MdxPostTemplate } from '@components/templates/MdxPost';
-import { DotDivider } from '@raulfdm/blog-components';
+import { DotDivider } from '@components/MdxComponents/DotDivider';
 import dynamic from 'next/dynamic';
 import React from 'react';
 import type { SeriesSection as SeriesSectionType } from './components/SeriesSection';

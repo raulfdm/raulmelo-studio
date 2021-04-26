@@ -1,7 +1,7 @@
-import { LinkedInIcon, TwitterIcon } from '@raulfdm/blog-components';
+import { LinkedInIcon, TwitterIcon } from '@components/Icons';
 import classNames from 'classnames';
-import React from 'react';
 import qs from 'query-string';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 export const ShareContent = ({
