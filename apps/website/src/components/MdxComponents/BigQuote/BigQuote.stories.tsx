@@ -27,4 +27,6 @@ const meta: Meta = {
 
 export default meta;
 
-export const defaultCase: Story<BigQuoteProps> = args => <BigQuote {...args} />;
+export const defaultCase: Story<BigQuoteProps> = (args) => (
+  <BigQuote {...args} />
+);

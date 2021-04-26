@@ -22,7 +22,7 @@ describe('<Headings />', () => {
         <H4>Some weird Text</H4>
         <H5>Some weird Text</H5>
         <H6>Some weird Text</H6>
-      </>
+      </>,
     );
 
     expect(container).toMatchInlineSnapshot(`

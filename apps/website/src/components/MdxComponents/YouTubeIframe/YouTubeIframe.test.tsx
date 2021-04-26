@@ -23,14 +23,14 @@ describe('<YouTubeIframe />', () => {
     const container = screen.getByTestId('youtube-iframe') as HTMLIFrameElement;
 
     expect(container.src).toMatchInlineSnapshot(
-      `"https://www.youtube.com/embed/3-Pf8s2nP-g"`
+      `"https://www.youtube.com/embed/3-Pf8s2nP-g"`,
     );
     expect(container).toMatchSnapshot();
   });
 
   it('throws an error if neither "src" nor "directUrl" has been passed', () => {
     expect(() => render(<YouTubeIframe />)).toThrowErrorMatchingInlineSnapshot(
-      `"YouTubeIframe must receive either \\"src\\" or \\"video\\""`
+      `"YouTubeIframe must receive either \\"src\\" or \\"video\\""`,
     );
   });
 });
