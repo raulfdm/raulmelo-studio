@@ -18,7 +18,7 @@ export interface UsePaginationItem {
 export type PaginationItemProps = UsePaginationItem & {
   'aria-label': string;
   component?: (
-    props: Pick<UsePaginationItem, 'disabled' | 'onClick'>
+    props: Pick<UsePaginationItem, 'disabled' | 'onClick'>,
   ) => JSX.Element;
 };
 export interface UsePaginationProps {

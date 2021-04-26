@@ -1,6 +1,6 @@
 import * as React from 'react';
-import useControlled from '../hooks/useControlled';
-import { range } from '../utils/range';
+import useControlled from '@hooks/useControlled';
+import { range } from '@utils/range';
 import {
   ItemType,
   PaginationType,
@@ -32,7 +32,7 @@ export function usePagination(props: UsePaginationProps = {}) {
   const startPages = range(1, Math.min(boundaryCount, count));
   const endPages = range(
     Math.max(count - boundaryCount + 1, boundaryCount + 1),
-    count
+    count,
   );
 
   const siblingsStart = Math.max(
@@ -40,10 +40,10 @@ export function usePagination(props: UsePaginationProps = {}) {
       // Natural start
       page - siblingCount,
       // Lower boundary when page is high
-      count - boundaryCount - siblingCount * 2 - 1
+      count - boundaryCount - siblingCount * 2 - 1,
     ),
     // Greater than startPages
-    boundaryCount + 2
+    boundaryCount + 2,
   );
 
   const siblingsEnd = Math.min(
@@ -51,10 +51,10 @@ export function usePagination(props: UsePaginationProps = {}) {
       // Natural end
       page + siblingCount,
       // Upper boundary when page is low
-      boundaryCount + siblingCount * 2 + 2
+      boundaryCount + siblingCount * 2 + 2,
     ),
     // Less than endPages
-    endPages[0] - 2
+    endPages[0] - 2,
   );
 
   const itemList = createItemList();
