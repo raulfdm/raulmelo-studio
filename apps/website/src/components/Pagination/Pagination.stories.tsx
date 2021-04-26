@@ -20,11 +20,11 @@ const meta: Meta = {
 
 export default meta;
 
-export const defaultCase: Story<PaginationProps> = args => (
+export const defaultCase: Story<PaginationProps> = (args) => (
   <Pagination {...args} onChange={console.log} />
 );
 
-export const withCustomRenderItem: Story<PaginationProps> = args => {
+export const withCustomRenderItem: Story<PaginationProps> = (args) => {
   const Link = (props: any) => <a {...props} />;
 
   return (
@@ -32,7 +32,7 @@ export const withCustomRenderItem: Story<PaginationProps> = args => {
       {...args}
       onChange={console.log}
       defaultPage={3}
-      renderItem={item => <PaginationItem {...item} component={Link} />}
+      renderItem={(item) => <PaginationItem {...item} component={Link} />}
     />
   );
 };

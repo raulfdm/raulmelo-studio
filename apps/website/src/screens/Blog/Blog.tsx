@@ -1,5 +1,5 @@
 import { useLocalization } from '@hooks/useLocalization';
-import { Pagination, PaginationItem } from '@raulfdm/blog-components';
+import { Pagination, PaginationItem } from '@components/Pagination';
 import { Posts } from '@screens/Home/components/Posts';
 import { usePageQueryReset } from '@screens/Home/hooks/usePageQueryReset';
 import { NextSeo } from 'next-seo';

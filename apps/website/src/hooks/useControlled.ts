@@ -8,7 +8,7 @@ export default function useControlled<T = unknown>({
   const [valueState, setValue] = React.useState(defaultProp);
   const value = isControlled ? controlled : valueState;
 
-  const setValueIfUncontrolled = React.useCallback(newValue => {
+  const setValueIfUncontrolled = React.useCallback((newValue) => {
     if (!isControlled) {
       setValue(newValue);
     }
