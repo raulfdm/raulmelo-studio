@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom class for grid */
+@layer utilities {
+  .grid-container {
+    @apply w-full;
+    @apply grid-cols-4;
+    @apply px-4;
+    @apply gap-4;
+    @apply grid;
+    @apply mx-auto;
+  }
+
+  @media (min-width: 768px) {
+    .grid-container {
+      @apply max-w-5xl;
+      @apply grid-cols-6;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid-container {
+      @apply max-w-7xl;
+      @apply grid-cols-12;
+    }
+  }
+}
+
+html {
+  @apply h-full;
+}
+
+* {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Prose + Title Anchor Related */
+.prose .copy-title-icon {
+  position: absolute;
+  right: -0.1em;
+  transform: translate(100%, 50%);
+}
+
+.prose .copy-title-icon .icon.icon-link {
+  display: inline-block;
+  display: block;
+  width: 0.7em;
+  height: 0.7em;
+  mask: url(/icons/anchor.svg) no-repeat;
+  transition: visibility 0.2s ease-in-out;
+  visibility: var(--icon-visible);
+  background-color: black;
+}
+
+.dark .prose .icon.icon-link {
+  background-color: white;
+}
