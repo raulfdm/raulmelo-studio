@@ -1,20 +1,13 @@
-import {
-  BigQuote,
-  H1,
-  H2,
-  H3,
-  H4,
-  H5,
-  H6,
-  CodePenIframe,
-  Gif,
-  YouTubeIframe,
-  DotDivider,
-  ImageSliderFactory,
-} from '@raulfdm/blog-components';
 import NextImage from 'next/image';
 import { Tweet } from 'react-twitter-widgets';
+import { BigQuote } from './BigQuote';
+import { CodePenIframe } from './CodePenIframe';
+import { DotDivider } from './DotDivider';
+import { Gif } from './Gif';
 import { Image } from './Image';
+import { H1, H2, H3, H4, H5, H6 } from './Headings';
+import { YouTubeIframe } from './YouTubeIframe';
+import { ImageSliderFactory } from './ImageSlider';
 
 export const mdxComponents = {
   BigQuote,

@@ -49,7 +49,7 @@ const meta: Meta = {
 
 export default meta;
 
-export const defaultCase: Story<ImageSliderProps> = args => {
+export const defaultCase: Story<ImageSliderProps> = (args) => {
   const ConfiguredImageSlider = ImageSliderFactory();
 
   return <ConfiguredImageSlider {...args} />;

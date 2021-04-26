@@ -21,7 +21,7 @@ describe('<CodePenIframe />', () => {
       <CodePenIframe
         src="https://codepen.io/raulfdm/embed/VzmoRM?height=350&theme-id=light&default-tab=css,result"
         height="600"
-      />
+      />,
     );
 
     const container = screen.getByTestId('codepen') as HTMLIFrameElement;
@@ -35,7 +35,7 @@ describe('<CodePenIframe />', () => {
       <CodePenIframe
         directUrl="https://codepen.io/raulfdm/pen/VzmoRM"
         height="600"
-      />
+      />,
     );
 
     const container = screen.getByTestId('codepen') as HTMLIFrameElement;
@@ -49,7 +49,7 @@ describe('<CodePenIframe />', () => {
       render(<CodePenIframe />);
     } catch (error) {
       expect(error).toMatchInlineSnapshot(
-        `[Error: CodePenIframe must receive either "src" or "directUrl"]`
+        `[Error: CodePenIframe must receive either "src" or "directUrl"]`,
       );
     }
   });

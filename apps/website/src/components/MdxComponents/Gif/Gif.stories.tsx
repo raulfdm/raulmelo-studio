@@ -39,4 +39,4 @@ const meta: Meta = {
 
 export default meta;
 
-export const defaultCase: Story<GifProps> = args => <Gif {...args} />;
+export const defaultCase: Story<GifProps> = (args) => <Gif {...args} />;

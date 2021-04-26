@@ -1,9 +1,13 @@
 import styled from '@emotion/styled';
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  useCircularIndexes,
+} from '@raulfdm/blog-components';
 import classNames from 'classnames';
 import omit from 'lodash.omit';
 import React from 'react';
-import { useCircularIndexes } from '../hooks/useCircularIndexes';
-import { ChevronLeftIcon, ChevronRightIcon } from '../Icons';
+
 import { validations } from './utils';
 
 const Figure = styled.figure`
