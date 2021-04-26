@@ -1,7 +1,6 @@
+import { SideMenu as SideMenuComponent } from '@components/SideMenu/SideMenu';
 import { useApp } from '@hooks/useApp';
 import { useLocalization } from '@hooks/useLocalization';
-import { SideMenu as SideMenuComponent } from '@components/SideMenu';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 import { defineMessage } from 'react-intl';
@@ -68,7 +67,6 @@ export const SideMenu = () => {
 
   return (
     <SideMenuComponent
-      Link={Link}
       state={state}
       className="top-16"
       overlayClassName="top-16"
