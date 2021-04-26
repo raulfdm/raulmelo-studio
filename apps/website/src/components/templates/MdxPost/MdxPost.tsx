@@ -1,8 +1,8 @@
+import { ProseContainer } from '@components/ProseContainer';
 import { ShareContent } from '@components/ShareContent';
-import { useLocalization } from '@hooks/useLocalization';
-import { ProseContainer } from '@raulfdm/blog-components';
 import { Tag } from '@components/Tag';
 import { Tags } from '@components/Tags';
+import { useLocalization } from '@hooks/useLocalization';
 import { getTagUrl } from '@utils/url';
 import classNames from 'classnames';
 import { BlogJsonLd, NextSeo, NextSeoProps } from 'next-seo';
