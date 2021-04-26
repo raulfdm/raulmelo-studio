@@ -2,7 +2,10 @@ import { Meta, Story } from '@storybook/react';
 import React from 'react';
 
 import { DotDivider } from '.';
-import { ProseContainer, ProseContainerProps } from '../ProseContainer';
+import {
+  ProseContainer,
+  ProseContainerProps,
+} from '@components/ProseContainer';
 
 const meta: Meta = {
   title: 'Mdx Components/DotDivider',

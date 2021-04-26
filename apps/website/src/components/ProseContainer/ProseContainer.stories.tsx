@@ -1,12 +1,11 @@
+import { BigQuote } from '@components/MdxComponents/BigQuote';
+import { DotDivider } from '@components/MdxComponents/DotDivider';
+import { Gif } from '@components/MdxComponents/Gif';
+import * as Headings from '@components/MdxComponents/Headings';
+import { ImageSliderFactory } from '@components/MdxComponents/ImageSlider';
 import { Meta, Story } from '@storybook/react';
 import React from 'react';
-import { BigQuote } from '../BigQuote';
-
 import { ProseContainer, ProseContainerProps } from './ProseContainer';
-import * as Headings from '../Headings';
-import { DotDivider } from '../DotDivider';
-import { Gif } from '../Gif';
-import { ImageSliderFactory } from '../ImageSlider';
 
 const meta: Meta = {
   title: 'components/ProseContainer',

@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react';
 import React from 'react';
 
 import * as Headings from '.';
-import { ProseContainer } from '../ProseContainer';
+import { ProseContainer } from '@components/ProseContainer';
 
 const meta: Meta = {
   title: 'Mdx Components/Headings',
