@@ -1,8 +1,9 @@
 import { SideMenu } from '@components/SideMenu';
 import { useApp } from '@hooks/useApp';
 import { useLocalization } from '@hooks/useLocalization';
-import { CloseIcon, Logo, MenuIcon } from '@raulfdm/blog-components';
+import { CloseIcon, MenuIcon } from '@raulfdm/blog-components';
 import classNames from 'classnames';
+import { Logo } from '@components/Logo';
 import Link from 'next/link';
 import { FC } from 'react';
 import { LanguageSwitch } from './components/LanguageSwitch';
