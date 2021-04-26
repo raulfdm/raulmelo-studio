@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 import React from 'react';
-import { Tags, Tag } from '@raulfdm/blog-components';
+import { Tag } from '@components/Tag';
+import { Tags } from '@components/Tags';
 import { getTagUrl } from '@utils/url';
 import { FormattedDate } from 'react-intl';
 
