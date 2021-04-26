@@ -1,4 +1,4 @@
-import { ExternalLink } from '@raulfdm/blog-components';
+import { ExternalLinkIcon } from '@components/Icons';
 import classNames from 'classnames';
 import { NextSeo } from 'next-seo';
 import Image from 'next/image';
@@ -72,7 +72,7 @@ const CurriculumPage = () => {
             values={{
               // eslint-disable-next-line react/display-name
               icon: () => (
-                <ExternalLink className="w-4 inline-block mb-2 md:mb-4" />
+                <ExternalLinkIcon className="w-4 inline-block mb-2 md:mb-4" />
               ),
             }}
           />

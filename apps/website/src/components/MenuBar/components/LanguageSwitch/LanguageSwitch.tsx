@@ -1,9 +1,11 @@
+import { GlobeIcon } from '@components/Icons';
 import { menuButtonClasses } from '@components/MenuBar';
+import { Popover } from '@headlessui/react';
 import { useLocalization } from '@hooks/useLocalization';
-import { GlobeIcon, Popover, usePopper } from '@raulfdm/blog-components';
 import classNames from 'classnames';
 import { useRouter } from 'next/router';
 import { Fragment, useState } from 'react';
+import { usePopper } from 'react-popper';
 
 export const LanguageSwitch = () => {
   const { switchToEnglish, switchToPortuguese } = useLocalization();

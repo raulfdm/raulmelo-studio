@@ -1,6 +1,6 @@
 import { menuButtonClasses } from '@components/MenuBar';
 import { useThemeHandler } from '@hooks/useThemeHandler';
-import { MoonIcon, SunIcon } from '@raulfdm/blog-components';
+import { MoonIcon, SunIcon } from '@components/Icons';
 
 const ThemeIconMap = {
   dark: SunIcon,

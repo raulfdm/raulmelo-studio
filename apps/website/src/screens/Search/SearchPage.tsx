@@ -1,7 +1,7 @@
 import { PostCardWrapper } from '@components/PostCardWrapper';
 import { algoliaConfig } from '@config/algolia';
 import { useLocalization } from '@hooks/useLocalization';
-import { AlgoliaIcon } from '@raulfdm/blog-components';
+import { AlgoliaIcon } from '@components/Icons';
 import { HitAlgolia } from '@types-app';
 import { NextSeo } from 'next-seo';
 import React from 'react';
