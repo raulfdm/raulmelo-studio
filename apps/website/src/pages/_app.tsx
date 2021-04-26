@@ -1,7 +1,7 @@
 import { MenuBar } from '@components/MenuBar';
 import { AppContextProvider } from '@contexts/app';
 import { LocalizationProvider } from '@contexts/Localization';
-import '@raulfdm/blog-components/dist/static/css/base.css';
+import '@styles/base.css';
 import '@styles/algolia.css';
 import { SupportedLanguages } from '@types-app';
 import { getSocial } from '@utils/seo';
