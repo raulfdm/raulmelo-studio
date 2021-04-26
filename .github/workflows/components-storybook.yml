@@ -2,10 +2,12 @@ name: Component Lib Storybook
 
 on:
   push:
-    paths:
-      - 'packages/blog-components/**'
-      - '.github/workflows/components-storybook.yml'
-      - package.json
+    paths-ignore:
+      - '**'
+    # paths:
+    #   - 'packages/blog-components/**'
+    #   - '.github/workflows/components-storybook.yml'
+    #   - package.json
 
 jobs:
   deploy-storybook:
