@@ -18,7 +18,7 @@ describe('<Tags>', () => {
       }
 
       <ul
-        class="flex flex-row flex-wrap text-base emotion-0"
+        class="flex flex-row flex-wrap text-base emotion-0 emotion-1"
       >
         <li>
           hi

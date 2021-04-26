@@ -36,15 +36,15 @@ describe('<DotDivider />', () => {
       >
         <div
           aria-hidden="true"
-          class="w-1.5 h-1.5 lg:w-[0.475rem] lg:h-[0.475rem] rounded-full emotion-0"
+          class="w-1.5 h-1.5 lg:w-[0.475rem] lg:h-[0.475rem] rounded-full emotion-0 emotion-1"
         />
         <div
           aria-hidden="true"
-          class="w-1.5 h-1.5 lg:w-[0.475rem] lg:h-[0.475rem] rounded-full emotion-0"
+          class="w-1.5 h-1.5 lg:w-[0.475rem] lg:h-[0.475rem] rounded-full emotion-0 emotion-1"
         />
         <div
           aria-hidden="true"
-          class="w-1.5 h-1.5 lg:w-[0.475rem] lg:h-[0.475rem] rounded-full emotion-0"
+          class="w-1.5 h-1.5 lg:w-[0.475rem] lg:h-[0.475rem] rounded-full emotion-0 emotion-1"
         />
       </div>
     `);
