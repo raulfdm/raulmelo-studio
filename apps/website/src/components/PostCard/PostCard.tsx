@@ -1,6 +1,6 @@
 import classNames from 'classnames';
+import Link from 'next/link';
 import React from 'react';
-import { ConfiguredLinkProps, configureLink } from '../ConfiguredLink';
 import { Tag } from '../Tag';
 import { Tags } from '../Tags';
 
@@ -11,12 +11,9 @@ export const PostCard: React.FC<PostCardProps> = ({
   subtitle,
   publishDate,
   postUrl,
-  Link,
   titleLinkProps,
   tags,
 }) => {
-  const ConfiguredLink = configureLink(Link);
-
   return (
     <section>
       <div
@@ -39,15 +36,13 @@ export const PostCard: React.FC<PostCardProps> = ({
         )}
       </div>
       <div className="my-4 md:my-3">
-        <ConfiguredLink
-          className="relative inline-block"
-          href={postUrl}
-          linkProps={titleLinkProps}
-        >
-          <h3 className={classNames(['font-black', 'text-xl lg:text-lg'])}>
-            {title}
-          </h3>
-        </ConfiguredLink>
+        <Link href={postUrl}>
+          <a className="relative inline-block" {...titleLinkProps}>
+            <h3 className={classNames(['font-black', 'text-xl lg:text-lg'])}>
+              {title}
+            </h3>
+          </a>
+        </Link>
 
         <span
           className={classNames([
@@ -74,9 +69,9 @@ export const PostCard: React.FC<PostCardProps> = ({
           <Tags className="mt-4">
             {tags.map(({ name, href }) => (
               <Tag key={name}>
-                <ConfiguredLink className="underline" href={href}>
-                  #{name}
-                </ConfiguredLink>
+                <Link href={href}>
+                  <a className="underline">#{name}</a>
+                </Link>
               </Tag>
             ))}
           </Tags>
