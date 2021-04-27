@@ -11,6 +11,7 @@ import { AppProps } from 'next/dist/next-server/lib/router/router';
 import Head from 'next/head';
 import React from 'react';
 import siteData from 'site-data';
+import { gridContainer } from '@styles/base';
 
 const MyApp = ({ Component, pageProps, router }: AppProps) => {
   const defaultSeo = siteData.defaultSeo[router.locale as SupportedLanguages];
@@ -93,7 +94,7 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
         <AppContextProvider>
           <MenuBar />
           <motion.main
-            className="grid-container"
+            css={gridContainer}
             animate="enter"
             exit="exit"
             initial="initial"
