@@ -1,21 +1,82 @@
 import { Disclosure } from '@headlessui/react';
+import tw, { css } from 'twin.macro';
 //TODO: fix @hooks/index
 import { useClickAway } from '@hooks/index';
-import classNames from 'classnames';
 import { motion, useAnimation } from 'framer-motion';
-import React, { useEffect, useRef } from 'react';
-import { SideMenuItem, SideMenuItemProps } from '../SideMenuItem';
+import React, { useEffect, useMemo, useRef } from 'react';
+import { SideMenuItem } from '../SideMenuItem';
+import { useLocalization } from '@hooks/useLocalization';
+import { useApp } from '@hooks/useApp';
+import { useRouter } from 'next/router';
+import { defineMessage } from 'react-intl';
 
-export const SideMenu = ({
-  className,
-  handleCloseMenu,
-  items,
-  overlayClassName,
-  state,
-}: SideMenuProps) => {
+const messages = defineMessage({
+  home: {
+    id: 'sideMenu.home',
+  },
+  blog: {
+    id: 'sideMenu.blog',
+  },
+  til: {
+    id: 'sideMenu.til',
+  },
+  search: {
+    id: 'sideMenu.search',
+  },
+  uses: {
+    id: 'sideMenu.uses',
+  },
+  cv: {
+    id: 'sideMenu.cv',
+  },
+});
+
+export const SideMenu = () => {
+  const { sideMenu } = useApp();
+  const { state, handleClose } = sideMenu;
+  const { formatMessage, locale } = useLocalization();
+  const { pathname } = useRouter();
   const navRef = useRef(null);
+  const links = useMemo(
+    () =>
+      [
+        {
+          href: '/',
+          localeId: messages.home,
+          locale,
+        },
+        {
+          href: '/blog',
+          localeId: messages.blog,
+          locale,
+        },
+        {
+          href: '/til',
+          localeId: messages.til,
+          locale,
+        },
+        {
+          href: '/search',
+          localeId: messages.search,
+        },
+        {
+          href: '/uses',
+          localeId: messages.uses,
+        },
+        {
+          href: '/cv',
+          localeId: messages.cv,
+        },
+      ].map(({ href, localeId }) => ({
+        itemLabel: formatMessage(localeId),
+        active: pathname === href,
+        href,
+      })),
+    [locale],
+  );
+
   const isClosed = state === 'closed';
-  useClickAway(navRef, handleCloseMenu, ['mouseevent', 'scroll']);
+  useClickAway(navRef, handleClose, ['mouseevent', 'scroll']);
 
   /**
    * The following animation exists because I need to coordinate the animations.
@@ -45,27 +106,22 @@ export const SideMenu = ({
         as={motion.nav}
         aria-expanded={!isClosed}
         ref={navRef}
-        className={classNames([
-          className,
-          'fixed',
-          'bottom-0 right-0',
-          'h-full',
-          'bg-white dark:bg-blue-800',
-          'z-20',
-          'transform translate-x-full',
-          'min-w-full sm:min-w-min sm:w-full sm:max-w-xs',
-          'transition-theme duration-200 ease',
-        ])}
+        css={[
+          tw`fixed`,
+          tw`bottom-0 right-0 top-16`,
+          tw`h-full`,
+          tw`bg-white dark:bg-blue-800`,
+          tw`z-20`,
+          tw`transform translate-x-full`,
+          tw`min-w-full sm:min-w-min sm:w-full sm:max-w-xs`,
+          tw`transition-theme duration-200 ease`,
+        ]}
         animate={animation}
         data-testid="sideMenu"
       >
-        <ul className={classNames(['py-6', 'flex flex-col'])}>
-          {items.map((props) => (
-            <SideMenuItem
-              key={props.href}
-              {...props}
-              onClick={handleCloseMenu}
-            />
+        <ul tw="py-6 flex flex-col">
+          {links.map((props) => (
+            <SideMenuItem key={props.href} {...props} onClick={handleClose} />
           ))}
         </ul>
       </Disclosure.Panel>
@@ -73,18 +129,13 @@ export const SideMenu = ({
         static
         as={motion.div}
         aria-hidden={isClosed}
-        className={classNames([
-          'absolute',
-          'inset-0',
-          'z-10',
-          'bg-[rgba(0,0,0,0.7)]',
-          'opacity-0',
-          overlayClassName,
-        ])}
-        style={{
-          pointerEvents: isClosed ? 'none' : 'all',
-        }}
-        onClick={handleCloseMenu}
+        css={[
+          tw`absolute inset-0 top-16 z-10 opacity-0 background[rgba(0,0,0,0.7)]`,
+          css`
+            pointer-events: ${isClosed ? 'none' : 'all'};
+          `,
+        ]}
+        onClick={handleClose}
         animate={state}
         transition={{ ease: 'easeOut', duration: 0.2 }}
         variants={{
@@ -100,12 +151,4 @@ export const SideMenu = ({
       />
     </Disclosure>
   );
-};
-
-export type SideMenuProps = {
-  className?: string;
-  overlayClassName?: string;
-  handleCloseMenu: () => void;
-  items: SideMenuItemProps[];
-  state: 'open' | 'closed';
 };
