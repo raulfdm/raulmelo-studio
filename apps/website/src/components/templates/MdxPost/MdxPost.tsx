@@ -1,15 +1,15 @@
 import { ProseContainer } from '@components/ProseContainer';
 import { ShareContent } from '@components/ShareContent';
-import { Tags, Tag } from '@components/Tags';
+import { Tag, Tags } from '@components/Tags';
 import { useLocalization } from '@hooks/useLocalization';
 import { getTagUrl } from '@utils/url';
-import classNames from 'classnames';
 import { BlogJsonLd, NextSeo, NextSeoProps } from 'next-seo';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useMemo } from 'react';
 import siteData from 'site-data';
+import 'twin.macro';
 import { FeaturedImage, FeaturedImageProps } from './components/FeaturedImage';
 import { Header } from './components/Header';
 import { PrismStyles } from './components/PrismStyles';
@@ -104,12 +104,7 @@ export const MdxPostTemplate: React.FC<MdxPostTemplateProps> = ({
         />
       ) : null}
 
-      <section
-        className={classNames([
-          'w-full',
-          'col-span-full lg:col-start-2 lg:col-end-12',
-        ])}
-      >
+      <section tw="w-full col-span-full lg:col-start-2 lg:col-end-12">
         <Header
           title={title}
           subtitle={subtitle}
@@ -120,13 +115,26 @@ export const MdxPostTemplate: React.FC<MdxPostTemplateProps> = ({
           })}
         />
         {series?.top}
-        <ProseContainer className="mt-8">{children}</ProseContainer>
+        <ProseContainer tw="mt-8">{children}</ProseContainer>
         {series?.bottom}
-        <hr className="mt-10 mb-6" />
-        <footer
-          className={classNames(['flex', 'justify-between', 'flex-wrap'])}
-        >
-          {tags ? <PostTags postTags={tags} /> : null}
+        <hr tw="mt-10 mb-6" />
+        <footer tw="flex justify-between flex-wrap">
+          {tags ? (
+            <div tw="mb-4 mr-4">
+              <span tw="font-extrabold text-md md:text-lg lg:text-xl block mb-4 md:mb-6">
+                Tags
+              </span>
+              <Tags>
+                {tags.map((tag) => (
+                  <Tag key={tag.id} tw="text-base lg:text-lg">
+                    <Link href={getTagUrl(tag.slug)}>
+                      <a tw="underline">#{tag.name}</a>
+                    </Link>
+                  </Tag>
+                ))}
+              </Tags>
+            </div>
+          ) : null}
           <ShareContent
             twitter={{ text: description }}
             linkedIn={{ title, summary: description }}
@@ -134,38 +142,6 @@ export const MdxPostTemplate: React.FC<MdxPostTemplateProps> = ({
         </footer>
       </section>
     </>
-  );
-};
-
-const PostTags = ({
-  postTags,
-}: {
-  postTags: NonNullable<MdxPostTemplateProps['tags']>;
-}) => {
-  return (
-    <div className="mb-4 mr-4">
-      <span
-        className={classNames([
-          'font-extrabold',
-          'text-md md:text-lg lg:text-xl',
-          'block',
-          'mb-4 md:mb-6',
-        ])}
-      >
-        Tags
-      </span>
-      <Tags>
-        {postTags.map((tag) => {
-          return (
-            <Tag key={tag.id} className="text-base lg:text-lg">
-              <Link href={getTagUrl(tag.slug)}>
-                <a className="underline">#{tag.name}</a>
-              </Link>
-            </Tag>
-          );
-        })}
-      </Tags>
-    </div>
   );
 };
 
