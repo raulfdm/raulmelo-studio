@@ -1,8 +1,7 @@
 import 'twin.macro';
 import Link from 'next/link';
 import React from 'react';
-import { Tag } from '../Tag';
-import { Tags } from '../Tags';
+import { Tags, Tag } from '../Tags';
 
 export const PostCard: React.FC<PostCardProps> = ({
   renderImage,
