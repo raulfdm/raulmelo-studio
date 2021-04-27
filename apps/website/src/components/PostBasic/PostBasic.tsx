@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import tw, { styled } from 'twin.macro';
+import tw, { styled, TwStyle } from 'twin.macro';
 import React from 'react';
 import { Tags, Tag } from '@components/Tags';
 import { getTagUrl } from '@utils/url';
@@ -63,10 +63,10 @@ export interface PostBasicProps {
   title: string;
   subtitle?: string;
   url: string;
-  className?: string;
+  className?: string | TwStyle;
   as?: React.ElementType;
   publishedAt: string;
-  titleClassName?: string;
+  titleClassName?: string | TwStyle;
   tags: {
     name: string;
     slug: string;

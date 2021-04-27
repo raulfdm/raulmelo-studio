@@ -10,6 +10,7 @@ import { defineMessages } from 'react-intl';
 import siteData from 'site-data';
 import { AuthorPresentation } from './components/AuthorPresentation';
 import { IHomeGraphQLResponse } from './types';
+import tw from 'twin.macro';
 
 const messages = defineMessages({
   postsTitle: {
@@ -101,19 +102,13 @@ const PostSection = ({ checkAllLink, posts, title }: PostSectionProps) => {
         ])}
       >
         {posts.map((post) => (
-          <PostBasic
-            className={classNames([
-              'dark:bg-blue-800',
-              'p-6',
-              'rounded-sm',
-              'shadow',
-              'hover:scale-50',
-            ])}
-            titleClassName="lg:!text-xl"
-            key={post.id}
-            {...post}
-            as="li"
-          />
+          <li key={post.id}>
+            <PostBasic
+              tw="dark:bg-blue-800 p-6 rounded-sm shadow hover:scale-50"
+              titleClassName={tw`text-xl`}
+              {...post}
+            />
+          </li>
         ))}
       </ul>
       <Link href={checkAllLink.href}>
