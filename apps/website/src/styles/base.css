@@ -2,32 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom class for grid */
-@layer utilities {
-  .grid-container {
-    @apply w-full;
-    @apply grid-cols-4;
-    @apply px-4;
-    @apply gap-4;
-    @apply grid;
-    @apply mx-auto;
-  }
-
-  @media (min-width: 768px) {
-    .grid-container {
-      @apply max-w-5xl;
-      @apply grid-cols-6;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .grid-container {
-      @apply max-w-7xl;
-      @apply grid-cols-12;
-    }
-  }
-}
-
 html {
   @apply h-full;
 }
