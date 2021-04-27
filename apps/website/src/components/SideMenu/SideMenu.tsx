@@ -4,11 +4,11 @@ import tw, { css } from 'twin.macro';
 import { useClickAway } from '@hooks/index';
 import { motion, useAnimation } from 'framer-motion';
 import React, { useEffect, useMemo, useRef } from 'react';
-import { SideMenuItem } from '../SideMenuItem';
 import { useLocalization } from '@hooks/useLocalization';
 import { useApp } from '@hooks/useApp';
 import { useRouter } from 'next/router';
 import { defineMessage } from 'react-intl';
+import Link from 'next/link';
 
 const messages = defineMessage({
   home: {
@@ -151,4 +151,43 @@ export const SideMenu = () => {
       />
     </Disclosure>
   );
+};
+
+const SideMenuItem = ({
+  active = false,
+  href,
+  itemLabel,
+  onClick,
+}: SideMenuItemProps) => {
+  const activeClasses = tw`
+    sm:pl-3
+    border-b-2 sm:border-l-2 sm:border-b-0
+    border-black dark:border-gray-300 border-opacity-80
+  `;
+
+  return (
+    <li tw="px-4 py-2 text-center sm:text-left">
+      <Link href={href}>
+        <a
+          onClick={onClick}
+          css={[
+            tw`cursor-pointer`,
+            tw`font-black`,
+            tw`text-xl sm:text-lg`,
+            tw`mx-5`,
+            active && activeClasses,
+          ]}
+        >
+          {itemLabel}
+        </a>
+      </Link>
+    </li>
+  );
+};
+
+type SideMenuItemProps = {
+  active?: boolean;
+  href: string;
+  itemLabel: React.ReactNode;
+  onClick?: () => void;
 };
