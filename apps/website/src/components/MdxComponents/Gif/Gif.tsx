@@ -1,4 +1,5 @@
 import React from 'react';
+import tw, { css } from 'twin.macro';
 
 export const Gif = ({
   src,
@@ -13,14 +14,16 @@ export const Gif = ({
 
   return (
     <figure
-      className="relative mx-auto"
-      style={{
-        maxWidth: width,
-      }}
+      css={[
+        tw`relative m-auto`,
+        css`
+          max-width: ${width}px;
+        `,
+      ]}
     >
       <ImageComponent src={src} alt={caption} width={width} height={height} />
       {caption && (
-        <figcaption role="caption" className="w-full text-center">
+        <figcaption role="caption" tw="text-center w-full">
           {caption}
         </figcaption>
       )}

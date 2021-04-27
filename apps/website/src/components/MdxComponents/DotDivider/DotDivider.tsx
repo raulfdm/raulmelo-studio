@@ -1,25 +1,29 @@
-import styled from '@emotion/styled';
-import classNames from 'classnames';
+// import styled from '@emotion/styled';
+import tw, { styled, css } from 'twin.macro';
 import React from 'react';
 
-const Dot = styled.div`
-  --hr-color: currentColor;
-  background-color: var(--hr-color);
+const Dot = styled.div(() => [
+  tw`w-1.5 h-1.5 lg:width[0.475rem] lg:height[0.475rem]`,
+  tw`rounded-full`,
+  css`
+    --hr-color: currentColor;
+    background-color: var(--hr-color);
 
-  /* IE and Legacy Edge */
-  @media screen and (-ms-high-contrast: active) {
-    --hr-color: windowText;
-  }
-  /* Using the new standards for forced colors, currently supported in Chromium Edge */
-  @media screen and (forced-colors: active) {
-    --hr-color: CanvasText;
-  }
+    /* IE and Legacy Edge */
+    @media screen and (-ms-high-contrast: active) {
+      --hr-color: windowText;
+    }
+    /* Using the new standards for forced colors, currently supported in Chromium Edge */
+    @media screen and (forced-colors: active) {
+      --hr-color: CanvasText;
+    }
 
-  /* For all variants, we need this: */
-  & + * {
-    margin-top: 0;
-  }
-`;
+    /* For all variants, we need this: */
+    & + * {
+      margin-top: 0;
+    }
+  `,
+]);
 
 /**
  * I'm currently use 3 sizes of tailwind typography:
@@ -32,33 +36,18 @@ const Dot = styled.div`
  */
 
 export const DotDivider = () => {
-  const dotClasses = classNames([
-    /**
-     * Arbitrary numbers based on the look and feel
-     */
-    'w-1.5 h-1.5 lg:w-[0.475rem] lg:h-[0.475rem]',
-    'rounded-full',
-  ]);
-
   return (
     <div
       role="separator"
       data-testid="dot-divider"
-      className={classNames([
-        'flex',
-        'justify-center',
-        'space-x-3',
-        /**
-         * - lg: margin top and bottom `em(56px/18px [base font]) => 3.111em`
-         * - xl: margin top and bottom `em(56px/20px [base font]) => 2.800em`
-         * - 2xl: margin top and bottom `em(72px/24px [base font]) => 3.000em`
-         */
-        'my-[3.111em] md:my-[2.8em] lg:my-[3em]',
-      ])}
+      css={[
+        tw`flex justify-center space-x-3`,
+        tw`margin[3.111em 0px] md:margin[2.8em 0px] lg:margin[3em 0px]`,
+      ]}
     >
-      <Dot aria-hidden className={classNames(dotClasses)} />
-      <Dot aria-hidden className={classNames(dotClasses)} />
-      <Dot aria-hidden className={classNames(dotClasses)} />
+      <Dot aria-hidden />
+      <Dot aria-hidden />
+      <Dot aria-hidden />
     </div>
   );
 };

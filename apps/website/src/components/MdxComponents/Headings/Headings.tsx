@@ -1,16 +1,11 @@
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
+import tw, { css, styled } from 'twin.macro';
 
 const common = css`
-  && {
-    position: relative;
-    @apply relative;
-    display: table;
-    --icon-visible: hidden;
+  ${tw`relative table`};
 
-    &:hover {
-      --icon-visible: unset;
-    }
+  --icon-visible: hidden;
+  &:hover {
+    --icon-visible: unset;
   }
 `;
 
