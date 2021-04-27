@@ -1,12 +1,20 @@
 import { useLocalization } from '@hooks/useLocalization';
-import classNames from 'classnames';
 import { NextSeo } from 'next-seo';
 import { defineMessage, FormattedMessage } from 'react-intl';
+import tw from 'twin.macro';
 
 const pageTitleMessage = defineMessage({
   id: '404.title',
   description: 'page title',
 });
+
+const styles = {
+  title: tw`font-black text-center col-span-full font-size[3.5rem] md:font-size[4.5rem] lg:font-size[6rem]`,
+  titleSpan: tw`text-base`,
+  baseParagraph: tw`col-span-full md:col-start-1 lg:col-start-3 lg:col-end-11`,
+  firstParagraph: tw`mt-3 text-2xl md:text-3xl font-extrabold`,
+  secondParagraph: tw`mt-5 text-lg`,
+};
 
 const Error = () => {
   const { formatMessage } = useLocalization();
@@ -15,34 +23,13 @@ const Error = () => {
     <>
       <NextSeo title={formatMessage(pageTitleMessage)} nofollow noindex />
 
-      <h1
-        className={classNames([
-          'text-[3.5rem] md:text-[4.5rem] lg:text-[6rem]',
-          'font-black',
-          'text-center',
-          'col-span-full',
-        ])}
-      >
-        Oops! <span className="text-base">404</span>
+      <h1 css={styles.title}>
+        Oops! <span css={styles.titleSpan}>404</span>
       </h1>
-
-      <p
-        className={classNames([
-          'mt-3',
-          'text-2xl md:text-3xl',
-          'font-extra',
-          'col-span-full md:col-start-1 lg:col-start-3 lg:col-end-11',
-        ])}
-      >
+      <p css={[styles.baseParagraph, styles.firstParagraph]}>
         <FormattedMessage id="404.subtitle" />
       </p>
-      <p
-        className={classNames([
-          'mt-5',
-          'text-lg',
-          'col-span-full md:col-start-1 lg:col-start-3 lg:col-end-11',
-        ])}
-      >
+      <p css={[styles.baseParagraph, styles.secondParagraph]}>
         <FormattedMessage id="404.description" />
       </p>
     </>
