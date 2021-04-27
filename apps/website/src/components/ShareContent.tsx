@@ -1,66 +1,61 @@
 import { LinkedInIcon, TwitterIcon } from '@components/Icons';
-import classNames from 'classnames';
 import qs from 'query-string';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import tw, { styled, TwStyle } from 'twin.macro';
+
+const Wrapper = styled.div``;
+
+const styles = {
+  title: tw`font-extrabold text-md md:text-lg lg:text-xl block mb-4 md:mb-6`,
+  list: tw`flex space-x-4`,
+  item: tw`w-6 md:w-8`,
+  itemIcon: tw`w-6 md:w-8`,
+};
 
 export const ShareContent = ({
-  as = 'div',
+  as,
   className,
   linkedIn,
   twitter,
 }: ShareProps) => {
-  const Wrapper = as;
-
   return (
-    <Wrapper className={className}>
-      <span
-        className={classNames([
-          'font-extrabold',
-          'text-md md:text-lg lg:text-xl',
-          'block',
-          'mb-4 md:mb-6',
-        ])}
-      >
+    <Wrapper as={as} css={className}>
+      <span css={styles.title}>
         <FormattedMessage id="blogPost.share" />
       </span>
-      <ul className={classNames(['flex', 'space-x-4'])}>
-        <ShareItem
-          onClick={() => {
-            window.open(
-              linkGenerator.linkedIn(linkedIn.title, linkedIn.summary),
-              '_blank',
-              'noopener',
-            );
-          }}
-          Icon={LinkedInIcon}
-        />
-        <ShareItem
-          onClick={() => {
-            window.open(
-              linkGenerator.twitter(twitter.text),
-              '_blank',
-              'noopener',
-            );
-          }}
-          Icon={TwitterIcon}
-        />
+      <ul css={styles.list}>
+        <li css={styles.item}>
+          <button
+            role="link"
+            onClick={() => {
+              window.open(
+                linkGenerator.linkedIn(linkedIn.title, linkedIn.summary),
+                '_blank',
+                'noopener',
+              );
+            }}
+          >
+            <LinkedInIcon css={styles.itemIcon} />
+          </button>
+        </li>
+
+        <li css={styles.item}>
+          <button
+            role="link"
+            onClick={() => {
+              window.open(
+                linkGenerator.twitter(twitter.text),
+                '_blank',
+                'noopener',
+              );
+            }}
+          >
+            <TwitterIcon css={styles.itemIcon} />
+          </button>
+        </li>
       </ul>
     </Wrapper>
-  );
-};
-
-const ShareItem: React.FC<{
-  onClick: () => void;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Icon: React.FC<any>;
-}> = ({ onClick, Icon }) => {
-  return (
-    <li className={classNames(['w-6 md:w-8'])}>
-      <button role="link" onClick={onClick}>
-        <Icon className={classNames(['w-6 md:w-8'])} />
-      </button>
-    </li>
   );
 };
 
@@ -85,7 +80,7 @@ const linkGenerator = {
 
 type ShareProps = {
   as?: React.ElementType;
-  className?: string;
+  className?: string | TwStyle;
   linkedIn: {
     title: string;
     summary?: string;
