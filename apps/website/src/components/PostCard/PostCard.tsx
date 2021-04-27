@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import 'twin.macro';
 import Link from 'next/link';
 import React from 'react';
 import { Tag } from '../Tag';
@@ -16,13 +16,7 @@ export const PostCard: React.FC<PostCardProps> = ({
 }) => {
   return (
     <section>
-      <div
-        className={classNames([
-          'relative',
-          'rounded-sm shadow-sm',
-          'aspect-w-16 aspect-h-9',
-        ])}
-      >
+      <div tw="relative rounded-sm shadow-sm aspect-w-16 aspect-h-9">
         {renderImage ? (
           renderImage({
             className: 'object-cover rounded-sm',
@@ -30,47 +24,32 @@ export const PostCard: React.FC<PostCardProps> = ({
           })
         ) : (
           <img
-            className="object-cover rounded-sm m-auto min-w-full max-w-full min-h-full max-h-full absolute"
+            tw="object-cover rounded-sm m-auto min-w-full max-w-full min-h-full max-h-full absolute"
             src={imageUrl}
           />
         )}
       </div>
-      <div className="my-4 md:my-3">
+      <div tw="my-4 md:my-3">
         <Link href={postUrl}>
-          <a className="relative inline-block" {...titleLinkProps}>
-            <h3 className={classNames(['font-black', 'text-xl lg:text-lg'])}>
-              {title}
-            </h3>
+          <a tw="relative inline-block" {...titleLinkProps}>
+            <h3 tw="font-black text-xl lg:text-lg">{title}</h3>
           </a>
         </Link>
 
-        <span
-          className={classNames([
-            'block',
-            'text-md lg:text-base',
-            'font-sans',
-            'mb-2.5',
-          ])}
-        >
+        <span tw="block text-md lg:text-base font-sans mb-2.5">
           <time dateTime={publishDate}>{publishDate}</time>
         </span>
         {subtitle && (
-          <p
-            className={classNames([
-              'text-lg lg:text-md',
-              'text-black dark:text-gray-200',
-              'text-opacity-80 dark:text-opacity-100',
-            ])}
-          >
+          <p tw="text-lg lg:text-md text-black dark:text-gray-200 text-opacity-80 dark:text-opacity-100">
             {subtitle}
           </p>
         )}
         {tags ? (
-          <Tags className="mt-4">
+          <Tags tw="mt-4">
             {tags.map(({ name, href }) => (
               <Tag key={name}>
                 <Link href={href}>
-                  <a className="underline">#{name}</a>
+                  <a tw="underline">#{name}</a>
                 </Link>
               </Tag>
             ))}
