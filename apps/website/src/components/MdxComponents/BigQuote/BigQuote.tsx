@@ -1,21 +1,14 @@
 import React from 'react';
-import classNames from 'classnames';
+import 'twin.macro';
 
-export const BigQuote = ({ className, ...props }: BigQuoteProps) => (
+export const BigQuote = ({ ...props }: BigQuoteProps) => (
   <blockquote
     /* 
       According to W3 HTMl aria, blockquote by itself has no role.
       https://www.w3.org/TR/html-aria/
     */
     role="blockquote"
-    className={classNames([
-      'border-none',
-      'text-xl md:text-2xl lg:text-4xl',
-      'font-black',
-      'text-opacity-60',
-      'tracking-normal',
-      className,
-    ])}
+    tw="border-none text-xl md:text-2xl lg:text-4xl font-black tracking-normal"
     {...props}
   />
 );

@@ -1,4 +1,5 @@
 import NextImage from 'next/image';
+import 'twin.macro';
 
 type ImageProps = {
   width: string | number;
@@ -19,7 +20,7 @@ export const Image: React.FC<ImageProps> = (props) => {
   }
 
   return (
-    <div className="flex items-center justify-center">
+    <div tw="flex items-center justify-center">
       <NextImage {...props} />
     </div>
   );

@@ -1,10 +1,8 @@
-import styled from '@emotion/styled';
-import { useCircularIndexes } from '@hooks/useCircularIndexes';
 import { ChevronLeftIcon, ChevronRightIcon } from '@components/Icons';
-import classNames from 'classnames';
+import { useCircularIndexes } from '@hooks/useCircularIndexes';
 import omit from 'lodash.omit';
 import React from 'react';
-
+import tw, { css, styled } from 'twin.macro';
 import { validations } from './utils';
 
 const Figure = styled.figure`
@@ -12,6 +10,17 @@ const Figure = styled.figure`
   && {
     margin: 0;
   }
+`;
+
+const NavButton = tw.button`
+    w-8 h-8
+    p-2
+    z-10
+    shadow
+    text-lg
+    rounded-full
+    bg-white dark:bg-blue-700
+    transition-theme duration-200 ease
 `;
 
 export const ImageSlider = ({
@@ -40,7 +49,6 @@ export const ImageSlider = ({
      * The solution was find the `img` inside figure and only then perform
      * the calculation
      */
-
     const imgDOMEl = document.body.querySelector('[data-sliderfigure] img');
 
     if (imgDOMEl) {
@@ -55,11 +63,11 @@ export const ImageSlider = ({
   const shouldRenderAction = images.length > 1 && actionsPosition > 0;
 
   return (
-    <div className="relative p-2" data-testid="image-slider">
+    <div tw="relative p-2" data-testid="image-slider">
       <Figure data-sliderfigure>
         <ImageComponent {...omit(currentImage, ['noCaption'])} />
         {!currentImage.noCaption ? (
-          <figcaption className="text-center" data-testid="caption">
+          <figcaption tw="text-center" data-testid="caption">
             {currentImage.alt}
           </figcaption>
         ) : null}
@@ -67,13 +75,12 @@ export const ImageSlider = ({
 
       {shouldRenderAction ? (
         <div
-          className={classNames([
-            'flex justify-between',
-            'absolute right-0 left-0 top-0',
-            'h-7',
-            '-mx-3',
-          ])}
-          style={{ transform: `translateY(${actionsPosition}px)` }}
+          css={[
+            tw`flex justify-between absolute right-0 left-0 top-0 h-7 -mx-3`,
+            css`
+              transform: translateY(${actionsPosition}px);
+            `,
+          ]}
           data-testid="actions-wrapper"
         >
           <NavButton onClick={prevIndex} data-testid="prev-image">
@@ -87,28 +94,6 @@ export const ImageSlider = ({
     </div>
   );
 };
-
-function NavButton({ className, ...props }: NavButtonProps) {
-  return (
-    <button
-      className={classNames([
-        'w-8 h-8',
-        'p-2',
-        'z-10',
-        'shadow',
-        'flex justify-center items-center',
-        'text-lg',
-        'rounded-full',
-        'bg-white dark:bg-blue-700',
-        'transition-theme duration-200 ease',
-        className,
-      ])}
-      {...props}
-    />
-  );
-}
-
-type NavButtonProps = React.ComponentPropsWithoutRef<'button'>;
 
 export type SliderImageProps = {
   src: string;

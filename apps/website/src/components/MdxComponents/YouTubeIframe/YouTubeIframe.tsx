@@ -1,11 +1,18 @@
 import React from 'react';
+import 'twin.macro';
 
 export const YouTubeIframe = ({ src, videoId }: YouTubeIframeProps) => {
-  const videoSrc = videoId ? `https://www.youtube.com/embed/${videoId}` : src;
-
-  if (!videoSrc) {
-    throw new Error('YouTubeIframe must receive either "src" or "video"');
+  if (src) {
+    throw new Error(
+      `YouTubeIframe: "src" is no longer allowed. Use "videoId" instead`,
+    );
   }
+
+  if (!videoId) {
+    throw new Error(`YouTubeIframe: "videoId" is required`);
+  }
+
+  const videoSrc = `https://www.youtube.com/embed/${videoId}`;
 
   /**
    * The reasons for defining here the code from iframe-responsive
@@ -16,21 +23,16 @@ export const YouTubeIframe = ({ src, videoId }: YouTubeIframeProps) => {
    *
    * This sucks but it seems a limitation of using first remark, then react-rehype */
   return (
-    <div
-      className="w-full h-0 relative overflow-hidden"
-      style={{ paddingBottom: '56.25%' }}
-    >
+    <div tw="w-full h-0 relative overflow-hidden aspect-w-16 aspect-h-9">
       <iframe
-        className="absolute top-0 left-0 h-full w-full"
-        width="560"
-        height="315"
+        tw="absolute top-0 left-0 h-full w-full"
         src={videoSrc}
         frameBorder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
         data-testid="youtube-iframe"
         title="YouTube Video"
-      ></iframe>
+      />
     </div>
   );
 };
