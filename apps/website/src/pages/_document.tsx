@@ -1,8 +1,19 @@
 import { GA_TRACKING_ID } from '@config/analytics';
-import classNames from 'classnames';
 import { domAnimation, LazyMotion } from 'framer-motion';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
+import tw, { css } from 'twin.macro';
 
+const styles = {
+  /* padding bottom ensures the same spacing for all spacing*/
+  body: css`
+    ${tw`min-h-screen`};
+    ${tw`bg-white dark:bg-blue-900`};
+    ${tw`text-black dark:text-white`};
+    ${tw`transition-theme duration-200 ease`};
+    ${tw`relative`};
+    ${tw`pb-12 md:pb-16`};
+  `,
+};
 export default class MyDocument extends Document {
   render() {
     return (
@@ -34,19 +45,7 @@ export default class MyDocument extends Document {
             }}
           />
         </Head>
-        <body
-          className={classNames([
-            'min-h-screen',
-            'bg-white dark:bg-blue-900',
-            'text-black dark:text-white',
-            'transition-theme duration-200 ease',
-            'relative',
-            /**
-             * Ensure padding bottom for the entire application
-             */
-            'pb-12 md:pb-16',
-          ])}
-        >
+        <body css={styles.body}>
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             async
