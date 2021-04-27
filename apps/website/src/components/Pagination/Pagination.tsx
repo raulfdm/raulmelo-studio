@@ -1,17 +1,15 @@
 import React from 'react';
-import classNames from 'classnames';
-
-import { usePagination } from './usePagination';
+import 'twin.macro';
 import { PaginationItem } from './PaginationItem';
 import {
   GetItemAriaLabelProps,
   PaginationItemProps,
   PaginationProps,
 } from './types';
+import { usePagination } from './usePagination';
 
 export const Pagination = (props: PaginationProps) => {
   const {
-    className,
     getItemAriaLabel = defaultGetAriaLabel,
     renderItem = (item: PaginationItemProps) => <PaginationItem {...item} />,
   } = props;
@@ -22,22 +20,17 @@ export const Pagination = (props: PaginationProps) => {
   });
 
   return (
-    <nav aria-label="pagination navigation" className={className}>
-      <ul
-        className={classNames([
-          'flex',
-          'items-stretch',
-          'justify-items-center',
-          'list-none',
-          'space-x-2',
-        ])}
-      >
+    <nav
+      aria-label="pagination navigation"
+      tw="flex justify-center mt-6 col-span-full"
+    >
+      <ul tw="flex items-stretch justify-items-center list-none space-x-2">
         {items.map((item, index) => {
           const { type, page, selected } = item;
           return (
             <li
               key={index}
-              className="flex justify-items-center items-stretch text-xl"
+              tw="flex justify-items-center items-stretch text-xl"
             >
               {renderItem({
                 ...item,
