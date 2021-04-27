@@ -5,6 +5,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Tils } from './types';
 import { getTilUrl } from './utils';
+import tw from 'twin.macro';
 
 type TilsHomeProps = {
   tils: Tils;
@@ -38,6 +39,7 @@ export const TilsHome = ({ tils }: TilsHomeProps) => {
             {tils.map((til) => (
               <PostBasic
                 as="li"
+                titleClassName={tw`text-xl lg:text-2xl`}
                 key={til.id}
                 publishedAt={til.publishedAt}
                 tags={til.tags}
