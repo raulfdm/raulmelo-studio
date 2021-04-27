@@ -1,5 +1,6 @@
+import 'twin.macro';
 import { GlobeIcon } from '@components/Icons';
-import { menuButtonClasses } from '@components/MenuBar';
+import { MenuButton } from '@components/MenuBar';
 import { Popover } from '@headlessui/react';
 import { useLocalization } from '@hooks/useLocalization';
 import classNames from 'classnames';
@@ -44,11 +45,8 @@ export const LanguageSwitch = () => {
 
   return (
     <Popover as={Fragment}>
-      <Popover.Button
-        className={menuButtonClasses}
-        ref={setReferenceElement as never}
-      >
-        <GlobeIcon className="w-6" />
+      <Popover.Button as={MenuButton} ref={setReferenceElement as never}>
+        <GlobeIcon tw="w-6" />
       </Popover.Button>
 
       <Popover.Panel
