@@ -1,15 +1,14 @@
-import { PostBasic, PostBasicProps } from '@components/PostBasic';
+import { PostBasic } from '@components/PostBasic';
 import { useLocalization } from '@hooks/useLocalization';
 import { getTilUrl } from '@screens/TilsHome/utils';
 import { getPostUrl } from '@utils/url';
-import classNames from 'classnames';
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import React from 'react';
 import { defineMessages } from 'react-intl';
 import siteData from 'site-data';
 import { AuthorPresentation } from './components/AuthorPresentation';
-import { IHomeGraphQLResponse } from './types';
+import { IHomeGraphQLResponse, PostSectionProps } from './types';
 import tw from 'twin.macro';
 
 const messages = defineMessages({
@@ -26,6 +25,15 @@ const messages = defineMessages({
     id: 'home.tils.checkAll',
   },
 });
+
+const styles = {
+  divider: tw`col-span-full md:col-start-2 md:col-end-6 lg:col-start-3 lg:col-end-10 mb-8`,
+  postWrapper: tw`col-span-full mb-6`,
+  postTitle: tw`font-sans font-extrabold text-lg lg:text-xl mb-4 lg:mb-6`,
+  postList: tw`grid grid-cols-1 ipad-pro:grid-cols-2 gap-6`,
+  postCard: tw`dark:bg-blue-800 p-6 rounded-sm shadow hover:scale-50`,
+  postCardLink: tw`text-lg underline mt-6 inline-block`,
+};
 
 export const HomePage: React.FC<IHomeGraphQLResponse> = ({ posts, tils }) => {
   const { formatMessage, locale } = useLocalization();
@@ -52,12 +60,7 @@ export const HomePage: React.FC<IHomeGraphQLResponse> = ({ posts, tils }) => {
         }}
       />
 
-      <hr
-        className={classNames([
-          'col-span-full md:col-start-2 md:col-end-6 lg:col-start-3 lg:col-end-10',
-          'mb-8',
-        ])}
-      />
+      <hr css={styles.divider} />
       <PostSection
         title={formatMessage(messages.tilsTitle)}
         posts={tils.map((til) => ({
@@ -73,38 +76,15 @@ export const HomePage: React.FC<IHomeGraphQLResponse> = ({ posts, tils }) => {
   );
 };
 
-type PostSectionProps = {
-  title: string;
-  posts: (PostBasicProps & { id: string })[];
-  checkAllLink: {
-    href: string;
-    text: string;
-  };
-};
-
 const PostSection = ({ checkAllLink, posts, title }: PostSectionProps) => {
   return (
-    <section className={classNames(['col-span-full', 'mb-6'])}>
-      <h2
-        className={classNames([
-          'font-sans font-extrabold',
-          'text-lg lg:text-xl',
-          'mb-4 lg:mb-6',
-        ])}
-      >
-        {title}
-      </h2>
-      <ul
-        className={classNames([
-          'grid',
-          'grid-cols-1 ipad-pro:grid-cols-2',
-          'gap-6',
-        ])}
-      >
+    <section css={styles.postWrapper}>
+      <h2 css={styles.postTitle}>{title}</h2>
+      <ul css={styles.postList}>
         {posts.map((post) => (
           <li key={post.id}>
             <PostBasic
-              tw="dark:bg-blue-800 p-6 rounded-sm shadow hover:scale-50"
+              className={styles.postCard}
               titleClassName={tw`text-xl`}
               {...post}
             />
@@ -112,9 +92,7 @@ const PostSection = ({ checkAllLink, posts, title }: PostSectionProps) => {
         ))}
       </ul>
       <Link href={checkAllLink.href}>
-        <a className="text-lg underline mt-6 inline-block">
-          {checkAllLink.text}
-        </a>
+        <a css={styles.postCardLink}>{checkAllLink.text}</a>
       </Link>
     </section>
   );

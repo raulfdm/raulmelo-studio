@@ -1,3 +1,4 @@
+import { PostBasicProps } from '@components/PostBasic';
 import { SupportedLanguages } from '@types-app';
 
 export interface IHomeGraphQLResponse {
@@ -36,3 +37,12 @@ interface FeaturedImage {
   height: number;
   url: string;
 }
+
+export type PostSectionProps = {
+  title: string;
+  posts: (PostBasicProps & { id: string })[];
+  checkAllLink: {
+    href: string;
+    text: string;
+  };
+};
