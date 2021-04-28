@@ -3,10 +3,40 @@ import { GlobeIcon } from '@components/Icons';
 import { MenuButton } from '@components/MenuBar';
 import { Popover } from '@headlessui/react';
 import { useLocalization } from '@hooks/useLocalization';
-import classNames from 'classnames';
 import { useRouter } from 'next/router';
 import { Fragment, useState } from 'react';
 import { usePopper } from 'react-popper';
+import tw, { css, styled } from 'twin.macro';
+
+const styles = {
+  panel: css`
+    ${tw`flex flex-col`};
+    ${tw`shadow-sm`};
+    ${tw`max-w-min`};
+    ${tw`border rounded dark:border-gray-400`};
+    ${tw`divide-y divide-gray-200 dark:divide-gray-500`};
+    ${tw`bg-white dark:bg-blue-800`};
+    ${tw`z-10`};
+  `,
+  arrow: css`
+    ${tw`bg-white dark:bg-blue-800`};
+    ${tw`z-20`};
+    ${tw`w-4 h-4`};
+    ${tw`border-l border-t rounded-sm dark:border-gray-400`};
+    ${tw`top[-8px]`};
+  `,
+  item: css`
+    ${tw`text-base font-sans text-center`};
+    ${tw`cursor-pointer`};
+    ${tw`py-2 px-6`};
+    ${tw`whitespace-nowrap`};
+    ${tw`flex-1`};
+  `,
+};
+
+const Panel = styled.div`
+  ${styles.panel};
+`;
 
 export const LanguageSwitch = () => {
   const { switchToEnglish, switchToPortuguese } = useLocalization();
@@ -15,18 +45,22 @@ export const LanguageSwitch = () => {
   const [referenceElement, setReferenceElement] = useState(null);
   const [popperElement, setPopperElement] = useState(null);
   const [arrowElement, setArrowElement] = useState(null);
-  const { styles, attributes } = usePopper(referenceElement, popperElement, {
-    placement: 'bottom-end',
-    modifiers: [
-      {
-        name: 'offset',
-        options: {
-          offset: [0, 12],
+  const { styles: popperStyles, attributes } = usePopper(
+    referenceElement,
+    popperElement,
+    {
+      placement: 'bottom-end',
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 12],
+          },
         },
-      },
-      { name: 'arrow', options: { element: arrowElement, padding: 5 } },
-    ],
-  });
+        { name: 'arrow', options: { element: arrowElement, padding: 5 } },
+      ],
+    },
+  );
 
   /**
    * Having this option in a post Page leads into an undesired behaviour.
@@ -50,48 +84,26 @@ export const LanguageSwitch = () => {
       </Popover.Button>
 
       <Popover.Panel
+        as={Panel}
         ref={setPopperElement as never}
-        style={styles.popper}
+        style={popperStyles.popper}
         {...attributes.popper}
-        className={classNames([
-          'flex flex-col',
-          'shadow-sm',
-          'max-w-min',
-          'border rounded dark:border-gray-400',
-          'divide-y divide-gray-200 dark:divide-gray-500',
-          'bg-white dark:bg-blue-800',
-          'z-10',
-        ])}
       >
         <div
           ref={setArrowElement as never}
-          className={classNames([
-            'bg-white dark:bg-blue-800',
-            'z-20',
-            'w-4 h-4',
-            'border-l border-t rounded-sm dark:border-gray-400',
-          ])}
+          css={styles.arrow}
           style={{
-            ...styles.arrow,
-            top: -8,
-            transform: `${styles.arrow.transform} rotate(45deg)`,
+            ...popperStyles.arrow,
+            transform: `${popperStyles.arrow.transform} rotate(45deg)`,
           }}
         />
-        <button className={itemClasses} onClick={switchToEnglish}>
+        <button css={styles.item} onClick={switchToEnglish}>
           English
         </button>
-        <button className={itemClasses} onClick={switchToPortuguese}>
+        <button css={styles.item} onClick={switchToPortuguese}>
           Português
         </button>
       </Popover.Panel>
     </Popover>
   );
 };
-
-const itemClasses = classNames([
-  'text-base font-sans text-center',
-  'cursor-pointer',
-  'py-2 px-6',
-  'whitespace-nowrap',
-  'flex-1',
-]);
