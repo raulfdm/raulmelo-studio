@@ -5,7 +5,7 @@ import * as Headings from '@components/MdxComponents/Headings';
 import { ImageSliderFactory } from '@components/MdxComponents/ImageSlider';
 import { Meta, Story } from '@storybook/react';
 import React from 'react';
-import { ProseContainer, ProseContainerProps } from './ProseContainer';
+import { ProseContainer } from './ProseContainer';
 
 const meta: Meta = {
   title: 'components/ProseContainer',
@@ -26,7 +26,7 @@ export default meta;
 
 const ConfiguredImageSlider = ImageSliderFactory();
 
-export const defaultCase: Story<ProseContainerProps> = () => (
+export const defaultCase: Story = () => (
   <ProseContainer>
     <Headings.H1>H1. Heading</Headings.H1>
     <p>

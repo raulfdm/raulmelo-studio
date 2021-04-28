@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/react';
 import React from 'react';
-import { SideMenu, SideMenuProps } from './SideMenu';
+import { SideMenu } from './SideMenu';
 
 const meta: Meta = {
   title: 'components/SideMenu',
@@ -37,6 +37,4 @@ const meta: Meta = {
 
 export default meta;
 
-export const defaultCase: Story<SideMenuProps> = (args) => (
-  <SideMenu {...args} />
-);
+export const defaultCase: Story = (args) => <SideMenu {...args} />;

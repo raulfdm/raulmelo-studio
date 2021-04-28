@@ -1,8 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 
-import { Tags, TagsProps } from './Tags';
-import { Tag } from '../Tag';
+import { Tags, Tag } from './Tags';
 
 const meta: Meta = {
   title: 'Components/Tags',
@@ -21,14 +20,14 @@ const meta: Meta = {
 
 export default meta;
 
-export const withTag: Story<TagsProps> = () => (
+export const withTag: Story = () => (
   <Tags>
     <Tag>#some-tag</Tag>
     <Tag>#another-tag</Tag>
   </Tags>
 );
 
-export const withTagLinks: Story<TagsProps> = () => (
+export const withTagLinks: Story = () => (
   <Tags>
     <Tag>
       <a href="#">#some-tag</a>
@@ -39,7 +38,7 @@ export const withTagLinks: Story<TagsProps> = () => (
   </Tags>
 );
 
-export const withManyItems: Story<TagsProps> = () => (
+export const withManyItems: Story = () => (
   <Tags>
     <Tag>#JavaScript</Tag>
     <Tag>#Typescript</Tag>
