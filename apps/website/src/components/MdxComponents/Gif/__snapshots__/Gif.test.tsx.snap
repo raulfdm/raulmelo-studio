@@ -1,9 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Gif /> matches snapshot 1`] = `
+.emotion-0 {
+  position: relative;
+  margin: auto;
+  max-width: 300px;
+}
+
+.emotion-1 {
+  text-align: center;
+  width: 100%;
+}
+
 <figure
-  class="relative mx-auto"
-  style="max-width: 300px;"
+  class="emotion-0"
 >
   <img
     alt="foo bar"
@@ -12,7 +22,7 @@ exports[`<Gif /> matches snapshot 1`] = `
     width="300"
   />
   <figcaption
-    class="w-full text-center"
+    class="emotion-1"
     role="caption"
   >
     foo bar

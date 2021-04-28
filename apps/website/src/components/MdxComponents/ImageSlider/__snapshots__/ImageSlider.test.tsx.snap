@@ -1,16 +1,68 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ImageSlider /> matches snapshot 1`] = `
-.emotion-0.emotion-0 {
+.emotion-0 {
+  position: relative;
+  padding: 0.5rem;
+}
+
+.emotion-1.emotion-1 {
   margin: 0;
 }
 
+.emotion-3 {
+  text-align: center;
+}
+
+.emotion-4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  top: 0px;
+  height: 1.75rem;
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+  -webkit-transform: translateY(150px);
+  -moz-transform: translateY(150px);
+  -ms-transform: translateY(150px);
+  transform: translateY(150px);
+}
+
+.emotion-5 {
+  width: 2rem;
+  height: 2rem;
+  padding: 0.5rem;
+  z-index: 10;
+  --tw-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow);
+  font-size: 1.333rem;
+  line-height: 1.3;
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+  transition-property: background-color,color,fill,opacity,border,shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.dark .emotion-5 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(51, 65, 85, var(--tw-bg-opacity));
+}
+
 <div
-  class="relative p-2"
+  class="emotion-0"
   data-testid="image-slider"
 >
   <figure
-    class="emotion-0 emotion-1"
+    class="emotion-1 emotion-2"
     data-sliderfigure="true"
   >
     <img
@@ -18,19 +70,18 @@ exports[`<ImageSlider /> matches snapshot 1`] = `
       src="https://picsum.photos/300/200"
     />
     <figcaption
-      class="text-center"
+      class="emotion-3"
       data-testid="caption"
     >
       random picture
     </figcaption>
   </figure>
   <div
-    class="flex justify-between absolute right-0 left-0 top-0 h-7 -mx-3"
+    class="emotion-4"
     data-testid="actions-wrapper"
-    style="transform: translateY(150px);"
   >
     <button
-      class="w-8 h-8 p-2 z-10 shadow flex justify-center items-center text-lg rounded-full bg-white dark:bg-blue-700 transition-theme duration-200 ease"
+      class="emotion-5 emotion-6"
       data-testid="prev-image"
     >
       <svg
@@ -49,7 +100,7 @@ exports[`<ImageSlider /> matches snapshot 1`] = `
       </svg>
     </button>
     <button
-      class="w-8 h-8 p-2 z-10 shadow flex justify-center items-center text-lg rounded-full bg-white dark:bg-blue-700 transition-theme duration-200 ease"
+      class="emotion-5 emotion-6"
       data-testid="next-image"
     >
       <svg
@@ -72,16 +123,68 @@ exports[`<ImageSlider /> matches snapshot 1`] = `
 `;
 
 exports[`fn: ImageSliderFactory returns an ImageSlider with custom ImageComponent 1`] = `
-.emotion-0.emotion-0 {
+.emotion-0 {
+  position: relative;
+  padding: 0.5rem;
+}
+
+.emotion-1.emotion-1 {
   margin: 0;
 }
 
+.emotion-3 {
+  text-align: center;
+}
+
+.emotion-4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  top: 0px;
+  height: 1.75rem;
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+  -webkit-transform: translateY(150px);
+  -moz-transform: translateY(150px);
+  -ms-transform: translateY(150px);
+  transform: translateY(150px);
+}
+
+.emotion-5 {
+  width: 2rem;
+  height: 2rem;
+  padding: 0.5rem;
+  z-index: 10;
+  --tw-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow);
+  font-size: 1.333rem;
+  line-height: 1.3;
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+  transition-property: background-color,color,fill,opacity,border,shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.dark .emotion-5 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(51, 65, 85, var(--tw-bg-opacity));
+}
+
 <div
-  class="relative p-2"
+  class="emotion-0"
   data-testid="image-slider"
 >
   <figure
-    class="emotion-0 emotion-1"
+    class="emotion-1 emotion-2"
     data-sliderfigure="true"
   >
     <img
@@ -90,19 +193,18 @@ exports[`fn: ImageSliderFactory returns an ImageSlider with custom ImageComponen
       src="https://picsum.photos/300/200"
     />
     <figcaption
-      class="text-center"
+      class="emotion-3"
       data-testid="caption"
     >
       random picture
     </figcaption>
   </figure>
   <div
-    class="flex justify-between absolute right-0 left-0 top-0 h-7 -mx-3"
+    class="emotion-4"
     data-testid="actions-wrapper"
-    style="transform: translateY(150px);"
   >
     <button
-      class="w-8 h-8 p-2 z-10 shadow flex justify-center items-center text-lg rounded-full bg-white dark:bg-blue-700 transition-theme duration-200 ease"
+      class="emotion-5 emotion-6"
       data-testid="prev-image"
     >
       <svg
@@ -121,7 +223,7 @@ exports[`fn: ImageSliderFactory returns an ImageSlider with custom ImageComponen
       </svg>
     </button>
     <button
-      class="w-8 h-8 p-2 z-10 shadow flex justify-center items-center text-lg rounded-full bg-white dark:bg-blue-700 transition-theme duration-200 ease"
+      class="emotion-5 emotion-6"
       data-testid="next-image"
     >
       <svg
