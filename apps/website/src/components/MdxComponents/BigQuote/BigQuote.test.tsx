@@ -12,8 +12,30 @@ describe('<BigQuote />', () => {
         hidden: true,
       }),
     ).toMatchInlineSnapshot(`
+      .emotion-0 {
+        border-style: none;
+        font-size: 1.777rem;
+        line-height: 1.3;
+        font-weight: 900;
+        letter-spacing: 0em;
+      }
+
+      @media (min-width: 768px) {
+        .emotion-0 {
+          font-size: 2.369rem;
+          line-height: 1.3;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .emotion-0 {
+          font-size: 4.209rem;
+          line-height: 1.3;
+        }
+      }
+
       <blockquote
-        class="border-none text-xl md:text-2xl lg:text-4xl font-black text-opacity-60 tracking-normal"
+        class="emotion-0"
         role="blockquote"
       >
         hey

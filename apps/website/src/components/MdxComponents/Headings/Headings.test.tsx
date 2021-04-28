@@ -26,63 +26,63 @@ describe('<Headings />', () => {
     );
 
     expect(container).toMatchInlineSnapshot(`
-      .emotion-0.emotion-0 {
+      .emotion-0 {
         position: relative;
         display: table;
         --icon-visible: hidden;
       }
 
-      .emotion-0.emotion-0:hover {
+      .emotion-0:hover {
         --icon-visible: unset;
       }
 
-      .emotion-2.emotion-2 {
+      .emotion-2 {
         position: relative;
         display: table;
         --icon-visible: hidden;
       }
 
-      .emotion-2.emotion-2:hover {
+      .emotion-2:hover {
         --icon-visible: unset;
       }
 
-      .emotion-4.emotion-4 {
+      .emotion-4 {
         position: relative;
         display: table;
         --icon-visible: hidden;
       }
 
-      .emotion-4.emotion-4:hover {
+      .emotion-4:hover {
         --icon-visible: unset;
       }
 
-      .emotion-6.emotion-6 {
+      .emotion-6 {
         position: relative;
         display: table;
         --icon-visible: hidden;
       }
 
-      .emotion-6.emotion-6:hover {
+      .emotion-6:hover {
         --icon-visible: unset;
       }
 
-      .emotion-8.emotion-8 {
+      .emotion-8 {
         position: relative;
         display: table;
         --icon-visible: hidden;
       }
 
-      .emotion-8.emotion-8:hover {
+      .emotion-8:hover {
         --icon-visible: unset;
       }
 
-      .emotion-10.emotion-10 {
+      .emotion-10 {
         position: relative;
         display: table;
         --icon-visible: hidden;
       }
 
-      .emotion-10.emotion-10:hover {
+      .emotion-10:hover {
         --icon-visible: unset;
       }
 
