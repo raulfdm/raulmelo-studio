@@ -1,5 +1,5 @@
 import React from 'react';
-
+import 'twin.macro';
 import { YouTubeIframe } from '.';
 
 export default {
@@ -8,13 +8,13 @@ export default {
 };
 
 export const fullSrc = () => (
-  <div className="max-w-md">
+  <div tw="max-w-md">
     <YouTubeIframe src="https://www.youtube.com/embed/3-Pf8s2nP-g" />
   </div>
 );
 
 export const withVideoId = () => (
-  <div className="max-w-md">
+  <div tw="max-w-md">
     <YouTubeIframe videoId="AycZPxzTo90" />
   </div>
 );

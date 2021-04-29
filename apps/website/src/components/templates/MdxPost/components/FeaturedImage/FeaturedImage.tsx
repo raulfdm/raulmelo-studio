@@ -61,12 +61,12 @@ function UnsplashCaption({ authorName, url }: UnsplashCaptionProps) {
         id="blogPost.unsplashCaption"
         values={{
           authorLink: (
-            <a href={url} className="underline">
+            <a href={url} tw="underline">
               {authorName}
             </a>
           ),
           unsplashLink: (
-            <a href="https://unsplash.com" className="underline">
+            <a href="https://unsplash.com" tw="underline">
               Unsplash
             </a>
           ),

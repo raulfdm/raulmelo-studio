@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/react';
 import React from 'react';
+import 'twin.macro';
 
 import { IconProps } from './types';
 
@@ -13,7 +14,7 @@ const meta: Meta = {
   decorators: [
     (storyFn: () => React.ReactNode) => {
       return (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+        <div tw="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
           {storyFn()}
         </div>
       );
@@ -35,7 +36,7 @@ export const allIcons = (args: IconProps) => {
   const iconsEntries = Object.entries(Icons);
 
   return iconsEntries.map(([iconName, Icon]) => (
-    <div className="grid place-items-center" key={iconName}>
+    <div tw="grid place-items-center" key={iconName}>
       <p>{`<${iconName} />`}</p>
       <Icon {...args} />
     </div>

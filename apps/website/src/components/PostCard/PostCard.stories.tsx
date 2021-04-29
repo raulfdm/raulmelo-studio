@@ -1,6 +1,7 @@
 import { Meta, Story } from '@storybook/react';
 import React from 'react';
 
+import 'twin.macro';
 import { PostCard, PostCardProps } from './PostCard';
 
 const meta: Meta = {
@@ -39,7 +40,7 @@ const meta: Meta = {
   },
   decorators: [
     (Story: React.ElementType) => (
-      <div className="container mx-auto px-4 md:px-0 max-w-screen-md">
+      <div tw="container mx-auto px-4 md:px-0 max-w-screen-md">
         <Story />
       </div>
     ),
