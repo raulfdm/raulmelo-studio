@@ -3,13 +3,7 @@ const colors = require('tailwindcss/colors');
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-  },
-  mode: 'jit',
   darkMode: 'class',
-  purge: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     fontSize: {
       xs: ['0.563rem', { lineHeight: 1.3 }],
