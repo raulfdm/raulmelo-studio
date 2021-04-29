@@ -1,17 +1,13 @@
 import dynamic from 'next/dynamic';
-
-import { BigQuote } from './BigQuote';
-import { DotDivider } from './DotDivider';
-
-import type { YouTubeIframe as YouTubeIframeType } from './YouTubeIframe';
-import type { Tweet as TweetType } from './Tweet';
-import type { ImageSlider as ImageSliderType } from './ImageSlider';
-import type { Gif as GifType } from './Gif';
-import type { CodePenIframe as CodePenIframeType } from './CodePenIframe';
 import type { BigQuote as BigQuoteType } from './BigQuote';
-
-import { Image } from './Image';
+import type { CodePenIframe as CodePenIframeType } from './CodePenIframe';
+import { DotDivider } from './DotDivider';
+import type { Gif as GifType } from './Gif';
 import { H1, H2, H3, H4, H5, H6 } from './Headings';
+import { Image } from './Image';
+import type { ImageSlider as ImageSliderType } from './ImageSlider';
+import type { Tweet as TweetType } from './Tweet';
+import type { YouTubeIframe as YouTubeIframeType } from './YouTubeIframe';
 
 const YouTubeVideo = dynamic(() =>
   import('./YouTubeIframe').then((mod) => mod.YouTubeIframe),

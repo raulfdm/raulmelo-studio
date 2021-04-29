@@ -1,8 +1,6 @@
 import { MenuBar } from '@components/MenuBar';
 import { AppContextProvider } from '@contexts/app';
 import { LocalizationProvider } from '@contexts/Localization';
-import '@styles/base.css';
-import '@styles/algolia.css';
 import { SupportedLanguages } from '@types-app';
 import { getSocial } from '@utils/seo';
 import { motion } from 'framer-motion';
@@ -11,7 +9,9 @@ import { AppProps } from 'next/dist/next-server/lib/router/router';
 import Head from 'next/head';
 import React from 'react';
 import siteData from 'site-data';
-import { gridContainer } from '@styles/base';
+import { gridContainer, globals } from '@styles/base';
+import { GlobalStyles as BaseStyles } from 'twin.macro';
+import { Global } from '@emotion/react';
 
 const MyApp = ({ Component, pageProps, router }: AppProps) => {
   const defaultSeo = siteData.defaultSeo[router.locale as SupportedLanguages];
@@ -23,7 +23,9 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
+      <Global styles={globals} />
 
+      <BaseStyles />
       <SocialProfileJsonLd
         type="person"
         name={siteData.personalInformation.full_name}
