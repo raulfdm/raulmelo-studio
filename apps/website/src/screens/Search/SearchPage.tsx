@@ -1,12 +1,14 @@
+import { AlgoliaIcon } from '@components/Icons';
 import { PostCardWrapper } from '@components/PostCardWrapper';
 import { algoliaConfig } from '@config/algolia';
+import { Global } from '@emotion/react';
 import { useLocalization } from '@hooks/useLocalization';
-import { AlgoliaIcon } from '@components/Icons';
 import { HitAlgolia } from '@types-app';
 import { NextSeo } from 'next-seo';
 import React from 'react';
 import { Hits, InstantSearch, SearchBox, Stats } from 'react-instantsearch-dom';
 import { defineMessages } from 'react-intl';
+import tw, { css } from 'twin.macro';
 import { algoliaDebounceSearchClient } from './utils';
 
 const messages = defineMessages({
@@ -27,12 +29,13 @@ export const SearchPage = () => {
   return (
     <>
       <NextSeo title={formatMessage(messages.pageTitle)} noindex />
+      <Global styles={algoliaStyles} />
 
       <InstantSearch
         searchClient={algoliaDebounceSearchClient}
         indexName={algoliaConfig.indexName}
       >
-        <div className="pb-5 md:pb-10 col-span-full">
+        <div tw="pb-5 md:pb-10 col-span-full">
           <SearchBox
             searchAsYouType
             autoFocus
@@ -48,7 +51,11 @@ export const SearchPage = () => {
               },
             }}
           />
-          <AlgoliaHits />
+          <Hits
+            hitComponent={({ hit }: { hit: HitAlgolia }) => {
+              return <PostCardWrapper key={hit.objectID} post={hit} />;
+            }}
+          />
         </div>
         <PoweredByAlgolia />
       </InstantSearch>
@@ -59,56 +66,24 @@ export const SearchPage = () => {
 function PoweredByAlgolia() {
   return (
     <a
-      className="flex justify-end items-center font-medium font-sans text-base col-span-full"
+      tw="flex justify-end items-center font-medium font-sans text-base col-span-full"
       href="https://www.algolia.com/"
     >
-      Powered by <AlgoliaIcon className="w-8" color="#5468ff" /> Algolia
+      Powered by <AlgoliaIcon tw="w-8" color="#5468ff" /> Algolia
     </a>
   );
 }
 
-function AlgoliaHits() {
-  return (
-    <>
-      <Hits
-        hitComponent={({ hit }: { hit: HitAlgolia }) => {
-          return <PostCardWrapper key={hit.objectID} post={hit} />;
-        }}
-      />
+const algoliaStyles = css`
+  .ais-SearchBox-form input {
+    ${tw`text-xl md:text-3xl`}
+    /* disable IOS native input styles */
+    /* https://stackoverflow.com/a/2918716 */
+    ${tw`rounded-none`}
+    -webkit-appearance: none;
+  }
 
-      <style jsx global>{`
-        .ais-SearchBox-form input {
-          font-size: 1.5rem;
-          /* disable IOS native input styles */
-          /* https://stackoverflow.com/a/2918716 */
-          border-radius: 0;
-          -webkit-appearance: none;
-        }
-
-        @media (min-width: 768px) {
-          .ais-SearchBox-form input {
-            font-size: 3rem;
-          }
-        }
-
-        .ais-Hits-list {
-          display: grid;
-          grid-template-columns: repeat(1, minmax(0, 1fr));
-          grid-gap: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-          .ais-Hits-list {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-          }
-        }
-
-        @media (min-width: 1024px) {
-          .ais-Hits-list {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-          }
-        }
-      `}</style>
-    </>
-  );
-}
+  .ais-Hits-list {
+    ${tw`grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3`}
+  }
+`;
