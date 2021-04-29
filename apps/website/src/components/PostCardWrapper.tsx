@@ -2,7 +2,6 @@ import { useLocalization } from '@hooks/useLocalization';
 import { PostCard } from './PostCard';
 import { SupportedLanguages } from '@types-app';
 import { getPostUrl, getTagUrl } from '@utils/url';
-import Image from 'next/image';
 
 export type PostCardWrapperProps = {
   post: {
