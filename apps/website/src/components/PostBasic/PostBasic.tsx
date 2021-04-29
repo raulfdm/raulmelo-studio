@@ -8,11 +8,12 @@ import { FormattedDate } from 'react-intl';
 const Wrapper = styled.section``;
 
 const styles = {
-  titleLink: tw`relative inline-block`,
+  titleLink: tw`relative inline-block cursor-pointer`,
   title: tw`font-extrabold`,
   publishedAt: tw`block text-md font-sans mb-2.5`,
   subtitle: tw`text-lg lg:text-md text-black dark:text-gray-200 text-opacity-80 dark:text-opacity-100`,
   tags: tw`mt-4`,
+  tagLink: tw`underline cursor-pointer`,
 };
 
 export const PostBasic: React.FC<PostBasicProps> = ({
@@ -49,7 +50,7 @@ export const PostBasic: React.FC<PostBasicProps> = ({
           {tags.map(({ name, slug, id }) => (
             <Tag key={id}>
               <Link href={getTagUrl(slug)}>
-                <a tw="underline">#{name}</a>
+                <a css={styles.tagLink}>#{name}</a>
               </Link>
             </Tag>
           ))}
