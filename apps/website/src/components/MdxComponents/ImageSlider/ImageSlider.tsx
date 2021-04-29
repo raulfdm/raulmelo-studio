@@ -67,6 +67,7 @@ export const ImageSlider = ({ images }: ImageSliderProps) => {
           src={currentImage.src}
           width={currentImage.width}
           height={currentImage.height}
+          alt={currentImage.alt}
         />
         {!currentImage.noCaption ? (
           <figcaption tw="text-center" data-testid="caption">
