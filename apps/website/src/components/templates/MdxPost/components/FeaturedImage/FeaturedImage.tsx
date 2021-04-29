@@ -1,9 +1,9 @@
 import { useLocalization } from '@hooks/useLocalization';
 import { BlogPostPost } from '@screens/BlogPost';
-import classNames from 'classnames';
 import Image from 'next/image';
 import React from 'react';
 import { defineMessages, FormattedMessage } from 'react-intl';
+import tw from 'twin.macro';
 
 const messages = defineMessages({
   featuredImageLabel: {
@@ -17,6 +17,13 @@ export type FeaturedImageProps = {
   unsplash: BlogPostPost['unsplash'];
 };
 
+const styles = {
+  wrapper: tw`mb-8 lg:mb-16 col-span-full`,
+  figure: tw`aspect-w-12 aspect-h-6 relative overflow-hidden h-0 shadow`,
+};
+
+const Caption = tw.p`text-center text-base lg:text-md dark:text-gray-300 mt-4`;
+
 export const FeaturedImage: React.FC<FeaturedImageProps> = ({
   src,
   alt,
@@ -26,19 +33,11 @@ export const FeaturedImage: React.FC<FeaturedImageProps> = ({
 
   return (
     <div
-      className="mb-8 lg:mb-16 col-span-full"
+      css={styles.wrapper}
       role="img"
       aria-label={formatMessage(messages.featuredImageLabel)}
     >
-      <figure
-        className={classNames([
-          'aspect-w-12 aspect-h-6',
-          'relative',
-          'overflow-hidden',
-          'h-0',
-          'shadow',
-        ])}
-      >
+      <figure css={styles.figure}>
         <Image
           src={src}
           layout="fill"
@@ -74,25 +73,5 @@ function UnsplashCaption({ authorName, url }: UnsplashCaptionProps) {
         }}
       />
     </Caption>
-  );
-}
-
-type CaptionProps = {
-  children: React.ReactNode;
-};
-
-function Caption({ children }: CaptionProps) {
-  return (
-    <p
-      className={classNames([
-        'img-caption',
-        'text-center',
-        'text-base lg:text-md',
-        'dark:text-gray-300',
-        'mt-4',
-      ])}
-    >
-      {children}
-    </p>
   );
 }
