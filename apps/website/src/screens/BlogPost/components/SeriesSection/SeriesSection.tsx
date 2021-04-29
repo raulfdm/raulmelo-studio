@@ -2,10 +2,111 @@ import { ChevronDownIcon } from '@components/Icons';
 import { BlogPostPost } from '@screens/BlogPost';
 import { createMachine } from '@xstate/fsm';
 import { useMachine } from '@xstate/react/fsm';
-import classNames from 'classnames';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FormattedMessage } from 'react-intl';
+import tw, { css } from 'twin.macro';
+
+// TODO: review this html markup. It seems having ugly/bad HTML structure.
+export const SeriesSection: React.FC<SeriesSectionProps> = ({
+  series,
+  currentPostId,
+}) => {
+  const [current, send] = useMachine(seriesMachine);
+  const { name, posts } = series;
+  const currentState = current.value as SeriesMachineState;
+
+  const toggleSection = () => send('TOGGLE');
+
+  return (
+    <section>
+      <div css={styles.wrapper} data-testid="series-menu">
+        <div>
+          <div
+            css={styles.header.wrapper(currentState)}
+            onClick={toggleSection}
+            data-testid="expand-button"
+            aria-role="button"
+          >
+            <span css={styles.header.title}>{name}</span>
+            <motion.button
+              css={styles.header.button}
+              initial="collapsed"
+              animate={currentState}
+              variants={{
+                expanded: { rotate: '0deg' },
+                collapsed: { rotate: '180deg' },
+              }}
+            >
+              <ChevronDownIcon css={styles.header.icon} />
+            </motion.button>
+          </div>
+
+          <motion.ul
+            layout
+            css={styles.list}
+            initial={false}
+            animate={currentState}
+            variants={variants.list}
+            data-testid="series-post-list"
+          >
+            {posts.map((post) => {
+              const { id, copy, uri } = post;
+              const isCurrentPost = id === currentPostId;
+              return (
+                <motion.li
+                  layout
+                  css={styles.item(isCurrentPost)}
+                  key={id}
+                  data-testid={`post_${id}`}
+                  variants={variants.item}
+                >
+                  <Link href={uri}>
+                    <a
+                      css={styles.link}
+                      aria-hidden={currentState === 'collapsed'}
+                    >
+                      {copy}
+                    </a>
+                  </Link>
+                </motion.li>
+              );
+            })}
+          </motion.ul>
+
+          <div
+            onClick={toggleSection}
+            css={styles.footer(currentState)}
+            aria-role="button"
+          >
+            <span>
+              <FormattedMessage
+                id="series.sectionDescription"
+                values={{
+                  seriesAmount: posts.length,
+                }}
+              />
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+interface SeriesSectionProps {
+  currentPostId: string;
+  series: NonNullable<BlogPostPost['series']>;
+  divider?: boolean;
+}
+
+type SeriesMachineEvent =
+  | {
+      type: 'TOGGLE';
+    }
+  | { type: 'CLOSE' };
+
+type SeriesMachineState = 'expanded' | 'collapsed';
 
 const variants = {
   list: {
@@ -70,163 +171,48 @@ const seriesMachine = createMachine<never, SeriesMachineEvent>({
   },
 });
 
-export const SeriesSection: React.FC<SeriesSectionProps> = ({
-  series,
-  currentPostId,
-}) => {
-  const [current, send] = useMachine(seriesMachine);
-  const { name, posts } = series;
-  const currentState = current.value as SeriesMachineState;
-
-  const toggleSection = () => send('TOGGLE');
-
-  return (
-    <section>
-      <div
-        className={classNames([
-          'relative',
-          ' bg-white dark:bg-blue-800',
-          'rounded',
-          'shadow',
-          'my-8',
-          'transition-theme duration-200 ease',
-        ])}
-        data-testid="series-menu"
-      >
-        <div>
-          <Header
-            toggleSection={toggleSection}
-            name={name}
-            currentState={currentState}
-          />
-          <motion.ul
-            layout
-            className="m-0"
-            initial={false}
-            animate={currentState}
-            variants={variants.list}
-            data-testid="series-post-list"
-          >
-            {posts.map((post) => {
-              const { id, copy, uri } = post;
-              const isCurrentPost = id === currentPostId;
-              return (
-                <motion.li
-                  layout
-                  className={classNames([
-                    'cursor-pointer',
-                    'm-0 p-b',
-                    'font-sans text-sm md:text-base',
-                    isCurrentPost
-                      ? 'bg-green-400'
-                      : 'hover:bg-green-400 hover:bg-opacity-50',
-                  ])}
-                  key={id}
-                  data-testid={`post_${id}`}
-                  variants={variants.item}
-                >
-                  <Link href={uri}>
-                    <a
-                      className="block no-underline px-4 py-3"
-                      aria-hidden={currentState === 'collapsed'}
-                    >
-                      {copy}
-                    </a>
-                  </Link>
-                </motion.li>
-              );
-            })}
-          </motion.ul>
-          <Footer
-            currentState={currentState}
-            toggleSection={toggleSection}
-            amount={posts.length}
-          />
-        </div>
-      </div>
-    </section>
-  );
+const styles = {
+  wrapper: css`
+    ${tw`relative`};
+    ${tw`bg-white dark:bg-blue-800`};
+    ${tw`rounded`};
+    ${tw`shadow`};
+    ${tw`my-8`};
+    ${tw`transition-theme duration-200 ease`};
+  `,
+  list: tw`m-0 pb-0`,
+  item: (isCurrentPost: boolean) => css`
+    ${tw`cursor-pointer`};
+    ${tw`m-0`};
+    ${tw`font-sans text-sm md:text-base`};
+    ${isCurrentPost
+      ? tw`bg-green-400`
+      : tw`hover:bg-green-400 hover:bg-opacity-50`};
+  `,
+  link: tw`block no-underline px-4 py-3`,
+  header: {
+    wrapper: (currentState: SeriesMachineState) => css`
+      ${tw`flex content-between`};
+      ${tw`cursor-pointer`};
+      ${tw`py-3 px-4`};
+      ${tw`text-lg md:text-xl font-bold`};
+      ${tw`transition-spacing duration-300`};
+      ${currentState === 'expanded'
+        ? tw`pb-2.5 border-b border-gray-100 dark:border-gray-600`
+        : `pb-0 border-none`}
+    `,
+    title: tw`flex-1`,
+    button: tw`flex items-center justify-center w-7 h-7`,
+    icon: tw`w-5`,
+  },
+  footer: (currentState: SeriesMachineState) => css`
+    ${tw`flex content-between`};
+    ${tw`cursor-pointer`};
+    ${tw`py-3 px-4`};
+    ${tw`text-base md:text-md font-sans`};
+    ${tw`transition-spacing duration-300`};
+    ${currentState === 'expanded'
+      ? tw`pt-2.5 border-t border-gray-100 dark:border-gray-600`
+      : tw`pt-0 border-none`}
+  `,
 };
-
-const Header = ({ toggleSection, name, currentState }: HeaderProps) => {
-  return (
-    <div
-      className={classNames([
-        'flex content-between',
-        'cursor-pointer',
-        'py-3 px-4',
-        'font-serif text-lg md:text-xl font-bold',
-        'transition-spacing duration-300',
-        currentState === 'expanded'
-          ? 'pb-2.5 border-b border-gray-100 dark:border-gray-600'
-          : 'pb-0 border-none',
-      ])}
-      onClick={toggleSection}
-      data-testid="expand-button"
-    >
-      <span className="flex-1">{name}</span>
-      <motion.button
-        className="flex items-center justify-center w-7 h-7"
-        initial="collapsed"
-        animate={currentState}
-        variants={{
-          expanded: { rotate: '0deg' },
-          collapsed: { rotate: '180deg' },
-        }}
-      >
-        <ChevronDownIcon className="w-5" />
-      </motion.button>
-    </div>
-  );
-};
-
-const Footer = ({ amount, toggleSection, currentState }: FooterProps) => {
-  return (
-    <div
-      onClick={toggleSection}
-      className={classNames([
-        'flex content-between',
-        'cursor-pointer',
-        'py-3 px-4',
-        'text-base md:text-md font-sans',
-        ' transition-spacing duration-300',
-        currentState === 'expanded'
-          ? 'pt-2.5 border-t border-gray-100 dark:border-gray-600'
-          : 'pt-0 border-none',
-      ])}
-    >
-      <span>
-        <FormattedMessage
-          id="series.sectionDescription"
-          values={{
-            seriesAmount: amount,
-          }}
-        />
-      </span>
-    </div>
-  );
-};
-
-type FooterProps = Pick<HeaderProps, 'toggleSection' | 'currentState'> & {
-  amount: number;
-};
-
-type HeaderProps = {
-  toggleSection: () => void;
-  name: string;
-  currentState: SeriesMachineState;
-};
-
-interface SeriesSectionProps {
-  currentPostId: string;
-  series: NonNullable<BlogPostPost['series']>;
-  divider?: boolean;
-}
-
-type SeriesMachineEvent =
-  | {
-      type: 'TOGGLE';
-    }
-  | { type: 'CLOSE' };
-
-type SeriesMachineState = 'expanded' | 'collapsed';
