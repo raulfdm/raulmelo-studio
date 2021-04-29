@@ -1,17 +1,26 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 
-import { ImageSlider, ImageSliderFactory } from '.';
+import { ImageSlider } from '.';
 
 const images = [
-  { src: 'https://picsum.photos/300/200', alt: 'random picture' },
   {
-    src: 'https://picsum.photos/200/300',
-    alt: 'another random picture',
+    src: '/test.png',
+    alt: 'random picture',
+    width: 300,
+    height: 200,
   },
   {
-    src: 'https://picsum.photos/500/230',
+    src: '/test2.png',
+    alt: 'another random picture',
+    width: 300,
+    height: 200,
+  },
+  {
+    src: '/test3.png',
     alt: 'another random picture 3',
+    width: 300,
+    height: 200,
   },
 ];
 
@@ -72,27 +81,7 @@ describe('<ImageSlider />', () => {
       render(<ImageSlider images={images} />);
       const img = screen.getByRole('img') as HTMLImageElement;
       expect(img).toBeInTheDocument();
-      expect(img.src).toBe(images[0].src);
       expect(img.alt).toBe(images[0].alt);
-    });
-
-    it('renders custom image component', () => {
-      const testId = 'my-very-custom-image-component';
-      const CustomImage = (props: any) => (
-        <img data-testid={testId} {...props} />
-      );
-
-      render(<ImageSlider images={images} ImageComponent={CustomImage} />);
-      const img = screen.getByTestId(testId) as HTMLImageElement;
-
-      expect(img).toBeInTheDocument();
-      expect(img).toMatchInlineSnapshot(`
-        <img
-          alt="random picture"
-          data-testid="my-very-custom-image-component"
-          src="https://picsum.photos/300/200"
-        />
-      `);
     });
   });
 
@@ -152,22 +141,19 @@ describe('<ImageSlider />', () => {
           return screen.getByRole('img') as HTMLImageElement;
         }
 
-        expect(getImg().src).toBe(images[0].src);
         expect(getImg().alt).toBe(images[0].alt);
         rerender(<ImageSlider images={images} />);
 
         const nextImageBtn = screen.getByTestId('next-image');
 
         fireEvent.click(nextImageBtn);
-        expect(getImg().src).toBe(images[1].src);
         expect(getImg().alt).toBe(images[1].alt);
 
         fireEvent.click(nextImageBtn);
-        expect(getImg().src).toBe(images[2].src);
         expect(getImg().alt).toBe(images[2].alt);
 
         fireEvent.click(nextImageBtn);
-        expect(getImg().src).toBe(images[0].src);
+
         expect(getImg().alt).toBe(images[0].alt);
       });
     });
@@ -180,45 +166,21 @@ describe('<ImageSlider />', () => {
           return screen.getByRole('img') as HTMLImageElement;
         }
 
-        expect(getImg().src).toBe(images[0].src);
         expect(getImg().alt).toBe(images[0].alt);
         rerender(<ImageSlider images={images} />);
 
         const nextImageBtn = screen.getByTestId('prev-image');
 
         fireEvent.click(nextImageBtn);
-        expect(getImg().src).toBe(images[2].src);
         expect(getImg().alt).toBe(images[2].alt);
 
         fireEvent.click(nextImageBtn);
-        expect(getImg().src).toBe(images[1].src);
         expect(getImg().alt).toBe(images[1].alt);
 
         fireEvent.click(nextImageBtn);
-        expect(getImg().src).toBe(images[0].src);
+
         expect(getImg().alt).toBe(images[0].alt);
       });
     });
-  });
-});
-
-describe('fn: ImageSliderFactory', () => {
-  it('returns an ImageSlider with custom ImageComponent', () => {
-    const testId = 'my-very-custom-image-component';
-    const CustomImage = (props: any) => <img data-testid={testId} {...props} />;
-
-    const ConfiguredImageSlider = ImageSliderFactory({
-      ImageComponent: CustomImage,
-    });
-
-    const { rerender } = render(<ConfiguredImageSlider images={images} />);
-    rerender(<ConfiguredImageSlider images={images} />);
-
-    const imageSliderEl = screen.getByTestId('image-slider');
-    const img = screen.getByTestId(testId) as HTMLImageElement;
-
-    expect(img).toBeInTheDocument();
-    expect(imageSliderEl).toBeInTheDocument();
-    expect(imageSliderEl).toMatchSnapshot();
   });
 });
