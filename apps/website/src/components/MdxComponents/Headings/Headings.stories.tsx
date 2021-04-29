@@ -1,8 +1,8 @@
+import { ProseContainer } from '@components/ProseContainer';
 import { Meta, Story } from '@storybook/react';
 import React from 'react';
-
+import 'twin.macro';
 import * as Headings from '.';
-import { ProseContainer } from '@components/ProseContainer';
 
 const meta: Meta = {
   title: 'Mdx Components/Headings',
@@ -43,9 +43,9 @@ const WithCopyIcon: React.FC<{ Heading: React.ElementType }> = ({
 }) => {
   return (
     <Heading>
-      <a className="copy-title-icon" href="#">
+      <a tw="copy-title-icon" href="#">
         <span
-          className="icon icon-link"
+          tw="icon icon-link"
           style={{
             mask: 'url(/icons/anchor.svg) no-repeat',
           }}
