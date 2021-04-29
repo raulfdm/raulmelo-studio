@@ -1,12 +1,29 @@
-import classNames from 'classnames';
 import React from 'react';
-
+import tw, { css } from 'twin.macro';
 import { ChevronLeftIcon, ChevronRightIcon } from '../Icons';
 import { PaginationItemProps } from './types';
 
 const iconsTypeMap = {
   previous: ChevronLeftIcon,
   next: ChevronRightIcon,
+};
+
+const styles = {
+  ellipsis: tw`w-6 text-center`,
+  item: (selected: boolean) => css`
+    min-width: 1.5rem;
+
+    ${tw`text-center`};
+    ${tw`cursor-pointer`};
+    ${tw`text-lg`};
+    ${tw`tabular-nums`};
+    ${selected && tw`border-black dark:border-white border-b font-bold`};
+    ${!selected && tw`hover:font-bold`}
+  `,
+  icon: (disabled: boolean) => css`
+    ${tw`w-6`};
+    ${disabled ?? tw`opacity-50`}
+  `,
 };
 
 export function PaginationItem(props: PaginationItemProps) {
@@ -28,25 +45,11 @@ export function PaginationItem(props: PaginationItemProps) {
   const ItemComponent = component ?? 'button';
 
   return type === 'start-ellipsis' || type === 'end-ellipsis' ? (
-    <div className="w-6 text-center">…</div>
+    <div css={styles.ellipsis}>…</div>
   ) : (
-    <ItemComponent
-      disabled={disabled}
-      className={classNames([
-        'min-w-[1.5rem]',
-        'text-center',
-        'cursor-pointer',
-        'text-lg',
-        'tabular-nums',
-        selected && 'border-black dark:border-white border-b font-bold',
-        !selected && 'hover:font-bold',
-      ])}
-      {...other}
-    >
+    <ItemComponent disabled={disabled} css={styles.item(selected)} {...other}>
       {type === 'page' && page}
-      {Icon ? (
-        <Icon className={classNames([disabled && 'opacity-50', 'w-6'])} />
-      ) : null}
+      {Icon ? <Icon css={styles.icon(disabled)} /> : null}
     </ItemComponent>
   );
 }
