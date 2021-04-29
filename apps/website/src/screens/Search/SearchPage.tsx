@@ -8,7 +8,8 @@ import { NextSeo } from 'next-seo';
 import React from 'react';
 import { Hits, InstantSearch, SearchBox, Stats } from 'react-instantsearch-dom';
 import { defineMessages } from 'react-intl';
-import tw, { css } from 'twin.macro';
+import 'twin.macro';
+import { algoliaGlobalStyles } from './styles';
 import { algoliaDebounceSearchClient } from './utils';
 
 const messages = defineMessages({
@@ -29,7 +30,7 @@ export const SearchPage = () => {
   return (
     <>
       <NextSeo title={formatMessage(messages.pageTitle)} noindex />
-      <Global styles={algoliaStyles} />
+      <Global styles={algoliaGlobalStyles} />
 
       <InstantSearch
         searchClient={algoliaDebounceSearchClient}
@@ -73,17 +74,3 @@ function PoweredByAlgolia() {
     </a>
   );
 }
-
-const algoliaStyles = css`
-  .ais-SearchBox-form input {
-    ${tw`text-xl md:text-3xl`}
-    /* disable IOS native input styles */
-    /* https://stackoverflow.com/a/2918716 */
-    ${tw`rounded-none`}
-    -webkit-appearance: none;
-  }
-
-  .ais-Hits-list {
-    ${tw`grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3`}
-  }
-`;
