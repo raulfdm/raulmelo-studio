@@ -1,8 +1,7 @@
+import { ProseContainer } from '@components/ProseContainer';
 import { Meta, Story } from '@storybook/react';
 import React from 'react';
-
-import { BigQuote, BigQuoteProps } from '.';
-import { ProseContainer } from '@components/ProseContainer';
+import { BigQuote } from '.';
 
 const meta: Meta = {
   title: 'Mdx Components/BigQuote',
@@ -27,6 +26,4 @@ const meta: Meta = {
 
 export default meta;
 
-export const defaultCase: Story<BigQuoteProps> = (args) => (
-  <BigQuote {...args} />
-);
+export const defaultCase: Story = (args) => <BigQuote {...args} />;
