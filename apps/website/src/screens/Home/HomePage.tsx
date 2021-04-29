@@ -32,7 +32,7 @@ const styles = {
   postTitle: tw`font-sans font-extrabold text-lg lg:text-xl mb-4 lg:mb-6`,
   postList: tw`grid grid-cols-1 ipad-pro:grid-cols-2 gap-6`,
   postCard: tw`dark:bg-blue-800 p-6 rounded-sm shadow hover:scale-50`,
-  postCardLink: tw`text-lg underline mt-6 inline-block`,
+  postCardLink: tw`text-lg underline mt-6 inline-block cursor-pointer`,
 };
 
 export const HomePage: React.FC<IHomeGraphQLResponse> = ({ posts, tils }) => {
