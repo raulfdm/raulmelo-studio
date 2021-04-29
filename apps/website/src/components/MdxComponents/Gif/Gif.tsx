@@ -1,5 +1,17 @@
 import React from 'react';
-import tw, { css } from 'twin.macro';
+import tw, { css, styled } from 'twin.macro';
+
+const Figure = styled.figure(
+  ({ width }: { width: number }) => css`
+    ${tw`relative m-auto`};
+
+    max-width: ${width}px;
+
+    figcaption {
+      ${tw`text-center w-full`};
+    }
+  `,
+);
 
 export const Gif = ({
   src,
@@ -13,21 +25,10 @@ export const Gif = ({
   }
 
   return (
-    <figure
-      css={[
-        tw`relative m-auto`,
-        css`
-          max-width: ${width}px;
-        `,
-      ]}
-    >
+    <Figure width={width as number}>
       <ImageComponent src={src} alt={caption} width={width} height={height} />
-      {caption && (
-        <figcaption role="caption" tw="text-center w-full">
-          {caption}
-        </figcaption>
-      )}
-    </figure>
+      {caption && <figcaption role="caption">{caption}</figcaption>}
+    </Figure>
   );
 };
 
