@@ -1,6 +1,6 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@components/Icons';
+import Image from 'next/image';
 import { useCircularIndexes } from '@hooks/useCircularIndexes';
-import omit from 'lodash.omit';
 import React from 'react';
 import tw, { css, styled } from 'twin.macro';
 import { validations } from './utils';
@@ -23,10 +23,7 @@ const NavButton = tw.button`
     transition-theme duration-200 ease
 `;
 
-export const ImageSlider = ({
-  images,
-  ImageComponent = 'img',
-}: ImageSliderProps) => {
+export const ImageSlider = ({ images }: ImageSliderProps) => {
   const { currentIndex, nextIndex, prevIndex } = useCircularIndexes(
     images.length,
   );
@@ -65,7 +62,12 @@ export const ImageSlider = ({
   return (
     <div tw="relative p-2" data-testid="image-slider">
       <Figure data-sliderfigure>
-        <ImageComponent {...omit(currentImage, ['noCaption'])} />
+        <Image
+          layout="responsive"
+          src={currentImage.src}
+          width={currentImage.width}
+          height={currentImage.height}
+        />
         {!currentImage.noCaption ? (
           <figcaption tw="text-center" data-testid="caption">
             {currentImage.alt}
@@ -99,23 +101,10 @@ export type SliderImageProps = {
   src: string;
   alt: string;
   noCaption?: boolean;
-  width?: string | number;
-  height?: string | number;
+  width: string | number;
+  height: string | number;
 };
 
 export type ImageSliderProps = {
   images: SliderImageProps[];
-} & ImageSliderConfig;
-
-export type ImageSliderConfig = {
-  /**
-   * Will be used to add a hidden text for screen readers
-   */
-  ImageComponent?: React.ElementType;
 };
-
-export function ImageSliderFactory(config?: ImageSliderConfig) {
-  return function ImageSliderConfigured(props: ImageSliderProps) {
-    return <ImageSlider {...props} {...config} />;
-  };
-}

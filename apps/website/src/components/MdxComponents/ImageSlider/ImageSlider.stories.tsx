@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react';
 import React from 'react';
 
-import { ImageSlider, ImageSliderProps, ImageSliderFactory } from '.';
+import { ImageSlider, ImageSliderProps } from '.';
 import { ProseContainer } from '@components/ProseContainer';
 
 const meta: Meta = {
@@ -50,7 +50,5 @@ const meta: Meta = {
 export default meta;
 
 export const defaultCase: Story<ImageSliderProps> = (args) => {
-  const ConfiguredImageSlider = ImageSliderFactory();
-
-  return <ConfiguredImageSlider {...args} />;
+  return <ImageSlider {...args} />;
 };

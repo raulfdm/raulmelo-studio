@@ -2,7 +2,7 @@ import { BigQuote } from '@components/MdxComponents/BigQuote';
 import { DotDivider } from '@components/MdxComponents/DotDivider';
 import { Gif } from '@components/MdxComponents/Gif';
 import * as Headings from '@components/MdxComponents/Headings';
-import { ImageSliderFactory } from '@components/MdxComponents/ImageSlider';
+import { ImageSlider } from '@components/MdxComponents/ImageSlider';
 import { Meta, Story } from '@storybook/react';
 import React from 'react';
 import { ProseContainer } from './ProseContainer';
@@ -23,8 +23,6 @@ const meta: Meta = {
 };
 
 export default meta;
-
-const ConfiguredImageSlider = ImageSliderFactory();
 
 export const defaultCase: Story = () => (
   <ProseContainer>
@@ -67,22 +65,26 @@ export const defaultCase: Story = () => (
       width="300"
       height="400"
     />
-    <ConfiguredImageSlider
+    <ImageSlider
       images={[
         {
           src: 'https://picsum.photos/id/100/2500/1656',
           alt: 'A random image',
+          width: 2500,
+          height: 1656,
         },
         {
           src: 'https://picsum.photos/id/1/5616/3744',
           alt: 'A random image 2',
           noCaption: true,
+          width: 5616,
+          height: 3744,
         },
         {
           src: 'https://picsum.photos/id/10/2500/1667',
           alt: 'A random image3',
-          width: 3000,
-          height: 4000,
+          width: 2500,
+          height: 1667,
         },
       ]}
     />
