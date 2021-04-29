@@ -11,6 +11,19 @@ type TilsHomeProps = {
   tils: Tils;
 };
 
+const styles = {
+  baseCol: tw`col-span-full lg:col-span-10`,
+  title: tw`text-3xl md:text-4xl font-extrabold`,
+  subtitle: tw`text-lg md:text-xl italic text-opacity-80`,
+  description: tw`text-md md:text-lg my-4`,
+  tilsList: {
+    wrapper: tw`mt-5`,
+    list: tw`space-y-8`,
+    itemTitle: tw`text-xl lg:text-2xl`,
+    notFound: tw`text-lg`,
+  },
+};
+
 export const TilsHome = ({ tils }: TilsHomeProps) => {
   const { formatMessage } = useLocalization();
   return (
@@ -20,36 +33,36 @@ export const TilsHome = ({ tils }: TilsHomeProps) => {
         description={formatMessage({ id: 'tilHome.subtitle' })}
       />
 
-      <header className="col-span-full lg:col-span-10">
-        <h1 className="text-3xl md:text-4xl font-extrabold">
+      <header css={styles.baseCol}>
+        <h1 css={styles.title}>
           <FormattedMessage id="tilHome.title" />
         </h1>
-        <p className="text-lg md:text-xl italic text-opacity-80">
+        <p css={styles.subtitle}>
           <FormattedMessage id="tilHome.subtitle" />
         </p>
       </header>
 
-      <p className="col-span-full lg:col-span-10 text-md md:text-lg my-4">
+      <p css={[styles.baseCol, styles.description]}>
         <FormattedMessage id="tilHome.description" />
       </p>
 
-      <section className="col-span-full lg:col-span-10 mt-5">
+      <section css={[styles.baseCol, styles.tilsList.wrapper]}>
         {tils.length > 0 ? (
-          <ul className="space-y-8">
+          <ul css={styles.tilsList.list}>
             {tils.map((til) => (
-              <PostBasic
-                as="li"
-                titleClassName={tw`text-xl lg:text-2xl`}
-                key={til.id}
-                publishedAt={til.publishedAt}
-                tags={til.tags}
-                url={getTilUrl(til.slug)}
-                title={til.title}
-              />
+              <li key={til.id}>
+                <PostBasic
+                  titleClassName={styles.tilsList.itemTitle}
+                  publishedAt={til.publishedAt}
+                  tags={til.tags}
+                  url={getTilUrl(til.slug)}
+                  title={til.title}
+                />
+              </li>
             ))}
           </ul>
         ) : (
-          <p className="text-lg">
+          <p css={styles.tilsList.notFound}>
             <FormattedMessage id="tilHome.noTil" />
           </p>
         )}
