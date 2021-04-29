@@ -1,10 +1,22 @@
-import 'twin.macro';
+import tw from 'twin.macro';
 import Link from 'next/link';
 import React from 'react';
 import { Tags, Tag } from '../Tags';
+import Image from 'next/image';
+
+const styles = {
+  imageWrapper: tw`relative rounded-sm shadow-sm aspect-w-16 aspect-h-9`,
+  bodyWrapper: tw`my-4 md:my-3`,
+  image: tw`object-cover rounded-sm`,
+  title: tw`font-black text-xl lg:text-lg`,
+  titleLink: tw`relative inline-block cursor-pointer`,
+  publishedAt: tw`block text-md lg:text-base font-sans mb-2.5`,
+  subtitle: tw`text-lg lg:text-md text-black dark:text-gray-200 text-opacity-80 dark:text-opacity-100`,
+  tags: tw`mt-4`,
+  tag: tw`underline cursor-pointer`,
+};
 
 export const PostCard: React.FC<PostCardProps> = ({
-  renderImage,
   imageUrl,
   title,
   subtitle,
@@ -15,40 +27,26 @@ export const PostCard: React.FC<PostCardProps> = ({
 }) => {
   return (
     <section>
-      <div tw="relative rounded-sm shadow-sm aspect-w-16 aspect-h-9">
-        {renderImage ? (
-          renderImage({
-            className: 'object-cover rounded-sm',
-            src: imageUrl,
-          })
-        ) : (
-          <img
-            tw="object-cover rounded-sm m-auto min-w-full max-w-full min-h-full max-h-full absolute"
-            src={imageUrl}
-          />
-        )}
+      <div css={styles.imageWrapper}>
+        <Image src={imageUrl} layout="fill" css={styles.image} />
       </div>
-      <div tw="my-4 md:my-3">
+      <div css={styles.bodyWrapper}>
         <Link href={postUrl}>
-          <a tw="relative inline-block" {...titleLinkProps}>
-            <h3 tw="font-black text-xl lg:text-lg">{title}</h3>
+          <a css={styles.titleLink} {...titleLinkProps}>
+            <h3 css={styles.title}>{title}</h3>
           </a>
         </Link>
 
-        <span tw="block text-md lg:text-base font-sans mb-2.5">
+        <span css={styles.publishedAt}>
           <time dateTime={publishDate}>{publishDate}</time>
         </span>
-        {subtitle && (
-          <p tw="text-lg lg:text-md text-black dark:text-gray-200 text-opacity-80 dark:text-opacity-100">
-            {subtitle}
-          </p>
-        )}
+        {subtitle && <p css={styles.subtitle}>{subtitle}</p>}
         {tags ? (
-          <Tags tw="mt-4">
+          <Tags css={styles.tags}>
             {tags.map(({ name, href }) => (
               <Tag key={name}>
                 <Link href={href}>
-                  <a tw="underline">#{name}</a>
+                  <a css={styles.tag}>#{name}</a>
                 </Link>
               </Tag>
             ))}
@@ -63,10 +61,6 @@ export type PostCardProps = {
   imageUrl: string;
   postUrl: string;
   publishDate: string;
-  renderImage?: (renderProps: {
-    className: string;
-    src: string;
-  }) => React.ReactNode;
   subtitle?: string;
   tags: { href: string; name: string }[];
   title: string;
