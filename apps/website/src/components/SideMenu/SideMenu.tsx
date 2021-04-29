@@ -1,5 +1,5 @@
 import { Disclosure } from '@headlessui/react';
-import tw, { css } from 'twin.macro';
+import tw, { css, styled } from 'twin.macro';
 //TODO: fix @hooks/index
 import { useClickAway } from '@hooks/index';
 import { motion, useAnimation } from 'framer-motion';
@@ -31,13 +31,118 @@ const messages = defineMessage({
   },
 });
 
+const styles = {
+  sideMenuPanel: tw`
+    fixed
+    bottom-0 right-0 top-16
+    h-full
+    bg-white dark:bg-blue-800
+    z-20
+    transform translate-x-full
+    min-w-full sm:min-w-min sm:w-full sm:max-w-xs
+    transition-theme duration-200 ease
+  `,
+  sideMenuItem: (isActive: boolean) => css`
+    ${tw`cursor-pointer font-black text-xl sm:text-lg mx-5`};
+    ${isActive &&
+    tw`
+      sm:pl-3
+      border-b-2 sm:border-l-2 sm:border-b-0
+      border-black dark:border-gray-300 border-opacity-80
+  `}
+  `,
+  overlay: (isClosed: boolean) => css`
+    ${tw`absolute inset-0 top-16 z-10 opacity-0 background[rgba(0,0,0,0.7)]`};
+    pointer-events: ${isClosed ? 'none' : 'all'};
+  `,
+  list: tw`py-6 flex flex-col`,
+  listItem: tw`px-4 py-2 text-center sm:text-left`,
+};
+
+const Panel = styled(motion.nav)`
+  ${styles.sideMenuPanel}
+`;
+
 export const SideMenu = () => {
   const { sideMenu } = useApp();
   const { state, handleClose } = sideMenu;
+  const links = useLinks();
+  const navRef = useRef(null);
+
+  const isClosed = state === 'closed';
+  useClickAway(navRef, handleClose, ['mouseevent', 'scroll']);
+
+  /**
+   * The following animation exists because I need to coordinate the animations.
+   * If I let translate and display run in the same time, when it got close,
+   * because the display will be `none`, it'll suddenly disappear.
+   */
+  const animation = useAnimation();
+
+  async function sequence() {
+    if (isClosed) {
+      await animation.start({ transform: `translate3d(100%, 0, 0)` });
+      await animation.start({ display: 'none' });
+    } else {
+      await animation.start({ display: 'block' });
+      await animation.start({ transform: `translate3d(0%, 0, 0)` });
+    }
+  }
+
+  useEffect(() => {
+    sequence();
+  }, [isClosed]);
+
+  return (
+    <Disclosure>
+      <Disclosure.Panel
+        static
+        as={Panel}
+        aria-expanded={!isClosed}
+        ref={navRef}
+        animate={animation}
+        data-testid="sideMenu"
+      >
+        <ul css={styles.list}>
+          {links.map(({ href, active, itemLabel }) => (
+            <li css={styles.listItem} key={href}>
+              <Link href={href}>
+                <a onClick={handleClose} css={styles.sideMenuItem(active)}>
+                  {itemLabel}
+                </a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Disclosure.Panel>
+      <Disclosure.Panel
+        static
+        as={motion.div}
+        aria-hidden={isClosed}
+        css={styles.overlay}
+        onClick={handleClose}
+        animate={state}
+        transition={{ ease: 'easeOut', duration: 0.2 }}
+        variants={{
+          open: {
+            opacity: 1,
+            display: 'block',
+          },
+          closed: {
+            opacity: 0,
+            display: 'none',
+          },
+        }}
+      />
+    </Disclosure>
+  );
+};
+
+function useLinks() {
   const { formatMessage, locale } = useLocalization();
   const { pathname } = useRouter();
-  const navRef = useRef(null);
-  const links = useMemo(
+
+  return useMemo(
     () =>
       [
         {
@@ -72,122 +177,6 @@ export const SideMenu = () => {
         active: pathname === href,
         href,
       })),
-    [locale],
+    [locale, pathname],
   );
-
-  const isClosed = state === 'closed';
-  useClickAway(navRef, handleClose, ['mouseevent', 'scroll']);
-
-  /**
-   * The following animation exists because I need to coordinate the animations.
-   * If I let translate and display run in the same time, when it got close,
-   * because the display will be `none`, it'll suddenly disappear.
-   */
-  const animation = useAnimation();
-
-  async function sequence() {
-    if (isClosed) {
-      await animation.start({ transform: `translate3d(100%, 0, 0)` });
-      await animation.start({ display: 'none' });
-    } else {
-      await animation.start({ display: 'block' });
-      await animation.start({ transform: `translate3d(0%, 0, 0)` });
-    }
-  }
-
-  useEffect(() => {
-    sequence();
-  }, [isClosed]);
-
-  return (
-    <Disclosure>
-      <Disclosure.Panel
-        static
-        as={motion.nav}
-        aria-expanded={!isClosed}
-        ref={navRef}
-        css={[
-          tw`fixed`,
-          tw`bottom-0 right-0 top-16`,
-          tw`h-full`,
-          tw`bg-white dark:bg-blue-800`,
-          tw`z-20`,
-          tw`transform translate-x-full`,
-          tw`min-w-full sm:min-w-min sm:w-full sm:max-w-xs`,
-          tw`transition-theme duration-200 ease`,
-        ]}
-        animate={animation}
-        data-testid="sideMenu"
-      >
-        <ul tw="py-6 flex flex-col">
-          {links.map((props) => (
-            <SideMenuItem key={props.href} {...props} onClick={handleClose} />
-          ))}
-        </ul>
-      </Disclosure.Panel>
-      <Disclosure.Panel
-        static
-        as={motion.div}
-        aria-hidden={isClosed}
-        css={[
-          tw`absolute inset-0 top-16 z-10 opacity-0 background[rgba(0,0,0,0.7)]`,
-          css`
-            pointer-events: ${isClosed ? 'none' : 'all'};
-          `,
-        ]}
-        onClick={handleClose}
-        animate={state}
-        transition={{ ease: 'easeOut', duration: 0.2 }}
-        variants={{
-          open: {
-            opacity: 1,
-            display: 'block',
-          },
-          closed: {
-            opacity: 0,
-            display: 'none',
-          },
-        }}
-      />
-    </Disclosure>
-  );
-};
-
-const SideMenuItem = ({
-  active = false,
-  href,
-  itemLabel,
-  onClick,
-}: SideMenuItemProps) => {
-  const activeClasses = tw`
-    sm:pl-3
-    border-b-2 sm:border-l-2 sm:border-b-0
-    border-black dark:border-gray-300 border-opacity-80
-  `;
-
-  return (
-    <li tw="px-4 py-2 text-center sm:text-left">
-      <Link href={href}>
-        <a
-          onClick={onClick}
-          css={[
-            tw`cursor-pointer`,
-            tw`font-black`,
-            tw`text-xl sm:text-lg`,
-            tw`mx-5`,
-            active && activeClasses,
-          ]}
-        >
-          {itemLabel}
-        </a>
-      </Link>
-    </li>
-  );
-};
-
-type SideMenuItemProps = {
-  active?: boolean;
-  href: string;
-  itemLabel: React.ReactNode;
-  onClick?: () => void;
-};
+}
