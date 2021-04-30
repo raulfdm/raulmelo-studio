@@ -4,8 +4,23 @@ const common = css`
   ${tw`relative table`};
 
   --icon-visible: hidden;
+
   &:hover {
     --icon-visible: unset;
+  }
+
+  .copy-title-icon {
+    ${tw`absolute -right-1`};
+    transform: translate(100%, 50%);
+
+    .icon-link {
+      ${tw`block bg-secondary`};
+      width: 0.7em;
+      height: 0.7em;
+      mask: url(/icons/anchor.svg) no-repeat;
+      transition: visibility 0.2s ease-in-out;
+      visibility: var(--icon-visible);
+    }
   }
 `;
 

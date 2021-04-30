@@ -29,27 +29,6 @@ export const globals = css`
   body {
     ${tw`antialiased`};
   }
-
-  .prose .copy-title-icon {
-    position: absolute;
-    right: -0.1em;
-    transform: translate(100%, 50%);
-  }
-
-  .prose .copy-title-icon .icon.icon-link {
-    display: inline-block;
-    display: block;
-    width: 0.7em;
-    height: 0.7em;
-    mask: url(/icons/anchor.svg) no-repeat;
-    transition: visibility 0.2s ease-in-out;
-    visibility: var(--icon-visible);
-    background-color: black;
-  }
-
-  .dark .prose .icon.icon-link {
-    background-color: white;
-  }
 `;
 
 export const gridContainer = tw`
