@@ -20,6 +20,7 @@ export type FeaturedImageProps = {
 const styles = {
   wrapper: tw`mb-8 lg:mb-16 col-span-full`,
   figure: tw`aspect-w-12 aspect-h-6 relative overflow-hidden h-0 shadow`,
+  captionLink: tw`underline text-secondary`,
 };
 
 const Caption = tw.p`text-center text-base lg:text-md dark:text-gray-300 mt-4`;
@@ -61,12 +62,12 @@ function UnsplashCaption({ authorName, url }: UnsplashCaptionProps) {
         id="blogPost.unsplashCaption"
         values={{
           authorLink: (
-            <a href={url} tw="underline">
+            <a href={url} tw="underline text-secondary">
               {authorName}
             </a>
           ),
           unsplashLink: (
-            <a href="https://unsplash.com" tw="underline">
+            <a href="https://unsplash.com" tw="underline text-secondary">
               Unsplash
             </a>
           ),
