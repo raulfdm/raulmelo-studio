@@ -12,7 +12,7 @@ export const algoliaGlobalStyles = css`
       text-3xl font-light md:text-4xl
       border-b dark:border-gray-700
       pb-3 py-1
-      focus:outline-black dark:focus:outline-white focus:border-0
+      focus:border-0
     `}
   }
 

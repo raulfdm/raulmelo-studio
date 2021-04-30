@@ -11,7 +11,7 @@ const styles = {
   title: tw`font-black text-xl lg:text-lg`,
   titleLink: tw`relative inline-block cursor-pointer`,
   publishedAt: tw`block text-md lg:text-base font-sans mb-2.5`,
-  subtitle: tw`text-lg lg:text-md text-black dark:text-gray-200 text-opacity-80 dark:text-opacity-100`,
+  subtitle: tw`text-lg lg:text-md text-primary dark:text-gray-200 text-opacity-80 dark:text-opacity-100`,
   tags: tw`mt-4`,
   tag: tw`underline cursor-pointer`,
 };

@@ -128,7 +128,7 @@ export const MdxPostTemplate: React.FC<MdxPostTemplateProps> = ({
                 {tags.map((tag) => (
                   <Tag key={tag.id} tw="text-base lg:text-lg">
                     <Link href={getTagUrl(tag.slug)} passHref>
-                      <a tw="underline">#{tag.name}</a>
+                      <a tw="underline text-secondary">#{tag.name}</a>
                     </Link>
                   </Tag>
                 ))}

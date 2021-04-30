@@ -8,7 +8,7 @@ const styles = {
   body: css`
     ${tw`min-h-screen`};
     ${tw`bg-white dark:bg-blue-900`};
-    ${tw`text-black dark:text-white`};
+    ${tw`text-primary`};
     ${tw`transition-theme duration-200 ease`};
     ${tw`relative`};
     ${tw`pb-12 md:pb-16`};

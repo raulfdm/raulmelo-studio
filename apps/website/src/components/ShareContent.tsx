@@ -8,7 +8,7 @@ const Wrapper = styled.div``;
 
 const styles = {
   title: tw`font-extrabold text-md md:text-lg lg:text-xl block mb-4 md:mb-6`,
-  list: tw`flex space-x-4`,
+  list: tw`flex space-x-4 text-secondary`,
   item: tw`w-6 md:w-8`,
   itemIcon: tw`w-6 md:w-8`,
 };
