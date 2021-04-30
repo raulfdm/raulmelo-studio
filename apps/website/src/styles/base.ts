@@ -4,7 +4,8 @@ export const globals = css`
   html {
     ${tw`h-full`};
 
-    --primary: #2c2c2c;
+    --black: #2c2c2c;
+    --primary: var(--black);
     --secondary: #be185d;
   }
 
@@ -20,7 +21,8 @@ export const globals = css`
   }
 
   button:focus,
-  * {
+  *,
+  *::focus-visible {
     ${tw`focus:outline-black dark:focus:outline-white`}
   }
 
