@@ -36,6 +36,27 @@ describe('<Headings />', () => {
         --icon-visible: unset;
       }
 
+      .emotion-0 .copy-title-icon {
+        position: absolute;
+        right: -0.25rem;
+        -webkit-transform: translate(100%, 50%);
+        -moz-transform: translate(100%, 50%);
+        -ms-transform: translate(100%, 50%);
+        transform: translate(100%, 50%);
+      }
+
+      .emotion-0 .copy-title-icon .icon-link {
+        display: block;
+        background-color: var(--secondary);
+        width: 0.7em;
+        height: 0.7em;
+        -webkit-mask: url(/icons/anchor.svg) no-repeat;
+        mask: url(/icons/anchor.svg) no-repeat;
+        -webkit-transition: visibility 0.2s ease-in-out;
+        transition: visibility 0.2s ease-in-out;
+        visibility: var(--icon-visible);
+      }
+
       .emotion-2 {
         position: relative;
         display: table;
@@ -44,6 +65,27 @@ describe('<Headings />', () => {
 
       .emotion-2:hover {
         --icon-visible: unset;
+      }
+
+      .emotion-2 .copy-title-icon {
+        position: absolute;
+        right: -0.25rem;
+        -webkit-transform: translate(100%, 50%);
+        -moz-transform: translate(100%, 50%);
+        -ms-transform: translate(100%, 50%);
+        transform: translate(100%, 50%);
+      }
+
+      .emotion-2 .copy-title-icon .icon-link {
+        display: block;
+        background-color: var(--secondary);
+        width: 0.7em;
+        height: 0.7em;
+        -webkit-mask: url(/icons/anchor.svg) no-repeat;
+        mask: url(/icons/anchor.svg) no-repeat;
+        -webkit-transition: visibility 0.2s ease-in-out;
+        transition: visibility 0.2s ease-in-out;
+        visibility: var(--icon-visible);
       }
 
       .emotion-4 {
@@ -56,6 +98,27 @@ describe('<Headings />', () => {
         --icon-visible: unset;
       }
 
+      .emotion-4 .copy-title-icon {
+        position: absolute;
+        right: -0.25rem;
+        -webkit-transform: translate(100%, 50%);
+        -moz-transform: translate(100%, 50%);
+        -ms-transform: translate(100%, 50%);
+        transform: translate(100%, 50%);
+      }
+
+      .emotion-4 .copy-title-icon .icon-link {
+        display: block;
+        background-color: var(--secondary);
+        width: 0.7em;
+        height: 0.7em;
+        -webkit-mask: url(/icons/anchor.svg) no-repeat;
+        mask: url(/icons/anchor.svg) no-repeat;
+        -webkit-transition: visibility 0.2s ease-in-out;
+        transition: visibility 0.2s ease-in-out;
+        visibility: var(--icon-visible);
+      }
+
       .emotion-6 {
         position: relative;
         display: table;
@@ -64,6 +127,27 @@ describe('<Headings />', () => {
 
       .emotion-6:hover {
         --icon-visible: unset;
+      }
+
+      .emotion-6 .copy-title-icon {
+        position: absolute;
+        right: -0.25rem;
+        -webkit-transform: translate(100%, 50%);
+        -moz-transform: translate(100%, 50%);
+        -ms-transform: translate(100%, 50%);
+        transform: translate(100%, 50%);
+      }
+
+      .emotion-6 .copy-title-icon .icon-link {
+        display: block;
+        background-color: var(--secondary);
+        width: 0.7em;
+        height: 0.7em;
+        -webkit-mask: url(/icons/anchor.svg) no-repeat;
+        mask: url(/icons/anchor.svg) no-repeat;
+        -webkit-transition: visibility 0.2s ease-in-out;
+        transition: visibility 0.2s ease-in-out;
+        visibility: var(--icon-visible);
       }
 
       .emotion-8 {
@@ -76,6 +160,27 @@ describe('<Headings />', () => {
         --icon-visible: unset;
       }
 
+      .emotion-8 .copy-title-icon {
+        position: absolute;
+        right: -0.25rem;
+        -webkit-transform: translate(100%, 50%);
+        -moz-transform: translate(100%, 50%);
+        -ms-transform: translate(100%, 50%);
+        transform: translate(100%, 50%);
+      }
+
+      .emotion-8 .copy-title-icon .icon-link {
+        display: block;
+        background-color: var(--secondary);
+        width: 0.7em;
+        height: 0.7em;
+        -webkit-mask: url(/icons/anchor.svg) no-repeat;
+        mask: url(/icons/anchor.svg) no-repeat;
+        -webkit-transition: visibility 0.2s ease-in-out;
+        transition: visibility 0.2s ease-in-out;
+        visibility: var(--icon-visible);
+      }
+
       .emotion-10 {
         position: relative;
         display: table;
@@ -84,6 +189,27 @@ describe('<Headings />', () => {
 
       .emotion-10:hover {
         --icon-visible: unset;
+      }
+
+      .emotion-10 .copy-title-icon {
+        position: absolute;
+        right: -0.25rem;
+        -webkit-transform: translate(100%, 50%);
+        -moz-transform: translate(100%, 50%);
+        -ms-transform: translate(100%, 50%);
+        transform: translate(100%, 50%);
+      }
+
+      .emotion-10 .copy-title-icon .icon-link {
+        display: block;
+        background-color: var(--secondary);
+        width: 0.7em;
+        height: 0.7em;
+        -webkit-mask: url(/icons/anchor.svg) no-repeat;
+        mask: url(/icons/anchor.svg) no-repeat;
+        -webkit-transition: visibility 0.2s ease-in-out;
+        transition: visibility 0.2s ease-in-out;
+        visibility: var(--icon-visible);
       }
 
       <div>
