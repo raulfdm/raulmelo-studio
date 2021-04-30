@@ -22,6 +22,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        blue: colors.blueGray,
         primary: 'var(--primary)',
         secondary: 'var(--secondary)',
       },
