@@ -31,6 +31,11 @@ const styles = {
     ${tw`py-2 px-6`};
     ${tw`whitespace-nowrap`};
     ${tw`flex-1`};
+
+    &:disabled {
+      ${tw`cursor-not-allowed`}
+      ${tw`font-semibold text-secondary`};
+    }
   `,
 };
 
@@ -39,7 +44,7 @@ const Panel = styled.div`
 `;
 
 export const LanguageSwitch = () => {
-  const { switchToEnglish, switchToPortuguese } = useLocalization();
+  const { switchToEnglish, switchToPortuguese, locale } = useLocalization();
   const { pathname } = useRouter();
 
   const [referenceElement, setReferenceElement] = useState(null);
@@ -97,10 +102,18 @@ export const LanguageSwitch = () => {
             transform: `${popperStyles.arrow.transform} rotate(45deg)`,
           }}
         />
-        <button css={styles.item} onClick={switchToEnglish}>
+        <button
+          css={styles.item}
+          disabled={locale === 'en'}
+          onClick={switchToEnglish}
+        >
           English
         </button>
-        <button css={styles.item} onClick={switchToPortuguese}>
+        <button
+          css={styles.item}
+          disabled={locale === 'pt'}
+          onClick={switchToPortuguese}
+        >
           Português
         </button>
       </Popover.Panel>

@@ -7,8 +7,11 @@ export const Tags = styled.ul`
   }
 `;
 
-export const Tag = tw.li`
-  font-sans text-center hover:font-bold
-  cursor-default
-  list-none
+export const Tag = styled.li`
+  ${tw`
+    font-sans text-center hover:font-bold
+    cursor-default
+    list-none
+    text-secondary
+  `};
 `;

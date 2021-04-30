@@ -13,12 +13,15 @@ const styles = {
   item: (selected: boolean) => css`
     min-width: 1.5rem;
 
-    ${tw`text-center`};
-    ${tw`cursor-pointer`};
-    ${tw`text-lg`};
-    ${tw`tabular-nums`};
-    ${selected && tw`border-black dark:border-white border-b font-bold`};
-    ${!selected && tw`hover:font-bold`}
+    ${tw`
+      text-center
+      cursor-pointer
+      text-lg
+      tabular-nums
+    `};
+    ${selected
+      ? tw`border-secondary border-b font-bold text-secondary`
+      : tw`hover:font-bold`};
   `,
   icon: (disabled: boolean) => css`
     ${tw`w-6`};

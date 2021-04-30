@@ -18,7 +18,7 @@ const styles = {
     title: tw`font-sans font-black text-2xl md:text-3xl xl:text-4xl`,
     description: tw`text-md md:text-md xl:text-lg mt-2.5`,
     icons: {
-      wrapper: tw`flex items-center pt-5 flex-1 text-black opacity-60 dark:text-white dark:opacity-90 space-x-4`,
+      wrapper: tw`flex items-center pt-5 flex-1 dark:opacity-90 space-x-4 text-secondary`,
       icon: tw`w-6 lg:w-8`,
     },
   },

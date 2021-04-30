@@ -10,6 +10,7 @@ import siteData from 'site-data';
 import { AuthorPresentation } from './components/AuthorPresentation';
 import { IHomeGraphQLResponse, PostSectionProps } from './types';
 import tw from 'twin.macro';
+import { ArrowRightIcon } from '@components/Icons';
 
 const messages = defineMessages({
   postsTitle: {
@@ -31,8 +32,9 @@ const styles = {
   postWrapper: tw`col-span-full mb-6`,
   postTitle: tw`font-sans font-extrabold text-lg lg:text-xl mb-4 lg:mb-6`,
   postList: tw`grid grid-cols-1 ipad-pro:grid-cols-2 gap-6`,
-  postCard: tw`dark:bg-blue-800 p-6 rounded-sm shadow hover:scale-50`,
-  postCardLink: tw`text-lg underline mt-6 inline-block cursor-pointer`,
+  postCard: tw`bg-white dark:bg-blue-800 p-6 rounded-sm shadow hover:scale-50 transition-theme`,
+  postCardLink: tw`text-lg underline mt-6 cursor-pointer inline-flex text-secondary`,
+  linkIcon: tw`w-6 ml-2`,
 };
 
 export const HomePage: React.FC<IHomeGraphQLResponse> = ({ posts, tils }) => {
@@ -92,7 +94,10 @@ const PostSection = ({ checkAllLink, posts, title }: PostSectionProps) => {
         ))}
       </ul>
       <Link href={checkAllLink.href} passHref>
-        <a css={styles.postCardLink}>{checkAllLink.text}</a>
+        <a css={styles.postCardLink}>
+          {checkAllLink.text}
+          <ArrowRightIcon css={styles.linkIcon} />
+        </a>
       </Link>
     </section>
   );

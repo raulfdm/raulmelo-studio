@@ -48,7 +48,8 @@ const styles = {
     tw`
       sm:pl-3
       border-b-2 sm:border-l-2 sm:border-b-0
-      border-black dark:border-gray-300 border-opacity-80
+      border-secondary border-opacity-80
+      transition-theme
   `}
   `,
   overlay: (isClosed: boolean) => css`
@@ -119,7 +120,7 @@ export const SideMenu = () => {
         static
         as={motion.div}
         aria-hidden={isClosed}
-        css={styles.overlay}
+        css={styles.overlay(isClosed)}
         onClick={handleClose}
         animate={state}
         transition={{ ease: 'easeOut', duration: 0.2 }}
