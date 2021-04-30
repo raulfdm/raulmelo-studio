@@ -31,7 +31,7 @@ export const PostCard: React.FC<PostCardProps> = ({
         <Image src={imageUrl} layout="fill" css={styles.image} />
       </div>
       <div css={styles.bodyWrapper}>
-        <Link href={postUrl}>
+        <Link href={postUrl} passHref>
           <a css={styles.titleLink} {...titleLinkProps}>
             <h3 css={styles.title}>{title}</h3>
           </a>
@@ -45,7 +45,7 @@ export const PostCard: React.FC<PostCardProps> = ({
           <Tags css={styles.tags}>
             {tags.map(({ name, href }) => (
               <Tag key={name}>
-                <Link href={href}>
+                <Link href={href} passHref>
                   <a css={styles.tag}>#{name}</a>
                 </Link>
               </Tag>

@@ -28,7 +28,7 @@ export const PostBasic: React.FC<PostBasicProps> = ({
 }) => {
   return (
     <Wrapper as={as} css={className}>
-      <Link href={url}>
+      <Link href={url} passHref>
         <a css={styles.titleLink}>
           <h3 css={[styles.title, titleClassName]}>{title}</h3>
         </a>
@@ -49,7 +49,7 @@ export const PostBasic: React.FC<PostBasicProps> = ({
         <Tags css={styles.tags}>
           {tags.map(({ name, slug, id }) => (
             <Tag key={id}>
-              <Link href={getTagUrl(slug)}>
+              <Link href={getTagUrl(slug)} passHref>
                 <a css={styles.tagLink}>#{name}</a>
               </Link>
             </Tag>

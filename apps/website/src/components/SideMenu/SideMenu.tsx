@@ -106,7 +106,7 @@ export const SideMenu = () => {
         <ul css={styles.list}>
           {links.map(({ href, active, itemLabel }) => (
             <li css={styles.listItem} key={href}>
-              <Link href={href}>
+              <Link href={href} passHref>
                 <a onClick={handleClose} css={styles.sideMenuItem(active)}>
                   {itemLabel}
                 </a>

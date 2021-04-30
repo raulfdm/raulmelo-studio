@@ -61,7 +61,7 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
                   data-testid={`post_${id}`}
                   variants={variants.item}
                 >
-                  <Link href={uri}>
+                  <Link href={uri} passHref>
                     <a
                       css={styles.link}
                       aria-hidden={currentState === 'collapsed'}
