@@ -3,6 +3,14 @@ import tw, { css } from 'twin.macro';
 export const globals = css`
   html {
     ${tw`h-full`};
+
+    --primary: #2c2c2c;
+    --secondary: #be185d;
+  }
+
+  html.dark {
+    --primary: #fff;
+    --secondary: #c0ed40;
   }
 
   * {
