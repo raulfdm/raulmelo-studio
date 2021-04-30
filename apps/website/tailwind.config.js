@@ -22,23 +22,12 @@ module.exports = {
     },
     extend: {
       colors: {
-        // TODO: Deprecate this soon
-        blue: colors.blueGray,
-        black: '#2c2c2c',
-
-        primaryDark: '#fff',
-        primaryLight: '#2c2c2c',
-        secondaryDark: '#C0ED40',
-        secondaryLight: '#ED4128',
+        primary: 'var(--primary)',
+        secondary: 'var(--secondary)',
       },
       textColor: {
-        // TODO: Deprecate this soon
-        black: '#2c2c2c',
-
-        primaryDark: '#fff',
-        primaryLight: '#2c2c2c',
-        secondaryDark: '#C0ED40',
-        secondaryLight: '#ED4128',
+        primary: 'var(--primary)',
+        secondary: 'var(--secondary)',
       },
       screens: {
         'ipad-pro': '834px',
@@ -48,8 +37,8 @@ module.exports = {
         theme: 'background-color, color, fill, opacity, border, shadow',
       },
       typography: (theme) => {
-        const white = theme('textColor.white');
-        const black = theme('textColor.black');
+        const primary = theme('textColor.primary');
+        const secondary = theme('textColor.secondary');
 
         return {
           /**
@@ -57,34 +46,43 @@ module.exports = {
            */
           DEFAULT: {
             css: {
-              color: black,
+              color: primary,
               blockquote: {
-                borderLeftColor: black,
+                borderLeftColor: secondary,
                 fontWeight: 900,
+              },
+              code: {
+                color: secondary,
               },
               h1: {
                 fontWeight: 800,
-                color: black,
+                color: primary,
               },
               h2: {
                 fontWeight: 800,
-                color: black,
+                color: primary,
               },
               h3: {
                 fontWeight: 800,
-                color: black,
+                color: primary,
               },
               h4: {
                 fontWeight: 800,
-                color: black,
+                color: primary,
               },
               h5: {
                 fontWeight: 800,
-                color: black,
+                color: primary,
               },
               h6: {
                 fontWeight: 800,
-                color: black,
+                color: primary,
+              },
+              a: {
+                color: secondary,
+              },
+              strong: {
+                color: secondary,
               },
             },
           },
@@ -93,40 +91,11 @@ module.exports = {
            */
           dark: {
             css: {
-              color: white,
               'figure figcaption': {
                 color: theme('textColor.gray.200'),
               },
               blockquote: {
-                borderLeftColor: white,
                 color: theme('textColor.gray.200'),
-              },
-              a: {
-                color: white,
-              },
-              code: {
-                color: white,
-              },
-              h1: {
-                color: white,
-              },
-              h2: {
-                color: white,
-              },
-              h3: {
-                color: white,
-              },
-              h4: {
-                color: white,
-              },
-              h5: {
-                color: white,
-              },
-              h6: {
-                color: white,
-              },
-              strong: {
-                color: white,
               },
             },
           },
