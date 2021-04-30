@@ -42,7 +42,7 @@ export const MenuBar: FC = () => {
       <div css={styles.wrapper}>
         <nav css={styles.inner}>
           <section data-testid="menu-bar__logo" css={styles.logo}>
-            <Link href="/" locale={locale}>
+            <Link href="/" locale={locale} passHref>
               <a>
                 <Logo />
               </a>

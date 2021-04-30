@@ -91,7 +91,7 @@ const PostSection = ({ checkAllLink, posts, title }: PostSectionProps) => {
           </li>
         ))}
       </ul>
-      <Link href={checkAllLink.href}>
+      <Link href={checkAllLink.href} passHref>
         <a css={styles.postCardLink}>{checkAllLink.text}</a>
       </Link>
     </section>
