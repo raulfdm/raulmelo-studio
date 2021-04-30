@@ -42,7 +42,7 @@ describe('<DotDivider />', () => {
         width: 0.375rem;
         height: 0.375rem;
         border-radius: 9999px;
-        --hr-color: currentColor;
+        --hr-color: var(--secondary);
         background-color: var(--hr-color);
       }
 

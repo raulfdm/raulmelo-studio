@@ -11,7 +11,7 @@ describe('<ProseContainer />', () => {
       .emotion-0 {
         font-size: 1rem;
         line-height: 1.75;
-        color: #2c2c2c;
+        color: var(--primary);
         max-width: 65ch;
         font-size: 1.125rem;
         line-height: 1.7777778;
@@ -24,7 +24,7 @@ describe('<ProseContainer />', () => {
       }
 
       .emotion-0 a {
-        color: #111827;
+        color: var(--secondary);
         -webkit-text-decoration: underline;
         text-decoration: underline;
         font-weight: 500;
@@ -32,12 +32,12 @@ describe('<ProseContainer />', () => {
 
       .emotion-0 h6 {
         font-weight: 800;
-        color: #2c2c2c;
+        color: var(--primary);
       }
 
       .emotion-0 h5 {
         font-weight: 800;
-        color: #2c2c2c;
+        color: var(--primary);
       }
 
       .emotion-0 li {
@@ -56,7 +56,7 @@ describe('<ProseContainer />', () => {
       }
 
       .emotion-0 h4 {
-        color: #2c2c2c;
+        color: var(--primary);
         font-weight: 800;
         margin-top: 1.5em;
         margin-bottom: 0.5em;
@@ -64,7 +64,7 @@ describe('<ProseContainer />', () => {
       }
 
       .emotion-0 h3 {
-        color: #2c2c2c;
+        color: var(--primary);
         font-weight: 800;
         font-size: 1.25em;
         margin-top: 1.6em;
@@ -73,7 +73,7 @@ describe('<ProseContainer />', () => {
       }
 
       .emotion-0 h2 {
-        color: #2c2c2c;
+        color: var(--primary);
         font-weight: 800;
         font-size: 1.5em;
         margin-top: 2em;
@@ -82,7 +82,7 @@ describe('<ProseContainer />', () => {
       }
 
       .emotion-0 h1 {
-        color: #2c2c2c;
+        color: var(--primary);
         font-weight: 800;
         font-size: 2.25em;
         margin-top: 0;
@@ -118,7 +118,7 @@ describe('<ProseContainer />', () => {
       }
 
       .emotion-0 code {
-        color: #111827;
+        color: var(--secondary);
         font-weight: 600;
         font-size: 0.875em;
       }
@@ -171,7 +171,7 @@ describe('<ProseContainer />', () => {
       }
 
       .emotion-0 strong {
-        color: #111827;
+        color: var(--secondary);
         font-weight: 600;
       }
 
@@ -235,7 +235,7 @@ describe('<ProseContainer />', () => {
         font-style: italic;
         color: #111827;
         border-left-width: 0.25rem;
-        border-left-color: #2c2c2c;
+        border-left-color: var(--secondary);
         quotes: "\\201C""\\201D""\\2018""\\2019";
         margin-top: 1.6em;
         margin-bottom: 1.6em;
@@ -405,48 +405,7 @@ describe('<ProseContainer />', () => {
         margin-bottom: 0.75em;
       }
 
-      .dark .emotion-0 {
-        color: #fff;
-      }
-
-      .dark .emotion-0 a {
-        color: #fff;
-      }
-
-      .dark .emotion-0 h6 {
-        color: #fff;
-      }
-
-      .dark .emotion-0 h5 {
-        color: #fff;
-      }
-
-      .dark .emotion-0 h4 {
-        color: #fff;
-      }
-
-      .dark .emotion-0 h3 {
-        color: #fff;
-      }
-
-      .dark .emotion-0 h2 {
-        color: #fff;
-      }
-
-      .dark .emotion-0 h1 {
-        color: #fff;
-      }
-
-      .dark .emotion-0 code {
-        color: #fff;
-      }
-
-      .dark .emotion-0 strong {
-        color: #fff;
-      }
-
       .dark .emotion-0 blockquote {
-        border-left-color: #fff;
         color: #e5e7eb;
       }
 
