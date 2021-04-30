@@ -86,6 +86,14 @@ module.exports = {
               strong: {
                 color: secondary,
               },
+              'ol > li::before': {
+                color: secondary,
+                opacity: 0.8,
+              },
+              'ul > li::before': {
+                backgroundColor: secondary,
+                opacity: 0.8,
+              },
             },
           },
           /**

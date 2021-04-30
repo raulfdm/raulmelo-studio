@@ -7,7 +7,7 @@ const TilsPage = (props: { tils: Tils }) => <TilsHome {...props} />;
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const { tils } = await Backend.graphql<TilsHomeGraphQLResponse>(`
   query Tils {
-    tils(locale: "${locale}") {
+    tils(locale: "${locale}", sort: "publishedAt:DESC") {
       id
       publishedAt
       title
