@@ -9,7 +9,7 @@ export const globals = css`
   }
 
   html.dark {
-    --primary: #fff;
+    --primary: #ffffff;
     --secondary: #c0ed40;
   }
 
@@ -17,6 +17,11 @@ export const globals = css`
     overflow-wrap: break-word;
     word-wrap: break-word;
     hyphens: auto;
+  }
+
+  button:focus,
+  * {
+    ${tw`focus:outline-black dark:focus:outline-white`}
   }
 
   body {
