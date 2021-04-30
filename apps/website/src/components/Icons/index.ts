@@ -12,3 +12,4 @@ export * from './Moon';
 export * from './Sun';
 export * from './Twitter';
 export * from './ExternalLink';
+export * from './ArrowRight';
