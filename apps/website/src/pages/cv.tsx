@@ -20,12 +20,12 @@ const styles = {
   `,
   figure: tw`relative h-full w-full`,
   cta: css`
-    ${tw`bg-secondary dark:text-primary transition-theme`};
+    ${tw`bg-secondary transition-theme`};
     ${tw`rounded-md`};
     ${tw`py-2 px-3 md:py-4 md:px-6`};
     ${tw`text-base md:text-lg`};
     ${tw`font-extrabold`};
-    ${tw`text-white`};
+    ${tw`text-white dark:text-black`};
     ${tw`absolute`};
   `,
   ctaIcon: tw`w-4 inline-block mb-2 md:mb-4`,
