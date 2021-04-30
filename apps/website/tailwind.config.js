@@ -23,6 +23,7 @@ module.exports = {
     extend: {
       colors: {
         blue: colors.blueGray,
+        black: 'var(--black)',
         primary: 'var(--primary)',
         secondary: 'var(--secondary)',
       },
