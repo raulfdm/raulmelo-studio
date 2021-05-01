@@ -4,9 +4,11 @@ import { searchStyles } from '../styles';
 
 function PoweredByAlgolia({ url }: { url: string }) {
   return (
-    <a css={searchStyles.poweredLink} href={url}>
-      Powered by <AlgoliaIcon tw="w-8" color="#5468ff" /> Algolia
-    </a>
+    <div css={searchStyles.poweredLink}>
+      <a href={url}>
+        Powered by <AlgoliaIcon tw="w-8" color="#5468ff" /> Algolia
+      </a>
+    </div>
   );
 }
 

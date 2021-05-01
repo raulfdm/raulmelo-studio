@@ -23,8 +23,12 @@ export const searchStyles = {
       }
     `,
   },
-
-  poweredLink: tw`flex justify-end items-center font-medium font-sans text-base col-span-full`,
+  poweredLink: css`
+    ${tw`relative items-center font-medium font-sans text-base col-span-full`};
+    a {
+      ${tw`inline-flex justify-end absolute right-0`}
+    }
+  `,
 };
 
 const algoliaGlobalStyles = css`
