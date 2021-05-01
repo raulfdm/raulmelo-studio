@@ -1,7 +1,6 @@
-import debounce from 'debounce-promise';
-
 import { algoliaClient } from '@config/algolia';
-import { RequestsAlgoliaClient } from '@types-app';
+import debounce from 'debounce-promise';
+import { RequestsAlgoliaClient } from './types';
 
 export const algoliaDebounceSearchClient = {
   search: debounce(async (requests: RequestsAlgoliaClient) => {

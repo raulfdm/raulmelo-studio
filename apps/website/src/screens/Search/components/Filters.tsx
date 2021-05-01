@@ -1,10 +1,10 @@
-import { RefinementListProps } from '@types-app';
 import { isEmpty } from '@utils/ramda';
 import React from 'react';
 import { connectRefinementList } from 'react-instantsearch-dom';
 import { FormattedMessage } from 'react-intl';
 import 'twin.macro';
 import { searchStyles } from '../styles';
+import { RefinementListProps } from '../types';
 
 export const Filters = () => {
   return (

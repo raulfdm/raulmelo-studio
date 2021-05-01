@@ -1,11 +1,11 @@
 import { PostBasic } from '@components/PostBasic';
 import { getTilUrl } from '@screens/TilsHome/utils';
-import { HitAlgolia } from '@types-app';
 import { getPostUrl } from '@utils/url';
 import React from 'react';
 import { Hits as HitsComp } from 'react-instantsearch-dom';
 import tw from 'twin.macro';
 import { searchStyles } from '../styles';
+import { HitAlgolia } from '../types';
 
 export const Hits = () => {
   return (
