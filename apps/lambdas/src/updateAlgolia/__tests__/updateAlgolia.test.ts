@@ -2,16 +2,13 @@ import MockDate from 'mockdate';
 import { updateAlgolia } from '../updateAlgolia';
 import { ErrorFunctionReturn, SuccessFunctionReturn } from '../types';
 
-import { getPostsToAlgolia } from '../indexes/posts';
-import { getTilsToAlgolia } from '../indexes/tils';
+import { getContentToAlgolia } from '../indexes/content';
 import { pushAlgoliaData } from '../pushAlgoliaData';
 
-jest.mock('../indexes/posts');
-jest.mock('../indexes/tils');
+jest.mock('../indexes/content');
 jest.mock('../pushAlgoliaData');
 
-const mockGetPostsToAlgolia = (getPostsToAlgolia as unknown) as jest.Mock<any>;
-const mockGetTilsToAlgolia = (getTilsToAlgolia as unknown) as jest.Mock<any>;
+const mockGetContentToAlgolia = (getContentToAlgolia as unknown) as jest.Mock<any>;
 const mockPushAlgoliaData = (pushAlgoliaData as unknown) as jest.Mock<any>;
 
 describe('fn: updateAlgolia', () => {
@@ -22,18 +19,15 @@ describe('fn: updateAlgolia', () => {
   describe('When success', () => {
     let result: SuccessFunctionReturn;
 
-    const getPostMockData = ['post', [{ id: 1 }]];
-    const getTilsMockData = ['tils', [{ id: 2 }]];
+    const getContentMockData = ['post', [{ id: 1 }]];
 
     beforeEach(async () => {
-      mockGetPostsToAlgolia.mockReturnValue(getPostMockData);
-      mockGetTilsToAlgolia.mockReturnValue(getTilsMockData);
+      mockGetContentToAlgolia.mockReturnValue(getContentMockData);
       result = (await callConfiguredUpdateAlgolia()) as SuccessFunctionReturn;
     });
 
     it('calls pushAlgoliaData with the index updaters return', () => {
-      expect(mockPushAlgoliaData).toHaveBeenCalledWith(...getPostMockData);
-      expect(mockPushAlgoliaData).toHaveBeenCalledWith(...getTilsMockData);
+      expect(mockPushAlgoliaData).toHaveBeenCalledWith(...getContentMockData);
     });
 
     it('returns success object', () => {
@@ -54,7 +48,7 @@ describe('fn: updateAlgolia', () => {
 
     beforeEach(async () => {
       console.error = mockConsoleError;
-      mockGetPostsToAlgolia.mockRejectedValue({
+      mockGetContentToAlgolia.mockRejectedValue({
         error: 'Something went wrong',
       });
 

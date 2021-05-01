@@ -1,6 +1,5 @@
 import { authMiddleware } from '../utils/authMiddleware';
-import { getPostsToAlgolia } from './indexes/posts';
-import { getTilsToAlgolia } from './indexes/tils';
+import { getContentToAlgolia } from './indexes/content';
 import { pushAlgoliaData } from './pushAlgoliaData';
 import { FunctionReturn, PushAlgoliaTuple } from './types';
 
@@ -8,8 +7,7 @@ export const updateAlgolia = authMiddleware(
   async function updateAlgolia(): Promise<FunctionReturn> {
     try {
       const indexesToUpdate: Promise<PushAlgoliaTuple>[] = [
-        getPostsToAlgolia(),
-        getTilsToAlgolia(),
+        getContentToAlgolia(),
       ];
 
       for await (const indexData of indexesToUpdate) {

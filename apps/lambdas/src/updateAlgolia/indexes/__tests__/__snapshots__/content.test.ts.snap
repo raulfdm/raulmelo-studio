@@ -1,0 +1,1050 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fn: getPostsToAlgolia returns expected data structure 1`] = `
+Object {
+  "date_timestamp": "1588032000",
+  "excerpt": "Hey, devs. How is it going during this quarantine? Hope you’re not getting crazy like I'm 😬.
+
+Today I’d like to bring to you a new feature announced on April 22 by Gatsby team: **Incremental builds**.
+
+<Tweet tweetId=\\"1252991368005324800\\" />
+
+To follow this guide you will need to know about Gatsby (of course) but also a bit of knowledge of using Github Actions. I won’t dive deep in the details of how to set up a CI environment using it so it’s important to at least have the basics.
+
+
+
+ Gatsby bottleneck
+
+Gatsby is an amazing toolkit to create static websites using React or maybe set up your JAM (JavaScript, API, and Markup) application. Everything works fine, you can find a bunch of plugins to avoid infrastructure code and the concepts are relatively easy to understand since their documentation is well written and has details about almost everything.
+
+The problem starts as soon as your website starts to have a lot of pages or maybe like my blog, you have a lot of images that need to be processed and compressed to ship a good experience for those who are reading it.
+
+When I start my blog, a build would take approximately less than 2 minutes. After migrating my posts from Medium, in the CI it usually takes from 6 to 8 minutes. As you can imagine, as many posts, images, and data you have I add, as slower my build command becomes.
+
+
+
+ Incremental Build
+
+Of course, I’m not the only one having this issue. The Gatsby community and adoption are becoming bigger every year given all benefits which it brings for us, developers.
+
+Knowing that they just released a feature called Incremental Build.
+
+The name is self-explanatory I imagine, you’ll only build/generate what have been changed.
+
+Let’s imagine you have a website which has 2 pages, home and about. Then you change something on the “About” page and want to ship it. Does it make sense to build both pages? You only have changed in one. It’s a waste of time and resources.
+
+With this flag, it’ll check all files previously generated and understand what needs to be built.
+
+Another nice benefit of it is if you’re using a CMS which triggers a build for each change you’ve made in a post, page, or any data, you’ll see almost immediately your change live and this is sick!
+
+
+
+ How it works
+
+If you check their docs, it already has a page under the “improve performance” section which explains what’s the feature and how it works.
+
+In a nutshell, when you run \`yarn gatsby build\`, it generates 2 folders:
+
+1. \`public/\`. Here it’s your website. Is the folder you need to host in a web server (e.g. Github Pages, Netlify, etc.)
+1. \`.cache/\`. Here it’s all files cached to speed up the building process.
+
+My first thought was: “Ok, I only need to persist cache and everything will work” but reading till the end they made clear: Both pages need to be persisted.
+
+> Note that until this date I’m writing this post, this feature does not work for \`gatsby develop\`
+
+
+
+ My problem
+
+Well, I already explained a bit about my problem: I have tons of images to be processed and a bunch of posts already.
+
+Even when I’m working by myself, I like to create feature branches for my projects just because I can easily revert code or decisions I made by just pressing a button on Github.
+
+So, imagine the situation. I create a feature branch, do my changes and apart from the pipeline saying to me: “Hey, lint, tests, and build are working fine, ship it”, I like to see a live preview that Netlify offers to me.
+
+The first time takes 8 minutes.
+
+Then when I see it online, I notice that I forgot to see something. I fix it and push. Another 8 minutes.
+
+Another case I have is when dependabot creates a PR for me from a major version or maybe I’m using a beta version from some dependency like I’m doing right now with framer-motion.
+
+The pipeline will say it’s green but I still want to check the live preview and be sure that the change won’t affect the experience I want for my website.
+
+When the Gatsby team announced, they (for obvious reasons) did an ad for their cloud platform, Gatsby Cloud.
+
+I have to confess that I was planning on moving there until I realized that when you connect Gatsby Cloud with Github, it has a bug (it might be already fixed) that does not update the stats of “build” to “done”.
+
+After that, I just had one option, making it work for Github Actions.
+
+First I tried to Google to see if people already had solved this problem but I couldn’t find anything. Maybe because it’s new, maybe because google search didn’t rank well yet.
+
+Even not being a CI expert, I have figured out a bunch of stuff by myself reading official docs and inspecting how people set up in open-source projects (pro tip), then I just decided to try by myself.
+
+
+
+ Setting it up
+
+To enable this feature, be sure you have installed gatsby version 2.20.4 or higher.
+
+After that, you need to specify an environment variable named **GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES** to true in your build context, like:
+
+\`\`\`shell
+GATSBY_EXPERIMEN",
+  "featured_image": Object {
+    "height": 889,
+    "url": "https://res.cloudinary.com/duzei21zt/image/upload/v1597942390/site/cache_gatsby_github_actions_featured_img_844a0fe924.png",
+    "width": 1920,
+  },
+  "id": "5f3eaabd8d32c410783fbe9b",
+  "locale": "en",
+  "objectID": "Content_5f3eaabd8d32c410783fbe9b",
+  "publishedAt": "2020-04-28",
+  "slug": "cache-gatsby-github-actions",
+  "subtitle": "A quick setup to increase your build performance",
+  "tags": Array [
+    Object {
+      "id": "5f390975f5ec161249bd8cdf",
+      "name": "Front-end",
+      "slug": "front-end",
+    },
+    Object {
+      "id": "5f39098ef5ec161249bd8ce0",
+      "name": "DevOps",
+      "slug": "devops",
+    },
+    Object {
+      "id": "5f3948d4e57aa266137e0ffc",
+      "name": "Github Actions",
+      "slug": "github-actions",
+    },
+    Object {
+      "id": "5f39642d2163ea002152ca9c",
+      "name": "CI/CD",
+      "slug": "ci-cd",
+    },
+  ],
+  "title": "Gatsby Incremental Builds and Github Actions",
+  "type": "post",
+}
+`;
+
+exports[`fn: getPostsToAlgolia returns expected data structure 2`] = `
+Object {
+  "date_timestamp": "1584576000",
+  "excerpt": "More and more, we, web developers need to learn about different areas to become better professionals and less dependent on others for simple things.
+
+If you start a career as FE, you might see a lot of \`.yml\` files like \`.travis.yml\` (for Travis Build), \`.gitlab-ci.yml\` (for git lab CI), etc. but, let's be honest, what the hell?
+
+Why would people use this kind of file? What's the benefit of it? How does this thing work?
+
+So, the goal of this article is to introduce you to the \`YAML\` structure and give you more confidence to understand, read, and change a file like this when you need it.
+
+After all, we tend to feel very uncomfortable and frustrated and we need to do something and we can't even understand what's that.
+
+
+
+ But first, What is YAML?
+
+According to [the official website](https://yaml.org/), Yaml is:
+
+<BigQuote>
+  \\"YAML (a recursive acronym for \\"YAML Ain't Markup Language\\") is a
+  human-friendly data serialization standard for all programming languages.\\"
+</BigQuote>
+
+Heavily used to write configuration files, which explains A LOT, right?
+
+People were tired to have a bunch of configs nobody could understand until someone just say:
+
+> What if we could somehow write our configuration like a \\"cake recipe\\"? I mean minimum bare text, very straight forward?
+
+Boom, in May 2001 Yaml was created.
+
+
+
+ YAML vs JSON
+
+Surprisingly (or not really), Yaml is a superset of our well-known buddy JSON.
+
+> \\"Superset is A programming language that contains all the features of a given language and has been expanded or enhanced to include other features as well.\\" - [Font](https://encyclopedia2.thefreedictionary.com/superset)
+
+If I could give you a perspective of what it means I would say:
+
+> In a FE world, Yaml would matches for TypeScript while JSON for JavaScript
+
+To better understand how this would be even possible let's see this example:
+
+\`\`\`json:tsconfig.json
+{
+  \\"compilerOptions\\": {
+    \\"module\\": \\"system\\",
+    \\"noImplicitAny\\": true,
+    \\"removeComments\\": true,
+    \\"preserveConstEnums\\": true,
+    \\"outFile\\": \\"../../built/local/tsc.js\\",
+    \\"sourceMap\\": false,
+    \\"types\\": [\\"node\\", \\"lodash\\", \\"express\\"]
+  },
+  \\"include\\": [\\"src/**/*\\"],
+  \\"exclude\\": [\\"node_modules\\", \\"**/*.spec.ts\\"]
+}
+\`\`\`
+
+This is a \`tsconfig.json\` example. very easy to read, we can easily identify what's what but... it has some limitations, like:
+
+- Can't create variables;
+- Can't use external variables (e.g. environment variables)
+- Override values;
+
+In JS world, if we can create a \`.json\` a configuration file, we almost always also can create a \`.js\` (like \`.eslintrc\` or \`.eslint.js\`) which allows us to mitigate the CONS mentioned before.
+
+But then, if you're using other programing language, JS files isn't an option. And it's at this point Yaml starts to shine.
+
+If we'd have to re-write the \`tsconfig.json\` in \`YAML\` syntax and having the exactly result, it'd be like:
+
+\`\`\`yaml:tsconfig.yml
+compilerOptions:
+  module: system
+  noImplicitAny: true
+  removeComments: true
+  preserveConstEnums: true
+  outFile: '../../built/local/tsc.js'
+  sourceMap: false
+  types:
+    - node
+    - lodash
+    - express
+include:
+  - src/**/*
+exclude:
+  - node_modules
+  - '**/*.spec.ts'
+\`\`\`
+
+> Note this is only an example. You cannot write your \`tsconfig\` in YAML! 😜
+
+I hope you're starting to get the idea from these files.
+
+
+
+ Concepts, Types, and Syntax
+
+Now, let's dive deep a bit in the concept of the language.
+
+ Indentation
+
+<!-- prettier-ignore -->
+In Yaml, indentation **does matter**. It uses _whitespace indentation_ to nest information. By whitespace, keep in mind \`tab\` is not allowed.
+
+If you're like me and uses tab for everything, install some plugin in your IDE to replace your tabs for spaces (like [editorconfig](https://editorconfig.org/)). Doing that, when you hit a tab, it'll automatically replace your tab by space and you don't even need to use your space bar! ;)
+
+ Root
+
+Since indentation matters here, if there's no space before the first declaration YAML will understand that's the root (level 0) of your file:
+
+\`\`\`yml
+person:
+  age: 20
+\`\`\`
+
+Like we have in JSON with the first \`{\` curly brackets:
+
+\`\`\`json{1}
+{
+  \\"person\\": {
+    \\"age\\": 20
+  }
+}
+\`\`\`
+
+ Key/Value
+
+Like in JSON/JS, \`YAML\` also uses the \`key/value\` syntax and you can use in various ways:
+
+\`\`\`yml
+key: value
+key_one: value one
+key one: value  This works but it's weird
+'my key': somekey
+\`\`\`
+
+ Comments
+
+To write a comment you just have to use \`\` followed by your message.
+
+\`\`\`yml
+ I'm a comment
+person:  I'm also a comment
+  age: 20
+\`\`\`
+
+This is cool to document some decision or make a note. Unfortunately, we can't do this with JSON.
+
+ Lists
+
+There're 2 ways to write lists:
+
+ JSON way: array of strings
+
+Remember Yaml is a JSON's superset? we can use its syntax:
+
+\`\`\`yml
+people: ['Anne', 'John', 'Max']
+\`\`\`
+
+ Hyphen syntax
+
+The most common (and probably recommended)
+
+\`\`\`yml
+people:
+  - Anne
+  - John
+  - Max
+\`\`\`
+
+ Strings
+
+There're a few ways to declare a string in Yaml:
+
+<!-- prettier-ignore -->
+\`\`\`yml
+company: Goog",
+  "featured_image": Object {
+    "height": 1106,
+    "url": "https://res.cloudinary.com/duzei21zt/image/upload/v1598005862/site/yaml_para_desenvolvedores_web_featured_img_4c38d17c77.png",
+    "width": 2684,
+  },
+  "id": "5f3fa398d511c2380b097af0",
+  "locale": "en",
+  "objectID": "Content_5f3fa398d511c2380b097af0",
+  "publishedAt": "2020-03-19",
+  "slug": "yaml-for-web-developers",
+  "subtitle": "A small guide to help you write and read .yml files",
+  "tags": Array [
+    Object {
+      "id": "5f3fa2bad511c2380b097ae9",
+      "name": "Yaml",
+      "slug": "yaml",
+    },
+    Object {
+      "id": "5f3fa370d511c2380b097aee",
+      "name": "Introduction",
+      "slug": "introduction",
+    },
+    Object {
+      "id": "5f3fa377d511c2380b097aef",
+      "name": "Development",
+      "slug": "development",
+    },
+  ],
+  "title": "YAML for Web Developers",
+  "type": "post",
+}
+`;
+
+exports[`fn: getPostsToAlgolia returns expected data structure 3`] = `
+Object {
+  "date_timestamp": "1606608000",
+  "excerpt": "Hello, devs.
+
+This is might be an old topic but I think it still can be a bit confused when you try to do this configuration:
+
+> How can I add aliases to my imports?
+
+The idea here is to do not stitch in any specific framework/tool but to give you an idea of knowing what and how to do, based on your application setup.
+
+First, let's check what problem we're trying to solve, a solution in a more abstract way and how to configure your project to support that.
+
+
+ Table of Content
+
+- [Problem](problem)
+- [Solution](solution)
+- [Configuration](configuration)
+  - [Editor completion](editor-completion)
+  - [Babel](babel)
+  - [Rollup](rollup)
+  - [Webpack](webpack)
+  - [Jest](jest)
+  - [Typescript](typescript)
+  - [Other Tools](other-tools)
+- [Prefix Strategy](prefix-strategy)
+- [Conclusion](conclusion)
+
+ Problem
+
+In well-structured JavaScript applications it's common we organize our codebase in a way that makes explicit what these files do or each domain they belong to.
+
+Notwithstanding we don't have a standard of \\"how to structure\\", we always try to organize like \`components\`, \`helpers\`, \`models\`, etc. and sometimes, creating subfolders inside these folders and as consequence, creating a deeply nested structure.
+
+Let's see an example of a tiny and not too nested app folder structure:
+
+\`\`\`markdown
+.
+├── package.json
+├── src
+│   ├── components
+│   │   └── Button
+│   │       ├── Button.js
+│   │       └── index.js
+│   ├── helpers
+│   │   └── text.js
+│   └── index.js
+└── yarn-error.log
+\`\`\`
+
+This is a very basic setup where:
+
+1. We have our \`src\` (source) which holds our app code;
+2. \`src/components\` which holds all our app components;
+3. \`src/helpers\`, which holds all our helpers/utilities which can be used anywhere in our code
+
+Now let's say we to import a function called \`sanitizeText\` from our helper text inside our Button component. We would do something like:
+
+\`\`\`jsx
+import React from \\"react\\";
+import { sanitizeText } from \\"../../helpers/text\\";
+
+export const Button = ({ text }) => {
+  return <button>{sanitizeText(text)}</button>;
+};
+\`\`\`
+
+It's not so bad, but as soon as you start having more and more imports from different folders and levels, it starts to become more confusing.
+
+Also, you **always** need to guess how many levels you have to go up and down to import your code. Of course, modern code editors can help you out with that by just showing you which level you are and sometimes even completing it for you, but still.
+
+Another problem is that if you eventually create a subfolder (for whatever reason you might have), you need to fix ALL imports by adding another \\"go up\\" level in the path.
+
+That's not too much work but isn't by far optimal. We have a better way to do that and it's via \`module resolution\` or \`import alias\`
+
+ Solution
+
+Module resolution or import alias is a way we can emulate the same way we import \`node_modules\` but with our internal code.
+
+We can say to the tool we're using:
+
+> Hey, when you encounter \\"helpers/text\\", could you consider \\"./src/helpers/text\\" please?
+
+In the same example above we would have some code like this:
+
+\`\`\`jsx
+import React from \\"react\\";
+import { sanitizeText } from \\"helpers/text\\";
+
+export const Button = ({ text }) => {
+  return <button>{sanitizeText(text)}</button>;
+};
+\`\`\`
+
+Much cooler, right?
+
+You'll import from \`helpers\` and it does not matter how deep you are in your app structure. Even if you move around this file, the imports will be always correct.
+
+At the end of the day it's like import a library in our project. Imagine if you have to every time go up and down inside \`node_modules\` until you find your dependency:
+
+\`\`\`jsx
+import React from \\"react\\";
+import { sanitizeText } from \\"helpers/text\\";
+import { camelCase } from '../../../node_modules/lodash'
+
+export const Button = ({ text }) => {
+  return <button>{camelCase(sanitizeText(text))}</button>;
+};
+\`\`\`
+
+This would be hell. A lot of waste of energy having to navigate to the code.
+
+ Configuration
+
+JavaScript itself does not allow us doing that those imports natively. But luckily we are always using a tool that supports that (e.g. Babel, Webpack, etc).
+
+You might think:
+
+> Nice, I only need to do once this configuration!
+
+And the answer is: it depends... but probably not.
+
+The more tooling you introduce in your application, the more complicated it becomes to get it configured. Here some examples where this could be tricky:
+
+- If you're working on a JS project only with **Babel** and add **jest** to test your app, you'll need to add aliases in **both** places.
+- If you're working in a JS project with some built-in **Webpack** config and you add **Storybook**, you'll need to add an alias in both \`webpack.config.js\` and also customize Storybook \`babel.config.js\`.
+- If you're working on a JS project with all these configurations and want to move to **TypeScript**, you'll need to keep this configuration everywhere plus configure the \`tsconfig.json\` file to let TS aware of how to resolve those aliases.
+
+As you can see this can",
+  "featured_image": Object {
+    "height": 630,
+    "url": "https://res.cloudinary.com/duzei21zt/image/upload/v1606664570/site/post_alias_cover_033d2ce8c5.png",
+    "width": 1200,
+  },
+  "id": "5fc3be95cbcafe002155aa29",
+  "locale": "en",
+  "objectID": "Content_5fc3be95cbcafe002155aa29",
+  "publishedAt": "2020-11-29",
+  "slug": "module-resolution-or-import-alias-the-final-guide",
+  "subtitle": "A guide how to enable this feature in (almost) any JS/TS project.",
+  "tags": Array [
+    Object {
+      "id": "5f390975f5ec161249bd8cdf",
+      "name": "Front-end",
+      "slug": "front-end",
+    },
+    Object {
+      "id": "5f3972a5c998c60021565c2c",
+      "name": "JavaScript",
+      "slug": "javascript",
+    },
+    Object {
+      "id": "5fc3bea4cbcafe002155aa2b",
+      "name": "Typescript",
+      "slug": "typescript",
+    },
+    Object {
+      "id": "5fc3beb6cbcafe002155aa2c",
+      "name": "Tooling",
+      "slug": "tooling",
+    },
+  ],
+  "title": "Module Resolution or Import Alias: The Final Guide",
+  "type": "post",
+}
+`;
+
+exports[`fn: getPostsToAlgolia returns expected data structure 4`] = `
+Object {
+  "date_timestamp": "1597536000",
+  "excerpt": "Hello, devs.
+
+For the last couple of weeks, I've been participating in a hiring process for a big company.
+
+It was a very nice experience and it gave me a lot of insights about hiring, code challenges, and how (possibly) to become more prepared for interviews.
+
+As you already saw in the title, I didn't pass, but I went through all the stages of it. So it might be interesting for you if you're trying to get your first job, or even if you're thinking of switching jobs but don't do interviews for a couple of years already.
+
+I'll explain all stages, with some details and thoughts, but my main focus here is to tell where and why I failed in the last part of it.
+
+Hope you like it and I hope my experience can help you somehow!
+
+ Table of content
+
+- [Stage 1: Getting an interview](stage-1-getting-an-interview)
+- [Stage 2: Human Resources (aka HR)](stage-2-human-resources-aka-hr)
+- [Stage 3: The managers](stage-3-the-managers)
+- [Stage 4: the HR (again)](stage-4-the-hr-again)
+- [Stage 5 (latest): The devs](stage-5-latest-the-devs)
+  - [About me](about-me)
+  - [Technical questions](technical-questions)
+    - [JavaScript questions](javascript-questions)
+    - [CSS questions](css-questions)
+    - [HTTP questions](http-questions)
+  - [Technical Challenge](technical-challenge)
+  - [After the test](after-the-test)
+- [The last HR Call](the-last-hr-call)
+- [Thoughts about hiring X our skills](thoughts-about-hiring-x-our-skills)
+- [Learnings](learnings)
+- [Conclusion](conclusion)
+
+
+
+ Stage 1: Getting an interview
+
+A very common practice in companies, in general, is to motivate people (with money) to recommend professionals to fill opening jobs (that's a good reason why you should build good connections as much as you can with people in and out of the internet).
+
+A friend of mine recommended me to work in his company. Good salary, very well structured and it seemed a very good place to work in, why not try it out?
+
+I just needed to do some adjustments to my [online CV](https://www.raulmelo.dev/cv/) and I was ready.
+
+
+
+ Stage 2: Human Resources (aka HR)
+
+The HR from the company just called me to know a bit about me.
+
+They asked about all my experience, things I've done in my life, whether I had some specific knowledge (like React, testing, Redux, etc) and also questioned about the company I'm working on.
+
+To be honest this call just seemed to be a filter for people who lied on their CV, because everything was very basic and trivial.
+
+I was pretty confident in all the answers I gave to her, and at the end of the call she just gave me a positive feedback and then she'd schedule the next phase with the tech lead and team manager.
+
+
+
+ Stage 3: The managers
+
+The following week, I had a 1-hour meeting (now with webcam) with the \\"managers\\".
+
+Their job was getting to know about my soft skills. A lot of questions like:
+
+- What is the proudest moment of my career
+- What was the worst technical decision I have ever made
+- How I deal with conflicts
+- How I deal with top-down decision
+- How I handle hard discussions
+
+And in between those questions, they constantly asked me to give out examples of situations I have experienced that exemplifies that I thought or worked out a solution in the way I was explaining.
+
+It was very nice because I could remember some good and bad moments in my career which made me grow up a lot as a professional and also as a person.
+
+When I turned the call off, I was still very confident about the final result.
+
+After a couple of days, the HR called me saying the managers liked me and the way I answered their questions (maybe someday I can share in details some situations I've been through and my current way to deal with people and job).
+
+The only feedback she gave to me was: \\"I needed to be less of a follower\\".
+
+And... of course, they thought I was more of a follower than a leader or something because, to be honest, I'm almost 30 and I kinda lost the energy to keep fighting pointless discussions about technical tastes and personal ways to code.
+
+I have my opinions and I always can argue why I have them, but to be honest, when the discussion reaches the moment where it's an ego thingy or personal taste, I just give up and let people do what they want.
+
+I **do not** care about:
+
+- what's the best JS framework;
+- what's the best state management library;
+- if we should use reduce or map + filter
+- if we should use \`it\` or \`test\` in jest assertions
+
+I **do** care about:
+
+- what solution fits best for the problem;
+- good naming;
+- tested code;
+- a simple solution when it's possible;
+- ship the product;
+- my salary at the end of the month;
+
+In the past, I used to have endless debates about what's best, what's the worst. Nowadays I still have these discussions but if I notice that we're not going anywhere, I just agree and live my life.
+
+But of course, don't be a fool. If I'm convinced that some bad decisions are being made and I can argue that a different approach is better, I'll certainly pursue my vision for a better ",
+  "featured_image": Object {
+    "height": 2324,
+    "url": "https://res.cloudinary.com/duzei21zt/image/upload/v1598186651/site/siora_photography_hg_FY_1m_ZY_Y0_unsplash_2529f3a52d.jpg",
+    "width": 3537,
+  },
+  "id": "5f425861cc63b728e57641d3",
+  "locale": "en",
+  "objectID": "Content_5f425861cc63b728e57641d3",
+  "publishedAt": "2020-08-16",
+  "slug": "i-failed-an-interview-because-of-an-algorithm",
+  "subtitle": null,
+  "tags": Array [
+    Object {
+      "id": "5f390f92f95eb21417e28f68",
+      "name": "Career",
+      "slug": "career",
+    },
+    Object {
+      "id": "5f390f99f95eb21417e28f69",
+      "name": "Interview",
+      "slug": "interview",
+    },
+    Object {
+      "id": "5f390fb6f95eb21417e28f6a",
+      "name": "Job",
+      "slug": "job",
+    },
+  ],
+  "title": "I failed an interview because of an algorithm",
+  "type": "post",
+}
+`;
+
+exports[`fn: getPostsToAlgolia returns expected data structure 5`] = `
+Object {
+  "date_timestamp": "1618790400",
+  "excerpt": "For some reason, when we install Rust VSCODE extension the formatter does not work by default.
+To do that I we need to enforce the formatter via \`settings.json\` (or User preference)
+
+\`\`\`json
+{
+    \\"[rust]\\": {
+        \\"editor.defaultFormatter\\": \\"rust-lang.rust\\", // Makes the magic
+        \\"editor.formatOnSave\\": true // Optional
+    },
+}
+\`\`\`",
+  "featured_image": Object {},
+  "id": "6081113c532c3c28f38780df",
+  "locale": "en",
+  "objectID": "Content_6081113c532c3c28f38780df",
+  "publishedAt": "2021-04-19",
+  "slug": "how-to-format-rust-code-on-save-in-vscode",
+  "subtitle": null,
+  "tags": Array [
+    Object {
+      "id": "60811147532c3c28f38780e0",
+      "name": "Rust",
+      "slug": "rust",
+    },
+    Object {
+      "id": "6085122f8d4cc978989e764c",
+      "name": "VSCode",
+      "slug": "vscode",
+    },
+  ],
+  "title": "How to format Rust code \\"on save\\" in VSCODE",
+  "type": "til",
+}
+`;
+
+exports[`fn: getPostsToAlgolia returns expected data structure 6`] = `
+Object {
+  "date_timestamp": "1618704000",
+  "excerpt": "Let's say you have the following folder structure:
+
+\`\`\`text
+.
+├── exercise
+└── variables
+    ├── Cargo.lock
+    ├── Cargo.toml
+    └── src
+        └── main.rs
+\`\`\`
+
+You're in root level and wants  to run Cargo for \`variables\` folder. All you need to do is specifying \`--manifest-path\`:
+
+\`\`\`bash
+cargo run --manifest-path variables/Cargo.toml
+\`\`\`",
+  "featured_image": Object {},
+  "id": "6083bcfbe06b20719026b4b2",
+  "locale": "en",
+  "objectID": "Content_6083bcfbe06b20719026b4b2",
+  "publishedAt": "2021-04-18",
+  "slug": "how-to-run-cargo-in-a-nested-folder",
+  "subtitle": null,
+  "tags": Array [
+    Object {
+      "id": "60811147532c3c28f38780e0",
+      "name": "Rust",
+      "slug": "rust",
+    },
+  ],
+  "title": "How to run Cargo in a nested folder",
+  "type": "til",
+}
+`;
+
+exports[`fn: getPostsToAlgolia returns expected data structure 7`] = `
+Object {
+  "date_timestamp": "1617580800",
+  "excerpt": "The site is [\`https://type-scale.com/\`](https://type-scale.com/).
+
+It basically allow us creating great typography scale system using different scale rules:
+
+![image.png](https://res.cloudinary.com/duzei21zt/image/upload/v1619253544/site/image_8d33c5df45.png)
+",
+  "featured_image": Object {},
+  "id": "6083d93d242a834d1a70ee7d",
+  "locale": "en",
+  "objectID": "Content_6083d93d242a834d1a70ee7d",
+  "publishedAt": "2021-04-05",
+  "slug": "there-is-a-website-which-generates-typography-scale",
+  "subtitle": null,
+  "tags": Array [
+    Object {
+      "id": "5f3eaea98d32c410783fbea9",
+      "name": "CSS",
+      "slug": "css",
+    },
+  ],
+  "title": "There is a website which generates typography scale",
+  "type": "til",
+}
+`;
+
+exports[`fn: getPostsToAlgolia returns expected data structure 8`] = `
+Object {
+  "date_timestamp": "1618790400",
+  "excerpt": "Por algum motivo, quando a gente instala o plugin do Rust pro VSCODE, o formatador não funciona por padrão.
+
+Pra corrigir isso, precisamos configurar nas preferências do usuário (\`settings.json\`):
+
+\`\`\`json
+{
+    \\"[rust]\\": {
+        \\"editor.defaultFormatter\\": \\"rust-lang.rust\\", // Makes the magic
+        \\"editor.formatOnSave\\": true // Optional
+    },
+}
+\`\`\`",
+  "featured_image": Object {},
+  "id": "60844e4acfbc7bff4150ed5c",
+  "locale": "pt",
+  "objectID": "Content_60844e4acfbc7bff4150ed5c",
+  "publishedAt": "2021-04-19",
+  "slug": "como-formatar-codigo-rust-ao-salvar-no-vscode",
+  "subtitle": null,
+  "tags": Array [
+    Object {
+      "id": "60811147532c3c28f38780e0",
+      "name": "Rust",
+      "slug": "rust",
+    },
+    Object {
+      "id": "6085122f8d4cc978989e764c",
+      "name": "VSCode",
+      "slug": "vscode",
+    },
+  ],
+  "title": "Como formatar código Rust \\"ao salvar\\" no VSCODE",
+  "type": "til",
+}
+`;
+
+exports[`fn: getPostsToAlgolia returns expected data structure 9`] = `
+Object {
+  "date_timestamp": "1619308800",
+  "excerpt": "One thing that always annoyed me is that the suggestions in VSCode always showed up the snippets first and then the methods, properties, etc.:
+
+
+![2021-04-25_08-49.png](https://res.cloudinary.com/duzei21zt/image/upload/v1619333480/site/2021_04_25_08_49_f957952952.png)
+
+Today I've learned we can customize where to show the snippets. To do that you can go to \`Preferences: Open User Settings\`, search for \`suggestions\` and go to the option \`Editor: Snippet Suggestion\`.
+
+There you can choose the order, which in my case was \`top\` and now will be \`inline\`:
+
+![2021-04-25_08-54.png](https://res.cloudinary.com/duzei21zt/image/upload/v1619333658/site/2021_04_25_08_54_5bf29c5911.png)
+",
+  "featured_image": Object {},
+  "id": "608512238d4cc978989e764b",
+  "locale": "en",
+  "objectID": "Content_608512238d4cc978989e764b",
+  "publishedAt": "2021-04-25",
+  "slug": "choose-the-suggestion-order-in-vscode",
+  "subtitle": null,
+  "tags": Array [
+    Object {
+      "id": "6085122f8d4cc978989e764c",
+      "name": "VSCode",
+      "slug": "vscode",
+    },
+  ],
+  "title": "We can choose the suggestion order in VSCode",
+  "type": "til",
+}
+`;
+
+exports[`fn: getPostsToAlgolia returns expected data structure 10`] = `
+Object {
+  "date_timestamp": "1610496000",
+  "excerpt": "I've never realized that everything we pass from the 3thrd + n via setTimeout is actually passed to the callback function:
+
+\`\`\`js
+function checkParams(...args){
+  console.log(args); //> ['b', true, 4]
+}
+
+setTimeout(checkParams, 200, /* From here til the end will be passed*/ 'b', true, 4);
+\`\`\`
+
+ Resource
+
+- https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeoutparameters",
+  "featured_image": Object {},
+  "id": "60857b1187d544006174e1f9",
+  "locale": "en",
+  "objectID": "Content_60857b1187d544006174e1f9",
+  "publishedAt": "2021-01-13",
+  "slug": "settimeout-3thrd-argument-is-passed-to-the-callback",
+  "subtitle": null,
+  "tags": Array [
+    Object {
+      "id": "5f3972a5c998c60021565c2c",
+      "name": "JavaScript",
+      "slug": "javascript",
+    },
+  ],
+  "title": "In setTimeout, the 3thrd+n argument is passed to the callback",
+  "type": "til",
+}
+`;
+
+exports[`fn: getPostsToAlgolia returns expected data structure 11`] = `
+Object {
+  "date_timestamp": "1610496000",
+  "excerpt": "Tudo que a gente passar do terceiro argumento pra frente pro \`setTimeout\` vai ser passado para a funćão callback:
+
+\`\`\`js
+function checkParams(...args){
+  console.log(args); //> ['b', true, 4]
+}
+
+setTimeout(checkParams, 200, /* Daqui pra frente */ 'b', true, 4);
+\`\`\`
+
+ Referência
+
+- https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeoutparameters",
+  "featured_image": Object {},
+  "id": "60857c0b87d544006174e1fa",
+  "locale": "pt",
+  "objectID": "Content_60857c0b87d544006174e1fa",
+  "publishedAt": "2021-01-13",
+  "slug": "terceiro-argumento-pra-frente-passado-para-callback-settimeout",
+  "subtitle": null,
+  "tags": Array [
+    Object {
+      "id": "5f3972a5c998c60021565c2c",
+      "name": "JavaScript",
+      "slug": "javascript",
+    },
+  ],
+  "title": "O terceiro argumento pra frente é passado para a callback no setTimeout",
+  "type": "til",
+}
+`;
+
+exports[`fn: getPostsToAlgolia returns expected data structure 12`] = `
+Object {
+  "date_timestamp": "1610496000",
+  "excerpt": "Arrow function has not its own scope. Instead it resolves it lexically which means that \\"it has access to whatever exists in the place where it's been created\\".
+
+Keep this in mind, it's not like \\"the this of arrow function is lexical\\". Actually it's \\"arrow function **DOES NOT** have this\\".
+
+To prove that you can try to call an arrow function with \`call()\`, \`apply()\` or \`bind()\` and it'll throw an error saying that.
+
+
+\`\`\`js
+var obj = {
+  num: 100,
+};
+
+var addFun = function (a, b, c) {
+  return this.num + a + b + c;
+};
+console.log(addFun.call(obj, 1,2,3)); // 106
+
+var addArrow = (a, b, c) => this.num + a + b + c;
+console.log(addArrow.call(obj, 1,2,3)); //> NaN (because \\"this\\"\\" is undefined)
+\`\`\`
+
+ Resources
+
+- https://tc39.es/ecma262/sec-arrow-function-definitions-runtime-semantics-namedevaluation
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions",
+  "featured_image": Object {},
+  "id": "60857f1087d544006174e1fb",
+  "locale": "en",
+  "objectID": "Content_60857f1087d544006174e1fb",
+  "publishedAt": "2021-01-13",
+  "slug": "how-to-prove-that-arrow-function-does-not-have-this",
+  "subtitle": null,
+  "tags": Array [
+    Object {
+      "id": "5f3972a5c998c60021565c2c",
+      "name": "JavaScript",
+      "slug": "javascript",
+    },
+  ],
+  "title": "How to prove that arrow function does not have \\"this\\"",
+  "type": "til",
+}
+`;
+
+exports[`fn: getPostsToAlgolia returns expected data structure 13`] = `
+Object {
+  "date_timestamp": "1618012800",
+  "excerpt": "> **BE CAREFUL** : by doing this you'll completely erase ALL existing tags.
+
+We can simply run the following commands:
+
+\`\`\`bash
+Delete local tags.
+git tag -l | xargs git tag -d
+Fetch remote tags.
+git fetch
+Delete remote tags.
+git tag -l | xargs git push --delete origin
+Delete local tasg.
+git tag -l | xargs git tag -d
+\`\`\`",
+  "featured_image": Object {},
+  "id": "6085807687d544006174e1fc",
+  "locale": "en",
+  "objectID": "Content_6085807687d544006174e1fc",
+  "publishedAt": "2021-04-10",
+  "slug": "how-to-delete-all-local-and-remote-tags-from-a-github-repo",
+  "subtitle": null,
+  "tags": Array [
+    Object {
+      "id": "6085808587d544006174e1fd",
+      "name": "Git",
+      "slug": "git",
+    },
+  ],
+  "title": "How to delete all local and remote tags from a Github Repo",
+  "type": "til",
+}
+`;
+
+exports[`fn: getPostsToAlgolia returns expected data structure 14`] = `
+Object {
+  "date_timestamp": "1619568000",
+  "excerpt": "One thing which bug my mind is the default way to text navigate in iTerm2.
+
+When you press \`cmd+arrow-left\` or \`option+arrow left\` for instance it, it throw \`[D\` key.
+
+In the best I used to replace what key it send to be able to walk through words. However I've found a better way of doing that.
+
+Just open iTerm2, \`Profiles -> Edit Profiles -> Keys\`. Then you click on \`Presets\` and select:  \`Natural Text Editing\`.
+
+Now we can have the same behavior as we have in other apps. :D
+
+ 
+
+ Resource
+
+- https://apple.stackexchange.com/a/218639",
+  "featured_image": Object {},
+  "id": "60899e6577ec420061b1197f",
+  "locale": "en",
+  "objectID": "Content_60899e6577ec420061b1197f",
+  "publishedAt": "2021-04-28",
+  "slug": "how-to-easy-fix-iterm2-text-navigation",
+  "subtitle": null,
+  "tags": Array [],
+  "title": "How to easy fix iTerm2 text navigation (cmd+arrow)",
+  "type": "til",
+}
+`;
+
+exports[`fn: getPostsToAlgolia returns expected data structure 15`] = `
+Object {
+  "date_timestamp": "1619740800",
+  "excerpt": "If you're trying to test your website tab navigation and the link (anchor tag) is not being focused, it might be the case it's missing \`href\`attribute:
+
+\`\`\`html
+<a>I'm not focusable</a>
+
+<a href=\\"/\\">I'm focusable</a>
+\`\`\`
+
+In fact, they also have visually different style:
+
+![Visual difference between anchor with and without href](https://res.cloudinary.com/duzei21zt/image/upload/v1619762823/site/Screenshot_2021_04_30_at_08_06_44_bdfc314872.png)
+
+But this can be a bit tricky when you're using global styles to normalize all anchor styles, no matter its state.
+",
+  "featured_image": Object {},
+  "id": "608b9edde52738ac558e148d",
+  "locale": "en",
+  "objectID": "Content_608b9edde52738ac558e148d",
+  "publishedAt": "2021-04-30",
+  "slug": "anchor-tag-without-href-is-not-focusable",
+  "subtitle": null,
+  "tags": Array [
+    Object {
+      "id": "5f3eaea98d32c410783fbea9",
+      "name": "CSS",
+      "slug": "css",
+    },
+    Object {
+      "id": "608b9ee8e52738ac558e148e",
+      "name": "HTML",
+      "slug": "html",
+    },
+  ],
+  "title": "A anchor tag without \\"href\\" is not focusable",
+  "type": "til",
+}
+`;
