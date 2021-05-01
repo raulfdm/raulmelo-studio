@@ -30,7 +30,7 @@ export interface ITagBlogPost {
   id: string;
   locale: SupportedLanguages;
   slug: string;
-  date: string;
+  publishedAt: string;
   title: string;
   subtitle: string;
   description: string;

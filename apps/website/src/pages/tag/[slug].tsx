@@ -1,5 +1,5 @@
-import { TagPage } from '@screens/Tag/TagPage';
-import { IPostTag, ITagPageGraphQLResponse } from '@screens/Tag/types';
+import { TagPage, TagPageProps } from '@screens/Tag/TagPage';
+import { ITagPageGraphQLResponse } from '@screens/Tag/types';
 import { Backend } from '@services/Backend';
 import { SupportedLanguages } from '@types-app';
 import { head } from '@utils/ramda';
@@ -12,7 +12,7 @@ interface TagPageParams {
   };
   locale: SupportedLanguages;
 }
-const Tag = (props: { tag: IPostTag }) => <TagPage {...props} />;
+const Tag = (props: TagPageProps) => <TagPage {...props} />;
 
 export const getStaticProps = async ({ params, locale }: TagPageParams) => {
   const query = `
@@ -38,7 +38,7 @@ export const getStaticProps = async ({ params, locale }: TagPageParams) => {
         id
         locale
         slug
-        date
+        publishedAt: date
         title
         subtitle
         description
@@ -47,7 +47,7 @@ export const getStaticProps = async ({ params, locale }: TagPageParams) => {
           height
           width
         }
-        post_tags {
+        tags: post_tags {
           ...postTags
         }
       }
@@ -63,14 +63,17 @@ export const getStaticProps = async ({ params, locale }: TagPageParams) => {
 
   const { postTags } = await Backend.graphql<ITagPageGraphQLResponse>(query);
 
-  const tag = head(postTags);
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const tag = head(postTags)!;
 
   const content = [
-    ...tag!.blog_posts.map((b) => ({ ...b, type: 'post' })),
-    ...tag!.til_posts.map((t) => ({ ...t, type: 'til' })),
-  ];
-
-  console.log(content);
+    ...tag.blog_posts.map((b) => ({ ...b, type: 'post' })),
+    ...tag.til_posts.map((t) => ({ ...t, type: 'til' })),
+  ].sort(
+    (prev, next) =>
+      new Date(next.publishedAt as string).getTime() -
+      new Date(prev.publishedAt as string).getTime(),
+  );
 
   return {
     props: {
