@@ -4,17 +4,29 @@ export type HitAlgolia = {
   objectID: string;
   excerpt: string;
   title: string;
-  subtitle?: string;
   slug: string;
   locale: SupportedLanguages;
-  date: string;
-  featured_image: {
+  publishedAt: string;
+  type: 'post' | 'til';
+  subtitle?: string;
+  featured_image?: {
     url: string;
   };
-  post_tags: {
+  tags: {
     name: string;
     slug: string;
+    id: string;
   }[];
+};
+
+export type RefinementListProps = {
+  items: {
+    label: string;
+    value: string[];
+    count: number;
+  }[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  refine: (value: string[]) => any;
 };
 
 export type RequestAlgoliaClient = {

@@ -29,6 +29,10 @@ export const globals = css`
   body {
     ${tw`antialiased`};
   }
+
+  .page-title {
+    ${tw`text-3xl md:text-4xl font-extrabold`}
+  }
 `;
 
 export const gridContainer = tw`
@@ -44,4 +48,10 @@ export const gridContainer = tw`
 
   lg:max-w-7xl
   lg:grid-cols-12
+`;
+
+export const pageTitle = tw`
+  text-3xl md:text-4xl
+  font-extrabold
+  col-span-full
 `;

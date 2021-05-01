@@ -40,6 +40,7 @@ const styles = {
 export const HomePage: React.FC<IHomeGraphQLResponse> = ({ posts, tils }) => {
   const { formatMessage, locale } = useLocalization();
   const defaultSeo = siteData.defaultSeo[locale];
+
   return (
     <>
       <NextSeo

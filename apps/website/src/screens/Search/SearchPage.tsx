@@ -1,24 +1,14 @@
-import { AlgoliaIcon } from '@components/Icons';
-import { PostCardWrapper } from '@components/PostCardWrapper';
 import { algoliaConfig } from '@config/algolia';
-import { Global } from '@emotion/react';
 import { useLocalization } from '@hooks/useLocalization';
-import { HitAlgolia } from '@types-app';
 import { NextSeo } from 'next-seo';
 import React from 'react';
-import { Hits, InstantSearch, SearchBox, Stats } from 'react-instantsearch-dom';
-import { defineMessages } from 'react-intl';
-import 'twin.macro';
-import { algoliaGlobalStyles } from './styles';
+import { InstantSearch } from 'react-instantsearch-dom';
+import { defineMessages, FormattedMessage } from 'react-intl';
+import { Filters, Hits, PoweredBy, SearchBox } from './components';
+import { AlgoliaGlobalStyles, searchStyles } from './styles';
 import { algoliaDebounceSearchClient } from './utils';
 
 const messages = defineMessages({
-  stats: {
-    id: 'search.stats',
-  },
-  input: {
-    id: 'search.input',
-  },
   pageTitle: {
     id: 'search.pageTitle',
   },
@@ -30,47 +20,23 @@ export const SearchPage = () => {
   return (
     <>
       <NextSeo title={formatMessage(messages.pageTitle)} noindex />
-      <Global styles={algoliaGlobalStyles} />
+      <AlgoliaGlobalStyles />
+
+      <header css={searchStyles.header}>
+        <h1 css={searchStyles.title}>
+          <FormattedMessage id="search.pageTitle" />
+        </h1>
+      </header>
 
       <InstantSearch
         searchClient={algoliaDebounceSearchClient}
         indexName={algoliaConfig.indexName}
       >
-        <div tw="pb-5 md:pb-10 col-span-full">
-          <SearchBox
-            searchAsYouType
-            autoFocus
-            translations={{ placeholder: formatMessage(messages.input) }}
-          />
-          <Stats
-            translations={{
-              stats(results, milliseconds) {
-                return formatMessage(messages.stats, {
-                  results,
-                  milliseconds,
-                });
-              },
-            }}
-          />
-          <Hits
-            hitComponent={({ hit }: { hit: HitAlgolia }) => {
-              return <PostCardWrapper key={hit.objectID} post={hit} />;
-            }}
-          />
-        </div>
-        <PoweredByAlgolia />
+        <SearchBox />
+        <Filters />
+        <Hits />
+        <PoweredBy />
       </InstantSearch>
     </>
   );
 };
-
-function PoweredByAlgolia() {
-  return (
-    <a
-      tw="flex justify-end items-center font-medium font-sans text-base col-span-full"
-      href="https://www.algolia.com/"
-    >
-      Powered by <AlgoliaIcon tw="w-8" color="#5468ff" /> Algolia
-    </a>
-  );
-}

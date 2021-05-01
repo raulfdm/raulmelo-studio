@@ -1,6 +1,33 @@
+import { Global } from '@emotion/react';
+import { pageTitle } from '@styles/base';
 import tw, { css } from 'twin.macro';
 
-export const algoliaGlobalStyles = css`
+export const AlgoliaGlobalStyles = () => (
+  <Global styles={algoliaGlobalStyles} />
+);
+
+export const searchStyles = {
+  searchArea: tw`col-span-full`,
+  header: tw`col-span-full mb-6`,
+  title: pageTitle,
+  hits: tw`pb-5 md:pb-10 col-span-full`,
+  filters: {
+    wrapper: tw`col-span-full inline-flex flex-wrap m-auto mb-7`,
+    label: tw`space-x-2 flex items-center`,
+    list: tw`flex flex-col`,
+    text: tw`text-md`,
+    title: tw`text-lg font-bold`,
+    refinementWrapper: css`
+      &:not(:last-child) {
+        ${tw`mr-6`}
+      }
+    `,
+  },
+
+  poweredLink: tw`flex justify-end items-center font-medium font-sans text-base col-span-full`,
+};
+
+const algoliaGlobalStyles = css`
   .ais-SearchBox-form {
     ${tw`flex`}
   }
@@ -52,6 +79,14 @@ export const algoliaGlobalStyles = css`
   }
 
   .ais-Hits-list {
-    ${tw`grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3`}
+    ${tw`space-y-8`}
+  }
+
+  .ais-PoweredBy {
+    ${tw`flex justify-end items-center font-medium font-sans text-base col-span-full`};
+
+    span {
+      ${tw`mr-2`}
+    }
   }
 `;
