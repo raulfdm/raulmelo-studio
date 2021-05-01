@@ -1,11 +1,14 @@
+import { PostBasic } from '@components/PostBasic';
 import { useLocalization } from '@hooks/useLocalization';
 import { AuthorPresentation } from '@screens/Home/components/AuthorPresentation';
-import { Posts } from '@screens/Home/components/Posts';
-import { getTagUrl } from '@utils/url';
+import { getTilUrl } from '@screens/TilsHome/utils';
+import { isEmpty } from '@utils/ramda';
+import { getPostUrl, getTagUrl } from '@utils/url';
 import { NextSeo } from 'next-seo';
-import { useMemo } from 'react';
-import { defineMessages } from 'react-intl';
+import React, { useMemo } from 'react';
+import { defineMessages, FormattedMessage } from 'react-intl';
 import siteData from 'site-data';
+import tw from 'twin.macro';
 import { IPostTag } from './types';
 
 const messages = defineMessages({
@@ -17,7 +20,31 @@ const messages = defineMessages({
   },
 });
 
-export const TagPage: React.FC<{ tag: IPostTag }> = ({ tag }) => {
+const styles = {
+  pageTitle: tw`col-span-full font-sans font-extrabold text-xl lg:text-2xl mb-4 lg:mb-8`,
+  emptyParagraph: tw`col-span-full text-lg`,
+  postTitle: tw`text-xl lg:text-2xl`,
+  list: tw`pb-5 md:pb-10 col-span-full space-y-6`,
+};
+
+export type TagPageProps = {
+  tag: IPostTag;
+  content: {
+    publishedAt: string;
+    id: string;
+    slug: string;
+    subtitle?: string;
+    title: string;
+    type: 'post' | 'til';
+    tags: {
+      name: string;
+      slug: string;
+      id: string;
+    }[];
+  }[];
+};
+
+export const TagPage: React.FC<TagPageProps> = ({ tag, content }) => {
   const { formatMessage } = useLocalization();
 
   const [title, description] = useMemo(
@@ -51,10 +78,28 @@ export const TagPage: React.FC<{ tag: IPostTag }> = ({ tag }) => {
       />
 
       <AuthorPresentation />
-      <Posts
-        posts={tag.blog_posts}
-        title={formatMessage(messages.title, { tag: tag.name })}
-      />
+
+      <h2 css={styles.pageTitle}>{title}</h2>
+      {isEmpty(content) ? (
+        <p css={styles.emptyParagraph}>
+          <FormattedMessage id="tag.empty" />
+        </p>
+      ) : (
+        <ul css={styles.list}>
+          {content.map((c) => {
+            const getUrl = c.type === 'post' ? getPostUrl : getTilUrl;
+
+            return (
+              <PostBasic
+                key={c.id}
+                titleClassName={styles.postTitle}
+                {...c}
+                url={getUrl(c.slug)}
+              />
+            );
+          })}
+        </ul>
+      )}
     </>
   );
 };
