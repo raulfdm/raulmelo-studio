@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { AlgoliaObject } from '../../types';
-import { getPostsToAlgolia } from '../posts';
+import { getContentToAlgolia } from '../content';
 
 jest.mock('../../../utils/api', () => {
-  const { postApi } = require('../__fixtures__/posts');
+  const { postApi } = require('../__fixtures__/content');
 
   return {
     api: {
@@ -17,7 +17,7 @@ describe('fn: getPostsToAlgolia', () => {
   let data: AlgoliaObject[];
 
   beforeEach(async () => {
-    [indexName, data] = await getPostsToAlgolia();
+    [indexName, data] = await getContentToAlgolia();
   });
 
   it('returns expected index name', async () => {
@@ -26,22 +26,7 @@ describe('fn: getPostsToAlgolia', () => {
 
   it('returns expected data structure', () => {
     data.forEach((obj) => {
-      expect(obj).toEqual(
-        expect.objectContaining({
-          date: expect.any(String),
-          objectID: expect.any(String),
-          id: expect.any(String),
-          excerpt: expect.any(String),
-          locale: expect.any(String),
-          title: expect.any(String),
-          subtitle: expect.any(String),
-          featured_image: expect.objectContaining({
-            width: expect.any(Number),
-            height: expect.any(Number),
-            url: expect.any(String),
-          }),
-        }),
-      );
+      expect(obj).toMatchSnapshot();
 
       // Can't send entire content
       expect(obj).not.toEqual({
