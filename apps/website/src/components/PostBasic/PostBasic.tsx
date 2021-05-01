@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import tw, { styled, TwStyle } from 'twin.macro';
-import React from 'react';
-import { Tags, Tag } from '@components/Tags';
+import { Tag, Tags } from '@components/Tags';
 import { getTagUrl } from '@utils/url';
+import Link from 'next/link';
+import React from 'react';
 import { FormattedDate } from 'react-intl';
+import tw, { styled, TwStyle } from 'twin.macro';
 
 const Wrapper = styled.section``;
 
@@ -11,7 +11,7 @@ const styles = {
   titleLink: tw`relative inline-block cursor-pointer`,
   title: tw`font-extrabold`,
   metaWrapper: tw`flex space-x-4 mb-2.5`,
-  typeBase: tw`px-2 rounded-sm min-width[40px] text-center font-bold text-gray-50`,
+  typeBase: tw`px-2 rounded-sm min-width[40px] text-center font-bold text-gray-50 uppercase`,
   type: {
     post: tw`bg-indigo-600`,
     til: tw`bg-yellow-600`,

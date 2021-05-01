@@ -23,7 +23,7 @@ export const getStaticProps = async ({ params, locale }: TagPageParams) => {
       name
   
       # TIL
-      til_posts {
+      til_posts(sort: "publishedAt:desc", where: { locale: "${locale}" }) {
         publishedAt
         id
         slug
@@ -65,9 +65,17 @@ export const getStaticProps = async ({ params, locale }: TagPageParams) => {
 
   const tag = head(postTags);
 
+  const content = [
+    ...tag!.blog_posts.map((b) => ({ ...b, type: 'post' })),
+    ...tag!.til_posts.map((t) => ({ ...t, type: 'til' })),
+  ];
+
+  console.log(content);
+
   return {
     props: {
       tag,
+      content,
     },
     revalidate: 1,
   };
