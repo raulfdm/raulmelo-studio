@@ -1,10 +1,9 @@
-import debounce from 'debounce-promise';
-
 import { algoliaClient } from '@config/algolia';
-import { RequestsAlgoliaClient } from '@types-app';
+import debounce from 'debounce-promise';
+import { RequestsAlgoliaClient } from './types';
 
 export const algoliaDebounceSearchClient = {
-  search: debounce((requests: RequestsAlgoliaClient) => {
+  search: debounce(async (requests: RequestsAlgoliaClient) => {
     if (requests.every(({ params }) => !params.query)) {
       return Promise.resolve({
         results: requests.map(() => ({
@@ -16,6 +15,8 @@ export const algoliaDebounceSearchClient = {
       });
     }
 
-    return algoliaClient.search(requests);
+    const a = await algoliaClient.search(requests);
+
+    return a;
   }, 500),
 };
