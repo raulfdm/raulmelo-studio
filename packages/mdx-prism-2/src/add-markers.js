@@ -1,26 +1,35 @@
 // Copied from https://github.com/rexxars/react-refractor/blob/master/src/Refractor.js
-const filter = require("unist-util-filter");
-const visit = require("unist-util-visit-parents");
-const NodeMap = require("./map");
+import { filter } from 'unist-util-filter';
+import { visitParents } from 'unist-util-visit-parents';
+import { NodeMap } from './map';
+
+export function addMarkers(ast, options) {
+  const markers = options.markers
+    .map((marker) => (marker.line ? marker : { line: marker }))
+    .sort((nodeA, nodeB) => nodeA.line - nodeB.line);
+
+  const numbered = lineNumberify(ast).nodes;
+  return wrapLines(numbered, markers, options);
+}
 
 function lineNumberify(ast, context = { lineNumber: 1 }) {
   return ast.reduce(
     (result, node) => {
       const lineStart = context.lineNumber;
 
-      if (node.type === "text") {
-        if (node.value.indexOf("\n") === -1) {
+      if (node.type === 'text') {
+        if (node.value.indexOf('\n') === -1) {
           node.lineStart = lineStart;
           node.lineEnd = lineStart;
           result.nodes.push(node);
           return result;
         }
 
-        const lines = node.value.split("\n");
+        const lines = node.value.split('\n');
         for (let i = 0; i < lines.length; i++) {
           const lineNum = i === 0 ? context.lineNumber : ++context.lineNumber;
           result.nodes.push({
-            type: "text",
+            type: 'text',
             value: i === lines.length - 1 ? lines[i] : `${lines[i]}\n`,
             lineStart: lineNum,
             lineEnd: lineNum,
@@ -46,12 +55,12 @@ function lineNumberify(ast, context = { lineNumber: 1 }) {
       result.nodes.push(node);
       return result;
     },
-    { nodes: [], lineNumber: context.lineNumber }
+    { nodes: [], lineNumber: context.lineNumber },
   );
 }
 
 function unwrapLine(markerLine, nodes) {
-  const tree = { type: "root", children: nodes };
+  const tree = { type: 'root', children: nodes };
 
   const headMap = new NodeMap();
   const lineMap = new NodeMap();
@@ -82,7 +91,7 @@ function unwrapLine(markerLine, nodes) {
     }
   }
 
-  visit(tree, (node, ancestors) => {
+  visitParents(tree, (node, ancestors) => {
     if (node.children) {
       return;
     }
@@ -117,7 +126,7 @@ function unwrapLine(markerLine, nodes) {
       return [];
     }
 
-    visit(rootNode, (leaf, ancestors) => {
+    visitParents(rootNode, (leaf, ancestors) => {
       if (leaf.children) {
         leaf.lineStart = 0;
         leaf.lineEnd = 0;
@@ -137,7 +146,7 @@ function unwrapLine(markerLine, nodes) {
     getChildren(headMap),
     getChildren(lineMap),
     getChildren(tailMap),
-    filtered ? filtered.children : []
+    filtered ? filtered.children : [],
   );
 
   headMap.clear();
@@ -148,10 +157,10 @@ function unwrapLine(markerLine, nodes) {
 }
 
 function wrapBatch(children, marker, options) {
-  const className = marker.className || "mdx-marker";
+  const className = marker.className || 'mdx-marker';
   return {
-    type: "element",
-    tagName: marker.component || "div",
+    type: 'element',
+    tagName: marker.component || 'div',
     properties: marker.component
       ? Object.assign({}, options, { className })
       : { className },
@@ -169,7 +178,7 @@ function wrapLines(treeNodes, markers, options) {
 
   const ast = markers.reduce(
     (acc, marker) => unwrapLine(marker.line, acc),
-    treeNodes
+    treeNodes,
   );
 
   // Container for the new AST
@@ -212,14 +221,3 @@ function wrapLines(treeNodes, markers, options) {
 
   return wrapped;
 }
-
-function addMarkers(ast, options) {
-  const markers = options.markers
-    .map((marker) => (marker.line ? marker : { line: marker }))
-    .sort((nodeA, nodeB) => nodeA.line - nodeB.line);
-
-  const numbered = lineNumberify(ast).nodes;
-  return wrapLines(numbered, markers, options);
-}
-
-module.exports = addMarkers;

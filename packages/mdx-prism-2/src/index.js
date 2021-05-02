@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-const rangeParser = require("parse-numeric-range");
-const rehype = require("rehype");
-const visit = require("unist-util-visit");
-const nodeToString = require("hast-util-to-string");
-const unified = require("unified");
-const parse = require("rehype-parse");
-const refractor = require("refractor");
-const addMarkers = require("./add-markers");
+import nodeToString from 'hast-util-to-string';
+import rangeParser from 'parse-numeric-range';
+import refractor from 'refractor';
+import rehype from 'rehype';
+import parse from 'rehype-parse';
+import unified from 'unified';
+import { visit } from 'unist-util-visit';
+import { addMarkers } from './add-markers';
 
 /**
  * This module walks through the node tree and does:
@@ -22,13 +22,13 @@ const addMarkers = require("./add-markers");
  *  - sets the code as value
  */
 
-module.exports = (options = {}) => {
+export default function mdxPrism2(options = {}) {
   return (tree) => {
-    visit(tree, "element", visitor);
+    visit(tree, 'element', visitor);
   };
 
   function visitor(node, index, parent) {
-    if (!parent || parent.tagName !== "pre" || node.tagName !== "code") {
+    if (!parent || parent.tagName !== 'pre' || node.tagName !== 'code') {
       return;
     }
 
@@ -45,7 +45,7 @@ module.exports = (options = {}) => {
 
     try {
       parent.properties.className = (parent.properties.className || []).concat(
-        "language-" + lang
+        'language-' + lang,
       );
 
       result = refractor.highlight(nodeToString(node), lang);
@@ -57,14 +57,14 @@ module.exports = (options = {}) => {
 
         // AST to HTML
         let html_ = rehype()
-          .stringify({ type: "root", children: result })
+          .stringify({ type: 'root', children: result })
           .toString();
 
         // Fix JSX issue
         html_ = html_.replace(PLAIN_TEXT_WITH_LF_TEST, (match) => {
           return match.replace(
             /\n/g,
-            '</span>\n<span class="token plain-text">'
+            '</span>\n<span class="token plain-text">',
           );
         });
 
@@ -86,17 +86,17 @@ module.exports = (options = {}) => {
 
     node.children = result;
   }
-};
+}
 
 const parseLineNumberRange = (language) => {
   if (!language) {
-    return "";
+    return '';
   }
 
   const lineRegex = /{.*}/g;
 
   if (lineRegex.test(language)) {
-    let [splitLanguage, ...options] = language.split("{");
+    let [splitLanguage, ...options] = language.split('{');
 
     let highlightLines = [];
 
@@ -121,15 +121,15 @@ const parseLineNumberRange = (language) => {
 function getLangClass(node) {
   const className = node.properties.className || [];
   for (const item of className) {
-    if (item.slice(0, 9) === "language-") {
+    if (item.slice(0, 9) === 'language-') {
       return item;
     }
   }
   return null;
 }
 
-function getLanguage(className = "") {
-  if (className.slice(0, 9) === "language-") {
+function getLanguage(className = '') {
+  if (className.slice(0, 9) === 'language-') {
     return className.slice(9).toLowerCase();
   }
 
