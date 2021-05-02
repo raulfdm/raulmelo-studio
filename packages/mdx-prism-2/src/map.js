@@ -1,7 +1,8 @@
 /**
  * Weird "map" polyfill, that's weak if possible
  */
-module.exports = typeof WeakMap === "function" ? HappyMap : SadMap;
+
+export const NodeMap = typeof WeakMap === 'function' ? HappyMap : SadMap;
 
 // Happy path! Fakes a `clear()` if possible (noop)
 function HappyMap() {
