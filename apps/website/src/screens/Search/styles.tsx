@@ -16,7 +16,7 @@ export const searchStyles = {
   poweredLink: css`
     ${tw`relative items-center font-medium font-sans text-base col-span-full`};
     a {
-      ${tw`inline-flex justify-end absolute right-0`}
+      ${tw`inline-flex justify-end items-center absolute right-0`}
     }
   `,
 };
