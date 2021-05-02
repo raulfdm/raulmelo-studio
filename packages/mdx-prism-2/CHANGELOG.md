@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/raulfdm/raulmelo-studio/compare/mdx-prism-2@1.0.0...mdx-prism-2@4.0.0) (2021-05-02)
+
+### Code Refactoring
+
+- convert lib to es6 and compile to ES6 ([fc892b5](https://github.com/raulfdm/raulmelo-studio/commit/fc892b581478ba169bce677a879ebb9717ba2974))
+
+### BREAKING CHANGES
+
+- upgrade unist\* major version.
+
 ## [3.0.14](https://github.com/raulfdm/mdx-prism-2/compare/mdx-prism-2@3.0.13...mdx-prism-2@3.0.14) (2021-03-28)
 
 **Note:** Version bump only for package mdx-prism-2
