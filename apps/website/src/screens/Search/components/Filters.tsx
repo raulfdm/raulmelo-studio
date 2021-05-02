@@ -113,7 +113,9 @@ function GenericRefinement({
                   onClick={handleClick}
                   onKeyPress={createEnterHandler(handleClick)}
                 />
-                <LabelText>{renderLabelText(item.label)}</LabelText>
+                <LabelText>
+                  {renderLabelText(item.label)} {`(${item.count})`}
+                </LabelText>
               </Label>
             </ListItem>
           );
