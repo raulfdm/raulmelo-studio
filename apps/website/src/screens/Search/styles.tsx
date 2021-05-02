@@ -11,18 +11,6 @@ export const searchStyles = {
   header: tw`col-span-full mb-6`,
   title: pageTitle,
   hits: tw`pb-5 md:pb-10 col-span-full`,
-  filters: {
-    wrapper: tw`col-span-full inline-flex flex-wrap m-auto mb-7`,
-    label: tw`space-x-2 flex items-center`,
-    list: tw`flex flex-col`,
-    text: tw`text-md`,
-    title: tw`text-lg font-bold`,
-    refinementWrapper: css`
-      &:not(:last-child) {
-        ${tw`mr-6`}
-      }
-    `,
-  },
   poweredLink: css`
     ${tw`relative items-center font-medium font-sans text-base col-span-full`};
     a {
