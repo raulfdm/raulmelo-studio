@@ -9,6 +9,8 @@ export const AlgoliaGlobalStyles = () => (
 export const searchStyles = {
   searchArea: tw`col-span-full`,
   header: tw`col-span-full mb-6`,
+  paragraph: tw`text-lg`,
+  searchLink: tw`underline text-secondary`,
   title: pageTitle,
   hits: tw`pb-5 md:pb-10 col-span-full`,
   poweredLink: css`
