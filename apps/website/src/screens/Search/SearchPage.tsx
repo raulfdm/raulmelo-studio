@@ -26,6 +26,22 @@ export const SearchPage = () => {
         <h1 css={searchStyles.title}>
           <FormattedMessage id="search.pageTitle" />
         </h1>
+        <p css={searchStyles.paragraph}>
+          <FormattedMessage
+            id="search.paragraph"
+            values={{
+              // eslint-disable-next-line react/display-name
+              a: (chunks: never) => (
+                <a
+                  css={searchStyles.searchLink}
+                  href="https://www.google.com/search?q=site%3Araulmelo.dev+javascript"
+                >
+                  {chunks}
+                </a>
+              ),
+            }}
+          />
+        </p>
       </header>
 
       <InstantSearch

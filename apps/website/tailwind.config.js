@@ -118,14 +118,17 @@ module.exports = {
       fontWeight: ['hover'],
       boxShadow: ['dark'],
       borderWidth: ['dark', 'focus'],
+      borderColor: ['focus', 'checked'],
       scale: ['hover'],
       transform: ['hover'],
       outline: ['dark'],
+      backgroundColor: ['focus', 'hover', 'checked'],
     },
     typography: ['dark', 'responsive'],
   },
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/forms'),
   ],
 };

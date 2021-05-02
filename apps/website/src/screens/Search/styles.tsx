@@ -9,24 +9,14 @@ export const AlgoliaGlobalStyles = () => (
 export const searchStyles = {
   searchArea: tw`col-span-full`,
   header: tw`col-span-full mb-6`,
+  paragraph: tw`text-lg`,
+  searchLink: tw`underline text-secondary`,
   title: pageTitle,
   hits: tw`pb-5 md:pb-10 col-span-full`,
-  filters: {
-    wrapper: tw`col-span-full inline-flex flex-wrap m-auto mb-7`,
-    label: tw`space-x-2 flex items-center`,
-    list: tw`flex flex-col`,
-    text: tw`text-md`,
-    title: tw`text-lg font-bold`,
-    refinementWrapper: css`
-      &:not(:last-child) {
-        ${tw`mr-6`}
-      }
-    `,
-  },
   poweredLink: css`
     ${tw`relative items-center font-medium font-sans text-base col-span-full`};
     a {
-      ${tw`inline-flex justify-end absolute right-0`}
+      ${tw`inline-flex justify-end items-center absolute right-0`}
     }
   `,
 };
