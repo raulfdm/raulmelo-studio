@@ -1,6 +1,6 @@
 {
   "name": "mdx-prism-2",
-  "version": "1.0.0",
+  "version": "3.0.15",
   "description": "A fork from mdx-prism plugin to highlight code blocks in HTML with Prism and more",
   "repository": {
     "type": "git",
@@ -20,27 +20,34 @@
   "bugs": {
     "url": "https://github.com/raulfdm/raulmelo-studio"
   },
-  "main": "src/index.js",
+  "main": "dist/index.cjs.js",
   "scripts": {
+    "build": "scripty",
+    "dev": "scripty",
     "lint": "scripty",
-    "test": "scripty"
+    "test": "scripty",
+    "prepare": "scripty"
   },
   "files": [
-    "src"
+    "dist"
   ],
   "dependencies": {
     "hast-util-to-string": "1.0.4",
     "parse-numeric-range": "1.2.0",
     "refractor": "3.3.1",
     "rehype": "11.0.0",
-    "unist-util-filter": "2.0.3",
-    "unist-util-visit": "2.0.3",
-    "unist-util-visit-parents": "3.1.1"
+    "rehype-parse": "7.0.1",
+    "unified": "9.2.1",
+    "unist-util-filter": "3.0.0",
+    "unist-util-visit": "3.0.0",
+    "unist-util-visit-parents": "4.0.0"
   },
   "devDependencies": {
-    "dedent": "0.7.0"
+    "@rollup/plugin-commonjs": "18.0.0",
+    "dedent": "0.7.0",
+    "rollup": "2.46.0"
   },
   "scripty": {
-    "path": "../../scripts/common"
+    "path": "./scripts"
   }
 }
