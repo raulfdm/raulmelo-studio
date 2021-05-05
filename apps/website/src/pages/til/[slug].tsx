@@ -7,7 +7,7 @@ import {
 } from '@screens/TilPost';
 import { Backend, graphqlVariables } from '@services/Backend';
 import { SupportedLanguages } from '@types-app';
-import { head } from '@utils/ramda';
+import { head, isEmpty, isNil } from '@utils/ramda';
 import { GetStaticPaths } from 'next';
 
 type Props = {
@@ -40,6 +40,14 @@ type Params = {
 
 export const getStaticProps = async ({ params, preview }: Params) => {
   const til = await fetchTilBySlug(params.slug, preview);
+
+  // https://github.com/vercel/next.js/issues/16681#issuecomment-792314687
+  if (isNil(til) || isEmpty(til)) {
+    return {
+      notFound: true,
+    };
+  }
+
   const content = await renderToString(til.content);
 
   return {
@@ -70,7 +78,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: tils.map(generatePath),
-    fallback: false,
+    fallback: 'blocking',
   };
 
   function generatePath(til: ResponseType['tils'][0]) {
@@ -86,7 +94,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 async function fetchTilBySlug(
   slug: string,
   preview = false,
-): Promise<ITilPost> {
+): Promise<ITilPost | undefined> {
   const query = `
     query Tils($where: JSON) {
       tils(locale: "all", where: $where) {
@@ -113,10 +121,6 @@ async function fetchTilBySlug(
   });
 
   const til = head(tils);
-
-  if (!til) {
-    throw new Error('Invalid Slug');
-  }
 
   return til;
 }
