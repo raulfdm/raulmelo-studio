@@ -10,6 +10,7 @@ import {
   BlogPostPageProps,
   BlogPostPost,
 } from '@screens/BlogPost';
+import { isEmpty, isNil } from '@utils/ramda';
 
 const BlogPostPage: React.FC<BlogPostPageProps> = ({
   content,
@@ -34,6 +35,13 @@ type Params = {
 
 export const getStaticProps = async ({ params, preview }: Params) => {
   const post = await fetchPostBySlug(params.slug, preview);
+
+  if (isNil(post) || isEmpty(post)) {
+    return {
+      notFound: true,
+    };
+  }
+
   const content = await renderToString(post.content);
 
   return {
@@ -69,14 +77,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   };
 };
 
 async function fetchPostBySlug(
   slug: string,
   preview = false,
-): Promise<BlogPostPost> {
+): Promise<BlogPostPost | undefined> {
   /**
    * I cannot use `post` schema to fetch this data.
    * The reason is within `post`, I only can filter by post id and I need to
