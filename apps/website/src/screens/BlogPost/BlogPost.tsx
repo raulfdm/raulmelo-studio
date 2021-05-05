@@ -9,7 +9,11 @@ const SeriesSection = dynamic(() =>
   import('./components/SeriesSection').then((mod) => mod.SeriesSection),
 ) as typeof SeriesSectionType;
 
-export const BlogPost: React.FC<BlogPostProps> = ({ children, post }) => {
+export const BlogPost: React.FC<BlogPostProps> = ({
+  children,
+  post,
+  preview,
+}) => {
   const { featured_image, post_tags, unsplash, series } = post;
 
   const allSeries = series ? (
@@ -25,6 +29,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({ children, post }) => {
 
   return (
     <MdxPostTemplate
+      preview={preview}
       featuredImage={{
         src: featured_image.url,
         unsplash,

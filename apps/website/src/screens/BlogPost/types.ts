@@ -44,8 +44,10 @@ export type BlogPostGraphQLResponse = {
 
 export type BlogPostProps = {
   post: BlogPostPost;
+  preview: boolean;
 };
 
 export type BlogPostPageProps = BlogPostProps & {
   content: MdxRemoteSource;
+  preview: boolean;
 };
