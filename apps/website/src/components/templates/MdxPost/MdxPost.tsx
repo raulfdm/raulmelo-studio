@@ -12,6 +12,7 @@ import siteData from 'site-data';
 import 'twin.macro';
 import { FeaturedImage, FeaturedImageProps } from './components/FeaturedImage';
 import { Header } from './components/Header';
+import { PreviewBanner } from './components/PreviewBanner/PreviewBanner';
 import { PrismStyles } from './components/PrismStyles';
 
 export const MdxPostTemplate: React.FC<MdxPostTemplateProps> = ({
@@ -97,20 +98,7 @@ export const MdxPostTemplate: React.FC<MdxPostTemplateProps> = ({
       />
 
       <PrismStyles />
-      {preview ? (
-        <div tw="col-span-full bg-yellow-300 dark:text-black px-6 py-4 text-lg flex justify-center">
-          <p>
-            This is <strong>Preview Mode</strong>.
-          </p>
-          <p>
-            You can turn it off by{' '}
-            <a tw="underline" href="/api/exit-preview">
-              clicking here
-            </a>
-            .
-          </p>
-        </div>
-      ) : null}
+      {preview ? <PreviewBanner /> : null}
 
       {featuredImage ? (
         <FeaturedImage
