@@ -112,16 +112,6 @@ async function fetchTilBySlug(
     },
   });
 
-  console.log({
-    tils,
-    vars: {
-      where: {
-        slug,
-        ...(preview ? graphqlVariables.preview : {}),
-      },
-    },
-  });
-
   const til = head(tils);
 
   if (!til) {
