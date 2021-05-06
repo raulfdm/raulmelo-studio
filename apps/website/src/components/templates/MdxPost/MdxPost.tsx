@@ -12,6 +12,7 @@ import siteData from 'site-data';
 import 'twin.macro';
 import { FeaturedImage, FeaturedImageProps } from './components/FeaturedImage';
 import { Header } from './components/Header';
+import { PreviewBanner } from './components/PreviewBanner/PreviewBanner';
 import { PrismStyles } from './components/PrismStyles';
 
 export const MdxPostTemplate: React.FC<MdxPostTemplateProps> = ({
@@ -24,6 +25,7 @@ export const MdxPostTemplate: React.FC<MdxPostTemplateProps> = ({
   tags,
   series,
   nextSeo,
+  preview,
 }) => {
   const { formatDate } = useLocalization();
   const { asPath } = useRouter();
@@ -96,6 +98,7 @@ export const MdxPostTemplate: React.FC<MdxPostTemplateProps> = ({
       />
 
       <PrismStyles />
+      {preview ? <PreviewBanner /> : null}
 
       {featuredImage ? (
         <FeaturedImage
@@ -146,6 +149,7 @@ export const MdxPostTemplate: React.FC<MdxPostTemplateProps> = ({
 };
 
 interface MdxPostTemplateProps {
+  preview?: boolean;
   tags?: { id: string; slug: string; name: string }[];
   featuredImage?: FeaturedImageProps & { width: number; height: number };
   title: string;

@@ -5,16 +5,17 @@ import {
   ITilPostGraphQLResponse,
   ITilPostParsed,
 } from '@screens/TilPost';
-import { Backend } from '@services/Backend';
+import { Backend, graphqlVariables } from '@services/Backend';
 import { SupportedLanguages } from '@types-app';
-import { head } from '@utils/ramda';
+import { head, isEmpty, isNil } from '@utils/ramda';
 import { GetStaticPaths } from 'next';
 
 type Props = {
   til: ITilPostParsed;
+  preview: boolean;
 };
 
-const TilPostPage = ({ til }: Props) => {
+const TilPostPage = ({ til, preview }: Props) => {
   const parsedContent = hydrate(til.content);
 
   return (
@@ -23,6 +24,7 @@ const TilPostPage = ({ til }: Props) => {
       description={til.title}
       publishedAt={til.publishedAt}
       tags={til.tags}
+      preview={preview}
     >
       {parsedContent}
     </MdxPostTemplate>
@@ -33,15 +35,26 @@ type Params = {
   params: {
     slug: string;
   };
+  preview?: boolean;
 };
 
-export const getStaticProps = async ({ params }: Params) => {
-  const til = await fetchTilBySlug(params.slug);
+export const getStaticProps = async ({ params, preview }: Params) => {
+  const til = await fetchTilBySlug(params.slug, preview);
+
+  // https://github.com/vercel/next.js/issues/16681#issuecomment-792314687
+  if (isNil(til) || isEmpty(til)) {
+    return {
+      notFound: true,
+    };
+  }
+
   const content = await renderToString(til.content);
 
   return {
     props: {
       til: { ...til, content },
+      // TODO: add a banner for "preview mode"
+      preview: Boolean(preview),
     },
     revalidate: 1,
   };
@@ -65,7 +78,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: tils.map(generatePath),
-    fallback: false,
+    fallback: 'blocking',
   };
 
   function generatePath(til: ResponseType['tils'][0]) {
@@ -78,10 +91,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 };
 
-async function fetchTilBySlug(slug: string): Promise<ITilPost> {
+async function fetchTilBySlug(
+  slug: string,
+  preview = false,
+): Promise<ITilPost | undefined> {
   const query = `
-    query Tils {
-      tils(locale: "all", where: { slug: "${slug}" }) {
+    query Tils($where: JSON) {
+      tils(locale: "all", where: $where) {
         id
         publishedAt
         title
@@ -97,13 +113,14 @@ async function fetchTilBySlug(slug: string): Promise<ITilPost> {
     }
 `;
 
-  const { tils } = await Backend.graphql<ITilPostGraphQLResponse>(query);
+  const { tils } = await Backend.graphql<ITilPostGraphQLResponse>(query, {
+    where: {
+      slug,
+      ...(preview ? graphqlVariables.preview : {}),
+    },
+  });
 
   const til = head(tils);
-
-  if (!til) {
-    throw new Error('Invalid Slug');
-  }
 
   return til;
 }

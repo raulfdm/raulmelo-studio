@@ -1,5 +1,5 @@
 import { hydrate, renderToString } from '@config/mdx';
-import { Backend } from '@services/Backend';
+import { Backend, graphqlVariables } from '@services/Backend';
 import { SupportedLanguages } from '@types-app';
 import { head } from '@utils/utilities';
 import { GetStaticPaths } from 'next';
@@ -10,27 +10,45 @@ import {
   BlogPostPageProps,
   BlogPostPost,
 } from '@screens/BlogPost';
+import { isEmpty, isNil } from '@utils/ramda';
 
-const BlogPostPage: React.FC<BlogPostPageProps> = ({ content, post }) => {
+const BlogPostPage: React.FC<BlogPostPageProps> = ({
+  content,
+  post,
+  preview,
+}) => {
   const parsedContent = hydrate(content);
 
-  return <BlogPost post={post}>{parsedContent}</BlogPost>;
+  return (
+    <BlogPost post={post} preview={preview}>
+      {parsedContent}
+    </BlogPost>
+  );
 };
 
 type Params = {
   params: {
     slug: string;
   };
+  preview?: boolean;
 };
 
-export const getStaticProps = async ({ params }: Params) => {
-  const post = await fetchPostBySlug(params.slug);
+export const getStaticProps = async ({ params, preview }: Params) => {
+  const post = await fetchPostBySlug(params.slug, preview);
+
+  if (isNil(post) || isEmpty(post)) {
+    return {
+      notFound: true,
+    };
+  }
+
   const content = await renderToString(post.content);
 
   return {
     props: {
       post,
       content,
+      preview: Boolean(preview),
     },
     revalidate: 1,
   };
@@ -59,19 +77,22 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   };
 };
 
-async function fetchPostBySlug(slug: string): Promise<BlogPostPost> {
+async function fetchPostBySlug(
+  slug: string,
+  preview = false,
+): Promise<BlogPostPost | undefined> {
   /**
    * I cannot use `post` schema to fetch this data.
    * The reason is within `post`, I only can filter by post id and I need to
    * fetch by post slug
    */
-  const apiJsonResponse = await Backend.graphql<BlogPostGraphQLResponse>(`
-  query BlogPost {
-    posts(where: { slug: "${slug}" }, locale: "all") {
+  const query = `
+  query BlogPost($where: JSON) {
+    posts(where: $where, locale: "all") {
       id
       title
       subtitle
@@ -105,7 +126,17 @@ async function fetchPostBySlug(slug: string): Promise<BlogPostPost> {
       }
     }
   }  
-  `);
+  `;
+
+  const apiJsonResponse = await Backend.graphql<BlogPostGraphQLResponse>(
+    query,
+    {
+      where: {
+        ...(preview ? graphqlVariables.preview : {}),
+        slug,
+      },
+    },
+  );
 
   const postHead = head(apiJsonResponse.posts);
 
