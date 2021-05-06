@@ -5,6 +5,7 @@
 
 module.exports = {
   clearMocks: true,
+  collectCoverage: true,
   modulePathIgnorePatterns: ['.history'],
   testMatch: ['**/?(*.)+(spec|test).[tj]s?(x)'],
 };
