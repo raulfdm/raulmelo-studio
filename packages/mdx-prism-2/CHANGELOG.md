@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/raulfdm/raulmelo-studio/compare/mdx-prism-2@4.0.2...mdx-prism-2@5.0.0) (2021-05-07)
+
+### chore
+
+- **deps:** major dependency upgrade ([#277](https://github.com/raulfdm/raulmelo-studio/issues/277)) ([ad4bf8c](https://github.com/raulfdm/raulmelo-studio/commit/ad4bf8c61977dfc9eac91eaed15edefaea755979))
+
+### BREAKING CHANGES
+
+- **deps:** @rollup/plugin-node-resolve was upgraded from v11 to v13
+
 ## [4.0.2](https://github.com/raulfdm/raulmelo-studio/compare/mdx-prism-2@4.0.1...mdx-prism-2@4.0.2) (2021-05-02)
 
 **Note:** Version bump only for package mdx-prism-2
