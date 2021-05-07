@@ -25,7 +25,8 @@ const styles = {
     ${tw`items-center h-full`};
     ${gridContainer};
   `,
-  logo: tw`col-span-2`,
+  logoSection: tw`col-span-2`,
+  logo: tw` text-primary`,
   iconsWrapper: tw`flex justify-end space-x-3 col-span-2 md:col-end-9 lg:col-end-13`,
   menuButtonBase: tw`p-2 flex place-content-center`,
   icon: tw`w-6`,
@@ -41,9 +42,9 @@ export const MenuBar: FC = () => {
     <>
       <div css={styles.wrapper}>
         <nav css={styles.inner}>
-          <section data-testid="menu-bar__logo" css={styles.logo}>
+          <section data-testid="menu-bar__logo" css={styles.logoSection}>
             <Link href="/" locale={locale} passHref>
-              <a>
+              <a css={styles.logo}>
                 <Logo />
               </a>
             </Link>
