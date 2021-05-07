@@ -47,6 +47,7 @@ jobs:
         run: |
           git config --global user.name "Raul Melo"
           git config --global user.email "melo.raulf@gmail.com"
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ./.npmrc
           yarn release
         if: github.ref == 'refs/heads/main'
         env:
