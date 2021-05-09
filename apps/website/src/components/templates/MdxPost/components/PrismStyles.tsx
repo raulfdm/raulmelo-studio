@@ -5,7 +5,7 @@ export const PrismStyles = () => <Global styles={prismStyles} />;
 
 const prismStyles = css`
   html {
-    --prism-black: #292a2b;
+    --prism-black: #1f2937;
     --prism-yellow: #d9d336;
     --prism-orange: #ffb86c;
     --prism-gray-light: #e6e6e6;
@@ -156,18 +156,19 @@ const prismStyles = css`
 
   /* Styles for File name */
   .remark-code-title {
-    padding: 0.5rem 1rem;
     background-color: var(--prism-black);
-    font-size: 0.75rem;
-    border-bottom: 1px solid rgb(217, 215, 224, 0.2);
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
+    border-bottom: 1px solid var(--prism-gray);
+    ${tw`text-base font-bold rounded-t py-2 px-4`}
   }
 
   .remark-code-title + pre {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    margin-top: 0;
+
+    /* Couldn't find a way to get precedence from prose styles */
+    margin-top: 0 !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
   }
   /* End:Styles for File name */
 
@@ -176,7 +177,7 @@ const prismStyles = css`
     background: #d9d7e0;
     border-radius: 0px 0px 4px 4px;
     color: #232129;
-    font-size: 0.65rem;
+    ${tw`text-sm font-semibold`}
     font-family: var(--prism-font-family);
     letter-spacing: 0.045em;
     line-height: 1;
