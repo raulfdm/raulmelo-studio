@@ -1,5 +1,3 @@
-import { MdxRemote } from 'next-mdx-remote/types';
-
 export type SupportedLanguages = 'en' | 'pt';
 
 export type SupportedThemes = 'dark' | 'light';
@@ -29,7 +27,3 @@ export interface SiteTheme {
     };
   };
 }
-
-export type MdxRemoteSource = MdxRemote.Source;
-
-export type MdxRemoteComponents = MdxRemote.Components;

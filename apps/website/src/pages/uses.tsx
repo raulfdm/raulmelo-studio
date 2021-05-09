@@ -1,21 +1,22 @@
-import { hydrate, renderToString } from '@config/mdx';
+import { serializeMdx } from '@config/mdx';
 import { UsesPageStaticPropsResponse } from '@screens/Uses/types';
 import { UsesPage, UsesPageProps } from '@screens/Uses/UsesPage';
 import { Backend } from '@services/Backend';
-import { MdxRemoteSource } from '@types-app';
 import { GetStaticProps } from 'next';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
-type Props = UsesPageProps & { usesMd: MdxRemoteSource; title: string };
-
-const Uses = ({ usesMd, seo, title }: Props) => {
-  const content = hydrate(usesMd);
-
-  return (
-    <UsesPage seo={seo} title={title}>
-      {content}
-    </UsesPage>
-  );
+type Props = UsesPageProps & {
+  content: MDXRemoteSerializeResult;
+  title: string;
 };
+
+const Uses = ({ content, seo, title }: Props) => {
+  return <UsesPage seo={seo} title={title} content={content} />;
+};
+
+// const Uses = ({ content, seo, title }: Props) => {
+//   return <h1>hi</h1>;
+// };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const { use: uses } = await Backend.graphql<UsesPageStaticPropsResponse>(`
@@ -32,11 +33,13 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   }
   `);
 
-  const mdxSource = await renderToString(uses.content);
+  const content = await serializeMdx(uses.content);
+
+  console.log(content);
 
   return {
     props: {
-      usesMd: mdxSource,
+      content,
       seo: uses.seo,
       title: uses.title,
     },

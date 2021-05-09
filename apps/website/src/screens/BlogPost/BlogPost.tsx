@@ -10,7 +10,7 @@ const SeriesSection = dynamic(() =>
 ) as typeof SeriesSectionType;
 
 export const BlogPost: React.FC<BlogPostProps> = ({
-  children,
+  content,
   post,
   preview,
 }) => {
@@ -29,6 +29,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({
 
   return (
     <MdxPostTemplate
+      content={content}
       preview={preview}
       featuredImage={{
         src: featured_image.url,
@@ -48,8 +49,6 @@ export const BlogPost: React.FC<BlogPostProps> = ({
         top: allSeries,
         bottom: seriesWithDivider,
       }}
-    >
-      {children}
-    </MdxPostTemplate>
+    />
   );
 };

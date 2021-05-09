@@ -1,23 +1,12 @@
-import mdxRemoteRenderToString from 'next-mdx-remote/render-to-string';
-import mdxRemoteHydrate from 'next-mdx-remote/hydrate';
+import { serialize } from 'next-mdx-remote/serialize';
 import rehypeAutoLink from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import mdxPrims from 'mdx-prism-2';
 import remarkCodeTitle from 'remark-code-titles';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
-import { mdxComponents } from '@components/MdxComponents';
-import { MdxRemoteSource } from '@types-app';
-
-export function hydrate(source: MdxRemoteSource) {
-  return mdxRemoteHydrate(source, {
-    components: mdxComponents,
-  });
-}
-
-export function renderToString(content: string) {
-  return mdxRemoteRenderToString(content, {
-    components: mdxComponents,
+export function serializeMdx(source: string): ReturnType<typeof serialize> {
+  return serialize(source, {
     mdxOptions: {
       remarkPlugins: [remarkUnwrapImages, remarkCodeTitle] as never,
       rehypePlugins: [
