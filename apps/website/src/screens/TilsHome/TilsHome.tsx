@@ -19,7 +19,7 @@ const styles = {
   tilsList: {
     wrapper: tw`mt-5`,
     list: tw`space-y-8`,
-    itemTitle: tw`text-xl lg:text-2xl`,
+    itemTitle: tw`text-lg lg:text-xl`,
     notFound: tw`text-lg`,
   },
 };
