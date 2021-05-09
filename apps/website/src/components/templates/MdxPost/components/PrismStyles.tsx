@@ -32,6 +32,8 @@ const prismStyles = css`
     tab-size: 4;
     hyphens: none;
 
+    font-size: 1rem !important;
+
     ${tw`
       whitespace-pre
       w-full
