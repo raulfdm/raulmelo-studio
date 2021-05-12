@@ -7416,7 +7416,7 @@ chalk@1.1.3, chalk@^1.1.3:
     strip-ansi "^3.0.0"
     supports-color "^2.0.0"
 
-chalk@2.4.2, chalk@^2.0.0, chalk@^2.0.1, chalk@^2.3.0, chalk@^2.3.2, chalk@^2.4.1, chalk@^2.4.2:
+chalk@2.4.2, chalk@^2.0.0, chalk@^2.3.0, chalk@^2.3.2, chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
   integrity sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==
@@ -7663,7 +7663,7 @@ cli-highlight@^2.1.4:
     parse5-htmlparser2-tree-adapter "^6.0.0"
     yargs "^16.0.0"
 
-cli-spinners@^2.0.0, cli-spinners@^2.5.0:
+cli-spinners@^2.5.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/cli-spinners/-/cli-spinners-2.6.0.tgz#36c7dc98fb6a9a76bd6238ec3f77e2425627e939"
   integrity sha512-t+4/y50K/+4xcCRosKkA7W4gTr1MySvLV0q+PxmG7FJ5g+66ChKurYjxBCjHggHH3HA5Hh9cy+lcUGWDqVH+4Q==
@@ -14593,13 +14593,6 @@ lodash@4.17.21, lodash@^4.1.1, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
-log-symbols@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-2.2.0.tgz#5740e1c5d6f0dfda4ad9323b5332107ef6b4c40a"
-  integrity sha512-VeIAFslyIerEJLXHziedo2basKbMKtTw3vfn5IzG0XTjhAVEJyNHnL2p7vc+wBDSdQuUpNw3M2u6xb9QsAY5Eg==
-  dependencies:
-    chalk "^2.0.1"
-
 log-symbols@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-4.1.0.tgz#3fbdbb95b4683ac9fc785111e792e558d4abd503"
@@ -16559,18 +16552,6 @@ optionator@^0.9.1:
     prelude-ls "^1.2.1"
     type-check "^0.4.0"
     word-wrap "^1.2.3"
-
-ora@^3.0.0, ora@^3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/ora/-/ora-3.4.0.tgz#bf0752491059a3ef3ed4c85097531de9fdbcd318"
-  integrity sha512-eNwHudNbO1folBP3JsZ19v9azXWtQZjICdr3Q0TDPIaeBQ3mXLrh54wM+er0+hSp+dWKf+Z8KM58CYzEyIYxYg==
-  dependencies:
-    chalk "^2.4.2"
-    cli-cursor "^2.1.0"
-    cli-spinners "^2.0.0"
-    log-symbols "^2.2.0"
-    strip-ansi "^5.2.0"
-    wcwidth "^1.0.1"
 
 ora@^5.4.0:
   version "5.4.0"
@@ -21230,15 +21211,15 @@ strapi-connector-mongoose@3.6.1:
     semver "^7.3.5"
     strapi-utils "3.6.1"
 
-strapi-database@3.6.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/strapi-database/-/strapi-database-3.6.1.tgz#4eab376c0702fe3958c55efbde3ccf71b09469ae"
-  integrity sha512-P+PH/Jc3C3jGRmIarjHtllGIX7pYeM03sSfqsyApNkEm44zWBRnKXf9VaMmRUUXq/V8fpu7329BJxCauqcKSHg==
+strapi-database@3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/strapi-database/-/strapi-database-3.6.2.tgz#818c97e1aa570f2c33d9301e21d3257cfcf505e4"
+  integrity sha512-8csfxBbi6HIxvG4tiIDFsY1c9DU98UNWKnwXYwsVjWDIpHd08rkkJAtWoEhttkkwz3gMK2ZWTMFNim+xb0vwtQ==
   dependencies:
     debug "4.3.1"
     lodash "4.17.21"
     p-map "4.0.0"
-    strapi-utils "3.6.1"
+    strapi-utils "3.6.2"
     verror "^1.10.0"
 
 strapi-generate-api@3.6.1:
@@ -21250,27 +21231,36 @@ strapi-generate-api@3.6.1:
     pluralize "^8.0.0"
     strapi-utils "3.6.1"
 
-strapi-generate-controller@3.6.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/strapi-generate-controller/-/strapi-generate-controller-3.6.1.tgz#ac0626b6a5359a7942d5fb020eed502ed5878b36"
-  integrity sha512-8zzFXqa7U3VgG9XIq13yPHDYNw3gD56aH9ybY7YEJQ4KlyJfhz8X9uhjzM5OyS7OK19qjsxuHcWSrMXlq2Setg==
-  dependencies:
-    lodash "4.17.21"
-    strapi-utils "3.6.1"
-
-strapi-generate-model@3.6.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/strapi-generate-model/-/strapi-generate-model-3.6.1.tgz#e614cfc8a57c90e3ad1f77d1062d11d89fdbf336"
-  integrity sha512-enIlzg8vkPxmQFAduB/emzLcGY34cVLBUzTm4Ey2k8545Mc2tbF+8kcDtIo7pL4JTVk51Bj/1rjPhZilemOxCg==
+strapi-generate-api@3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/strapi-generate-api/-/strapi-generate-api-3.6.2.tgz#2c4ceed01f3bce1a0ef41c64f95aca828405f680"
+  integrity sha512-gT0V50zkePuZPrMBlWuN5EcPzbVRBNZ5FC1IJI6dGxH+Ixy8/A2A7o39hbSW9f0sXUhZFPhdflWyNIiWl9FXkw==
   dependencies:
     lodash "4.17.21"
     pluralize "^8.0.0"
-    strapi-utils "3.6.1"
+    strapi-utils "3.6.2"
 
-strapi-generate-new@3.6.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/strapi-generate-new/-/strapi-generate-new-3.6.1.tgz#ec054f868001370ac7a346f825f7f34a530d4183"
-  integrity sha512-Iim1EUU+fTy1MSRDKe3biC5MvO2/nzBcpgNtEaGg3Cy/FO9AMxmbLSclXMz6UbuNT9yVQVnTt8/MTEz0Aea/Rw==
+strapi-generate-controller@3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/strapi-generate-controller/-/strapi-generate-controller-3.6.2.tgz#7a071bde3d9ed575d781baed077b9483c5dfa7f9"
+  integrity sha512-lWEmpQegK2PW3dPFr7pW0YFwhuyCSoZ3VBvsifi3ikvkOtK9HXhnYbqdguePqyXEj3DwAAQuQv33p523asut4A==
+  dependencies:
+    lodash "4.17.21"
+    strapi-utils "3.6.2"
+
+strapi-generate-model@3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/strapi-generate-model/-/strapi-generate-model-3.6.2.tgz#c9881ae1b586bfbd94461adf2a0b2d6934670308"
+  integrity sha512-WbOaM6+5mg3kf+qBe+NfnVzTg/iSLkwPHxNPs0gQGGDnsWXjcmDEuBT0Q9HURF6FxwNwwzTEJetj1D9ADMnqdw==
+  dependencies:
+    lodash "4.17.21"
+    pluralize "^8.0.0"
+    strapi-utils "3.6.2"
+
+strapi-generate-new@3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/strapi-generate-new/-/strapi-generate-new-3.6.2.tgz#58a017df5cd5ef3e68d9bab33aab7afa68dfd1f7"
+  integrity sha512-r41ylEa8+oUl+BYDo+oq1CRalJ0ZPNOo407knK6hm6DXIHWs/sO0jKv3EqBTP6J1UrSDNxmJosG9FPuD9IRebA==
   dependencies:
     "@sentry/node" "6.3.0"
     chalk "^4.1.1"
@@ -21281,34 +21271,34 @@ strapi-generate-new@3.6.1:
     lodash "4.17.21"
     node-fetch "^2.6.1"
     node-machine-id "^1.1.10"
-    ora "^3.4.0"
+    ora "^5.4.0"
     tar "6.1.0"
     uuid "^3.3.2"
 
-strapi-generate-plugin@3.6.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/strapi-generate-plugin/-/strapi-generate-plugin-3.6.1.tgz#d54bd53c4f00f4683ee25a20608dc068864b84ef"
-  integrity sha512-hB1hsVes/B7FQl5I2yOYzp0JDhobVzkVFRRjlYGa7zdR1PWAR9rL8dTy72qwGIDqA5zaJr+LnfjzkdEq2/EQyQ==
+strapi-generate-plugin@3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/strapi-generate-plugin/-/strapi-generate-plugin-3.6.2.tgz#71810ad23b16b4f5ba52c7485258cf170423bc6c"
+  integrity sha512-BY9cdM2HMrgERIAmOuLQ2H1BSRil9cRjvCSMtnNvjHuamlg7LkB8dFTkIbaStjCx2tresJLrAIAwUDZVU25evQ==
   dependencies:
     fs-extra "^9.1.0"
     lodash "4.17.21"
-    strapi-utils "3.6.1"
+    strapi-utils "3.6.2"
 
-strapi-generate-policy@3.6.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/strapi-generate-policy/-/strapi-generate-policy-3.6.1.tgz#73624be939d6b181a0e7ba7b7189d28020d3e2db"
-  integrity sha512-Mcf4o3wdtzstutLdm+m5vXiGY1JhMLElFNfvkYiQNMA60gHId+AB3g4tzgj0JOISCJ7SMAf6YjjgHPE/iQsdFg==
+strapi-generate-policy@3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/strapi-generate-policy/-/strapi-generate-policy-3.6.2.tgz#95cb9ae94641426a935710c156c369b7ed80862a"
+  integrity sha512-dCmNuKSHdMjFObKfeO0iEKkAvWUgkzY7G//P9REvqM5/Ob26r75+a8D5cqWEcM8OnDTldKnm4dW35iKFswgTVg==
   dependencies:
     lodash "4.17.21"
-    strapi-utils "3.6.1"
+    strapi-utils "3.6.2"
 
-strapi-generate-service@3.6.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/strapi-generate-service/-/strapi-generate-service-3.6.1.tgz#efd939cb3bf4ba32e751c10d21f0b377f5e748ef"
-  integrity sha512-Emhnt+s3lP3RPMnJPBd/u/Smsl0pAQP+Wc5IkQzWBJ0HwQay9IgqTO0ET8YIOjxt3XMaVdDhVKU5xcpovuBh/Q==
+strapi-generate-service@3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/strapi-generate-service/-/strapi-generate-service-3.6.2.tgz#716f2500c059da7036e4a7bc4774575d6273802b"
+  integrity sha512-i/sOvn+BDT34yOY1zlhqW644ku/kOD+p5I+uaoSSl8vDfZhBPEXBnXRZw3mW1M6kNojYA0pQZz5jZmO1r+OBwA==
   dependencies:
     lodash "4.17.21"
-    strapi-utils "3.6.1"
+    strapi-utils "3.6.2"
 
 strapi-generate@3.6.1:
   version "3.6.1"
@@ -21320,6 +21310,17 @@ strapi-generate@3.6.1:
     lodash "4.17.21"
     reportback "^2.0.2"
     strapi-utils "3.6.1"
+
+strapi-generate@3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/strapi-generate/-/strapi-generate-3.6.2.tgz#eb160b9bffa0cb169038efdc28e6313c64d33fc4"
+  integrity sha512-kI52jqNwwAE1aN3f5OQunLcuuHkVnXtaOzi/kkr8cvVjcPjxomc4gzBUHlzHC8udnbgViXgodISKDZxxXSuZAA==
+  dependencies:
+    async "^2.6.2"
+    fs-extra "^9.1.0"
+    lodash "4.17.21"
+    reportback "^2.0.2"
+    strapi-utils "3.6.2"
 
 strapi-helper-plugin@3.6.1:
   version "3.6.1"
@@ -21462,17 +21463,17 @@ strapi-plugin-content-type-builder@3.6.1:
     strapi-utils "3.6.1"
     yup "^0.27.0"
 
-strapi-plugin-documentation@3.6.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/strapi-plugin-documentation/-/strapi-plugin-documentation-3.6.1.tgz#d439b72f4cb77f620a0253c18df9e1f2502a359c"
-  integrity sha512-FgDkN8du0qJy3m7z31RfcOx4Dj8gcRsXtXK1eUjlnw6zWgLR+mqDjceql/10sb+GIspyYgDRGpF/jDz5HvSTDA==
+strapi-plugin-documentation@3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/strapi-plugin-documentation/-/strapi-plugin-documentation-3.6.2.tgz#bb5024bb195525f2e7ca5879dc6d33f631ad9399"
+  integrity sha512-rMGT77iNuXXj7PZ/2gcn1+W+5dH1+hpUZPrj6kh88AcbfWtxl57kVxDg/DEbYqgtEHYE/gsgJlhpbYsnH+WRuA==
   dependencies:
-    "@buffetjs/core" "3.3.5"
-    "@buffetjs/custom" "3.3.5"
-    "@buffetjs/hooks" "3.3.5"
-    "@buffetjs/icons" "3.3.5"
-    "@buffetjs/styles" "3.3.5"
-    "@buffetjs/utils" "3.3.5"
+    "@buffetjs/core" "3.3.6"
+    "@buffetjs/custom" "3.3.6"
+    "@buffetjs/hooks" "3.3.6"
+    "@buffetjs/icons" "3.3.6"
+    "@buffetjs/styles" "3.3.6"
+    "@buffetjs/utils" "3.3.6"
     cheerio "^1.0.0-rc.5"
     fs-extra "^9.1.0"
     immutable "^3.8.2"
@@ -21491,7 +21492,7 @@ strapi-plugin-documentation@3.6.1:
     redux "^4.0.1"
     redux-immutable "^4.0.0"
     reselect "^4.0.0"
-    strapi-helper-plugin "3.6.1"
+    strapi-helper-plugin "3.6.2"
     swagger-ui-dist "3.47.1"
 
 strapi-plugin-email@3.6.1:
@@ -21526,15 +21527,15 @@ strapi-plugin-graphql@3.6.1:
     pluralize "^8.0.0"
     strapi-utils "3.6.1"
 
-strapi-plugin-i18n@3.6.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/strapi-plugin-i18n/-/strapi-plugin-i18n-3.6.1.tgz#7b2e2e7d981f73b0d471f0b7b227557c1e7c9d2a"
-  integrity sha512-tHlIGrtWwdufmWw0A9W7+aMopCt23r7OWEUjD+dt5vDAl/zYf1AYjDV5b9HjRSFfrtroygKJn8tHN7gvOlvbMA==
+strapi-plugin-i18n@3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/strapi-plugin-i18n/-/strapi-plugin-i18n-3.6.2.tgz#c70980db678840c2182ed750f542e35d1b2a2035"
+  integrity sha512-WSqnkNSNe0X8NUx4IvqErAnfuH9LJR36FlNxqZGqj5OMeEJELau2uwK+K1CmS72vqt6ms41oWxr4GgFKKV7lLg==
   dependencies:
     lodash "4.17.20"
     p-map "4.0.0"
     pluralize "8.0.0"
-    strapi-utils "3.6.1"
+    strapi-utils "3.6.2"
 
 strapi-plugin-upload@3.6.1:
   version "3.6.1"
@@ -21648,10 +21649,10 @@ strapi-utils@3.6.2:
     pluralize "^8.0.0"
     yup "0.29.3"
 
-strapi@3.6.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/strapi/-/strapi-3.6.1.tgz#e78d96e5c4dd87ef03c4e1591653d74cc57bf0fa"
-  integrity sha512-ApHfxvlSlSw9yiWb8nV/8ZdJ594Vt1uc/h3d5j2iAjAi0IA+1K8iHEqLezqp+DLFqQ5MTa5JobKIyt7JpEOC2A==
+strapi@3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/strapi/-/strapi-3.6.2.tgz#71e5de0cc692792e938958cf276750e7a9012428"
+  integrity sha512-SHfeXkt4q/JDTZ79BHqvHYXIR0N6cndlNXQ/Day5/XFUGhvaFUNsQ5rFwYOj7HF3+R4zWFOEkO9KxalHWo7fwQ==
   dependencies:
     "@koa/cors" "^3.0.0"
     async "^2.1.2"
@@ -21690,22 +21691,22 @@ strapi@3.6.1:
     node-machine-id "1.1.12"
     node-schedule "1.3.2"
     opn "^5.3.0"
-    ora "^3.0.0"
+    ora "^5.4.0"
     package-json "6.5.0"
     qs "^6.10.1"
     resolve-cwd "^3.0.0"
     rimraf "^3.0.2"
     semver "7.3.5"
-    strapi-database "3.6.1"
-    strapi-generate "3.6.1"
-    strapi-generate-api "3.6.1"
-    strapi-generate-controller "3.6.1"
-    strapi-generate-model "3.6.1"
-    strapi-generate-new "3.6.1"
-    strapi-generate-plugin "3.6.1"
-    strapi-generate-policy "3.6.1"
-    strapi-generate-service "3.6.1"
-    strapi-utils "3.6.1"
+    strapi-database "3.6.2"
+    strapi-generate "3.6.2"
+    strapi-generate-api "3.6.2"
+    strapi-generate-controller "3.6.2"
+    strapi-generate-model "3.6.2"
+    strapi-generate-new "3.6.2"
+    strapi-generate-plugin "3.6.2"
+    strapi-generate-policy "3.6.2"
+    strapi-generate-service "3.6.2"
+    strapi-utils "3.6.2"
 
 stream-browserify@3.0.0:
   version "3.0.0"
