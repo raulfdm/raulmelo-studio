@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.3](https://github.com/raulfdm/raulmelo-studio/compare/mdx-prism-2@5.0.2...mdx-prism-2@5.0.3) (2021-05-13)
+
+**Note:** Version bump only for package mdx-prism-2
+
 ## [5.0.2](https://github.com/raulfdm/raulmelo-studio/compare/mdx-prism-2@5.0.1...mdx-prism-2@5.0.2) (2021-05-12)
 
 **Note:** Version bump only for package mdx-prism-2
