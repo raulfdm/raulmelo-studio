@@ -2,7 +2,7 @@
 
 import nodeToString from 'hast-util-to-string';
 import rangeParser from 'parse-numeric-range';
-import refractor from 'refractor';
+import { refractor } from 'refractor/lib/all';
 import rehype from 'rehype';
 import parse from 'rehype-parse';
 import unified from 'unified';
@@ -48,12 +48,13 @@ export default function mdxPrism2(options = {}) {
         'language-' + lang,
       );
 
-      result = refractor.highlight(nodeToString(node), lang);
+      result = refractor.highlight(nodeToString(node), lang).children;
 
       if (markers && markers.length > 0) {
         // This blocks attempts this fix:
         // https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-remark-prismjs/src/directives.js#L113-L119
-        const PLAIN_TEXT_WITH_LF_TEST = /<span class="token plain-text">[^<]*\n[^<]*<\/span>/g;
+        const PLAIN_TEXT_WITH_LF_TEST =
+          /<span class="token plain-text">[^<]*\n[^<]*<\/span>/g;
 
         // AST to HTML
         let html_ = rehype()
