@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/raulfdm/raulmelo-studio/compare/mdx-prism-2@5.0.3...mdx-prism-2@6.0.0) (2021-05-13)
+
+### chore
+
+- **deps:** upgrade refractor ([#282](https://github.com/raulfdm/raulmelo-studio/issues/282)) ([52954bf](https://github.com/raulfdm/raulmelo-studio/commit/52954bf1e7ca4f7120c9c57bde8f4a9a7497dd4d))
+
+### BREAKING CHANGES
+
+- **deps:** this bumps a major version which had an API change
+
+Co-authored-by: Raul Melo <melo.raulf@gmail.com>
+
 ## [5.0.3](https://github.com/raulfdm/raulmelo-studio/compare/mdx-prism-2@5.0.2...mdx-prism-2@5.0.3) (2021-05-13)
 
 **Note:** Version bump only for package mdx-prism-2
