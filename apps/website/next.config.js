@@ -4,6 +4,7 @@ const { redirects } = require('./config/redirects');
 const path = require('path');
 const withPlugins = require('next-compose-plugins');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
+const withPreact = require('next-plugin-preact');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: isAnalyzerMode,
 });
@@ -95,4 +96,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withPlugins([withBundleAnalyzer], nextConfig);
+module.exports = withPlugins([withBundleAnalyzer, withPreact], nextConfig);
