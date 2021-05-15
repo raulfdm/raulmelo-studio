@@ -90,16 +90,6 @@ function getRssXml(content, rss) {
             <description>
             <![CDATA[${description}]]>
             </description>
-            <content:encode>
-            <![CDATA[<div style="width: 100%; margin: 0 auto; max-width: 800px; padding: 40px 40px;">
-            <p>
-              I've posted a new article <em>"Don't Solve Problems, Eliminate Them"</em> 
-              and you can <a href="${postHref}">read it online</a>.
-              <br />
-              How eliminating problems can drastically simplify your codebases and life
-            </p>
-          </div>]]>
-            </content:encode>
         </item>`;
   }
 }
@@ -154,11 +144,6 @@ function getContent(locale) {
   });
 }
 
-/**
- *
- * @param {string} date
- * @returns
- */
 function humanizeDate(date) {
   return new Date(date).toUTCString();
 }
