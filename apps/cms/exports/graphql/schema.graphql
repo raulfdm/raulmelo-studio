@@ -552,6 +552,47 @@ type deletePostPayload {
   post: Post
 }
 
+type Rss {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  title: String!
+  description: String!
+  locale: String
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [Rss]
+}
+
+input RssInput {
+  title: String!
+  description: String!
+  localizations: [ID]
+  locale: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editRssInput {
+  title: String
+  description: String
+  localizations: [ID]
+  locale: String
+  created_by: ID
+  updated_by: ID
+}
+
+input updateRssInput {
+  data: editRssInput
+}
+
+type updateRssPayload {
+  rss: Rss
+}
+
+type deleteRssPayload {
+  rss: Rss
+}
+
 type Site {
   id: ID!
   _id: ID!
@@ -1428,7 +1469,7 @@ input editComponentUsesSeoInput {
   description: String
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | DefaultSeo | updateDefaultSeoPayload | deleteDefaultSeoPayload | PersonalInformation | updatePersonalInformationPayload | deletePersonalInformationPayload | PostSerie | PostSerieConnection | PostSerieAggregator | PostSerieGroupBy | PostSerieConnectionId | PostSerieConnection_id | PostSerieConnectionCreatedAt | PostSerieConnectionUpdatedAt | PostSerieConnectionName | PostSerieConnectionSlug | PostSerieConnectionLocale | createPostSeriePayload | updatePostSeriePayload | deletePostSeriePayload | PostTag | PostTagConnection | PostTagAggregator | PostTagGroupBy | PostTagConnectionId | PostTagConnection_id | PostTagConnectionCreatedAt | PostTagConnectionUpdatedAt | PostTagConnectionName | PostTagConnectionSlug | createPostTagPayload | updatePostTagPayload | deletePostTagPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnection_id | PostConnectionCreatedAt | PostConnectionUpdatedAt | PostConnectionTitle | PostConnectionSubtitle | PostConnectionDate | PostConnectionDescription | PostConnectionFeatured_image | PostConnectionContent | PostConnectionSlug | PostConnectionSerie_copy | PostConnectionPost_serie | PostConnectionFeatured_image_caption | PostConnectionUnsplash | PostConnectionLocale | PostConnectionPublished_at | createPostPayload | updatePostPayload | deletePostPayload | Site | updateSitePayload | deleteSitePayload | Social | SocialConnection | SocialAggregator | SocialGroupBy | SocialConnectionId | SocialConnection_id | SocialConnectionCreatedAt | SocialConnectionUpdatedAt | SocialConnectionName | SocialConnectionUrl | SocialConnectionUsername | createSocialPayload | updateSocialPayload | deleteSocialPayload | Til | TilConnection | TilAggregator | TilGroupBy | TilConnectionId | TilConnection_id | TilConnectionCreatedAt | TilConnectionUpdatedAt | TilConnectionTitle | TilConnectionPublishedAt | TilConnectionContent | TilConnectionSlug | TilConnectionLocale | TilConnectionPublished_at | createTilPayload | updateTilPayload | deleteTilPayload | Uses | updateUsePayload | deleteUsePayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentGeneralUrlLink | ComponentPostsUnsplashAuthor | ComponentUsesSeo
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | DefaultSeo | updateDefaultSeoPayload | deleteDefaultSeoPayload | PersonalInformation | updatePersonalInformationPayload | deletePersonalInformationPayload | PostSerie | PostSerieConnection | PostSerieAggregator | PostSerieGroupBy | PostSerieConnectionId | PostSerieConnection_id | PostSerieConnectionCreatedAt | PostSerieConnectionUpdatedAt | PostSerieConnectionName | PostSerieConnectionSlug | PostSerieConnectionLocale | createPostSeriePayload | updatePostSeriePayload | deletePostSeriePayload | PostTag | PostTagConnection | PostTagAggregator | PostTagGroupBy | PostTagConnectionId | PostTagConnection_id | PostTagConnectionCreatedAt | PostTagConnectionUpdatedAt | PostTagConnectionName | PostTagConnectionSlug | createPostTagPayload | updatePostTagPayload | deletePostTagPayload | Post | PostConnection | PostAggregator | PostGroupBy | PostConnectionId | PostConnection_id | PostConnectionCreatedAt | PostConnectionUpdatedAt | PostConnectionTitle | PostConnectionSubtitle | PostConnectionDate | PostConnectionDescription | PostConnectionFeatured_image | PostConnectionContent | PostConnectionSlug | PostConnectionSerie_copy | PostConnectionPost_serie | PostConnectionFeatured_image_caption | PostConnectionUnsplash | PostConnectionLocale | PostConnectionPublished_at | createPostPayload | updatePostPayload | deletePostPayload | Rss | updateRssPayload | deleteRssPayload | Site | updateSitePayload | deleteSitePayload | Social | SocialConnection | SocialAggregator | SocialGroupBy | SocialConnectionId | SocialConnection_id | SocialConnectionCreatedAt | SocialConnectionUpdatedAt | SocialConnectionName | SocialConnectionUrl | SocialConnectionUsername | createSocialPayload | updateSocialPayload | deleteSocialPayload | Til | TilConnection | TilAggregator | TilGroupBy | TilConnectionId | TilConnection_id | TilConnectionCreatedAt | TilConnectionUpdatedAt | TilConnectionTitle | TilConnectionPublishedAt | TilConnectionContent | TilConnectionSlug | TilConnectionLocale | TilConnectionPublished_at | createTilPayload | updateTilPayload | deleteTilPayload | Uses | updateUsePayload | deleteUsePayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentGeneralUrlLink | ComponentPostsUnsplashAuthor | ComponentUsesSeo
 
 input InputID {
   id: ID!
@@ -1458,6 +1499,7 @@ type Query {
   post(id: ID!, publicationState: PublicationState): Post
   posts(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState, locale: String): [Post]
   postsConnection(sort: String, limit: Int, start: Int, where: JSON, locale: String): PostConnection
+  rss(publicationState: PublicationState, locale: String): Rss
   site(publicationState: PublicationState): Site
   social(id: ID!, publicationState: PublicationState): Social
   socials(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Social]
@@ -1495,6 +1537,8 @@ type Mutation {
   createPost(input: createPostInput): createPostPayload
   updatePost(input: updatePostInput): updatePostPayload
   deletePost(input: deletePostInput): deletePostPayload
+  updateRss(input: updateRssInput, locale: String): updateRssPayload
+  deleteRss(locale: String): deleteRssPayload
   updateSite(input: updateSiteInput): updateSitePayload
   deleteSite: deleteSitePayload
   createSocial(input: createSocialInput): createSocialPayload
@@ -1529,6 +1573,7 @@ type Mutation {
   createDefaultSeoLocalization(input: updateDefaultSeoInput!): DefaultSeo!
   createPostSerieLocalization(input: updatePostSerieInput!): PostSerie!
   createPostLocalization(input: updatePostInput!): Post!
+  createRssLocalization(input: updateRssInput!): Rss!
   createTilLocalization(input: updateTilInput!): Til!
   createUseLocalization(input: updateUseInput!): Uses!
   upload(refId: ID, ref: String, field: String, source: String, info: FileInfoInput, file: Upload!): UploadFile!
