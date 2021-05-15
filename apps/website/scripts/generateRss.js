@@ -77,6 +77,7 @@ function getRssXml(content, rss) {
   </rss>`;
 
   function getRssItem({ publishedAt, urlPrefix, description, slug, title }) {
+    console.log({ title, h: humanizeDate(publishedAt), publishedAt });
     const postHref = `${rss.url}/${urlPrefix}/${slug}`;
     return `
           <item>
@@ -90,14 +91,14 @@ function getRssXml(content, rss) {
             <![CDATA[${description}]]>
             </description>
             <content:encode>
-            <div style="width: 100%; margin: 0 auto; max-width: 800px; padding: 40px 40px;">
-              <p>
-                I've posted a new article <em>"Don't Solve Problems, Eliminate Them"</em> 
-                and you can <a href="${postHref}">read it online</a>.
-                <br />
-                How eliminating problems can drastically simplify your codebases and life
-              </p>
-            </div>
+            <![CDATA[<div style="width: 100%; margin: 0 auto; max-width: 800px; padding: 40px 40px;">
+            <p>
+              I've posted a new article <em>"Don't Solve Problems, Eliminate Them"</em> 
+              and you can <a href="${postHref}">read it online</a>.
+              <br />
+              How eliminating problems can drastically simplify your codebases and life
+            </p>
+          </div>]]>
             </content:encode>
         </item>`;
   }
@@ -130,7 +131,7 @@ function getContent(locale) {
         }
         posts(locale: $locale) {
           slug
-          publishedAt: createdAt
+          publishedAt: date
           title
           slug
           description
