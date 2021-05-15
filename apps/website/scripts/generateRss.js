@@ -81,7 +81,7 @@ function getRssXml(content, url) {
     version="2.0"
   >
     <channel>
-        <title><![CDATA[Articles and Learnings by Raul Melo]]></title>
+        <title><![CDATA[Raul Melo RSS Feed]]></title>
         <link>${url}</link>
         <description>
           <![CDATA[A description about your own website that really shows off what it's all about]]>
@@ -119,6 +119,18 @@ function blogPostsRssXml(content) {
           <description>
           <![CDATA[${description}]]>
           </description>
+          <content:encode>
+          <div style="width: 100%; margin: 0 auto; max-width: 800px; padding: 40px 40px;">
+            <p>
+              I've posted a new article <em>"Don't Solve Problems, Eliminate Them"</em> and you can <a href="https://kentcdodds.com/blog/don-t-solve-problems-eliminate-them">read it online</a>.
+              <br>
+              How eliminating problems can drastically simplify your codebases and life
+
+              <br>
+              You can also <a href="https://kentcdodds.com/subscribe">subscribe</a> for weekly emails on what I'm learning, working on, and writing about.
+            </p>
+          </div>
+          </content:encode>
       </item>`;
     },
   );
