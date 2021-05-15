@@ -77,8 +77,8 @@ function getRssXml(content, rss) {
   </rss>`;
 
   function getRssItem({ publishedAt, urlPrefix, description, slug, title }) {
-    console.log({ title, h: humanizeDate(publishedAt), publishedAt });
     const postHref = `${rss.url}/${urlPrefix}/${slug}`;
+
     return `
           <item>
             <guid>${postHref}</guid>
