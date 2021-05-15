@@ -7,29 +7,8 @@ import React, { useEffect, useMemo, useRef } from 'react';
 import { useLocalization } from '@hooks/useLocalization';
 import { useApp } from '@hooks/useApp';
 import { useRouter } from 'next/router';
-import { defineMessage } from 'react-intl';
 import Link from 'next/link';
-
-const messages = defineMessage({
-  home: {
-    id: 'sideMenu.home',
-  },
-  blog: {
-    id: 'sideMenu.blog',
-  },
-  til: {
-    id: 'sideMenu.til',
-  },
-  search: {
-    id: 'sideMenu.search',
-  },
-  uses: {
-    id: 'sideMenu.uses',
-  },
-  cv: {
-    id: 'sideMenu.cv',
-  },
-});
+import { ExternalLinkIcon } from '@components/Icons';
 
 const styles = {
   sideMenuPanel: tw`
@@ -52,6 +31,8 @@ const styles = {
       transition-theme
   `}
   `,
+  sideMenuItemExternalLink: tw`inline-flex relative`,
+  sideMenuItemExternalIcon: tw`w-4 absolute top-0 -right-6`,
   overlay: (isClosed: boolean) => css`
     ${tw`absolute inset-0 top-16 z-10 opacity-0 background[rgba(0,0,0,0.7)]`};
     pointer-events: ${isClosed ? 'none' : 'all'};
@@ -105,15 +86,35 @@ export const SideMenu = () => {
         data-testid="sideMenu"
       >
         <ul css={styles.list}>
-          {links.map(({ href, active, itemLabel }) => (
-            <li css={styles.listItem} key={href}>
-              <Link href={href} passHref>
-                <a onClick={handleClose} css={styles.sideMenuItem(active)}>
-                  {itemLabel}
-                </a>
-              </Link>
-            </li>
-          ))}
+          {links.map(({ href, active, itemLabel, newWindow }) => {
+            const linkProps = {
+              onClick: handleClose,
+              css: styles.sideMenuItem(active),
+            };
+
+            return (
+              <li css={styles.listItem} key={href}>
+                {newWindow ? (
+                  <>
+                    <a
+                      {...linkProps}
+                      css={[linkProps.css, styles.sideMenuItemExternalLink]}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {itemLabel}
+                      <ExternalLinkIcon css={styles.sideMenuItemExternalIcon} />
+                    </a>
+                  </>
+                ) : (
+                  <Link href={href} passHref>
+                    <a {...linkProps}>{itemLabel}</a>
+                  </Link>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </Disclosure.Panel>
       <Disclosure.Panel
@@ -148,35 +149,38 @@ function useLinks() {
       [
         {
           href: '/',
-          localeId: messages.home,
-          locale,
+          localeId: 'sideMenu.home',
         },
         {
           href: '/blog',
-          localeId: messages.blog,
-          locale,
+          localeId: 'sideMenu.blog',
         },
         {
           href: '/til',
-          localeId: messages.til,
-          locale,
+          localeId: 'sideMenu.til',
         },
         {
           href: '/search',
-          localeId: messages.search,
+          localeId: 'sideMenu.search',
         },
         {
           href: '/uses',
-          localeId: messages.uses,
+          localeId: 'sideMenu.uses',
         },
         {
           href: '/cv',
-          localeId: messages.cv,
+          localeId: 'sideMenu.cv',
         },
-      ].map(({ href, localeId }) => ({
-        itemLabel: formatMessage(localeId),
+        {
+          href: locale === 'en' ? '/rss.xml' : '/rss-pt.xml',
+          localeId: 'sideMenu.rss',
+          newWindow: true,
+        },
+      ].map(({ href, localeId, newWindow = false }) => ({
+        itemLabel: formatMessage({ id: localeId }),
         active: pathname === href,
         href,
+        newWindow,
       })),
     [locale, pathname],
   );
