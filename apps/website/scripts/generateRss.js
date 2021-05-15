@@ -94,7 +94,7 @@ function getRssXml(content, rss) {
               <p>
                 I've posted a new article <em>"Don't Solve Problems, Eliminate Them"</em> 
                 and you can <a href="${postHref}">read it online</a>.
-                <br>
+                <br />
                 How eliminating problems can drastically simplify your codebases and life
               </p>
             </div>
