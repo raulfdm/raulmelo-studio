@@ -34,7 +34,12 @@ export const MdxPostTemplate: React.FC<MdxPostTemplateProps> = ({
     const date = new Date(publishedAt).toISOString();
     return {
       title: title,
-      description: description,
+      /**
+       * This enforce parsing double quotes correctly.
+       * - no parsing: "the description will be "like this""
+       * - parsing: "the description will be \"like this\""
+       */
+      description: `${description}`,
       url: `${siteData.site.url}${asPath}`,
       published: date,
       modified: date,
