@@ -1,5 +1,5 @@
 import { MdxPostTemplate } from '@components/templates/MdxPost';
-import { hydrate, renderToString } from '@config/mdx';
+import { serializeMdx } from '@config/mdx';
 import {
   ITilPost,
   ITilPostGraphQLResponse,
@@ -9,25 +9,24 @@ import { Backend, graphqlVariables } from '@services/Backend';
 import { SupportedLanguages } from '@types-app';
 import { head, isEmpty, isNil } from '@utils/ramda';
 import { GetStaticPaths } from 'next';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 type Props = {
   til: ITilPostParsed;
   preview: boolean;
+  content: MDXRemoteSerializeResult;
 };
 
-const TilPostPage = ({ til, preview }: Props) => {
-  const parsedContent = hydrate(til.content);
-
+const TilPostPage = ({ til, preview, content }: Props) => {
   return (
     <MdxPostTemplate
+      content={content}
       title={til.title}
       description={til.title}
       publishedAt={til.publishedAt}
       tags={til.tags}
       preview={preview}
-    >
-      {parsedContent}
-    </MdxPostTemplate>
+    />
   );
 };
 
@@ -48,11 +47,12 @@ export const getStaticProps = async ({ params, preview }: Params) => {
     };
   }
 
-  const content = await renderToString(til.content);
+  const content = await serializeMdx(til.content);
 
   return {
     props: {
-      til: { ...til, content },
+      til: { ...til },
+      content,
       // TODO: add a banner for "preview mode"
       preview: Boolean(preview),
     },

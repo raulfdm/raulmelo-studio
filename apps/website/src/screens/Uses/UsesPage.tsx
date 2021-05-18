@@ -4,17 +4,20 @@ import React from 'react';
 import { UsesPageApi } from './types';
 import siteData from 'site-data';
 import { getPostUrl } from '@utils/url';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 export type UsesPageProps = {
   seo: UsesPageApi['seo'];
   title: string;
+  content: MDXRemoteSerializeResult;
 };
 
-export const UsesPage: React.FC<UsesPageProps> = ({ children, seo, title }) => {
+export const UsesPage: React.FC<UsesPageProps> = ({ content, seo, title }) => {
   const { locale } = useLocalization();
 
   return (
     <MdxPostTemplate
+      content={content}
       title={title}
       publishedAt={'2020-10-20'}
       description={seo.description}
@@ -37,8 +40,6 @@ export const UsesPage: React.FC<UsesPageProps> = ({ children, seo, title }) => {
           ],
         },
       }}
-    >
-      {children}
-    </MdxPostTemplate>
+    />
   );
 };

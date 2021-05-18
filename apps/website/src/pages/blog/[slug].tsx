@@ -1,4 +1,4 @@
-import { hydrate, renderToString } from '@config/mdx';
+import { serializeMdx } from '@config/mdx';
 import { Backend, graphqlVariables } from '@services/Backend';
 import { SupportedLanguages } from '@types-app';
 import { head } from '@utils/utilities';
@@ -12,19 +12,9 @@ import {
 } from '@screens/BlogPost';
 import { isEmpty, isNil } from '@utils/ramda';
 
-const BlogPostPage: React.FC<BlogPostPageProps> = ({
-  content,
-  post,
-  preview,
-}) => {
-  const parsedContent = hydrate(content);
-
-  return (
-    <BlogPost post={post} preview={preview}>
-      {parsedContent}
-    </BlogPost>
-  );
-};
+const BlogPostPage: React.FC<BlogPostPageProps> = (props) => (
+  <BlogPost {...props} />
+);
 
 type Params = {
   params: {
@@ -42,7 +32,7 @@ export const getStaticProps = async ({ params, preview }: Params) => {
     };
   }
 
-  const content = await renderToString(post.content);
+  const content = await serializeMdx(post.content);
 
   return {
     props: {

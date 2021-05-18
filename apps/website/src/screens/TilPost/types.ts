@@ -1,4 +1,4 @@
-import { MdxRemoteSource } from '@types-app';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 export interface ITilPostGraphQLResponse {
   tils: ITilPosts;
@@ -23,5 +23,5 @@ export interface ITilPost {
 }
 
 export type ITilPostParsed = ITilPost & {
-  content: MdxRemoteSource;
+  content: MDXRemoteSerializeResult;
 };

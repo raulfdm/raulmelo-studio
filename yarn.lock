@@ -9770,6 +9770,11 @@ es6-templates@^0.2.3:
     recast "~0.11.12"
     through "~2.3.6"
 
+esbuild@^0.11.12:
+  version "0.11.19"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.11.19.tgz#59289d9c6ee3f45d0db289a662c31473da25c199"
+  integrity sha512-X2h8UThAwKLxmc1OChHVegIScphS/qU9cUB5vCEV2T0A024E8Ptpg9xssXXcs+j1uEgXrDJZuVRzx2JsmGzq7A==
+
 escalade@^3.0.2, escalade@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/escalade/-/escalade-3.1.1.tgz#d8cfdc7000965c5a0174b4a82eaa5c0552742e40"
@@ -15692,17 +15697,15 @@ next-compose-plugins@2.2.1:
   resolved "https://registry.yarnpkg.com/next-compose-plugins/-/next-compose-plugins-2.2.1.tgz#020fc53f275a7e719d62521bef4300fbb6fde5ab"
   integrity sha512-OjJ+fV15FXO2uQXQagLD4C0abYErBjyjE0I0FHpOEIB8upw0hg1ldFP6cqHTJBH1cZqy96OeR3u1dJ+Ez2D4Bg==
 
-next-mdx-remote@2.1.4:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/next-mdx-remote/-/next-mdx-remote-2.1.4.tgz#21b2a72bdc9a172f09c1e6e80fc9d79ee480fa51"
-  integrity sha512-HHJasFVgPGjWXW3tWC37NCvHcQUOjJgVUMdwxgVbshwgtDLrGmupNkist/iamDLlvVibU52B9rqM9VAWofq7cA==
+next-mdx-remote@3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/next-mdx-remote/-/next-mdx-remote-3.0.2.tgz#7e1159b4eb8a6bdd4000c0b6e6631f94d8683f04"
+  integrity sha512-imLrrw6c/Hi1BKRyJE9yLhk45N5zzw+/CxSQRHOAByYUSOhd+DNjUaqm2jtd+/GgxJeYB1d3fJPXmvUZTez1MQ==
   dependencies:
-    "@babel/core" "^7.12.10"
-    "@babel/preset-env" "^7.12.11"
-    "@babel/preset-react" "^7.12.10"
-    "@babel/preset-typescript" "^7.12.7"
     "@mdx-js/mdx" "^1.6.22"
     "@mdx-js/react" "^1.6.22"
+    esbuild "^0.11.12"
+    pkg-dir "^5.0.0"
 
 next-seo@4.24.0:
   version "4.24.0"

@@ -1,4 +1,4 @@
-import { MdxRemoteSource } from '@types-app';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 type PostSeriesPosts = {
   id: string;
@@ -45,9 +45,10 @@ export type BlogPostGraphQLResponse = {
 export type BlogPostProps = {
   post: BlogPostPost;
   preview: boolean;
+  content: MDXRemoteSerializeResult;
 };
 
 export type BlogPostPageProps = BlogPostProps & {
-  content: MdxRemoteSource;
+  content: MDXRemoteSerializeResult;
   preview: boolean;
 };

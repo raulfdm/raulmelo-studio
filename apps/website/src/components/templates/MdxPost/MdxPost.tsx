@@ -14,9 +14,11 @@ import { FeaturedImage, FeaturedImageProps } from './components/FeaturedImage';
 import { Header } from './components/Header';
 import { PreviewBanner } from './components/PreviewBanner/PreviewBanner';
 import { PrismStyles } from './components/PrismStyles';
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { mdxComponents } from '@components/MdxComponents';
 
 export const MdxPostTemplate: React.FC<MdxPostTemplateProps> = ({
-  children,
+  content,
   featuredImage,
   title,
   subtitle,
@@ -123,7 +125,9 @@ export const MdxPostTemplate: React.FC<MdxPostTemplateProps> = ({
           })}
         />
         {series?.top}
-        <ProseContainer tw="mt-8">{children}</ProseContainer>
+        <ProseContainer tw="mt-8">
+          <MDXRemote {...content} components={mdxComponents} />
+        </ProseContainer>
         {series?.bottom}
         <hr tw="mt-10 mb-6" />
         <footer tw="flex justify-between flex-wrap">
@@ -154,6 +158,7 @@ export const MdxPostTemplate: React.FC<MdxPostTemplateProps> = ({
 };
 
 interface MdxPostTemplateProps {
+  content: MDXRemoteSerializeResult;
   preview?: boolean;
   tags?: { id: string; slug: string; name: string }[];
   featuredImage?: FeaturedImageProps & { width: number; height: number };
