@@ -35,8 +35,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
   const content = await serializeMdx(uses.content);
 
-  console.log(content);
-
   return {
     props: {
       content,
