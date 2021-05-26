@@ -2,6 +2,7 @@ const defaultConfig = require('../../config/jest.config');
 
 module.exports = {
   ...defaultConfig,
+  testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['./jest.setup.js'],
   snapshotSerializers: ['@emotion/jest/serializer'],
   collectCoverageFrom: [
