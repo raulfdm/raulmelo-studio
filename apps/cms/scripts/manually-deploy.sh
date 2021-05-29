@@ -2,8 +2,11 @@
 
 echo "Manually Deploy Docker Image to Heroku"
 
+# Login to heroku container
+heroku container:login
+
 # Build image
-docker build -t raulfdm/raulmelo.dev-cms:latest . # -f apps/cms/DockerFile 
+docker build . -f apps/cms/DockerFile -t raulfdm/raulmelo.dev-cms:latest
 
 # Create locally the tag
 docker tag raulfdm/raulmelo.dev-cms:latest registry.heroku.com/raulmelo-dev-server/web
