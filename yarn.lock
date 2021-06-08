@@ -1298,7 +1298,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.5", "@babel/runtime@^7.12.0", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.13", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.13.17", "@babel/runtime@^7.2.0", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.5", "@babel/runtime@^7.12.0", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.13", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.13.17", "@babel/runtime@^7.2.0", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2", "@babel/runtime@^7.9.6":
   version "7.14.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.0.tgz#46794bc20b612c5f75e62dd071e24dfd95f1cbe6"
   integrity sha512-JELkvo/DlpNdJ7dlyw/eY7E0suy5i5GQH+Vlxaq1nsNJ+H7f4Vtv3jMeCEgRhZZQFXTjldYfQgv2qmM6M1v5wA==
@@ -21359,10 +21359,42 @@ strapi-helper-plugin@3.6.2:
     styled-components "^5.2.3"
     whatwg-fetch "^3.6.2"
 
-strapi-plugin-content-manager@3.6.2:
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/strapi-plugin-content-manager/-/strapi-plugin-content-manager-3.6.2.tgz#3ac0b3e9d63d8eeb97d41cba82e91c40562d4122"
-  integrity sha512-nE1oAWFTfkdpOk4FX8pibQzGdHuLPap7Y0GtDk9/UsIQo8Z5yrfnUIvrQvsVw9Vktxj6sdoGLLoU/MsKHI07uA==
+strapi-helper-plugin@3.6.3:
+  version "3.6.3"
+  resolved "https://registry.yarnpkg.com/strapi-helper-plugin/-/strapi-helper-plugin-3.6.3.tgz#ed8ac1d1c3bc345b9a30209f93be1a15c85fc4ea"
+  integrity sha512-f4/9NzzjtSfwBOC5J8sy66my92EbV1v8Pi5Ne3y4kFs7LiC6IBxHPX/sTT/FwxmR65yD5tx0kO10q5xkZ5KCiA==
+  dependencies:
+    "@buffetjs/core" "3.3.6"
+    "@buffetjs/custom" "3.3.6"
+    "@buffetjs/hooks" "3.3.6"
+    "@buffetjs/icons" "3.3.6"
+    "@buffetjs/styles" "3.3.6"
+    "@buffetjs/utils" "3.3.6"
+    "@fortawesome/fontawesome-free" "^5.15.2"
+    "@fortawesome/fontawesome-svg-core" "^1.2.35"
+    "@fortawesome/free-brands-svg-icons" "^5.15.2"
+    "@fortawesome/free-solid-svg-icons" "^5.15.3"
+    "@fortawesome/react-fontawesome" "^0.1.14"
+    bootstrap "^4.6.0"
+    classnames "^2.3.1"
+    immutable "^3.8.2"
+    invariant "^2.2.1"
+    lodash "4.17.21"
+    moment "^2.29.1"
+    react "^16.14.0"
+    react-dom "^16.9.0"
+    react-helmet "^6.1.0"
+    react-intl "4.5.0"
+    react-router "^5.2.0"
+    react-router-dom "^5.0.0"
+    reactstrap "8.4.1"
+    styled-components "^5.2.3"
+    whatwg-fetch "^3.6.2"
+
+strapi-plugin-content-manager@3.6.3:
+  version "3.6.3"
+  resolved "https://registry.yarnpkg.com/strapi-plugin-content-manager/-/strapi-plugin-content-manager-3.6.3.tgz#8e3a6124ae8c8abe95135d56fa1a5687d478e220"
+  integrity sha512-B4/ABfnc1ibxFTkTC5b7GWymS8MSpOwhLpUQeeXNQsvfSiJ+UeF/fZiB7j4kgO1byvG/8qTTuGUgmFH18quQ7w==
   dependencies:
     "@buffetjs/core" "3.3.6"
     "@buffetjs/custom" "3.3.6"
@@ -21400,9 +21432,9 @@ strapi-plugin-content-manager@3.6.2:
     redux-immutable "^4.0.0"
     reselect "^4.0.0"
     sanitize-html "2.3.3"
-    strapi-helper-plugin "3.6.2"
-    strapi-utils "3.6.2"
-    yup "^0.27.0"
+    strapi-helper-plugin "3.6.3"
+    strapi-utils "3.6.3"
+    yup "^0.28.2"
 
 strapi-plugin-content-type-builder@3.6.2:
   version "3.6.2"
@@ -21609,6 +21641,18 @@ strapi-utils@3.6.2:
     pino "^4.7.1"
     pluralize "^8.0.0"
     yup "0.29.3"
+
+strapi-utils@3.6.3:
+  version "3.6.3"
+  resolved "https://registry.yarnpkg.com/strapi-utils/-/strapi-utils-3.6.3.tgz#86b98b9fb86672973769ad116a0fc4d959551559"
+  integrity sha512-FAIdJfOsg8+igndwckgxwoUQkYjJDtsdsI2tHoBzrUZzQT2scVv+0I5RFmM5poXl5JR33iPU51tpAoLuTW/T8w==
+  dependencies:
+    "@sindresorhus/slugify" "1.1.0"
+    date-fns "^2.19.0"
+    lodash "4.17.21"
+    pino "^4.7.1"
+    pluralize "^8.0.0"
+    yup "^0.28.2"
 
 strapi@3.6.2:
   version "3.6.2"
@@ -22162,7 +22206,7 @@ symbol.prototype.description@^1.0.0:
     has-symbols "^1.0.1"
     object.getownpropertydescriptors "^2.1.2"
 
-synchronous-promise@^2.0.13, synchronous-promise@^2.0.6:
+synchronous-promise@^2.0.10, synchronous-promise@^2.0.13, synchronous-promise@^2.0.6:
   version "2.0.15"
   resolved "https://registry.yarnpkg.com/synchronous-promise/-/synchronous-promise-2.0.15.tgz#07ca1822b9de0001f5ff73595f3d08c4f720eb8e"
   integrity sha512-k8uzYIkIVwmT+TcglpdN50pS2y1BDcUnBPK9iJeGu0Pl1lOI8pD6wtzgw91Pjpe+RxtTncw32tLxs/R0yNL2Mg==
@@ -24105,6 +24149,19 @@ yup@^0.27.0:
     lodash "^4.17.11"
     property-expr "^1.5.0"
     synchronous-promise "^2.0.6"
+    toposort "^2.0.2"
+
+yup@^0.28.2:
+  version "0.28.5"
+  resolved "https://registry.yarnpkg.com/yup/-/yup-0.28.5.tgz#85cabb4000d3623ef69be81551190692e631a8a5"
+  integrity sha512-7JZcvpUGUxMKoaEtcoMEM8lCWRaueGNH/A3EhL/UWqfbFm3uloiI+x59Yq4nzhbbYWUTwAsCteaZOJ+VbqI1uw==
+  dependencies:
+    "@babel/runtime" "^7.9.6"
+    fn-name "~3.0.0"
+    lodash "^4.17.15"
+    lodash-es "^4.17.11"
+    property-expr "^2.0.2"
+    synchronous-promise "^2.0.10"
     toposort "^2.0.2"
 
 zen-observable-ts@^0.8.21:
