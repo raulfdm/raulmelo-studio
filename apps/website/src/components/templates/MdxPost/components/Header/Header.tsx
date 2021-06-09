@@ -5,6 +5,7 @@ import tw from 'twin.macro';
 type HeaderProps = {
   title: string;
   publishedDate: string;
+  readingTime?: number;
   subtitle?: string;
 };
 
@@ -18,19 +19,31 @@ const styles = {
 export const Header: React.FC<HeaderProps> = React.memo(function Header({
   title,
   subtitle,
+  readingTime,
   publishedDate,
 }) {
+  const shouldRenderReadingTime = readingTime && readingTime > 0;
+
   return (
     <header css={styles.header}>
       <h1 css={styles.title}>{title}</h1>
       {subtitle && <p css={styles.subtitle}>{subtitle}</p>}
       <p css={styles.paragraph}>
         <FormattedMessage
-          id="blogPost.publishedDate"
+          id="blogPost.publishedAt"
           values={{
             publishedDate,
           }}
         />
+        {shouldRenderReadingTime ? (
+          <FormattedMessage
+            id="blogPost.readingTime"
+            values={{
+              publishedDate,
+              readingTime,
+            }}
+          />
+        ) : null}
       </p>
     </header>
   );

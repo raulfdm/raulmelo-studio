@@ -19,6 +19,7 @@ import { mdxComponents } from '@components/MdxComponents';
 
 export const MdxPostTemplate: React.FC<MdxPostTemplateProps> = ({
   content,
+  postContent,
   featuredImage,
   title,
   subtitle,
@@ -123,6 +124,9 @@ export const MdxPostTemplate: React.FC<MdxPostTemplateProps> = ({
             month: 'short',
             day: '2-digit',
           })}
+          readingTime={
+            postContent ? getEstimatedReadingTime(postContent) : undefined
+          }
         />
         {series?.top}
         <ProseContainer tw="mt-8">
@@ -158,17 +162,33 @@ export const MdxPostTemplate: React.FC<MdxPostTemplateProps> = ({
 };
 
 interface MdxPostTemplateProps {
+  /**
+   * parsed content via MDX remote
+   */
   content: MDXRemoteSerializeResult;
+  /**
+   * markdown content used to generate estimated reading time.
+   */
+  postContent?: string;
+  title: string;
+  description: string;
+  publishedAt: string;
   preview?: boolean;
   tags?: { id: string; slug: string; name: string }[];
   featuredImage?: FeaturedImageProps & { width: number; height: number };
-  title: string;
-  description: string;
   subtitle?: string;
-  publishedAt: string;
   series?: {
     top: JSX.Element | null;
     bottom: JSX.Element | null;
   };
   nextSeo?: NextSeoProps;
+}
+
+function getEstimatedReadingTime(text: string): number {
+  const AVERAGE_WORD_READING = 200;
+  const numberOfWords = text.split(' ').length;
+
+  const wpm = numberOfWords / AVERAGE_WORD_READING;
+
+  return Math.round(wpm);
 }

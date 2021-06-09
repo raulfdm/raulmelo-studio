@@ -10,14 +10,21 @@ export type UsesPageProps = {
   seo: UsesPageApi['seo'];
   title: string;
   content: MDXRemoteSerializeResult;
+  postContent: string;
 };
 
-export const UsesPage: React.FC<UsesPageProps> = ({ content, seo, title }) => {
+export const UsesPage: React.FC<UsesPageProps> = ({
+  content,
+  seo,
+  title,
+  postContent,
+}) => {
   const { locale } = useLocalization();
 
   return (
     <MdxPostTemplate
       content={content}
+      postContent={postContent}
       title={title}
       publishedAt={'2020-10-20'}
       description={seo.description}
