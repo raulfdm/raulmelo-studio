@@ -30,6 +30,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({
   return (
     <MdxPostTemplate
       content={content}
+      postContent={post.content}
       preview={preview}
       featuredImage={{
         src: featured_image.url,
