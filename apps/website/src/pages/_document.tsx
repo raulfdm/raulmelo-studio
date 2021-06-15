@@ -1,6 +1,7 @@
 import { GA_TRACKING_ID } from '@config/analytics';
 import { domAnimation, LazyMotion } from 'framer-motion';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
+import Script from 'next/script';
 import tw, { css } from 'twin.macro';
 
 const styles = {
@@ -47,8 +48,7 @@ export default class MyDocument extends Document {
         </Head>
         <body css={styles.body}>
           {/* Global Site Tag (gtag.js) - Google Analytics */}
-          <script
-            async
+          <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
           />
           <script
