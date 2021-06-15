@@ -9,9 +9,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 const nextConfig = {
-  future: {
-    webpack5: true,
-  },
   target: 'serverless',
   reactStrictMode: true,
   i18n: {
