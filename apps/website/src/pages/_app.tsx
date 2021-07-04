@@ -48,12 +48,7 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
       </Script>
 
       {/* Global Site Tag (gtag.js) - Google Analytics */}
-      <Script
-        src={analyticsConfig.scriptUrl}
-        onLoad={() => {
-          console.log('analytics loaded');
-        }}
-      />
+      <Script src={analyticsConfig.scriptUrl} />
       <Script>{analyticsConfig.gtagLoadScript}</Script>
 
       <Global styles={globals} />
