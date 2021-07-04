@@ -1,4 +1,6 @@
 import { MenuBar } from '@components/MenuBar';
+import { analyticsConfig } from '@config/analytics';
+import Script from 'next/script';
 import { AppContextProvider } from '@contexts/app';
 import { LocalizationProvider } from '@contexts/Localization';
 import { SupportedLanguages } from '@types-app';
@@ -23,6 +25,32 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
+
+      {/* Global Theme handler
+            It needs to be in the header to avoid FOUC (flash of unstyled content)
+          */}
+      <Script>
+        {`
+          (function themeHandler() {
+            if (
+              window.__theme === 'dark' ||
+              localStorage.theme === 'dark' ||
+              (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+              ) {
+              document.documentElement.classList.add('dark');
+              window.__theme = 'dark';
+            } else {
+              document.documentElement.classList.remove('dark');
+              window.__theme = 'light'
+            }
+          })()
+        `}
+      </Script>
+
+      {/* Global Site Tag (gtag.js) - Google Analytics */}
+      <Script src={analyticsConfig.scriptUrl} />
+      <Script>{analyticsConfig.gtagLoadScript}</Script>
+
       <Global styles={globals} />
 
       <BaseStyles />
