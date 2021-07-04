@@ -33,6 +33,11 @@ export const globals = css`
   .page-title {
     ${tw`text-3xl md:text-4xl font-extrabold`}
   }
+
+  /* important is necessary to override prose style */
+  a code {
+    ${tw`text-primary!`};
+  }
 `;
 
 export const gridContainer = tw`
