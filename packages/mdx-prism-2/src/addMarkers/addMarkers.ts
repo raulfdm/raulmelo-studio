@@ -1,18 +1,44 @@
-// Copied from https://github.com/rexxars/react-refractor/blob/master/src/Refractor.js
+// https://github.com/rexxars/react-refractor/blob/2ef6b5cd98a3af124aad8bd26b3888f1613a09df/src/addMarkers.js
 import { filter } from 'unist-util-filter';
-import { visitParents } from 'unist-util-visit-parents';
-import { NodeMap } from './map';
+import { visitParents, Node as UnistNode } from 'unist-util-visit-parents';
+import { Children } from '../types';
 
-export function addMarkers(ast, options) {
+interface Node extends UnistNode {
+  value: string;
+  children?: Node[];
+}
+
+type Ast = Node[];
+
+type LineNumber = number;
+type Marker = {
+  line: number;
+};
+
+type Options = {
+  markers: (Marker | LineNumber)[];
+};
+
+export function addMarkers(ast: any, options: Options): Children {
   const markers = options.markers
-    .map((marker) => (marker.line ? marker : { line: marker }))
-    .sort((nodeA, nodeB) => nodeA.line - nodeB.line);
+    .map((marker) => {
+      if (typeof marker === 'number') {
+        return {
+          line: marker,
+        };
+      }
+
+      return marker;
+    })
+    .sort((nodeA: Marker, nodeB: Marker) => {
+      return nodeA.line - nodeB.line;
+    });
 
   const numbered = lineNumberify(ast).nodes;
   return wrapLines(numbered, markers, options);
 }
 
-function lineNumberify(ast, context = { lineNumber: 1 }) {
+function lineNumberify(ast: Ast, context = { lineNumber: 1 }) {
   return ast.reduce(
     (result, node) => {
       const lineStart = context.lineNumber;
@@ -55,19 +81,24 @@ function lineNumberify(ast, context = { lineNumber: 1 }) {
       result.nodes.push(node);
       return result;
     },
-    { nodes: [], lineNumber: context.lineNumber },
+    { nodes: [], lineNumber: context.lineNumber } as {
+      nodes: Ast;
+      lineNumber: number;
+    },
   );
 }
 
-function unwrapLine(markerLine, nodes) {
-  const tree = { type: 'root', children: nodes };
+function unwrapLine(markerLine: number[], nodes: Ast) {
+  const tree: Partial<Node> = { type: 'root', children: nodes };
 
-  const headMap = new NodeMap();
-  const lineMap = new NodeMap();
-  const tailMap = new NodeMap();
-  const cloned = [];
+  const headMap = new Map<Node, Node>();
+  const lineMap = new Map<Node, Node>();
+  const tailMap = new Map<Node, Node>();
+  const cloned: Ast = [];
 
-  function addCopy(map, node, ancestors) {
+  type IMap = typeof headMap;
+
+  function addCopy(map: IMap, node: Node, ancestors: Ast) {
     cloned.push(node);
 
     ancestors.forEach((ancestor) => {
@@ -85,13 +116,13 @@ function unwrapLine(markerLine, nodes) {
       const ancestor = map.get(ancestors[i]);
       const child = ancestors[i + 1];
       const leaf = map.get(child) || node;
-      if (ancestor.children.indexOf(leaf) === -1) {
+      if (ancestor?.children?.indexOf(leaf) === -1) {
         ancestor.children.push(leaf);
       }
     }
   }
 
-  visitParents(tree, (node, ancestors) => {
+  visitParents(tree as Node, (node: any, ancestors: any) => {
     if (node.children) {
       return;
     }
@@ -119,21 +150,24 @@ function unwrapLine(markerLine, nodes) {
   });
 
   // Get the remaining nodes - the ones who were not part of the same tree
-  const filtered = filter(tree, (node) => cloned.indexOf(node) === -1);
-  const getChildren = (map) => {
-    const rootNode = map.get(tree);
+  const filtered = filter(
+    tree as any,
+    (node: any) => cloned.indexOf(node) === -1,
+  );
+  const getChildren = (map: any) => {
+    const rootNode = map.get(tree as any);
     if (!rootNode) {
       return [];
     }
 
-    visitParents(rootNode, (leaf, ancestors) => {
+    visitParents(rootNode, (leaf: any, ancestors: any) => {
       if (leaf.children) {
         leaf.lineStart = 0;
         leaf.lineEnd = 0;
         return;
       }
 
-      ancestors.forEach((ancestor) => {
+      ancestors.forEach((ancestor: any) => {
         ancestor.lineStart = Math.max(ancestor.lineStart, leaf.lineStart);
         ancestor.lineEnd = Math.max(ancestor.lineEnd, leaf.lineEnd);
       });
@@ -146,7 +180,7 @@ function unwrapLine(markerLine, nodes) {
     getChildren(headMap),
     getChildren(lineMap),
     getChildren(tailMap),
-    filtered ? filtered.children : [],
+    filtered ? (filtered as any).children : [],
   );
 
   headMap.clear();
@@ -156,7 +190,7 @@ function unwrapLine(markerLine, nodes) {
   return merged;
 }
 
-function wrapBatch(children, marker, options) {
+function wrapBatch(children: any, marker: any, options: any) {
   const className = marker.className || 'mdx-marker';
   return {
     type: 'element',
@@ -171,13 +205,13 @@ function wrapBatch(children, marker, options) {
   };
 }
 
-function wrapLines(treeNodes, markers, options) {
+function wrapLines(treeNodes: any, markers: any, options: any) {
   if (markers.length === 0 || treeNodes.length === 0) {
     return treeNodes;
   }
 
   const ast = markers.reduce(
-    (acc, marker) => unwrapLine(marker.line, acc),
+    (acc: any, marker: any) => unwrapLine(marker.line, acc),
     treeNodes,
   );
 
