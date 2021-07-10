@@ -5,9 +5,9 @@ import json from '@rollup/plugin-json';
 import typescript from '@rollup/plugin-typescript';
 
 export default {
-  input: 'src/index.js',
+  input: 'src/lib.ts',
   output: {
-    file: 'dist/index.cjs.js',
+    file: 'dist/mdx-prism-2.js',
     format: 'cjs',
     exports: 'default',
     sourcemap: true,
