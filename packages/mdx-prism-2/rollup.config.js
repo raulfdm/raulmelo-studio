@@ -2,6 +2,7 @@ import pkg from './package.json';
 import commonJs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
+import typescript from '@rollup/plugin-typescript';
 
 export default {
   input: 'src/index.js',
@@ -11,7 +12,7 @@ export default {
     exports: 'default',
     sourcemap: true,
   },
-  plugins: [json(), nodeResolve(), commonJs()],
+  plugins: [json(), nodeResolve(), typescript(), commonJs()],
   external: Object.entries(pkg.dependencies)
     .map(([name]) => name)
     /**
