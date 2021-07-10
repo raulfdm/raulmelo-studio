@@ -12,8 +12,8 @@ import Head from 'next/head';
 import React from 'react';
 import siteData from 'site-data';
 import { gridContainer, globals } from '@styles/base';
-import { GlobalStyles as BaseStyles } from 'twin.macro';
-import { Global } from '@emotion/react';
+import { globalStyles } from 'twin.macro';
+import { CSSObject, Global } from '@emotion/react';
 
 const MyApp = ({ Component, pageProps, router }: AppProps) => {
   const defaultSeo = siteData.defaultSeo[router.locale as SupportedLanguages];
@@ -30,9 +30,9 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
       <Script src={analyticsConfig.scriptUrl} />
       <Script>{analyticsConfig.gtagLoadScript}</Script>
 
+      <Global styles={globalStyles as CSSObject} />
       <Global styles={globals} />
 
-      <BaseStyles />
       <SocialProfileJsonLd
         type="person"
         name={siteData.personalInformation.full_name}
