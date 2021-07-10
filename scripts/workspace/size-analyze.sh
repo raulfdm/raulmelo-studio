@@ -2,4 +2,4 @@
 
 echo "┏━━━ 📋 Size: analyzer  ━━━━━━━"
 
-scripts/workspace/size.sh --why
+scripts/workspace/size.sh $1
