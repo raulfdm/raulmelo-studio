@@ -136,8 +136,8 @@ const prismStyles = css`
       pointer-events-none
       whitespace-pre
       block
-      -mx-8
-      pl-3
+      -mx-6
+      pl-5
       border-l-4
     `};
     line-height: inherit;
