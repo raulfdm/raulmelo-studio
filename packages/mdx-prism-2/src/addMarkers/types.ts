@@ -1,12 +1,12 @@
-import type { Node as UnistNode } from 'unist-util-visit-parents';
+import type { Node } from 'unist-util-visit-parents';
 import type { MdxPrismOptions } from '../types';
 
-export interface Node extends UnistNode {
+export interface AstNode extends Node {
   value: string;
-  children?: Node[];
+  children?: AstNode[];
 }
 
-export type Ast = Node[];
+export type Ast = AstNode[];
 
 type LineNumber = number;
 

@@ -1,7 +1,7 @@
 import { filter } from 'unist-util-filter';
 import { visitParents } from 'unist-util-visit-parents';
 import { Hash } from '../types';
-import { Ast, Options, Node, Marker } from './types';
+import { Ast, Options, AstNode, Marker } from './types';
 
 export function wrapLines(treeNodes: any[], markers: Marker[], options: any) {
   if (markers.length === 0 || treeNodes.length === 0) {
@@ -55,16 +55,16 @@ export function wrapLines(treeNodes: any[], markers: Marker[], options: any) {
 }
 
 function unwrapLine(markerLine: Marker['line'][], nodes: Ast) {
-  const tree = { type: 'root', children: nodes } as Node;
+  const tree = { type: 'root', children: nodes } as AstNode;
 
-  const headMap = new Map<Node, Node>();
-  const lineMap = new Map<Node, Node>();
-  const tailMap = new Map<Node, Node>();
+  const headMap = new Map<AstNode, AstNode>();
+  const lineMap = new Map<AstNode, AstNode>();
+  const tailMap = new Map<AstNode, AstNode>();
   const cloned: Ast = [];
 
   type IMap = typeof headMap;
 
-  function addCopy(map: IMap, node: Node, ancestors: Ast) {
+  function addCopy(map: IMap, node: AstNode, ancestors: Ast) {
     cloned.push(node);
 
     ancestors.forEach((ancestor) => {
@@ -88,7 +88,7 @@ function unwrapLine(markerLine: Marker['line'][], nodes: Ast) {
     }
   }
 
-  visitParents(tree as Node, (node: any, ancestors: any) => {
+  visitParents(tree as AstNode, (node: any, ancestors: any) => {
     if (node.children) {
       return;
     }
