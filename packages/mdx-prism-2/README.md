@@ -35,14 +35,11 @@ If no `language-{name}` class is found on a `<code>` element, it will be skipped
 
 ### options
 
-#### options.ignoreMissing
-
-Type: `boolean`.
-Default: `false`.
-
-By default, if `{name}` does not correspond to a [language supported by refractor] an error will be thrown.
-
-If you would like to silently skip `<code>` elements with invalid languages, set this option to `true`.
+| Parameter                 |                                         Type                                         |   Default    | Description                                                                                                                                                                                                         |
+| :------------------------ | :----------------------------------------------------------------------------------: | :----------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `ignoreMissing`           |                                      `boolean`                                       |   `false`    | By default, if `{name}` does not correspond to a [language supported by refractor] an error will be thrown. If you would like to silently skip `<code>` elements with invalid languages, set this option to `true`. |
+| `lineHighlight.component` | `string` ([HTML element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)) |    `div`     | The HTML tag used to wrap the highlight line.                                                                                                                                                                       |
+| `lineHighlight.className` |                                       `string`                                       | `mdx-marker` | CSS class applied to highlight line.                                                                                                                                                                                |
 
 ## Usage
 
@@ -51,16 +48,30 @@ Use this package [as a rehype plugin](https://github.com/rehypejs/rehype/blob/ma
 Some examples of how you might do that:
 
 ```js
-const rehype = require("rehype");
-const mdxPrism = require("mdx-prism-2");
+const rehype = require('rehype');
+const mdxPrism = require('mdx-prism-2');
 
 rehype().use(mdxPrism).process(/* some html */);
 ```
 
 ```js
-const unified = require("unified");
-const rehypeParse = require("rehype-parse");
-const mdxPrism = require("mdx-prism-2");
+const rehype = require('rehype');
+const mdxPrism = require('mdx-prism-2');
+
+rehype()
+  .use(mdxPrism, {
+    lineHighlight: {
+      component: 'span',
+      className: 'my-line-highlight-class',
+    },
+  })
+  .process(/* some html */);
+```
+
+```js
+const unified = require('unified');
+const rehypeParse = require('rehype-parse');
+const mdxPrism = require('mdx-prism-2');
 
 unified().use(rehypeParse).use(mdxPrism).processSync(/* some html */);
 ```
@@ -68,10 +79,10 @@ unified().use(rehypeParse).use(mdxPrism).processSync(/* some html */);
 If you'd like to get syntax highlighting in Markdown, parse the Markdown (with remark-parse), convert it to rehype, then use this plugin.
 
 ```js
-const unified = require("unified");
-const remarkParse = require("remark-parse");
-const remarkRehype = require("remark-rehype");
-const mdxPrism = require("mdx-prism-2");
+const unified = require('unified');
+const remarkParse = require('remark-parse');
+const remarkRehype = require('remark-rehype');
+const mdxPrism = require('mdx-prism-2');
 
 unified()
   .use(remarkParse)
