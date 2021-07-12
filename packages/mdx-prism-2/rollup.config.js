@@ -9,6 +9,7 @@ export default {
   output: {
     file: 'dist/mdx-prism-2.js',
     format: 'cjs',
+    exports: 'default',
     sourcemap: true,
   },
   plugins: [json(), nodeResolve(), typescript(), commonJs()],

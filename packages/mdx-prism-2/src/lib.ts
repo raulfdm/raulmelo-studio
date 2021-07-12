@@ -1,2 +1,2 @@
-export { mdxPrism } from './mdxPrism';
+export { mdxPrism as default } from './mdxPrism';
 export { MdxPrismOptions } from './types';
