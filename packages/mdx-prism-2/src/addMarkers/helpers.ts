@@ -1,10 +1,9 @@
 import { filter } from 'unist-util-filter';
 import { visitParents } from 'unist-util-visit-parents';
 import { Hash } from '../types';
-import { Ast, Options, Node } from './types';
+import { Ast, Options, Node, Marker } from './types';
 
-export function wrapLines(treeNodes: any, markers: any, options: any) {
-  console.log(treeNodes);
+export function wrapLines(treeNodes: any[], markers: Marker[], options: any) {
   if (markers.length === 0 || treeNodes.length === 0) {
     return treeNodes;
   }
@@ -55,7 +54,7 @@ export function wrapLines(treeNodes: any, markers: any, options: any) {
   return wrapped;
 }
 
-function unwrapLine(markerLine: number[], nodes: Ast) {
+function unwrapLine(markerLine: Marker['line'][], nodes: Ast) {
   const tree = { type: 'root', children: nodes } as Node;
 
   const headMap = new Map<Node, Node>();
@@ -121,6 +120,7 @@ function unwrapLine(markerLine: number[], nodes: Ast) {
     tree as any,
     (node: any) => cloned.indexOf(node) === -1,
   );
+
   const getChildren = (map: any) => {
     const rootNode = map.get(tree as any);
     if (!rootNode) {
@@ -158,7 +158,11 @@ function unwrapLine(markerLine: number[], nodes: Ast) {
 }
 
 function wrapBatch(children: any, marker: any, options: Options) {
-  const className = marker.className || 'mdx-marker';
+  const className =
+    marker.className || options.lineHighlight?.className || 'mdx-marker';
+  const component =
+    marker.component || options.lineHighlight?.component || 'div';
+
   const properties: Partial<Hash> = { ...options };
 
   delete properties.lineHighlight;
@@ -166,7 +170,7 @@ function wrapBatch(children: any, marker: any, options: Options) {
 
   return {
     type: 'element',
-    tagName: marker.component || 'div',
+    tagName: component || 'div',
     properties: marker.component
       ? Object.assign({}, properties, { className })
       : { className },
