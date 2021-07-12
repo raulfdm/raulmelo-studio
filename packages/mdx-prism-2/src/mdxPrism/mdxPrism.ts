@@ -97,7 +97,10 @@ export function mdxPrism(options: MdxPrismOptions = {}): MdxPrism2Visit {
           .use(parse, { emitParseErrors: true, fragment: true })
           .parse(html_);
 
-        nextChildren = addMarkers(hast_.children, { markers });
+        nextChildren = addMarkers(hast_.children, {
+          markers,
+          lineHighlight: options.lineHighlight,
+        });
       }
     } catch (error) {
       /**

@@ -14,7 +14,23 @@ export type Visitor = (
 export type Children = Array<RefractorElement | Text>;
 
 export type MdxPrismOptions = {
+  /**
+   * If true it won't throw an error if the language is not supported.
+   */
   ignoreMissing?: true;
+  lineHighlight?: {
+    /**
+     * Component to use to wrap the highlighted code.
+     * @example 'div' | 'pre' | 'p' | 'span'
+     * @default div
+     */
+    component?: keyof HTMLElementTagNameMap;
+    /**
+     * css class to apply to the highlighted code.
+     * @default mdx-marker
+     */
+    className?: string;
+  };
 };
 
 export type Hash = { [key: string]: any };
