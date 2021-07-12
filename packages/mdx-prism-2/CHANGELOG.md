@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/raulfdm/raulmelo-studio/compare/mdx-prism-2@6.0.8...mdx-prism-2@6.1.0) (2021-07-12)
+
+### Features
+
+- add new options for highlight line ([b139dd3](https://github.com/raulfdm/raulmelo-studio/commit/b139dd3c7389077f886e6615f7653a2bb3ad2423))
+
 ## [6.0.8](https://github.com/raulfdm/raulmelo-studio/compare/mdx-prism-2@6.0.7...mdx-prism-2@6.0.8) (2021-07-10)
 
 **Note:** Version bump only for package mdx-prism-2
