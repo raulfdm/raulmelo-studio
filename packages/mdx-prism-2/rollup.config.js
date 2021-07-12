@@ -2,14 +2,13 @@ import pkg from './package.json';
 import commonJs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
-import typescript from '@rollup/plugin-typescript';
+import typescript from 'rollup-plugin-typescript2';
 
 export default {
   input: 'src/lib.ts',
   output: {
     file: 'dist/mdx-prism-2.js',
     format: 'cjs',
-    exports: 'default',
     sourcemap: true,
   },
   plugins: [json(), nodeResolve(), typescript(), commonJs()],

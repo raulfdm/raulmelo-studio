@@ -1,6 +1,7 @@
 import { filter } from 'unist-util-filter';
 import { visitParents } from 'unist-util-visit-parents';
 import { Hash } from '../types';
+import { Ast, Options, Node } from './types';
 
 export function wrapLines(treeNodes: any, markers: any, options: any) {
   console.log(treeNodes);
@@ -55,7 +56,7 @@ export function wrapLines(treeNodes: any, markers: any, options: any) {
 }
 
 function unwrapLine(markerLine: number[], nodes: Ast) {
-  const tree: Partial<Node> = { type: 'root', children: nodes };
+  const tree = { type: 'root', children: nodes } as Node;
 
   const headMap = new Map<Node, Node>();
   const lineMap = new Map<Node, Node>();

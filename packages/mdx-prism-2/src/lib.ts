@@ -1,5 +1,2 @@
-import { mdxPrism } from './mdxPrism';
-
-export default mdxPrism;
-
+export { mdxPrism } from './mdxPrism';
 export { MdxPrismOptions } from './types';

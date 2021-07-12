@@ -1,25 +1,9 @@
 // https://github.com/rexxars/react-refractor/blob/2ef6b5cd98a3af124aad8bd26b3888f1613a09df/src/addMarkers.js
 
-import { Node as UnistNode } from 'unist-util-visit-parents';
-import { Children, MdxPrismOptions } from '../types';
+import type { Children } from '../types';
+import { Ast, Options, Marker } from './types';
+
 import { wrapLines } from './helpers';
-
-interface Node extends UnistNode {
-  value: string;
-  children?: Node[];
-}
-
-type Ast = Node[];
-
-type LineNumber = number;
-type Marker = {
-  line: number;
-};
-
-type Options = {
-  markers: (Marker | LineNumber)[];
-  lineHighlight?: MdxPrismOptions['lineHighlight'];
-};
 
 export function addMarkers(ast: any, options: Options): Children {
   const markers = options.markers
