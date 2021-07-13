@@ -14,10 +14,19 @@ jobs:
         with:
           node-version: '14'
 
+      - name: Install lerna and netlify
+        run: yarn global add nx
+
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
         with:
           useRollingCache: true
 
       - name: Test, build and lint
-        run: yarn nx run-many --target=build,test,lint --all --parallel
+        run: yarn nx run-many --target=build, --all --parallel
+
+      - name: Test
+        run: yarn nx run-many --target=test --all --parallel
+
+      - name: lint
+        run: yarn nx run-many --target=lint --all --parallel
