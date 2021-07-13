@@ -20,4 +20,10 @@ jobs:
           useRollingCache: true
 
       - name: Lint
-        run: yarn lint
+        run: yarn lint --all
+
+      - name: Test
+        run: yarn test --all
+
+      - name: Build
+        run: yarn build --all
