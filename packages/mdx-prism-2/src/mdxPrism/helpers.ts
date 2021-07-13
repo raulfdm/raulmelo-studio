@@ -1,12 +1,17 @@
 import rangeParser from 'parse-numeric-range';
-import { ClassInformation, Node } from '../types';
+import { Node } from '../types';
 
 const LANGUAGE_PREFIX = 'language-';
 const LINE_RANGE_REGEX = /{.*}/g;
 
-export function extractClassInformationFromNode(
-  node: Node,
-): ClassInformation | undefined {
+export function extractClassInformationFromNode(node: Node):
+  | {
+      originalClassName: string;
+      languageClassName: string;
+      language: string;
+      markers: number[] | undefined;
+    }
+  | undefined {
   const originalClassName = extractLanguageClassNameFromNode(node);
 
   if (!originalClassName) {
@@ -32,7 +37,7 @@ function extractLanguage(className: string): string {
 }
 
 function extractLanguageClassNameFromNode(node: Node): string | undefined {
-  const classNames = node.properties.className || [];
+  const classNames = node?.properties?.className || [];
 
   for (const className of classNames) {
     if (className.slice(0, 9) === LANGUAGE_PREFIX) {
