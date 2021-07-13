@@ -2,18 +2,12 @@
 
 import rehype from 'rehype';
 import parse from 'rehype-parse';
-import rehypeFormat from 'rehype-format';
 import unified from 'unified';
 import { whitespace } from 'hast-util-whitespace';
 
-import type { Children } from '../types';
+import type { Children, NodeWithLine } from '../types';
 import { wrapLines } from './helpers';
-import type {
-  AddMarkersOptions,
-  Marker,
-  UnsanitizedMarker,
-  NodeWithLine,
-} from './types';
+import type { AddMarkersOptions, Marker, UnsanitizedMarker } from './types';
 
 export function addMarkers(
   children: Children,
@@ -44,7 +38,7 @@ export function addMarkers(
 
   // console.log(JSON.stringify(html_));
   console.log(
-    rehype().use(rehypeFormat).stringify({ type: 'root', children }).toString(),
+    rehype().stringify({ type: 'root', children }).toString(),
     // .split('\n'),
   );
   // console.log(
