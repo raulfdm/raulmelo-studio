@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { RefractorElement } from 'refractor';
-import { Node, Parent } from 'unist-util-visit';
-import { VisitorResult } from 'unist-util-visit';
-
-export { VisitorResult } from 'unist-util-visit';
+import {
+  Node as UnistNode,
+  // Parent as UnistParent,
+  VisitorResult,
+} from 'unist-util-visit';
+import { Parent as UnistParent, Literal as UnistLiteral } from 'unist';
 
 export type Visitor = (
   node: Node,
@@ -11,8 +13,11 @@ export type Visitor = (
   parent: Parent | null,
 ) => VisitorResult;
 
-export type Children = Array<RefractorElement | Text>;
+// export type Children = Array<RefractorElement | Text>;
 
+/**
+ * Lib options
+ */
 export type MdxPrismOptions = {
   /**
    * If true it won't throw an error if the language is not supported.
@@ -33,23 +38,52 @@ export type MdxPrismOptions = {
   };
 };
 
+/**
+ * Generic types
+ */
 export type Hash = { [key: string]: any };
 
-export type NodeWithProperties = Node & {
-  properties: Hash;
+export type MdxPrism2Visit = (tree: Node) => void;
+
+export { VisitorResult } from 'unist-util-visit';
+
+/**
+ * Hast types
+ */
+
+export type Properties = Partial<Record<keyof HTMLElement, any>>;
+
+export type Children = Node[];
+
+export type Node = UnistNode & {
+  properties?: Properties;
+  [key: string]: any;
 };
 
-export type ParentWithProperties = NodeWithProperties & {
-  children: NodeWithProperties[];
+export type Parent = Node & {
+  children: Children;
 };
 
-export type MdxPrism2Visit = (tree: NodeWithProperties) => void;
+export type Literal = UnistLiteral & {
+  value: string;
+};
 
-export type ClassNames = string[];
+export type Root = Parent & {
+  type: 'root';
+};
 
-export type ClassInformation = {
-  originalClassName: string;
-  language: string;
-  languageClassName: string;
-  markers: number[] | undefined;
+export type Element = Parent & {
+  type: 'element';
+  tagName: string;
+  properties?: Hash;
+  content?: Root;
+  children: Array<Element | Comment | Text>;
+};
+
+export type Comment = Literal & {
+  type: 'comment';
+};
+
+export type Text = Literal & {
+  type: 'text';
 };

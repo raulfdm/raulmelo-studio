@@ -1,11 +1,11 @@
 import rangeParser from 'parse-numeric-range';
-import { ClassInformation, NodeWithProperties } from '../types';
+import { ClassInformation, Node } from '../types';
 
 const LANGUAGE_PREFIX = 'language-';
 const LINE_RANGE_REGEX = /{.*}/g;
 
 export function extractClassInformationFromNode(
-  node: NodeWithProperties,
+  node: Node,
 ): ClassInformation | undefined {
   const originalClassName = extractLanguageClassNameFromNode(node);
 
@@ -31,9 +31,7 @@ function extractLanguage(className: string): string {
   return className.replace(LANGUAGE_PREFIX, '').replace(LINE_RANGE_REGEX, '');
 }
 
-function extractLanguageClassNameFromNode(
-  node: NodeWithProperties,
-): string | undefined {
+function extractLanguageClassNameFromNode(node: Node): string | undefined {
   const classNames = node.properties.className || [];
 
   for (const className of classNames) {

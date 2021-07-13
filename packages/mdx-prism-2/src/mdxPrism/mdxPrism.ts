@@ -2,17 +2,16 @@ import nodeToString from 'hast-util-to-string';
 import { refractor } from 'refractor/lib/all';
 import rehype from 'rehype';
 import parse from 'rehype-parse';
+import { Ast } from 'src/addMarkers/types';
 import unified from 'unified';
 import { visit } from 'unist-util-visit';
 import { addMarkers } from '../addMarkers';
 import {
   Children,
-  ClassNames,
   MdxPrism2Visit,
   MdxPrismOptions,
-  NodeWithProperties,
-  ParentWithProperties,
-  Visitor,
+  Node,
+  Parent,
   VisitorResult,
 } from '../types';
 import { extractClassInformationFromNode } from './helpers';
@@ -30,22 +29,17 @@ import { extractClassInformationFromNode } from './helpers';
  *    - sets the updated code
  */
 
-export function mdxPrism(options: MdxPrismOptions = {}): MdxPrism2Visit {
-  return function mdxPrism2Visit(tree: NodeWithProperties): void {
-    /**
-     * This cast (visitor) is needed because for some reason, the "Node"
-     * type they are using does not contain "properties" but in runtime the tree
-     * and all node does.
-     *
-     * So I've created a `NodeWithProperties` and workaround where it complains
-     */
-    visit<NodeWithProperties>(tree, 'element', visitor as Visitor);
+export function mdxPrismAttacher(
+  options: MdxPrismOptions = {},
+): MdxPrism2Visit {
+  return function mdxPrism2Visit(tree: Node): void {
+    visit(tree, 'element', visitor);
   };
 
   function visitor(
-    node: NodeWithProperties,
+    node: Node,
     _index: number | null,
-    parent: ParentWithProperties | null,
+    parent: Parent | null,
   ): VisitorResult {
     if (!parent || parent.tagName !== 'pre' || node.tagName !== 'code') {
       return;
@@ -71,9 +65,11 @@ export function mdxPrism(options: MdxPrismOptions = {}): MdxPrism2Visit {
        * ['container','divider', 'language-css']
        *                          ^^^^^^^^^^^^
        */
-      const parentClassNames =
-        (parent.properties.className as ClassNames) || [];
-      parent.properties.className = [...parentClassNames, languageClassName];
+      if (parent.properties) {
+        const parentClassNames = parent.properties?.className || [];
+
+        parent.properties.className = [...parentClassNames, languageClassName];
+      }
 
       nextChildren = refractor.highlight(nodeToString(node), language)
         .children as Children;
@@ -97,7 +93,7 @@ export function mdxPrism(options: MdxPrismOptions = {}): MdxPrism2Visit {
           .use(parse, { emitParseErrors: true, fragment: true })
           .parse(html_);
 
-        nextChildren = addMarkers(hast_.children, {
+        nextChildren = addMarkers(hast_.children as Ast, {
           markers,
           lineHighlight: options.lineHighlight,
         });
