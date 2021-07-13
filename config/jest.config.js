@@ -7,5 +7,5 @@ module.exports = {
   clearMocks: true,
   collectCoverage: true,
   modulePathIgnorePatterns: ['.history'],
-  testMatch: ['**/?(*.)+(spec|test).[tj]s?(x)'],
+  testMatch: ['<rootDir>/src/**/?(*.)+(spec|test).[tj]s?(x)'],
 };

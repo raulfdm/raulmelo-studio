@@ -1,0 +1,11 @@
+name: CMS deploy
+
+on: [push]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mansagroup/nrwl-nx-action@v2
+        with:
+          targets: lint,build,deploy,test
