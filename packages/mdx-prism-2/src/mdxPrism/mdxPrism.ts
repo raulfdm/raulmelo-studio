@@ -1,18 +1,14 @@
 import nodeToString from 'hast-util-to-string';
 import { refractor } from 'refractor/lib/all';
-import rehype from 'rehype';
-import parse from 'rehype-parse';
-import unified from 'unified';
+
 import { visit } from 'unist-util-visit';
 import { addMarkers } from '../addMarkers';
 import {
   Children,
-  ClassNames,
   MdxPrism2Visit,
   MdxPrismOptions,
-  NodeWithProperties,
-  ParentWithProperties,
-  Visitor,
+  Node,
+  Parent,
   VisitorResult,
 } from '../types';
 import { extractClassInformationFromNode } from './helpers';
@@ -30,22 +26,17 @@ import { extractClassInformationFromNode } from './helpers';
  *    - sets the updated code
  */
 
-export function mdxPrism(options: MdxPrismOptions = {}): MdxPrism2Visit {
-  return function mdxPrism2Visit(tree: NodeWithProperties): void {
-    /**
-     * This cast (visitor) is needed because for some reason, the "Node"
-     * type they are using does not contain "properties" but in runtime the tree
-     * and all node does.
-     *
-     * So I've created a `NodeWithProperties` and workaround where it complains
-     */
-    visit<NodeWithProperties>(tree, 'element', visitor as Visitor);
+export function mdxPrismAttacher(
+  options: MdxPrismOptions = {},
+): MdxPrism2Visit {
+  return function transformer(tree: Node): void {
+    visit(tree, 'element', visitor);
   };
 
   function visitor(
-    node: NodeWithProperties,
+    node: Node,
     _index: number | null,
-    parent: ParentWithProperties | null,
+    parent: Parent | null,
   ): VisitorResult {
     if (!parent || parent.tagName !== 'pre' || node.tagName !== 'code') {
       return;
@@ -66,41 +57,12 @@ export function mdxPrism(options: MdxPrismOptions = {}): MdxPrism2Visit {
      * For those, if we pass option.ignoreMissing = true this error is just suppressed.
      */
     try {
-      /**
-       * Enforcing parent to have the language class, e.g.:
-       * ['container','divider', 'language-css']
-       *                          ^^^^^^^^^^^^
-       */
-      const parentClassNames =
-        (parent.properties.className as ClassNames) || [];
-      parent.properties.className = [...parentClassNames, languageClassName];
+      addLanguageClassToParent(parent, languageClassName);
 
-      nextChildren = refractor.highlight(nodeToString(node), language)
-        .children as Children;
+      nextChildren = highlightCode(node, language);
 
       if (markers && markers.length > 0) {
-        /**
-         * This blocks attempts this fix:
-         * https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-remark-prismjs/src/directives.js#L113-L119
-         */
-        const PLAIN_TEXT_WITH_LF_TEST =
-          /<span class="token plain-text">[^<]*\n[^<]*<\/span>/g;
-
-        const html_ = rehype()
-          .stringify({ type: 'root', children: nextChildren })
-          .toString()
-          .replace(PLAIN_TEXT_WITH_LF_TEST, (match) =>
-            match.replace(/\n/g, '</span>\n<span class="token plain-text">'),
-          );
-
-        const hast_ = unified()
-          .use(parse, { emitParseErrors: true, fragment: true })
-          .parse(html_);
-
-        nextChildren = addMarkers(hast_.children, {
-          markers,
-          lineHighlight: options.lineHighlight,
-        });
+        nextChildren = addMarkers(nextChildren, { ...options, markers });
       }
     } catch (error) {
       /**
@@ -114,5 +76,22 @@ export function mdxPrism(options: MdxPrismOptions = {}): MdxPrism2Visit {
     }
 
     node.children = nextChildren;
+  }
+}
+
+function highlightCode(node: Node, lang: string): Children {
+  return refractor.highlight(nodeToString(node), lang).children as Children;
+}
+
+/**
+ * Enforcing parent to have the language class, e.g.:
+ * ['container','divider', 'language-css']
+ *                          ^^^^^^^^^^^^
+ */
+function addLanguageClassToParent(parent: Parent, languageClassName: string) {
+  if (parent.properties) {
+    const parentClassNames = parent.properties?.className || [];
+
+    parent.properties.className = [...parentClassNames, languageClassName];
   }
 }

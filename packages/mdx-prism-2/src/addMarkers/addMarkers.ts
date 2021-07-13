@@ -1,77 +1,97 @@
 // https://github.com/rexxars/react-refractor/blob/2ef6b5cd98a3af124aad8bd26b3888f1613a09df/src/addMarkers.js
 
-import type { Children } from '../types';
-import { Ast, Options, Marker } from './types';
+import rehype from 'rehype';
+import parse from 'rehype-parse';
+import unified from 'unified';
 
+import type {
+  Children,
+  NodeWithLine,
+  UnistHastChildren,
+  UnistHastNode,
+} from '../types';
 import { wrapLines } from './helpers';
+import type { AddMarkersOptions, Marker, UnsanitizedMarker } from './types';
 
-export function addMarkers(ast: any, options: Options): Children {
+export function addMarkers(
+  children: Children,
+  options: AddMarkersOptions,
+): Children {
+  const processedHtmlString = childrenToProcessedHtmlString(children);
+
+  const hastChildren = processedHtmlToHastChildren(processedHtmlString);
+
   const markers = options.markers
-    .map((marker) => {
-      const finalMarker =
-        typeof marker === 'number'
-          ? {
-              line: marker,
-            }
-          : marker;
+    .map(sanitizeMarkers)
+    .sort(sortMarkersByLinesAsc);
 
-      return { ...finalMarker, ...options.lineHighlight };
-    })
-    .sort((nodeA: Marker, nodeB: Marker) => {
-      return nodeA.line - nodeB.line;
-    });
+  const { nodes: nodesWithLines } = lineNumberify(hastChildren);
 
-  const numbered = lineNumberify(ast).nodes;
-
-  return wrapLines(numbered, markers, options);
+  return wrapLines(nodesWithLines, markers, options);
 }
 
-function lineNumberify(ast: Ast, context = { lineNumber: 1 }) {
-  return ast.reduce(
-    (result, node) => {
-      const lineStart = context.lineNumber;
+function processedHtmlToHastChildren(
+  processedHtmlString: string,
+): UnistHastNode[] {
+  const hast = unified()
+    .use(parse, { emitParseErrors: true, fragment: true })
+    .parse(processedHtmlString);
 
-      if (node.type === 'text') {
-        if (node.value.indexOf('\n') === -1) {
-          node.lineStart = lineStart;
-          node.lineEnd = lineStart;
-          result.nodes.push(node);
-          return result;
+  return hast.children as UnistHastNode[];
+}
+
+function childrenToProcessedHtmlString(children: Children): string {
+  /**
+   * This blocks attempts this fix:
+   * https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-remark-prismjs/src/directives.js#L113-L119
+   */
+  const PLAIN_TEXT_WITH_LF_TEST =
+    /<span class="token plain-text">[^<]*\n[^<]*<\/span>/g;
+
+  return rehype()
+    .stringify({ type: 'root', children })
+    .toString()
+    .replace(PLAIN_TEXT_WITH_LF_TEST, (match) =>
+      match.replace(/\n/g, '</span>\n<span class="token plain-text">'),
+    );
+}
+
+function sanitizeMarkers(marker: UnsanitizedMarker): Marker {
+  const finalMarker =
+    typeof marker === 'number'
+      ? {
+          line: marker,
         }
+      : marker;
 
-        const lines = node.value.split('\n');
-        for (let i = 0; i < lines.length; i++) {
-          const lineNum = i === 0 ? context.lineNumber : ++context.lineNumber;
-          result.nodes.push({
-            type: 'text',
-            value: i === lines.length - 1 ? lines[i] : `${lines[i]}\n`,
-            lineStart: lineNum,
-            lineEnd: lineNum,
-          });
-        }
+  return finalMarker;
+}
 
-        result.lineNumber = context.lineNumber;
-        return result;
-      }
+function sortMarkersByLinesAsc(markerA: Marker, markerB: Marker): number {
+  return markerA.line - markerB.line;
+}
 
-      if (node.children) {
-        const processed = lineNumberify(node.children, context);
-        const firstChild = processed.nodes[0];
-        const lastChild = processed.nodes[processed.nodes.length - 1];
-        node.lineStart = firstChild ? firstChild.lineStart : lineStart;
-        node.lineEnd = lastChild ? lastChild.lineEnd : lineStart;
-        node.children = processed.nodes;
-        result.lineNumber = processed.lineNumber;
-        result.nodes.push(node);
-        return result;
-      }
+function lineNumberify(ast: UnistHastChildren): {
+  nodes: NodeWithLine[];
+} {
+  const nodes: NodeWithLine[] = [];
 
-      result.nodes.push(node);
-      return result;
-    },
-    { nodes: [], lineNumber: context.lineNumber } as {
-      nodes: Ast;
-      lineNumber: number;
-    },
-  );
+  for (const node of ast) {
+    const newNode = { ...node } as NodeWithLine;
+    if (node.children) {
+      const { nodes: childrenNodes } = lineNumberify(node.children);
+
+      newNode.lineStart = childrenNodes[0].lineStart;
+      newNode.lineEnd = childrenNodes[childrenNodes.length - 1].lineEnd;
+    } else {
+      newNode.lineStart = node.position.start.line;
+      newNode.lineEnd = node.position.end.line;
+    }
+
+    nodes.push(newNode);
+  }
+
+  return {
+    nodes,
+  };
 }
