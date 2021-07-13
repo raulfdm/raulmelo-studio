@@ -2,4 +2,4 @@
 
 echo "┏━━━ 🚗 Start: yarn start  ━━━━━━━"
 
-yarn lerna run start --stream $1
+yarn nx run-many --target=start --all

@@ -9,5 +9,4 @@ export GIT_AUTHOR_EMAIL="melo.raulf@gmail.com"
 # https://github.com/semantic-release/git/issues/154#issuecomment-524676502
 export HUSKY_SKIP_HOOKS=1
 
-# lerna exec --concurrency 1 --scope=mdx-prism-2 -- semantic-release -e semantic-release-monorepo --tag-format='${LERNA_PACKAGE_NAME}@\${version}'
-yarn lerna publish --conventional-commits --no-private -y
+yarn nx run-many --target=publish $1

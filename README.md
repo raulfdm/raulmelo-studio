@@ -15,7 +15,6 @@ Each project/package uses different technologies because they have different pur
 
 For the root level I'm using:
 
-- [Lerna](https://lerna.js.org/) + [Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) - Maintain this Monorepo
 - [TypeScript](https://www.typescriptlang.org/) - core programming language
 - [scripty](https://www.npmjs.com/package/scripty) - Run npm scripts with bash files
 - [Babel](https://babeljs.io/) - Parse and bundle together with TSC

@@ -2,4 +2,4 @@
 
 echo "┏━━━ 🕵️ Lint: yarn lint  ━━━━━━━"
 
-yarn lerna run lint --stream --concurrency=5 $1
+yarn nx run-many --target=lint $1

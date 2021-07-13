@@ -2,4 +2,4 @@
 
 echo "┏━━━ 📦 Build: yarn build  ━━━━━━━"
 
-yarn lerna run build --stream --concurrency=5 --include-dependencies $1
+yarn nx run-many --target=build $1
