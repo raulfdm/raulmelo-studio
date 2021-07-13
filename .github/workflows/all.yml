@@ -19,7 +19,5 @@ jobs:
         with:
           useRollingCache: true
 
-      - name: Setup NX
-        uses: mansagroup/nrwl-nx-action@v2
-        with:
-          targets: lint,build,deploy,test
+      - name: Lint
+        uses: yarn lint
