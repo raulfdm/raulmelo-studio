@@ -1,15 +1,25 @@
 import { filter } from 'unist-util-filter';
 import { visitParents } from 'unist-util-visit-parents';
-import { Hash } from '../types';
-import { Ast, Options, AstNode, Marker } from './types';
+import type {
+  Children,
+  Hash,
+  Root,
+  NodeWithLine,
+  ParentWithLine,
+} from '../types';
+import type { Marker, AddMarkersOptions } from './types';
 
-export function wrapLines(treeNodes: any[], markers: Marker[], options: any) {
+export function wrapLines(
+  treeNodes: NodeWithLine[],
+  markers: Marker[],
+  options: AddMarkersOptions,
+): Children {
   if (markers.length === 0 || treeNodes.length === 0) {
     return treeNodes;
   }
 
   const ast = markers.reduce(
-    (acc: any, marker: any) => unwrapLine(marker.line, acc),
+    (acc, marker) => unwrapLine(marker.line, acc),
     treeNodes,
   );
 
@@ -54,20 +64,55 @@ export function wrapLines(treeNodes: any[], markers: Marker[], options: any) {
   return wrapped;
 }
 
-function unwrapLine(markerLine: Marker['line'][], nodes: Ast) {
-  const tree = { type: 'root', children: nodes } as AstNode;
+function unwrapLine(markerLine: Marker['line'], nodes: NodeWithLine[]) {
+  const tree = { type: 'root', children: nodes } as Root;
 
-  const headMap = new Map<AstNode, AstNode>();
-  const lineMap = new Map<AstNode, AstNode>();
-  const tailMap = new Map<AstNode, AstNode>();
-  const cloned: Ast = [];
+  const headMap = new Map<NodeWithLine | Root, NodeWithLine>();
+  const lineMap = new Map<NodeWithLine | Root, NodeWithLine>();
+  const tailMap = new Map<NodeWithLine | Root, NodeWithLine>();
+  const cloned: Array<NodeWithLine> = [];
 
   type IMap = typeof headMap;
 
-  function addCopy(map: IMap, node: AstNode, ancestors: Ast) {
+  visitParents(tree, (node, ancestors) => {
+    if (node.children) {
+      return;
+    }
+    const nodeWithLine = node as NodeWithLine;
+    const ancestorsWithLine = ancestors as ParentWithLine[];
+
+    // These nodes are on previous lines, but nested within the same structure
+    if (nodeWithLine.lineStart < markerLine) {
+      addCopy(headMap, nodeWithLine, ancestorsWithLine);
+      return;
+    }
+
+    // These nodes are on the target line
+    if (nodeWithLine.lineStart === markerLine) {
+      addCopy(lineMap, nodeWithLine, ancestorsWithLine);
+      return;
+    }
+
+    // If we have shared ancestors with some of the cloned elements,
+    // create another tree of the remaining nodes
+    if (
+      nodeWithLine.lineEnd > markerLine &&
+      cloned.some((clone) => ancestorsWithLine.indexOf(clone as any) !== -1)
+    ) {
+      addCopy(tailMap, nodeWithLine, ancestorsWithLine);
+    }
+  });
+
+  // Get the remaining nodes - the ones who were not part of the same tree
+  const filtered = filter(
+    tree,
+    (node) => cloned.indexOf(node as NodeWithLine) === -1,
+  ) as NodeWithLine;
+
+  function addCopy(map: IMap, node: NodeWithLine, ancestors: ParentWithLine[]) {
     cloned.push(node);
 
-    ancestors.forEach((ancestor) => {
+    ancestors.forEach((ancestor: Root) => {
       if (!map.has(ancestor)) {
         map.set(ancestor, Object.assign({}, ancestor, { children: [] }));
 
@@ -88,67 +133,40 @@ function unwrapLine(markerLine: Marker['line'][], nodes: Ast) {
     }
   }
 
-  visitParents(tree as AstNode, (node: any, ancestors: any) => {
-    if (node.children) {
-      return;
-    }
-
-    // These nodes are on previous lines, but nested within the same structure
-    if (node.lineStart < markerLine) {
-      addCopy(headMap, node, ancestors);
-      return;
-    }
-
-    // These nodes are on the target line
-    if (node.lineStart === markerLine) {
-      addCopy(lineMap, node, ancestors);
-      return;
-    }
-
-    // If we have shared ancestors with some of the cloned elements,
-    // create another tree of the remaining nodes
-    if (
-      node.lineEnd > markerLine &&
-      cloned.some((clone) => ancestors.indexOf(clone) !== -1)
-    ) {
-      addCopy(tailMap, node, ancestors);
-    }
-  });
-
-  // Get the remaining nodes - the ones who were not part of the same tree
-  const filtered = filter(
-    tree as any,
-    (node: any) => cloned.indexOf(node) === -1,
-  );
-
-  const getChildren = (map: any) => {
-    const rootNode = map.get(tree as any);
+  const getChildren = (map: IMap) => {
+    const rootNode = map.get(tree);
     if (!rootNode) {
       return [];
     }
 
-    visitParents(rootNode, (leaf: any, ancestors: any) => {
-      if (leaf.children) {
-        leaf.lineStart = 0;
-        leaf.lineEnd = 0;
+    visitParents(rootNode, (leaf, ancestors): void => {
+      const leafWithLines = leaf as NodeWithLine;
+      const ancestorsWithLines = ancestors as ParentWithLine[];
+
+      if (leafWithLines.children) {
+        leafWithLines.lineStart = 0;
+        leafWithLines.lineEnd = 0;
         return;
       }
 
-      ancestors.forEach((ancestor: any) => {
-        ancestor.lineStart = Math.max(ancestor.lineStart, leaf.lineStart);
-        ancestor.lineEnd = Math.max(ancestor.lineEnd, leaf.lineEnd);
+      ancestorsWithLines.forEach((ancestor) => {
+        ancestor.lineStart = Math.max(
+          ancestor.lineStart,
+          (leaf as NodeWithLine).lineStart,
+        );
+        ancestor.lineEnd = Math.max(ancestor.lineEnd, leafWithLines.lineEnd);
       });
     });
 
     return rootNode.children;
   };
 
-  const merged = [].concat(
-    getChildren(headMap),
-    getChildren(lineMap),
-    getChildren(tailMap),
-    filtered ? (filtered as any).children : [],
-  );
+  const merged = [
+    ...getChildren(headMap),
+    ...getChildren(lineMap),
+    ...getChildren(tailMap),
+    ...(filtered?.children ?? []),
+  ];
 
   headMap.clear();
   lineMap.clear();
@@ -157,11 +175,13 @@ function unwrapLine(markerLine: Marker['line'][], nodes: Ast) {
   return merged;
 }
 
-function wrapBatch(children: any, marker: any, options: Options) {
-  const className =
-    marker.className || options.lineHighlight?.className || 'mdx-marker';
-  const component =
-    marker.component || options.lineHighlight?.component || 'div';
+function wrapBatch(
+  children: Children,
+  marker: Marker,
+  options: AddMarkersOptions,
+) {
+  const className = options.lineHighlight?.className || 'mdx-marker';
+  const component = options.lineHighlight?.component || 'div';
 
   const properties: Partial<Hash> = { ...options };
 
@@ -170,10 +190,8 @@ function wrapBatch(children: any, marker: any, options: Options) {
 
   return {
     type: 'element',
-    tagName: component || 'div',
-    properties: marker.component
-      ? Object.assign({}, properties, { className })
-      : { className },
+    tagName: component,
+    properties: Object.assign({}, properties, { className }),
     children,
     lineStart: marker.line,
     lineEnd: children[children.length - 1].lineEnd,

@@ -2,7 +2,9 @@
 
 import rehype from 'rehype';
 import parse from 'rehype-parse';
+import rehypeFormat from 'rehype-format';
 import unified from 'unified';
+import { whitespace } from 'hast-util-whitespace';
 
 import type { Children } from '../types';
 import { wrapLines } from './helpers';
@@ -33,12 +35,23 @@ export function addMarkers(
 
   const hast_ = unified()
     .use(parse, { emitParseErrors: true, fragment: true })
+
     .parse(html_);
 
   const markers = options.markers
     .map(sanitizeMarkers)
     .sort(sortMarkersByLinesAsc);
 
+  // console.log(JSON.stringify(html_));
+  console.log(
+    rehype().use(rehypeFormat).stringify({ type: 'root', children }).toString(),
+    // .split('\n'),
+  );
+  // console.log(
+  //   '%c ',
+  //   'background-color: #000;color: white;padding: 4px 2px;',
+  //   hast_.,
+  // );
   const { nodes: nodesWithLines } = lineNumberify(hast_.children as Children);
 
   return wrapLines(nodesWithLines, markers, options);
@@ -67,10 +80,9 @@ function lineNumberify(
   let currentLine = context.lineNumber;
 
   for (const node of ast) {
+    // console.log(node);
     if (node.type === 'text') {
-      const isNodeValueABreakLine = (node.value as string).indexOf('\n') !== -1;
-
-      if (isNodeValueABreakLine) {
+      if (whitespace(node)) {
         const lines = (node.value as string).split('\n');
 
         lines.forEach((line, index) => {

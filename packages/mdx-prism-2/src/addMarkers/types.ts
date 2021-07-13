@@ -1,4 +1,4 @@
-import type { MdxPrismOptions, Node } from '../types';
+import type { MdxPrismOptions } from '../types';
 
 type LineNumber = number;
 
@@ -10,9 +10,4 @@ export type UnsanitizedMarker = Marker | LineNumber;
 
 export type AddMarkersOptions = MdxPrismOptions & {
   markers: Array<UnsanitizedMarker>;
-};
-
-export type NodeWithLine = Node & {
-  lineStart: number;
-  lineEnd: number;
 };

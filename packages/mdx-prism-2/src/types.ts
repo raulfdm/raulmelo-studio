@@ -43,6 +43,11 @@ export type MdxPrism2Visit = (tree: Node) => void;
 
 export { VisitorResult } from 'unist-util-visit';
 
+type LineMarker = {
+  lineStart: number;
+  lineEnd: number;
+};
+
 /**
  * Hast types
  */
@@ -56,9 +61,13 @@ export type Node = UnistNode & {
   [key: string]: any;
 };
 
+export type NodeWithLine = Node & LineMarker;
+
 export type Parent = Node & {
   children: Children;
 };
+
+export type ParentWithLine = Parent & LineMarker;
 
 export type Literal = UnistLiteral & {
   value: string;
