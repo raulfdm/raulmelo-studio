@@ -1,11 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { RefractorElement } from 'refractor';
-import {
-  Node as UnistNode,
-  // Parent as UnistParent,
-  VisitorResult,
-} from 'unist-util-visit';
-import { Parent as UnistParent, Literal as UnistLiteral } from 'unist';
+
+import { Node as UnistNode, VisitorResult } from 'unist-util-visit';
+import { Literal as UnistLiteral } from 'unist';
 
 export type Visitor = (
   node: Node,

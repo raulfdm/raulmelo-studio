@@ -1,12 +1,4 @@
-import type { Node } from 'unist-util-visit-parents';
-import type { MdxPrismOptions } from '../types';
-
-export interface AstNode extends Node {
-  value: string;
-  children?: AstNode[];
-}
-
-export type Ast = AstNode[];
+import type { MdxPrismOptions, Node } from '../types';
 
 type LineNumber = number;
 
@@ -14,7 +6,13 @@ export type Marker = {
   line: LineNumber;
 };
 
-export type Options = {
-  markers: (Marker | LineNumber)[];
-  lineHighlight?: MdxPrismOptions['lineHighlight'];
+export type UnsanitizedMarker = Marker | LineNumber;
+
+export type AddMarkersOptions = MdxPrismOptions & {
+  markers: Array<UnsanitizedMarker>;
+};
+
+export type NodeWithLine = Node & {
+  lineStart: number;
+  lineEnd: number;
 };

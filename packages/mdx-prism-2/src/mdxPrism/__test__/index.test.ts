@@ -1,5 +1,5 @@
 import rehype from 'rehype';
-import { mdxPrism } from '../mdxPrism';
+import { mdxPrismAttacher } from '../mdxPrism';
 
 describe('mdx-prism-2 lib', () => {
   it('copies the language-* class to pre tag', () => {
@@ -159,7 +159,7 @@ describe('mdx-prism-2 lib', () => {
 function processHtml(html: string, options = {}) {
   const result = rehype()
     .data('settings', { fragment: true })
-    .use(mdxPrism as any, options)
+    .use(mdxPrismAttacher as any, options)
     .processSync(html)
     .toString();
 

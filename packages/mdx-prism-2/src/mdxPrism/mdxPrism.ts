@@ -1,9 +1,6 @@
 import nodeToString from 'hast-util-to-string';
 import { refractor } from 'refractor/lib/all';
-import rehype from 'rehype';
-import parse from 'rehype-parse';
-import { Ast } from 'src/addMarkers/types';
-import unified from 'unified';
+
 import { visit } from 'unist-util-visit';
 import { addMarkers } from '../addMarkers';
 import {
@@ -32,7 +29,7 @@ import { extractClassInformationFromNode } from './helpers';
 export function mdxPrismAttacher(
   options: MdxPrismOptions = {},
 ): MdxPrism2Visit {
-  return function mdxPrism2Visit(tree: Node): void {
+  return function transformer(tree: Node): void {
     visit(tree, 'element', visitor);
   };
 
@@ -60,43 +57,12 @@ export function mdxPrismAttacher(
      * For those, if we pass option.ignoreMissing = true this error is just suppressed.
      */
     try {
-      /**
-       * Enforcing parent to have the language class, e.g.:
-       * ['container','divider', 'language-css']
-       *                          ^^^^^^^^^^^^
-       */
-      if (parent.properties) {
-        const parentClassNames = parent.properties?.className || [];
+      addLanguageClassToParent(parent, languageClassName);
 
-        parent.properties.className = [...parentClassNames, languageClassName];
-      }
-
-      nextChildren = refractor.highlight(nodeToString(node), language)
-        .children as Children;
+      nextChildren = highlightCode(node, language);
 
       if (markers && markers.length > 0) {
-        /**
-         * This blocks attempts this fix:
-         * https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-remark-prismjs/src/directives.js#L113-L119
-         */
-        const PLAIN_TEXT_WITH_LF_TEST =
-          /<span class="token plain-text">[^<]*\n[^<]*<\/span>/g;
-
-        const html_ = rehype()
-          .stringify({ type: 'root', children: nextChildren })
-          .toString()
-          .replace(PLAIN_TEXT_WITH_LF_TEST, (match) =>
-            match.replace(/\n/g, '</span>\n<span class="token plain-text">'),
-          );
-
-        const hast_ = unified()
-          .use(parse, { emitParseErrors: true, fragment: true })
-          .parse(html_);
-
-        nextChildren = addMarkers(hast_.children as Ast, {
-          markers,
-          lineHighlight: options.lineHighlight,
-        });
+        nextChildren = addMarkers(nextChildren, { ...options, markers });
       }
     } catch (error) {
       /**
@@ -110,5 +76,22 @@ export function mdxPrismAttacher(
     }
 
     node.children = nextChildren;
+  }
+}
+
+function highlightCode(node: Node, lang: string): Children {
+  return refractor.highlight(nodeToString(node), lang).children as Children;
+}
+
+/**
+ * Enforcing parent to have the language class, e.g.:
+ * ['container','divider', 'language-css']
+ *                          ^^^^^^^^^^^^
+ */
+function addLanguageClassToParent(parent: Parent, languageClassName: string) {
+  if (parent.properties) {
+    const parentClassNames = parent.properties?.className || [];
+
+    parent.properties.className = [...parentClassNames, languageClassName];
   }
 }
