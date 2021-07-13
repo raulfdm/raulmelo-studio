@@ -19,11 +19,5 @@ jobs:
         with:
           useRollingCache: true
 
-      - name: Lint
-        run: yarn lint --all
-
-      - name: Test
-        run: yarn test --all
-
-      - name: Build
-        run: yarn build --all
+      - name: Test, build and lint
+        run: yarn nx run-many --target=build,test,lint --all --parallel
