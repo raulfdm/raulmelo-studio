@@ -18,20 +18,29 @@ export type MdxPrismOptions = {
   /**
    * If true it won't throw an error if the language is not supported.
    */
-  ignoreMissing?: true;
-  lineHighlight?: {
-    /**
-     * Component to use to wrap the highlighted code.
-     * @example 'div' | 'pre' | 'p' | 'span'
-     * @default div
-     */
-    component?: keyof HTMLElementTagNameMap;
-    /**
-     * css class to apply to the highlighted code.
-     * @default mdx-marker
-     */
-    className?: string;
-  };
+  ignoreMissing?: boolean;
+  /**
+   * Defines if every code line will be wrapped in an element
+   */
+  wrapLines?: boolean;
+  /**
+   * css class for the wrapper element (when `wrapLines` is true).
+   * @example code-line
+   * @default token-line
+   */
+  wrapperClassName?: string;
+  /**
+   * Component to use to wrap the highlighted code.
+   * @example 'div' | 'pre' | 'p' | 'span'
+   * @default div
+   */
+  wrapperComponent?: keyof HTMLElementTagNameMap;
+  /**
+   * css class to apply to the highlighted code.
+   * @example highlight-line
+   * @default mdx-marker
+   */
+  lineHighlightClassName?: string;
 };
 
 /**
@@ -60,6 +69,15 @@ export type Node = UnistNode & {
   properties?: Properties;
   [key: string]: any;
 };
+
+export type UnistHastNode = Node & {
+  position: {
+    start: { line: number; column: number; offset: number };
+    end: { line: number; column: number; offset: number };
+  };
+};
+
+export type UnistHastChildren = UnistHastNode[];
 
 export type NodeWithLine = Node & LineMarker;
 

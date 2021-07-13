@@ -89,6 +89,68 @@ describe('mdx-prism-2 lib', () => {
       `);
   });
 
+  it.only('highlights more complex', () => {
+    processHtml(`
+      <pre>
+        <code class="language-js{5,8-10}">
+          function SchedulerFactory() {
+            const q = QueueFactory();
+          
+            return {
+              add
+            };
+            
+            function add(task){
+              q.enqueue(task)
+            }
+          }
+        </code>
+      </pre>
+    `);
+
+    expect(document.body.innerHTML).toMatchInlineSnapshot(`
+      <pre class="language-js">
+        <code class="language-js{5,8-10}">
+          <span class="token keyword">function</span>
+          <span class="token function">
+            <span class="token maybe-class-name">SchedulerFactory</span>
+          </span>
+          <span class="token punctuation">(</span>
+          <span class="token punctuation">)</span>
+          <span class="token punctuation">{</span>
+          <span class="token keyword">const</span>q
+          <span class="token operator">=</span>
+          <span class="token function">
+            <span class="token maybe-class-name">QueueFactory</span>
+          </span>
+          <span class="token punctuation">(</span>
+          <span class="token punctuation">)</span>
+          <span class="token punctuation">;</span>
+          <div class="mdx-marker">
+            <span class="token keyword control-flow">return</span>
+            <span class="token punctuation">{</span>add</div>
+          <span class="token punctuation">}</span>
+          <span class="token punctuation">;</span>
+          <div class="mdx-marker">
+            <span class="token keyword">function</span>
+            <span class="token function">add</span>
+            <span class="token punctuation">(</span>
+            <span class="token parameter">task</span>
+            <span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>q</div>
+          <div class="mdx-marker">
+            <span class="token punctuation">.</span>
+            <span class="token method function property-access">enqueue</span>
+            <span class="token punctuation">(</span>task
+            <span class="token punctuation">)</span>
+          </div>
+          <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        </code>
+      </pre>
+`);
+  });
+
   it('normalizes uppercase class for "pre" tag', () => {
     processHtml(`
       <div>

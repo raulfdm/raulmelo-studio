@@ -14,9 +14,8 @@ export function serializeMdx(source: string): ReturnType<typeof serialize> {
           mdxPrims,
           {
             ignoreMissing: true,
-            lineHighlight: {
-              component: 'span',
-            },
+            wrapLines: true,
+            highlightCode: true,
           } as MdxPrismOptions,
         ],
         rehypeSlug,
