@@ -1,0 +1,29 @@
+{
+  "name": "website-svelte",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "scripty",
+    "build": "scripty",
+    "preview": "svelte-kit preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
+    "lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
+    "format": "prettier --write --plugin-search-dir=. ."
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-vercel": "next",
+    "@sveltejs/kit": "next",
+    "eslint-plugin-svelte3": "^3.2.0",
+    "prettier-plugin-svelte": "^2.2.0",
+    "svelte": "^3.34.0",
+    "svelte-check": "^2.0.0",
+    "svelte-preprocess": "^4.0.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "ramda": "^0.27.1"
+  },
+  "scripty": {
+    "path": "./scripts"
+  }
+}
