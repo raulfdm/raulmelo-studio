@@ -56,12 +56,42 @@
 </script>
 
 <script lang="ts">
-  import AuthorPresentation from '../components/AuthorPresentation.svelte';
+  import AuthorPresentation from '@components/AuthorPresentation.svelte';
+  import HomePostSection from '@components/HomePostSection.svelte';
+
+  import { getTilUrl, getPostUrl } from '../utils/url';
+
+  // TODO: add types heres
+  export let posts;
+  export let tils;
 </script>
 
 <AuthorPresentation />
-
+<HomePostSection
+  title="Latests posts"
+  checkAllLink={{
+    href: '/blog',
+    text: 'See all posts',
+  }}
+  posts={posts.map((post) => ({
+    ...post,
+    publishedAt: post.date,
+    tags: post.post_tags,
+    url: getPostUrl(post.slug),
+  }))}
+/>
 <hr />
+<HomePostSection
+  title={`Latests TILs ("Today I Learned")`}
+  checkAllLink={{
+    href: '/til',
+    text: 'See all TILs',
+  }}
+  posts={tils.map((til) => ({
+    ...til,
+    url: getTilUrl(til.slug),
+  }))}
+/>
 
 <style>
   hr {
