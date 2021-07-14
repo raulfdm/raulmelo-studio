@@ -1,7 +1,7 @@
 <script lang="ts">
-  import GithubIcon from './Icons/GithubIcon.svelte';
-  import TwitterIcon from './Icons/TwitterIcon.svelte';
-  import LinkedInIcon from './Icons/LinkedInIcon.svelte';
+  import GithubIcon from '../Icons/GithubIcon.svelte';
+  import TwitterIcon from '../Icons/TwitterIcon.svelte';
+  import LinkedInIcon from '../Icons/LinkedInIcon.svelte';
   import siteee from 'site-data';
   console.log(siteee);
 
