@@ -52,13 +52,28 @@
     flex-direction: column-reverse;
     justify-content: space-between;
     grid-column: 1/-1;
+    margin-bottom: 1.75rem;
   }
 
-  h1 {
+  aside {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  aside h1 {
     font-family: proxima-nova, sans-serif;
     font-weight: 900;
     line-height: 1.3;
     font-size: 2.369rem;
+  }
+
+  aside p {
+    font-size: 1.125rem;
+    line-height: 1.3;
+    margin-top: 0.625rem;
+    font-family: proxima-nova, sans-serif;
   }
 
   a {
@@ -69,9 +84,38 @@
     height: var(--icon-size);
   }
 
+  figure {
+    --image-size: 5rem;
+
+    width: var(--image-size);
+    height: var(--image-size);
+  }
+
+  figure img {
+    width: 100%;
+    border-radius: 50%;
+  }
+
   @media screen and (min-width: 768px) {
-    h1 {
+    header {
+      flex-direction: row;
+    }
+
+    aside p {
+      font-size: 1.125rem;
+      line-height: 1.3;
+    }
+
+    aside h1 {
       font-size: 3.157rem;
+    }
+
+    figure {
+      --image-size: 8rem;
+    }
+    aside {
+      max-width: 75%;
+      margin-top: 0px;
     }
   }
 
