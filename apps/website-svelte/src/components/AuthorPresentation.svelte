@@ -1,5 +1,8 @@
 <script lang="ts">
   import GithubIcon from './Icons/GithubIcon.svelte';
+  import TwitterIcon from './Icons/TwitterIcon.svelte';
+  import LinkedInIcon from './Icons/LinkedInIcon.svelte';
+
   const siteData = {
     personalInformation: {
       full_name: 'Raul Melo',
@@ -10,7 +13,8 @@
   };
 
   const defaultSeo = {
-    description: 'foo bar',
+    description:
+      'Developer, writer in my spare time, tech addicted, open-source lover who believes the only way to transform lives is through education.',
   };
 
   const github = {
@@ -26,10 +30,10 @@
 
 <header>
   <aside>
-    <h1 data-testid="author__name">
+    <h1>
       {siteData.personalInformation.full_name}
     </h1>
-    <p data-testid="author__description">
+    <p>
       {defaultSeo?.description}
     </p>
     <section>
@@ -37,10 +41,10 @@
         <GithubIcon />
       </a>
       <a href={twitter.url}>
-        <!-- <TwitterIcon css={styles.content.icons.icon} /> -->
+        <TwitterIcon />
       </a>
       <a href={linkedIn.url}>
-        <!-- <LinkedInIcon css={styles.content.icons.icon} /> -->
+        <LinkedInIcon />
       </a>
     </section>
   </aside>
@@ -57,6 +61,13 @@
     grid-column: 1/-1;
   }
 
+  h1 {
+    font-family: proxima-nova, sans-serif;
+    font-weight: 900;
+    line-height: 1.3;
+    font-size: 2.369rem;
+  }
+
   a {
     display: inline-block;
     --icon-size: 24px;
@@ -65,7 +76,17 @@
     height: var(--icon-size);
   }
 
+  @media screen and (min-width: 768px) {
+    h1 {
+      font-size: 3.157rem;
+    }
+  }
+
   @media screen and (min-width: 1024px) {
+    h1 {
+      font-size: 4.209rem;
+    }
+
     a {
       --icon-size: 32px;
     }

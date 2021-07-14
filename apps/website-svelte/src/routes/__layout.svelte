@@ -1,3 +1,8 @@
+<svelte:head>
+  <link rel="stylesheet" href="https://use.typekit.net/rsd6fwc.css" />
+  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+</svelte:head>
+
 <main>
   <slot />
 </main>
