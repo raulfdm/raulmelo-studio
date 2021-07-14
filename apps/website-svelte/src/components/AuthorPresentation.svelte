@@ -22,14 +22,14 @@
 </script>
 
 <header>
-  <aside>
-    <h1>
+  <aside class="info">
+    <h1 class="author-name">
       {personalInformation.full_name}
     </h1>
-    <p>
+    <p class="description">
       {defaultSeo?.description}
     </p>
-    <section>
+    <section class="socials">
       <a href={github.url}>
         <GithubIcon />
       </a>
@@ -41,7 +41,7 @@
       </a>
     </section>
   </aside>
-  <figure>
+  <figure class="profile-picture">
     <img src={personalInformation.profile_pic.url} alt="stuff" />
   </figure>
 </header>
@@ -55,43 +55,56 @@
     margin-bottom: 1.75rem;
   }
 
-  aside {
+  .info {
     display: flex;
     flex-direction: column;
     width: 100%;
     margin-top: 1rem;
   }
 
-  aside h1 {
-    font-family: proxima-nova, sans-serif;
-    font-weight: 900;
-    line-height: 1.3;
-    font-size: 2.369rem;
+  .socials {
+    display: flex;
+    padding-top: 1.25rem;
+    flex: 1;
+    opacity: 0.9;
   }
 
-  aside p {
-    font-size: 1.125rem;
-    line-height: 1.3;
-    margin-top: 0.625rem;
-    font-family: proxima-nova, sans-serif;
-  }
-
-  a {
+  .socials a {
     display: inline-block;
     --icon-size: 24px;
+
+    color: var(--color-secondary);
 
     width: var(--icon-size);
     height: var(--icon-size);
   }
 
-  figure {
+  .socials a:not(:first-child) {
+    margin-left: 1rem;
+  }
+
+  .author-name {
+    font-family: var(--font-sans);
+    font-weight: 900;
+    line-height: 1.3;
+    font-size: 2.369rem;
+  }
+
+  .description {
+    font-size: 1.125rem;
+    line-height: 1.3;
+    margin-top: 0.625rem;
+    font-family: var(--font-sans);
+  }
+
+  .profile-picture {
     --image-size: 5rem;
 
     width: var(--image-size);
     height: var(--image-size);
   }
 
-  figure img {
+  .profile-picture img {
     width: 100%;
     border-radius: 50%;
   }
@@ -101,30 +114,30 @@
       flex-direction: row;
     }
 
-    aside p {
+    .description {
       font-size: 1.125rem;
       line-height: 1.3;
     }
 
-    aside h1 {
+    .author-name {
       font-size: 3.157rem;
     }
 
-    figure {
+    .profile-picture {
       --image-size: 8rem;
     }
-    aside {
+    .info {
       max-width: 75%;
       margin-top: 0px;
     }
   }
 
   @media screen and (min-width: 1024px) {
-    h1 {
+    .author-name {
       font-size: 4.209rem;
     }
 
-    a {
+    .socials a {
       --icon-size: 32px;
     }
   }
