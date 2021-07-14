@@ -1,5 +1,5 @@
 {
-  "name": "website-v2",
+  "name": "website-svelte",
   "version": "0.0.1",
   "scripts": {
     "dev": "scripty",
@@ -11,6 +11,7 @@
     "format": "prettier --write --plugin-search-dir=. ."
   },
   "devDependencies": {
+    "@sveltejs/adapter-vercel": "next",
     "@sveltejs/kit": "next",
     "eslint-plugin-svelte3": "^3.2.0",
     "prettier-plugin-svelte": "^2.2.0",
@@ -21,5 +22,8 @@
   "type": "module",
   "dependencies": {
     "ramda": "^0.27.1"
+  },
+  "scripty": {
+    "path": "./scripts"
   }
 }
