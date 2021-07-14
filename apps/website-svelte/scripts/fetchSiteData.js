@@ -10,7 +10,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const URL = process.env.API_ENDPOINT ?? 'http://localhost:1337';
+const URL = process.env.VITE_API_ENDPOINT ?? 'http://localhost:1337';
 
 if (URL.includes('localhost')) {
   console.log('Getting data from Localhost');
