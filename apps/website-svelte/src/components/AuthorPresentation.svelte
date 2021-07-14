@@ -2,20 +2,14 @@
   import GithubIcon from './Icons/GithubIcon.svelte';
   import TwitterIcon from './Icons/TwitterIcon.svelte';
   import LinkedInIcon from './Icons/LinkedInIcon.svelte';
+  import siteee from 'site-data';
+  console.log(siteee);
 
-  const siteData = {
-    personalInformation: {
-      full_name: 'Raul Melo',
-      profile_pic: {
-        url: '',
-      },
-    },
-  };
+  const { personalInformation, defaultSeo: allDefaultSeo, socials } = siteee;
 
-  const defaultSeo = {
-    description:
-      'Developer, writer in my spare time, tech addicted, open-source lover who believes the only way to transform lives is through education.',
-  };
+  const defaultSeo = allDefaultSeo['en'];
+
+  socials;
 
   const github = {
     url: '',
@@ -31,7 +25,7 @@
 <header>
   <aside>
     <h1>
-      {siteData.personalInformation.full_name}
+      {personalInformation.full_name}
     </h1>
     <p>
       {defaultSeo?.description}
@@ -49,7 +43,7 @@
     </section>
   </aside>
   <figure>
-    <img src={siteData.personalInformation.profile_pic.url} alt="stuff" />
+    <img src={personalInformation.profile_pic.url} alt="stuff" />
   </figure>
 </header>
 
