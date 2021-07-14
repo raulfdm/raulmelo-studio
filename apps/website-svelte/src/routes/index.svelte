@@ -60,7 +60,7 @@
   export let posts;
   export let tils;
 
-  console.log(tils);
+  console.log({ posts, tils });
 </script>
 
 <AuthorPresentation />
