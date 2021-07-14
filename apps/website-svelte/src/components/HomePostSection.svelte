@@ -13,10 +13,10 @@
 
 <section class="wrapper">
   <h2 class="title">{title}</h2>
-  <ul>
+  <ul class="posts-list">
     {#each posts as post}
       <li>
-        <PostBasic {...post} />
+        <PostBasic {post} />
       </li>
     {/each}
   </ul>
@@ -41,6 +41,13 @@
     line-height: 1.3;
     margin-bottom: 1rem;
   }
+  .posts-list {
+    list-style: none;
+
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
 
   .page-link {
     font-size: 1.333rem;
@@ -57,6 +64,12 @@
     width: 1.5rem;
     margin-left: 0.5rem;
     display: inline-flex;
+  }
+
+  @media screen and (min-width: 834px) {
+    .posts-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
   @media screen and (min-width: 1024px) {

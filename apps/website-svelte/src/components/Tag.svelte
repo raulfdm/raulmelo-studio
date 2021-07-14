@@ -6,6 +6,10 @@
   li {
     font-family: var(--font-sans);
     cursor: default;
-    color: var(--text-secondary);
+    color: var(--color-secondary);
+  }
+
+  li:not(:last-child) {
+    margin-right: 1rem;
   }
 </style>
