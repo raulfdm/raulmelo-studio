@@ -14,6 +14,17 @@
     --screen-lg: 1024px;
     --screen-xl: 1280px;
     --screen-2xl: 1536px;
+
+    --font-sans: proxima-nova, sans-serif;
+
+    --color-black: #2c2c2c;
+    --color-primary: var(--color-black);
+    --color-secondary: #be185d;
+  }
+
+  :global(html.dark) {
+    --color-primary: #ffffff;
+    --color-secondary: #c0ed40;
   }
   main {
     width: 100%;
