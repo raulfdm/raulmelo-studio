@@ -56,10 +56,19 @@
 </script>
 
 <script lang="ts">
+  import AuthorPresentation from '../components/AuthorPresentation.svelte';
   export let posts;
   export let tils;
 
   console.log(tils);
 </script>
 
-<h1>hi</h1>
+<AuthorPresentation />
+
+<hr />
+
+<style>
+  hr {
+    margin-bottom: 32px;
+  }
+</style>
