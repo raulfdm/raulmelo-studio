@@ -57,10 +57,6 @@
 
 <script lang="ts">
   import AuthorPresentation from '../components/AuthorPresentation.svelte';
-  export let posts;
-  export let tils;
-
-  console.log({ posts, tils });
 </script>
 
 <AuthorPresentation />

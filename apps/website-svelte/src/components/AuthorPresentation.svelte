@@ -1,9 +1,8 @@
 <script lang="ts">
-  import GithubIcon from '../Icons/GithubIcon.svelte';
-  import TwitterIcon from '../Icons/TwitterIcon.svelte';
-  import LinkedInIcon from '../Icons/LinkedInIcon.svelte';
+  import GithubIcon from '@components/Icons/GithubIcon.svelte';
+  import TwitterIcon from '@components/Icons/TwitterIcon.svelte';
+  import LinkedInIcon from '@components/Icons/LinkedInIcon.svelte';
   import siteee from 'site-data';
-  console.log(siteee);
 
   const { personalInformation, defaultSeo: allDefaultSeo, socials } = siteee;
 

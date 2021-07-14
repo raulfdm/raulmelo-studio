@@ -16,6 +16,7 @@ const config = {
       resolve: {
         alias: {
           'site-data': path.resolve('./site-data.json'),
+          '@components': path.resolve('./src/components'),
         },
       },
     },
