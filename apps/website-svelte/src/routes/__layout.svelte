@@ -1,35 +1,20 @@
+<script>
+  import MenuBar from '@components/MenuBar.svelte';
+  import '../styles/globals.css';
+  import '../styles/utilities.css';
+</script>
+
 <svelte:head>
   <link rel="stylesheet" href="https://use.typekit.net/rsd6fwc.css" />
   <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
 </svelte:head>
 
+<MenuBar />
 <main>
   <slot />
 </main>
 
 <style>
-  :global(:root) {
-    --screen-sm: 640px;
-    --screen-md: 768px;
-    --screen-lg: 1024px;
-    --screen-xl: 1280px;
-    --screen-2xl: 1536px;
-
-    --font-sans: proxima-nova, sans-serif;
-
-    --color-black: #2c2c2c;
-    --color-primary: var(--color-black);
-    --color-secondary: #be185d;
-  }
-
-  :global(*) {
-    box-sizing: border-box;
-  }
-
-  :global(html.dark) {
-    --color-primary: #ffffff;
-    --color-secondary: #c0ed40;
-  }
   main {
     width: 100%;
     display: grid;
