@@ -27,7 +27,7 @@
   */
 </script>
 
-<section>
+<section class="shadow">
   <a class="title" href={post.url}>
     <h3>{post.title}</h3>
   </a>
@@ -62,18 +62,12 @@
   section {
     padding: 1.5rem;
     border-radius: 0.125rem;
-    font-family: var(--font-sans);
-    color: var(--color-primary);
-    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-      rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
-      rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   }
 
   .title {
     font-weight: 800;
     font-size: 1.777rem;
     line-height: 1.3;
-    font-family: var(--font-sans);
     color: inherit;
 
     position: relative;
