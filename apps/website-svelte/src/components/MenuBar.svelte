@@ -1,13 +1,15 @@
 <script>
   import SiteLogo from './SiteLogo.svelte';
+  import ThemeHandler from '@components/ThemeHandler.svelte';
 </script>
 
-<div class="wrapper shadow">
+<div class="wrapper shadow bg-color-secondary">
   <nav>
     <a class="logo-link" href="/">
       <SiteLogo />
     </a>
     <section class="actions-wrapper">
+      <ThemeHandler />
       <!-- Icons will be insert here -->
     </section>
   </nav>
@@ -39,7 +41,14 @@
   }
 
   .logo-link {
+    grid-column: span 2 / span 2;
     display: inline-flex;
+  }
+
+  .actions-wrapper {
+    grid-column: span 2 / span 2;
+    display: flex;
+    justify-content: flex-end;
   }
 
   @media (min-width: 768px) {
@@ -47,12 +56,20 @@
       max-width: 64rem;
       grid-template-columns: repeat(6, minmax(0, 1fr));
     }
+
+    .actions-wrapper {
+      grid-column-end: 9;
+    }
   }
 
   @media (min-width: 1024px) {
     .wrapper nav {
       max-width: 80rem;
       grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+
+    .actions-wrapper {
+      grid-column-end: 13;
     }
   }
 </style>
