@@ -95,6 +95,26 @@
 
 <style>
   hr {
-    margin-bottom: 32px;
+    margin: 0;
+    margin-bottom: 2rem;
+    grid-column: 1 / -1;
+    color: inherit;
+    border: 0;
+
+    border-top: 1px solid rgb(229, 231, 235);
+  }
+
+  @media (min-width: 768px) {
+    hr {
+      grid-column-start: 2;
+      grid-column-end: 6;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    hr {
+      grid-column-start: 3;
+      grid-column-end: 10;
+    }
   }
 </style>

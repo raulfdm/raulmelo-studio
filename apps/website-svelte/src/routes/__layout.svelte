@@ -22,6 +22,10 @@
     --color-secondary: #be185d;
   }
 
+  :global(*) {
+    box-sizing: border-box;
+  }
+
   :global(html.dark) {
     --color-primary: #ffffff;
     --color-secondary: #c0ed40;

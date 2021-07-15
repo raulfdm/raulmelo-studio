@@ -32,6 +32,7 @@
 <style>
   .wrapper {
     grid-column: 1/-1;
+    margin-bottom: 1.5rem;
   }
 
   .title {
