@@ -1,6 +1,7 @@
 <script>
   import SiteLogo from './SiteLogo.svelte';
   import ThemeHandler from '@components/ThemeHandler.svelte';
+  import SideMenu from '@components/SideMenu.svelte';
 </script>
 
 <div class="wrapper shadow bg-color-secondary">
@@ -14,6 +15,7 @@
     </section>
   </nav>
 </div>
+<SideMenu />
 
 <style>
   .wrapper {
