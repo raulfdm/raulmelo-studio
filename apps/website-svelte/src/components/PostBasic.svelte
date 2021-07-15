@@ -27,7 +27,7 @@
   */
 </script>
 
-<section class="shadow">
+<section class="shadow bg-color-secondary">
   <a class="title" href={post.url}>
     <h3>{post.title}</h3>
   </a>
