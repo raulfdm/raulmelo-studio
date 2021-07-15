@@ -3,25 +3,17 @@
   import CloudSunIcon from '@components/Icons/CloudSunIcon.svelte';
   import MenuBarButton from '@components/MenuBarButton.svelte';
 
-  import { browser } from '$app/env';
-  import { themeStore, themeStore2 } from '../stores/theme';
+  import {
+    themeStore,
+    toggleTheme,
+    initializeThemeStore,
+  } from '../stores/theme';
 
-  import { onMount, beforeUpdate } from 'svelte';
-
-  beforeUpdate(() => {
-    themeStore2.set(window.__theme);
-    console.log('the component is about to update');
-  });
-
-  function handler() {
-    console.log('HEHE');
-  }
-
-  function toggleTheme() {}
+  initializeThemeStore();
 </script>
 
-<MenuBarButton on:click={themeStore.toggleTheme}>
-  {#if $themeStore2 === 'light'}
+<MenuBarButton on:click={toggleTheme}>
+  {#if $themeStore === 'light'}
     <CloudMoonIcon />
   {:else}
     <CloudSunIcon />

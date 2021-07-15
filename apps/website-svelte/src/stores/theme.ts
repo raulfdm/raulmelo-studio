@@ -1,41 +1,42 @@
+import { beforeUpdate } from 'svelte';
 import { browser } from '$app/env';
 import { writable } from 'svelte/store';
 import type { SupportedThemes } from '@types-app';
 
-export const themeStore2 = writable();
-
-const colorMap = {
+const THEME_COLOR_MAP = {
   light: 'rgb(255,255,255)',
   dark: 'rgb(15, 23, 42)',
 };
 
-const themeClassToRemove = {
+const THEME_CLASS_TO_REMOVE_MAP = {
   light: 'dark',
   dark: 'light',
 };
 
-export const themeStore = {
-  theme(): SupportedThemes {
-    /**
-     * We need to check if it's browser otherwise VITE will try to run this code
-     * inside of the server and consequently it will throw an error.
-     *
-     * @see https://kit.svelte.dev/faq#integrations
-     */
-    if (browser) {
-      return window.__theme;
-    }
-  },
-  toggleTheme(): void {
-    // debugger;
+export const themeStore = writable<SupportedThemes>(null);
 
-    const nextTheme = themeStore.theme() === 'light' ? 'dark' : 'light';
+export const initializeThemeStore = (): void =>
+  beforeUpdate(() => {
+    themeStore.set(window.__theme);
+  });
 
-    removeThemeClass(themeClassToRemove[nextTheme]);
-    handleThemeClassDOM(nextTheme);
-    saveThemeOnLocalStorage(nextTheme);
-  },
-};
+export function toggleTheme(): void {
+  const nextTheme = window.__theme === 'light' ? 'dark' : 'light';
+
+  themeStore.set(nextTheme);
+}
+
+themeStore.subscribe((theme: SupportedThemes) => {
+  /**
+   * Ensure isn't the first render and always in the browser before
+   * global update
+   */
+  if (theme && browser) {
+    removeThemeClass(THEME_CLASS_TO_REMOVE_MAP[theme]);
+    handleThemeClassDOM(theme);
+    saveThemeOnLocalStorage(theme);
+  }
+});
 
 function removeThemeClass(theme: SupportedThemes) {
   document.documentElement.classList.remove(theme);
@@ -46,7 +47,7 @@ function handleThemeClassDOM(theme: SupportedThemes) {
   window.__theme = theme;
   document
     .querySelector('meta[name="theme-color"]')
-    ?.setAttribute('content', colorMap[theme]);
+    ?.setAttribute('content', THEME_COLOR_MAP[theme]);
 }
 
 function saveThemeOnLocalStorage(theme: SupportedThemes) {

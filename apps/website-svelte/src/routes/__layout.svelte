@@ -2,10 +2,6 @@
   import MenuBar from '@components/MenuBar.svelte';
   import '../styles/globals.css';
   import '../styles/utilities.css';
-
-  function handler() {
-    console.log('FOOOOOO');
-  }
 </script>
 
 <svelte:head>
@@ -13,7 +9,6 @@
   <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
 </svelte:head>
 
-<svelte:window on:load={handler} />
 <MenuBar />
 <main>
   <slot />
