@@ -56,15 +56,65 @@
 </script>
 
 <script lang="ts">
-  import AuthorPresentation from '../components/AuthorPresentation.svelte';
+  import AuthorPresentation from '@components/AuthorPresentation.svelte';
+  import HomePostSection from '@components/HomePostSection.svelte';
+
+  import { getTilUrl, getPostUrl } from '../utils/url';
+
+  // TODO: add types heres
+  export let posts;
+  export let tils;
 </script>
 
 <AuthorPresentation />
-
+<HomePostSection
+  title="Latests posts"
+  checkAllLink={{
+    href: '/blog',
+    text: 'See all posts',
+  }}
+  posts={posts.map((post) => ({
+    ...post,
+    publishedAt: post.date,
+    tags: post.post_tags,
+    url: getPostUrl(post.slug),
+  }))}
+/>
 <hr />
+<HomePostSection
+  title={`Latests TILs ("Today I Learned")`}
+  checkAllLink={{
+    href: '/til',
+    text: 'See all TILs',
+  }}
+  posts={tils.map((til) => ({
+    ...til,
+    url: getTilUrl(til.slug),
+  }))}
+/>
 
 <style>
   hr {
-    margin-bottom: 32px;
+    margin: 0;
+    margin-bottom: 2rem;
+    grid-column: 1 / -1;
+    color: inherit;
+    border: 0;
+
+    border-top: 1px solid rgb(229, 231, 235);
+  }
+
+  @media (min-width: 768px) {
+    hr {
+      grid-column-start: 2;
+      grid-column-end: 6;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    hr {
+      grid-column-start: 3;
+      grid-column-end: 10;
+    }
   }
 </style>

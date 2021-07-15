@@ -14,6 +14,21 @@
     --screen-lg: 1024px;
     --screen-xl: 1280px;
     --screen-2xl: 1536px;
+
+    --font-sans: proxima-nova, sans-serif;
+
+    --color-black: #2c2c2c;
+    --color-primary: var(--color-black);
+    --color-secondary: #be185d;
+  }
+
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(html.dark) {
+    --color-primary: #ffffff;
+    --color-secondary: #c0ed40;
   }
   main {
     width: 100%;
@@ -21,7 +36,7 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 1rem;
     padding: 0 1rem;
-    margin: 0 1rem;
+    margin: 0 auto;
   }
 
   @media screen and (min-width: 768px) {

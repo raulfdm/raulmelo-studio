@@ -2,7 +2,14 @@ import { API_URL } from '../config/app';
 import { isNil } from 'ramda';
 
 async function fetcher(url: string, opts?: RequestInit) {
-  const res = await fetch(url, opts);
+  /**
+   * The following code removes double slash after `://` in a URL:
+   * http://localhost:1337//api -> http://localhost:1337/api
+   */
+  const REGEX_DOUBLE_SLASH = /(?<!:)\/\//gm;
+  const sanitizedUrl = url.replace(REGEX_DOUBLE_SLASH, '/');
+
+  const res = await fetch(sanitizedUrl, opts);
 
   return await res.json();
 }
