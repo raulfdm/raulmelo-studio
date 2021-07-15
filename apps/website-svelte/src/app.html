@@ -8,5 +8,25 @@
   </head>
   <body>
     <div id="svelte">%svelte.body%</div>
+    <script>
+      /**
+       * Function to avoid FOC (Flash of Content) when loading
+       * website with a saved theme.
+       */
+      (function themeHandler() {
+        if (
+          window.__theme === 'dark' ||
+          localStorage.theme === 'dark' ||
+          (!('theme' in localStorage) &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+          window.__theme = 'dark';
+        } else {
+          document.documentElement.classList.remove('dark');
+          window.__theme = 'light';
+        }
+      })();
+    </script>
   </body>
 </html>
