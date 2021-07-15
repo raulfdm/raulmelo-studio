@@ -1,4 +1,4 @@
-<button {...$$restProps}>
+<button on:click>
   <slot />
 </button>
 
@@ -8,5 +8,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 2.5rem;
   }
 </style>

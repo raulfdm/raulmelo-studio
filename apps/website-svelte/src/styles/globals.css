@@ -10,6 +10,10 @@
   --color-black: #2c2c2c;
   --color-primary: var(--color-black);
   --color-secondary: #be185d;
+
+  --color-theme-light-primary: rgb(255, 255, 255);
+  --color-theme-dark-primary: rgb(15, 23, 42);
+  --color-theme-dark-secondary: rgba(30, 41, 59, 1);
 }
 
 *,
@@ -21,11 +25,15 @@
 html {
   color: var(--color-primary);
   font-family: var(--font-sans);
+
+  background-color: var(--color-theme-light-primary);
 }
 
 html.dark {
   --color-primary: #ffffff;
   --color-secondary: #c0ed40;
+
+  background-color: var(--color-theme-dark-primary);
 }
 
 a {
