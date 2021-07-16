@@ -18,6 +18,7 @@ const config = {
           'site-data': path.resolve('./site-data.json'),
           '@components': path.resolve('./src/components'),
           '@types-app': path.resolve('src/types/index.ts'),
+          '@stores': path.resolve('src/stores'),
         },
       },
     },

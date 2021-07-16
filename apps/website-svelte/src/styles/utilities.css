@@ -1,3 +1,19 @@
+html.dark .bg-color-primary {
+  background-color: var(--color-theme-dark-primary);
+}
+
+html.light .bg-color-primary {
+  background-color: var(--color-theme-light-primary);
+}
+
+html.dark .bg-color-secondary {
+  background-color: var(--color-theme-dark-secondary);
+}
+
+html.light .bg-color-secondary {
+  background-color: var(--color-theme-light-primary);
+}
+
 .shadow {
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
@@ -11,10 +27,6 @@
   color: var(--color-secondary);
 }
 
-html.dark .bg-color-secondary {
-  background-color: var(--color-theme-dark-secondary);
-}
-
-html.light .bg-color-secondary {
-  background-color: var(--color-theme-light-primary);
+.underscore {
+  text-decoration: underline;
 }

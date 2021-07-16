@@ -1,6 +1,8 @@
 <script>
   import SiteLogo from './SiteLogo.svelte';
   import ThemeHandler from '@components/ThemeHandler.svelte';
+  import SideMenuButton from '@components/SideMenuButton.svelte';
+  import SideMenu from '@components/SideMenu.svelte';
 </script>
 
 <div class="wrapper shadow bg-color-secondary">
@@ -10,10 +12,11 @@
     </a>
     <section class="actions-wrapper">
       <ThemeHandler />
-      <!-- Icons will be insert here -->
+      <SideMenuButton />
     </section>
   </nav>
 </div>
+<SideMenu />
 
 <style>
   .wrapper {
