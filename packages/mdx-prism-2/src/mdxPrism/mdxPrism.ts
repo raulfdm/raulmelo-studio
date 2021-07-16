@@ -2,7 +2,7 @@ import nodeToString from 'hast-util-to-string';
 import { refractor } from 'refractor/lib/all';
 import rehype from 'rehype';
 import parse from 'rehype-parse';
-import unified from 'unified';
+import { unified } from 'unified';
 import { visit } from 'unist-util-visit';
 import { addMarkers } from '../addMarkers';
 import {
@@ -94,7 +94,7 @@ export function mdxPrism(options: MdxPrismOptions = {}): MdxPrism2Visit {
           );
 
         const hast_ = unified()
-          .use(parse, { emitParseErrors: true, fragment: true })
+          .use(parse as any, { emitParseErrors: true, fragment: true })
           .parse(html_);
 
         nextChildren = addMarkers(hast_.children, {
