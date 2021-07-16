@@ -56,6 +56,7 @@
             href={link.href}
             class="link"
             class:active={$page.path === link.href}
+            on:click={closeSideMenuOnScroll}
           >
             {link.localeId}
           </a>
