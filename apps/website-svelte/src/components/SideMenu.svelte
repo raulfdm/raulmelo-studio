@@ -120,11 +120,16 @@
     }
 
     .link {
-      padding-left: 0.75rem;
       border-left-width: 2px;
       border-bottom-width: 0px;
       font-size: 1.333rem;
       line-height: 1.3;
+    }
+    .link.active {
+      padding-left: 0.75rem;
+      border-bottom-width: 0;
+      border-left-width: 2px;
+      border-left-style: solid;
     }
   }
 </style>
