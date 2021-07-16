@@ -34,7 +34,15 @@
     //   newWindow: true,
     // },
   ];
+
+  function closeSideMenuOnScroll() {
+    if ($sideMenuStore === 'open') {
+      sideMenuStore.close();
+    }
+  }
 </script>
+
+<svelte:window on:scroll={closeSideMenuOnScroll} />
 
 {#if $sideMenuStore === 'open'}
   <nav
@@ -107,6 +115,7 @@
   .overlay {
     background: rgba(0, 0, 0, 0.7);
     display: block;
+    height: 100%;
     inset: 4rem 0px 0px;
     opacity: 1;
     pointer-events: all;
