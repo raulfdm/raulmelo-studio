@@ -1,7 +1,9 @@
 <script lang="ts">
-  import { getStores, navigating, page, session } from '$app/stores';
+  import { page } from '$app/stores';
+  import { fly, fade } from 'svelte/transition';
+  import { sideMenuStore } from '@stores/sideMenu';
 
-  let links = [
+  const links = [
     {
       href: '/',
       localeId: 'Home',
@@ -34,23 +36,28 @@
   ];
 </script>
 
-<nav class="wrapper bg-color-secondary">
-  <ul class="list">
-    {#each links as link}
-      <li class="item">
-        <a
-          href={link.href}
-          class="link"
-          class:active={$page.path === link.href}
-        >
-          {link.localeId}
-        </a>
-      </li>
-    {/each}
-  </ul>
-</nav>
+{#if $sideMenuStore === 'open'}
+  <nav
+    class="wrapper bg-color-secondary"
+    transition:fly={{ x: 320, opacity: 1, duration: 200 }}
+  >
+    <ul class="list">
+      {#each links as link}
+        <li class="item">
+          <a
+            href={link.href}
+            class="link"
+            class:active={$page.path === link.href}
+          >
+            {link.localeId}
+          </a>
+        </li>
+      {/each}
+    </ul>
+  </nav>
 
-<div class="overlay" />
+  <div class="overlay" transition:fade={{ duration: 200 }} />
+{/if}
 
 <style>
   .wrapper {
