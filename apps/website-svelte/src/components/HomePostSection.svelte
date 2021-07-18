@@ -11,73 +11,29 @@
   };
 </script>
 
-<section class="wrapper">
-  <h2 class="title">{title}</h2>
-  <ul class="posts-list">
+<section class="col-span-full mb-6">
+  <h2 class="font-sans font-extrabold text-lg lg:text-xl mb-4 lg:mb-6">
+    {title}
+  </h2>
+  <ul class="grid grid-cols-1 ipad-pro:grid-cols-2 gap-6">
     {#each posts as post}
       <li>
-        <PostBasic {post} />
+        <PostBasic
+          {post}
+          titleClassName="text-xl"
+          className="bg-white dark:bg-blue-800 p-6 rounded-sm shadow  transition-theme"
+        />
       </li>
     {/each}
   </ul>
 
-  <a class="page-link" href={checkAllLink.href}>
+  <a
+    class="text-lg underline mt-6 cursor-pointer inline-flex text-secondary"
+    href={checkAllLink.href}
+  >
     {checkAllLink.text}
-    <span class="icon-wrapper">
+    <span class="w-6 ml-2">
       <ArrowRightIcon />
     </span>
   </a>
 </section>
-
-<style>
-  .wrapper {
-    grid-column: 1/-1;
-    margin-bottom: 1.5rem;
-  }
-
-  .title {
-    font-family: var(--font-sans);
-    font-weight: 800;
-    font-size: 1.333rem;
-    line-height: 1.3;
-    margin-bottom: 1rem;
-  }
-  .posts-list {
-    list-style: none;
-
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-    gap: 1.5rem;
-  }
-
-  .page-link {
-    font-size: 1.333rem;
-    line-height: 1.3;
-    text-decoration: underline;
-    margin-top: 1.5rem;
-    cursor: pointer;
-    display: inline-flex;
-    color: var(--color-secondary);
-    font-family: var(--font-sans);
-  }
-
-  .icon-wrapper {
-    width: 1.5rem;
-    margin-left: 0.5rem;
-    display: inline-flex;
-  }
-
-  @media screen and (min-width: 834px) {
-    .posts-list {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-
-  @media screen and (min-width: 1024px) {
-    .title {
-      font-size: 1.777rem;
-      line-height: 1.3;
-      margin-bottom: 1.5rem;
-    }
-  }
-</style>

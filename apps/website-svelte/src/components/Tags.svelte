@@ -1,19 +1,8 @@
-<ul>
+<script>
+  import classNames from 'classnames';
+  export let className = '';
+</script>
+
+<ul class={classNames('flex flex-row flex-wrap text-base', className)}>
   <slot />
 </ul>
-
-<style>
-  ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    list-style: none;
-
-    font-size: 1rem;
-    line-height: 1.5rem;
-  }
-
-  ul > * {
-    margin-right: 1rem;
-  }
-</style>

@@ -80,7 +80,11 @@
     url: getPostUrl(post.slug),
   }))}
 />
-<hr />
+
+<hr
+  class="col-span-full md:col-start-2 md:col-end-6 lg:col-start-3 lg:col-end-10 mb-8"
+/>
+
 <HomePostSection
   title={`Latests TILs ("Today I Learned")`}
   checkAllLink={{
@@ -92,29 +96,3 @@
     url: getTilUrl(til.slug),
   }))}
 />
-
-<style>
-  hr {
-    margin: 0;
-    margin-bottom: 2rem;
-    grid-column: 1 / -1;
-    color: inherit;
-    border: 0;
-
-    border-top: 1px solid rgb(229, 231, 235);
-  }
-
-  @media (min-width: 768px) {
-    hr {
-      grid-column-start: 2;
-      grid-column-end: 6;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    hr {
-      grid-column-start: 3;
-      grid-column-end: 10;
-    }
-  }
-</style>
