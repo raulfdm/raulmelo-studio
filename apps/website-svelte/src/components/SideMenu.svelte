@@ -41,12 +41,15 @@
       sideMenuStore.close();
     }
   }
+
+  let sideMenuWidth = 0;
 </script>
 
 <svelte:window on:scroll={closeSideMenuOnScroll} />
 
 {#if $sideMenuStore === 'open'}
   <nav
+    bind:clientWidth={sideMenuWidth}
     class={classaNames([
       'fixed',
       'bottom-0 right-0 top-[var(--top-menu-height)]',
@@ -56,7 +59,7 @@
       'min-w-full sm:min-w-min sm:w-full sm:max-w-xs',
       'transition-theme duration-200 ease',
     ])}
-    transition:fly={{ x: 320, opacity: 1, duration: 200 }}
+    transition:fly={{ x: sideMenuWidth, opacity: 1, duration: 200 }}
   >
     <ul class="py-6 flex flex-col">
       {#each links as link}
