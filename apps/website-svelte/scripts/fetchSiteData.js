@@ -31,9 +31,7 @@ query SiteData {
   personalInformation {
     full_name
     profile_pic {
-      width
-      height
-      url
+      formats      
     }
   }
   site {
@@ -68,13 +66,18 @@ fetch(config.apiUrl, {
 })
   .then((res) => res.json())
   .then(async ({ data }) => {
-    const { defaultSeoPt, defaultSeoEn, ...rest } = data;
+    const { defaultSeoPt, defaultSeoEn, personalInformation, ...rest } = data;
+    const { profile_pic, ...restPersonalInfo } = personalInformation;
 
     /**
      * Ensure of having both default seo locales
      */
     const sanitizedData = {
       ...rest,
+      personalInformation: {
+        profile_pic: profile_pic.formats.thumbnail,
+        ...restPersonalInfo,
+      },
       defaultSeo: {
         pt: defaultSeoPt,
         en: defaultSeoEn,
