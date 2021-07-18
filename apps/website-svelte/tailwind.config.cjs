@@ -24,13 +24,13 @@ const config = {
     extend: {
       colors: {
         blue: colors.blueGray,
-        black: 'var(--black)',
-        primary: 'var(--primary)',
-        secondary: 'var(--secondary)',
+        black: 'var(--color-black)',
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
       },
       textColor: {
-        primary: 'var(--primary)',
-        secondary: 'var(--secondary)',
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
       },
       screens: {
         'ipad-pro': '834px',
