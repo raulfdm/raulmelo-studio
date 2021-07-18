@@ -21,124 +21,36 @@
   };
 </script>
 
-<header>
-  <aside class="info">
-    <h1 class="author-name">
+<header
+  class="flex flex-col-reverse justify-between md:flex-row mb-7 col-span-full"
+>
+  <aside class="flex flex-col w-full md:max-width[75%] mt-4 md:mt-0">
+    <h1 class="font-sans font-black text-2xl md:text-3xl xl:text-4xl">
       {personalInformation.full_name}
     </h1>
-    <p class="description">
+    <p class="text-md md:text-md xl:text-lg mt-2.5">
       {defaultSeo?.description}
     </p>
-    <section class="socials">
-      <a href={github.url}>
+    <section
+      class="flex items-center pt-5 flex-1 dark:opacity-90 space-x-4 text-secondary"
+    >
+      <a href={github.url} class="w-6 lg:w-8">
         <GithubIcon />
       </a>
-      <a href={twitter.url}>
+      <a href={twitter.url} class="w-6 lg:w-8">
         <TwitterIcon />
       </a>
-      <a href={linkedIn.url}>
+      <a href={linkedIn.url} class="w-6 lg:w-8">
         <LinkedInIcon />
       </a>
     </section>
   </aside>
-  <figure class="profile-picture">
-    <img src={personalInformation.profile_pic.url} alt="stuff" />
+  <figure class="relative w-20 md:w-32 h-20 md:h-32 rounded">
+    <!-- TODO: fix alt -->
+    <img
+      src={personalInformation.profile_pic.url}
+      alt="stuff"
+      class="rounded-full object-cover"
+    />
   </figure>
 </header>
-
-<style>
-  header {
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: space-between;
-    grid-column: 1/-1;
-    margin-bottom: 1.75rem;
-  }
-
-  .info {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 1rem;
-  }
-
-  .socials {
-    display: flex;
-    padding-top: 1.25rem;
-    flex: 1;
-    opacity: 0.9;
-  }
-
-  .socials a {
-    display: inline-block;
-    --icon-size: 24px;
-
-    color: var(--color-secondary);
-
-    width: var(--icon-size);
-    height: var(--icon-size);
-  }
-
-  .socials a:not(:first-child) {
-    margin-left: 1rem;
-  }
-
-  .author-name {
-    font-family: var(--font-sans);
-    font-weight: 900;
-    line-height: 1.3;
-    font-size: 2.369rem;
-  }
-
-  .description {
-    font-size: 1.125rem;
-    line-height: 1.3;
-    margin-top: 0.625rem;
-    font-family: var(--font-sans);
-  }
-
-  .profile-picture {
-    --image-size: 5rem;
-
-    width: var(--image-size);
-    height: var(--image-size);
-  }
-
-  .profile-picture img {
-    width: 100%;
-    border-radius: 50%;
-  }
-
-  @media screen and (min-width: 768px) {
-    header {
-      flex-direction: row;
-    }
-
-    .description {
-      font-size: 1.125rem;
-      line-height: 1.3;
-    }
-
-    .author-name {
-      font-size: 3.157rem;
-    }
-
-    .profile-picture {
-      --image-size: 8rem;
-    }
-    .info {
-      max-width: 75%;
-      margin-top: 0px;
-    }
-  }
-
-  @media screen and (min-width: 1024px) {
-    .author-name {
-      font-size: 4.209rem;
-    }
-
-    .socials a {
-      --icon-size: 32px;
-    }
-  }
-</style>
