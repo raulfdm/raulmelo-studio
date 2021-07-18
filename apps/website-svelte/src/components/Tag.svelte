@@ -1,14 +1,10 @@
-<li>
+<li
+  class="font-sans text-center hover:font-bold cursor-default list-none text-secondary"
+>
   <slot />
 </li>
 
 <style>
-  li {
-    font-family: var(--font-sans);
-    cursor: default;
-    color: var(--color-secondary);
-  }
-
   li:not(:last-child) {
     margin-right: 1rem;
   }
