@@ -1,13 +1,3 @@
-<button on:click>
+<button on:click class="p-2 flex place-content-center w-10">
   <slot />
 </button>
-
-<style>
-  button {
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5rem;
-  }
-</style>

@@ -5,74 +5,19 @@
   import SideMenu from '@components/SideMenu.svelte';
 </script>
 
-<div class="wrapper shadow bg-color-secondary">
-  <nav>
-    <a class="logo-link" href="/">
+<div
+  class="inset-x-0 relative h-16 z-40 shadow bg-white dark:bg-blue-800 transition-theme duration-200 ease mb-8 md:mb-12"
+>
+  <nav class="items-center h-full grid-container">
+    <a class="col-span-2" href="/">
       <SiteLogo />
     </a>
-    <section class="actions-wrapper">
+    <section
+      class="flex justify-end space-x-3 col-span-2 md:col-end-9 lg:col-end-13"
+    >
       <ThemeHandler />
       <SideMenuButton />
     </section>
   </nav>
 </div>
 <SideMenu />
-
-<style>
-  .wrapper {
-    height: 4rem;
-    z-index: 40;
-    margin-bottom: 2rem;
-    position: relative;
-    top: 0;
-    right: 0;
-
-    grid-column: span 2 / span 2;
-  }
-
-  .wrapper nav {
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    padding-left: 1rem;
-    padding-right: 1rem;
-    gap: 1rem;
-    display: grid;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .logo-link {
-    grid-column: span 2 / span 2;
-    display: inline-flex;
-  }
-
-  .actions-wrapper {
-    grid-column: span 2 / span 2;
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  @media (min-width: 768px) {
-    .wrapper nav {
-      max-width: 64rem;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-    }
-
-    .actions-wrapper {
-      grid-column-end: 9;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .wrapper nav {
-      max-width: 80rem;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-    }
-
-    .actions-wrapper {
-      grid-column-end: 13;
-    }
-  }
-</style>
