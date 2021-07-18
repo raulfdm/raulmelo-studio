@@ -21,7 +21,7 @@
         <PostBasic
           {post}
           titleClassName="text-xl"
-          className="bg-white dark:bg-blue-800 p-6 rounded-sm shadow hover:scale-50 transition-theme"
+          className="bg-white dark:bg-blue-800 p-6 rounded-sm shadow  transition-theme"
         />
       </li>
     {/each}
