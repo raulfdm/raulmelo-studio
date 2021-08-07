@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/raulfdm/raulmelo-studio/compare/mdx-prism-2@6.1.4...mdx-prism-2@6.2.0) (2021-08-07)
+
+### Features
+
+- add support to svelte language ([fc58cd6](https://github.com/raulfdm/raulmelo-studio/commit/fc58cd62dcd19953f75f639bdaa38720a61211f1))
+
 ## [6.1.4](https://github.com/raulfdm/raulmelo-studio/compare/mdx-prism-2@6.1.3...mdx-prism-2@6.1.4) (2021-07-26)
 
 **Note:** Version bump only for package mdx-prism-2
