@@ -232,7 +232,13 @@ const prismStyles = css`
 
   pre[class='language-css']::before {
     content: 'css';
-    background: #ff9800;
+    background: #379ad6;
+    color: white;
+  }
+
+  pre[class='language-svelte']::before {
+    content: 'svelte';
+    background: #ff3e00;
     color: white;
   }
 
