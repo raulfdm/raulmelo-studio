@@ -5,6 +5,10 @@ import parse from 'rehype-parse';
 import { unified } from 'unified';
 import { visit } from 'unist-util-visit';
 import { addMarkers } from '../addMarkers';
+import svelte from '../lang/svelte';
+
+refractor.register(svelte);
+
 import {
   Children,
   ClassNames,
