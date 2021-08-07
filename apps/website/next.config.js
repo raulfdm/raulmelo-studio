@@ -71,7 +71,6 @@ const nextConfig = {
       'escape-string-regexp',
       'iconv-lite',
       'semver',
-      'unified',
     ];
 
     pluginsToResolve.forEach((plugin) => {
