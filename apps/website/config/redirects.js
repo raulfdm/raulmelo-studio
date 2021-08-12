@@ -1,6 +1,12 @@
 module.exports = {
   async redirects() {
     return [
+      {
+        source: '/cv',
+        destination:
+          'https://docs.google.com/document/d/1xk0ChmPckqW85xtM1Hizx2tVbo2B61xjcpz-_dAH3f8',
+        permanent: true,
+      },
       /**
        * Old Paths
        */
