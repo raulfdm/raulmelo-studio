@@ -9,6 +9,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 const nextConfig = {
+  experimental: {
+    esmExternals: 'loose',
+  },
   target: 'serverless',
   reactStrictMode: true,
   i18n: {
