@@ -7,7 +7,7 @@ import { SupportedLanguages } from '@types-app';
 import { getSocial } from '@utils/seo';
 import { motion } from 'framer-motion';
 import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo';
-import { AppProps } from 'next/dist/next-server/lib/router/router';
+import { AppProps } from 'next/dist/shared/lib/router/router';
 import Head from 'next/head';
 import React from 'react';
 import siteData from 'site-data';

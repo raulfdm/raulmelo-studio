@@ -3,4 +3,4 @@
 echo "Dev server..."
 
 node ./scripts/fetchSiteData.js
-yarn next
+yarn next $1 $2
