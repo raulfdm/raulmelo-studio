@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-echo "Removing .next folder"
+echo "Removing dist folder"
 
-rm -rf .next
+rm -rf dist
