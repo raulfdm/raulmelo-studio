@@ -35,13 +35,14 @@ export type MdxPrismOptions = {
 
 export type Hash = { [key: string]: any };
 
-export type NodeWithProperties = Node & {
+export interface NodeWithProperties extends Node {
   properties: Hash;
-};
+  tagName: string;
+}
 
-export type ParentWithProperties = NodeWithProperties & {
-  children: NodeWithProperties[];
-};
+export interface ParentWithProperties extends NodeWithProperties {
+  children: (NodeWithProperties | Children)[];
+}
 
 export type MdxPrism2Visit = (tree: NodeWithProperties) => void;
 
