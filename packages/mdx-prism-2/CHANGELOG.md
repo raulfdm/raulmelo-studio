@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.2](https://github.com/raulfdm/raulmelo-studio/compare/mdx-prism-2@6.2.1...mdx-prism-2@6.2.2) (2021-08-14)
+
+### Bug Fixes
+
+- includes unified to into the bundle ([653520f](https://github.com/raulfdm/raulmelo-studio/commit/653520fed1798117bd8ca41dc594dfa23cbdd9e9))
+
 ## [6.2.1](https://github.com/raulfdm/raulmelo-studio/compare/mdx-prism-2@6.2.0...mdx-prism-2@6.2.1) (2021-08-13)
 
 **Note:** Version bump only for package mdx-prism-2
