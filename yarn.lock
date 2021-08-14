@@ -6653,18 +6653,6 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-autoprefixer@10.2.6:
-  version "10.2.6"
-  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.2.6.tgz#aadd9ec34e1c98d403e01950038049f0eb252949"
-  integrity sha512-8lChSmdU6dCNMCQopIf4Pe5kipkAGj/fvTMslCsih0uHpOrXOPUEVOmYMMqmw3cekQkSD7EhIeuYl5y0BLdKqg==
-  dependencies:
-    browserslist "^4.16.6"
-    caniuse-lite "^1.0.30001230"
-    colorette "^1.2.2"
-    fraction.js "^4.1.1"
-    normalize-range "^0.1.2"
-    postcss-value-parser "^4.1.0"
-
 autoprefixer@10.3.1, autoprefixer@^10.2.5:
   version "10.3.1"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.3.1.tgz#954214821d3aa06692406c6a0a9e9d401eafbed2"
@@ -7614,7 +7602,7 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001125, caniuse-lite@^1.0.30001202, caniuse-lite@^1.0.30001219, caniuse-lite@^1.0.30001228, caniuse-lite@^1.0.30001230, caniuse-lite@^1.0.30001243, caniuse-lite@^1.0.30001248:
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001125, caniuse-lite@^1.0.30001202, caniuse-lite@^1.0.30001219, caniuse-lite@^1.0.30001228, caniuse-lite@^1.0.30001243, caniuse-lite@^1.0.30001248:
   version "1.0.30001251"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001251.tgz#6853a606ec50893115db660f82c094d18f096d85"
   integrity sha512-HOe1r+9VkU4TFmnU70z+r7OLmtR+/chB1rdcJUeQlAinjEeb0cKL20tlAtOagNZhbrtLnCvV19B4FmF1rgzl6A==
@@ -9021,16 +9009,7 @@ cssnano-utils@^2.0.1:
   resolved "https://registry.yarnpkg.com/cssnano-utils/-/cssnano-utils-2.0.1.tgz#8660aa2b37ed869d2e2f22918196a9a8b6498ce2"
   integrity sha512-i8vLRZTnEH9ubIyfdZCAdIdgnHAUeQeByEeQ2I7oTilvP9oHO6RScpeq3GsFUVqeB8uZgOQ9pw8utofNn32hhQ==
 
-cssnano@5.0.6:
-  version "5.0.6"
-  resolved "https://registry.yarnpkg.com/cssnano/-/cssnano-5.0.6.tgz#2a91ad34c6521ae31eab3da9c90108ea3093535d"
-  integrity sha512-NiaLH/7yqGksFGsFNvSRe2IV/qmEBAeDE64dYeD8OBrgp6lE8YoMeQJMtsv5ijo6MPyhuoOvFhI94reahBRDkw==
-  dependencies:
-    cosmiconfig "^7.0.0"
-    cssnano-preset-default "^5.1.3"
-    is-resolvable "^1.1.0"
-
-cssnano@^5.0.2:
+cssnano@5.0.7, cssnano@^5.0.2:
   version "5.0.7"
   resolved "https://registry.yarnpkg.com/cssnano/-/cssnano-5.0.7.tgz#e81894bdf31aa01a0ca3d1d0eee47be18f7f3012"
   integrity sha512-7C0tbb298hef3rq+TtBbMuezBQ9VrFtrQEsPNuBKNVgWny/67vdRsnq8EoNu7TRjAHURgYvWlRIpCUmcMZkRzw==
@@ -18437,6 +18416,15 @@ postcss@8.3.5:
     nanoid "^3.1.23"
     source-map-js "^0.6.2"
 
+postcss@8.3.6, postcss@^8.0.2, postcss@^8.1.6, postcss@^8.1.8, postcss@^8.2.1, postcss@^8.2.15, postcss@^8.3.6:
+  version "8.3.6"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.3.6.tgz#2730dd76a97969f37f53b9a6096197be311cc4ea"
+  integrity sha512-wG1cc/JhRgdqB6WHEuyLTedf3KIRuD0hG6ldkFEZNCjRxiC+3i6kkWUUbiJQayP28iwG35cEmAbe98585BYV0A==
+  dependencies:
+    colorette "^1.2.2"
+    nanoid "^3.1.23"
+    source-map-js "^0.6.2"
+
 postcss@^7.0.14, postcss@^7.0.17, postcss@^7.0.2, postcss@^7.0.26, postcss@^7.0.32, postcss@^7.0.35, postcss@^7.0.36, postcss@^7.0.5, postcss@^7.0.6:
   version "7.0.36"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.36.tgz#056f8cffa939662a8f5905950c07d5285644dfcb"
@@ -18445,15 +18433,6 @@ postcss@^7.0.14, postcss@^7.0.17, postcss@^7.0.2, postcss@^7.0.26, postcss@^7.0.
     chalk "^2.4.2"
     source-map "^0.6.1"
     supports-color "^6.1.0"
-
-postcss@^8.0.2, postcss@^8.1.6, postcss@^8.1.8, postcss@^8.2.1, postcss@^8.2.15, postcss@^8.3.6:
-  version "8.3.6"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.3.6.tgz#2730dd76a97969f37f53b9a6096197be311cc4ea"
-  integrity sha512-wG1cc/JhRgdqB6WHEuyLTedf3KIRuD0hG6ldkFEZNCjRxiC+3i6kkWUUbiJQayP28iwG35cEmAbe98585BYV0A==
-  dependencies:
-    colorette "^1.2.2"
-    nanoid "^3.1.23"
-    source-map-js "^0.6.2"
 
 prebuild-install@^6.1.1:
   version "6.1.4"
@@ -18489,10 +18468,10 @@ prepend-http@^2.0.0:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
 
-prettier-plugin-svelte@2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-svelte/-/prettier-plugin-svelte-2.2.0.tgz#4bd94992fa5b76413a8a5556f90b128c4fdaf7a6"
-  integrity sha512-Xdmqgr71tAuMqqzNCK52/v94g/Yv7V7lz+nmbO9NEA+9ol15VV3uUHOfydMNOo3SWvFaVlBcp947ebEaMWqVfQ==
+prettier-plugin-svelte@2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-svelte/-/prettier-plugin-svelte-2.3.1.tgz#926184a490549688dbea0a8d61c1b1ae20218368"
+  integrity sha512-F1/r6OYoBq8Zgurhs1MN25tdrhPw0JW5JjioPRqpxbYdmrZ3gY/DzHGs0B6zwd4DLyRsfGB2gqhxUCbHt/D1fw==
 
 prettier@2.3.2:
   version "2.3.2"
@@ -22520,10 +22499,10 @@ supports-hyperlinks@^2.0.0, supports-hyperlinks@^2.1.0:
     has-flag "^4.0.0"
     supports-color "^7.0.0"
 
-svelte-check@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/svelte-check/-/svelte-check-2.0.0.tgz#c125bd69c204f5f0bb0b000247001400b7e27037"
-  integrity sha512-72xHHZG2DUgt1QzKKKvirzvYYDKLfK5L2lJsCCbW87fd383VqZJ08RLKNf6pfEZQJl8yk2rUsTU6krgntB9TXQ==
+svelte-check@2.2.4:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/svelte-check/-/svelte-check-2.2.4.tgz#103140eeb4bbe65721e023ab210566041abe7224"
+  integrity sha512-eGEuZ3UEanOhlpQhICLjKejDxcZ9uYJlGnBGKAPW7uugolaBE6HpEBIiKFZN/TMRFFHQUURgGvsVn8/HJUBfeQ==
   dependencies:
     chalk "^4.0.0"
     chokidar "^3.4.1"
@@ -22540,17 +22519,7 @@ svelte-hmr@^0.14.7:
   resolved "https://registry.yarnpkg.com/svelte-hmr/-/svelte-hmr-0.14.7.tgz#7fa8261c7b225d9409f0a86f3b9ea5c3ca6f6607"
   integrity sha512-pDrzgcWSoMaK6AJkBWkmgIsecW0GChxYZSZieIYfCP0v2oPyx2CYU/zm7TBIcjLVUPP714WxmViE9Thht4etog==
 
-svelte-preprocess@4.7.3:
-  version "4.7.3"
-  resolved "https://registry.yarnpkg.com/svelte-preprocess/-/svelte-preprocess-4.7.3.tgz#454fa059c2400b15e7a3caeca18993cff9df0e96"
-  integrity sha512-Zx1/xLeGOIBlZMGPRCaXtlMe4ZA0faato5Dc3CosEqwu75MIEPuOstdkH6cy+RYTUYynoxzNaDxkPX4DbrPwRA==
-  dependencies:
-    "@types/pug" "^2.0.4"
-    "@types/sass" "^1.16.0"
-    detect-indent "^6.0.0"
-    strip-indent "^3.0.0"
-
-svelte-preprocess@^4.0.0:
+svelte-preprocess@4.7.4, svelte-preprocess@^4.0.0:
   version "4.7.4"
   resolved "https://registry.yarnpkg.com/svelte-preprocess/-/svelte-preprocess-4.7.4.tgz#e4d5208ab25c2aaaf19e837f7d7bbf7930e61d2b"
   integrity sha512-mDAmaltQl6e5zU2VEtoWEf7eLTfuOTGr9zt+BpA3AGHo8MIhKiNSPE9OLTCTOMgj0vj/uL9QBbaNmpG4G1CgIA==
@@ -22560,10 +22529,10 @@ svelte-preprocess@^4.0.0:
     detect-indent "^6.0.0"
     strip-indent "^3.0.0"
 
-svelte@3.34.0:
-  version "3.34.0"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.34.0.tgz#a0195a0db0305d78df87520711317b99e6fb8a26"
-  integrity sha512-xWcaQ/J4Yd5k0UWz+ef6i5RW5WP3hNpluEI2qtTTKlMOXERHpVL509O9lIw7sgEn1JjJgTOS+lnnDj99vQ3YqQ==
+svelte@3.42.1:
+  version "3.42.1"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.42.1.tgz#d4b4d9068cce911835f7c6b8ff1d290e1a0b5657"
+  integrity sha512-XtExLd2JAU3T7M2g/DkO3UNj/3n1WdTXrfL63OZ5nZq7nAqd9wQw+lR4Pv/wkVbrWbAIPfLDX47UjFdmnY+YtQ==
 
 svgo@^2.3.0:
   version "2.4.0"
@@ -22659,7 +22628,7 @@ tailwindcss@2.2.4:
     resolve "^1.20.0"
     tmp "^0.2.1"
 
-tailwindcss@^2.1.0:
+tailwindcss@2.2.7, tailwindcss@^2.1.0:
   version "2.2.7"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-2.2.7.tgz#795d07a14ef46c2dc4a1610f7f906f697daaf731"
   integrity sha512-jv35rugP5j8PpzbXnsria7ZAry7Evh0KtQ4MZqNd+PhF+oIKPwJTVwe/rmfRx9cZw3W7iPZyzBmeoAoNwfJ1yg==
