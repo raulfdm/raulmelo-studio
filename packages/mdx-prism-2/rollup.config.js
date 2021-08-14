@@ -14,7 +14,7 @@ export default {
   },
   plugins: [json(), nodeResolve(), typescript(), commonJs()],
   external: Object.entries(pkg.dependencies)
-    .map(([name]) => name)
+    .map(([pkgName]) => pkgName)
     /**
      * This includes in the bundle ONLY these 3 problematic packages.
      *
@@ -26,11 +26,12 @@ export default {
      * And that's because these 3 deps now are only ESM.
      */
     .filter(
-      (name) =>
+      (pkgName) =>
         ![
+          'unified',
           'unist-util-filter',
           'unist-util-visit',
           'unist-util-visit-parents',
-        ].includes(name),
+        ].includes(pkgName),
     ),
 };
