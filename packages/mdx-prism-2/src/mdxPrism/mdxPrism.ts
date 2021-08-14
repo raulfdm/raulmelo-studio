@@ -91,7 +91,7 @@ export function mdxPrism(options: MdxPrismOptions = {}): MdxPrism2Visit {
           /<span class="token plain-text">[^<]*\n[^<]*<\/span>/g;
 
         const html_ = rehype()
-          .stringify({ type: 'root', children: nextChildren })
+          .stringify({ type: 'root', children: nextChildren } as never)
           .toString()
           .replace(PLAIN_TEXT_WITH_LF_TEST, (match) =>
             match.replace(/\n/g, '</span>\n<span class="token plain-text">'),
@@ -101,7 +101,7 @@ export function mdxPrism(options: MdxPrismOptions = {}): MdxPrism2Visit {
           .use(parse as any, { emitParseErrors: true, fragment: true })
           .parse(html_);
 
-        nextChildren = addMarkers(hast_.children, {
+        nextChildren = addMarkers((hast_ as any).children, {
           markers,
           lineHighlight: options.lineHighlight,
         });
@@ -117,6 +117,6 @@ export function mdxPrism(options: MdxPrismOptions = {}): MdxPrism2Visit {
       throw error;
     }
 
-    node.children = nextChildren;
+    (node as any).children = nextChildren;
   }
 }

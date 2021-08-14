@@ -4,6 +4,8 @@ import type { MdxPrismOptions } from '../types';
 export interface Node extends UnistNode {
   value: string;
   children?: Node[];
+  lineStart: number;
+  lineEnd: number;
 }
 
 export type Ast = Node[];
