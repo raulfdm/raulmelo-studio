@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0](https://github.com/raulfdm/raulmelo-studio/compare/mdx-prism-2@6.2.2...mdx-prism-2@7.0.0) (2021-08-15)
+
+### chore
+
+- **deps:** upgrade dependencies ([8eaf00c](https://github.com/raulfdm/raulmelo-studio/commit/8eaf00c2414ace99689a04bd63999f8e61ee0e07))
+
+### BREAKING CHANGES
+
+- **deps:** upgrade major dependencies version. Since rehype and its utils are moving to full esm, needed to include both `rehype` and `rehype-parse` to de bundle to avoid incorrect resolution while in monorepo
+
 ## [6.2.2](https://github.com/raulfdm/raulmelo-studio/compare/mdx-prism-2@6.2.1...mdx-prism-2@6.2.2) (2021-08-14)
 
 ### Bug Fixes
