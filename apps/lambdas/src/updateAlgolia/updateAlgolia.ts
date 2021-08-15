@@ -20,7 +20,7 @@ export const updateAlgolia = authMiddleware(
         body: JSON.stringify({ message: 'Indexes updated!', date: new Date() }),
       };
     } catch (error) {
-      console.error(`Error while updating indexes:`, error);
+      console.error(`Error while updating indexes:`, error.message);
 
       return {
         statusCode: 500,

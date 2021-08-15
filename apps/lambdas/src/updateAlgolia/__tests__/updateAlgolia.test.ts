@@ -8,8 +8,9 @@ import { pushAlgoliaData } from '../pushAlgoliaData';
 jest.mock('../indexes/content');
 jest.mock('../pushAlgoliaData');
 
-const mockGetContentToAlgolia = (getContentToAlgolia as unknown) as jest.Mock<any>;
-const mockPushAlgoliaData = (pushAlgoliaData as unknown) as jest.Mock<any>;
+const mockGetContentToAlgolia =
+  getContentToAlgolia as unknown as jest.Mock<any>;
+const mockPushAlgoliaData = pushAlgoliaData as unknown as jest.Mock<any>;
 
 describe('fn: updateAlgolia', () => {
   beforeAll(() => {
@@ -70,23 +71,22 @@ describe('fn: updateAlgolia', () => {
 
     it('consoles the error', () => {
       expect(mockConsoleError).toMatchInlineSnapshot(`
-          [MockFunction] {
-            "calls": Array [
-              Array [
-                "Error while updating indexes:",
-                Object {
-                  "error": "Something went wrong",
-                },
-              ],
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              "Error while updating indexes:",
+              "Invalid attempt to destructure non-iterable instance.
+        In order to be iterable, non-array objects must have a [Symbol.iterator]() method.",
             ],
-            "results": Array [
-              Object {
-                "type": "return",
-                "value": undefined,
-              },
-            ],
-          }
-        `);
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      `);
     });
   });
 });
