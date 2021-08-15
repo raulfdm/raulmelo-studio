@@ -1,6 +1,6 @@
-import nodeToString from 'hast-util-to-string';
+import { toString } from 'hast-util-to-string';
 import { refractor } from 'refractor/lib/all';
-import rehype from 'rehype';
+import { rehype } from 'rehype';
 import parse from 'rehype-parse';
 import { unified } from 'unified';
 import { visit } from 'unist-util-visit';
@@ -16,7 +16,6 @@ import {
   MdxPrismOptions,
   NodeWithProperties,
   ParentWithProperties,
-  Visitor,
   VisitorResult,
 } from '../types';
 import { extractClassInformationFromNode } from './helpers';
@@ -43,7 +42,7 @@ export function mdxPrism(options: MdxPrismOptions = {}): MdxPrism2Visit {
      *
      * So I've created a `NodeWithProperties` and workaround where it complains
      */
-    visit<NodeWithProperties>(tree, 'element', visitor as Visitor);
+    visit<NodeWithProperties>(tree, 'element' as any, visitor as any);
   };
 
   function visitor(
@@ -79,7 +78,7 @@ export function mdxPrism(options: MdxPrismOptions = {}): MdxPrism2Visit {
         (parent.properties.className as ClassNames) || [];
       parent.properties.className = [...parentClassNames, languageClassName];
 
-      nextChildren = refractor.highlight(nodeToString(node), language)
+      nextChildren = refractor.highlight(toString(node as any), language)
         .children as Children;
 
       if (markers && markers.length > 0) {

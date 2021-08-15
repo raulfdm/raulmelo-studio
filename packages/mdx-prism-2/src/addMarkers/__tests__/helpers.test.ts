@@ -1,4 +1,4 @@
-import rehype from 'rehype';
+import { rehype } from 'rehype';
 
 import { wrapLines } from '../helpers';
 import { treeNodes } from '../__fixtures__/treeNodes';
