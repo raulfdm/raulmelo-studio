@@ -28,6 +28,8 @@ export default {
     .filter(
       (pkgName) =>
         ![
+          'rehype',
+          'rehype-parse',
           'unified',
           'unist-util-filter',
           'unist-util-visit',
