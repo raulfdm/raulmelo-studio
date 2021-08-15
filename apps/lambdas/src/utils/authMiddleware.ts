@@ -7,7 +7,10 @@ import { Handler } from '../types';
  * is just a guard which takes into account secrets.
  */
 export function authMiddleware(handler: Handler) {
-  return async function check(event: APIGatewayEvent, context?: Context) {
+  return function check(
+    event: APIGatewayEvent,
+    context?: Context,
+  ): ReturnType<Handler> | { statusCode: number; body: string } {
     if (event.headers?.authorization !== SETTINGS.authToken) {
       return {
         statusCode: 401,
