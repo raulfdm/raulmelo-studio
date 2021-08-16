@@ -22,6 +22,9 @@
   },
   "main": "dist/mdx-prism-2.js",
   "types": "dist/lib.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "scripty",
     "dev": "scripty",
@@ -29,9 +32,6 @@
     "test": "scripty",
     "prepare": "scripty"
   },
-  "files": [
-    "dist"
-  ],
   "dependencies": {
     "hast-util-to-string": "2.0.0",
     "parse-numeric-range": "1.2.0",
@@ -44,13 +44,8 @@
     "unist-util-visit-parents": "5.0.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "20.0.0",
-    "@rollup/plugin-json": "4.1.0",
-    "@rollup/plugin-node-resolve": "13.0.4",
     "@types/parse-numeric-range": "0.0.1",
-    "jest-serializer-html-string": "1.0.1",
-    "rollup": "2.56.2",
-    "rollup-plugin-typescript2": "0.30.0"
+    "jest-serializer-html-string": "1.0.1"
   },
   "scripty": {
     "path": "./scripts"
