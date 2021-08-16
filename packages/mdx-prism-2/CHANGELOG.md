@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://github.com/raulfdm/raulmelo-studio/compare/mdx-prism-2@7.0.1...mdx-prism-2@7.1.0) (2021-08-16)
+
+### Features
+
+- enable esm export ([#588](https://github.com/raulfdm/raulmelo-studio/issues/588)) ([a4e7c7a](https://github.com/raulfdm/raulmelo-studio/commit/a4e7c7a8a6acc2f127d31a215a97779e9db17404))
+
 ## [7.0.1](https://github.com/raulfdm/raulmelo-studio/compare/mdx-prism-2@7.0.0...mdx-prism-2@7.0.1) (2021-08-16)
 
 **Note:** Version bump only for package mdx-prism-2
