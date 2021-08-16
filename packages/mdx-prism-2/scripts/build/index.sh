@@ -1,3 +1,10 @@
 #!/usr/bin/env bash
 
-./scripts/clean.sh && ./scripts/build/build.js $1
+# Remove dist folder
+./scripts/clean.sh
+
+# Build itself
+./scripts/build/build.js $1
+
+#generate .d.ts files
+yarn tsc

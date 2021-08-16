@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { runESBuild } = require('../_base/esbuild');
+import { runESBuild } from '../_base/esbuild.js';
 
 console.log('Running ESBuild in watch mode');
 
