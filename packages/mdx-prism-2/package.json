@@ -20,8 +20,16 @@
   "bugs": {
     "url": "https://github.com/raulfdm/raulmelo-studio"
   },
-  "main": "dist/mdx-prism-2.js",
-  "types": "dist/lib.d.ts",
+  "type": "module",
+  "main": "./dist/cjs/mdx-prism-2.js",
+  "module": "./dist/esm/mdx-prism-2.js",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/mdx-prism-2.js",
+      "default": "./dist/esm/mdx-prism-2.js"
+    }
+  },
+  "types": "./dist/types/lib.d.ts",
   "files": [
     "dist"
   ],

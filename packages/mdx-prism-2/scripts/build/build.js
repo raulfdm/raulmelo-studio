@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-const { runESBuild } = require('../_base/esbuild');
+import {runESBuild} from '../_base/esbuild.js'
 
-console.log('Bulding with ESBuild');
+console.log('Building with ESBuild');
 
 runESBuild().catch((err) => {
   console.error(err);
