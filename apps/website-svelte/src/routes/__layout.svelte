@@ -1,5 +1,5 @@
 <script>
-  import '../styles/app.postcss';
+  import '@raulmelo/styles/lib/all.css';
   import MenuBar from '@components/MenuBar.svelte';
 </script>
 
