@@ -11,7 +11,7 @@ import { AppProps } from 'next/dist/shared/lib/router/router';
 import Head from 'next/head';
 import React from 'react';
 import siteData from 'site-data';
-import { gridContainer, globals } from '@styles/base';
+import '@raulmelo/styles/lib/base.css';
 import { globalStyles } from 'twin.macro';
 import { CSSObject, Global } from '@emotion/react';
 
@@ -31,7 +31,6 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
       <Script>{analyticsConfig.gtagLoadScript}</Script>
 
       <Global styles={globalStyles as CSSObject} />
-      <Global styles={globals} />
 
       <SocialProfileJsonLd
         type="person"
@@ -103,7 +102,7 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
         <AppContextProvider>
           <MenuBar />
           <motion.main
-            css={gridContainer}
+            className="grid-container"
             animate="enter"
             exit="exit"
             initial="initial"

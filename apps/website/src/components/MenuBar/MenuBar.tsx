@@ -3,7 +3,6 @@ import { Logo } from '@components/Logo';
 import { SideMenu } from '@components/SideMenu';
 import { useApp } from '@hooks/useApp';
 import { useLocalization } from '@hooks/useLocalization';
-import { gridContainer } from '@styles/base';
 import Link from 'next/link';
 import { FC } from 'react';
 import tw, { css, styled } from 'twin.macro';
@@ -23,7 +22,6 @@ const styles = {
   `,
   inner: css`
     ${tw`items-center h-full`};
-    ${gridContainer};
   `,
   logoSection: tw`col-span-2`,
   logo: tw` text-primary`,
@@ -41,7 +39,7 @@ export const MenuBar: FC = () => {
   return (
     <>
       <div css={styles.wrapper}>
-        <nav css={styles.inner}>
+        <nav css={styles.inner} className="grid-container">
           <section data-testid="menu-bar__logo" css={styles.logoSection}>
             <Link href="/" locale={locale} passHref>
               <a css={styles.logo}>

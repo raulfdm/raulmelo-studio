@@ -1,5 +1,4 @@
 import { Global } from '@emotion/react';
-import { pageTitle } from '@styles/base';
 import tw, { css } from 'twin.macro';
 
 export const AlgoliaGlobalStyles = () => (
@@ -11,7 +10,11 @@ export const searchStyles = {
   header: tw`col-span-full mb-6`,
   paragraph: tw`text-lg`,
   searchLink: tw`underline text-secondary`,
-  title: pageTitle,
+  title: tw`
+    text-3xl md:text-4xl
+    font-extrabold
+    col-span-full
+  `,
   hits: tw`pb-5 md:pb-10 col-span-full`,
   poweredLink: css`
     ${tw`relative items-center font-medium font-sans text-base col-span-full`};
