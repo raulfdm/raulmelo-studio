@@ -11,28 +11,21 @@
     "lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
     "format": "prettier --write --plugin-search-dir=. ."
   },
-  "devDependencies": {
-    "@sveltejs/adapter-vercel": "next",
-    "@sveltejs/kit": "next",
-    "@tailwindcss/aspect-ratio": "0.2.1",
-    "@tailwindcss/forms": "0.3.3",
-    "@tailwindcss/typography": "0.4.1",
-    "autoprefixer": "10.3.1",
-    "cssnano": "5.0.7",
-    "eslint-plugin-svelte3": "3.2.0",
-    "postcss": "8.3.6",
-    "postcss-load-config": "3.1.0",
-    "prettier-plugin-svelte": "2.3.1",
-    "svelte": "3.42.1",
-    "svelte-check": "2.2.4",
-    "svelte-preprocess": "4.7.4",
-    "tailwindcss": "2.2.7"
-  },
-  "type": "module",
   "dependencies": {
     "classnames": "2.3.1",
     "ramda": "0.27.1"
   },
+  "devDependencies": {
+    "@raulmelo/styles": "*",
+    "@sveltejs/adapter-vercel": "next",
+    "@sveltejs/kit": "next",
+    "eslint-plugin-svelte3": "3.2.0",
+    "prettier-plugin-svelte": "2.3.1",
+    "svelte-check": "2.2.4",
+    "svelte-preprocess": "4.7.4",
+    "svelte": "3.42.1"
+  },
+  "type": "module",
   "scripty": {
     "path": "./scripts"
   }
