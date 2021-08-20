@@ -21153,10 +21153,10 @@ strapi-admin@3.6.6:
     webpackbar "^4.0.0"
     yup "^0.32.9"
 
-strapi-connector-mongoose@3.6.6:
-  version "3.6.6"
-  resolved "https://registry.yarnpkg.com/strapi-connector-mongoose/-/strapi-connector-mongoose-3.6.6.tgz#40a24dd8974109a6176902324d71987294842fb0"
-  integrity sha512-3e6J4saIH7R4BqlPjmt2fG+NLmhRfmlSt5FBJMCm0/GwtAGZkmVY2hWA31e8LDU9YtUprD9/T9/dMsimggwR3w==
+strapi-connector-mongoose@3.6.7:
+  version "3.6.7"
+  resolved "https://registry.yarnpkg.com/strapi-connector-mongoose/-/strapi-connector-mongoose-3.6.7.tgz#1e88d435b1f018d037bb99eca0dcb35ba7f2e049"
+  integrity sha512-yfmjVvtsZXziV+PDqzVvEa589BdZyQu6TbT5Jk/bg5U01NEK51lo/dGMNbIP8VSEIRuQeIEX9BobB8nYkqqeJw==
   dependencies:
     lodash "4.17.21"
     mongoose "5.10.8"
@@ -21165,7 +21165,7 @@ strapi-connector-mongoose@3.6.6:
     p-map "4.0.0"
     pluralize "^8.0.0"
     semver "^7.3.5"
-    strapi-utils "3.6.6"
+    strapi-utils "3.6.7"
 
 strapi-database@3.6.6:
   version "3.6.6"
@@ -21533,6 +21533,18 @@ strapi-utils@3.6.6:
   version "3.6.6"
   resolved "https://registry.yarnpkg.com/strapi-utils/-/strapi-utils-3.6.6.tgz#f002d96f025c9fae2f8fb4d2628e28c12037385f"
   integrity sha512-vZavsM/6CVNecoznhqJBBOrrDMbPMSLSLqA2GgQ0DiimVLLsMC070uaROmRCkKw+DTgLqZDzi2mih0kKJXruTg==
+  dependencies:
+    "@sindresorhus/slugify" "1.1.0"
+    date-fns "^2.19.0"
+    lodash "4.17.21"
+    pino "^4.7.1"
+    pluralize "^8.0.0"
+    yup "^0.32.9"
+
+strapi-utils@3.6.7:
+  version "3.6.7"
+  resolved "https://registry.yarnpkg.com/strapi-utils/-/strapi-utils-3.6.7.tgz#b83e4f824c6240bcac440581c3fbf4aae274138d"
+  integrity sha512-a3f1N0Bler7ImpXDurjeJD07FhsIqx0rveQ4nMeqnVByWcS7aW9G0dKreaYHxGbwsI4XWR0WK1Dal8hw3jjrLw==
   dependencies:
     "@sindresorhus/slugify" "1.1.0"
     date-fns "^2.19.0"
