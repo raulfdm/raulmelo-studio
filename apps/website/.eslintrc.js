@@ -2,7 +2,7 @@ module.exports = {
   extends: '../../.eslintrc.js',
   overrides: [
     {
-      files: ['*.test.*', '*.stories.*'],
+      files: ['*.test.*'],
       rules: {
         '@typescript-eslint/ban-ts-comment': 'off',
         '@typescript-eslint/no-explicit-any': 'off',

@@ -8,7 +8,6 @@ module.exports = {
   modulePathIgnorePatterns: ['<rootDir>/.next'],
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
-    '!src/**/*.stories.*', // Don't want to test stories
     '!src/**/index.ts', // Don't want to test barrels
   ],
   moduleNameMapper: {
