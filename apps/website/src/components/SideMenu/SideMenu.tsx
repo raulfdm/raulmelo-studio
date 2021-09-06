@@ -11,33 +11,19 @@ import Link from 'next/link';
 import { ExternalLinkIcon } from '@components/Icons';
 
 const styles = {
-  sideMenuPanel: tw`
-    fixed
-    bottom-0 right-0 top-16
-    h-full
-    bg-white dark:bg-blue-800
-    z-20
-    transform translate-x-full
-    min-w-full sm:min-w-min sm:w-full sm:max-w-xs
-    transition-theme duration-200 ease
-  `,
+  sideMenuPanel: tw`fixed bottom-0 right-0 z-20 h-full min-w-full duration-200 transform translate-x-full bg-white top-16 dark:bg-blue-800 sm:min-w-min sm:w-full sm:max-w-xs transition-theme ease`,
   sideMenuItem: (isActive: boolean) => css`
-    ${tw`cursor-pointer font-black text-xl sm:text-lg mx-5`};
+    ${tw`mx-5 text-xl font-black cursor-pointer sm:text-lg`};
     ${isActive &&
-    tw`
-      sm:pl-3
-      border-b-2 sm:border-l-2 sm:border-b-0
-      border-secondary border-opacity-80
-      transition-theme
-  `}
+    tw`border-b-2 sm:pl-3 sm:border-l-2 sm:border-b-0 border-secondary border-opacity-80 transition-theme`}
   `,
-  sideMenuItemExternalLink: tw`inline-flex relative`,
-  sideMenuItemExternalIcon: tw`w-4 absolute top-0 -right-6`,
+  sideMenuItemExternalLink: tw`relative inline-flex`,
+  sideMenuItemExternalIcon: tw`absolute top-0 w-4 -right-6`,
   overlay: (isClosed: boolean) => css`
     ${tw`absolute inset-0 top-16 z-10 opacity-0 background[rgba(0,0,0,0.7)]`};
     pointer-events: ${isClosed ? 'none' : 'all'};
   `,
-  list: tw`py-6 flex flex-col`,
+  list: tw`flex flex-col py-6`,
   listItem: tw`px-4 py-2 text-center sm:text-left`,
 };
 
