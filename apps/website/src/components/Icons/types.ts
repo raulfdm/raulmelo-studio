@@ -1,5 +1,5 @@
-import type { TwFn, css } from 'twin.macro';
+import tw, { css } from 'twin.macro';
 
 export interface IconProps extends React.ComponentPropsWithoutRef<'svg'> {
-  css?: ReturnType<TwFn> | ReturnType<typeof css>;
+  css?: ReturnType<typeof tw> | ReturnType<typeof css>;
 }
