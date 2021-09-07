@@ -105,7 +105,8 @@ export function mdxPrism(options: MdxPrismOptions = {}): MdxPrism2Visit {
           lineHighlight: options.lineHighlight,
         });
       }
-    } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
       /**
        * Only suppressing if it's unknown language
        */
