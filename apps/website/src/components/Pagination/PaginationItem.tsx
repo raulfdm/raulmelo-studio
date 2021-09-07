@@ -13,14 +13,9 @@ const styles = {
   item: (selected: boolean) => css`
     min-width: 1.5rem;
 
-    ${tw`
-      text-center
-      cursor-pointer
-      text-lg
-      tabular-nums
-    `};
+    ${tw`text-lg text-center cursor-pointer tabular-nums`};
     ${selected
-      ? tw`border-secondary border-b font-bold text-secondary`
+      ? tw`font-bold border-b border-secondary text-secondary`
       : tw`hover:font-bold`};
   `,
   icon: (disabled: boolean) => css`
