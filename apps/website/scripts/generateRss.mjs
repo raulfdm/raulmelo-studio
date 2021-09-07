@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 
-const fetch = require('node-fetch');
-const fs = require('fs');
-const path = require('path');
+import fetch from 'node-fetch';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const API_ENDPOINT = process.env.API_ENDPOINT ?? 'http://localhost:1337';
 const LOCALES_TO_GEN_RSS = ['en', 'pt'];
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 if (API_ENDPOINT.includes('localhost')) {
   console.log('Getting data from Localhost');
