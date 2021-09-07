@@ -28,12 +28,12 @@ const messages = defineMessages({
 });
 
 const styles = {
-  divider: tw`col-span-full md:col-start-2 md:col-end-6 lg:col-start-3 lg:col-end-10 mb-8`,
-  postWrapper: tw`col-span-full mb-6`,
-  postTitle: tw`font-sans font-extrabold text-lg lg:text-xl mb-4 lg:mb-6`,
-  postList: tw`grid grid-cols-1 ipad-pro:grid-cols-2 gap-6`,
-  postCard: tw`bg-white dark:bg-blue-800 p-6 rounded-sm shadow hover:scale-50 transition-theme`,
-  postCardLink: tw`text-lg underline mt-6 cursor-pointer inline-flex text-secondary`,
+  divider: tw`mb-8 col-span-full md:col-start-2 md:col-end-6 lg:col-start-3 lg:col-end-10`,
+  postWrapper: tw`mb-6 col-span-full`,
+  postTitle: tw`mb-4 font-sans text-lg font-extrabold lg:text-xl lg:mb-6`,
+  postList: tw`grid grid-cols-1 gap-6 ipad-pro:grid-cols-2`,
+  postCard: tw`p-6 transition-all bg-white rounded-sm shadow dark:bg-blue-800 hover:shadow-lg dark:hover:bg-blue-700`,
+  postCardLink: tw`inline-flex mt-6 text-lg underline cursor-pointer text-secondary`,
   linkIcon: tw`w-6 ml-2`,
 };
 
