@@ -1,8 +1,8 @@
-interface IPost {
-  publishedAt: string;
-}
-
-export function sortPostsByPublishedDate(posts: IPost[]): IPost[] {
+export function sortPostsByPublishedDate<
+  T extends {
+    publishedAt: string;
+  },
+>(posts: T[]): T[] {
   return [...posts].sort(
     (prev, next) =>
       new Date(next.publishedAt).getTime() -
