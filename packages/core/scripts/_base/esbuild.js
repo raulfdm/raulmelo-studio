@@ -23,10 +23,20 @@ export function runESBuild(options = {}) {
     metafile: false,
   });
 
+  const generateRssFeedScript = createConfig({
+    format: 'esm',
+    platform: 'node',
+    target: 'node12',
+    outfile: 'dist/scripts/generateRssFeed.mjs',
+    entryPoints: ['src/scripts/generateRssFeed.ts'],
+    metafile: false,
+  });
+
   return Promise.all([
     build(commonJs),
     build(esm),
     build(generateSiteDataScript),
+    build(generateRssFeedScript),
   ]);
 
   function createConfig(overrides = {}) {
