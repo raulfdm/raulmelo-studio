@@ -1,17 +1,12 @@
 import { MdxPostTemplate } from '@components/templates/MdxPost';
 import { serializeMdx } from '@config/mdx';
-import {
-  ITilPost,
-  ITilPostGraphQLResponse,
-  ITilPostParsed,
-} from '@screens/TilPost';
-import { Backend, graphqlVariables } from '@services/Backend';
-import { SupportedLanguages } from '@types-app';
+import { ITilPostParsed } from '@screens/TilPost';
 import { GetStaticPaths } from 'next';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
-import { utils } from '@raulfdm/core';
+import { domains, utils } from '@raulfdm/core';
+import { ITilsTil } from '@raulfdm/core/dist/types/domains/posts/queryTils/types';
 
-const { head, isEmpty, isNil } = utils;
+const { isEmpty, isNil } = utils;
 
 type Props = {
   til: ITilPostParsed;
@@ -40,7 +35,7 @@ type Params = {
 };
 
 export const getStaticProps = async ({ params, preview }: Params) => {
-  const til = await fetchTilBySlug(params.slug, preview);
+  const til = await domains.posts.queryTilBySlug(params.slug, preview);
 
   // https://github.com/vercel/next.js/issues/16681#issuecomment-792314687
   if (isNil(til) || isEmpty(til)) {
@@ -53,7 +48,7 @@ export const getStaticProps = async ({ params, preview }: Params) => {
 
   return {
     props: {
-      til: { ...til },
+      til,
       content,
       // TODO: add a banner for "preview mode"
       preview: Boolean(preview),
@@ -63,27 +58,14 @@ export const getStaticProps = async ({ params, preview }: Params) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  type ResponseType = {
-    tils: { slug: string; locale: SupportedLanguages }[];
-  };
-
-  const query = `
-  query TilsPath {
-    tils(locale: "all") {
-      locale
-      slug
-    }
-  }  
-  `;
-
-  const { tils } = await Backend.graphql<ResponseType>(query);
+  const { tils } = await domains.posts.queryTils('all');
 
   return {
     paths: tils.map(generatePath),
     fallback: 'blocking',
   };
 
-  function generatePath(til: ResponseType['tils'][0]) {
+  function generatePath(til: ITilsTil) {
     return {
       params: {
         slug: til.slug,
@@ -92,39 +74,5 @@ export const getStaticPaths: GetStaticPaths = async () => {
     };
   }
 };
-
-async function fetchTilBySlug(
-  slug: string,
-  preview = false,
-): Promise<ITilPost | undefined> {
-  const query = `
-    query Tils($where: JSON) {
-      tils(locale: "all", where: $where) {
-        id
-        publishedAt
-        title
-        locale
-        slug
-        content
-        tags {
-          id
-          name
-          slug
-        }
-      }
-    }
-`;
-
-  const { tils } = await Backend.graphql<ITilPostGraphQLResponse>(query, {
-    where: {
-      slug,
-      ...(preview ? graphqlVariables.preview : {}),
-    },
-  });
-
-  const til = head(tils);
-
-  return til;
-}
 
 export default TilPostPage;
