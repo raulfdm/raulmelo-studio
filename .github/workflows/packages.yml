@@ -34,13 +34,13 @@ jobs:
           useRollingCache: true
 
       - name: Lint Projects
-        run: yarn lint --scope=mdx-prism-2
+        run: yarn lint --scope=mdx-prism-2 --scope=@raulfdm/core
 
       - name: Test Projects
-        run: yarn test --scope=mdx-prism-2
+        run: yarn test --scope=mdx-prism-2 --scope=@raulfdm/core
 
       - name: Build Projects
-        run: yarn build --scope=mdx-prism-2
+        run: yarn build --scope=mdx-prism-2 --scope=@raulfdm/core
 
       - name: Release Packages
         run: |
