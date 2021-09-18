@@ -1,10 +1,10 @@
-import { TagPage, TagPageProps } from '@screens/Tag/TagPage';
-import { ITagPageGraphQLResponse } from '@screens/Tag/types';
-import { Backend } from '@services/Backend';
-import { SupportedLanguages } from '@types-app';
+import { domains, SupportedLanguages } from '@raulfdm/core';
+import { TagPage } from '@screens/Tag/TagPage';
+import { TagPageProps } from '@screens/Tag/types';
 import { GetStaticPaths } from 'next';
 import React from 'react';
-import { utils } from '@raulfdm/core';
+
+const Tag = (props: TagPageProps) => <TagPage {...props} />;
 
 interface TagPageParams {
   params: {
@@ -12,68 +12,14 @@ interface TagPageParams {
   };
   locale: SupportedLanguages;
 }
-const Tag = (props: TagPageProps) => <TagPage {...props} />;
 
 export const getStaticProps = async ({ params, locale }: TagPageParams) => {
-  const query = `
-  query TagPage {
-    postTags(where: { slug: "${params.slug}" }) {
-      id
-      slug
-      name
-  
-      # TIL
-      til_posts(sort: "publishedAt:desc", where: { locale: "${locale}" }) {
-        publishedAt
-        id
-        slug
-        title
-        tags {
-          ...postTags
-        }
-      }
-  
-      #POSTS
-      blog_posts(sort: "date:desc", where: { locale: "${locale}" }) {
-        id
-        locale
-        slug
-        publishedAt: date
-        title
-        subtitle
-        description
-        featured_image {
-          url
-          height
-          width
-        }
-        tags: post_tags {
-          ...postTags
-        }
-      }
-    }
-  }
-  
-  fragment postTags on PostTag {
-    slug
-    id
-    name
-  }
-  `;
+  const tag = await domains.tag.queryTagBySlug(params.slug, locale);
 
-  const { postTags } = await Backend.graphql<ITagPageGraphQLResponse>(query);
-
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const tag = utils.head(postTags)!;
-
-  const content = [
-    ...tag.blog_posts.map((b) => ({ ...b, type: 'post' })),
-    ...tag.til_posts.map((t) => ({ ...t, type: 'til' })),
-  ].sort(
-    (prev, next) =>
-      new Date(next.publishedAt as string).getTime() -
-      new Date(prev.publishedAt as string).getTime(),
-  );
+  const content = domains.posts.sortPostsByPublishedDate([
+    ...tag.blog_posts.map((blogPost) => ({ ...blogPost, type: 'post' })),
+    ...tag.til_posts.map((tilPost) => ({ ...tilPost, type: 'til' })),
+  ]);
 
   return {
     props: {
@@ -85,16 +31,7 @@ export const getStaticProps = async ({ params, locale }: TagPageParams) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  interface TagPageStaticPathQuery {
-    postTags: { slug: string }[];
-  }
-  const { postTags } = await Backend.graphql<TagPageStaticPathQuery>(`
-  query {
-    postTags {
-      slug
-    }
-  }
-  `);
+  const { postTags } = await domains.tag.queryAllTags();
 
   const paths: TagPageParams[] = [];
 
@@ -109,17 +46,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
    * In this way I generate the same page for both lang and I don't have to do
    * any workaround.
    */
+  const allSupportedLanguages: SupportedLanguages[] = ['en', 'pt'];
 
-  ['en', 'pt'].forEach((lang) => {
-    postTags.forEach((tag) => {
+  for (const lang of allSupportedLanguages) {
+    for (const tag of postTags) {
       paths.push({
         params: {
           slug: tag.slug,
         },
-        locale: lang as SupportedLanguages,
+        locale: lang,
       });
-    });
-  });
+    }
+  }
 
   return {
     paths,

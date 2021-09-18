@@ -8,8 +8,8 @@ import React, { useMemo } from 'react';
 import { defineMessages, FormattedMessage } from 'react-intl';
 import siteData from 'site-data';
 import tw from 'twin.macro';
-import { IPostTag } from './types';
 import { utils } from '@raulfdm/core';
+import { TagPageProps } from './types';
 
 const messages = defineMessages({
   description: {
@@ -25,23 +25,6 @@ const styles = {
   emptyParagraph: tw`text-lg col-span-full`,
   postTitle: tw`text-xl lg:text-2xl`,
   list: tw`pb-5 space-y-6 md:pb-10 col-span-full`,
-};
-
-export type TagPageProps = {
-  tag: IPostTag;
-  content: {
-    publishedAt: string;
-    id: string;
-    slug: string;
-    subtitle?: string;
-    title: string;
-    type: 'post' | 'til';
-    tags: {
-      name: string;
-      slug: string;
-      id: string;
-    }[];
-  }[];
 };
 
 export const TagPage: React.FC<TagPageProps> = ({ tag, content }) => {
