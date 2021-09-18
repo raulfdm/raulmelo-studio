@@ -1,5 +1,8 @@
-import { SupportedLanguages } from '@types-app';
+import { SupportedLanguages } from '@raulfdm/core';
 
+/**
+ * TODO: Move those functions to core/domains/*
+ */
 export function getPostUrl(
   postSlug: string,
   locale?: SupportedLanguages,

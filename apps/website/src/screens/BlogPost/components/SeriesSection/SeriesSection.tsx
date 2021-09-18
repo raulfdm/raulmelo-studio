@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from '@components/Icons';
-import { BlogPostPost } from '@screens/BlogPost';
+import { IBlogPostBySlug } from '@raulfdm/core/dist/types/domains/posts/queryPostBySlug/types';
 import { createMachine } from '@xstate/fsm';
 import { useMachine } from '@xstate/react/fsm';
 import { motion } from 'framer-motion';
@@ -96,7 +96,7 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
 
 interface SeriesSectionProps {
   currentPostId: string;
-  series: NonNullable<BlogPostPost['series']>;
+  series: NonNullable<IBlogPostBySlug['series']>;
   divider?: boolean;
 }
 
@@ -178,9 +178,9 @@ const styles = {
     ${tw`rounded`};
     ${tw`shadow`};
     ${tw`my-8`};
-    ${tw`transition-theme duration-200 ease`};
+    ${tw`duration-200 transition-theme ease`};
   `,
-  list: tw`m-0 pb-0`,
+  list: tw`pb-0 m-0`,
   item: (isCurrentPost: boolean) => css`
     ${tw`cursor-pointer`};
     ${tw`m-0`};
@@ -189,14 +189,14 @@ const styles = {
       ? tw`bg-green-400`
       : tw`hover:bg-green-400 hover:bg-opacity-50`};
   `,
-  link: tw`block no-underline px-4 py-3`,
+  link: tw`block px-4 py-3 no-underline`,
   header: {
     wrapper: (currentState: SeriesMachineState) => css`
       ${tw`flex content-between`};
       ${tw`cursor-pointer`};
-      ${tw`py-3 px-4`};
-      ${tw`text-lg md:text-xl font-bold`};
-      ${tw`transition-spacing duration-300`};
+      ${tw`px-4 py-3`};
+      ${tw`text-lg font-bold md:text-xl`};
+      ${tw`duration-300 transition-spacing`};
       ${currentState === 'expanded'
         ? tw`pb-2.5 border-b border-gray-100 dark:border-gray-600`
         : `pb-0 border-none`}
@@ -208,9 +208,9 @@ const styles = {
   footer: (currentState: SeriesMachineState) => css`
     ${tw`flex content-between`};
     ${tw`cursor-pointer`};
-    ${tw`py-3 px-4`};
-    ${tw`text-base md:text-md font-sans`};
-    ${tw`transition-spacing duration-300`};
+    ${tw`px-4 py-3`};
+    ${tw`font-sans text-base md:text-md`};
+    ${tw`duration-300 transition-spacing`};
     ${currentState === 'expanded'
       ? tw`pt-2.5 border-t border-gray-100 dark:border-gray-600`
       : tw`pt-0 border-none`}

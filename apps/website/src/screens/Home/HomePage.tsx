@@ -8,9 +8,10 @@ import React from 'react';
 import { defineMessages } from 'react-intl';
 import siteData from 'site-data';
 import { AuthorPresentation } from './components/AuthorPresentation';
-import { IHomeGraphQLResponse, PostSectionProps } from './types';
+import { PostSectionProps } from './types';
 import tw from 'twin.macro';
 import { ArrowRightIcon } from '@components/Icons';
+import { IPostsAndTilsApi } from '@raulfdm/core/dist/types/domains/posts';
 
 const messages = defineMessages({
   postsTitle: {
@@ -37,7 +38,7 @@ const styles = {
   linkIcon: tw`w-6 ml-2`,
 };
 
-export const HomePage: React.FC<IHomeGraphQLResponse> = ({ posts, tils }) => {
+export const HomePage: React.FC<IPostsAndTilsApi> = ({ posts, tils }) => {
   const { formatMessage, locale } = useLocalization();
   const defaultSeo = siteData.defaultSeo[locale];
 

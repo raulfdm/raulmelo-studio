@@ -6,7 +6,7 @@ const Dot = styled.div(() => [
   tw`w-1.5 h-1.5 lg:width[0.475rem] lg:height[0.475rem]`,
   tw`rounded-full`,
   css`
-    --hr-color: var(--secondary);
+    --hr-color: var(--color-secondary);
     background-color: var(--hr-color);
 
     /* IE and Legacy Edge */

@@ -2,4 +2,4 @@
 
 echo "┏━━━ 🧹 Clean: yarn clean  ━━━━━━━"
 
-yarn lerna run clean --stream --concurrency=5 $1
+yarn lerna run clean --stream --concurrency=5 $@

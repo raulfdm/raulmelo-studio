@@ -1,0 +1,32 @@
+{
+  "private": true,
+  "name": "@raulfdm/core",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/cjs/core.js",
+  "module": "./dist/esm/core.js",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/core.js",
+      "default": "./dist/esm/core.js"
+    },
+    "./generateSiteData": "./dist/scripts/generateSiteData.mjs",
+    "./generateRssFeed": "./dist/scripts/generateRssFeed.mjs"
+  },
+  "types": "./dist/types/index.d.ts",
+  "scripts": {
+    "build": "scripty",
+    "lint": "scripty"
+  },
+  "dependencies": {
+    "ramda": "0.27.1",
+    "isomorphic-fetch": "3.0.0"
+  },
+  "devDependencies": {
+    "@types/ramda": "0.27.44"
+  },
+  "scripty": {
+    "path": "./scripts"
+  }
+}

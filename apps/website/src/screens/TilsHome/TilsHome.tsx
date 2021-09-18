@@ -3,19 +3,19 @@ import { useLocalization } from '@hooks/useLocalization';
 import { NextSeo } from 'next-seo';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Tils } from './types';
 import { getTilUrl } from './utils';
 import tw from 'twin.macro';
+import { ITilsTil } from '@raulfdm/core/dist/types/domains/posts/queryTils/types';
 
 type TilsHomeProps = {
-  tils: Tils;
+  tils: ITilsTil[];
 };
 
 const styles = {
   baseCol: tw`col-span-full lg:col-span-10`,
-  title: tw`text-3xl md:text-4xl font-extrabold`,
-  subtitle: tw`text-lg md:text-xl italic text-opacity-80`,
-  description: tw`text-md md:text-lg my-4`,
+  title: tw`text-3xl font-extrabold md:text-4xl`,
+  subtitle: tw`text-lg italic md:text-xl text-opacity-80`,
+  description: tw`my-4 text-md md:text-lg`,
   tilsList: {
     wrapper: tw`mt-5`,
     list: tw`space-y-8`,

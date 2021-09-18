@@ -1,9 +1,9 @@
 import { useLocalization } from '@hooks/useLocalization';
-import { isEmpty } from '@utils/ramda';
 import React from 'react';
 import { connectRefinementList } from 'react-instantsearch-dom';
 import tw, { styled } from 'twin.macro';
 import { RefinementListProps } from '../types';
+import { utils } from '@raulfdm/core';
 
 const FiltersWrapper = tw.div`col-span-full inline-flex flex-wrap m-auto mb-7`;
 const RefinementWrapper = styled.div`
@@ -21,12 +21,7 @@ const Checkbox = styled.input`
     background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='currentColor' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
   }
 
-  ${tw`
-    rounded
-    checked:bg-secondary hover:checked:bg-secondary
-    focus:checked:bg-secondary focus:checked:ring-secondary
-    focus:ring-secondary
-`}
+  ${tw`rounded checked:bg-secondary hover:checked:bg-secondary focus:checked:bg-secondary focus:checked:ring-secondary focus:ring-secondary`}
 `;
 
 export const Filters = () => {
@@ -98,7 +93,7 @@ function GenericRefinement({
   items,
   renderLabelText,
 }: GenericRefinementProps) {
-  return isEmpty(items) ? null : (
+  return utils.isEmpty(items) ? null : (
     <RefinementWrapper>
       <Title>{title}</Title>
 
@@ -145,8 +140,9 @@ function sortOptionByLabel(prev: Item, next: Item): number {
 function createEnterHandler(callback: () => void) {
   return (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.code === 'Enter') {
-      (event.target as HTMLInputElement).checked = !(event.target as HTMLInputElement)
-        .checked;
+      (event.target as HTMLInputElement).checked = !(
+        event.target as HTMLInputElement
+      ).checked;
       callback();
     }
   };
