@@ -23,13 +23,17 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install lerna and netlify
-        run: yarn global add lerna netlify-cli
+      - name: Install lerna
+        run: yarn global add lerna
 
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
         with:
           useRollingCache: true
+
+      # Necessary because it's being used in the code
+      - name: Build packages
+        run: yarn build --scope=@raulfdm/core
 
       - name: Lint Projects
         run: yarn lint --scope=website
