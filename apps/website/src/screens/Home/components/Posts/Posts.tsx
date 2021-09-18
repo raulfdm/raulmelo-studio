@@ -1,5 +1,5 @@
 import { PostCardWrapper } from '@components/PostCardWrapper';
-import { IHomePost } from '@screens/Home/types';
+import { IPostsAndTilsPost } from '@raulfdm/core/dist/types/domains/posts';
 import { AnimatePresence, motion } from 'framer-motion';
 import tw from 'twin.macro';
 
@@ -18,14 +18,14 @@ const itemsAnimationVariants = {
 };
 
 type PostsProps = {
-  posts: Omit<IHomePost, 'description'>[];
+  posts: Omit<IPostsAndTilsPost, 'description'>[];
   title: string;
 };
 
 const styles = {
   wrapper: tw`col-span-full`,
-  title: tw`font-sans font-extrabold text-lg lg:text-xl mb-4 lg:mb-8`,
-  list: tw`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6`,
+  title: tw`mb-4 font-sans text-lg font-extrabold lg:text-xl lg:mb-8`,
+  list: tw`grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3`,
 };
 
 export const Posts = ({ posts, title }: PostsProps) => {
