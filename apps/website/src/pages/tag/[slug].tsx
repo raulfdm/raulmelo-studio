@@ -2,9 +2,9 @@ import { TagPage, TagPageProps } from '@screens/Tag/TagPage';
 import { ITagPageGraphQLResponse } from '@screens/Tag/types';
 import { Backend } from '@services/Backend';
 import { SupportedLanguages } from '@types-app';
-import { head } from '@utils/ramda';
 import { GetStaticPaths } from 'next';
 import React from 'react';
+import { utils } from '@raulfdm/core';
 
 interface TagPageParams {
   params: {
@@ -64,7 +64,7 @@ export const getStaticProps = async ({ params, locale }: TagPageParams) => {
   const { postTags } = await Backend.graphql<ITagPageGraphQLResponse>(query);
 
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const tag = head(postTags)!;
+  const tag = utils.head(postTags)!;
 
   const content = [
     ...tag.blog_posts.map((b) => ({ ...b, type: 'post' })),

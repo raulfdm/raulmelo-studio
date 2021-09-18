@@ -1,7 +1,6 @@
 import { serializeMdx } from '@config/mdx';
 import { Backend, graphqlVariables } from '@services/Backend';
 import { SupportedLanguages } from '@types-app';
-import { head } from '@utils/utilities';
 import { GetStaticPaths } from 'next';
 import React from 'react';
 import {
@@ -10,7 +9,9 @@ import {
   BlogPostPageProps,
   BlogPostPost,
 } from '@screens/BlogPost';
-import { isEmpty, isNil } from '@utils/ramda';
+import { utils } from '@raulfdm/core';
+
+const { isNil, isEmpty, head } = utils;
 
 const BlogPostPage: React.FC<BlogPostPageProps> = (props) => (
   <BlogPost {...props} />

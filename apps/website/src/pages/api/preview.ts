@@ -1,7 +1,9 @@
 import { Backend, graphqlVariables } from '@services/Backend';
 import { SupportedLanguages } from '@types-app';
-import { head, isNil } from '@utils/ramda';
+import { utils } from '@raulfdm/core';
 import { NextApiRequest, NextApiResponse } from 'next';
+
+const { head, isNil } = utils;
 
 type Content = { slug: string; locale: SupportedLanguages };
 

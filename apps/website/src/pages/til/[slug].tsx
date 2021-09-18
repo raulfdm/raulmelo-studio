@@ -7,9 +7,11 @@ import {
 } from '@screens/TilPost';
 import { Backend, graphqlVariables } from '@services/Backend';
 import { SupportedLanguages } from '@types-app';
-import { head, isEmpty, isNil } from '@utils/ramda';
 import { GetStaticPaths } from 'next';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { utils } from '@raulfdm/core';
+
+const { head, isEmpty, isNil } = utils;
 
 type Props = {
   til: ITilPostParsed;

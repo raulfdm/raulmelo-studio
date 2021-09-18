@@ -2,7 +2,6 @@ import { PostBasic } from '@components/PostBasic';
 import { useLocalization } from '@hooks/useLocalization';
 import { AuthorPresentation } from '@screens/Home/components/AuthorPresentation';
 import { getTilUrl } from '@screens/TilsHome/utils';
-import { isEmpty } from '@utils/ramda';
 import { getPostUrl, getTagUrl } from '@utils/url';
 import { NextSeo } from 'next-seo';
 import React, { useMemo } from 'react';
@@ -10,6 +9,7 @@ import { defineMessages, FormattedMessage } from 'react-intl';
 import siteData from 'site-data';
 import tw from 'twin.macro';
 import { IPostTag } from './types';
+import { utils } from '@raulfdm/core';
 
 const messages = defineMessages({
   description: {
@@ -21,10 +21,10 @@ const messages = defineMessages({
 });
 
 const styles = {
-  pageTitle: tw`col-span-full font-sans font-extrabold text-xl lg:text-2xl mb-4 lg:mb-8`,
-  emptyParagraph: tw`col-span-full text-lg`,
+  pageTitle: tw`mb-4 font-sans text-xl font-extrabold col-span-full lg:text-2xl lg:mb-8`,
+  emptyParagraph: tw`text-lg col-span-full`,
   postTitle: tw`text-xl lg:text-2xl`,
-  list: tw`pb-5 md:pb-10 col-span-full space-y-6`,
+  list: tw`pb-5 space-y-6 md:pb-10 col-span-full`,
 };
 
 export type TagPageProps = {
@@ -80,7 +80,7 @@ export const TagPage: React.FC<TagPageProps> = ({ tag, content }) => {
       <AuthorPresentation />
 
       <h2 css={styles.pageTitle}>{title}</h2>
-      {isEmpty(content) ? (
+      {utils.isEmpty(content) ? (
         <p css={styles.emptyParagraph}>
           <FormattedMessage id="tag.empty" />
         </p>

@@ -1,5 +1,5 @@
 import { API_URL } from '@config/app';
-import { isNil } from '@utils/ramda';
+import { utils } from '@raulfdm/core';
 
 async function fetcher(url: string, opts?: RequestInit) {
   const res = await fetch(url, opts);
@@ -24,7 +24,7 @@ export const Backend = {
       body: JSON.stringify({ query, variables }),
     });
 
-    if (!isNil(res.errors)) {
+    if (!utils.isNil(res.errors)) {
       console.log('ERRORS ->', res.errors);
       throw new Error('Backend.graphql: Something went wrong. Check console');
     }
