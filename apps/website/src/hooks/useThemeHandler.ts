@@ -1,7 +1,7 @@
-import { SupportedThemes } from '@types-app';
 import { useMachine } from '@xstate/react/fsm';
 import { useEffect } from 'react';
 import { createMachine } from '@xstate/fsm';
+import { AppTheme } from '@raulfdm/core';
 
 /* TODO: find a way to consume this value from a single source of truth */
 const colorMap = {
@@ -14,13 +14,13 @@ type ToggleEvent =
   | { type: 'TURN_LIGHT' }
   | { type: 'TURN_DARK' };
 
-function removeThemeClass(theme: SupportedThemes) {
+function removeThemeClass(theme: AppTheme) {
   return () => {
     document.documentElement.classList.remove(theme);
   };
 }
 
-function setThemeClass(theme: SupportedThemes) {
+function setThemeClass(theme: AppTheme) {
   return () => {
     document.documentElement.classList.add(theme);
     window.__theme = theme;
@@ -30,7 +30,7 @@ function setThemeClass(theme: SupportedThemes) {
   };
 }
 
-function saveThemeOnLocalStorage(theme: SupportedThemes) {
+function saveThemeOnLocalStorage(theme: AppTheme) {
   return () => {
     localStorage.setItem('theme', theme);
   };
@@ -83,7 +83,7 @@ export function useThemeHandler() {
   }, []);
 
   return {
-    currentTheme: current.value as SupportedThemes | 'off',
+    currentTheme: current.value as AppTheme | 'off',
     toggleTheme: () => send('TOGGLE'),
   };
 }

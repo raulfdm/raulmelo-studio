@@ -4,7 +4,7 @@ export interface ITilBySlugApiResponse {
 
 export interface ITilBySlug {
   id: string;
-  publishedAt: Date;
+  publishedAt: string;
   title: string;
   locale: string;
   slug: string;

@@ -1,7 +1,3 @@
-export type SupportedLanguages = 'en' | 'pt';
-
-export type SupportedThemes = 'dark' | 'light';
-
 export interface SiteTheme {
   isDarkTheme: boolean;
   font: {

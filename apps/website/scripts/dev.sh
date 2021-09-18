@@ -2,5 +2,5 @@
 
 echo "Dev server..."
 
-node ./scripts/fetchSiteData.js
+node ./scripts/fetchSiteData.mjs
 yarn next $1 $2

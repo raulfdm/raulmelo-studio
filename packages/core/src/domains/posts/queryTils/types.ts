@@ -6,7 +6,7 @@ export interface ITilsApiResponse {
 
 export interface ITilsTil {
   id: string;
-  publishedAt: Date;
+  publishedAt: string;
   title: string;
   locale: SupportedLanguages;
   slug: string;

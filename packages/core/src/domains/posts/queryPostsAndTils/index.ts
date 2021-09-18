@@ -14,4 +14,4 @@ export function queryPostsAndTils(
   });
 }
 
-export { IPostsAndTilsApi } from './types';
+export * from './types';
