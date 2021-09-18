@@ -1,8 +1,8 @@
-import { SupportedThemes } from '@raulfdm/core';
+import { AppTheme } from '@raulfdm/core';
 
 declare global {
   interface Window {
-    __theme: SupportedThemes;
+    __theme: AppTheme;
     twttr?: any;
   }
 
