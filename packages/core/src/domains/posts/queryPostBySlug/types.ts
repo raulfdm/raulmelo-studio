@@ -14,7 +14,19 @@ export interface IBlogPostBySlug {
   featured_image: IBlogPostBySlugFeaturedImage;
   featured_image_caption: string;
   post_tags: IBlogPostBySlugPostTag[];
-  series: null;
+  series: IBlogPostBySlugSeries | null;
+}
+
+interface IBlogPostBySlugSeries {
+  name: string;
+  posts: IBlogPostBySlugSeriesPost[];
+}
+
+interface IBlogPostBySlugSeriesPost {
+  id: string;
+  copy: string;
+  uri: string;
+  date: Date;
 }
 
 interface IBlogPostBySlugFeaturedImage {
