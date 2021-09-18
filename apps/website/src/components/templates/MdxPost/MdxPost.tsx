@@ -172,7 +172,7 @@ interface MdxPostTemplateProps {
   postContent?: string;
   title: string;
   description: string;
-  publishedAt: string;
+  publishedAt: string | Date;
   preview?: boolean;
   tags?: { id: string; slug: string; name: string }[];
   featuredImage?: FeaturedImageProps & { width: number; height: number };
