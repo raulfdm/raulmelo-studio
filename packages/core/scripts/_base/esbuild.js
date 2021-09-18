@@ -14,7 +14,20 @@ export function runESBuild(options = {}) {
     outfile: 'dist/esm/core.js',
   });
 
-  return Promise.all([build(commonJs), build(esm)]);
+  const generateSiteDataScript = createConfig({
+    format: 'esm',
+    platform: 'node',
+    target: 'node12',
+    outfile: 'dist/scripts/generateSiteData.mjs',
+    entryPoints: ['src/scripts/generateSiteData.ts'],
+    metafile: false,
+  });
+
+  return Promise.all([
+    build(commonJs),
+    build(esm),
+    build(generateSiteDataScript),
+  ]);
 
   function createConfig(overrides = {}) {
     const baseConfig = {
