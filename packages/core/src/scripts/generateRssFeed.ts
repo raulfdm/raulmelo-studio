@@ -45,11 +45,12 @@ export async function generateRssFeed(config: IConfig): Promise<void> {
   }
 
   for await (const locale of LOCALES_TO_GEN_RSS) {
-    const { data } = await fetcher.graphql<IQueryApiResponse>(query, {
-      locale,
-    });
-
-    const { tils, posts, site, rss } = data;
+    const { tils, posts, site, rss } = await fetcher.graphql<IQueryResponse>(
+      query,
+      {
+        locale,
+      },
+    );
 
     const rssConfig = {
       ...rss,
@@ -141,11 +142,7 @@ interface IConfig {
   apiEndpoint?: string;
 }
 
-interface IQueryApiResponse {
-  data: Data;
-}
-
-interface Data {
+interface IQueryResponse {
   rss: DefaultSEO;
   defaultSeo: DefaultSEO;
   site: Site;

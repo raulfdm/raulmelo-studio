@@ -20,10 +20,10 @@ export const fetcher = {
         body: JSON.stringify({ query, variables }),
       });
 
-      const data = await res.json();
+      const { data, errors } = await res.json();
 
-      if (!utils.isNil(data.errors)) {
-        throw new Error(data.errors);
+      if (!utils.isNil(errors)) {
+        throw new Error(errors);
       }
 
       return data;

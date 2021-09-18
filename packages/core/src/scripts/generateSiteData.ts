@@ -50,9 +50,9 @@ export async function generateSiteData(config: IConfig): Promise<void> {
   }
 
   try {
-    const { data } = await fetcher.graphql<IQueryApiResponse>(query);
+    const { defaultSeoPt, defaultSeoEn, personalInformation, ...rest } =
+      await fetcher.graphql<IQueryData>(query);
 
-    const { defaultSeoPt, defaultSeoEn, personalInformation, ...rest } = data;
     const { profile_pic, ...restPersonalInfo } = personalInformation;
     /**
      * Ensure of having both default seo locales
@@ -78,10 +78,6 @@ export async function generateSiteData(config: IConfig): Promise<void> {
     console.error('Something went wrong while generating site-data');
     throw error;
   }
-}
-
-interface IQueryApiResponse {
-  data: IQueryData;
 }
 
 interface IQueryData {
