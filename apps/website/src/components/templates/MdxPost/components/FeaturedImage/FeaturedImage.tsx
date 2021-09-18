@@ -1,5 +1,5 @@
 import { useLocalization } from '@hooks/useLocalization';
-import { BlogPostPost } from '@screens/BlogPost';
+import { IBlogPostBySlug } from '@raulfdm/core/dist/types/domains/posts/queryPostBySlug/types';
 import Image from 'next/image';
 import React from 'react';
 import { defineMessages, FormattedMessage } from 'react-intl';
@@ -14,12 +14,12 @@ const messages = defineMessages({
 export type FeaturedImageProps = {
   src: string;
   alt?: string;
-  unsplash: BlogPostPost['unsplash'];
+  unsplash: IBlogPostBySlug['unsplash'];
 };
 
 const styles = {
   wrapper: tw`mb-8 lg:mb-16 col-span-full`,
-  figure: tw`aspect-w-12 aspect-h-6 relative overflow-hidden h-0 shadow`,
+  figure: tw`relative h-0 overflow-hidden shadow aspect-w-12 aspect-h-6`,
   captionLink: tw`underline text-secondary`,
 };
 
@@ -53,7 +53,7 @@ export const FeaturedImage: React.FC<FeaturedImageProps> = ({
   );
 };
 
-type UnsplashCaptionProps = NonNullable<BlogPostPost['unsplash']>;
+type UnsplashCaptionProps = NonNullable<IBlogPostBySlug['unsplash']>;
 
 function UnsplashCaption({ authorName, url }: UnsplashCaptionProps) {
   return (

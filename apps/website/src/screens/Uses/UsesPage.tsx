@@ -1,13 +1,13 @@
 import { MdxPostTemplate } from '@components/templates/MdxPost';
 import { useLocalization } from '@hooks/useLocalization';
 import React from 'react';
-import { UsesPageApi } from './types';
 import siteData from 'site-data';
 import { getPostUrl } from '@utils/url';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { IUsesData } from '@raulfdm/core/dist/types/domains/uses';
 
 export type UsesPageProps = {
-  seo: UsesPageApi['seo'];
+  seo: IUsesData['seo'];
   title: string;
   content: MDXRemoteSerializeResult;
   postContent: string;

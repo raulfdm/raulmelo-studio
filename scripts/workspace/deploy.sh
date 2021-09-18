@@ -2,4 +2,4 @@
 
 echo "┏━━━ 🚢 Deploy: yarn deploy  ━━━━━━━"
 
-yarn lerna run deploy --stream --concurrency=5 $1
+yarn lerna run deploy --stream --concurrency=5 $@

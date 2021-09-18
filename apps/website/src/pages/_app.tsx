@@ -3,7 +3,6 @@ import { analyticsConfig } from '@config/analytics';
 import Script from 'next/script';
 import { AppContextProvider } from '@contexts/app';
 import { LocalizationProvider } from '@contexts/Localization';
-import { SupportedLanguages } from '@types-app';
 import { getSocial } from '@utils/seo';
 import { motion } from 'framer-motion';
 import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo';
@@ -14,6 +13,7 @@ import siteData from 'site-data';
 import '@raulmelo/styles/lib/base.css';
 import { globalStyles } from 'twin.macro';
 import { CSSObject, Global } from '@emotion/react';
+import { SupportedLanguages } from '@raulfdm/core';
 
 const MyApp = ({ Component, pageProps, router }: AppProps) => {
   const defaultSeo = siteData.defaultSeo[router.locale as SupportedLanguages];

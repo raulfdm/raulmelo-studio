@@ -1,4 +1,4 @@
-import { SupportedThemes } from '@types-app';
+import { SupportedThemes } from '@raulfdm/core';
 
 declare global {
   interface Window {

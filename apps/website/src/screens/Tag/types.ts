@@ -1,45 +1,22 @@
-import { SupportedLanguages } from '@types-app';
+import {
+  ITagBySlugBlogPost,
+  ITagBySlugPostTag,
+  ITagBySlugTilPost,
+} from '@raulfdm/core/dist/types/domains/tag/queryTagBySlug/types';
 
-export interface ITagPageGraphQLResponse {
-  postTags: IPostTag[];
-}
+export type TagPageProps = {
+  tag: ITagBySlugPostTag;
+  content: ITagPageContent;
+};
 
-export interface IPostTag {
-  id: string;
-  slug: string;
-  name: string;
-  til_posts: ITagTilPost[];
-  blog_posts: ITagBlogPost[];
-}
+type ITagPageContent = ITagPagePostOrTil[];
 
-export interface ITagTilPost {
-  publishedAt: string;
-  id: string;
-  slug: string;
-  title: string;
-  tags: Tag[];
-}
+type ITagPagePostOrTil = IEnhancedTil | IEnhancedPost;
 
-interface Tag {
-  slug: string;
-  id: string;
-  name: string;
-}
+type IEnhancedPost = ITagBySlugBlogPost & IPostType;
 
-export interface ITagBlogPost {
-  id: string;
-  locale: SupportedLanguages;
-  slug: string;
-  publishedAt: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  featured_image: IFeaturedImage;
-  post_tags: Tag[];
-}
+type IEnhancedTil = ITagBySlugTilPost & IPostType;
 
-export interface IFeaturedImage {
-  url: string;
-  height: number;
-  width: number;
+interface IPostType {
+  type: 'post' | 'til';
 }

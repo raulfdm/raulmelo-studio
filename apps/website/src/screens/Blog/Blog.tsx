@@ -1,5 +1,6 @@
 import { Pagination, PaginationItem } from '@components/Pagination';
 import { useLocalization } from '@hooks/useLocalization';
+import { IBlogPagePost } from '@raulfdm/core/dist/types/domains/posts';
 import { Posts } from '@screens/Home/components/Posts';
 import { usePageQueryReset } from '@screens/Home/hooks/usePageQueryReset';
 import { NextSeo } from 'next-seo';
@@ -7,7 +8,6 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import { defineMessages, FormattedMessage } from 'react-intl';
 import 'twin.macro';
-import { BlogGraphQLResponse } from './types';
 
 const messages = defineMessages({
   latests: {
@@ -18,7 +18,8 @@ const messages = defineMessages({
   },
 });
 
-type BlogProps = BlogGraphQLResponse & {
+type BlogProps = {
+  posts: IBlogPagePost[];
   pageNumber: number;
   numberOfPages: number;
 };

@@ -1,7 +1,7 @@
 import { useLocalization } from '@hooks/useLocalization';
 import { PostCard } from './PostCard';
-import { SupportedLanguages } from '@types-app';
 import { getPostUrl, getTagUrl } from '@utils/url';
+import { SupportedLanguages } from '@raulfdm/core';
 
 export type PostCardWrapperProps = {
   post: {

@@ -1,8 +1,7 @@
 import { serializeMdx } from '@config/mdx';
-import { UsesPageStaticPropsResponse } from '@screens/Uses/types';
 import { UsesPage, UsesPageProps } from '@screens/Uses/UsesPage';
-import { Backend } from '@services/Backend';
 import { GetStaticProps } from 'next';
+import { domains, SupportedLanguages } from '@raulfdm/core';
 
 const Uses = ({ content, seo, title, postContent }: UsesPageProps) => {
   return (
@@ -16,19 +15,7 @@ const Uses = ({ content, seo, title, postContent }: UsesPageProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const { use: uses } = await Backend.graphql<UsesPageStaticPropsResponse>(`
-  query UsesPage {
-    use(locale: "${locale}") {
-      locale
-      title
-      seo {
-        title
-        description
-      }
-      content
-    }
-  }
-  `);
+  const { uses } = await domains.uses.getUses(locale as SupportedLanguages);
 
   const content = await serializeMdx(uses.content);
 

@@ -1,7 +1,7 @@
 import { polyfill as scrollPolyfill } from 'smoothscroll-polyfill';
-import { isBrowserApiAvailable } from '@utils/utilities';
+import { utils } from '@raulfdm/core';
 
-if (isBrowserApiAvailable.window) {
+if (utils.isBrowserApiAvailable.window) {
   scrollPolyfill();
 }
 
