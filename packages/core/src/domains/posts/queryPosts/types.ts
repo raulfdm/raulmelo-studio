@@ -10,7 +10,7 @@ export interface IBlogPagePost {
   slug: string;
   date: string;
   title: string;
-  subtitle: null | string;
+  subtitle?: string;
   description: string;
   featured_image: IBlogPageFeaturedImage;
   post_serie: IBlogPagePostSerieClass | null;
