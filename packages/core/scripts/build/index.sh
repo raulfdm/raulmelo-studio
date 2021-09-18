@@ -4,7 +4,7 @@
 ./scripts/clean.sh
 
 # Build itself
-./scripts/build/build.js $1
+./scripts/build/build.js $@
 
 #generate .d.ts files
 yarn tsc
