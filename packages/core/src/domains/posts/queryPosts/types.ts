@@ -8,7 +8,7 @@ interface IBlogPagePost {
   id: string;
   locale: SupportedLanguages;
   slug: string;
-  date: Date;
+  date: string;
   title: string;
   subtitle: null | string;
   description: string;

@@ -18,12 +18,3 @@ export async function queryTagBySlug(
 
   return tag;
 }
-
-// const content = [
-//   ...tag.blog_posts.map((b) => ({ ...b, type: 'post' })),
-//   ...tag.til_posts.map((t) => ({ ...t, type: 'til' })),
-// ].sort(
-//   (prev, next) =>
-//     new Date(next.publishedAt).getTime() -
-//     new Date(prev.publishedAt).getTime(),
-// );

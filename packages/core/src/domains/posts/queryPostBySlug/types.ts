@@ -7,7 +7,7 @@ export interface IBlogPostBySlug {
   title: string;
   subtitle: string;
   description: string;
-  date: Date;
+  date: string;
   slug: string;
   unsplash: IBlogPostBySlugUnsplash;
   content: string;

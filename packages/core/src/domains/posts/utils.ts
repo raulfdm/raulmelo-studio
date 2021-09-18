@@ -1,5 +1,5 @@
 interface IPost {
-  publishedAt: Date;
+  publishedAt: string;
 }
 
 export function sortPostsByPublishedDate(posts: IPost[]): IPost[] {

@@ -11,7 +11,7 @@ export interface ITagBySlugPostTag {
 }
 
 export interface ITagBySlugTilPost {
-  publishedAt: Date;
+  publishedAt: string;
   id: string;
   slug: string;
   title: string;
@@ -22,7 +22,7 @@ export interface ITagBySlugBlogPost {
   id: string;
   locale: string;
   slug: string;
-  publishedAt: Date;
+  publishedAt: string;
   title: string;
   subtitle: string;
   description: string;
