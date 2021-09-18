@@ -23,6 +23,7 @@ export function runESBuild(options = {}) {
       sourcemap: 'external',
       // TODO: import from package.json IF it starts to become a mess
       external: ['ramda', 'isomorphic-fetch'],
+      metafile: true,
       ...overrides,
     };
 
