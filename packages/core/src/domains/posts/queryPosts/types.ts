@@ -4,7 +4,7 @@ export interface IBlogPageApiResponse {
   posts: IBlogPagePost[];
 }
 
-interface IBlogPagePost {
+export interface IBlogPagePost {
   id: string;
   locale: SupportedLanguages;
   slug: string;

@@ -9,3 +9,5 @@ export function queryPosts(
 ): Promise<IBlogPageApiResponse> {
   return fetcher.graphql<IBlogPageApiResponse>(query, { locale });
 }
+
+export * from './types';
