@@ -1,16 +1,5 @@
-import { Backend, graphqlVariables } from '@services/Backend';
-import { SupportedLanguages } from '@types-app';
-import { utils } from '@raulfdm/core';
+import { domains } from '@raulfdm/core';
 import { NextApiRequest, NextApiResponse } from 'next';
-
-const { head, isNil } = utils;
-
-type Content = { slug: string; locale: SupportedLanguages };
-
-type GraphqlResponse = {
-  tils: Content[];
-  posts: Content[];
-};
 
 export default async function handler(
   req: NextApiRequest,
@@ -26,32 +15,12 @@ export default async function handler(
     return res.status(401).json({ message: 'Invalid token' });
   }
 
-  // Fetch the headless CMS to check if the provided `slug` exists
-  const query = `
-    query Tils($where: JSON) {
-      tils(locale: "all", where: $where) {
-        slug
-        locale
-      }
-      posts(locale: "all", where: $where){
-        slug
-        locale
-      }
-    }
-  `;
-
-  const { tils, posts } = await Backend.graphql<GraphqlResponse>(query, {
-    where: {
-      ...graphqlVariables.preview,
-      slug: req.query.slug as string,
-    },
-  });
-
-  const til = head(tils);
-  const post = head(posts);
+  const content = await domains.preview.queryPostOrTil(
+    req.query.slug as string,
+  );
 
   // If the slug doesn't exist prevent preview mode from being enabled
-  if (isNil(til) && isNil(post)) {
+  if (content === null) {
     return res.status(401).json({ message: 'Invalid slug' });
   }
 
@@ -60,18 +29,14 @@ export default async function handler(
     maxAge: 60 * 60,
   });
 
-  const contentType = til ? 'til' : 'blog';
-  const content = (til ?? post) as Content;
-
-  const Location =
-    content.locale === 'pt'
-      ? `/pt/${contentType}/${content.slug}`
-      : `/${contentType}/${content.slug}`;
+  const contentPrePath = content.type === 'til' ? '/til' : '/blog';
+  const partialPath = `${contentPrePath}/${content.slug}`;
+  const Location = content.locale === 'pt' ? `/pt${partialPath}` : partialPath;
 
   // Redirect to the path from the fetched post
   // We don't redirect to req.query.slug as that might lead to open redirect vulnerabilities
   res.writeHead(307, {
-    Location: Location,
+    Location,
   });
 
   res.end();

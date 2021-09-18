@@ -1,37 +1,33 @@
 import previewRoute from '../preview';
-import { Backend } from '@services/Backend';
+import { domains } from '@raulfdm/core';
 
-jest.mock('@services/Backend', () => {
-  const actualModule = jest.requireActual('@services/Backend');
+jest.mock('@raulfdm/core', () => {
+  const actualModule = jest.requireActual('@raulfdm/core');
   return {
     ...actualModule,
-    Backend: {
-      graphql: jest.fn(() => Promise.resolve({ tils: [], posts: [] })),
+    domains: {
+      preview: {
+        queryPostOrTil: jest.fn(() => Promise.resolve(null)),
+      },
     },
   };
 });
 
 const mockPreviewSecret = '123';
 
-const mockBackendGraphql = Backend.graphql as jest.Mock<any>;
+const mockQueryPostOrTil = domains.preview.queryPostOrTil as jest.Mock<any>;
 
 const fakeData = {
   onlyTil: {
-    _til: { id: 1, slug: 'my-til', locale: 'en' },
+    _til: { id: 1, slug: 'my-til', locale: 'en', type: 'til' },
     get data() {
-      return {
-        tils: [fakeData.onlyTil._til],
-        posts: [],
-      };
+      return fakeData.onlyTil._til;
     },
   },
   onlyPost: {
-    _post: { id: 2, slug: 'my-post', locale: 'en' },
+    _post: { id: 2, slug: 'my-post', locale: 'en', type: 'post' },
     get data() {
-      return {
-        tils: [],
-        posts: [fakeData.onlyPost._post],
-      };
+      return fakeData.onlyPost._post;
     },
   },
 };
@@ -45,7 +41,7 @@ describe('Preview Route', () => {
 
   describe('returns with status 401 and invalid token when...', () => {
     it('token is invalid', async () => {
-      const { mockRes, mockJson, mockStatus } = createMockResponde();
+      const { mockRes, mockJson, mockStatus } = createMockResponse();
 
       await previewRoute({ query: {} } as any, mockRes as any);
 
@@ -56,7 +52,7 @@ describe('Preview Route', () => {
     });
 
     it('slug is not present', async () => {
-      const { mockRes, mockJson, mockStatus } = createMockResponde();
+      const { mockRes, mockJson, mockStatus } = createMockResponse();
       await previewRoute(
         { query: { secret: mockPreviewSecret } } as any,
         mockRes as any,
@@ -69,42 +65,19 @@ describe('Preview Route', () => {
     });
   });
 
-  it('calls graphql with the query and preview params expected', async () => {
-    const { mockRes } = createMockResponde();
+  it('fetches data with the slug value', async () => {
+    const { mockRes } = createMockResponse();
+    const slug = 'my-post';
     await previewRoute(
-      { query: { secret: mockPreviewSecret, slug: 'my-post' } } as any,
+      { query: { secret: mockPreviewSecret, slug } } as any,
       mockRes as any,
     );
 
-    const [firstCall] = mockBackendGraphql.mock.calls;
-
-    expect(firstCall).toMatchInlineSnapshot(`
-      Array [
-        "
-          query Tils($where: JSON) {
-            tils(locale: \\"all\\", where: $where) {
-              slug
-              locale
-            }
-            posts(locale: \\"all\\", where: $where){
-              slug
-              locale
-            }
-          }
-        ",
-        Object {
-          "where": Object {
-            "_publicationState": "preview",
-            "published_at_null": true,
-            "slug": "my-post",
-          },
-        },
-      ]
-    `);
+    expect(mockQueryPostOrTil).toHaveBeenCalledWith(slug);
   });
 
-  it('returns 401 and invalid slug if both post and til is nil', async () => {
-    const { mockRes, mockStatus, mockJson } = createMockResponde();
+  it('returns 401 and invalid slug if content is null', async () => {
+    const { mockRes, mockStatus, mockJson } = createMockResponse();
     await previewRoute(
       { query: { secret: mockPreviewSecret, slug: 'my-post' } } as any,
       mockRes as any,
@@ -119,8 +92,8 @@ describe('Preview Route', () => {
   describe('pass validations', () => {
     describe('sets setPreviewData', () => {
       it('define max age to preview', async () => {
-        const { mockRes, mockSetPreviewData } = createMockResponde();
-        mockBackendGraphql.mockReturnValue(fakeData.onlyTil.data);
+        const { mockRes, mockSetPreviewData } = createMockResponse();
+        mockQueryPostOrTil.mockReturnValue(fakeData.onlyTil.data);
         await previewRoute(
           { query: { secret: mockPreviewSecret, slug: 'my-post' } } as any,
           mockRes as any,
@@ -135,8 +108,8 @@ describe('Preview Route', () => {
 
     describe('calls writeHead', () => {
       it('with 307', async () => {
-        const { mockRes, mockWriteHead } = createMockResponde();
-        mockBackendGraphql.mockReturnValue(fakeData.onlyTil.data);
+        const { mockRes, mockWriteHead } = createMockResponse();
+        mockQueryPostOrTil.mockReturnValue(fakeData.onlyTil.data);
         await previewRoute(
           { query: { secret: mockPreviewSecret, slug: 'my-post' } } as any,
           mockRes as any,
@@ -148,8 +121,8 @@ describe('Preview Route', () => {
 
       describe('with correct location', () => {
         it('generate til slug without locale', async () => {
-          const { mockRes, mockWriteHead } = createMockResponde();
-          mockBackendGraphql.mockReturnValue(fakeData.onlyTil.data);
+          const { mockRes, mockWriteHead } = createMockResponse();
+          mockQueryPostOrTil.mockReturnValue(fakeData.onlyTil.data);
           await previewRoute(
             { query: { secret: mockPreviewSecret, slug: 'my-post' } } as any,
             mockRes as any,
@@ -161,10 +134,11 @@ describe('Preview Route', () => {
         });
 
         it('generate til slug with locale', async () => {
-          const { mockRes, mockWriteHead } = createMockResponde();
-          mockBackendGraphql.mockResolvedValue({
-            tils: [{ ...fakeData.onlyTil._til, locale: 'pt' }],
-            posts: [],
+          const { mockRes, mockWriteHead } = createMockResponse();
+          mockQueryPostOrTil.mockResolvedValue({
+            ...fakeData.onlyTil._til,
+            locale: 'pt',
+            type: 'til',
           });
 
           await previewRoute(
@@ -178,8 +152,8 @@ describe('Preview Route', () => {
         });
 
         it('generate post slug without locale', async () => {
-          const { mockRes, mockWriteHead } = createMockResponde();
-          mockBackendGraphql.mockReturnValue(fakeData.onlyPost.data);
+          const { mockRes, mockWriteHead } = createMockResponse();
+          mockQueryPostOrTil.mockReturnValue(fakeData.onlyPost.data);
           await previewRoute(
             { query: { secret: mockPreviewSecret, slug: 'my-post' } } as any,
             mockRes as any,
@@ -191,10 +165,11 @@ describe('Preview Route', () => {
         });
 
         it('generate post slug with locale', async () => {
-          const { mockRes, mockWriteHead } = createMockResponde();
-          mockBackendGraphql.mockResolvedValue({
-            tils: [],
-            posts: [{ ...fakeData.onlyPost._post, locale: 'pt' }],
+          const { mockRes, mockWriteHead } = createMockResponse();
+          mockQueryPostOrTil.mockResolvedValue({
+            ...fakeData.onlyPost._post,
+            locale: 'pt',
+            type: 'post',
           });
 
           await previewRoute(
@@ -210,8 +185,8 @@ describe('Preview Route', () => {
     });
 
     it('calls end at the end of execution', async () => {
-      const { mockRes, mockEnd } = createMockResponde();
-      mockBackendGraphql.mockReturnValue(fakeData.onlyTil.data);
+      const { mockRes, mockEnd } = createMockResponse();
+      mockQueryPostOrTil.mockReturnValue(fakeData.onlyTil.data);
       await previewRoute(
         { query: { secret: mockPreviewSecret, slug: 'my-post' } } as any,
         mockRes as any,
@@ -222,7 +197,7 @@ describe('Preview Route', () => {
   });
 });
 
-function createMockResponde() {
+function createMockResponse() {
   const mockStatus = jest.fn();
   const mockJson = jest.fn();
   const mockSetPreviewData = jest.fn();
