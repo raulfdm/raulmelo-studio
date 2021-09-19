@@ -1,3 +1,21 @@
+<script lang="ts">
+import { defineComponent, useStore } from '@nuxtjs/composition-api';
+
+export default defineComponent({
+  setup() {
+    const store = useStore<RootStoreState>();
+
+    console.log(store);
+    function toggleSideNav() {
+      store.dispatch('sideMenu/toggle');
+    }
+
+    return {
+      toggleSideNav,
+    };
+  },
+});
+</script>
 <template>
   <div :class="$style.wrapper">
     <nav :class="$style.inner" class="grid-container">
@@ -6,12 +24,14 @@
           <TheLogo />
         </nuxt-link>
       </section>
-      <section :class="$style.iconsSection"></section>
+      <section :class="$style.iconsSection">
+        <button @click="toggleSideNav">Toggle Side Menu</button>
+      </section>
     </nav>
   </div>
 </template>
 
-<style lang="postcss" module>
+<style module>
 .wrapper {
   @apply inset-x-0;
   @apply relative;
