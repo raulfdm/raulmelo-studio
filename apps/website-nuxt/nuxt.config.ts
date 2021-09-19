@@ -34,8 +34,10 @@ export default {
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: {
-    dirs: ['~/components', '~/components/app'],
+    dirs: ['~/components', '~/components/app', '~/components/base'],
   },
+
+  ignore: ['**/*.test.*', '.history/**/*'],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
