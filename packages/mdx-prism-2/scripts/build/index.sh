@@ -4,7 +4,7 @@
 ./scripts/clean.sh
 
 # Build itself
-./scripts/build/build.js $1
+NODE_OPTIONS=--experimental-json-modules ./scripts/build/build.js $@
 
 #generate .d.ts files
 yarn tsc
