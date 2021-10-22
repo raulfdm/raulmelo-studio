@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-echo "Building..."
-yarn netlify-lambda build lambdas
+echo "Building Lambda functions"
+pnpm netlify-lambda build lambdas

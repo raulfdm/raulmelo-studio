@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-echo "Dev server..."
-yarn netlify-lambda serve lambdas
+echo "Running Lambda Functions dev server"
+pnpm netlify-lambda serve lambdas
