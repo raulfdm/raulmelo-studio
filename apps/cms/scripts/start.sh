@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-echo "Start..."
-yarn strapi start
+echo "Starting CMS"
+pnpm strapi start

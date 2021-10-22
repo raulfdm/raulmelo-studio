@@ -5,15 +5,16 @@ WORKDIR /app
 EXPOSE 1337
 
 COPY package.json .
-COPY yarn.lock .
-COPY lerna.json .
-COPY scripts/ ./scripts/
+COPY pnpm-lock.yaml .
+COPY pnpm-workspace.yaml .
 COPY apps/cms ./apps/cms
 
-RUN yarn
+RUN npm install -g pnpm
 
-RUN yarn build --scope=cms
+RUN pnpm i --filter cms
+
+RUN pnpm run build --filter cms
 
 VOLUME [ "${PWD}/apps/cms/build:/app/build" ]
 
-CMD [ "yarn", "start", "--scope=cms" ]
+CMD [ "pnpm", "run", "start", "--filter", "cms" ]
