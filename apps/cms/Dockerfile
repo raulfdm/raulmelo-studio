@@ -11,7 +11,7 @@ COPY apps/cms ./apps/cms
 
 RUN npm install -g pnpm
 
-RUN pnpm i --filter cms
+RUN pnpm i --shamefully-hoist --filter cms
 
 RUN pnpm run build --filter cms
 
