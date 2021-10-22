@@ -1,48 +1,48 @@
-name: Lambas Deployment
+# name: Lambas Deployment
 
-on:
-  push:
-    paths:
-      - 'apps/lambdas/**'
-      - 'scripts/**'
-      - 'config/**'
-      - '.github/workflows/lambdas.yml'
-      - .eslintignore
-      - .eslintrc.js
-      - package.json
+# on:
+#   push:
+#     paths:
+#       - 'apps/lambdas/**'
+#       - 'scripts/**'
+#       - 'config/**'
+#       - '.github/workflows/lambdas.yml'
+#       - .eslintignore
+#       - .eslintrc.js
+#       - package.json
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repo
+#         uses: actions/checkout@v2
 
-      - name: Use Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
+#       - name: Use Node
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: '14'
 
-      - name: Install lerna and netlify
-        run: yarn global add lerna netlify-cli
+#       - name: Install lerna and netlify
+#         run: yarn global add lerna netlify-cli
 
-      - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1
-        with:
-          useRollingCache: true
+#       - name: Install deps and build (with cache)
+#         uses: bahmutov/npm-install@v1
+#         with:
+#           useRollingCache: true
 
-      - name: Lint Projects
-        run: yarn lint --scope=lambdas
+#       - name: Lint Projects
+#         run: yarn lint --scope=lambdas
 
-      - name: Test Projects
-        run: yarn test --scope=lambdas
+#       - name: Test Projects
+#         run: yarn test --scope=lambdas
 
-      - name: Build Projects
-        run: yarn build --scope=lambdas
+#       - name: Build Projects
+#         run: yarn build --scope=lambdas
 
-      - name: Deploy
-        run: yarn deploy --scope=lambdas
-        if: contains('refs/heads/main', github.ref)
-        env:
-          NETLIFY_AUTH_TOKEN: ${{secrets.NETLIFY_AUTH_TOKEN}}
-          NETLIFY_SITE_ID: ${{secrets.LAMBDAS_SITE_ID}}
+#       - name: Deploy
+#         run: yarn deploy --scope=lambdas
+#         if: contains('refs/heads/main', github.ref)
+#         env:
+#           NETLIFY_AUTH_TOKEN: ${{secrets.NETLIFY_AUTH_TOKEN}}
+#           NETLIFY_SITE_ID: ${{secrets.LAMBDAS_SITE_ID}}

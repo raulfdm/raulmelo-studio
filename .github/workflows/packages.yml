@@ -1,55 +1,63 @@
-name: Packages
+# name: Packages
 
-on:
-  push:
-    paths:
-      - packages/**
-      - config/**
-      - .github/workflows/packages.yml
-      - scripts/workspace/release.sh
-      - package.json
-      - commitlint.config.js
+# on:
+#   push:
+#     paths:
+#       - packages/**
+#       - config/**
+#       - .github/workflows/packages.yml
+#       - scripts/workspace/release.sh
+#       - package.json
+#       - commitlint.config.js
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-        with:
-          # pulls all commits (needed for lerna / semantic release to correctly version)
-          fetch-depth: 0
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repo
+#         uses: actions/checkout@v2
+#         with:
+#           # pulls all commits (needed for lerna / semantic release to correctly version)
+#           fetch-depth: 0
 
-      - name: Use Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
+#       - uses: pnpm/action-setup@v2.0.1
+#         with:
+#           version: 6.0.2
+#           run_install: true
 
-      - name: Install lerna and netlify
-        run: yarn global add lerna netlify-cli
+#       - name: Lint Projects
+#         run: pnpm run lint --filter
 
-      - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1
-        with:
-          useRollingCache: true
+#       # - name: Use Node
+#       #   uses: actions/setup-node@v2
+#       #   with:
+#       #     node-version: '14'
 
-      - name: Lint Projects
-        run: yarn lint --scope=mdx-prism-2 --scope=@raulfdm/core
+#       # - name: Install lerna and netlify
+#       #   run: yarn global add lerna netlify-cli
 
-      - name: Test Projects
-        run: yarn test --scope=mdx-prism-2 --scope=@raulfdm/core
+#       # - name: Install deps and build (with cache)
+#       #   uses: bahmutov/npm-install@v1
+#       #   with:
+#       #     useRollingCache: true
 
-      - name: Build Projects
-        run: yarn build --scope=mdx-prism-2 --scope=@raulfdm/core
+#       # - name: Lint Projects
+#       #   run: yarn lint --scope=mdx-prism-2 --scope=@raulfdm/core
 
-      - name: Release Packages
-        run: |
-          git config --global user.name "Raul Melo"
-          git config --global user.email "melo.raulf@gmail.com"
-          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ./.npmrc
-          git reset --hard
-          yarn release
-        if: github.ref == 'refs/heads/main'
-        env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-          GH_TOKEN: ${{secrets.GH_TOKEN}}
+#       # - name: Test Projects
+#       #   run: yarn test --scope=mdx-prism-2 --scope=@raulfdm/core
+
+#       # - name: Build Projects
+#       #   run: yarn build --scope=mdx-prism-2 --scope=@raulfdm/core
+
+#       # - name: Release Packages
+#       #   run: |
+#       #     git config --global user.name "Raul Melo"
+#       #     git config --global user.email "melo.raulf@gmail.com"
+#       #     echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ./.npmrc
+#       #     git reset --hard
+#       #     yarn release
+#       #   if: github.ref == 'refs/heads/main'
+#       #   env:
+#       #     NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+#       #     GH_TOKEN: ${{secrets.GH_TOKEN}}
