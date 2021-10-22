@@ -7,4 +7,4 @@
 ./scripts/build/build.js $@
 
 #generate .d.ts files
-yarn tsc
+pnpm tsc
