@@ -4,7 +4,8 @@
 ./scripts/clean.sh
 
 # Build itself
-NODE_OPTIONS=--experimental-json-modules ./scripts/build/build.js $@
+export NODE_OPTIONS=--experimental-json-modules
+./scripts/build/build.js $@
 
 #generate .d.ts files
-yarn tsc
+pnpm tsc

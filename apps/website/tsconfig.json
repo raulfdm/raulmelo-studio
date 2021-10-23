@@ -20,8 +20,9 @@
       "@utils/*": ["src/utils/*"],
       "site-data": ["site-data.json"]
     },
-    "typeRoots": ["node_modules/@types", "../../node_modules/@types", "types"]
+    "typeRoots": ["node_modules/@types", "../../node_modules/@types", "types"],
+    "incremental": true
   },
-  "exclude": ["node_modules"],
-  "include": ["**/*.ts", "**/*.tsx"]
+  "exclude": ["node_modules", "../../node_modules"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "types/**/*", "next-env.d.ts"]
 }

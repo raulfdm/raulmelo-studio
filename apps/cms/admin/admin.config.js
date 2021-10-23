@@ -1,7 +1,7 @@
 module.exports = {
   webpack: (config) => {
     /**
-     * This workaround is necessary because within lerna/monorepo setup,
+     * This workaround is necessary because within monorepo setup,
      * some dependencies could not being resolved naturally like:
      *
      * strapi-admin/node_modules/formik.

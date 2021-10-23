@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-echo "Dev server..."
-yarn strapi develop
+echo "Starting CMS dev server"
+pnpm strapi develop

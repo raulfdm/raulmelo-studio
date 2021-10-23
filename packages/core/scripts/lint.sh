@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-echo "LINTING..."
+echo "Linting @raulfdm/core"
 ./../../scripts/common/lint.sh

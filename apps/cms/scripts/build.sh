@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-echo "Building..."
-yarn strapi build
+echo "Building CMS"
+pnpm strapi build

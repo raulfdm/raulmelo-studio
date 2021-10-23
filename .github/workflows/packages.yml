@@ -10,46 +10,87 @@ on:
       - package.json
       - commitlint.config.js
 
+env:
+  CI: true
+  PNPM_CACHE_FOLDER: .pnpm-store
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-        with:
-          # pulls all commits (needed for lerna / semantic release to correctly version)
-          fetch-depth: 0
 
       - name: Use Node
         uses: actions/setup-node@v2
         with:
           node-version: '14'
 
-      - name: Install lerna and netlify
-        run: yarn global add lerna netlify-cli
+      - name: Install pnpm
+        run: npm install -g pnpm
 
-      - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
         with:
-          useRollingCache: true
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+
+      - name: Install dependencies
+        run: pnpm i --frozen-lock --filter {packages/}
 
       - name: Lint Projects
-        run: yarn lint --scope=mdx-prism-2 --scope=@raulfdm/core
+        run: pnpm run lint --filter {packages/}
 
       - name: Test Projects
-        run: yarn test --scope=mdx-prism-2 --scope=@raulfdm/core
+        run: pnpm run test --filter {packages/}
 
       - name: Build Projects
-        run: yarn build --scope=mdx-prism-2 --scope=@raulfdm/core
+        run: pnpm run build --filter {packages/}
 
-      - name: Release Packages
-        run: |
-          git config --global user.name "Raul Melo"
-          git config --global user.email "melo.raulf@gmail.com"
-          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ./.npmrc
-          git reset --hard
-          yarn release
-        if: github.ref == 'refs/heads/main'
+  release:
+    if: github.ref == 'refs/heads/main'
+    needs: [build]
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: setup node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+
+      - name: install pnpm
+        run: npm i pnpm@latest -g
+
+      - name: Setup npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+
+      - name: setup pnpm config
+        run: pnpm config set store-dir $PNPM_CACHE_FOLDER
+
+      - name: install dependencies
+        run: pnpm install --frozen-lock --filter mdx-prism-2
+
+      - name: create and publish versions
+        uses: changesets/action@master
+        with:
+          version: pnpm ci:version
+          commit: 'chore: update versions'
+          title: 'chore: update versions'
+          publish: pnpm ci:publish
         env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-          GH_TOKEN: ${{secrets.GH_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

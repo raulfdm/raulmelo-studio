@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-echo "TESTING..."
-yarn jest --passWithNoTests $1
+echo "Running Jest"
+pnpm jest --passWithNoTests

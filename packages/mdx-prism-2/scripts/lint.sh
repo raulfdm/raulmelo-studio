@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-echo "LINTING..."
+echo "Linting mdx-prism-2"
 ./../../scripts/common/lint.sh

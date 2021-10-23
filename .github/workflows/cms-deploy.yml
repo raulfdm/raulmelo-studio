@@ -6,10 +6,10 @@ on:
       - main
     paths:
       - 'apps/cms/**'
-      - 'scripts/**'
       - 'config/**'
       - '.github/workflows/cms-deploy.yml'
       - package.json
+      - pnpm-lock.yaml
 
 jobs:
   deploy:
@@ -51,7 +51,9 @@ jobs:
         run: |
           echo "machine api.heroku.com\n  login melo.raulf@gmail.com\n  password $HEROKU_API_KEY\nmachine git.heroku.com\n  login melo.raulf@gmail.com\n  password $HEROKU_API_KEY" >> ~/.netrc
 
-          yarn global add heroku
+          npm install -g heroku
+          npm install -g pnpm
+
           heroku container:login
 
           docker tag raulfdm/raulmelo.dev-cms:latest registry.heroku.com/raulmelo-dev-server/web

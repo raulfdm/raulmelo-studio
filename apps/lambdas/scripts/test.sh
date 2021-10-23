@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-echo "Testing..."
-./../../scripts/common/test.sh $1
+echo "Testing Lambda Functions"
+./../../scripts/common/test.sh

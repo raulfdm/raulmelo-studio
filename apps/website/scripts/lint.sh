@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 
-echo "LINTING..."
-tsc
+echo "Linting website"
 ./../../scripts/common/lint.sh

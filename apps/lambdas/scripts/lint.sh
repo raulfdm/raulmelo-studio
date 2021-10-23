@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-echo "Linting..."
+echo "Linting Lambda Functions"
 ./../../scripts/common/lint.sh

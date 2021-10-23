@@ -4,7 +4,6 @@ on:
   push:
     paths:
       - 'apps/lambdas/**'
-      - 'scripts/**'
       - 'config/**'
       - '.github/workflows/lambdas.yml'
       - .eslintignore
@@ -23,25 +22,31 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install lerna and netlify
-        run: yarn global add lerna netlify-cli
+      - name: Install pnpm and netlify
+        run: npm install -g netlify-cli pnpm
 
-      - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
         with:
-          useRollingCache: true
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+
+      - name: Install dependencies
+        run: pnpm i --frozen-lockfile
 
       - name: Lint Projects
-        run: yarn lint --scope=lambdas
+        run: pnpm run lint --filter lambdas
 
       - name: Test Projects
-        run: yarn test --scope=lambdas
+        run: pnpm run test --filter lambdas
 
       - name: Build Projects
-        run: yarn build --scope=lambdas
+        run: pnpm run build --filter lambdas...
 
       - name: Deploy
-        run: yarn deploy --scope=lambdas
+        run: pnpm run deploy --filter lambdas
         if: contains('refs/heads/main', github.ref)
         env:
           NETLIFY_AUTH_TOKEN: ${{secrets.NETLIFY_AUTH_TOKEN}}

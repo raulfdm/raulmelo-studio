@@ -23,20 +23,25 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install lerna
-        run: yarn global add lerna
+      - name: Install pnpm
+        run: npm install -g pnpm
 
-      - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
         with:
-          useRollingCache: true
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
 
-      # Necessary because it's being used in the code
-      - name: Build packages
-        run: yarn build --scope=@raulfdm/core
+      - name: Install dependencies
+        run: pnpm i --frozen-lockfile
+
+      - name: Build dependents packages
+        run: pnpm run build --filter "website^..."
 
       - name: Lint Projects
-        run: yarn lint --scope=website
+        run: pnpm run lint --filter website
 
       - name: Test Projects
-        run: yarn test --scope=website
+        run: pnpm run test --filter website

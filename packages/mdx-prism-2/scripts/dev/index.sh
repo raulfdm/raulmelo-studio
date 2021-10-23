@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-./scripts/clean.sh && ./scripts/dev/dev.js $1
+export NODE_OPTIONS=--experimental-json-modules
+./scripts/clean.sh
+./scripts/dev/dev.js $@
