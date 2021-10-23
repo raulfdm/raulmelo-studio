@@ -36,8 +36,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-
 
+      - name: Install dependencies
+        run: pnpm i --frozen-lock --filter {packages/}
+
       - name: Lint Projects
-        run: pnpm run filter --filter {packages/}
+        run: pnpm run lint --filter {packages/}
 
       - name: Test Projects
         run: pnpm run test --filter {packages/}
