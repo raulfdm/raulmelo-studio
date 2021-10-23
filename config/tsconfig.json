@@ -1,6 +1,7 @@
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
   "compilerOptions": {
+    "incremental": true,
     "module": "esnext",
     "moduleResolution": "node",
     // interop between ESM and CJS modules. Recommended by TS
@@ -20,6 +21,6 @@
     "noUnusedParameters": true,
     "alwaysStrict": true,
     // resolve .json imports
-    "resolveJsonModule": true,
+    "resolveJsonModule": true
   }
 }

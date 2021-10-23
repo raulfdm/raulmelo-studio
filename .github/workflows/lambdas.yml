@@ -43,7 +43,7 @@ jobs:
         run: pnpm run test --filter lambdas
 
       - name: Build Projects
-        run: pnpm run build --filter lambdas
+        run: pnpm run build --filter lambdas...
 
       - name: Deploy
         run: pnpm run deploy --filter lambdas

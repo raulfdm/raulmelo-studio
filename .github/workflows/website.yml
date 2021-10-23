@@ -1,42 +1,45 @@
-# name: Website
+name: Website
 
-# on:
-#   push:
-#     paths:
-#       - 'apps/website/**'
-#       - 'scripts/**'
-#       - 'config/**'
-#       - '.github/workflows/website.yml'
-#       - .eslintignore
-#       - .eslintrc.js
-#       - package.json
+on:
+  push:
+    paths:
+      - 'apps/website/**'
+      - 'scripts/**'
+      - 'config/**'
+      - '.github/workflows/website.yml'
+      - .eslintignore
+      - .eslintrc.js
+      - package.json
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout repo
-#         uses: actions/checkout@v2
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
 
-#       - name: Use Node
-#         uses: actions/setup-node@v2
-#         with:
-#           node-version: '14'
+      - name: Use Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
 
-#       - name: Install lerna
-#         run: yarn global add lerna
+      - name: Install lerna
+        run: npm install -g pnpm
 
-#       - name: Install deps and build (with cache)
-#         uses: bahmutov/npm-install@v1
-#         with:
-#           useRollingCache: true
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
 
-#       # Necessary because it's being used in the code
-#       - name: Build packages
-#         run: yarn build --scope=@raulfdm/core
+      # Necessary because it's being used in the code
+      - name: Build packages
+        run: pnpm run build --filter core...
 
-#       - name: Lint Projects
-#         run: yarn lint --scope=website
+      - name: Lint Projects
+        run: pnpm run lint --filter website
 
-#       - name: Test Projects
-#         run: yarn test --scope=website
+      - name: Test Projects
+        run: pnpm run test --filter website

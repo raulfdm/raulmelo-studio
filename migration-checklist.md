@@ -9,23 +9,23 @@
 
 ## LAMBDAS
 
-- [ ] build
-- [ ] dev
-- [ ] deploy
-- [ ] lint
-- [ ] test
-- [ ] netlify.toml
+- [x] build
+- [x] dev
+- [x] deploy
+- [x] lint
+- [x] test
+- [x] netlify.toml
 
 ## WEBSITE
 
-- [ ] build
-- [ ] clean
-- [ ] dev
-- [ ] lint
-- [ ] postbuild
-- [ ] start
-- [ ] test
-- [ ] generateRss
+- [x] build
+- [x] clean
+- [x] dev
+- [x] lint
+- [x] postbuild
+- [x] start
+- [x] test
+- [x] generateRss
 
 ## WEBSITE-SVELTE
 

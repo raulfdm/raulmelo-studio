@@ -139,13 +139,13 @@ importers:
       strapi: 3.6.8
       strapi-admin: 3.6.8
       strapi-connector-mongoose: 3.6.8
-      strapi-plugin-content-manager: 3.6.8
-      strapi-plugin-content-type-builder: 3.6.8
+      strapi-plugin-content-manager: 3.6.8_@babel+runtime@7.15.4
+      strapi-plugin-content-type-builder: 3.6.8_@babel+runtime@7.15.4
       strapi-plugin-email: 3.6.8
       strapi-plugin-graphql: 3.6.8
       strapi-plugin-i18n: 3.6.8
-      strapi-plugin-upload: 3.6.8
-      strapi-plugin-users-permissions: 3.6.8
+      strapi-plugin-upload: 3.6.8_@babel+runtime@7.15.4
+      strapi-plugin-users-permissions: 3.6.8_@babel+runtime@7.15.4
       strapi-provider-upload-cloudinary: 3.6.8_strapi-plugin-upload@3.6.8
       strapi-utils: 3.6.8
 
@@ -205,7 +205,7 @@ importers:
       mdx-prism-2: '*'
       next: 11.1.2
       next-compose-plugins: 2.2.1
-      next-mdx-remote: 3.0.5
+      next-mdx-remote: 3.0.6
       next-seo: 4.28.1
       next-sitemap: 1.6.179
       query-string: 7.0.1
@@ -242,7 +242,7 @@ importers:
       lodash.throttle: 4.1.1
       mdx-prism-2: link:../../packages/mdx-prism-2
       next: 11.1.2_39969d7352d8af97f97f0d53dea4f445
-      next-mdx-remote: 3.0.5_react-dom@17.0.2+react@17.0.2
+      next-mdx-remote: 3.0.6_react-dom@17.0.2+react@17.0.2
       next-seo: 4.28.1_6fbf59523517da779df50d355b375324
       query-string: 7.0.1
       react: 17.0.2
@@ -897,7 +897,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.12.9
-      '@babel/helper-plugin-utils': 7.10.4
+      '@babel/helper-plugin-utils': 7.14.5
       '@babel/plugin-syntax-object-rest-spread': 7.8.3_@babel+core@7.12.9
       '@babel/plugin-transform-parameters': 7.15.4_@babel+core@7.12.9
     dev: false
@@ -1807,39 +1807,7 @@ packages:
       - '@babel/runtime'
     dev: false
 
-  /@buffetjs/core/3.3.8_7a082f7d10047d47195aea793f958a14:
-    resolution: {integrity: sha512-lDobqgC6aUigHPH7Cx82S/AzeMEer3SxepOZ9PMLxgyc0JeTK1jSAUTr6IYBrbZdYzvGX+zMFtneI4se93Q/Vg==}
-    peerDependencies:
-      react: ^16.9.0
-      react-dom: ^16.8.6
-      styled-components: ^5.0.0
-    dependencies:
-      '@buffetjs/hooks': 3.3.8_react@17.0.2
-      '@buffetjs/icons': 3.3.8_c17876e09d792e0c7b0f44e49f814625
-      '@buffetjs/styles': 3.3.8_7a4a8f2235bb67b067eba1cc600e0785
-      '@buffetjs/utils': 3.3.8
-      '@fortawesome/fontawesome-svg-core': 1.2.36
-      '@fortawesome/free-regular-svg-icons': 5.15.4
-      '@fortawesome/free-solid-svg-icons': 5.15.4
-      '@fortawesome/react-fontawesome': 0.1.16_f515edce028694561ceb456e3dba224c
-      invariant: 2.2.4
-      lodash: 4.17.21
-      moment: 2.29.1
-      prop-types: 15.7.2
-      rc-input-number: 4.6.3
-      react: 17.0.2
-      react-dates: 21.8.0_d0804d3726ad84366bcc42e494508e1e
-      react-dom: 17.0.2_react@17.0.2
-      react-moment-proptypes: 1.8.1
-      react-router-dom: 5.3.0_react@17.0.2
-      react-with-direction: 1.4.0_react-dom@17.0.2+react@17.0.2
-      reactstrap: 8.10.0_react-dom@17.0.2+react@17.0.2
-      styled-components: 5.3.3_react-dom@17.0.2+react@17.0.2
-    transitivePeerDependencies:
-      - '@babel/runtime'
-    dev: false
-
-  /@buffetjs/core/3.3.8_react-dom@17.0.2+react@17.0.2:
+  /@buffetjs/core/3.3.8_d8639ecdef37434ccbad8c4188f415e8:
     resolution: {integrity: sha512-lDobqgC6aUigHPH7Cx82S/AzeMEer3SxepOZ9PMLxgyc0JeTK1jSAUTr6IYBrbZdYzvGX+zMFtneI4se93Q/Vg==}
     peerDependencies:
       react: ^16.9.0
@@ -1848,7 +1816,7 @@ packages:
     dependencies:
       '@buffetjs/hooks': 3.3.8_react@17.0.2
       '@buffetjs/icons': 3.3.8_react@17.0.2
-      '@buffetjs/styles': 3.3.8_d0804d3726ad84366bcc42e494508e1e
+      '@buffetjs/styles': 3.3.8_7e567a079aa0283cf67817adac9bef7a
       '@buffetjs/utils': 3.3.8
       '@fortawesome/fontawesome-svg-core': 1.2.36
       '@fortawesome/free-regular-svg-icons': 5.15.4
@@ -1860,7 +1828,7 @@ packages:
       prop-types: 15.7.2
       rc-input-number: 4.6.3
       react: 17.0.2
-      react-dates: 21.8.0_d0804d3726ad84366bcc42e494508e1e
+      react-dates: 21.8.0_7e567a079aa0283cf67817adac9bef7a
       react-dom: 17.0.2_react@17.0.2
       react-moment-proptypes: 1.8.1
       react-router-dom: 5.3.0_react@17.0.2
@@ -1890,34 +1858,14 @@ packages:
       - react-dom
     dev: false
 
-  /@buffetjs/custom/3.3.8_7a082f7d10047d47195aea793f958a14:
+  /@buffetjs/custom/3.3.8_d8639ecdef37434ccbad8c4188f415e8:
     resolution: {integrity: sha512-QmCA0aLhSrGRXxFI+Cu94xp/Xk8FDjESE6dDf2ipM13OpOpN6XQiEcf8aNRP5/MASdxEfDDL2yh25jXavD2Ayg==}
     peerDependencies:
       react: ^16.8.6
       styled-components: ^5.0.0
     dependencies:
-      '@buffetjs/core': 3.3.8_7a082f7d10047d47195aea793f958a14
-      '@buffetjs/styles': 3.3.8_7a4a8f2235bb67b067eba1cc600e0785
-      '@buffetjs/utils': 3.3.8
-      lodash: 4.17.21
-      moment: 2.29.1
-      prop-types: 15.7.2
-      react: 17.0.2
-      react-moment-proptypes: 1.8.1
-      styled-components: 5.3.3_react-dom@17.0.2+react@17.0.2
-    transitivePeerDependencies:
-      - '@babel/runtime'
-      - react-dom
-    dev: false
-
-  /@buffetjs/custom/3.3.8_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-QmCA0aLhSrGRXxFI+Cu94xp/Xk8FDjESE6dDf2ipM13OpOpN6XQiEcf8aNRP5/MASdxEfDDL2yh25jXavD2Ayg==}
-    peerDependencies:
-      react: ^16.8.6
-      styled-components: ^5.0.0
-    dependencies:
-      '@buffetjs/core': 3.3.8_react-dom@17.0.2+react@17.0.2
-      '@buffetjs/styles': 3.3.8_d0804d3726ad84366bcc42e494508e1e
+      '@buffetjs/core': 3.3.8_d8639ecdef37434ccbad8c4188f415e8
+      '@buffetjs/styles': 3.3.8_7e567a079aa0283cf67817adac9bef7a
       '@buffetjs/utils': 3.3.8
       lodash: 4.17.21
       moment: 2.29.1
@@ -1958,7 +1906,7 @@ packages:
       react: 17.0.2
     dev: false
 
-  /@buffetjs/styles/3.3.8_7a4a8f2235bb67b067eba1cc600e0785:
+  /@buffetjs/styles/3.3.8_7e567a079aa0283cf67817adac9bef7a:
     resolution: {integrity: sha512-YkBoXyg6qKe8tUwQQJaieC1hfyBQKLhQZCsIWqhiswr+CJhIJS+YFRQHGQXCo+k3yhHmpXdJqKeMSoBkHr6Xvw==}
     peerDependencies:
       react: ^16.9.0
@@ -1971,16 +1919,15 @@ packages:
       '@fortawesome/react-fontawesome': 0.1.16_f515edce028694561ceb456e3dba224c
       prop-types: 15.7.2
       react: 17.0.2
-      react-dates: 21.8.0_d0804d3726ad84366bcc42e494508e1e
+      react-dates: 21.8.0_7e567a079aa0283cf67817adac9bef7a
       react-tooltip: 4.2.21_react-dom@17.0.2+react@17.0.2
-      styled-components: 5.3.3_react-dom@17.0.2+react@17.0.2
     transitivePeerDependencies:
       - '@babel/runtime'
       - moment
       - react-dom
     dev: false
 
-  /@buffetjs/styles/3.3.8_d0804d3726ad84366bcc42e494508e1e:
+  /@buffetjs/styles/3.3.8_d8639ecdef37434ccbad8c4188f415e8:
     resolution: {integrity: sha512-YkBoXyg6qKe8tUwQQJaieC1hfyBQKLhQZCsIWqhiswr+CJhIJS+YFRQHGQXCo+k3yhHmpXdJqKeMSoBkHr6Xvw==}
     peerDependencies:
       react: ^16.9.0
@@ -1993,7 +1940,7 @@ packages:
       '@fortawesome/react-fontawesome': 0.1.16_f515edce028694561ceb456e3dba224c
       prop-types: 15.7.2
       react: 17.0.2
-      react-dates: 21.8.0_d0804d3726ad84366bcc42e494508e1e
+      react-dates: 21.8.0_d8639ecdef37434ccbad8c4188f415e8
       react-tooltip: 4.2.21_react-dom@17.0.2+react@17.0.2
     transitivePeerDependencies:
       - '@babel/runtime'
@@ -2017,27 +1964,6 @@ packages:
       react-dates: 21.8.0_7e567a079aa0283cf67817adac9bef7a
       react-tooltip: 4.2.21_react-dom@17.0.2+react@17.0.2
       styled-components: 5.3.3_1f55980affd76ea66174a1939c753673
-    transitivePeerDependencies:
-      - '@babel/runtime'
-      - moment
-      - react-dom
-    dev: false
-
-  /@buffetjs/styles/3.3.8_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-YkBoXyg6qKe8tUwQQJaieC1hfyBQKLhQZCsIWqhiswr+CJhIJS+YFRQHGQXCo+k3yhHmpXdJqKeMSoBkHr6Xvw==}
-    peerDependencies:
-      react: ^16.9.0
-      styled-components: ^5.0.0
-    dependencies:
-      '@fortawesome/fontawesome-free': 5.15.4
-      '@fortawesome/fontawesome-svg-core': 1.2.36
-      '@fortawesome/free-regular-svg-icons': 5.15.4
-      '@fortawesome/free-solid-svg-icons': 5.15.4
-      '@fortawesome/react-fontawesome': 0.1.16_f515edce028694561ceb456e3dba224c
-      prop-types: 15.7.2
-      react: 17.0.2
-      react-dates: 21.8.0_react-dom@17.0.2+react@17.0.2
-      react-tooltip: 4.2.21_react-dom@17.0.2+react@17.0.2
     transitivePeerDependencies:
       - '@babel/runtime'
       - moment
@@ -5223,7 +5149,7 @@ packages:
       loader-utils: 1.4.0
       make-dir: 3.1.0
       schema-utils: 2.7.1
-      webpack: 4.46.0_webpack-cli@3.3.12
+      webpack: 4.46.0
     dev: false
 
   /babel-plugin-apply-mdx-type-prop/1.6.22_@babel+core@7.12.9:
@@ -7714,7 +7640,6 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-darwin-64/0.13.4:
@@ -7730,7 +7655,6 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-darwin-arm64/0.13.4:
@@ -7746,7 +7670,6 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-freebsd-64/0.13.4:
@@ -7762,7 +7685,6 @@ packages:
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-freebsd-arm64/0.13.4:
@@ -7778,7 +7700,6 @@ packages:
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-linux-32/0.13.4:
@@ -7794,7 +7715,6 @@ packages:
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-linux-64/0.13.4:
@@ -7810,7 +7730,6 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-linux-arm/0.13.4:
@@ -7826,7 +7745,6 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-linux-arm64/0.13.4:
@@ -7842,7 +7760,6 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-linux-mips64le/0.13.4:
@@ -7858,7 +7775,6 @@ packages:
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-linux-ppc64le/0.13.4:
@@ -7874,7 +7790,6 @@ packages:
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-netbsd-64/0.13.8:
@@ -7882,7 +7797,6 @@ packages:
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-openbsd-64/0.13.4:
@@ -7898,7 +7812,6 @@ packages:
     cpu: [x64]
     os: [openbsd]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-plugin-d.ts/1.0.6_ts-node@10.2.1+typescript@4.4.3:
@@ -7930,7 +7843,6 @@ packages:
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-windows-32/0.13.4:
@@ -7946,7 +7858,6 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-windows-64/0.13.4:
@@ -7962,7 +7873,6 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-windows-arm64/0.13.4:
@@ -7978,13 +7888,13 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild/0.12.29:
     resolution: {integrity: sha512-w/XuoBCSwepyiZtIRsKsetiLDUVGPVw1E/R3VTFSecIy8UR7Cq3SOtwKHJMFoVqqVG36aGkzh4e8BvpO1Fdc7g==}
     hasBin: true
     requiresBuild: true
+    dev: true
 
   /esbuild/0.13.4:
     resolution: {integrity: sha512-wMA5eUwpavTBiNl+It6j8OQuKVh69l6z4DKDLzoTIqC+gChnPpcmqdA8WNHptUHRnfyML+mKEQPlW7Mybj8gHg==}
@@ -8031,7 +7941,6 @@ packages:
       esbuild-windows-32: 0.13.8
       esbuild-windows-64: 0.13.8
       esbuild-windows-arm64: 0.13.8
-    dev: true
 
   /escalade/3.1.1:
     resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
@@ -13128,15 +13037,15 @@ packages:
     resolution: {integrity: sha512-OjJ+fV15FXO2uQXQagLD4C0abYErBjyjE0I0FHpOEIB8upw0hg1ldFP6cqHTJBH1cZqy96OeR3u1dJ+Ez2D4Bg==}
     dev: true
 
-  /next-mdx-remote/3.0.5_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-m9OD2GBuqvz/IeM/h4kufQ7GEdaCaZ4owqkCQ+yoxzCIM7jVQYK9JWXNVcyPP/Y6FBS00fLH03Hn5VFdvkFf0A==}
+  /next-mdx-remote/3.0.6_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-nLyDACEvebCwZonab29/AayXddgActZRcWvtsX8KKzxeRQH4Kjm9/5psD5ARU6ZTa3lALhVss+nCbejll3o5/g==}
     peerDependencies:
       react: '>=16.x <=17.x'
       react-dom: '>=16.x <=17.x'
     dependencies:
       '@mdx-js/mdx': 1.6.22
       '@mdx-js/react': 1.6.22_react@17.0.2
-      esbuild: 0.12.29
+      esbuild: 0.13.8
       pkg-dir: 5.0.0
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -15177,7 +15086,7 @@ packages:
       react-with-styles-interface-css: 6.0.0_9b083d6cf088088c74b21b078635947d
     dev: false
 
-  /react-dates/21.8.0_d0804d3726ad84366bcc42e494508e1e:
+  /react-dates/21.8.0_d8639ecdef37434ccbad8c4188f415e8:
     resolution: {integrity: sha512-PPriGqi30CtzZmoHiGdhlA++YPYPYGCZrhydYmXXQ6RAvAsaONcPtYgXRTLozIOrsQ5mSo40+DiA5eOFHnZ6xw==}
     peerDependencies:
       '@babel/runtime': ^7.0.0
@@ -15185,34 +15094,7 @@ packages:
       react: ^0.14 || ^15.5.4 || ^16.1.1
       react-dom: ^0.14 || ^15.5.4 || ^16.1.1
     dependencies:
-      airbnb-prop-types: 2.16.0_react@17.0.2
-      consolidated-events: 2.0.2
-      enzyme-shallow-equal: 1.0.4
-      is-touch-device: 1.0.1
-      lodash: 4.17.21
-      moment: 2.29.1
-      object.assign: 4.1.2
-      object.values: 1.1.5
-      prop-types: 15.7.2
-      raf: 3.4.1
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
-      react-moment-proptypes: 1.8.1
-      react-outside-click-handler: 1.3.0_react-dom@17.0.2+react@17.0.2
-      react-portal: 4.2.1_react@17.0.2
-      react-with-direction: 1.4.0_react-dom@17.0.2+react@17.0.2
-      react-with-styles: 4.2.0_react-dom@17.0.2+react@17.0.2
-      react-with-styles-interface-css: 6.0.0_react-with-styles@4.2.0
-    dev: false
-
-  /react-dates/21.8.0_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-PPriGqi30CtzZmoHiGdhlA++YPYPYGCZrhydYmXXQ6RAvAsaONcPtYgXRTLozIOrsQ5mSo40+DiA5eOFHnZ6xw==}
-    peerDependencies:
-      '@babel/runtime': ^7.0.0
-      moment: ^2.18.1
-      react: ^0.14 || ^15.5.4 || ^16.1.1
-      react-dom: ^0.14 || ^15.5.4 || ^16.1.1
-    dependencies:
+      '@babel/runtime': 7.15.4
       airbnb-prop-types: 2.16.0_react@17.0.2
       consolidated-events: 2.0.2
       enzyme-shallow-equal: 1.0.4
@@ -15228,8 +15110,8 @@ packages:
       react-outside-click-handler: 1.3.0_react-dom@17.0.2+react@17.0.2
       react-portal: 4.2.1_react@17.0.2
       react-with-direction: 1.4.0_react-dom@17.0.2+react@17.0.2
-      react-with-styles: 4.2.0_react-dom@17.0.2+react@17.0.2
-      react-with-styles-interface-css: 6.0.0_react-with-styles@4.2.0
+      react-with-styles: 4.2.0_d8639ecdef37434ccbad8c4188f415e8
+      react-with-styles-interface-css: 6.0.0_9b083d6cf088088c74b21b078635947d
     dev: false
 
   /react-dnd-html5-backend/10.0.2:
@@ -15728,17 +15610,6 @@ packages:
       react-with-styles: 4.2.0_d8639ecdef37434ccbad8c4188f415e8
     dev: false
 
-  /react-with-styles-interface-css/6.0.0_react-with-styles@4.2.0:
-    resolution: {integrity: sha512-6khSG1Trf4L/uXOge/ZAlBnq2O2PEXlQEqAhCRbvzaQU4sksIkdwpCPEl6d+DtP3+IdhyffTWuHDO9lhe1iYvA==}
-    peerDependencies:
-      '@babel/runtime': ^7.0.0
-      react-with-styles: ^3.0.0 || ^4.0.0
-    dependencies:
-      array.prototype.flat: 1.2.5
-      global-cache: 1.2.1
-      react-with-styles: 4.2.0_react-dom@17.0.2+react@17.0.2
-    dev: false
-
   /react-with-styles/4.2.0_d8639ecdef37434ccbad8c4188f415e8:
     resolution: {integrity: sha512-tZCTY27KriRNhwHIbg1NkSdTTOSfXDg6Z7s+Q37mtz0Ym7Sc7IOr3PzVt4qJhJMW6Nkvfi3g34FuhtiGAJCBQA==}
     peerDependencies:
@@ -15746,22 +15617,6 @@ packages:
       react: '>=0.14'
     dependencies:
       '@babel/runtime': 7.15.4
-      airbnb-prop-types: 2.16.0_react@17.0.2
-      hoist-non-react-statics: 3.3.2
-      object.assign: 4.1.2
-      prop-types: 15.7.2
-      react: 17.0.2
-      react-with-direction: 1.4.0_react-dom@17.0.2+react@17.0.2
-    transitivePeerDependencies:
-      - react-dom
-    dev: false
-
-  /react-with-styles/4.2.0_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-tZCTY27KriRNhwHIbg1NkSdTTOSfXDg6Z7s+Q37mtz0Ym7Sc7IOr3PzVt4qJhJMW6Nkvfi3g34FuhtiGAJCBQA==}
-    peerDependencies:
-      '@babel/runtime': ^7.0.0
-      react: '>=0.14'
-    dependencies:
       airbnb-prop-types: 2.16.0_react@17.0.2
       hoist-non-react-statics: 3.3.2
       object.assign: 4.1.2
@@ -17523,15 +17378,15 @@ packages:
       strapi-utils: 3.6.8
     dev: false
 
-  /strapi-helper-plugin/3.6.8:
+  /strapi-helper-plugin/3.6.8_@babel+runtime@7.15.4:
     resolution: {integrity: sha512-nKXotVyqqGYYj5l3cR4wYqcvY9QZOpmom77ziNTPvQFLqp0jmfrNUYfV6QMYa6LpuffJJgmSIHl4chS2GuBD+w==}
     engines: {node: '>=10.16.0 <=14.x.x', npm: '>=6.0.0'}
     dependencies:
-      '@buffetjs/core': 3.3.8_7a082f7d10047d47195aea793f958a14
-      '@buffetjs/custom': 3.3.8_7a082f7d10047d47195aea793f958a14
+      '@buffetjs/core': 3.3.8_1885f3464208da2f63eb3dc4bd567729
+      '@buffetjs/custom': 3.3.8_1885f3464208da2f63eb3dc4bd567729
       '@buffetjs/hooks': 3.3.8_react@17.0.2
       '@buffetjs/icons': 3.3.8_c17876e09d792e0c7b0f44e49f814625
-      '@buffetjs/styles': 3.3.8_7a4a8f2235bb67b067eba1cc600e0785
+      '@buffetjs/styles': 3.3.8_f6a9f7c613f24be9b6ce7f597258fbaa
       '@buffetjs/utils': 3.3.8
       '@fortawesome/fontawesome-free': 5.15.4
       '@fortawesome/fontawesome-svg-core': 1.2.36
@@ -17597,15 +17452,15 @@ packages:
       - react-is
     dev: false
 
-  /strapi-plugin-content-manager/3.6.8:
+  /strapi-plugin-content-manager/3.6.8_@babel+runtime@7.15.4:
     resolution: {integrity: sha512-cNI+/Shx4ayd3FUfoy3E/BG2yutczos5LX8XCgHdBGVI1YkIdNbnGJXd+fL4jQQZzDRwI9fABs6VXeQCyuCY8A==}
     engines: {node: '>=10.16.0 <=14.x.x', npm: '>=6.0.0'}
     dependencies:
-      '@buffetjs/core': 3.3.8_react-dom@17.0.2+react@17.0.2
-      '@buffetjs/custom': 3.3.8_react-dom@17.0.2+react@17.0.2
+      '@buffetjs/core': 3.3.8_d8639ecdef37434ccbad8c4188f415e8
+      '@buffetjs/custom': 3.3.8_d8639ecdef37434ccbad8c4188f415e8
       '@buffetjs/hooks': 3.3.8_react@17.0.2
       '@buffetjs/icons': 3.3.8_react@17.0.2
-      '@buffetjs/styles': 3.3.8_react-dom@17.0.2+react@17.0.2
+      '@buffetjs/styles': 3.3.8_d8639ecdef37434ccbad8c4188f415e8
       '@buffetjs/utils': 3.3.8
       '@sindresorhus/slugify': 1.1.0
       classnames: 2.3.1
@@ -17637,7 +17492,7 @@ packages:
       redux-immutable: 4.0.0_immutable@3.8.2
       reselect: 4.0.0
       sanitize-html: 2.3.3
-      strapi-helper-plugin: 3.6.8
+      strapi-helper-plugin: 3.6.8_@babel+runtime@7.15.4
       strapi-utils: 3.6.8
       yup: 0.32.11
     transitivePeerDependencies:
@@ -17650,15 +17505,15 @@ packages:
       - styled-components
     dev: false
 
-  /strapi-plugin-content-type-builder/3.6.8:
+  /strapi-plugin-content-type-builder/3.6.8_@babel+runtime@7.15.4:
     resolution: {integrity: sha512-kxCPNHV15JmNz3PUdb/8I5mj4i0n8HicumSvqZh3LxovUaIqd0tGioMd4pJ3BY8XcPI7SpdZrEsbPHTqlQIEvg==}
     engines: {node: '>=10.16.0 <=14.x.x', npm: '>=6.0.0'}
     dependencies:
-      '@buffetjs/core': 3.3.8_react-dom@17.0.2+react@17.0.2
-      '@buffetjs/custom': 3.3.8_react-dom@17.0.2+react@17.0.2
+      '@buffetjs/core': 3.3.8_d8639ecdef37434ccbad8c4188f415e8
+      '@buffetjs/custom': 3.3.8_d8639ecdef37434ccbad8c4188f415e8
       '@buffetjs/hooks': 3.3.8_react@17.0.2
       '@buffetjs/icons': 3.3.8_react@17.0.2
-      '@buffetjs/styles': 3.3.8_react-dom@17.0.2+react@17.0.2
+      '@buffetjs/styles': 3.3.8_d8639ecdef37434ccbad8c4188f415e8
       '@buffetjs/utils': 3.3.8
       '@sindresorhus/slugify': 1.1.0
       fs-extra: 9.1.0
@@ -17677,7 +17532,7 @@ packages:
       reselect: 4.0.0
       strapi-generate: 3.6.8
       strapi-generate-api: 3.6.8
-      strapi-helper-plugin: 3.6.8
+      strapi-helper-plugin: 3.6.8_@babel+runtime@7.15.4
       strapi-utils: 3.6.8
       yup: 0.32.11
     transitivePeerDependencies:
@@ -17736,15 +17591,15 @@ packages:
       strapi-utils: 3.6.8
     dev: false
 
-  /strapi-plugin-upload/3.6.8:
+  /strapi-plugin-upload/3.6.8_@babel+runtime@7.15.4:
     resolution: {integrity: sha512-uVNwtJP7yMqSn02VG7zuECRqdRWQyaZ9G9Wac/+p3GyPXAnzTiitBNMWgWnkZFO/LAulrSvIF2w3IMBIrJfIpw==}
     engines: {node: '>=10.16.0 <=14.x.x', npm: '>=6.0.0'}
     dependencies:
-      '@buffetjs/core': 3.3.8_react-dom@17.0.2+react@17.0.2
-      '@buffetjs/custom': 3.3.8_react-dom@17.0.2+react@17.0.2
+      '@buffetjs/core': 3.3.8_d8639ecdef37434ccbad8c4188f415e8
+      '@buffetjs/custom': 3.3.8_d8639ecdef37434ccbad8c4188f415e8
       '@buffetjs/hooks': 3.3.8_react@17.0.2
       '@buffetjs/icons': 3.3.8_react@17.0.2
-      '@buffetjs/styles': 3.3.8_react-dom@17.0.2+react@17.0.2
+      '@buffetjs/styles': 3.3.8_d8639ecdef37434ccbad8c4188f415e8
       '@buffetjs/utils': 3.3.8
       byte-size: 7.0.1
       cropperjs: 1.5.12
@@ -17764,7 +17619,7 @@ packages:
       react-router-dom: 5.3.0_react@17.0.2
       reactstrap: 8.4.1_react-dom@17.0.2+react@17.0.2
       sharp: 0.28.1
-      strapi-helper-plugin: 3.6.8
+      strapi-helper-plugin: 3.6.8_@babel+runtime@7.15.4
       strapi-provider-upload-local: 3.6.8_strapi-plugin-upload@3.6.8
       strapi-utils: 3.6.8
       stream-to-array: 2.3.0
@@ -17781,15 +17636,15 @@ packages:
       - supports-color
     dev: false
 
-  /strapi-plugin-users-permissions/3.6.8:
+  /strapi-plugin-users-permissions/3.6.8_@babel+runtime@7.15.4:
     resolution: {integrity: sha512-DZPPYMUzcDxadc3BHntEobVwrWwYsI1hHK+ENTU0EVD1w9Zi4h41Bae5DKIuqwRCK2G24Dsmr5G/edcVCFeRCg==}
     engines: {node: '>=10.16.0 <=14.x.x', npm: '>=6.0.0'}
     dependencies:
-      '@buffetjs/core': 3.3.8_react-dom@17.0.2+react@17.0.2
-      '@buffetjs/custom': 3.3.8_react-dom@17.0.2+react@17.0.2
+      '@buffetjs/core': 3.3.8_d8639ecdef37434ccbad8c4188f415e8
+      '@buffetjs/custom': 3.3.8_d8639ecdef37434ccbad8c4188f415e8
       '@buffetjs/hooks': 3.3.8_react@17.0.2
       '@buffetjs/icons': 3.3.8_react@17.0.2
-      '@buffetjs/styles': 3.3.8_react-dom@17.0.2+react@17.0.2
+      '@buffetjs/styles': 3.3.8_d8639ecdef37434ccbad8c4188f415e8
       '@buffetjs/utils': 3.3.8
       '@purest/providers': 1.0.4
       bcryptjs: 2.4.3
@@ -17808,7 +17663,7 @@ packages:
       reactstrap: 8.4.1_react-dom@17.0.2+react@17.0.2
       redux-saga: 0.16.2
       request: 2.88.2
-      strapi-helper-plugin: 3.6.8
+      strapi-helper-plugin: 3.6.8_@babel+runtime@7.15.4
       strapi-utils: 3.6.8
       uuid: 3.4.0
     transitivePeerDependencies:
@@ -17846,7 +17701,7 @@ packages:
     dependencies:
       cloudinary: 1.27.1
       into-stream: 5.1.1
-      strapi-plugin-upload: 3.6.8
+      strapi-plugin-upload: 3.6.8_@babel+runtime@7.15.4
     dev: false
 
   /strapi-provider-upload-local/3.6.8_strapi-plugin-upload@3.6.8:
@@ -17855,7 +17710,7 @@ packages:
     peerDependencies:
       strapi-plugin-upload: ^3.1.6
     dependencies:
-      strapi-plugin-upload: 3.6.8
+      strapi-plugin-upload: 3.6.8_@babel+runtime@7.15.4
     dev: false
 
   /strapi-utils/3.6.8:

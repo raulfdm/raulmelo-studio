@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
-echo "LINTING..."
-tsc
+echo "Linting website"
+echo "=============================="
 ./../../scripts/common/lint.sh
+
+echo "Running TSC"
+pnpm tsc

@@ -23,6 +23,15 @@ const nextConfig = {
     domains: ['res.cloudinary.com', 'miro.medium.com', 'media.giphy.com'],
   },
   webpack: (config, { isServer }) => {
+    /**
+     * Because next-mdx-remote defines esbuild as production dependency,
+     * next will try to transpile it and include it in the bundle.
+     * This will trigger syntax and "cannot include esbuild in the bundle" errors.
+     *
+     * Knowing that, we have to manually mark esbuild as external.
+     */
+    config.externals.push('esbuild');
+
     config.resolve.alias = {
       ...config.resolve.alias,
       '@components': path.resolve(__dirname, './src/components'),
