@@ -15,11 +15,10 @@ Each project/package uses different technologies because they have different pur
 
 For the root level I'm using:
 
-- [pnpm + pnp workspaces](https://pnpm.io/) - Maintain this Monorepo
-- [TypeScript](https://www.typescriptlang.org/) - core programming language
-- [scripty](https://www.npmjs.com/package/scripty) - Run npm scripts with bash files
-- [Babel](https://babeljs.io/) - Parse and bundle together with TSC
-- [commitlint](https://commitlint.js.org/#/) - Ensure commit consistency
+- [pnpm + pnp workspaces](https://pnpm.io/) - Maintain this Monorepo;
+- [changesets](https://github.com/atlassian/changesets) - Automation for package release and changelog;
+- [TypeScript](https://www.typescriptlang.org/) - core programming language;
+- [scripty](https://www.npmjs.com/package/scripty) - Run npm scripts with bash files;
 
 ## Structure
 
