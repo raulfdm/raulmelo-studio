@@ -2,4 +2,4 @@
 
 echo "Dev server..."
 
-./scripts/fetchSiteData.js && yarn svelte-kit dev
+./scripts/fetchSiteData.js && pnpm svelte-kit dev

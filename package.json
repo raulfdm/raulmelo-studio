@@ -1,16 +1,6 @@
 {
   "name": "root",
   "private": true,
-  "workspaces": {
-    "packages": [
-      "packages/*",
-      "apps/*"
-    ],
-    "nohoist": [
-      "**/netlify-lambda",
-      "**/netlify-lambda/**"
-    ]
-  },
   "devDependencies": {
     "@babel/core": "7.15.8",
     "@babel/plugin-transform-object-assign": "7.14.5",

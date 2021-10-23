@@ -17,7 +17,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
         with:
-          # pulls all commits (needed for lerna / semantic release to correctly version)
+          # pulls all commits (needed for monorepo / semantic release to correctly version)
           fetch-depth: 0
 
       - name: Use Node

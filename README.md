@@ -15,7 +15,7 @@ Each project/package uses different technologies because they have different pur
 
 For the root level I'm using:
 
-- [Lerna](https://lerna.js.org/) + [Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) - Maintain this Monorepo
+- [pnpm + pnp workspaces](https://pnpm.io/) - Maintain this Monorepo
 - [TypeScript](https://www.typescriptlang.org/) - core programming language
 - [scripty](https://www.npmjs.com/package/scripty) - Run npm scripts with bash files
 - [Babel](https://babeljs.io/) - Parse and bundle together with TSC
@@ -33,8 +33,6 @@ I've decided to divide this project into 2 types of projects:
 I might need to run a specific workflow for each package/app. Doing that with npm script will be hard, I've introduced the package `scripty`.
 
 This helper allows me to use an executable file (e.g. `bash` or `node exec`) to determine what needs to happen.
-
-In that sense, I have workspace level scripts which are most scripts that call `lerna` to run `build`, `lint`, etc. In general, commands would be generic for everyone.
 
 Then I have per package/app script which calls whatever they need in other to make it work (e.g. `nextjs cli`, `tsdx cli`, etc.). For some commands, they can refer to a common script (e.g. `lint` and `test`) in the root level script if they don't need to do anything special for these commands.
 
