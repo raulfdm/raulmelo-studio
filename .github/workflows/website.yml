@@ -34,6 +34,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-
 
+      - name: Install dependencies
+        run: pnpm i --frozen-lockfile
+
       - name: Lint Projects
         run: pnpm run lint --filter website
 
