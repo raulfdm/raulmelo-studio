@@ -37,6 +37,9 @@ jobs:
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
 
+      - name: Build dependents packages
+        run: pnpm run build --filter "website^..."
+
       - name: Lint Projects
         run: pnpm run lint --filter website
 
