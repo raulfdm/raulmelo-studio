@@ -34,10 +34,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-
 
-      # Necessary because it's being used in the code
-      - name: Build packages
-        run: pnpm run build --filter core...
-
       - name: Lint Projects
         run: pnpm run lint --filter website
 
