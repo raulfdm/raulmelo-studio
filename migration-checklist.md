@@ -40,21 +40,21 @@
 
 ## CORE
 
-- [ ] build
-- [ ] lint
-- [ ] watch
+- [x] build
+- [x] lint
+- [x] watch
 
 ## MDX-PRISM-2
 
-- [ ] build
-- [ ] dev
-- [ ] lint
-- [ ] test
-- [ ] prepare
+- [x] build
+- [x] dev
+- [x] lint
+- [x] test
+- [x] prepare
 
 ## Workflows
 
-- [ ] cms-deploy
-- [ ] lambdas
-- [ ] packages
-- [ ] website
+- [x] cms-deploy
+- [x] lambdas
+- [x] packages
+- [x] website
