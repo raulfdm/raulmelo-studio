@@ -49,7 +49,7 @@ importers:
       eslint-plugin-react-hooks: 4.2.0
       glob: 7.2.0
       husky: 7.0.2
-      jest: 27.2.5
+      jest: 27.3.1
       mockdate: 3.0.5
       node-fetch: 3.0.0
       npm-run-all: 4.1.5
@@ -89,7 +89,7 @@ importers:
       eslint-plugin-react-hooks: 4.2.0_eslint@7.32.0
       glob: 7.2.0
       husky: 7.0.2
-      jest: 27.2.5_ts-node@10.3.0
+      jest: 27.3.1_ts-node@10.3.0
       mockdate: 3.0.5
       node-fetch: 3.0.0
       npm-run-all: 4.1.5
@@ -5113,6 +5113,7 @@ packages:
 
   /bindings/1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
+    requiresBuild: true
     dependencies:
       file-uri-to-path: 1.0.0
     dev: false
@@ -8370,6 +8371,7 @@ packages:
 
   /file-uri-to-path/1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -10995,8 +10997,8 @@ packages:
       supports-color: 8.1.1
     dev: true
 
-  /jest/27.2.5_ts-node@10.3.0:
-    resolution: {integrity: sha512-vDMzXcpQN4Ycaqu+vO7LX8pZwNNoKMhc+gSp6q1D8S6ftRk8gNW8cni3YFxknP95jxzQo23Lul0BI2FrWgnwYQ==}
+  /jest/27.3.1_ts-node@10.3.0:
+    resolution: {integrity: sha512-U2AX0AgQGd5EzMsiZpYt8HyZ+nSVIh5ujQ9CPp9EQZJMjXIiSZpJNweZl0swatKRoqHWgGKM3zaSwm4Zaz87ng==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     hasBin: true
     peerDependencies:
@@ -12531,6 +12533,7 @@ packages:
 
   /nan/2.15.0:
     resolution: {integrity: sha512-8ZtvEnA2c5aYCZYd1cvgdnU6cqwixRoYg70xPLWUws5ORTa/lnw+u4amixRS/Ac5U5mQVgp9pnlSUnbNWFaWZQ==}
+    requiresBuild: true
     dev: false
     optional: true
 
