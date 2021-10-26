@@ -9,6 +9,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 const nextConfig = {
+  swcMinify: true,
   experimental: {
     esmExternals: 'loose',
   },
@@ -21,6 +22,7 @@ const nextConfig = {
   redirects,
   images: {
     domains: ['res.cloudinary.com', 'miro.medium.com', 'media.giphy.com'],
+    formats: ['image/avif', 'image/webp'],
   },
   webpack: (config, { isServer }) => {
     /**
