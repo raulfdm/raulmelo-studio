@@ -1,16 +1,12 @@
 module.exports = {
-  branchPrefix: 'renovate/',
-  dryRun: true,
+  baseBranches: ['main'],
+  labels: ['dependencies'],
+  branchPrefix: 'deps/',
+  commitMessagePrefix: 'chore:',
+  commitMessageTopic: '{{depName}}',
   username: 'renovate-release',
   gitAuthor: 'Renovate Bot <bot@renovateapp.com>',
-  onboarding: false,
   platform: 'github',
-  includeForks: true,
-  repositories: [
-    'renovatebot/github-action',
-    'renovate-tests/cocoapods1',
-    'renovate-tests/gomod1',
-  ],
   packageRules: [
     {
       description: 'lockFileMaintenance',
