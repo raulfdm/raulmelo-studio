@@ -7,6 +7,11 @@ module.exports = {
   username: 'renovate-release',
   gitAuthor: 'Renovate Bot <bot@renovateapp.com>',
   platform: 'github',
+  repositories: [
+    'renovatebot/github-action',
+    'renovate-tests/cocoapods1',
+    'renovate-tests/gomod1',
+  ],
   packageRules: [
     {
       description: 'lockFileMaintenance',
