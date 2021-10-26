@@ -3,7 +3,7 @@ lockfileVersion: 5.3
 overrides:
   '@npmcli/arborist': ^2.8.2
   ansi-regex: ^5.0.1
-  axios: ^0.21.2
+  axios: ^0.24.0
   glob-parent: ^5.1.2
   immer: ^9.0.6
   mpath: ^0.8.4
@@ -137,12 +137,12 @@ importers:
       '@types/aws-lambda': 8.10.84
       '@types/axios': 0.14.0
       algoliasearch: 4.10.5
-      axios: ^0.21.2
+      axios: ^0.24.0
       dotenv: 10.0.0
       netlify-lambda: 2.0.15
     dependencies:
       algoliasearch: 4.10.5
-      axios: 0.21.4
+      axios: 0.24.0
       dotenv: 10.0.0
       netlify-lambda: 2.0.15
     devDependencies:
@@ -3283,7 +3283,7 @@ packages:
     resolution: {integrity: sha1-7CMA++fX3d1+udOr+HmZlkyvzkY=}
     deprecated: This is a stub types definition for axios (https://github.com/mzabriskie/axios). axios provides its own type definitions, so you don't need @types/axios installed!
     dependencies:
-      axios: 0.21.4
+      axios: 0.24.0
     transitivePeerDependencies:
       - debug
     dev: true
@@ -4810,8 +4810,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /axios/0.21.4:
-    resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
+  /axios/0.24.0:
+    resolution: {integrity: sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==}
     dependencies:
       follow-redirects: 1.14.4
     transitivePeerDependencies:
@@ -5113,6 +5113,7 @@ packages:
 
   /bindings/1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
+    requiresBuild: true
     dependencies:
       file-uri-to-path: 1.0.0
     dev: false
@@ -8370,6 +8371,7 @@ packages:
 
   /file-uri-to-path/1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -12531,6 +12533,7 @@ packages:
 
   /nan/2.15.0:
     resolution: {integrity: sha512-8ZtvEnA2c5aYCZYd1cvgdnU6cqwixRoYg70xPLWUws5ORTa/lnw+u4amixRS/Ac5U5mQVgp9pnlSUnbNWFaWZQ==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -16569,7 +16572,7 @@ packages:
       '@fortawesome/free-solid-svg-icons': 5.15.4
       '@fortawesome/react-fontawesome': 0.1.16_f515edce028694561ceb456e3dba224c
       autoprefixer: 9.8.8
-      axios: 0.21.4
+      axios: 0.24.0
       babel-loader: 8.2.3_7f185b6b63b1b293762538aa414d8c1b
       bcryptjs: 2.4.3
       bootstrap: 4.6.0
