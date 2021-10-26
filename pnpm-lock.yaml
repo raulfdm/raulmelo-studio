@@ -153,7 +153,7 @@ importers:
   apps/website:
     specifiers:
       '@emotion/babel-plugin': 11.3.0
-      '@emotion/jest': 11.3.0
+      '@emotion/jest': 11.5.0
       '@emotion/react': 11.4.1
       '@emotion/styled': 11.3.0
       '@headlessui/react': 1.4.1
@@ -242,7 +242,7 @@ importers:
       smoothscroll-polyfill: 0.4.4
     devDependencies:
       '@emotion/babel-plugin': 11.3.0_@babel+core@7.15.8
-      '@emotion/jest': 11.3.0_@types+jest@27.0.2
+      '@emotion/jest': 11.5.0_@types+jest@27.0.2
       '@next/bundle-analyzer': 11.1.2
       '@testing-library/jest-dom': 5.14.1
       '@testing-library/react': 12.1.2_react-dom@17.0.2+react@17.0.2
@@ -2178,10 +2178,10 @@ packages:
       '@emotion/memoize': 0.7.5
     dev: false
 
-  /@emotion/jest/11.3.0_@types+jest@27.0.2:
-    resolution: {integrity: sha512-LZqYc3yerhic1IvAcEwBLRs1DsUt3oY7Oz6n+e+HU32iYOK/vpfzlhgmQURE94BHfv6eCOj6DV38f3jSnIkBkQ==}
+  /@emotion/jest/11.5.0_@types+jest@27.0.2:
+    resolution: {integrity: sha512-bz791yTD1I9lyB+h0+nDahmMv4kf3d+hGj85QncY3qB8VwGe03zVxdKutgaTNg7gvsRFh3ovhQGbsbwOJZMXqQ==}
     peerDependencies:
-      '@types/jest': ^26.0.14
+      '@types/jest': ^26.0.14 || ^27.0.0
       enzyme-to-json: ^3.2.1
     peerDependenciesMeta:
       '@types/jest':
@@ -5113,6 +5113,7 @@ packages:
 
   /bindings/1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
+    requiresBuild: true
     dependencies:
       file-uri-to-path: 1.0.0
     dev: false
@@ -8370,6 +8371,7 @@ packages:
 
   /file-uri-to-path/1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -12531,6 +12533,7 @@ packages:
 
   /nan/2.15.0:
     resolution: {integrity: sha512-8ZtvEnA2c5aYCZYd1cvgdnU6cqwixRoYg70xPLWUws5ORTa/lnw+u4amixRS/Ac5U5mQVgp9pnlSUnbNWFaWZQ==}
+    requiresBuild: true
     dev: false
     optional: true
 
