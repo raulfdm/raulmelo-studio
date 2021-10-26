@@ -189,7 +189,7 @@ importers:
       next-compose-plugins: 2.2.1
       next-mdx-remote: 3.0.6
       next-seo: 4.28.1
-      next-sitemap: 1.6.184
+      next-sitemap: 1.6.192
       query-string: 7.0.1
       react: ^17.0.2
       react-dom: ^17.0.2
@@ -258,7 +258,7 @@ importers:
       duplicate-package-checker-webpack-plugin: 3.0.0
       eslint-config-next: 11.1.2_b254488bed7690859822a81f0a41c857
       next-compose-plugins: 2.2.1
-      next-sitemap: 1.6.184_next@11.1.2
+      next-sitemap: 1.6.192_next@11.1.2
       twin.macro: 2.8.0_ts-node@10.3.0
 
   packages/core:
@@ -5113,6 +5113,7 @@ packages:
 
   /bindings/1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
+    requiresBuild: true
     dependencies:
       file-uri-to-path: 1.0.0
     dev: false
@@ -8370,6 +8371,7 @@ packages:
 
   /file-uri-to-path/1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -12531,6 +12533,7 @@ packages:
 
   /nan/2.15.0:
     resolution: {integrity: sha512-8ZtvEnA2c5aYCZYd1cvgdnU6cqwixRoYg70xPLWUws5ORTa/lnw+u4amixRS/Ac5U5mQVgp9pnlSUnbNWFaWZQ==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -12674,8 +12677,8 @@ packages:
       react-dom: 17.0.2_react@17.0.2
     dev: false
 
-  /next-sitemap/1.6.184_next@11.1.2:
-    resolution: {integrity: sha512-72a3juoo3V5PDPiVNJd8DxPRm5E76sT+zWcAjiFIPl7D7kAka8OFp1yEHWXyss5SfjT3WfINeXmletmOX8PEkQ==}
+  /next-sitemap/1.6.192_next@11.1.2:
+    resolution: {integrity: sha512-Pvxi5ttn/pedojrCvhGrvXsXg0bSV/scWCLrivO1xeBd+OVGiFyn60WHfx7I0HfW7nFQmbvwGfYffkUMOj/ptg==}
     hasBin: true
     peerDependencies:
       next: '*'
