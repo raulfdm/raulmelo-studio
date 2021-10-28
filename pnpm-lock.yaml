@@ -7,7 +7,7 @@ overrides:
   glob-parent: ^5.1.2
   immer: ^9.0.6
   mpath: ^0.8.4
-  mquery: ^3.2.3
+  mquery: ^4.0.0
   nth-check: ^2.0.1
   object-path: ^0.11.8
   react-dom: ^17.0.2
@@ -5170,10 +5170,6 @@ packages:
       buffer: 5.7.1
       inherits: 2.0.4
       readable-stream: 3.6.0
-    dev: false
-
-  /bluebird/3.5.1:
-    resolution: {integrity: sha512-MKiLiV+I1AA596t9w1sQJ8jkiSr5+ZKi0WKrYGUn6d1Fx+Ij4tIj+m2WMQSGczs5jZVxV339chE8iwk6F64wjA==}
     dev: false
 
   /bluebird/3.7.2:
@@ -12294,12 +12290,14 @@ packages:
       mongodb: 3.6.2
       mongoose-legacy-pluralize: 1.0.2_mongoose@5.10.8
       mpath: 0.8.4
-      mquery: 3.2.5
+      mquery: 4.0.0
       ms: 2.1.2
       regexp-clone: 1.0.0
       safe-buffer: 5.2.1
       sift: 7.0.1
       sliced: 1.0.1
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /mongoose/5.13.12:
@@ -12313,7 +12311,7 @@ packages:
       mongodb: 3.7.2
       mongoose-legacy-pluralize: 1.0.2_mongoose@5.13.12
       mpath: 0.8.4
-      mquery: 3.2.5
+      mquery: 4.0.0
       ms: 2.1.2
       optional-require: 1.0.3
       regexp-clone: 1.0.0
@@ -12327,6 +12325,7 @@ packages:
       - mongodb-client-encryption
       - mongodb-extjson
       - snappy
+      - supports-color
     dev: false
 
   /move-concurrently/1.0.1:
@@ -12345,15 +12344,15 @@ packages:
     engines: {node: '>=4.0.0'}
     dev: false
 
-  /mquery/3.2.5:
-    resolution: {integrity: sha512-VjOKHHgU84wij7IUoZzFRU07IAxd5kWJaDmyUzQlbjHjyoeK5TNeeo8ZsFDtTYnSgpW6n/nMNIHvE3u8Lbrf4A==}
-    engines: {node: '>=4.0.0'}
+  /mquery/4.0.0:
+    resolution: {integrity: sha512-nGjm89lHja+T/b8cybAby6H0YgA4qYC/lx6UlwvHGqvTq8bDaNeCwl1sY8uRELrNbVWJzIihxVd+vphGGn1vBw==}
+    engines: {node: '>=12.0.0'}
     dependencies:
-      bluebird: 3.5.1
-      debug: 3.1.0
+      debug: 4.3.2
       regexp-clone: 1.0.0
-      safe-buffer: 5.1.2
       sliced: 1.0.1
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /mri/1.2.0:
@@ -16532,6 +16531,8 @@ packages:
       pluralize: 8.0.0
       semver: 7.3.5
       strapi-utils: 3.6.8
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /strapi-database/3.6.8:
