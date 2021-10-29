@@ -1,16 +1,20 @@
 module.exports = {
-  branchPrefix: 'renovate/',
-  dryRun: true,
+  /**
+   * Self-hosted Options
+   * https://docs.renovatebot.com/self-hosted-configuration
+   */
   username: 'renovate-release',
-  gitAuthor: 'Renovate Bot <bot@renovateapp.com>',
   onboarding: false,
   platform: 'github',
+  repositories: ['raulfdm/raulmelo-studio'],
+
+  /**
+   * Renovate options
+   */
+  branchPrefix: 'renovate/',
+  gitAuthor: 'Renovate Bot <bot@renovateapp.com>',
   includeForks: true,
-  repositories: [
-    'renovatebot/github-action',
-    'renovate-tests/cocoapods1',
-    'renovate-tests/gomod1',
-  ],
+  prCreation: 'not-pending',
   packageRules: [
     {
       description: 'lockFileMaintenance',
@@ -23,7 +27,12 @@ module.exports = {
         'lockFileMaintenance',
       ],
       dependencyDashboardApproval: false,
-      stabilityDays: 0,
+      stabilityDays: 3,
+    },
+    {
+      matchPackageNames: ['node'],
+      matchManagers: ['dockerfile'],
+      enabled: false,
     },
   ],
 };
