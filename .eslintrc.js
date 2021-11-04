@@ -5,7 +5,7 @@ const baseTs = {
 };
 
 const baseJs = {
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   extends: ['eslint:recommended'],
 };
 
