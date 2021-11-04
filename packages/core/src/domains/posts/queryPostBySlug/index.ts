@@ -1,4 +1,5 @@
-import { fetcher, utils } from '~utils';
+import { client } from '~config';
+import { utils } from '~utils';
 import { GRAPHQL_VARIABLES } from '../resources';
 import { query } from './query';
 import { IBlogPostBySlug, IBlogPostBySlugApiResponse } from './types';
@@ -7,7 +8,7 @@ export async function queryPostBySlug(
   slug: string,
   preview = false,
 ): Promise<IBlogPostBySlug> {
-  const apiJsonResponse = await fetcher.graphql<IBlogPostBySlugApiResponse>(
+  const apiJsonResponse = await client.request<IBlogPostBySlugApiResponse>(
     query,
     {
       where: {

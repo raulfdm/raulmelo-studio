@@ -1,11 +1,10 @@
-import { fetcher } from '~utils';
-
 import { ISiteData, ISiteDataApiResponse } from './types';
 import { query } from './query';
+import { client } from '~config';
 
 export async function querySiteData(): Promise<ISiteData> {
   const { defaultSeoPt, defaultSeoEn, ...rest } =
-    await fetcher.graphql<ISiteDataApiResponse>(query);
+    await client.request<ISiteDataApiResponse>(query);
 
   return {
     ...rest,

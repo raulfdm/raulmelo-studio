@@ -1,4 +1,6 @@
-export const query = `
+import { gql } from 'graphql-request';
+
+export const query = gql`
   query Home($locale: String, $numberOfPosts: Int) {
     posts(locale: $locale, sort: "date:desc", limit: $numberOfPosts) {
       id

@@ -1,4 +1,6 @@
-export const query = `
+import { gql } from 'graphql-request';
+
+export const query = gql`
   query Tils($where: JSON) {
     tils(where: $where) {
       id

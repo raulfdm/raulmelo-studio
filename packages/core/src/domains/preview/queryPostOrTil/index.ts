@@ -1,4 +1,5 @@
-import { fetcher, utils } from '~utils';
+import { client } from '~config';
+import { utils } from '~utils';
 import { GRAPHQL_VARIABLES } from '../../posts/resources';
 import { query } from './query';
 import { IPreviewPostOrTil, IQueryPostOrTilApiResponse } from './types';
@@ -6,7 +7,7 @@ import { IPreviewPostOrTil, IQueryPostOrTilApiResponse } from './types';
 export async function queryPostOrTil(
   slug: string,
 ): Promise<IPreviewPostOrTil | null> {
-  const { tils, posts } = await fetcher.graphql<IQueryPostOrTilApiResponse>(
+  const { tils, posts } = await client.request<IQueryPostOrTilApiResponse>(
     query,
     {
       where: {
