@@ -75,8 +75,7 @@ describe('fn: updateAlgolia', () => {
           "calls": Array [
             Array [
               "Error while updating indexes:",
-              "Invalid attempt to destructure non-iterable instance.
-        In order to be iterable, non-array objects must have a [Symbol.iterator]() method.",
+              undefined,
             ],
           ],
           "results": Array [
