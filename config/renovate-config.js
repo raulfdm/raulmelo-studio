@@ -42,5 +42,16 @@ module.exports = {
       matchPackageNames: ['@types/node'],
       allowedVersions: '<15',
     },
+    /**
+     * NextJS 12.0.2 still does not support ESLint 8.
+     *
+     * apps/website build: error - ESLint version 8.1.0 is not yet supported.
+     * Please downgrade to version 7 for the meantime: npm uninstall eslint
+     * && npm install --save-dev eslint@"<8.0.0"
+     */
+    {
+      matchPackageNames: ['eslint'],
+      allowedVersions: '<8',
+    },
   ],
 };

@@ -5,7 +5,13 @@ const baseTs = {
 };
 
 const baseJs = {
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
+  /**
+   * https://github.com/babel/ember-cli-babel/issues/366#issuecomment-728947041
+   */
+  parserOptions: {
+    requireConfigFile: false,
+  },
   extends: ['eslint:recommended'],
 };
 
