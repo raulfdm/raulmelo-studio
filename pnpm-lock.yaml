@@ -43,7 +43,7 @@ importers:
       esbuild-plugin-d.ts: 1.0.6
       eslint: <8.0.0
       eslint-config-prettier: 8.3.0
-      eslint-plugin-jest: 25.2.2
+      eslint-plugin-jest: 25.2.3
       eslint-plugin-node: 11.1.0
       eslint-plugin-react: 7.26.1
       eslint-plugin-react-hooks: 4.2.0
@@ -83,7 +83,7 @@ importers:
       esbuild-plugin-d.ts: 1.0.6_ts-node@10.4.0+typescript@4.4.4
       eslint: 7.32.0
       eslint-config-prettier: 8.3.0_eslint@7.32.0
-      eslint-plugin-jest: 25.2.2_3ef2f6ef11876f9f07d568cdbc11ce49
+      eslint-plugin-jest: 25.2.3_ffccc95c1f6899fb97bb9cd359ff2cc2
       eslint-plugin-node: 11.1.0_eslint@7.32.0
       eslint-plugin-react: 7.26.1_eslint@7.32.0
       eslint-plugin-react-hooks: 4.2.0_eslint@7.32.0
@@ -9034,19 +9034,23 @@ packages:
       tsconfig-paths: 3.11.0
     dev: true
 
-  /eslint-plugin-jest/25.2.2_3ef2f6ef11876f9f07d568cdbc11ce49:
-    resolution: {integrity: sha512-frn5yhOF60U4kcqozO3zKTNZQUk+mfx037XOy2iiYL8FhorEkuCuL3/flzKcY1ECDP2WYT9ydmvlO3fRW9o4mg==}
+  /eslint-plugin-jest/25.2.3_ffccc95c1f6899fb97bb9cd359ff2cc2:
+    resolution: {integrity: sha512-Yoa0at3euTjERDvPGPWiItY1uuqKYQ5Ov2SmkSLmKRq9OFiVdEehw0rWuK4PA538k7CNqnvmkztjAB9l+HJ7kQ==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     peerDependencies:
       '@typescript-eslint/eslint-plugin': ^4.0.0 || ^5.0.0
       eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+      jest: '*'
     peerDependenciesMeta:
       '@typescript-eslint/eslint-plugin':
+        optional: true
+      jest:
         optional: true
     dependencies:
       '@typescript-eslint/eslint-plugin': 5.3.0_17f50caceef7fa1e82b14d5986b10305
       '@typescript-eslint/experimental-utils': 5.3.0_eslint@7.32.0+typescript@4.4.4
       eslint: 7.32.0
+      jest: 27.3.1_ts-node@10.4.0
     transitivePeerDependencies:
       - supports-color
       - typescript
