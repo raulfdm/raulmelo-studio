@@ -3,7 +3,7 @@ on:
   schedule:
     # The "*" (#42, asterisk) character has special semantics in YAML, so this
     # string has to be quoted.
-    - cron: '0/15 * * * *'
+    - cron: '0 0 * * *' # At 00:00 /> https://crontab.guru/#0_0_*_*_*
 jobs:
   renovate:
     runs-on: ubuntu-latest
