@@ -1,14 +1,15 @@
 import { SupportedLanguages } from '../../../types';
-import { fetcher, utils } from '~utils';
+import { utils } from '~utils';
 import { ITagBySlugApiResponse, ITagBySlugPostTag } from './types';
 
 import { query } from './query';
+import { client } from '~config';
 
 export async function queryTagBySlug(
   slug: string,
   locale: SupportedLanguages,
 ): Promise<ITagBySlugPostTag> {
-  const { postTags } = await fetcher.graphql<ITagBySlugApiResponse>(query, {
+  const { postTags } = await client.request<ITagBySlugApiResponse>(query, {
     slug,
     locale,
   });

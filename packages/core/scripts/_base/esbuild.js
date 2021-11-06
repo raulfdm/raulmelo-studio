@@ -45,7 +45,7 @@ export function runESBuild(options = {}) {
       entryPoints: ['src/index.ts'],
       sourcemap: 'external',
       // TODO: import from package.json IF it starts to become a mess
-      external: ['ramda', 'isomorphic-fetch'],
+      external: ['ramda', 'graphql-request'],
       metafile: true,
       ...overrides,
     };

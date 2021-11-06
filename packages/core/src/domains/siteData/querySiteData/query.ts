@@ -1,4 +1,6 @@
-export const query = `
+import { gql } from 'graphql-request';
+
+export const query = gql`
   query SiteData {
     defaultSeoPt: defaultSeo(locale: "pt") {
       title

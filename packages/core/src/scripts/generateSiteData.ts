@@ -1,8 +1,8 @@
 import * as fs from 'fs';
-import { API_URL } from '~config';
-import { fetcher } from '~utils';
+import { gql } from 'graphql-request';
+import { client } from '~config';
 
-const query = `
+const query = gql`
   query SiteData {
     defaultSeoPt: defaultSeo(locale: "pt") {
       title
@@ -43,7 +43,11 @@ interface IConfig {
 }
 
 export async function generateSiteData(config: IConfig): Promise<void> {
-  const { apiEndpoint = API_URL, outdir, fileName = 'site-data' } = config;
+  const { apiEndpoint, outdir, fileName = 'site-data' } = config;
+
+  if (apiEndpoint) {
+    client.setEndpoint(`${apiEndpoint}/graphql`);
+  }
 
   if (apiEndpoint.includes('localhost')) {
     console.log('Attention: Getting data from Localhost');
@@ -51,7 +55,7 @@ export async function generateSiteData(config: IConfig): Promise<void> {
 
   try {
     const { defaultSeoPt, defaultSeoEn, personalInformation, ...rest } =
-      await fetcher.graphql<IQueryData>(query);
+      await client.request<IQueryData>(query);
 
     const { profile_pic, ...restPersonalInfo } = personalInformation;
     /**

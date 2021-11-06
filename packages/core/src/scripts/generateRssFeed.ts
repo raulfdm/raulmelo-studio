@@ -1,51 +1,55 @@
 import * as fs from 'fs';
+import { gql } from 'graphql-request';
 import * as path from 'path';
 import { SupportedLanguages } from 'src';
 import { sortPostsByPublishedDate } from 'src/domains/posts';
-import { API_URL } from '~config';
-import { fetcher } from '~utils';
+import { client } from '~config';
 
 const LOCALES_TO_GEN_RSS: SupportedLanguages[] = ['en', 'pt'];
 
-const query = `
-      query Content($locale: String) {
-        rss(locale: $locale) {
-          title
-          description
-        }
-        defaultSeo {
-          title
-          description
-        }
-        site {
-          url
-        }
-        tils(locale: $locale) {
-          slug
-          publishedAt
-          title
-          slug
-          description: title
-        }
-        posts(locale: $locale) {
-          slug
-          publishedAt: date
-          title
-          slug
-          description
-        }
-      }
+const query = gql`
+  query Content($locale: String) {
+    rss(locale: $locale) {
+      title
+      description
+    }
+    defaultSeo {
+      title
+      description
+    }
+    site {
+      url
+    }
+    tils(locale: $locale) {
+      slug
+      publishedAt
+      title
+      slug
+      description: title
+    }
+    posts(locale: $locale) {
+      slug
+      publishedAt: date
+      title
+      slug
+      description
+    }
+  }
 `;
 
 export async function generateRssFeed(config: IConfig): Promise<void> {
-  const { apiEndpoint = API_URL, outdir } = config;
+  const { apiEndpoint, outdir } = config;
+
+  if (apiEndpoint) {
+    client.setEndpoint(`${apiEndpoint}/graphql`);
+  }
 
   if (apiEndpoint.includes('localhost')) {
     console.log('Atention: Getting data from Localhost');
   }
 
   for await (const locale of LOCALES_TO_GEN_RSS) {
-    const { tils, posts, site, rss } = await fetcher.graphql<IQueryResponse>(
+    const { tils, posts, site, rss } = await client.request<IQueryResponse>(
       query,
       {
         locale,
