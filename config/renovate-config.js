@@ -34,8 +34,11 @@ module.exports = {
       matchManagers: ['dockerfile'],
       enabled: false,
     },
+    /**
+     * Resolutions
+     */
     {
-      matchPackageNames: ['ansi-regex'],
+      matchPackageNames: ['ansi-regex', 'glob-parent'],
       enabled: false,
     },
     {
