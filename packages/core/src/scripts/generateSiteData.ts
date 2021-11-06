@@ -46,7 +46,7 @@ export async function generateSiteData(config: IConfig): Promise<void> {
   const { apiEndpoint, outdir, fileName = 'site-data' } = config;
 
   if (apiEndpoint) {
-    client.setEndpoint(apiEndpoint);
+    client.setEndpoint(`${apiEndpoint}/graphql`);
   }
 
   if (apiEndpoint.includes('localhost')) {

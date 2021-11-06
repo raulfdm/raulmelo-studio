@@ -5,4 +5,4 @@ const API_URL =
   process.env.API_ENDPOINT ||
   'http://localhost:1337';
 
-export const client = new GraphQLClient(API_URL);
+export const client = new GraphQLClient(`${API_URL}/graphql`);

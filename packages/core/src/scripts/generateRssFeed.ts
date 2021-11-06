@@ -41,7 +41,7 @@ export async function generateRssFeed(config: IConfig): Promise<void> {
   const { apiEndpoint, outdir } = config;
 
   if (apiEndpoint) {
-    client.setEndpoint(apiEndpoint);
+    client.setEndpoint(`${apiEndpoint}/graphql`);
   }
 
   if (apiEndpoint.includes('localhost')) {
