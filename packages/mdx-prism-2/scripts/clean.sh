@@ -3,3 +3,4 @@
 echo "Removing \"dist\" folder"
 
 rm -rf dist
+mkdir dist
