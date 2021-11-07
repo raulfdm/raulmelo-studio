@@ -7,7 +7,7 @@ import { useLocalization } from '@hooks/useLocalization';
 import { motion, useAnimation } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import tw, { css, styled } from 'twin.macro';
 
 const styles = {
@@ -128,7 +128,7 @@ export const SideMenu = () => {
 
 function useLinks() {
   const { formatMessage, locale } = useLocalization();
-  const { pathname } = useRouter();
+  const { asPath } = useRouter();
 
   return useMemo(
     () =>
@@ -164,10 +164,10 @@ function useLinks() {
         },
       ].map(({ href, localeId, newWindow = false }) => ({
         itemLabel: formatMessage({ id: localeId }),
-        active: pathname === href,
+        active: asPath === href,
         href,
         newWindow,
       })),
-    [locale, pathname],
+    [locale, asPath],
   );
 }
