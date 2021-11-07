@@ -1,4 +1,4 @@
-import exitPreview from '../exit-preview';
+import exitPreview from '../exit-preview.page';
 
 describe('Preview Route', () => {
   const mocks = createMockResponse();

@@ -1,4 +1,4 @@
-import previewRoute from '../preview';
+import previewRoute from '../preview.page';
 import { domains } from '@raulfdm/core';
 
 jest.mock('@raulfdm/core', () => {
