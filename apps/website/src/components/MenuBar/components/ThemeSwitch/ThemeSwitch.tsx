@@ -1,8 +1,8 @@
 import 'twin.macro';
 
-import { MoonIcon, SunIcon } from '@components/Icons';
-import { MenuButton } from '@components/MenuBar';
-import { useThemeHandler } from '@hooks/useThemeHandler';
+import { MoonIcon, SunIcon } from '~/components/Icons';
+import { MenuButton } from '~/components/MenuBar';
+import { useThemeHandler } from '~/hooks/useThemeHandler';
 
 const ThemeIconMap = {
   dark: SunIcon,

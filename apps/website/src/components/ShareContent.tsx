@@ -1,8 +1,9 @@
-import { LinkedInIcon, TwitterIcon } from '@components/Icons';
 import qs from 'query-string';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import tw, { styled, TwStyle } from 'twin.macro';
+
+import { LinkedInIcon, TwitterIcon } from '~/components/Icons';
 
 const Wrapper = styled.div``;
 

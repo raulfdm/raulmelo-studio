@@ -8,17 +8,14 @@
     "target": "esnext",
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@config/*": ["src/config/*"],
-      "@contexts/*": ["src/contexts/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@lib/*": ["src/lib/*"],
+      "~/components/*": ["src/components/*"],
+      "~/config/*": ["src/config/*"],
+      "~/contexts/*": ["src/contexts/*"],
+      "~/hooks/*": ["src/hooks/*"],
+      "~/lib/*": ["src/lib/*"],
       "~/pages/*": ["src/pages/*"],
-      "@services/*": ["src/services/*"],
-      "@styles/*": ["src/styles/*"],
-      "@types-app": ["src/types/index.ts"],
-      "@utils/*": ["src/utils/*"],
-      "site-data": ["site-data.json"]
+      "~/utils/*": ["src/utils/*"],
+      "~/site-data": ["site-data.json"]
     },
     "typeRoots": ["node_modules/@types", "../../node_modules/@types", "types"],
     "incremental": true

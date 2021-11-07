@@ -1,7 +1,8 @@
-import { useLocalization } from '@hooks/useLocalization';
 import { NextSeo } from 'next-seo';
 import { defineMessage, FormattedMessage } from 'react-intl';
 import tw from 'twin.macro';
+
+import { useLocalization } from '~/hooks/useLocalization';
 
 const pageTitleMessage = defineMessage({
   id: '404.title',

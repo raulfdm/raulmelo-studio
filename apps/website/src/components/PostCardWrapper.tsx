@@ -1,6 +1,7 @@
-import { useLocalization } from '@hooks/useLocalization';
 import { SupportedLanguages } from '@raulfdm/core';
-import { getPostUrl, getTagUrl } from '@utils/url';
+
+import { useLocalization } from '~/hooks/useLocalization';
+import { getPostUrl, getTagUrl } from '~/utils/url';
 
 import { PostCard } from './PostCard';
 

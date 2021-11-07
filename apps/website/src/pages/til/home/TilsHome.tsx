@@ -1,9 +1,10 @@
-import { PostBasic } from '@components/PostBasic';
-import { useLocalization } from '@hooks/useLocalization';
 import { ITilsTil } from '@raulfdm/core/dist/types/domains/posts/queryTils/types';
 import { NextSeo } from 'next-seo';
 import { FormattedMessage } from 'react-intl';
 import tw from 'twin.macro';
+
+import { PostBasic } from '~/components/PostBasic';
+import { useLocalization } from '~/hooks/useLocalization';
 
 import { getTilUrl } from './utils';
 

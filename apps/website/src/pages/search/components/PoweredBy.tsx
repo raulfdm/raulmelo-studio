@@ -1,5 +1,6 @@
-import { AlgoliaIcon } from '@components/Icons';
 import { connectPoweredBy } from 'react-instantsearch-dom';
+
+import { AlgoliaIcon } from '~/components/Icons';
 
 import { searchStyles } from '../styles';
 

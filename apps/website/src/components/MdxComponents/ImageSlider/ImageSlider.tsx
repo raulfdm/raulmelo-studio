@@ -1,8 +1,9 @@
-import { ChevronLeftIcon, ChevronRightIcon } from '@components/Icons';
-import { useCircularIndexes } from '@hooks/useCircularIndexes';
 import Image from 'next/image';
 import React from 'react';
 import tw, { css, styled } from 'twin.macro';
+
+import { ChevronLeftIcon, ChevronRightIcon } from '~/components/Icons';
+import { useCircularIndexes } from '~/hooks/useCircularIndexes';
 
 import { validations } from './utils';
 

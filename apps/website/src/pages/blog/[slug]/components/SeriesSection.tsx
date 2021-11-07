@@ -1,4 +1,3 @@
-import { ChevronDownIcon } from '@components/Icons';
 import { IBlogPostBySlug } from '@raulfdm/core/dist/types/domains/posts/queryPostBySlug/types';
 import { createMachine } from '@xstate/fsm';
 import { useMachine } from '@xstate/react/fsm';
@@ -6,6 +5,8 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FormattedMessage } from 'react-intl';
 import tw, { css } from 'twin.macro';
+
+import { ChevronDownIcon } from '~/components/Icons';
 
 // TODO: review this html markup. It seems having ugly/bad HTML structure.
 export const SeriesSection: React.FC<SeriesSectionProps> = ({

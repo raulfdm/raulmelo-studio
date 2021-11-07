@@ -1,9 +1,10 @@
-import { useLocalization } from '@hooks/useLocalization';
 import { IBlogPostBySlug } from '@raulfdm/core/dist/types/domains/posts/queryPostBySlug/types';
 import Image from 'next/image';
 import React from 'react';
 import { defineMessages, FormattedMessage } from 'react-intl';
 import tw from 'twin.macro';
+
+import { useLocalization } from '~/hooks/useLocalization';
 
 const messages = defineMessages({
   featuredImageLabel: {
