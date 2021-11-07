@@ -53,6 +53,7 @@ const nextConfig = {
       '@hooks': path.resolve(__dirname, './src/hooks'),
       '@lib': path.resolve(__dirname, './src/lib'),
       '@screens': path.resolve(__dirname, './src/screens'),
+      '~/pages': path.resolve(__dirname, './src/pages'),
       '@services': path.resolve(__dirname, './src/services'),
       '@styles': path.resolve(__dirname, './src/styles'),
       '@types-app': path.resolve(__dirname, './src/types/index.ts'),
