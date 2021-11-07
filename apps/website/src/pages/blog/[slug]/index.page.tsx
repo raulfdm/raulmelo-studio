@@ -1,10 +1,11 @@
-import { DotDivider } from '@components/MdxComponents/DotDivider';
-import { MdxPostTemplate } from '@components/templates/MdxPost';
-import { serializeMdx } from '@config/mdx';
 import { domains, utils } from '@raulfdm/core';
 import { GetStaticPaths } from 'next';
 import dynamic from 'next/dynamic';
 import React from 'react';
+
+import { DotDivider } from '~/components/MdxComponents/DotDivider';
+import { MdxPostTemplate } from '~/components/templates/MdxPost';
+import { serializeMdx } from '~/config/mdx';
 
 import type { SeriesSection as SeriesSectionType } from './components/SeriesSection';
 import { BlogPostProps, GetStaticProps } from './types';

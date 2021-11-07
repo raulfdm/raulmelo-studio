@@ -1,18 +1,19 @@
 import 'twin.macro';
 
-import { mdxComponents } from '@components/MdxComponents';
-import { ProseContainer } from '@components/ProseContainer';
-import { ShareContent } from '@components/ShareContent';
-import { Tag, Tags } from '@components/Tags';
-import { useLocalization } from '@hooks/useLocalization';
-import { getTagUrl } from '@utils/url';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { BlogJsonLd, NextSeo, NextSeoProps } from 'next-seo';
 import React, { useMemo } from 'react';
-import siteData from 'site-data';
+
+import { mdxComponents } from '~/components/MdxComponents';
+import { ProseContainer } from '~/components/ProseContainer';
+import { ShareContent } from '~/components/ShareContent';
+import { Tag, Tags } from '~/components/Tags';
+import { useLocalization } from '~/hooks/useLocalization';
+import siteData from '~/site-data';
+import { getTagUrl } from '~/utils/url';
 
 import { FeaturedImage, FeaturedImageProps } from './components/FeaturedImage';
 import { Header } from './components/Header';

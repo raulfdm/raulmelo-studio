@@ -1,8 +1,9 @@
-import { algoliaConfig } from '@config/algolia';
-import { useLocalization } from '@hooks/useLocalization';
 import { NextSeo } from 'next-seo';
 import { InstantSearch } from 'react-instantsearch-dom';
 import { defineMessages, FormattedMessage } from 'react-intl';
+
+import { algoliaConfig } from '~/config/algolia';
+import { useLocalization } from '~/hooks/useLocalization';
 
 import { Filters, Hits, PoweredBy, SearchBox } from './components';
 import { AlgoliaGlobalStyles, searchStyles } from './styles';

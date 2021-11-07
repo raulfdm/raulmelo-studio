@@ -1,6 +1,7 @@
-import useControlled from '@hooks/useControlled';
-import { range } from '@utils/range';
 import * as React from 'react';
+
+import useControlled from '~/hooks/useControlled';
+import { range } from '~/utils/range';
 
 import {
   ItemType,

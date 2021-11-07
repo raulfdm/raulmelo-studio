@@ -1,13 +1,14 @@
 import 'twin.macro';
 
-import { GlobeIcon } from '@components/Icons';
-import { MenuButton } from '@components/MenuBar';
 import { Popover } from '@headlessui/react';
-import { useLocalization } from '@hooks/useLocalization';
 import { useRouter } from 'next/router';
 import { Fragment, useState } from 'react';
 import { usePopper } from 'react-popper';
 import tw, { css, styled } from 'twin.macro';
+
+import { GlobeIcon } from '~/components/Icons';
+import { MenuButton } from '~/components/MenuBar';
+import { useLocalization } from '~/hooks/useLocalization';
 
 const styles = {
   panel: css`

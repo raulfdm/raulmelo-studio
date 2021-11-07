@@ -1,4 +1,4 @@
-import siteData from 'site-data';
+import siteData from '~/site-data';
 
 type Socials = typeof siteData['socials'];
 

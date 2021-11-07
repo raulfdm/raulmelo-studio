@@ -55,18 +55,14 @@ const nextConfig = {
 
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@components': path.resolve(__dirname, './src/components'),
-      '@config': path.resolve(__dirname, './src/config'),
-      '@contexts': path.resolve(__dirname, './src/contexts'),
-      '@hooks': path.resolve(__dirname, './src/hooks'),
-      '@lib': path.resolve(__dirname, './src/lib'),
+      '~/components': path.resolve(__dirname, './src/components'),
+      '~/config': path.resolve(__dirname, './src/config'),
+      '~/contexts': path.resolve(__dirname, './src/contexts'),
+      '~/hooks': path.resolve(__dirname, './src/hooks'),
+      '~/lib': path.resolve(__dirname, './src/lib'),
       '~/pages': path.resolve(__dirname, './src/pages'),
-      '@services': path.resolve(__dirname, './src/services'),
-      '@styles': path.resolve(__dirname, './src/styles'),
-      '@types-app': path.resolve(__dirname, './src/types/index.ts'),
-      '@data': path.resolve(__dirname, './src/data'),
-      '@utils': path.resolve(__dirname, './src/utils'),
-      'site-data': path.resolve(__dirname, 'site-data.json'),
+      '~/utils': path.resolve(__dirname, './src/utils'),
+      '~/site-data': path.resolve(__dirname, 'site-data.json'),
     };
 
     /**

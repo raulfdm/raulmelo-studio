@@ -1,9 +1,9 @@
-import { PostBasic } from '@components/PostBasic';
-import { getPostUrl } from '@utils/url';
 import { Hits as HitsComp } from 'react-instantsearch-dom';
 import tw from 'twin.macro';
 
+import { PostBasic } from '~/components/PostBasic';
 import { getTilUrl } from '~/pages/til/home/utils';
+import { getPostUrl } from '~/utils/url';
 
 import { searchStyles } from '../styles';
 import { HitAlgolia } from '../types';

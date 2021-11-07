@@ -1,7 +1,8 @@
-import { PostCardWrapper } from '@components/PostCardWrapper';
 import { IPostsAndTilsPost } from '@raulfdm/core/dist/types/domains/posts';
 import { AnimatePresence, motion } from 'framer-motion';
 import tw from 'twin.macro';
+
+import { PostCardWrapper } from '~/components/PostCardWrapper';
 
 const itemsAnimationVariants = {
   visible: (index: number) => ({

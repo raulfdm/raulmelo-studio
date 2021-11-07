@@ -1,6 +1,7 @@
-import { useLocalization } from '@hooks/useLocalization';
 import { SearchBox as SearchBoxComp } from 'react-instantsearch-dom';
 import { defineMessages } from 'react-intl';
+
+import { useLocalization } from '~/hooks/useLocalization';
 
 import { searchStyles } from '../styles';
 

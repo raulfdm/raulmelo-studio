@@ -1,6 +1,7 @@
-import { serializeMdx } from '@config/mdx';
 import { domains, SupportedLanguages } from '@raulfdm/core';
 import { GetStaticProps } from 'next';
+
+import { serializeMdx } from '~/config/mdx';
 
 import { UsesPage, UsesPageProps } from './UsesPage';
 

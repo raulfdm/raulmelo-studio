@@ -1,11 +1,12 @@
-import { CloseIcon, MenuIcon } from '@components/Icons';
-import { Logo } from '@components/Logo';
-import { SideMenu } from '@components/SideMenu';
-import { useApp } from '@hooks/useApp';
-import { useLocalization } from '@hooks/useLocalization';
 import Link from 'next/link';
 import { FC } from 'react';
 import tw, { css, styled } from 'twin.macro';
+
+import { CloseIcon, MenuIcon } from '~/components/Icons';
+import { Logo } from '~/components/Logo';
+import { SideMenu } from '~/components/SideMenu';
+import { useApp } from '~/hooks/useApp';
+import { useLocalization } from '~/hooks/useLocalization';
 
 import { LanguageSwitch } from './components/LanguageSwitch';
 import { ThemeSwitch } from './components/ThemeSwitch';

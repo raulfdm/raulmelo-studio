@@ -1,16 +1,16 @@
-import { ArrowRightIcon } from '@components/Icons';
-import { PostBasic } from '@components/PostBasic';
-import { useLocalization } from '@hooks/useLocalization';
 import { IPostsAndTilsApi } from '@raulfdm/core/dist/types/domains/posts';
-import { getPostUrl } from '@utils/url';
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';
 import React from 'react';
 import { defineMessages } from 'react-intl';
-import siteData from 'site-data';
 import tw from 'twin.macro';
 
+import { ArrowRightIcon } from '~/components/Icons';
+import { PostBasic } from '~/components/PostBasic';
+import { useLocalization } from '~/hooks/useLocalization';
 import { getTilUrl } from '~/pages/til/home/utils';
+import siteData from '~/site-data';
+import { getPostUrl } from '~/utils/url';
 
 import { AuthorPresentation } from './components/AuthorPresentation';
 import { PostSectionProps } from './types';

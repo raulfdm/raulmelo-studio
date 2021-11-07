@@ -1,10 +1,11 @@
-import { GithubIcon, LinkedInIcon, TwitterIcon } from '@components/Icons';
-import { useLocalization } from '@hooks/useLocalization';
-import { getSocial } from '@utils/seo';
 import Image from 'next/image';
 import { defineMessage } from 'react-intl';
-import siteData from 'site-data';
 import tw from 'twin.macro';
+
+import { GithubIcon, LinkedInIcon, TwitterIcon } from '~/components/Icons';
+import { useLocalization } from '~/hooks/useLocalization';
+import siteData from '~/site-data';
+import { getSocial } from '~/utils/seo';
 
 const message = defineMessage({ id: 'authorPresentation.profileImageAlt' });
 

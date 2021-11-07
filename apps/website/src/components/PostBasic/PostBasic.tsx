@@ -1,9 +1,10 @@
-import { Tag, Tags } from '@components/Tags';
-import { getTagUrl } from '@utils/url';
 import Link from 'next/link';
 import React from 'react';
 import { FormattedDate } from 'react-intl';
 import tw, { styled, TwStyle } from 'twin.macro';
+
+import { Tag, Tags } from '~/components/Tags';
+import { getTagUrl } from '~/utils/url';
 
 const Wrapper = styled.section``;
 
