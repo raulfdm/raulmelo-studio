@@ -18,7 +18,6 @@ module.exports = {
     '^@data/(.*)': '<rootDir>/src/data/$1',
     '^@hooks/(.*)': '<rootDir>/src/hooks/$1',
     '^@lib/(.*)': '<rootDir>/src/lib/$1',
-    '^@screens/(.*)': '<rootDir>/src/screens/$1',
     '^~/pages/(.*)': '<rootDir>/src/pages/$1',
     '^@services/(.*)': '<rootDir>/src/services/$1',
     '^@styles/(.*)': '<rootDir>/src/styles/$1',

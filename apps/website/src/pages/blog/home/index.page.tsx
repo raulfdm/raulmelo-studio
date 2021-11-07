@@ -1,10 +1,11 @@
 import { AllSupportedLanguages, domains } from '@raulfdm/core';
 import { IBlogPagePost } from '@raulfdm/core/dist/types/domains/posts';
-import { Blog } from '@screens/Blog';
 import chunk from 'lodash.chunk';
 import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import React from 'react';
+
+import { Blog } from './BlogPage';
 
 const POST_THRESHOLD = 6;
 

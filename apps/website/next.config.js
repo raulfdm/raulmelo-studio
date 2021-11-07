@@ -30,6 +30,10 @@ const nextConfig = {
         source: '/',
         destination: '/home',
       },
+      {
+        source: '/blog',
+        destination: '/blog/home',
+      },
     ];
   },
   redirects,
@@ -56,7 +60,6 @@ const nextConfig = {
       '@contexts': path.resolve(__dirname, './src/contexts'),
       '@hooks': path.resolve(__dirname, './src/hooks'),
       '@lib': path.resolve(__dirname, './src/lib'),
-      '@screens': path.resolve(__dirname, './src/screens'),
       '~/pages': path.resolve(__dirname, './src/pages'),
       '@services': path.resolve(__dirname, './src/services'),
       '@styles': path.resolve(__dirname, './src/styles'),

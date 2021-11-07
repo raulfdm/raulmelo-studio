@@ -1,14 +1,15 @@
 import { PostBasic } from '@components/PostBasic';
 import { useLocalization } from '@hooks/useLocalization';
 import { utils } from '@raulfdm/core';
-import { AuthorPresentation } from '@screens/Home/components/AuthorPresentation';
-import { getTilUrl } from '@screens/TilsHome/utils';
 import { getPostUrl, getTagUrl } from '@utils/url';
 import { NextSeo } from 'next-seo';
 import React, { useMemo } from 'react';
 import { defineMessages, FormattedMessage } from 'react-intl';
 import siteData from 'site-data';
 import tw from 'twin.macro';
+
+import { AuthorPresentation } from '~/pages/home/components/AuthorPresentation';
+import { getTilUrl } from '~/pages/til/home/utils';
 
 import { TagPageProps } from './types';
 
