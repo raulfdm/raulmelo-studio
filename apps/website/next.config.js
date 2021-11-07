@@ -26,6 +26,10 @@ const nextConfig = {
         source: '/til',
         destination: '/til/home',
       },
+      {
+        source: '/',
+        destination: '/home',
+      },
     ];
   },
   redirects,

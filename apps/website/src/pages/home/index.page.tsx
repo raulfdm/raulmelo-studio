@@ -1,7 +1,8 @@
 import { domains, SupportedLanguages } from '@raulfdm/core';
 import { IPostsAndTilsApi } from '@raulfdm/core/dist/types/domains/posts';
-import { HomePage } from '@screens/Home/HomePage';
 import { GetStaticProps } from 'next';
+
+import { HomePage } from './HomePage';
 
 const Home = (props: IPostsAndTilsApi) => <HomePage {...props} />;
 
