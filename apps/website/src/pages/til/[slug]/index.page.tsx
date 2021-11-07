@@ -1,10 +1,11 @@
 import { MdxPostTemplate } from '@components/templates/MdxPost';
 import { serializeMdx } from '@config/mdx';
-import { ITilPostParsed } from '@screens/TilPost';
-import { GetStaticPaths } from 'next';
-import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { domains, utils } from '@raulfdm/core';
 import { ITilsTil } from '@raulfdm/core/dist/types/domains/posts/queryTils/types';
+import { GetStaticPaths } from 'next';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+
+import { ITilPostParsed } from './types';
 
 const { isEmpty, isNil } = utils;
 
