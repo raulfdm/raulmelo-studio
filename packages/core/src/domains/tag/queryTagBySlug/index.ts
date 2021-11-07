@@ -1,9 +1,9 @@
-import { SupportedLanguages } from '../../../types';
-import { utils } from '~utils';
-import { ITagBySlugApiResponse, ITagBySlugPostTag } from './types';
-
-import { query } from './query';
 import { client } from '~config';
+import { utils } from '~utils';
+
+import { SupportedLanguages } from '../../../types';
+import { query } from './query';
+import { ITagBySlugApiResponse, ITagBySlugPostTag } from './types';
 
 export async function queryTagBySlug(
   slug: string,

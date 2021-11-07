@@ -1,9 +1,10 @@
 import axios from 'axios';
+
 import { api } from '../api';
 
 jest.mock('axios');
 
-const mockAxios = (axios as unknown) as jest.Mock<any>;
+const mockAxios = axios as unknown as jest.Mock<any>;
 
 describe('api', () => {
   it('includes a "query" method', () => {

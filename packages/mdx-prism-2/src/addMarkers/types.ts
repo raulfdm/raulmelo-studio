@@ -1,4 +1,5 @@
 import type { Node as UnistNode } from 'unist-util-visit-parents';
+
 import type { MdxPrismOptions } from '../types';
 
 export interface Node extends UnistNode {

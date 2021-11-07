@@ -3,6 +3,7 @@ import { gql } from 'graphql-request';
 import * as path from 'path';
 import { SupportedLanguages } from 'src';
 import { sortPostsByPublishedDate } from 'src/domains/posts';
+
 import { client } from '~config';
 
 const LOCALES_TO_GEN_RSS: SupportedLanguages[] = ['en', 'pt'];

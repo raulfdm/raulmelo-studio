@@ -6,6 +6,7 @@ import { useLocalization } from '@hooks/useLocalization';
 import Link from 'next/link';
 import { FC } from 'react';
 import tw, { css, styled } from 'twin.macro';
+
 import { LanguageSwitch } from './components/LanguageSwitch';
 import { ThemeSwitch } from './components/ThemeSwitch';
 

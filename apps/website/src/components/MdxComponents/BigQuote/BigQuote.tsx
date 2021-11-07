@@ -1,5 +1,6 @@
-import React from 'react';
 import 'twin.macro';
+
+import React from 'react';
 
 export const BigQuote = ({ ...props }: BigQuoteProps) => (
   <blockquote

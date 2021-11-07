@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+
 import type { BigQuote as BigQuoteType } from './BigQuote';
 import type { CodePenIframe as CodePenIframeType } from './CodePenIframe';
 import { DotDivider } from './DotDivider';

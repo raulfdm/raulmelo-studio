@@ -1,8 +1,9 @@
-import tw from 'twin.macro';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { Tags, Tag } from '../Tags';
-import Image from 'next/image';
+import tw from 'twin.macro';
+
+import { Tag, Tags } from '../Tags';
 
 const styles = {
   imageWrapper: tw`relative rounded-sm shadow-sm aspect-w-16 aspect-h-9`,

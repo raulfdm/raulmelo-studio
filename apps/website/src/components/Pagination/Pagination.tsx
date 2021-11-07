@@ -1,5 +1,7 @@
-import React from 'react';
 import 'twin.macro';
+
+import React from 'react';
+
 import { PaginationItem } from './PaginationItem';
 import {
   GetItemAriaLabelProps,

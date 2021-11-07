@@ -1,7 +1,19 @@
+const commons = {
+  extends: ['eslint:recommended'],
+  plugins: ['simple-import-sort'],
+  rules: {
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
+  },
+};
+
 const baseTs = {
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+  plugins: [...commons.plugins, '@typescript-eslint'],
+  extends: [...commons.extends, 'plugin:@typescript-eslint/recommended'],
+  rules: {
+    ...commons.rules,
+  },
 };
 
 const baseJs = {
@@ -12,7 +24,11 @@ const baseJs = {
   parserOptions: {
     requireConfigFile: false,
   },
-  extends: ['eslint:recommended'],
+  extends: [...commons.extends],
+  plugins: [...commons.plugins],
+  rules: {
+    ...commons.rules,
+  },
 };
 
 module.exports = {
@@ -31,6 +47,7 @@ module.exports = {
         },
       },
       rules: {
+        ...baseTs.rules,
         // React 17
         'react/react-in-jsx-scope': 'off',
         // This is TypeScript
@@ -49,6 +66,7 @@ module.exports = {
       files: ['*.test.*', '**/__test__/*.ts', '**/__test__/*.tsx'],
       ...baseTs,
       rules: {
+        ...baseTs.rules,
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/ban-types': 'off',
       },

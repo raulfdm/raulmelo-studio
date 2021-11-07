@@ -1,4 +1,5 @@
 import { client } from '~config';
+
 import { query } from './query';
 import { ITagsApiResponse } from './types';
 

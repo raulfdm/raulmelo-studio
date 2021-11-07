@@ -20,6 +20,22 @@ const nextConfig = {
     locales: ['en', 'pt'],
     defaultLocale: 'en',
   },
+  async rewrites() {
+    return [
+      {
+        source: '/til',
+        destination: '/til/home',
+      },
+      {
+        source: '/',
+        destination: '/home',
+      },
+      {
+        source: '/blog',
+        destination: '/blog/home',
+      },
+    ];
+  },
   redirects,
   images: {
     domains: ['res.cloudinary.com', 'miro.medium.com', 'media.giphy.com'],
@@ -44,7 +60,7 @@ const nextConfig = {
       '@contexts': path.resolve(__dirname, './src/contexts'),
       '@hooks': path.resolve(__dirname, './src/hooks'),
       '@lib': path.resolve(__dirname, './src/lib'),
-      '@screens': path.resolve(__dirname, './src/screens'),
+      '~/pages': path.resolve(__dirname, './src/pages'),
       '@services': path.resolve(__dirname, './src/services'),
       '@styles': path.resolve(__dirname, './src/styles'),
       '@types-app': path.resolve(__dirname, './src/types/index.ts'),

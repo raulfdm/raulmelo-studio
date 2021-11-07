@@ -1,7 +1,7 @@
+import mdxPrims, { MdxPrismOptions } from 'mdx-prism-2';
 import { serialize } from 'next-mdx-remote/serialize';
 import rehypeAutoLink from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
-import mdxPrims, { MdxPrismOptions } from 'mdx-prism-2';
 import remarkCodeTitle from 'remark-code-titles';
 import remarkUnwrapImages from 'remark-unwrap-images';
 

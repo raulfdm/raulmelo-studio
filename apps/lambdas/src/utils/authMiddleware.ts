@@ -1,4 +1,5 @@
 import { APIGatewayEvent, Context } from 'aws-lambda';
+
 import { SETTINGS } from '../config';
 import { Handler } from '../types';
 

@@ -1,11 +1,10 @@
+import { SupportedLanguages } from '@raulfdm/core';
+import flat from 'flat';
+import { useRouter } from 'next/router';
 import { createContext, useMemo } from 'react';
 import { IntlProvider } from 'react-intl';
-import flat from 'flat';
-
 import enMessages from 'src/locales/en.json';
 import ptMessages from 'src/locales/pt.json';
-import { useRouter } from 'next/router';
-import { SupportedLanguages } from '@raulfdm/core';
 
 export type LocalizationContextType = {
   switchToPortuguese(): void;

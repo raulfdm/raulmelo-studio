@@ -1,6 +1,7 @@
-import { ISiteData, ISiteDataApiResponse } from './types';
-import { query } from './query';
 import { client } from '~config';
+
+import { query } from './query';
+import { ISiteData, ISiteDataApiResponse } from './types';
 
 export async function querySiteData(): Promise<ISiteData> {
   const { defaultSeoPt, defaultSeoEn, ...rest } =
