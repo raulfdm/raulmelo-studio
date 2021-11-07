@@ -1,15 +1,19 @@
-import { MdxPostTemplate } from '@components/templates/MdxPost';
 import { DotDivider } from '@components/MdxComponents/DotDivider';
+import { MdxPostTemplate } from '@components/templates/MdxPost';
+import { serializeMdx } from '@config/mdx';
+import { domains, utils } from '@raulfdm/core';
+import { GetStaticPaths } from 'next';
 import dynamic from 'next/dynamic';
 import React from 'react';
+
 import type { SeriesSection as SeriesSectionType } from './components/SeriesSection';
-import { BlogPostProps } from './types';
+import { BlogPostProps, GetStaticProps } from './types';
 
 const SeriesSection = dynamic(() =>
   import('./components/SeriesSection').then((mod) => mod.SeriesSection),
 ) as typeof SeriesSectionType;
 
-export const BlogPost: React.FC<BlogPostProps> = ({
+export const BlogPostPage: React.FC<BlogPostProps> = ({
   content,
   post,
   preview,
@@ -53,3 +57,43 @@ export const BlogPost: React.FC<BlogPostProps> = ({
     />
   );
 };
+
+export const getStaticProps = async ({ params, preview }: GetStaticProps) => {
+  const post = await domains.posts.queryPostBySlug(params.slug, preview);
+  const { isNil, isEmpty } = utils;
+
+  if (isNil(post) || isEmpty(post)) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const content = await serializeMdx(post.content);
+
+  return {
+    props: {
+      post,
+      content,
+      preview: Boolean(preview),
+    },
+    revalidate: 1,
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const { posts } = await domains.posts.queryPosts('all');
+
+  const paths = posts.map((post) => ({
+    params: {
+      slug: post.slug,
+    },
+    locale: post.locale,
+  }));
+
+  return {
+    paths,
+    fallback: 'blocking',
+  };
+};
+
+export default BlogPostPage;

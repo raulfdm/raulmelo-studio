@@ -11,3 +11,10 @@ export type BlogPostPageProps = BlogPostProps & {
   content: MDXRemoteSerializeResult;
   preview: boolean;
 };
+
+export type GetStaticProps = {
+  params: {
+    slug: string;
+  };
+  preview?: boolean;
+};

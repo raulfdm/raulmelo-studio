@@ -1,13 +1,15 @@
+import 'twin.macro';
+
 import { Pagination, PaginationItem } from '@components/Pagination';
 import { useLocalization } from '@hooks/useLocalization';
 import { IBlogPagePost } from '@raulfdm/core/dist/types/domains/posts';
-import { Posts } from '@screens/Home/components/Posts';
-import { usePageQueryReset } from '@screens/Home/hooks/usePageQueryReset';
-import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
+import { NextSeo } from 'next-seo';
 import React from 'react';
 import { defineMessages, FormattedMessage } from 'react-intl';
-import 'twin.macro';
+
+import { Posts } from '~/pages/home/components/Posts';
+import { usePageQueryReset } from '~/pages/home/hooks/usePageQueryReset';
 
 const messages = defineMessages({
   latests: {
