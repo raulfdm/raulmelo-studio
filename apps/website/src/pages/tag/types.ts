@@ -1,3 +1,4 @@
+import { SupportedLanguages } from '@raulfdm/core';
 import {
   ITagBySlugBlogPost,
   ITagBySlugPostTag,
@@ -19,4 +20,11 @@ type IEnhancedTil = ITagBySlugTilPost & IPostType;
 
 interface IPostType {
   type: 'post' | 'til';
+}
+
+export interface TagPageParams {
+  params: {
+    slug: string;
+  };
+  locale: SupportedLanguages;
 }

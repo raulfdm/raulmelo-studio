@@ -1,17 +1,10 @@
 import { domains, SupportedLanguages } from '@raulfdm/core';
-import { TagPage } from '@screens/Tag/TagPage';
-import { TagPageProps } from '@screens/Tag/types';
 import { GetStaticPaths } from 'next';
-import React from 'react';
+
+import { TagPage } from './TagPage';
+import { TagPageParams, TagPageProps } from './types';
 
 const Tag = (props: TagPageProps) => <TagPage {...props} />;
-
-interface TagPageParams {
-  params: {
-    slug: string;
-  };
-  locale: SupportedLanguages;
-}
 
 export const getStaticProps = async ({ params, locale }: TagPageParams) => {
   const tag = await domains.tag.queryTagBySlug(params.slug, locale);

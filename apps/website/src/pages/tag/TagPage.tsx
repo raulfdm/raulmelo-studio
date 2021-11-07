@@ -1,5 +1,6 @@
 import { PostBasic } from '@components/PostBasic';
 import { useLocalization } from '@hooks/useLocalization';
+import { utils } from '@raulfdm/core';
 import { AuthorPresentation } from '@screens/Home/components/AuthorPresentation';
 import { getTilUrl } from '@screens/TilsHome/utils';
 import { getPostUrl, getTagUrl } from '@utils/url';
@@ -8,7 +9,7 @@ import React, { useMemo } from 'react';
 import { defineMessages, FormattedMessage } from 'react-intl';
 import siteData from 'site-data';
 import tw from 'twin.macro';
-import { utils } from '@raulfdm/core';
+
 import { TagPageProps } from './types';
 
 const messages = defineMessages({
