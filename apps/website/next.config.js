@@ -20,6 +20,14 @@ const nextConfig = {
     locales: ['en', 'pt'],
     defaultLocale: 'en',
   },
+  async rewrites() {
+    return [
+      {
+        source: '/til',
+        destination: '/til/home',
+      },
+    ];
+  },
   redirects,
   images: {
     domains: ['res.cloudinary.com', 'miro.medium.com', 'media.giphy.com'],

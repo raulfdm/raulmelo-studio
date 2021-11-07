@@ -1,11 +1,11 @@
 import { PostBasic } from '@components/PostBasic';
 import { useLocalization } from '@hooks/useLocalization';
-import { NextSeo } from 'next-seo';
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import { getTilUrl } from './utils';
-import tw from 'twin.macro';
 import { ITilsTil } from '@raulfdm/core/dist/types/domains/posts/queryTils/types';
+import { NextSeo } from 'next-seo';
+import { FormattedMessage } from 'react-intl';
+import tw from 'twin.macro';
+
+import { getTilUrl } from './utils';
 
 type TilsHomeProps = {
   tils: ITilsTil[];

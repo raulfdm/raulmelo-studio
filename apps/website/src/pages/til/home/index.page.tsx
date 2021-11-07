@@ -1,7 +1,8 @@
 import { AllSupportedLanguages, domains } from '@raulfdm/core';
 import { ITilsTil } from '@raulfdm/core/dist/types/domains/posts/queryTils/types';
-import { TilsHome } from '@screens/TilsHome';
 import { GetStaticProps } from 'next';
+
+import { TilsHome } from './TilsHome';
 
 const TilsPage = (props: { tils: ITilsTil[] }) => <TilsHome {...props} />;
 
