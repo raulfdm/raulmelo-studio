@@ -1,9 +1,10 @@
 import { useLocalization } from '@hooks/useLocalization';
+import { utils } from '@raulfdm/core';
 import React from 'react';
 import { connectRefinementList } from 'react-instantsearch-dom';
 import tw, { styled } from 'twin.macro';
+
 import { RefinementListProps } from '../types';
-import { utils } from '@raulfdm/core';
 
 const FiltersWrapper = tw.div`col-span-full inline-flex flex-wrap m-auto mb-7`;
 const RefinementWrapper = styled.div`

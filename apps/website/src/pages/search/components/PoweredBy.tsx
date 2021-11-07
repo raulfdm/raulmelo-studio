@@ -1,5 +1,6 @@
-import { connectPoweredBy } from 'react-instantsearch-dom';
 import { AlgoliaIcon } from '@components/Icons';
+import { connectPoweredBy } from 'react-instantsearch-dom';
+
 import { searchStyles } from '../styles';
 
 function PoweredByAlgolia({ url }: { url: string }) {
