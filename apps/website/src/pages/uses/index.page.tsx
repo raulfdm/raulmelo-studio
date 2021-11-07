@@ -1,7 +1,8 @@
 import { serializeMdx } from '@config/mdx';
-import { UsesPage, UsesPageProps } from '@screens/Uses/UsesPage';
-import { GetStaticProps } from 'next';
 import { domains, SupportedLanguages } from '@raulfdm/core';
+import { GetStaticProps } from 'next';
+
+import { UsesPage, UsesPageProps } from './UsesPage';
 
 const Uses = ({ content, seo, title, postContent }: UsesPageProps) => {
   return (

@@ -1,10 +1,10 @@
 import { MdxPostTemplate } from '@components/templates/MdxPost';
 import { useLocalization } from '@hooks/useLocalization';
-import React from 'react';
-import siteData from 'site-data';
+import { IUsesData } from '@raulfdm/core/dist/types/domains/uses';
 import { getPostUrl } from '@utils/url';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
-import { IUsesData } from '@raulfdm/core/dist/types/domains/uses';
+import React from 'react';
+import siteData from 'site-data';
 
 export type UsesPageProps = {
   seo: IUsesData['seo'];
