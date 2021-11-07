@@ -1,5 +1,5 @@
-import { dtsPlugin } from 'esbuild-plugin-d.ts';
 import { build } from 'esbuild';
+import { dtsPlugin } from 'esbuild-plugin-d.ts';
 
 export function runESBuild(options = {}) {
   const commonJs = createConfig({

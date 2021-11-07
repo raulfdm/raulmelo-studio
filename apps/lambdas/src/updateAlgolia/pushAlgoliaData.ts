@@ -1,4 +1,5 @@
 import algolia from 'algoliasearch';
+
 import { SETTINGS } from '../config';
 import { AlgoliaObjectList } from './types';
 

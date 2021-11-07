@@ -1,5 +1,5 @@
-import React from 'react';
 import { render } from '@testing-library/react';
+import React from 'react';
 
 import { H1, H2, H3, H4, H5, H6 } from '.';
 

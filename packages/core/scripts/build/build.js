@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { analyzeMetafileSync } from 'esbuild'
+
 import { runESBuild } from '../_base/esbuild.js'
 
 console.log('Building with ESBuild');

@@ -1,5 +1,6 @@
-import NextImage from 'next/image';
 import 'twin.macro';
+
+import NextImage from 'next/image';
 
 type ImageProps = {
   width: string | number;

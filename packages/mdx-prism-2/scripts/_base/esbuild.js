@@ -1,5 +1,6 @@
+import { analyzeMetafile, build } from 'esbuild';
 import { dtsPlugin } from 'esbuild-plugin-d.ts';
-import { build, analyzeMetafile } from 'esbuild';
+
 import pkgJson from '../../package.json';
 
 export function runESBuild(options = {}) {

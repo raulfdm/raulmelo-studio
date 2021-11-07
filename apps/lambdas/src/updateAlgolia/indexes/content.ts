@@ -1,6 +1,6 @@
 import { getDateTimestamp, getExcerpt } from '../../utils/algolia';
 import { api } from '../../utils/api';
-import { PushAlgoliaTuple, AlgoliaObject } from '../types';
+import { AlgoliaObject, PushAlgoliaTuple } from '../types';
 
 const INDEX_NAME = 'posts';
 const QUERY = `

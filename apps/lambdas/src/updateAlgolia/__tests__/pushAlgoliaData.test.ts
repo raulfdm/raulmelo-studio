@@ -1,4 +1,5 @@
 import algoliaserach from 'algoliasearch';
+
 import { SETTINGS } from '../../config';
 import { pushAlgoliaData } from '../pushAlgoliaData';
 
@@ -6,7 +7,7 @@ jest.mock('algoliasearch');
 
 const mockSaveObjects = jest.fn();
 const mockInitIndex = jest.fn(() => ({ saveObjects: mockSaveObjects }));
-const mockAlgoliaSearch = (algoliaserach as unknown) as jest.Mock<any>;
+const mockAlgoliaSearch = algoliaserach as unknown as jest.Mock<any>;
 
 describe('fn: pushAlgoliaData', () => {
   const data = [{ id: 1 }];

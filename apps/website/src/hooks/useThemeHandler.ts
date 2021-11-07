@@ -1,7 +1,7 @@
+import { AppTheme } from '@raulfdm/core';
+import { createMachine } from '@xstate/fsm';
 import { useMachine } from '@xstate/react/fsm';
 import { useEffect } from 'react';
-import { createMachine } from '@xstate/fsm';
-import { AppTheme } from '@raulfdm/core';
 
 /* TODO: find a way to consume this value from a single source of truth */
 const colorMap = {

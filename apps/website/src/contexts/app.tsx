@@ -1,6 +1,6 @@
-import React, { createContext } from 'react';
 // TODO: fix SideMenu
-import { useSideMenu, UseSideMenu } from '@components/SideMenu/useSideMenu';
+import { UseSideMenu, useSideMenu } from '@components/SideMenu/useSideMenu';
+import React, { createContext } from 'react';
 
 type AppContextTypes = { sideMenu: UseSideMenu };
 

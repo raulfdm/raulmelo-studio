@@ -1,5 +1,6 @@
 import React from 'react';
 import tw, { css } from 'twin.macro';
+
 import { ChevronLeftIcon, ChevronRightIcon } from '../Icons';
 import { PaginationItemProps } from './types';
 

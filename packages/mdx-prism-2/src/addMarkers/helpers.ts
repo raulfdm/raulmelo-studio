@@ -1,7 +1,8 @@
 import { filter } from 'unist-util-filter';
 import { visitParents } from 'unist-util-visit-parents';
+
 import { Hash } from '../types';
-import { Ast, Options, Node, Marker } from './types';
+import { Ast, Marker, Node, Options } from './types';
 
 export function wrapLines(treeNodes: any[], markers: Marker[], options: any) {
   if (markers.length === 0 || treeNodes.length === 0) {

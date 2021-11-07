@@ -1,5 +1,6 @@
 import { client } from '~config';
 import { utils } from '~utils';
+
 import { GRAPHQL_VARIABLES } from '../../posts/resources';
 import { query } from './query';
 import { IPreviewPostOrTil, IQueryPostOrTilApiResponse } from './types';

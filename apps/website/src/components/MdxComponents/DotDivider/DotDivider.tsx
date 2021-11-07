@@ -1,6 +1,6 @@
 // import styled from '@emotion/styled';
-import tw, { styled, css } from 'twin.macro';
 import React from 'react';
+import tw, { css, styled } from 'twin.macro';
 
 const Dot = styled.div(() => [
   tw`w-1.5 h-1.5 lg:width[0.475rem] lg:height[0.475rem]`,

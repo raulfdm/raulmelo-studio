@@ -1,6 +1,6 @@
 import { client } from '~config';
-import type { SupportedLanguages } from '../../../types';
 
+import type { SupportedLanguages } from '../../../types';
 import { query } from './query';
 import type { IPostsAndTilsApi } from './types';
 

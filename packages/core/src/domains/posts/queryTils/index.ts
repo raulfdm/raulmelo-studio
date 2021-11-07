@@ -1,6 +1,6 @@
 import { client } from '~config';
-import { AllSupportedLanguages } from '../../../types';
 
+import { AllSupportedLanguages } from '../../../types';
 import { query } from './query';
 import { ITilsApiResponse } from './types';
 

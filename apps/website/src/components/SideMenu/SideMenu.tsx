@@ -1,14 +1,14 @@
+import { ExternalLinkIcon } from '@components/Icons';
 import { Disclosure } from '@headlessui/react';
-import tw, { css, styled } from 'twin.macro';
 //TODO: fix @hooks/index
 import { useClickAway } from '@hooks/index';
-import { motion, useAnimation } from 'framer-motion';
-import React, { useEffect, useMemo, useRef } from 'react';
-import { useLocalization } from '@hooks/useLocalization';
 import { useApp } from '@hooks/useApp';
-import { useRouter } from 'next/router';
+import { useLocalization } from '@hooks/useLocalization';
+import { motion, useAnimation } from 'framer-motion';
 import Link from 'next/link';
-import { ExternalLinkIcon } from '@components/Icons';
+import { useRouter } from 'next/router';
+import React, { useEffect, useMemo, useRef } from 'react';
+import tw, { css, styled } from 'twin.macro';
 
 const styles = {
   sideMenuPanel: tw`fixed bottom-0 right-0 z-20 h-full min-w-full duration-200 transform translate-x-full bg-white top-16 dark:bg-blue-800 sm:min-w-min sm:w-full sm:max-w-xs transition-theme ease`,

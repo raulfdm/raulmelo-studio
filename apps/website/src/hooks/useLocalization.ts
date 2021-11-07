@@ -1,11 +1,10 @@
-import { useContext } from 'react';
-import { IntlShape, useIntl } from 'react-intl';
-
 import {
-  LocalizationContextType,
   LocalizationContext,
+  LocalizationContextType,
 } from '@contexts/Localization';
 import { SupportedLanguages } from '@raulfdm/core';
+import { useContext } from 'react';
+import { IntlShape, useIntl } from 'react-intl';
 
 /**
  * react-intl has "locale" which is a string.

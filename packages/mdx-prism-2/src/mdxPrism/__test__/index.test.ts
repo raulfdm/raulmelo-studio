@@ -1,4 +1,5 @@
 import { rehype } from 'rehype';
+
 import { mdxPrism } from '../mdxPrism';
 
 describe('mdx-prism-2 lib', () => {

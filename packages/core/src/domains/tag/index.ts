@@ -1,2 +1,2 @@
-export * from './queryTagBySlug';
 export * from './queryAllTags';
+export * from './queryTagBySlug';

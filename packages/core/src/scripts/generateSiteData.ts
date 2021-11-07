@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import { gql } from 'graphql-request';
+
 import { client } from '~config';
 
 const query = gql`

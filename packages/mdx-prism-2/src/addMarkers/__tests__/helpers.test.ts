@@ -1,7 +1,7 @@
 import { rehype } from 'rehype';
 
-import { wrapLines } from '../helpers';
 import { treeNodes } from '../__fixtures__/treeNodes';
+import { wrapLines } from '../helpers';
 
 describe('fn: wrapLines', () => {
   it('returns the same treeNodes if list of nodes is empty', () => {

@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import { SETTINGS } from '../config';
 
 export const api = {

@@ -1,4 +1,5 @@
 import rangeParser from 'parse-numeric-range';
+
 import { ClassInformation, NodeWithProperties } from '../types';
 
 const LANGUAGE_PREFIX = 'language-';

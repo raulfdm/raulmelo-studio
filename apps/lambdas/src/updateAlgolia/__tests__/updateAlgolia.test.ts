@@ -1,9 +1,9 @@
 import MockDate from 'mockdate';
-import { updateAlgolia } from '../updateAlgolia';
-import { ErrorFunctionReturn, SuccessFunctionReturn } from '../types';
 
 import { getContentToAlgolia } from '../indexes/content';
 import { pushAlgoliaData } from '../pushAlgoliaData';
+import { ErrorFunctionReturn, SuccessFunctionReturn } from '../types';
+import { updateAlgolia } from '../updateAlgolia';
 
 jest.mock('../indexes/content');
 jest.mock('../pushAlgoliaData');

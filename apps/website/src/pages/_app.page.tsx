@@ -1,19 +1,20 @@
+import '@raulmelo/styles/lib/base.css';
+
 import { MenuBar } from '@components/MenuBar';
 import { analyticsConfig } from '@config/analytics';
-import Script from 'next/script';
 import { AppContextProvider } from '@contexts/app';
 import { LocalizationProvider } from '@contexts/Localization';
-import { getSocial } from '@utils/seo';
-import { motion } from 'framer-motion';
-import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo';
-import { AppProps } from 'next/dist/shared/lib/router/router';
-import Head from 'next/head';
-import React from 'react';
-import siteData from 'site-data';
-import '@raulmelo/styles/lib/base.css';
-import { globalStyles } from 'twin.macro';
 import { CSSObject, Global } from '@emotion/react';
 import { SupportedLanguages } from '@raulfdm/core';
+import { getSocial } from '@utils/seo';
+import { motion } from 'framer-motion';
+import { AppProps } from 'next/dist/shared/lib/router/router';
+import Head from 'next/head';
+import Script from 'next/script';
+import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo';
+import React from 'react';
+import siteData from 'site-data';
+import { globalStyles } from 'twin.macro';
 
 const MyApp = ({ Component, pageProps, router }: AppProps) => {
   const defaultSeo = siteData.defaultSeo[router.locale as SupportedLanguages];
