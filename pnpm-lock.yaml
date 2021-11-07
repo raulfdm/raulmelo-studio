@@ -136,12 +136,12 @@ importers:
       '@types/algoliasearch': 4.0.0
       '@types/aws-lambda': 8.10.85
       '@types/axios': 0.14.0
-      algoliasearch: 4.10.5
+      algoliasearch: 4.11.0
       axios: ^0.24.0
       dotenv: 10.0.0
       netlify-lambda: 2.0.15
     dependencies:
-      algoliasearch: 4.10.5
+      algoliasearch: 4.11.0
       axios: 0.24.0
       dotenv: 10.0.0
       netlify-lambda: 2.0.15
@@ -173,7 +173,7 @@ importers:
       '@types/react-instantsearch-dom': 6.12.0
       '@xstate/fsm': 1.6.2
       '@xstate/react': 1.6.2
-      algoliasearch: 4.10.5
+      algoliasearch: 4.11.0
       autoprefixer: 10.4.0
       dayjs: 1.10.7
       debounce-promise: 3.1.2
@@ -214,7 +214,7 @@ importers:
       '@raulmelo/styles': link:../../packages/styles
       '@xstate/fsm': 1.6.2
       '@xstate/react': 1.6.2_796913ee3522c536df1c3c080f0a67b8
-      algoliasearch: 4.10.5
+      algoliasearch: 4.11.0
       dayjs: 1.10.7
       debounce-promise: 3.1.2
       flat: 5.0.2
@@ -229,7 +229,7 @@ importers:
       query-string: 7.0.1
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-      react-instantsearch-dom: 6.15.0_7f770dea5663f3612b40f53110f92d57
+      react-instantsearch-dom: 6.15.0_9c61a37bce6c0496634c2178214848ce
       react-intl: 5.21.0_react@17.0.2+typescript@4.4.4
       react-popper: 2.2.5_838acf1c84808345430cf17171f87518
       react-twitter-widgets: 1.10.0_react@17.0.2
@@ -313,81 +313,81 @@ importers:
 
 packages:
 
-  /@algolia/cache-browser-local-storage/4.10.5:
-    resolution: {integrity: sha512-cfX2rEKOtuuljcGI5DMDHClwZHdDqd2nT2Ohsc8aHtBiz6bUxKVyIqxr2gaC6tU8AgPtrTVBzcxCA+UavXpKww==}
+  /@algolia/cache-browser-local-storage/4.11.0:
+    resolution: {integrity: sha512-4sr9vHIG1fVA9dONagdzhsI/6M5mjs/qOe2xUP0yBmwsTsuwiZq3+Xu6D3dsxsuFetcJgC6ydQoCW8b7fDJHYQ==}
     dependencies:
-      '@algolia/cache-common': 4.10.5
+      '@algolia/cache-common': 4.11.0
 
-  /@algolia/cache-common/4.10.5:
-    resolution: {integrity: sha512-1mClwdmTHll+OnHkG+yeRoFM17kSxDs4qXkjf6rNZhoZGXDvfYLy3YcZ1FX4Kyz0DJv8aroq5RYGBDsWkHj6Tw==}
+  /@algolia/cache-common/4.11.0:
+    resolution: {integrity: sha512-lODcJRuPXqf+6mp0h6bOxPMlbNoyn3VfjBVcQh70EDP0/xExZbkpecgHyyZK4kWg+evu+mmgvTK3GVHnet/xKw==}
 
-  /@algolia/cache-in-memory/4.10.5:
-    resolution: {integrity: sha512-+ciQnfIGi5wjMk02XhEY8fmy2pzy+oY1nIIfu8LBOglaSipCRAtjk6WhHc7/KIbXPiYzIwuDbM2K1+YOwSGjwA==}
+  /@algolia/cache-in-memory/4.11.0:
+    resolution: {integrity: sha512-aBz+stMSTBOBaBEQ43zJXz2DnwS7fL6dR0e2myehAgtfAWlWwLDHruc/98VOy1ZAcBk1blE2LCU02bT5HekGxQ==}
     dependencies:
-      '@algolia/cache-common': 4.10.5
+      '@algolia/cache-common': 4.11.0
 
-  /@algolia/client-account/4.10.5:
-    resolution: {integrity: sha512-I9UkSS2glXm7RBZYZIALjBMmXSQbw/fI/djPcBHxiwXIheNIlqIFl2SNPkvihpPF979BSkzjqdJNRPhE1vku3Q==}
+  /@algolia/client-account/4.11.0:
+    resolution: {integrity: sha512-jwmFBoUSzoMwMqgD3PmzFJV/d19p1RJXB6C1ADz4ju4mU7rkaQLtqyZroQpheLoU5s5Tilmn/T8/0U2XLoJCRQ==}
     dependencies:
-      '@algolia/client-common': 4.10.5
-      '@algolia/client-search': 4.10.5
-      '@algolia/transporter': 4.10.5
+      '@algolia/client-common': 4.11.0
+      '@algolia/client-search': 4.11.0
+      '@algolia/transporter': 4.11.0
 
-  /@algolia/client-analytics/4.10.5:
-    resolution: {integrity: sha512-h2owwJSkovPxzc+xIsjY1pMl0gj+jdVwP9rcnGjlaTY2fqHbSLrR9yvGyyr6305LvTppxsQnfAbRdE/5Z3eFxw==}
+  /@algolia/client-analytics/4.11.0:
+    resolution: {integrity: sha512-v5U9585aeEdYml7JqggHAj3E5CQ+jPwGVztPVhakBk8H/cmLyPS2g8wvmIbaEZCHmWn4TqFj3EBHVYxAl36fSA==}
     dependencies:
-      '@algolia/client-common': 4.10.5
-      '@algolia/client-search': 4.10.5
-      '@algolia/requester-common': 4.10.5
-      '@algolia/transporter': 4.10.5
+      '@algolia/client-common': 4.11.0
+      '@algolia/client-search': 4.11.0
+      '@algolia/requester-common': 4.11.0
+      '@algolia/transporter': 4.11.0
 
-  /@algolia/client-common/4.10.5:
-    resolution: {integrity: sha512-21FAvIai5qm8DVmZHm2Gp4LssQ/a0nWwMchAx+1hIRj1TX7OcdW6oZDPyZ8asQdvTtK7rStQrRnD8a95SCUnzA==}
+  /@algolia/client-common/4.11.0:
+    resolution: {integrity: sha512-Qy+F+TZq12kc7tgfC+FM3RvYH/Ati7sUiUv/LkvlxFwNwNPwWGoZO81AzVSareXT/ksDDrabD4mHbdTbBPTRmQ==}
     dependencies:
-      '@algolia/requester-common': 4.10.5
-      '@algolia/transporter': 4.10.5
+      '@algolia/requester-common': 4.11.0
+      '@algolia/transporter': 4.11.0
 
-  /@algolia/client-personalization/4.10.5:
-    resolution: {integrity: sha512-nH+IyFKBi8tCyzGOanJTbXC5t4dspSovX3+ABfmwKWUYllYzmiQNFUadpb3qo+MLA3jFx5IwBesjneN6dD5o3w==}
+  /@algolia/client-personalization/4.11.0:
+    resolution: {integrity: sha512-mI+X5IKiijHAzf9fy8VSl/GTT67dzFDnJ0QAM8D9cMPevnfX4U72HRln3Mjd0xEaYUOGve8TK/fMg7d3Z5yG6g==}
     dependencies:
-      '@algolia/client-common': 4.10.5
-      '@algolia/requester-common': 4.10.5
-      '@algolia/transporter': 4.10.5
+      '@algolia/client-common': 4.11.0
+      '@algolia/requester-common': 4.11.0
+      '@algolia/transporter': 4.11.0
 
-  /@algolia/client-search/4.10.5:
-    resolution: {integrity: sha512-1eQFMz9uodrc5OM+9HeT+hHcfR1E1AsgFWXwyJ9Q3xejA2c1c4eObGgOgC9ZoshuHHdptaTN1m3rexqAxXRDBg==}
+  /@algolia/client-search/4.11.0:
+    resolution: {integrity: sha512-iovPLc5YgiXBdw2qMhU65sINgo9umWbHFzInxoNErWnYoTQWfXsW6P54/NlKx5uscoLVjSf+5RUWwFu5BX+lpw==}
     dependencies:
-      '@algolia/client-common': 4.10.5
-      '@algolia/requester-common': 4.10.5
-      '@algolia/transporter': 4.10.5
+      '@algolia/client-common': 4.11.0
+      '@algolia/requester-common': 4.11.0
+      '@algolia/transporter': 4.11.0
 
-  /@algolia/logger-common/4.10.5:
-    resolution: {integrity: sha512-gRJo9zt1UYP4k3woEmZm4iuEBIQd/FrArIsjzsL/b+ihNoOqIxZKTSuGFU4UUZOEhvmxDReiA4gzvQXG+TMTmA==}
+  /@algolia/logger-common/4.11.0:
+    resolution: {integrity: sha512-pRMJFeOY8hoWKIxWuGHIrqnEKN/kqKh7UilDffG/+PeEGxBuku+Wq5CfdTFG0C9ewUvn8mAJn5BhYA5k8y0Jqg==}
 
-  /@algolia/logger-console/4.10.5:
-    resolution: {integrity: sha512-4WfIbn4253EDU12u9UiYvz+QTvAXDv39mKNg9xSoMCjKE5szcQxfcSczw2byc6pYhahOJ9PmxPBfs1doqsdTKQ==}
+  /@algolia/logger-console/4.11.0:
+    resolution: {integrity: sha512-wXztMk0a3VbNmYP8Kpc+F7ekuvaqZmozM2eTLok0XIshpAeZ/NJDHDffXK2Pw+NF0wmHqurptLYwKoikjBYvhQ==}
     dependencies:
-      '@algolia/logger-common': 4.10.5
+      '@algolia/logger-common': 4.11.0
 
-  /@algolia/requester-browser-xhr/4.10.5:
-    resolution: {integrity: sha512-53/MURQEqtK+bGdfq4ITSPwTh5hnADU99qzvpAINGQveUFNSFGERipJxHjTJjIrjFz3vxj5kKwjtxDnU6ygO9g==}
+  /@algolia/requester-browser-xhr/4.11.0:
+    resolution: {integrity: sha512-Fp3SfDihAAFR8bllg8P5ouWi3+qpEVN5e7hrtVIYldKBOuI/qFv80Zv/3/AMKNJQRYglS4zWyPuqrXm58nz6KA==}
     dependencies:
-      '@algolia/requester-common': 4.10.5
+      '@algolia/requester-common': 4.11.0
 
-  /@algolia/requester-common/4.10.5:
-    resolution: {integrity: sha512-UkVa1Oyuj6NPiAEt5ZvrbVopEv1m/mKqjs40KLB+dvfZnNcj+9Fry4Oxnt15HMy/HLORXsx4UwcthAvBuOXE9Q==}
+  /@algolia/requester-common/4.11.0:
+    resolution: {integrity: sha512-+cZGe/9fuYgGuxjaBC+xTGBkK7OIYdfapxhfvEf03dviLMPmhmVYFJtJlzAjQ2YmGDJpHrGgAYj3i/fbs8yhiA==}
 
-  /@algolia/requester-node-http/4.10.5:
-    resolution: {integrity: sha512-aNEKVKXL4fiiC+bS7yJwAHdxln81ieBwY3tsMCtM4zF9f5KwCzY2OtN4WKEZa5AAADVcghSAUdyjs4AcGUlO5w==}
+  /@algolia/requester-node-http/4.11.0:
+    resolution: {integrity: sha512-qJIk9SHRFkKDi6dMT9hba8X1J1z92T5AZIgl+tsApjTGIRQXJLTIm+0q4yOefokfu4CoxYwRZ9QAq+ouGwfeOg==}
     dependencies:
-      '@algolia/requester-common': 4.10.5
+      '@algolia/requester-common': 4.11.0
 
-  /@algolia/transporter/4.10.5:
-    resolution: {integrity: sha512-F8DLkmIlvCoMwSCZA3FKHtmdjH3o5clbt0pi2ktFStVNpC6ZDmY307HcK619bKP5xW6h8sVJhcvrLB775D2cyA==}
+  /@algolia/transporter/4.11.0:
+    resolution: {integrity: sha512-k4dyxiaEfYpw4UqybK9q7lrFzehygo6KV3OCYJMMdX0IMWV0m4DXdU27c1zYRYtthaFYaBzGF4Kjcl8p8vxCKw==}
     dependencies:
-      '@algolia/cache-common': 4.10.5
-      '@algolia/logger-common': 4.10.5
-      '@algolia/requester-common': 4.10.5
+      '@algolia/cache-common': 4.11.0
+      '@algolia/logger-common': 4.11.0
+      '@algolia/requester-common': 4.11.0
 
   /@apollo/federation/0.20.7_graphql@15.5.0:
     resolution: {integrity: sha512-URIayksqBaJ+xlcJmyGCf+OqHP60lX2CYGv9fDWQ1KM48sEN1ABHGXkEa0vwgWMH0XUVo94lYDVY11BAJUsuCw==}
@@ -4650,7 +4650,7 @@ packages:
     resolution: {integrity: sha512-XMGE0h/dRV7qR6lR/zgGL01esc39pLHNl4m7gKZldrgoov/IaFJGfmmEJGxktlH63esWEtAiXzbjLfvEQXN15Q==}
     deprecated: This is a stub types definition. algoliasearch provides its own type definitions, so you do not need this installed.
     dependencies:
-      algoliasearch: 4.10.5
+      algoliasearch: 4.11.0
     dev: true
 
   /@types/aria-query/4.2.2:
@@ -4996,8 +4996,8 @@ packages:
     resolution: {integrity: sha512-VjXJFUfsPdWMSiugJiQc950G9ZRjCEIzqQ9/K915d1f1BsVE2TE57PcfHSxAy1pGDDR8FT5uAgAaOMyKJ66NJQ==}
     dependencies:
       '@types/react': 17.0.33
-      algoliasearch: 4.10.5
-      algoliasearch-helper: 3.6.2_algoliasearch@4.10.5
+      algoliasearch: 4.11.0
+      algoliasearch-helper: 3.6.2_algoliasearch@4.11.0
     dev: true
 
   /@types/react-instantsearch-dom/6.12.0:
@@ -5546,31 +5546,31 @@ packages:
       uri-js: 4.4.1
     dev: true
 
-  /algoliasearch-helper/3.6.2_algoliasearch@4.10.5:
+  /algoliasearch-helper/3.6.2_algoliasearch@4.11.0:
     resolution: {integrity: sha512-Xx0NOA6k4ySn+R2l3UMSONAaMkyfmrZ3AP1geEMo32MxDJQJesZABZYsldO9fa6FKQxH91afhi4hO1G0Zc2opg==}
     peerDependencies:
       algoliasearch: '>= 3.1 < 5'
     dependencies:
-      algoliasearch: 4.10.5
+      algoliasearch: 4.11.0
       events: 1.1.1
 
-  /algoliasearch/4.10.5:
-    resolution: {integrity: sha512-KmH2XkiN+8FxhND4nWFbQDkIoU6g2OjfeU9kIv4Lb+EiOOs3Gpp7jvd+JnatsCisAZsnWQdjd7zVlW7I/85QvQ==}
+  /algoliasearch/4.11.0:
+    resolution: {integrity: sha512-IXRj8kAP2WrMmj+eoPqPc6P7Ncq1yZkFiyDrjTBObV1ADNL8Z/KdZ+dWC5MmYcBLAbcB/mMCpak5N/D1UIZvsA==}
     dependencies:
-      '@algolia/cache-browser-local-storage': 4.10.5
-      '@algolia/cache-common': 4.10.5
-      '@algolia/cache-in-memory': 4.10.5
-      '@algolia/client-account': 4.10.5
-      '@algolia/client-analytics': 4.10.5
-      '@algolia/client-common': 4.10.5
-      '@algolia/client-personalization': 4.10.5
-      '@algolia/client-search': 4.10.5
-      '@algolia/logger-common': 4.10.5
-      '@algolia/logger-console': 4.10.5
-      '@algolia/requester-browser-xhr': 4.10.5
-      '@algolia/requester-common': 4.10.5
-      '@algolia/requester-node-http': 4.10.5
-      '@algolia/transporter': 4.10.5
+      '@algolia/cache-browser-local-storage': 4.11.0
+      '@algolia/cache-common': 4.11.0
+      '@algolia/cache-in-memory': 4.11.0
+      '@algolia/client-account': 4.11.0
+      '@algolia/client-analytics': 4.11.0
+      '@algolia/client-common': 4.11.0
+      '@algolia/client-personalization': 4.11.0
+      '@algolia/client-search': 4.11.0
+      '@algolia/logger-common': 4.11.0
+      '@algolia/logger-console': 4.11.0
+      '@algolia/requester-browser-xhr': 4.11.0
+      '@algolia/requester-common': 4.11.0
+      '@algolia/requester-node-http': 4.11.0
+      '@algolia/transporter': 4.11.0
 
   /alphanum-sort/1.0.2:
     resolution: {integrity: sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=}
@@ -15942,34 +15942,34 @@ packages:
       react: 17.0.2
     dev: false
 
-  /react-instantsearch-core/6.15.0_bdc42e7c8af415d3d7b8c54bad5b9087:
+  /react-instantsearch-core/6.15.0_7ce4838e463d1525dea7855d64eb110e:
     resolution: {integrity: sha512-mp6kWtyDvf3qeAuNxl8m/f+7pBpf1Enlao69oXyYiTsx582nayE8Wo3g2Des0o6l+D1L09UgvGa+1b/bmkTD2w==}
     peerDependencies:
       algoliasearch: '>= 3.1 < 5'
       react: '>= 16.3.0 < 18'
     dependencies:
       '@babel/runtime': 7.16.0
-      algoliasearch: 4.10.5
-      algoliasearch-helper: 3.6.2_algoliasearch@4.10.5
+      algoliasearch: 4.11.0
+      algoliasearch-helper: 3.6.2_algoliasearch@4.11.0
       prop-types: 15.7.2
       react: 17.0.2
       react-fast-compare: 3.2.0
     dev: false
 
-  /react-instantsearch-dom/6.15.0_7f770dea5663f3612b40f53110f92d57:
+  /react-instantsearch-dom/6.15.0_9c61a37bce6c0496634c2178214848ce:
     resolution: {integrity: sha512-BGqlDNd9H4CsjA7lhEkK8pH5pXVjdWMCdIkqqWbS++zBmIJnR+F6h/z1g7x1B/q77EsVUU7LDbdpKayEEftFDA==}
     peerDependencies:
       react: '>= 16.3.0 < 18'
       react-dom: '>= 16.3.0 < 18'
     dependencies:
       '@babel/runtime': 7.16.0
-      algoliasearch-helper: 3.6.2_algoliasearch@4.10.5
+      algoliasearch-helper: 3.6.2_algoliasearch@4.11.0
       classnames: 2.3.1
       prop-types: 15.7.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-fast-compare: 3.2.0
-      react-instantsearch-core: 6.15.0_bdc42e7c8af415d3d7b8c54bad5b9087
+      react-instantsearch-core: 6.15.0_7ce4838e463d1525dea7855d64eb110e
     transitivePeerDependencies:
       - algoliasearch
     dev: false
