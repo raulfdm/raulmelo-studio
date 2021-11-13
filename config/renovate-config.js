@@ -11,6 +11,7 @@ module.exports = {
   /**
    * Renovate options
    */
+  rebaseWhen: 'conflicted',
   branchPrefix: 'renovate/',
   gitAuthor: 'Renovate Bot <bot@renovateapp.com>',
   includeForks: true,
