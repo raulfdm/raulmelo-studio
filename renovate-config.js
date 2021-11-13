@@ -11,7 +11,7 @@ module.exports = {
   /**
    * Renovate options
    */
-  rebaseWhen: 'conflicted',
+  rebaseWhen: 'behind-base-branch',
   recreateClosed: true,
   branchPrefix: 'renovate/',
   gitAuthor: 'Renovate Bot <bot@renovateapp.com>',
@@ -57,6 +57,17 @@ module.exports = {
     {
       matchPackageNames: ['eslint'],
       allowedVersions: '<8',
+    },
+    /**
+     * Grouping packages to reduce the number of PRs
+     */
+    {
+      matchPackagePatterns: ['eslint'],
+      groupName: 'eslint',
+    },
+    {
+      matchPackagePatterns: ['babel'],
+      groupName: 'babel',
     },
   ],
 };
