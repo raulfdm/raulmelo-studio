@@ -3,9 +3,9 @@ on:
   workflow_dispatch:
     inputs:
       logLevel:
-        description: 'Log level'
-        required: true
-        default: 'warning'
+        description: 'Reason'
+        required: false
+        default: 'Checking for updates'
   schedule:
     # The "*" (#42, asterisk) character has special semantics in YAML, so this
     # string has to be quoted.
