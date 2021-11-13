@@ -46,7 +46,7 @@ importers:
       eslint-plugin-jest: 25.2.3
       eslint-plugin-node: 11.1.0
       eslint-plugin-react: 7.26.1
-      eslint-plugin-react-hooks: 4.2.0
+      eslint-plugin-react-hooks: 4.3.0
       eslint-plugin-simple-import-sort: 7.0.0
       glob: 7.2.0
       husky: 7.0.4
@@ -87,7 +87,7 @@ importers:
       eslint-plugin-jest: 25.2.3_ffccc95c1f6899fb97bb9cd359ff2cc2
       eslint-plugin-node: 11.1.0_eslint@7.32.0
       eslint-plugin-react: 7.26.1_eslint@7.32.0
-      eslint-plugin-react-hooks: 4.2.0_eslint@7.32.0
+      eslint-plugin-react-hooks: 4.3.0_eslint@7.32.0
       eslint-plugin-simple-import-sort: 7.0.0_eslint@7.32.0
       glob: 7.2.0
       husky: 7.0.4
@@ -9145,6 +9145,15 @@ packages:
     engines: {node: '>=10'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
+    dependencies:
+      eslint: 7.32.0
+    dev: true
+
+  /eslint-plugin-react-hooks/4.3.0_eslint@7.32.0:
+    resolution: {integrity: sha512-XslZy0LnMn+84NEG9jSGR6eGqaZB3133L8xewQo3fQagbQuGt7a63gf+P1NGKZavEYEC3UXaWEAA/AqDkuN6xA==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
     dependencies:
       eslint: 7.32.0
     dev: true
