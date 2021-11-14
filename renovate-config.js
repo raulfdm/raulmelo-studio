@@ -13,7 +13,7 @@ module.exports = {
    * Renovate options
    */
   baseBranches: ['main'],
-  rebaseWhen: 'behind-base-branch',
+  rebaseWhen: 'conflicted',
   recreateClosed: true,
   branchPrefix: 'renovate/',
   gitAuthor: 'Renovate Bot <bot@renovateapp.com>',
