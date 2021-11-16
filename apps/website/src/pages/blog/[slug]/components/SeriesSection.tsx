@@ -27,7 +27,7 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
             css={styles.header.wrapper(currentState)}
             onClick={toggleSection}
             data-testid="expand-button"
-            aria-role="button"
+            role="button"
           >
             <span css={styles.header.title}>{name}</span>
             <motion.button

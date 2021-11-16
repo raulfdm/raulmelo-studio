@@ -21,6 +21,17 @@ const prismStyles = css`
 
   code[class*='language-'],
   pre[class*='language-'],
+  .remark-code-title,
+  pre code {
+    font-size: 1.1rem !important;
+  }
+
+  pre[class*='language-'] {
+    padding-top: 2rem !important;
+  }
+
+  code[class*='language-'],
+  pre[class*='language-'],
   .remark-code-title {
     background: var(--prism-black);
     color: var(--prism-gray-light);
@@ -32,13 +43,7 @@ const prismStyles = css`
     tab-size: 4;
     hyphens: none;
 
-    font-size: 1rem !important;
-
-    ${tw`
-      whitespace-pre
-      w-full
-      text-left
-    `}
+    ${tw`w-full text-left whitespace-pre `}
   }
 
   pre[class*='language-'] code {
@@ -51,7 +56,7 @@ const prismStyles = css`
   }
 
   pre[class*='language-'] {
-    ${tw`p-4 pt-6 overflow-auto rounded relative`}
+    ${tw`relative p-4 pt-6 overflow-auto rounded`}
   }
 
   /* Inline code */
@@ -129,17 +134,7 @@ const prismStyles = css`
     to the way it's rendered.
     */
   .mdx-marker {
-    ${tw`
-      relative
-      left-0
-      right-0
-      pointer-events-none
-      whitespace-pre
-      block
-      -mx-6
-      pl-5
-      border-l-4
-    `};
+    ${tw`relative left-0 right-0 block pl-5 -mx-6 whitespace-pre border-l-4 pointer-events-none `};
     line-height: inherit;
     background-color: var(--prism-gray-dark);
     border-color: var(--prism-rosy);
@@ -160,7 +155,7 @@ const prismStyles = css`
   .remark-code-title {
     background-color: var(--prism-black);
     border-bottom: 1px solid var(--prism-gray);
-    ${tw`text-base font-bold rounded-t py-2 px-4`}
+    ${tw`px-4 py-2 text-base font-bold rounded-t`}
   }
 
   .remark-code-title + pre {
