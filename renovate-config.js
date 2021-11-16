@@ -65,6 +65,7 @@ module.exports = {
     {
       matchPackagePatterns: ['eslint'],
       groupName: 'eslint',
+      excludePackagePatterns: ['eslint-config-next', '@typescript-eslint'],
     },
     {
       matchPackagePatterns: ['babel'],
@@ -73,6 +74,18 @@ module.exports = {
     {
       matchPackagePatterns: ['@emotion', 'emotion'],
       groupName: 'emotion',
+    },
+    {
+      matchPackagePatterns: [
+        'eslint-config-next',
+        'next',
+        '@next/bundle-analyzer',
+      ],
+      groupName: 'Next.JS',
+    },
+    {
+      matchPackagePatterns: ['@typescript-eslint'],
+      groupName: 'TS Lint',
     },
   ],
 };
