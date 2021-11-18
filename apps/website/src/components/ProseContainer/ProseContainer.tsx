@@ -4,4 +4,9 @@ export const ProseContainer = styled.article`
   ${tw`prose dark:prose-dark`};
   ${tw`prose-lg md:prose-xl lg:prose-2xl`};
   ${tw`max-w-full`};
+
+  /* Prose overrides */
+  a code {
+    ${tw`dark:text-secondary`}
+  }
 `;
