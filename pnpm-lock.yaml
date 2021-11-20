@@ -31,7 +31,7 @@ importers:
       '@babel/preset-typescript': 7.16.0
       '@babel/runtime': 7.16.3
       '@changesets/cli': 2.18.0
-      '@types/jest': 27.0.2
+      '@types/jest': 27.0.3
       '@types/node': 16.7.12
       '@typescript-eslint/eslint-plugin': 5.4.0
       '@typescript-eslint/parser': 5.4.0
@@ -72,7 +72,7 @@ importers:
       '@babel/preset-typescript': 7.16.0_@babel+core@7.16.0
       '@babel/runtime': 7.16.3
       '@changesets/cli': 2.18.0
-      '@types/jest': 27.0.2
+      '@types/jest': 27.0.3
       '@types/node': 16.7.12
       '@typescript-eslint/eslint-plugin': 5.4.0_2e9c5db745a32be551690d83b5446a92
       '@typescript-eslint/parser': 5.4.0_eslint@7.32.0+typescript@4.4.4
@@ -248,7 +248,7 @@ importers:
       smoothscroll-polyfill: 0.4.4
     devDependencies:
       '@emotion/babel-plugin': 11.3.0_@babel+core@7.16.0
-      '@emotion/jest': 11.6.0_@types+jest@27.0.2
+      '@emotion/jest': 11.6.0_@types+jest@27.0.3
       '@next/bundle-analyzer': 12.0.4
       '@testing-library/jest-dom': 5.15.0
       '@testing-library/react': 12.1.2_react-dom@17.0.2+react@17.0.2
@@ -3563,7 +3563,7 @@ packages:
       '@emotion/memoize': 0.7.5
     dev: false
 
-  /@emotion/jest/11.6.0_@types+jest@27.0.2:
+  /@emotion/jest/11.6.0_@types+jest@27.0.3:
     resolution: {integrity: sha512-HJrnA6ARrRlYYi0AzSvFG3eAupar0cmegnG1OkXfKdBvqfbuTDLAHVovbsg5EecFjq0wTCHDvbBllGz8RpadCg==}
     peerDependencies:
       '@types/jest': ^26.0.14 || ^27.0.0
@@ -3576,7 +3576,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.16.3
       '@emotion/css-prettifier': 1.0.0
-      '@types/jest': 27.0.2
+      '@types/jest': 27.0.3
       chalk: 4.1.2
       specificity: 0.4.1
       stylis: 4.0.10
@@ -4907,6 +4907,13 @@ packages:
 
   /@types/jest/27.0.2:
     resolution: {integrity: sha512-4dRxkS/AFX0c5XW6IPMNOydLn2tEhNhJV7DnYK+0bjoJZ+QTmfucBlihX7aoEsh/ocYtkLC73UbnBXBXIxsULA==}
+    dependencies:
+      jest-diff: 27.3.1
+      pretty-format: 27.3.1
+    dev: true
+
+  /@types/jest/27.0.3:
+    resolution: {integrity: sha512-cmmwv9t7gBYt7hNKH5Spu7Kuu/DotGa+Ff+JGRKZ4db5eh8PnKS4LuebJ3YLUoyOyIHraTGyULn23YtEAm0VSg==}
     dependencies:
       jest-diff: 27.3.1
       pretty-format: 27.3.1
