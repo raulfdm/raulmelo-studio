@@ -1,6 +1,9 @@
 name: Renovate
 on:
   workflow_dispatch:
+    secrets:
+      RENOVATE_TOKEN:
+        required: true
     inputs:
       logLevel:
         description: 'Reason'
@@ -12,6 +15,7 @@ on:
     - cron: '0 0 * * *' # At 00:00 /> https://crontab.guru/#0_0_*_*_*
 jobs:
   renovate:
+    environment: Raul Melo
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -21,4 +25,4 @@ jobs:
         uses: renovatebot/github-action@v29.2.4
         with:
           configurationFile: renovate-config.js
-          token: ${{ env.RENOVATE_TOKEN }}
+          token: ${{ secrets.RENOVATE_TOKEN }}
