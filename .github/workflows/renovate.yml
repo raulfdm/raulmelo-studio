@@ -13,6 +13,7 @@ on:
     # The "*" (#42, asterisk) character has special semantics in YAML, so this
     # string has to be quoted.
     - cron: '0 0 * * *' # At 00:00 /> https://crontab.guru/#0_0_*_*_*
+
 jobs:
   renovate:
     environment: Raul Melo
@@ -21,8 +22,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2.4.0
 
-      - name: Self-hosted Renovate
-        uses: renovatebot/github-action@v29.29.2
+      - name: Use Node
+        uses: actions/setup-node@v2
         with:
-          configurationFile: renovate-config.js
-          token: ${{ secrets.RENOVATE_TOKEN }}
+          node-version: '14'
+
+      - name: Install renovate
+        run: npm install -g renovate
+
+      - name: Running Renovate
+        run: renovate
+        env:
+          RENOVATE_CONFIG_FILE: renovate-config.js
+          RENOVATE_TOKEN: ${{ secrets.RENOVATE_TOKEN }}
