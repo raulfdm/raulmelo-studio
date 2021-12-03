@@ -22,16 +22,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2.4.0
 
-      - name: Use Node
-        uses: actions/setup-node@v2
+      - name: Self-hosted Renovate
+        uses: renovatebot/github-action@v29.29.2
         with:
-          node-version: '14'
-
-      - name: Install renovate
-        run: npm install -g renovate
-
-      - name: Running Renovate
-        run: renovate
-        env:
-          RENOVATE_CONFIG_FILE: renovate-config.js
-          RENOVATE_TOKEN: ${{ secrets.RENOVATE_TOKEN }}
+          configurationFile: renovate-config.js
+          token: ${{ secrets.RENOVATE_TOKEN }}
