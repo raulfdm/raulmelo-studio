@@ -3,6 +3,8 @@ import { domAnimation, LazyMotion } from 'framer-motion';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 import tw, { css } from 'twin.macro';
 
+const CustomDocument = Document as any;
+
 const styles = {
   /* padding bottom ensures the same spacing for all spacing*/
   body: css`
@@ -15,9 +17,9 @@ const styles = {
   `,
 };
 
-export default class MyDocument extends Document {
+export default class MyDocument extends CustomDocument {
   static async getInitialProps(ctx: any) {
-    const initialProps = await Document.getInitialProps(ctx);
+    const initialProps = await CustomDocument.getInitialProps(ctx);
     const critical = extractCritical(initialProps.html);
     initialProps.html = critical.html;
     initialProps.styles = (
