@@ -3,7 +3,6 @@
 import schemaTypes from 'all:part:@sanity/base/schema-type';
 import createSchema from 'part:@sanity/base/schema-creator';
 
-import author from './author';
 // We import object and document schemas
 import blockContent from './blockContent';
 import category from './category';
@@ -20,7 +19,6 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
     post,
-    author,
     category,
     siteSettings,
     // When added to this list, object types can be used as
