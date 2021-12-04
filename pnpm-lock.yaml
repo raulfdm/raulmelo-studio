@@ -147,6 +147,7 @@ importers:
       prop-types: ^15.7
       react: ^17.0.2
       react-dom: ^17.0.2
+      sanity-plugin-asset-source-cloudinary: ^0.1.1
       sanity-plugin-markdown: ^2.1.0
       styled-components: ^5.2.0
     dependencies:
@@ -159,6 +160,7 @@ importers:
       prop-types: 15.7.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
+      sanity-plugin-asset-source-cloudinary: 0.1.1_ae4135346be0a3494c4b733b5891a711
       sanity-plugin-markdown: 2.1.0_ae4135346be0a3494c4b733b5891a711
       styled-components: 5.3.3_react-dom@17.0.2+react@17.0.2
 
@@ -21359,6 +21361,24 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       diff-match-patch: 1.0.5
+    dev: false
+
+  /sanity-plugin-asset-source-cloudinary/0.1.1_ae4135346be0a3494c4b733b5891a711:
+    resolution: {integrity: sha512-Ke8UikJ7MUVt+9UmHv9kF6PflZ8f93dm5li31PSy+/uF3FOffeFZYDV8lqb1xPc/CdgCw+qTjLd1WDzQOMTiLA==}
+    engines: {node: '>=6.0.0'}
+    peerDependencies:
+      '@sanity/base': '>=2.13.0'
+      '@sanity/components': ^2.13.0
+      react: '>= 16.9'
+      react-dom: '>= 16.2'
+    dependencies:
+      '@sanity/base': 2.22.3_625185cb104c53dd960b8025c62cc00a
+      '@sanity/ui': 0.36.15_7a082f7d10047d47195aea793f958a14
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      styled-components: 5.3.3_react-dom@17.0.2+react@17.0.2
+    transitivePeerDependencies:
+      - react-is
     dev: false
 
   /sanity-plugin-markdown/2.1.0_ae4135346be0a3494c4b733b5891a711:
