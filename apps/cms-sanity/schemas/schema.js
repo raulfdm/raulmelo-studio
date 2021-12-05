@@ -5,9 +5,10 @@ import createSchema from 'part:@sanity/base/schema-creator';
 
 // We import object and document schemas
 import blockContent from './blockContent';
-import tag from './tag';
+import personalInfo from './personalInfo';
 import post from './post';
 import siteSettings from './siteSettings';
+import tag from './tag';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -20,6 +21,7 @@ export default createSchema({
     // in the studio.
     post,
     tag,
+    personalInfo,
     siteSettings,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
