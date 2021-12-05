@@ -9,11 +9,6 @@ export default {
       type: 'string',
     },
     {
-      name: 'tags',
-      title: 'tags',
-      type: 'string',
-    },
-    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -31,12 +26,6 @@ export default {
       },
     },
     {
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
-      of: [{ type: 'reference', to: { type: 'category' } }],
-    },
-    {
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
@@ -45,6 +34,18 @@ export default {
       type: 'markdown',
       description: 'A Github flavored markdown field with image uploading',
       name: 'Content',
+    },
+    {
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [{ type: 'reference', to: { type: 'tag' } }],
+    },
+    {
+      name: 'tagss',
+      title: 'Tags',
+      type: 'reference',
+      to: [{ type: 'reference', to: { type: 'tag' } }],
     },
   ],
 
