@@ -184,7 +184,7 @@ importers:
       duplicate-package-checker-webpack-plugin: 3.0.0
       eslint-config-next: 12.0.7
       flat: 5.0.2
-      framer-motion: 5.3.3
+      framer-motion: 5.4.1
       lodash.chunk: 4.2.0
       lodash.omit: 4.5.0
       lodash.throttle: 4.1.1
@@ -224,7 +224,7 @@ importers:
       dayjs: 1.10.7
       debounce-promise: 3.1.2
       flat: 5.0.2
-      framer-motion: 5.3.3_react-dom@17.0.2+react@17.0.2
+      framer-motion: 5.4.1_react-dom@17.0.2+react@17.0.2
       lodash.chunk: 4.2.0
       lodash.omit: 4.5.0
       lodash.throttle: 4.1.1
@@ -9989,15 +9989,22 @@ packages:
       map-cache: 0.2.2
     dev: false
 
-  /framer-motion/5.3.3_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-s4mz0E4/TPTKXqKnpb578S0Jp/0JhAyvDpULFe95kHnWs1lOCKf2+EEl6yAX+1wfPLUYokZzudiK9jam0ZAVdQ==}
+  /framer-motion/5.4.1_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-U4hiU3g5RCaZRTtTTOKStXH1jm+8uiIhM46wjIYQ7fWnc5c1cGlAzo238X7AM3WhU//jtqd1l5EHq32x96Eg4g==}
     peerDependencies:
+      '@react-three/fiber': ^7.0.21
       react: '>=16.8 || ^17.0.0'
       react-dom: '>=16.8 || ^17.0.0'
+      three: ^0.135.0
+    peerDependenciesMeta:
+      '@react-three/fiber':
+        optional: true
+      three:
+        optional: true
     dependencies:
       framesync: 6.0.1
       hey-listen: 1.0.8
-      popmotion: 11.0.0
+      popmotion: 11.0.3
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       style-value-types: 5.0.0
@@ -15061,8 +15068,8 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /popmotion/11.0.0:
-    resolution: {integrity: sha512-kJDyaG00TtcANP5JZ51od+DCqopxBm2a/Txh3Usu23L9qntjY5wumvcVf578N8qXEHR1a+jx9XCv8zOntdYalQ==}
+  /popmotion/11.0.3:
+    resolution: {integrity: sha512-Y55FLdj3UxkR7Vl3s7Qr4e9m0onSnP8W7d/xQLsoJM40vs6UKHFdygs6SWryasTZYqugMjm3BepCF4CWXDiHgA==}
     dependencies:
       framesync: 6.0.1
       hey-listen: 1.0.8
