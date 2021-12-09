@@ -184,7 +184,7 @@ importers:
       duplicate-package-checker-webpack-plugin: 3.0.0
       eslint-config-next: 12.0.7
       flat: 5.0.2
-      framer-motion: 5.4.1
+      framer-motion: 5.4.4
       lodash.chunk: 4.2.0
       lodash.omit: 4.5.0
       lodash.throttle: 4.1.1
@@ -224,7 +224,7 @@ importers:
       dayjs: 1.10.7
       debounce-promise: 3.1.2
       flat: 5.0.2
-      framer-motion: 5.4.1_react-dom@17.0.2+react@17.0.2
+      framer-motion: 5.4.4_react-dom@17.0.2+react@17.0.2
       lodash.chunk: 4.2.0
       lodash.omit: 4.5.0
       lodash.throttle: 4.1.1
@@ -8181,6 +8181,10 @@ packages:
     resolution: {integrity: sha512-rZHcgBkbYavBeD9ej6sP56XfG53d51CD4dnaw989YX/nZ/ZJfgRx/9ePKmTNiUiyQvh4mtrMoS3OAWW+yoYtpg==}
     dev: false
 
+  /debounce/1.2.1:
+    resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
+    dev: false
+
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
     dependencies:
@@ -10037,8 +10041,8 @@ packages:
       map-cache: 0.2.2
     dev: false
 
-  /framer-motion/5.4.1_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-U4hiU3g5RCaZRTtTTOKStXH1jm+8uiIhM46wjIYQ7fWnc5c1cGlAzo238X7AM3WhU//jtqd1l5EHq32x96Eg4g==}
+  /framer-motion/5.4.4_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-R2IE9EdmsKpliqyA+6U7biRnLdAHBXh510oFZLLWg5ZbFQYg1UsSLCZD3AXWFLQxOKn0C6ohZb7y0R9XpsriFA==}
     peerDependencies:
       '@react-three/fiber': ^7.0.21
       react: '>=16.8 || ^17.0.0'
@@ -10055,6 +10059,8 @@ packages:
       popmotion: 11.0.3
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
+      react-merge-refs: 1.1.0
+      react-use-measure: 2.1.1_react-dom@17.0.2+react@17.0.2
       style-value-types: 5.0.0
       tslib: 2.3.1
     optionalDependencies:
@@ -16265,6 +16271,10 @@ packages:
       react: 17.0.2
     dev: false
 
+  /react-merge-refs/1.1.0:
+    resolution: {integrity: sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==}
+    dev: false
+
   /react-moment-proptypes/1.8.1:
     resolution: {integrity: sha512-Er940DxWoObfIqPrZNfwXKugjxMIuk1LAuEzn23gytzV6hKS/sw108wibi9QubfMN4h+nrlje8eUCSbQRJo2fQ==}
     dependencies:
@@ -16525,6 +16535,17 @@ packages:
     dependencies:
       react: 17.0.2
       tslib: 2.3.1
+    dev: false
+
+  /react-use-measure/2.1.1_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-nocZhN26cproIiIduswYpV5y5lQpSQS1y/4KuvUCjSKmw7ZWIS/+g3aFnX3WdBkyuGUtTLif3UTqnLLhbDoQig==}
+    peerDependencies:
+      react: '>=16.13'
+      react-dom: '>=16.13'
+    dependencies:
+      debounce: 1.2.1
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
     dev: false
 
   /react-use/17.3.1_react-dom@17.0.2+react@17.0.2:
