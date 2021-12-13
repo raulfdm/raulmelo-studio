@@ -87,5 +87,14 @@ module.exports = {
       matchPackagePatterns: ['@typescript-eslint'],
       groupName: 'TS Lint',
     },
+    {
+      groupName: 'Tailwind',
+      matchPackagePatterns: [
+        'tailwindcss',
+        '@tailwindcss/forms',
+        '@tailwindcss/aspect-ratio',
+        '@tailwindcss/typography',
+      ],
+    },
   ],
 };
