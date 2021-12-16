@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import dotenv from 'dotenv-flow';
+dotenv.config();
 import { generateSiteData } from '@raulfdm/core/generateSiteData';
 import path from 'path';
 import { fileURLToPath } from 'url';
