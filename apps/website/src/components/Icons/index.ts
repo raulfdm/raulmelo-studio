@@ -5,6 +5,7 @@ export * from './ChevronDown';
 export * from './ChevronLeft';
 export * from './ChevronRight';
 export * from './Close';
+export * from './DevTo';
 export * from './ExternalLink';
 export * from './Github';
 export * from './Globe';

@@ -2,7 +2,13 @@ import Image from 'next/image';
 import { defineMessage } from 'react-intl';
 import tw from 'twin.macro';
 
-import { GithubIcon, LinkedInIcon, TwitterIcon } from '~/components/Icons';
+import {
+  DevToIcon,
+  GithubIcon,
+  LinkedInIcon,
+  TwitterIcon,
+} from '~/components/Icons';
+import { MediumIcon } from '~/components/Icons/Medium';
 import { useLocalization } from '~/hooks/useLocalization';
 import siteData from '~/site-data';
 import { getSocial } from '~/utils/seo';
@@ -30,6 +36,8 @@ export const AuthorPresentation = () => {
   const github = getSocial('github');
   const twitter = getSocial('twitter');
   const linkedIn = getSocial('linkedin');
+  const devTo = getSocial('dev.to');
+  const medium = getSocial('medium');
 
   return (
     <header css={styles.header}>
@@ -41,6 +49,12 @@ export const AuthorPresentation = () => {
           {defaultSeo?.description}
         </p>
         <section css={styles.content.icons.wrapper}>
+          <a href={devTo.url} data-testid="author__linkedInUrl">
+            <DevToIcon css={styles.content.icons.icon} />
+          </a>
+          <a href={medium.url} data-testid="author__linkedInUrl">
+            <MediumIcon css={styles.content.icons.icon} />
+          </a>
           <a href={github.url} data-testid="author__githubUrl">
             <GithubIcon css={styles.content.icons.icon} />
           </a>
