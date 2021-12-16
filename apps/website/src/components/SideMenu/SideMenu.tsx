@@ -12,7 +12,7 @@ import { useApp } from '~/hooks/useApp';
 import { useLocalization } from '~/hooks/useLocalization';
 
 const styles = {
-  sideMenuPanel: tw`fixed bottom-0 right-0 z-20 h-full min-w-full duration-200 transform translate-x-full bg-white top-16 dark:bg-blue-800 sm:min-w-min sm:w-full sm:max-w-xs transition-theme ease`,
+  sideMenuPanel: tw`fixed bottom-0 right-0 z-20 h-full min-w-full duration-200 translate-x-full bg-white top-16 dark:bg-blue-800 sm:min-w-min sm:w-full sm:max-w-xs transition-theme ease`,
   sideMenuItem: (isActive: boolean) => css`
     ${tw`mx-5 text-xl font-black cursor-pointer sm:text-lg`};
     ${isActive &&
