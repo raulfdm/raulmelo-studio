@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-require('dotenv').config();
+require('dotenv-flow').config();
 
 export const SETTINGS = {
   algolia: {
