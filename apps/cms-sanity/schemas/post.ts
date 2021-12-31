@@ -1,20 +1,11 @@
+import { languageField } from './customFields/language';
+
 export default {
   name: 'post',
   title: 'Post',
   type: 'document',
   fields: [
-    {
-      title: 'Language',
-      type: 'string',
-      name: 'language',
-      initialValue: 'en',
-      options: {
-        list: [
-          { title: 'English', value: 'en' },
-          { title: 'Português', value: 'pt' },
-        ],
-      },
-    },
+    languageField,
     {
       name: 'title',
       title: 'Title',
@@ -54,7 +45,7 @@ export default {
     {
       name: 'publishedAt',
       title: 'Published at',
-      type: 'datetime',
+      type: 'date',
     },
     {
       type: 'markdown',
@@ -68,24 +59,25 @@ export default {
       of: [{ type: 'reference', to: { type: 'tag' } }],
     },
     {
-      name: 'tagss',
-      title: 'Tags',
-      type: 'reference',
-      to: [{ type: 'reference', to: { type: 'tag' } }],
+      title: 'Unsplash',
+      name: 'unsplash',
+      type: 'object',
+      fields: [
+        {
+          name: 'authorName',
+          type: 'string',
+          title: 'Author Name',
+        },
+        { name: 'url', type: 'string', title: 'URL' },
+      ],
     },
   ],
 
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
-      media: 'mainImage',
-    },
-    prepare(selection) {
-      const { author } = selection;
-      return Object.assign({}, selection, {
-        subtitle: author && `by ${author}`,
-      });
+      subtitle: 'subtitle',
+      media: 'featuredImage',
     },
   },
 };

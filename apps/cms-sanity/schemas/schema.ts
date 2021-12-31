@@ -7,6 +7,7 @@ import createSchema from 'part:@sanity/base/schema-creator';
 import blockContent from './blockContent';
 import personalInfo from './personalInfo';
 import post from './post';
+import { postSeries } from './postSeries';
 import siteSettings from './siteSettings';
 import tag from './tag';
 
@@ -23,6 +24,7 @@ export default createSchema({
     tag,
     personalInfo,
     siteSettings,
+    postSeries,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
