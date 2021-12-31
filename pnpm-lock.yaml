@@ -144,7 +144,6 @@ importers:
       '@sanity/default-layout': 2.23.2
       '@sanity/default-login': 2.23.2
       '@sanity/desk-tool': 2.23.2
-      '@sanity/language-filter': 2.23.2
       '@sanity/vision': 2.23.2
       prop-types: '15.7'
       react: ^17.0.2
@@ -158,7 +157,6 @@ importers:
       '@sanity/default-layout': 2.23.2_625185cb104c53dd960b8025c62cc00a
       '@sanity/default-login': 2.23.2_7a082f7d10047d47195aea793f958a14
       '@sanity/desk-tool': 2.23.2_9eddfaa965e5a9309d14b6d803bc531c
-      '@sanity/language-filter': 2.23.2_625185cb104c53dd960b8025c62cc00a
       '@sanity/vision': 2.23.2_9eddfaa965e5a9309d14b6d803bc531c
       prop-types: 15.7.2
       react: 17.0.2
@@ -5161,24 +5159,6 @@ packages:
       oneline: 1.0.3
     transitivePeerDependencies:
       - react
-    dev: false
-
-  /@sanity/language-filter/2.23.2_625185cb104c53dd960b8025c62cc00a:
-    resolution: {integrity: sha512-SGx91UBtIcorcHFCW/orO6KRfaoTPPW/UyrUw7TI757C16Fnjqea2Ktzc2TYIkaihNjwRxd1rakYt9R3Y2PVfA==}
-    peerDependencies:
-      prop-types: ^15.3
-      react: ^16.9 || ^17
-    dependencies:
-      '@sanity/icons': 1.2.2_react@17.0.2
-      '@sanity/types': 2.23.2
-      '@sanity/ui': 0.36.17_7a082f7d10047d47195aea793f958a14
-      lodash: 4.17.21
-      prop-types: 15.7.2
-      react: 17.0.2
-      rxjs: 6.6.7
-    transitivePeerDependencies:
-      - react-dom
-      - styled-components
     dev: false
 
   /@sanity/logos/1.1.6_react@17.0.2:
@@ -11952,7 +11932,7 @@ packages:
       debug:
         optional: true
 
-  /follow-redirects/1.14.4_debug@4.3.2:
+  /follow-redirects/1.14.4_debug@2.6.9:
     resolution: {integrity: sha512-zwGkiSXC1MUJG/qmeIFH2HBJx9u0V46QGUe3YR1fXG8bXQxq7fLj0RjLZQ5nubr9qNJUZrH+xUcwXEoXNpfS+g==}
     engines: {node: '>=4.0'}
     peerDependencies:
@@ -11961,7 +11941,7 @@ packages:
       debug:
         optional: true
     dependencies:
-      debug: 4.3.2_supports-color@6.1.0
+      debug: 2.6.9
     dev: false
 
   /follow-redirects/1.14.4_debug@4.3.2:
@@ -12297,7 +12277,7 @@ packages:
       create-error-class: 3.0.2
       debug: 2.6.9
       decompress-response: 3.3.0
-      follow-redirects: 1.14.4_debug@4.3.2
+      follow-redirects: 1.14.4_debug@2.6.9
       form-urlencoded: 2.0.9
       into-stream: 3.1.0
       is-plain-object: 2.0.4
@@ -13315,7 +13295,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.14.4_debug@4.3.2
+      follow-redirects: 1.14.4_debug@2.6.9
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
