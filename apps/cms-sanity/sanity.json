@@ -13,7 +13,8 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "markdown",
-    "asset-source-cloudinary"
+    "asset-source-cloudinary",
+    "@sanity/language-filter"
   ],
   "env": {
     "development": {
@@ -27,7 +28,11 @@
     },
     {
       "name": "part:@sanity/desk-tool/structure",
-      "path": "./deskStructure.js"
+      "path": "./deskStructure.ts"
+    },
+    {
+      "name": "part:@sanity/language-filter/config",
+      "path": "./config/languageFilterConfig.ts"
     }
   ]
 }

@@ -4,9 +4,35 @@ export default {
   type: 'document',
   fields: [
     {
+      title: 'Language',
+      type: 'string',
+      name: 'language',
+      initialValue: 'en',
+      options: {
+        list: [
+          { title: 'English', value: 'en' },
+          { title: 'Português', value: 'pt' },
+        ],
+      },
+    },
+    {
       name: 'title',
       title: 'Title',
       type: 'string',
+    },
+    {
+      name: 'subtitle',
+      title: 'Subtitle',
+      type: 'string',
+    },
+    {
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+      validation: (Rule) => [
+        Rule.min(5).error('Description too short.'),
+        Rule.max(121).error('Description is too long.'),
+      ],
     },
     {
       name: 'slug',
@@ -18,8 +44,8 @@ export default {
       },
     },
     {
-      name: 'mainImage',
-      title: 'Main image',
+      name: 'featuredImage',
+      title: 'Featured Image',
       type: 'image',
       options: {
         hotspot: true,
