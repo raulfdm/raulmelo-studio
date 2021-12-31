@@ -10,6 +10,7 @@ import post from './post';
 import { postSeries } from './postSeries';
 import siteSettings from './siteSettings';
 import tag from './tag';
+import { til } from './til';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -22,6 +23,7 @@ export default createSchema({
     // in the studio.
     post,
     tag,
+    til,
     personalInfo,
     siteSettings,
     postSeries,
