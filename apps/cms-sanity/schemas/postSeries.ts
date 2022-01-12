@@ -1,11 +1,12 @@
-import { languageField } from './customFields/language';
-
 export const postSeries = {
   name: 'postSeries',
   title: 'Post Series',
   type: 'document',
   fields: [
-    languageField,
+    {
+      type: 'language',
+      name: 'language',
+    },
     {
       name: 'name',
       title: 'Name',

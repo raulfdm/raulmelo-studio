@@ -8,7 +8,7 @@
  *    type: 'blockContent'
  *  }
  */
-export default {
+export const blockContentField = {
   title: 'Block Content',
   name: 'blockContent',
   type: 'array',

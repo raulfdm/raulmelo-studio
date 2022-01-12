@@ -1,11 +1,12 @@
-import { languageField } from './customFields/language';
-
 export default {
   name: 'post',
   title: 'Post',
   type: 'document',
   fields: [
-    languageField,
+    {
+      type: 'language',
+      name: 'language',
+    },
     {
       name: 'title',
       title: 'Title',
@@ -50,7 +51,7 @@ export default {
     {
       type: 'markdown',
       description: 'A Github flavored markdown field with image uploading',
-      name: 'Content',
+      name: 'content',
     },
     {
       name: 'tags',

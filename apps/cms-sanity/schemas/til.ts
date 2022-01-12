@@ -1,11 +1,12 @@
-import { languageField } from './customFields/language';
-
 export const til = {
   name: 'til',
   title: 'TIL - Today I Learned',
   type: 'document',
   fields: [
-    languageField,
+    {
+      type: 'language',
+      name: 'language',
+    },
     {
       name: 'title',
       title: 'Title',

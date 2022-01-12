@@ -4,7 +4,8 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 import createSchema from 'part:@sanity/base/schema-creator';
 
 // We import object and document schemas
-import blockContent from './blockContent';
+import { blockContentField } from './customFields/blockContent';
+import { languageField } from './customFields/language';
 import personalInfo from './personalInfo';
 import post from './post';
 import { postSeries } from './postSeries';
@@ -29,6 +30,7 @@ export default createSchema({
     postSeries,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
-    blockContent,
+    blockContentField,
+    languageField,
   ]),
 });
