@@ -13,6 +13,7 @@ import { rssSchema } from './rss';
 import siteSettings from './siteSettings';
 import tag from './tag';
 import { til } from './til';
+import { usesSchema } from './uses';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -29,6 +30,7 @@ export default createSchema({
     personalInfo,
     siteSettings,
     rssSchema,
+    usesSchema,
     postSeries,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
