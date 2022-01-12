@@ -9,6 +9,7 @@ import { languageField } from './customFields/language';
 import personalInfo from './personalInfo';
 import post from './post';
 import { postSeries } from './postSeries';
+import { rssSchema } from './rss';
 import siteSettings from './siteSettings';
 import tag from './tag';
 import { til } from './til';
@@ -27,6 +28,7 @@ export default createSchema({
     til,
     personalInfo,
     siteSettings,
+    rssSchema,
     postSeries,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
