@@ -6,6 +6,7 @@ export const postSchema = {
     {
       name: 'post',
       title: 'Post',
+      default: true,
     },
     {
       name: 'media',
