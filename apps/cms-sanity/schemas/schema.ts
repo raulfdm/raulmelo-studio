@@ -12,6 +12,7 @@ import { postSchema } from './post';
 import { postSeries } from './postSeries';
 import { rssSchema } from './rss';
 import siteSettings from './siteSettings';
+import { socialSchema } from './social';
 import tag from './tag';
 import { til } from './til';
 import { usesSchema } from './uses';
@@ -28,6 +29,7 @@ export default createSchema({
     postSchema,
     til,
     tag,
+    socialSchema,
     postSeries,
     personalInfo,
     siteSettings,
