@@ -1,32 +1,40 @@
-export default {
+export const postSchema = {
   name: 'post',
   title: 'Post',
   type: 'document',
+  groups: [
+    {
+      name: 'post',
+      title: 'Post',
+    },
+    {
+      name: 'media',
+      title: 'Media',
+    },
+
+    {
+      name: 'meta',
+      title: 'Meta',
+    },
+    {
+      name: 'reference',
+      title: 'References',
+    },
+  ],
   fields: [
     {
+      group: 'meta',
       type: 'language',
       name: 'language',
     },
     {
+      group: 'post',
       name: 'title',
       title: 'Title',
       type: 'string',
     },
     {
-      name: 'subtitle',
-      title: 'Subtitle',
-      type: 'string',
-    },
-    {
-      name: 'description',
-      title: 'Description',
-      type: 'text',
-      validation: (Rule) => [
-        Rule.min(5).error('Description too short.'),
-        Rule.max(121).error('Description is too long.'),
-      ],
-    },
-    {
+      group: 'meta',
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -36,6 +44,41 @@ export default {
       },
     },
     {
+      group: 'post',
+      name: 'subtitle',
+      title: 'Subtitle',
+      type: 'string',
+    },
+    {
+      group: 'post',
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+      validation: (Rule) => [
+        Rule.min(5).error('Description too short.'),
+        Rule.max(121).error('Description is too long.'),
+      ],
+    },
+    {
+      group: 'meta',
+      name: 'publishedAt',
+      title: 'Published at',
+      type: 'date',
+    },
+    {
+      group: 'meta',
+      name: 'seriesCopy',
+      title: 'Series Copy',
+      type: 'string',
+    },
+    {
+      group: 'post',
+      type: 'markdown',
+      description: 'A Github flavored markdown field with image uploading',
+      name: 'content',
+    },
+    {
+      group: 'media',
       name: 'featuredImage',
       title: 'Featured Image',
       type: 'image',
@@ -44,22 +87,14 @@ export default {
       },
     },
     {
-      name: 'publishedAt',
-      title: 'Published at',
-      type: 'date',
-    },
-    {
-      type: 'markdown',
-      description: 'A Github flavored markdown field with image uploading',
-      name: 'content',
-    },
-    {
+      group: 'reference',
       name: 'tags',
       title: 'Tags',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'tag' } }],
     },
     {
+      group: 'media',
       title: 'Unsplash',
       name: 'unsplash',
       type: 'object',

@@ -6,8 +6,9 @@ import createSchema from 'part:@sanity/base/schema-creator';
 // We import object and document schemas
 import { blockContentField } from './customFields/blockContent';
 import { languageField } from './customFields/language';
+import { defaultSeoSchema } from './defaultSeo';
 import personalInfo from './personalInfo';
-import post from './post';
+import { postSchema } from './post';
 import { postSeries } from './postSeries';
 import { rssSchema } from './rss';
 import siteSettings from './siteSettings';
@@ -24,14 +25,16 @@ export default createSchema({
   types: schemaTypes.concat([
     // The following are document types which will appear
     // in the studio.
-    post,
-    tag,
+    postSchema,
     til,
+    tag,
+    postSeries,
     personalInfo,
     siteSettings,
     rssSchema,
     usesSchema,
-    postSeries,
+    defaultSeoSchema,
+
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContentField,
