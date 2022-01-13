@@ -87,6 +87,12 @@ export const postSchema = {
       },
     },
     {
+      group: 'media',
+      name: 'imgCaption',
+      title: 'Image Caption',
+      type: 'string',
+    },
+    {
       group: 'reference',
       name: 'tags',
       title: 'Tags',
