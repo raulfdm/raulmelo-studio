@@ -14,5 +14,18 @@ export default {
       title: 'Site Description',
       type: 'text',
     },
+    {
+      name: 'url',
+      title: 'URL',
+      type: 'string',
+    },
+    {
+      name: 'seoImage',
+      title: 'SEO Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
   ],
 };
