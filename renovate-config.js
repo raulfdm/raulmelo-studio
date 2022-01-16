@@ -72,6 +72,10 @@ module.exports = {
       groupName: 'babel',
     },
     {
+      matchPackagePatterns: ['sanity'],
+      groupName: 'sanity',
+    },
+    {
       matchPackagePatterns: ['@emotion', 'emotion'],
       groupName: 'emotion',
     },
