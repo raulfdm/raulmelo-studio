@@ -57,7 +57,7 @@ export const postSchema = {
       type: 'text',
       validation: (Rule) => [
         Rule.min(5).error('Description too short.'),
-        Rule.max(121).error('Description is too long.'),
+        Rule.max(150).error('Description is too long.'),
       ],
     },
     {
