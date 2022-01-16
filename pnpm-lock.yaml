@@ -216,7 +216,7 @@ importers:
       duplicate-package-checker-webpack-plugin: 3.0.0
       eslint-config-next: 12.0.7
       flat: 5.0.2
-      framer-motion: 5.5.5
+      framer-motion: 5.6.0
       lodash.chunk: 4.2.0
       lodash.omit: 4.5.0
       lodash.throttle: 4.1.1
@@ -256,7 +256,7 @@ importers:
       dayjs: 1.10.7
       debounce-promise: 3.1.2
       flat: 5.0.2
-      framer-motion: 5.5.5_react-dom@17.0.2+react@17.0.2
+      framer-motion: 5.6.0_react-dom@17.0.2+react@17.0.2
       lodash.chunk: 4.2.0
       lodash.omit: 4.5.0
       lodash.throttle: 4.1.1
@@ -12117,6 +12117,32 @@ packages:
 
   /framer-motion/5.5.5_react-dom@17.0.2+react@17.0.2:
     resolution: {integrity: sha512-+LPAF5ddo02qKh+MK4h1ChwqUFvrLkK1NDWwrHy+MuCVmQDGgiFNHvwqOSklTDGkEtbio3dCOEDy23+ZyNAa9g==}
+    peerDependencies:
+      '@react-three/fiber': '*'
+      react: '>=16.8 || ^17.0.0'
+      react-dom: '>=16.8 || ^17.0.0'
+      three: ^0.135.0
+    peerDependenciesMeta:
+      '@react-three/fiber':
+        optional: true
+      three:
+        optional: true
+    dependencies:
+      framesync: 6.0.1
+      hey-listen: 1.0.8
+      popmotion: 11.0.3
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      react-merge-refs: 1.1.0
+      react-use-measure: 2.1.1_react-dom@17.0.2+react@17.0.2
+      style-value-types: 5.0.0
+      tslib: 2.3.1
+    optionalDependencies:
+      '@emotion/is-prop-valid': 0.8.8
+    dev: false
+
+  /framer-motion/5.6.0_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-Y4FtwUU+LUWLKSzoT6Sq538qluvhpe6izdQK8/xZeVjQZ/ORKGfZzyhzcUxNfscqnfEa3dUOA47s+dwrSipdGA==}
     peerDependencies:
       '@react-three/fiber': '*'
       react: '>=16.8 || ^17.0.0'
