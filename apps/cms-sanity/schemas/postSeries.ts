@@ -24,7 +24,13 @@ export const postSeries = {
     {
       name: 'posts',
       type: 'array',
-      of: [{ type: 'reference', to: { type: 'post' } }],
+      of: [
+        {
+          type: 'reference',
+          to: { type: 'post' },
+        },
+      ],
+      validation: (Rule) => Rule.unique(),
     },
   ],
   preview: {
@@ -33,9 +39,8 @@ export const postSeries = {
       posts: 'posts',
     },
     prepare(selection) {
-      console.log(selection);
       const { posts, name } = selection;
-      const numberOfPosts = posts.length;
+      const numberOfPosts = posts?.length ?? 0;
       let plural = 'posts';
 
       if (numberOfPosts === 1) {
