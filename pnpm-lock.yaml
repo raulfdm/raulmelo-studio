@@ -304,12 +304,12 @@ importers:
   packages/core:
     specifiers:
       '@types/ramda': 0.27.64
-      graphql: 16.2.0
+      graphql: 16.3.0
       graphql-request: 3.7.0
       ramda: 0.28.0
     dependencies:
-      graphql: 16.2.0
-      graphql-request: 3.7.0_graphql@16.2.0
+      graphql: 16.3.0
+      graphql-request: 3.7.0_graphql@16.3.0
       ramda: 0.28.0
     devDependencies:
       '@types/ramda': 0.27.64
@@ -7539,7 +7539,7 @@ packages:
       loader-utils: 1.4.0
       make-dir: 3.1.0
       schema-utils: 2.7.1
-      webpack: 4.46.0
+      webpack: 4.46.0_webpack-cli@3.3.12
     dev: false
 
   /babel-loader/8.2.3_@babel+core@7.16.7:
@@ -11878,18 +11878,6 @@ packages:
       debug: 2.6.9
     dev: false
 
-  /follow-redirects/1.14.4_debug@4.3.2:
-    resolution: {integrity: sha512-zwGkiSXC1MUJG/qmeIFH2HBJx9u0V46QGUe3YR1fXG8bXQxq7fLj0RjLZQ5nubr9qNJUZrH+xUcwXEoXNpfS+g==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-    dependencies:
-      debug: 4.3.2_supports-color@6.1.0
-    dev: false
-
   /font-awesome/4.7.0:
     resolution: {integrity: sha1-j6jPBBGhoxr9B7BtKQK7n8gVoTM=}
     engines: {node: '>=0.10.3'}
@@ -12582,7 +12570,7 @@ packages:
       graphql-playground-html: 1.6.29
     dev: false
 
-  /graphql-request/3.7.0_graphql@16.2.0:
+  /graphql-request/3.7.0_graphql@16.3.0:
     resolution: {integrity: sha512-dw5PxHCgBneN2DDNqpWu8QkbbJ07oOziy8z+bK/TAXufsOLaETuVO4GkXrbs0WjhdKhBMN3BkpN/RIvUHkmNUQ==}
     peerDependencies:
       graphql: 14 - 16
@@ -12590,7 +12578,7 @@ packages:
       cross-fetch: 3.1.4
       extract-files: 9.0.0
       form-data: 3.0.1
-      graphql: 16.2.0
+      graphql: 16.3.0
     dev: false
 
   /graphql-subscriptions/1.2.1_graphql@15.5.0:
@@ -12661,8 +12649,8 @@ packages:
     engines: {node: '>= 10.x'}
     dev: false
 
-  /graphql/16.2.0:
-    resolution: {integrity: sha512-MuQd7XXrdOcmfwuLwC2jNvx0n3rxIuNYOxUtiee5XOmfrWo613ar2U8pE7aHAKh8VwfpifubpD9IP+EdEAEOsA==}
+  /graphql/16.3.0:
+    resolution: {integrity: sha512-xm+ANmA16BzCT5pLjuXySbQVFwH3oJctUVdy81w1sV0vBU0KgDdBGtxQOUd5zqOBk/JayAFeG8Dlmeq74rjm/A==}
     engines: {node: ^12.22.0 || ^14.16.0 || >=16.0.0}
     dev: false
 
@@ -13245,7 +13233,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.14.4_debug@4.3.2
+      follow-redirects: 1.14.4_debug@2.6.9
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
