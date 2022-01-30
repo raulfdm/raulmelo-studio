@@ -2,12 +2,12 @@ import React from 'react';
 
 import { parseCodePenDirectUrl } from './utils';
 
-type CodePenProps = {
+export interface CodePenProps {
   /** codepen iframe url */
   src?: string;
   directUrl?: string;
   height?: string;
-};
+}
 
 export const CodePenIframe: React.FC<CodePenProps> = ({
   src,
