@@ -1,36 +1,28 @@
-import React from 'react';
-import tw, { css, styled } from 'twin.macro';
+import styles from './Gif.module.css';
 
-const Figure = styled.figure(
-  ({ width }: { width: number }) => css`
-    ${tw`relative m-auto`};
-
-    max-width: ${width}px;
-
-    figcaption {
-      ${tw`text-center w-full`};
-    }
-  `,
-);
-
-export const Gif = ({
+export function Gif({
   src,
   caption,
   width,
   height,
   ImageComponent = 'img',
-}: GifProps) => {
-  if (!width || !height) {
-    throw new Error(`Width and Height are required: Image src: ${src}`);
-  }
-
+}: GifProps) {
   return (
-    <Figure width={width as number}>
+    <figure
+      style={{
+        maxWidth: width ? `${width}px` : undefined,
+      }}
+      className={styles.figure}
+    >
       <ImageComponent src={src} alt={caption} width={width} height={height} />
-      {caption && <figcaption role="caption">{caption}</figcaption>}
-    </Figure>
+      {caption && (
+        <figcaption role="caption" className={styles.caption}>
+          {caption}
+        </figcaption>
+      )}
+    </figure>
   );
-};
+}
 
 type Dimension = string | number;
 
