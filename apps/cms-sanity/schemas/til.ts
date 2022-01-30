@@ -9,12 +9,12 @@ export const til = {
       default: true,
     },
     {
-      name: 'references',
-      title: 'References',
-    },
-    {
       name: 'meta',
       title: 'Meta',
+    },
+    {
+      name: 'references',
+      title: 'References',
     },
   ],
   fields: [
@@ -57,6 +57,19 @@ export const til = {
       title: 'Tags',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'tag' } }],
+    },
+  ],
+
+  orderings: [
+    {
+      title: 'Release Date, New',
+      name: 'releaseDateDesc',
+      by: [{ field: 'publishedAt', direction: 'desc' }],
+    },
+    {
+      title: 'Release Date, Old',
+      name: 'releaseDateAsc',
+      by: [{ field: 'publishedAt', direction: 'asc' }],
     },
   ],
 
