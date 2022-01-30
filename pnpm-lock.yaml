@@ -53,7 +53,7 @@ importers:
       husky: 7.0.4
       jest: 27.4.7
       mockdate: 3.0.5
-      node-fetch: 3.1.1
+      node-fetch: 3.2.0
       npm-run-all: 4.1.5
       postcss: 8.4.5
       postcss-cli: 9.1.0
@@ -96,7 +96,7 @@ importers:
       husky: 7.0.4
       jest: 27.4.7_ts-node@10.4.0
       mockdate: 3.0.5
-      node-fetch: 3.1.1
+      node-fetch: 3.2.0
       npm-run-all: 4.1.5
       postcss: 8.4.5
       postcss-cli: 9.1.0_postcss@8.4.5+ts-node@10.4.0
@@ -11706,10 +11706,11 @@ packages:
       ua-parser-js: 0.7.30
     dev: false
 
-  /fetch-blob/3.1.3:
-    resolution: {integrity: sha512-ax1Y5I9w+9+JiM+wdHkhBoxew+zG4AJ2SvAD1v1szpddUIiPERVGBxrMcB2ZqW0Y3PP8bOWYv2zqQq1Jp2kqUQ==}
+  /fetch-blob/3.1.4:
+    resolution: {integrity: sha512-Eq5Xv5+VlSrYWEqKrusxY1C3Hm/hjeAsCGVG3ft7pZahlUAChpGZT/Ms1WmSLnEAisEXszjzu/s+ce6HZB2VHA==}
     engines: {node: ^12.20 || >= 14.13}
     dependencies:
+      node-domexception: 1.0.0
       web-streams-polyfill: 3.1.1
     dev: true
 
@@ -12003,7 +12004,7 @@ packages:
     resolution: {integrity: sha512-buewHzMvYL29jdeQTVILecSaZKnt/RJWjoZCF5OW60Z67/GmSLBkOFM7qh1PI3zFNtJbaZL5eQu1vLfazOwj4g==}
     engines: {node: '>=12.20.0'}
     dependencies:
-      fetch-blob: 3.1.3
+      fetch-blob: 3.1.4
     dev: true
 
   /formidable/1.2.2:
@@ -16903,6 +16904,11 @@ packages:
     resolution: {integrity: sha512-mmcei9JghVNDYydghQmeDX8KoAm0FAiYyIcUt/N4nhyAipB17pllZQDOJD2fotxABnt4Mdz+dKTO7eftLg4d0A==}
     dev: false
 
+  /node-domexception/1.0.0:
+    resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
+    engines: {node: '>=10.5.0'}
+    dev: true
+
   /node-emoji/1.11.0:
     resolution: {integrity: sha512-wo2DpQkQp7Sjm2A0cq+sN7EHKO6Sl0ctXeBdFZrL9T9+UywORbufTcTZxom8YqpLQt/FqNMUkOpkZrJVYSKD3A==}
     dependencies:
@@ -16920,12 +16926,12 @@ packages:
       whatwg-url: 5.0.0
     dev: false
 
-  /node-fetch/3.1.1:
-    resolution: {integrity: sha512-SMk+vKgU77PYotRdWzqZGTZeuFKlsJ0hu4KPviQKkfY+N3vn2MIzr0rvpnYpR8MtB3IEuhlEcuOLbGvLRlA+yg==}
+  /node-fetch/3.2.0:
+    resolution: {integrity: sha512-8xeimMwMItMw8hRrOl3C9/xzU49HV/yE6ORew/l+dxWimO5A4Ra8ld2rerlJvc/O7et5Z1zrWsPX43v1QBjCxw==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       data-uri-to-buffer: 4.0.0
-      fetch-blob: 3.1.3
+      fetch-blob: 3.1.4
       formdata-polyfill: 4.0.10
     dev: true
 
