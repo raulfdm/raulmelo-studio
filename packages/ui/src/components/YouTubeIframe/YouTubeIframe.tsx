@@ -1,8 +1,6 @@
-import 'twin.macro';
+import styles from './YouTubeIframe.module.css';
 
-import React from 'react';
-
-export const YouTubeIframe = ({ src, videoId }: YouTubeIframeProps) => {
+export function YouTubeIframe({ src, videoId }: YouTubeIframeProps) {
   if (src) {
     throw new Error(
       `YouTubeIframe: "src" is no longer allowed. Use "videoId" instead`,
@@ -24,9 +22,9 @@ export const YouTubeIframe = ({ src, videoId }: YouTubeIframeProps) => {
    *
    * This sucks but it seems a limitation of using first remark, then react-rehype */
   return (
-    <div tw="w-full h-0 relative overflow-hidden aspect-w-16 aspect-h-9">
+    <div className={styles.wrapper}>
       <iframe
-        tw="absolute top-0 left-0 h-full w-full"
+        className={styles.iframe}
         src={videoSrc}
         frameBorder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -36,9 +34,9 @@ export const YouTubeIframe = ({ src, videoId }: YouTubeIframeProps) => {
       />
     </div>
   );
-};
+}
 
-export type YouTubeIframeProps = {
+export interface YouTubeIframeProps {
   src?: string;
   videoId?: string;
-};
+}
