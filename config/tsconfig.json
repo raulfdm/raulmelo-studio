@@ -1,6 +1,7 @@
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
   "compilerOptions": {
+    "importHelpers": true,
     "incremental": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -21,6 +22,11 @@
     "noUnusedParameters": true,
     "alwaysStrict": true,
     // resolve .json imports
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ]
   }
 }
