@@ -1,4 +1,5 @@
-import '@raulmelo/styles/lib/all.css';
+import '@raulmelo/styles/lib/base.css';
+import '../src/infrastructure/styles.css';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -9,3 +10,11 @@ export const parameters = {
     },
   },
 };
+
+export const decorators = [
+  (Story) => (
+    <main className="grid-container">
+      <Story />
+    </main>
+  ),
+];
