@@ -226,8 +226,8 @@ importers:
       next: 12.0.8
       next-compose-plugins: 2.2.1
       next-mdx-remote: 3.0.8
-      next-seo: 4.28.1
-      next-sitemap: 1.9.9
+      next-seo: 5.0.0
+      next-sitemap: 2.0.11
       query-string: 7.1.0
       react: ^17.0.2
       react-dom: ^17.0.2
@@ -265,7 +265,7 @@ importers:
       mdx-prism-2: link:../../packages/mdx-prism-2
       next: 12.0.8_dfc0b93d99fba272c9564d3139a2581a
       next-mdx-remote: 3.0.8_react-dom@17.0.2+react@17.0.2
-      next-seo: 4.28.1_227e7fb4dbd28186517209bc65f02635
+      next-seo: 5.0.0_227e7fb4dbd28186517209bc65f02635
       query-string: 7.1.0
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -298,7 +298,7 @@ importers:
       duplicate-package-checker-webpack-plugin: 3.0.0
       eslint-config-next: 12.0.8_6cccf5d08fa597194f00abd55ff4c65f
       next-compose-plugins: 2.2.1
-      next-sitemap: 1.9.9_next@12.0.8
+      next-sitemap: 2.0.11_next@12.0.8
       twin.macro: 2.8.2_ts-node@10.4.0
 
   packages/core:
@@ -7539,7 +7539,7 @@ packages:
       loader-utils: 1.4.0
       make-dir: 3.1.0
       schema-utils: 2.7.1
-      webpack: 4.46.0
+      webpack: 4.46.0_webpack-cli@3.3.12
     dev: false
 
   /babel-loader/8.2.3_@babel+core@7.16.7:
@@ -11878,18 +11878,6 @@ packages:
       debug: 2.6.9
     dev: false
 
-  /follow-redirects/1.14.4_debug@4.3.2:
-    resolution: {integrity: sha512-zwGkiSXC1MUJG/qmeIFH2HBJx9u0V46QGUe3YR1fXG8bXQxq7fLj0RjLZQ5nubr9qNJUZrH+xUcwXEoXNpfS+g==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-    dependencies:
-      debug: 4.3.2_supports-color@6.1.0
-    dev: false
-
   /font-awesome/4.7.0:
     resolution: {integrity: sha1-j6jPBBGhoxr9B7BtKQK7n8gVoTM=}
     engines: {node: '>=0.10.3'}
@@ -13245,7 +13233,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.14.4_debug@4.3.2
+      follow-redirects: 1.14.4_debug@2.6.9
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
@@ -16716,8 +16704,8 @@ packages:
       - supports-color
     dev: false
 
-  /next-seo/4.28.1_227e7fb4dbd28186517209bc65f02635:
-    resolution: {integrity: sha512-WZgwdM+UhpNF3A37zFllzmPhnOVJ9vYeYlc0n3Z/kYfz/QQgy8NEdncNNggS9dU4JD8xriaCcyknhy5OsrFsJw==}
+  /next-seo/5.0.0_227e7fb4dbd28186517209bc65f02635:
+    resolution: {integrity: sha512-uCa8hoE5VQz4D2NqZAPhqR64hY5LSmaq70wmfGK09U57TMY7XzsDI+MjfZo0MgHJM87bj3Fd/oMQbDcZ/YWhJQ==}
     peerDependencies:
       next: ^8.1.1-canary.54 || >=9.0.0
       react: '>=16.0.0'
@@ -16728,8 +16716,8 @@ packages:
       react-dom: 17.0.2_react@17.0.2
     dev: false
 
-  /next-sitemap/1.9.9_next@12.0.8:
-    resolution: {integrity: sha512-Tl7otSmXq/k+FDH5FAJGCH1bOMxs6ddRmuPVurgQTrz+pFWzMQ7KIPSP96wiY5vZ5npFjPTPJP2wlCwOqQB1Dw==}
+  /next-sitemap/2.0.11_next@12.0.8:
+    resolution: {integrity: sha512-Y3ydrQerVTOythnyuQxAzWjQLZ4Gi1p9SE4zbQVu91yM+xUO0doHuA+Q2UirHMiV97hUWPZcGTxjFdunOt7QcQ==}
     engines: {node: '>=14'}
     hasBin: true
     peerDependencies:
