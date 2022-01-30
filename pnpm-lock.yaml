@@ -360,6 +360,9 @@ importers:
   packages/ui:
     specifiers:
       '@raulmelo/styles': workspace:*
+      react-twitter-widgets: 1.10.0
+    dependencies:
+      react-twitter-widgets: 1.10.0
     devDependencies:
       '@raulmelo/styles': link:../styles
 
@@ -20401,6 +20404,14 @@ packages:
       prop-types: 15.7.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
+    dev: false
+
+  /react-twitter-widgets/1.10.0:
+    resolution: {integrity: sha512-K7MAREhkKJxrhoiNWricKs1O++NyElnVpcplLzZ67gDrmeIsD3E4TUzlt0/nTZAHPOPPc86V4kEd4KIg4de7cQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17
+    dependencies:
+      loadjs: 4.2.0
     dev: false
 
   /react-twitter-widgets/1.10.0_react@17.0.2:
