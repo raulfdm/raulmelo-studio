@@ -101,6 +101,13 @@ export const postSchema = {
       of: [{ type: 'reference', to: { type: 'tag' } }],
     },
     {
+      group: 'reference',
+      name: 'postSeries',
+      title: 'Post Series',
+      type: 'reference',
+      to: [{ type: 'postSeries' }],
+    },
+    {
       group: 'media',
       title: 'Unsplash',
       name: 'unsplash',
@@ -116,11 +123,38 @@ export const postSchema = {
     },
   ],
 
+  orderings: [
+    {
+      title: 'Release Date, New',
+      name: 'releaseDateDesc',
+      by: [{ field: 'publishedAt', direction: 'desc' }],
+    },
+    {
+      title: 'Release Date, Old',
+      name: 'releaseDateAsc',
+      by: [{ field: 'publishedAt', direction: 'asc' }],
+    },
+  ],
+
   preview: {
     select: {
       title: 'title',
       subtitle: 'subtitle',
       media: 'featuredImage',
+      seriesCopy: 'seriesCopy',
+    },
+    prepare(selection) {
+      const result = {
+        title: selection.title,
+        subtitle: selection.subtitle,
+        media: selection.media,
+      };
+
+      if (selection.seriesCopy) {
+        result.subtitle = selection.seriesCopy;
+      }
+
+      return result;
     },
   },
 };
