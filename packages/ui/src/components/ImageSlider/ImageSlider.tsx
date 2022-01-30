@@ -1,36 +1,70 @@
-import Image from 'next/image';
-import React from 'react';
-import tw, { css, styled } from 'twin.macro';
+import { useLayoutEffect, useState } from 'react';
 
-import { ChevronLeftIcon, ChevronRightIcon } from '~/components/Icons';
-import { useCircularIndexes } from '~/hooks/useCircularIndexes';
+import { ChevronLeftIcon, ChevronRightIcon } from '../Icons';
+import { useCircularIndexes, validations } from './utils';
 
-import { validations } from './utils';
-
-const Figure = styled.figure`
-  /* && to gain precedence over prose class */
-  && {
-    margin: 0;
-  }
-`;
-
-const NavButton = tw.button`
-    w-8 h-8
-    p-2
-    z-10
-    shadow
-    text-lg
-    rounded-full
-    bg-white dark:bg-blue-700
-    transition-theme duration-200 ease
-`;
-
-export const ImageSlider = ({ images }: ImageSliderProps) => {
+export const ImageSlider = (props: ImageSliderProps) => {
+  const { images, renderImage } = props;
   const { currentIndex, nextIndex, prevIndex } = useCircularIndexes(
     images.length,
   );
+  const [actionsPosition, setActionsPosition] = useState(0);
   const currentImage = images[currentIndex];
   validations(currentImage);
+
+  useLayoutEffect(() => {
+    setActionsPosition(getActionsTransformValue());
+  });
+  const shouldRenderAction = images.length > 1 && actionsPosition > 0;
+
+  console.log({ actionsPosition });
+  return (
+    <div className="relative p-2 mx-auto max-w-max" data-testid="image-slider">
+      <figure data-sliderfigure style={{ margin: 0 }}>
+        {renderImage ? (
+          renderImage(currentImage)
+        ) : (
+          <img
+            className="mx-auto"
+            src={currentImage.src}
+            width={currentImage.width}
+            height={currentImage.height}
+            alt={currentImage.alt}
+          />
+        )}
+        {!currentImage.noCaption ? (
+          <figcaption className="text-center" data-testid="caption">
+            {currentImage.alt}
+          </figcaption>
+        ) : null}
+      </figure>
+
+      {shouldRenderAction ? (
+        <div
+          className={`absolute top-0 left-0 right-0 flex justify-between -mx-3 h-7 transform`}
+          data-testid="actions-wrapper"
+          style={{
+            transform: `translateY(${actionsPosition}px)`,
+          }}
+        >
+          <NavButton
+            onClick={prevIndex}
+            data-testid="prev-image"
+            aria-label="Previous image"
+          >
+            <ChevronLeftIcon />
+          </NavButton>
+          <NavButton
+            onClick={nextIndex}
+            data-testid="next-image"
+            aria-label="Next image"
+          >
+            <ChevronRightIcon />
+          </NavButton>
+        </div>
+      ) : null}
+    </div>
+  );
 
   function getActionsTransformValue() {
     /**
@@ -57,47 +91,6 @@ export const ImageSlider = ({ images }: ImageSliderProps) => {
 
     return 0;
   }
-
-  const actionsPosition = getActionsTransformValue();
-  const shouldRenderAction = images.length > 1 && actionsPosition > 0;
-
-  return (
-    <div tw="relative p-2" data-testid="image-slider">
-      <Figure data-sliderfigure>
-        <Image
-          layout="responsive"
-          src={currentImage.src}
-          width={currentImage.width}
-          height={currentImage.height}
-          alt={currentImage.alt}
-        />
-        {!currentImage.noCaption ? (
-          <figcaption tw="text-center" data-testid="caption">
-            {currentImage.alt}
-          </figcaption>
-        ) : null}
-      </Figure>
-
-      {shouldRenderAction ? (
-        <div
-          css={[
-            tw`flex justify-between absolute right-0 left-0 top-0 h-7 -mx-3`,
-            css`
-              transform: translateY(${actionsPosition}px);
-            `,
-          ]}
-          data-testid="actions-wrapper"
-        >
-          <NavButton onClick={prevIndex} data-testid="prev-image">
-            <ChevronLeftIcon />
-          </NavButton>
-          <NavButton onClick={nextIndex} data-testid="next-image">
-            <ChevronRightIcon />
-          </NavButton>
-        </div>
-      ) : null}
-    </div>
-  );
 };
 
 export type SliderImageProps = {
@@ -110,4 +103,17 @@ export type SliderImageProps = {
 
 export type ImageSliderProps = {
   images: SliderImageProps[];
+  renderImage?: (image: SliderImageProps) => React.ReactNode;
 };
+
+function NavButton({ children, ...props }) {
+  return (
+    <button
+      type="button"
+      className="z-10 w-8 h-8 p-2 text-lg duration-200 bg-white rounded-full shadow dark:bg-blue-700 transition-theme ease "
+      {...props}
+    >
+      {children}
+    </button>
+  );
+}
