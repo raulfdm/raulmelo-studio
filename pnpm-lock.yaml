@@ -236,7 +236,7 @@ importers:
       react-popper: 2.2.5
       react-twitter-widgets: 1.10.0
       react-use: 17.3.2
-      rehype: 12.0.0
+      rehype: 12.0.1
       rehype-autolink-headings: 6.1.1
       rehype-slug: 5.0.1
       remark-code-titles: 0.1.2
@@ -274,7 +274,7 @@ importers:
       react-popper: 2.2.5_4d48938cec404f33c7375aa6b453941c
       react-twitter-widgets: 1.10.0_react@17.0.2
       react-use: 17.3.2_react-dom@17.0.2+react@17.0.2
-      rehype: 12.0.0
+      rehype: 12.0.1
       rehype-autolink-headings: 6.1.1
       rehype-slug: 5.0.1
       remark-code-titles: 0.1.2
@@ -320,7 +320,7 @@ importers:
       jest-serializer-html-string: 1.0.1
       parse-numeric-range: 1.3.0
       refractor: 4.4.0
-      rehype: 12.0.0
+      rehype: 12.0.1
       rehype-parse: 8.0.3
       unified: 10.1.1
       unist-util-filter: 4.0.0
@@ -330,7 +330,7 @@ importers:
       hast-util-to-string: 2.0.0
       parse-numeric-range: 1.3.0
       refractor: 4.4.0
-      rehype: 12.0.0
+      rehype: 12.0.1
       rehype-parse: 8.0.3
       unified: 10.1.1
       unist-util-filter: 4.0.0
@@ -7539,7 +7539,7 @@ packages:
       loader-utils: 1.4.0
       make-dir: 3.1.0
       schema-utils: 2.7.1
-      webpack: 4.46.0
+      webpack: 4.46.0_webpack-cli@3.3.12
     dev: false
 
   /babel-loader/8.2.3_@babel+core@7.16.7:
@@ -11878,18 +11878,6 @@ packages:
       debug: 2.6.9
     dev: false
 
-  /follow-redirects/1.14.4_debug@4.3.2:
-    resolution: {integrity: sha512-zwGkiSXC1MUJG/qmeIFH2HBJx9u0V46QGUe3YR1fXG8bXQxq7fLj0RjLZQ5nubr9qNJUZrH+xUcwXEoXNpfS+g==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-    dependencies:
-      debug: 4.3.2_supports-color@6.1.0
-    dev: false
-
   /font-awesome/4.7.0:
     resolution: {integrity: sha1-j6jPBBGhoxr9B7BtKQK7n8gVoTM=}
     engines: {node: '>=0.10.3'}
@@ -13245,7 +13233,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.14.4_debug@4.3.2
+      follow-redirects: 1.14.4_debug@2.6.9
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
@@ -20651,8 +20639,8 @@ packages:
       unified: 10.1.1
     dev: false
 
-  /rehype/12.0.0:
-    resolution: {integrity: sha512-gZcttmf9R5IYHb8AlI1rlmWqXS1yX0rSB/S5ZGJs8atfYZy2DobvH3Ic/gSzB+HL/+oOHPtBguw1TprfhxXBgQ==}
+  /rehype/12.0.1:
+    resolution: {integrity: sha512-ey6kAqwLM3X6QnMDILJthGvG1m1ULROS9NT4uG9IDCuv08SFyLlreSuvOa//DgEvbXx62DS6elGVqusWhRUbgw==}
     dependencies:
       '@types/hast': 2.3.4
       rehype-parse: 8.0.3
