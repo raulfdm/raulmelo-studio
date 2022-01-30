@@ -7,12 +7,24 @@
   "types": "./dist/ui.es.d.ts",
   "scripts": {
     "build": "vite build",
-    "build:watch": "vite build --watch"
+    "build:watch": "vite build --watch",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "react-twitter-widgets": "1.10.0"
   },
   "devDependencies": {
-    "@raulmelo/styles": "workspace:*"
+    "@babel/core": "7.16.12",
+    "@raulmelo/styles": "workspace:*",
+    "@storybook/addon-actions": "6.4.16",
+    "@storybook/addon-essentials": "6.4.16",
+    "@storybook/addon-links": "6.4.16",
+    "@storybook/addon-postcss": "2.0.0",
+    "@storybook/react": "6.4.16",
+    "babel-loader": "8.2.3"
+  },
+  "resolutions": {
+    "postcss": "^8.0.0"
   }
 }
