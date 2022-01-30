@@ -1,6 +1,8 @@
 import '@raulmelo/styles/lib/base.css';
 import '../src/infrastructure/styles.css';
 
+import { PageContainer } from '../src/components/PageContainer';
+
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
@@ -14,7 +16,9 @@ export const parameters = {
 export const decorators = [
   (Story) => (
     <main className="grid-container">
-      <Story />
+      <PageContainer>
+        <Story />
+      </PageContainer>
     </main>
   ),
 ];
