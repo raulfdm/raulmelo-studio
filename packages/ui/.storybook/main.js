@@ -1,3 +1,5 @@
+const { configuredConfig } = require('@raulmelo/styles/lib/postcss.config.cjs');
+
 module.exports = {
   core: {
     builder: 'webpack5',
@@ -12,6 +14,7 @@ module.exports = {
       options: {
         postcssLoaderOptions: {
           implementation: require('../../../node_modules/postcss'),
+          postcssOptions: configuredConfig,
         },
       },
     },
