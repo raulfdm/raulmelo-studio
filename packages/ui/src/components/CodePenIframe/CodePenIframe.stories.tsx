@@ -1,3 +1,4 @@
+import { proseDecorator } from '../../infrastructure/decorators';
 import { CodePenIframe } from './CodePenIframe';
 
 export default {
@@ -9,6 +10,7 @@ export default {
       defaultValue: 'https://codepen.io/P1N2O/pen/pyBNzX',
     },
   },
+  decorators: [proseDecorator],
 };
 
 const Template = (args) => <CodePenIframe {...args} />;

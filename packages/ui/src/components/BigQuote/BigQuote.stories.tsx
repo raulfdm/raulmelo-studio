@@ -1,3 +1,4 @@
+import { proseDecorator } from '../../infrastructure/decorators';
 import { BigQuote } from './BigQuote';
 
 export default {
@@ -6,6 +7,7 @@ export default {
   argTypes: {
     children: { control: 'text', defaultValue: 'This is a Big Quote' },
   },
+  decorators: [proseDecorator],
 };
 
 const Template = (args) => <BigQuote {...args} />;

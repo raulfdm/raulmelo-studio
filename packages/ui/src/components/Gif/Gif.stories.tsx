@@ -1,3 +1,4 @@
+import { proseDecorator } from '../../infrastructure/decorators';
 import { Gif } from './Gif';
 
 export default {
@@ -10,6 +11,7 @@ export default {
         'https://media.giphy.com/media/ulKOLYX8YEFxEopfUr/giphy-downsized-large.gif',
     },
   },
+  decorators: [proseDecorator],
 };
 
 const Template = (args) => <Gif {...args} />;

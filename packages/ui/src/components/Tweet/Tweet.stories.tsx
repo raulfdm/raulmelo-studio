@@ -1,3 +1,4 @@
+import { proseDecorator } from '../../infrastructure/decorators';
 import { Tweet } from './Tweet';
 
 export default {
@@ -9,6 +10,7 @@ export default {
       defaultValue: '1487452256312053763',
     },
   },
+  decorators: [proseDecorator],
 };
 
 const Template = (args) => <Tweet {...args} />;
