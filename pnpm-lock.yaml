@@ -359,26 +359,24 @@ importers:
 
   packages/ui:
     specifiers:
-      '@babel/core': 7.16.12
       '@raulmelo/styles': workspace:*
       '@storybook/addon-actions': 6.4.16
       '@storybook/addon-essentials': 6.4.16
       '@storybook/addon-links': 6.4.16
       '@storybook/addon-postcss': 2.0.0
       '@storybook/react': 6.4.16
-      babel-loader: 8.2.3
       react-twitter-widgets: 1.10.0
+      storybook-css-modules-preset: 1.1.1
     dependencies:
       react-twitter-widgets: 1.10.0
     devDependencies:
-      '@babel/core': 7.16.12
       '@raulmelo/styles': link:../styles
       '@storybook/addon-actions': 6.4.16
-      '@storybook/addon-essentials': 6.4.16_8632d058e26cf28d5f533892cacd6ff3
+      '@storybook/addon-essentials': 6.4.16_0f2780308d4c867e63dde6330b618ad8
       '@storybook/addon-links': 6.4.16
       '@storybook/addon-postcss': 2.0.0
-      '@storybook/react': 6.4.16_82e4b7205d0027a40b702c44a440ec88
-      babel-loader: 8.2.3_@babel+core@7.16.12
+      '@storybook/react': 6.4.16_9bfec3f4108e083ace6aecae3d24a079
+      storybook-css-modules-preset: 1.1.1
 
 packages:
 
@@ -2151,13 +2149,13 @@ packages:
       '@babel/core': 7.16.7
       '@babel/helper-plugin-utils': 7.16.7
 
-  /@babel/plugin-syntax-flow/7.16.7_@babel+core@7.16.12:
+  /@babel/plugin-syntax-flow/7.16.7_@babel+core@7.16.7:
     resolution: {integrity: sha512-UDo3YGQO0jH6ytzVwgSLv9i/CzMcUjbKenL67dTrAZPPv6GFAtDhe6jqnvmoKzC/7htNTohhos+onPtDMqJwaQ==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.16.12
+      '@babel/core': 7.16.7
       '@babel/helper-plugin-utils': 7.16.7
     dev: true
 
@@ -2819,15 +2817,15 @@ packages:
       '@babel/helper-builder-binary-assignment-operator-visitor': 7.16.7
       '@babel/helper-plugin-utils': 7.16.7
 
-  /@babel/plugin-transform-flow-strip-types/7.16.7_@babel+core@7.16.12:
+  /@babel/plugin-transform-flow-strip-types/7.16.7_@babel+core@7.16.7:
     resolution: {integrity: sha512-mzmCq3cNsDpZZu9FADYYyfZJIOrSONmHcop2XEKPdBNMa4PDC4eEvcOvzZaCNcjKu72v0XQlA5y1g58aLRXdYg==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.16.12
+      '@babel/core': 7.16.7
       '@babel/helper-plugin-utils': 7.16.7
-      '@babel/plugin-syntax-flow': 7.16.7_@babel+core@7.16.12
+      '@babel/plugin-syntax-flow': 7.16.7_@babel+core@7.16.7
     dev: true
 
   /@babel/plugin-transform-for-of/7.15.4_@babel+core@7.15.8:
@@ -3332,7 +3330,6 @@ packages:
     dependencies:
       '@babel/core': 7.16.7
       '@babel/helper-plugin-utils': 7.16.7
-    dev: false
 
   /@babel/plugin-transform-react-jsx-development/7.14.5_@babel+core@7.15.8:
     resolution: {integrity: sha512-rdwG/9jC6QybWxVe2UVOa7q6cnTpw8JRRHOxntG/h6g/guAOe6AhtQHJuJh5FwmnXIT1bdm5vC2/5huV8ZOorQ==}
@@ -3362,7 +3359,6 @@ packages:
     dependencies:
       '@babel/core': 7.16.7
       '@babel/plugin-transform-react-jsx': 7.14.9_@babel+core@7.16.7
-    dev: false
 
   /@babel/plugin-transform-react-jsx/7.14.9_@babel+core@7.15.8:
     resolution: {integrity: sha512-30PeETvS+AeD1f58i1OVyoDlVYQhap/K20ZrMjLmmzmC2AYR/G43D4sdJAaDAqCD3MYpSWbmrz3kES158QSLjw==}
@@ -3404,7 +3400,6 @@ packages:
       '@babel/helper-plugin-utils': 7.16.7
       '@babel/plugin-syntax-jsx': 7.14.5_@babel+core@7.16.7
       '@babel/types': 7.16.8
-    dev: false
 
   /@babel/plugin-transform-react-pure-annotations/7.14.5_@babel+core@7.15.8:
     resolution: {integrity: sha512-3X4HpBJimNxW4rhUy/SONPyNQHp5YRr0HhJdT2OH1BRp0of7u3Dkirc7x9FRJMKMqTBI079VZ1hzv7Ouuz///g==}
@@ -3437,7 +3432,6 @@ packages:
       '@babel/core': 7.16.7
       '@babel/helper-annotate-as-pure': 7.16.7
       '@babel/helper-plugin-utils': 7.16.7
-    dev: false
 
   /@babel/plugin-transform-regenerator/7.14.5_@babel+core@7.15.8:
     resolution: {integrity: sha512-NVIY1W3ITDP5xQl50NgTKlZ0GrotKtLna08/uGY6ErQt6VEQZXla86x/CTddm5gZdcr+5GSsvMeTmWA5Ii6pkg==}
@@ -4028,16 +4022,16 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@babel/preset-flow/7.16.7_@babel+core@7.16.12:
+  /@babel/preset-flow/7.16.7_@babel+core@7.16.7:
     resolution: {integrity: sha512-6ceP7IyZdUYQ3wUVqyRSQXztd1YmFHWI4Xv11MIqAlE4WqxBSd/FZ61V9k+TS5Gd4mkHOtQtPp9ymRpxH4y1Ug==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.16.12
+      '@babel/core': 7.16.7
       '@babel/helper-plugin-utils': 7.16.7
       '@babel/helper-validator-option': 7.16.7
-      '@babel/plugin-transform-flow-strip-types': 7.16.7_@babel+core@7.16.12
+      '@babel/plugin-transform-flow-strip-types': 7.16.7_@babel+core@7.16.7
     dev: true
 
   /@babel/preset-modules/0.1.5_@babel+core@7.15.8:
@@ -4121,7 +4115,6 @@ packages:
       '@babel/plugin-transform-react-jsx': 7.14.9_@babel+core@7.16.7
       '@babel/plugin-transform-react-jsx-development': 7.14.5_@babel+core@7.16.7
       '@babel/plugin-transform-react-pure-annotations': 7.14.5_@babel+core@7.16.7
-    dev: false
 
   /@babel/preset-typescript/7.16.7_@babel+core@7.16.12:
     resolution: {integrity: sha512-WbVEmgXdIyvzB77AQjGBEyYPZx+8tTsO50XtfozQrkW8QB2rLJpH2lgx0TRw5EJrBxOZQ+wCcyPVQvS8tjEHpQ==}
@@ -7213,7 +7206,7 @@ packages:
       '@storybook/node-logger': 6.4.16
       '@storybook/postinstall': 6.4.16
       '@storybook/preview-web': 6.4.16
-      '@storybook/react': 6.4.16_82e4b7205d0027a40b702c44a440ec88
+      '@storybook/react': 6.4.16_9bfec3f4108e083ace6aecae3d24a079
       '@storybook/source-loader': 6.4.16
       '@storybook/store': 6.4.16
       '@storybook/theming': 6.4.16
@@ -7253,7 +7246,7 @@ packages:
       - webpack-command
     dev: true
 
-  /@storybook/addon-essentials/6.4.16_8632d058e26cf28d5f533892cacd6ff3:
+  /@storybook/addon-essentials/6.4.16_0f2780308d4c867e63dde6330b618ad8:
     resolution: {integrity: sha512-qKQR74+96Hj21HWrBj9FfTc8jvQNTOqFLPXsZzZXkxIsH6IcL5xs8KpjdjEWt2RrBiwlpcTSfxHULC1L7cLQDA==}
     peerDependencies:
       '@babel/core': ^7.9.6
@@ -7278,7 +7271,7 @@ packages:
       webpack:
         optional: true
     dependencies:
-      '@babel/core': 7.16.12
+      '@babel/core': 7.16.7
       '@storybook/addon-actions': 6.4.16
       '@storybook/addon-backgrounds': 6.4.16
       '@storybook/addon-controls': 6.4.16_eslint@7.32.0+typescript@4.5.5
@@ -7290,7 +7283,7 @@ packages:
       '@storybook/addons': 6.4.16
       '@storybook/api': 6.4.16
       '@storybook/node-logger': 6.4.16
-      babel-loader: 8.2.3_@babel+core@7.16.12
+      babel-loader: 8.2.3_@babel+core@7.16.7
       core-js: 3.18.3
       regenerator-runtime: 0.13.9
       ts-dedent: 2.2.0
@@ -8325,7 +8318,7 @@ packages:
       - supports-color
     dev: true
 
-  /@storybook/react/6.4.16_82e4b7205d0027a40b702c44a440ec88:
+  /@storybook/react/6.4.16_9bfec3f4108e083ace6aecae3d24a079:
     resolution: {integrity: sha512-lnAabl3wuhXKolq+uY2x7Amb3sl5YPbF3CLNT18TSviw6mABiOCIFZUz2YothvJj/x/lW9aGSFT13vSiIFivAA==}
     engines: {node: '>=10.13.0'}
     hasBin: true
@@ -8340,9 +8333,9 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@babel/core': 7.16.12
-      '@babel/preset-flow': 7.16.7_@babel+core@7.16.12
-      '@babel/preset-react': 7.14.5_@babel+core@7.16.12
+      '@babel/core': 7.16.7
+      '@babel/preset-flow': 7.16.7_@babel+core@7.16.7
+      '@babel/preset-react': 7.14.5_@babel+core@7.16.7
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.4_06cd85ae30adde416cafc06517ba554d
       '@storybook/addons': 6.4.16
       '@storybook/core': 6.4.16_8e9646a45d8cde5071abb7ad158fe49f
@@ -8354,7 +8347,7 @@ packages:
       '@storybook/store': 6.4.16
       '@types/webpack-env': 1.16.3
       babel-plugin-add-react-displayname: 0.0.5
-      babel-plugin-named-asset-import: 0.3.8_@babel+core@7.16.12
+      babel-plugin-named-asset-import: 0.3.8_@babel+core@7.16.7
       babel-plugin-react-docgen: 4.2.1
       core-js: 3.18.3
       global: 4.4.0
@@ -10496,20 +10489,6 @@ packages:
       webpack: 4.46.0_webpack-cli@3.3.12
     dev: false
 
-  /babel-loader/8.2.3_@babel+core@7.16.12:
-    resolution: {integrity: sha512-n4Zeta8NC3QAsuyiizu0GkmRcQ6clkV9WFUnUf1iXP//IeSKbWjofW3UHyZVwlOB4y039YQKefawyTn64Zwbuw==}
-    engines: {node: '>= 8.9'}
-    peerDependencies:
-      '@babel/core': ^7.0.0
-      webpack: '>=2'
-    dependencies:
-      '@babel/core': 7.16.12
-      find-cache-dir: 3.3.2
-      loader-utils: 1.4.0
-      make-dir: 3.1.0
-      schema-utils: 2.7.1
-    dev: true
-
   /babel-loader/8.2.3_@babel+core@7.16.7:
     resolution: {integrity: sha512-n4Zeta8NC3QAsuyiizu0GkmRcQ6clkV9WFUnUf1iXP//IeSKbWjofW3UHyZVwlOB4y039YQKefawyTn64Zwbuw==}
     engines: {node: '>= 8.9'}
@@ -10616,12 +10595,12 @@ packages:
       resolve: 1.20.0
     dev: true
 
-  /babel-plugin-named-asset-import/0.3.8_@babel+core@7.16.12:
+  /babel-plugin-named-asset-import/0.3.8_@babel+core@7.16.7:
     resolution: {integrity: sha512-WXiAc++qo7XcJ1ZnTYGtLxmBCVbddAml3CEXgWaBzNzLNoxtQ8AiGEFDMOhot9XjTCQbvP5E77Fj9Gk924f00Q==}
     peerDependencies:
       '@babel/core': ^7.1.0
     dependencies:
-      '@babel/core': 7.16.12
+      '@babel/core': 7.16.7
     dev: true
 
   /babel-plugin-polyfill-corejs2/0.2.2_@babel+core@7.15.8:
@@ -26064,6 +26043,10 @@ packages:
 
   /store2/2.13.1:
     resolution: {integrity: sha512-iJtHSGmNgAUx0b/MCS6ASGxb//hGrHHRgzvN+K5bvkBTN7A9RTpPSf1WSp+nPGvWCJ1jRnvY7MKnuqfoi3OEqg==}
+    dev: true
+
+  /storybook-css-modules-preset/1.1.1:
+    resolution: {integrity: sha512-wyINPOtB/8SvU7J92ePAhciBk4xoHuwrcqDNyGnSwilwHjmtHwbeEgZ1//JALOTwMB10zwz3WPONRkWec9LdGw==}
     dev: true
 
   /strapi-admin/3.6.8:
