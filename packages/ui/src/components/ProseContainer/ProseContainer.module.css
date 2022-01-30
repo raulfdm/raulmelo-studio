@@ -1,0 +1,9 @@
+.container {
+  @apply prose dark:prose-dark;
+  @apply prose-lg md:prose-xl lg:prose-2xl;
+  @apply max-w-full;
+
+  :global(a code) {
+    @apply dark:text-secondary;
+  }
+}
