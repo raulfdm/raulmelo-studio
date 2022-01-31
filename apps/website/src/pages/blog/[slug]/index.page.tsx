@@ -1,9 +1,9 @@
 import { domains, utils } from '@raulfdm/core';
+import { DotDivider } from '@raulmelo/ui';
 import { GetStaticPaths } from 'next';
 import dynamic from 'next/dynamic';
 import React from 'react';
 
-import { DotDivider } from '~/components/MdxComponents/DotDivider';
 import { MdxPostTemplate } from '~/components/templates/MdxPost';
 import { serializeMdx } from '~/config/mdx';
 
