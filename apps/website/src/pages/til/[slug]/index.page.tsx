@@ -3,7 +3,7 @@ import { ITilsTil } from '@raulfdm/core/dist/types/domains/posts/queryTils/types
 import { GetStaticPaths } from 'next';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
-import { MdxPostTemplate } from '~/components/templates/MdxPost';
+import { MdxPostTemplate } from '~/components/MdxPost';
 import { serializeMdx } from '~/config/mdx';
 
 import { ITilPostParsed } from './types';
