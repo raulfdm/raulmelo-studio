@@ -1,5 +1,6 @@
 import 'twin.macro';
 
+import { ProseContainer } from '@raulmelo/ui';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -8,7 +9,6 @@ import { BlogJsonLd, NextSeo, NextSeoProps } from 'next-seo';
 import React, { useMemo } from 'react';
 
 import { mdxComponents } from '~/components/MdxComponents';
-import { ProseContainer } from '~/components/ProseContainer';
 import { ShareContent } from '~/components/ShareContent';
 import { Tag, Tags } from '~/components/Tags';
 import { useLocalization } from '~/hooks/useLocalization';

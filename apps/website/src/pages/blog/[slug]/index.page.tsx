@@ -4,7 +4,7 @@ import { GetStaticPaths } from 'next';
 import dynamic from 'next/dynamic';
 import React from 'react';
 
-import { MdxPostTemplate } from '~/components/templates/MdxPost';
+import { MdxPostTemplate } from '~/components/MdxPost';
 import { serializeMdx } from '~/config/mdx';
 
 import type { SeriesSection as SeriesSectionType } from './components/SeriesSection';
