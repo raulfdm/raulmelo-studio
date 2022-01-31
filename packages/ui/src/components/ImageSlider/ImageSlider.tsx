@@ -15,9 +15,9 @@ export const ImageSlider = (props: ImageSliderProps) => {
   useLayoutEffect(() => {
     setActionsPosition(getActionsTransformValue());
   });
+
   const shouldRenderAction = images.length > 1 && actionsPosition > 0;
 
-  console.log({ actionsPosition });
   return (
     <div className="relative p-2 mx-auto max-w-max" data-testid="image-slider">
       <figure data-sliderfigure style={{ margin: 0 }}>
