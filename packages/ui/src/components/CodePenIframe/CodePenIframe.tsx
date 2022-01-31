@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { parseCodePenDirectUrl } from './utils';
 
 export interface CodePenProps {

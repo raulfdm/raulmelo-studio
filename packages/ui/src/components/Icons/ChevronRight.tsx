@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ChevronDownIcon } from './ChevronDown';
 import { IconProps } from './types';
 

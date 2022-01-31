@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { IconProps } from './types';
 
 export const GlobeIcon = ({ width, ...props }: IconProps) => {
