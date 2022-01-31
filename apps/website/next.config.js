@@ -84,38 +84,6 @@ const nextConfig = {
       config.plugins.push(new DuplicatePackageCheckerPlugin());
     }
 
-    const pluginsToResolve = [
-      '@babel/plugin-syntax-jsx',
-      '@babel/core',
-      '@babel/plugin-proposal-object-rest-spread',
-      '@babel/types',
-      'remark-parse',
-      'has-flag',
-      'tslib',
-      'supports-color',
-      '@babel/runtime',
-      '@emotion/is-prop-valid',
-      '@emotion/memoize',
-      '@babel/helper-plugin-utils',
-      'escape-string-regexp',
-      'iconv-lite',
-      'semver',
-    ];
-
-    pluginsToResolve.forEach((plugin) => {
-      /**
-       * `require.resolve` won't help in this case because because it brings the
-       * entry file from the module (e.g. path/to/module/lib/index.js).
-       *
-       * What I need is only `path/to/module`
-       */
-      config.resolve.alias[plugin] = path.resolve(
-        __dirname,
-        '../../node_modules',
-        plugin,
-      );
-    });
-
     return config;
   },
 };
