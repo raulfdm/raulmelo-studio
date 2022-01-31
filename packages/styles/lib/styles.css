@@ -37,6 +37,14 @@
   body {
     @apply antialiased;
   }
+
+  .prose-container blockquote {
+    color: theme('colors.primary') !important;
+  }
+
+  .prose-container code a {
+    color: theme('colors.secondary') !important;
+  }
 }
 
 @layer utilities {
