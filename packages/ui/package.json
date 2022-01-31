@@ -4,9 +4,9 @@
   "description": "",
   "main": "dist/ui.cjs.js",
   "module": "dist/ui.es.js",
-  "types": "./dist/ui.es.d.ts",
+  "types": "dist/types/index.d.ts",
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && pnpm exec tsc",
     "dev": "vite build --watch",
     "storybook": "start-storybook -p 6006 --no-manager-cache",
     "build-storybook": "build-storybook"

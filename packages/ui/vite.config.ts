@@ -1,6 +1,5 @@
 import path from 'path';
 import { defineConfig } from 'vite';
-import dts from 'vite-dts';
 
 const isExternal = (id: string) => !id.startsWith('.') && !path.isAbsolute(id);
 
@@ -17,5 +16,4 @@ export default defineConfig(() => ({
       external: isExternal,
     },
   },
-  plugins: [dts()],
 }));
