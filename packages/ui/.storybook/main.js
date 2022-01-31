@@ -13,7 +13,17 @@ module.exports = {
       name: '@storybook/addon-postcss',
       options: {
         postcssLoaderOptions: {
+          /**
+           * Because postcss is installed globally, I have to manually require
+           * it at the top-level node_modules.
+           */
           implementation: require('../../../node_modules/postcss'),
+          /**
+           * It's necessary to pass the POSTCSS options here instead a file in
+           * the root of this package because for some reason, storybook's
+           * postcss does not consider all my options there, leading to uncompiled
+           * CSS (e.g., tailwind styles without being parsed.)
+           */
           postcssOptions: configuredConfig,
         },
       },
