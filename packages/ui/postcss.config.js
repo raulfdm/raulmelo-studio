@@ -1,3 +1,3 @@
-const { configuredConfig } = require('@raulmelo/styles/lib/postcss.config.cjs');
+const { flatConfig } = require('@raulmelo/styles/lib/postcss.config.cjs');
 
-module.exports = configuredConfig;
+module.exports = flatConfig;
