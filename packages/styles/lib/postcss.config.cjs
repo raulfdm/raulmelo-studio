@@ -1,16 +1,13 @@
-const tailwindcss = require('tailwindcss');
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
-
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 
 const configuredConfig = {
   plugins: [
     //Some plugins, like postcss-nested, need to run before Tailwind,
-    tailwindcss(),
+    require('tailwindcss'),
+    require('tailwindcss/nesting'),
     //But others, like autoprefixer, need to run after,
-    autoprefixer(),
+    require('autoprefixer'),
   ],
 };
 
@@ -21,12 +18,13 @@ const flatConfig = {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
+    'tailwindcss/nesting': {},
   },
 };
 
 if (!dev) {
   configuredConfig.plugins.push(
-    cssnano({
+    require('cssnano')({
       preset: 'default',
     }),
   );
