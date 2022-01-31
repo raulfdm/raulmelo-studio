@@ -1,11 +1,11 @@
 import { Disclosure } from '@headlessui/react';
+import { ExternalLinkIcon } from '@raulmelo/ui';
 import { motion, useAnimation } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useMemo, useRef } from 'react';
 import tw, { css, styled } from 'twin.macro';
 
-import { ExternalLinkIcon } from '~/components/Icons';
 //TODO: fix ~/hooks/index
 import { useClickAway } from '~/hooks/index';
 import { useApp } from '~/hooks/useApp';

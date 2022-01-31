@@ -1,6 +1,7 @@
 import 'twin.macro';
 
-import { MoonIcon, SunIcon } from '~/components/Icons';
+import { MoonIcon, SunIcon } from '@raulmelo/ui';
+
 import { MenuButton } from '~/components/MenuBar';
 import { useThemeHandler } from '~/hooks/useThemeHandler';
 

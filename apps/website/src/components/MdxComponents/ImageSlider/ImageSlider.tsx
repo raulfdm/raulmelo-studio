@@ -1,8 +1,7 @@
+import { ChevronLeftIcon, ChevronRightIcon } from '@raulmelo/ui';
 import Image from 'next/image';
-import React from 'react';
 import tw, { css, styled } from 'twin.macro';
 
-import { ChevronLeftIcon, ChevronRightIcon } from '~/components/Icons';
 import { useCircularIndexes } from '~/hooks/useCircularIndexes';
 
 import { validations } from './utils';
@@ -81,7 +80,7 @@ export const ImageSlider = ({ images }: ImageSliderProps) => {
       {shouldRenderAction ? (
         <div
           css={[
-            tw`flex justify-between absolute right-0 left-0 top-0 h-7 -mx-3`,
+            tw`absolute top-0 left-0 right-0 flex justify-between -mx-3 h-7`,
             css`
               transform: translateY(${actionsPosition}px);
             `,
