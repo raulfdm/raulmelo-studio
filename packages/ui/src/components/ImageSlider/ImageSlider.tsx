@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { useLayoutEffect, useState } from 'react';
 
 import { ChevronLeftIcon, ChevronRightIcon } from '../Icons';
@@ -19,7 +20,12 @@ export const ImageSlider = (props: ImageSliderProps) => {
   const shouldRenderAction = images.length > 1 && actionsPosition > 0;
 
   return (
-    <div className="relative p-2 mx-auto max-w-max" data-testid="image-slider">
+    <div
+      className={classNames('relative p-2', {
+        'mx-auto': Boolean(renderImage) === false,
+      })}
+      data-testid="image-slider"
+    >
       <figure data-sliderfigure style={{ margin: 0 }}>
         {renderImage ? (
           renderImage(currentImage)
@@ -41,7 +47,7 @@ export const ImageSlider = (props: ImageSliderProps) => {
 
       {shouldRenderAction ? (
         <div
-          className={`absolute top-0 left-0 right-0 flex justify-between -mx-3 h-7 transform`}
+          className="absolute top-0 left-0 right-0 flex justify-between -mx-3 transform h-7"
           data-testid="actions-wrapper"
           style={{
             transform: `translateY(${actionsPosition}px)`,
