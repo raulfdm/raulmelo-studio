@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-black: #2c2c2c;
+    --color-primary: var(--color-black);
+    --color-secondary: #be185d;
+
+    --color-theme-light-primary: rgb(255, 255, 255);
+    --color-theme-dark-primary: rgb(15, 23, 42);
+    --color-theme-dark-secondary: rgba(30, 41, 59, 1);
+
+    --top-menu-height: 4rem;
+  }
+
+  * {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+
+  html {
+    @apply font-sans;
+    @apply text-primary;
+    @apply h-full;
+  }
+
+  html.dark {
+    --color-primary: #ffffff;
+    --color-secondary: #c0ed40;
+
+    background-color: var(--color-theme-dark-primary);
+  }
+
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer utilities {
+  @variants focus-visible, focus {
+    button,
+    * {
+      @apply focus:outline-black dark:focus:outline-white;
+    }
+  }
+}
+
+@layer components {
+  .grid-container {
+    @apply w-full;
+    @apply grid-cols-4;
+    @apply px-4;
+    @apply gap-4;
+    @apply grid;
+    @apply mx-auto;
+
+    @apply md:max-w-5xl;
+    @apply md:grid-cols-6;
+
+    @apply lg:max-w-7xl;
+    @apply lg:grid-cols-12;
+  }
+}

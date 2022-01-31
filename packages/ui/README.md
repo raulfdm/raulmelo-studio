@@ -16,7 +16,7 @@
 2. Import the CSS files:
 
 ```ts
-import '@raulmelo/styles/lib/all.css';
+import '@raulmelo/styles/lib/styles.css';
 import '@raulmelo/ui/dist/style.css';
 ```
 

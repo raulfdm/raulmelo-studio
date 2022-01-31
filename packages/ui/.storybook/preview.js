@@ -1,4 +1,4 @@
-import '@raulmelo/styles/lib/base.css';
+import '@raulmelo/styles/lib/styles.css';
 import './styles.css';
 
 import { PageContainer } from '../src/components/PageContainer';

@@ -1,4 +1,4 @@
-import '@raulmelo/styles/lib/base.css';
+import '@raulmelo/styles/lib/styles.css';
 import '@raulmelo/ui/dist/style.css';
 
 import { CSSObject, Global } from '@emotion/react';
