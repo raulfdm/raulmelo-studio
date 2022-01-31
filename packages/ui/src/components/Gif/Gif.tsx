@@ -1,3 +1,4 @@
+//@ts-ignore
 import styles from './Gif.module.css';
 
 export function Gif(props: GifProps) {

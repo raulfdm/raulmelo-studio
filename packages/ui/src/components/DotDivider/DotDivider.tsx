@@ -1,3 +1,4 @@
+//@ts-ignore
 import styles from './DotDivider.module.css';
 
 const Dot = () => (

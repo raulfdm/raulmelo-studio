@@ -112,7 +112,7 @@ export type ImageSliderProps = {
   renderImage?: (image: SliderImageProps) => React.ReactNode;
 };
 
-function NavButton({ children, ...props }) {
+function NavButton({ children, ...props }: any) {
   return (
     <button
       type="button"
