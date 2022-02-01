@@ -1,12 +1,12 @@
 import 'twin.macro';
 
 import { Popover } from '@headlessui/react';
+import { GlobeIcon } from '@raulmelo/ui';
 import { useRouter } from 'next/router';
 import { Fragment, useState } from 'react';
 import { usePopper } from 'react-popper';
 import tw, { css, styled } from 'twin.macro';
 
-import { GlobeIcon } from '~/components/Icons';
 import { MenuButton } from '~/components/MenuBar';
 import { useLocalization } from '~/hooks/useLocalization';
 
@@ -24,13 +24,13 @@ const styles = {
     ${tw`bg-white dark:bg-blue-800`};
     ${tw`z-20`};
     ${tw`w-4 h-4`};
-    ${tw`border-l border-t rounded-sm dark:border-gray-400`};
+    ${tw`border-t border-l rounded-sm dark:border-gray-400`};
     ${tw`top[-8px]`};
   `,
   item: css`
-    ${tw`text-base font-sans text-center`};
+    ${tw`font-sans text-base text-center`};
     ${tw`cursor-pointer`};
-    ${tw`py-2 px-6`};
+    ${tw`px-6 py-2`};
     ${tw`whitespace-nowrap`};
     ${tw`flex-1`};
 

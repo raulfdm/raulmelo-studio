@@ -29,3 +29,27 @@ export default {
 const Template = (args) => <ImageSlider {...args} />;
 
 export const DefaultStory = Template.bind({});
+
+export const WithRealImages = Template.bind({});
+WithRealImages.args = {
+  images: [
+    {
+      src: 'https://res.cloudinary.com/duzei21zt/image/upload/v1598103069/site/desenvolvedor_javascript_brasil_europa_ato_9_parte_2_house_3_7718a8a103.jpg',
+      alt: 'Camas',
+      width: '4160',
+      height: '3120',
+    },
+    {
+      src: 'https://res.cloudinary.com/duzei21zt/image/upload/v1598103074/site/desenvolvedor_javascript_brasil_europa_ato_9_parte_2_house_2_453bceb38e.jpg',
+      alt: 'Sala e Entrada',
+      width: '4160',
+      height: '3120',
+    },
+    {
+      src: 'https://res.cloudinary.com/duzei21zt/image/upload/v1598103067/site/desenvolvedor_javascript_brasil_europa_ato_9_parte_2_house_1_b79e836fca.jpg',
+      alt: 'Cozinha',
+      width: '4160',
+      height: '3120',
+    },
+  ],
+};

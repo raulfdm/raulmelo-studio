@@ -67,7 +67,6 @@ importers:
       typescript: 4.5.5
       typescript-plugin-css-modules: 3.4.0
       vite: 2.7.13
-      vite-dts: 1.0.4
     dependencies:
       dotenv-flow: 3.2.0
     devDependencies:
@@ -114,7 +113,6 @@ importers:
       typescript: 4.5.5
       typescript-plugin-css-modules: 3.4.0_ts-node@10.4.0+typescript@4.5.5
       vite: 2.7.13
-      vite-dts: 1.0.4_vite@2.7.13
 
   apps/cms:
     specifiers:
@@ -207,6 +205,7 @@ importers:
       '@popperjs/core': 2.11.2
       '@raulfdm/core': '*'
       '@raulmelo/styles': '*'
+      '@raulmelo/ui': '*'
       '@testing-library/jest-dom': 5.16.1
       '@testing-library/react': 12.1.2
       '@types/debounce-promise': 3.1.4
@@ -260,6 +259,7 @@ importers:
       '@popperjs/core': 2.11.2
       '@raulfdm/core': link:../../packages/core
       '@raulmelo/styles': link:../../packages/styles
+      '@raulmelo/ui': link:../../packages/ui
       '@xstate/fsm': 1.6.4
       '@xstate/react': 1.6.3_d62ddcee1049e30b78468e57773b4719
       algoliasearch: 4.12.0
@@ -369,10 +369,12 @@ importers:
       '@storybook/builder-webpack5': 6.4.16
       '@storybook/manager-webpack5': 6.4.16
       '@storybook/react': 6.4.16
+      classnames: 2.3.1
       react-twitter-widgets: 1.10.0
       storybook-css-modules-preset: 1.1.1
       webpack: 5.67.0
     dependencies:
+      classnames: 2.3.1
       react-twitter-widgets: 1.10.0
     devDependencies:
       '@raulmelo/styles': link:../styles
@@ -19468,16 +19470,6 @@ packages:
       strip-bom: 3.0.0
     dev: true
 
-  /load-json-file/6.2.0:
-    resolution: {integrity: sha512-gUD/epcRms75Cw8RT1pUdHugZYM5ce64ucs2GEISABwkRsOQr0q2wm/MV2TKThycIe5e0ytRweW2RZxclogCdQ==}
-    engines: {node: '>=8'}
-    dependencies:
-      graceful-fs: 4.2.9
-      parse-json: 5.2.0
-      strip-bom: 4.0.0
-      type-fest: 0.6.0
-    dev: true
-
   /load-yaml-file/0.2.0:
     resolution: {integrity: sha512-OfCBkGEw4nN6JLtgRidPX6QxjBQGQf72q3si2uvqyFEMbycSFFHwAZeXx6cJgFM9wmLrf9zBwCP3Ivqa+LLZPw==}
     engines: {node: '>=6'}
@@ -29273,15 +29265,6 @@ packages:
   /viewport-dimensions/0.2.0:
     resolution: {integrity: sha1-3nQHR9tTh/0XJfUXXpG6x2r982w=}
     dev: false
-
-  /vite-dts/1.0.4_vite@2.7.13:
-    resolution: {integrity: sha512-jfRsrBU8vibUS4a/AboDzHdph2/9/dpoMdYgkiD5tb4OXL75wnlzeEZ6D2XoEZNExwnkXqARKAvz7pv5VtUm5g==}
-    peerDependencies:
-      vite: '>2.0.0-0'
-    dependencies:
-      load-json-file: 6.2.0
-      vite: 2.7.13
-    dev: true
 
   /vite/2.7.13:
     resolution: {integrity: sha512-Mq8et7f3aK0SgSxjDNfOAimZGW9XryfHRa/uV0jseQSilg+KhYDSoNb9h1rknOy6SuMkvNDLKCYAYYUMCE+IgQ==}

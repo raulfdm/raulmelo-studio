@@ -1,4 +1,5 @@
-import '@raulmelo/styles/lib/base.css';
+import '@raulmelo/styles/lib/styles.css';
+import '@raulmelo/ui/dist/style.css';
 
 import { CSSObject, Global } from '@emotion/react';
 import { SupportedLanguages } from '@raulfdm/core';
@@ -7,7 +8,6 @@ import { AppProps } from 'next/dist/shared/lib/router/router';
 import Head from 'next/head';
 import Script from 'next/script';
 import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo';
-import React from 'react';
 import { globalStyles } from 'twin.macro';
 
 import { MenuBar } from '~/components/MenuBar';

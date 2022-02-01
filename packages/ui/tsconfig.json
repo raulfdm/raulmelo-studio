@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "baseUrl": "./src",
     "importHelpers": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -7,7 +10,9 @@
     "jsx": "react-jsx",
     "lib": ["dom", "esnext", "dom.iterable"],
     "module": "esnext",
-    "noEmit": true,
+    "declaration": true,
+    "declarationDir": "./dist/types",
+    "emitDeclarationOnly": true,
     "strict": true,
     "target": "esnext",
     "allowSyntheticDefaultImports": true,
@@ -17,6 +22,13 @@
       }
     ]
   },
-  "include": ["./packages", "*.d.ts"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["./src", "*.d.ts"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/**/*.spec.ts",
+    "src/**/*.test.tsx",
+    "src/**/*.stories.tsx",
+    "src/infrastructure/decorators.tsx"
+  ]
 }

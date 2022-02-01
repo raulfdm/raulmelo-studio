@@ -1,7 +1,6 @@
-import React from 'react';
+import { ChevronLeftIcon, ChevronRightIcon } from '@raulmelo/ui';
 import tw, { css } from 'twin.macro';
 
-import { ChevronLeftIcon, ChevronRightIcon } from '../Icons';
 import { PaginationItemProps } from './types';
 
 const iconsTypeMap = {

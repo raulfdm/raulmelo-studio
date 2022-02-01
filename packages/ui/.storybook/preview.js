@@ -1,5 +1,5 @@
-import '@raulmelo/styles/lib/base.css';
-import '../src/infrastructure/styles.css';
+import '@raulmelo/styles/lib/styles.css';
+import './styles.css';
 
 import { PageContainer } from '../src/components/PageContainer';
 

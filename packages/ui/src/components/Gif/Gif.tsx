@@ -1,3 +1,4 @@
+//@ts-ignore
 import styles from './Gif.module.css';
 
 export function Gif(props: GifProps) {
@@ -30,5 +31,5 @@ export type GifProps = {
   width?: Dimension;
   height?: Dimension;
   caption?: string;
-  renderImage?: (props: GifProps) => React.ElementType;
+  renderImage?: (props: GifProps) => React.ReactNode;
 };

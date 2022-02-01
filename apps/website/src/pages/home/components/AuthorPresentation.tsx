@@ -1,14 +1,14 @@
-import Image from 'next/image';
-import { defineMessage } from 'react-intl';
-import tw from 'twin.macro';
-
 import {
   DevToIcon,
   GithubIcon,
   LinkedInIcon,
+  MediumIcon,
   TwitterIcon,
-} from '~/components/Icons';
-import { MediumIcon } from '~/components/Icons/Medium';
+} from '@raulmelo/ui';
+import Image from 'next/image';
+import { defineMessage } from 'react-intl';
+import tw from 'twin.macro';
+
 import { useLocalization } from '~/hooks/useLocalization';
 import siteData from '~/site-data';
 import { getSocial } from '~/utils/seo';

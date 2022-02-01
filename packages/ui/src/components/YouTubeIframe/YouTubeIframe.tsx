@@ -1,3 +1,4 @@
+//@ts-ignore
 import styles from './YouTubeIframe.module.css';
 
 export function YouTubeIframe({ src, videoId }: YouTubeIframeProps) {

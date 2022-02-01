@@ -2,7 +2,7 @@ import { IUsesData } from '@raulfdm/core/dist/types/domains/uses';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import React from 'react';
 
-import { MdxPostTemplate } from '~/components/templates/MdxPost';
+import { MdxPostTemplate } from '~/components/MdxPost';
 import { useLocalization } from '~/hooks/useLocalization';
 import siteData from '~/site-data';
 import { getPostUrl } from '~/utils/url';

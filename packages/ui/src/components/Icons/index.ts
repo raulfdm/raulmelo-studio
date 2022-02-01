@@ -10,6 +10,7 @@ export * from './ExternalLink';
 export * from './Github';
 export * from './Globe';
 export * from './LinkedIn';
+export * from './Medium';
 export * from './Menu';
 export * from './Moon';
 export * from './Sun';

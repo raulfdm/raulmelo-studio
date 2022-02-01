@@ -1,8 +1,8 @@
+import { CloseIcon, MenuIcon } from '@raulmelo/ui';
 import Link from 'next/link';
 import { FC } from 'react';
 import tw, { css, styled } from 'twin.macro';
 
-import { CloseIcon, MenuIcon } from '~/components/Icons';
 import { Logo } from '~/components/Logo';
 import { SideMenu } from '~/components/SideMenu';
 import { useApp } from '~/hooks/useApp';
@@ -12,23 +12,14 @@ import { LanguageSwitch } from './components/LanguageSwitch';
 import { ThemeSwitch } from './components/ThemeSwitch';
 
 const styles = {
-  wrapper: tw`
-    inset-x-0
-    relative
-    h-16
-    z-40
-    shadow
-    bg-white dark:bg-blue-800
-    transition-theme duration-200 ease
-    mb-8 md:mb-12
-  `,
+  wrapper: tw`relative inset-x-0 z-40 h-16 mb-8 duration-200 bg-white shadow  dark:bg-blue-800 transition-theme ease md:mb-12`,
   inner: css`
     ${tw`items-center h-full`};
   `,
   logoSection: tw`col-span-2`,
   logo: tw` text-primary`,
-  iconsWrapper: tw`flex justify-end space-x-3 col-span-2 md:col-end-9 lg:col-end-13`,
-  menuButtonBase: tw`p-2 flex place-content-center`,
+  iconsWrapper: tw`flex justify-end col-span-2 space-x-3 md:col-end-9 lg:col-end-13`,
+  menuButtonBase: tw`flex p-2 place-content-center`,
   icon: tw`w-6`,
 };
 

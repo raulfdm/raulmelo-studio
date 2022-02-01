@@ -1,9 +1,10 @@
+//@ts-ignore
 import styles from './DotDivider.module.css';
 
 const Dot = () => (
   <div
     aria-hidden="true"
-    className={`${styles.dot} w-1.5 h-1.5 lg:width[0.475rem] lg:height[0.475rem]`}
+    className={`${styles.dot} w-1.5 h-1.5 lg:w[0.475rem] lg:h[0.475rem]`}
   />
 );
 /**
@@ -21,7 +22,7 @@ export const DotDivider = () => {
     <div
       role="separator"
       data-testid="dot-divider"
-      className={`${styles.divider} margin[3.111em 0px] md:margin[2.8em 0px] lg:margin[3em 0px]`}
+      className={`${styles.divider} my-[3.111em] md:my-[2.8em] lg:my-[3em]`}
     >
       <Dot />
       <Dot />

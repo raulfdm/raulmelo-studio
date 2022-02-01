@@ -1,3 +1,4 @@
+//@ts-ignore
 import styles from './BigQuote.module.css';
 
 export const BigQuote = ({ ...props }: BigQuoteProps) => (
