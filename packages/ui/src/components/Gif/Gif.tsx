@@ -31,5 +31,5 @@ export type GifProps = {
   width?: Dimension;
   height?: Dimension;
   caption?: string;
-  renderImage?: (props: GifProps) => React.ElementType;
+  renderImage?: (props: GifProps) => React.ReactNode;
 };

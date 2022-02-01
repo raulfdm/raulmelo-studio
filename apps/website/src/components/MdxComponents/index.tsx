@@ -3,6 +3,7 @@ import {
   CodePenIframe,
   DotDivider,
   Gif,
+  GifProps,
   H1,
   H2,
   H3,
@@ -10,6 +11,7 @@ import {
   H5,
   H6,
   ImageSlider,
+  ImageSliderProps,
   Tweet,
   YouTubeIframe,
 } from '@raulmelo/ui';
@@ -19,7 +21,16 @@ import { Image } from './Image';
 
 export const mdxComponents = {
   BigQuote,
-  Gif,
+  Gif: function (props: GifProps) {
+    return (
+      <Gif
+        {...props}
+        renderImage={({ src, height, width, caption }) => (
+          <NextImage src={src} height={height} width={width} alt={caption} />
+        )}
+      />
+    );
+  },
   CodePen: CodePenIframe,
   YouTubeVideo: YouTubeIframe,
   hr: DotDivider,
@@ -31,7 +42,7 @@ export const mdxComponents = {
   h4: H4,
   h5: H5,
   h6: H6,
-  ImageSlider: function (props: any) {
+  ImageSlider: function (props: ImageSliderProps) {
     return (
       <ImageSlider
         renderImage={(currentImage) => {
