@@ -144,6 +144,8 @@ importers:
 
   apps/cms-sanity:
     specifiers:
+      '@raulmelo/styles': workspace:*
+      '@raulmelo/ui': workspace:*
       '@sanity/base': 2.26.0
       '@sanity/cli': 2.26.0
       '@sanity/code-input': 2.26.0
@@ -161,6 +163,8 @@ importers:
       sanity-plugin-markdown: 2.1.1
       styled-components: 5.3.3
     dependencies:
+      '@raulmelo/styles': link:../../packages/styles
+      '@raulmelo/ui': link:../../packages/ui
       '@sanity/base': 2.26.0_f9946b04243d66cb0d0a52b930f90e5e
       '@sanity/code-input': 2.26.0_f9946b04243d66cb0d0a52b930f90e5e
       '@sanity/core': 2.26.0_dfc0b93d99fba272c9564d3139a2581a
