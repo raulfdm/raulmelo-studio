@@ -89,7 +89,6 @@ export const blockContentField = {
      * TODO:
      * - ImageSlider;
      * - Finish Gif
-     * - Youtube Block
      * - hr
      * - CodePen
      * - Tweet
@@ -99,6 +98,9 @@ export const blockContentField = {
     },
     {
       type: 'youtubeVideo',
+    },
+    {
+      type: 'tweet',
     },
   ],
 };
