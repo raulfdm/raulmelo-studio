@@ -97,5 +97,8 @@ export const blockContentField = {
     {
       type: 'gif',
     },
+    {
+      type: 'youtubeVideo',
+    },
   ],
 };

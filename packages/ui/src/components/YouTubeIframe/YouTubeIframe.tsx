@@ -1,7 +1,7 @@
 //@ts-ignore
 import styles from './YouTubeIframe.module.css';
 
-export function YouTubeIframe({ src, videoId }: YouTubeIframeProps) {
+export function YouTubeIframe({ src, videoId, ref }: YouTubeIframeProps) {
   if (src) {
     throw new Error(
       `YouTubeIframe: "src" is no longer allowed. Use "videoId" instead`,
@@ -9,7 +9,8 @@ export function YouTubeIframe({ src, videoId }: YouTubeIframeProps) {
   }
 
   if (!videoId) {
-    throw new Error(`YouTubeIframe: "videoId" is required`);
+    console.error(`YouTubeIframe: "videoId" is required`);
+    return null;
   }
 
   const videoSrc = `https://www.youtube.com/embed/${videoId}`;
