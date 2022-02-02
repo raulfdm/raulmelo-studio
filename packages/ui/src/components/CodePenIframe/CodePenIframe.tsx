@@ -20,7 +20,8 @@ export const CodePenIframe: React.FC<CodePenProps> = ({
   }
 
   if (!finalUrl) {
-    throw new Error('CodePenIframe must receive either "src" or "directUrl"');
+    console.error('CodePenIframe must receive either "src" or "directUrl"');
+    return null;
   }
 
   return (

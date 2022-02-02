@@ -88,10 +88,7 @@ export const blockContentField = {
     /**
      * TODO:
      * - ImageSlider;
-     * - Finish Gif
      * - hr
-     * - CodePen
-     * - Tweet
      */
     {
       type: 'gif',
@@ -101,6 +98,9 @@ export const blockContentField = {
     },
     {
       type: 'tweet',
+    },
+    {
+      type: 'codePen',
     },
   ],
 };
