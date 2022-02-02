@@ -24,6 +24,11 @@ export const postSchema = {
   ],
   fields: [
     {
+      type: 'blockContent',
+      name: 'body',
+      group: 'post',
+    },
+    {
       group: 'meta',
       type: 'language',
       name: 'language',
