@@ -6,3 +6,9 @@ const API_URL =
   'http://localhost:1337';
 
 export const client = new GraphQLClient(`${API_URL}/graphql`);
+
+export const sanityConfig = {
+  projectId: 'gc3hakk3',
+  dataset: 'production',
+  apiVersion: 'v1',
+};
