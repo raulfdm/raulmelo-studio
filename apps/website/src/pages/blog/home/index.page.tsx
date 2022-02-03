@@ -1,5 +1,5 @@
-import { AllSupportedLanguages, domains } from '@raulfdm/core';
-import { IBlogPagePost } from '@raulfdm/core/dist/types/domains/posts';
+import { AllSupportedLanguages, domains } from '@raulmelo/core';
+import { IBlogPagePost } from '@raulmelo/core/dist/types/domains/posts';
 import chunk from 'lodash.chunk';
 import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';

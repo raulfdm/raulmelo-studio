@@ -1,4 +1,4 @@
-import { SupportedLanguages } from '@raulfdm/core';
+import { SupportedLanguages } from '@raulmelo/core';
 
 /**
  * TODO: Move those functions to core/domains/*

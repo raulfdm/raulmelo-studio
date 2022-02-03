@@ -1,4 +1,4 @@
-import { utils } from '@raulfdm/core';
+import { utils } from '@raulmelo/core';
 import React from 'react';
 import { connectRefinementList } from 'react-instantsearch-dom';
 import tw, { styled } from 'twin.macro';

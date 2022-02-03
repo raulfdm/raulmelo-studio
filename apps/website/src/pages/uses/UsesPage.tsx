@@ -1,4 +1,4 @@
-import { IUsesData } from '@raulfdm/core/dist/types/domains/uses';
+import { IUsesData } from '@raulmelo/core/dist/types/domains/uses';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import React from 'react';
 

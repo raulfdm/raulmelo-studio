@@ -1,4 +1,4 @@
-import { IPostsAndTilsPost } from '@raulfdm/core/dist/types/domains/posts';
+import { IPostsAndTilsPost } from '@raulmelo/core/dist/types/domains/posts';
 import { AnimatePresence, motion } from 'framer-motion';
 import tw from 'twin.macro';
 

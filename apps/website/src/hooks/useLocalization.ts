@@ -1,4 +1,4 @@
-import { SupportedLanguages } from '@raulfdm/core';
+import { SupportedLanguages } from '@raulmelo/core';
 import { useContext } from 'react';
 import { IntlShape, useIntl } from 'react-intl';
 

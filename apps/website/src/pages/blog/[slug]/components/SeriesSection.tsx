@@ -1,4 +1,4 @@
-import { IBlogPostBySlug } from '@raulfdm/core/dist/types/domains/posts/queryPostBySlug/types';
+import { IBlogPostBySlug } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
 import { ChevronDownIcon } from '@raulmelo/ui';
 import { createMachine } from '@xstate/fsm';
 import { useMachine } from '@xstate/react/fsm';

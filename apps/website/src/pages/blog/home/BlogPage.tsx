@@ -1,6 +1,6 @@
 import 'twin.macro';
 
-import { IBlogPagePost } from '@raulfdm/core/dist/types/domains/posts';
+import { IBlogPagePost } from '@raulmelo/core/dist/types/domains/posts';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import React from 'react';

@@ -1,4 +1,4 @@
-import { utils } from '@raulfdm/core';
+import { utils } from '@raulmelo/core';
 import { polyfill as scrollPolyfill } from 'smoothscroll-polyfill';
 
 if (utils.isBrowserApiAvailable.window) {

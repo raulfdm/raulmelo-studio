@@ -1,4 +1,4 @@
-import { utils } from '@raulfdm/core';
+import { utils } from '@raulmelo/core';
 import { NextSeo } from 'next-seo';
 import React, { useMemo } from 'react';
 import { defineMessages, FormattedMessage } from 'react-intl';

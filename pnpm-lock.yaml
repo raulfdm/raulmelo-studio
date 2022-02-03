@@ -144,6 +144,7 @@ importers:
 
   apps/cms-sanity:
     specifiers:
+      '@raulmelo/core': workspace:*
       '@raulmelo/styles': workspace:*
       '@raulmelo/ui': workspace:*
       '@sanity/base': 2.26.0
@@ -163,6 +164,7 @@ importers:
       sanity-plugin-markdown: 2.1.1
       styled-components: 5.3.3
     dependencies:
+      '@raulmelo/core': link:../../packages/core
       '@raulmelo/styles': link:../../packages/styles
       '@raulmelo/ui': link:../../packages/ui
       '@sanity/base': 2.26.0_f9946b04243d66cb0d0a52b930f90e5e
@@ -211,7 +213,7 @@ importers:
       '@headlessui/react': 1.4.3
       '@next/bundle-analyzer': 12.0.8
       '@popperjs/core': 2.11.2
-      '@raulfdm/core': '*'
+      '@raulmelo/core': '*'
       '@raulmelo/styles': '*'
       '@raulmelo/ui': '*'
       '@testing-library/jest-dom': 5.16.1
@@ -265,7 +267,7 @@ importers:
       '@emotion/styled': 11.6.0_023218a630dedcfdc5aa065bf93ff9d7
       '@headlessui/react': 1.4.3_react-dom@17.0.2+react@17.0.2
       '@popperjs/core': 2.11.2
-      '@raulfdm/core': link:../../packages/core
+      '@raulmelo/core': link:../../packages/core
       '@raulmelo/styles': link:../../packages/styles
       '@raulmelo/ui': link:../../packages/ui
       '@xstate/fsm': 1.6.4
@@ -319,11 +321,13 @@ importers:
 
   packages/core:
     specifiers:
+      '@sanity/image-url': 1.0.1
       '@types/ramda': 0.27.64
       graphql: 16.3.0
       graphql-request: 3.7.0
       ramda: 0.28.0
     dependencies:
+      '@sanity/image-url': 1.0.1
       graphql: 16.3.0
       graphql-request: 3.7.0_graphql@16.3.0
       ramda: 0.28.0

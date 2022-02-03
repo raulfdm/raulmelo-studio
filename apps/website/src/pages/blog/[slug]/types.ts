@@ -1,4 +1,4 @@
-import { IBlogPostBySlug } from '@raulfdm/core/dist/types/domains/posts/queryPostBySlug/types';
+import { IBlogPostBySlug } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 export type BlogPostProps = {
