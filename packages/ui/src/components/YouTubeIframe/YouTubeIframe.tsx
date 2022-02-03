@@ -9,7 +9,8 @@ export function YouTubeIframe({ src, videoId }: YouTubeIframeProps) {
   }
 
   if (!videoId) {
-    throw new Error(`YouTubeIframe: "videoId" is required`);
+    console.error(`YouTubeIframe: "videoId" is required`);
+    return null;
   }
 
   const videoSrc = `https://www.youtube.com/embed/${videoId}`;

@@ -1,4 +1,4 @@
-import { domains, utils } from '@raulfdm/core';
+import { domains, utils } from '@raulmelo/core';
 import { DotDivider } from '@raulmelo/ui';
 import { GetStaticPaths } from 'next';
 import dynamic from 'next/dynamic';

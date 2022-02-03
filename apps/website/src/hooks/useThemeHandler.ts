@@ -1,4 +1,4 @@
-import { AppTheme } from '@raulfdm/core';
+import { AppTheme } from '@raulmelo/core';
 import { createMachine } from '@xstate/fsm';
 import { useMachine } from '@xstate/react/fsm';
 import { useEffect } from 'react';

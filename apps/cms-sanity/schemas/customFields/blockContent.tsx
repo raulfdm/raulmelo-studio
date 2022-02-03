@@ -1,13 +1,9 @@
-/**
- * This is the schema definition for the rich text fields used for
- * for this blog studio. When you import it in schemas.js it can be
- * reused in other parts of the studio with:
- *  {
- *    name: 'someName',
- *    title: 'Some title',
- *    type: 'blockContent'
- *  }
- */
+import '@raulmelo/ui/dist/style.css?raw';
+
+import { BigQuote, DotDivider, H2 } from '@raulmelo/ui';
+
+import { memoizeAndRemoveStyle } from '../../utils/schema';
+
 export const blockContentField = {
   title: 'Block Content',
   name: 'blockContent',
@@ -22,13 +18,38 @@ export const blockContentField = {
       // use your content.
       styles: [
         { title: 'Normal', value: 'normal' },
-        { title: 'H1', value: 'h1' },
-        { title: 'H2', value: 'h2' },
+        {
+          title: 'H2',
+          value: 'h2',
+          blockEditor: {
+            render: memoizeAndRemoveStyle(H2),
+          },
+        },
         { title: 'H3', value: 'h3' },
         { title: 'H4', value: 'h4' },
+        { title: 'H5', value: 'h5' },
+        { title: 'H6', value: 'h6' },
         { title: 'Quote', value: 'blockquote' },
+        {
+          title: 'Big Quote',
+          value: 'big-quote',
+          blockEditor: {
+            render: memoizeAndRemoveStyle(BigQuote),
+          },
+        },
+        {
+          title: 'Divider',
+          value: 'dotDivider',
+          blockEditor: {
+            render: DotDivider,
+          },
+        },
       ],
-      lists: [{ title: 'Bullet', value: 'bullet' }],
+      lists: [
+        { title: 'Bullet', value: 'bullet' },
+        { title: 'Bullet', value: 'bullet' },
+        { title: 'Break', value: 'break' },
+      ],
       // Marks let you mark up inline text in the block editor.
       marks: {
         // Decorators usually describe a single property – e.g. a typographic
@@ -60,6 +81,27 @@ export const blockContentField = {
     {
       type: 'image',
       options: { hotspot: true },
+    },
+    {
+      type: 'code',
+    },
+    {
+      type: 'gif',
+    },
+    {
+      type: 'youtubeVideo',
+    },
+    {
+      type: 'tweet',
+    },
+    {
+      type: 'codePen',
+    },
+    {
+      type: 'imageSlider',
+    },
+    {
+      type: 'divider',
     },
   ],
 };

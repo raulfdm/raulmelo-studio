@@ -1,4 +1,4 @@
-import { SupportedLanguages } from '@raulfdm/core';
+import { SupportedLanguages } from '@raulmelo/core';
 
 export type HitAlgolia = {
   objectID: string;

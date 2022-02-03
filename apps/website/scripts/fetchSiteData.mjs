@@ -2,7 +2,7 @@
 
 import dotenv from 'dotenv-flow';
 dotenv.config();
-import { generateSiteData } from '@raulfdm/core/generateSiteData';
+import { generateSiteData } from '@raulmelo/core/generateSiteData';
 import path from 'path';
 import { fileURLToPath } from 'url';
 

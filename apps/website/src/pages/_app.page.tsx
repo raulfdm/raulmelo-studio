@@ -2,7 +2,7 @@ import '@raulmelo/styles/lib/styles.css';
 import '@raulmelo/ui/dist/style.css';
 
 import { CSSObject, Global } from '@emotion/react';
-import { SupportedLanguages } from '@raulfdm/core';
+import { SupportedLanguages } from '@raulmelo/core';
 import { motion } from 'framer-motion';
 import { AppProps } from 'next/dist/shared/lib/router/router';
 import Head from 'next/head';

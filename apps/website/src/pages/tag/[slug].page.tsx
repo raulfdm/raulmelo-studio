@@ -1,4 +1,4 @@
-import { domains, SupportedLanguages } from '@raulfdm/core';
+import { domains, SupportedLanguages } from '@raulmelo/core';
 import { GetStaticPaths } from 'next';
 
 import { TagPage } from './TagPage';

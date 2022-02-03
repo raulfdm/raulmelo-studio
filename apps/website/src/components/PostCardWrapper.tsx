@@ -1,4 +1,4 @@
-import { SupportedLanguages } from '@raulfdm/core';
+import { SupportedLanguages } from '@raulmelo/core';
 
 import { useLocalization } from '~/hooks/useLocalization';
 import { getPostUrl, getTagUrl } from '~/utils/url';

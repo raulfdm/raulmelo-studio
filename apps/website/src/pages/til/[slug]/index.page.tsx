@@ -1,5 +1,5 @@
-import { domains, utils } from '@raulfdm/core';
-import { ITilsTil } from '@raulfdm/core/dist/types/domains/posts/queryTils/types';
+import { domains, utils } from '@raulmelo/core';
+import { ITilsTil } from '@raulmelo/core/dist/types/domains/posts/queryTils/types';
 import { GetStaticPaths } from 'next';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
