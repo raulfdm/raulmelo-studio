@@ -85,11 +85,6 @@ export const blockContentField = {
     {
       type: 'code',
     },
-    /**
-     * TODO:
-     * - ImageSlider;
-     * - hr
-     */
     {
       type: 'gif',
     },
@@ -104,6 +99,9 @@ export const blockContentField = {
     },
     {
       type: 'imageSlider',
+    },
+    {
+      type: 'divider',
     },
   ],
 };

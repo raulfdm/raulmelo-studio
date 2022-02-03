@@ -9,6 +9,7 @@ import createSchema from 'part:@sanity/base/schema-creator';
 // We import object and document schemas
 import { blockContentField } from './customFields/blockContent';
 import { codePenField } from './customFields/codePenField';
+import { dividerField } from './customFields/divider';
 import { gifField } from './customFields/gif';
 import { imageSliderField } from './customFields/imageSlider';
 import { languageField } from './customFields/language';
@@ -54,5 +55,6 @@ export default createSchema({
     youtubeVideoField,
     tweetField,
     codePenField,
+    dividerField,
   ]),
 });
