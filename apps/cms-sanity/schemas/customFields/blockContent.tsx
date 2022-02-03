@@ -102,5 +102,8 @@ export const blockContentField = {
     {
       type: 'codePen',
     },
+    {
+      type: 'imageSlider',
+    },
   ],
 };

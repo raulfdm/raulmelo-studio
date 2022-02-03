@@ -8,8 +8,12 @@ import createSchema from 'part:@sanity/base/schema-creator';
 
 // We import object and document schemas
 import { blockContentField } from './customFields/blockContent';
+import { codePenField } from './customFields/codePenField';
 import { gifField } from './customFields/gif';
+import { imageSliderField } from './customFields/imageSlider';
 import { languageField } from './customFields/language';
+import { tweetField } from './customFields/tweetField';
+import { youtubeVideoField } from './customFields/youtubeVideoField';
 import { defaultSeoSchema } from './defaultSeo';
 import personalInfo from './personalInfo';
 import { postSchema } from './post';
@@ -46,5 +50,9 @@ export default createSchema({
     blockContentField,
     languageField,
     gifField,
+    imageSliderField,
+    youtubeVideoField,
+    tweetField,
+    codePenField,
   ]),
 });

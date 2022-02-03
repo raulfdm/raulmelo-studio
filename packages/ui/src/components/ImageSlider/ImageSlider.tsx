@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { ChevronLeftIcon, ChevronRightIcon } from '../Icons';
 import { useCircularIndexes, validations } from './utils';
@@ -13,7 +13,7 @@ export const ImageSlider = (props: ImageSliderProps) => {
   const currentImage = images[currentIndex];
   validations(currentImage);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setActionsPosition(getActionsTransformValue());
   });
 
