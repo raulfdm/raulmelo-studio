@@ -324,12 +324,12 @@ importers:
       '@sanity/image-url': 1.0.1
       '@types/ramda': 0.27.64
       graphql: 16.3.0
-      graphql-request: 3.7.0
+      graphql-request: 4.0.0
       ramda: 0.28.0
     dependencies:
       '@sanity/image-url': 1.0.1
       graphql: 16.3.0
-      graphql-request: 3.7.0_graphql@16.3.0
+      graphql-request: 4.0.0_graphql@16.3.0
       ramda: 0.28.0
     devDependencies:
       '@types/ramda': 0.27.64
@@ -17035,15 +17035,17 @@ packages:
       graphql-playground-html: 1.6.29
     dev: false
 
-  /graphql-request/3.7.0_graphql@16.3.0:
-    resolution: {integrity: sha512-dw5PxHCgBneN2DDNqpWu8QkbbJ07oOziy8z+bK/TAXufsOLaETuVO4GkXrbs0WjhdKhBMN3BkpN/RIvUHkmNUQ==}
+  /graphql-request/4.0.0_graphql@16.3.0:
+    resolution: {integrity: sha512-cdqQLCXlBGkaLdkLYRl4LtkwaZU6TfpE7/tnUQFl3wXfUPWN74Ov+Q61VuIh+AltS789YfGB6whghmCmeXLvTw==}
     peerDependencies:
       graphql: 14 - 16
     dependencies:
-      cross-fetch: 3.1.4
+      cross-fetch: 3.1.5
       extract-files: 9.0.0
       form-data: 3.0.1
       graphql: 16.3.0
+    transitivePeerDependencies:
+      - encoding
     dev: false
 
   /graphql-subscriptions/1.2.1_graphql@15.5.0:
