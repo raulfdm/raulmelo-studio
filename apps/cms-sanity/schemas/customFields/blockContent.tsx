@@ -1,6 +1,6 @@
 import '@raulmelo/ui/dist/style.css?raw';
 
-import { BigQuote, DotDivider, H2 } from '@raulmelo/ui';
+import { BigQuote, H2, H3, H4, H5, H6 } from '@raulmelo/ui';
 
 import { memoizeAndRemoveStyle } from '../../utils/schema';
 
@@ -25,30 +25,46 @@ export const blockContentField = {
             render: memoizeAndRemoveStyle(H2),
           },
         },
-        { title: 'H3', value: 'h3' },
-        { title: 'H4', value: 'h4' },
-        { title: 'H5', value: 'h5' },
-        { title: 'H6', value: 'h6' },
-        { title: 'Quote', value: 'blockquote' },
         {
-          title: 'Big Quote',
-          value: 'big-quote',
+          title: 'H3',
+          value: 'h3',
           blockEditor: {
-            render: memoizeAndRemoveStyle(BigQuote),
+            render: memoizeAndRemoveStyle(H3),
           },
         },
         {
-          title: 'Divider',
-          value: 'dotDivider',
+          title: 'H4',
+          value: 'h4',
           blockEditor: {
-            render: DotDivider,
+            render: memoizeAndRemoveStyle(H4),
+          },
+        },
+        {
+          title: 'H5',
+          value: 'h5',
+          blockEditor: {
+            render: memoizeAndRemoveStyle(H5),
+          },
+        },
+        {
+          title: 'H6',
+          value: 'h6',
+          blockEditor: {
+            render: memoizeAndRemoveStyle(H6),
+          },
+        },
+        { title: 'Quote', value: 'blockquote' },
+        {
+          title: 'Big Quote',
+          value: 'bigQuote',
+          blockEditor: {
+            render: memoizeAndRemoveStyle(BigQuote),
           },
         },
       ],
       lists: [
         { title: 'Bullet', value: 'bullet' },
-        { title: 'Bullet', value: 'bullet' },
-        { title: 'Break', value: 'break' },
+        { title: 'Number', value: 'number' },
       ],
       // Marks let you mark up inline text in the block editor.
       marks: {
@@ -84,6 +100,24 @@ export const blockContentField = {
     },
     {
       type: 'code',
+      options: {
+        theme: 'github',
+        withFilename: true,
+        languageAlternatives: [
+          { title: 'CSS', value: 'css' },
+          { title: 'GROQ', value: 'groq' },
+          { title: 'HTML', value: 'html' },
+          { title: 'Javascript', value: 'js' },
+          { title: 'JSON', value: 'json' },
+          { title: 'JSX', value: 'jsx' },
+          { title: 'Markdown', value: 'markdown' },
+          { title: 'SASS', value: 'sass' },
+          { title: 'sh', value: 'sh' },
+          { title: 'TSX', value: 'tsx' },
+          { title: 'TypeScript', value: 'typescript' },
+          { title: 'YAML', value: 'yaml' },
+        ],
+      },
     },
     {
       type: 'gif',

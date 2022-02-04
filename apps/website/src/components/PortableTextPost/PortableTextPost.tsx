@@ -136,10 +136,7 @@ export const PortableTextPost: React.FC<MdxPostTemplateProps> = ({
         />
         {series?.top}
         <ProseContainer tw="mt-8">
-          <PortableText
-            value={content}
-            components={portableComponents as never}
-          />
+          <PortableText value={content} components={portableComponents} />
         </ProseContainer>
         {series?.bottom}
         <hr tw="mt-10 mb-6" />

@@ -11,3 +11,4 @@ export * from './components/PageContainer';
 export * from './components/ProseContainer';
 export * from './components/Tweet';
 export * from './components/YouTubeIframe';
+export * from './infrastructure/utils/sanityComponentAdapter';

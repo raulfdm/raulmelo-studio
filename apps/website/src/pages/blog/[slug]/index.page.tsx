@@ -1,10 +1,15 @@
+import { PortableText } from '@portabletext/react';
 import { domains, utils } from '@raulmelo/core';
-import { DotDivider } from '@raulmelo/ui';
+import { BigQuote, DotDivider, ProseContainer } from '@raulmelo/ui';
+import fs from 'fs';
 import { GetStaticPaths } from 'next';
 import dynamic from 'next/dynamic';
+import path from 'path';
 import React from 'react';
 
-import { MdxPostTemplate } from '~/components/MdxPost';
+import { PrismStyles } from '~/components/MdxPost/components/PrismStyles';
+import { PortableTextPost } from '~/components/PortableTextPost/PortableTextPost';
+// import { MdxPostTemplate } from '~/components/MdxPost';
 import { serializeMdx } from '~/config/mdx';
 
 import type { SeriesSection as SeriesSectionType } from './components/SeriesSection';
@@ -18,6 +23,7 @@ export const BlogPostPage: React.FC<BlogPostProps> = ({
   content,
   post,
   preview,
+  sanityParsedContent,
 }) => {
   const { featured_image, post_tags, unsplash, series } = post;
 
@@ -33,8 +39,8 @@ export const BlogPostPage: React.FC<BlogPostProps> = ({
   ) : null;
 
   return (
-    <MdxPostTemplate
-      content={content}
+    <PortableTextPost
+      content={JSON.parse(sanityParsedContent).body}
       postContent={post.content}
       preview={preview}
       featuredImage={{
@@ -56,6 +62,30 @@ export const BlogPostPage: React.FC<BlogPostProps> = ({
         bottom: seriesWithDivider,
       }}
     />
+
+    // <MdxPostTemplate
+    // content={content}
+    // postContent={post.content}
+    // preview={preview}
+    // featuredImage={{
+    //   src: featured_image.url,
+    //   unsplash,
+    //   width: featured_image.width,
+    //   height: featured_image.height,
+    // }}
+    // title={post.title}
+    // subtitle={post.subtitle}
+    // publishedAt={post.date}
+    // // share={{
+    // //   description: `${post.title}. ${post.subtitle}`,
+    // // }}
+    // tags={post_tags}
+    // description={post.description}
+    // series={{
+    //   top: allSeries,
+    //   bottom: seriesWithDivider,
+    // }}
+    // />
   );
 };
 
@@ -68,14 +98,20 @@ export const getStaticProps = async ({ params, preview }: GetStaticProps) => {
       notFound: true,
     };
   }
-
+  const sanityParsedContent = fs.readFileSync(
+    path.resolve(process.cwd(), 'src/pages/blog/[slug]/raw.json'),
+    'utf-8',
+  );
   const content = await serializeMdx(post.content);
+
+  console.log(JSON.parse(sanityParsedContent));
 
   return {
     props: {
       post,
       content,
       preview: Boolean(preview),
+      sanityParsedContent,
     },
     revalidate: 1,
   };
