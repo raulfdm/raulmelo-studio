@@ -213,6 +213,7 @@ importers:
       '@headlessui/react': 1.4.3
       '@next/bundle-analyzer': 12.0.8
       '@popperjs/core': 2.11.2
+      '@portabletext/react': 1.0.1
       '@raulmelo/core': '*'
       '@raulmelo/styles': '*'
       '@raulmelo/ui': '*'
@@ -251,8 +252,10 @@ importers:
       react-instantsearch-dom: 6.21.1
       react-intl: 5.24.3
       react-popper: 2.2.5
+      react-refractor: 2.1.5
       react-twitter-widgets: 1.10.0
       react-use: 17.3.2
+      refractor: 4.4.0
       rehype: 12.0.1
       rehype-autolink-headings: 6.1.1
       rehype-slug: 5.0.1
@@ -267,6 +270,7 @@ importers:
       '@emotion/styled': 11.6.0_023218a630dedcfdc5aa065bf93ff9d7
       '@headlessui/react': 1.4.3_react-dom@17.0.2+react@17.0.2
       '@popperjs/core': 2.11.2
+      '@portabletext/react': 1.0.1_react@17.0.2
       '@raulmelo/core': link:../../packages/core
       '@raulmelo/styles': link:../../packages/styles
       '@raulmelo/ui': link:../../packages/ui
@@ -290,8 +294,10 @@ importers:
       react-instantsearch-dom: 6.21.1_d4554d5e62644df6deccb9ead77cbf79
       react-intl: 5.24.3_react@17.0.2+typescript@4.5.5
       react-popper: 2.2.5_4d48938cec404f33c7375aa6b453941c
+      react-refractor: 2.1.5_react@17.0.2
       react-twitter-widgets: 1.10.0_react@17.0.2
       react-use: 17.3.2_react-dom@17.0.2+react@17.0.2
+      refractor: 4.4.0
       rehype: 12.0.1
       rehype-autolink-headings: 6.1.1
       rehype-slug: 5.0.1
@@ -6174,6 +6180,14 @@ packages:
 
   /@popperjs/core/2.11.2:
     resolution: {integrity: sha512-92FRmppjjqz29VMJ2dn+xdyXZBrMlE42AV6Kq6BwjWV7CNUW1hs2FtxSNLQE+gJhaZ6AAmYuO9y8dshhcBl7vA==}
+
+  /@portabletext/react/1.0.1_react@17.0.2:
+    resolution: {integrity: sha512-LSoRFwvui/O7UVp8J7OAxfaE7Rl0UviICtP+SM1tY47HYpYFdvf/AweKeaJnnEutPZa7zumtUZUgBwq0aoCHOw==}
+    peerDependencies:
+      react: ^17.0.0
+    dependencies:
+      react: 17.0.2
+    dev: false
 
   /@protobufjs/aspromise/1.1.2:
     resolution: {integrity: sha1-m4sMxmPWaafY9vXQiToU00jzD78=}
