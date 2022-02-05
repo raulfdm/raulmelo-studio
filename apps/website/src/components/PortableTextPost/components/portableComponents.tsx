@@ -3,33 +3,30 @@ import {
   CodePenIframe,
   DotDivider,
   Gif,
-  ImageSlider,
   sanityToUiAdapter,
   Tweet,
   YouTubeIframe,
 } from '@raulmelo/ui';
 
 import { CodeComponent } from './Code';
+import { ImageAdapter } from './ImageAdapter';
+import { ImageSliderAdapter } from './ImageSliderAdapter';
 
 export const portableComponents = {
-  hardBreak: false as boolean,
+  hardBreak: false,
   types: {
-    divider: () => {
-      return <DotDivider />;
-    },
+    divider: () => <DotDivider />,
     code: CodeComponent,
     youtubeVideo: sanityToUiAdapter(YouTubeIframe),
+    image: ImageAdapter,
     codePen: sanityToUiAdapter(CodePenIframe),
     tweet: sanityToUiAdapter(Tweet),
     gif: sanityToUiAdapter(Gif),
-    imageSlider: (props) => {
-      console.log(props);
-      return null;
-    },
+    imageSlider: ImageSliderAdapter,
   },
   block: {
-    bigQuote: (props: any) => {
-      return <BigQuote {...props} />;
+    bigQuote: ({ children }: { children: React.ReactNode }) => {
+      return <BigQuote>{children}</BigQuote>;
     },
   },
 };
