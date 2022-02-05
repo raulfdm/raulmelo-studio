@@ -1,6 +1,7 @@
 import './infrastructure/styles.css';
 
 export * from './components/BigQuote';
+export * from './components/CodeBlock';
 export * from './components/CodePenIframe';
 export * from './components/DotDivider';
 export * from './components/Gif';

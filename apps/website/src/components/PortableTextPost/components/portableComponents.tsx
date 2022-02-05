@@ -1,5 +1,6 @@
 import {
   BigQuote,
+  CodeBlock,
   CodePenIframe,
   DotDivider,
   Gif,
@@ -8,7 +9,6 @@ import {
   YouTubeIframe,
 } from '@raulmelo/ui';
 
-import { CodeComponent } from './Code';
 import { ImageAdapter } from './ImageAdapter';
 import { ImageSliderAdapter } from './ImageSliderAdapter';
 
@@ -16,7 +16,7 @@ export const portableComponents = {
   hardBreak: false,
   types: {
     divider: () => <DotDivider />,
-    code: CodeComponent,
+    code: sanityToUiAdapter(CodeBlock),
     youtubeVideo: sanityToUiAdapter(YouTubeIframe),
     image: ImageAdapter,
     codePen: sanityToUiAdapter(CodePenIframe),
