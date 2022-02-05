@@ -38,7 +38,12 @@ const nextConfig = {
   },
   redirects,
   images: {
-    domains: ['res.cloudinary.com', 'miro.medium.com', 'media.giphy.com'],
+    domains: [
+      'res.cloudinary.com',
+      'miro.medium.com',
+      'media.giphy.com',
+      'cdn.sanity.io',
+    ],
     formats: ['image/avif', 'image/webp'],
   },
   webpack: (config, { isServer }) => {
