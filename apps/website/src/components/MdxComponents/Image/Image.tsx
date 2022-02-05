@@ -22,7 +22,9 @@ export const Image: React.FC<ImageProps> = (props) => {
 
   return (
     <div tw="flex items-center justify-center">
-      <NextImage {...props} />
+      <figure>
+        <NextImage {...props} />
+      </figure>
     </div>
   );
 };
