@@ -104,8 +104,6 @@ export const getStaticProps = async ({ params, preview }: GetStaticProps) => {
   );
   const content = await serializeMdx(post.content);
 
-  console.log(JSON.parse(sanityParsedContent));
-
   return {
     props: {
       post,
