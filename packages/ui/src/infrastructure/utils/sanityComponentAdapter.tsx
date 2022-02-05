@@ -1,15 +1,39 @@
-import { utils } from '@raulmelo/core';
-interface IComponentProps {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+type IComponentProps = {
   value: {
-    _type: string;
+    [key: string]: any;
   };
+  children: React.ReactNode;
+} & {
+  [key: string]: any;
+};
+
+interface AdapterOptions {
+  propsToOmit?: string[];
 }
 
-const propsToOmit = ['_type', '_key', 'markDefs', 'style'];
+const sanityBlockPropsToIgnore = ['_type', '_key', 'markDefs', 'style'];
 
-export function sanityToUiAdapter(Component: React.ElementType) {
-  return function Comp({ value }: IComponentProps) {
-    const props = utils.omit(propsToOmit, value);
-    return <Component {...props} />;
+export function sanityToUiAdapter(
+  Component: React.ElementType,
+  options: AdapterOptions = { propsToOmit: [] },
+) {
+  return function Comp({ value, children }: IComponentProps) {
+    const { propsToOmit } = options;
+
+    const allProps = { ...value, children } as IComponentProps;
+
+    const allPropsToOmit = sanityBlockPropsToIgnore;
+
+    if (propsToOmit) {
+      allPropsToOmit.push(...propsToOmit);
+    }
+
+    allPropsToOmit.forEach((prop) => {
+      delete allProps[prop];
+    });
+
+    return <Component {...allProps} />;
   };
 }
