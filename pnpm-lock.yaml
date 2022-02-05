@@ -379,6 +379,7 @@ importers:
 
   packages/ui:
     specifiers:
+      '@raulmelo/core': workspace:*
       '@raulmelo/styles': workspace:*
       '@storybook/addon-actions': 6.4.16
       '@storybook/addon-essentials': 6.4.16
@@ -392,6 +393,7 @@ importers:
       storybook-css-modules-preset: 1.1.1
       webpack: 5.67.0
     dependencies:
+      '@raulmelo/core': link:../core
       classnames: 2.3.1
       react-twitter-widgets: 1.10.0
     devDependencies:
@@ -11136,7 +11138,7 @@ packages:
       loader-utils: 1.4.0
       make-dir: 3.1.0
       schema-utils: 2.7.1
-      webpack: 4.46.0_webpack-cli@3.3.12
+      webpack: 4.46.0
     dev: false
 
   /babel-loader/8.2.3_@babel+core@7.16.7:
