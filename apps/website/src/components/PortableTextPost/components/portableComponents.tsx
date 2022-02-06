@@ -31,7 +31,7 @@ export const portableComponents = {
     },
   },
   marks: {
-    highlight: ({ children, ...props }) => {
+    highlight: ({ children, ...props }: { children: React.ReactNode }) => {
       console.log(props);
       return <Highlight {...props}>{children}</Highlight>;
     },
