@@ -1,12 +1,13 @@
 import { utils } from '@raulmelo/core';
 import type { SanityImageSource } from '@raulmelo/core/dist/types/utils/image';
-import { ImageSlider } from '@raulmelo/ui';
+import { ImageSlider, ViewCarouselIcon } from '@raulmelo/ui';
 import React from 'react';
 
 export const imageSliderField = {
   type: 'object',
   name: 'imageSlider',
   title: 'Image Slider',
+  icon: () => <ViewCarouselIcon width={20} />,
   fields: [
     {
       name: 'images',

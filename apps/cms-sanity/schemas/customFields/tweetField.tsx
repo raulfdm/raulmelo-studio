@@ -1,4 +1,5 @@
-import { Tweet } from '@raulmelo/ui';
+import { Tweet, TwitterIcon } from '@raulmelo/ui';
+import React from 'react';
 
 import { sanityToUiAdapter } from '../../utils/schema';
 
@@ -6,6 +7,7 @@ export const tweetField = {
   type: 'object',
   name: 'tweet',
   title: 'Tweet',
+  icon: () => <TwitterIcon width={20} />,
   fields: [
     {
       name: 'tweetId',

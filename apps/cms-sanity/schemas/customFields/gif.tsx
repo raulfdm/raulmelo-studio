@@ -1,4 +1,5 @@
-import { Gif } from '@raulmelo/ui';
+import { Gif, GifIcon } from '@raulmelo/ui';
+import React from 'react';
 
 import { sanityToUiAdapter } from '../../utils/schema';
 
@@ -6,6 +7,7 @@ export const gifField = {
   type: 'object',
   name: 'gif',
   title: 'GIF',
+  icon: () => <GifIcon width={20} />,
   fields: [
     {
       name: 'src',
