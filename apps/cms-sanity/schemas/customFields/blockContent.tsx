@@ -1,8 +1,9 @@
 import '@raulmelo/ui/dist/style.css?raw';
 
-import { BigQuote, DotDivider, H2 } from '@raulmelo/ui';
+import { BigQuote, H2, H3, H4, H5, H6 } from '@raulmelo/ui';
 
 import { memoizeAndRemoveStyle } from '../../utils/schema';
+import { highlightMarker } from './highlightMarker';
 
 export const blockContentField = {
   title: 'Block Content',
@@ -25,30 +26,46 @@ export const blockContentField = {
             render: memoizeAndRemoveStyle(H2),
           },
         },
-        { title: 'H3', value: 'h3' },
-        { title: 'H4', value: 'h4' },
-        { title: 'H5', value: 'h5' },
-        { title: 'H6', value: 'h6' },
-        { title: 'Quote', value: 'blockquote' },
         {
-          title: 'Big Quote',
-          value: 'big-quote',
+          title: 'H3',
+          value: 'h3',
           blockEditor: {
-            render: memoizeAndRemoveStyle(BigQuote),
+            render: memoizeAndRemoveStyle(H3),
           },
         },
         {
-          title: 'Divider',
-          value: 'dotDivider',
+          title: 'H4',
+          value: 'h4',
           blockEditor: {
-            render: DotDivider,
+            render: memoizeAndRemoveStyle(H4),
+          },
+        },
+        {
+          title: 'H5',
+          value: 'h5',
+          blockEditor: {
+            render: memoizeAndRemoveStyle(H5),
+          },
+        },
+        {
+          title: 'H6',
+          value: 'h6',
+          blockEditor: {
+            render: memoizeAndRemoveStyle(H6),
+          },
+        },
+        { title: 'Quote', value: 'blockquote' },
+        {
+          title: 'Big Quote',
+          value: 'bigQuote',
+          blockEditor: {
+            render: memoizeAndRemoveStyle(BigQuote),
           },
         },
       ],
       lists: [
         { title: 'Bullet', value: 'bullet' },
-        { title: 'Bullet', value: 'bullet' },
-        { title: 'Break', value: 'break' },
+        { title: 'Number', value: 'number' },
       ],
       // Marks let you mark up inline text in the block editor.
       marks: {
@@ -57,6 +74,7 @@ export const blockContentField = {
         decorators: [
           { title: 'Strong', value: 'strong' },
           { title: 'Emphasis', value: 'em' },
+          highlightMarker,
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [

@@ -46,6 +46,7 @@ export const FeaturedImage: React.FC<FeaturedImageProps> = ({
           objectFit="cover"
           alt={alt || formatMessage(messages.featuredImageLabel)}
           loading="eager"
+          priority
         />
       </figure>
       {unsplash ? <UnsplashCaption {...unsplash} /> : null}

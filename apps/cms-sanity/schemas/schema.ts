@@ -1,5 +1,7 @@
 import '@raulmelo/styles/lib/styles.css?raw';
 import '@raulmelo/ui/dist/style.css?raw';
+import '@raulmelo/ui/dist/prism.css?raw';
+import '../overrides.css?raw';
 
 // First, we must import the schema creator
 // Then import schema types from any plugins that might expose them
@@ -8,6 +10,7 @@ import createSchema from 'part:@sanity/base/schema-creator';
 
 // We import object and document schemas
 import { blockContentField } from './customFields/blockContent';
+import { codeField } from './customFields/codeField';
 import { codePenField } from './customFields/codePenField';
 import { dividerField } from './customFields/divider';
 import { gifField } from './customFields/gif';
@@ -56,5 +59,6 @@ export default createSchema({
     tweetField,
     codePenField,
     dividerField,
+    codeField,
   ]),
 });
