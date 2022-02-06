@@ -151,7 +151,6 @@ importers:
       '@raulmelo/ui': workspace:*
       '@sanity/base': 2.26.0
       '@sanity/cli': 2.26.0
-      '@sanity/code-input': 2.26.0
       '@sanity/core': 2.26.0
       '@sanity/data-aspects': 2.18.0
       '@sanity/default-layout': 2.26.0
@@ -170,7 +169,6 @@ importers:
       '@raulmelo/styles': link:../../packages/styles
       '@raulmelo/ui': link:../../packages/ui
       '@sanity/base': 2.26.0_f9946b04243d66cb0d0a52b930f90e5e
-      '@sanity/code-input': 2.26.0_f9946b04243d66cb0d0a52b930f90e5e
       '@sanity/core': 2.26.0_dfc0b93d99fba272c9564d3139a2581a
       '@sanity/data-aspects': 2.18.0
       '@sanity/default-layout': 2.26.0_f9946b04243d66cb0d0a52b930f90e5e
@@ -6442,30 +6440,6 @@ packages:
       rxjs: 6.6.7
     dev: false
 
-  /@sanity/code-input/2.26.0_f9946b04243d66cb0d0a52b930f90e5e:
-    resolution: {integrity: sha512-o3uD3l2K0vTBr6LytkxBcvNG5NfXECvCPIZ7B/oyA2QphIwKBBGc0Q1t7JuaAjriSaPZPOUQlu+8dHPYbksLAQ==}
-    peerDependencies:
-      prop-types: ^15.6 || ^16
-      react: ^16.9 || ^17
-      styled-components: ^5.2.0
-    dependencies:
-      '@reach/auto-id': 0.13.2_react-dom@17.0.2+react@17.0.2
-      '@sanity/base': 2.26.0_f9946b04243d66cb0d0a52b930f90e5e
-      '@sanity/icons': 1.2.3_react@17.0.2
-      '@sanity/types': 2.26.0
-      '@sanity/ui': 0.37.2_7a082f7d10047d47195aea793f958a14
-      '@sanity/util': 2.26.0
-      ace-builds: 1.4.14
-      prop-types: 15.8.1
-      react: 17.0.2
-      react-ace: 9.5.0_react-dom@17.0.2+react@17.0.2
-      styled-components: 5.3.3_react-dom@17.0.2+react@17.0.2
-    transitivePeerDependencies:
-      - '@react-three/fiber'
-      - react-dom
-      - three
-    dev: false
-
   /@sanity/color/2.1.6:
     resolution: {integrity: sha512-iXCGgMkfY111RISOHnpwp6OmQz+N+UVOJ1YMhIGoesQdjm31ybeTkLP5yy1kkI8ffbxZkmmfbl9rjfR0OiwC8g==}
     dev: false
@@ -10159,10 +10133,6 @@ packages:
     dependencies:
       mime-types: 2.1.34
       negotiator: 0.6.2
-
-  /ace-builds/1.4.14:
-    resolution: {integrity: sha512-NBOQlm9+7RBqRqZwimpgquaLeTJFayqb9UEPtTkpC3TkkwDnlsT/TwsCC0svjt9kEZ6G9mH5AEOHSz6Q/HrzQQ==}
-    dev: false
 
   /acorn-dynamic-import/2.0.2:
     resolution: {integrity: sha1-x1K9IQvvZ5UBtsbLf8hPj0cVjMQ=}
@@ -20223,6 +20193,7 @@ packages:
 
   /lodash.get/4.4.2:
     resolution: {integrity: sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk=}
+    dev: true
 
   /lodash.includes/4.3.0:
     resolution: {integrity: sha1-YLuYqHy5I8aMoeUTJUgzFISfVT8=}
@@ -20238,10 +20209,6 @@ packages:
 
   /lodash.isboolean/3.0.3:
     resolution: {integrity: sha1-bC4XHbKiV82WgC/UOwGyDV9YcPY=}
-    dev: false
-
-  /lodash.isequal/4.5.0:
-    resolution: {integrity: sha1-QVxEePK8wwEgwizhDtMib30+GOA=}
     dev: false
 
   /lodash.isinteger/4.0.4:
@@ -24427,21 +24394,6 @@ packages:
       ini: 1.3.8
       minimist: 1.2.5
       strip-json-comments: 2.0.1
-    dev: false
-
-  /react-ace/9.5.0_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-4l5FgwGh6K7A0yWVMQlPIXDItM4Q9zzXRqOae8KkCl6MkOob7sC1CzHxZdOGvV+QioKWbX2p5HcdOVUv6cAdSg==}
-    peerDependencies:
-      react: ^0.13.0 || ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0
-      react-dom: ^0.13.0 || ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0
-    dependencies:
-      ace-builds: 1.4.14
-      diff-match-patch: 1.0.5
-      lodash.get: 4.4.2
-      lodash.isequal: 4.5.0
-      prop-types: 15.8.1
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
     dev: false
 
   /react-base16-styling/0.6.0:
