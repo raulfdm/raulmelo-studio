@@ -70,10 +70,7 @@ export const getStaticProps = async ({ params, preview }: GetStaticProps) => {
       notFound: true,
     };
   }
-  const sanityParsedContent = fs.readFileSync(
-    path.resolve(process.cwd(), 'src/pages/blog/[slug]/raw.json'),
-    'utf-8',
-  );
+
   const content = await serializeMdx(post.content);
 
   return {
@@ -81,7 +78,6 @@ export const getStaticProps = async ({ params, preview }: GetStaticProps) => {
       post,
       content,
       preview: Boolean(preview),
-      sanityParsedContent,
     },
     revalidate: 1,
   };
