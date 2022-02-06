@@ -4,6 +4,7 @@ import {
   CodePenIframe,
   DotDivider,
   Gif,
+  Highlight,
   sanityToUiAdapter,
   Tweet,
   YouTubeIframe,
@@ -27,6 +28,12 @@ export const portableComponents = {
   block: {
     bigQuote: ({ children }: { children: React.ReactNode }) => {
       return <BigQuote>{children}</BigQuote>;
+    },
+  },
+  marks: {
+    highlight: ({ children, ...props }) => {
+      console.log(props);
+      return <Highlight {...props}>{children}</Highlight>;
     },
   },
 };

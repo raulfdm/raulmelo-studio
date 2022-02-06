@@ -3,6 +3,7 @@ import '@raulmelo/ui/dist/style.css?raw';
 import { BigQuote, H2, H3, H4, H5, H6 } from '@raulmelo/ui';
 
 import { memoizeAndRemoveStyle } from '../../utils/schema';
+import { highlightMarker } from './highlightMarker';
 
 export const blockContentField = {
   title: 'Block Content',
@@ -73,6 +74,7 @@ export const blockContentField = {
         decorators: [
           { title: 'Strong', value: 'strong' },
           { title: 'Emphasis', value: 'em' },
+          highlightMarker,
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
