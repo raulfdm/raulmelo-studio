@@ -100,24 +100,6 @@ export const blockContentField = {
     },
     {
       type: 'code',
-      options: {
-        theme: 'github',
-        withFilename: true,
-        languageAlternatives: [
-          { title: 'CSS', value: 'css' },
-          { title: 'GROQ', value: 'groq' },
-          { title: 'HTML', value: 'html' },
-          { title: 'Javascript', value: 'js' },
-          { title: 'JSON', value: 'json' },
-          { title: 'JSX', value: 'jsx' },
-          { title: 'Markdown', value: 'markdown' },
-          { title: 'SASS', value: 'sass' },
-          { title: 'sh', value: 'sh' },
-          { title: 'TSX', value: 'tsx' },
-          { title: 'TypeScript', value: 'typescript' },
-          { title: 'YAML', value: 'yaml' },
-        ],
-      },
     },
     {
       type: 'gif',
