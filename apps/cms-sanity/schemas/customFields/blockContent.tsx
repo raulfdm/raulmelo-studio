@@ -1,6 +1,7 @@
 import '@raulmelo/ui/dist/style.css?raw';
 
-import { BigQuote, H2, H3, H4, H5, H6 } from '@raulmelo/ui';
+import { BigQuote, H2, H3, H4, H5, H6, ImageIcon } from '@raulmelo/ui';
+import React from 'react';
 
 import { memoizeAndRemoveStyle } from '../../utils/schema';
 import { highlightMarker } from './highlightMarker';
@@ -99,6 +100,7 @@ export const blockContentField = {
     {
       type: 'image',
       options: { hotspot: true },
+      icon: () => <ImageIcon width={20} />,
     },
     {
       type: 'code',
