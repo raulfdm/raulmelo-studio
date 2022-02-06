@@ -69,10 +69,10 @@
     }
 
     .refractor-marker {
-      @apply relative left-0 right-0 block pl-5 -mx-8 whitespace-pre border-l-4 pointer-events-none;
+      @apply relative left-0 right-0 block pl-5 -mx-4 whitespace-pre border-l-4 pointer-events-none;
       line-height: inherit;
       background-color: var(--mono-3);
-      border-color: var(--hue-1);
+      @apply border-secondary;
     }
   }
 }

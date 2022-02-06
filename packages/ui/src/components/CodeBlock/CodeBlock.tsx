@@ -19,19 +19,9 @@ export function CodeBlock({
 
   let lang = language;
 
-  if (lang === 'sh') {
-    lang = 'bash';
-  }
-
-  // if (lang === 'typescript') {
-  //   lang = 'ts';
-  // }
-
   if (!lang || lang === 'text' || !ConfiguredRefractor.hasLanguage(language)) {
     lang = 'plaintext';
   }
-
-  console.log('LAAAANG MDX', { lang, language });
 
   return (
     <div className="code-snippet">
