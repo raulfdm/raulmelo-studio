@@ -10,6 +10,7 @@ export const dividerField = {
   icon: () => <DividerIcon width={20} />,
   fields: [
     {
+      initialValue: true,
       name: 'hr',
       type: 'boolean',
     },
