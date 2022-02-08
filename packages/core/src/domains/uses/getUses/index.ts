@@ -1,11 +1,13 @@
 import { client } from '~config';
 
 import { SupportedLanguages } from '../../../types';
-import { query } from './query';
+import { getUsesQuery } from './query';
 import { IUsesApiResponse } from './types';
 
-export function getUses(locale: SupportedLanguages): Promise<IUsesApiResponse> {
-  return client.request(query, { locale });
+export function getUses(
+  language: SupportedLanguages,
+): Promise<IUsesApiResponse> {
+  return client.fetch(getUsesQuery, { language });
 }
 
-export { IUsesData } from './types';
+export { IUsesApiResponse as IUsesData } from './types';

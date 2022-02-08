@@ -6,29 +6,30 @@ export interface IPostsAndTilsApi {
 }
 
 export interface IPostsAndTilsTil {
-  id: string;
+  _id: string;
   title: string;
+  language: SupportedLanguages;
   publishedAt: string;
   slug: string;
   tags: IPostsAndTilsTag[];
 }
 
 export interface IPostsAndTilsPost {
-  id: string;
+  _id: string;
   slug: string;
-  date: string;
+  publishedAt: string;
   title: string;
-  locale: SupportedLanguages;
+  language: SupportedLanguages;
   subtitle?: string;
   description: string;
-  featured_image: IPostsAndTilsFeaturedImage;
-  post_tags: IPostsAndTilsTag[];
+  featuredImage?: IPostsAndTilsFeaturedImage;
+  tags: IPostsAndTilsTag[];
 }
 
 interface IPostsAndTilsTag {
-  slug: string;
-  id: string;
+  _id: string;
   name: string;
+  slug: string;
 }
 
 interface IPostsAndTilsFeaturedImage {

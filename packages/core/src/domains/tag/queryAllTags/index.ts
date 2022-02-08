@@ -1,10 +1,10 @@
 import { client } from '~config';
 
-import { query } from './query';
+import { allTagsQuery } from './query';
 import { ITagsApiResponse } from './types';
 
 export function queryAllTags(): Promise<ITagsApiResponse> {
-  return client.request(query);
+  return client.fetch(allTagsQuery);
 }
 
 export * from './types';

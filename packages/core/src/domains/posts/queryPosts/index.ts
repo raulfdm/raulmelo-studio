@@ -1,13 +1,17 @@
+import { SUPPORTED_LANGUAGES } from 'src/config/languages';
+
 import { client } from '~config';
 
 import { AllSupportedLanguages } from '../../../types';
-import { query } from './query';
+import { postQuery } from './query';
 import { IBlogPageApiResponse } from './types';
 
 export function queryPosts(
-  locale: AllSupportedLanguages,
+  language: AllSupportedLanguages,
 ): Promise<IBlogPageApiResponse> {
-  return client.request<IBlogPageApiResponse>(query, { locale });
+  const languages = language === 'all' ? SUPPORTED_LANGUAGES.all : [language];
+
+  return client.fetch(postQuery, { languages });
 }
 
 export * from './types';

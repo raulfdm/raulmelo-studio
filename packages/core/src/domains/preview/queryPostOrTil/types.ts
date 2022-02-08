@@ -5,11 +5,8 @@ export interface IQueryPostOrTilApiResponse {
   posts: IQueryPostOrTil[];
 }
 
-export interface IPreviewPostOrTil extends IQueryPostOrTil {
-  type: 'post' | 'til';
-}
-
-interface IQueryPostOrTil {
+export interface IQueryPostOrTil {
   slug: string;
-  locale: SupportedLanguages;
+  language: SupportedLanguages;
+  _type: 'post' | 'til';
 }

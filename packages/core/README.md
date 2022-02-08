@@ -7,16 +7,7 @@ This package is responsible to holding the core logic for my website which inclu
 
 ## Data Fetching
 
-The api endpoint is consumed from environment variable `API_ENDPOINT`:
+All data fetching is made against my sanity project and uses their own SDK to
+ease the requests.
 
-```js
-process.env.API_ENDPOINT;
-```
-
-For external injection, you can populate the `window`/`global` (or easily via `globalThis`) object with a variable called `__API_ENDPOINT__`:
-
-```js
-globalThis.__API_ENDPOINT__ = process.env.ANOTHER_API_ENDPOINT;
-```
-
-> It'll always fallback to localhost.
+That means no configuration needed, just calling the methods to get the data.

@@ -1,21 +1,13 @@
 import type { SupportedLanguages } from '../../../types';
 
-export interface ISiteDataApiResponse {
-  defaultSeoPt: DefaultSEO;
-  defaultSeoEn: DefaultSEO;
+export interface ISiteData {
   personalInformation: PersonalInformation;
   site: Site;
   socials: Social[];
-}
-
-export type ISiteData = Pick<
-  ISiteDataApiResponse,
-  'personalInformation' | 'site' | 'socials'
-> & {
   defaultSeo: {
     [keys in SupportedLanguages]: DefaultSEO;
   };
-};
+}
 
 interface DefaultSEO {
   title: string;
@@ -24,8 +16,8 @@ interface DefaultSEO {
 }
 
 interface PersonalInformation {
-  full_name: string;
-  profile_pic: ProfilePic;
+  fullName: string;
+  profilePic: ProfilePic;
 }
 
 interface ProfilePic {
@@ -36,7 +28,7 @@ interface ProfilePic {
 
 interface Site {
   url: string;
-  seo_image: ProfilePic;
+  seoImage: ProfilePic;
 }
 
 interface Social {

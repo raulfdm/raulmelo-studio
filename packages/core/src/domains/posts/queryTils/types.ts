@@ -1,20 +1,17 @@
 import { SupportedLanguages } from '../../../types';
 
-export interface ITilsApiResponse {
-  tils: ITilsTil[];
-}
-
+export type ITilsApiResponse = ITilsTil[];
 export interface ITilsTil {
-  id: string;
+  _id: string;
   publishedAt: string;
   title: string;
-  locale: SupportedLanguages;
+  language: SupportedLanguages;
   slug: string;
   tags: ITilsTilTag[];
 }
 
 interface ITilsTilTag {
-  id: string;
+  _id: string;
   name: string;
   slug: string;
 }

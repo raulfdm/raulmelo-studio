@@ -1,8 +1,8 @@
-import { GraphQLClient } from 'graphql-request';
+import sanityClient from '@sanity/client';
 
-const API_URL =
-  globalThis.__API_ENDPOINT__ ||
-  process.env.API_ENDPOINT ||
-  'http://localhost:1337';
-
-export const client = new GraphQLClient(`${API_URL}/graphql`);
+export const client = sanityClient({
+  projectId: 'gc3hakk3',
+  dataset: 'production',
+  apiVersion: 'v1',
+  useCdn: true, // `false` if you want to ensure fresh data
+});

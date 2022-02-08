@@ -1,43 +1,35 @@
-import { gql } from 'graphql-request';
-/**
- * I cannot use `post` schema to fetch this data.
- * The reason is within `post`, I only can filter by post id and I need to
- * fetch by post slug
- */
-export const query = gql`
-  query BlogPost($where: JSON) {
-    posts(where: $where, locale: "all") {
-      id
-      title
-      subtitle
-      description
-      date
-      slug
-      unsplash {
-        authorName
-        url
-      }
-      content
-      featured_image {
-        url
-        width
-        height
-      }
-      featured_image_caption
-      post_tags {
-        id
-        slug
-        name
-      }
-      series: post_serie {
-        name
-        posts: blog_posts(sort: "date:asc") {
-          id
-          copy: serie_copy
-          uri: slug
-          date
-        }
-      }
-    }
+import groq from 'groq';
+
+export const postQuery = groq`
+*[_type=="post" && slug.current == $slug && !(_id in path('drafts.**'))][0]{
+  _id,
+  content,
+  title,
+  subtitle,
+  description,
+  publishedAt,
+  "slug": slug.current,
+  language,
+  "featuredImage": featuredImage.asset->{
+    url,
+    "width": metadata.dimensions.width,
+    "height": metadata.dimensions.height,
+  },
+  "tags": tags[]->{
+    _id,
+    name,
+    "slug": slug.current
+  },
+  unsplash,
+  imageCaption,
+  "series": *[_type=='postSeries' && references(^._id)][0]{
+    name,
+    "posts": posts[]->{
+      _id,
+      seriesCopy,
+      "slug": slug.current,
+      publishedAt
+    },
   }
+}
 `;

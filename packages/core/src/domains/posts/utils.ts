@@ -1,6 +1,6 @@
 export function sortPostsByPublishedDate<
   T extends {
-    publishedAt: string;
+    publishedAt: Date | string;
   },
 >(posts: T[]): T[] {
   return [...posts].sort(

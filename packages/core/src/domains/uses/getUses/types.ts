@@ -1,9 +1,7 @@
-export interface IUsesApiResponse {
-  uses: IUsesData;
-}
+import { SupportedLanguages } from 'src';
 
-export interface IUsesData {
-  locale: string;
+export interface IUsesApiResponse {
+  language: SupportedLanguages;
   title: string;
   seo: IUsesSEO;
   content: string;

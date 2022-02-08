@@ -1,21 +1,15 @@
 import { client } from '~config';
-import { utils } from '~utils';
 
 import { SupportedLanguages } from '../../../types';
-import { query } from './query';
-import { ITagBySlugApiResponse, ITagBySlugPostTag } from './types';
+import { tagsBySlugQuery } from './query';
+import { ITagBySlugPostTag } from './types';
 
 export async function queryTagBySlug(
   slug: string,
-  locale: SupportedLanguages,
+  language: SupportedLanguages,
 ): Promise<ITagBySlugPostTag> {
-  const { postTags } = await client.request<ITagBySlugApiResponse>(query, {
+  return client.fetch(tagsBySlugQuery, {
     slug,
-    locale,
+    language,
   });
-
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const tag = utils.head(postTags)!;
-
-  return tag;
 }

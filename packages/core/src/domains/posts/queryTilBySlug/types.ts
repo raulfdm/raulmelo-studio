@@ -1,19 +1,17 @@
-export interface ITilBySlugApiResponse {
-  tils: ITilBySlug[];
-}
+import { SupportedLanguages } from 'src';
 
-export interface ITilBySlug {
-  id: string;
+export interface ITilBySlugApiResponse {
+  _id: string;
   publishedAt: string;
   title: string;
-  locale: string;
+  language: SupportedLanguages;
   slug: string;
   content: string;
   tags: Tag[];
 }
 
 interface Tag {
-  id: string;
+  _id: string;
   name: string;
   slug: string;
 }
