@@ -1,6 +1,5 @@
 const isAnalyzerMode = process.env.ANALYZE === 'true';
 
-const { redirects } = require('./config/redirects');
 const path = require('path');
 const withPlugins = require('next-compose-plugins');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
@@ -14,7 +13,6 @@ const nextConfig = {
   experimental: {
     esmExternals: 'loose',
   },
-  target: 'serverless',
   reactStrictMode: true,
   i18n: {
     locales: ['en', 'pt'],
@@ -36,9 +34,24 @@ const nextConfig = {
       },
     ];
   },
-  redirects,
+  redirects: async () => {
+    return [
+      {
+        source: '/cv',
+        destination:
+          'https://docs.google.com/document/d/1xk0ChmPckqW85xtM1Hizx2tVbo2B61xjcpz-_dAH3f8',
+        permanent: true,
+      },
+    ];
+  },
   images: {
-    domains: ['res.cloudinary.com', 'miro.medium.com', 'media.giphy.com'],
+    domains: [
+      'res.cloudinary.com',
+      'miro.medium.com',
+      'media.giphy.com',
+      'cdn.sanity.io',
+      'sanity.io',
+    ],
     formats: ['image/avif', 'image/webp'],
   },
   webpack: (config, { isServer }) => {
@@ -83,38 +96,6 @@ const nextConfig = {
     if (isAnalyzerMode) {
       config.plugins.push(new DuplicatePackageCheckerPlugin());
     }
-
-    const pluginsToResolve = [
-      '@babel/plugin-syntax-jsx',
-      '@babel/core',
-      '@babel/plugin-proposal-object-rest-spread',
-      '@babel/types',
-      'remark-parse',
-      'has-flag',
-      'tslib',
-      'supports-color',
-      '@babel/runtime',
-      '@emotion/is-prop-valid',
-      '@emotion/memoize',
-      '@babel/helper-plugin-utils',
-      'escape-string-regexp',
-      'iconv-lite',
-      'semver',
-    ];
-
-    pluginsToResolve.forEach((plugin) => {
-      /**
-       * `require.resolve` won't help in this case because because it brings the
-       * entry file from the module (e.g. path/to/module/lib/index.js).
-       *
-       * What I need is only `path/to/module`
-       */
-      config.resolve.alias[plugin] = path.resolve(
-        __dirname,
-        '../../node_modules',
-        plugin,
-      );
-    });
 
     return config;
   },
