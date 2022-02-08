@@ -11,7 +11,7 @@ export const codeField = {
       name: 'language',
       title: 'Language',
       options: {
-        defaultValue: 'plaintext',
+        initialValue: 'plaintext',
         list: adaptMapToListValue(LANGUAGES_MAP),
       },
     },
