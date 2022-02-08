@@ -37,13 +37,13 @@ export const UsesPage: React.FC<UsesPageProps> = ({
           type: 'article',
           title: seo.title,
           description: seo.description,
-          site_name: siteData.personalInformation.full_name,
+          site_name: siteData.personalInformation.fullName,
           images: [
             {
-              url: siteData.site.seo_image.url,
+              url: siteData.site.seoImage.url,
               width: 1024,
               height: 512,
-              alt: siteData.personalInformation.full_name,
+              alt: siteData.personalInformation.fullName,
             },
           ],
         },

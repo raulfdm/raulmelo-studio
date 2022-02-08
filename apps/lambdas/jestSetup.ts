@@ -7,7 +7,7 @@ process.env = Object.assign(process.env, {
 /**
  * Mock API to avoid hitting the real API
  */
-jest.mock('@raulfdm/core', () => {
+jest.mock('@raulmelo/core', () => {
   const {
     postApi,
     // eslint-disable-next-line @typescript-eslint/no-var-requires

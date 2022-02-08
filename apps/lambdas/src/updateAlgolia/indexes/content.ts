@@ -1,5 +1,5 @@
-import { domains } from '@raulfdm/core';
-import type { PushAlgoliaTuple } from '@raulfdm/core/dist/types/domains/algolia';
+import { domains } from '@raulmelo/core';
+import type { PushAlgoliaTuple } from '@raulmelo/core/dist/types/domains/algolia';
 
 const INDEX_NAME = 'posts';
 

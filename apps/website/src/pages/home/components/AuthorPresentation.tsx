@@ -43,7 +43,7 @@ export const AuthorPresentation = () => {
     <header css={styles.header}>
       <aside css={styles.content.wrapper}>
         <h1 css={styles.content.title} data-testid="author__name">
-          {siteData.personalInformation.full_name}
+          {siteData.personalInformation.fullName}
         </h1>
         <p css={styles.content.description} data-testid="author__description">
           {defaultSeo?.description}
@@ -69,10 +69,11 @@ export const AuthorPresentation = () => {
       <figure css={styles.figure}>
         <Image
           css={styles.image}
-          src={siteData.personalInformation.profile_pic.url}
+          src={siteData.personalInformation.profilePic.url}
           layout="fill"
           alt={formatMessage(message)}
           loading="eager"
+          priority
         />
       </figure>
     </header>

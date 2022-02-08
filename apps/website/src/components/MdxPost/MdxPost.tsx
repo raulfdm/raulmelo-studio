@@ -50,9 +50,9 @@ export const MdxPostTemplate: React.FC<MdxPostTemplateProps> = ({
       published: date,
       modified: date,
       image: {
-        url: featuredImage?.src ?? siteData.site.seo_image.url,
-        width: featuredImage?.width ?? siteData.site.seo_image.width,
-        height: featuredImage?.height ?? siteData.site.seo_image.height,
+        url: featuredImage?.src ?? siteData.site.seoImage.url,
+        width: featuredImage?.width ?? siteData.site.seoImage.width,
+        height: featuredImage?.height ?? siteData.site.seoImage.height,
       },
     };
   }, [
@@ -80,7 +80,7 @@ export const MdxPostTemplate: React.FC<MdxPostTemplateProps> = ({
         images={[seoInfo.image.url]}
         datePublished={seoInfo.published}
         dateModified={seoInfo.modified}
-        authorName={[siteData.personalInformation.full_name]}
+        authorName={[siteData.personalInformation.fullName]}
       />
 
       <NextSeo
@@ -145,7 +145,7 @@ export const MdxPostTemplate: React.FC<MdxPostTemplateProps> = ({
               </span>
               <Tags>
                 {tags.map((tag) => (
-                  <Tag key={tag.id} tw="text-base lg:text-lg">
+                  <Tag key={tag._id} tw="text-base lg:text-lg">
                     <Link href={getTagUrl(tag.slug)} passHref>
                       <a tw="underline text-secondary">#{tag.name}</a>
                     </Link>
@@ -177,7 +177,7 @@ interface MdxPostTemplateProps {
   description: string;
   publishedAt: string;
   preview?: boolean;
-  tags?: { id: string; slug: string; name: string }[];
+  tags?: { _id: string; slug: string; name: string }[];
   featuredImage?: FeaturedImageProps & { width: number; height: number };
   subtitle?: string;
   series?: {

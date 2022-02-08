@@ -60,7 +60,7 @@ export const getStaticProps = async ({ params, preview }: Params) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { tils } = await domains.posts.queryTils('all');
+  const tils = await domains.posts.queryTils('all');
 
   return {
     paths: tils.map(generatePath),
@@ -72,7 +72,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       params: {
         slug: til.slug,
       },
-      locale: til.locale,
+      locale: til.language,
     };
   }
 };

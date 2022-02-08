@@ -51,7 +51,7 @@ export const TilsHome = ({ tils }: TilsHomeProps) => {
         {tils.length > 0 ? (
           <ul css={styles.tilsList.list}>
             {tils.map((til) => (
-              <li key={til.id}>
+              <li key={til._id}>
                 <PostBasic
                   titleClassName={styles.tilsList.itemTitle}
                   publishedAt={til.publishedAt}

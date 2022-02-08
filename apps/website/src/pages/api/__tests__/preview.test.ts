@@ -20,13 +20,13 @@ const mockQueryPostOrTil = domains.preview.queryPostOrTil as jest.Mock<any>;
 
 const fakeData = {
   onlyTil: {
-    _til: { id: 1, slug: 'my-til', locale: 'en', type: 'til' },
+    _til: { id: 1, slug: 'my-til', language: 'en', _type: 'til' },
     get data() {
       return fakeData.onlyTil._til;
     },
   },
   onlyPost: {
-    _post: { id: 2, slug: 'my-post', locale: 'en', type: 'post' },
+    _post: { id: 2, slug: 'my-post', language: 'en', _type: 'post' },
     get data() {
       return fakeData.onlyPost._post;
     },
@@ -138,8 +138,8 @@ describe('Preview Route', () => {
           const { mockRes, mockWriteHead } = createMockResponse();
           mockQueryPostOrTil.mockResolvedValue({
             ...fakeData.onlyTil._til,
-            locale: 'pt',
-            type: 'til',
+            language: 'pt',
+            _type: 'til',
           });
 
           await previewRoute(
@@ -169,8 +169,8 @@ describe('Preview Route', () => {
           const { mockRes, mockWriteHead } = createMockResponse();
           mockQueryPostOrTil.mockResolvedValue({
             ...fakeData.onlyPost._post,
-            locale: 'pt',
-            type: 'post',
+            language: 'pt',
+            _type: 'post',
           });
 
           await previewRoute(

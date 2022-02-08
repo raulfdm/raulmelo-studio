@@ -1,5 +1,9 @@
+<<<<<<< Updated upstream
 import { IPostsAndTilsApi } from '@raulmelo/core/dist/types/domains/posts';
 import { ArrowRightIcon } from '@raulmelo/ui';
+=======
+import type { IPostsAndTilsApi } from '@raulmelo/core/dist/types/domains/posts';
+>>>>>>> Stashed changes
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';
 import React from 'react';
@@ -48,7 +52,7 @@ export const HomePage: React.FC<IPostsAndTilsApi> = ({ posts, tils }) => {
     <>
       <NextSeo
         titleTemplate="%s"
-        title={`${siteData.personalInformation.full_name} · ${defaultSeo.title}`}
+        title={`${siteData.personalInformation.fullName} · ${defaultSeo.title}`}
       />
 
       <AuthorPresentation />
@@ -56,8 +60,8 @@ export const HomePage: React.FC<IPostsAndTilsApi> = ({ posts, tils }) => {
         title={formatMessage(messages.postsTitle)}
         posts={posts.map((post) => ({
           ...post,
-          publishedAt: post.date,
-          tags: post.post_tags,
+          publishedAt: post.publishedAt,
+          tags: post.tags,
           url: getPostUrl(post.slug),
         }))}
         checkAllLink={{
@@ -87,15 +91,17 @@ const PostSection = ({ checkAllLink, posts, title }: PostSectionProps) => {
     <section css={styles.postWrapper}>
       <h2 css={styles.postTitle}>{title}</h2>
       <ul css={styles.postList}>
-        {posts.map((post) => (
-          <li key={post.id}>
-            <PostBasic
-              className={styles.postCard}
-              titleClassName={tw`text-xl`}
-              {...post}
-            />
-          </li>
-        ))}
+        {posts.map((post) => {
+          return (
+            <li key={post._id}>
+              <PostBasic
+                className={styles.postCard}
+                titleClassName={tw`text-xl`}
+                {...post}
+              />
+            </li>
+          );
+        })}
       </ul>
       <Link href={checkAllLink.href} passHref>
         <a css={styles.postCardLink}>

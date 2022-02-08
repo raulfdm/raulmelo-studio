@@ -47,16 +47,16 @@ export const TagPage: React.FC<TagPageProps> = ({ tag, content }) => {
         description={description}
         canonical={`${siteData.site.url}${getTagUrl(tag.slug)}`}
         openGraph={{
-          title: `${title} - ${siteData.personalInformation.full_name}`,
+          title: `${title} - ${siteData.personalInformation.fullName}`,
           description: description,
           type: 'website',
-          site_name: siteData.personalInformation.full_name,
+          site_name: siteData.personalInformation.fullName,
           images: [
             {
-              url: siteData.site.seo_image.url,
+              url: siteData.site.seoImage.url,
               width: 1024,
               height: 512,
-              alt: siteData.personalInformation.full_name,
+              alt: siteData.personalInformation.fullName,
             },
           ],
         }}
@@ -72,11 +72,11 @@ export const TagPage: React.FC<TagPageProps> = ({ tag, content }) => {
       ) : (
         <ul css={styles.list}>
           {content.map((c) => {
-            const getUrl = c.type === 'post' ? getPostUrl : getTilUrl;
+            const getUrl = c._type === 'post' ? getPostUrl : getTilUrl;
 
             return (
               <PostBasic
-                key={c.id}
+                key={c._id}
                 titleClassName={styles.postTitle}
                 {...c}
                 url={getUrl(c.slug)}

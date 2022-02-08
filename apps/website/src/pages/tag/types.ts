@@ -10,17 +10,7 @@ export type TagPageProps = {
   content: ITagPageContent;
 };
 
-type ITagPageContent = ITagPagePostOrTil[];
-
-type ITagPagePostOrTil = IEnhancedTil | IEnhancedPost;
-
-type IEnhancedPost = ITagBySlugBlogPost & IPostType;
-
-type IEnhancedTil = ITagBySlugTilPost & IPostType;
-
-interface IPostType {
-  type: 'post' | 'til';
-}
+type ITagPageContent = (ITagBySlugBlogPost | ITagBySlugTilPost)[];
 
 export interface TagPageParams {
   params: {

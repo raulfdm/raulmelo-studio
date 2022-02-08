@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-import { AlgoliaObject } from '@raulfdm/core/dist/types/domains/algolia';
+import { AlgoliaObject } from '@raulmelo/core/dist/types/domains/algolia';
 
 import { getContentToAlgolia } from '../content';
 

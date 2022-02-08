@@ -17,7 +17,7 @@ const Uses = ({ content, seo, title, postContent }: UsesPageProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const { uses } = await domains.uses.getUses(locale as SupportedLanguages);
+  const uses = await domains.uses.getUses(locale as SupportedLanguages);
 
   const content = await serializeMdx(uses.content);
 

@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream:apps/website/src/components/MdxPost/components/FeaturedImage/FeaturedImage.tsx
 import { IBlogPostBySlug } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
+=======
+import { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
+>>>>>>> Stashed changes:apps/website/src/components/templates/MdxPost/components/FeaturedImage/FeaturedImage.tsx
 import Image from 'next/image';
 import React from 'react';
 import { defineMessages, FormattedMessage } from 'react-intl';
@@ -15,7 +19,7 @@ const messages = defineMessages({
 export type FeaturedImageProps = {
   src: string;
   alt?: string;
-  unsplash: IBlogPostBySlug['unsplash'];
+  unsplash: IBlogPostBySlugApiResponse['unsplash'];
 };
 
 const styles = {
@@ -55,7 +59,7 @@ export const FeaturedImage: React.FC<FeaturedImageProps> = ({
   );
 };
 
-type UnsplashCaptionProps = NonNullable<IBlogPostBySlug['unsplash']>;
+type UnsplashCaptionProps = NonNullable<IBlogPostBySlugApiResponse['unsplash']>;
 
 function UnsplashCaption({ authorName, url }: UnsplashCaptionProps) {
   return (

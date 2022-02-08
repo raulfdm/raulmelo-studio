@@ -2,7 +2,7 @@ import { PostBasicProps } from '~/components/PostBasic';
 
 export type PostSectionProps = {
   title: string;
-  posts: (PostBasicProps & { id: string })[];
+  posts: (PostBasicProps & { _id: string })[];
   checkAllLink: {
     href: string;
     text: string;

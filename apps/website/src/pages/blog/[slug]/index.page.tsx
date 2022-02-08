@@ -2,29 +2,28 @@ import { domains, utils } from '@raulmelo/core';
 import { DotDivider } from '@raulmelo/ui';
 import fs from 'fs';
 import { GetStaticPaths } from 'next';
+<<<<<<< Updated upstream
 import dynamic from 'next/dynamic';
 import path from 'path';
+=======
+>>>>>>> Stashed changes
 import React from 'react';
 
 import { MdxPostTemplate } from '~/components/MdxPost';
 import { serializeMdx } from '~/config/mdx';
 
-import type { SeriesSection as SeriesSectionType } from './components/SeriesSection';
+import { SeriesSection } from './components/SeriesSection';
 import { BlogPostProps, GetStaticProps } from './types';
-
-const SeriesSection = dynamic(() =>
-  import('./components/SeriesSection').then((mod) => mod.SeriesSection),
-) as typeof SeriesSectionType;
 
 export const BlogPostPage: React.FC<BlogPostProps> = ({
   content,
   post,
   preview,
 }) => {
-  const { featured_image, post_tags, unsplash, series } = post;
+  const { featuredImage, tags, unsplash, series } = post;
 
   const allSeries = series ? (
-    <SeriesSection series={series} currentPostId={post.id} />
+    <SeriesSection series={series} currentPostId={post._id} />
   ) : null;
 
   const seriesWithDivider = series ? (
@@ -40,18 +39,18 @@ export const BlogPostPage: React.FC<BlogPostProps> = ({
       postContent={post.content}
       preview={preview}
       featuredImage={{
-        src: featured_image.url,
+        src: featuredImage.url,
         unsplash,
-        width: featured_image.width,
-        height: featured_image.height,
+        width: featuredImage.width,
+        height: featuredImage.height,
       }}
       title={post.title}
       subtitle={post.subtitle}
-      publishedAt={post.date}
+      publishedAt={post.publishedAt}
       // share={{
       //   description: `${post.title}. ${post.subtitle}`,
       // }}
-      tags={post_tags}
+      tags={tags}
       description={post.description}
       series={{
         top: allSeries,
@@ -63,9 +62,8 @@ export const BlogPostPage: React.FC<BlogPostProps> = ({
 
 export const getStaticProps = async ({ params, preview }: GetStaticProps) => {
   const post = await domains.posts.queryPostBySlug(params.slug, preview);
-  const { isNil, isEmpty } = utils;
 
-  if (isNil(post) || isEmpty(post)) {
+  if (utils.isNil(post) || utils.isEmpty(post)) {
     return {
       notFound: true,
     };
@@ -79,18 +77,18 @@ export const getStaticProps = async ({ params, preview }: GetStaticProps) => {
       content,
       preview: Boolean(preview),
     },
-    revalidate: 1,
+    revalidate: 60,
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { posts } = await domains.posts.queryPosts('all');
+  const posts = await domains.posts.queryPosts('all');
 
   const paths = posts.map((post) => ({
     params: {
       slug: post.slug,
     },
-    locale: post.locale,
+    locale: post.language,
   }));
 
   return {

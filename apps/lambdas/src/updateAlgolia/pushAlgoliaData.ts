@@ -1,4 +1,4 @@
-import { AlgoliaObjectList } from '@raulfdm/core/dist/types/domains/algolia';
+import { AlgoliaObjectList } from '@raulmelo/core/dist/types/domains/algolia';
 import algolia from 'algoliasearch';
 
 import { SETTINGS } from '../config';
