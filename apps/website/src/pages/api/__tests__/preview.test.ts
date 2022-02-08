@@ -1,9 +1,9 @@
-import { domains } from '@raulfdm/core';
+import { domains } from '@raulmelo/core';
 
 import previewRoute from '../preview.page';
 
-jest.mock('@raulfdm/core', () => {
-  const actualModule = jest.requireActual('@raulfdm/core');
+jest.mock('@raulmelo/core', () => {
+  const actualModule = jest.requireActual('@raulmelo/core');
   return {
     ...actualModule,
     domains: {

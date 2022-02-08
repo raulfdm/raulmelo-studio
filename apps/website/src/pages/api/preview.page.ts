@@ -1,4 +1,4 @@
-import { domains } from '@raulfdm/core';
+import { domains } from '@raulmelo/core';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(

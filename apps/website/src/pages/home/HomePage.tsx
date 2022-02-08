@@ -1,11 +1,11 @@
-import { IPostsAndTilsApi } from '@raulfdm/core/dist/types/domains/posts';
+import { IPostsAndTilsApi } from '@raulmelo/core/dist/types/domains/posts';
+import { ArrowRightIcon } from '@raulmelo/ui';
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';
 import React from 'react';
 import { defineMessages } from 'react-intl';
 import tw from 'twin.macro';
 
-import { ArrowRightIcon } from '~/components/Icons';
 import { PostBasic } from '~/components/PostBasic';
 import { useLocalization } from '~/hooks/useLocalization';
 import { getTilUrl } from '~/pages/til/home/utils';

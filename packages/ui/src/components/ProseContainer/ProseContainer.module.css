@@ -1,0 +1,13 @@
+.container {
+  @apply prose dark:prose-dark;
+  @apply prose-lg md:prose-xl lg:prose-2xl;
+  @apply max-w-full;
+
+  :global(a code) {
+    /* Tailwind Typography + Tailwind 2 has a problem with specificity */
+    /* Applying this style does not gain precedence enough to override Prose styles */
+    /* So I have to set it manually. Let's see on Tailwind v3 */
+    /* @apply dark:text-secondary !important; */
+    color: var(--color-secondary);
+  }
+}

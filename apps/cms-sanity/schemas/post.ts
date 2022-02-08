@@ -73,9 +73,8 @@ export const postSchema = {
       type: 'string',
     },
     {
+      type: 'blockContent',
       group: 'post',
-      type: 'markdown',
-      description: 'A Github flavored markdown field with image uploading',
       name: 'content',
     },
     {

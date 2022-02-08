@@ -14,7 +14,7 @@ Different applications could have different ways of declaring postcss config. To
 const {
   configuredConfig,
   flatConfig,
-} = require('@raulmelo/styles/lib/postcss.config');
+} = require('@raulmelo/styles/lib/postcss.config.cjs');
 
 module.exports = configuredConfig;
 // or
@@ -29,7 +29,7 @@ Tailwind supports presets so all you need to do is import and set it as preset:
 // tailwind.config.js
 
 module.exports = {
-  presets: [require('@raulmelo/styles/lib/tailwind.config')],
+  presets: [require('@raulmelo/styles/lib/tailwind.config.cjs')],
   //... overrides like
   mode: 'jit',
   purge: ['./src/**/*.{js,ts,tsx}'],

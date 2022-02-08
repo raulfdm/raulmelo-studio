@@ -1,9 +1,9 @@
-import { SupportedLanguages } from '@raulfdm/core';
+import { SupportedLanguages } from '@raulmelo/core';
 import {
   ITagBySlugBlogPost,
   ITagBySlugPostTag,
   ITagBySlugTilPost,
-} from '@raulfdm/core/dist/types/domains/tag/queryTagBySlug/types';
+} from '@raulmelo/core/dist/types/domains/tag/queryTagBySlug/types';
 
 export type TagPageProps = {
   tag: ITagBySlugPostTag;

@@ -1,4 +1,4 @@
-# @raulfdm/core
+# @raulmelo/core
 
 This package is responsible to holding the core logic for my website which includes:
 
