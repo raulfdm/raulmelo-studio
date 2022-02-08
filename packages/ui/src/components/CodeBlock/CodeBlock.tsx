@@ -44,6 +44,13 @@ function Filename({ filename }: { filename: string }) {
 }
 
 function getLines(lines?: string): number[] {
+  /**
+   * Don't know how but sometimes I got lines as number[]
+   */
+  if (Array.isArray(lines)) {
+    return lines;
+  }
+
   if (!lines || !lines.trim()) {
     return [];
   }
