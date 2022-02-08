@@ -13,7 +13,13 @@ interface AdapterOptions {
   propsToOmit?: string[];
 }
 
-const sanityBlockPropsToIgnore = ['_type', '_key', 'markDefs', 'style'];
+const sanityBlockPropsToIgnore = [
+  '_type',
+  '_key',
+  'markDefs',
+  'style',
+  'sanityStyle',
+];
 
 export function sanityToUiAdapter(
   Component: React.ElementType,
