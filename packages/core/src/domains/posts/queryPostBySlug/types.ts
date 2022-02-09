@@ -1,8 +1,9 @@
+import type { PortableTextBlock } from '@portabletext/react';
 import { SupportedLanguages } from 'src';
 
 export interface IBlogPostBySlugApiResponse {
   _id: string;
-  content: string;
+  content: PortableTextBlock;
   title: string;
   subtitle?: string;
   description: string;

@@ -322,6 +322,7 @@ importers:
 
   packages/core:
     specifiers:
+      '@portabletext/react': 1.0.1
       '@sanity/client': 2.23.2
       '@sanity/image-url': 1.0.1
       '@types/ramda': 0.27.64
@@ -333,6 +334,7 @@ importers:
       groq: 2.15.0
       ramda: 0.28.0
     devDependencies:
+      '@portabletext/react': 1.0.1
       '@types/ramda': 0.27.64
 
   packages/mdx-prism-2:
@@ -5043,6 +5045,12 @@ packages:
 
   /@popperjs/core/2.11.2:
     resolution: {integrity: sha512-92FRmppjjqz29VMJ2dn+xdyXZBrMlE42AV6Kq6BwjWV7CNUW1hs2FtxSNLQE+gJhaZ6AAmYuO9y8dshhcBl7vA==}
+
+  /@portabletext/react/1.0.1:
+    resolution: {integrity: sha512-LSoRFwvui/O7UVp8J7OAxfaE7Rl0UviICtP+SM1tY47HYpYFdvf/AweKeaJnnEutPZa7zumtUZUgBwq0aoCHOw==}
+    peerDependencies:
+      react: ^17.0.0
+    dev: true
 
   /@portabletext/react/1.0.1_react@17.0.2:
     resolution: {integrity: sha512-LSoRFwvui/O7UVp8J7OAxfaE7Rl0UviICtP+SM1tY47HYpYFdvf/AweKeaJnnEutPZa7zumtUZUgBwq0aoCHOw==}
@@ -10023,7 +10031,7 @@ packages:
   /axios/0.25.0:
     resolution: {integrity: sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==}
     dependencies:
-      follow-redirects: 1.14.7_debug@2.6.9
+      follow-redirects: 1.14.7
     transitivePeerDependencies:
       - debug
 
@@ -14969,6 +14977,15 @@ packages:
       debug: 2.6.9
     dev: false
 
+  /follow-redirects/1.14.7:
+    resolution: {integrity: sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+
   /follow-redirects/1.14.7_debug@2.6.9:
     resolution: {integrity: sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==}
     engines: {node: '>=4.0'}
@@ -14979,6 +14996,7 @@ packages:
         optional: true
     dependencies:
       debug: 2.6.9
+    dev: false
 
   /font-awesome/4.7.0:
     resolution: {integrity: sha1-j6jPBBGhoxr9B7BtKQK7n8gVoTM=}

@@ -1,3 +1,4 @@
+import type { PortableTextBlock } from '@portabletext/react';
 import { SupportedLanguages } from 'src';
 
 export interface ITilBySlugApiResponse {
@@ -6,7 +7,7 @@ export interface ITilBySlugApiResponse {
   title: string;
   language: SupportedLanguages;
   slug: string;
-  content: string;
+  content: PortableTextBlock;
   tags: Tag[];
 }
 
