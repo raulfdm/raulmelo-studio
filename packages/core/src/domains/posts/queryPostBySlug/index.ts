@@ -12,3 +12,5 @@ export async function queryPostBySlug(
     slug,
   });
 }
+
+export type { IBlogPostBySlugApiResponse } from './types';
