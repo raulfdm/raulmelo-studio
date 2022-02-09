@@ -1,10 +1,5 @@
-<<<<<<< Updated upstream
-import { AllSupportedLanguages, domains } from '@raulmelo/core';
-import { IBlogPagePost } from '@raulmelo/core/dist/types/domains/posts';
-=======
 import { domains, SupportedLanguages } from '@raulmelo/core';
 import { IBlogPagePost } from '@raulmelo/core/dist/types/domains/posts';
->>>>>>> Stashed changes
 import chunk from 'lodash.chunk';
 import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';

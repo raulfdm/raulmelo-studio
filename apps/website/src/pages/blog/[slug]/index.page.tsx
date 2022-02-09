@@ -1,12 +1,6 @@
 import { domains, utils } from '@raulmelo/core';
 import { DotDivider } from '@raulmelo/ui';
-import fs from 'fs';
 import { GetStaticPaths } from 'next';
-<<<<<<< Updated upstream
-import dynamic from 'next/dynamic';
-import path from 'path';
-=======
->>>>>>> Stashed changes
 import React from 'react';
 
 import { MdxPostTemplate } from '~/components/MdxPost';

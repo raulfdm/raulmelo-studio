@@ -1,9 +1,5 @@
-<<<<<<< Updated upstream
 import { IPostsAndTilsApi } from '@raulmelo/core/dist/types/domains/posts';
 import { ArrowRightIcon } from '@raulmelo/ui';
-=======
-import type { IPostsAndTilsApi } from '@raulmelo/core/dist/types/domains/posts';
->>>>>>> Stashed changes
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';
 import React from 'react';

@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream:apps/website/src/components/MdxPost/components/FeaturedImage/FeaturedImage.tsx
-import { IBlogPostBySlug } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
-=======
 import { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
->>>>>>> Stashed changes:apps/website/src/components/templates/MdxPost/components/FeaturedImage/FeaturedImage.tsx
 import Image from 'next/image';
 import React from 'react';
 import { defineMessages, FormattedMessage } from 'react-intl';

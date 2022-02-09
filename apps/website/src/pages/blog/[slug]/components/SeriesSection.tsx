@@ -1,9 +1,5 @@
-<<<<<<< Updated upstream
-import { IBlogPostBySlug } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
-import { ChevronDownIcon } from '@raulmelo/ui';
-=======
 import { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
->>>>>>> Stashed changes
+import { ChevronDownIcon } from '@raulmelo/ui';
 import { createMachine } from '@xstate/fsm';
 import { useMachine } from '@xstate/react/fsm';
 import { motion } from 'framer-motion';

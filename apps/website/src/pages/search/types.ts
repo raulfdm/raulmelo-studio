@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-import { SupportedLanguages } from '@raulmelo/core';
-=======
 import { AlgoliaObject } from '@raulmelo/core/dist/types/domains/algolia';
->>>>>>> Stashed changes
 
 export type HitAlgolia = AlgoliaObject;
 
