@@ -30,7 +30,7 @@ interface IBlogPostBySlugSeriesPost {
 }
 
 interface IBlogPostBySlugFeaturedImage {
-  url: string;
+  src: string;
   width: number;
   height: number;
 }
