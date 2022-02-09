@@ -13,7 +13,7 @@ const messages = defineMessages({
 });
 
 export type FeaturedImageProps = {
-  src: string;
+  url: string;
   alt?: string;
   unsplash: IBlogPostBySlugApiResponse['unsplash'];
 };
@@ -27,7 +27,7 @@ const styles = {
 const Caption = tw.p`text-center text-base lg:text-md dark:text-gray-300 mt-4`;
 
 export const FeaturedImage: React.FC<FeaturedImageProps> = ({
-  src,
+  url,
   alt,
   unsplash,
 }) => {
@@ -41,7 +41,7 @@ export const FeaturedImage: React.FC<FeaturedImageProps> = ({
     >
       <figure css={styles.figure}>
         <Image
-          src={src}
+          src={url}
           layout="fill"
           objectFit="cover"
           alt={alt || formatMessage(messages.featuredImageLabel)}

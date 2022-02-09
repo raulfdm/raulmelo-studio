@@ -3,18 +3,13 @@ import { DotDivider } from '@raulmelo/ui';
 import { GetStaticPaths } from 'next';
 import React from 'react';
 
-import { MdxPostTemplate } from '~/components/MdxPost';
-import { serializeMdx } from '~/config/mdx';
+import { PortableTextPost } from '~/components/PortableTextPost';
 
 import { SeriesSection } from './components/SeriesSection';
 import { BlogPostProps, GetStaticProps } from './types';
 
-export const BlogPostPage: React.FC<BlogPostProps> = ({
-  content,
-  post,
-  preview,
-}) => {
-  const { featuredImage, tags, unsplash, series } = post;
+export const BlogPostPage: React.FC<BlogPostProps> = ({ post, preview }) => {
+  const { series, ...restPost } = post;
 
   const allSeries = series ? (
     <SeriesSection series={series} currentPostId={post._id} />
@@ -28,25 +23,13 @@ export const BlogPostPage: React.FC<BlogPostProps> = ({
   ) : null;
 
   return (
-    <MdxPostTemplate
-      content={content}
-      postContent={post.content}
+    <PortableTextPost
+      {...restPost}
       preview={preview}
-      featuredImage={{
-        src: featuredImage.url,
-        unsplash,
-        width: featuredImage.width,
-        height: featuredImage.height,
-      }}
-      title={post.title}
-      subtitle={post.subtitle}
-      publishedAt={post.publishedAt}
       // share={{
       //   description: `${post.title}. ${post.subtitle}`,
       // }}
-      tags={tags}
-      description={post.description}
-      series={{
+      seriesSection={{
         top: allSeries,
         bottom: seriesWithDivider,
       }}
@@ -63,12 +46,11 @@ export const getStaticProps = async ({ params, preview }: GetStaticProps) => {
     };
   }
 
-  const content = await serializeMdx(post.content);
+  // TODO: do the time reading here instead client side
 
   return {
     props: {
       post,
-      content,
       preview: Boolean(preview),
     },
     revalidate: 60,
