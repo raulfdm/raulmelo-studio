@@ -6,6 +6,7 @@ export const tilQuery = groq`
   publishedAt,
   title,
   language,
+  content,
   "slug": slug.current,
   "tags": tags[]->{
     _id,
