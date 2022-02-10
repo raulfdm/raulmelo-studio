@@ -1,3 +1,5 @@
+import { PortableTextBlock } from '@portabletext/react';
+
 import { SupportedLanguages } from '../../../types';
 
 export type ITilsApiResponse = ITilsTil[];
@@ -6,6 +8,7 @@ export interface ITilsTil {
   publishedAt: string;
   title: string;
   language: SupportedLanguages;
+  content: PortableTextBlock;
   slug: string;
   tags: ITilsTilTag[];
 }
