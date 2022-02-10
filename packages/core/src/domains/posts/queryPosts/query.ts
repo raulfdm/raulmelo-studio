@@ -1,7 +1,7 @@
 import groq from 'groq';
 
 export const postQuery = groq`
-*[_type == "post" && language in $languages && !(_id in path('drafts.**'))]{
+*[_type == "post" && language in $languages && !(_id in path('drafts.**'))] | order(publishedAt desc){
   _id,
   language,
   "slug": slug.current,
