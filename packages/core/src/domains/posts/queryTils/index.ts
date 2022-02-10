@@ -12,3 +12,5 @@ export async function queryTils(
   const languages = language === 'all' ? SUPPORTED_LANGUAGES.all : [language];
   return client.fetch(tilQuery, { languages });
 }
+
+export type { ITilsTil } from './types';
