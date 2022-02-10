@@ -21,7 +21,7 @@ import { PreviewBanner } from '../MdxPost/components/PreviewBanner/PreviewBanner
 import { portableComponents } from './components/portableComponents';
 import { PrismStyles } from './components/PrismStyles';
 
-export const PortableTextPost: React.FC<MdxPostTemplateProps> = ({
+export const PortableTextPost: React.FC<PortableTextPostProps> = ({
   content,
   featuredImage,
   title,
@@ -161,10 +161,16 @@ export const PortableTextPost: React.FC<MdxPostTemplateProps> = ({
   );
 };
 
-interface MdxPostTemplateProps extends Omit<IBlogPostBySlugApiResponse, '_id'> {
+interface PortableTextPostProps
+  extends Omit<
+    IBlogPostBySlugApiResponse,
+    '_id' | 'unsplash' | 'featuredImage' | 'description'
+  > {
   nextSeo?: NextSeoProps;
   preview?: boolean;
-
+  unsplash?: IBlogPostBySlugApiResponse['unsplash'];
+  featuredImage?: IBlogPostBySlugApiResponse['featuredImage'];
+  description?: IBlogPostBySlugApiResponse['description'];
   seriesSection?: {
     top: JSX.Element | null;
     bottom: JSX.Element | null;

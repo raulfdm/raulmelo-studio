@@ -1,32 +1,18 @@
 import { domains, utils } from '@raulmelo/core';
 import { ITilsTil } from '@raulmelo/core/dist/types/domains/posts/queryTils/types';
 import { GetStaticPaths } from 'next';
-import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
-import { MdxPostTemplate } from '~/components/MdxPost';
-import { serializeMdx } from '~/config/mdx';
-
-import { ITilPostParsed } from './types';
+import { PortableTextPost } from '~/components/PortableTextPost';
 
 const { isEmpty, isNil } = utils;
 
 type Props = {
-  til: ITilPostParsed;
+  til: ITilsTil;
   preview: boolean;
-  content: MDXRemoteSerializeResult;
 };
 
-const TilPostPage = ({ til, preview, content }: Props) => {
-  return (
-    <MdxPostTemplate
-      content={content}
-      title={til.title}
-      description={til.title}
-      publishedAt={til.publishedAt}
-      tags={til.tags}
-      preview={preview}
-    />
-  );
+const TilPostPage = ({ til, preview }: Props) => {
+  return <PortableTextPost {...til} preview={preview} />;
 };
 
 type Params = {
@@ -46,12 +32,9 @@ export const getStaticProps = async ({ params, preview }: Params) => {
     };
   }
 
-  const content = await serializeMdx(til.content);
-
   return {
     props: {
       til,
-      content,
       // TODO: add a banner for "preview mode"
       preview: Boolean(preview),
     },
