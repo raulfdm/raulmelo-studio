@@ -1,6 +1,16 @@
 import '@raulmelo/ui/dist/style.css?raw';
 
-import { BigQuote, H2, H3, H4, H5, H6, ImageIcon } from '@raulmelo/ui';
+import {
+  BigQuote,
+  ExternalLinkIcon,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+  ImageIcon,
+  LinkIcon,
+} from '@raulmelo/ui';
 import React from 'react';
 
 import { memoizeAndRemoveStyle } from '../../utils/schema';
@@ -80,14 +90,41 @@ export const blockContentField = {
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
           {
+            name: 'internalLink',
+            type: 'object',
+            title: 'Internal Link',
+            icon: () => <LinkIcon width={20} />,
+            fields: [
+              {
+                name: 'item',
+                type: 'reference',
+                to: [
+                  {
+                    type: 'post',
+                  },
+                  {
+                    type: 'til',
+                  },
+                ],
+              },
+            ],
+          },
+          {
             title: 'URL',
             name: 'link',
             type: 'object',
+            icon: () => <ExternalLinkIcon width={20} />,
             fields: [
               {
                 title: 'URL',
                 name: 'href',
                 type: 'url',
+              },
+              {
+                title: 'Open in new window',
+                name: 'blank',
+                type: 'boolean',
+                initialValue: false,
               },
             ],
           },

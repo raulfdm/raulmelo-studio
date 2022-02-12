@@ -9,6 +9,7 @@ import {
   Tweet,
   YouTubeIframe,
 } from '@raulmelo/ui';
+import Link from 'next/link';
 
 import { ImageAdapter } from './ImageAdapter';
 import { ImageSliderAdapter } from './ImageSliderAdapter';
@@ -50,8 +51,58 @@ export const portableComponents = {
     },
   },
   marks: {
+    // TODO: enhance these components PLEEEAAAASE
     highlight: ({ children, ...props }: { children: React.ReactNode }) => {
       return <Highlight {...props}>{children}</Highlight>;
+    },
+    link: ({
+      children,
+      value,
+    }: {
+      children: React.ReactNode;
+      value: { href: string; blank: boolean };
+    }) => {
+      const { href, blank } = value;
+      const props = {
+        href,
+        children,
+      } as React.AnchorHTMLAttributes<HTMLAnchorElement>;
+
+      if (blank === true) {
+        props.target = '_blank';
+        props.rel = 'noopener noreferrer';
+      }
+
+      return <a {...props} />;
+    },
+    internalLink: ({
+      children,
+      value,
+    }: {
+      children: React.ReactNode;
+      value: {
+        itemMeta: {
+          slug: string;
+          _type: 'post' | 'til';
+        };
+      };
+    }) => {
+      const { slug, _type } = value.itemMeta;
+      let href = '';
+
+      if (_type === 'post') {
+        href = '/blog/';
+      } else if (_type === 'til') {
+        href = '/til/';
+      }
+
+      href += slug;
+
+      return (
+        <Link href={href}>
+          <a>{children}</a>
+        </Link>
+      );
     },
   },
 };
