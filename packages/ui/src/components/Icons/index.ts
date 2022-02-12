@@ -15,6 +15,7 @@ export * from './Github';
 export * from './Globe';
 export * from './Highlight';
 export * from './Image';
+export * from './Link';
 export * from './LinkedIn';
 export * from './Medium';
 export * from './Menu';
