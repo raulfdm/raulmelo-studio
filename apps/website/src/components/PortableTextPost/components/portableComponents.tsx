@@ -29,6 +29,25 @@ export const portableComponents = {
     bigQuote: ({ children }: { children: React.ReactNode }) => {
       return <BigQuote>{children}</BigQuote>;
     },
+    blockquote: ({ children }: { children: string[] }) => {
+      const updatedChildren = children
+        .filter((c) => c !== '')
+        .reduce((accumulator, current) => {
+          if (current.length === 0) {
+            return accumulator;
+          }
+
+          if (current === '\n') {
+            accumulator.push(<br />);
+            return accumulator;
+          }
+
+          accumulator.push(current);
+          return accumulator;
+        }, [] as (React.ReactNode | string)[]);
+
+      return <blockquote>{updatedChildren}</blockquote>;
+    },
   },
   marks: {
     highlight: ({ children, ...props }: { children: React.ReactNode }) => {
