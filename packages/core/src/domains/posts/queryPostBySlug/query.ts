@@ -3,7 +3,19 @@ import groq from 'groq';
 export const postQuery = groq`
 *[_type=="post" && slug.current == $slug && !(_id in path('drafts.**'))][0]{
   _id,
-  content,
+  content[]{
+    ...,
+    markDefs[]{
+      ...,
+      _type == "internalLink" => {
+      ...,
+      "itemMeta": @.item -> {
+        "slug": slug.current,
+        _type
+      }
+    },
+    }
+  },
   title,
   subtitle,
   description,

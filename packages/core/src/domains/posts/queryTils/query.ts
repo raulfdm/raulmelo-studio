@@ -6,7 +6,19 @@ export const tilQuery = groq`
   publishedAt,
   title,
   language,
-  content,
+  content[]{
+    ...,
+    markDefs[]{
+      ...,
+      _type == "internalLink" => {
+      ...,
+      "itemMeta": @.item -> {
+        "slug": slug.current,
+        _type
+      }
+    },
+    }
+  },
   "slug": slug.current,
   "tags": tags[]->{
     _id,
