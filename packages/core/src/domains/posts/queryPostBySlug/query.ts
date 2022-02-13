@@ -5,6 +5,11 @@ export const postQuery = groq`
   _id,
   content[]{
     ...,
+    "image": image.asset ->{
+      url,
+      "width": metadata.dimensions.width,
+      "height": metadata.dimensions.height,
+    },
     markDefs[]{
       ...,
       _type == "internalLink" => {
@@ -12,8 +17,14 @@ export const postQuery = groq`
       "itemMeta": @.item -> {
         "slug": slug.current,
         _type
-      }
+      },
     },
+    _type == "detailedImage" => {
+        ...,
+        "image": @.image -> {
+          ...
+        }
+      }
     }
   },
   title,
