@@ -8,7 +8,6 @@ import {
   H4,
   H5,
   H6,
-  ImageIcon,
   LinkIcon,
 } from '@raulmelo/ui';
 import React from 'react';
@@ -135,9 +134,7 @@ export const blockContentField = {
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
     {
-      type: 'image',
-      options: { hotspot: true },
-      icon: () => <ImageIcon width={20} />,
+      type: 'detailedImage',
     },
     {
       type: 'code',

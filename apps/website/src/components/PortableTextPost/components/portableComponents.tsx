@@ -11,6 +11,7 @@ import {
 } from '@raulmelo/ui';
 import Link from 'next/link';
 
+import { Image } from './Image';
 import { ImageAdapter } from './ImageAdapter';
 import { ImageSliderAdapter } from './ImageSliderAdapter';
 
@@ -25,6 +26,7 @@ export const portableComponents = {
     tweet: sanityToUiAdapter(Tweet),
     gif: sanityToUiAdapter(Gif),
     imageSlider: ImageSliderAdapter,
+    detailedImage: sanityToUiAdapter(Image),
   },
   block: {
     bigQuote: ({ children }: { children: React.ReactNode }) => {

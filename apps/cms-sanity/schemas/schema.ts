@@ -14,6 +14,7 @@ import { codeField } from './customFields/codeField';
 import { codePenField } from './customFields/codePenField';
 import { dividerField } from './customFields/divider';
 import { gifField } from './customFields/gif';
+import { detailedImageField } from './customFields/imageField';
 import { imageSliderField } from './customFields/imageSlider';
 import { languageField } from './customFields/language';
 import { tweetField } from './customFields/tweetField';
@@ -60,5 +61,6 @@ export default createSchema({
     codePenField,
     dividerField,
     codeField,
+    detailedImageField,
   ]),
 });
