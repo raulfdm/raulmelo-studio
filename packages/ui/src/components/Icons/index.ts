@@ -20,6 +20,7 @@ export * from './LinkedIn';
 export * from './Medium';
 export * from './Menu';
 export * from './Moon';
+export * from './Strikethrough';
 export * from './Sun';
 export * from './Twitter';
 export * from './ViewCarousel';
