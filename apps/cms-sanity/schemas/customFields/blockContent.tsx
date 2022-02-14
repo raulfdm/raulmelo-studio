@@ -14,6 +14,7 @@ import React from 'react';
 
 import { memoizeAndRemoveStyle } from '../../utils/schema';
 import { highlightMarker } from './highlightMarker';
+import { strikeThroughMarker } from './strikeThroughMarker';
 
 export const blockContentField = {
   title: 'Block Content',
@@ -84,6 +85,7 @@ export const blockContentField = {
         decorators: [
           { title: 'Strong', value: 'strong' },
           { title: 'Emphasis', value: 'em' },
+          strikeThroughMarker,
           highlightMarker,
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
