@@ -53,6 +53,9 @@ export const portableComponents = {
     },
   },
   marks: {
+    strikethrough: ({ children }: { children: React.ReactNode }) => (
+      <s>{children}</s>
+    ),
     // TODO: enhance these components PLEEEAAAASE
     highlight: ({ children, ...props }: { children: React.ReactNode }) => {
       return <Highlight {...props}>{children}</Highlight>;
