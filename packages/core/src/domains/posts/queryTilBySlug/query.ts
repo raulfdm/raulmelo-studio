@@ -8,6 +8,11 @@ export const tilBySlugQuery = groq`
   language,
   content[]{
     ...,
+    "image": image.asset ->{
+      url,
+      "width": metadata.dimensions.width,
+      "height": metadata.dimensions.height,
+    },
     markDefs[]{
       ...,
       _type == "internalLink" => {
@@ -15,8 +20,14 @@ export const tilBySlugQuery = groq`
       "itemMeta": @.item -> {
         "slug": slug.current,
         _type
-      }
+      },
     },
+    _type == "detailedImage" => {
+        ...,
+        "image": @.image -> {
+          ...
+        }
+      }
     }
   },
   "slug": slug.current,
