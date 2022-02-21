@@ -26,19 +26,18 @@ export const Image: React.FC<ImageProps> = ({
     width: image.width,
   };
 
-  const figureStyles = {
-    width: undefined,
-    margin: '0 auto',
-  } as CSSProperties;
+  const figureStyles = {} as CSSProperties;
 
   if (customWidth) {
     figureStyles.width = customWidth;
   }
 
   return (
-    <figure style={figureStyles}>
-      <NextImage src={image.url} {...props} layout="responsive" alt={alt} />
-      {caption ? <figcaption tw="text-center">{caption}</figcaption> : null}
-    </figure>
+    <div tw="flex items-center justify-center">
+      <figure style={figureStyles}>
+        <NextImage src={image.url} {...props} alt={alt} quality={90} />
+        {caption ? <figcaption tw="text-center">{caption}</figcaption> : null}
+      </figure>
+    </div>
   );
 };
