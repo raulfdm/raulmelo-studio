@@ -4,7 +4,7 @@ import '@raulmelo/ui/dist/prism.css';
 
 import { CSSObject, Global } from '@emotion/react';
 import { SupportedLanguages } from '@raulmelo/core';
-import { motion } from 'framer-motion';
+import { AnimatePresence, domAnimation, LazyMotion, m } from 'framer-motion';
 import { AppProps } from 'next/dist/shared/lib/router/router';
 import Head from 'next/head';
 import Script from 'next/script';
@@ -102,23 +102,27 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
       />
 
       <LocalizationProvider>
-        <AppContextProvider>
-          <MenuBar />
-          <motion.main
-            className="grid-container"
-            animate="enter"
-            exit="exit"
-            initial="initial"
-            key={router.route}
-            variants={{
-              initial: { opacity: 0, x: 40 },
-              enter: { opacity: 1, x: 0 },
-              exit: { opacity: 0, x: -40 },
-            }}
-          >
-            <Component {...pageProps} />
-          </motion.main>
-        </AppContextProvider>
+        <LazyMotion features={domAnimation} strict>
+          <AppContextProvider>
+            <MenuBar />
+            <AnimatePresence>
+              <m.main
+                className="grid-container"
+                animate="enter"
+                exit="exit"
+                initial={false}
+                key={router.route}
+                variants={{
+                  initial: { opacity: 0, x: 40 },
+                  enter: { opacity: 1, x: 0 },
+                  exit: { opacity: 0, x: -40 },
+                }}
+              >
+                <Component {...pageProps} />
+              </m.main>
+            </AnimatePresence>
+          </AppContextProvider>
+        </LazyMotion>
       </LocalizationProvider>
     </>
   );
