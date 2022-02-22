@@ -1,6 +1,5 @@
 const isAnalyzerMode = process.env.ANALYZE === 'true';
 
-const { redirects } = require('./config/redirects');
 const path = require('path');
 const withPlugins = require('next-compose-plugins');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
@@ -14,7 +13,6 @@ const nextConfig = {
   experimental: {
     esmExternals: 'loose',
   },
-  target: 'serverless',
   reactStrictMode: true,
   i18n: {
     locales: ['en', 'pt'],
@@ -36,13 +34,23 @@ const nextConfig = {
       },
     ];
   },
-  redirects,
+  redirects: async () => {
+    return [
+      {
+        source: '/cv',
+        destination:
+          'https://docs.google.com/document/d/1xk0ChmPckqW85xtM1Hizx2tVbo2B61xjcpz-_dAH3f8',
+        permanent: true,
+      },
+    ];
+  },
   images: {
     domains: [
       'res.cloudinary.com',
       'miro.medium.com',
       'media.giphy.com',
       'cdn.sanity.io',
+      'sanity.io',
     ],
     formats: ['image/avif', 'image/webp'],
   },

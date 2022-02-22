@@ -1,7 +1,7 @@
+import { AlgoliaObjectList } from '@raulmelo/core/dist/types/domains/algolia';
 import algolia from 'algoliasearch';
 
 import { SETTINGS } from '../config';
-import { AlgoliaObjectList } from './types';
 
 export async function pushAlgoliaData(
   indexName: string,

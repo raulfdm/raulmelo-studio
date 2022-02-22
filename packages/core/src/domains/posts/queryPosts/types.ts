@@ -1,20 +1,18 @@
 import { SupportedLanguages } from '../../../types';
 
-export interface IBlogPageApiResponse {
-  posts: IBlogPagePost[];
-}
+export type IBlogPageApiResponse = IBlogPagePost[];
 
 export interface IBlogPagePost {
-  id: string;
-  locale: SupportedLanguages;
+  _id: string;
+  language: SupportedLanguages;
   slug: string;
-  date: string;
+  publishedAt: string;
   title: string;
   subtitle?: string;
   description: string;
-  featured_image: IBlogPageFeaturedImage;
-  post_serie: IBlogPagePostSerieClass | null;
-  post_tags: IBlogPagePostSerieClass[];
+  featuredImage?: IBlogPageFeaturedImage;
+  tags: IBlogPagePostTags[];
+  series?: IBlogPageSeries;
 }
 
 interface IBlogPageFeaturedImage {
@@ -23,8 +21,13 @@ interface IBlogPageFeaturedImage {
   url: string;
 }
 
-interface IBlogPagePostSerieClass {
+interface IBlogPageSeries {
   slug: string;
   name: string;
-  id: string;
+  _id: string;
+}
+interface IBlogPagePostTags {
+  slug: string;
+  name: string;
+  _id: string;
 }

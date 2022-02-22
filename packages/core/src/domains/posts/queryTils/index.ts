@@ -1,11 +1,16 @@
+import { SUPPORTED_LANGUAGES } from 'src/config/languages';
+
 import { client } from '~config';
 
 import { AllSupportedLanguages } from '../../../types';
-import { query } from './query';
+import { tilQuery } from './query';
 import { ITilsApiResponse } from './types';
 
 export async function queryTils(
-  locale: AllSupportedLanguages,
+  language: AllSupportedLanguages,
 ): Promise<ITilsApiResponse> {
-  return client.request(query, { locale });
+  const languages = language === 'all' ? SUPPORTED_LANGUAGES.all : [language];
+  return client.fetch(tilQuery, { languages });
 }
+
+export type { ITilsTil } from './types';

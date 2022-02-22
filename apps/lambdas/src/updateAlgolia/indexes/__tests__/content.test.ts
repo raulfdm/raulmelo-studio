@@ -1,16 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { AlgoliaObject } from '../../types';
+
+import { AlgoliaObject } from '@raulmelo/core/dist/types/domains/algolia';
+
 import { getContentToAlgolia } from '../content';
-
-jest.mock('../../../utils/api', () => {
-  const { postApi } = require('../__fixtures__/content');
-
-  return {
-    api: {
-      query: jest.fn(() => Promise.resolve(postApi)),
-    },
-  };
-});
 
 describe('fn: getPostsToAlgolia', () => {
   let indexName: string;

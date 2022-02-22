@@ -2,1049 +2,771 @@
 
 exports[`fn: getPostsToAlgolia returns expected data structure 1`] = `
 Object {
-  "date_timestamp": "1588032000",
-  "excerpt": "Hey, devs. How is it going during this quarantine? Hope you’re not getting crazy like I'm 😬.
+  "date_timestamp": "1637107200",
+  "excerpt": "Monorepo architecture has become more popular over the years, which is understandable considering the problem it solves. The biggest challenge, though, is finding an easy-to-use tool for handling such a structure.
 
-Today I’d like to bring to you a new feature announced on April 22 by Gatsby team: **Incremental builds**.
+If you Google \\"monorepo tool javascript\\", you'll find many articles showing the most popular options we have, and curiously each one attempts to solve that problem in a very different way.
 
-<Tweet tweetId=\\"1252991368005324800\\" />
+From the options we have, some are there for a while (like Lerna) but no longer actively maintained; others never went out from draft (like Bolt), others are working fine but only for a specific kind of project.
 
-To follow this guide you will need to know about Gatsby (of course) but also a bit of knowledge of using Github Actions. I won’t dive deep in the details of how to set up a CI environment using it so it’s important to at least have the basics.
+Unfortunately, we don't have a killer tool that fits all types of JavaScript/Typescript projects and all sizes of teams, and that's understandable.
 
+Yet there's one (\\"new\\") option that might help us in most cases: **pnpm workspaces**.
 
-
- Gatsby bottleneck
-
-Gatsby is an amazing toolkit to create static websites using React or maybe set up your JAM (JavaScript, API, and Markup) application. Everything works fine, you can find a bunch of plugins to avoid infrastructure code and the concepts are relatively easy to understand since their documentation is well written and has details about almost everything.
-
-The problem starts as soon as your website starts to have a lot of pages or maybe like my blog, you have a lot of images that need to be processed and compressed to ship a good experience for those who are reading it.
-
-When I start my blog, a build would take approximately less than 2 minutes. After migrating my posts from Medium, in the CI it usually takes from 6 to 8 minutes. As you can imagine, as many posts, images, and data you have I add, as slower my build command becomes.
+But before talking about pnpm, let me tell you my monorepo/workspaces usage and how I managed to solve that in the first place.
 
 
 
- Incremental Build
+ My Blog
 
-Of course, I’m not the only one having this issue. The Gatsby community and adoption are becoming bigger every year given all benefits which it brings for us, developers.
+When I first created my blog, I bootstrapped a Next.js application, put it into a git repository, and pushed the scaffolding code there.
 
-Knowing that they just released a feature called Incremental Build.
+After a while, I needed to set up the CMS to hold my content. Then I created a Strapi application, put it into another git repository, and pushed it to another Github repo.
 
-The name is self-explanatory I imagine, you’ll only build/generate what have been changed.
+Then, I decided to fork a library called \`mdx-prism\` to fix some minor problems and automate its deployment. Once again, another new git repository containing its code and setup.
 
-Let’s imagine you have a website which has 2 pages, home and about. Then you change something on the “About” page and want to ship it. Does it make sense to build both pages? You only have changed in one. It’s a waste of time and resources.
+I had 3 git repos implied that I had 3 eslint, prettier, jest, babel, and typescript configs, but I handled it for a while.
 
-With this flag, it’ll check all files previously generated and understand what needs to be built.
+Soon, I became bothered by every dependency update (like TypeScript); I had to update in all repositories (three pull requests). Every new thing I learned like a new eslint rule, I agree, I had to go in there and change three times and so on.
 
-Another nice benefit of it is if you’re using a CMS which triggers a build for each change you’ve made in a post, page, or any data, you’ll see almost immediately your change live and this is sick!
+My first instinct was:
 
+> What if I put all projects inside a single folder and repository, create my base config and use it to extend each project's config?
 
+Unfortunately, I couldn't simply drop the files there, extend, and hope it works because things are more complex than that. The tools need module/file resolution, and I didn't want to ship all projects when I was about to deploy.
 
- How it works
+At that moment, I realized I needed a monorepo tool to do this linking and make my experience better.
 
-If you check their docs, it already has a page under the “improve performance” section which explains what’s the feature and how it works.
+I tried some solutions, and the easiest way to get up and running was Lerna + Yarn Workspaces.
 
-In a nutshell, when you run \`yarn gatsby build\`, it generates 2 folders:
+Of course, along the setup process, I had had some gotchas like understanding why some builds were failing (not all apps likes hoisted dependencies), had to adapt my pipelines, and how I deployed each project. Still, I managed everything and had a decent setup.
 
-1. \`public/\`. Here it’s your website. Is the folder you need to host in a web server (e.g. Github Pages, Netlify, etc.)
-1. \`.cache/\`. Here it’s all files cached to speed up the building process.
-
-My first thought was: “Ok, I only need to persist cache and everything will work” but reading till the end they made clear: Both pages need to be persisted.
-
-> Note that until this date I’m writing this post, this feature does not work for \`gatsby develop\`
+With the bare minimum setup, I started to create even more small independent modules/apps to re-use, extend and try out new tools without impacting my existing code. That was the moment I saw with my own eyes how amazing it's working a monorepo.
 
 
 
- My problem
+ About Lerna + Yarn Workspaces
 
-Well, I already explained a bit about my problem: I have tons of images to be processed and a bunch of posts already.
+Lerna is a high-level monorepo tool that provides abstractions to simultaneously manage a single or multiple apps/packages. 
 
-Even when I’m working by myself, I like to create feature branches for my projects just because I can easily revert code or decisions I made by just pressing a button on Github.
+You can run commands (e.g., build, test, lint) for all the projects you control with a single command-line instruction, or if you prefer, you can even filter a specific project with the flag \`--scope\`.
 
-So, imagine the situation. I create a feature branch, do my changes and apart from the pipeline saying to me: “Hey, lint, tests, and build are working fine, ship it”, I like to see a live preview that Netlify offers to me.
+Yarn Workspaces is a low-level tool that handles the packages installation, creates a symlink between projects, and allocates the modules in root and controlled projects folders.
 
-The first time takes 8 minutes.
+You can use either Lerna or Yarn Workspaces to manage your repository, but you may have noticed that they are more complementary than exclusionary. In other words, they work really well together.
 
-Then when I see it online, I notice that I forgot to see something. I fix it and push. Another 8 minutes.
+Even nowadays, this combination is still a good choice, but some \\"problems\\" might be highlighted:
 
-Another case I have is when dependabot creates a PR for me from a major version or maybe I’m using a beta version from some dependency like I’m doing right now with framer-motion.
+- Yarn Workspaces (at least for v1) is no longer receiving new features and improvements (the last update was from 2018);
+- Lerna documentation is OK, but you have to figure out a lot of things by yourself;
+- Lerna publishing system is not as simple as it seems, especially to generate automated publishes with commit lint;
+- You can easily get lost on understanding the commands you have to run or what commands are being run by other commands you invoke;
+- Lerna CLI  has problems like [you cannot install multiple dependencies at the same time](https://github.com/lerna/lerna/issues/2004);
+- Lerna CLI \`--scope\` is not reliable and hard to understand and use;
+- There's a [wizard](https://github.com/webuniverseio/lerna-wizard) to help us with regular tasks, but it seems to be being maintained outside the main repo;
+- [Lerna is currently unmaintained](https://github.com/lerna/lerna/issues/2703issuecomment-744601134);
 
-The pipeline will say it’s green but I still want to check the live preview and be sure that the change won’t affect the experience I want for my website.
+By the time it was created (in 2015), Lerna had come up to help us with this lack of tooling to manage JS monorepos, and it did amazingly well.
 
-When the Gatsby team announced, they (for obvious reasons) did an ad for their cloud platform, Gatsby Cloud.
-
-I have to confess that I was planning on moving there until I realized that when you connect Gatsby Cloud with Github, it has a bug (it might be already fixed) that does not update the stats of “build” to “done”.
-
-After that, I just had one option, making it work for Github Actions.
-
-First I tried to Google to see if people already had solved this problem but I couldn’t find anything. Maybe because it’s new, maybe because google search didn’t rank well yet.
-
-Even not being a CI expert, I have figured out a bunch of stuff by myself reading official docs and inspecting how people set up in open-source projects (pro tip), then I just decided to try by myself.
-
-
-
- Setting it up
-
-To enable this feature, be sure you have installed gatsby version 2.20.4 or higher.
-
-After that, you need to specify an environment variable named **GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES** to true in your build context, like:
-
-\`\`\`shell
-GATSBY_EXPERIMEN",
-  "featured_image": Object {
-    "height": 889,
-    "url": "https://res.cloudinary.com/duzei21zt/image/upload/v1597942390/site/cache_gatsby_github_actions_featured_img_844a0fe924.png",
-    "width": 1920,
+Though because they might not have a dedicated team (or a few people) to work on that, plan the future of the tool, Lerna is slowly dyin",
+  "featuredImage": Object {
+    "height": 1260,
+    "url": "https://cdn.sanity.io/images/gc3hakk3/production/f3be09a1be3373867ac367d2425e80c37958a9bb-2400x1260.png",
+    "width": 2400,
   },
-  "id": "5f3eaabd8d32c410783fbe9b",
-  "locale": "en",
-  "objectID": "Content_5f3eaabd8d32c410783fbe9b",
-  "publishedAt": "2020-04-28",
-  "slug": "cache-gatsby-github-actions",
-  "subtitle": "A quick setup to increase your build performance",
+  "id": "fe63b616-8f70-44c3-9227-fd0625ca3103",
+  "language": "en",
+  "objectID": "Content_fe63b616-8f70-44c3-9227-fd0625ca3103",
+  "slug": "replacing-lerna-and-yarn-with-pnpm-workspaces",
   "tags": Array [
     Object {
-      "id": "5f390975f5ec161249bd8cdf",
-      "name": "Front-end",
-      "slug": "front-end",
+      "_id": "a98ba9c8-b2ec-4fdd-a47d-80714402d9b4",
+      "name": "pnpm",
+      "slug": "pnpm",
     },
     Object {
-      "id": "5f39098ef5ec161249bd8ce0",
-      "name": "DevOps",
-      "slug": "devops",
+      "_id": "92be336e-3b55-40df-93e7-7942428bd8b9",
+      "name": "Package Manager",
+      "slug": "package-manager",
     },
     Object {
-      "id": "5f3948d4e57aa266137e0ffc",
-      "name": "Github Actions",
-      "slug": "github-actions",
+      "_id": "74087cc8-2774-4aa6-b39d-15f12e457351",
+      "name": "JavaScript",
+      "slug": "javascript",
     },
     Object {
-      "id": "5f39642d2163ea002152ca9c",
-      "name": "CI/CD",
-      "slug": "ci-cd",
+      "_id": "7fc7bb85-6f69-4d28-a04d-1f1a29953880",
+      "name": "Monorepo",
+      "slug": "monorepo",
     },
   ],
-  "title": "Gatsby Incremental Builds and Github Actions",
-  "type": "post",
+  "title": "Replacing Lerna + Yarn with PNPM Workspaces",
 }
 `;
 
 exports[`fn: getPostsToAlgolia returns expected data structure 2`] = `
 Object {
-  "date_timestamp": "1584576000",
-  "excerpt": "More and more, we, web developers need to learn about different areas to become better professionals and less dependent on others for simple things.
+  "date_timestamp": "1625702400",
+  "excerpt": "Hey, devs.
 
-If you start a career as FE, you might see a lot of \`.yml\` files like \`.travis.yml\` (for Travis Build), \`.gitlab-ci.yml\` (for git lab CI), etc. but, let's be honest, what the hell?
+Today I want to present to you a simpler and (IMO) better way to have installed different versions of the same runtime in your machine with a single tool called \`asdf\`.
 
-Why would people use this kind of file? What's the benefit of it? How does this thing work?
+The tool itself is relatively simple, the docs are well written and you won’t have trouble getting started asap.
 
-So, the goal of this article is to introduce you to the \`YAML\` structure and give you more confidence to understand, read, and change a file like this when you need it.
-
-After all, we tend to feel very uncomfortable and frustrated and we need to do something and we can't even understand what's that.
+Here I will just make a summary and present you some gotchas I had after a while using it.
 
 
 
- But first, What is YAML?
+ The Hell of Runtime Versions
 
-According to [the official website](https://yaml.org/), Yaml is:
+Back in 2013 when I was learning development in college, I remember having a lot of trouble running some projects because they rely on a specific Java version.
 
-<BigQuote>
-  \\"YAML (a recursive acronym for \\"YAML Ain't Markup Language\\") is a
-  human-friendly data serialization standard for all programming languages.\\"
-</BigQuote>
+“Oh, this one uses Java 5, I need to download the runtime. But wait, I already have Java 6 in my machine… damn”
 
-Heavily used to write configuration files, which explains A LOT, right?
+This was very overwhelming, especially because I didn’t have much experience and back then my professors and colleagues didn’t know a better way of easing this problem.
 
-People were tired to have a bunch of configs nobody could understand until someone just say:
+In the first company I started work as a software developer, all backend apps were written in ruby and well… the exact same problem.
 
-> What if we could somehow write our configuration like a \\"cake recipe\\"? I mean minimum bare text, very straight forward?
+To avoid consuming the production/staging environment while I was coding my client-side application, I needed to run a couple of servers in my machine and, again, they required different ruby versions.
 
-Boom, in May 2001 Yaml was created.
+Luckily the backend team had a wiki page recommending to use a tool called RVM (Ruby Version Manager), which as the name already explains itself, is a CLI to control multiple ruby versions in our machine.
+
+And it worked pretty well, to be honest.
+
+After a while coding front-end applications, I started to see more often the same problem happening with node js.
+
+> This project uses node 7. But I have node 10 installed... Oh no…
+
+When I googled to find a similar solution as \`rvm\`, I found NVM (Node Version Manager), which does the same thing as \`rvm\` but for the Node runtime.
+
+Ok, now I have 2 CLIs to handle the same problem.
+
+It was then I started to study Go and thought: “oh, here we go again… another CLI”.
+
+After I complained about that to a colleague he said:
+
+> Why the heck don't you use \`asdf\` for all these languages?
+
+And my mind explodes because of course, if I was bothered dealing with that, someone in the plant was bothered as well, and most importantly: he/she had already created a tool that solves this problem.
 
 
 
- YAML vs JSON
+ The Master CLI: asdf
 
-Surprisingly (or not really), Yaml is a superset of our well-known buddy JSON.
+\`asdf\` is a CLI tool that solves the runtime version management in a well-architected and elegant way: by being a single tool for all runtimes.
 
-> \\"Superset is A programming language that contains all the features of a given language and has been expanded or enhanced to include other features as well.\\" - [Font](https://encyclopedia2.thefreedictionary.com/superset)
+The idea is that \`asdf\` is a core application that does the handling heavy-lifting of providing CLI options, being hooked via terminal, etc. but instead of also solving the version available for **every single runtime that exists**, it delegates this to third party plugins.
 
-If I could give you a perspective of what it means I would say:
+![asdf workflow](https://res.cloudinary.com/duzei21zt/image/upload/v1625743285/site/asdf_1_4ab74a00a5.png)
 
-> In a FE world, Yaml would matches for TypeScript while JSON for JavaScript
+This means that \`asdf\` does not care about any runtime like java, go, deno, rust, or whatever, but it provides an abstract interface where someone in the community can simply create and maintain a plugin that provides all the information to download the version X for example.
 
-To better understand how this would be even possible let's see this example:
+If you’re familiar with Front-end development, this is pretty much like babel does. It handles our code but you can write your plugin that hooks there and do something else without creating a burden to the Babel’s team to maintain the code itself.
 
-\`\`\`json:tsconfig.json
-{
-  \\"compilerOptions\\": {
-    \\"module\\": \\"system\\",
-    \\"noImplicitAny\\": true,
-    \\"removeComments\\": true,
-    \\"preserveConstEnums\\": true,
-    \\"outFile\\": \\"../../built/local/tsc.js\\",
-    \\"sourceMap\\": false,
-    \\"types\\": [\\"node\\", \\"lodash\\", \\"express\\"]
+The following sections will show how the tooling works. If you want to try, you need to make sure that you have \`asdf\` properly installed and configured in your bash, fish, or zsh terminal configuration.
+
+> [asdf installation guide](https://asdf-vm.com//core-manage-asdf?id=install)
+
+ Plugins
+
+As I mentioned, a plugin is a specific runtime manager. In that sense, the \`asdf-ruby\` plugin only deals with how to download ruby runtime, which version was released, etc.
+Installing a plugin is relatively easy but I strongly recommend you check the plugin’s repository and see if there are more instructions needed before adding it.
+
+> Check here [all plugins available](https://asdf-vm.com//plugins-all) for \`asdf\`
+
+In general, the instruction follows the same basic way of installing, running \`asdf plugin add <plugin-name> <git-url>\`. The \`git-url\` isn’t required but recommended just to be sure you’re consuming for the correct repository:
+
+\`\`\`bash
+asdf plugin add nodejs
+asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+\`\`\`
+
+Now, my \`asdf\` will have 2 plugins: one capable to manage node versions and another to manage ruby versions.
+
+ Versions
+
+The plugin itself won’t add any version by default. It’s time to finally install some versions we want to use in some projects.
+
+For this example I want to have in my machine:
+Latest \`10.2\` version of node
+Latest \`14\` version of node
+Exact \`2.6.5\` version of Ruby
+Latest \`2.7\` version of Ruby
+
+For all these versions I'll run \`asdf install <plugin-name> <version>\`. So all I need to do is running in the terminal:
+
+\`\`\`bash
+asdf install nodejs latest:10.2
+asdf install nodejs latest:14
+asdf install ruby 2.6.5
+asdf instal",
+  "featuredImage": Object {
+    "height": 3316,
+    "url": "https://cdn.sanity.io/images/gc3hakk3/production/e97a867f0e9443c42b8a042e3d714c8594f36f08-5196x3316.jpg",
+    "width": 5196,
   },
-  \\"include\\": [\\"src/**/*\\"],
-  \\"exclude\\": [\\"node_modules\\", \\"**/*.spec.ts\\"]
-}
-\`\`\`
-
-This is a \`tsconfig.json\` example. very easy to read, we can easily identify what's what but... it has some limitations, like:
-
-- Can't create variables;
-- Can't use external variables (e.g. environment variables)
-- Override values;
-
-In JS world, if we can create a \`.json\` a configuration file, we almost always also can create a \`.js\` (like \`.eslintrc\` or \`.eslint.js\`) which allows us to mitigate the CONS mentioned before.
-
-But then, if you're using other programing language, JS files isn't an option. And it's at this point Yaml starts to shine.
-
-If we'd have to re-write the \`tsconfig.json\` in \`YAML\` syntax and having the exactly result, it'd be like:
-
-\`\`\`yaml:tsconfig.yml
-compilerOptions:
-  module: system
-  noImplicitAny: true
-  removeComments: true
-  preserveConstEnums: true
-  outFile: '../../built/local/tsc.js'
-  sourceMap: false
-  types:
-    - node
-    - lodash
-    - express
-include:
-  - src/**/*
-exclude:
-  - node_modules
-  - '**/*.spec.ts'
-\`\`\`
-
-> Note this is only an example. You cannot write your \`tsconfig\` in YAML! 😜
-
-I hope you're starting to get the idea from these files.
-
-
-
- Concepts, Types, and Syntax
-
-Now, let's dive deep a bit in the concept of the language.
-
- Indentation
-
-<!-- prettier-ignore -->
-In Yaml, indentation **does matter**. It uses _whitespace indentation_ to nest information. By whitespace, keep in mind \`tab\` is not allowed.
-
-If you're like me and uses tab for everything, install some plugin in your IDE to replace your tabs for spaces (like [editorconfig](https://editorconfig.org/)). Doing that, when you hit a tab, it'll automatically replace your tab by space and you don't even need to use your space bar! ;)
-
- Root
-
-Since indentation matters here, if there's no space before the first declaration YAML will understand that's the root (level 0) of your file:
-
-\`\`\`yml
-person:
-  age: 20
-\`\`\`
-
-Like we have in JSON with the first \`{\` curly brackets:
-
-\`\`\`json{1}
-{
-  \\"person\\": {
-    \\"age\\": 20
-  }
-}
-\`\`\`
-
- Key/Value
-
-Like in JSON/JS, \`YAML\` also uses the \`key/value\` syntax and you can use in various ways:
-
-\`\`\`yml
-key: value
-key_one: value one
-key one: value  This works but it's weird
-'my key': somekey
-\`\`\`
-
- Comments
-
-To write a comment you just have to use \`\` followed by your message.
-
-\`\`\`yml
- I'm a comment
-person:  I'm also a comment
-  age: 20
-\`\`\`
-
-This is cool to document some decision or make a note. Unfortunately, we can't do this with JSON.
-
- Lists
-
-There're 2 ways to write lists:
-
- JSON way: array of strings
-
-Remember Yaml is a JSON's superset? we can use its syntax:
-
-\`\`\`yml
-people: ['Anne', 'John', 'Max']
-\`\`\`
-
- Hyphen syntax
-
-The most common (and probably recommended)
-
-\`\`\`yml
-people:
-  - Anne
-  - John
-  - Max
-\`\`\`
-
- Strings
-
-There're a few ways to declare a string in Yaml:
-
-<!-- prettier-ignore -->
-\`\`\`yml
-company: Goog",
-  "featured_image": Object {
-    "height": 1106,
-    "url": "https://res.cloudinary.com/duzei21zt/image/upload/v1598005862/site/yaml_para_desenvolvedores_web_featured_img_4c38d17c77.png",
-    "width": 2684,
-  },
-  "id": "5f3fa398d511c2380b097af0",
-  "locale": "en",
-  "objectID": "Content_5f3fa398d511c2380b097af0",
-  "publishedAt": "2020-03-19",
-  "slug": "yaml-for-web-developers",
-  "subtitle": "A small guide to help you write and read .yml files",
+  "id": "c1d296f4-35b0-41c2-99be-beff7583f193",
+  "language": "en",
+  "objectID": "Content_c1d296f4-35b0-41c2-99be-beff7583f193",
+  "slug": "how-to-manage-multiple-runtime-versions-with-a-single-tooling",
+  "subtitle": "A quick walkthrough on asdf CLI",
   "tags": Array [
     Object {
-      "id": "5f3fa2bad511c2380b097ae9",
-      "name": "Yaml",
-      "slug": "yaml",
+      "_id": "96f6acec-77a2-4940-b09d-51bb6d036f53",
+      "name": "Tooling",
+      "slug": "tooling",
     },
     Object {
-      "id": "5f3fa370d511c2380b097aee",
-      "name": "Introduction",
-      "slug": "introduction",
+      "_id": "fbdf4642-4a9b-4feb-93ca-64e57f8bb9f6",
+      "name": "Software Development",
+      "slug": "software-development",
     },
     Object {
-      "id": "5f3fa377d511c2380b097aef",
-      "name": "Development",
-      "slug": "development",
+      "_id": "923bef9b-658c-40cd-8b8a-42291e5d8268",
+      "name": "Runtime Management",
+      "slug": "runtime-management",
     },
   ],
-  "title": "YAML for Web Developers",
-  "type": "post",
+  "title": "How to Manage Multiple Runtime Versions With a Single Tooling",
 }
 `;
 
 exports[`fn: getPostsToAlgolia returns expected data structure 3`] = `
 Object {
-  "date_timestamp": "1606608000",
+  "date_timestamp": "1625097600",
   "excerpt": "Hello, devs.
 
-This is might be an old topic but I think it still can be a bit confused when you try to do this configuration:
+Today I want to dive deep into a very specific data structure to hold a collection that's called Linked List.
 
-> How can I add aliases to my imports?
+First I'll briefly explain the array problem and how linked lists came to solve those problems and then we'll how to implement that in JavaScript.
 
-The idea here is to do not stitch in any specific framework/tool but to give you an idea of knowing what and how to do, based on your application setup.
+I already can say that as a JS dev I don't see big use cases because we have natively a pretty decent way of handling collections. However, as a software engineer, I consider it very important to have a base understanding of it in case I need it in the future.
 
-First, let's check what problem we're trying to solve, a solution in a more abstract way and how to configure your project to support that.
+> Knowledge is power and never useless.
 
 
- Table of Content
 
-- [Problem](problem)
-- [Solution](solution)
-- [Configuration](configuration)
-  - [Editor completion](editor-completion)
-  - [Babel](babel)
-  - [Rollup](rollup)
-  - [Webpack](webpack)
-  - [Jest](jest)
-  - [Typescript](typescript)
-  - [Other Tools](other-tools)
-- [Prefix Strategy](prefix-strategy)
-- [Conclusion](conclusion)
+ About Lists
 
- Problem
+Arrays are one of the most efficient ways of storing data collections like a list of friends on Instagram for example.
 
-In well-structured JavaScript applications it's common we organize our codebase in a way that makes explicit what these files do or each domain they belong to.
+In JavaScript when we want to create a list of something, all we need is a very simple open/close square bracket (\`[]\`) and push as many elements you want to it.
 
-Notwithstanding we don't have a standard of \\"how to structure\\", we always try to organize like \`components\`, \`helpers\`, \`models\`, etc. and sometimes, creating subfolders inside these folders and as consequence, creating a deeply nested structure.
+However in some other languages, especially the ones which are focus on performance the approach is different. There, if you need a list, you have to specify the size of your list, which sometimes is a problem because we often handle dynamic data.
 
-Let's see an example of a tiny and not too nested app folder structure:
+And it makes sense to have this approach. If you have little memory and need to write some code that compiles a very low machine language (like binary) if you say that your list will have only 3 elements, for example, the compiler can say:
 
-\`\`\`markdown
-.
-├── package.json
-├── src
-│   ├── components
-│   │   └── Button
-│   │       ├── Button.js
-│   │       └── index.js
-│   ├── helpers
-│   │   └── text.js
-│   └── index.js
-└── yarn-error.log
+> Hey, for this list here can be allocated only a few bytes because we know in advance it'll only contain a max of 3 elements
+
+Also, if you want to insert or remove an element in some specific position, you need to entirely move the list and these operations could be tedious and expensive.
+
+In JS we don't suffer much about that because the language was designed in that way and we also have native array methods (very well optimized I suppose) that remove or add an element and regen the list, like the method [\`Array.prototype.splice()\`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice).
+
+\`\`\`js
+const months = ['Jan', 'March', 'April', 'June'];
+
+// insert exactly in the index one (1, 0) the string \`Feb\`
+months.splice(1, 0, 'Feb');
+
+console.log(months); // Array [\\"Jan\\", \\"Feb\\", \\"March\\", \\"April\\", \\"June\\"]
+
+// removes everything from the index 3 til the last el (\\"April\\" and \\"June\\")
+months.splice(3, months.length)
+
+console.log(months); // [\\"Jan\\", \\"Feb\\", \\"March\\"]
 \`\`\`
 
-This is a very basic setup where:
 
-1. We have our \`src\` (source) which holds our app code;
-2. \`src/components\` which holds all our app components;
-3. \`src/helpers\`, which holds all our helpers/utilities which can be used anywhere in our code
 
-Now let's say we to import a function called \`sanitizeText\` from our helper text inside our Button component. We would do something like:
+ Linked List: Concept
 
-\`\`\`jsx
-import React from \\"react\\";
-import { sanitizeText } from \\"../../helpers/text\\";
+Linked list implementation tries to solve the max number of elements we can store in a list and how to easily navigate through a list by change the data structure used from arrays to simple linked objects (node).
 
-export const Button = ({ text }) => {
-  return <button>{sanitizeText(text)}</button>;
-};
+Every node will have 2 properties:
+
+- \`element\`: the data we want to store in our list;
+- \`next\`: a link to another node or the value null (non-existing next node).
+
+Maybe the best way to visualize it is by imagining a train.
+
+In a train we always have the \\"head\\" which and from there it's connected the first \\"wagon\\", then a second \\"wagon\\" is connected to the first until the end of the train.
+
+If we want to remove a defective wagon, for example, all we need to do is find this wagon, link the previous wagon to the next wagon, and done.
+
+The principle is the same when we want to add a new \\"wagon\\". All we need is to find where we want to add it, connect the previous and the next wagon into the new one.
+
+In other words, linked lists are all about creating and modifying connections between nodes.
+
+In the next section, we'll step-by-step implement all those additions and removals and you'll that it's a relatively simple concept.
+
+
+
+ Linked List: Implementation
+
+Before any implementation, let's take a look in the API we'll need for this kind of list:
+
+- \`.append(element)\` - method used to append a new element to the end of the list;
+- \`.indexOf(element)\` - method used to known where in the index our element was added;
+- \`.insertAt(position, element)\` - method used to add an element in a specific position;
+- \`.remove(element)\` - method used to remove an element from the list;
+- \`.removeAt(position)\` - method used to remove an element in some specific position;
+- \`.toString()\` - method used to have an overview of our list.
+
+Once again, instead using JS classes/prototype, I'm going to use my favorite pattern Factory with some placeholders for our API already:
+
+\`\`\`js
+function LinkedListFactory() {
+  return {
+    append,
+    indexOf,
+    insertAt,
+    remove,
+    removeAt,
+    toString,
+  };
+
+  function append(element) {}
+
+  function indexOf(element) {}
+
+  function insertAt(position, element) {}
+
+  function remove(element) {}
+
+  function removeAt(position) {}
+
+  function toString() {}
+}
 \`\`\`
 
-It's not so bad, but as soon as you start having more and more imports from different folders and levels, it starts to become more confusing.
+ \\"Global\\" variables
 
-Also, you **always** need to guess how many levels you have to go up and down to import your code. Of course, modern code editors can help you out with that by just showing you which level you are and sometimes even completing it for you, but still.
+Before implementing the methods, we'll need to create 2 variables that will be used in almost all methods:
 
-Another problem is that if you eventually create a subfolder (for whatever reason you might have), you need to fix ALL imports by adding another \\"go up\\" level in the path.
+- \`head\` - variable to hold our very first element, where everything will start. It'll start with the value \`null\`;
+- \`length\` - a control variable to easily hold the list size. It'll start with the value \`0\`.
 
-That's not too much work but isn't by far optimal. We have a better way to do that and it's via \`module resolution\` or \`import alias\`
-
- Solution
-
-Module resolution or import alias is a way we can emulate the same way we import \`node_modules\` but with our internal code.
-
-We can say to the tool we're using:
-
-> Hey, when you encounter \\"helpers/text\\", could you consider \\"./src/helpers/text\\" please?
-
-In the same example above we would have some code like this:
-
-\`\`\`jsx
-import React from \\"react\\";
-import { sanitizeText } from \\"helpers/text\\";
-
-export const Button = ({ text }) => {
-  return <button>{sanitizeText(text)}</button>;
-};
-\`\`\`
-
-Much cooler, right?
-
-You'll import from \`helpers\` and it does not matter how deep you are in your app structure. Even if you move around this file, the imports will be always correct.
-
-At the end of the day it's like import a library in our project. Imagine if you have to every time go up and down inside \`node_modules\` until you find your dependency:
-
-\`\`\`jsx
-import React from \\"react\\";
-import { sanitizeText } from \\"helpers/text\\";
-import { camelCase } from '../../../node_modules/lodash'
-
-export const Button = ({ text }) => {
-  return <button>{camelCase(sanitizeText(text))}</button>;
-};
-\`\`\`
-
-This would be hell. A lot of waste of energy having to navigate to the code.
-
- Configuration
-
-JavaScript itself does not allow us doing that those imports natively. But luckily we are always using a tool that supports that (e.g. Babel, Webpack, etc).
-
-You might think:
-
-> Nice, I only need to do once this configuration!
-
-And the answer is: it depends... but probably not.
-
-The more tooling you introduce in your application, the more complicated it becomes to get it configured. Here some examples where this could be tricky:
-
-- If you're working on a JS project only with **Babel** and add **jest** to test your app, you'll need to add aliases in **both** places.
-- If you're working in a JS project with some built-in **Webpack** config and you add **Storybook**, you'll need to add an alias in both \`webpack.config.js\` and also customize Storybook \`babel.config.js\`.
-- If you're working on a JS project with all these configurations and want to move to **TypeScript**, you'll need to keep this configuration everywhere plus configure the \`tsconfig.json\` file to let TS aware of how to resolve those aliases.
-
-As you can see this can",
-  "featured_image": Object {
-    "height": 630,
-    "url": "https://res.cloudinary.com/duzei21zt/image/upload/v1606664570/site/post_alias_cover_033d2ce8c5.png",
-    "width": 1200,
+\`\`\`js
+function LinkedList",
+  "featuredImage": Object {
+    "height": 4000,
+    "url": "https://cdn.sanity.io/images/gc3hakk3/production/4ecac30d3d148098bc511364a9074ac94ebf2543-6000x4000.jpg",
+    "width": 6000,
   },
-  "id": "5fc3be95cbcafe002155aa29",
-  "locale": "en",
-  "objectID": "Content_5fc3be95cbcafe002155aa29",
-  "publishedAt": "2020-11-29",
-  "slug": "module-resolution-or-import-alias-the-final-guide",
-  "subtitle": "A guide how to enable this feature in (almost) any JS/TS project.",
+  "id": "9260ffdc-e0b9-4706-a36b-beae7b7c3f2d",
+  "language": "en",
+  "objectID": "Content_9260ffdc-e0b9-4706-a36b-beae7b7c3f2d",
+  "slug": "data-structure-with-javascript-linked-list",
+  "subtitle": "What is and how to implement a basic linked list in JavaScript",
   "tags": Array [
     Object {
-      "id": "5f390975f5ec161249bd8cdf",
-      "name": "Front-end",
-      "slug": "front-end",
+      "_id": "5ef50e3e-954a-4f07-a17a-a4c95cd780dc",
+      "name": "Computer Science",
+      "slug": "computer-science",
     },
     Object {
-      "id": "5f3972a5c998c60021565c2c",
-      "name": "JavaScript",
-      "slug": "javascript",
-    },
-    Object {
-      "id": "5fc3bea4cbcafe002155aa2b",
-      "name": "Typescript",
-      "slug": "typescript",
-    },
-    Object {
-      "id": "5fc3beb6cbcafe002155aa2c",
-      "name": "Tooling",
-      "slug": "tooling",
+      "_id": "8db1ecbb-65fa-4526-bd3b-b33aa68c15fa",
+      "name": "Data Structure",
+      "slug": "data-structure",
     },
   ],
-  "title": "Module Resolution or Import Alias: The Final Guide",
-  "type": "post",
+  "title": "Data Structure with JavaScript: Linked List",
 }
 `;
 
 exports[`fn: getPostsToAlgolia returns expected data structure 4`] = `
 Object {
-  "date_timestamp": "1597536000",
-  "excerpt": "Hello, devs.
+  "date_timestamp": "1621641600",
+  "excerpt": "When we talk about queue as a data structure, it's exactly the same as you can imagine in real-world examples: a lot of things a line one in front of the other, waiting for something, like the imagine hero shows.
 
-For the last couple of weeks, I've been participating in a hiring process for a big company.
+In this post, we're gonna talk about the basic implementation of a queue (like a supermarket queue), a priority queue (like a hospital queue), and also a circular queue (like a list of things you have to do repetitively).
 
-It was a very nice experience and it gave me a lot of insights about hiring, code challenges, and how (possibly) to become more prepared for interviews.
+ Basic Queue
 
-As you already saw in the title, I didn't pass, but I went through all the stages of it. So it might be interesting for you if you're trying to get your first job, or even if you're thinking of switching jobs but don't do interviews for a couple of years already.
+The basic queue will give us the base for the other queues. Here, we need to implement a mechanism called FIFO (First In, First Out), which means the first element added will be the first to be removed.
 
-I'll explain all stages, with some details and thoughts, but my main focus here is to tell where and why I failed in the last part of it.
+To start, let's see the API interface we need to implement that:
 
-Hope you like it and I hope my experience can help you somehow!
+- \`enqueue(element)\` - add new element(s) to the queue;
+- \`dequeue()\` - remove first element from the queue;
+- \`front()\` - returns the first element from the queue (for checking purposes);
+- \`isEmpty()\` - returns if the queue is empty or not;
+- \`size()\` - returns how many elements the queue contains.
 
- Table of content
+> Keep in mind that the API might differ from different languages which have Queue native or other implementations, but the principles are the same.
 
-- [Stage 1: Getting an interview](stage-1-getting-an-interview)
-- [Stage 2: Human Resources (aka HR)](stage-2-human-resources-aka-hr)
-- [Stage 3: The managers](stage-3-the-managers)
-- [Stage 4: the HR (again)](stage-4-the-hr-again)
-- [Stage 5 (latest): The devs](stage-5-latest-the-devs)
-  - [About me](about-me)
-  - [Technical questions](technical-questions)
-    - [JavaScript questions](javascript-questions)
-    - [CSS questions](css-questions)
-    - [HTTP questions](http-questions)
-  - [Technical Challenge](technical-challenge)
-  - [After the test](after-the-test)
-- [The last HR Call](the-last-hr-call)
-- [Thoughts about hiring X our skills](thoughts-about-hiring-x-our-skills)
-- [Learnings](learnings)
-- [Conclusion](conclusion)
+There are many ways of creating this structure, some people would straight use JS class but personally, I like to use the \`factory\` approach.
+
+So let's create a factory function with a placeholder for all those methods:
+
+\`\`\`js
+function QueueFactory() {
+  const items = [];
+
+  return {
+    enqueue,
+    dequeue,
+    front,
+    isEmpty,
+    size,
+  };
+
+  function enqueue() {}
+
+  function dequeue() {}
+
+  function front() {}
+
+  function isEmpty() {}
+
+  function size() {}
+}
+\`\`\`
+
+ .enqueue(element)
+
+This method will simple take an element as argument and add to the end of the list:
+
+\`\`\`js
+function enqueue(element) {
+  items.push(element)
+}
+\`\`\`
+
+ .dequeue()
+
+Dequeue will remove the first element of our items and return it. We can simple use \`Array.prototype.shift\` for that task:
+
+\`\`\`js
+function dequeue() {
+  return items.shift();
+}
+\`\`\`
+
+> Friendly reminder that shift mutates \`items\` array.
+
+ .front()
+
+This method will only return for visibility purposes the first element of the list:
+
+\`\`\`js
+function front() {
+  return items[0];
+}
+\`\`\`
+
+ .isEmpty()
+
+As the name says, this method will check if our queue is empty or not:
+
+\`\`\`js
+function isEmpty() {
+  return items.length === 0;
+}
+\`\`\`
+
+ .size()
+
+This will simply return the length of our list:
+
+\`\`\`js
+function size() {
+  return items.length;
+}
+\`\`\`
+
+ (Optional) .print() / .queue()
+
+It's important that we don't expose our queue as part of the public interface because the whole idea is having a custom implementation for arrays.
+
+Also, arrays are mutable, which means that if the user (we or other devs) push has access to the reference, new elements could be pushed or removed.
+
+So if you want to provide a method to check the entire list, you could return a copy of this list:
+
+\`\`\`js
+function queue() {
+  return [...items];
+}
+\`\`\`
+
+Or maybe a method which prints the list:
+
+\`\`\`js
+function print() {
+  console.log(items.toString());
+  // or console.log(JSON.stringify(items))
+}
+\`\`\`
+
+ Final result
+
+\`\`\`js
+function QueueFactory() {
+  const items = [];
+
+  return {
+    enqueue,
+    dequeue,
+    front,
+    isEmpty,
+    size,
+    print
+  };
+
+  function enqueue(element) {
+    items.push(element);
+  }
+
+  function dequeue() {
+    return items.shift();
+  }
+
+  function front() {
+    return items[0];
+  }
+
+  function isEmpty() {
+    return items.length === 0;
+  }
+
+  function size() {
+    return items.length;
+  }
+
+  function print() {
+    console.log(items.toString());
+  }
+}
+
+
+const myQueue = QueueFactory();
+
+myQueue.enqueue(3);
+myQueue.enqueue(2);
+myQueue.enqueue(6);
+
+console.log(myQueue.front()); // 3
+myQueue.print(); // 3,2,6
+
+console.log(myQueue.dequeue()); // 3
+myQueue.print(); // 2,6
+\`\`\`
 
 
 
- Stage 1: Getting an interview
+ Priority Queue
 
-A very common practice in companies, in general, is to motivate people (with money) to recommend professionals to fill opening jobs (that's a good reason why you should build good connections as much as you can with people in and out of the internet).
+In some cases, only the basic queue isn't enough. We need that behavior but we also want to take into account priorities, like a hospital emergency queue where the worst case has the highest priority no matter when it arrives first.
 
-A friend of mine recommended me to work in his company. Good salary, very well structured and it seemed a very good place to work in, why not try it out?
+The good news is that from our previous implementation, only a few changes will be necessary.
 
-I just needed to do some adjustments to my [online CV](https://www.raulmelo.dev/cv/) and I was ready.
+ Internal data structure
 
-
-
- Stage 2: Human Resources (aka HR)
-
-The HR from the company just called me to know a bit about me.
-
-They asked about all my experience, things I've done in my life, whether I had some specific knowledge (like React, testing, Redux, etc) and also questioned about the company I'm working on.
-
-To be honest this call just seemed to be a filter for people who lied on their CV, because everything was very basic and trivial.
-
-I was pretty confident in all the answers I gave to her, and at the end of the call she just gave me a positive feedback and then she'd schedule the next phase with the tech lead and team manager.
+Before we were simply pushing the element we received from our \`enqueue\` method into a list.
 
 
+Now, to keep tracking which element has higher or lower priority we might want to have an internal structure, a simple object where we simply hold the element and the priority:
 
- Stage 3: The managers
+\`\`\`js
+function createQueueElement(element, priority) {
+  return {
+    element,
+    priority,
+  };
+}
+\`\`\`
 
-The following week, I had a 1-hour meeting (now with webcam) with the \\"managers\\".
+Now, iniside the \`enqueue\` method, we have to also accept a priority, so we create our element with our internal structure:
 
-Their job was getting to know about my soft skills. A lot of questions like:
 
-- What is the proudest moment of my career
-- What was the worst technical decision I have ever made
-- How I deal with conflicts
-- How I deal with top-down decision
-- How I handle hard discussions
+\`\`\`js
+function enqueue(element, priority) {
+  const newEl = createQueueElement(element, priority);
+  
+  items.push(newEl)
+}
+\`\`\`
 
-And in between those questions, they constantly asked me to give out examples of situations I have experienced that exemplifies that I thought or worked out a solution in the way I was explaining.
+Nothing has changed until here, only our internal data structure.
 
-It was very nice because I could remember some good and bad moments in my career which made me grow up a lot as a professional and also as a person.
+ Priority
 
-When I turned the call off, I was still very confident about the final result.
-
-After a couple of days, the HR called me saying the managers liked me and the way I answered their questions (maybe someday I can share in details some situations I've been through and my current way to deal with people and job).
-
-The only feedback she gave to me was: \\"I needed to be less of a follower\\".
-
-And... of course, they thought I was more of a follower than a leader or something because, to be honest, I'm almost 30 and I kinda lost the energy to keep fighting pointless discussions about technical tastes and personal ways to code.
-
-I have my opinions and I always can argue why I have them, but to be honest, when the discussion reaches the moment where it's an ego thingy or personal taste, I just give up and let people do what they want.
-
-I **do not** care about:
-
-- what's the best JS framework;
-- what's the best state management library;
-- if we should use reduce or map + filter
-- if we should use \`it\` or \`test\` in jest assertions
-
-I **do** care about:
-
-- what solution fits best for the problem;
-- good naming;
-- tested code;
-- a simple solution when it's possible;
-- ship the product;
-- my salary at the end of the month;
-
-In the past, I used to have endless debates about what's best, what's the worst. Nowadays I still have these discussions but if I notice that we're not going anywhere, I just agree and live my life.
-
-But of course, don't be a fool. If I'm convinced that some bad decisions are being made and I can argue that a different approach is better, I'll certainly pursue my vision for a better ",
-  "featured_image": Object {
-    "height": 2324,
-    "url": "https://res.cloudinary.com/duzei21zt/image/upload/v1598186651/site/siora_photography_hg_FY_1m_ZY_Y0_unsplash_2529f3a52d.jpg",
-    "width": 3537,
+To take into account where to add the element we'll need to loop over all items and check if ",
+  "featuredImage": Object {
+    "height": 3648,
+    "url": "https://cdn.sanity.io/images/gc3hakk3/production/7228f4b494fc6dc189da4dd31ec908bb39659ae3-5472x3648.jpg",
+    "width": 5472,
   },
-  "id": "5f425861cc63b728e57641d3",
-  "locale": "en",
-  "objectID": "Content_5f425861cc63b728e57641d3",
-  "publishedAt": "2020-08-16",
-  "slug": "i-failed-an-interview-because-of-an-algorithm",
-  "subtitle": null,
+  "id": "826a32b0-6718-4327-a592-6da0bda52e98",
+  "language": "en",
+  "objectID": "Content_826a32b0-6718-4327-a592-6da0bda52e98",
+  "slug": "data-structure-with-javascript-queue",
+  "subtitle": "How to implement basic, priority and circular queue in JavaScript.",
   "tags": Array [
     Object {
-      "id": "5f390f92f95eb21417e28f68",
-      "name": "Career",
-      "slug": "career",
+      "_id": "5ef50e3e-954a-4f07-a17a-a4c95cd780dc",
+      "name": "Computer Science",
+      "slug": "computer-science",
     },
     Object {
-      "id": "5f390f99f95eb21417e28f69",
-      "name": "Interview",
-      "slug": "interview",
-    },
-    Object {
-      "id": "5f390fb6f95eb21417e28f6a",
-      "name": "Job",
-      "slug": "job",
+      "_id": "8db1ecbb-65fa-4526-bd3b-b33aa68c15fa",
+      "name": "Data Structure",
+      "slug": "data-structure",
     },
   ],
-  "title": "I failed an interview because of an algorithm",
-  "type": "post",
+  "title": "Data Structure with JavaScript: Queue",
 }
 `;
 
 exports[`fn: getPostsToAlgolia returns expected data structure 5`] = `
 Object {
-  "date_timestamp": "1618790400",
-  "excerpt": "For some reason, when we install Rust VSCODE extension the formatter does not work by default.
-To do that I we need to enforce the formatter via \`settings.json\` (or User preference)
+  "date_timestamp": "1618531200",
+  "excerpt": "As a JavaScript developer (no matter back or front-end), we often rely upon \`npm scripts\` to automate common tasks like starting a server, building a project, and even performing tasks before or after certain scripts like \`postbuild\`, \`prebuild\`, etc.
+
+When those commands are simple like \`node index.js\`, having them a single line in our package.json isn't a problem at all. The real problem starts when we need an extensive command, adding environment variables, and concatenating commands:
+
+(Example extracted from [Material UI package.json](https://github.com/mui-org/material-ui/blob/830c18ba71af19bc0370f1eeb902f9f605144a5d/package.json))
+\`\`\`json
+{
+    \\"scripts\\": {
+      \\"proptypes\\": \\"cross-env BABEL_ENV=development babel-node --extensions \\\\\\".tsx,.ts,.js\\\\\\" ./scripts/generateProptypes.ts\\",
+      \\"deduplicate\\": \\"node scripts/deduplicate.js\\",
+      \\"benchmark:browser\\": \\"yarn workspace benchmark browser\\",
+      \\"build:codesandbox\\": \\"lerna run --parallel --scope \\\\\\"@material-ui/*\\\\\\" build\\",
+      \\"release:version\\": \\"lerna version --exact --no-changelog --no-push --no-git-tag-version\\",
+      \\"release:build\\": \\"lerna run --parallel --scope \\\\\\"@material-ui/*\\\\\\" build\\",
+      \\"release:changelog\\": \\"node scripts/releaseChangelog\\",
+      \\"release:publish\\": \\"lerna publish from-package --dist-tag next --contents build\\",
+      \\"release:publish:dry-run\\": \\"lerna publish from-package --dist-tag next --contents build --registry=\\\\\\"http://localhost:4873/\\\\\\"\\",
+      \\"release:tag\\": \\"node scripts/releaseTag\\",
+      \\"docs:api\\": \\"rimraf ./docs/pages/api-docs && yarn docs:api:build\\",
+      \\"docs:api:build\\": \\"cross-env BABEL_ENV=development __NEXT_EXPORT_TRAILING_SLASH=true babel-node --extensions \\\\\\".tsx,.ts,.js\\\\\\" ./docs/scripts/buildApi.ts  ./docs/pages/api-docs ./packages/material-ui-unstyled/src ./packages/material-ui/src ./packages/material-ui-lab/src --apiPagesManifestPath ./docs/src/pagesApi.js\\",
+      \\"docs:build\\": \\"yarn workspace docs build\\",
+      \\"docs:build-sw\\": \\"yarn workspace docs build-sw\\",
+      \\"docs:build-color-preview\\": \\"babel-node scripts/buildColorTypes\\",
+      \\"docs:deploy\\": \\"yarn workspace docs deploy\\",
+      \\"docs:dev\\": \\"yarn workspace docs dev\\",
+      \\"docs:export\\": \\"yarn workspace docs export\\",
+      \\"docs:icons\\": \\"yarn workspace docs icons\\",
+      \\"docs:size-why\\": \\"cross-env DOCS_STATS_ENABLED=true yarn docs:build\\",
+      \\"docs:start\\": \\"yarn workspace docs start\\",
+      //.....
+    }
+}
+\`\`\`
+
+
+But what if I told you could have those commands extracted into a separate file and having a \`scripts\` config like this:
 
 \`\`\`json
 {
-    \\"[rust]\\": {
-        \\"editor.defaultFormatter\\": \\"rust-lang.rust\\", // Makes the magic
-        \\"editor.formatOnSave\\": true // Optional
-    },
+    \\"scripts\\": {
+      \\"proptypes\\": \\"scripty\\",
+      \\"deduplicate\\": \\"scripty\\",
+      \\"benchmark:browser\\": \\"scripty\\",
+      \\"build:codesandbox\\": \\"scripty\\",
+      \\"release:version\\": \\"scripty\\",
+      \\"release:build\\": \\"scripty\\",
+      \\"release:changelog\\": \\"scripty\\",
+      \\"release:publish\\": \\"scripty\\",
+      \\"release:publish:dry-run\\": \\"scripty\\",
+      \\"release:tag\\": \\"scripty\\",
+      \\"docs:api\\": \\"scripty\\",
+      \\"docs:api:build\\": \\"scripty\\",
+      \\"docs:build\\": \\"scripty\\",
+      \\"docs:build-sw\\": \\"scripty\\",
+      \\"docs:build-color-preview\\": \\"scripty\\",
+      \\"docs:deploy\\": \\"scripty\\",
+      \\"docs:dev\\": \\"scripty\\",
+      \\"docs:export\\": \\"scripty\\",
+      \\"docs:icons\\": \\"scripty\\",
+      \\"docs:size-why\\": \\"scripty\\",
+      \\"docs:start\\": \\"scripty\\",
+    }
+   //.....
 }
-\`\`\`",
-  "featured_image": Object {},
-  "id": "6081113c532c3c28f38780df",
-  "locale": "en",
-  "objectID": "Content_6081113c532c3c28f38780df",
-  "publishedAt": "2021-04-19",
-  "slug": "how-to-format-rust-code-on-save-in-vscode",
-  "subtitle": null,
-  "tags": Array [
-    Object {
-      "id": "60811147532c3c28f38780e0",
-      "name": "Rust",
-      "slug": "rust",
-    },
-    Object {
-      "id": "6085122f8d4cc978989e764c",
-      "name": "VSCode",
-      "slug": "vscode",
-    },
-  ],
-  "title": "How to format Rust code \\"on save\\" in VSCODE",
-  "type": "til",
-}
-`;
-
-exports[`fn: getPostsToAlgolia returns expected data structure 6`] = `
-Object {
-  "date_timestamp": "1618704000",
-  "excerpt": "Let's say you have the following folder structure:
-
-\`\`\`text
-.
-├── exercise
-└── variables
-    ├── Cargo.lock
-    ├── Cargo.toml
-    └── src
-        └── main.rs
 \`\`\`
 
-You're in root level and wants  to run Cargo for \`variables\` folder. All you need to do is specifying \`--manifest-path\`:
 
-\`\`\`bash
-cargo run --manifest-path variables/Cargo.toml
-\`\`\`",
-  "featured_image": Object {},
-  "id": "6083bcfbe06b20719026b4b2",
-  "locale": "en",
-  "objectID": "Content_6083bcfbe06b20719026b4b2",
-  "publishedAt": "2021-04-18",
-  "slug": "how-to-run-cargo-in-a-nested-folder",
-  "subtitle": null,
-  "tags": Array [
-    Object {
-      "id": "60811147532c3c28f38780e0",
-      "name": "Rust",
-      "slug": "rust",
-    },
-  ],
-  "title": "How to run Cargo in a nested folder",
-  "type": "til",
-}
-`;
 
-exports[`fn: getPostsToAlgolia returns expected data structure 7`] = `
-Object {
-  "date_timestamp": "1617580800",
-  "excerpt": "The site is [\`https://type-scale.com/\`](https://type-scale.com/).
+ Scripty
 
-It basically allow us creating great typography scale system using different scale rules:
+Scripty is a npm package that enables us the ability to have executable files to run \`npm scripts\`.
 
-![image.png](https://res.cloudinary.com/duzei21zt/image/upload/v1619253544/site/image_8d33c5df45.png)
-",
-  "featured_image": Object {},
-  "id": "6083d93d242a834d1a70ee7d",
-  "locale": "en",
-  "objectID": "Content_6083d93d242a834d1a70ee7d",
-  "publishedAt": "2021-04-05",
-  "slug": "there-is-a-website-which-generates-typography-scale",
-  "subtitle": null,
-  "tags": Array [
-    Object {
-      "id": "5f3eaea98d32c410783fbea9",
-      "name": "CSS",
-      "slug": "css",
-    },
-  ],
-  "title": "There is a website which generates typography scale",
-  "type": "til",
-}
-`;
+The whole idea is to treat these giant script lines we have as code and keep our package.json clean and simple.
 
-exports[`fn: getPostsToAlgolia returns expected data structure 8`] = `
-Object {
-  "date_timestamp": "1618790400",
-  "excerpt": "Por algum motivo, quando a gente instala o plugin do Rust pro VSCODE, o formatador não funciona por padrão.
-
-Pra corrigir isso, precisamos configurar nas preferências do usuário (\`settings.json\`):
+Let's say we have this:
 
 \`\`\`json
 {
-    \\"[rust]\\": {
-        \\"editor.defaultFormatter\\": \\"rust-lang.rust\\", // Makes the magic
-        \\"editor.formatOnSave\\": true // Optional
-    },
-}
-\`\`\`",
-  "featured_image": Object {},
-  "id": "60844e4acfbc7bff4150ed5c",
-  "locale": "pt",
-  "objectID": "Content_60844e4acfbc7bff4150ed5c",
-  "publishedAt": "2021-04-19",
-  "slug": "como-formatar-codigo-rust-ao-salvar-no-vscode",
-  "subtitle": null,
-  "tags": Array [
-    Object {
-      "id": "60811147532c3c28f38780e0",
-      "name": "Rust",
-      "slug": "rust",
-    },
-    Object {
-      "id": "6085122f8d4cc978989e764c",
-      "name": "VSCode",
-      "slug": "vscode",
-    },
-  ],
-  "title": "Como formatar código Rust \\"ao salvar\\" no VSCODE",
-  "type": "til",
-}
-`;
-
-exports[`fn: getPostsToAlgolia returns expected data structure 9`] = `
-Object {
-  "date_timestamp": "1619308800",
-  "excerpt": "One thing that always annoyed me is that the suggestions in VSCode always showed up the snippets first and then the methods, properties, etc.:
-
-
-![2021-04-25_08-49.png](https://res.cloudinary.com/duzei21zt/image/upload/v1619333480/site/2021_04_25_08_49_f957952952.png)
-
-Today I've learned we can customize where to show the snippets. To do that you can go to \`Preferences: Open User Settings\`, search for \`suggestions\` and go to the option \`Editor: Snippet Suggestion\`.
-
-There you can choose the order, which in my case was \`top\` and now will be \`inline\`:
-
-![2021-04-25_08-54.png](https://res.cloudinary.com/duzei21zt/image/upload/v1619333658/site/2021_04_25_08_54_5bf29c5911.png)
-",
-  "featured_image": Object {},
-  "id": "608512238d4cc978989e764b",
-  "locale": "en",
-  "objectID": "Content_608512238d4cc978989e764b",
-  "publishedAt": "2021-04-25",
-  "slug": "choose-the-suggestion-order-in-vscode",
-  "subtitle": null,
-  "tags": Array [
-    Object {
-      "id": "6085122f8d4cc978989e764c",
-      "name": "VSCode",
-      "slug": "vscode",
-    },
-  ],
-  "title": "We can choose the suggestion order in VSCode",
-  "type": "til",
-}
-`;
-
-exports[`fn: getPostsToAlgolia returns expected data structure 10`] = `
-Object {
-  "date_timestamp": "1610496000",
-  "excerpt": "I've never realized that everything we pass from the 3thrd + n via setTimeout is actually passed to the callback function:
-
-\`\`\`js
-function checkParams(...args){
-  console.log(args); //> ['b', true, 4]
+  \\"scripts\\": {
+    \\"lint\\": \\"eslint . --cache --report-unused-disable-directives --ext .js,.ts,.tsx --max-warnings 0\\"
+  }
 }
 
-setTimeout(checkParams, 200, /* From here til the end will be passed*/ 'b', true, 4);
 \`\`\`
 
- Resource
+Using scripty it'll look like this:
 
-- https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeoutparameters",
-  "featured_image": Object {},
-  "id": "60857b1187d544006174e1f9",
-  "locale": "en",
-  "objectID": "Content_60857b1187d544006174e1f9",
-  "publishedAt": "2021-01-13",
-  "slug": "settimeout-3thrd-argument-is-passed-to-the-callback",
-  "subtitle": null,
-  "tags": Array [
-    Object {
-      "id": "5f3972a5c998c60021565c2c",
-      "name": "JavaScript",
-      "slug": "javascript",
-    },
-  ],
-  "title": "In setTimeout, the 3thrd+n argument is passed to the callback",
-  "type": "til",
+\`\`\`json
+{
+  \\"scripts\\": {
+    \\"lint\\": \\"scripty\\"
+  }
 }
-`;
-
-exports[`fn: getPostsToAlgolia returns expected data structure 11`] = `
-Object {
-  "date_timestamp": "1610496000",
-  "excerpt": "Tudo que a gente passar do terceiro argumento pra frente pro \`setTimeout\` vai ser passado para a funćão callback:
-
-\`\`\`js
-function checkParams(...args){
-  console.log(args); //> ['b', true, 4]
-}
-
-setTimeout(checkParams, 200, /* Daqui pra frente */ 'b', true, 4);
 \`\`\`
 
- Referência
+ The magic behind
 
-- https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeoutparameters",
-  "featured_image": Object {},
-  "id": "60857c0b87d544006174e1fa",
-  "locale": "pt",
-  "objectID": "Content_60857c0b87d544006174e1fa",
-  "publishedAt": "2021-01-13",
-  "slug": "terceiro-argumento-pra-frente-passado-para-callback-settimeout",
-  "subtitle": null,
-  "tags": Array [
-    Object {
-      "id": "5f3972a5c998c60021565c2c",
-      "name": "JavaScript",
-      "slug": "javascript",
-    },
-  ],
-  "title": "O terceiro argumento pra frente é passado para a callback no setTimeout",
-  "type": "til",
-}
-`;
+Of course, the command we just removed needs to be somewhere. To make it simple as that, scripty does a pairing of \`<npm-script-nam>:<executable-file-name>\`.
 
-exports[`fn: getPostsToAlgolia returns expected data structure 12`] = `
-Object {
-  "date_timestamp": "1610496000",
-  "excerpt": "Arrow function has not its own scope. Instead it resolves it lexically which means that \\"it has access to whatever exists in the place where it's been created\\".
-
-Keep this in mind, it's not like \\"the this of arrow function is lexical\\". Actually it's \\"arrow function **DOES NOT** have this\\".
-
-To prove that you can try to call an arrow function with \`call()\`, \`apply()\` or \`bind()\` and it'll throw an error saying that.
+In other words, if we have an npm script called \`lint\`, we need an executable file called \`lint\`, \`lint.sh\`, or \`lint.js\`.
 
 
-\`\`\`js
-var obj = {
-  num: 100,
-};
+The default folder is always, at the root level, a folder called \`scripts\`. So, to solve the previous migration, we would create a file called \`lint.sh\` under the \`scripts\` folder, like this:
 
-var addFun = function (a, b, c) {
-  return this.num + a + b + c;
-};
-console.log(addFun.call(obj, 1,2,3)); // 106
-
-var addArrow = (a, b, c) => this.num + a + b + c;
-console.log(addArrow.call(obj, 1,2,3)); //> NaN (because \\"this\\"\\" is undefined)
-\`\`\`
-
- Resources
-
-- https://tc39.es/ecma262/sec-arrow-function-definitions-runtime-semantics-namedevaluation
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions",
-  "featured_image": Object {},
-  "id": "60857f1087d544006174e1fb",
-  "locale": "en",
-  "objectID": "Content_60857f1087d544006174e1fb",
-  "publishedAt": "2021-01-13",
-  "slug": "how-to-prove-that-arrow-function-does-not-have-this",
-  "subtitle": null,
-  "tags": Array [
-    Object {
-      "id": "5f3972a5c998c60021565c2c",
-      "name": "JavaScript",
-      "slug": "javascript",
-    },
-  ],
-  "title": "How to prove that arrow function does not have \\"this\\"",
-  "type": "til",
-}
-`;
-
-exports[`fn: getPostsToAlgolia returns expected data structure 13`] = `
-Object {
-  "date_timestamp": "1618012800",
-  "excerpt": "> **BE CAREFUL** : by doing this you'll completely erase ALL existing tags.
-
-We can simply run the following commands:
 
 \`\`\`bash
-Delete local tags.
-git tag -l | xargs git tag -d
-Fetch remote tags.
-git fetch
-Delete remote tags.
-git tag -l | xargs git push --delete origin
-Delete local tasg.
-git tag -l | xargs git tag -d
-\`\`\`",
-  "featured_image": Object {},
-  "id": "6085807687d544006174e1fc",
-  "locale": "en",
-  "objectID": "Content_6085807687d544006174e1fc",
-  "publishedAt": "2021-04-10",
-  "slug": "how-to-delete-all-local-and-remote-tags-from-a-github-repo",
-  "subtitle": null,
-  "tags": Array [
-    Object {
-      "id": "6085808587d544006174e1fd",
-      "name": "Git",
-      "slug": "git",
-    },
-  ],
-  "title": "How to delete all local and remote tags from a Github Repo",
-  "type": "til",
-}
-`;
+!/usr/bin/env bash
 
-exports[`fn: getPostsToAlgolia returns expected data structure 14`] = `
-Object {
-  "date_timestamp": "1619568000",
-  "excerpt": "One thing which bug my mind is the default way to text navigate in iTerm2.
-
-When you press \`cmd+arrow-left\` or \`option+arrow left\` for instance it, it throw \`[D\` key.
-
-In the best I used to replace what key it send to be able to walk through words. However I've found a better way of doing that.
-
-Just open iTerm2, \`Profiles -> Edit Profiles -> Keys\`. Then you click on \`Presets\` and select:  \`Natural Text Editing\`.
-
-Now we can have the same behavior as we have in other apps. :D
-
- 
-
- Resource
-
-- https://apple.stackexchange.com/a/218639",
-  "featured_image": Object {},
-  "id": "60899e6577ec420061b1197f",
-  "locale": "en",
-  "objectID": "Content_60899e6577ec420061b1197f",
-  "publishedAt": "2021-04-28",
-  "slug": "how-to-easy-fix-iterm2-text-navigation",
-  "subtitle": null,
-  "tags": Array [],
-  "title": "How to easy fix iTerm2 text navigation (cmd+arrow)",
-  "type": "til",
-}
-`;
-
-exports[`fn: getPostsToAlgolia returns expected data structure 15`] = `
-Object {
-  "date_timestamp": "1619740800",
-  "excerpt": "If you're trying to test your website tab navigation and the link (anchor tag) is not being focused, it might be the case it's missing \`href\`attribute:
-
-\`\`\`html
-<a>I'm not focusable</a>
-
-<a href=\\"/\\">I'm focusable</a>
+yarn eslint . --cache --report-unused-disable-directives --ext .js,.ts,.tsx --max-warnings 0
 \`\`\`
 
-In fact, they also have visually different style:
+ Executable Bash or .JS
 
-![Visual difference between anchor with and without href](https://res.cloudinary.com/duzei21zt/image/upload/v1619762823/site/Screenshot_2021_04_30_at_08_06_44_bdfc314872.png)
+Scripty can handle only handle bash or JavaScript executables.
 
-But this can be a bit tricky when you're using global styles to normalize all anchor styles, no matter its state.
-",
-  "featured_image": Object {},
-  "id": "608b9edde52738ac558e148d",
-  "locale": "en",
-  "objectID": "Content_608b9edde52738ac558e148d",
-  "publishedAt": "2021-04-30",
-  "slug": "anchor-tag-without-href-is-not-focusable",
-  "subtitle": null,
+To have one of those, the file needs to:
+
+1. having the shebang at the top of the file (e.g. \`!/bin/bash\` or \`!/bin/node\`;
+2. having permission to execute (while \`ls -la\`, it needs to have \`x\` flag);
+
+> Quick tip, if you're in a UNIX environment, you can quickly give this permission by running the command \`chmod u+x <file-path>\`
+
+
+Also, file extensions are not necessary. You can write a \`test.sh\`, \`test.js\` or only \`test\`. What will define the syntax highlight and the execution w",
+  "featuredImage": Object {
+    "height": 4312,
+    "url": "https://cdn.sanity.io/images/gc3hakk3/production/cde16fb7505ac11b315af8b5ca9179c284a6e6b5-6468x4312.jpg",
+    "width": 6468,
+  },
+  "id": "80be37b1-a1d9-4931-975b-1cf4640f7f7d",
+  "language": "en",
+  "objectID": "Content_80be37b1-a1d9-4931-975b-1cf4640f7f7d",
+  "slug": "how-to-have-better-npm-scripts",
+  "subtitle": "A quick npm package to ease your complex npm scripts",
   "tags": Array [
     Object {
-      "id": "5f3eaea98d32c410783fbea9",
-      "name": "CSS",
-      "slug": "css",
+      "_id": "74087cc8-2774-4aa6-b39d-15f12e457351",
+      "name": "JavaScript",
+      "slug": "javascript",
     },
     Object {
-      "id": "608b9ee8e52738ac558e148e",
-      "name": "HTML",
-      "slug": "html",
+      "_id": "96f6acec-77a2-4940-b09d-51bb6d036f53",
+      "name": "Tooling",
+      "slug": "tooling",
     },
   ],
-  "title": "A anchor tag without \\"href\\" is not focusable",
-  "type": "til",
+  "title": "How to have better NPM Scripts",
 }
 `;

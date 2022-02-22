@@ -21,7 +21,9 @@ export function getImageDimensionsFromSanityImageUrl(url: string) {
    * from sanity does not provide the dimensions
    */
   const REGEX = /-(\d*)x(\d*)./gm;
-  const [, width, height] = REGEX.exec(url);
+  const pattern = REGEX.exec(url) ?? [];
+
+  const [, width, height] = pattern;
 
   if (isNil(width) || isNil(height)) {
     throw new Error(`Could not parse image dimensions from url => "${url}"`);

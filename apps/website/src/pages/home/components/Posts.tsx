@@ -38,7 +38,7 @@ export const Posts = ({ posts, title }: PostsProps) => {
           {posts
             ? posts.map((post) => (
                 <motion.li
-                  key={post.id}
+                  key={post._id}
                   variants={itemsAnimationVariants}
                   initial="hidden"
                   animate="visible"

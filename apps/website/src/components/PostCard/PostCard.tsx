@@ -9,7 +9,7 @@ const styles = {
   imageWrapper: tw`relative rounded-sm shadow-sm aspect-w-16 aspect-h-9`,
   bodyWrapper: tw`my-4 md:my-3`,
   image: tw`object-cover rounded-sm`,
-  title: tw`font-black text-xl lg:text-lg`,
+  title: tw`text-xl font-black lg:text-lg`,
   titleLink: tw`relative inline-block cursor-pointer`,
   publishedAt: tw`block text-md lg:text-base font-sans mb-2.5`,
   subtitle: tw`text-lg lg:text-md text-primary dark:text-gray-200 text-opacity-80 dark:text-opacity-100`,
@@ -28,9 +28,11 @@ export const PostCard: React.FC<PostCardProps> = ({
 }) => {
   return (
     <section>
-      <div css={styles.imageWrapper}>
-        <Image src={imageUrl} layout="fill" css={styles.image} />
-      </div>
+      {imageUrl ? (
+        <div css={styles.imageWrapper}>
+          <Image src={imageUrl} layout="fill" css={styles.image} />
+        </div>
+      ) : null}
       <div css={styles.bodyWrapper}>
         <Link href={postUrl} passHref>
           <a css={styles.titleLink} {...titleLinkProps}>
@@ -59,7 +61,7 @@ export const PostCard: React.FC<PostCardProps> = ({
 };
 
 export type PostCardProps = {
-  imageUrl: string;
+  imageUrl?: string;
   postUrl: string;
   publishDate: string;
   subtitle?: string;

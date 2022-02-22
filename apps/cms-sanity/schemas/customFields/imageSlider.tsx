@@ -39,10 +39,18 @@ export const imageSliderField = {
 
       const images = value.images.filter(filterEmptyImage).map(prepareImages);
 
+      if (images.length === 0) {
+        return null;
+      }
+
       return <ImageSlider images={images} />;
 
       function filterEmptyImage(sanityImage: SanityImageSliderImage) {
-        return sanityImage.image?.['asset'] !== undefined;
+        return (
+          sanityImage.image?.['asset'] !== undefined ||
+          sanityImage.image?.['src'] !== undefined ||
+          sanityImage.image?.['alt'] !== undefined
+        );
       }
 
       function prepareImages(sanityImage: SanityImageSliderImage) {

@@ -47,8 +47,7 @@ export const til = {
     },
     {
       group: 'post',
-      type: 'markdown',
-      description: 'A Github flavored markdown field with image uploading',
+      type: 'blockContent',
       name: 'content',
     },
     {

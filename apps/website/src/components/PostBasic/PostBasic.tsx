@@ -17,7 +17,7 @@ const styles = {
     post: tw`bg-indigo-600`,
     til: tw`bg-yellow-600`,
   },
-  publishedAt: tw`block text-md font-sans`,
+  publishedAt: tw`block font-sans text-md`,
   subtitle: tw`text-lg lg:text-md text-primary dark:text-gray-200 text-opacity-80 dark:text-opacity-100`,
   tags: tw`mt-4`,
   tagLink: tw`underline cursor-pointer`,
@@ -27,7 +27,7 @@ export const PostBasic: React.FC<PostBasicProps> = ({
   title,
   subtitle,
   url,
-  type,
+  _type,
   publishedAt,
   tags,
   titleClassName,
@@ -53,15 +53,15 @@ export const PostBasic: React.FC<PostBasicProps> = ({
             />
           </time>
         </span>
-        {type ? (
-          <span css={[styles.type[type], styles.typeBase]}>{type}</span>
+        {_type ? (
+          <span css={[styles.type[_type], styles.typeBase]}>{_type}</span>
         ) : null}
       </div>
       {subtitle && <p css={styles.subtitle}>{subtitle}</p>}
       {tags ? (
         <Tags css={styles.tags}>
-          {tags.map(({ name, slug, id }) => (
-            <Tag key={id}>
+          {tags.map(({ name, slug, _id }) => (
+            <Tag key={_id}>
               <Link href={getTagUrl(slug)} passHref>
                 <a css={styles.tagLink}>#{name}</a>
               </Link>
@@ -77,7 +77,7 @@ export interface PostBasicProps {
   title: string;
   subtitle?: string;
   url: string;
-  type?: 'post' | 'til';
+  _type?: 'post' | 'til';
   className?: string | TwStyle;
   as?: React.ElementType;
   publishedAt: string;
@@ -85,6 +85,6 @@ export interface PostBasicProps {
   tags: {
     name: string;
     slug: string;
-    id: string;
+    _id: string;
   }[];
 }

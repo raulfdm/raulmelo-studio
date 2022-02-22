@@ -8,15 +8,16 @@
   "license": "UNLICENSED",
   "scripts": {
     "dev": "sanity start",
-    "build": "sanity build"
+    "build": "sanity build",
+    "deploy": "scripty"
   },
   "keywords": [
     "sanity"
   ],
   "dependencies": {
-    "@raulmelo/ui": "workspace:*",
-    "@raulmelo/styles": "workspace:*",
     "@raulmelo/core": "workspace:*",
+    "@raulmelo/styles": "workspace:*",
+    "@raulmelo/ui": "workspace:*",
     "@sanity/base": "2.26.0",
     "@sanity/core": "2.26.0",
     "@sanity/data-aspects": "2.18.0",

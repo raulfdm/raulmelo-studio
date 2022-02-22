@@ -1,4 +1,4 @@
-import { AllSupportedLanguages, domains } from '@raulmelo/core';
+import { domains, SupportedLanguages } from '@raulmelo/core';
 import { IBlogPagePost } from '@raulmelo/core/dist/types/domains/posts';
 import chunk from 'lodash.chunk';
 import { GetStaticProps } from 'next';
@@ -23,7 +23,7 @@ const BlogPage = ({ posts, ...props }: BlogPageProps) => {
    * I initially thought about using posts.length as useMemo dependency, however
    * two arrays with 10 elements don't have necessarily the same elements.
    */
-  const postsFootprint = JSON.stringify(posts.map((p) => p.id));
+  const postsFootprint = JSON.stringify(posts.map((p) => p._id));
 
   const postsChunks = React.useMemo(
     () => chunk(posts, POST_THRESHOLD),
@@ -44,9 +44,7 @@ const BlogPage = ({ posts, ...props }: BlogPageProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const { posts } = await domains.posts.queryPosts(
-    locale as AllSupportedLanguages,
-  );
+  const posts = await domains.posts.queryPosts(locale as SupportedLanguages);
 
   return {
     props: {

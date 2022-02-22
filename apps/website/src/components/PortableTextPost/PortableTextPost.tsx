@@ -1,6 +1,7 @@
 import 'twin.macro';
 
-import { PortableText, PortableTextBlock } from '@portabletext/react';
+import { PortableText } from '@portabletext/react';
+import { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts';
 import { ProseContainer } from '@raulmelo/ui';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -14,33 +15,31 @@ import { useLocalization } from '~/hooks/useLocalization';
 import siteData from '~/site-data';
 import { getTagUrl } from '~/utils/url';
 
-import {
-  FeaturedImage,
-  FeaturedImageProps,
-} from '../MdxPost/components/FeaturedImage';
-import { Header } from '../MdxPost/components/Header';
-import { PreviewBanner } from '../MdxPost/components/PreviewBanner/PreviewBanner';
+import { FeaturedImage } from './components/FeaturedImage';
+import { Header } from './components/Header';
 import { portableComponents } from './components/portableComponents';
+import { PreviewBanner } from './components/PreviewBanner/PreviewBanner';
 import { PrismStyles } from './components/PrismStyles';
 
-export const PortableTextPost: React.FC<MdxPostTemplateProps> = ({
+export const PortableTextPost: React.FC<PortableTextPostProps> = ({
   content,
-  postContent,
   featuredImage,
   title,
   subtitle,
   description,
   publishedAt,
   tags,
-  series,
+  seriesSection,
   nextSeo,
   preview,
+  unsplash,
 }) => {
   const { formatDate } = useLocalization();
   const { asPath } = useRouter();
 
   const seoInfo = useMemo(() => {
     const date = new Date(publishedAt).toISOString();
+
     return {
       title: title,
       /**
@@ -53,15 +52,15 @@ export const PortableTextPost: React.FC<MdxPostTemplateProps> = ({
       published: date,
       modified: date,
       image: {
-        url: featuredImage?.src ?? siteData.site.seo_image.url,
-        width: featuredImage?.width ?? siteData.site.seo_image.width,
-        height: featuredImage?.height ?? siteData.site.seo_image.height,
+        url: featuredImage?.url ?? siteData.site.seoImage.url,
+        width: featuredImage?.width ?? siteData.site.seoImage.width,
+        height: featuredImage?.height ?? siteData.site.seoImage.height,
       },
     };
   }, [
     title,
     description,
-    featuredImage?.src,
+    featuredImage,
     publishedAt,
     asPath,
     siteData.site.url,
@@ -75,7 +74,6 @@ export const PortableTextPost: React.FC<MdxPostTemplateProps> = ({
           rel="stylesheet"
         />
       </Head>
-
       <BlogJsonLd
         url={seoInfo.url}
         title={seoInfo.title}
@@ -83,9 +81,8 @@ export const PortableTextPost: React.FC<MdxPostTemplateProps> = ({
         images={[seoInfo.image.url]}
         datePublished={seoInfo.published}
         dateModified={seoInfo.modified}
-        authorName={[siteData.personalInformation.full_name]}
+        authorName={[siteData.personalInformation.fullName]}
       />
-
       <NextSeo
         title={seoInfo.title}
         description={seoInfo.description}
@@ -110,17 +107,11 @@ export const PortableTextPost: React.FC<MdxPostTemplateProps> = ({
         }}
         {...nextSeo}
       />
-
       <PrismStyles />
       {preview ? <PreviewBanner /> : null}
-
       {featuredImage ? (
-        <FeaturedImage
-          src={featuredImage.src}
-          unsplash={featuredImage.unsplash}
-        />
+        <FeaturedImage url={featuredImage.url} unsplash={unsplash} />
       ) : null}
-
       <section tw="w-full col-span-full lg:col-start-2 lg:col-end-12">
         <Header
           title={title}
@@ -130,18 +121,18 @@ export const PortableTextPost: React.FC<MdxPostTemplateProps> = ({
             month: 'short',
             day: '2-digit',
           })}
-          readingTime={
-            postContent ? getEstimatedReadingTime(postContent) : undefined
-          }
+          // readingTime={
+          //   postContent ? getEstimatedReadingTime(postContent) : undefined
+          // }
         />
-        {series?.top}
+        {seriesSection?.top}
         <ProseContainer tw="mt-8">
           <PortableText
             value={content}
             components={portableComponents as never}
           />
         </ProseContainer>
-        {series?.bottom}
+        {seriesSection?.bottom}
         <hr tw="mt-10 mb-6" />
         <footer tw="flex justify-between flex-wrap">
           {tags ? (
@@ -151,7 +142,7 @@ export const PortableTextPost: React.FC<MdxPostTemplateProps> = ({
               </span>
               <Tags>
                 {tags.map((tag) => (
-                  <Tag key={tag.id} tw="text-base lg:text-lg">
+                  <Tag key={tag._id} tw="text-base lg:text-lg">
                     <Link href={getTagUrl(tag.slug)} passHref>
                       <a tw="underline text-secondary">#{tag.name}</a>
                     </Link>
@@ -160,37 +151,33 @@ export const PortableTextPost: React.FC<MdxPostTemplateProps> = ({
               </Tags>
             </div>
           ) : null}
-          <ShareContent
-            twitter={{ text: description }}
-            linkedIn={{ title, summary: description }}
-          />
+          {description ? (
+            <ShareContent
+              twitter={{ text: description }}
+              linkedIn={{ title, summary: description }}
+            />
+          ) : null}
         </footer>
       </section>
     </>
   );
 };
 
-interface MdxPostTemplateProps {
-  /**
-   * parsed content via MDX remote
-   */
-  content: PortableTextBlock;
-  /**
-   * markdown content used to generate estimated reading time.
-   */
-  postContent?: string;
-  title: string;
-  description: string;
-  publishedAt: string;
+interface PortableTextPostProps
+  extends Omit<
+    IBlogPostBySlugApiResponse,
+    '_id' | 'unsplash' | 'featuredImage' | 'description' | 'slug' | 'tags'
+  > {
+  nextSeo?: NextSeoProps;
   preview?: boolean;
-  tags?: { id: string; slug: string; name: string }[];
-  featuredImage?: FeaturedImageProps & { width: number; height: number };
-  subtitle?: string;
-  series?: {
+  unsplash?: IBlogPostBySlugApiResponse['unsplash'];
+  featuredImage?: IBlogPostBySlugApiResponse['featuredImage'];
+  description?: IBlogPostBySlugApiResponse['description'];
+  seriesSection?: {
     top: JSX.Element | null;
     bottom: JSX.Element | null;
   };
-  nextSeo?: NextSeoProps;
+  tags?: IBlogPostBySlugApiResponse['tags'];
 }
 
 function getEstimatedReadingTime(text: string): number {

@@ -1,30 +1,18 @@
 import { domains, utils } from '@raulmelo/core';
 import { DotDivider } from '@raulmelo/ui';
-import fs from 'fs';
 import { GetStaticPaths } from 'next';
-import dynamic from 'next/dynamic';
-import path from 'path';
 import React from 'react';
 
-import { MdxPostTemplate } from '~/components/MdxPost';
-import { serializeMdx } from '~/config/mdx';
+import { PortableTextPost } from '~/components/PortableTextPost';
 
-import type { SeriesSection as SeriesSectionType } from './components/SeriesSection';
+import { SeriesSection } from './components/SeriesSection';
 import { BlogPostProps, GetStaticProps } from './types';
 
-const SeriesSection = dynamic(() =>
-  import('./components/SeriesSection').then((mod) => mod.SeriesSection),
-) as typeof SeriesSectionType;
-
-export const BlogPostPage: React.FC<BlogPostProps> = ({
-  content,
-  post,
-  preview,
-}) => {
-  const { featured_image, post_tags, unsplash, series } = post;
+export const BlogPostPage: React.FC<BlogPostProps> = ({ post, preview }) => {
+  const { series, ...restPost } = post;
 
   const allSeries = series ? (
-    <SeriesSection series={series} currentPostId={post.id} />
+    <SeriesSection series={series} currentPostId={post._id} />
   ) : null;
 
   const seriesWithDivider = series ? (
@@ -35,25 +23,13 @@ export const BlogPostPage: React.FC<BlogPostProps> = ({
   ) : null;
 
   return (
-    <MdxPostTemplate
-      content={content}
-      postContent={post.content}
+    <PortableTextPost
+      {...restPost}
       preview={preview}
-      featuredImage={{
-        src: featured_image.url,
-        unsplash,
-        width: featured_image.width,
-        height: featured_image.height,
-      }}
-      title={post.title}
-      subtitle={post.subtitle}
-      publishedAt={post.date}
       // share={{
       //   description: `${post.title}. ${post.subtitle}`,
       // }}
-      tags={post_tags}
-      description={post.description}
-      series={{
+      seriesSection={{
         top: allSeries,
         bottom: seriesWithDivider,
       }}
@@ -63,34 +39,32 @@ export const BlogPostPage: React.FC<BlogPostProps> = ({
 
 export const getStaticProps = async ({ params, preview }: GetStaticProps) => {
   const post = await domains.posts.queryPostBySlug(params.slug, preview);
-  const { isNil, isEmpty } = utils;
 
-  if (isNil(post) || isEmpty(post)) {
+  if (utils.isNil(post) || utils.isEmpty(post)) {
     return {
       notFound: true,
     };
   }
 
-  const content = await serializeMdx(post.content);
+  // TODO: do the time reading here instead client side
 
   return {
     props: {
       post,
-      content,
       preview: Boolean(preview),
     },
-    revalidate: 1,
+    revalidate: 60,
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { posts } = await domains.posts.queryPosts('all');
+  const posts = await domains.posts.queryPosts('all');
 
   const paths = posts.map((post) => ({
     params: {
       slug: post.slug,
     },
-    locale: post.locale,
+    locale: post.language,
   }));
 
   return {

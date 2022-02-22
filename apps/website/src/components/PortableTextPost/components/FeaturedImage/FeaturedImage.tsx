@@ -1,4 +1,4 @@
-import { IBlogPostBySlug } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
+import { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
 import Image from 'next/image';
 import React from 'react';
 import { defineMessages, FormattedMessage } from 'react-intl';
@@ -13,9 +13,9 @@ const messages = defineMessages({
 });
 
 export type FeaturedImageProps = {
-  src: string;
+  url: string;
   alt?: string;
-  unsplash: IBlogPostBySlug['unsplash'];
+  unsplash?: IBlogPostBySlugApiResponse['unsplash'];
 };
 
 const styles = {
@@ -27,7 +27,7 @@ const styles = {
 const Caption = tw.p`text-center text-base lg:text-md dark:text-gray-300 mt-4`;
 
 export const FeaturedImage: React.FC<FeaturedImageProps> = ({
-  src,
+  url,
   alt,
   unsplash,
 }) => {
@@ -41,7 +41,7 @@ export const FeaturedImage: React.FC<FeaturedImageProps> = ({
     >
       <figure css={styles.figure}>
         <Image
-          src={src}
+          src={url}
           layout="fill"
           objectFit="cover"
           alt={alt || formatMessage(messages.featuredImageLabel)}
@@ -55,7 +55,7 @@ export const FeaturedImage: React.FC<FeaturedImageProps> = ({
   );
 };
 
-type UnsplashCaptionProps = NonNullable<IBlogPostBySlug['unsplash']>;
+type UnsplashCaptionProps = NonNullable<IBlogPostBySlugApiResponse['unsplash']>;
 
 function UnsplashCaption({ authorName, url }: UnsplashCaptionProps) {
   return (

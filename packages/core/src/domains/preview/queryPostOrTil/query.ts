@@ -1,14 +1,17 @@
-import { gql } from 'graphql-request';
+import groq from 'groq';
 
-export const query = gql`
-  query PostOrTilQuery($where: JSON) {
-    tils(locale: "all", where: $where) {
-      slug
-      locale
-    }
-    posts(locale: "all", where: $where) {
-      slug
-      locale
-    }
-  }
+export const tilQuery = groq`
+*[_type=="til" && slug.current == $slug][0]{
+  "slug": slug.current,
+  language,
+  _type
+}
+`;
+
+export const postQuery = groq`
+*[_type=="post" && slug.current == $slug][0]{
+  "slug": slug.current,
+  language,
+  _type
+}
 `;

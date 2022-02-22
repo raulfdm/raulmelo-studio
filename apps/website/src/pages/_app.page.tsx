@@ -37,7 +37,7 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
 
       <SocialProfileJsonLd
         type="person"
-        name={siteData.personalInformation.full_name}
+        name={siteData.personalInformation.fullName}
         url={siteData.site.url}
         sameAs={siteData.socials.map((social) => social.url)}
       />
@@ -48,20 +48,20 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
       />
       <DefaultSeo
         title={defaultSeo.title}
-        titleTemplate={`%s · ${siteData.personalInformation.full_name}`}
+        titleTemplate={`%s · ${siteData.personalInformation.fullName}`}
         description={defaultSeo.description}
         canonical={siteData.site.url + (router.asPath || '')}
         openGraph={{
-          title: siteData.personalInformation.full_name,
+          title: siteData.personalInformation.fullName,
           description: defaultSeo.description,
           type: 'website',
-          site_name: siteData.personalInformation.full_name,
+          site_name: siteData.personalInformation.fullName,
           images: [
             {
-              url: siteData.site.seo_image.url,
+              url: siteData.site.seoImage.url,
               width: 1024,
               height: 512,
-              alt: siteData.personalInformation.full_name,
+              alt: siteData.personalInformation.fullName,
             },
           ],
         }}

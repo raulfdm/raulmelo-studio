@@ -13,7 +13,7 @@ export const Hits = () => {
     <div css={searchStyles.hits}>
       <HitsComp
         hitComponent={({ hit }: { hit: HitAlgolia }) => {
-          const getUrl = hit.type === 'post' ? getPostUrl : getTilUrl;
+          const getUrl = hit._type === 'post' ? getPostUrl : getTilUrl;
           return (
             <PostBasic
               key={hit.objectID}

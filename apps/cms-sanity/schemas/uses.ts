@@ -19,8 +19,7 @@ export const usesSchema = {
       type: 'string',
     },
     {
-      type: 'markdown',
-      description: 'A Github flavored markdown field with image uploading',
+      type: 'blockContent',
       name: 'content',
     },
     {

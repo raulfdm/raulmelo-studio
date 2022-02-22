@@ -1,5 +1,6 @@
 import { build } from 'esbuild';
 import { dtsPlugin } from 'esbuild-plugin-d.ts';
+import fs from 'fs';
 
 export function runESBuild(options = {}) {
   const commonJs = createConfig({
@@ -44,8 +45,7 @@ export function runESBuild(options = {}) {
       bundle: true,
       entryPoints: ['src/index.ts'],
       sourcemap: 'external',
-      // TODO: import from package.json IF it starts to become a mess
-      external: ['ramda', 'graphql-request'],
+      external: getExternalDependencies(),
       metafile: true,
       ...overrides,
     };
@@ -69,4 +69,10 @@ export function runESBuild(options = {}) {
 
     return baseConfig;
   }
+}
+
+function getExternalDependencies() {
+  const pkgString = fs.readFileSync('package.json').toString();
+  const pkgJson = JSON.parse(pkgString);
+  return Object.keys(pkgJson.dependencies);
 }

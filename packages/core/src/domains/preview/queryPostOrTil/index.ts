@@ -1,37 +1,20 @@
 import { client } from '~config';
-import { utils } from '~utils';
 
-import { GRAPHQL_VARIABLES } from '../../posts/resources';
-import { query } from './query';
-import { IPreviewPostOrTil, IQueryPostOrTilApiResponse } from './types';
+import { postQuery, tilQuery } from './query';
+import { IQueryPostOrTil } from './types';
 
 export async function queryPostOrTil(
   slug: string,
-): Promise<IPreviewPostOrTil | null> {
-  const { tils, posts } = await client.request<IQueryPostOrTilApiResponse>(
-    query,
-    {
-      where: {
-        ...GRAPHQL_VARIABLES.preview,
-        slug,
-      },
-    },
-  );
-
-  const til = utils.head(tils);
+): Promise<IQueryPostOrTil | null> {
+  const til = await client.fetch(tilQuery, { slug });
   if (til) {
-    return {
-      type: 'til',
-      ...til,
-    };
+    return til;
   }
 
-  const post = utils.head(posts);
+  const post = await client.fetch(postQuery, { slug });
+
   if (post) {
-    return {
-      type: 'post',
-      ...post,
-    };
+    return post;
   }
 
   return null;

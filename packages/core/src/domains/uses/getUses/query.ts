@@ -1,15 +1,27 @@
-import { gql } from 'graphql-request';
+import groq from 'groq';
 
-export const query = gql`
-  query UsesPage($locale: String) {
-    uses: use(locale: $locale) {
-      locale
-      title
-      seo {
-        title
-        description
+export const getUsesQuery = groq`
+*[_type=="uses" && language == $language][0]{
+  language,
+  title,
+  _createdAt,
+  _updatedAt,
+  content[]{
+    ...,
+    markDefs[]{
+      ...,
+      _type == "internalLink" => {
+      ...,
+      "itemMeta": @.item -> {
+        "slug": slug.current,
+        _type
       }
-      content
+    },
     }
+  },
+  "seo":{
+    "description": seoDescription,
+    "title": seoTitle
   }
+}
 `;

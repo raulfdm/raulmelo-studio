@@ -1,30 +1,28 @@
-import { gql } from 'graphql-request';
+import groq from 'groq';
 
-export const query = gql`
-  query Home($locale: String) {
-    posts(locale: $locale, sort: "date:desc") {
-      id
-      locale
-      slug
-      date
-      title
-      subtitle
-      description
-      featured_image {
-        width
-        height
-        url
-      }
-      post_serie {
-        slug
-        name
-        id
-      }
-      post_tags {
-        slug
-        id
-        name
-      }
-    }
+export const postQuery = groq`
+*[_type == "post" && language in $languages && !(_id in path('drafts.**'))] | order(publishedAt desc){
+  _id,
+  language,
+  "slug": slug.current,
+  publishedAt,
+  title,
+  subtitle,
+  description,
+  "tags": tags[]->{
+    _id,
+    name,
+    "slug": slug.current
+  },
+  "featuredImage": featuredImage.asset->{
+    url,
+    "width": metadata.dimensions.width,
+    "height": metadata.dimensions.height,
+  },
+  "series": *[_type=='postSeries' && references(^._id)][0]{
+    _id,
+    name,
+    "slug": slug.current
   }
+}
 `;

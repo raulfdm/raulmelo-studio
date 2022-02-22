@@ -1,8 +1,8 @@
 import { IUsesData } from '@raulmelo/core/dist/types/domains/uses';
-import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { IUsesApiResponse } from '@raulmelo/core/dist/types/domains/uses/getUses/types';
 import React from 'react';
 
-import { MdxPostTemplate } from '~/components/MdxPost';
+import { PortableTextPost } from '~/components/PortableTextPost';
 import { useLocalization } from '~/hooks/useLocalization';
 import siteData from '~/site-data';
 import { getPostUrl } from '~/utils/url';
@@ -10,25 +10,19 @@ import { getPostUrl } from '~/utils/url';
 export type UsesPageProps = {
   seo: IUsesData['seo'];
   title: string;
-  content: MDXRemoteSerializeResult;
-  postContent: string;
+  uses: IUsesApiResponse;
 };
 
-export const UsesPage: React.FC<UsesPageProps> = ({
-  content,
-  seo,
-  title,
-  postContent,
-}) => {
+export const UsesPage: React.FC<UsesPageProps> = ({ seo, title, uses }) => {
   const { locale } = useLocalization();
 
   return (
-    <MdxPostTemplate
-      content={content}
-      postContent={postContent}
+    <PortableTextPost
+      content={uses.content}
       title={title}
-      publishedAt={'2020-10-20'}
+      publishedAt={uses._updatedAt}
       description={seo.description}
+      language={locale}
       nextSeo={{
         title: seo.title,
         description: seo.description,
@@ -37,13 +31,13 @@ export const UsesPage: React.FC<UsesPageProps> = ({
           type: 'article',
           title: seo.title,
           description: seo.description,
-          site_name: siteData.personalInformation.full_name,
+          site_name: siteData.personalInformation.fullName,
           images: [
             {
-              url: siteData.site.seo_image.url,
+              url: siteData.site.seoImage.url,
               width: 1024,
               height: 512,
-              alt: siteData.personalInformation.full_name,
+              alt: siteData.personalInformation.fullName,
             },
           ],
         },

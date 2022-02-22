@@ -1,33 +1,33 @@
-export interface ITagBySlugApiResponse {
-  postTags: ITagBySlugPostTag[];
-}
+import { SupportedLanguages } from 'src/types';
+
+export type ITagBySlugApiResponse = ITagBySlugPostTag[];
 
 export interface ITagBySlugPostTag {
-  id: string;
+  _id: string;
   slug: string;
   name: string;
-  til_posts: ITagBySlugTilPost[];
-  blog_posts: ITagBySlugBlogPost[];
+  tils: ITagBySlugTilPost[];
+  posts: ITagBySlugBlogPost[];
 }
 
-export interface ITagBySlugTilPost {
+interface ITagBySlugCommonPost {
+  _id: string;
   publishedAt: string;
-  id: string;
   slug: string;
   title: string;
+  language: SupportedLanguages;
   tags: ITagBySlugTag[];
 }
 
-export interface ITagBySlugBlogPost {
-  id: string;
-  locale: string;
-  slug: string;
-  publishedAt: string;
-  title: string;
-  subtitle: string;
+export interface ITagBySlugTilPost extends ITagBySlugCommonPost {
+  _type: 'til';
+}
+
+export interface ITagBySlugBlogPost extends ITagBySlugCommonPost {
+  _type: 'post';
+  subtitle?: string;
   description: string;
-  featured_image: ITagBySlugFeaturedImage;
-  tags: ITagBySlugTag[];
+  featuredImage: ITagBySlugFeaturedImage;
 }
 
 interface ITagBySlugFeaturedImage {
@@ -38,6 +38,6 @@ interface ITagBySlugFeaturedImage {
 
 interface ITagBySlugTag {
   slug: string;
-  id: string;
+  _id: string;
   name: string;
 }

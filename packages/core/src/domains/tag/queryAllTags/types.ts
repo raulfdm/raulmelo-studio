@@ -1,6 +1,4 @@
-export interface ITagsApiResponse {
-  postTags: ITags[];
-}
+export type ITagsApiResponse = ITags[];
 
 export interface ITags {
   slug: string;

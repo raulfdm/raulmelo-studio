@@ -1,10 +1,20 @@
 import '@raulmelo/ui/dist/style.css?raw';
 
-import { BigQuote, H2, H3, H4, H5, H6, ImageIcon } from '@raulmelo/ui';
+import {
+  BigQuote,
+  ExternalLinkIcon,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+  LinkIcon,
+} from '@raulmelo/ui';
 import React from 'react';
 
 import { memoizeAndRemoveStyle } from '../../utils/schema';
 import { highlightMarker } from './highlightMarker';
+import { strikeThroughMarker } from './strikeThroughMarker';
 
 export const blockContentField = {
   title: 'Block Content',
@@ -75,19 +85,47 @@ export const blockContentField = {
         decorators: [
           { title: 'Strong', value: 'strong' },
           { title: 'Emphasis', value: 'em' },
+          strikeThroughMarker,
           highlightMarker,
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
           {
+            name: 'internalLink',
+            type: 'object',
+            title: 'Internal Link',
+            icon: () => <LinkIcon width={20} />,
+            fields: [
+              {
+                name: 'item',
+                type: 'reference',
+                to: [
+                  {
+                    type: 'post',
+                  },
+                  {
+                    type: 'til',
+                  },
+                ],
+              },
+            ],
+          },
+          {
             title: 'URL',
             name: 'link',
             type: 'object',
+            icon: () => <ExternalLinkIcon width={20} />,
             fields: [
               {
                 title: 'URL',
                 name: 'href',
                 type: 'url',
+              },
+              {
+                title: 'Open in new window',
+                name: 'blank',
+                type: 'boolean',
+                initialValue: false,
               },
             ],
           },
@@ -98,9 +136,7 @@ export const blockContentField = {
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
     {
-      type: 'image',
-      options: { hotspot: true },
-      icon: () => <ImageIcon width={20} />,
+      type: 'detailedImage',
     },
     {
       type: 'code',

@@ -1,24 +1,16 @@
 import { client } from '~config';
-import { utils } from '~utils';
 
-import { GRAPHQL_VARIABLES } from '../resources';
-import { query } from './query';
-import { ITilBySlug, ITilBySlugApiResponse } from './types';
+import { tilBySlugQuery } from './query';
+import { ITilBySlugApiResponse } from './types';
 
 export async function queryTilBySlug(
   slug: string,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   preview = false,
-): Promise<ITilBySlug> {
-  const { tils } = await client.request<ITilBySlugApiResponse>(query, {
-    where: {
-      slug,
-      ...(preview ? GRAPHQL_VARIABLES.preview : {}),
-    },
+): Promise<ITilBySlugApiResponse> {
+  return client.fetch(tilBySlugQuery, {
+    slug,
   });
-
-  const til = utils.head(tils);
-
-  return til;
 }
 
 export * from './types';

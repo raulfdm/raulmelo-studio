@@ -1,34 +1,22 @@
 import { domains, SupportedLanguages } from '@raulmelo/core';
 import { GetStaticProps } from 'next';
 
-import { serializeMdx } from '~/config/mdx';
-
 import { UsesPage, UsesPageProps } from './UsesPage';
 
-const Uses = ({ content, seo, title, postContent }: UsesPageProps) => {
-  return (
-    <UsesPage
-      seo={seo}
-      title={title}
-      content={content}
-      postContent={postContent}
-    />
-  );
+const Uses = ({ uses, seo, title }: UsesPageProps) => {
+  return <UsesPage seo={seo} title={title} uses={uses} />;
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const { uses } = await domains.uses.getUses(locale as SupportedLanguages);
-
-  const content = await serializeMdx(uses.content);
+  const uses = await domains.uses.getUses(locale as SupportedLanguages);
 
   return {
     props: {
-      content,
-      postContent: uses.content,
+      uses,
       seo: uses.seo,
       title: uses.title,
     },
-    revalidate: 1,
+    revalidate: 60,
   };
 };
 

@@ -1,94 +1,51 @@
 import * as fs from 'fs';
-import { gql } from 'graphql-request';
 import * as path from 'path';
-import { SupportedLanguages } from 'src';
+import { domains, SupportedLanguages } from 'src';
+import { SUPPORTED_LANGUAGES } from 'src/config/languages';
 import { sortPostsByPublishedDate } from 'src/domains/posts';
+import type {
+  IRSSApiResponse,
+  IRSSDataPost,
+} from 'src/domains/rss/queryRssData/types';
 
-import { client } from '~config';
+type IRssConfig = Omit<IRSSApiResponse, 'posts' | 'tils'>;
 
-const LOCALES_TO_GEN_RSS: SupportedLanguages[] = ['en', 'pt'];
-
-const query = gql`
-  query Content($locale: String) {
-    rss(locale: $locale) {
-      title
-      description
-    }
-    defaultSeo {
-      title
-      description
-    }
-    site {
-      url
-    }
-    tils(locale: $locale) {
-      slug
-      publishedAt
-      title
-      slug
-      description: title
-    }
-    posts(locale: $locale) {
-      slug
-      publishedAt: date
-      title
-      slug
-      description
-    }
-  }
-`;
+interface IConfig {
+  outdir: string;
+}
 
 export async function generateRssFeed(config: IConfig): Promise<void> {
-  const { apiEndpoint, outdir } = config;
+  const { outdir } = config;
 
-  if (apiEndpoint) {
-    client.setEndpoint(`${apiEndpoint}/graphql`);
-  }
-
-  if (apiEndpoint.includes('localhost')) {
-    console.log('Atention: Getting data from Localhost');
-  }
-
-  for await (const locale of LOCALES_TO_GEN_RSS) {
-    const { tils, posts, site, rss } = await client.request<IQueryResponse>(
-      query,
-      {
-        locale,
-      },
+  for await (const language of SUPPORTED_LANGUAGES.all) {
+    const { tils, posts, ...restData } = await domains.rss.queryRssData(
+      language,
     );
 
-    const rssConfig = {
-      ...rss,
-      url: site.url,
-      locale,
+    const rssConfig: IRssConfig = {
+      ...restData,
+      language,
     };
 
-    const allContent = sortPostsByPublishedDate([
-      ...tils.map(setUrlPrefix('til')),
-      ...posts.map(setUrlPrefix('blog')),
-    ]);
+    const allContent = sortPostsByPublishedDate([...tils, ...posts]);
 
     const rssContent = getRssXml(allContent, rssConfig);
 
-    const filePath = writeFile({ locale, outdir, rssContent });
+    const filePath = writeFile({ language, outdir, rssContent });
 
     console.log(`RSS Feed generated: "${filePath}"`);
   }
 
-  function setUrlPrefix(prefix: 'til' | 'blog') {
-    return (content: Content) => ({ ...content, urlPrefix: prefix });
-  }
-
   function writeFile({
     rssContent,
-    locale,
+    language,
     outdir,
   }: {
     rssContent: string;
-    locale: SupportedLanguages;
+    language: SupportedLanguages;
     outdir: string;
   }) {
-    const fileName = locale === 'en' ? 'rss.xml' : 'rss-pt.xml';
+    const fileName = language === 'en' ? 'rss.xml' : 'rss-pt.xml';
     const filePath = path.resolve(outdir, fileName);
 
     fs.writeFileSync(filePath, rssContent);
@@ -97,8 +54,9 @@ export async function generateRssFeed(config: IConfig): Promise<void> {
   }
 }
 
-function getRssXml(content, rss) {
+function getRssXml(content: IRSSDataPost[], rss: IRssConfig) {
   const rssItemsXml = content.map(getRssItem).join('');
+
   const latestPostDate = humanizeDate(content[0].publishedAt);
 
   return `<?xml version="1.0" ?>
@@ -110,18 +68,24 @@ function getRssXml(content, rss) {
   >
     <channel>
         <title><![CDATA[${rss.title}]]></title>
-        <link>${rss.url}</link>
+        <link>${rss.siteUrl}</link>
         <description>
           <![CDATA[${rss.description}]]>
         </description>
-        <language>${rss.locale}</language>
+        <language>${rss.language}</language>
         <lastBuildDate>${latestPostDate}</lastBuildDate>
         ${rssItemsXml}
     </channel>
   </rss>`;
 
-  function getRssItem({ publishedAt, urlPrefix, description, slug, title }) {
-    const postHref = `${rss.url}/${urlPrefix}/${slug}`;
+  function getRssItem({
+    publishedAt,
+    urlPrefix,
+    description,
+    slug,
+    title,
+  }: IRSSDataPost) {
+    const postHref = `${rss.siteUrl}/${urlPrefix}/${slug}`;
 
     return `
           <item>
@@ -132,41 +96,12 @@ function getRssXml(content, rss) {
             <guid isPermaLink="false">${postHref}</guid>
             
             <description>
-            <![CDATA[${description}]]>
+            <![CDATA[${description ?? title}]]>
             </description>
         </item>`;
   }
 }
 
-function humanizeDate(date) {
+function humanizeDate(date: Date) {
   return new Date(date).toUTCString();
-}
-
-interface IConfig {
-  outdir: string;
-  apiEndpoint?: string;
-}
-
-interface IQueryResponse {
-  rss: DefaultSEO;
-  defaultSeo: DefaultSEO;
-  site: Site;
-  tils: Content[];
-  posts: Content[];
-}
-
-interface DefaultSEO {
-  title: string;
-  description: string;
-}
-
-interface Content {
-  slug: string;
-  publishedAt: string;
-  title: string;
-  description: string;
-}
-
-interface Site {
-  url: string;
 }

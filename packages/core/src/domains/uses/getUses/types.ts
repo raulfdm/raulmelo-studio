@@ -1,12 +1,13 @@
-export interface IUsesApiResponse {
-  uses: IUsesData;
-}
+import { PortableTextBlock } from '@portabletext/react';
+import { SupportedLanguages } from 'src';
 
-export interface IUsesData {
-  locale: string;
+export interface IUsesApiResponse {
+  language: SupportedLanguages;
+  _createdAt: string;
+  _updatedAt: string;
   title: string;
   seo: IUsesSEO;
-  content: string;
+  content: PortableTextBlock;
 }
 
 interface IUsesSEO {

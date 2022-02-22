@@ -10,8 +10,8 @@ export const getStaticProps = async ({ params, locale }: TagPageParams) => {
   const tag = await domains.tag.queryTagBySlug(params.slug, locale);
 
   const content = domains.posts.sortPostsByPublishedDate([
-    ...tag.blog_posts.map((blogPost) => ({ ...blogPost, type: 'post' })),
-    ...tag.til_posts.map((tilPost) => ({ ...tilPost, type: 'til' })),
+    ...tag.posts,
+    ...tag.tils,
   ]);
 
   return {
@@ -24,7 +24,7 @@ export const getStaticProps = async ({ params, locale }: TagPageParams) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { postTags } = await domains.tag.queryAllTags();
+  const postTags = await domains.tag.queryAllTags();
 
   const paths: TagPageParams[] = [];
 

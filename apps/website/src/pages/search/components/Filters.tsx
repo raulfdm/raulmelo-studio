@@ -29,8 +29,8 @@ const Checkbox = styled.input`
 export const Filters = () => {
   return (
     <FiltersWrapper>
-      <ConfiguredLanguageRefinement attribute="locale" operator="or" />
-      <ConfiguredTypeRefinement attribute="type" operator="or" />
+      <ConfiguredLanguageRefinement attribute="language" operator="or" />
+      <ConfiguredTypeRefinement attribute="_type" operator="or" />
       <ConfiguredTagsRefinement attribute="tags.name" operator="or" />
     </FiltersWrapper>
   );

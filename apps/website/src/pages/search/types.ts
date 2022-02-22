@@ -1,23 +1,6 @@
-import { SupportedLanguages } from '@raulmelo/core';
+import { AlgoliaObject } from '@raulmelo/core/dist/types/domains/algolia';
 
-export type HitAlgolia = {
-  objectID: string;
-  excerpt: string;
-  title: string;
-  slug: string;
-  locale: SupportedLanguages;
-  publishedAt: string;
-  type: 'post' | 'til';
-  subtitle?: string;
-  featured_image?: {
-    url: string;
-  };
-  tags: {
-    name: string;
-    slug: string;
-    id: string;
-  }[];
-};
+export type HitAlgolia = AlgoliaObject;
 
 export type RefinementListProps = {
   items: {

@@ -1,20 +1,20 @@
-export interface IBlogPostBySlugApiResponse {
-  posts: IBlogPostBySlug[];
-}
+import type { PortableTextBlock } from '@portabletext/react';
+import { SupportedLanguages } from 'src';
 
-export interface IBlogPostBySlug {
-  id: string;
+export interface IBlogPostBySlugApiResponse {
+  _id: string;
+  content: PortableTextBlock;
   title: string;
-  subtitle: string;
+  subtitle?: string;
   description: string;
-  date: string;
+  publishedAt: string;
   slug: string;
+  language: SupportedLanguages;
+  featuredImage: IBlogPostBySlugFeaturedImage;
+  tags: IBlogPostBySlugPostTag[];
   unsplash: IBlogPostBySlugUnsplash;
-  content: string;
-  featured_image: IBlogPostBySlugFeaturedImage;
-  featured_image_caption: string;
-  post_tags: IBlogPostBySlugPostTag[];
-  series: IBlogPostBySlugSeries | null;
+  imageCaption?: string;
+  series?: IBlogPostBySlugSeries;
 }
 
 interface IBlogPostBySlugSeries {
@@ -23,10 +23,10 @@ interface IBlogPostBySlugSeries {
 }
 
 interface IBlogPostBySlugSeriesPost {
-  id: string;
-  copy: string;
-  uri: string;
-  date: Date;
+  _id: string;
+  seriesCopy: string;
+  slug: string;
+  publishedAt: Date;
 }
 
 interface IBlogPostBySlugFeaturedImage {
@@ -36,7 +36,7 @@ interface IBlogPostBySlugFeaturedImage {
 }
 
 interface IBlogPostBySlugPostTag {
-  id: string;
+  _id: string;
   slug: string;
   name: string;
 }

@@ -1,4 +1,4 @@
-import { IBlogPostBySlug } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
+import { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
 import { ChevronDownIcon } from '@raulmelo/ui';
 import { createMachine } from '@xstate/fsm';
 import { useMachine } from '@xstate/react/fsm';
@@ -51,22 +51,23 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
             data-testid="series-post-list"
           >
             {posts.map((post) => {
-              const { id, copy, uri } = post;
-              const isCurrentPost = id === currentPostId;
+              const { _id, seriesCopy, slug } = post;
+
+              const isCurrentPost = _id === currentPostId;
               return (
                 <motion.li
                   layout
                   css={styles.item(isCurrentPost)}
-                  key={id}
-                  data-testid={`post_${id}`}
+                  key={_id}
+                  data-testid={`post_${_id}`}
                   variants={variants.item}
                 >
-                  <Link href={uri} passHref>
+                  <Link href={slug} passHref>
                     <a
                       css={styles.link}
                       aria-hidden={currentState === 'collapsed'}
                     >
-                      {copy}
+                      {seriesCopy}
                     </a>
                   </Link>
                 </motion.li>
@@ -96,7 +97,7 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
 
 interface SeriesSectionProps {
   currentPostId: string;
-  series: NonNullable<IBlogPostBySlug['series']>;
+  series: NonNullable<IBlogPostBySlugApiResponse['series']>;
   divider?: boolean;
 }
 

@@ -29,9 +29,10 @@ export default async function handler(
     maxAge: 60 * 60,
   });
 
-  const contentPrePath = content.type === 'til' ? '/til' : '/blog';
+  const contentPrePath = content._type === 'til' ? '/til' : '/blog';
   const partialPath = `${contentPrePath}/${content.slug}`;
-  const Location = content.locale === 'pt' ? `/pt${partialPath}` : partialPath;
+  const Location =
+    content.language === 'pt' ? `/pt${partialPath}` : partialPath;
 
   // Redirect to the path from the fetched post
   // We don't redirect to req.query.slug as that might lead to open redirect vulnerabilities

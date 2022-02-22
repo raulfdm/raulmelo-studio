@@ -1,47 +1,42 @@
-import { gql } from 'graphql-request';
+import groq from 'groq';
 
-export const query = gql`
-  query TagPage($slug: String, $locale: String) {
-    postTags(where: { slug: $slug }) {
-      id
-      slug
+export const tagsBySlugQuery = groq`
+*[_type == "tag" && slug.current == $slug && !(_id in path('drafts.**'))][0]{
+  _id,
+  name,
+  "slug": slug.current,
+  "posts": *[_type=='post' && references(^._id) && language == $language && !(_id in path('drafts.**'))] | order(publishedAt desc){
+    _id,
+    _type,
+    publishedAt,
+    "slug": slug.current,
+    title,
+    subtitle,
+    description,
+    language,
+    "tags": tags[]->{
+      _id,
+      "slug": slug.current,
       name
-
-      # TIL
-      til_posts(sort: "publishedAt:desc", where: { locale: $locale }) {
-        publishedAt
-        id
-        slug
-        title
-        tags {
-          ...postTags
-        }
-      }
-
-      #POSTS
-      blog_posts(sort: "date:desc", where: { locale: $locale }) {
-        id
-        locale
-        slug
-        publishedAt: date
-        title
-        subtitle
-        description
-        featured_image {
-          url
-          height
-          width
-        }
-        tags: post_tags {
-          ...postTags
-        }
-      }
+    },
+    "featuredImage": featuredImage.asset->{
+      url,
+      "width": metadata.dimensions.width,
+      "height": metadata.dimensions.height,
     }
-  }
-
-  fragment postTags on PostTag {
-    slug
-    id
-    name
-  }
+  },
+  "tils": *[_type=='til' && references(^._id) && language == $language && !(_id in path('drafts.**'))] | order(publishedAt desc){
+    _id,
+    _type,
+    publishedAt,
+    "slug": slug.current,
+    title,
+    language,
+    "tags": tags[]->{
+      _id,
+      "slug": slug.current,
+      name
+    }
+  },
+}
 `;

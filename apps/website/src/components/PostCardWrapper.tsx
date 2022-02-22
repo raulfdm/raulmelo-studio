@@ -10,14 +10,15 @@ export type PostCardWrapperProps = {
     title: string;
     subtitle?: string;
     slug: string;
-    locale: SupportedLanguages;
-    date: string;
-    featured_image: {
+    language: SupportedLanguages;
+    publishedAt: string;
+    featuredImage?: {
       url: string;
     };
-    post_tags?: {
+    tags?: {
       name: string;
       slug: string;
+      _id: string;
     }[];
   };
 };
@@ -26,17 +27,17 @@ export function PostCardWrapper({ post }: PostCardWrapperProps) {
   const { formatDate } = useLocalization();
   return (
     <PostCard
-      imageUrl={post.featured_image.url}
+      imageUrl={post.featuredImage?.url}
       title={post.title}
       subtitle={post.subtitle}
-      titleLinkProps={{ locale: post.locale }}
+      titleLinkProps={{ locale: post.language }}
       postUrl={getPostUrl(post.slug)}
-      publishDate={formatDate(new Date(post.date), {
+      publishDate={formatDate(new Date(post.publishedAt), {
         year: 'numeric',
         month: 'short',
         day: '2-digit',
       })}
-      tags={(post.post_tags ?? []).map((tag) => ({
+      tags={(post.tags ?? []).map((tag) => ({
         name: tag.name,
         href: getTagUrl(tag.slug),
       }))}

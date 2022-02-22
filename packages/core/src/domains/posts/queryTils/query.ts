@@ -1,18 +1,29 @@
-import { gql } from 'graphql-request';
+import groq from 'groq';
 
-export const query = gql`
-  query Tils($locale: String!) {
-    tils(locale: $locale, sort: "publishedAt:DESC") {
-      id
-      publishedAt
-      title
-      locale
-      slug
-      tags {
-        id
-        name
-        slug
+export const tilQuery = groq`
+*[_type == "til" && language in $languages && !(_id in path('drafts.**'))] | order(publishedAt desc){
+  _id,
+  publishedAt,
+  title,
+  language,
+  content[]{
+    ...,
+    markDefs[]{
+      ...,
+      _type == "internalLink" => {
+      ...,
+      "itemMeta": @.item -> {
+        "slug": slug.current,
+        _type
       }
+    },
     }
+  },
+  "slug": slug.current,
+  "tags": tags[]->{
+    _id,
+    name,
+    "slug": slug.current
   }
+}
 `;
