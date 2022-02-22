@@ -4,6 +4,8 @@ export const getUsesQuery = groq`
 *[_type=="uses" && language == $language][0]{
   language,
   title,
+  _createdAt,
+  _updatedAt,
   content[]{
     ...,
     markDefs[]{
