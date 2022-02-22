@@ -2,7 +2,7 @@ import { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/po
 import { ChevronDownIcon } from '@raulmelo/ui';
 import { createMachine } from '@xstate/fsm';
 import { useMachine } from '@xstate/react/fsm';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Link from 'next/link';
 import { FormattedMessage } from 'react-intl';
 import tw, { css } from 'twin.macro';
@@ -29,7 +29,7 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
             role="button"
           >
             <span css={styles.header.title}>{name}</span>
-            <motion.button
+            <m.button
               css={styles.header.button}
               initial="collapsed"
               animate={currentState}
@@ -39,10 +39,10 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
               }}
             >
               <ChevronDownIcon css={styles.header.icon} />
-            </motion.button>
+            </m.button>
           </div>
 
-          <motion.ul
+          <m.ul
             layout
             css={styles.list}
             initial={false}
@@ -55,7 +55,7 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
 
               const isCurrentPost = _id === currentPostId;
               return (
-                <motion.li
+                <m.li
                   layout
                   css={styles.item(isCurrentPost)}
                   key={_id}
@@ -70,15 +70,15 @@ export const SeriesSection: React.FC<SeriesSectionProps> = ({
                       {seriesCopy}
                     </a>
                   </Link>
-                </motion.li>
+                </m.li>
               );
             })}
-          </motion.ul>
+          </m.ul>
 
           <div
             onClick={toggleSection}
             css={styles.footer(currentState)}
-            aria-role="button"
+            role="button"
           >
             <span>
               <FormattedMessage

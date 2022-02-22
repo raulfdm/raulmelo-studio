@@ -1,6 +1,6 @@
 import { Disclosure } from '@headlessui/react';
 import { ExternalLinkIcon } from '@raulmelo/ui';
-import { motion, useAnimation } from 'framer-motion';
+import { m, useAnimation } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useMemo, useRef } from 'react';
@@ -28,7 +28,7 @@ const styles = {
   listItem: tw`px-4 py-2 text-center sm:text-left`,
 };
 
-const Panel = styled(motion.nav)`
+const Panel = styled(m.nav)`
   ${styles.sideMenuPanel}
 `;
 
@@ -106,7 +106,7 @@ export const SideMenu = () => {
       </Disclosure.Panel>
       <Disclosure.Panel
         static
-        as={motion.div}
+        as={m.div}
         aria-hidden={isClosed}
         css={styles.overlay(isClosed)}
         onClick={handleClose}

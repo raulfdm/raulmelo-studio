@@ -1,5 +1,5 @@
 import { IPostsAndTilsPost } from '@raulmelo/core/dist/types/domains/posts';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m } from 'framer-motion';
 import tw from 'twin.macro';
 
 import { PostCardWrapper } from '~/components/PostCardWrapper';
@@ -33,11 +33,11 @@ export const Posts = ({ posts, title }: PostsProps) => {
   return (
     <section css={styles.wrapper}>
       <h2 css={styles.title}>{title}</h2>
-      <motion.ul css={styles.list}>
+      <m.ul css={styles.list}>
         <AnimatePresence initial={false}>
           {posts
             ? posts.map((post) => (
-                <motion.li
+                <m.li
                   key={post._id}
                   variants={itemsAnimationVariants}
                   initial="hidden"
@@ -51,11 +51,11 @@ export const Posts = ({ posts, title }: PostsProps) => {
                   }}
                 >
                   <PostCardWrapper post={post} />
-                </motion.li>
+                </m.li>
               ))
             : null}
         </AnimatePresence>
-      </motion.ul>
+      </m.ul>
     </section>
   );
 };
