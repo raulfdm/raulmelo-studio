@@ -15,10 +15,10 @@ import { useLocalization } from '~/hooks/useLocalization';
 import siteData from '~/site-data';
 import { getTagUrl } from '~/utils/url';
 
-import { FeaturedImage } from '../MdxPost/components/FeaturedImage';
-import { Header } from '../MdxPost/components/Header';
-import { PreviewBanner } from '../MdxPost/components/PreviewBanner/PreviewBanner';
+import { FeaturedImage } from './components/FeaturedImage';
+import { Header } from './components/Header';
 import { portableComponents } from './components/portableComponents';
+import { PreviewBanner } from './components/PreviewBanner/PreviewBanner';
 import { PrismStyles } from './components/PrismStyles';
 
 export const PortableTextPost: React.FC<PortableTextPostProps> = ({
@@ -151,10 +151,12 @@ export const PortableTextPost: React.FC<PortableTextPostProps> = ({
               </Tags>
             </div>
           ) : null}
-          <ShareContent
-            twitter={{ text: description }}
-            linkedIn={{ title, summary: description }}
-          />
+          {description ? (
+            <ShareContent
+              twitter={{ text: description }}
+              linkedIn={{ title, summary: description }}
+            />
+          ) : null}
         </footer>
       </section>
     </>
@@ -164,7 +166,7 @@ export const PortableTextPost: React.FC<PortableTextPostProps> = ({
 interface PortableTextPostProps
   extends Omit<
     IBlogPostBySlugApiResponse,
-    '_id' | 'unsplash' | 'featuredImage' | 'description'
+    '_id' | 'unsplash' | 'featuredImage' | 'description' | 'slug' | 'tags'
   > {
   nextSeo?: NextSeoProps;
   preview?: boolean;
@@ -175,6 +177,7 @@ interface PortableTextPostProps
     top: JSX.Element | null;
     bottom: JSX.Element | null;
   };
+  tags?: IBlogPostBySlugApiResponse['tags'];
 }
 
 function getEstimatedReadingTime(text: string): number {

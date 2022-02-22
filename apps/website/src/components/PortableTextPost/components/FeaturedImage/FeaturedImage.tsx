@@ -15,7 +15,7 @@ const messages = defineMessages({
 export type FeaturedImageProps = {
   url: string;
   alt?: string;
-  unsplash: IBlogPostBySlugApiResponse['unsplash'];
+  unsplash?: IBlogPostBySlugApiResponse['unsplash'];
 };
 
 const styles = {
