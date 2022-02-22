@@ -1,7 +1,6 @@
 import { domains, SupportedLanguages } from '@raulmelo/core';
 import { GetStaticProps } from 'next';
 
-// import { serializeMdx } from '~/config/mdx';
 import { UsesPage, UsesPageProps } from './UsesPage';
 
 const Uses = ({ uses, seo, title }: UsesPageProps) => {
