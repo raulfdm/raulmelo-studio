@@ -216,7 +216,7 @@ importers:
       '@raulmelo/core': '*'
       '@raulmelo/styles': '*'
       '@raulmelo/ui': '*'
-      '@testing-library/jest-dom': 5.16.1
+      '@testing-library/jest-dom': 5.16.2
       '@testing-library/react': 12.1.2
       '@types/debounce-promise': 3.1.4
       '@types/flat': 5.0.2
@@ -289,7 +289,7 @@ importers:
       '@emotion/babel-plugin': 11.7.2_@babel+core@7.16.7
       '@emotion/jest': 11.7.1_@types+jest@27.4.0
       '@next/bundle-analyzer': 12.0.10
-      '@testing-library/jest-dom': 5.16.1
+      '@testing-library/jest-dom': 5.16.2
       '@testing-library/react': 12.1.2_react-dom@17.0.2+react@17.0.2
       '@types/debounce-promise': 3.1.4
       '@types/flat': 5.0.2
@@ -823,15 +823,15 @@ packages:
       regexpu-core: 4.8.0
     dev: false
 
-  /@babel/helper-create-regexp-features-plugin/7.16.7_@babel+core@7.15.8:
-    resolution: {integrity: sha512-fk5A6ymfp+O5+p2yCkXAu5Kyj6v0xh0RBeNcAkYUMDvvAAoxvSKXn+Jb37t/yWFiQVDFK1ELpUTD8/aLhCPu+g==}
+  /@babel/helper-create-regexp-features-plugin/7.17.0_@babel+core@7.15.8:
+    resolution: {integrity: sha512-awO2So99wG6KnlE+TPs6rn83gCz5WlEePJDTnLEqbchMVrBeAujURVphRdigsk094VhvZehFoNOihSlcBjwsXA==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0
     dependencies:
       '@babel/core': 7.15.8
       '@babel/helper-annotate-as-pure': 7.16.7
-      regexpu-core: 4.8.0
+      regexpu-core: 5.0.1
     dev: false
 
   /@babel/helper-create-regexp-features-plugin/7.17.0_@babel+core@7.16.7:
@@ -1758,7 +1758,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.15.8
-      '@babel/helper-create-regexp-features-plugin': 7.16.7_@babel+core@7.15.8
+      '@babel/helper-create-regexp-features-plugin': 7.17.0_@babel+core@7.15.8
       '@babel/helper-plugin-utils': 7.16.7
     dev: false
 
@@ -2296,7 +2296,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.15.8
-      '@babel/helper-create-regexp-features-plugin': 7.16.7_@babel+core@7.15.8
+      '@babel/helper-create-regexp-features-plugin': 7.17.0_@babel+core@7.15.8
       '@babel/helper-plugin-utils': 7.16.7
     dev: false
 
@@ -3188,7 +3188,7 @@ packages:
       '@babel/helper-plugin-utils': 7.16.7
       '@babel/plugin-proposal-unicode-property-regex': 7.16.7_@babel+core@7.15.8
       '@babel/plugin-transform-dotall-regex': 7.16.7_@babel+core@7.15.8
-      '@babel/types': 7.16.8
+      '@babel/types': 7.17.0
       esutils: 2.0.3
     dev: false
 
@@ -3296,7 +3296,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.9
-    dev: true
 
   /@babel/template/7.15.4:
     resolution: {integrity: sha512-UgBAfEa1oGuYgDIPM2G+aHa4Nlo9Lh6mGD2bDBGMTbYnc38vulXPuC1MGjYILIEmlwl6Rd+BPR9ee3gm20CBtg==}
@@ -8050,7 +8049,7 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       '@babel/code-frame': 7.16.0
-      '@babel/runtime': 7.16.5
+      '@babel/runtime': 7.17.2
       '@types/aria-query': 4.2.2
       aria-query: 5.0.0
       chalk: 4.1.2
@@ -8059,11 +8058,11 @@ packages:
       pretty-format: 27.3.1
     dev: true
 
-  /@testing-library/jest-dom/5.16.1:
-    resolution: {integrity: sha512-ajUJdfDIuTCadB79ukO+0l8O+QwN0LiSxDaYUTI4LndbbUsGi6rWU1SCexXzBA2NSjlVB9/vbkasQIL3tmPBjw==}
+  /@testing-library/jest-dom/5.16.2:
+    resolution: {integrity: sha512-6ewxs1MXWwsBFZXIk4nKKskWANelkdUehchEOokHsN8X7c2eKXGw+77aRV63UU8f/DTSVUPLaGxdrj4lN7D/ug==}
     engines: {node: '>=8', npm: '>=6', yarn: '>=1'}
     dependencies:
-      '@babel/runtime': 7.16.3
+      '@babel/runtime': 7.17.2
       '@types/testing-library__jest-dom': 5.14.1
       aria-query: 5.0.0
       chalk: 3.0.0
@@ -8417,13 +8416,6 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/27.0.3:
-    resolution: {integrity: sha512-cmmwv9t7gBYt7hNKH5Spu7Kuu/DotGa+Ff+JGRKZ4db5eh8PnKS4LuebJ3YLUoyOyIHraTGyULn23YtEAm0VSg==}
-    dependencies:
-      jest-diff: 27.3.1
-      pretty-format: 27.3.1
-    dev: true
-
   /@types/jest/27.4.0:
     resolution: {integrity: sha512-gHl8XuC1RZ8H2j5sHv/JqsaxXkDDM9iDOgu0Wp8sjs4u/snb2PVehyWXJPr+ORA0RPpgw231mnutWI1+0hgjIQ==}
     dependencies:
@@ -8697,7 +8689,7 @@ packages:
   /@types/testing-library__jest-dom/5.14.1:
     resolution: {integrity: sha512-Gk9vaXfbzc5zCXI9eYE9BI5BNHEp4D3FWjgqBE/ePGYElLAP+KvxBcsdkwfIVvezs605oiyd/VrpiHe3Oeg+Aw==}
     dependencies:
-      '@types/jest': 27.0.3
+      '@types/jest': 27.4.0
     dev: true
 
   /@types/uglify-js/3.13.1:
@@ -10175,7 +10167,7 @@ packages:
   /axios/0.25.0:
     resolution: {integrity: sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==}
     dependencies:
-      follow-redirects: 1.14.7
+      follow-redirects: 1.14.7_debug@2.6.9
     transitivePeerDependencies:
       - debug
 
@@ -10368,7 +10360,7 @@ packages:
   /babel-plugin-macros/2.8.0:
     resolution: {integrity: sha512-SEP5kJpfGYqYKpBrj5XU3ahw5p5GOHJ0U5ssOSQ/WBVdwkD2Dzlce95exQTs3jOVWPPKLBN2rlEWkCK7dSmLvg==}
     dependencies:
-      '@babel/runtime': 7.16.5
+      '@babel/runtime': 7.17.2
       cosmiconfig: 6.0.0
       resolve: 1.20.0
 
@@ -13179,11 +13171,6 @@ packages:
     resolution: {integrity: sha512-IayShXAgj/QMXgB0IWmKx+rOPuGMhqm5w6jvFxmVenXKIzRqTAAsbBPT3kWQeGANj3jGgvcvv4yK6SxqYmikgw==}
     dev: false
 
-  /diff-sequences/27.4.0:
-    resolution: {integrity: sha512-YqiQzkrsmHMH5uuh8OdQFU9/ZpADnwzml8z0O5HvRNda+5UZsaX/xN+AAxfR2hWq1Y7HZnAzO9J5lJXOuDz2Ww==}
-    engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
-    dev: true
-
   /diff-sequences/27.5.1:
     resolution: {integrity: sha512-k1gCAXAsNgLwEL+Y8Wvl+M6oEFj5bgazfZULpS5CneoPPXRaCCW7dm+q21Ky2VEE5X+VeRDBVg1Pcvvsr4TtNQ==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
@@ -15184,15 +15171,6 @@ packages:
       debug: 2.6.9
     dev: false
 
-  /follow-redirects/1.14.7:
-    resolution: {integrity: sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-
   /follow-redirects/1.14.7_debug@2.6.9:
     resolution: {integrity: sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==}
     engines: {node: '>=4.0'}
@@ -15203,7 +15181,6 @@ packages:
         optional: true
     dependencies:
       debug: 2.6.9
-    dev: false
 
   /font-awesome/4.7.0:
     resolution: {integrity: sha1-j6jPBBGhoxr9B7BtKQK7n8gVoTM=}
@@ -17880,16 +17857,6 @@ packages:
       - utf-8-validate
     dev: true
 
-  /jest-diff/27.3.1:
-    resolution: {integrity: sha512-PCeuAH4AWUo2O5+ksW4pL9v5xJAcIKPUPfIhZBcG1RKv/0+dvaWTQK1Nrau8d67dp65fOqbeMdoil+6PedyEPQ==}
-    engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
-    dependencies:
-      chalk: 4.1.2
-      diff-sequences: 27.4.0
-      jest-get-type: 27.4.0
-      pretty-format: 27.4.2
-    dev: true
-
   /jest-diff/27.5.1:
     resolution: {integrity: sha512-m0NvkX55LDt9T4mctTEgnZk3fmEg3NRYutvMPWM/0iPnkFj2wIeF45O1718cMSOFO1vINkqmxqD8vE37uTEbqw==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
@@ -17946,11 +17913,6 @@ packages:
       '@types/node': 16.7.12
       jest-mock: 27.5.1
       jest-util: 27.5.1
-    dev: true
-
-  /jest-get-type/27.4.0:
-    resolution: {integrity: sha512-tk9o+ld5TWq41DkK14L4wox4s2D9MtTpKaAVzXfr5CUKm5ZK2ExcaFE0qls2W71zE/6R2TxxrK9w2r6svAFDBQ==}
-    engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     dev: true
 
   /jest-get-type/27.5.1:
@@ -22789,16 +22751,6 @@ packages:
       react-is: 17.0.2
     dev: true
 
-  /pretty-format/27.4.2:
-    resolution: {integrity: sha512-p0wNtJ9oLuvgOQDEIZ9zQjZffK7KtyR6Si0jnXULIDwrlNF8Cuir3AZP0hHv0jmKuNN/edOnbMjnzd4uTcmWiw==}
-    engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
-    dependencies:
-      '@jest/types': 27.4.2
-      ansi-regex: 5.0.1
-      ansi-styles: 5.2.0
-      react-is: 17.0.2
-    dev: true
-
   /pretty-format/27.5.1:
     resolution: {integrity: sha512-Qb1gy5OrP5+zDf2Bvnzdl3jsTf1qXVMazbvCoKhtKqVs4/YK4ozX4gKQJJVyNe+cajNPn0KoC0MC3FUmaHWEmQ==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
@@ -23581,7 +23533,7 @@ packages:
       algoliasearch: '>= 3.1 < 5'
       react: '>= 16.3.0 < 18'
     dependencies:
-      '@babel/runtime': 7.16.7
+      '@babel/runtime': 7.17.2
       algoliasearch: 4.12.0
       algoliasearch-helper: 3.7.0_algoliasearch@4.12.0
       prop-types: 15.8.1
@@ -25207,7 +25159,7 @@ packages:
   /rtl-css-js/1.14.2:
     resolution: {integrity: sha512-t6Wc/wpqm8s3kuXAV6tL/T7VS6n0XszzX58CgCsLj3O2xi9ITSLfzYhtl+GKyxCi/3QEqVctOJQwCiDzb2vteQ==}
     dependencies:
-      '@babel/runtime': 7.16.5
+      '@babel/runtime': 7.17.2
     dev: false
 
   /run-async/2.4.1:
@@ -25913,6 +25865,7 @@ packages:
 
   /source-map-resolve/0.6.0:
     resolution: {integrity: sha512-KXBr9d/fO/bWo97NXsPIAW1bFSBOuCnjbNTBMO7N59hsv5i9yzRDfcYwwt0l04+VqnKC+EwzvJZIP/qkuMgR/w==}
+    deprecated: See https://github.com/lydell/source-map-resolve#deprecated
     dependencies:
       atob: 2.1.2
       decode-uri-component: 0.2.0
