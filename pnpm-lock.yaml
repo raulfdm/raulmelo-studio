@@ -210,7 +210,7 @@ importers:
       '@emotion/server': 11.4.0
       '@emotion/styled': 11.6.0
       '@headlessui/react': 1.4.3
-      '@next/bundle-analyzer': 12.0.10
+      '@next/bundle-analyzer': 12.1.0
       '@popperjs/core': 2.11.2
       '@portabletext/react': 1.0.3
       '@raulmelo/core': '*'
@@ -241,8 +241,8 @@ importers:
       lodash.throttle: 4.1.1
       next: 12.1.0
       next-compose-plugins: 2.2.1
-      next-seo: 4.28.1
-      next-sitemap: 1.9.9
+      next-seo: 4.29.0
+      next-sitemap: 1.9.12
       query-string: 7.1.0
       react: ^17.0.2
       react-dom: ^17.0.2
@@ -275,7 +275,7 @@ importers:
       lodash.omit: 4.5.0
       lodash.throttle: 4.1.1
       next: 12.1.0_dfc0b93d99fba272c9564d3139a2581a
-      next-seo: 4.28.1_caa633a00319350dbda42996613fe26c
+      next-seo: 4.29.0_caa633a00319350dbda42996613fe26c
       query-string: 7.1.0
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -288,7 +288,7 @@ importers:
     devDependencies:
       '@emotion/babel-plugin': 11.7.2_@babel+core@7.16.7
       '@emotion/jest': 11.7.1_@types+jest@27.4.0
-      '@next/bundle-analyzer': 12.0.10
+      '@next/bundle-analyzer': 12.1.0
       '@testing-library/jest-dom': 5.16.1
       '@testing-library/react': 12.1.2_react-dom@17.0.2+react@17.0.2
       '@types/debounce-promise': 3.1.4
@@ -303,7 +303,7 @@ importers:
       duplicate-package-checker-webpack-plugin: 3.0.0
       eslint-config-next: 12.1.0_70b9e77f990aba58cb915f77ab09742d
       next-compose-plugins: 2.2.1
-      next-sitemap: 1.9.9_next@12.1.0
+      next-sitemap: 1.9.12_next@12.1.0
       twin.macro: 2.8.2_ts-node@10.4.0
 
   packages/core:
@@ -823,15 +823,15 @@ packages:
       regexpu-core: 4.8.0
     dev: false
 
-  /@babel/helper-create-regexp-features-plugin/7.16.7_@babel+core@7.15.8:
-    resolution: {integrity: sha512-fk5A6ymfp+O5+p2yCkXAu5Kyj6v0xh0RBeNcAkYUMDvvAAoxvSKXn+Jb37t/yWFiQVDFK1ELpUTD8/aLhCPu+g==}
+  /@babel/helper-create-regexp-features-plugin/7.17.0_@babel+core@7.15.8:
+    resolution: {integrity: sha512-awO2So99wG6KnlE+TPs6rn83gCz5WlEePJDTnLEqbchMVrBeAujURVphRdigsk094VhvZehFoNOihSlcBjwsXA==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0
     dependencies:
       '@babel/core': 7.15.8
       '@babel/helper-annotate-as-pure': 7.16.7
-      regexpu-core: 4.8.0
+      regexpu-core: 5.0.1
     dev: false
 
   /@babel/helper-create-regexp-features-plugin/7.17.0_@babel+core@7.16.7:
@@ -1758,7 +1758,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.15.8
-      '@babel/helper-create-regexp-features-plugin': 7.16.7_@babel+core@7.15.8
+      '@babel/helper-create-regexp-features-plugin': 7.17.0_@babel+core@7.15.8
       '@babel/helper-plugin-utils': 7.16.7
     dev: false
 
@@ -2296,7 +2296,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.15.8
-      '@babel/helper-create-regexp-features-plugin': 7.16.7_@babel+core@7.15.8
+      '@babel/helper-create-regexp-features-plugin': 7.17.0_@babel+core@7.15.8
       '@babel/helper-plugin-utils': 7.16.7
     dev: false
 
@@ -3188,7 +3188,7 @@ packages:
       '@babel/helper-plugin-utils': 7.16.7
       '@babel/plugin-proposal-unicode-property-regex': 7.16.7_@babel+core@7.15.8
       '@babel/plugin-transform-dotall-regex': 7.16.7_@babel+core@7.15.8
-      '@babel/types': 7.16.8
+      '@babel/types': 7.17.0
       esutils: 2.0.3
     dev: false
 
@@ -4892,8 +4892,8 @@ packages:
       glob-to-regexp: 0.3.0
     dev: true
 
-  /@next/bundle-analyzer/12.0.10:
-    resolution: {integrity: sha512-POUNU5BAyJUvuMnALBFaxQvS6Rpdk2D7snHV/3Wdv2UkVX5PUPBYZc3KLdMirMQ6jPNbnvB0/lG5/LM15fHtqw==}
+  /@next/bundle-analyzer/12.1.0:
+    resolution: {integrity: sha512-pOtWRWaKQXff8A80Ex3E67EH8XuERHxBPn8cQgKzfhRKQwoTEareHe2nWJO1uXTQm6m7ZRhmhb4+uwp+UvmITQ==}
     dependencies:
       webpack-bundle-analyzer: 4.3.0
     transitivePeerDependencies:
@@ -10175,7 +10175,7 @@ packages:
   /axios/0.25.0:
     resolution: {integrity: sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==}
     dependencies:
-      follow-redirects: 1.14.7
+      follow-redirects: 1.14.7_debug@2.6.9
     transitivePeerDependencies:
       - debug
 
@@ -15184,15 +15184,6 @@ packages:
       debug: 2.6.9
     dev: false
 
-  /follow-redirects/1.14.7:
-    resolution: {integrity: sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-
   /follow-redirects/1.14.7_debug@2.6.9:
     resolution: {integrity: sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==}
     engines: {node: '>=4.0'}
@@ -15203,7 +15194,6 @@ packages:
         optional: true
     dependencies:
       debug: 2.6.9
-    dev: false
 
   /font-awesome/4.7.0:
     resolution: {integrity: sha1-j6jPBBGhoxr9B7BtKQK7n8gVoTM=}
@@ -20350,8 +20340,8 @@ packages:
     resolution: {integrity: sha512-OjJ+fV15FXO2uQXQagLD4C0abYErBjyjE0I0FHpOEIB8upw0hg1ldFP6cqHTJBH1cZqy96OeR3u1dJ+Ez2D4Bg==}
     dev: true
 
-  /next-seo/4.28.1_caa633a00319350dbda42996613fe26c:
-    resolution: {integrity: sha512-WZgwdM+UhpNF3A37zFllzmPhnOVJ9vYeYlc0n3Z/kYfz/QQgy8NEdncNNggS9dU4JD8xriaCcyknhy5OsrFsJw==}
+  /next-seo/4.29.0_caa633a00319350dbda42996613fe26c:
+    resolution: {integrity: sha512-xmwzcz4uHaYJ8glbuhs6FSBQ7z3irmdPYdJJ5saWm72Uy3o+mPKGaPCXQetTCE6/xxVnpoDV4yFtFlEjUcljSg==}
     peerDependencies:
       next: ^8.1.1-canary.54 || >=9.0.0
       react: '>=16.0.0'
@@ -20362,8 +20352,8 @@ packages:
       react-dom: 17.0.2_react@17.0.2
     dev: false
 
-  /next-sitemap/1.9.9_next@12.1.0:
-    resolution: {integrity: sha512-Tl7otSmXq/k+FDH5FAJGCH1bOMxs6ddRmuPVurgQTrz+pFWzMQ7KIPSP96wiY5vZ5npFjPTPJP2wlCwOqQB1Dw==}
+  /next-sitemap/1.9.12_next@12.1.0:
+    resolution: {integrity: sha512-kHXf4ZNAGLJyK16HbjzE5X9JlKwXtxW+9J4dh3oT7LSbU/+3bN+VqWjNw/776Otbanf7EJsvl51oQ78qQW5XBQ==}
     engines: {node: '>=14'}
     hasBin: true
     peerDependencies:
@@ -29026,7 +29016,7 @@ packages:
       lodash: 4.17.21
       opener: 1.5.2
       sirv: 1.0.18
-      ws: 7.5.6
+      ws: 7.5.7
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -29542,19 +29532,6 @@ packages:
       utf-8-validate:
         optional: true
     dev: false
-
-  /ws/7.5.6:
-    resolution: {integrity: sha512-6GLgCqo2cy2A2rjCNFlxQS6ZljG/coZfZXclldI8FB/1G3CCI36Zd8xy2HrFVACi8tfk5XrgLQEk+P0Tnz9UcA==}
-    engines: {node: '>=8.3.0'}
-    peerDependencies:
-      bufferutil: ^4.0.1
-      utf-8-validate: ^5.0.2
-    peerDependenciesMeta:
-      bufferutil:
-        optional: true
-      utf-8-validate:
-        optional: true
-    dev: true
 
   /ws/7.5.7:
     resolution: {integrity: sha512-KMvVuFzpKBuiIXW3E4u3mySRO2/mCHSyZDJQM5NQ9Q9KHWHWh0NHgfbRMLLrceUK5qAL4ytALJbpRMjixFZh8A==}
