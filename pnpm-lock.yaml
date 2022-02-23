@@ -205,10 +205,10 @@ importers:
     specifiers:
       '@emotion/babel-plugin': 11.7.2
       '@emotion/css': 11.7.1
-      '@emotion/jest': 11.7.1
-      '@emotion/react': 11.7.1
+      '@emotion/jest': 11.8.0
+      '@emotion/react': 11.8.1
       '@emotion/server': 11.4.0
-      '@emotion/styled': 11.6.0
+      '@emotion/styled': 11.8.1
       '@headlessui/react': 1.4.3
       '@next/bundle-analyzer': 12.0.10
       '@popperjs/core': 2.11.2
@@ -255,9 +255,9 @@ importers:
       twin.macro: 2.8.2
     dependencies:
       '@emotion/css': 11.7.1_@babel+core@7.16.7
-      '@emotion/react': 11.7.1_b3e67f1b1cc68ee82c343add0615c039
+      '@emotion/react': 11.8.1_b3e67f1b1cc68ee82c343add0615c039
       '@emotion/server': 11.4.0_@emotion+css@11.7.1
-      '@emotion/styled': 11.6.0_023218a630dedcfdc5aa065bf93ff9d7
+      '@emotion/styled': 11.8.1_c024f1efc0f8eca2bf792ab49bdd80e9
       '@headlessui/react': 1.4.3_react-dom@17.0.2+react@17.0.2
       '@popperjs/core': 2.11.2
       '@portabletext/react': 1.0.3_react@17.0.2
@@ -287,7 +287,7 @@ importers:
       smoothscroll-polyfill: 0.4.4
     devDependencies:
       '@emotion/babel-plugin': 11.7.2_@babel+core@7.16.7
-      '@emotion/jest': 11.7.1_@types+jest@27.4.0
+      '@emotion/jest': 11.8.0_@types+jest@27.4.0
       '@next/bundle-analyzer': 12.0.10
       '@testing-library/jest-dom': 5.16.1
       '@testing-library/react': 12.1.2_react-dom@17.0.2+react@17.0.2
@@ -823,15 +823,15 @@ packages:
       regexpu-core: 4.8.0
     dev: false
 
-  /@babel/helper-create-regexp-features-plugin/7.16.7_@babel+core@7.15.8:
-    resolution: {integrity: sha512-fk5A6ymfp+O5+p2yCkXAu5Kyj6v0xh0RBeNcAkYUMDvvAAoxvSKXn+Jb37t/yWFiQVDFK1ELpUTD8/aLhCPu+g==}
+  /@babel/helper-create-regexp-features-plugin/7.17.0_@babel+core@7.15.8:
+    resolution: {integrity: sha512-awO2So99wG6KnlE+TPs6rn83gCz5WlEePJDTnLEqbchMVrBeAujURVphRdigsk094VhvZehFoNOihSlcBjwsXA==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0
     dependencies:
       '@babel/core': 7.15.8
       '@babel/helper-annotate-as-pure': 7.16.7
-      regexpu-core: 4.8.0
+      regexpu-core: 5.0.1
     dev: false
 
   /@babel/helper-create-regexp-features-plugin/7.17.0_@babel+core@7.16.7:
@@ -1758,7 +1758,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.15.8
-      '@babel/helper-create-regexp-features-plugin': 7.16.7_@babel+core@7.15.8
+      '@babel/helper-create-regexp-features-plugin': 7.17.0_@babel+core@7.15.8
       '@babel/helper-plugin-utils': 7.16.7
     dev: false
 
@@ -2296,7 +2296,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.15.8
-      '@babel/helper-create-regexp-features-plugin': 7.16.7_@babel+core@7.15.8
+      '@babel/helper-create-regexp-features-plugin': 7.17.0_@babel+core@7.15.8
       '@babel/helper-plugin-utils': 7.16.7
     dev: false
 
@@ -3188,7 +3188,7 @@ packages:
       '@babel/helper-plugin-utils': 7.16.7
       '@babel/plugin-proposal-unicode-property-regex': 7.16.7_@babel+core@7.15.8
       '@babel/plugin-transform-dotall-regex': 7.16.7_@babel+core@7.15.8
-      '@babel/types': 7.16.8
+      '@babel/types': 7.17.0
       esutils: 2.0.3
     dev: false
 
@@ -3296,7 +3296,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.9
-    dev: true
 
   /@babel/template/7.15.4:
     resolution: {integrity: sha512-UgBAfEa1oGuYgDIPM2G+aHa4Nlo9Lh6mGD2bDBGMTbYnc38vulXPuC1MGjYILIEmlwl6Rd+BPR9ee3gm20CBtg==}
@@ -3970,7 +3969,7 @@ packages:
     dependencies:
       '@emotion/memoize': 0.7.5
       '@emotion/sheet': 1.1.0
-      '@emotion/utils': 1.0.0
+      '@emotion/utils': 1.1.0
       '@emotion/weak-memoize': 0.2.5
       stylis: 4.0.13
     dev: false
@@ -4040,14 +4039,14 @@ packages:
     dependencies:
       '@emotion/memoize': 0.7.4
 
-  /@emotion/is-prop-valid/1.1.1:
-    resolution: {integrity: sha512-bW1Tos67CZkOURLc0OalnfxtSXQJMrAMV0jZTVGJUPSOd4qgjF3+tTD5CwJM13PHA8cltGW1WGbbvV9NpvUZPw==}
+  /@emotion/is-prop-valid/1.1.2:
+    resolution: {integrity: sha512-3QnhqeL+WW88YjYbQL5gUIkthuMw7a0NGbZ7wfFVk2kg/CK5w8w5FFa0RzWjyY1+sujN0NWbtSHH6OJmWHtJpQ==}
     dependencies:
       '@emotion/memoize': 0.7.5
     dev: false
 
-  /@emotion/jest/11.7.1_@types+jest@27.4.0:
-    resolution: {integrity: sha512-IYKyiIm4a7LINESYTa6aAizRj6YTwIvpD9s9yDzkrOEJXKwCqWWOTVNNOJKBygim3fv4lC9KM5jG5qzHvy4ZJg==}
+  /@emotion/jest/11.8.0_@types+jest@27.4.0:
+    resolution: {integrity: sha512-LfiD3cmPekVFky4L9Z9D2LpD/25JnJs1EalJGP/bmDJlqPiV8rLzUVwtfNvq7lk68o4GMxg/VRf28qPPeZKEPQ==}
     peerDependencies:
       '@types/jest': ^26.0.14 || ^27.0.0
       enzyme-to-json: ^3.2.1
@@ -4057,7 +4056,7 @@ packages:
       enzyme-to-json:
         optional: true
     dependencies:
-      '@babel/runtime': 7.16.3
+      '@babel/runtime': 7.17.2
       '@emotion/css-prettifier': 1.0.1
       '@types/jest': 27.4.0
       chalk: 4.1.2
@@ -4117,8 +4116,8 @@ packages:
       react: 17.0.2
     dev: false
 
-  /@emotion/react/11.7.1_b3e67f1b1cc68ee82c343add0615c039:
-    resolution: {integrity: sha512-DV2Xe3yhkF1yT4uAUoJcYL1AmrnO5SVsdfvu+fBuS7IbByDeTVx9+wFmvx9Idzv7/78+9Mgx2Hcmr7Fex3tIyw==}
+  /@emotion/react/11.8.1_b3e67f1b1cc68ee82c343add0615c039:
+    resolution: {integrity: sha512-XGaie4nRxmtP1BZYBXqC5JGqMYF2KRKKI7vjqNvQxyRpekVAZhb6QqrElmZCAYXH1L90lAelADSVZC4PFsrJ8Q==}
     peerDependencies:
       '@babel/core': ^7.0.0
       '@types/react': '*'
@@ -4130,11 +4129,12 @@ packages:
         optional: true
     dependencies:
       '@babel/core': 7.16.7
-      '@babel/runtime': 7.16.3
+      '@babel/runtime': 7.17.2
+      '@emotion/babel-plugin': 11.7.2_@babel+core@7.16.7
       '@emotion/cache': 11.7.1
       '@emotion/serialize': 1.0.2
       '@emotion/sheet': 1.1.0
-      '@emotion/utils': 1.0.0
+      '@emotion/utils': 1.1.0
       '@emotion/weak-memoize': 0.2.5
       '@types/react': 17.0.38
       hoist-non-react-statics: 3.3.2
@@ -4156,7 +4156,7 @@ packages:
       '@emotion/hash': 0.8.0
       '@emotion/memoize': 0.7.5
       '@emotion/unitless': 0.7.5
-      '@emotion/utils': 1.0.0
+      '@emotion/utils': 1.1.0
       csstype: 3.0.9
 
   /@emotion/server/11.4.0_@emotion+css@11.7.1:
@@ -4235,8 +4235,8 @@ packages:
       babel-plugin-emotion: 10.2.2
     dev: true
 
-  /@emotion/styled/11.6.0_023218a630dedcfdc5aa065bf93ff9d7:
-    resolution: {integrity: sha512-mxVtVyIOTmCAkFbwIp+nCjTXJNgcz4VWkOYQro87jE2QBTydnkiYusMrRGFtzuruiGK4dDaNORk4gH049iiQuw==}
+  /@emotion/styled/11.8.1_c024f1efc0f8eca2bf792ab49bdd80e9:
+    resolution: {integrity: sha512-OghEVAYBZMpEquHZwuelXcRjRJQOVayvbmNR0zr174NHdmMgrNkLC6TljKC5h9lZLkN5WGrdUcrKlOJ4phhoTQ==}
     peerDependencies:
       '@babel/core': ^7.0.0
       '@emotion/react': ^11.0.0-rc.0
@@ -4249,12 +4249,12 @@ packages:
         optional: true
     dependencies:
       '@babel/core': 7.16.7
-      '@babel/runtime': 7.16.3
+      '@babel/runtime': 7.17.2
       '@emotion/babel-plugin': 11.7.2_@babel+core@7.16.7
-      '@emotion/is-prop-valid': 1.1.1
-      '@emotion/react': 11.7.1_b3e67f1b1cc68ee82c343add0615c039
+      '@emotion/is-prop-valid': 1.1.2
+      '@emotion/react': 11.8.1_b3e67f1b1cc68ee82c343add0615c039
       '@emotion/serialize': 1.0.2
-      '@emotion/utils': 1.0.0
+      '@emotion/utils': 1.1.0
       '@types/react': 17.0.38
       react: 17.0.2
     dev: false
@@ -4270,6 +4270,10 @@ packages:
 
   /@emotion/utils/1.0.0:
     resolution: {integrity: sha512-mQC2b3XLDs6QCW+pDQDiyO/EdGZYOygE8s5N5rrzjSI4M3IejPE/JPndCBwRT9z982aqQNi6beWs1UeayrQxxA==}
+    dev: false
+
+  /@emotion/utils/1.1.0:
+    resolution: {integrity: sha512-iRLa/Y4Rs5H/f2nimczYmS5kFJEbpiVvgN3XVfZ022IYhuNA1IRSHEizcof88LtCTXtl9S2Cxt32KgaXEu72JQ==}
 
   /@emotion/weak-memoize/0.2.5:
     resolution: {integrity: sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==}
@@ -8050,7 +8054,7 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       '@babel/code-frame': 7.16.0
-      '@babel/runtime': 7.16.5
+      '@babel/runtime': 7.17.2
       '@types/aria-query': 4.2.2
       aria-query: 5.0.0
       chalk: 4.1.2
@@ -10175,7 +10179,7 @@ packages:
   /axios/0.25.0:
     resolution: {integrity: sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==}
     dependencies:
-      follow-redirects: 1.14.7
+      follow-redirects: 1.14.7_debug@2.6.9
     transitivePeerDependencies:
       - debug
 
@@ -10368,7 +10372,7 @@ packages:
   /babel-plugin-macros/2.8.0:
     resolution: {integrity: sha512-SEP5kJpfGYqYKpBrj5XU3ahw5p5GOHJ0U5ssOSQ/WBVdwkD2Dzlce95exQTs3jOVWPPKLBN2rlEWkCK7dSmLvg==}
     dependencies:
-      '@babel/runtime': 7.16.5
+      '@babel/runtime': 7.17.2
       cosmiconfig: 6.0.0
       resolve: 1.20.0
 
@@ -15184,15 +15188,6 @@ packages:
       debug: 2.6.9
     dev: false
 
-  /follow-redirects/1.14.7:
-    resolution: {integrity: sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-
   /follow-redirects/1.14.7_debug@2.6.9:
     resolution: {integrity: sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==}
     engines: {node: '>=4.0'}
@@ -15203,7 +15198,6 @@ packages:
         optional: true
     dependencies:
       debug: 2.6.9
-    dev: false
 
   /font-awesome/4.7.0:
     resolution: {integrity: sha1-j6jPBBGhoxr9B7BtKQK7n8gVoTM=}
@@ -23581,7 +23575,7 @@ packages:
       algoliasearch: '>= 3.1 < 5'
       react: '>= 16.3.0 < 18'
     dependencies:
-      '@babel/runtime': 7.16.7
+      '@babel/runtime': 7.17.2
       algoliasearch: 4.12.0
       algoliasearch-helper: 3.7.0_algoliasearch@4.12.0
       prop-types: 15.8.1
@@ -25207,7 +25201,7 @@ packages:
   /rtl-css-js/1.14.2:
     resolution: {integrity: sha512-t6Wc/wpqm8s3kuXAV6tL/T7VS6n0XszzX58CgCsLj3O2xi9ITSLfzYhtl+GKyxCi/3QEqVctOJQwCiDzb2vteQ==}
     dependencies:
-      '@babel/runtime': 7.16.5
+      '@babel/runtime': 7.17.2
     dev: false
 
   /run-async/2.4.1:
