@@ -40,7 +40,7 @@ importers:
       babel-jest: 27.4.6
       babel-loader: 8.2.3
       concurrently: 7.0.0
-      cssnano: 5.0.16
+      cssnano: 5.0.17
       dotenv-flow: 3.2.0
       esbuild: 0.14.14
       esbuild-plugin-d.ts: 1.1.0
@@ -88,7 +88,7 @@ importers:
       babel-jest: 27.4.6_@babel+core@7.16.7
       babel-loader: 8.2.3_@babel+core@7.16.7
       concurrently: 7.0.0
-      cssnano: 5.0.16_postcss@8.4.5
+      cssnano: 5.0.17_postcss@8.4.5
       esbuild: 0.14.14
       esbuild-plugin-d.ts: 1.1.0_ts-node@10.4.0+typescript@4.5.5
       eslint: 7.32.0
@@ -823,15 +823,15 @@ packages:
       regexpu-core: 4.8.0
     dev: false
 
-  /@babel/helper-create-regexp-features-plugin/7.16.7_@babel+core@7.15.8:
-    resolution: {integrity: sha512-fk5A6ymfp+O5+p2yCkXAu5Kyj6v0xh0RBeNcAkYUMDvvAAoxvSKXn+Jb37t/yWFiQVDFK1ELpUTD8/aLhCPu+g==}
+  /@babel/helper-create-regexp-features-plugin/7.17.0_@babel+core@7.15.8:
+    resolution: {integrity: sha512-awO2So99wG6KnlE+TPs6rn83gCz5WlEePJDTnLEqbchMVrBeAujURVphRdigsk094VhvZehFoNOihSlcBjwsXA==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0
     dependencies:
       '@babel/core': 7.15.8
       '@babel/helper-annotate-as-pure': 7.16.7
-      regexpu-core: 4.8.0
+      regexpu-core: 5.0.1
     dev: false
 
   /@babel/helper-create-regexp-features-plugin/7.17.0_@babel+core@7.16.7:
@@ -1758,7 +1758,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.15.8
-      '@babel/helper-create-regexp-features-plugin': 7.16.7_@babel+core@7.15.8
+      '@babel/helper-create-regexp-features-plugin': 7.17.0_@babel+core@7.15.8
       '@babel/helper-plugin-utils': 7.16.7
     dev: false
 
@@ -2296,7 +2296,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.15.8
-      '@babel/helper-create-regexp-features-plugin': 7.16.7_@babel+core@7.15.8
+      '@babel/helper-create-regexp-features-plugin': 7.17.0_@babel+core@7.15.8
       '@babel/helper-plugin-utils': 7.16.7
     dev: false
 
@@ -3188,7 +3188,7 @@ packages:
       '@babel/helper-plugin-utils': 7.16.7
       '@babel/plugin-proposal-unicode-property-regex': 7.16.7_@babel+core@7.15.8
       '@babel/plugin-transform-dotall-regex': 7.16.7_@babel+core@7.15.8
-      '@babel/types': 7.16.8
+      '@babel/types': 7.17.0
       esutils: 2.0.3
     dev: false
 
@@ -12655,8 +12655,8 @@ packages:
       postcss: 7.0.39
     dev: false
 
-  /cssnano/5.0.16_postcss@8.4.5:
-    resolution: {integrity: sha512-ryhRI9/B9VFCwPbb1z60LLK5/ldoExi7nwdnJzpkLZkm2/r7j2X3jfY+ZvDVJhC/0fPZlrAguYdHNFg0iglPKQ==}
+  /cssnano/5.0.17_postcss@8.4.5:
+    resolution: {integrity: sha512-fmjLP7k8kL18xSspeXTzRhaFtRI7DL9b8IcXR80JgtnWBpvAzHT7sCR/6qdn0tnxIaINUN6OEQu83wF57Gs3Xw==}
     engines: {node: ^10 || ^12 || >=14.0}
     peerDependencies:
       postcss: ^8.2.15
