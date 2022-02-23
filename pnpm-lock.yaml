@@ -243,7 +243,7 @@ importers:
       next-compose-plugins: 2.2.1
       next-seo: 4.28.1
       next-sitemap: 1.9.9
-      query-string: 7.1.0
+      query-string: 7.1.1
       react: ^17.0.2
       react-dom: ^17.0.2
       react-instantsearch-dom: 6.21.1
@@ -276,7 +276,7 @@ importers:
       lodash.throttle: 4.1.1
       next: 12.1.0_dfc0b93d99fba272c9564d3139a2581a
       next-seo: 4.28.1_caa633a00319350dbda42996613fe26c
-      query-string: 7.1.0
+      query-string: 7.1.1
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-instantsearch-dom: 6.21.1_d4554d5e62644df6deccb9ead77cbf79
@@ -823,15 +823,15 @@ packages:
       regexpu-core: 4.8.0
     dev: false
 
-  /@babel/helper-create-regexp-features-plugin/7.16.7_@babel+core@7.15.8:
-    resolution: {integrity: sha512-fk5A6ymfp+O5+p2yCkXAu5Kyj6v0xh0RBeNcAkYUMDvvAAoxvSKXn+Jb37t/yWFiQVDFK1ELpUTD8/aLhCPu+g==}
+  /@babel/helper-create-regexp-features-plugin/7.17.0_@babel+core@7.15.8:
+    resolution: {integrity: sha512-awO2So99wG6KnlE+TPs6rn83gCz5WlEePJDTnLEqbchMVrBeAujURVphRdigsk094VhvZehFoNOihSlcBjwsXA==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0
     dependencies:
       '@babel/core': 7.15.8
       '@babel/helper-annotate-as-pure': 7.16.7
-      regexpu-core: 4.8.0
+      regexpu-core: 5.0.1
     dev: false
 
   /@babel/helper-create-regexp-features-plugin/7.17.0_@babel+core@7.16.7:
@@ -1758,7 +1758,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.15.8
-      '@babel/helper-create-regexp-features-plugin': 7.16.7_@babel+core@7.15.8
+      '@babel/helper-create-regexp-features-plugin': 7.17.0_@babel+core@7.15.8
       '@babel/helper-plugin-utils': 7.16.7
     dev: false
 
@@ -2296,7 +2296,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.15.8
-      '@babel/helper-create-regexp-features-plugin': 7.16.7_@babel+core@7.15.8
+      '@babel/helper-create-regexp-features-plugin': 7.17.0_@babel+core@7.15.8
       '@babel/helper-plugin-utils': 7.16.7
     dev: false
 
@@ -3188,7 +3188,7 @@ packages:
       '@babel/helper-plugin-utils': 7.16.7
       '@babel/plugin-proposal-unicode-property-regex': 7.16.7_@babel+core@7.15.8
       '@babel/plugin-transform-dotall-regex': 7.16.7_@babel+core@7.15.8
-      '@babel/types': 7.16.8
+      '@babel/types': 7.17.0
       esutils: 2.0.3
     dev: false
 
@@ -10175,7 +10175,7 @@ packages:
   /axios/0.25.0:
     resolution: {integrity: sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==}
     dependencies:
-      follow-redirects: 1.14.7
+      follow-redirects: 1.14.7_debug@2.6.9
     transitivePeerDependencies:
       - debug
 
@@ -15184,15 +15184,6 @@ packages:
       debug: 2.6.9
     dev: false
 
-  /follow-redirects/1.14.7:
-    resolution: {integrity: sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-
   /follow-redirects/1.14.7_debug@2.6.9:
     resolution: {integrity: sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==}
     engines: {node: '>=4.0'}
@@ -15203,7 +15194,6 @@ packages:
         optional: true
     dependencies:
       debug: 2.6.9
-    dev: false
 
   /font-awesome/4.7.0:
     resolution: {integrity: sha1-j6jPBBGhoxr9B7BtKQK7n8gVoTM=}
@@ -23089,8 +23079,8 @@ packages:
       strict-uri-encode: 2.0.0
     dev: false
 
-  /query-string/7.1.0:
-    resolution: {integrity: sha512-wnJ8covk+S9isYR5JIXPt93kFUmI2fQ4R/8130fuq+qwLiGVTurg7Klodgfw4NSz/oe7xnyi09y3lSrogUeM3g==}
+  /query-string/7.1.1:
+    resolution: {integrity: sha512-MplouLRDHBZSG9z7fpuAAcI7aAYjDLhtsiVZsevsfaHWDS2IDdORKbSd1kWUA+V4zyva/HZoSfpwnYMMQDhb0w==}
     engines: {node: '>=6'}
     dependencies:
       decode-uri-component: 0.2.0
