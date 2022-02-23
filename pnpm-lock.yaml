@@ -330,7 +330,7 @@ importers:
       parse-numeric-range: 1.3.0
       refractor: 4.4.0
       rehype: 12.0.1
-      rehype-parse: 8.0.3
+      rehype-parse: 8.0.4
       unified: 10.1.1
       unist-util-filter: 4.0.0
       unist-util-visit: 4.1.0
@@ -340,7 +340,7 @@ importers:
       parse-numeric-range: 1.3.0
       refractor: 4.4.0
       rehype: 12.0.1
-      rehype-parse: 8.0.3
+      rehype-parse: 8.0.4
       unified: 10.1.1
       unist-util-filter: 4.0.0
       unist-util-visit: 4.1.0
@@ -823,15 +823,15 @@ packages:
       regexpu-core: 4.8.0
     dev: false
 
-  /@babel/helper-create-regexp-features-plugin/7.16.7_@babel+core@7.15.8:
-    resolution: {integrity: sha512-fk5A6ymfp+O5+p2yCkXAu5Kyj6v0xh0RBeNcAkYUMDvvAAoxvSKXn+Jb37t/yWFiQVDFK1ELpUTD8/aLhCPu+g==}
+  /@babel/helper-create-regexp-features-plugin/7.17.0_@babel+core@7.15.8:
+    resolution: {integrity: sha512-awO2So99wG6KnlE+TPs6rn83gCz5WlEePJDTnLEqbchMVrBeAujURVphRdigsk094VhvZehFoNOihSlcBjwsXA==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0
     dependencies:
       '@babel/core': 7.15.8
       '@babel/helper-annotate-as-pure': 7.16.7
-      regexpu-core: 4.8.0
+      regexpu-core: 5.0.1
     dev: false
 
   /@babel/helper-create-regexp-features-plugin/7.17.0_@babel+core@7.16.7:
@@ -1758,7 +1758,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.15.8
-      '@babel/helper-create-regexp-features-plugin': 7.16.7_@babel+core@7.15.8
+      '@babel/helper-create-regexp-features-plugin': 7.17.0_@babel+core@7.15.8
       '@babel/helper-plugin-utils': 7.16.7
     dev: false
 
@@ -2296,7 +2296,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.15.8
-      '@babel/helper-create-regexp-features-plugin': 7.16.7_@babel+core@7.15.8
+      '@babel/helper-create-regexp-features-plugin': 7.17.0_@babel+core@7.15.8
       '@babel/helper-plugin-utils': 7.16.7
     dev: false
 
@@ -3188,7 +3188,7 @@ packages:
       '@babel/helper-plugin-utils': 7.16.7
       '@babel/plugin-proposal-unicode-property-regex': 7.16.7_@babel+core@7.15.8
       '@babel/plugin-transform-dotall-regex': 7.16.7_@babel+core@7.15.8
-      '@babel/types': 7.16.8
+      '@babel/types': 7.17.0
       esutils: 2.0.3
     dev: false
 
@@ -10175,7 +10175,7 @@ packages:
   /axios/0.25.0:
     resolution: {integrity: sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==}
     dependencies:
-      follow-redirects: 1.14.7
+      follow-redirects: 1.14.7_debug@2.6.9
     transitivePeerDependencies:
       - debug
 
@@ -15184,15 +15184,6 @@ packages:
       debug: 2.6.9
     dev: false
 
-  /follow-redirects/1.14.7:
-    resolution: {integrity: sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-
   /follow-redirects/1.14.7_debug@2.6.9:
     resolution: {integrity: sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==}
     engines: {node: '>=4.0'}
@@ -15203,7 +15194,6 @@ packages:
         optional: true
     dependencies:
       debug: 2.6.9
-    dev: false
 
   /font-awesome/4.7.0:
     resolution: {integrity: sha1-j6jPBBGhoxr9B7BtKQK7n8gVoTM=}
@@ -24755,8 +24745,8 @@ packages:
     dependencies:
       jsesc: 0.5.0
 
-  /rehype-parse/8.0.3:
-    resolution: {integrity: sha512-RGw0CVt+0S6KdvpE8bbP2Db9WXclQcIX7A0ufM3QFqAhTo/ddJMQrrI2j3cijlRPZlGK8R3pRgC8U5HyV76IDw==}
+  /rehype-parse/8.0.4:
+    resolution: {integrity: sha512-MJJKONunHjoTh4kc3dsM1v3C9kGrrxvA3U8PxZlP2SjH8RNUSrb+lF7Y0KVaUDnGH2QZ5vAn7ulkiajM9ifuqg==}
     dependencies:
       '@types/hast': 2.3.4
       hast-util-from-parse5: 7.1.0
@@ -24776,7 +24766,7 @@ packages:
     resolution: {integrity: sha512-ey6kAqwLM3X6QnMDILJthGvG1m1ULROS9NT4uG9IDCuv08SFyLlreSuvOa//DgEvbXx62DS6elGVqusWhRUbgw==}
     dependencies:
       '@types/hast': 2.3.4
-      rehype-parse: 8.0.3
+      rehype-parse: 8.0.4
       rehype-stringify: 9.0.2
       unified: 10.1.1
     dev: false
