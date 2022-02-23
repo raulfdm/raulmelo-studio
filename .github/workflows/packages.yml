@@ -49,48 +49,48 @@ jobs:
       - name: Build Projects
         run: pnpm run build --filter {packages/}
 
-  release:
-    if: github.ref == 'refs/heads/main'
-    needs: [build]
-    timeout-minutes: 15
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout code repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+  # release:
+  #   if: github.ref == 'refs/heads/main'
+  #   needs: [build]
+  #   timeout-minutes: 15
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: checkout code repository
+  #       uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 0
 
-      - name: setup node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
+  #     - name: setup node.js
+  #       uses: actions/setup-node@v2
+  #       with:
+  #         node-version: 14
 
-      - name: Cache pnpm modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-
+  #     - name: Cache pnpm modules
+  #       uses: actions/cache@v2
+  #       with:
+  #         path: ~/.pnpm-store
+  #         key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-
 
-      - name: install pnpm
-        run: npm i pnpm@latest -g
+  #     - name: install pnpm
+  #       run: npm i pnpm@latest -g
 
-      - name: Setup npmrc
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+  #     - name: Setup npmrc
+  #       run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
 
-      - name: setup pnpm config
-        run: pnpm config set store-dir $PNPM_CACHE_FOLDER
+  #     - name: setup pnpm config
+  #       run: pnpm config set store-dir $PNPM_CACHE_FOLDER
 
-      - name: install dependencies
-        run: pnpm install --frozen-lock --filter mdx-prism-2
+  #     - name: install dependencies
+  #       run: pnpm install --frozen-lock --filter mdx-prism-2
 
-      - name: create and publish versions
-        uses: changesets/action@master
-        with:
-          version: pnpm ci:version
-          commit: 'chore: update versions'
-          title: 'chore: update versions'
-          publish: pnpm ci:publish
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #     - name: create and publish versions
+  #       uses: changesets/action@master
+  #       with:
+  #         version: pnpm ci:version
+  #         commit: 'chore: update versions'
+  #         title: 'chore: update versions'
+  #         publish: pnpm ci:publish
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
