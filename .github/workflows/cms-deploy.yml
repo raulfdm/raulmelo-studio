@@ -29,26 +29,26 @@ jobs:
 
       - run: pnpm run build --filter cms...--stream
 
-    deploy:
-      # if: github.ref == 'refs/heads/main'
-      needs: [build]
-      timeout-minutes: 15
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
+  deploy:
+    # if: github.ref == 'refs/heads/main'
+    needs: [build]
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
 
-        - name: Cache pnpm modules
-          uses: actions/cache@v2
-          with:
-            path: ~/.pnpm-store
-            key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-            restore-keys: |
-              ${{ runner.os }}-
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
 
-        - uses: pnpm/action-setup@v2.1.0
-          with:
-            version: 6.32.1
+      - uses: pnpm/action-setup@v2.1.0
+        with:
+          version: 6.32.1
 
-        - run: pnpm run deploy --filter cms
-          env:
-            SANITY_AUTH_TOKEN: ${{secrets.SANITY_AUTH_TOKEN}}
+      - run: pnpm run deploy --filter cms
+        env:
+          SANITY_AUTH_TOKEN: ${{secrets.SANITY_AUTH_TOKEN}}
