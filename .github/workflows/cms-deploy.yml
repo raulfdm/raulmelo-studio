@@ -7,7 +7,6 @@ on:
       - 'config/**'
       - '.github/workflows/cms-deploy.yml'
       - package.json
-      - pnpm-lock.yaml
 
 jobs:
   build:
@@ -27,7 +26,7 @@ jobs:
         with:
           version: 6.32.1
 
-      - run: pnpm run build --filter cms...--stream
+      - run: pnpm run build --filter cms... --stream
 
       - name: Deploy
         run: pnpm run deploy --filter cms
