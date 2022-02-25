@@ -182,7 +182,7 @@ importers:
       '@emotion/server': 11.4.0
       '@emotion/styled': 11.8.1
       '@headlessui/react': 1.5.0
-      '@next/bundle-analyzer': 12.0.10
+      '@next/bundle-analyzer': 12.1.0
       '@popperjs/core': 2.11.2
       '@portabletext/react': 1.0.3
       '@raulmelo/core': '*'
@@ -198,8 +198,8 @@ importers:
       '@types/react': 17.0.39
       '@types/react-dom': 17.0.11
       '@types/react-instantsearch-dom': 6.12.2
-      '@xstate/fsm': 1.6.4
-      '@xstate/react': 1.6.3
+      '@xstate/fsm': 1.6.5
+      '@xstate/react': 2.0.0
       algoliasearch: 4.12.1
       autoprefixer: 10.4.2
       dayjs: 1.10.7
@@ -236,8 +236,8 @@ importers:
       '@raulmelo/core': link:../../packages/core
       '@raulmelo/styles': link:../../packages/styles
       '@raulmelo/ui': link:../../packages/ui
-      '@xstate/fsm': 1.6.4
-      '@xstate/react': 1.6.3_a1aadb5a9cc50da60d050fa76d3d739a
+      '@xstate/fsm': 1.6.5
+      '@xstate/react': 2.0.0_f580876926a89f426e763873abcb2c56
       algoliasearch: 4.12.1
       dayjs: 1.10.7
       debounce-promise: 3.1.2
@@ -260,7 +260,7 @@ importers:
     devDependencies:
       '@emotion/babel-plugin': 11.7.2_@babel+core@7.16.7
       '@emotion/jest': 11.8.0_@types+jest@27.4.0
-      '@next/bundle-analyzer': 12.0.10
+      '@next/bundle-analyzer': 12.1.0
       '@testing-library/jest-dom': 5.16.2
       '@testing-library/react': 12.1.3_react-dom@17.0.2+react@17.0.2
       '@types/debounce-promise': 3.1.4
@@ -4279,8 +4279,8 @@ packages:
       glob-to-regexp: 0.3.0
     dev: true
 
-  /@next/bundle-analyzer/12.0.10:
-    resolution: {integrity: sha512-POUNU5BAyJUvuMnALBFaxQvS6Rpdk2D7snHV/3Wdv2UkVX5PUPBYZc3KLdMirMQ6jPNbnvB0/lG5/LM15fHtqw==}
+  /@next/bundle-analyzer/12.1.0:
+    resolution: {integrity: sha512-pOtWRWaKQXff8A80Ex3E67EH8XuERHxBPn8cQgKzfhRKQwoTEareHe2nWJO1uXTQm6m7ZRhmhb4+uwp+UvmITQ==}
     dependencies:
       webpack-bundle-analyzer: 4.3.0
     transitivePeerDependencies:
@@ -8252,23 +8252,23 @@ packages:
     resolution: {integrity: sha512-N8tkAACJx2ww8vFMneJmaAgmjAG1tnVBZJRLRcx061tmsLRZHSEZSLuGWnwPtunsSLvSqXQ2wfp7Mgqg1I+2dQ==}
     dev: false
 
-  /@xstate/fsm/1.6.4:
-    resolution: {integrity: sha512-JvoozDB1ndz+byxXsQYW150gAJQIAKZt8MfU2a4dqGhhxfvHBKNj5e1rqb+adVCLtB+F/McyUBe4jRauFhTCTQ==}
+  /@xstate/fsm/1.6.5:
+    resolution: {integrity: sha512-b5o1I6aLNeYlU/3CPlj/Z91ybk1gUsKT+5NAJI+2W4UjvS5KLG28K9v5UvNoFVjHV8PajVZ00RH3vnjyQO7ZAw==}
     dev: false
 
-  /@xstate/react/1.6.3_a1aadb5a9cc50da60d050fa76d3d739a:
-    resolution: {integrity: sha512-NCUReRHPGvvCvj2yLZUTfR0qVp6+apc8G83oXSjN4rl89ZjyujiKrTff55bze/HrsvCsP/sUJASf2n0nzMF1KQ==}
+  /@xstate/react/2.0.0_f580876926a89f426e763873abcb2c56:
+    resolution: {integrity: sha512-Pw8uHkamrMxoV8cwnVHv570Zun7o2ktokn5bkUOrv6PufFg5JHL2URiGvbyR9JqmIxfJdXregWvCGa3pqXd7Cg==}
     peerDependencies:
-      '@xstate/fsm': ^1.0.0
+      '@xstate/fsm': ^1.6.4
       react: ^16.8.0 || ^17.0.0
-      xstate: ^4.11.0
+      xstate: ^4.29.0
     peerDependenciesMeta:
       '@xstate/fsm':
         optional: true
       xstate:
         optional: true
     dependencies:
-      '@xstate/fsm': 1.6.4
+      '@xstate/fsm': 1.6.5
       react: 17.0.2
       use-isomorphic-layout-effect: 1.1.1_a0c521d4794c7ad97f5f4c1c4a7d5818
       use-subscription: 1.5.1_react@17.0.2
@@ -9591,7 +9591,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001312
-      electron-to-chromium: 1.4.71
+      electron-to-chromium: 1.4.73
       escalade: 3.1.1
       node-releases: 2.0.2
       picocolors: 1.0.0
@@ -11666,6 +11666,10 @@ packages:
 
   /electron-to-chromium/1.4.71:
     resolution: {integrity: sha512-Hk61vXXKRb2cd3znPE9F+2pLWdIOmP7GjiTj45y6L3W/lO+hSnUSUhq+6lEaERWBdZOHbk2s3YV5c9xVl3boVw==}
+    dev: false
+
+  /electron-to-chromium/1.4.73:
+    resolution: {integrity: sha512-RlCffXkE/LliqfA5m29+dVDPB2r72y2D2egMMfIy3Le8ODrxjuZNVo4NIC2yPL01N4xb4nZQLwzi6Z5tGIGLnA==}
 
   /element-resize-detector/1.2.4:
     resolution: {integrity: sha512-Fl5Ftk6WwXE0wqCgNoseKWndjzZlDCwuPTcoVZfCP9R3EHQF8qUtr3YUPNETegRBOKqQKPW3n4kiIWngGi8tKg==}
@@ -16828,6 +16832,11 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
+  /mrmime/1.0.0:
+    resolution: {integrity: sha512-a70zx7zFfVO7XpnQ2IX1Myh9yY4UYvfld/dikWRnsXxbyvMcfz+u6UfgNAtH+k2QqtJuzVpv6eLTx1G2+WKZbQ==}
+    engines: {node: '>=10'}
+    dev: true
+
   /ms/2.0.0:
     resolution: {integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=}
 
@@ -21130,12 +21139,12 @@ packages:
     dependencies:
       is-arrayish: 0.3.2
 
-  /sirv/1.0.18:
-    resolution: {integrity: sha512-f2AOPogZmXgJ9Ma2M22ZEhc1dNtRIzcEkiflMFeVTRq+OViOZMvH1IPMVOwrKaxpSaHioBJiDR0SluRqGa7atA==}
+  /sirv/1.0.19:
+    resolution: {integrity: sha512-JuLThK3TnZG1TAKDwNIqNq6QA2afLOCcm+iE8D1Kj3GA40pSPsxQjjJl0J8X3tsR7T+CP1GavpzLwYkgVLWrZQ==}
     engines: {node: '>= 10'}
     dependencies:
       '@polka/url': 1.0.0-next.21
-      mime: 2.5.2
+      mrmime: 1.0.0
       totalist: 1.1.0
     dev: true
 
@@ -23368,8 +23377,8 @@ packages:
       gzip-size: 6.0.0
       lodash: 4.17.21
       opener: 1.5.2
-      sirv: 1.0.18
-      ws: 7.5.6
+      sirv: 1.0.19
+      ws: 7.5.7
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -23719,19 +23728,6 @@ packages:
     dependencies:
       async-limiter: 1.0.1
     dev: false
-
-  /ws/7.5.6:
-    resolution: {integrity: sha512-6GLgCqo2cy2A2rjCNFlxQS6ZljG/coZfZXclldI8FB/1G3CCI36Zd8xy2HrFVACi8tfk5XrgLQEk+P0Tnz9UcA==}
-    engines: {node: '>=8.3.0'}
-    peerDependencies:
-      bufferutil: ^4.0.1
-      utf-8-validate: ^5.0.2
-    peerDependenciesMeta:
-      bufferutil:
-        optional: true
-      utf-8-validate:
-        optional: true
-    dev: true
 
   /ws/7.5.7:
     resolution: {integrity: sha512-KMvVuFzpKBuiIXW3E4u3mySRO2/mCHSyZDJQM5NQ9Q9KHWHWh0NHgfbRMLLrceUK5qAL4ytALJbpRMjixFZh8A==}
