@@ -1,4 +1,4 @@
-import type { PortableTextBlock } from '@portabletext/react';
+import type { PortableTextBlock } from '@portabletext/types';
 import { SupportedLanguages } from 'src';
 
 export interface ITilBySlugApiResponse {
