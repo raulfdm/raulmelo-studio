@@ -3,10 +3,9 @@ import 'twin.macro';
 import { PortableText } from '@portabletext/react';
 import { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts';
 import { ProseContainer } from '@raulmelo/ui';
-import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { BlogJsonLd, NextSeo, NextSeoProps } from 'next-seo';
+import { ArticleJsonLd, NextSeo, NextSeoProps } from 'next-seo';
 import React, { useMemo } from 'react';
 
 import { ShareContent } from '~/components/ShareContent';
@@ -68,7 +67,7 @@ export const PortableTextPost: React.FC<PortableTextPostProps> = ({
 
   return (
     <>
-      <BlogJsonLd
+      <ArticleJsonLd
         url={seoInfo.url}
         title={seoInfo.title}
         description={seoInfo.description}

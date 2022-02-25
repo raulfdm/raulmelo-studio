@@ -1,3 +1,5 @@
+/** @type {import('next-sitemap').IConfig} */
+
 // https://github.com/iamvishnusankar/next-sitemap
 module.exports = {
   siteUrl: 'https://raulmelo.dev',

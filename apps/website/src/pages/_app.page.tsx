@@ -36,7 +36,7 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
       <Global styles={globalStyles as CSSObject} />
 
       <SocialProfileJsonLd
-        type="person"
+        type="Person"
         name={siteData.personalInformation.fullName}
         url={siteData.site.url}
         sameAs={siteData.socials.map((social) => social.url)}
