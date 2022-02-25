@@ -2,33 +2,37 @@
   "name": "cms",
   "private": true,
   "version": "1.0.0",
+  "description": "",
+  "main": "package.json",
+  "author": "Raul Melo <melo.raulf@gmail.com>",
+  "license": "UNLICENSED",
   "scripts": {
-    "build": "scripty",
-    "clean": "scripty",
-    "dev": "scripty",
-    "start": "scripty"
+    "dev": "sanity start",
+    "build": "sanity build",
+    "deploy": "scripty"
   },
+  "keywords": [
+    "sanity"
+  ],
   "dependencies": {
-    "strapi": "3.6.8",
-    "strapi-admin": "3.6.8",
-    "strapi-connector-mongoose": "3.6.8",
-    "strapi-plugin-content-manager": "3.6.8",
-    "strapi-plugin-content-type-builder": "3.6.8",
-    "strapi-plugin-email": "3.6.8",
-    "strapi-plugin-graphql": "3.6.8",
-    "strapi-plugin-i18n": "3.6.8",
-    "strapi-plugin-upload": "3.6.8",
-    "strapi-plugin-users-permissions": "3.6.8",
-    "strapi-provider-upload-cloudinary": "3.6.8",
-    "strapi-utils": "3.6.8"
+    "@raulmelo/core": "workspace:*",
+    "@raulmelo/styles": "workspace:*",
+    "@raulmelo/ui": "workspace:*",
+    "@sanity/base": "2.26.0",
+    "@sanity/core": "2.26.0",
+    "@sanity/data-aspects": "2.18.0",
+    "@sanity/default-layout": "2.26.0",
+    "@sanity/default-login": "2.26.0",
+    "@sanity/desk-tool": "2.26.0",
+    "@sanity/form-builder": "2.26.0",
+    "@sanity/vision": "2.26.0",
+    "prop-types": "15.8",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "sanity-plugin-media": "1.4.4",
+    "styled-components": "5.3.3"
   },
-  "strapi": {
-    "uuid": "2d2c1cad-7859-4b15-9a5d-cce4568b2bc5"
-  },
-  "scripty": {
-    "path": "./scripts"
-  },
-  "resolutions": {
-    "sharp": "^0.29.0"
+  "devDependencies": {
+    "@sanity/cli": "2.26.0"
   }
 }
