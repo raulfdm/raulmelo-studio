@@ -2,23 +2,26 @@ import { build } from 'esbuild';
 import { dtsPlugin } from 'esbuild-plugin-d.ts';
 import fs from 'fs';
 
+const NODE_TARGET = 'node14';
+
 export function runESBuild(options = {}) {
   const commonJs = createConfig({
     outfile: 'dist/cjs/core.js',
     platform: 'node',
     format: 'cjs',
-    target: 'node12',
+    target: NODE_TARGET,
   });
 
   const esm = createConfig({
     format: 'esm',
     outfile: 'dist/esm/core.js',
+    target: 'es2019',
   });
 
   const generateSiteDataScript = createConfig({
     format: 'esm',
     platform: 'node',
-    target: 'node12',
+    target: NODE_TARGET,
     outfile: 'dist/scripts/generateSiteData.mjs',
     entryPoints: ['src/scripts/generateSiteData.ts'],
     metafile: false,
@@ -27,7 +30,7 @@ export function runESBuild(options = {}) {
   const generateRssFeedScript = createConfig({
     format: 'esm',
     platform: 'node',
-    target: 'node12',
+    target: NODE_TARGET,
     outfile: 'dist/scripts/generateRssFeed.mjs',
     entryPoints: ['src/scripts/generateRssFeed.ts'],
     metafile: false,
