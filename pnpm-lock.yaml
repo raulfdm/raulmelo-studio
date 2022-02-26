@@ -45,10 +45,10 @@ importers:
       esbuild: 0.14.14
       esbuild-plugin-d.ts: 1.1.0
       eslint: 7.32.0
-      eslint-config-prettier: 8.3.0
+      eslint-config-prettier: 8.4.0
       eslint-plugin-jest: 25.7.0
       eslint-plugin-node: 11.1.0
-      eslint-plugin-react: 7.28.0
+      eslint-plugin-react: 7.29.1
       eslint-plugin-react-hooks: 4.3.0
       eslint-plugin-simple-import-sort: 7.0.0
       glob: 7.2.0
@@ -92,10 +92,10 @@ importers:
       esbuild: 0.14.14
       esbuild-plugin-d.ts: 1.1.0_ts-node@10.4.0+typescript@4.5.5
       eslint: 7.32.0
-      eslint-config-prettier: 8.3.0_eslint@7.32.0
+      eslint-config-prettier: 8.4.0_eslint@7.32.0
       eslint-plugin-jest: 25.7.0_4c4b385b99a1f845aedaf54754846915
       eslint-plugin-node: 11.1.0_eslint@7.32.0
-      eslint-plugin-react: 7.28.0_eslint@7.32.0
+      eslint-plugin-react: 7.29.1_eslint@7.32.0
       eslint-plugin-react-hooks: 4.3.0_eslint@7.32.0
       eslint-plugin-simple-import-sort: 7.0.0_eslint@7.32.0
       glob: 7.2.0
@@ -9588,7 +9588,7 @@ packages:
   /axios/0.25.0:
     resolution: {integrity: sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==}
     dependencies:
-      follow-redirects: 1.14.7
+      follow-redirects: 1.14.7_debug@2.6.9
     transitivePeerDependencies:
       - debug
     dev: true
@@ -13005,8 +13005,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-config-prettier/8.3.0_eslint@7.32.0:
-    resolution: {integrity: sha512-BgZuLUSeKzvlL/VUjx/Yb787VQ26RU3gGjA3iiFvdsp/2bMfVIWUVP7tjxtjS0e+HP409cPlPvNkQloz8C91ew==}
+  /eslint-config-prettier/8.4.0_eslint@7.32.0:
+    resolution: {integrity: sha512-CFotdUcMY18nGRo5KGsnNxpznzhkopOcOo0InID+sgQssPrzjvsyKZPvOgymTFeHrFuC3Tzdf2YndhXtULK9Iw==}
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
@@ -13149,6 +13149,29 @@ packages:
 
   /eslint-plugin-react/7.28.0_eslint@7.32.0:
     resolution: {integrity: sha512-IOlFIRHzWfEQQKcAD4iyYDndHwTQiCMcJVJjxempf203jnNLUnW34AXLrV33+nEXoifJE2ZEGmcjKPL8957eSw==}
+    engines: {node: '>=4'}
+    peerDependencies:
+      eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
+    dependencies:
+      array-includes: 3.1.4
+      array.prototype.flatmap: 1.2.5
+      doctrine: 2.1.0
+      eslint: 7.32.0
+      estraverse: 5.3.0
+      jsx-ast-utils: 3.2.1
+      minimatch: 3.1.2
+      object.entries: 1.1.5
+      object.fromentries: 2.0.5
+      object.hasown: 1.1.0
+      object.values: 1.1.5
+      prop-types: 15.8.1
+      resolve: 2.0.0-next.3
+      semver: 6.3.0
+      string.prototype.matchall: 4.0.6
+    dev: true
+
+  /eslint-plugin-react/7.29.1_eslint@7.32.0:
+    resolution: {integrity: sha512-WtzRpHMhsOX05ZrkyaaqmLl2uXGqmYooCfBxftJKlkYdsltiufGgfU7uuoHwR2lBam2Kh/EIVID4aU9e3kbCMA==}
     engines: {node: '>=4'}
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
@@ -13939,16 +13962,6 @@ packages:
       tslib: 2.1.0
     dev: false
 
-  /follow-redirects/1.14.7:
-    resolution: {integrity: sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-    dev: true
-
   /follow-redirects/1.14.7_debug@2.6.9:
     resolution: {integrity: sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==}
     engines: {node: '>=4.0'}
@@ -13959,7 +13972,6 @@ packages:
         optional: true
     dependencies:
       debug: 2.6.9
-    dev: false
 
   /follow-redirects/1.14.9_debug@2.6.9:
     resolution: {integrity: sha512-MQDfihBQYMcyy5dhRDJUHcw7lb2Pv/TuE6xP1vyraLukNDHKbDxDNaOE3NbCAdKQApno+GPRyo1YAp89yCjK4w==}
