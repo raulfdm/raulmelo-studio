@@ -7,8 +7,11 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: isAnalyzerMode,
 });
 
+/**
+ * @type {import('next').NextConfig}
+ */
 const nextConfig = {
-  swcMinify: true,
+  swcMinify: false,
   pageExtensions: ['page.tsx', 'page.ts'],
   experimental: {
     esmExternals: 'loose',
@@ -52,7 +55,6 @@ const nextConfig = {
       'cdn.sanity.io',
       'sanity.io',
     ],
-    formats: ['image/avif', 'image/webp'],
   },
   webpack: (config, { isServer }) => {
     /**
