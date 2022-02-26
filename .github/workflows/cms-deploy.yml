@@ -27,7 +27,7 @@ jobs:
           version: 6.32.1
 
       - name: Install deps
-        run: pnpm i --frozen-lock
+        run: pnpm i --frozen-lock -F cms...
 
       - run: pnpm run build --filter cms... --stream
 
