@@ -159,9 +159,7 @@ importers:
   apps/lambdas:
     specifiers:
       '@raulmelo/core': workspace:*
-      '@types/algoliasearch': 4.0.0
       '@types/aws-lambda': 8.10.92
-      '@types/axios': 0.14.0
       algoliasearch: 4.12.1
       netlify-lambda: 2.0.15
     dependencies:
@@ -169,9 +167,7 @@ importers:
       algoliasearch: 4.12.1
       netlify-lambda: 2.0.15
     devDependencies:
-      '@types/algoliasearch': 4.0.0
       '@types/aws-lambda': 8.10.92
-      '@types/axios': 0.14.0
 
   apps/website:
     specifiers:
@@ -8047,28 +8043,12 @@ packages:
     resolution: {integrity: sha512-eZxlbI8GZscaGS7kkc/trHTT5xgrjH3/1n2JDwusC9iahPKWMRvRjJSAN5mCXviuTGQ/lHnhvv8Q1YTpnfz9gA==}
     dev: true
 
-  /@types/algoliasearch/4.0.0:
-    resolution: {integrity: sha512-XMGE0h/dRV7qR6lR/zgGL01esc39pLHNl4m7gKZldrgoov/IaFJGfmmEJGxktlH63esWEtAiXzbjLfvEQXN15Q==}
-    deprecated: This is a stub types definition. algoliasearch provides its own type definitions, so you do not need this installed.
-    dependencies:
-      algoliasearch: 4.12.1
-    dev: true
-
   /@types/aria-query/4.2.2:
     resolution: {integrity: sha512-HnYpAE1Y6kRyKM/XkEuiRQhTHvkzMBurTHnpFLYLBGPIylZNPs9jJcuOOYWxPLJCSEtmZT0Y8rHDokKN7rRTig==}
     dev: true
 
   /@types/aws-lambda/8.10.92:
     resolution: {integrity: sha512-dB14TltT1SNq73z3MaZfKyyBZ37NAgAFl8jze59bisR4fJ6pB6AYGxItHFkooZbN7UcVJX/cFudM4p8wp1W4rA==}
-    dev: true
-
-  /@types/axios/0.14.0:
-    resolution: {integrity: sha1-7CMA++fX3d1+udOr+HmZlkyvzkY=}
-    deprecated: This is a stub types definition for axios (https://github.com/mzabriskie/axios). axios provides its own type definitions, so you don't need @types/axios installed!
-    dependencies:
-      axios: 0.25.0
-    transitivePeerDependencies:
-      - debug
     dev: true
 
   /@types/babel__core/7.1.18:
@@ -9583,14 +9563,6 @@ packages:
   /axe-core/4.4.1:
     resolution: {integrity: sha512-gd1kmb21kwNuWr6BQz8fv6GNECPBnUasepcoLbekws23NVBLODdsClRZ+bQ8+9Uomf3Sm3+Vwn0oYG9NvwnJCw==}
     engines: {node: '>=4'}
-    dev: true
-
-  /axios/0.25.0:
-    resolution: {integrity: sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==}
-    dependencies:
-      follow-redirects: 1.14.7
-    transitivePeerDependencies:
-      - debug
     dev: true
 
   /axobject-query/2.2.0:
@@ -13938,16 +13910,6 @@ packages:
     dependencies:
       tslib: 2.1.0
     dev: false
-
-  /follow-redirects/1.14.7:
-    resolution: {integrity: sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-    dev: true
 
   /follow-redirects/1.14.7_debug@2.6.9:
     resolution: {integrity: sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==}
