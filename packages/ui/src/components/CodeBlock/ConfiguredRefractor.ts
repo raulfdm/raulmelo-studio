@@ -8,7 +8,7 @@ import git from 'refractor/lang/git';
 import graphql from 'refractor/lang/graphql';
 import js from 'refractor/lang/javascript';
 import jsExtra from 'refractor/lang/js-extras';
-import jsTemplate from 'refractor/lang/js-templates';
+// import jsTemplate from 'refractor/lang/js-templates';
 import json from 'refractor/lang/json';
 import jsx from 'refractor/lang/jsx';
 import markdown from 'refractor/lang/markdown';
@@ -35,7 +35,11 @@ Refractor.registerLanguage(graphql);
 Refractor.registerLanguage(js);
 Refractor.registerLanguage(jsExtra);
 Refractor.registerLanguage(json);
-Refractor.registerLanguage(jsTemplate);
+/**
+ * For some reason I'm having trouble with this one:
+ * cannot read "source" property of undefined
+ */
+// Refractor.registerLanguage(jsTemplate);
 Refractor.registerLanguage(jsx);
 Refractor.registerLanguage(markdown);
 Refractor.registerLanguage(markup);
