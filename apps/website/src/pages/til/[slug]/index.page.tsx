@@ -9,10 +9,17 @@ const { isEmpty, isNil } = utils;
 type Props = {
   til: ITilsTil;
   preview: boolean;
+  estimatedReadingTime: number;
 };
 
-const TilPostPage = ({ til, preview }: Props) => {
-  return <PortableTextPost {...til} preview={preview} />;
+const TilPostPage = ({ til, preview, estimatedReadingTime }: Props) => {
+  return (
+    <PortableTextPost
+      {...til}
+      preview={preview}
+      estimatedReadingTime={estimatedReadingTime}
+    />
+  );
 };
 
 type Params = {
@@ -37,8 +44,9 @@ export const getStaticProps = async ({ params, preview }: Params) => {
       til,
       // TODO: add a banner for "preview mode"
       preview: Boolean(preview),
+      estimatedReadingTime: utils.content.getEstimatedReadingTime(til.content),
     },
-    revalidate: 1,
+    revalidate: 60,
   };
 };
 

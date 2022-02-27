@@ -11,9 +11,9 @@ type HeaderProps = {
 
 const styles = {
   header: tw`border-b`,
-  title: tw`text-xl sm:text-2xl lg:text-3xl font-black tracking-tight`,
-  subtitle: tw`tracking-tight text-lg sm:text-xl lg:text-2xl font-medium opacity-80 mt-2`,
-  paragraph: tw`text-right text-base lg:text-md mt-6 mb-4`,
+  title: tw`text-xl font-black tracking-tight sm:text-2xl lg:text-3xl`,
+  subtitle: tw`mt-2 text-lg font-medium tracking-tight sm:text-xl lg:text-2xl opacity-80`,
+  paragraph: tw`mt-6 mb-4 text-base text-right lg:text-md`,
 };
 
 export const Header: React.FC<HeaderProps> = React.memo(function Header({
@@ -22,8 +22,6 @@ export const Header: React.FC<HeaderProps> = React.memo(function Header({
   readingTime,
   publishedDate,
 }) {
-  const shouldRenderReadingTime = readingTime && readingTime > 0;
-
   return (
     <header css={styles.header}>
       <h1 css={styles.title}>{title}</h1>
@@ -35,15 +33,13 @@ export const Header: React.FC<HeaderProps> = React.memo(function Header({
             publishedDate,
           }}
         />
-        {shouldRenderReadingTime ? (
-          <FormattedMessage
-            id="blogPost.readingTime"
-            values={{
-              publishedDate,
-              readingTime,
-            }}
-          />
-        ) : null}
+        <FormattedMessage
+          id="blogPost.readingTime"
+          values={{
+            publishedDate,
+            readingTime,
+          }}
+        />
       </p>
     </header>
   );
