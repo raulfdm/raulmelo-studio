@@ -11,15 +11,22 @@ export type UsesPageProps = {
   seo: IUsesData['seo'];
   title: string;
   uses: IUsesApiResponse;
+  estimatedReadingTime: number;
 };
 
-export const UsesPage: React.FC<UsesPageProps> = ({ seo, title, uses }) => {
+export const UsesPage: React.FC<UsesPageProps> = ({
+  seo,
+  title,
+  uses,
+  estimatedReadingTime,
+}) => {
   const { locale } = useLocalization();
 
   return (
     <PortableTextPost
       content={uses.content}
       title={title}
+      estimatedReadingTime={estimatedReadingTime}
       publishedAt={uses._updatedAt}
       description={seo.description}
       language={locale}

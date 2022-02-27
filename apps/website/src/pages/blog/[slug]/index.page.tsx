@@ -8,7 +8,11 @@ import { PortableTextPost } from '~/components/PortableTextPost';
 import { SeriesSection } from './components/SeriesSection';
 import { BlogPostProps, GetStaticProps } from './types';
 
-export const BlogPostPage: React.FC<BlogPostProps> = ({ post, preview }) => {
+export const BlogPostPage: React.FC<BlogPostProps> = ({
+  post,
+  preview,
+  estimatedReadingTime,
+}) => {
   const { series, ...restPost } = post;
 
   const allSeries = series ? (
@@ -29,6 +33,7 @@ export const BlogPostPage: React.FC<BlogPostProps> = ({ post, preview }) => {
       // share={{
       //   description: `${post.title}. ${post.subtitle}`,
       // }}
+      estimatedReadingTime={estimatedReadingTime}
       seriesSection={{
         top: allSeries,
         bottom: seriesWithDivider,
@@ -46,11 +51,14 @@ export const getStaticProps = async ({ params, preview }: GetStaticProps) => {
     };
   }
 
-  // TODO: do the time reading here instead client side
+  const estimatedReadingTime = utils.content.getEstimatedReadingTime(
+    post.content,
+  );
 
   return {
     props: {
       post,
+      estimatedReadingTime,
       preview: Boolean(preview),
     },
     revalidate: 60,

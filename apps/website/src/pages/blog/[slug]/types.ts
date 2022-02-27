@@ -3,6 +3,7 @@ import { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/po
 export type BlogPostProps = {
   post: IBlogPostBySlugApiResponse;
   preview: boolean;
+  estimatedReadingTime: number;
 };
 
 export type BlogPostPageProps = BlogPostProps & {

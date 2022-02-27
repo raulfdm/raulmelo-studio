@@ -32,6 +32,7 @@ export const PortableTextPost: React.FC<PortableTextPostProps> = ({
   nextSeo,
   preview,
   unsplash,
+  estimatedReadingTime,
 }) => {
   const { formatDate } = useLocalization();
   const { asPath } = useRouter();
@@ -114,9 +115,7 @@ export const PortableTextPost: React.FC<PortableTextPostProps> = ({
             month: 'short',
             day: '2-digit',
           })}
-          // readingTime={
-          //   postContent ? getEstimatedReadingTime(postContent) : undefined
-          // }
+          readingTime={estimatedReadingTime}
         />
         {seriesSection?.top}
         <ProseContainer tw="mt-8">
@@ -161,6 +160,7 @@ interface PortableTextPostProps
     IBlogPostBySlugApiResponse,
     '_id' | 'unsplash' | 'featuredImage' | 'description' | 'slug' | 'tags'
   > {
+  estimatedReadingTime: number;
   nextSeo?: NextSeoProps;
   preview?: boolean;
   unsplash?: IBlogPostBySlugApiResponse['unsplash'];
@@ -171,13 +171,4 @@ interface PortableTextPostProps
     bottom: JSX.Element | null;
   };
   tags?: IBlogPostBySlugApiResponse['tags'];
-}
-
-function getEstimatedReadingTime(text: string): number {
-  const AVERAGE_WORD_READING = 200;
-  const numberOfWords = text.split(' ').length;
-
-  const wpm = numberOfWords / AVERAGE_WORD_READING;
-
-  return Math.round(wpm);
 }
