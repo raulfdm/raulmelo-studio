@@ -10,7 +10,7 @@ type HeaderProps = {
 };
 
 const styles = {
-  header: tw`border-b`,
+  header: tw`mb-6 border-b`,
   title: tw`text-xl font-black tracking-tight sm:text-2xl lg:text-3xl`,
   subtitle: tw`mt-2 text-lg font-medium tracking-tight sm:text-xl lg:text-2xl opacity-80`,
   paragraph: tw`mt-6 mb-4 text-base text-right lg:text-md`,
