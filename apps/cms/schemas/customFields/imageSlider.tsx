@@ -37,20 +37,28 @@ export const imageSliderField = {
         return null;
       }
 
-      const images = value.images.filter(filterEmptyImage).map(prepareImages);
+      const images = value.images.filter(filterEmptyImage);
 
       if (images.length === 0) {
         return null;
       }
 
-      return <ImageSlider images={images} />;
+      return <ImageSlider images={images.map(prepareImages) as never} />;
 
       function filterEmptyImage(sanityImage: SanityImageSliderImage) {
-        return (
-          sanityImage.image?.['asset'] !== undefined ||
-          sanityImage.image?.['src'] !== undefined ||
-          sanityImage.image?.['alt'] !== undefined
-        );
+        if (sanityImage.image?.['asset'] === undefined) {
+          return false;
+        }
+
+        if (sanityImage.image?.['src'] === undefined) {
+          return false;
+        }
+
+        if (sanityImage.image?.['alt'] === undefined) {
+          return false;
+        }
+
+        return true;
       }
 
       function prepareImages(sanityImage: SanityImageSliderImage) {
