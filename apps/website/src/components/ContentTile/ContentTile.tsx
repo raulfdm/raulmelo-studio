@@ -1,0 +1,59 @@
+import { IPostsAndTilsPost } from '@raulmelo/core/dist/types/domains/posts';
+import { m } from 'framer-motion';
+import Link from 'next/link';
+import { useState } from 'react';
+import tw, { styled } from 'twin.macro';
+
+import { useLocalization } from '~/hooks/useLocalization';
+
+const Title = styled.h3`
+  ${tw`text-lg font-black md:text-xl`};
+  ${({ hover }: { hover: boolean }) => hover && tw`text-secondary`}
+`;
+
+type ContentTileProps = Omit<IPostsAndTilsPost, 'description'> & {
+  description?: string;
+  urlBuilder: (slug: string) => string;
+};
+
+export function ContentTile({
+  slug,
+  publishedAt,
+  title,
+  description,
+  urlBuilder,
+}: ContentTileProps) {
+  const { formatDate, formatMessage } = useLocalization();
+  const [isFocused, setIsFocused] = useState(false);
+
+  const formattedPublishedAt = formatDate(new Date(publishedAt), {
+    year: 'numeric',
+    month: 'short',
+    day: '2-digit',
+  });
+
+  return (
+    <m.article
+      tw="mb-3"
+      onHoverStart={() => setIsFocused(true)}
+      onHoverEnd={() => setIsFocused(false)}
+    >
+      <Link href={urlBuilder(slug)} passHref>
+        <a tw="relative inline-block cursor-pointer">
+          <Title hover={isFocused}>{title}</Title>
+          <span tw="block text-md lg:text-base font-sans mb-2.5">
+            <time dateTime={publishedAt}>{formattedPublishedAt}</time>
+          </span>
+          {description && (
+            <p tw="text-base md:text-md text-primary dark:text-gray-200 text-opacity-80 dark:text-opacity-100">
+              {description}
+            </p>
+          )}
+          <span tw="font-bold mt-3 block">
+            {formatMessage({ id: 'blog.readMore' })}
+          </span>
+        </a>
+      </Link>
+    </m.article>
+  );
+}
