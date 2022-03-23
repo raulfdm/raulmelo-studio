@@ -178,7 +178,7 @@ importers:
       '@emotion/styled': 11.8.1
       '@headlessui/react': 1.5.0
       '@next/bundle-analyzer': 12.1.0
-      '@popperjs/core': 2.11.2
+      '@popperjs/core': 2.11.4
       '@portabletext/react': 1.0.4
       '@raulmelo/core': '*'
       '@raulmelo/styles': '*'
@@ -226,7 +226,7 @@ importers:
       '@emotion/server': 11.4.0_@emotion+css@11.7.1
       '@emotion/styled': 11.8.1_86298085d838b819be51470c095f525d
       '@headlessui/react': 1.5.0_react-dom@17.0.2+react@17.0.2
-      '@popperjs/core': 2.11.2
+      '@popperjs/core': 2.11.4
       '@portabletext/react': 1.0.4_react@17.0.2
       '@raulmelo/core': link:../../packages/core
       '@raulmelo/styles': link:../../packages/styles
@@ -248,7 +248,7 @@ importers:
       react-dom: 17.0.2_react@17.0.2
       react-instantsearch-dom: 6.22.0_732d5a2cc5bb5eb9d2529448aa9fbdb0
       react-intl: 5.24.7_react@17.0.2+typescript@4.6.2
-      react-popper: 2.2.5_4d48938cec404f33c7375aa6b453941c
+      react-popper: 2.2.5_2e9dd80dbd4df675244d857293d4c5b0
       react-twitter-widgets: 1.10.0_react@17.0.2
       react-use: 17.3.2_react-dom@17.0.2+react@17.0.2
       smoothscroll-polyfill: 0.4.4
@@ -3111,6 +3111,10 @@ packages:
 
   /@popperjs/core/2.11.2:
     resolution: {integrity: sha512-92FRmppjjqz29VMJ2dn+xdyXZBrMlE42AV6Kq6BwjWV7CNUW1hs2FtxSNLQE+gJhaZ6AAmYuO9y8dshhcBl7vA==}
+
+  /@popperjs/core/2.11.4:
+    resolution: {integrity: sha512-q/ytXxO5NKvyT37pmisQAItCFqA7FD/vNb8dgaJy3/630Fsc+Mz9/9f2SziBoIZ30TJooXyTwZmhi1zjXmObYg==}
+    dev: false
 
   /@portabletext/react/1.0.4:
     resolution: {integrity: sha512-IaCt83hJTR1foeD8FsMJmGnBawuD4IAaRQqilTElIgBzdsuW79h14D4REso8xY0Fdt+T+h+W+n/AnAS8QT/ZQQ==}
@@ -17778,6 +17782,18 @@ packages:
       '@popperjs/core': 2.11.2
       react-popper: 2.2.5_@popperjs+core@2.11.2
     dev: true
+
+  /react-popper/2.2.5_2e9dd80dbd4df675244d857293d4c5b0:
+    resolution: {integrity: sha512-kxGkS80eQGtLl18+uig1UIf9MKixFSyPxglsgLBxlYnyDf65BiY9B3nZSc6C9XUNDgStROB0fMQlTEz1KxGddw==}
+    peerDependencies:
+      '@popperjs/core': ^2.0.0
+      react: ^16.8.0 || ^17
+    dependencies:
+      '@popperjs/core': 2.11.4
+      react: 17.0.2
+      react-fast-compare: 3.2.0
+      warning: 4.0.3
+    dev: false
 
   /react-popper/2.2.5_4d48938cec404f33c7375aa6b453941c:
     resolution: {integrity: sha512-kxGkS80eQGtLl18+uig1UIf9MKixFSyPxglsgLBxlYnyDf65BiY9B3nZSc6C9XUNDgStROB0fMQlTEz1KxGddw==}
