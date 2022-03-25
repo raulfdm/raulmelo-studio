@@ -1,4 +1,5 @@
-import { IPostsAndTilsPost } from '@raulmelo/core/dist/types/domains/posts';
+import type { IPostsAndTilsPost } from '@raulmelo/core/dist/types/domains/posts';
+import { ArrowRightIcon } from '@raulmelo/ui';
 import { m } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -14,6 +15,12 @@ const Title = styled.h3`
 const Subtitle = styled.h4`
   ${tw`font-medium text-gray-600 dark:text-gray-300 text-md md:text-lg`};
   ${tw`mb-2.5`};
+`;
+
+const ReadMore = styled.span`
+  ${tw`flex mt-3 font-bold`};
+  ${({ hover }: { hover: boolean }) =>
+    hover && tw`font-extrabold text-secondary`}
 `;
 
 type ContentTileProps = Omit<IPostsAndTilsPost, 'description'> & {
@@ -57,9 +64,10 @@ export function ContentTile({
               {description}
             </p>
           )}
-          <span tw="font-bold mt-3 block">
+          <ReadMore hover={isFocused}>
             {formatMessage({ id: 'blog.readMore' })}
-          </span>
+            <ArrowRightIcon tw="w-4 ml-2" />
+          </ReadMore>
         </a>
       </Link>
     </m.article>
