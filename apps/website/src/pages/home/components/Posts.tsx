@@ -2,7 +2,8 @@ import { IPostsAndTilsPost } from '@raulmelo/core/dist/types/domains/posts';
 import { AnimatePresence, m } from 'framer-motion';
 import tw from 'twin.macro';
 
-import { PostCardWrapper } from '~/components/PostCardWrapper';
+import { ContentTile } from '~/components/ContentTile';
+import { getPostUrl } from '~/utils/url';
 
 const itemsAnimationVariants = {
   visible: (index: number) => ({
@@ -19,14 +20,14 @@ const itemsAnimationVariants = {
 };
 
 type PostsProps = {
-  posts: Omit<IPostsAndTilsPost, 'description'>[];
+  posts: IPostsAndTilsPost[];
   title: string;
 };
 
 const styles = {
   wrapper: tw`col-span-full`,
   title: tw`mb-4 font-sans text-lg font-extrabold lg:text-xl lg:mb-8`,
-  list: tw`grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3`,
+  list: tw`space-y-10`,
 };
 
 export const Posts = ({ posts, title }: PostsProps) => {
@@ -50,7 +51,7 @@ export const Posts = ({ posts, title }: PostsProps) => {
                     },
                   }}
                 >
-                  <PostCardWrapper post={post} />
+                  <ContentTile urlBuilder={getPostUrl} {...post} />
                 </m.li>
               ))
             : null}
