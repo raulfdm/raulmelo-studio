@@ -11,6 +11,11 @@ const Title = styled.h3`
   ${({ hover }: { hover: boolean }) => hover && tw`text-secondary`}
 `;
 
+const Subtitle = styled.h4`
+  ${tw`font-medium text-gray-600 dark:text-gray-300 text-md md:text-lg`};
+  ${tw`mb-2.5`};
+`;
+
 type ContentTileProps = Omit<IPostsAndTilsPost, 'description'> & {
   description?: string;
   urlBuilder: (slug: string) => string;
@@ -22,6 +27,7 @@ export function ContentTile({
   title,
   description,
   urlBuilder,
+  subtitle,
 }: ContentTileProps) {
   const { formatDate, formatMessage } = useLocalization();
   const [isFocused, setIsFocused] = useState(false);
@@ -41,6 +47,8 @@ export function ContentTile({
       <Link href={urlBuilder(slug)} passHref>
         <a tw="relative inline-block cursor-pointer">
           <Title hover={isFocused}>{title}</Title>
+          {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
+
           <span tw="block text-md lg:text-base font-sans mb-2.5">
             <time dateTime={publishedAt}>{formattedPublishedAt}</time>
           </span>
