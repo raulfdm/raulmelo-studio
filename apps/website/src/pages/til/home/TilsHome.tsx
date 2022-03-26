@@ -3,7 +3,7 @@ import { NextSeo } from 'next-seo';
 import { FormattedMessage } from 'react-intl';
 import tw from 'twin.macro';
 
-import { PostBasic } from '~/components/PostBasic';
+import { ContentTile } from '~/components/ContentTile';
 import { useLocalization } from '~/hooks/useLocalization';
 
 import { getTilUrl } from './utils';
@@ -52,13 +52,7 @@ export const TilsHome = ({ tils }: TilsHomeProps) => {
           <ul css={styles.tilsList.list}>
             {tils.map((til) => (
               <li key={til._id}>
-                <PostBasic
-                  titleClassName={styles.tilsList.itemTitle}
-                  publishedAt={til.publishedAt}
-                  tags={til.tags}
-                  url={getTilUrl(til.slug)}
-                  title={til.title}
-                />
+                <ContentTile urlBuilder={getTilUrl} {...til} />
               </li>
             ))}
           </ul>
