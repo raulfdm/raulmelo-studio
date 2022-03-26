@@ -1,15 +1,12 @@
 import 'twin.macro';
 
 import { IBlogPagePost } from '@raulmelo/core/dist/types/domains/posts';
-import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import React from 'react';
 import { defineMessages, FormattedMessage } from 'react-intl';
 
-import { Pagination, PaginationItem } from '~/components/Pagination';
 import { useLocalization } from '~/hooks/useLocalization';
 import { Posts } from '~/pages/home/components/Posts';
-import { usePageQueryReset } from '~/pages/home/hooks/usePageQueryReset';
 
 const messages = defineMessages({
   latests: {
@@ -22,20 +19,10 @@ const messages = defineMessages({
 
 type BlogProps = {
   posts: IBlogPagePost[];
-  pageNumber: number;
-  numberOfPages: number;
 };
 
-export const Blog: React.FC<BlogProps> = ({
-  posts,
-  pageNumber,
-  numberOfPages,
-}) => {
+export const Blog: React.FC<BlogProps> = ({ posts }) => {
   const { formatMessage } = useLocalization();
-  const router = useRouter();
-  usePageQueryReset({ pageNumber, numberOfPages });
-
-  const pageTitle = pageNumber === 1 ? messages.latests : messages.page;
 
   return (
     <>
@@ -52,20 +39,7 @@ export const Blog: React.FC<BlogProps> = ({
         </p>
       </header>
 
-      <Posts posts={posts} title={formatMessage(pageTitle, { pageNumber })} />
-      {numberOfPages > 1 ? (
-        <Pagination
-          count={numberOfPages}
-          page={pageNumber}
-          defaultPage={pageNumber}
-          onChange={(_, page) => {
-            router.push(`${router.pathname}?page=${page}`);
-          }}
-          renderItem={(item) => {
-            return <PaginationItem {...item} />;
-          }}
-        />
-      ) : null}
+      <Posts posts={posts} title={formatMessage(messages.latests)} />
     </>
   );
 };
