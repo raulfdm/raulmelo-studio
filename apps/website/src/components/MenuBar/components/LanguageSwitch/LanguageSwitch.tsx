@@ -47,7 +47,7 @@ const Panel = styled.div`
 
 export const LanguageSwitch = () => {
   const { switchToEnglish, switchToPortuguese, locale } = useLocalization();
-  const { pathname } = useRouter();
+  const { asPath } = useRouter();
 
   const [referenceElement, setReferenceElement] = useState(null);
   const [popperElement, setPopperElement] = useState(null);
@@ -80,7 +80,7 @@ export const LanguageSwitch = () => {
    * which allow the user know when this post has translations available and also
    * redirects he/she for the correct page
    */
-  if (pathname.includes('/blog/')) {
+  if (asPath.match(/\/blog\/.*/)) {
     return null;
   }
 
