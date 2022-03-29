@@ -1,6 +1,7 @@
 import S from '@sanity/desk-tool/structure-builder';
 
-export default () => S.list().title('Base').items([getBlogMenu()]);
+export default () =>
+  S.list().title('CMS').items([getBlogMenu(), getTrainingPlannerMenu()]);
 
 function getBlogMenu() {
   const singleTypesIds = ['siteSettings', 'personalInfo'];
@@ -32,11 +33,33 @@ function getBlogMenu() {
               S.list()
                 .title('Collections')
                 .items(
-                  S.documentTypeListItems().filter(
-                    (listItem) => !singleTypesIds.includes(listItem.getId()),
-                  ),
+                  S.documentTypeListItems()
+                    .filter(
+                      (listItem) => !singleTypesIds.includes(listItem.getId()),
+                    )
+                    .filter(
+                      (listItem) =>
+                        !getTrainingPlannerMenu.types.includes(
+                          listItem.getId(),
+                        ),
+                    ),
                 ),
             ),
         ]),
     );
 }
+
+function getTrainingPlannerMenu() {
+  return S.listItem()
+    .id('trainingPlanner')
+    .title('Training Planner')
+    .child(
+      S.list()
+        .title('Training Planner')
+        .items([
+          S.listItem().title('Exercises').child(S.documentTypeList('exercise')),
+        ]),
+    );
+}
+
+getTrainingPlannerMenu.types = ['exercise'];

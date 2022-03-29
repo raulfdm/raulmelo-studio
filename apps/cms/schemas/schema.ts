@@ -29,6 +29,7 @@ import { imageSliderField } from './customFields/imageSlider';
 import { languageField } from './customFields/language';
 import { tweetField } from './customFields/tweetField';
 import { youtubeVideoField } from './customFields/youtubeVideoField';
+import { exerciseSchema } from './trainingPlanner/exercise';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -49,6 +50,10 @@ export default createSchema({
     rssSchema,
     usesSchema,
     defaultSeoSchema,
+    /**
+     * Training Planner
+     */
+    exerciseSchema,
     /**
      * Fields
      */
