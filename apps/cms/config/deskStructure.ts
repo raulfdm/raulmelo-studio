@@ -1,31 +1,42 @@
 import S from '@sanity/desk-tool/structure-builder';
 
-const singleTypesIds = ['siteSettings', 'personalInfo'];
+export default () => S.list().title('Base').items([getBlogMenu()]);
 
-export default () =>
-  S.list()
-    .title('Base')
-    .items([
-      S.listItem()
-        .title('Personal Info')
-        .child(
-          S.document().schemaType('personalInfo').documentId('personalInfo'),
-        ),
-      S.listItem()
-        .title('Settings')
-        .child(
-          S.document().schemaType('siteSettings').documentId('siteSettings'),
-        ),
-      S.divider(),
-      S.listItem()
-        .title('Collection Types')
-        .child(
-          S.list()
-            .title('Collection Types')
-            .items(
-              S.documentTypeListItems().filter(
-                (listItem) => !singleTypesIds.includes(listItem.getId()),
-              ),
+function getBlogMenu() {
+  const singleTypesIds = ['siteSettings', 'personalInfo'];
+
+  return S.listItem()
+    .id('blog')
+    .title('Blog')
+    .child(
+      S.list()
+        .title('Blog')
+        .items([
+          S.listItem()
+            .title('Personal details')
+            .child(
+              S.document()
+                .schemaType('personalInfo')
+                .documentId('personalInfo'),
             ),
-        ),
-    ]);
+          S.listItem()
+            .title('Website settings')
+            .child(
+              S.document()
+                .schemaType('siteSettings')
+                .documentId('siteSettings'),
+            ),
+          S.listItem()
+            .title('Collections')
+            .child(
+              S.list()
+                .title('Collections')
+                .items(
+                  S.documentTypeListItems().filter(
+                    (listItem) => !singleTypesIds.includes(listItem.getId()),
+                  ),
+                ),
+            ),
+        ]),
+    );
+}
