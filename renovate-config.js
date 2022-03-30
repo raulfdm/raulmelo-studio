@@ -63,6 +63,10 @@ module.exports = {
      * Grouping packages to reduce the number of PRs
      */
     {
+      matchPackageNames: ['react', 'react-dom'],
+      groupName: 'React',
+    },
+    {
       matchPackagePatterns: ['eslint'],
       groupName: 'eslint',
       excludePackagePatterns: ['eslint-config-next', '@typescript-eslint'],
