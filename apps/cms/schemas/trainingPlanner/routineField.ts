@@ -50,6 +50,7 @@ export const trainingRoutineField = {
                       { title: `BI-Set`, value: 'bi_set' },
                       { title: `FST-7`, value: 'fst_7' },
                       { title: `GVT`, value: 'gvt' },
+                      { title: `Drop Set 3x`, value: 'drop-set' },
                       {
                         title: `Rest 'n' Pause 3x`,
                         value: 'rest_and_pause',
