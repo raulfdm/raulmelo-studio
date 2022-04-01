@@ -9,20 +9,14 @@ export const exerciseSchema = {
       type: 'string',
     },
     {
-      name: 'description',
+      name: 'image',
       title: 'Description',
-      type: 'text',
+      type: 'image',
+    },
+    {
+      name: 'video',
+      title: 'Video',
+      type: 'youtubeVideo',
     },
   ],
-  // preview: {
-  //   select: {
-  //     title: 'title',
-  //     language: 'language',
-  //   },
-  //   prepare(selection: { title: string; language: string }) {
-  //     return {
-  //       title: `In ${selection.language.toUpperCase()}`,
-  //     };
-  //   },
-  // },
 };
