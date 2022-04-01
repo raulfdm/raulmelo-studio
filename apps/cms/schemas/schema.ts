@@ -8,6 +8,16 @@ import '../overrides.css?raw';
 import schemaTypes from 'all:part:@sanity/base/schema-type';
 import createSchema from 'part:@sanity/base/schema-creator';
 
+import { defaultSeoSchema } from './blog/defaultSeo';
+import personalInfo from './blog/personalInfo';
+import { postSchema } from './blog/post';
+import { postSeries } from './blog/postSeries';
+import { rssSchema } from './blog/rss';
+import siteSettings from './blog/siteSettings';
+import { socialSchema } from './blog/social';
+import tag from './blog/tag';
+import { til } from './blog/til';
+import { usesSchema } from './blog/uses';
 // We import object and document schemas
 import { blockContentField } from './customFields/blockContent';
 import { codeField } from './customFields/codeField';
@@ -19,16 +29,9 @@ import { imageSliderField } from './customFields/imageSlider';
 import { languageField } from './customFields/language';
 import { tweetField } from './customFields/tweetField';
 import { youtubeVideoField } from './customFields/youtubeVideoField';
-import { defaultSeoSchema } from './defaultSeo';
-import personalInfo from './personalInfo';
-import { postSchema } from './post';
-import { postSeries } from './postSeries';
-import { rssSchema } from './rss';
-import siteSettings from './siteSettings';
-import { socialSchema } from './social';
-import tag from './tag';
-import { til } from './til';
-import { usesSchema } from './uses';
+import { exerciseSchema } from './trainingPlanner/exercise';
+import { trainingRoutineField } from './trainingPlanner/routineField';
+import { trainingSchema } from './trainingPlanner/schema';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -49,6 +52,12 @@ export default createSchema({
     rssSchema,
     usesSchema,
     defaultSeoSchema,
+    /**
+     * Training Planner
+     */
+    trainingRoutineField,
+    exerciseSchema,
+    trainingSchema,
     /**
      * Fields
      */
