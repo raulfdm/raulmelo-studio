@@ -76,7 +76,7 @@ module.exports = {
       groupName: 'babel',
     },
     {
-      matchPackagePatterns: ['sanity'],
+      matchPackagePatterns: ['sanity', 'groq'],
       groupName: 'sanity',
     },
     {
