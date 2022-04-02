@@ -80,6 +80,10 @@ module.exports = {
       groupName: 'sanity',
     },
     {
+      matchPackagePatterns: ['@storybook'],
+      groupName: 'Storybook',
+    },
+    {
       matchPackagePatterns: ['@emotion', 'emotion'],
       groupName: 'emotion',
     },
