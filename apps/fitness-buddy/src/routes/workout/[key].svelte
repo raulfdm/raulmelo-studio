@@ -1,12 +1,17 @@
 <script lang="ts">
   import WorkoutTitle from '$lib/components/WorkoutTitle.svelte';
   import TrainingInfo from '$lib/components/TrainingInfo.svelte';
+  import CardioCard from '$lib/components/CardioCard.svelte';
   import type { ITrainingRoutine } from '$lib/api';
 
   export let trainingRoutine: ITrainingRoutine;
 </script>
 
-<div v-if="routine">
+<svelte:head>
+  <title>{trainingRoutine.name}</title>
+</svelte:head>
+
+<div>
   <h1 class="title">
     {trainingRoutine.name}
     {#if trainingRoutine.description}
@@ -22,20 +27,9 @@
     {#each trainingRoutine.training as training}
       <TrainingInfo {training} />
     {/each}
-    <!--
-    <WorkoutCard
-      v-for="(training, index) in routine.training"
-      :key="training.exercise._id"
-      :workout="training"
-      :index="index + 1"
-    />
-    <WorkoutSectionInfo title="Cardio" />
-    <CardioCard
-      :cardio="{
-        name: 'Qualquer Cardio',
-        duration: routine.cardioTime,
-      }"
-    /> -->
+
+    <WorkoutTitle title="Cardio" />
+    <CardioCard cardioTime={trainingRoutine.cardioTime} />
   </div>
 </div>
 

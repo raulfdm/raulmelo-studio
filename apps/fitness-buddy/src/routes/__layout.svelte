@@ -1,4 +1,5 @@
 <script lang="ts">
+  import BottomBar from '$lib/components/BottomBar.svelte';
   import TopBar from '$lib/components/TopBar.svelte';
   import '../app.css';
 </script>
@@ -17,6 +18,7 @@
   <div class="flex-1 p-4 overflow-scroll">
     <slot />
   </div>
+  <BottomBar />
 </main>
 
 <style lang="postcss">

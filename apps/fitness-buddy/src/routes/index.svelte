@@ -8,8 +8,6 @@
   <title>Fitness Buddy</title>
 </svelte:head>
 
-<h1 class="text-3xl font-bold underline">Hello world!</h1>
-
 <nav class="grid grid-cols-2 gap-6">
   {#each trainingSheet.schema as schema}
     <a href={`/workout/${schema._key}`} class="link">
