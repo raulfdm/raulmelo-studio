@@ -155,16 +155,22 @@ importers:
 
   apps/fitness-buddy:
     specifiers:
+      '@sanity/client': 3.3.0
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@typescript-eslint/eslint-plugin': 5.10.1
       '@typescript-eslint/parser': 5.10.1
       eslint-plugin-svelte3: 3.2.1
+      groq: 2.29.3
       prettier-plugin-svelte: 2.5.0
       svelte: 3.44.0
       svelte-check: 2.2.6
       svelte-preprocess: 4.10.1
+      tailwindcss: 2.2.19
       tslib: 2.3.1
+    dependencies:
+      '@sanity/client': 3.3.0
+      groq: 2.29.3
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.34
       '@sveltejs/kit': 1.0.0-next.304_svelte@3.44.0
@@ -175,6 +181,7 @@ importers:
       svelte: 3.44.0
       svelte-check: 2.2.6_ac17668b2cd2660b7119c4bfe059c145
       svelte-preprocess: 4.10.1_f9d7d148f8bf600e74cf11665bf7f219
+      tailwindcss: 2.2.19_bdaceb00f796c0c549cd3844d4c4fef2
       tslib: 2.3.1
 
   apps/lambdas:
