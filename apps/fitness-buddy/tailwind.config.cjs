@@ -1,7 +1,11 @@
 module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        title: "'Shadows Into Light Two', cursive",
+      },
+    },
   },
   plugins: [],
 };
