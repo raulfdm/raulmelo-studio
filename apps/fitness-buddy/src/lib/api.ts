@@ -94,6 +94,7 @@ export interface ITraining {
   repetitions: string;
   restTime: number;
   series: number;
+  _key: string;
 }
 
 export interface ITrainingRoutine {
