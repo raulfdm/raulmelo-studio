@@ -25,7 +25,8 @@ export const trainingSchema = {
       of: [
         {
           name: 'routine',
-          type: 'trainingRoutine',
+          type: 'reference',
+          to: { type: 'trainingRoutine' },
         },
       ],
     },
