@@ -3,6 +3,7 @@
   import TrainingInfo from '$lib/components/TrainingInfo.svelte';
   import CardioCard from '$lib/components/CardioCard.svelte';
   import type { ITrainingRoutine } from '$lib/api';
+  import Actvity from '$lib/components/Activity/Actvity.svelte';
 
   export let trainingRoutine: ITrainingRoutine;
 </script>
@@ -29,9 +30,11 @@
     {/each}
 
     <WorkoutTitle title="Cardio" />
-    <CardioCard cardioTime={trainingRoutine.cardioTime} />
+    <CardioCard cardioTime={trainingRoutine.cardio.time} />
   </div>
 </div>
+
+<Actvity />
 
 <style lang="postcss" module>
   .title {

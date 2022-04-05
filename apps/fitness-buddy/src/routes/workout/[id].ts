@@ -1,10 +1,10 @@
-import { TrainingSheetApi } from '$lib/api';
 import type { RequestEvent } from '@sveltejs/kit/types/private';
+import { TrainingSheetApi } from '$lib/api';
 
 export async function get({ params }: RequestEvent) {
-  const { key } = params;
+  const { id } = params;
 
-  const trainingRoutine = await TrainingSheetApi.getByKeY(key);
+  const trainingRoutine = await TrainingSheetApi.getById(id);
 
   return {
     body: {

@@ -1,5 +1,7 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import type { ITraining } from '$lib/api';
+  import { activityActions } from '$lib/components/Activity/activityStore';
 
   const ADVANCED_TECHNIQUES: {
     [key in NonNullable<ITraining['advancedTechnique']>]: string;
@@ -12,7 +14,6 @@
   };
 
   export let training: ITraining;
-  console.log(training);
 
   const seriesName = `${training.series}x${training.repetitions}`;
 
@@ -22,9 +23,13 @@
     const advanced = ADVANCED_TECHNIQUES[training.advancedTechnique];
     workoutInfo += ` - ${advanced}`;
   }
+
+  onMount(() => {
+    activityActions.addTraining(training);
+  });
 </script>
 
-<div class="wrapper">
+<div class="wrapper" on:click={() => activityActions.open(training)}>
   <header class="flex">
     <h2 class="text-base font-semibold">{training.exercise.name}</h2>
   </header>

@@ -10,7 +10,7 @@
 
 <nav class="grid grid-cols-2 gap-6">
   {#each trainingSheet.schema as schema}
-    <a href={`/workout/${schema._key}`} class="link">
+    <a href={`/workout/${schema._id}`} class="link">
       <h2 class="title">
         {schema.routine.name}
         <span v-if="routine.description" class="subtitle"

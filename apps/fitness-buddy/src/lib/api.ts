@@ -13,20 +13,14 @@ export const TrainingSheetApi = {
     const query = groq`
 *[_type=="trainingSchema"][0]{
   title,
-  schema[]{
-    _key,
-    routine {
-      name,
-      description,
-      date,
-      "cardioTime": cardio.time,
+  schema[] -> {
+    _id,
+    routine{
+      ...,
       training[] {
-        repetitions,
-        restTime,
-        series,
-        advancedTechnique,
-        "exercise": exercise->{
-          name,
+        ...,
+        exercise ->{
+           name,
           "image": image.asset->{
             url,
             "width": metadata.dimensions.width,
@@ -37,17 +31,43 @@ export const TrainingSheetApi = {
       }
     }
   }
- }
+}
 `;
 
     return client.fetch(query);
   },
-  async getByKeY(key: string): Promise<ITrainingSchema['routine'] | undefined> {
-    const { schema } = await TrainingSheetApi.getSheet();
+  async getById(
+    key: string,
+  ): Promise<
+    ({ _id: ITrainingSchema['_id'] } & ITrainingSchema['routine']) | undefined
+  > {
+    const query = groq`
+    *[_type=="trainingRoutine" && _id == $id][0]{
+      _id,
+      routine{
+        ...,
+        training[] {
+          ...,
+          exercise ->{
+            name,
+            "image": image.asset->{
+              url,
+              "width": metadata.dimensions.width,
+              "height": metadata.dimensions.height,
+            },
+            "youtubeVideoId": video.videoId
+          }
+        }
+      }
+    }
+    `;
 
-    const training = schema.find((training) => training._key === key);
+    const result = await client.fetch<ITrainingSchema>(query, { id: key });
 
-    return training?.routine;
+    return {
+      _id: result._id,
+      ...result.routine,
+    };
   },
 };
 
@@ -77,7 +97,9 @@ export interface ITraining {
 }
 
 export interface ITrainingRoutine {
-  cardioTime: number;
+  cardio: {
+    time: number;
+  };
   date: Date;
   description: string;
   name: string;
@@ -85,7 +107,7 @@ export interface ITrainingRoutine {
 }
 
 export interface ITrainingSchema {
-  _key: string;
+  _id: string;
   routine: ITrainingRoutine;
 }
 
