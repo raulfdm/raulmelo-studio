@@ -1,7 +1,7 @@
-export const trainingRoutineField = {
+export const trainingRoutineSchema = {
   name: 'trainingRoutine',
   title: 'Training Routine',
-  type: 'object',
+  type: 'document',
   fields: [
     {
       type: 'object',

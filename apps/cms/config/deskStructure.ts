@@ -59,10 +59,17 @@ function getTrainingPlannerMenu() {
         .items([
           S.listItem().title('Exercises').child(S.documentTypeList('exercise')),
           S.listItem()
+            .title('Routine')
+            .child(S.documentTypeList('trainingRoutine')),
+          S.listItem()
             .title('Training Schema')
             .child(S.documentTypeList('trainingSchema')),
         ]),
     );
 }
 
-getTrainingPlannerMenu.types = ['exercise', 'trainingSchema'];
+getTrainingPlannerMenu.types = [
+  'exercise',
+  'trainingSchema',
+  'trainingRoutine',
+];

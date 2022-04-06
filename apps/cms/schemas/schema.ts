@@ -30,7 +30,7 @@ import { languageField } from './customFields/language';
 import { tweetField } from './customFields/tweetField';
 import { youtubeVideoField } from './customFields/youtubeVideoField';
 import { exerciseSchema } from './trainingPlanner/exercise';
-import { trainingRoutineField } from './trainingPlanner/routineField';
+import { trainingRoutineSchema } from './trainingPlanner/routine';
 import { trainingSchema } from './trainingPlanner/schema';
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -55,7 +55,7 @@ export default createSchema({
     /**
      * Training Planner
      */
-    trainingRoutineField,
+    trainingRoutineSchema,
     exerciseSchema,
     trainingSchema,
     /**
