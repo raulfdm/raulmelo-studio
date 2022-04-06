@@ -97,7 +97,7 @@ export const trainingRoutineSchema = {
     prepare(selection) {
       return {
         title: selection.routine.name,
-        subtitle: selection.routine.description,
+        subtitle: `${selection.routine.description} (${selection.routine.date})`,
       };
     },
   },
