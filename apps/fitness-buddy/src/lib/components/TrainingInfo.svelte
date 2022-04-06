@@ -1,7 +1,10 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import type { ITraining } from '$lib/api';
-  import { activityActions } from '$lib/components/Activity/activityStore';
+  import {
+    activityActions,
+    activityStore,
+  } from '$lib/components/Activity/activityStore';
 
   const ADVANCED_TECHNIQUES: {
     [key in NonNullable<ITraining['advancedTechnique']>]: string;
@@ -24,12 +27,13 @@
     workoutInfo += ` - ${advanced}`;
   }
 
+  console.log($activityStore);
   onMount(() => {
     activityActions.addTraining(training);
   });
 </script>
 
-<div class="wrapper" on:click={() => activityActions.open(training)}>
+<div class="wrapper" on:click={() => activityActions.open(training._key)}>
   <header class="flex">
     <h2 class="text-base font-semibold">{training.exercise.name}</h2>
   </header>
@@ -42,6 +46,6 @@
 
 <style lang="postcss">
   .wrapper {
-    @apply pb-2 space-y-2;
+    @apply pb-2 space-y-2 cursor-pointer;
   }
 </style>
