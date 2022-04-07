@@ -11,7 +11,7 @@ const client = sanityClient({
 export const TrainingSheetApi = {
   async getSheet(): Promise<ITrainingSheet> {
     const query = groq`
-*[_type=="trainingSchema"][0]{
+*[_type=="trainingSchema"]|order(_createdAt desc)[0]{
   title,
   schema[] -> {
     _id,
