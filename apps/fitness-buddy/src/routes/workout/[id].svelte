@@ -1,5 +1,5 @@
 <script lang="ts">
-  import WorkoutTitle from '$lib/components/WorkoutTitle.svelte';
+  import ContentTitle from '$lib/components/ContentTitle.svelte';
   import TrainingInfo from '$lib/components/TrainingInfo.svelte';
   import CardioCard from '$lib/components/CardioCard.svelte';
   import type { ITrainingRoutine } from '$lib/api';
@@ -23,13 +23,13 @@
   <hr class="my-6" />
 
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    <WorkoutTitle title="Workout" />
+    <ContentTitle title="Workout" />
 
     {#each trainingRoutine.training as training}
       <TrainingInfo {training} />
     {/each}
 
-    <WorkoutTitle title="Cardio" />
+    <ContentTitle title="Cardio" />
     <CardioCard cardioTime={trainingRoutine.cardio.time} />
   </div>
 </div>
