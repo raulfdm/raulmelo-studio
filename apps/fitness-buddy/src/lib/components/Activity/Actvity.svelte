@@ -1,7 +1,11 @@
 <script lang="ts">
-  import { activityStore, activityActions, Tabs } from './activityStore';
+  import type { ITab } from './activityStore';
+  import { activityStore, activityActions } from './activityStore';
+  import Clock from './components/Clock.svelte';
+  import ClockConfig from './components/ClockConfig.svelte';
+  import Content from './components/Content.svelte';
 
-  export const tabs: { value: Tabs; label: string }[] = [
+  export const tabs: { value: ITab; label: string }[] = [
     {
       label: 'Clock',
       value: 'clock',
@@ -10,6 +14,10 @@
       label: 'Clock Configuration',
       value: 'clockConfig',
     },
+    {
+      label: 'Content',
+      value: 'content',
+    },
   ];
 </script>
 
@@ -17,18 +25,29 @@
   <div class="bg-white wrapper">
     <button on:click={activityActions.close} class="closeButton">Close</button>
     <section>
-      <nav class="">
+      <nav>
         <ul class="tabs">
           {#each tabs as tab}
             <li
-              class:active={$activityStore.currentTabActive === tab.value}
-              on:click={() => activityActions.setCurrentTab(tab.value)}
+              class:tabActive={$activityStore.currentTabActive === tab.value}
+              class="tab"
             >
-              {tab.label}
+              <button on:click={() => activityActions.setCurrentTab(tab.value)}>
+                {tab.label}
+              </button>
             </li>
           {/each}
         </ul>
       </nav>
+    </section>
+    <section class="tabContent">
+      {#if $activityStore.currentTabActive === 'clock'}
+        <Clock />
+      {:else if $activityStore.currentTabActive === 'clockConfig'}
+        <ClockConfig />
+      {:else if $activityStore.currentTabActive === 'content'}
+        <Content />
+      {/if}
     </section>
   </div>
 {/if}
@@ -58,10 +77,17 @@
   .tab {
     @apply flex-1;
     @apply text-center;
-    @apply p-3;
+  }
+
+  .tab button {
+    @apply p-3 w-full;
   }
 
   .tabActive {
     @apply border-b-2 border-pink-600;
+  }
+
+  .tabContent {
+    @apply py-3;
   }
 </style>

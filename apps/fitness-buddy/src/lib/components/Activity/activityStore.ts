@@ -1,13 +1,13 @@
 import type { ITraining } from '$lib/api';
 import { writable } from 'svelte/store';
 
-export type Tabs = 'clock' | 'clockConfig';
+export type ITab = 'clock' | 'clockConfig' | 'content';
 
 type Store = {
   state: 'open' | 'closed';
   trainingList: Map<string, ITraining>;
   currentTraining: ITraining | null;
-  currentTabActive: Tabs;
+  currentTabActive: ITab;
 };
 
 export const activityStore = writable<Store>({
@@ -36,7 +36,7 @@ export const activityActions = {
     activityStore.update((store) => ({ ...store, state: 'closed' }));
   },
 
-  setCurrentTab(tab: Tabs) {
+  setCurrentTab(tab: ITab) {
     activityStore.update((store) => ({ ...store, currentTabActive: tab }));
   },
 };
