@@ -22,6 +22,7 @@
 </script>
 
 {#if $activityStore.state === 'open'}
+  <div class="overlay" />
   <div class="bg-white wrapper">
     <button on:click={activityActions.close} class="closeButton">Close</button>
     <section>
@@ -53,6 +54,10 @@
 {/if}
 
 <style lang="postcss">
+  .overlay {
+    @apply absolute top-0 bottom-0 right-0 left-0;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
   .wrapper {
     @apply absolute bottom-0 right-0 left-0;
     @apply bg-gray-100;
