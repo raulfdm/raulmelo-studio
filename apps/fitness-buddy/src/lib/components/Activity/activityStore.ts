@@ -1,3 +1,4 @@
+import { browser } from '$app/env';
 import type { ITraining } from '$lib/api';
 import { writable, get } from 'svelte/store';
 
@@ -41,18 +42,22 @@ activityStore.subscribe((value) => {
 
 export const activityActions = {
   addTraining: (training: ITraining) => {
+    const defaultClock = {
+      intervalId: null,
+      seriesDone: 1,
+      totalSeries: parseInt(training.repetitions, 10),
+      totalRest: training.restTime,
+      remainingTime: training.restTime,
+      state: 'idle',
+      done: false,
+    };
+
+    const persistedClock = readClockFromLocalStorage(training._key);
+
     activityStore.update((store) => {
       store.trainingList.set(training._key, {
         ...training,
-        clock: {
-          intervalId: null,
-          seriesDone: 1,
-          totalSeries: parseInt(training.repetitions, 10),
-          totalRest: training.restTime,
-          remainingTime: training.restTime,
-          state: 'idle',
-          done: false,
-        },
+        clock: persistedClock ?? defaultClock,
       });
       return store;
     });
@@ -61,6 +66,7 @@ export const activityActions = {
   open(trainingKey: string) {
     activityStore.update((store) => {
       const currentTrainingOpen = store.trainingList.get(trainingKey);
+
       const currentClock = currentTrainingOpen.clock;
 
       return {
@@ -197,4 +203,47 @@ function speakTimeIsOver() {
       clearInterval(id);
     }
   }, 2000);
+}
+
+activityStore.subscribe((store) => {
+  if (store.currentTraining !== null) {
+    persistStore(store.currentTraining._key, store.currentTraining.clock);
+  }
+});
+
+function persistStore(trainingId: string, clock: Clock) {
+  const store = get(activityStore);
+
+  if (browser && store.currentTraining?.clock) {
+    const nextSavedState = readTrainingStore() ?? {};
+
+    if (nextSavedState) {
+      nextSavedState[trainingId] = {
+        ...clock,
+        intervalId: null,
+      };
+    }
+
+    localStorage.setItem('activityStore_clock', JSON.stringify(nextSavedState));
+  }
+}
+
+function readClockFromLocalStorage(trainingId: string) {
+  if (browser) {
+    const state = readTrainingStore();
+    if (state) {
+      return state[trainingId] ?? null;
+    }
+    return null;
+  }
+}
+
+function readTrainingStore() {
+  if (browser) {
+    const state = localStorage.getItem('activityStore_clock');
+    if (state) {
+      return JSON.parse(state);
+    }
+    return null;
+  }
 }
