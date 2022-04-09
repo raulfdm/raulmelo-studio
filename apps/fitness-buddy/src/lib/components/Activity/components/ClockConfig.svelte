@@ -1,16 +1,24 @@
 <script lang="ts">
   import { activityStore, activityActions } from '../activityStore';
 
-  function handleSeries(
-    event: Event & {
-      currentTarget: EventTarget & HTMLInputElement;
-    },
-  ) {
+  type InputEvent = Event & {
+    currentTarget: EventTarget & HTMLInputElement;
+  };
+
+  function handleSeries(event: InputEvent) {
     const nextSeries = event.currentTarget.valueAsNumber;
     if (!isNaN(nextSeries)) {
       activityActions.onSeriesChange(nextSeries);
     }
   }
+  function handleRest(event: InputEvent) {
+    const nextRest = event.currentTarget.valueAsNumber;
+    if (!isNaN(nextRest)) {
+      activityActions.onRestTimeChange(nextRest);
+    }
+  }
+
+  $: currentClock = $activityStore.currentTraining.clock;
 </script>
 
 <section>
@@ -44,7 +52,7 @@
       id="series"
       type="number"
       placeholder="4"
-      value={$activityStore.currentClock.totalSeries}
+      value={currentClock.totalSeries}
       on:input={handleSeries}
     />
   </fieldset>
@@ -54,7 +62,8 @@
       id="time"
       type="number"
       placeholder="30"
-      value={$activityStore.currentTraining.restTime}
+      value={currentClock.totalRest}
+      on:input={handleRest}
     />
   </fieldset>
 </section>

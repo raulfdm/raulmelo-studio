@@ -7,6 +7,7 @@ type Clock = {
   intervalId: NodeJS.Timer | null;
   seriesDone: number;
   totalSeries: number;
+  totalRest: number;
   remainingTime: number;
   state: 'idle' | 'pause' | 'running';
   done: boolean;
@@ -28,6 +29,16 @@ export const activityStore = writable<Store>({
   currentTabActive: 'clock',
 });
 
+activityStore.subscribe((value) => {
+  const { currentTraining } = value;
+  if (currentTraining) {
+    const { state, intervalId } = currentTraining.clock;
+    if (state !== 'running' && intervalId !== null) {
+      clearInterval(intervalId);
+    }
+  }
+});
+
 export const activityActions = {
   addTraining: (training: ITraining) => {
     activityStore.update((store) => {
@@ -37,6 +48,7 @@ export const activityActions = {
           intervalId: null,
           seriesDone: 1,
           totalSeries: parseInt(training.repetitions, 10),
+          totalRest: training.restTime,
           remainingTime: training.restTime,
           state: 'idle',
           done: false,
@@ -67,37 +79,70 @@ export const activityActions = {
   },
   toggleClock() {
     const store = get(activityStore);
-    const currentClock = store.currentTraining.clock;
 
-    if (currentClock.state === 'idle') {
-      activityStore.update((store) => {
-        currentClock.state = 'running';
-        return { ...store, currentClock };
-      });
+    const { state } = store.currentTraining.clock;
 
-      const intervalId = setInterval(() => {
+    switch (state) {
+      case 'idle': {
         activityStore.update((store) => {
+          store.currentTraining.clock.state = 'running';
+
+          runClock();
+          return store;
+        });
+        break;
+      }
+      case 'pause': {
+        activityStore.update((store) => {
+          store.currentTraining.clock.state = 'running';
+
+          runClock();
+          return store;
+        });
+        break;
+      }
+      case 'running': {
+        activityStore.update((store) => {
+          clearInterval(store.currentTraining.clock.intervalId);
+          store.currentTraining.clock.state = 'pause';
+
+          return store;
+        });
+        break;
+      }
+      default: {
+        throw new Error('Unknown state');
+      }
+    }
+
+    function runClock() {
+      let { intervalId } = store.currentTraining.clock;
+
+      if (intervalId !== null) {
+        clearInterval(intervalId);
+      }
+
+      intervalId = setInterval(run, 1000);
+
+      function run() {
+        activityStore.update((store) => {
+          const currentClock = store.currentTraining.clock;
+
           currentClock.remainingTime -= 1;
           currentClock.intervalId = intervalId;
 
           if (currentClock.remainingTime < 0) {
             currentClock.state = 'idle';
-            currentClock.remainingTime = store.currentTraining.restTime;
+            currentClock.remainingTime = store.currentTraining.clock.totalRest;
             currentClock.seriesDone += 1;
             clearInterval(intervalId);
+            speakTimeIsOver();
           }
 
-          return { ...store, currentClock };
+          return store;
         });
-      }, 1000);
+      }
     }
-  },
-  pause() {
-    // const currentTrainingClock = activityActions.getCurrentTrainingClock();
-    // activityStore.update((store) => {
-    //   currentTrainingClock.state = 'pause';
-    //   return { ...store, currentClock: currentTrainingClock };
-    // });
   },
   onSeriesChange(series: number) {
     activityStore.update((store) => {
@@ -106,4 +151,50 @@ export const activityActions = {
       return { ...store };
     });
   },
+  onRestTimeChange(restTime: number) {
+    activityStore.update((store) => {
+      const { totalRest: currentRest, remainingTime } =
+        store.currentTraining.clock;
+
+      store.currentTraining.clock.totalRest = restTime;
+
+      if (currentRest === remainingTime) {
+        store.currentTraining.clock.remainingTime = restTime;
+      }
+
+      return store;
+    });
+  },
+  resetTimer() {
+    activityStore.update((store) => {
+      if (store.currentTraining.clock.intervalId !== null) {
+        clearInterval(store.currentTraining.clock.intervalId);
+        store.currentTraining.clock.intervalId = null;
+      }
+
+      store.currentTraining.clock.seriesDone = 1;
+      store.currentTraining.clock.remainingTime =
+        store.currentTraining.clock.totalRest;
+
+      return store;
+    });
+  },
 };
+
+function speakTimeIsOver() {
+  const msg = new SpeechSynthesisUtterance();
+  msg.text = 'Ae caralho, acabou o tempo!';
+  msg.lang = 'pt-BR';
+
+  window.speechSynthesis.speak(msg);
+
+  let counter = 2;
+
+  const id = setInterval(() => {
+    window.speechSynthesis.speak(msg);
+
+    if (--counter === 0) {
+      clearInterval(id);
+    }
+  }, 2000);
+}
