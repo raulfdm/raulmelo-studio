@@ -11,9 +11,8 @@
 <ContentTitle title={$activityStore.currentTraining.exercise.name} />
 
 {#if youtubeUrl}
-  <div class="aspect-w-16 aspect-h-9">
+  <div class="aspect-w-2 aspect-h-1">
     <iframe
-      class="w-full "
       src={youtubeUrl}
       title="YouTube video player"
       frameborder="0"

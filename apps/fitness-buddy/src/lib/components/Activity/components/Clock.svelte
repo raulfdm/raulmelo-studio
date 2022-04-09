@@ -1,12 +1,14 @@
 <script lang="ts">
-  import { activityStore } from '../activityStore';
+  import { activityActions, activityStore } from '../activityStore';
 
-  let currentClock = $activityStore.currentClock;
+  $: currentClock = $activityStore.currentClock;
 </script>
 
 <div>
   <span>Repetitions: </span>
-  <span>{currentClock.seriesDone}/{$activityStore.currentTraining.series}</span>
+  <span
+    >{currentClock.seriesDone}/{$activityStore.currentClock.totalSeries}</span
+  >
 </div>
 
 <div>
@@ -15,7 +17,7 @@
 </div>
 
 <div class="actions">
-  <button class="start">Start</button>
+  <button class="start" on:click={activityActions.toggleClock}>Start</button>
   <button class="reset">Reset</button>
 </div>
 
