@@ -45,7 +45,7 @@ export const activityActions = {
     const defaultClock = {
       intervalId: null,
       seriesDone: 1,
-      totalSeries: parseInt(training.repetitions, 10),
+      totalSeries: training.series,
       totalRest: training.restTime,
       remainingTime: training.restTime,
       state: 'idle',
