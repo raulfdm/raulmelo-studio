@@ -33,6 +33,4 @@
 {/if}
 
 <style lang="postcss">
-  .title {
-  }
 </style>
