@@ -1,5 +1,10 @@
 <script lang="ts">
+  import TrashIcon from '$lib/components/Icons/TrashIcon.svelte';
+
   import { activityStore, activityActions } from '../activityStore';
+
+  const seriesPresets = [2, 3, 4, 5, 7, 10];
+  const restPresets = [30, 45, 60, 120, 150];
 
   type InputEvent = Event & {
     currentTarget: EventTarget & HTMLInputElement;
@@ -26,20 +31,23 @@
   <section class="presetContainer">
     <h3 class="presetTitle">Series</h3>
     <div class="presetButtonsContainer">
-      <button class="presetButton">2</button>
-      <button class="presetButton">3</button>
-      <button class="presetButton">4</button>
-      <button class="presetButton">7</button>
-      <button class="presetButton">10</button>
+      {#each seriesPresets as serie}
+        <button
+          class="presetButton"
+          on:click={() => activityActions.onSeriesChange(serie)}>{serie}</button
+        >
+      {/each}
     </div>
   </section>
   <section class="presetContainer">
     <h3 class="presetTitle">Rest Time</h3>
     <div class="presetButtonsContainer">
-      <button class="presetButton">30</button>
-      <button class="presetButton">45</button>
-      <button class="presetButton">60</button>
-      <button class="presetButton">150</button>
+      {#each restPresets as rest}
+        <button
+          class="presetButton"
+          on:click={() => activityActions.onRestTimeChange(rest)}>{rest}</button
+        >
+      {/each}
     </div>
   </section>
 </section>
@@ -66,6 +74,20 @@
       on:input={handleRest}
     />
   </fieldset>
+</section>
+
+<section class="actions">
+  <h3 class="sectionTitle">Reset Counter</h3>
+  <button
+    class="reset"
+    on:click={() => {
+      if (confirm('Are you sure you want to clear the clock?')) {
+        activityActions.resetTimer();
+      }
+    }}
+  >
+    <TrashIcon size="32" />
+  </button>
 </section>
 
 <style>
@@ -104,5 +126,13 @@
   input {
     @apply w-20 p-1 border-b bg-gray-100;
     flex-grow: 0.3;
+  }
+
+  .actions {
+    @apply grid place-items-center mt-12;
+  }
+
+  .reset {
+    @apply text-gray-400;
   }
 </style>

@@ -62,7 +62,8 @@
     @apply absolute bottom-0 right-0 left-0;
     @apply bg-gray-100;
     @apply rounded-t-2xl p-4;
-    min-height: 92vh;
+    min-height: 80vh;
+    @apply flex flex-col;
   }
 
   .closeButton {
@@ -93,6 +94,6 @@
   }
 
   .tabContent {
-    @apply py-3;
+    @apply py-3 flex-1;
   }
 </style>

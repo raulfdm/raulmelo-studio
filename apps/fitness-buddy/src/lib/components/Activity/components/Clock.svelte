@@ -3,7 +3,7 @@
   import PauseIcon from '$lib/components/Icons/PauseIcon.svelte';
 
   import { activityActions, activityStore } from '../activityStore';
-  import TrashIcon from '$lib/components/Icons/TrashIcon.svelte';
+  import { secondsToMinutes } from '$lib/utils/secondsToMinutes';
 
   $: currentClock = $activityStore.currentTraining.clock;
 </script>
@@ -16,27 +16,17 @@
 
   <section>
     <h3>Time left</h3>
-    <span>{currentClock.remainingTime}</span>
+    <span>{secondsToMinutes(currentClock.remainingTime)}</span>
   </section>
 </div>
 
 <div class="actions">
   <button class="start" on:click={activityActions.toggleClock}>
     {#if currentClock.state === 'pause' || currentClock.state === 'idle'}
-      <PlayIcon size="40" />
+      <PlayIcon size="80" />
     {:else}
-      <PauseIcon size="40" />
+      <PauseIcon size="80" />
     {/if}
-  </button>
-  <button
-    class="reset"
-    on:click={() => {
-      if (confirm('Are you sure you want to clear the clock?')) {
-        activityActions.resetTimer();
-      }
-    }}
-  >
-    <TrashIcon size="32" />
   </button>
 </div>
 
@@ -50,16 +40,13 @@
 
   span {
     @apply text-center font-bold mb-2 text-6xl block text-gray-500;
+    font-variant-numeric: tabular-nums;
   }
   .actions {
-    @apply space-x-4 mt-4;
+    @apply mt-14 w-full grid place-items-center;
   }
 
   .start {
     @apply text-pink-600;
-  }
-
-  .reset {
-    @apply text-gray-400;
   }
 </style>
