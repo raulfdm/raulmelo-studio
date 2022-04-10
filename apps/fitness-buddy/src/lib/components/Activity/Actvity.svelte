@@ -30,22 +30,19 @@
   <div class="overlay" />
   <div class="bg-white wrapper">
     <button on:click={activityActions.close} class="closeButton">Close</button>
-    <section>
-      <nav>
-        <ul class="tabs">
-          {#each tabs as tab}
-            <li
-              class:tabActive={$activityStore.currentTabActive === tab.value}
-              class="tab"
-            >
-              <button on:click={() => activityActions.setCurrentTab(tab.value)}>
-                {tab.label}
-              </button>
-            </li>
-          {/each}
-        </ul>
-      </nav>
-    </section>
+
+    <nav class="tabs">
+      {#each tabs as tab}
+        <button
+          class="tab"
+          class:tabActive={$activityStore.currentTabActive === tab.value}
+          on:click={() => activityActions.setCurrentTab(tab.value)}
+        >
+          {tab.label}
+        </button>
+      {/each}
+    </nav>
+
     <section class="tabContent">
       {#if $activityStore.currentTabActive === 'clock'}
         <Clock />
@@ -83,21 +80,24 @@
   }
 
   .tabs {
-    @apply flex;
-    @apply flex-row;
+    @apply flex flex-row;
+    @apply overflow-x-auto pb-2;
+    scrollbar-width: none;
+  }
+
+  .tabs::-webkit-scrollbar {
+    display: none;
   }
 
   .tab {
     @apply flex-1;
-    @apply text-center;
-  }
-
-  .tab button {
-    @apply p-3 w-full;
+    @apply text-center font-medium text-gray-600;
+    @apply p-1;
+    min-width: 120px;
   }
 
   .tabActive {
-    @apply border-b-2 border-pink-600;
+    @apply border-b-2 border-pink-600 text-pink-600;
   }
 
   .tabContent {
