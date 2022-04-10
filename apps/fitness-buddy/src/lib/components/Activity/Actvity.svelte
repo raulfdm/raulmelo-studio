@@ -71,7 +71,7 @@
     @apply absolute bottom-0 right-0 left-0;
     @apply bg-gray-100;
     @apply rounded-t-2xl p-4;
-    min-height: 80vh;
+    height: 80vh;
     @apply flex flex-col;
   }
 
@@ -89,6 +89,7 @@
     @apply overflow-x-auto pb-2 -m-2;
     @apply border-t;
     scrollbar-width: none;
+    @apply bg-gray-100 z-10;
   }
 
   .tabs::-webkit-scrollbar {
@@ -107,6 +108,6 @@
   }
 
   .tabContent {
-    @apply py-3 flex-1;
+    @apply pt-4 pb-8 flex-1 overflow-y-auto;
   }
 </style>
