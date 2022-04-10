@@ -1,4 +1,5 @@
 <script lang="ts">
+  import TrainingInfo from '../TrainingInfo.svelte';
   import type { ITab } from './activityStore';
   import { activityStore, activityActions } from './activityStore';
   import Clock from './components/Clock.svelte';
@@ -31,17 +32,9 @@
   <div class="bg-white wrapper">
     <button on:click={activityActions.close} class="closeButton">Close</button>
 
-    <nav class="tabs">
-      {#each tabs as tab}
-        <button
-          class="tab"
-          class:tabActive={$activityStore.currentTabActive === tab.value}
-          on:click={() => activityActions.setCurrentTab(tab.value)}
-        >
-          {tab.label}
-        </button>
-      {/each}
-    </nav>
+    <TrainingInfo training={$activityStore.currentTraining} />
+
+    <hr class="my-2" />
 
     <section class="tabContent">
       {#if $activityStore.currentTabActive === 'clock'}
@@ -54,6 +47,18 @@
         <DropSetCalculator />
       {/if}
     </section>
+
+    <nav class="tabs">
+      {#each tabs as tab}
+        <button
+          class="tab"
+          class:tabActive={$activityStore.currentTabActive === tab.value}
+          on:click={() => activityActions.setCurrentTab(tab.value)}
+        >
+          {tab.label}
+        </button>
+      {/each}
+    </nav>
   </div>
 {/if}
 
@@ -81,7 +86,7 @@
 
   .tabs {
     @apply flex flex-row;
-    @apply overflow-x-auto pb-2;
+    @apply overflow-x-auto pb-2 -m-2;
     scrollbar-width: none;
   }
 
@@ -91,13 +96,13 @@
 
   .tab {
     @apply flex-1;
-    @apply text-center font-medium text-gray-600;
+    @apply text-center font-medium text-gray-500;
     @apply p-1;
     min-width: 120px;
   }
 
   .tabActive {
-    @apply border-b-2 border-pink-600 text-pink-600;
+    @apply border-t-2 border-pink-600 text-pink-600;
   }
 
   .tabContent {
