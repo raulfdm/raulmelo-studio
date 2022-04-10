@@ -1,6 +1,6 @@
 import { browser } from '$app/env';
 import type { ITraining } from '$lib/api';
-import { writable, get } from 'svelte/store';
+import { writable, get, derived } from 'svelte/store';
 
 export type ITab = 'clock' | 'clockConfig' | 'content' | 'drop-set-calculator';
 
@@ -28,6 +28,16 @@ export const activityStore = writable<Store>({
   currentTraining: null,
   trainingList: new Map(),
   currentTabActive: 'clock',
+});
+
+export const canRewind = derived(activityStore, ($store) => {
+  return $store.currentTraining.clock.seriesDone > 1;
+});
+
+export const canFastForward = derived(activityStore, ($store) => {
+  const { seriesDone, totalSeries } = $store.currentTraining.clock;
+
+  return seriesDone < totalSeries;
 });
 
 activityStore.subscribe((value) => {
@@ -181,6 +191,32 @@ export const activityActions = {
       store.currentTraining.clock.seriesDone = 1;
       store.currentTraining.clock.remainingTime =
         store.currentTraining.clock.totalRest;
+
+      return store;
+    });
+  },
+
+  rewindSeries() {
+    activityStore.update((store) => {
+      const { seriesDone } = store.currentTraining.clock;
+
+      if (seriesDone > 1) {
+        store.currentTraining.clock.seriesDone -= 1;
+        store.currentTraining.clock.remainingTime =
+          store.currentTraining.clock.totalRest;
+      }
+
+      return store;
+    });
+  },
+  fastForwardSeries() {
+    activityStore.update((store) => {
+      const { clock } = store.currentTraining;
+
+      if (clock.seriesDone < clock.totalSeries) {
+        clock.seriesDone += 1;
+        clock.remainingTime = clock.totalRest;
+      }
 
       return store;
     });
