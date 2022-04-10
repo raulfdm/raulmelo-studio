@@ -2,7 +2,7 @@ import { browser } from '$app/env';
 import type { ITraining } from '$lib/api';
 import { writable, get } from 'svelte/store';
 
-export type ITab = 'clock' | 'clockConfig' | 'content';
+export type ITab = 'clock' | 'clockConfig' | 'content' | 'drop-set-calculator';
 
 type Clock = {
   intervalId: NodeJS.Timer | null;

@@ -4,6 +4,7 @@
   import Clock from './components/Clock.svelte';
   import ClockConfig from './components/ClockConfig.svelte';
   import Content from './components/Content.svelte';
+  import DropSetCalculator from './components/DropSetCalculator.svelte';
 
   export const tabs: { value: ITab; label: string }[] = [
     {
@@ -17,6 +18,10 @@
     {
       label: 'Content',
       value: 'content',
+    },
+    {
+      label: 'Drop Set Calculator',
+      value: 'drop-set-calculator',
     },
   ];
 </script>
@@ -48,6 +53,8 @@
         <ClockConfig />
       {:else if $activityStore.currentTabActive === 'content'}
         <Content />
+      {:else if $activityStore.currentTabActive === 'drop-set-calculator'}
+        <DropSetCalculator />
       {/if}
     </section>
   </div>
