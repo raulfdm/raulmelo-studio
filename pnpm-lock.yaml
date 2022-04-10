@@ -174,7 +174,7 @@ importers:
       groq: 2.29.3
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.34
-      '@sveltejs/kit': 1.0.0-next.308_svelte@3.44.0
+      '@sveltejs/kit': 1.0.0-next.310_svelte@3.44.0
       '@tailwindcss/aspect-ratio': 0.4.0_tailwindcss@2.2.19
       '@typescript-eslint/eslint-plugin': 5.10.1_6c68982605e28b0c0f10f3b549129075
       '@typescript-eslint/parser': 5.10.1_eslint@7.32.0+typescript@4.6.3
@@ -209,7 +209,7 @@ importers:
       '@emotion/styled': 11.8.1
       '@headlessui/react': 1.5.0
       '@next/bundle-analyzer': 12.1.4
-      '@popperjs/core': 2.11.4
+      '@popperjs/core': 2.11.5
       '@portabletext/react': 1.0.4
       '@raulmelo/core': '*'
       '@raulmelo/styles': '*'
@@ -255,7 +255,7 @@ importers:
       '@emotion/server': 11.4.0_@emotion+css@11.7.1
       '@emotion/styled': 11.8.1_5523eef1f28247487551dd1a5a7c5be6
       '@headlessui/react': 1.5.0_react-dom@18.0.0+react@18.0.0
-      '@popperjs/core': 2.11.4
+      '@popperjs/core': 2.11.5
       '@portabletext/react': 1.0.4_react@18.0.0
       '@raulmelo/core': link:../../packages/core
       '@raulmelo/styles': link:../../packages/styles
@@ -276,7 +276,7 @@ importers:
       react-dom: 18.0.0_react@18.0.0
       react-instantsearch-dom: 6.23.1_b3df02c853a8c4e832543e05d655cf04
       react-intl: 5.24.8_react@18.0.0+typescript@4.6.3
-      react-popper: 2.2.5_e37af230b2abfbdc1782d8308cc5c8f9
+      react-popper: 2.2.5_ddeceac54e80ad082dd3259289d97632
       react-twitter-widgets: 1.10.0_react@18.0.0
       react-use: 17.3.2_react-dom@18.0.0+react@18.0.0
       smoothscroll-polyfill: 0.4.4
@@ -2867,6 +2867,10 @@ packages:
   /@popperjs/core/2.11.4:
     resolution: {integrity: sha512-q/ytXxO5NKvyT37pmisQAItCFqA7FD/vNb8dgaJy3/630Fsc+Mz9/9f2SziBoIZ30TJooXyTwZmhi1zjXmObYg==}
 
+  /@popperjs/core/2.11.5:
+    resolution: {integrity: sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==}
+    dev: false
+
   /@portabletext/react/1.0.4:
     resolution: {integrity: sha512-IaCt83hJTR1foeD8FsMJmGnBawuD4IAaRQqilTElIgBzdsuW79h14D4REso8xY0Fdt+T+h+W+n/AnAS8QT/ZQQ==}
     peerDependencies:
@@ -5391,8 +5395,8 @@ packages:
       esbuild: 0.14.30
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.308_svelte@3.44.0:
-    resolution: {integrity: sha512-/ORLef5kZEMTUgUkdSQ5Lsn3IKBRNYmLdJ26JjtSa03nPKsybvSMiGIho9WS6ESBw3+XaYF91TqksTyr/gTeoA==}
+  /@sveltejs/kit/1.0.0-next.310_svelte@3.44.0:
+    resolution: {integrity: sha512-pTyMyaoyHS+V5cQZIQMfQXmLkhw1VaRwT9avOSgwDc0QBpnNw2LdzwoPYsUr96ca5B6cfT3SMUNolxErTNHmPQ==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:
@@ -17433,6 +17437,18 @@ packages:
       react-fast-compare: 3.2.0
       warning: 4.0.3
     dev: true
+
+  /react-popper/2.2.5_ddeceac54e80ad082dd3259289d97632:
+    resolution: {integrity: sha512-kxGkS80eQGtLl18+uig1UIf9MKixFSyPxglsgLBxlYnyDf65BiY9B3nZSc6C9XUNDgStROB0fMQlTEz1KxGddw==}
+    peerDependencies:
+      '@popperjs/core': ^2.0.0
+      react: ^16.8.0 || ^17
+    dependencies:
+      '@popperjs/core': 2.11.5
+      react: 18.0.0
+      react-fast-compare: 3.2.0
+      warning: 4.0.3
+    dev: false
 
   /react-popper/2.2.5_e37af230b2abfbdc1782d8308cc5c8f9:
     resolution: {integrity: sha512-kxGkS80eQGtLl18+uig1UIf9MKixFSyPxglsgLBxlYnyDf65BiY9B3nZSc6C9XUNDgStROB0fMQlTEz1KxGddw==}
