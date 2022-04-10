@@ -87,6 +87,7 @@
   .tabs {
     @apply flex flex-row;
     @apply overflow-x-auto pb-2 -m-2;
+    @apply border-t;
     scrollbar-width: none;
   }
 
