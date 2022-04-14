@@ -80,6 +80,10 @@ module.exports = {
       groupName: 'babel',
     },
     {
+      matchPackagePatterns: ['@xstate'],
+      groupName: 'XState packages',
+    },
+    {
       matchPackagePatterns: ['sanity', 'groq'],
       groupName: 'sanity',
     },
