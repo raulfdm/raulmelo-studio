@@ -8,29 +8,26 @@
     : undefined;
 </script>
 
-<ContentTitle title={$activityStore.currentTraining.exercise.name} />
+<ContentTitle title="Video" />
 
-{#if youtubeUrl}
-  <div class="aspect-w-2 aspect-h-1">
-    <iframe
-      src={youtubeUrl}
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    />
-  </div>
-{:else if $activityStore.currentTraining.exercise.image.url}
-  <figure class="aspect-w-16 aspect-h-9">
-    <img
-      class="object-cover object-center w-full h-full"
-      src={$activityStore.currentTraining.exercise.image.url}
-      alt={$activityStore.currentTraining.exercise.name}
-    />
-  </figure>
-{:else}
-  <ContentTitle title="Nenhuma imagem" />
-{/if}
+<div class="aspect-w-2 aspect-h-1">
+  <iframe
+    src={youtubeUrl}
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  />
+</div>
 
-<style lang="postcss">
-</style>
+<br />
+
+<ContentTitle title="Image" />
+
+<figure class="aspect-w-16 aspect-h-9">
+  <img
+    class="object-cover object-center w-full h-full"
+    src={$activityStore.currentTraining.exercise.image.url}
+    alt={$activityStore.currentTraining.exercise.name}
+  />
+</figure>
