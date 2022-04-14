@@ -67,6 +67,10 @@ module.exports = {
       groupName: 'React',
     },
     {
+      matchPackageNames: ['@types/react', '@types/react-dom'],
+      groupName: 'React Types',
+    },
+    {
       matchPackagePatterns: ['eslint'],
       groupName: 'eslint',
       excludePackagePatterns: ['eslint-config-next', '@typescript-eslint'],
@@ -74,6 +78,14 @@ module.exports = {
     {
       matchPackagePatterns: ['babel'],
       groupName: 'babel',
+    },
+    {
+      matchPackagePatterns: ['@xstate'],
+      groupName: 'XState packages',
+    },
+    {
+      matchPackagePatterns: ['svelte'],
+      groupName: 'Svelte Packages',
     },
     {
       matchPackagePatterns: ['sanity', 'groq'],
