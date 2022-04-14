@@ -1,9 +1,11 @@
 <script lang="ts">
+  import TrainingInfo from '../TrainingInfo.svelte';
   import type { ITab } from './activityStore';
   import { activityStore, activityActions } from './activityStore';
   import Clock from './components/Clock.svelte';
   import ClockConfig from './components/ClockConfig.svelte';
   import Content from './components/Content.svelte';
+  import DropSetCalculator from './components/DropSetCalculator.svelte';
 
   export const tabs: { value: ITab; label: string }[] = [
     {
@@ -18,6 +20,10 @@
       label: 'Content',
       value: 'content',
     },
+    {
+      label: 'Drop Set Calculator',
+      value: 'drop-set-calculator',
+    },
   ];
 </script>
 
@@ -25,22 +31,11 @@
   <div class="overlay" />
   <div class="bg-white wrapper">
     <button on:click={activityActions.close} class="closeButton">Close</button>
-    <section>
-      <nav>
-        <ul class="tabs">
-          {#each tabs as tab}
-            <li
-              class:tabActive={$activityStore.currentTabActive === tab.value}
-              class="tab"
-            >
-              <button on:click={() => activityActions.setCurrentTab(tab.value)}>
-                {tab.label}
-              </button>
-            </li>
-          {/each}
-        </ul>
-      </nav>
-    </section>
+
+    <TrainingInfo training={$activityStore.currentTraining} />
+
+    <hr class="my-2" />
+
     <section class="tabContent">
       {#if $activityStore.currentTabActive === 'clock'}
         <Clock />
@@ -48,8 +43,22 @@
         <ClockConfig />
       {:else if $activityStore.currentTabActive === 'content'}
         <Content />
+      {:else if $activityStore.currentTabActive === 'drop-set-calculator'}
+        <DropSetCalculator />
       {/if}
     </section>
+
+    <nav class="tabs">
+      {#each tabs as tab}
+        <button
+          class="tab"
+          class:tabActive={$activityStore.currentTabActive === tab.value}
+          on:click={() => activityActions.setCurrentTab(tab.value)}
+        >
+          {tab.label}
+        </button>
+      {/each}
+    </nav>
   </div>
 {/if}
 
@@ -62,7 +71,7 @@
     @apply absolute bottom-0 right-0 left-0;
     @apply bg-gray-100;
     @apply rounded-t-2xl p-4;
-    min-height: 80vh;
+    height: 80vh;
     @apply flex flex-col;
   }
 
@@ -76,24 +85,29 @@
   }
 
   .tabs {
-    @apply flex;
-    @apply flex-row;
+    @apply flex flex-row;
+    @apply overflow-x-auto pb-2 -m-2;
+    @apply border-t;
+    scrollbar-width: none;
+    @apply bg-gray-100 z-10;
+  }
+
+  .tabs::-webkit-scrollbar {
+    display: none;
   }
 
   .tab {
     @apply flex-1;
-    @apply text-center;
-  }
-
-  .tab button {
-    @apply p-3 w-full;
+    @apply text-center font-medium text-gray-500;
+    @apply p-1;
+    min-width: 120px;
   }
 
   .tabActive {
-    @apply border-b-2 border-pink-600;
+    @apply border-t-2 border-pink-600 text-pink-600;
   }
 
   .tabContent {
-    @apply py-3 flex-1;
+    @apply pt-4 pb-8 flex-1 overflow-y-auto;
   }
 </style>
