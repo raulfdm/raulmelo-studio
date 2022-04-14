@@ -84,6 +84,10 @@ module.exports = {
       groupName: 'XState packages',
     },
     {
+      matchPackagePatterns: ['svelte'],
+      groupName: 'Svelte Packages',
+    },
+    {
       matchPackagePatterns: ['sanity', 'groq'],
       groupName: 'sanity',
     },
