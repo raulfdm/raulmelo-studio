@@ -3,9 +3,6 @@
 
   import { activityStore, activityActions } from '../activityStore';
 
-  const seriesPresets = [2, 3, 4, 5, 7, 10];
-  const restPresets = [30, 45, 60, 120, 150];
-
   type InputEvent = Event & {
     currentTarget: EventTarget & HTMLInputElement;
   };
@@ -25,32 +22,6 @@
 
   $: currentClock = $activityStore.currentTraining.clock;
 </script>
-
-<section>
-  <h2 class="sectionTitle">Presets</h2>
-  <section class="presetContainer">
-    <h3 class="presetTitle">Series</h3>
-    <div class="presetButtonsContainer">
-      {#each seriesPresets as serie}
-        <button
-          class="presetButton"
-          on:click={() => activityActions.onSeriesChange(serie)}>{serie}</button
-        >
-      {/each}
-    </div>
-  </section>
-  <section class="presetContainer">
-    <h3 class="presetTitle">Rest Time</h3>
-    <div class="presetButtonsContainer">
-      {#each restPresets as rest}
-        <button
-          class="presetButton"
-          on:click={() => activityActions.onRestTimeChange(rest)}>{rest}</button
-        >
-      {/each}
-    </div>
-  </section>
-</section>
 
 <section class="customConfigContainer">
   <h2 class="sectionTitle">Custom Configuration</h2>
