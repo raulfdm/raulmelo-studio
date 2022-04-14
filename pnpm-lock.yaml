@@ -223,8 +223,8 @@ importers:
       '@types/react': 17.0.43
       '@types/react-dom': 17.0.14
       '@types/react-instantsearch-dom': 6.12.2
-      '@xstate/fsm': 1.6.5
-      '@xstate/react': 2.0.1
+      '@xstate/fsm': 2.0.0
+      '@xstate/react': 3.0.0
       algoliasearch: 4.13.0
       autoprefixer: 10.4.4
       dayjs: 1.11.0
@@ -260,8 +260,8 @@ importers:
       '@raulmelo/core': link:../../packages/core
       '@raulmelo/styles': link:../../packages/styles
       '@raulmelo/ui': link:../../packages/ui
-      '@xstate/fsm': 1.6.5
-      '@xstate/react': 2.0.1_e648eb7177a064b577679391d9ccf4fb
+      '@xstate/fsm': 2.0.0
+      '@xstate/react': 3.0.0_53ecd3a08534c59f0f9ee568e6b227d6
       algoliasearch: 4.13.0
       dayjs: 1.11.0
       debounce-promise: 3.1.2
@@ -7518,26 +7518,26 @@ packages:
     resolution: {integrity: sha512-N8tkAACJx2ww8vFMneJmaAgmjAG1tnVBZJRLRcx061tmsLRZHSEZSLuGWnwPtunsSLvSqXQ2wfp7Mgqg1I+2dQ==}
     dev: false
 
-  /@xstate/fsm/1.6.5:
-    resolution: {integrity: sha512-b5o1I6aLNeYlU/3CPlj/Z91ybk1gUsKT+5NAJI+2W4UjvS5KLG28K9v5UvNoFVjHV8PajVZ00RH3vnjyQO7ZAw==}
+  /@xstate/fsm/2.0.0:
+    resolution: {integrity: sha512-p/zcvBMoU2ap5byMefLkR+AM+Eh99CU/SDEQeccgKlmFNOMDwphaRGqdk+emvel/SaGZ7Rf9sDvzAplLzLdEVQ==}
     dev: false
 
-  /@xstate/react/2.0.1_e648eb7177a064b577679391d9ccf4fb:
-    resolution: {integrity: sha512-sT3hxyzNBw+bm7uT3BP+uXzN0MnRqiaj/U9Yl4OYaMAUJXWsRvSA/ipL7EDf0gVLRGrRhJTCsC0cjWaduAAqnw==}
+  /@xstate/react/3.0.0_53ecd3a08534c59f0f9ee568e6b227d6:
+    resolution: {integrity: sha512-KHSCfwtb8gZ7QH2luihvmKYI+0lcdHQOmGNRUxUEs4zVgaJCyd8csCEmwPsudpliLdUmyxX2pzUBojFkINpotw==}
     peerDependencies:
-      '@xstate/fsm': ^1.6.5
-      react: ^16.8.0 || ^17.0.0
-      xstate: ^4.30.3
+      '@xstate/fsm': ^2.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      xstate: ^4.31.0
     peerDependenciesMeta:
       '@xstate/fsm':
         optional: true
       xstate:
         optional: true
     dependencies:
-      '@xstate/fsm': 1.6.5
+      '@xstate/fsm': 2.0.0
       react: 18.0.0
       use-isomorphic-layout-effect: 1.1.1_00a11a054056e3746b551a83b9229751
-      use-subscription: 1.5.1_react@18.0.0
+      use-sync-external-store: 1.0.0_react@18.0.0
     transitivePeerDependencies:
       - '@types/react'
     dev: false
@@ -21842,12 +21842,11 @@ packages:
       tslib: 2.3.1
     dev: false
 
-  /use-subscription/1.5.1_react@18.0.0:
-    resolution: {integrity: sha512-Xv2a1P/yReAjAbhylMfFplFKj9GssgTwN7RlcTxBujFQcloStWNDQdc4g4NRWH9xS4i/FDk04vQBptAXoF3VcA==}
+  /use-sync-external-store/1.0.0_react@18.0.0:
+    resolution: {integrity: sha512-AFVsxg5GkFg8GDcxnl+Z0lMAz9rE8DGJCc28qnBuQF7lac57B5smLcT37aXpXIIPz75rW4g3eXHPjhHwdGskOw==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0-rc
     dependencies:
-      object-assign: 4.1.1
       react: 18.0.0
     dev: false
 
