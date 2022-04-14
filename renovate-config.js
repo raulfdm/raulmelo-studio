@@ -67,6 +67,10 @@ module.exports = {
       groupName: 'React',
     },
     {
+      matchPackageNames: ['@types/react', '@types/react-dom'],
+      groupName: 'React Types',
+    },
+    {
       matchPackagePatterns: ['eslint'],
       groupName: 'eslint',
       excludePackagePatterns: ['eslint-config-next', '@typescript-eslint'],
