@@ -29,8 +29,10 @@
       <TrainingInfo {training} />
     {/each}
 
-    <ContentTitle title="Cardio" />
-    <CardioCard cardioTime={trainingRoutine.cardio.time} />
+    {#if trainingRoutine?.cardio?.time}
+      <ContentTitle title="Cardio" />
+      <CardioCard cardioTime={trainingRoutine.cardio.time} />
+    {/if}
   </div>
 </div>
 

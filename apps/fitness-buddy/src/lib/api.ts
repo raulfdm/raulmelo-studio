@@ -98,7 +98,7 @@ export interface ITraining {
 }
 
 export interface ITrainingRoutine {
-  cardio: {
+  cardio?: {
     time: number;
   };
   date: Date;
