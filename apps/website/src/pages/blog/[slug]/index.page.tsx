@@ -8,11 +8,11 @@ import { PortableTextPost } from '~/components/PortableTextPost';
 import { SeriesSection } from './components/SeriesSection';
 import { BlogPostProps, GetStaticProps } from './types';
 
-export const BlogPostPage: React.FC<BlogPostProps> = ({
+export const BlogPostPage = ({
   post,
   preview,
   estimatedReadingTime,
-}) => {
+}: BlogPostProps) => {
   const { series, ...restPost } = post;
 
   const allSeries = series ? (

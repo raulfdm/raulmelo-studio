@@ -21,7 +21,7 @@ type BlogProps = {
   posts: IBlogPagePost[];
 };
 
-export const Blog: React.FC<BlogProps> = ({ posts }) => {
+export const Blog = ({ posts }: BlogProps) => {
   const { formatMessage } = useLocalization();
 
   return (

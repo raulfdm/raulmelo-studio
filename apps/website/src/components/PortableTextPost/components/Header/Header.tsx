@@ -16,12 +16,12 @@ const styles = {
   paragraph: tw`mt-6 mb-4 text-base text-right lg:text-md`,
 };
 
-export const Header: React.FC<HeaderProps> = React.memo(function Header({
+export const Header = React.memo(function Header({
   title,
   subtitle,
   readingTime,
   publishedDate,
-}) {
+}: HeaderProps) {
   return (
     <header css={styles.header}>
       <h1 css={styles.title}>{title}</h1>
