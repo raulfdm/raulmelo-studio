@@ -66,21 +66,6 @@
     @apply text-lg text-center font-bold mb-2;
   }
 
-  .presetContainer {
-    @apply flex flex-col;
-  }
-
-  .presetTitle {
-    @apply italic;
-  }
-
-  .presetButtonsContainer {
-    @apply flex my-4 space-x-4;
-  }
-  .presetButton {
-    @apply flex items-center justify-center w-10 h-10 text-white bg-pink-600 rounded-full;
-  }
-
   .customConfigContainer {
     @apply space-y-4 mt-4;
   }
