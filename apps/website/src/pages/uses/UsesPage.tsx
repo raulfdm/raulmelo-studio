@@ -14,12 +14,12 @@ export type UsesPageProps = {
   estimatedReadingTime: number;
 };
 
-export const UsesPage: React.FC<UsesPageProps> = ({
+export const UsesPage = ({
   seo,
   title,
   uses,
   estimatedReadingTime,
-}) => {
+}: UsesPageProps) => {
   const { locale } = useLocalization();
 
   return (

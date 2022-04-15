@@ -1,4 +1,4 @@
-import { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
+import type { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
 import { ChevronDownIcon } from '@raulmelo/ui';
 import { createMachine } from '@xstate/fsm';
 import { useMachine } from '@xstate/react/fsm';
@@ -8,10 +8,10 @@ import { FormattedMessage } from 'react-intl';
 import tw, { css } from 'twin.macro';
 
 // TODO: review this html markup. It seems having ugly/bad HTML structure.
-export const SeriesSection: React.FC<SeriesSectionProps> = ({
+export const SeriesSection = ({
   series,
   currentPostId,
-}) => {
+}: SeriesSectionProps) => {
   const [current, send] = useMachine(seriesMachine);
   const { name, posts } = series;
   const currentState = current.value as SeriesMachineState;

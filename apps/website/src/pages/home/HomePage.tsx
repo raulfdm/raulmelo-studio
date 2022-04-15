@@ -40,7 +40,7 @@ const styles = {
   linkIcon: tw`w-6 ml-2`,
 };
 
-export const HomePage: React.FC<IPostsAndTilsApi> = ({ posts, tils }) => {
+export const HomePage = ({ posts, tils }: IPostsAndTilsApi) => {
   const { formatMessage, locale } = useLocalization();
   const defaultSeo = siteData.defaultSeo[locale];
 

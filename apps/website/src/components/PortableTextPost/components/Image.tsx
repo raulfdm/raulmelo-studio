@@ -14,12 +14,7 @@ type ImageProps = {
   customWidth?: number;
 };
 
-export const Image: React.FC<ImageProps> = ({
-  caption,
-  customWidth,
-  image,
-  alt,
-}) => {
+export const Image = ({ caption, customWidth, image, alt }: ImageProps) => {
   const props = {
     alt,
     height: image.height,

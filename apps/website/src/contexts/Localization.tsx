@@ -21,7 +21,18 @@ const localizedMessages = {
   pt: ptMessages,
 };
 
-export const LocalizationProvider: React.FC = ({ children }) => {
+/**
+ * TODO: fix this type.
+ *
+ * react-intl interfaces are not compatible with React 18 types.
+ */
+const CastedIntlProvider = IntlProvider as any;
+
+export const LocalizationProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const { locale = 'en', push, pathname, query, asPath } = useRouter();
 
   function switchLocale(nextLocale: SupportedLanguages): void {
@@ -67,12 +78,12 @@ export const LocalizationProvider: React.FC = ({ children }) => {
   );
 
   return (
-    <IntlProvider locale={locale!} messages={messages}>
+    <CastedIntlProvider locale={locale!} messages={messages}>
       <LocalizationContext.Provider
         value={{ switchToPortuguese, switchToEnglish, switchLocale }}
       >
         {children}
       </LocalizationContext.Provider>
-    </IntlProvider>
+    </CastedIntlProvider>
   );
 };

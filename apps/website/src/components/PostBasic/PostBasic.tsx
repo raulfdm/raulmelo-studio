@@ -23,7 +23,7 @@ const styles = {
   tagLink: tw`underline cursor-pointer`,
 };
 
-export const PostBasic: React.FC<PostBasicProps> = ({
+export const PostBasic = ({
   title,
   subtitle,
   url,
@@ -33,7 +33,7 @@ export const PostBasic: React.FC<PostBasicProps> = ({
   titleClassName,
   as = 'section',
   className,
-}) => {
+}: PostBasicProps) => {
   return (
     <Wrapper as={as} css={className}>
       <Link href={url} passHref>
