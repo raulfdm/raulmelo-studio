@@ -1,6 +1,6 @@
 import type { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
 import { ChevronDownIcon } from '@raulmelo/ui';
-import { createMachine } from '@xstate/fsm';
+import { createMachine, Typestate } from '@xstate/fsm';
 import { useMachine } from '@xstate/react/fsm';
 import { m } from 'framer-motion';
 import Link from 'next/link';
@@ -155,7 +155,11 @@ const variants = {
   },
 };
 
-const seriesMachine = createMachine<never, SeriesMachineEvent>({
+const seriesMachine = createMachine<
+  any,
+  SeriesMachineEvent,
+  Typestate<{ value: 'collapsed' | 'expanded' }>
+>({
   initial: 'collapsed',
   states: {
     collapsed: {
