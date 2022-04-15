@@ -1,4 +1,4 @@
-import { createMachine } from '@xstate/fsm';
+import { createMachine, Typestate } from '@xstate/fsm';
 import { useMachine } from '@xstate/react/fsm';
 
 type CloseMenuEvent = { type: 'CLOSE' };
@@ -6,8 +6,17 @@ type ToggleMenuEvent = { type: 'TOGGLE' };
 
 type MachineEvents = ToggleMenuEvent | CloseMenuEvent;
 
-const sideMenuMachine = createMachine<never, MachineEvents>({
+type MachineStates = 'open' | 'closed';
+
+const sideMenuMachine = createMachine<
+  any,
+  MachineEvents,
+  Typestate<{ value: MachineStates }>
+>({
   initial: 'closed',
+  context: {
+    value: 'closed',
+  },
   states: {
     open: {
       on: {
@@ -31,7 +40,7 @@ export function useSideMenu(): UseSideMenu {
   }
 
   return {
-    state: current.value as 'closed' | 'open',
+    state: current.value as MachineStates,
     isClosed: current.value === 'closed',
     toggle: () => send('TOGGLE'),
     handleClose,
@@ -42,5 +51,5 @@ export type UseSideMenu = {
   toggle: () => void;
   handleClose: () => void;
   isClosed: boolean;
-  state: 'open' | 'closed';
+  state: MachineStates;
 };

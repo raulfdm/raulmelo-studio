@@ -1,5 +1,5 @@
 import { AppTheme } from '@raulmelo/core';
-import { createMachine } from '@xstate/fsm';
+import { createMachine, Typestate } from '@xstate/fsm';
 import { useMachine } from '@xstate/react/fsm';
 import { useEffect } from 'react';
 
@@ -36,7 +36,13 @@ function saveThemeOnLocalStorage(theme: AppTheme) {
   };
 }
 
-const themeMachine = createMachine<never, ToggleEvent>({
+type MachineStates = 'light' | 'dark';
+
+const themeMachine = createMachine<
+  any,
+  ToggleEvent,
+  Typestate<{ value: MachineStates }>
+>({
   initial: 'off',
   states: {
     off: {
