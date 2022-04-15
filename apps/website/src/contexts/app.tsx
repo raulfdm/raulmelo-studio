@@ -7,7 +7,11 @@ type AppContextTypes = { sideMenu: UseSideMenu };
 
 export const AppContext = createContext<AppContextTypes | undefined>(undefined);
 
-export const AppContextProvider: React.FC = ({ children }) => {
+export const AppContextProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const sideMenu = useSideMenu();
 
   return (
