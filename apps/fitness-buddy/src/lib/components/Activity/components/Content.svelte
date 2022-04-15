@@ -2,9 +2,11 @@
   import ContentTitle from '$lib/components/ContentTitle.svelte';
 
   import { activityStore } from '../activityStore';
-  console.log($activityStore.currentTraining);
-  const youtubeUrl = $activityStore.currentTraining.exercise.youtubeVideoId
-    ? `https://www.youtube.com/embed/${$activityStore.currentTraining.exercise.youtubeVideoId}`
+
+  let currentExercise = $activityStore.currentTraining.exercise;
+
+  const youtubeUrl = currentExercise.youtubeVideoId
+    ? `https://www.youtube.com/embed/${currentExercise.youtubeVideoId}`
     : undefined;
 </script>
 
@@ -22,12 +24,14 @@
 
 <br />
 
-<ContentTitle title="Image" />
+{#if currentExercise?.image?.url}
+  <ContentTitle title="Image" />
 
-<figure class="aspect-w-16 aspect-h-9">
-  <img
-    class="object-cover object-center w-full h-full"
-    src={$activityStore.currentTraining.exercise.image.url}
-    alt={$activityStore.currentTraining.exercise.name}
-  />
-</figure>
+  <figure class="aspect-w-16 aspect-h-9">
+    <img
+      class="object-cover object-center w-full h-full"
+      src={currentExercise.image.url}
+      alt={currentExercise.name}
+    />
+  </figure>
+{/if}

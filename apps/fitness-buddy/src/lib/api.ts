@@ -78,9 +78,9 @@ interface Image {
 }
 
 interface Exercise {
-  image: Image;
+  image?: Image;
   name: string;
-  youtubeVideoId: string;
+  youtubeVideoId?: string;
 }
 
 export interface ITraining {
