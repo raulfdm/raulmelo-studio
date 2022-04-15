@@ -15,7 +15,7 @@ const ThemeIconMap = {
   off: SunIcon,
 };
 
-export const ThemeSwitch: React.FC = () => {
+export const ThemeSwitch = () => {
   const { toggleTheme, currentTheme } = useThemeHandler();
 
   const Icon = ThemeIconMap[currentTheme];

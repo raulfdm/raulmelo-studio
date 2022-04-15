@@ -5,14 +5,15 @@ export interface CodePenProps {
   src?: string;
   directUrl?: string;
   height?: string;
+  children?: React.ReactNode;
 }
 
-export const CodePenIframe: React.FC<CodePenProps> = ({
+export const CodePenIframe = ({
   src,
   directUrl,
   children,
   height = '400',
-}) => {
+}: CodePenProps) => {
   let finalUrl = src;
 
   if (directUrl) {

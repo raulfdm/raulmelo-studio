@@ -20,7 +20,7 @@ import { portableComponents } from './components/portableComponents';
 import { PreviewBanner } from './components/PreviewBanner/PreviewBanner';
 import { PrismStyles } from './components/PrismStyles';
 
-export const PortableTextPost: React.FC<PortableTextPostProps> = ({
+export const PortableTextPost = ({
   content,
   featuredImage,
   title,
@@ -33,7 +33,7 @@ export const PortableTextPost: React.FC<PortableTextPostProps> = ({
   preview,
   unsplash,
   estimatedReadingTime,
-}) => {
+}: PortableTextPostProps) => {
   const { formatDate } = useLocalization();
   const { asPath } = useRouter();
 

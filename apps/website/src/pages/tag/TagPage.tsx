@@ -29,7 +29,7 @@ const styles = {
   list: tw`pb-5 space-y-6 md:pb-10 col-span-full`,
 };
 
-export const TagPage: React.FC<TagPageProps> = ({ tag, content }) => {
+export const TagPage = ({ tag, content }: TagPageProps) => {
   const { formatMessage } = useLocalization();
 
   const [title, description] = useMemo(

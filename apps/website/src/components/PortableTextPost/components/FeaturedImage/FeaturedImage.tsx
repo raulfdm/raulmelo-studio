@@ -26,11 +26,7 @@ const styles = {
 
 const Caption = tw.p`text-center text-base lg:text-md dark:text-gray-300 mt-4`;
 
-export const FeaturedImage: React.FC<FeaturedImageProps> = ({
-  url,
-  alt,
-  unsplash,
-}) => {
+export const FeaturedImage = ({ url, alt, unsplash }: FeaturedImageProps) => {
   const { formatMessage } = useLocalization();
 
   return (
