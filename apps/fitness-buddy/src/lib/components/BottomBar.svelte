@@ -3,7 +3,7 @@
 </script>
 
 <nav class="navbar">
-  <a href="/" class="link">
+  <a sveltekit:prefetch href="/" class="link">
     <SwordIcon width={24} />
     Training
   </a>
