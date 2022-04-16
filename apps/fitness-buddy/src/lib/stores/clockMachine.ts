@@ -8,6 +8,8 @@ type CreateClockMachineProps = {
   remainingSeries?: number;
   totalRest: number;
   remainingRest?: number;
+  canRewind: boolean;
+  canFastForward: boolean;
 };
 
 type ClockContextWithState = CreateClockMachineProps & {
@@ -22,8 +24,9 @@ export function createClockMachine({
   totalSeries,
   remainingRest,
   remainingSeries,
-}: CreateClockMachineProps) {
+}: Omit<CreateClockMachineProps, 'canFastForward' | 'canRewind'>) {
   const persistedStore = readTrainingStore() || {};
+
   const persistedContext = persistedStore[exerciseId] || {
     exerciseId,
     totalRest,
@@ -31,6 +34,8 @@ export function createClockMachine({
     remainingRest: remainingRest || totalRest,
     remainingSeries: remainingSeries || 1,
     state: 'idle',
+    canFastForward: false,
+    canRewind: false,
   };
 
   const clockMachine = createMachine(
@@ -40,6 +45,8 @@ export function createClockMachine({
         events: {} as
           | { type: 'TOGGLE' }
           | { type: 'FINISH' }
+          | { type: 'REWIND' }
+          | { type: 'FAST_FORWARD' }
           | { type: 'TICK' },
       },
       id: 'clock',
@@ -47,23 +54,32 @@ export function createClockMachine({
       initial: persistedContext.state,
       states: {
         idle: {
+          entry: ['allowMoveSeries'],
           on: {
             TOGGLE: {
               target: 'running',
               actions: ['startClock'],
             },
+            FAST_FORWARD: {
+              target: 'idle',
+              actions: ['fastForward'],
+              cond: 'canFastForward',
+            },
+            REWIND: {
+              target: 'idle',
+              actions: ['rewind'],
+              cond: 'canRewind',
+            },
           },
         },
         running: {
           invoke: {
-            src: (context) => (cb) => {
+            src: () => (cb) => {
               const intervalId = setInterval(() => {
                 cb({ type: 'TICK' });
-                console.log(context.remainingRest);
               }, 1000);
 
               return () => {
-                console.log('CLEARING INTERVAL :(');
                 clearInterval(intervalId);
               };
             },
@@ -114,11 +130,29 @@ export function createClockMachine({
           }
           return context;
         }),
+        fastForward: assign({
+          remainingSeries: (context) => context.remainingSeries + 1,
+        }),
+        rewind: assign({
+          remainingSeries: (context) => context.remainingSeries - 1,
+        }),
+      },
+      guards: {
+        canFastForward,
+        canRewind,
       },
     },
   );
 
   return clockMachine;
+}
+
+export function canFastForward(context: CreateClockMachineProps) {
+  return context.remainingSeries < context.totalSeries;
+}
+
+export function canRewind(context: CreateClockMachineProps) {
+  return context.remainingSeries > 1;
 }
 
 export function persistClockInfo(context: ClockContextWithState): void {

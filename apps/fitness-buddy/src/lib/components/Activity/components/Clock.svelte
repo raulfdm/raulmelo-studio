@@ -4,12 +4,7 @@
   import PlayIcon from '$lib/components/Icons/PlayIcon.svelte';
   import PauseIcon from '$lib/components/Icons/PauseIcon.svelte';
 
-  import {
-    activityActions,
-    activityStore,
-    canFastForward,
-    canRewind,
-  } from '$lib/stores/activity';
+  import { activityStore } from '$lib/stores/activity';
   import { secondsToMinutes } from '$lib/utils/secondsToMinutes';
   import FastForwardIcon from '$lib/components/Icons/FastForwardIcon.svelte';
   import RewindIcon from '$lib/components/Icons/RewindIcon.svelte';
@@ -17,6 +12,8 @@
     createClockMachine,
     persistClockInfo,
     continueTimer,
+    canRewind,
+    canFastForward,
   } from '$lib/stores/clockMachine';
   import type { ClockMachineState } from '$lib/stores/clockMachine';
 
@@ -30,6 +27,14 @@
 
   $: currentClockNew = $state.context;
   $: clockState = $state.value;
+  $: isRewindButtonDisabled =
+    clockState !== 'idle' || !canRewind(currentClockNew);
+  $: isFastForwardButtonDisabled =
+    clockState !== 'idle' || !canFastForward(currentClockNew);
+
+  $: {
+    console.log(currentClockNew);
+  }
 
   onDestroy(() => {
     const clockContextWithState = {
@@ -60,9 +65,9 @@
 <div class="actions">
   <button
     class="action"
-    disabled={!$canRewind}
+    disabled={isRewindButtonDisabled}
     on:click={() => {
-      activityActions.rewindSeries();
+      send('REWIND');
     }}
   >
     <RewindIcon size="60" />
@@ -83,8 +88,10 @@
 
   <button
     class="action"
-    disabled={!$canFastForward}
-    on:click={activityActions.fastForwardSeries}
+    disabled={isFastForwardButtonDisabled}
+    on:click={() => {
+      send('FAST_FORWARD');
+    }}
   >
     <FastForwardIcon size="60" />
   </button>
