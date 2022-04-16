@@ -1,7 +1,7 @@
 <script lang="ts">
   import ContentTitle from '$lib/components/ContentTitle.svelte';
 
-  import { activityStore } from '../../../stores/activity';
+  import { activityStore } from '$lib/stores/activity';
 
   let currentExercise = $activityStore.currentTraining.exercise;
 
