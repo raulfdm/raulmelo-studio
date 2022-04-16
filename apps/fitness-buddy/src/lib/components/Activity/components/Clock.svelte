@@ -1,15 +1,14 @@
 <script lang="ts">
   import { onDestroy } from 'svelte';
-  import { useMachine } from '@xstate/svelte';
+
   import PlayIcon from '$lib/components/Icons/PlayIcon.svelte';
   import PauseIcon from '$lib/components/Icons/PauseIcon.svelte';
 
-  import { activityStore } from '$lib/stores/activity';
   import { secondsToMinutes } from '$lib/utils/secondsToMinutes';
   import FastForwardIcon from '$lib/components/Icons/FastForwardIcon.svelte';
   import RewindIcon from '$lib/components/Icons/RewindIcon.svelte';
   import {
-    createClockMachine,
+    clockMachineService,
     persistClockInfo,
     continueTimer,
     canRewind,
@@ -17,13 +16,7 @@
   } from '$lib/stores/clockMachine';
   import type { ClockMachineState } from '$lib/stores/clockMachine';
 
-  const { send, state } = useMachine(
-    createClockMachine({
-      exerciseId: $activityStore.currentTraining._key,
-      totalRest: $activityStore.currentTraining.restTime,
-      totalSeries: $activityStore.currentTraining.series,
-    }),
-  );
+  const { send, state } = clockMachineService;
 
   $: currentClockNew = $state.context;
   $: clockState = $state.value;
@@ -31,10 +24,6 @@
     clockState !== 'idle' || !canRewind(currentClockNew);
   $: isFastForwardButtonDisabled =
     clockState !== 'idle' || !canFastForward(currentClockNew);
-
-  $: {
-    console.log(currentClockNew);
-  }
 
   onDestroy(() => {
     const clockContextWithState = {
