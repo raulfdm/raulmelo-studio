@@ -114,7 +114,7 @@ const clockMachine = createMachine(
   {
     actions: {
       setActivity: assign((_, { payload }) => {
-        const persistedStore = readTrainingStore();
+        const persistedStore = readTrainingStore() || {};
 
         const persistedContext = persistedStore[payload.exerciseId] ?? {
           exerciseId: payload.exerciseId,
