@@ -1,7 +1,7 @@
 <script lang="ts">
   import TrashIcon from '$lib/components/Icons/TrashIcon.svelte';
 
-  import { activityStore, activityActions } from '../activityStore';
+  import { activityStore, activityActions } from '../../../stores/activity';
 
   type InputEvent = Event & {
     currentTarget: EventTarget & HTMLInputElement;

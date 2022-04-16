@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onDestroy } from 'svelte';
+  import { useMachine } from '@xstate/svelte';
   import PlayIcon from '$lib/components/Icons/PlayIcon.svelte';
   import PauseIcon from '$lib/components/Icons/PauseIcon.svelte';
 
@@ -7,23 +9,51 @@
     activityStore,
     canFastForward,
     canRewind,
-  } from '../activityStore';
+  } from '$lib/stores/activity';
   import { secondsToMinutes } from '$lib/utils/secondsToMinutes';
   import FastForwardIcon from '$lib/components/Icons/FastForwardIcon.svelte';
   import RewindIcon from '$lib/components/Icons/RewindIcon.svelte';
+  import {
+    createClockMachine,
+    persistClockInfo,
+    continueTimer,
+  } from '$lib/stores/clockMachine';
+  import type { ClockMachineState } from '$lib/stores/clockMachine';
 
-  $: currentClock = $activityStore.currentTraining.clock;
+  const { send, state } = useMachine(
+    createClockMachine({
+      exerciseId: $activityStore.currentTraining._key,
+      totalRest: $activityStore.currentTraining.restTime,
+      totalSeries: $activityStore.currentTraining.series,
+    }),
+  );
+
+  $: currentClockNew = $state.context;
+  $: clockState = $state.value;
+
+  onDestroy(() => {
+    const clockContextWithState = {
+      ...currentClockNew,
+      state: clockState as ClockMachineState,
+    };
+
+    persistClockInfo(clockContextWithState);
+
+    if (clockState === 'running') {
+      continueTimer(clockContextWithState);
+    }
+  });
 </script>
 
 <div class="info">
   <section>
     <h3>Series</h3>
-    <span>{currentClock.seriesDone}/{currentClock.totalSeries}</span>
+    <span>{currentClockNew.remainingSeries}/{currentClockNew.totalSeries}</span>
   </section>
 
   <section>
     <h3>Time left</h3>
-    <span>{secondsToMinutes(currentClock.remainingTime)}</span>
+    <span>{secondsToMinutes($state.context.remainingRest)}</span>
   </section>
 </div>
 
@@ -31,13 +61,20 @@
   <button
     class="action"
     disabled={!$canRewind}
-    on:click={activityActions.rewindSeries}
+    on:click={() => {
+      activityActions.rewindSeries();
+    }}
   >
     <RewindIcon size="60" />
   </button>
 
-  <button class="action start" on:click={activityActions.toggleClock}>
-    {#if currentClock.state === 'pause' || currentClock.state === 'idle'}
+  <button
+    class="action start"
+    on:click={() => {
+      send('TOGGLE');
+    }}
+  >
+    {#if clockState === 'pause' || clockState === 'idle'}
       <PlayIcon size="80" />
     {:else}
       <PauseIcon size="80" />
