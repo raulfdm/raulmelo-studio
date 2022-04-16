@@ -1,4 +1,5 @@
 <script lang="ts">
+  import BeepAudio from '$lib/components/BeepAudio.svelte';
   import BottomBar from '$lib/components/BottomBar.svelte';
   import TopBar from '$lib/components/TopBar.svelte';
   import '../app.css';
@@ -19,6 +20,7 @@
     <slot />
   </div>
   <BottomBar />
+  <BeepAudio />
 </main>
 
 <style lang="postcss">
