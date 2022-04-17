@@ -4,7 +4,7 @@ export interface Typegen0 {
   '@@xstate/typegen': true;
   eventsCausingActions: {
     setActivity: 'SET_ACTIVITY';
-    startClock: 'TOGGLE';
+    startClock: 'RUN' | 'TOGGLE';
     fastForward: 'FAST_FORWARD';
     rewind: 'REWIND';
     tick: 'TICK';

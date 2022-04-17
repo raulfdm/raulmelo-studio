@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onDestroy } from 'svelte';
+  import { onDestroy, beforeUpdate } from 'svelte';
 
   import PlayIcon from '$lib/components/Icons/PlayIcon.svelte';
   import PauseIcon from '$lib/components/Icons/PauseIcon.svelte';
@@ -13,8 +13,10 @@
     continueTimer,
     canRewind,
     canFastForward,
+    readTrainingStore,
   } from '$lib/stores/clockMachine';
   import type { ClockMachineState } from '$lib/stores/clockMachine';
+  import { activityStore } from '$lib/stores/activity';
 
   const { send, state } = clockMachineService;
 
@@ -24,6 +26,37 @@
     clockState !== 'idle' || !canRewind(currentClockNew);
   $: isFastForwardButtonDisabled =
     clockState !== 'idle' || !canFastForward(currentClockNew);
+
+  beforeUpdate(() => {
+    clockMachineService.service.start();
+
+    const persistedStore = readTrainingStore() || {};
+
+    const persistedContext =
+      persistedStore[$activityStore.currentTraining._key];
+
+    if (persistedContext) {
+      clockMachineService.send({
+        type: 'SET_ACTIVITY',
+        payload: persistedContext,
+      });
+
+      if (persistedContext.state === 'running') {
+        clockMachineService.send({
+          type: 'RUN',
+        });
+      }
+    } else {
+      clockMachineService.send({
+        type: 'SET_ACTIVITY',
+        payload: {
+          exerciseId: $activityStore.currentTraining._key,
+          totalRest: $activityStore.currentTraining.restTime,
+          totalSeries: $activityStore.currentTraining.series,
+        },
+      });
+    }
+  });
 
   onDestroy(() => {
     const clockContextWithState = {

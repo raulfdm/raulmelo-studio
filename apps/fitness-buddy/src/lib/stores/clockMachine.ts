@@ -29,9 +29,12 @@ const clockMachine = createMachine(
               exerciseId: string;
               totalSeries: number;
               totalRest: number;
+              remainingSeries?: number;
+              remainingRest?: number;
             };
           }
         | { type: 'TOGGLE' }
+        | { type: 'RUN' }
         | { type: 'FINISH' }
         | { type: 'REWIND' }
         | { type: 'FAST_FORWARD' }
@@ -57,6 +60,10 @@ const clockMachine = createMachine(
       },
       idle: {
         on: {
+          RUN: {
+            target: 'running',
+            actions: ['startClock'],
+          },
           TOGGLE: {
             target: 'running',
             actions: ['startClock'],
@@ -114,19 +121,15 @@ const clockMachine = createMachine(
   {
     actions: {
       setActivity: assign((_, { payload }) => {
-        const persistedStore = readTrainingStore() || {};
-
-        const persistedContext = persistedStore[payload.exerciseId] ?? {
+        const nextContext = {
           exerciseId: payload.exerciseId,
           totalRest: payload.totalRest,
           totalSeries: payload.totalSeries,
-          remainingRest: payload.totalRest,
-          remainingSeries: 1,
-          canFastForward: false,
-          canRewind: false,
+          remainingRest: payload.remainingRest ?? payload.totalRest,
+          remainingSeries: payload.remainingSeries ?? 1,
         };
 
-        return persistedContext;
+        return nextContext;
       }),
       startClock(context) {
         return context;
@@ -190,7 +193,7 @@ export function persistClockInfo(context: ClockContextWithState): void {
   }
 }
 
-function readTrainingStore(): {
+export function readTrainingStore(): {
   [key: string]: CreateClockMachineProps & {
     state: ClockMachineState;
   };
