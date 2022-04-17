@@ -161,6 +161,8 @@ importers:
       '@tailwindcss/aspect-ratio': 0.4.0
       '@typescript-eslint/eslint-plugin': 5.19.0
       '@typescript-eslint/parser': 5.19.0
+      '@xstate/cli': 0.1.6
+      '@xstate/svelte': 1.0.0
       eslint-plugin-svelte3: 3.4.1
       groq: 2.29.3
       prettier-plugin-svelte: 2.7.0
@@ -169,12 +171,16 @@ importers:
       svelte-preprocess: 4.10.6
       tailwindcss: 2.2.19
       tslib: 2.3.1
+      xstate: 4.31.0
     dependencies:
       '@sanity/client': 3.3.0
+      '@xstate/cli': 0.1.6_prettier@2.6.2
+      '@xstate/svelte': 1.0.0_svelte@3.47.0+xstate@4.31.0
       groq: 2.29.3
+      xstate: 4.31.0
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.34
-      '@sveltejs/kit': 1.0.0-next.312_svelte@3.47.0
+      '@sveltejs/kit': 1.0.0-next.314_svelte@3.47.0
       '@tailwindcss/aspect-ratio': 0.4.0_tailwindcss@2.2.19
       '@typescript-eslint/eslint-plugin': 5.19.0_edcb20b406075febffd90857e23671f0
       '@typescript-eslint/parser': 5.19.0_eslint@7.32.0+typescript@4.6.3
@@ -541,7 +547,6 @@ packages:
       semver: 6.3.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /@babel/eslint-parser/7.17.0_@babel+core@7.17.9+eslint@7.32.0:
     resolution: {integrity: sha512-PUEJ7ZBXbRkbq3qqM/jZ2nIuakUBqCYc7Qf52Lj7dlZ6zERnqisdHioL0l4wwQZnmskMeasqUNzLBFKs3nylXA==}
@@ -882,7 +887,6 @@ packages:
       '@babel/types': 7.17.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /@babel/highlight/7.16.10:
     resolution: {integrity: sha512-5FnTQLSLswEj6IkgVw5KusNUUFY9ZGqe/TRFnP/BKYHYgfh7tc+C7mwiy95/yNP7Dh9x580Vv8r7u7ZfTBFxdw==}
@@ -6529,8 +6533,8 @@ packages:
       esbuild: 0.14.36
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.312_svelte@3.47.0:
-    resolution: {integrity: sha512-l07ct0FJQnt+y3/NSEBvHKDKVE/7syYQnFhCVZ6H+4LEYRtTNybFxUTC8jA3xpZwPqJLZz1X+Tt+Sa8ZMuVzDg==}
+  /@sveltejs/kit/1.0.0-next.314_svelte@3.47.0:
+    resolution: {integrity: sha512-EkXjEd30XO8+AydBLARxAtI6Ak8V0KFSEJ07sNsrkGq9J70sWPL7yGenhGaeq6S852XZAqeyWd6uGQZmQLR4Wg==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:
@@ -7553,8 +7557,33 @@ packages:
     resolution: {integrity: sha512-N8tkAACJx2ww8vFMneJmaAgmjAG1tnVBZJRLRcx061tmsLRZHSEZSLuGWnwPtunsSLvSqXQ2wfp7Mgqg1I+2dQ==}
     dev: false
 
+  /@xstate/cli/0.1.6_prettier@2.6.2:
+    resolution: {integrity: sha512-npDPm9kRGFgWLPfyCsn2MBzmiV/Mx3R8sGNPKQEbBnmRiXD2c2hGqoYwrWiittk+pFOJmc7tm9eT8NUbxND0/g==}
+    hasBin: true
+    dependencies:
+      '@babel/core': 7.17.9
+      '@xstate/machine-extractor': 0.6.3_@babel+core@7.17.9+xstate@4.31.0
+      '@xstate/tools-shared': 1.1.4_d9260602859b89fb40cdea4be0a8706b
+      chokidar: 3.5.3
+      commander: 8.3.0
+      xstate: 4.31.0
+    transitivePeerDependencies:
+      - prettier
+      - supports-color
+    dev: false
+
   /@xstate/fsm/2.0.0:
     resolution: {integrity: sha512-p/zcvBMoU2ap5byMefLkR+AM+Eh99CU/SDEQeccgKlmFNOMDwphaRGqdk+emvel/SaGZ7Rf9sDvzAplLzLdEVQ==}
+    dev: false
+
+  /@xstate/machine-extractor/0.6.3_@babel+core@7.17.9+xstate@4.31.0:
+    resolution: {integrity: sha512-PieLwCFiL+q4/fZczAv4/cl5J4ULDM5z6GoCliajTnHIAh0wHxxKiey6LsVvqWVzGw9fUlO87AqtWPsIcsy4jw==}
+    peerDependencies:
+      '@babel/core': ^7
+      xstate: ^4
+    dependencies:
+      '@babel/core': 7.17.9
+      xstate: 4.31.0
     dev: false
 
   /@xstate/react/3.0.0_66ea0b04422bd4474b56bbc9739bbb0f:
@@ -7575,6 +7604,35 @@ packages:
       use-sync-external-store: 1.0.0_react@18.0.0
     transitivePeerDependencies:
       - '@types/react'
+    dev: false
+
+  /@xstate/svelte/1.0.0_svelte@3.47.0+xstate@4.31.0:
+    resolution: {integrity: sha512-IXrqWEIbvSw9TIN0g2eAbiBhvjC6scjekDD39f7ihLqTowXITQmrXCrqsq3CF9/f9WJbmU2OLbsydyqIJQbQNQ==}
+    peerDependencies:
+      '@xstate/fsm': ^2.0.0
+      svelte: ^3.24.1
+      xstate: ^4.31.0
+    peerDependenciesMeta:
+      '@xstate/fsm':
+        optional: true
+      xstate:
+        optional: true
+    dependencies:
+      svelte: 3.47.0
+      xstate: 4.31.0
+    dev: false
+
+  /@xstate/tools-shared/1.1.4_d9260602859b89fb40cdea4be0a8706b:
+    resolution: {integrity: sha512-gH1NdnQYbmM9JpKbD1Q3ybWzgwUArS5tgq5GZUSMtFVyghlG8JNWILx+s8XvshE9HCZB0jy3pFa4bUscbCLerw==}
+    peerDependencies:
+      prettier: ^2.3.1
+      xstate: ^4
+    dependencies:
+      '@xstate/machine-extractor': 0.6.3_@babel+core@7.17.9+xstate@4.31.0
+      prettier: 2.6.2
+      xstate: 4.31.0
+    transitivePeerDependencies:
+      - '@babel/core'
     dev: false
 
   /@xtuc/ieee754/1.2.0:
@@ -22475,6 +22533,10 @@ packages:
 
   /xregexp/2.0.0:
     resolution: {integrity: sha1-UqY+VsoLhKfzpfPWGHLxJq16WUM=}
+    dev: false
+
+  /xstate/4.31.0:
+    resolution: {integrity: sha512-UK5m6OqUsTlPuKWkfRR5cR9/Yt7sysFyEg+PVIbEH9mwHSf9zuCvWO7rRvhBq7T+3pEXLKTEMfaqmLxl9Ob1pw==}
     dev: false
 
   /xtend/2.1.2:

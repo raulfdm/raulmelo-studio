@@ -1,7 +1,9 @@
 <script lang="ts">
+  import { useMachine } from '@xstate/svelte';
   import TrainingInfo from '../TrainingInfo.svelte';
-  import type { ITab } from './activityStore';
-  import { activityStore, activityActions } from './activityStore';
+  import type { ITab } from '../../stores/activity';
+  import { activityStore, activityActions } from '../../stores/activity';
+  import { clockMachineService } from '$lib/stores/clockMachine';
   import Clock from './components/Clock.svelte';
   import ClockConfig from './components/ClockConfig.svelte';
   import Content from './components/Content.svelte';
@@ -12,10 +14,10 @@
       label: 'Clock',
       value: 'clock',
     },
-    {
-      label: 'Clock Configuration',
-      value: 'clockConfig',
-    },
+    // {
+    //   label: 'Clock Configuration',
+    //   value: 'clockConfig',
+    // },
     {
       label: 'Content',
       value: 'content',
@@ -39,8 +41,8 @@
     <section class="tabContent">
       {#if $activityStore.currentTabActive === 'clock'}
         <Clock />
-      {:else if $activityStore.currentTabActive === 'clockConfig'}
-        <ClockConfig />
+        <!-- {:else if $activityStore.currentTabActive === 'clockConfig'} -->
+        <!-- <ClockConfig /> -->
       {:else if $activityStore.currentTabActive === 'content'}
         <Content />
       {:else if $activityStore.currentTabActive === 'drop-set-calculator'}
