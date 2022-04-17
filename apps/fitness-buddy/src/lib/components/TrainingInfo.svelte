@@ -1,8 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import type { ITraining } from '$lib/api';
-  import { activityActions, activityStore } from '$lib/stores/activity';
-  import { clockMachineService } from '$lib/stores/clockMachine';
+  import { activityActions } from '$lib/stores/activity';
 
   const ADVANCED_TECHNIQUES: {
     [key in NonNullable<ITraining['advancedTechnique']>]: string;
@@ -34,16 +33,6 @@
   class="wrapper"
   on:click={() => {
     activityActions.open(training._key);
-    clockMachineService.service.start();
-
-    clockMachineService.send({
-      type: 'SET_ACTIVITY',
-      payload: {
-        exerciseId: training._key,
-        totalRest: training.restTime,
-        totalSeries: training.series,
-      },
-    });
   }}
 >
   <header class="flex">
