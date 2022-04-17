@@ -36,6 +36,7 @@ const clockMachine = createMachine(
         | { type: 'TOGGLE' }
         | { type: 'RUN' }
         | { type: 'FINISH' }
+        | { type: 'RESET' }
         | { type: 'REWIND' }
         | { type: 'FAST_FORWARD' }
         | { type: 'TICK' },
@@ -78,6 +79,10 @@ const clockMachine = createMachine(
             actions: ['rewind'],
             cond: 'canRewind',
           },
+          RESET: {
+            target: 'idle',
+            actions: ['reset'],
+          },
         },
       },
       running: {
@@ -114,6 +119,10 @@ const clockMachine = createMachine(
       pause: {
         on: {
           TOGGLE: 'running',
+          RESET: {
+            target: 'idle',
+            actions: ['reset'],
+          },
         },
       },
     },
@@ -155,6 +164,10 @@ const clockMachine = createMachine(
       }),
       rewind: assign({
         remainingSeries: (context) => context.remainingSeries - 1,
+      }),
+      reset: assign({
+        remainingSeries: 1,
+        remainingRest: (context) => context.totalRest,
       }),
     },
     guards: {

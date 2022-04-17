@@ -17,6 +17,7 @@
   } from '$lib/stores/clockMachine';
   import type { ClockMachineState } from '$lib/stores/clockMachine';
   import { activityStore } from '$lib/stores/activity';
+  import TrashIcon from '$lib/components/Icons/TrashIcon.svelte';
 
   const { send, state } = clockMachineService;
 
@@ -26,6 +27,7 @@
     clockState !== 'idle' || !canRewind(currentClockNew);
   $: isFastForwardButtonDisabled =
     clockState !== 'idle' || !canFastForward(currentClockNew);
+  $: isResetButtonDisabled = clockState === 'running' || clockState === 'unset';
 
   beforeUpdate(() => {
     clockMachineService.service.start();
@@ -72,54 +74,76 @@
   });
 </script>
 
-<div class="info">
-  <section>
-    <h3>Series</h3>
-    <span>{currentClockNew.remainingSeries}/{currentClockNew.totalSeries}</span>
+<div class="clockWrapper">
+  <div class="info">
+    <section>
+      <h3>Series</h3>
+      <span
+        >{currentClockNew.remainingSeries}/{currentClockNew.totalSeries}</span
+      >
+    </section>
+
+    <section>
+      <h3>Time left</h3>
+      <span>{secondsToMinutes($state.context.remainingRest)}</span>
+    </section>
+  </div>
+
+  <div class="actions">
+    <button
+      class="action"
+      disabled={isRewindButtonDisabled}
+      on:click={() => {
+        send('REWIND');
+      }}
+    >
+      <RewindIcon size="60" />
+    </button>
+
+    <button
+      class="action start"
+      on:click={() => {
+        send('TOGGLE');
+      }}
+    >
+      {#if clockState === 'pause' || clockState === 'idle'}
+        <PlayIcon size="80" />
+      {:else}
+        <PauseIcon size="80" />
+      {/if}
+    </button>
+
+    <button
+      class="action"
+      disabled={isFastForwardButtonDisabled}
+      on:click={() => {
+        send('FAST_FORWARD');
+      }}
+    >
+      <FastForwardIcon size="60" />
+    </button>
+  </div>
+
+  <section class="resetWrapper">
+    <h3 class="sectionTitle">Reset Counter</h3>
+    <button
+      class="reset"
+      disabled={isResetButtonDisabled}
+      on:click={() => {
+        if (confirm('Are you sure you want to clear the clock?')) {
+          send('RESET');
+        }
+      }}
+    >
+      <TrashIcon size="32" />
+    </button>
   </section>
-
-  <section>
-    <h3>Time left</h3>
-    <span>{secondsToMinutes($state.context.remainingRest)}</span>
-  </section>
-</div>
-
-<div class="actions">
-  <button
-    class="action"
-    disabled={isRewindButtonDisabled}
-    on:click={() => {
-      send('REWIND');
-    }}
-  >
-    <RewindIcon size="60" />
-  </button>
-
-  <button
-    class="action start"
-    on:click={() => {
-      send('TOGGLE');
-    }}
-  >
-    {#if clockState === 'pause' || clockState === 'idle'}
-      <PlayIcon size="80" />
-    {:else}
-      <PauseIcon size="80" />
-    {/if}
-  </button>
-
-  <button
-    class="action"
-    disabled={isFastForwardButtonDisabled}
-    on:click={() => {
-      send('FAST_FORWARD');
-    }}
-  >
-    <FastForwardIcon size="60" />
-  </button>
 </div>
 
 <style lang="postcss">
+  .clockWrapper {
+    @apply flex flex-col h-full justify-around;
+  }
   .info {
     @apply space-y-4;
   }
@@ -146,5 +170,17 @@
 
   .start {
     @apply text-pink-600;
+  }
+
+  .resetWrapper {
+    @apply grid place-items-center mt-12;
+  }
+
+  .reset {
+    @apply text-gray-400;
+  }
+
+  .reset:disabled {
+    @apply opacity-50;
   }
 </style>

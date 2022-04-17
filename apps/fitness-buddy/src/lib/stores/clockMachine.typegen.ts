@@ -7,6 +7,7 @@ export interface Typegen0 {
     startClock: 'RUN' | 'TOGGLE';
     fastForward: 'FAST_FORWARD';
     rewind: 'REWIND';
+    reset: 'RESET';
     tick: 'TICK';
     startNextSession: 'xstate.init';
   };
