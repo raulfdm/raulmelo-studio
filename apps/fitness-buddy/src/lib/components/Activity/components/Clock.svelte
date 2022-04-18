@@ -16,6 +16,7 @@
     readTrainingStore,
   } from '$lib/stores/clockMachine';
   import type { ClockMachineState } from '$lib/stores/clockMachine';
+  import { activityMachine } from '$lib/stores/activityMachine';
   import { activityStore } from '$lib/stores/activity';
   import TrashIcon from '$lib/components/Icons/TrashIcon.svelte';
 
@@ -28,6 +29,15 @@
   $: isFastForwardButtonDisabled =
     clockState !== 'idle' || !canFastForward(currentClockNew);
   $: isResetButtonDisabled = clockState === 'running' || clockState === 'unset';
+
+  const { state: activityState } = activityMachine;
+
+  const { state: clockState2, send: send2 } = $activityState.context.training;
+
+  $: {
+    console.log($activityState);
+    console.log(clockState2);
+  }
 
   beforeUpdate(() => {
     clockMachineService.service.start();
@@ -104,6 +114,7 @@
       class="action start"
       on:click={() => {
         send('TOGGLE');
+        send2('TOGGLE');
       }}
     >
       {#if clockState === 'pause' || clockState === 'idle'}

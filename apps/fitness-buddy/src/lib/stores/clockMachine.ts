@@ -17,7 +17,7 @@ type ClockContextWithState = CreateClockMachineProps & {
 
 export type ClockMachineState = 'idle' | 'running' | 'pause';
 
-const clockMachine = createMachine(
+export const clockMachine = createMachine(
   {
     tsTypes: {} as import('./clockMachine.typegen').Typegen0,
     schema: {

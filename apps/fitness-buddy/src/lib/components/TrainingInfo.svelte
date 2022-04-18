@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import type { ITraining } from '$lib/api';
+  import { activityMachine } from '$lib/stores/activityMachine';
   import { activityActions } from '$lib/stores/activity';
 
   const ADVANCED_TECHNIQUES: {
@@ -13,7 +14,8 @@
     'drop-set': `Drop-Set 3x`,
   };
 
-  export let training: ITraining;
+  export let training: any;
+  console.log(training);
 
   const seriesName = `${training.series}x${training.repetitions}`;
 
@@ -33,6 +35,10 @@
   class="wrapper"
   on:click={() => {
     activityActions.open(training._key);
+    activityMachine.send({
+      type: 'OPEN',
+      payload: { trainingId: training._key },
+    });
   }}
 >
   <header class="flex">

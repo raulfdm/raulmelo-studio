@@ -1,9 +1,11 @@
 <script lang="ts">
+  import { createMachine } from 'xstate';
   import { useMachine } from '@xstate/svelte';
   import TrainingInfo from '../TrainingInfo.svelte';
-  import type { ITab } from '../../stores/activity';
+  import type { ITab } from '$lib/stores/activityMachine';
   import { activityStore, activityActions } from '../../stores/activity';
   import { clockMachineService } from '$lib/stores/clockMachine';
+  import { activityMachine } from '$lib/stores/activityMachine';
   import Clock from './components/Clock.svelte';
   import ClockConfig from './components/ClockConfig.svelte';
   import Content from './components/Content.svelte';
@@ -14,10 +16,6 @@
       label: 'Clock',
       value: 'clock',
     },
-    // {
-    //   label: 'Clock Configuration',
-    //   value: 'clockConfig',
-    // },
     {
       label: 'Content',
       value: 'content',
@@ -27,25 +25,28 @@
       value: 'drop-set-calculator',
     },
   ];
+
+  const { state, send } = activityMachine;
+  console.log($state);
+
+  $: currentTabOpened = $state.context.currentTabOpened;
 </script>
 
-{#if $activityStore.state === 'open'}
+{#if $state.value === 'active'}
   <div class="overlay" />
   <div class="bg-white wrapper">
-    <button on:click={activityActions.close} class="closeButton">Close</button>
+    <button on:click={() => send('CLOSE')} class="closeButton">Close</button>
 
-    <TrainingInfo training={$activityStore.currentTraining} />
+    <TrainingInfo training={$state.context.training} />
 
     <hr class="my-2" />
 
     <section class="tabContent">
-      {#if $activityStore.currentTabActive === 'clock'}
+      {#if currentTabOpened === 'clock'}
         <Clock />
-        <!-- {:else if $activityStore.currentTabActive === 'clockConfig'} -->
-        <!-- <ClockConfig /> -->
-      {:else if $activityStore.currentTabActive === 'content'}
+      {:else if currentTabOpened === 'content'}
         <Content />
-      {:else if $activityStore.currentTabActive === 'drop-set-calculator'}
+      {:else if currentTabOpened === 'drop-set-calculator'}
         <DropSetCalculator />
       {/if}
     </section>
@@ -54,8 +55,9 @@
       {#each tabs as tab}
         <button
           class="tab"
-          class:tabActive={$activityStore.currentTabActive === tab.value}
-          on:click={() => activityActions.setCurrentTab(tab.value)}
+          class:tabActive={currentTabOpened === tab.value}
+          on:click={() =>
+            send({ type: 'CHANGE_TAB', payload: { tab: tab.value } })}
         >
           {tab.label}
         </button>
