@@ -31,15 +31,16 @@ export default function SearchPage() {
           <FormattedMessage
             id="search.paragraph"
             values={{
-              // eslint-disable-next-line react/display-name
-              a: (chunks: never) => (
-                <a
-                  css={searchStyles.searchLink}
-                  href="https://www.google.com/search?q=site%3Araulmelo.dev+javascript"
-                >
-                  {chunks}
-                </a>
-              ),
+              a: function Anchor(chunks: never) {
+                return (
+                  <a
+                    css={searchStyles.searchLink}
+                    href="https://www.google.com/search?q=site%3Araulmelo.dev+javascript"
+                  >
+                    {chunks}
+                  </a>
+                );
+              } as unknown as React.ReactNode,
             }}
           />
         </p>

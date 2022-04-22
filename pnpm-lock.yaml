@@ -249,7 +249,7 @@ importers:
       react: ^18.0.0
       react-dom: ^18.0.0
       react-instantsearch-dom: 6.23.4
-      react-intl: 5.24.8
+      react-intl: 5.25.0
       react-popper: 2.2.5
       react-twitter-widgets: 1.10.0
       react-use: 17.3.2
@@ -281,7 +281,7 @@ importers:
       react: 18.0.0
       react-dom: 18.0.0_react@18.0.0
       react-instantsearch-dom: 6.23.4_b3df02c853a8c4e832543e05d655cf04
-      react-intl: 5.24.8_react@18.0.0+typescript@4.6.3
+      react-intl: 5.25.0_react@18.0.0+typescript@4.6.3
       react-popper: 2.2.5_ddeceac54e80ad082dd3259289d97632
       react-twitter-widgets: 1.10.0_react@18.0.0
       react-use: 17.3.2_react-dom@18.0.0+react@18.0.0
@@ -3365,8 +3365,8 @@ packages:
       tslib: 2.3.1
     dev: false
 
-  /@formatjs/intl/2.1.1_typescript@4.6.3:
-    resolution: {integrity: sha512-iUjBnV2XE+mS3run+Rj/96rfxvwSiCsqMrSbIWoU4dOjIYil7boZK2mCamxoz8CqiiL4VD4ym5EEDbYPWirlFA==}
+  /@formatjs/intl/2.2.0_typescript@4.6.3:
+    resolution: {integrity: sha512-2wLE64ns7QcQvqeNmwIFZBnDZ6XcL1QKx+x7A9J25XykCIgIMZNF5Dx7LAxJplCLRCqh2Eh0Q4ZVC1GLcZA4MQ==}
     peerDependencies:
       typescript: ^4.5
     peerDependenciesMeta:
@@ -18649,10 +18649,10 @@ packages:
       react-instantsearch-core: 6.23.4_4c5d39e65dca46599159c46711c1c64f
     dev: false
 
-  /react-intl/5.24.8_react@18.0.0+typescript@4.6.3:
-    resolution: {integrity: sha512-uFBA7Fvh3XsHVn6b+jgVTk8hMBpQFvkterWwq4KHrjn8nMmLJf6lGqPawAcmhXes0q29JruCQyKX0vj+G7iokA==}
+  /react-intl/5.25.0_react@18.0.0+typescript@4.6.3:
+    resolution: {integrity: sha512-jIgmCy9s2IVFdQHEe2LzW023wKDQwgKXPdxg6WwuUJxR9BHPBPGLj01rxc3gLZ3aKDuL91SsFPAlx+qEy7+k0w==}
     peerDependencies:
-      react: ^16.3.0 || 17
+      react: ^16.3.0 || 17 || 18
       typescript: ^4.5
     peerDependenciesMeta:
       typescript:
@@ -18660,11 +18660,11 @@ packages:
     dependencies:
       '@formatjs/ecma402-abstract': 1.11.4
       '@formatjs/icu-messageformat-parser': 2.0.19
-      '@formatjs/intl': 2.1.1_typescript@4.6.3
+      '@formatjs/intl': 2.2.0_typescript@4.6.3
       '@formatjs/intl-displaynames': 5.4.3
       '@formatjs/intl-listformat': 6.5.3
       '@types/hoist-non-react-statics': 3.3.1
-      '@types/react': 17.0.43
+      '@types/react': 18.0.5
       hoist-non-react-statics: 3.3.2
       intl-messageformat: 9.12.0
       react: 18.0.0
