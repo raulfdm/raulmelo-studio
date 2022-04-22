@@ -11,6 +11,8 @@ LANGUAGES_MAP.set('CSS', 'css');
 LANGUAGES_MAP.set('CSV', 'csv');
 LANGUAGES_MAP.set('Diff', 'diff');
 LANGUAGES_MAP.set('Git', 'git');
+LANGUAGES_MAP.set('Go', 'go');
+LANGUAGES_MAP.set('Go Module', 'go-mod');
 LANGUAGES_MAP.set('GraphQL', 'graphql');
 LANGUAGES_MAP.set('HTML', 'html');
 LANGUAGES_MAP.set('JavaScript', 'js');
