@@ -34,7 +34,7 @@ importers:
       '@types/node': 16.7.12
       '@typescript-eslint/eslint-plugin': 5.20.0
       '@typescript-eslint/parser': 5.20.0
-      autoprefixer: 10.4.4
+      autoprefixer: 10.4.5
       babel-jest: 27.5.1
       babel-loader: 8.2.5
       concurrently: 7.1.0
@@ -82,7 +82,7 @@ importers:
       '@types/node': 16.7.12
       '@typescript-eslint/eslint-plugin': 5.20.0_4a38537b28d61fb150842b8115287657
       '@typescript-eslint/parser': 5.20.0_eslint@7.32.0+typescript@4.6.3
-      autoprefixer: 10.4.4_postcss@8.4.12
+      autoprefixer: 10.4.5_postcss@8.4.12
       babel-jest: 27.5.1_@babel+core@7.17.9
       babel-loader: 8.2.5_@babel+core@7.17.9
       concurrently: 7.1.0
@@ -109,7 +109,7 @@ importers:
       pretty-quick: 3.1.3_prettier@2.6.2
       rimraf: 3.0.2
       scripty: 2.1.0
-      tailwindcss: 2.2.19_bdaceb00f796c0c549cd3844d4c4fef2
+      tailwindcss: 2.2.19_3425a46c47258e6ad509bc7cdce7ea50
       ts-node: 10.7.0_ebb91bbb458f687221054300398f8c95
       tslib: 2.4.0
       typescript: 4.6.3
@@ -191,7 +191,7 @@ importers:
       svelte: 3.47.0
       svelte-check: 2.7.0_b98e46eda9a1daf0670d5665a547cd9d
       svelte-preprocess: 4.10.6_8a999102124df95bbaafee8e9e091793
-      tailwindcss: 2.2.19_bdaceb00f796c0c549cd3844d4c4fef2
+      tailwindcss: 2.2.19_3425a46c47258e6ad509bc7cdce7ea50
       tslib: 2.4.0
 
   apps/lambdas:
@@ -234,7 +234,7 @@ importers:
       '@xstate/fsm': 2.0.0
       '@xstate/react': 3.0.0
       algoliasearch: 4.13.0
-      autoprefixer: 10.4.4
+      autoprefixer: 10.4.5
       dayjs: 1.11.1
       debounce-promise: 3.1.2
       duplicate-package-checker-webpack-plugin: 3.0.0
@@ -301,7 +301,7 @@ importers:
       '@types/react': 18.0.8
       '@types/react-dom': 18.0.2
       '@types/react-instantsearch-dom': 6.12.3
-      autoprefixer: 10.4.4_postcss@8.4.12
+      autoprefixer: 10.4.5_postcss@8.4.12
       duplicate-package-checker-webpack-plugin: 3.0.0
       eslint-config-next: 12.1.5_5919bfe26dc205ceac960b85167949fc
       next-compose-plugins: 2.2.1
@@ -339,7 +339,7 @@ importers:
       '@tailwindcss/aspect-ratio': 0.3.0_tailwindcss@2.2.19
       '@tailwindcss/forms': 0.3.4_tailwindcss@2.2.19
       '@tailwindcss/typography': 0.4.1_tailwindcss@2.2.19
-      tailwindcss: 2.2.19_bdaceb00f796c0c549cd3844d4c4fef2
+      tailwindcss: 2.2.19_3425a46c47258e6ad509bc7cdce7ea50
 
   packages/ui:
     specifiers:
@@ -6631,7 +6631,7 @@ packages:
     peerDependencies:
       tailwindcss: '>=2.0.0 || >=3.0.0-alpha.1'
     dependencies:
-      tailwindcss: 2.2.19_bdaceb00f796c0c549cd3844d4c4fef2
+      tailwindcss: 2.2.19_3425a46c47258e6ad509bc7cdce7ea50
     dev: false
 
   /@tailwindcss/aspect-ratio/0.4.0_tailwindcss@2.2.19:
@@ -6639,7 +6639,7 @@ packages:
     peerDependencies:
       tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
     dependencies:
-      tailwindcss: 2.2.19_bdaceb00f796c0c549cd3844d4c4fef2
+      tailwindcss: 2.2.19_3425a46c47258e6ad509bc7cdce7ea50
     dev: true
 
   /@tailwindcss/forms/0.3.4_tailwindcss@2.2.19:
@@ -6648,7 +6648,7 @@ packages:
       tailwindcss: '>=2.0.0'
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 2.2.19_bdaceb00f796c0c549cd3844d4c4fef2
+      tailwindcss: 2.2.19_3425a46c47258e6ad509bc7cdce7ea50
     dev: false
 
   /@tailwindcss/typography/0.4.1_tailwindcss@2.2.19:
@@ -6660,7 +6660,7 @@ packages:
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
-      tailwindcss: 2.2.19_bdaceb00f796c0c549cd3844d4c4fef2
+      tailwindcss: 2.2.19_3425a46c47258e6ad509bc7cdce7ea50
     dev: false
 
   /@tanem/react-nprogress/3.0.52_react-dom@18.0.0+react@18.0.0:
@@ -8340,15 +8340,15 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /autoprefixer/10.4.4_postcss@8.4.12:
-    resolution: {integrity: sha512-Tm8JxsB286VweiZ5F0anmbyGiNI3v3wGv3mz9W+cxEDYB/6jbnj6GM9H9mK3wIL8ftgl+C07Lcwb8PG5PCCPzA==}
+  /autoprefixer/10.4.5_postcss@8.4.12:
+    resolution: {integrity: sha512-Fvd8yCoA7lNX/OUllvS+aS1I7WRBclGXsepbvT8ZaPgrH24rgXpZzF0/6Hh3ZEkwg+0AES/Osd196VZmYoEFtw==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.20.2
-      caniuse-lite: 1.0.30001320
+      caniuse-lite: 1.0.30001332
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -9285,6 +9285,10 @@ packages:
 
   /caniuse-lite/1.0.30001320:
     resolution: {integrity: sha512-MWPzG54AGdo3nWx7zHZTefseM5Y1ccM7hlQKHRqJkPozUaw3hNbBTMmLn16GG2FUzjR13Cr3NPfhIieX5PzXDA==}
+
+  /caniuse-lite/1.0.30001332:
+    resolution: {integrity: sha512-10T30NYOEQtN6C11YGg411yebhvpnC6Z102+B95eAsN0oB6KUs01ivE8u+G6FMIRtIrVlYXhL+LUwQ3/hXwDWw==}
+    dev: true
 
   /capture-exit/2.0.0:
     resolution: {integrity: sha512-PiT/hQmTonHhl/HFGN+Lx3JJUznrVYJ3+AQsnthneZbvW7x+f08Tk7yLJTLEOUvBTbduLeeBkxEaYXUOUrRq6g==}
@@ -21120,7 +21124,7 @@ packages:
       strip-ansi: 6.0.1
     dev: true
 
-  /tailwindcss/2.2.19_bdaceb00f796c0c549cd3844d4c4fef2:
+  /tailwindcss/2.2.19_3425a46c47258e6ad509bc7cdce7ea50:
     resolution: {integrity: sha512-6Ui7JSVtXadtTUo2NtkBBacobzWiQYVjYW0ZnKaP9S1ZCKQ0w7KVNz+YSDI/j7O7KCMHbOkz94ZMQhbT9pOqjw==}
     engines: {node: '>=12.13.0'}
     hasBin: true
@@ -21129,7 +21133,7 @@ packages:
       postcss: ^8.0.9
     dependencies:
       arg: 5.0.1
-      autoprefixer: 10.4.4_postcss@8.4.12
+      autoprefixer: 10.4.5_postcss@8.4.12
       bytes: 3.1.2
       chalk: 4.1.2
       chokidar: 3.5.3
@@ -21700,7 +21704,7 @@ packages:
     dependencies:
       '@babel/parser': 7.17.8
       '@babel/template': 7.16.7
-      autoprefixer: 10.4.4_postcss@8.4.12
+      autoprefixer: 10.4.5_postcss@8.4.12
       babel-plugin-macros: 2.8.0
       chalk: 4.1.2
       clean-set: 1.1.2
@@ -21711,7 +21715,7 @@ packages:
       lodash.merge: 4.6.2
       postcss: 8.4.12
       string-similarity: 4.0.4
-      tailwindcss: 2.2.19_bdaceb00f796c0c549cd3844d4c4fef2
+      tailwindcss: 2.2.19_3425a46c47258e6ad509bc7cdce7ea50
       timsort: 0.3.0
     transitivePeerDependencies:
       - ts-node
