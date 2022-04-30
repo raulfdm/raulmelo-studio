@@ -1,3 +1,10 @@
+import { useMachine } from '@xstate/react';
+import classNames from 'classnames';
+import { useState } from 'react';
+import { usePopper } from 'react-popper';
+import { createMachine } from 'xstate';
+
+import { ClipboardIcon } from '../Icons/Clipboard';
 import { ConfiguredRefractor } from './ConfiguredRefractor';
 
 interface ICodeBlockProps {
@@ -5,14 +12,66 @@ interface ICodeBlockProps {
   language?: string;
   highlightedLines?: string;
   filename?: string;
+  copyTitle?: string;
+  copyTooltipTitle?: string;
 }
+
+const copyMachine = createMachine(
+  {
+    tsTypes: {} as import('./CodeBlock.typegen').Typegen0,
+    schema: {
+      events: {} as { type: 'COPY'; code: string },
+    },
+    initial: 'notCopied',
+    states: {
+      notCopied: {
+        on: {
+          COPY: {
+            target: 'copied',
+            actions: ['copyCode'],
+          },
+        },
+      },
+      copied: {
+        after: {
+          2000: 'notCopied',
+        },
+      },
+    },
+  },
+  {
+    actions: {
+      copyCode: (_, event) => {
+        navigator.clipboard.writeText(event.code);
+      },
+    },
+  },
+);
 
 export function CodeBlock({
   code,
   language,
   filename,
   highlightedLines,
+  copyTitle = 'Copy',
+  copyTooltipTitle = 'Copied',
 }: ICodeBlockProps) {
+  const [referenceElement, setReferenceElement] = useState(null);
+  const [tooltipElement, setTooltipElement] = useState(null);
+  const { styles, attributes } = usePopper(referenceElement, tooltipElement, {
+    placement: 'bottom-end',
+    modifiers: [
+      {
+        name: 'offset',
+        options: {
+          offset: [0, 8],
+        },
+      },
+    ],
+  });
+
+  const [state, send] = useMachine(copyMachine);
+
   if (!code) {
     return null;
   }
@@ -23,8 +82,41 @@ export function CodeBlock({
     lang = 'plaintext';
   }
 
+  async function onCopyCode() {
+    send({ type: 'COPY', code });
+  }
+
   return (
-    <div className="code-snippet">
+    <div className="relative code-snippet">
+      <button
+        ref={setReferenceElement as never}
+        type="button"
+        title={copyTitle}
+        className={
+          'absolute p-1 transition-colors focus:outline-white top-1 right-1 text-gray-500 hover:text-gray-300'
+        }
+        onClick={onCopyCode}
+      >
+        <ClipboardIcon />
+      </button>
+      <span
+        ref={setTooltipElement as never}
+        style={{
+          ...styles.popper,
+          fontFamily: 'monospace',
+        }}
+        className={classNames(
+          'px-2 py-1 text-sm font-bold bg-green-600 rounded text-gray-50 transition-all',
+          {
+            'opacity-0': state.matches('notCopied'),
+            'opacity-100': state.matches('copied'),
+          },
+        )}
+        {...attributes.popper}
+      >
+        {copyTooltipTitle}
+      </span>
+
       {filename && <Filename filename={filename} />}
       <ConfiguredRefractor
         language={lang}
