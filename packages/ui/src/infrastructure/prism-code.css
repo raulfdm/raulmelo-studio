@@ -63,10 +63,8 @@
     @apply rounded-t-none;
   }
 
-  .refractor {
-    pre {
-      font-size: 1.1rem;
-    }
+  pre.refractor {
+    @apply text-base;
 
     .refractor-marker {
       @apply relative left-0 right-0 block pl-5 -mx-4 whitespace-pre border-l-4 pointer-events-none;
