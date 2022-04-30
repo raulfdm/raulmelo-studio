@@ -3,7 +3,7 @@ import 'twin.macro';
 import { Popover } from '@headlessui/react';
 import { GlobeIcon } from '@raulmelo/ui';
 import { useRouter } from 'next/router';
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 import { usePopper } from 'react-popper';
 import tw, { css, styled } from 'twin.macro';
 
@@ -85,7 +85,7 @@ export const LanguageSwitch = () => {
   }
 
   return (
-    <Popover as={Fragment}>
+    <Popover>
       <Popover.Button as={MenuButton} ref={setReferenceElement as never}>
         <GlobeIcon tw="w-6" />
       </Popover.Button>
@@ -104,20 +104,21 @@ export const LanguageSwitch = () => {
             transform: `${popperStyles.arrow.transform} rotate(45deg)`,
           }}
         />
-        <button
+        <Popover.Button
           css={styles.item}
           disabled={locale === 'en'}
           onClick={switchToEnglish}
         >
           English
-        </button>
-        <button
+        </Popover.Button>
+
+        <Popover.Button
           css={styles.item}
           disabled={locale === 'pt'}
           onClick={switchToPortuguese}
         >
           Português
-        </button>
+        </Popover.Button>
       </Popover.Panel>
     </Popover>
   );
