@@ -10,16 +10,37 @@ import {
   YouTubeIframe,
 } from '@raulmelo/ui';
 import Link from 'next/link';
+import { defineMessages } from 'react-intl';
+
+import { useLocalization } from '~/hooks/useLocalization';
 
 import { Image } from './Image';
 import { ImageAdapter } from './ImageAdapter';
 import { ImageSliderAdapter } from './ImageSliderAdapter';
 
+const messages = defineMessages({
+  copyButtonTitle: {
+    id: 'blogPost.copyButton.title',
+  },
+  copyButtonSuccess: {
+    id: 'blogPost.copyButton.success',
+  },
+});
+
 export const portableComponents = {
   hardBreak: false,
   types: {
     divider: () => <DotDivider />,
-    code: sanityToUiAdapter(CodeBlock),
+    code: sanityToUiAdapter((props) => {
+      const { formatMessage } = useLocalization();
+      return (
+        <CodeBlock
+          {...props}
+          copyTitle={formatMessage(messages.copyButtonTitle)}
+          copyTooltipTitle={formatMessage(messages.copyButtonSuccess)}
+        />
+      );
+    }),
     youtubeVideo: sanityToUiAdapter(YouTubeIframe),
     image: ImageAdapter,
     codePen: sanityToUiAdapter(CodePenIframe),

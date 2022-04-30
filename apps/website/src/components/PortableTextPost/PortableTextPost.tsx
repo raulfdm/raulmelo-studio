@@ -6,7 +6,7 @@ import { ProseContainer } from '@raulmelo/ui';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ArticleJsonLd, NextSeo, NextSeoProps } from 'next-seo';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { ShareContent } from '~/components/ShareContent';
 import { Tag, Tags } from '~/components/Tags';
@@ -18,7 +18,6 @@ import { FeaturedImage } from './components/FeaturedImage';
 import { Header } from './components/Header';
 import { portableComponents } from './components/portableComponents';
 import { PreviewBanner } from './components/PreviewBanner/PreviewBanner';
-import { PrismStyles } from './components/PrismStyles';
 
 export const PortableTextPost = ({
   content,
@@ -101,7 +100,6 @@ export const PortableTextPost = ({
         }}
         {...nextSeo}
       />
-      <PrismStyles />
       {preview ? <PreviewBanner /> : null}
       {featuredImage ? (
         <FeaturedImage url={featuredImage.url} unsplash={unsplash} />

@@ -1,5 +1,5 @@
-import { createMachine, Typestate } from '@xstate/fsm';
-import { useMachine } from '@xstate/react/fsm';
+import { useMachine } from '@xstate/react';
+import { createMachine } from 'xstate';
 
 type CloseMenuEvent = { type: 'CLOSE' };
 type ToggleMenuEvent = { type: 'TOGGLE' };
@@ -8,15 +8,12 @@ type MachineEvents = ToggleMenuEvent | CloseMenuEvent;
 
 type MachineStates = 'open' | 'closed';
 
-const sideMenuMachine = createMachine<
-  any,
-  MachineEvents,
-  Typestate<{ value: MachineStates }>
->({
-  initial: 'closed',
-  context: {
-    value: 'closed',
+const sideMenuMachine = createMachine({
+  tsTypes: {} as import('./useSideMenu.typegen').Typegen0,
+  schema: {
+    actions: {} as MachineEvents,
   },
+  initial: 'closed',
   states: {
     open: {
       on: {
