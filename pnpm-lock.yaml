@@ -246,7 +246,7 @@ importers:
       react-dom: ^18.0.0
       react-instantsearch-dom: 6.24.0
       react-intl: 5.25.1
-      react-popper: 2.2.5
+      react-popper: 2.3.0
       react-twitter-widgets: 1.10.0
       react-use: 17.3.2
       smoothscroll-polyfill: 0.4.4
@@ -278,7 +278,7 @@ importers:
       react-dom: 18.0.0_react@18.0.0
       react-instantsearch-dom: 6.24.0_b3df02c853a8c4e832543e05d655cf04
       react-intl: 5.25.1_react@18.0.0+typescript@4.6.3
-      react-popper: 2.2.5_ddeceac54e80ad082dd3259289d97632
+      react-popper: 2.3.0_7662a49e75c97dd8b89d05a0d2a629e7
       react-twitter-widgets: 1.10.0_react@18.0.0
       react-use: 17.3.2_react-dom@18.0.0+react@18.0.0
       smoothscroll-polyfill: 0.4.4
@@ -18731,6 +18731,20 @@ packages:
     dependencies:
       '@popperjs/core': 2.11.5
       react: 18.0.0
+      react-fast-compare: 3.2.0
+      warning: 4.0.3
+    dev: false
+
+  /react-popper/2.3.0_7662a49e75c97dd8b89d05a0d2a629e7:
+    resolution: {integrity: sha512-e1hj8lL3uM+sgSR4Lxzn5h1GxBlpa4CQz0XLF8kx4MDrDRWY0Ena4c97PUeSX9i5W3UAfDP0z0FXCTQkoXUl3Q==}
+    peerDependencies:
+      '@popperjs/core': ^2.0.0
+      react: ^16.8.0 || ^17 || ^18
+      react-dom: ^16.8.0 || ^17 || ^18
+    dependencies:
+      '@popperjs/core': 2.11.5
+      react: 18.0.0
+      react-dom: 18.0.0_react@18.0.0
       react-fast-compare: 3.2.0
       warning: 4.0.3
     dev: false
