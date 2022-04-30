@@ -1,18 +1,12 @@
-import { AppTheme } from '@raulmelo/core';
-import { createMachine, Typestate } from '@xstate/fsm';
-import { useMachine } from '@xstate/react/fsm';
-import { useEffect } from 'react';
+import { AppTheme, utils } from '@raulmelo/core';
+import { useMachine } from '@xstate/react';
+import { createMachine } from 'xstate';
 
 /* TODO: find a way to consume this value from a single source of truth */
 const colorMap = {
   light: '#FFFFFF',
   dark: 'rgb(15, 23, 42)',
 };
-
-type ToggleEvent =
-  | { type: 'TOGGLE' }
-  | { type: 'TURN_LIGHT' }
-  | { type: 'TURN_DARK' };
 
 function removeThemeClass(theme: AppTheme) {
   return () => {
@@ -36,60 +30,73 @@ function saveThemeOnLocalStorage(theme: AppTheme) {
   };
 }
 
-type MachineStates = 'light' | 'dark';
-
-const themeMachine = createMachine<
-  any,
-  ToggleEvent,
-  Typestate<{ value: MachineStates }>
->({
-  initial: 'off',
-  states: {
-    off: {
-      on: {
-        TURN_DARK: 'dark',
-        TURN_LIGHT: 'light',
+const themeMachine = createMachine(
+  {
+    tsTypes: {} as import('./useThemeHandler.typegen').Typegen0,
+    initial: 'unset',
+    states: {
+      unset: {
+        always: [
+          {
+            target: 'light',
+            cond: 'isLight',
+          },
+          {
+            target: 'dark',
+          },
+        ],
       },
-    },
-    light: {
-      entry: [
-        setThemeClass('light'),
-        saveThemeOnLocalStorage('light'),
-        removeThemeClass('dark'),
-      ],
-      on: {
-        TOGGLE: {
-          target: 'dark',
+      light: {
+        entry: [
+          setThemeClass('light'),
+          saveThemeOnLocalStorage('light'),
+          removeThemeClass('dark'),
+        ],
+        on: {
+          TOGGLE: {
+            target: 'dark',
+          },
         },
       },
-    },
-    dark: {
-      entry: [
-        setThemeClass('dark'),
-        saveThemeOnLocalStorage('dark'),
-        removeThemeClass('light'),
-      ],
-      on: {
-        TOGGLE: {
-          target: 'light',
+      dark: {
+        entry: [
+          setThemeClass('dark'),
+          saveThemeOnLocalStorage('dark'),
+          removeThemeClass('light'),
+        ],
+        on: {
+          TOGGLE: {
+            target: 'light',
+          },
         },
       },
     },
   },
-});
+  {
+    guards: {
+      isLight: () => {
+        let result = true;
+        /**
+         * Because NEXT will run this on node first, I have to check
+         * if the window is defined before checking the __theme property.
+         */
+        if (utils.isBrowserApiAvailable.window) {
+          if (window.__theme) {
+            result = window.__theme === 'light';
+          }
+        }
+
+        return result;
+      },
+    },
+  },
+);
 
 export function useThemeHandler() {
-  const [current, send] = useMachine(themeMachine);
-
-  useEffect(() => {
-    if (window) {
-      const event = window.__theme === 'dark' ? 'TURN_DARK' : 'TURN_LIGHT';
-      send(event);
-    }
-  }, []);
+  const [state, send] = useMachine(() => themeMachine);
 
   return {
-    currentTheme: current.value as AppTheme | 'off',
+    currentTheme: state.value as AppTheme,
     toggleTheme: () => send('TOGGLE'),
   };
 }

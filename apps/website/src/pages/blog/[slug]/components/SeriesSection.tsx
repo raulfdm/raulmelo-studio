@@ -1,11 +1,11 @@
 import type { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
 import { ChevronDownIcon } from '@raulmelo/ui';
-import { createMachine, Typestate } from '@xstate/fsm';
-import { useMachine } from '@xstate/react/fsm';
+import { useMachine } from '@xstate/react';
 import { m } from 'framer-motion';
 import Link from 'next/link';
 import { FormattedMessage } from 'react-intl';
 import tw, { css } from 'twin.macro';
+import { createMachine } from 'xstate';
 
 // TODO: review this html markup. It seems having ugly/bad HTML structure.
 export const SeriesSection = ({
@@ -101,12 +101,6 @@ interface SeriesSectionProps {
   divider?: boolean;
 }
 
-type SeriesMachineEvent =
-  | {
-      type: 'TOGGLE';
-    }
-  | { type: 'CLOSE' };
-
 type SeriesMachineState = 'expanded' | 'collapsed';
 
 const variants = {
@@ -155,11 +149,8 @@ const variants = {
   },
 };
 
-const seriesMachine = createMachine<
-  any,
-  SeriesMachineEvent,
-  Typestate<{ value: 'collapsed' | 'expanded' }>
->({
+const seriesMachine = createMachine({
+  tsTypes: {} as import('./SeriesSection.typegen').Typegen0,
   initial: 'collapsed',
   states: {
     collapsed: {
