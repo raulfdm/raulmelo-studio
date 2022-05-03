@@ -20,7 +20,8 @@ module.exports = {
     },
     extend: {
       colors: {
-        blue: colors.blueGray,
+        blue: colors.slate,
+        gray: colors.gray,
         black: 'var(--color-black)',
         primary: 'var(--color-primary)',
         secondary: 'var(--color-secondary)',
@@ -110,19 +111,6 @@ module.exports = {
         };
       },
     },
-  },
-  variants: {
-    extend: {
-      fontWeight: ['hover'],
-      boxShadow: ['dark'],
-      borderWidth: ['dark', 'focus'],
-      borderColor: ['focus', 'checked'],
-      scale: ['hover'],
-      transform: ['hover'],
-      outline: ['dark'],
-      backgroundColor: ['focus', 'hover', 'checked'],
-    },
-    typography: ['dark', 'responsive'],
   },
   plugins: [
     require('@tailwindcss/typography'),
