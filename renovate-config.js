@@ -46,7 +46,7 @@ module.exports = {
     },
     {
       matchPackageNames: ['@types/node'],
-      allowedVersions: '<17',
+      allowedVersions: '<15',
     },
     {
       matchPackageNames: ['eslint'],
