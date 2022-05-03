@@ -32,8 +32,8 @@ jobs:
 
       - name: Build Projects
         run: |
-          - ls -la
-          - pnpm run build --filter lambdas...
+          ls -la
+          pnpm run build --filter lambdas...
 
       - name: Lint Projects
         run: pnpm run lint --filter lambdas
