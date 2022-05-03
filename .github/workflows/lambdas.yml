@@ -26,12 +26,14 @@ jobs:
 
       - uses: pnpm/action-setup@v2.2.1
         with:
-          version: latest
+          version: 6.32.11
           run_install: |
             - args: [--frozen-lockfile, --filter lambdas...]
 
       - name: Build Projects
-        run: pnpm run build --filter lambdas...
+        run: |
+          - ls -la
+          - pnpm run build --filter lambdas...
 
       - name: Lint Projects
         run: pnpm run lint --filter lambdas
