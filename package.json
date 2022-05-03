@@ -74,8 +74,8 @@
     "mquery": "^4.0.0",
     "nth-check": "^2.0.1",
     "object-path": "^0.11.8",
-    "react-dom": "^18.0.0",
-    "react": "^18.0.0",
+    "react-dom": "18.1.0",
+    "react": "18.1.0",
     "semver-regex": "^4.0.0",
     "set-value": "^4.0.1",
     "tar": "^6.1.9",
@@ -83,5 +83,30 @@
     "trim": "^1.0.0",
     "tslib": "2.4.0",
     "tailwindcss": "2.2.19"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "react": "18",
+        "react-dom": "18"
+      },
+      "ignoreMissing": [
+        "@babel/core",
+        "@popperjs/core",
+        "@sanity/color",
+        "autoprefixer",
+        "babel-loader",
+        "caniuse-lite",
+        "eslint",
+        "postcss",
+        "prettier",
+        "react",
+        "react-dom",
+        "react-is",
+        "redux",
+        "typescript",
+        "webpack"
+      ]
+    }
   }
 }
