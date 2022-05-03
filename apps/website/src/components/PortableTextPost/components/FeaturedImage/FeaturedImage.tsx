@@ -20,7 +20,7 @@ export type FeaturedImageProps = {
 
 const styles = {
   wrapper: tw`mb-8 lg:mb-16 col-span-full`,
-  figure: tw`relative h-0 overflow-hidden shadow aspect-w-12 aspect-h-6`,
+  figure: tw`relative h-0 overflow-hidden shadow`,
   captionLink: tw`underline text-secondary`,
 };
 
@@ -35,7 +35,7 @@ export const FeaturedImage = ({ url, alt, unsplash }: FeaturedImageProps) => {
       role="img"
       aria-label={formatMessage(messages.featuredImageLabel)}
     >
-      <figure css={styles.figure}>
+      <figure css={styles.figure} className="aspect-w-12 aspect-h-6">
         <Image
           src={url}
           layout="fill"
