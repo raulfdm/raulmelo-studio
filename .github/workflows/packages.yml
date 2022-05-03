@@ -19,6 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
 
       - name: Cache pnpm modules
         uses: actions/cache@v3
@@ -30,7 +33,7 @@ jobs:
 
       - uses: pnpm/action-setup@v2.2.1
         with:
-          version: 6.32.1
+          version: latest
 
       - name: Install dependencies
         run: pnpm i --frozen-lock --filter {packages/}

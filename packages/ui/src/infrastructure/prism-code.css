@@ -34,6 +34,7 @@
   --mono-1: hsl(220, 14%, 71%);
   --mono-2: hsl(220, 9%, 55%);
   --mono-3: hsl(220, 10%, 40%);
+  --mono-4: hsl(220, 10%, 28%);
   --hue-1: hsl(187, 47%, 55%);
   --hue-2: hsl(207, 82%, 66%);
   --hue-3: hsl(286, 60%, 67%);
@@ -67,10 +68,11 @@
     @apply text-base;
 
     .refractor-marker {
-      @apply relative left-0 right-0 block pl-5 -mx-4 whitespace-pre border-l-4 pointer-events-none;
-      line-height: inherit;
-      background-color: var(--mono-3);
+      @apply relative left-0 right-0 block -mx-4 whitespace-pre border-l-4 pointer-events-none;
       @apply border-secondary;
+      padding-left: 0.8em;
+      line-height: inherit;
+      background-color: var(--mono-4);
     }
   }
 }
