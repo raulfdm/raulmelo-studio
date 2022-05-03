@@ -20,7 +20,7 @@ jobs:
           node-version: 14
 
       - name: Cache pnpm modules
-        uses: actions/cache@v3
+        uses: actions/cache@v2
         with:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -30,21 +30,20 @@ jobs:
       - uses: pnpm/action-setup@v2.2.1
         with:
           version: latest
-
-      - name: Install dependencies
-        run: pnpm i --frozen-lockfile --filter lambdas...
+          run_install: |
+            args: [--frozen-lockfile, --filter lambdas..., --filter, .]
 
       - name: Build Projects
-        run: pnpm run build --filter lambdas...
+        run: pnpm --F lambdas... run build
 
       - name: Lint Projects
-        run: pnpm run lint --filter lambdas
+        run: pnpm --F lambdas run lint
 
       - name: Test Projects
-        run: pnpm run test --filter lambdas
+        run: pnpm --F lambdas run test
 
       - name: Deploy
-        run: pnpm run deploy --filter lambdas
+        run: pnpm --F lambdas run deploy
         if: contains('refs/heads/main', github.ref)
         env:
           NETLIFY_AUTH_TOKEN: ${{secrets.NETLIFY_AUTH_TOKEN}}
