@@ -31,7 +31,7 @@ importers:
       '@babel/preset-typescript': 7.16.7
       '@babel/runtime': 7.17.9
       '@popperjs/core': 2.11.5
-      '@types/jest': 27.4.1
+      '@types/jest': 27.5.0
       '@types/node': 14.14.31
       '@typescript-eslint/eslint-plugin': 5.21.0
       '@typescript-eslint/parser': 5.21.0
@@ -93,7 +93,7 @@ importers:
       '@babel/preset-env': 7.17.10_@babel+core@7.17.10
       '@babel/preset-typescript': 7.16.7_@babel+core@7.17.10
       '@babel/runtime': 7.17.9
-      '@types/jest': 27.4.1
+      '@types/jest': 27.5.0
       '@types/node': 14.14.31
       '@typescript-eslint/eslint-plugin': 5.21.0_vxtfsxfxxyksjzzdyas4bgfolu
       '@typescript-eslint/parser': 5.21.0_t725usgvqspm5woeqpaxbfp2qu
@@ -7440,13 +7440,6 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/27.4.1:
-    resolution: {integrity: sha512-23iPJADSmicDVrWk+HT58LMJtzLAnB2AgIzplQuq/bSrGaxCrlvRFjGbXmamnnk/mAmCdLStiGqggu28ocUyiw==}
-    dependencies:
-      jest-matcher-utils: 27.5.1
-      pretty-format: 27.5.1
-    dev: true
-
   /@types/jest/27.5.0:
     resolution: {integrity: sha512-9RBFx7r4k+msyj/arpfaa0WOOEcaAZNmN+j80KFbFCoSqCJGHTz7YMAMGQW9Xmqm5w6l5c25vbSjMwlikJi5+g==}
     dependencies:
@@ -9366,6 +9359,7 @@ packages:
 
   /bindings/1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
+    requiresBuild: true
     dependencies:
       file-uri-to-path: 1.0.0
     optional: true
@@ -16647,6 +16641,7 @@ packages:
 
   /nan/2.15.0:
     resolution: {integrity: sha512-8ZtvEnA2c5aYCZYd1cvgdnU6cqwixRoYg70xPLWUws5ORTa/lnw+u4amixRS/Ac5U5mQVgp9pnlSUnbNWFaWZQ==}
+    requiresBuild: true
     optional: true
 
   /nano-css/5.3.4:
