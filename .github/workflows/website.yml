@@ -28,11 +28,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-
 
-      - uses: pnpm/action-setup@v2.2.1
+      - uses: pnpm/action-setup@v2
         with:
           version: latest
           run_install: |
-            args: [--frozen-lockfile, --filter, website...]
+            args: [--frozen-lockfile, --filter, website..., --filter, .]
 
       - name: Build dependents packages
         run: pnpm --filter "website^..." run build
