@@ -16,9 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
 
       - name: Cache pnpm modules
-        uses: actions/cache@v3
+        uses: actions/cache@v2
         with:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -28,15 +31,14 @@ jobs:
       - uses: pnpm/action-setup@v2.2.1
         with:
           version: latest
-
-      - name: Install dependencies
-        run: pnpm i --frozen-lockfile --filter website...
+          run_install: |
+            args: [--frozen-lockfile, --filter website...]
 
       - name: Build dependents packages
-        run: pnpm run build --filter "website^..."
+        run: pnpm --filter "website^..." run build
 
       - name: Lint Projects
-        run: pnpm run lint --filter website
+        run: pnpm --filter website run lint
 
       - name: Test Projects
-        run: pnpm run test --filter website
+        run: pnpm --filter website run test

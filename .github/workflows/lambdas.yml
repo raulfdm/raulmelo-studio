@@ -14,7 +14,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
 
       - name: Cache pnpm modules
         uses: actions/cache@v2
@@ -26,23 +29,21 @@ jobs:
 
       - uses: pnpm/action-setup@v2.2.1
         with:
-          version: 6.32.11
+          version: latest
           run_install: |
-            - args: [--frozen-lockfile, --filter lambdas...]
+            args: [--frozen-lockfile, --filter lambdas...]
 
       - name: Build Projects
-        run: |
-          ls -la
-          pnpm run build --filter lambdas...
+        run: pnpm --F lambdas... run build
 
       - name: Lint Projects
-        run: pnpm run lint --filter lambdas
+        run: pnpm --F lambdas run lint
 
       - name: Test Projects
-        run: pnpm run test --filter lambdas
+        run: pnpm --F lambdas run test
 
       - name: Deploy
-        run: pnpm run deploy --filter lambdas
+        run: pnpm --F lambdas run deploy
         if: contains('refs/heads/main', github.ref)
         env:
           NETLIFY_AUTH_TOKEN: ${{secrets.NETLIFY_AUTH_TOKEN}}
