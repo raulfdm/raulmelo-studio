@@ -167,8 +167,8 @@ const clockMachine = createMachine(
       }),
       reset: assign({
         remainingSeries: 1,
-        remainingRest: (context) => context.totalRest,
-      }),
+        remainingRest: (context: any) => context.totalRest,
+      }) as any,
     },
     guards: {
       canFastForward,

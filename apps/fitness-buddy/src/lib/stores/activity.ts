@@ -44,32 +44,4 @@ export const activityActions = {
   setCurrentTab(tab: ITab) {
     activityStore.update((store) => ({ ...store, currentTabActive: tab }));
   },
-  onRestTimeChange(restTime: number) {
-    activityStore.update((store) => {
-      const { totalRest: currentRest, remainingTime } =
-        store.currentTraining.clock;
-
-      store.currentTraining.clock.totalRest = restTime;
-
-      if (currentRest === remainingTime) {
-        store.currentTraining.clock.remainingTime = restTime;
-      }
-
-      return store;
-    });
-  },
-  resetTimer() {
-    activityStore.update((store) => {
-      if (store.currentTraining.clock.intervalId !== null) {
-        clearInterval(store.currentTraining.clock.intervalId);
-        store.currentTraining.clock.intervalId = null;
-      }
-
-      store.currentTraining.clock.seriesDone = 1;
-      store.currentTraining.clock.remainingTime =
-        store.currentTraining.clock.totalRest;
-
-      return store;
-    });
-  },
 };

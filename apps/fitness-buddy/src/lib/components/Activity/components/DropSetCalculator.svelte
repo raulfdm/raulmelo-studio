@@ -71,7 +71,7 @@
   </tbody>
 </table>
 
-<style>
+<style lang="postcss">
   fieldset {
     @apply grid grid-flow-col grid-cols-6 mb-2;
     place-items: baseline;
