@@ -1,0 +1,40 @@
+name: Fitness Buddy
+
+on:
+  push:
+    paths:
+      - 'apps/fitness-buddy/**'
+      - '.github/workflows/fitness-buddy.yml'
+      - package.json
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Cache pnpm modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
+          run_install: |
+            args: [--frozen-lockfile, --filter, fitness-buddy..., --filter, .]
+
+      - name: Test Projects
+        run: pnpm --filter fitness-buddy run check
+
+      - name: Lint Projects
+        run: pnpm --filter fitness-buddy run lint
+
+      - name: Build dependents packages
+        run: pnpm --filter "fitness-buddy..." run build
