@@ -178,7 +178,7 @@ const clockMachine = createMachine(
 );
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
+// @ts-ignore
 export const clockMachineService = useMachine(clockMachine);
 
 clockMachineService.service.start();
