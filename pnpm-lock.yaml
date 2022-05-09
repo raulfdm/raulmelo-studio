@@ -207,7 +207,7 @@ importers:
   apps/lambdas:
     specifiers:
       '@raulmelo/core': workspace:*
-      '@types/aws-lambda': 8.10.95
+      '@types/aws-lambda': 8.10.96
       algoliasearch: 4.13.0
       netlify-lambda: 2.0.15
     dependencies:
@@ -215,7 +215,7 @@ importers:
       algoliasearch: 4.13.0
       netlify-lambda: 2.0.15
     devDependencies:
-      '@types/aws-lambda': 8.10.95
+      '@types/aws-lambda': 8.10.96
 
   apps/website:
     specifiers:
@@ -7365,8 +7365,8 @@ packages:
     resolution: {integrity: sha512-HnYpAE1Y6kRyKM/XkEuiRQhTHvkzMBurTHnpFLYLBGPIylZNPs9jJcuOOYWxPLJCSEtmZT0Y8rHDokKN7rRTig==}
     dev: true
 
-  /@types/aws-lambda/8.10.95:
-    resolution: {integrity: sha512-wGtzLbd04EmqhFjTZmXgLzvmhDdyVU7AMo/JkiPmA2VUdBFQfUBQFCEzaVVK+f1PP5aWx1ejnb7K/8MXYI/frQ==}
+  /@types/aws-lambda/8.10.96:
+    resolution: {integrity: sha512-jnuITj29oFNGCt8CPR00+krIqfU7llEfhuR2uJuGMkJgMVgpWq6MdLu3vohevw3lEn8NXuoAfldwlScV+muKjQ==}
     dev: true
 
   /@types/babel__core/7.1.19:
@@ -9685,7 +9685,7 @@ packages:
       mississippi: 3.0.0
       mkdirp: 0.5.6
       move-concurrently: 1.0.1
-      promise-inflight: 1.0.1
+      promise-inflight: 1.0.1_bluebird@3.7.2
       rimraf: 2.7.1
       ssri: 6.0.2
       unique-filename: 1.1.1
@@ -19426,6 +19426,17 @@ packages:
     peerDependenciesMeta:
       bluebird:
         optional: true
+    dev: true
+
+  /promise-inflight/1.0.1_bluebird@3.7.2:
+    resolution: {integrity: sha1-mEcocL8igTL8vdhoEputEsPAKeM=}
+    peerDependencies:
+      bluebird: '*'
+    peerDependenciesMeta:
+      bluebird:
+        optional: true
+    dependencies:
+      bluebird: 3.7.2
 
   /promise-props-recursive/1.0.0:
     resolution: {integrity: sha1-rvLKrBW7e7PqGQiLD2BCQDnvciM=}
