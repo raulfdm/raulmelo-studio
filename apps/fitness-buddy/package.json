@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
+    "postinstall": "pnpm run typegen",
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
     "package": "svelte-kit package",
@@ -17,15 +18,15 @@
   "dependencies": {
     "@sanity/client": "3.3.0",
     "@xstate/cli": "0.1.7",
-    "@xstate/svelte": "1.0.0",
+    "@xstate/svelte": "2.0.0",
     "groq": "2.29.3",
-    "xstate": "4.31.0"
+    "xstate": "4.32.0"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
     "@tailwindcss/aspect-ratio": "0.4.0",
-    "eslint-plugin-svelte3": "3.4.1",
+    "eslint-plugin-svelte3": "4.0.0",
     "prettier-plugin-svelte": "2.7.0",
     "svelte": "3.48.0",
     "svelte-check": "2.7.0",

@@ -1,11 +1,8 @@
 <script lang="ts">
-  import { useMachine } from '@xstate/svelte';
   import TrainingInfo from '../TrainingInfo.svelte';
   import type { ITab } from '../../stores/activity';
   import { activityStore, activityActions } from '../../stores/activity';
-  import { clockMachineService } from '$lib/stores/clockMachine';
   import Clock from './components/Clock.svelte';
-  import ClockConfig from './components/ClockConfig.svelte';
   import Content from './components/Content.svelte';
   import DropSetCalculator from './components/DropSetCalculator.svelte';
 
