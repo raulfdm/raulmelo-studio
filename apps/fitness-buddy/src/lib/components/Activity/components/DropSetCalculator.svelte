@@ -2,9 +2,9 @@
   let times = 3;
 
   let result: string[] = [];
-  let initialWeight: number = 10;
-  let percentage: number = 0.8;
-  let round: boolean = false;
+  let initialWeight = 10;
+  let percentage = 0.8;
+  let round = false;
 
   function calculate() {
     let next: number = initialWeight;
