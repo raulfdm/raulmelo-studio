@@ -34,7 +34,7 @@ jobs:
       - run: pnpm --filter cms... --stream run build
 
       - name: Deploy
-        run: pnpm --filter cms run deploy
+        run: pnpm --filter cms --stream run deploy
         if: contains('refs/heads/main', github.ref)
         env:
           SANITY_AUTH_TOKEN: ${{secrets.SANITY_AUTH_TOKEN}}
