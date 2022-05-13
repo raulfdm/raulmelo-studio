@@ -53,7 +53,7 @@ importers:
       eslint-plugin-react-hooks: 4.5.0
       eslint-plugin-simple-import-sort: 7.0.0
       framer-motion: 6.3.3
-      glob: 8.0.1
+      glob: 8.0.2
       husky: 8.0.0
       jest: 28.1.0
       jest-environment-jsdom: 28.1.0
@@ -111,7 +111,7 @@ importers:
       eslint-plugin-react: 7.29.4_eslint@8.15.0
       eslint-plugin-react-hooks: 4.5.0_eslint@8.15.0
       eslint-plugin-simple-import-sort: 7.0.0_eslint@8.15.0
-      glob: 8.0.1
+      glob: 8.0.2
       husky: 8.0.0
       jest: 28.1.0_fzh7xy6wwxvk2fou5mwhigwqf4
       jest-environment-jsdom: 28.1.0
@@ -201,7 +201,7 @@ importers:
       xstate: 4.32.0
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.40
-      '@sveltejs/kit': 1.0.0-next.326_svelte@3.48.0
+      '@sveltejs/kit': 1.0.0-next.328_svelte@3.48.0
       '@tailwindcss/aspect-ratio': 0.4.0_tailwindcss@2.2.19
       eslint-plugin-svelte3: 4.0.0_svelte@3.48.0
       prettier-plugin-svelte: 2.7.0_svelte@3.48.0
@@ -7099,8 +7099,8 @@ packages:
       esbuild: 0.14.38
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.326_svelte@3.48.0:
-    resolution: {integrity: sha512-prJqmXZ2H1wmFfnMw7wDujfbkcA8vuubuqUkpVVmXhfh2+SEzQscPTNwxoE5EJxb5sywtLWEvYx3hv1gPS4Lvg==}
+  /@sveltejs/kit/1.0.0-next.328_svelte@3.48.0:
+    resolution: {integrity: sha512-L1RJ7wwLkOgo7aE+JiYppJEtVsSIpGPfgBZtjrS3J0avXVYUSTy+AfXbvjFJxTdk94uuCcTLUk/0vVODFm+Khg==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:
@@ -9672,7 +9672,7 @@ packages:
       mississippi: 3.0.0
       mkdirp: 0.5.6
       move-concurrently: 1.0.1
-      promise-inflight: 1.0.1_bluebird@3.7.2
+      promise-inflight: 1.0.1
       rimraf: 2.7.1
       ssri: 6.0.2
       unique-filename: 1.1.1
@@ -13802,8 +13802,8 @@ packages:
       once: 1.4.0
       path-is-absolute: 1.0.1
 
-  /glob/8.0.1:
-    resolution: {integrity: sha512-cF7FYZZ47YzmCu7dDy50xSRRfO3ErRfrXuLZcNIuyiJEco0XSrGtuilG19L5xp3NcwTx7Gn+X6Tv3fmsUPTbow==}
+  /glob/8.0.2:
+    resolution: {integrity: sha512-0jzor6jfIKaDg/2FIN+9L8oDxzHTkI/+vwJimOmOZjaVjFVVZJFojOYbbWC0okXbBVSgYpbcuQ7xy6gDP9f8gw==}
     engines: {node: '>=12'}
     dependencies:
       fs.realpath: 1.0.0
@@ -13811,7 +13811,6 @@ packages:
       inherits: 2.0.4
       minimatch: 5.0.1
       once: 1.4.0
-      path-is-absolute: 1.0.1
     dev: true
 
   /global/4.4.0:
@@ -19377,17 +19376,6 @@ packages:
     peerDependenciesMeta:
       bluebird:
         optional: true
-    dev: true
-
-  /promise-inflight/1.0.1_bluebird@3.7.2:
-    resolution: {integrity: sha1-mEcocL8igTL8vdhoEputEsPAKeM=}
-    peerDependencies:
-      bluebird: '*'
-    peerDependenciesMeta:
-      bluebird:
-        optional: true
-    dependencies:
-      bluebird: 3.7.2
 
   /promise-props-recursive/1.0.0:
     resolution: {integrity: sha1-rvLKrBW7e7PqGQiLD2BCQDnvciM=}
