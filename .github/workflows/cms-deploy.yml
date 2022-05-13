@@ -29,8 +29,7 @@ jobs:
         with:
           version: latest
           run_install: |
-            - recursive: true
-              args: [--frozen-lockfile, --filter, cms..., --filter, .]
+            - args: [--frozen-lockfile, --filter, cms..., --filter, .]
             - args: [--global, '@sanity/cli']
 
       - run: pnpm --filter cms... --stream run build
