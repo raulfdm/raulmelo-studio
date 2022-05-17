@@ -185,6 +185,7 @@ importers:
       '@xstate/svelte': 2.0.0
       eslint-plugin-svelte3: 4.0.0
       groq: 2.29.3
+      prettier: 2.6.2
       prettier-plugin-svelte: 2.7.0
       svelte: 3.48.0
       svelte-check: 2.7.0
@@ -193,7 +194,7 @@ importers:
       xstate: 4.32.0
     dependencies:
       '@sanity/client': 3.3.0
-      '@xstate/cli': 0.1.7
+      '@xstate/cli': 0.1.7_prettier@2.6.2
       '@xstate/svelte': 2.0.0_q46s4py7xk4q5vmuiim65steji
       groq: 2.29.3
       xstate: 4.32.0
@@ -202,7 +203,8 @@ importers:
       '@sveltejs/kit': 1.0.0-next.334_svelte@3.48.0
       '@tailwindcss/aspect-ratio': 0.4.0_tailwindcss@2.2.19
       eslint-plugin-svelte3: 4.0.0_svelte@3.48.0
-      prettier-plugin-svelte: 2.7.0_svelte@3.48.0
+      prettier: 2.6.2
+      prettier-plugin-svelte: 2.7.0_kkjbqzpydplecjtkxrgomroeru
       svelte: 3.48.0
       svelte-check: 2.7.0_svelte@3.48.0
       svelte-preprocess: 4.10.6_svelte@3.48.0
@@ -8242,13 +8244,13 @@ packages:
     resolution: {integrity: sha512-N8tkAACJx2ww8vFMneJmaAgmjAG1tnVBZJRLRcx061tmsLRZHSEZSLuGWnwPtunsSLvSqXQ2wfp7Mgqg1I+2dQ==}
     dev: false
 
-  /@xstate/cli/0.1.7:
+  /@xstate/cli/0.1.7_prettier@2.6.2:
     resolution: {integrity: sha512-BE2EumZoivO19PWXLPAx/gzOAQHrEWrp/T8L7u0LigbUODoAmZwKCuF94IYmRipUYKeyjhYUX2jstoHXg/7Asg==}
     hasBin: true
     dependencies:
       '@babel/core': 7.17.10
       '@xstate/machine-extractor': 0.6.4_lmg7k6nptcbgyndgp6xgwwxtw4
-      '@xstate/tools-shared': 1.1.5_lmg7k6nptcbgyndgp6xgwwxtw4
+      '@xstate/tools-shared': 1.1.5_sa5fzag2jewp6larzgr7ir3wbm
       chokidar: 3.5.3
       commander: 8.3.0
       xstate: 4.32.0
@@ -8307,7 +8309,7 @@ packages:
       xstate: 4.32.0
     dev: false
 
-  /@xstate/tools-shared/1.1.5_lmg7k6nptcbgyndgp6xgwwxtw4:
+  /@xstate/tools-shared/1.1.5_sa5fzag2jewp6larzgr7ir3wbm:
     resolution: {integrity: sha512-Gr9UMEMJxdrN16bEIb3eIys9pi08K4dAHK5ptIC3mBHy77JBGtgfYMTO619uy1pdmbBRVFWg7aPAcMIusqjq8w==}
     peerDependencies:
       prettier: ^2.3.1
@@ -8317,6 +8319,7 @@ packages:
         optional: true
     dependencies:
       '@xstate/machine-extractor': 0.6.4_lmg7k6nptcbgyndgp6xgwwxtw4
+      prettier: 2.6.2
       xstate: 4.32.0
     transitivePeerDependencies:
       - '@babel/core'
@@ -19314,7 +19317,7 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-svelte/2.7.0_svelte@3.48.0:
+  /prettier-plugin-svelte/2.7.0_kkjbqzpydplecjtkxrgomroeru:
     resolution: {integrity: sha512-fQhhZICprZot2IqEyoiUYLTRdumULGRvw0o4dzl5jt0jfzVWdGqeYW27QTWAeXhoupEZJULmNoH3ueJwUWFLIA==}
     peerDependencies:
       prettier: ^1.16.4 || ^2.0.0
@@ -19323,6 +19326,7 @@ packages:
       prettier:
         optional: true
     dependencies:
+      prettier: 2.6.2
       svelte: 3.48.0
     dev: true
 
