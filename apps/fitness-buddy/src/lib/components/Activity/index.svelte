@@ -1,5 +1,5 @@
 <script lang="ts">
-  import TrainingInfo from '../TrainingInfo.svelte';
+  import TrainingInfo from '../Training/TrainingInfo.svelte';
   import type { ITab } from '../../stores/activity';
   import { activityStore, activityActions } from '../../stores/activity';
   import Clock from './components/Clock.svelte';

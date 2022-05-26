@@ -9,23 +9,30 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Roboto&family=Shadows+Into+Light+Two&Rubik:wght@500;600;700&display=swap"
     rel="stylesheet"
   />
 </svelte:head>
 
-<main class="container relative flex flex-col h-full mx-auto">
-  <TopBar />
-  <div class="flex-1 p-4 overflow-scroll">
-    <slot />
-  </div>
-  <BottomBar />
-  <BeepAudio />
+<TopBar />
+<main
+  class="container relative flex flex-col flex-1 h-full p-4 mx-auto overflow-scroll"
+>
+  <slot />
 </main>
+<BottomBar />
+<BeepAudio />
 
 <style lang="postcss">
-  :global(html),
   :global(body) {
-    height: 100%;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+  :global(html) {
+    height: -webkit-fill-available;
+  }
+
+  main {
+    height: calc(100vh - 73px - 60px);
   }
 </style>

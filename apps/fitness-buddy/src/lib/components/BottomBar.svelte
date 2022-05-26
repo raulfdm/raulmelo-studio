@@ -11,7 +11,7 @@
 
 <style module lang="postcss">
   .navbar {
-    @apply container bottom-0 mx-auto border-t shadow-md;
+    @apply bottom-0 mx-auto border-t shadow-md;
     @apply bg-white;
 
     min-height: var(--nav-height);

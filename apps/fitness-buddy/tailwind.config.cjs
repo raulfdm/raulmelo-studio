@@ -3,7 +3,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        title: "'Shadows Into Light Two', cursive",
+        title: `'Shadows Into Light Two', cursive`,
+        heading: `'Rubik', sans-serif`,
+        sans: `'Roboto', sans-serif`,
       },
     },
   },
