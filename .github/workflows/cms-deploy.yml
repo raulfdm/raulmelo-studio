@@ -29,11 +29,13 @@ jobs:
         with:
           version: latest
 
-      - run: pnpm install --global @sanity/cli
+      - name: Installing Dependencies
+        run: |
+          pnpm install --global @sanity/cli
+          pnpm install --frozen-lockfile --filter cms... --filter .
 
-      - run: pnpm install --frozen-lockfile --filter cms... --filter .
-
-      - run: pnpm --filter cms... --stream run build
+      - name: Building
+        run: pnpm --filter cms... --stream run build
 
       - name: Deploy
         run: pnpm --filter cms --stream run deploy

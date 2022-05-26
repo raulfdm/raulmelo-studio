@@ -27,9 +27,10 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: latest
-          run_install: |
-            args: [--frozen-lockfile, --filter, fitness-buddy..., --filter, .]
-            cwd: .
+
+      - name: Installing Dependencies
+        run: |
+          pnpm install --frozen-lockfile --filter fitness-buddy... --filter .
 
       - name: Test Projects
         run: pnpm --filter fitness-buddy run check

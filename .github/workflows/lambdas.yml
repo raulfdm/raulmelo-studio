@@ -30,9 +30,10 @@ jobs:
       - uses: pnpm/action-setup@v2.2.1
         with:
           version: latest
-          run_install: |
-            args: [--frozen-lockfile, --filter lambdas..., --filter, .]
-            cwd: .
+
+      - name: Installing Dependencies
+        run: |
+          pnpm install --frozen-lockfile --filter lambdas... --filter .
 
       - name: Build Projects
         run: pnpm --F lambdas... run build
