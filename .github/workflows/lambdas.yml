@@ -32,6 +32,7 @@ jobs:
           version: latest
           run_install: |
             args: [--frozen-lockfile, --filter lambdas..., --filter, .]
+            cwd: .
 
       - name: Build Projects
         run: pnpm --F lambdas... run build

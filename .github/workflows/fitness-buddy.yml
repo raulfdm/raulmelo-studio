@@ -29,6 +29,7 @@ jobs:
           version: latest
           run_install: |
             args: [--frozen-lockfile, --filter, fitness-buddy..., --filter, .]
+            cwd: .
 
       - name: Test Projects
         run: pnpm --filter fitness-buddy run check

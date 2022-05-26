@@ -33,6 +33,7 @@ jobs:
           version: latest
           run_install: |
             args: [--frozen-lockfile, --filter, website..., --filter, .]
+            cwd: .
 
       - name: Build dependents packages
         run: pnpm --filter "website^..." run build
