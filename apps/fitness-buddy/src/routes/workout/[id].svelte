@@ -1,6 +1,6 @@
 <script lang="ts">
   import ContentTitle from '$lib/components/ContentTitle.svelte';
-  import TrainingInfo from '$lib/components/TrainingInfo.svelte';
+  import TrainingInfo from '$lib/components/Training/TrainingInfo.svelte';
   import CardioCard from '$lib/components/CardioCard.svelte';
   import type { ITrainingRoutine } from '$lib/api';
   import Actvity from '$lib/components/Activity/index.svelte';
