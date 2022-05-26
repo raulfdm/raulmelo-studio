@@ -269,7 +269,7 @@ importers:
       react-instantsearch-dom: 6.25.0
       react-intl: 5.25.1
       react-popper: 2.3.0
-      react-use: 17.3.2
+      react-use: 17.4.0
       sharp: 0.30.4
       smoothscroll-polyfill: 0.4.4
       twin.macro: 2.8.2
@@ -295,7 +295,7 @@ importers:
       react-instantsearch-dom: 6.25.0_algoliasearch@4.13.1
       react-intl: 5.25.1
       react-popper: 2.3.0
-      react-use: 17.3.2
+      react-use: 17.4.0
       sharp: 0.30.4
       smoothscroll-polyfill: 0.4.4
     devDependencies:
@@ -6105,7 +6105,6 @@ packages:
 
   /@next/env/12.1.6:
     resolution: {integrity: sha512-Te/OBDXFSodPU6jlXYPAXpmZr/AkG6DCATAxttQxqOWaq6eDFX25Db3dK0120GZrSZmv4QCe9KsZmJKDbWs4OA==}
-    dev: false
 
   /@next/eslint-plugin-next/12.1.6:
     resolution: {integrity: sha512-yNUtJ90NEiYFT6TJnNyofKMPYqirKDwpahcbxBgSIuABwYOdkGwzos1ZkYD51Qf0diYwpQZBeVqElTk7Q2WNqw==}
@@ -6119,7 +6118,6 @@ packages:
     cpu: [arm]
     os: [android]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-android-arm64/12.1.6:
@@ -6128,7 +6126,6 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-darwin-arm64/12.1.6:
@@ -6137,7 +6134,6 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-darwin-x64/12.1.6:
@@ -6146,7 +6142,6 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-linux-arm-gnueabihf/12.1.6:
@@ -6155,7 +6150,6 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-linux-arm64-gnu/12.1.6:
@@ -6164,7 +6158,6 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-linux-arm64-musl/12.1.6:
@@ -6173,7 +6166,6 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-linux-x64-gnu/12.1.6:
@@ -6182,7 +6174,6 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-linux-x64-musl/12.1.6:
@@ -6191,7 +6182,6 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-win32-arm64-msvc/12.1.6:
@@ -6200,7 +6190,6 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-win32-ia32-msvc/12.1.6:
@@ -6209,7 +6198,6 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@next/swc-win32-x64-msvc/12.1.6:
@@ -6218,7 +6206,6 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@nodelib/fs.scandir/2.1.5:
@@ -7562,7 +7549,7 @@ packages:
       '@storybook/core-events': 6.5.0
       '@storybook/csf': 0.0.2--canary.4566f4d.1
       '@storybook/docs-tools': 6.5.0
-      '@storybook/mdx1-csf': 0.0.1-canary.1.867dcd5.0
+      '@storybook/mdx1-csf': 0.0.2-canary.5.6cee405.0
       '@storybook/node-logger': 6.5.0
       '@storybook/postinstall': 6.5.0
       '@storybook/preview-web': 6.5.0
@@ -8376,13 +8363,14 @@ packages:
       '@babel/traverse': 7.17.12
       '@babel/types': 7.17.12
       '@storybook/csf': 0.0.2--canary.4566f4d.1
-      '@storybook/mdx1-csf': 0.0.1-canary.1.867dcd5.0_@babel+core@7.17.12
+      '@storybook/mdx1-csf': 0.0.2-canary.5.6cee405.0_@babel+core@7.17.12
       core-js: 3.22.4
       fs-extra: 9.1.0
       global: 4.4.0
       regenerator-runtime: 0.13.9
       ts-dedent: 2.2.0
     transitivePeerDependencies:
+      - react
       - supports-color
     dev: true
 
@@ -8525,14 +8513,15 @@ packages:
       - webpack-command
     dev: true
 
-  /@storybook/mdx1-csf/0.0.1-canary.1.867dcd5.0:
-    resolution: {integrity: sha512-VnlE825M9SpjyJCPLCXbo+RbvqllsqXqRDCouzHKSpCE3Q79KR7MMURBsJo/vrTG1zeNG68Z4TZrLAu6IoyYaA==}
+  /@storybook/mdx1-csf/0.0.2-canary.5.6cee405.0:
+    resolution: {integrity: sha512-LRQ086H27/Ro8jQPoXb3hb0LgYokurqqFf4eDNSv/EqvzUihGrurvpiIGfTJ6JDzWZbiX1NIsqe8dx4jKpEGMw==}
     dependencies:
       '@babel/generator': 7.17.12
       '@babel/parser': 7.17.12
       '@babel/preset-env': 7.17.12
       '@babel/types': 7.17.12
       '@mdx-js/mdx': 1.6.22
+      '@mdx-js/react': 1.6.22
       '@types/lodash': 4.14.182
       js-string-escape: 1.0.1
       loader-utils: 2.0.2
@@ -8541,17 +8530,19 @@ packages:
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - '@babel/core'
+      - react
       - supports-color
     dev: true
 
-  /@storybook/mdx1-csf/0.0.1-canary.1.867dcd5.0_@babel+core@7.17.12:
-    resolution: {integrity: sha512-VnlE825M9SpjyJCPLCXbo+RbvqllsqXqRDCouzHKSpCE3Q79KR7MMURBsJo/vrTG1zeNG68Z4TZrLAu6IoyYaA==}
+  /@storybook/mdx1-csf/0.0.2-canary.5.6cee405.0_@babel+core@7.17.12:
+    resolution: {integrity: sha512-LRQ086H27/Ro8jQPoXb3hb0LgYokurqqFf4eDNSv/EqvzUihGrurvpiIGfTJ6JDzWZbiX1NIsqe8dx4jKpEGMw==}
     dependencies:
       '@babel/generator': 7.17.12
       '@babel/parser': 7.17.12
       '@babel/preset-env': 7.17.12_@babel+core@7.17.12
       '@babel/types': 7.17.12
       '@mdx-js/mdx': 1.6.22
+      '@mdx-js/react': 1.6.22
       '@types/lodash': 4.14.182
       js-string-escape: 1.0.1
       loader-utils: 2.0.2
@@ -8560,6 +8551,7 @@ packages:
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - '@babel/core'
+      - react
       - supports-color
     dev: true
 
@@ -19159,7 +19151,6 @@ packages:
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
-    dev: false
 
   /nice-try/1.0.5:
     resolution: {integrity: sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==}
@@ -21379,7 +21370,6 @@ packages:
       nanoid: 3.3.3
       picocolors: 1.0.0
       source-map-js: 1.0.2
-    dev: false
 
   /prebuild-install/7.1.0:
     resolution: {integrity: sha512-CNcMgI1xBypOyGqjp3wOc8AAo1nMhZS3Cwd3iHIxOdAUbb+YxdNuM4Z5iIrZ8RLvOsf3F3bl7b7xGq6DjQoNYA==}
@@ -21433,7 +21423,6 @@ packages:
     resolution: {integrity: sha512-PkUpF+qoXTqhOeWL9fu7As8LXsIUZ1WYaJiY/a7McAQzxjk82OF0tibkFXVCDImZtWxbvojFjerkiLb0/q8mew==}
     engines: {node: '>=10.13.0'}
     hasBin: true
-    dev: true
 
   /pretty-bytes/4.0.2:
     resolution: {integrity: sha1-sr+C5zUNZcbDOqlaqlpPYyf2HNk=}
@@ -22469,11 +22458,11 @@ packages:
       react-dom: 18.1.0_react@18.1.0
     dev: false
 
-  /react-use/17.3.2:
-    resolution: {integrity: sha512-bj7OD0/1wL03KyWmzFXAFe425zziuTf7q8olwCYBfOeFHY1qfO1FAMjROQLsLZYwG4Rx63xAfb7XAbBrJsZmEw==}
+  /react-use/17.4.0:
+    resolution: {integrity: sha512-TgbNTCA33Wl7xzIJegn1HndB4qTS9u03QUwyNycUnXaweZkE4Kq2SB+Yoxx8qbshkZGYBDvUXbXWRUmQDcZZ/Q==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || 18
-      react-dom: ^16.8.0 || ^17.0.0 || 18
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || 18
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || 18
     peerDependenciesMeta:
       react:
         optional: true
@@ -22519,7 +22508,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /read-cache/1.0.0:
     resolution: {integrity: sha1-5mTvMRYRZsl1HNvo28+GtftY93Q=}
@@ -24217,7 +24205,6 @@ packages:
         optional: true
       react:
         optional: true
-    dev: false
 
   /styled-system/5.1.5:
     resolution: {integrity: sha512-7VoD0o2R3RKzOzPK0jYrVnS8iJdfkKsQJNiLRDjikOpQVqQHns/DXWaPZOH4tIKkhAT7I6wIsy9FWTWh2X3q+A==}
@@ -24438,7 +24425,6 @@ packages:
   /svelte/3.48.0:
     resolution: {integrity: sha512-fN2YRm/bGumvjUpu6yI3BpvZnpIm9I6A7HR4oUNYd7ggYyIwSA/BX7DJ+UXXffLp6XNcUijyLvttbPVCYa/3xQ==}
     engines: {node: '>= 8'}
-    dev: true
 
   /svgo/1.3.2:
     resolution: {integrity: sha512-yhy/sQYxR5BkC98CY7o31VGsg014AKLEPxdfhora76l36hD9Rdy5NZA/Ocn6yayNPgSamYdtX2rFJdcv07AYVw==}
