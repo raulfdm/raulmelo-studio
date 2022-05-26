@@ -5,7 +5,6 @@ module.exports = {
    */
   username: 'renovate-release',
   onboarding: false,
-  requireConfig: false,
   platform: 'github',
   repositories: ['raulfdm/raulmelo-studio'],
 
