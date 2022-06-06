@@ -1,86 +1,119 @@
-import { browser } from '$app/env';
-import { audioActions } from '$lib/stores/audio';
-import { useMachine } from '@xstate/svelte';
-import { createMachine, assign } from 'xstate';
+import type { ITrainingSheet } from '$lib/api';
+import {
+  createMachine,
+  assign,
+  spawn,
+  type InterpreterFrom,
+  interpret,
+} from 'xstate';
+import type { ClockMachineType } from './clockMachine';
+import { clockMachine } from './clockMachine';
 
 export type ClockMachineState = 'idle' | 'running' | 'pause';
 
-export const trainingMachine = createMachine(
+type TrainingMachineContext = {
+  currentIndex: number | null;
+  currentActiveTraining: ITrainingSheet['schema'][0] | null;
+  trainingSheet: ITrainingSheet | null;
+  clocks: {
+    [key: string]: InterpreterFrom<ClockMachineType>;
+  };
+  currentClock: InterpreterFrom<ClockMachineType> | null;
+};
+
+type TrainingMachineEvents =
+  | {
+      type: 'INITIALIZE';
+      payload: {
+        currentActiveIndex: number;
+        trainingSheet: ITrainingSheet;
+      };
+    }
+  | {
+      type: 'CHANGE_TRAINING';
+      payload: {
+        currentActiveIndex: number;
+      };
+    }
+  | {
+      type: 'OPEN_CLOCK';
+    };
+
+const trainingMachine = createMachine(
   {
     tsTypes: {} as import('./trainingMachine.typegen').Typegen0,
     schema: {
-      context: {},
-      events: {},
+      context: {} as TrainingMachineContext,
+      events: {} as TrainingMachineEvents,
     },
-    id: 'training',
-    context: {},
-    states: {},
+    id: 'trainingApp',
+    context: {
+      currentIndex: null,
+      currentActiveTraining: null,
+      trainingSheet: null,
+      clocks: {},
+      currentClock: null,
+    },
+    initial: 'uninitialized',
+    states: {
+      uninitialized: {
+        on: {
+          INITIALIZE: {
+            target: 'initialized',
+            actions: ['initializeTrainingMachine'],
+          },
+        },
+      },
+      initialized: {
+        id: 'initialized',
+        initial: 'idle',
+        on: {
+          CHANGE_TRAINING: {
+            actions: ['changeTraining'],
+          },
+        },
+        states: {
+          idle: {
+            on: {
+              OPEN_CLOCK: {
+                actions: ['selectClock'],
+                target: 'clockOpened',
+              },
+            },
+          },
+          clockOpened: {},
+        },
+      },
+    },
   },
-  {},
+  {
+    actions: {
+      initializeTrainingMachine: assign({
+        currentActiveTraining: (_, event) =>
+          event.payload.trainingSheet.schema[event.payload.currentActiveIndex],
+        trainingSheet: (_, event) => event.payload.trainingSheet,
+        currentIndex: (_, event) => event.payload.currentActiveIndex,
+      }),
+      changeTraining: assign({
+        currentActiveTraining: (context, event) =>
+          context.trainingSheet.schema[event.payload.currentActiveIndex],
+        currentIndex: (_, event) => event.payload.currentActiveIndex,
+      }),
+      selectClock: assign((context) => {
+        const { currentActiveTraining, clocks } = context;
+
+        let clock = clocks[currentActiveTraining._id];
+        const nextClocks = { ...clocks };
+
+        if (!clock) {
+          clock = spawn(clockMachine);
+          nextClocks[currentActiveTraining._id] = clock;
+        }
+
+        return { ...context, clocks: nextClocks, currentClock: clock };
+      }),
+    },
+  },
 );
 
-type ClockMachineContext = {};
-type ClockMachineEvents = {};
-
-const clockMachine = createMachine({
-  tsTypes: {} as import('./trainingMachine.typegen').Typegen1,
-  schema: {
-    context: {} as ClockMachineContext,
-    events: {} as ClockMachineEvents,
-  },
-});
-
-// export function canFastForward(context: ClockMachineContext) {
-//   return context.remainingSeries < context.totalSeries;
-// }
-
-// export function canRewind(context: ClockMachineContext) {
-//   return context.remainingSeries > 1;
-// }
-
-// export function persistClockInfo(context: ClockMachineContext): void {
-//   if (browser) {
-//     const nextSavedState = readTrainingStore() ?? {};
-
-//     if (nextSavedState) {
-//       nextSavedState[context.exerciseId] = context;
-//     }
-
-//     localStorage.setItem(
-//       'activityStore_clock_2',
-//       JSON.stringify(nextSavedState),
-//     );
-//   }
-// }
-
-// export function readTrainingStore(): {
-//   [key: string]: CreateClockMachineProps & {
-//     state: ClockMachineState;
-//   };
-// } | null {
-//   if (browser) {
-//     const state = localStorage.getItem('activityStore_clock_2');
-//     if (state) {
-//       return JSON.parse(state);
-//     }
-//     return null;
-//   }
-// }
-
-// export function continueTimer(context: ClockContextWithState) {
-//   const nextContext = { ...context };
-
-//   const intervalID = setInterval(() => {
-//     if (nextContext.remainingRest >= 0) {
-//       nextContext.remainingRest--;
-//     } else {
-//       nextContext.remainingSeries++;
-//       nextContext.remainingRest = nextContext.totalRest;
-//       nextContext.state = 'idle';
-//       clearInterval(intervalID);
-//       audioActions.beep();
-//     }
-
-//     persistClockInfo(nextContext);
-//   }, 1000);
-// }
+export const trainingService = interpret(trainingMachine).start();

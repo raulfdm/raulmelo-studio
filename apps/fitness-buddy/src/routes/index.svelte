@@ -1,47 +1,71 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount, setContext } from 'svelte';
   import type { ITrainingSheet } from '$lib/api';
   import LoaderSpinner from '$lib/components/LoaderSpinner.svelte';
 
   import TrainingDate from '$lib/components/Training/TrainingDate.svelte';
   import TrainingInfo from '$lib/components/Training/TrainingInfo.svelte';
+  import { trainingService } from '$lib/stores/trainingMachine';
+  import NewClock from '$lib/components/Clock/Clock.svelte';
 
   export let trainingSheet: ITrainingSheet;
   export let suggestedCurrentIndex: number;
 
   const TRAINING_PERSISTENCE_KEY = `training__currentIndex_${trainingSheet._id}`;
 
-  $: currentIndex = null;
-  $: currentRoutine =
-    currentIndex !== null ? trainingSheet.schema[currentIndex].routine : null;
   $: showAnimation = true;
+  const { send } = trainingService;
+
+  $: currentRoutine = $trainingService.context.currentActiveTraining?.routine;
+
+  $: context = $trainingService.context;
 
   onMount(() => {
-    definePersistedIndex();
+    send({
+      type: 'INITIALIZE',
+      payload: {
+        currentActiveIndex: getCurrendIndex(),
+        trainingSheet,
+      },
+    });
+
+    // TODO: make this an action
     setTimeout(hideAnimation, 1000);
   });
 
   function onTrainingClick(index: number) {
-    currentIndex = index;
-    localStorage.setItem(TRAINING_PERSISTENCE_KEY, currentIndex.toString());
+    send({
+      type: 'CHANGE_TRAINING',
+      payload: {
+        currentActiveIndex: index,
+      },
+    });
+
+    localStorage.setItem(TRAINING_PERSISTENCE_KEY, index.toString());
   }
 
   function hideAnimation() {
     showAnimation = false;
   }
 
-  function definePersistedIndex() {
+  function getCurrendIndex() {
     const persistedIndex = window.localStorage.getItem(
       TRAINING_PERSISTENCE_KEY,
     );
 
     if (persistedIndex) {
-      currentIndex = parseInt(persistedIndex);
+      return parseInt(persistedIndex);
     } else if (suggestedCurrentIndex !== -1) {
-      currentIndex = suggestedCurrentIndex;
+      return suggestedCurrentIndex;
     } else {
-      currentIndex = trainingSheet.schema.length - 1;
+      return trainingSheet.schema.length - 1;
     }
+  }
+
+  function TEST() {
+    send({
+      type: 'OPEN_CLOCK',
+    });
   }
 </script>
 
@@ -51,6 +75,7 @@
   >
 </svelte:head>
 
+<button on:click={TEST}>CLICK</button>
 {#if showAnimation}
   <div class="grid w-full h-full place-items-center">
     <LoaderSpinner />
@@ -60,7 +85,7 @@
     {#each trainingSheet.schema as schema, index}
       <TrainingDate
         date={schema.routine.date}
-        isActive={currentIndex === index}
+        isActive={context.currentIndex === index}
         onClick={() => onTrainingClick(index)}
       />
     {/each}
@@ -83,9 +108,14 @@
         {training}
         onClick={() => {
           // TODO: implement
+          send({ type: 'OPEN_CLOCK' });
           console.log(training);
         }}
       />
     {/each}
   </div>
+
+  {#if $trainingService.matches('initialized.clockOpened')}
+    <NewClock />
+  {/if}
 {/if}
