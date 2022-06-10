@@ -181,7 +181,7 @@ importers:
       '@sveltejs/adapter-vercel': 1.0.0-next.56
       '@sveltejs/kit': 1.0.0-next.345
       '@tailwindcss/aspect-ratio': 0.4.0
-      '@xstate/cli': 0.1.7
+      '@xstate/cli': 0.2.1
       '@xstate/svelte': 2.0.0
       autoprefixer: 10.4.7
       eslint-plugin-svelte3: 4.0.0
@@ -197,7 +197,7 @@ importers:
       xstate: 4.32.1
     dependencies:
       '@sanity/client': 3.3.1
-      '@xstate/cli': 0.1.7_prettier@2.6.2
+      '@xstate/cli': 0.2.1_prettier@2.6.2
       '@xstate/svelte': 2.0.0_d7pokp7cbuf37jpq25f5jmmg3a
       groq: 2.29.3
       xstate: 4.32.1
@@ -7642,13 +7642,13 @@ packages:
     resolution: {integrity: sha512-N8tkAACJx2ww8vFMneJmaAgmjAG1tnVBZJRLRcx061tmsLRZHSEZSLuGWnwPtunsSLvSqXQ2wfp7Mgqg1I+2dQ==}
     dev: false
 
-  /@xstate/cli/0.1.7_prettier@2.6.2:
-    resolution: {integrity: sha512-BE2EumZoivO19PWXLPAx/gzOAQHrEWrp/T8L7u0LigbUODoAmZwKCuF94IYmRipUYKeyjhYUX2jstoHXg/7Asg==}
+  /@xstate/cli/0.2.1_prettier@2.6.2:
+    resolution: {integrity: sha512-DNX3webiPGinEJd50uB6j41q5NAOqoMHUIC1fsCaTL+JAWe+gvOT69MievNRJ0c56s/49Vf3bCGrCdHXt/5pGg==}
     hasBin: true
     dependencies:
-      '@babel/core': 7.17.10
-      '@xstate/machine-extractor': 0.6.4_cuab3nnqg4bzsyowfqvalcepge
-      '@xstate/tools-shared': 1.1.5_fx6kqu4mdah3652bldlhog2t3q
+      '@babel/core': 7.18.2
+      '@xstate/machine-extractor': 0.7.0_ljgac6m5rbz2w35ryjwselbcti
+      '@xstate/tools-shared': 1.1.7_5djj2f277ajz4h7huwkjyxiawm
       chokidar: 3.5.3
       commander: 8.3.0
       xstate: 4.32.1
@@ -7657,13 +7657,13 @@ packages:
       - supports-color
     dev: false
 
-  /@xstate/machine-extractor/0.6.4_cuab3nnqg4bzsyowfqvalcepge:
-    resolution: {integrity: sha512-CTDHDdXbAdhS8XFOi0P/GF3zhh7rrcpycrM1Anlc1f0awILaNo+2kATBEVsL6k7nfFsGStjGeE8RwWeiUfYwag==}
+  /@xstate/machine-extractor/0.7.0_ljgac6m5rbz2w35ryjwselbcti:
+    resolution: {integrity: sha512-dXHI/sWWWouN/yG687ZuRCP7Cm6XggFWSK1qWj3NohBTyhaYWSR7ojwP6OUK6e1cbiJqxmM9EDnE2Auf+Xlp+A==}
     peerDependencies:
       '@babel/core': ^7
       xstate: ^4
     dependencies:
-      '@babel/core': 7.17.10
+      '@babel/core': 7.18.2
       xstate: 4.32.1
     dev: false
 
@@ -7703,13 +7703,13 @@ packages:
       xstate: 4.32.1
     dev: false
 
-  /@xstate/tools-shared/1.1.5_fx6kqu4mdah3652bldlhog2t3q:
-    resolution: {integrity: sha512-Gr9UMEMJxdrN16bEIb3eIys9pi08K4dAHK5ptIC3mBHy77JBGtgfYMTO619uy1pdmbBRVFWg7aPAcMIusqjq8w==}
+  /@xstate/tools-shared/1.1.7_5djj2f277ajz4h7huwkjyxiawm:
+    resolution: {integrity: sha512-q+GzSHfhx9ld0UK9rqYz/QI+rE6oEP3M9FI5ybmXKOMZ6739YKzdY3iQAfYfLZP8/Y6xdfvcpSmOzfFQvjnpcw==}
     peerDependencies:
       prettier: ^2.3.1
       xstate: ^4
     dependencies:
-      '@xstate/machine-extractor': 0.6.4_cuab3nnqg4bzsyowfqvalcepge
+      '@xstate/machine-extractor': 0.7.0_ljgac6m5rbz2w35ryjwselbcti
       prettier: 2.6.2
       xstate: 4.32.1
     transitivePeerDependencies:
@@ -9110,7 +9110,7 @@ packages:
       mississippi: 3.0.0
       mkdirp: 0.5.6
       move-concurrently: 1.0.1
-      promise-inflight: 1.0.1_bluebird@3.7.2
+      promise-inflight: 1.0.1
       rimraf: 2.7.1
       ssri: 6.0.2
       unique-filename: 1.1.1
@@ -18730,17 +18730,6 @@ packages:
     peerDependenciesMeta:
       bluebird:
         optional: true
-    dev: true
-
-  /promise-inflight/1.0.1_bluebird@3.7.2:
-    resolution: {integrity: sha1-mEcocL8igTL8vdhoEputEsPAKeM=}
-    peerDependencies:
-      bluebird: '*'
-    peerDependenciesMeta:
-      bluebird:
-        optional: true
-    dependencies:
-      bluebird: 3.7.2
 
   /promise-props-recursive/1.0.0:
     resolution: {integrity: sha512-kh/4BEytTXST030W1YJHs3bTzlFu4C9EFPtqrG3g8JM8nEi3+WxR0mm19TjiobO2YHbHrCicZGN2Z94OhAU+7Q==}
