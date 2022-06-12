@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount, setContext } from 'svelte';
+  import { onMount } from 'svelte';
   import type { ITrainingSheet } from '$lib/api';
   import LoaderSpinner from '$lib/components/LoaderSpinner.svelte';
 

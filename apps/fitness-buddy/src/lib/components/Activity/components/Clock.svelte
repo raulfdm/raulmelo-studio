@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
   import { onDestroy, beforeUpdate } from 'svelte';
 
   import PlayIcon from '$lib/components/Icons/PlayIcon.svelte';
@@ -183,4 +183,4 @@
   .reset:disabled {
     @apply opacity-50;
   }
-</style>
+</style> -->

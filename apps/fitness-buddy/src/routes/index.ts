@@ -15,6 +15,7 @@ export async function get() {
     return schemasFormattedDate === todaysFormattedDate;
   });
 
+  console.log(JSON.stringify(trainingSheet));
   return {
     body: {
       trainingSheet,

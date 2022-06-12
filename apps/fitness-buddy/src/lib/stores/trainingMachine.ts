@@ -1,4 +1,6 @@
+import { browser } from '$app/env';
 import type { ITrainingSheet } from '$lib/api';
+import { inspect } from '@xstate/inspect';
 import {
   createMachine,
   assign,
@@ -89,8 +91,12 @@ const trainingMachine = createMachine(
   {
     actions: {
       initializeTrainingMachine: assign({
-        currentActiveTraining: (_, event) =>
-          event.payload.trainingSheet.schema[event.payload.currentActiveIndex],
+        currentActiveTraining: (_, event) => {
+          console.log(event);
+          return event.payload.trainingSheet.schema[
+            event.payload.currentActiveIndex
+          ];
+        },
         trainingSheet: (_, event) => event.payload.trainingSheet,
         currentIndex: (_, event) => event.payload.currentActiveIndex,
       }),
@@ -116,4 +122,12 @@ const trainingMachine = createMachine(
   },
 );
 
-export const trainingService = interpret(trainingMachine).start();
+export const trainingService = interpret(trainingMachine, {
+  devTools: true,
+});
+
+if (browser) {
+  inspect({ iframe: false });
+}
+
+trainingService.start();

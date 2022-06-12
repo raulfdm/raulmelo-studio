@@ -182,6 +182,7 @@ importers:
       '@sveltejs/kit': 1.0.0-next.345
       '@tailwindcss/aspect-ratio': 0.4.0
       '@xstate/cli': 0.1.7
+      '@xstate/inspect': 0.7.0
       '@xstate/svelte': 2.0.0
       autoprefixer: 10.4.7
       eslint-plugin-svelte3: 4.0.0
@@ -205,6 +206,7 @@ importers:
       '@sveltejs/adapter-vercel': 1.0.0-next.56
       '@sveltejs/kit': 1.0.0-next.345_svelte@3.48.0
       '@tailwindcss/aspect-ratio': 0.4.0_tailwindcss@2.2.19
+      '@xstate/inspect': 0.7.0_xstate@4.32.1
       autoprefixer: 10.4.7_postcss@8.4.14
       eslint-plugin-svelte3: 4.0.0_svelte@3.48.0
       postcss: 8.4.14
@@ -9132,6 +9134,20 @@ packages:
       - supports-color
     dev: false
 
+  /@xstate/inspect/0.7.0_xstate@4.32.1:
+    resolution: {integrity: sha512-3wrTf8TfBYprH1gBFdxmOQUBDpBazlICWvGdFzr8IHFL4MbiexEZdAsL2QC/WAmW9BqNYTWTwgfbvKHKg+FrlA==}
+    peerDependencies:
+      '@types/ws': ^8.0.0
+      ws: ^8.0.0
+      xstate: ^4.32.0
+    peerDependenciesMeta:
+      '@types/ws':
+        optional: true
+    dependencies:
+      fast-safe-stringify: 2.1.1
+      xstate: 4.32.1
+    dev: true
+
   /@xstate/machine-extractor/0.6.4_cuab3nnqg4bzsyowfqvalcepge:
     resolution: {integrity: sha512-CTDHDdXbAdhS8XFOi0P/GF3zhh7rrcpycrM1Anlc1f0awILaNo+2kATBEVsL6k7nfFsGStjGeE8RwWeiUfYwag==}
     peerDependencies:
@@ -13832,6 +13848,10 @@ packages:
 
   /fast-levenshtein/2.0.6:
     resolution: {integrity: sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=}
+
+  /fast-safe-stringify/2.1.1:
+    resolution: {integrity: sha512-W+KJc2dmILlPplD/H4K9l9LcAHAfPtP6BY84uVLXQ6Evcz9Lcg33Y2z1IVblT6xdY54PXYVHEv+0Wpq8Io6zkA==}
+    dev: true
 
   /fast-shallow-equal/1.0.0:
     resolution: {integrity: sha512-HPtaa38cPgWvaCFmRNhlc6NG7pv6NUHqjPgVAkWGoB9mQMwYB27/K0CvOM5Czy+qpT3e8XJ6Q4aPAnzpNpzNaw==}
@@ -24956,7 +24976,6 @@ packages:
 
   /xstate/4.32.1:
     resolution: {integrity: sha512-QYUd+3GkXZ8i6qdixnOn28bL3EvA++LONYL/EMWwKlFSh/hiLndJ8YTnz77FDs+JUXcwU7NZJg7qoezoRHc4GQ==}
-    dev: false
 
   /xtend/2.1.2:
     resolution: {integrity: sha1-bv7MKk2tjmlixJAbM3znuoe10os=}
