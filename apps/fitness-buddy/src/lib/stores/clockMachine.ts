@@ -1,10 +1,11 @@
 import { createMachine } from 'xstate';
 
-type ClockMachineContext = {};
+type ClockMachineContext = {
+  clockId: string;
+  totalTime: number;
+  timeLeft: number;
+};
 type ClockMachineEvents =
-  | {
-      type: 'TOGGLE_CLOCK';
-    }
   | {
       type: 'TOGGLE_TIMER';
     }
@@ -12,51 +13,44 @@ type ClockMachineEvents =
       type: 'START';
     };
 
-export const clockMachine = createMachine(
-  {
-    context: {},
-    tsTypes: {} as import('./clockMachine.typegen').Typegen0,
-    schema: {
-      context: {} as ClockMachineContext,
-      events: {} as ClockMachineEvents,
-    },
-    initial: 'close',
-    states: {
-      close: {
-        on: {
-          TOGGLE_CLOCK: 'open',
-        },
+export function createClockMachine(
+  context: Omit<ClockMachineContext, 'timeLeft'>,
+) {
+  return createMachine(
+    {
+      context: {
+        timeLeft: 0,
+        ...context,
       },
-      open: {
-        id: 'open',
-        on: {
-          TOGGLE_CLOCK: 'close',
+      tsTypes: {} as import('./clockMachine.typegen').Typegen0,
+      schema: {
+        context: {} as ClockMachineContext,
+        events: {} as ClockMachineEvents,
+      },
+      initial: 'idle',
+      states: {
+        idle: {
+          on: {
+            START: 'running',
+          },
         },
-        initial: 'idle',
-        states: {
-          idle: {
-            on: {
-              START: 'running',
-            },
+        paused: {
+          on: {
+            TOGGLE_TIMER: 'running',
           },
-          paused: {
-            on: {
-              TOGGLE_TIMER: 'running',
-            },
-          },
-          running: {
-            on: {
-              TOGGLE_TIMER: 'paused',
-            },
-          },
-          finish: {},
         },
+        running: {
+          on: {
+            TOGGLE_TIMER: 'paused',
+          },
+        },
+        finish: {},
       },
     },
-  },
-  {
-    actions: {},
-  },
-);
+    {
+      actions: {},
+    },
+  );
+}
 
-export type ClockMachineType = typeof clockMachine;
+export type ClockMachineType = ReturnType<typeof createClockMachine>;

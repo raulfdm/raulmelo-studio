@@ -9,7 +9,7 @@ import {
   interpret,
 } from 'xstate';
 import type { ClockMachineType } from './clockMachine';
-import { clockMachine } from './clockMachine';
+// import { clockMachine } from './clockMachine';
 
 export type ClockMachineState = 'idle' | 'running' | 'pause';
 
@@ -112,7 +112,7 @@ const trainingMachine = createMachine(
         const nextClocks = { ...clocks };
 
         if (!clock) {
-          clock = spawn(clockMachine);
+          // clock = spawn(clockMachine);
           nextClocks[currentActiveTraining._id] = clock;
         }
 

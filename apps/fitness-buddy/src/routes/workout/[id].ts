@@ -1,7 +1,9 @@
-import type { RequestEvent } from '@sveltejs/kit/types/private';
 import { TrainingSheetApi } from '$lib/api';
 
-export async function get({ params }: RequestEvent) {
+/**
+ * @type import('.svelte-kit/types/src/routes/workout/__types/[id].d.ts')
+ */
+export async function get({ params }) {
   const { id } = params;
 
   const trainingRoutine = await TrainingSheetApi.getById(id);

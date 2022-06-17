@@ -1,4 +1,6 @@
-export async function get() {
+import type { RequestEvent } from '@sveltejs/kit';
+
+export async function get(res: RequestEvent) {
   return {
     body: {
       trainingSheet: {
