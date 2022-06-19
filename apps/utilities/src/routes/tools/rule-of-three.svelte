@@ -1,12 +1,26 @@
 <script lang="ts">
   import PageTitle from '$lib/components/PageTitle.svelte';
+  import { createLocalStorage } from '$lib/utils/localStorage';
+  import { onMount } from 'svelte';
 
   let xValue: string | null = null;
   let yValue: string | null = null;
   let result: number | null = null;
+  const localStorage = createLocalStorage<[string, string]>('rule-of-three');
+
+  onMount(() => {
+    const persistedValue = localStorage.read();
+
+    if (persistedValue !== null) {
+      xValue = persistedValue[0];
+      yValue = persistedValue[1];
+    }
+  });
 
   $: {
     if (xValue !== null && yValue !== null) {
+      localStorage.write([xValue, yValue]);
+
       const parsedX = parseInt(xValue, 10);
       const parsedY = parseInt(yValue, 10);
 
@@ -22,8 +36,8 @@
 <div class="content">
   <div class="row">
     <fieldset>
-      <label>X</label>
-      <input type="number" bind:value={xValue} />
+      <label for="xNumber">X</label>
+      <input id="xNumber" type="number" bind:value={xValue} />
     </fieldset>
     <span>---</span>
     <p>100</p>
@@ -31,8 +45,8 @@
 
   <div class="row">
     <fieldset>
-      <label>Y</label>
-      <input class="" type="number" bind:value={yValue} />
+      <label for="yNumber">Y</label>
+      <input id="yNumber" class="" type="number" bind:value={yValue} />
     </fieldset>
     <span>---</span>
 
