@@ -1,4 +1,6 @@
 <script lang="ts">
+  import PageTitle from '$lib/components/PageTitle.svelte';
+
   let xValue: string | null = null;
   let yValue: string | null = null;
   let result: number | null = null;
@@ -15,7 +17,7 @@
   }
 </script>
 
-<h1 class="text-3xl font-bold text-center">Rule of Three</h1>
+<PageTitle>Rule of Three</PageTitle>
 
 <div class="content">
   <div class="row">
