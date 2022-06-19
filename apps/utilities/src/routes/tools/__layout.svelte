@@ -1,2 +1,2 @@
-<a class="underline" href="/">{`<- Go back home`}</a>
+<a class="mb-6 underline" href="/">{`<- Go back home`}</a>
 <slot />
