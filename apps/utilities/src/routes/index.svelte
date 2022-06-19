@@ -1,2 +1,10 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<nav class="flex gap-4">
+  <a href="/tools/intermittent-fasting">Intermitent Fasting</a>
+  <a href="/tools/rule-of-three">Rule of Three</a>
+</nav>
+
+<style>
+  a {
+    @apply shadow p-4;
+  }
+</style>
