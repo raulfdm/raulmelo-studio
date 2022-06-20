@@ -236,7 +236,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.27.0
       '@typescript-eslint/parser': 5.27.0
       autoprefixer: 10.4.7
-      dayjs: 1.11.2
+      dayjs: 1.11.3
       eslint: 8.16.0
       eslint-plugin-svelte3: 4.0.0
       postcss: 8.4.14
@@ -252,7 +252,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.27.0_dszb5tb7atwkjjijmmov4qhi7i
       '@typescript-eslint/parser': 5.27.0_xztl6dhthcahlo6akmb2bmjmle
       autoprefixer: 10.4.7_postcss@8.4.14
-      dayjs: 1.11.2
+      dayjs: 1.11.3
       eslint: 8.16.0
       eslint-plugin-svelte3: 4.0.0_ptl5dfzbhlxv7nmkif6js74gcq
       postcss: 8.4.14
@@ -288,7 +288,7 @@ importers:
       '@types/react-instantsearch-dom': 6.12.3
       algoliasearch: 4.13.1
       autoprefixer: 10.4.7
-      dayjs: 1.11.2
+      dayjs: 1.11.3
       debounce-promise: 3.1.2
       duplicate-package-checker-webpack-plugin: 3.0.0
       eslint-config-next: 12.1.6
@@ -318,7 +318,7 @@ importers:
       '@raulmelo/styles': link:../../packages/styles
       '@raulmelo/ui': link:../../packages/ui
       algoliasearch: 4.13.1
-      dayjs: 1.11.2
+      dayjs: 1.11.3
       debounce-promise: 3.1.2
       flat: 5.0.2
       lodash.omit: 4.5.0
@@ -9354,7 +9354,7 @@ packages:
       mississippi: 3.0.0
       mkdirp: 0.5.6
       move-concurrently: 1.0.1
-      promise-inflight: 1.0.1
+      promise-inflight: 1.0.1_bluebird@3.7.2
       rimraf: 2.7.1
       ssri: 6.0.2
       unique-filename: 1.1.1
@@ -9377,7 +9377,7 @@ packages:
       minipass-pipeline: 1.2.4
       mkdirp: 1.0.4
       p-map: 4.0.0
-      promise-inflight: 1.0.1
+      promise-inflight: 1.0.1_bluebird@3.7.2
       rimraf: 3.0.2
       ssri: 8.0.1
       tar: 6.1.11
@@ -10757,8 +10757,8 @@ packages:
     resolution: {integrity: sha512-yiizelQCqYLUEVT4zqYihOW6Ird7Qyc6fD3Pv5xGxk4+Jz0rsB1dMN2KyNV6jgOHYh5K+sPGCSOknQN4Upa3pg==}
     dev: false
 
-  /dayjs/1.11.2:
-    resolution: {integrity: sha512-F4LXf1OeU9hrSYRPTTj/6FbO4HTjPKXvEIC1P2kcnFurViINCVk3ZV0xAS3XVx9MkMsXbbqlK6hjseaYbgKEHw==}
+  /dayjs/1.11.3:
+    resolution: {integrity: sha512-xxwlswWOlGhzgQ4TKzASQkUhqERI3egRNqgV4ScR8wlANA/A9tZ7miXa44vTTKEq5l7vWoL5G57bG3zA+Kow0A==}
 
   /debounce-promise/3.1.2:
     resolution: {integrity: sha512-rZHcgBkbYavBeD9ej6sP56XfG53d51CD4dnaw989YX/nZ/ZJfgRx/9ePKmTNiUiyQvh4mtrMoS3OAWW+yoYtpg==}
@@ -19199,13 +19199,15 @@ packages:
       through2: 2.0.5
     dev: false
 
-  /promise-inflight/1.0.1:
+  /promise-inflight/1.0.1_bluebird@3.7.2:
     resolution: {integrity: sha1-mEcocL8igTL8vdhoEputEsPAKeM=}
     peerDependencies:
       bluebird: '*'
     peerDependenciesMeta:
       bluebird:
         optional: true
+    dependencies:
+      bluebird: 3.7.2
 
   /promise-props-recursive/1.0.0:
     resolution: {integrity: sha512-kh/4BEytTXST030W1YJHs3bTzlFu4C9EFPtqrG3g8JM8nEi3+WxR0mm19TjiobO2YHbHrCicZGN2Z94OhAU+7Q==}
