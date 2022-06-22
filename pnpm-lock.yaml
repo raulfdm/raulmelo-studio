@@ -300,7 +300,7 @@ importers:
       next-seo: 5.4.0
       next-sitemap: 2.5.25
       query-string: 7.1.1
-      react-instantsearch-dom: 6.26.0
+      react-instantsearch-dom: 6.29.0
       react-intl: 6.0.3
       react-popper: 2.3.0
       react-use: 17.4.0
@@ -326,7 +326,7 @@ importers:
       next: 12.1.6_6j5eyi3us3liopewjenwniphpy
       next-seo: 5.4.0_2mgcgz5qhsdxw4fgpqzqeafmkq
       query-string: 7.1.1
-      react-instantsearch-dom: 6.26.0_g3pfdiaqzxzttnxa5euizx77ca
+      react-instantsearch-dom: 6.29.0_g3pfdiaqzxzttnxa5euizx77ca
       react-intl: 6.0.3_kyqnejrpc2rvfrn3drtswmketi
       react-popper: 2.3.0_42yiot2n2wjamynwfzzmd7tk3i
       react-use: 17.4.0_ef5jwxihqo6n7gxfmzogljlgcm
@@ -8154,6 +8154,16 @@ packages:
     dependencies:
       '@algolia/events': 4.0.1
       algoliasearch: 4.13.1
+    dev: true
+
+  /algoliasearch-helper/3.9.0_algoliasearch@4.13.1:
+    resolution: {integrity: sha512-siWWl8QYJ3sh1yzJf9h/cHHpZC8wuPoPdVx5OtQ8X62ruUembTwvsLYoicrL7pF7fsYxdyvJfV9Yb2/nrVGrfg==}
+    peerDependencies:
+      algoliasearch: '>= 3.1 < 5'
+    dependencies:
+      '@algolia/events': 4.0.1
+      algoliasearch: 4.13.1
+    dev: false
 
   /algoliasearch/4.13.1:
     resolution: {integrity: sha512-dtHUSE0caWTCE7liE1xaL+19AFf6kWEcyn76uhcitWpntqvicFHXKFoZe5JJcv9whQOTRM6+B8qJz6sFj+rDJA==}
@@ -8346,7 +8356,7 @@ packages:
     resolution: {integrity: sha512-o/HelwhuKpTj/frsOsbNLNgnNGVIFsVP/SW2BSF14gVl7kAfMOJ6/8wUAUvG1R1NHKrfG+2sHZTu0yauT1qBrA==}
     engines: {node: '>=6.0'}
     dependencies:
-      '@babel/runtime': 7.17.9
+      '@babel/runtime': 7.18.3
       '@babel/runtime-corejs3': 7.17.9
     dev: true
 
@@ -8782,7 +8792,7 @@ packages:
   /babel-plugin-macros/2.8.0:
     resolution: {integrity: sha512-SEP5kJpfGYqYKpBrj5XU3ahw5p5GOHJ0U5ssOSQ/WBVdwkD2Dzlce95exQTs3jOVWPPKLBN2rlEWkCK7dSmLvg==}
     dependencies:
-      '@babel/runtime': 7.17.9
+      '@babel/runtime': 7.18.3
       cosmiconfig: 6.0.0
       resolve: 1.22.0
 
@@ -12148,7 +12158,7 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
     dependencies:
-      '@babel/runtime': 7.17.9
+      '@babel/runtime': 7.18.3
       aria-query: 4.2.2
       array-includes: 3.1.4
       ast-types-flow: 0.0.7
@@ -19662,22 +19672,22 @@ packages:
       react: 18.1.0
     dev: true
 
-  /react-instantsearch-core/6.26.0_3zo37ewazksgzb36kco6ej77gq:
-    resolution: {integrity: sha512-rBfyP05t6SHuBcXiKibzz0jgA8/qLepy4J/RWb9z++GM6wHO/D0Rhs5eFCw9fBJbXKs3iw1FR5BhxuJV1zBhsQ==}
+  /react-instantsearch-core/6.29.0_3zo37ewazksgzb36kco6ej77gq:
+    resolution: {integrity: sha512-an75mkZMDvho6a5xbxZfJOFL6xbOgQgGfibDZvqRyre0WdCk3hGDnWJrST2rAK6RtQi1CWp4u4DAIbWk48LkWw==}
     peerDependencies:
       algoliasearch: '>= 3.1 < 5'
       react: '>= 16.3.0 < 19 || 18'
     dependencies:
       '@babel/runtime': 7.18.3
       algoliasearch: 4.13.1
-      algoliasearch-helper: 3.8.2_algoliasearch@4.13.1
+      algoliasearch-helper: 3.9.0_algoliasearch@4.13.1
       prop-types: 15.8.1
       react: 18.1.0
       react-fast-compare: 3.2.0
     dev: false
 
-  /react-instantsearch-dom/6.26.0_g3pfdiaqzxzttnxa5euizx77ca:
-    resolution: {integrity: sha512-ai3FlvfhZ019OmOG9V4fdIA28Vlw9KuvHEsG9Nl4WkB3Ic4aPxuxaPNxnlT1CXTIVFgegptkVxi6A0iQvaTCcA==}
+  /react-instantsearch-dom/6.29.0_g3pfdiaqzxzttnxa5euizx77ca:
+    resolution: {integrity: sha512-mLx2BCYRIkI+Qo4wvdPZi1mQKKjIolQ0lwhg6Zq+XJPBbeq18fMl6SQOPoq/UvWnhgk/yZmhaPnY25Lok7hSuQ==}
     peerDependencies:
       algoliasearch: '>= 3.1 < 5'
       react: '>= 16.3.0 < 19 || 18'
@@ -19685,13 +19695,13 @@ packages:
     dependencies:
       '@babel/runtime': 7.18.3
       algoliasearch: 4.13.1
-      algoliasearch-helper: 3.8.2_algoliasearch@4.13.1
+      algoliasearch-helper: 3.9.0_algoliasearch@4.13.1
       classnames: 2.3.1
       prop-types: 15.8.1
       react: 18.1.0
       react-dom: 18.1.0_react@18.1.0
       react-fast-compare: 3.2.0
-      react-instantsearch-core: 6.26.0_3zo37ewazksgzb36kco6ej77gq
+      react-instantsearch-core: 6.29.0_3zo37ewazksgzb36kco6ej77gq
     dev: false
 
   /react-intl/6.0.3_kyqnejrpc2rvfrn3drtswmketi:
