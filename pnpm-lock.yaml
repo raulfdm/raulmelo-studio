@@ -247,8 +247,8 @@ importers:
       tslib: 2.4.0
       typescript: 4.7.2
     devDependencies:
-      '@sveltejs/adapter-auto': 1.0.0-next.50
-      '@sveltejs/kit': 1.0.0-next.350_svelte@3.44.0
+      '@sveltejs/adapter-auto': 1.0.0-next.51
+      '@sveltejs/kit': 1.0.0-next.352_svelte@3.44.0
       '@typescript-eslint/eslint-plugin': 5.27.0_dszb5tb7atwkjjijmmov4qhi7i
       '@typescript-eslint/parser': 5.27.0_xztl6dhthcahlo6akmb2bmjmle
       autoprefixer: 10.4.7_postcss@8.4.14
@@ -298,7 +298,7 @@ importers:
       next: 12.1.6
       next-compose-plugins: 2.2.1
       next-seo: 5.4.0
-      next-sitemap: 2.5.25
+      next-sitemap: 3.1.6
       query-string: 7.1.1
       react-instantsearch-dom: 6.26.0
       react-intl: 6.0.3
@@ -349,7 +349,7 @@ importers:
       duplicate-package-checker-webpack-plugin: 3.0.0
       eslint-config-next: 12.1.6_k6khgwrcmlpd2kpaxkviqw2zii
       next-compose-plugins: 2.2.1
-      next-sitemap: 2.5.25_next@12.1.6
+      next-sitemap: 3.1.6_nlwwphh5s5ggdfer3ji4ymvzrq
       twin.macro: 2.8.2
 
   packages/core:
@@ -2991,8 +2991,8 @@ packages:
     dev: true
     optional: true
 
-  /@corex/deepmerge/2.6.148:
-    resolution: {integrity: sha512-6QMz0/2h5C3ua51iAnXMPWFbb1QOU1UvSM4bKBw5mzdT+WtLgjbETBBIQZ+Sh9WvEcGwlAt/DEdRpIC3XlDBMA==}
+  /@corex/deepmerge/4.0.26:
+    resolution: {integrity: sha512-Tp0u2/h45uWbZhsjazK9W6WwwTVBqCIY+1qJHfy6QWN0qUw6vCWLnJhB+Gg9dpQZ26q3ygd6aj49DtXUDq56JQ==}
     dev: true
 
   /@cspotcode/source-map-support/0.8.1:
@@ -6560,11 +6560,11 @@ packages:
       '@styled-system/css': 5.1.5
     dev: false
 
-  /@sveltejs/adapter-auto/1.0.0-next.50:
-    resolution: {integrity: sha512-5OkBxw+0Wmq7+Cr0DcOEOTHyOm4VmiWTUsKwMrSc47zcjbXB8n4UvEC0XUtJ5ZSBJRZz7hmVubqH1zm1SANtdw==}
+  /@sveltejs/adapter-auto/1.0.0-next.51:
+    resolution: {integrity: sha512-jvoYLFhIwqPBWGy1IrkhhYmXrDgCnPI1GO9tjbh3NqJHc5vbpI2B9qudE/UzgGNz9xXYSGIw3H2aeSX3HZg4nA==}
     dependencies:
       '@sveltejs/adapter-cloudflare': 1.0.0-next.23
-      '@sveltejs/adapter-netlify': 1.0.0-next.64
+      '@sveltejs/adapter-netlify': 1.0.0-next.65
       '@sveltejs/adapter-vercel': 1.0.0-next.58
     transitivePeerDependencies:
       - encoding
@@ -6578,8 +6578,8 @@ packages:
       worktop: 0.8.0-next.14
     dev: true
 
-  /@sveltejs/adapter-netlify/1.0.0-next.64:
-    resolution: {integrity: sha512-n2oBAIdv1s4magogcCYbequDmPgOKviNfy40JJ5ZavansboYeaygFri9HcOwcHqrTOmEo3ZDIBoc1UTpbmzMYg==}
+  /@sveltejs/adapter-netlify/1.0.0-next.65:
+    resolution: {integrity: sha512-81LYVqT0Fez7xqvOdE9ITD7b5kxdzzXjXwJ0ISBfJYt6wqg0fmABm3mcDy3opXau7DoQkhkhnlqkharTHfhJQg==}
     dependencies:
       '@iarna/toml': 2.2.5
       esbuild: 0.14.46
@@ -6627,8 +6627,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.350_svelte@3.44.0:
-    resolution: {integrity: sha512-qkZNjp7yIj6t91+wMhmMtGJH0Lb89OaKdVXUDy92CS5/4OHRTKcQPdfOKs4no/upkS3RiFb+rEpOkYqTMcPUXg==}
+  /@sveltejs/kit/1.0.0-next.352_svelte@3.44.0:
+    resolution: {integrity: sha512-cYQWGZ2TU1iMsh1cqi44FJm5Aqs3iOkuUOnRpoecthcbmiZaqkD1sPG/uROBIPexXSbfyUfrck/hgr9vdCAmCw==}
     engines: {node: '>=16.7'}
     hasBin: true
     peerDependencies:
@@ -16855,14 +16855,16 @@ packages:
       react-dom: 18.1.0_react@18.1.0
     dev: false
 
-  /next-sitemap/2.5.25_next@12.1.6:
-    resolution: {integrity: sha512-0YB6VnawGxXu9B/pppJ35vwGUQb6T004zVtAsfxb/KrDPXo/BM6QtuZO25WDmCL56HSlSvgPOderPKdsgLYqZg==}
+  /next-sitemap/3.1.6_nlwwphh5s5ggdfer3ji4ymvzrq:
+    resolution: {integrity: sha512-XQ1WQuW5/tkgkqxKhW898nvnuGghLK/raCsP0CkBTuB/Zyl3abF06jzkWQ0747ubWSCyDHdB9nP3SZdyMW0uIw==}
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
+      '@next/env': '*'
       next: '*'
     dependencies:
-      '@corex/deepmerge': 2.6.148
+      '@corex/deepmerge': 4.0.26
+      '@next/env': 12.1.6
       minimist: 1.2.6
       next: 12.1.6_6j5eyi3us3liopewjenwniphpy
     dev: true
