@@ -77,15 +77,17 @@
 
   <hr class="my-6" />
 
-  <div>
-    {#each currentRoutine.training as training}
-      <TrainingInfo
-        {training}
-        onClick={() => {
-          // TODO: implement
-          console.log(training);
-        }}
-      />
-    {/each}
-  </div>
+  {#if currentRoutine.training}
+    <div>
+      {#each currentRoutine.training as training}
+        <TrainingInfo
+          {training}
+          onClick={() => {
+            // TODO: implement
+            console.log(training);
+          }}
+        />
+      {/each}
+    </div>
+  {/if}
 {/if}
