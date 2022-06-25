@@ -298,7 +298,7 @@ importers:
       next: 12.1.6
       next-compose-plugins: 2.2.1
       next-seo: 5.4.0
-      next-sitemap: 2.5.25
+      next-sitemap: 2.5.28
       query-string: 7.1.1
       react-instantsearch-dom: 6.26.0
       react-intl: 6.0.3
@@ -349,7 +349,7 @@ importers:
       duplicate-package-checker-webpack-plugin: 3.0.0
       eslint-config-next: 12.1.6_k6khgwrcmlpd2kpaxkviqw2zii
       next-compose-plugins: 2.2.1
-      next-sitemap: 2.5.25_next@12.1.6
+      next-sitemap: 2.5.28_next@12.1.6
       twin.macro: 2.8.2
 
   packages/core:
@@ -9344,7 +9344,7 @@ packages:
       mississippi: 3.0.0
       mkdirp: 0.5.6
       move-concurrently: 1.0.1
-      promise-inflight: 1.0.1_bluebird@3.7.2
+      promise-inflight: 1.0.1
       rimraf: 2.7.1
       ssri: 6.0.2
       unique-filename: 1.1.1
@@ -9367,7 +9367,7 @@ packages:
       minipass-pipeline: 1.2.4
       mkdirp: 1.0.4
       p-map: 4.0.0
-      promise-inflight: 1.0.1_bluebird@3.7.2
+      promise-inflight: 1.0.1
       rimraf: 3.0.2
       ssri: 8.0.1
       tar: 6.1.11
@@ -16838,8 +16838,8 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /next-sitemap/2.5.25_next@12.1.6:
-    resolution: {integrity: sha512-0YB6VnawGxXu9B/pppJ35vwGUQb6T004zVtAsfxb/KrDPXo/BM6QtuZO25WDmCL56HSlSvgPOderPKdsgLYqZg==}
+  /next-sitemap/2.5.28_next@12.1.6:
+    resolution: {integrity: sha512-rDMTa7nLE0ikYnu8JDCrwQufIRm4b4Sg8BK11DGdDAmYpXmcmw4Qvm+oVBR8gUL97E6i2ihTM+cRx8mgENDACA==}
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
@@ -19182,15 +19182,13 @@ packages:
       through2: 2.0.5
     dev: false
 
-  /promise-inflight/1.0.1_bluebird@3.7.2:
+  /promise-inflight/1.0.1:
     resolution: {integrity: sha1-mEcocL8igTL8vdhoEputEsPAKeM=}
     peerDependencies:
       bluebird: '*'
     peerDependenciesMeta:
       bluebird:
         optional: true
-    dependencies:
-      bluebird: 3.7.2
 
   /promise-props-recursive/1.0.0:
     resolution: {integrity: sha512-kh/4BEytTXST030W1YJHs3bTzlFu4C9EFPtqrG3g8JM8nEi3+WxR0mm19TjiobO2YHbHrCicZGN2Z94OhAU+7Q==}
@@ -23371,30 +23369,6 @@ packages:
         optional: true
     dependencies:
       esbuild: 0.14.46
-      postcss: 8.4.14
-      resolve: 1.22.0
-      rollup: 2.71.1
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: true
-
-  /vite/2.9.9:
-    resolution: {integrity: sha512-ffaam+NgHfbEmfw/Vuh6BHKKlI/XIAhxE5QSS7gFLIngxg171mg1P3a4LSRME0z2ZU1ScxoKzphkipcYwSD5Ew==}
-    engines: {node: '>=12.2.0'}
-    hasBin: true
-    peerDependencies:
-      less: '*'
-      sass: '*'
-      stylus: '*'
-    peerDependenciesMeta:
-      less:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-    dependencies:
-      esbuild: 0.14.39
       postcss: 8.4.14
       resolve: 1.22.0
       rollup: 2.71.1
