@@ -1,6 +1,6 @@
 <script lang="ts">
   export let date: Date;
-  export let isActive: boolean = false;
+  export let isActive = false;
   export let onClick: () => void;
 
   const convertedDate = new Date(date);
