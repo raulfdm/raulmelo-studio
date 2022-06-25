@@ -6,13 +6,13 @@
   const convertedDate = new Date(date);
 
   const dateMap = {
-    0: 'Seg',
-    1: 'Ter',
-    2: 'Qua',
-    3: 'Qui',
-    4: 'Sex',
-    5: 'Sáb',
-    6: 'Dom',
+    0: 'Dom',
+    1: 'Seg',
+    2: 'Ter',
+    3: 'Qua',
+    4: 'Qui',
+    5: 'Sex',
+    6: 'Sáb',
   };
 </script>
 
