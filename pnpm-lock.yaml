@@ -283,7 +283,7 @@ importers:
       '@types/flat': 5.0.2
       '@types/lodash.omit': 4.5.7
       '@types/lodash.throttle': 4.1.7
-      '@types/react': 18.0.9
+      '@types/react': 18.0.14
       '@types/react-dom': 18.0.5
       '@types/react-instantsearch-dom': 6.12.3
       algoliasearch: 4.13.1
@@ -309,9 +309,9 @@ importers:
       twin.macro: 2.8.2
     dependencies:
       '@emotion/css': 11.9.0_@babel+core@7.18.2
-      '@emotion/react': 11.9.0_2ogqcaxpbb5hifp6q4frzzexiy
+      '@emotion/react': 11.9.0_ur6fjnz5n3uell2plzqksmmfr4
       '@emotion/server': 11.4.0_@emotion+css@11.9.0
-      '@emotion/styled': 11.8.1_b2vpp6i4cqd7wein5e6dgpdcai
+      '@emotion/styled': 11.8.1_7wtntdzogmdannuxpn7iq4n37u
       '@headlessui/react': 1.6.3_biqbaboplfbrettd7655fr4n2y
       '@portabletext/react': 1.0.6_react@18.2.0
       '@raulmelo/core': link:../../packages/core
@@ -342,7 +342,7 @@ importers:
       '@types/flat': 5.0.2
       '@types/lodash.omit': 4.5.7
       '@types/lodash.throttle': 4.1.7
-      '@types/react': 18.0.9
+      '@types/react': 18.0.14
       '@types/react-dom': 18.0.5
       '@types/react-instantsearch-dom': 6.12.3
       autoprefixer: 10.4.7_postcss@8.4.14
@@ -3132,30 +3132,6 @@ packages:
   /@emotion/memoize/0.7.5:
     resolution: {integrity: sha512-igX9a37DR2ZPGYtV6suZ6whr8pTFtyHL3K/oLUotxpSVO2ASaprmAe2Dkq7tBo7CRY7MMDrAa9nuQP9/YG8FxQ==}
 
-  /@emotion/react/11.9.0_2ogqcaxpbb5hifp6q4frzzexiy:
-    resolution: {integrity: sha512-lBVSF5d0ceKtfKCDQJveNAtkC7ayxpVlgOohLgXqRwqWr9bOf4TZAFFyIcNngnV6xK6X4x2ZeXq7vliHkoVkxQ==}
-    peerDependencies:
-      '@babel/core': ^7.0.0
-      '@types/react': '*'
-      react: '>=16.8.0 || 18'
-    peerDependenciesMeta:
-      '@babel/core':
-        optional: true
-      '@types/react':
-        optional: true
-    dependencies:
-      '@babel/core': 7.18.2
-      '@babel/runtime': 7.17.9
-      '@emotion/babel-plugin': 11.9.2_@babel+core@7.18.2
-      '@emotion/cache': 11.7.1
-      '@emotion/serialize': 1.0.3
-      '@emotion/utils': 1.1.0
-      '@emotion/weak-memoize': 0.2.5
-      '@types/react': 18.0.9
-      hoist-non-react-statics: 3.3.2
-      react: 18.2.0
-    dev: false
-
   /@emotion/react/11.9.0_sasuucfpbij2caq7q6lwrr6olm:
     resolution: {integrity: sha512-lBVSF5d0ceKtfKCDQJveNAtkC7ayxpVlgOohLgXqRwqWr9bOf4TZAFFyIcNngnV6xK6X4x2ZeXq7vliHkoVkxQ==}
     peerDependencies:
@@ -3175,6 +3151,30 @@ packages:
       '@emotion/serialize': 1.0.3
       '@emotion/utils': 1.1.0
       '@emotion/weak-memoize': 0.2.5
+      hoist-non-react-statics: 3.3.2
+      react: 18.2.0
+    dev: false
+
+  /@emotion/react/11.9.0_ur6fjnz5n3uell2plzqksmmfr4:
+    resolution: {integrity: sha512-lBVSF5d0ceKtfKCDQJveNAtkC7ayxpVlgOohLgXqRwqWr9bOf4TZAFFyIcNngnV6xK6X4x2ZeXq7vliHkoVkxQ==}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+      '@types/react': '*'
+      react: '>=16.8.0 || 18'
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+      '@types/react':
+        optional: true
+    dependencies:
+      '@babel/core': 7.18.2
+      '@babel/runtime': 7.17.9
+      '@emotion/babel-plugin': 11.9.2_@babel+core@7.18.2
+      '@emotion/cache': 11.7.1
+      '@emotion/serialize': 1.0.3
+      '@emotion/utils': 1.1.0
+      '@emotion/weak-memoize': 0.2.5
+      '@types/react': 18.0.14
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
     dev: false
@@ -3247,7 +3247,7 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@emotion/styled/11.8.1_b2vpp6i4cqd7wein5e6dgpdcai:
+  /@emotion/styled/11.8.1_7wtntdzogmdannuxpn7iq4n37u:
     resolution: {integrity: sha512-OghEVAYBZMpEquHZwuelXcRjRJQOVayvbmNR0zr174NHdmMgrNkLC6TljKC5h9lZLkN5WGrdUcrKlOJ4phhoTQ==}
     peerDependencies:
       '@babel/core': ^7.0.0
@@ -3264,10 +3264,10 @@ packages:
       '@babel/runtime': 7.17.9
       '@emotion/babel-plugin': 11.9.2_@babel+core@7.18.2
       '@emotion/is-prop-valid': 1.1.2
-      '@emotion/react': 11.9.0_2ogqcaxpbb5hifp6q4frzzexiy
+      '@emotion/react': 11.9.0_ur6fjnz5n3uell2plzqksmmfr4
       '@emotion/serialize': 1.0.3
       '@emotion/utils': 1.1.0
-      '@types/react': 18.0.9
+      '@types/react': 18.0.14
       react: 18.2.0
     dev: false
 
@@ -6950,7 +6950,7 @@ packages:
   /@types/hoist-non-react-statics/3.3.1:
     resolution: {integrity: sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==}
     dependencies:
-      '@types/react': 18.0.9
+      '@types/react': 18.0.14
       hoist-non-react-statics: 3.3.2
     dev: false
 
@@ -7115,13 +7115,13 @@ packages:
   /@types/react-dom/18.0.5:
     resolution: {integrity: sha512-OWPWTUrY/NIrjsAPkAk1wW9LZeIjSvkXRhclsFO8CZcZGCOg2G0YZy4ft+rOyYxy8B7ui5iZzi9OkDebZ7/QSA==}
     dependencies:
-      '@types/react': 18.0.9
+      '@types/react': 18.0.14
     dev: true
 
   /@types/react-instantsearch-core/6.10.8:
     resolution: {integrity: sha512-SbEGzzcHpLKijnNml+7gB3lfE8WD7jVc/M7K4i+79Q1q9822LfkzMMRIG0LawJfO7gEysbgIVMwwCArBOZefzA==}
     dependencies:
-      '@types/react': 18.0.9
+      '@types/react': 18.0.14
       algoliasearch: 4.13.1
       algoliasearch-helper: 3.8.2_algoliasearch@4.13.1
     dev: true
@@ -7129,7 +7129,7 @@ packages:
   /@types/react-instantsearch-dom/6.12.3:
     resolution: {integrity: sha512-HAQG74v7OzsUhdjNermd0A8c7LWRLsrMCsFCY6+7HEXK1hikeCs/Hmy6xjFhZVfFEWvpvX78vxJELafoAnuv8Q==}
     dependencies:
-      '@types/react': 18.0.9
+      '@types/react': 18.0.14
       '@types/react-instantsearch-core': 6.10.8
     dev: true
 
@@ -7147,12 +7147,20 @@ packages:
       csstype: 3.0.11
     dev: false
 
+  /@types/react/18.0.14:
+    resolution: {integrity: sha512-x4gGuASSiWmo0xjDLpm5mPb52syZHJx02VKbqUKdLmKtAwIh63XClGsiTI1K6DO5q7ox4xAsQrU+Gl3+gGXF9Q==}
+    dependencies:
+      '@types/prop-types': 15.7.5
+      '@types/scheduler': 0.16.2
+      csstype: 3.0.11
+
   /@types/react/18.0.9:
     resolution: {integrity: sha512-9bjbg1hJHUm4De19L1cHiW0Jvx3geel6Qczhjd0qY5VKVE2X5+x77YxAepuCwVh4vrgZJdgEJw48zrhRIeF4Nw==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
       csstype: 3.0.11
+    dev: true
 
   /@types/sass/1.43.1:
     resolution: {integrity: sha512-BPdoIt1lfJ6B7rw35ncdwBZrAssjcwzI5LByIrYs+tpXlj/CAkuVdRsgZDdP4lq5EjyWzwxZCqAoFyHKFwp32g==}
@@ -19655,7 +19663,7 @@ packages:
       '@formatjs/intl-displaynames': 6.0.2
       '@formatjs/intl-listformat': 7.0.2
       '@types/hoist-non-react-statics': 3.3.1
-      '@types/react': 18.0.9
+      '@types/react': 18.0.14
       hoist-non-react-statics: 3.3.2
       intl-messageformat: 10.1.0
       react: 18.2.0
