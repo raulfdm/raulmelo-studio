@@ -2,10 +2,14 @@
  * This file is needed to override the "css" and "style" types from the @types/twin.d.ts.
  * If i don't do that, TS will complain that either some React or
  * framer-motion components does not have the "css" or "style" props.
+ *
+ * https://github.com/ben-rogerson/twin.examples/blob/master/next-emotion-typescript/types/twin.d.ts
  */
-import type { TwStyle } from 'twin.macro';
-import type styledImport from '@emotion/styled';
-import type { css as cssImport } from '@emotion/react';
+
+import 'twin.macro';
+import { css as cssImport } from '@emotion/react';
+import { CSSInterpolation } from '@emotion/serialize';
+import styledImport from '@emotion/styled';
 
 declare module 'twin.macro' {
   // The styled and css imports
@@ -13,7 +17,16 @@ declare module 'twin.macro' {
   const css: typeof cssImport;
 }
 
-type CssTw = ReturnType<typeof css> | TwStyle;
+declare module 'react' {
+  // The css prop
+  interface HTMLAttributes<T> extends DOMAttributes<T> {
+    css?: CSSInterpolation;
+  }
+  // The inline svg css prop
+  interface SVGProps<T> extends SVGProps<SVGSVGElement> {
+    css?: CSSInterpolation;
+  }
+}
 
 declare module 'framer-motion' {
   /**
@@ -21,18 +34,6 @@ declare module 'framer-motion' {
    * css and styled props (twin macro) to the Motion component.
    */
   interface HTMLMotionProps<T> extends HTMLMotionProps<T> {
-    css?: CssTw;
-  }
-}
-
-declare module 'react' {
-  interface HTMLAttributes<T> extends DOMAttributes<T> {
-    css?: CssTw;
-    tw?: TwStyle | string;
-  }
-  // <style jsx> and <style jsx global> support for styled-jsx
-  interface StyleHTMLAttributes<T> extends HTMLAttributes<T> {
-    jsx?: boolean;
-    global?: boolean;
+    css?: typeof cssImport;
   }
 }
