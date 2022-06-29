@@ -30,19 +30,15 @@ importers:
       '@babel/preset-env': 7.18.6
       '@babel/preset-typescript': 7.18.6
       '@babel/runtime': 7.18.6
-      '@popperjs/core': 2.11.5
       '@types/jest': 28.1.3
       '@types/node': 14.18.18
       '@typescript-eslint/eslint-plugin': 5.26.0
       '@typescript-eslint/parser': 5.26.0
-      '@xstate/react': 3.0.0
       autoprefixer: 10.4.7
       babel-jest: 28.1.1
       babel-loader: 8.2.5
-      classnames: 2.3.1
       concurrently: 7.2.2
       cssnano: 5.1.12
-      dotenv-flow: 3.2.0
       esbuild: 0.14.39
       esbuild-plugin-d.ts: 1.1.0
       eslint: 8.16.0
@@ -52,7 +48,6 @@ importers:
       eslint-plugin-react: 7.30.0
       eslint-plugin-react-hooks: 4.5.0
       eslint-plugin-simple-import-sort: 7.0.0
-      framer-motion: 6.3.16
       husky: 8.0.1
       jest: 28.1.1
       jest-environment-jsdom: 28.1.1
@@ -64,8 +59,6 @@ importers:
       postcss-nesting: 10.1.9
       prettier: 2.7.1
       pretty-quick: 3.1.3
-      react-popper: 2.3.0
-      react-twitter-widgets: 1.11.0
       rimraf: 3.0.2
       scripty: 2.1.0
       tailwindcss: 2.2.19
@@ -74,16 +67,6 @@ importers:
       typescript: 4.7.2
       typescript-plugin-css-modules: 3.4.0
       vite: 2.9.13
-      xstate: 4.32.1
-    dependencies:
-      '@popperjs/core': 2.11.5
-      '@xstate/react': 3.0.0_react@18.2.0+xstate@4.32.1
-      classnames: 2.3.1
-      dotenv-flow: 3.2.0
-      framer-motion: 6.3.16_biqbaboplfbrettd7655fr4n2y
-      react-popper: 2.3.0_ili5ylfne7i3hkfpsanzgkfu6m
-      react-twitter-widgets: 1.11.0_react@18.2.0
-      xstate: 4.32.1
     devDependencies:
       '@babel/core': 7.18.6
       '@babel/eslint-parser': 7.18.2_7bf3csgyp56hfllaxlpspyxhka
@@ -221,10 +204,12 @@ importers:
       '@raulmelo/core': workspace:*
       '@types/aws-lambda': 8.10.101
       algoliasearch: 4.13.1
+      dotenv-flow: 3.2.0
       netlify-lambda: 2.0.15
     dependencies:
       '@raulmelo/core': link:../../packages/core
       algoliasearch: 4.13.1
+      dotenv-flow: 3.2.0
       netlify-lambda: 2.0.15
     devDependencies:
       '@types/aws-lambda': 8.10.101
@@ -273,6 +258,7 @@ importers:
       '@emotion/styled': 11.8.1
       '@headlessui/react': 1.6.3
       '@next/bundle-analyzer': 12.1.6
+      '@popperjs/core': 2.11.5
       '@portabletext/react': 1.0.6
       '@raulmelo/core': '*'
       '@raulmelo/styles': '*'
@@ -286,13 +272,16 @@ importers:
       '@types/react': 18.0.14
       '@types/react-dom': 18.0.5
       '@types/react-instantsearch-dom': 6.12.3
+      '@xstate/react': 3.0.0
       algoliasearch: 4.13.1
       autoprefixer: 10.4.7
       dayjs: 1.11.3
       debounce-promise: 3.1.2
+      dotenv-flow: 3.2.0
       duplicate-package-checker-webpack-plugin: 3.0.0
       eslint-config-next: 12.1.6
       flat: 5.0.2
+      framer-motion: 6.3.16
       lodash.omit: 4.5.0
       lodash.throttle: 4.1.1
       next: 12.1.6
@@ -309,20 +298,25 @@ importers:
       sharp: 0.30.7
       smoothscroll-polyfill: 0.4.4
       twin.macro: 2.8.2
+      xstate: 4.32.1
     dependencies:
       '@emotion/css': 11.9.0_@babel+core@7.18.6
       '@emotion/react': 11.9.0_4jaruczdv2uxjj3lb2xbkiuci4
       '@emotion/server': 11.4.0_@emotion+css@11.9.0
       '@emotion/styled': 11.8.1_7sgwo6nlxhv3jiqeudsnblsahy
       '@headlessui/react': 1.6.3_biqbaboplfbrettd7655fr4n2y
+      '@popperjs/core': 2.11.5
       '@portabletext/react': 1.0.6_react@18.2.0
       '@raulmelo/core': link:../../packages/core
       '@raulmelo/styles': link:../../packages/styles
       '@raulmelo/ui': link:../../packages/ui
+      '@xstate/react': 3.0.0_qkj3h26yqjpoza3bh3zse7k4ye
       algoliasearch: 4.13.1
       dayjs: 1.11.3
       debounce-promise: 3.1.2
+      dotenv-flow: 3.2.0
       flat: 5.0.2
+      framer-motion: 6.3.16_biqbaboplfbrettd7655fr4n2y
       lodash.omit: 4.5.0
       lodash.throttle: 4.1.1
       next: 12.1.6_beenoklgwfttvph5dgxj7na7aq
@@ -336,6 +330,7 @@ importers:
       react-use: 17.4.0_biqbaboplfbrettd7655fr4n2y
       sharp: 0.30.7
       smoothscroll-polyfill: 0.4.4
+      xstate: 4.32.1
     devDependencies:
       '@emotion/babel-plugin': 11.9.2_@babel+core@7.18.6
       '@emotion/jest': 11.9.1
@@ -395,6 +390,7 @@ importers:
 
   packages/ui:
     specifiers:
+      '@popperjs/core': 2.11.5
       '@raulmelo/core': workspace:*
       '@raulmelo/styles': workspace:*
       '@storybook/addon-actions': 6.5.5
@@ -404,15 +400,25 @@ importers:
       '@storybook/builder-webpack5': 6.5.5
       '@storybook/manager-webpack5': 6.5.5
       '@storybook/react': 6.5.5
+      '@xstate/react': 3.0.0
+      classnames: 2.3.1
+      react: 18.2.0
+      react-dom: 18.2.0
+      react-popper: 2.3.0
       react-refractor: 2.1.7
+      react-twitter-widgets: 1.11.0
       refractor: 4.7.0
       storybook-css-modules-preset: 1.1.1
       webpack: 5.72.1
+      xstate: 4.32.1
     dependencies:
       '@raulmelo/core': link:../core
+      classnames: 2.3.1
       react-refractor: 2.1.7_react@18.2.0
+      react-twitter-widgets: 1.11.0_react@18.2.0
       refractor: 4.7.0
     devDependencies:
+      '@popperjs/core': 2.11.5
       '@raulmelo/styles': link:../styles
       '@storybook/addon-actions': 6.5.5_biqbaboplfbrettd7655fr4n2y
       '@storybook/addon-essentials': 6.5.5_s3qojb7bfajnub2wd73lspudou
@@ -421,8 +427,13 @@ importers:
       '@storybook/builder-webpack5': 6.5.5_nry5ledq6ed4s4qvodqbpyqzjy
       '@storybook/manager-webpack5': 6.5.5_nry5ledq6ed4s4qvodqbpyqzjy
       '@storybook/react': 6.5.5_4thyxsgdwckqdongyu22lyckgm
+      '@xstate/react': 3.0.0_react@18.2.0+xstate@4.32.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-popper: 2.3.0_ili5ylfne7i3hkfpsanzgkfu6m
       storybook-css-modules-preset: 1.1.1
       webpack: 5.72.1
+      xstate: 4.32.1
 
 packages:
 
@@ -5891,7 +5902,6 @@ packages:
 
   /@popperjs/core/2.11.5:
     resolution: {integrity: sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==}
-    dev: false
 
   /@portabletext/react/1.0.6_react@18.2.0:
     resolution: {integrity: sha512-j6BprLiwFz3zr1Lo6BxM2sQ1b3g1JIjGwePeuxqSfbBiEYbGXn2izEckMJ02hSa1f7+RCEUJ+Bojvtzz6BBUaw==}
@@ -9677,6 +9687,26 @@ packages:
       xstate: 4.32.1
     dev: false
 
+  /@xstate/react/3.0.0_qkj3h26yqjpoza3bh3zse7k4ye:
+    resolution: {integrity: sha512-KHSCfwtb8gZ7QH2luihvmKYI+0lcdHQOmGNRUxUEs4zVgaJCyd8csCEmwPsudpliLdUmyxX2pzUBojFkINpotw==}
+    peerDependencies:
+      '@xstate/fsm': ^2.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || 18
+      xstate: ^4.31.0
+    peerDependenciesMeta:
+      '@xstate/fsm':
+        optional: true
+      xstate:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      use-isomorphic-layout-effect: 1.1.2_luyos4mouogwq6z3wafb3re4ce
+      use-sync-external-store: 1.1.0_react@18.2.0
+      xstate: 4.32.1
+    transitivePeerDependencies:
+      - '@types/react'
+    dev: false
+
   /@xstate/react/3.0.0_react@18.2.0+xstate@4.32.1:
     resolution: {integrity: sha512-KHSCfwtb8gZ7QH2luihvmKYI+0lcdHQOmGNRUxUEs4zVgaJCyd8csCEmwPsudpliLdUmyxX2pzUBojFkINpotw==}
     peerDependencies:
@@ -9695,7 +9725,7 @@ packages:
       xstate: 4.32.1
     transitivePeerDependencies:
       - '@types/react'
-    dev: false
+    dev: true
 
   /@xstate/svelte/2.0.0_d7pokp7cbuf37jpq25f5jmmg3a:
     resolution: {integrity: sha512-051btq174/fc0lsFUsl5xLbpzEGF4lg6unV1uimjQwKxYTwF2GZXKlcQx2dW7WYpqeH0CWoKvKtb2qIBsnxq5A==}
@@ -11169,7 +11199,7 @@ packages:
       mississippi: 3.0.0
       mkdirp: 0.5.6
       move-concurrently: 1.0.1
-      promise-inflight: 1.0.1_bluebird@3.7.2
+      promise-inflight: 1.0.1
       rimraf: 2.7.1
       ssri: 6.0.2
       unique-filename: 1.1.1
@@ -11192,7 +11222,7 @@ packages:
       minipass-pipeline: 1.2.4
       mkdirp: 1.0.4
       p-map: 4.0.0
-      promise-inflight: 1.0.1_bluebird@3.7.2
+      promise-inflight: 1.0.1
       rimraf: 3.0.2
       ssri: 8.0.1
       tar: 6.1.11
@@ -21048,15 +21078,13 @@ packages:
       through2: 2.0.5
     dev: false
 
-  /promise-inflight/1.0.1_bluebird@3.7.2:
+  /promise-inflight/1.0.1:
     resolution: {integrity: sha1-mEcocL8igTL8vdhoEputEsPAKeM=}
     peerDependencies:
       bluebird: '*'
     peerDependenciesMeta:
       bluebird:
         optional: true
-    dependencies:
-      bluebird: 3.7.2
 
   /promise-props-recursive/1.0.0:
     resolution: {integrity: sha512-kh/4BEytTXST030W1YJHs3bTzlFu4C9EFPtqrG3g8JM8nEi3+WxR0mm19TjiobO2YHbHrCicZGN2Z94OhAU+7Q==}
@@ -21419,7 +21447,6 @@ packages:
 
   /react-fast-compare/3.2.0:
     resolution: {integrity: sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==}
-    dev: false
 
   /react-file-icon/1.1.0_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-jYf+wrrdngnXal8UbgQMEsjJ2lshzAC2/gIBbPh1ui68rLe4P215cshqkur4IK+FTPNWUGbm0yuYwpYSSJUksg==}
@@ -21627,7 +21654,6 @@ packages:
       react-dom: 18.2.0_react@18.2.0
       react-fast-compare: 3.2.0
       warning: 4.0.3
-    dev: false
 
   /react-props-stream/1.0.1_react@18.2.0+rxjs@6.6.7:
     resolution: {integrity: sha512-lBMW9S7OvqE8sYruPTpG8Dv7WVwHiDt4hJmhixoRNlHBtVMnMvMJal/tsH8F/YKMsObvSkY3PCWCPRLqnEaOaw==}
@@ -25055,6 +25081,19 @@ packages:
       react: 18.2.0
     dev: false
 
+  /use-isomorphic-layout-effect/1.1.2_luyos4mouogwq6z3wafb3re4ce:
+    resolution: {integrity: sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || 18
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@types/react': 18.0.14
+      react: 18.2.0
+    dev: false
+
   /use-isomorphic-layout-effect/1.1.2_react@18.2.0:
     resolution: {integrity: sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==}
     peerDependencies:
@@ -25065,7 +25104,6 @@ packages:
         optional: true
     dependencies:
       react: 18.2.0
-    dev: false
 
   /use-latest/1.2.1_react@18.2.0:
     resolution: {integrity: sha512-xA+AVm/Wlg3e2P/JiItTziwS7FK92LWrDB0p+hgXloIMuVCeJJ8v6f0eeHyPZaJrM+usM1FkFfbNCrJGs8A/zw==}
@@ -25101,7 +25139,6 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || 18
     dependencies:
       react: 18.2.0
-    dev: false
 
   /use/3.1.1:
     resolution: {integrity: sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==}
@@ -25282,7 +25319,6 @@ packages:
     resolution: {integrity: sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /watchpack-chokidar2/2.0.1:
     resolution: {integrity: sha512-nCFfBIPKr5Sh61s4LPpy1Wtfi0HE8isJ3d2Yb5/Ppw2P2B/3eVSEBjKfN0fmHJSK14+31KwMKmcrzs2GM4P0Ww==}
@@ -25854,7 +25890,6 @@ packages:
 
   /xstate/4.32.1:
     resolution: {integrity: sha512-QYUd+3GkXZ8i6qdixnOn28bL3EvA++LONYL/EMWwKlFSh/hiLndJ8YTnz77FDs+JUXcwU7NZJg7qoezoRHc4GQ==}
-    dev: false
 
   /xtend/2.1.2:
     resolution: {integrity: sha1-bv7MKk2tjmlixJAbM3znuoe10os=}
