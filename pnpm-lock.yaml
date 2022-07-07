@@ -19,8 +19,6 @@ overrides:
   tslib: 2.4.0
   tailwindcss: 2.2.19
 
-patchedDependencies: {}
-
 importers:
 
   .:
@@ -192,7 +190,7 @@ importers:
       xstate: 4.32.1
     devDependencies:
       '@sveltejs/adapter-vercel': 1.0.0-next.59
-      '@sveltejs/kit': 1.0.0-next.355_svelte@3.48.0
+      '@sveltejs/kit': 1.0.0-next.360_svelte@3.48.0+vite@2.9.13
       '@tailwindcss/aspect-ratio': 0.4.0_tailwindcss@2.2.19
       autoprefixer: 10.4.7_postcss@8.4.14
       eslint-plugin-svelte3: 4.0.0_vypdqzeyqutkgs6qzc7qod4c64
@@ -238,8 +236,8 @@ importers:
       tslib: 2.4.0
       typescript: 4.7.2
     devDependencies:
-      '@sveltejs/adapter-auto': 1.0.0-next.52
-      '@sveltejs/kit': 1.0.0-next.355_svelte@3.44.0
+      '@sveltejs/adapter-auto': 1.0.0-next.54
+      '@sveltejs/kit': 1.0.0-next.360_svelte@3.44.0+vite@2.9.13
       '@typescript-eslint/eslint-plugin': 5.27.0_dszb5tb7atwkjjijmmov4qhi7i
       '@typescript-eslint/parser': 5.27.0_xztl6dhthcahlo6akmb2bmjmle
       autoprefixer: 10.4.7_postcss@8.4.14
@@ -287,7 +285,7 @@ importers:
       duplicate-package-checker-webpack-plugin: 3.0.0
       eslint-config-next: 12.2.0
       flat: 5.0.2
-      framer-motion: 6.3.16
+      framer-motion: 6.4.2
       lodash.omit: 4.5.0
       lodash.throttle: 4.1.1
       next: 12.2.0
@@ -323,7 +321,7 @@ importers:
       debounce-promise: 3.1.2
       dotenv-flow: 3.2.0
       flat: 5.0.2
-      framer-motion: 6.3.16_biqbaboplfbrettd7655fr4n2y
+      framer-motion: 6.4.2_biqbaboplfbrettd7655fr4n2y
       lodash.omit: 4.5.0
       lodash.throttle: 4.1.1
       next: 12.2.0_beenoklgwfttvph5dgxj7na7aq
@@ -5704,6 +5702,53 @@ packages:
     resolution: {integrity: sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==}
     dev: true
 
+  /@motionone/animation/10.10.1:
+    resolution: {integrity: sha512-iX839/Ir5wT7hVX0yCZYjcDhHAOkVR5hIhVBTf37qEUD693uVwrxC2i1BI9vMVPc1rIoFtftYjOtwoO9Oq/aog==}
+    dependencies:
+      '@motionone/easing': 10.9.0
+      '@motionone/types': 10.9.0
+      '@motionone/utils': 10.9.0
+      tslib: 2.4.0
+    dev: false
+
+  /@motionone/dom/10.11.2:
+    resolution: {integrity: sha512-0SX4acPV1srcnzi0ZKzeq/aqDq86Wwd2G2RiLbLhIGFB3zZB/rJ46yNW3AUhSPKEQLCL20J3e8V4hyfPdEZ5TA==}
+    dependencies:
+      '@motionone/animation': 10.10.1
+      '@motionone/generators': 10.9.0
+      '@motionone/types': 10.9.0
+      '@motionone/utils': 10.9.0
+      hey-listen: 1.0.8
+      tslib: 2.4.0
+    dev: false
+
+  /@motionone/easing/10.9.0:
+    resolution: {integrity: sha512-FYIr3HlQEb7aE5LOpY6BPQUaPyKeJt6VfGA+npy73+JIGqoVOjbrdZ1ZQxzTXqO76mG3UZvv1+twrDamRQsxFw==}
+    dependencies:
+      '@motionone/utils': 10.9.0
+      tslib: 2.4.0
+    dev: false
+
+  /@motionone/generators/10.9.0:
+    resolution: {integrity: sha512-BOkHx4qQswJV+z/6k05qdvRENE4hG606NI5cIPTsLtSuksnRn83utuj/15VTNoFeYHuTdhwzxvIPvlPVayIGTg==}
+    dependencies:
+      '@motionone/types': 10.9.0
+      '@motionone/utils': 10.9.0
+      tslib: 2.4.0
+    dev: false
+
+  /@motionone/types/10.9.0:
+    resolution: {integrity: sha512-ZcEDfsrS2ym9+vExV7+59avkzEO/PLkNj16uaDvbWhi0Q/vOZ72j2LQTrtDLWVyZRIeUaB/i8DJP017Gj6UYQw==}
+    dev: false
+
+  /@motionone/utils/10.9.0:
+    resolution: {integrity: sha512-5IgmwQ8TdH1HsQ9d2QZeBCu9+HkqjoYRYItRpmusoyiedPMZaKdU3pr3qFP5nbAj68Ww2sTUxgEZEOF20qJA6w==}
+    dependencies:
+      '@motionone/types': 10.9.0
+      hey-listen: 1.0.8
+      tslib: 2.4.0
+    dev: false
+
   /@mrmlnc/readdir-enhanced/2.2.1:
     resolution: {integrity: sha512-bPHp6Ji8b41szTOcaP63VlnbbO5Ny6dwAATtY6JTjh5N2OLrb5Qk/Th5cRkRQhkWCt+EJsYrNB0MiL+Gpn6e3g==}
     engines: {node: '>=4'}
@@ -8413,26 +8458,26 @@ packages:
       '@styled-system/css': 5.1.5
     dev: false
 
-  /@sveltejs/adapter-auto/1.0.0-next.52:
-    resolution: {integrity: sha512-jOuC7RauiwGg7BQQEZxBGcwtwynNqQSuGJ7MJ9kk5WIrFCMrZSclwnpO1yLmUUYFKvJ61Z7bvVoDqm6+CgLEaw==}
+  /@sveltejs/adapter-auto/1.0.0-next.54:
+    resolution: {integrity: sha512-GT3LmE+Qy4HcMO/CZJJTLWaLrchufo1Z+BVec79u02GNM16y7Q8Jbs1gVg4EKMHV8AqtDxYFsb0j5gUlP8Ol9g==}
     dependencies:
-      '@sveltejs/adapter-cloudflare': 1.0.0-next.23
-      '@sveltejs/adapter-netlify': 1.0.0-next.65
+      '@sveltejs/adapter-cloudflare': 1.0.0-next.25
+      '@sveltejs/adapter-netlify': 1.0.0-next.66
       '@sveltejs/adapter-vercel': 1.0.0-next.59
     transitivePeerDependencies:
       - encoding
       - supports-color
     dev: true
 
-  /@sveltejs/adapter-cloudflare/1.0.0-next.23:
-    resolution: {integrity: sha512-WaDE25Ib3Q9kM1BBxvGxr57vfExg0Q1Wu2H3dSFV4Apw18UHKS89P/U6wd4u4zAzAw+Mcm8gduX/rRs5z0YMwA==}
+  /@sveltejs/adapter-cloudflare/1.0.0-next.25:
+    resolution: {integrity: sha512-fhjH4LInepYxJ6ubuNO38sJeor04cUBKMPF5hpwrXLhKHrYTVwq1Oi7xNVbnrrIQzGRyiHOCvMy8E/MNnO3xLw==}
     dependencies:
       esbuild: 0.14.46
       worktop: 0.8.0-next.14
     dev: true
 
-  /@sveltejs/adapter-netlify/1.0.0-next.65:
-    resolution: {integrity: sha512-81LYVqT0Fez7xqvOdE9ITD7b5kxdzzXjXwJ0ISBfJYt6wqg0fmABm3mcDy3opXau7DoQkhkhnlqkharTHfhJQg==}
+  /@sveltejs/adapter-netlify/1.0.0-next.66:
+    resolution: {integrity: sha512-UypTRnTd+R1O6SaDdc8l3A3c9/mQF8xLNoVb3Ay5ipb7uPU5WmjVYjfLVGyeVy67gztFfeFC/9Esu4OI2Ayx1A==}
     dependencies:
       '@iarna/toml': 2.2.5
       esbuild: 0.14.46
@@ -8450,12 +8495,13 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.355_svelte@3.44.0:
-    resolution: {integrity: sha512-4M+BZL/kKgw5tMRkAYcpg38hxMX80iz6H9+nv2v6VzvKhD4Pw6zatzMs2D6PCT2uBHnrKGrUCheBBcK8kZdWKg==}
+  /@sveltejs/kit/1.0.0-next.360_svelte@3.44.0+vite@2.9.13:
+    resolution: {integrity: sha512-z1W6oYSmDzYcjlXANkbsb0N0IS/0aDl0huzDGRZWXobis4VmzoqzOyxsczyvxwH6FWxQBXls5wNrtm6drzsr6A==}
     engines: {node: '>=16.7'}
     hasBin: true
     peerDependencies:
       svelte: ^3.44.0
+      vite: ^2.9.10
     dependencies:
       '@sveltejs/vite-plugin-svelte': 1.0.0-next.49_svelte@3.44.0+vite@2.9.13
       chokidar: 3.5.3
@@ -8464,18 +8510,16 @@ packages:
       vite: 2.9.13
     transitivePeerDependencies:
       - diff-match-patch
-      - less
-      - sass
-      - stylus
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.355_svelte@3.48.0:
-    resolution: {integrity: sha512-4M+BZL/kKgw5tMRkAYcpg38hxMX80iz6H9+nv2v6VzvKhD4Pw6zatzMs2D6PCT2uBHnrKGrUCheBBcK8kZdWKg==}
+  /@sveltejs/kit/1.0.0-next.360_svelte@3.48.0+vite@2.9.13:
+    resolution: {integrity: sha512-z1W6oYSmDzYcjlXANkbsb0N0IS/0aDl0huzDGRZWXobis4VmzoqzOyxsczyvxwH6FWxQBXls5wNrtm6drzsr6A==}
     engines: {node: '>=16.7'}
     hasBin: true
     peerDependencies:
       svelte: ^3.44.0
+      vite: ^2.9.10
     dependencies:
       '@sveltejs/vite-plugin-svelte': 1.0.0-next.49_svelte@3.48.0+vite@2.9.13
       chokidar: 3.5.3
@@ -8484,9 +8528,6 @@ packages:
       vite: 2.9.13
     transitivePeerDependencies:
       - diff-match-patch
-      - less
-      - sass
-      - stylus
       - supports-color
     dev: true
 
@@ -15020,12 +15061,13 @@ packages:
       '@emotion/is-prop-valid': 0.8.8
     dev: false
 
-  /framer-motion/6.3.16_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-1kuXvOVss/Rzi+XHuYq6RPjwnZGkfnfvtBpCpZm+kYhLGA6ICHwfAJtG1ohz1ruSAFVMz3RSpanTf6TOPG979A==}
+  /framer-motion/6.4.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-SmrJbPTpvWGuAAYZMkjWsMc74wOREpXq9Lkq8lhm6IxvuJJitO7E0V5v1RulmTdNIrerJIUxvIZhrYSCb7UAgw==}
     peerDependencies:
       react: '>=16.8 || ^17.0.0 || ^18.0.0 || 18'
       react-dom: '>=16.8 || ^17.0.0 || ^18.0.0 || 18'
     dependencies:
+      '@motionone/dom': 10.11.2
       framesync: 6.0.1
       hey-listen: 1.0.8
       popmotion: 11.0.3
