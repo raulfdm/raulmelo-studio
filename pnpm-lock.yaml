@@ -19,8 +19,6 @@ overrides:
   tslib: 2.4.0
   tailwindcss: 2.2.19
 
-patchedDependencies: {}
-
 importers:
 
   .:
@@ -192,7 +190,7 @@ importers:
       xstate: 4.32.1
     devDependencies:
       '@sveltejs/adapter-vercel': 1.0.0-next.59
-      '@sveltejs/kit': 1.0.0-next.355_svelte@3.48.0
+      '@sveltejs/kit': 1.0.0-next.360_svelte@3.48.0+vite@2.9.13
       '@tailwindcss/aspect-ratio': 0.4.0_tailwindcss@2.2.19
       autoprefixer: 10.4.7_postcss@8.4.14
       eslint-plugin-svelte3: 4.0.0_vypdqzeyqutkgs6qzc7qod4c64
@@ -238,8 +236,8 @@ importers:
       tslib: 2.4.0
       typescript: 4.7.2
     devDependencies:
-      '@sveltejs/adapter-auto': 1.0.0-next.52
-      '@sveltejs/kit': 1.0.0-next.355_svelte@3.44.0
+      '@sveltejs/adapter-auto': 1.0.0-next.54
+      '@sveltejs/kit': 1.0.0-next.360_svelte@3.44.0+vite@2.9.13
       '@typescript-eslint/eslint-plugin': 5.27.0_dszb5tb7atwkjjijmmov4qhi7i
       '@typescript-eslint/parser': 5.27.0_xztl6dhthcahlo6akmb2bmjmle
       autoprefixer: 10.4.7_postcss@8.4.14
@@ -297,7 +295,7 @@ importers:
       query-string: 7.1.1
       react: 18.2.0
       react-dom: 18.2.0
-      react-instantsearch-dom: 6.26.0
+      react-instantsearch-dom: 6.30.0
       react-intl: 6.0.4
       react-popper: 2.3.0
       react-use: 17.4.0
@@ -331,7 +329,7 @@ importers:
       query-string: 7.1.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      react-instantsearch-dom: 6.26.0_3d5redehl2jjvbpdn3mne6usq4
+      react-instantsearch-dom: 6.30.0_3d5redehl2jjvbpdn3mne6usq4
       react-intl: 6.0.4_uoogoktp32kr56oz77spzichqa
       react-popper: 2.3.0_ili5ylfne7i3hkfpsanzgkfu6m
       react-use: 17.4.0_biqbaboplfbrettd7655fr4n2y
@@ -8413,26 +8411,26 @@ packages:
       '@styled-system/css': 5.1.5
     dev: false
 
-  /@sveltejs/adapter-auto/1.0.0-next.52:
-    resolution: {integrity: sha512-jOuC7RauiwGg7BQQEZxBGcwtwynNqQSuGJ7MJ9kk5WIrFCMrZSclwnpO1yLmUUYFKvJ61Z7bvVoDqm6+CgLEaw==}
+  /@sveltejs/adapter-auto/1.0.0-next.54:
+    resolution: {integrity: sha512-GT3LmE+Qy4HcMO/CZJJTLWaLrchufo1Z+BVec79u02GNM16y7Q8Jbs1gVg4EKMHV8AqtDxYFsb0j5gUlP8Ol9g==}
     dependencies:
-      '@sveltejs/adapter-cloudflare': 1.0.0-next.23
-      '@sveltejs/adapter-netlify': 1.0.0-next.65
+      '@sveltejs/adapter-cloudflare': 1.0.0-next.25
+      '@sveltejs/adapter-netlify': 1.0.0-next.66
       '@sveltejs/adapter-vercel': 1.0.0-next.59
     transitivePeerDependencies:
       - encoding
       - supports-color
     dev: true
 
-  /@sveltejs/adapter-cloudflare/1.0.0-next.23:
-    resolution: {integrity: sha512-WaDE25Ib3Q9kM1BBxvGxr57vfExg0Q1Wu2H3dSFV4Apw18UHKS89P/U6wd4u4zAzAw+Mcm8gduX/rRs5z0YMwA==}
+  /@sveltejs/adapter-cloudflare/1.0.0-next.25:
+    resolution: {integrity: sha512-fhjH4LInepYxJ6ubuNO38sJeor04cUBKMPF5hpwrXLhKHrYTVwq1Oi7xNVbnrrIQzGRyiHOCvMy8E/MNnO3xLw==}
     dependencies:
       esbuild: 0.14.46
       worktop: 0.8.0-next.14
     dev: true
 
-  /@sveltejs/adapter-netlify/1.0.0-next.65:
-    resolution: {integrity: sha512-81LYVqT0Fez7xqvOdE9ITD7b5kxdzzXjXwJ0ISBfJYt6wqg0fmABm3mcDy3opXau7DoQkhkhnlqkharTHfhJQg==}
+  /@sveltejs/adapter-netlify/1.0.0-next.66:
+    resolution: {integrity: sha512-UypTRnTd+R1O6SaDdc8l3A3c9/mQF8xLNoVb3Ay5ipb7uPU5WmjVYjfLVGyeVy67gztFfeFC/9Esu4OI2Ayx1A==}
     dependencies:
       '@iarna/toml': 2.2.5
       esbuild: 0.14.46
@@ -8450,12 +8448,13 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.355_svelte@3.44.0:
-    resolution: {integrity: sha512-4M+BZL/kKgw5tMRkAYcpg38hxMX80iz6H9+nv2v6VzvKhD4Pw6zatzMs2D6PCT2uBHnrKGrUCheBBcK8kZdWKg==}
+  /@sveltejs/kit/1.0.0-next.360_svelte@3.44.0+vite@2.9.13:
+    resolution: {integrity: sha512-z1W6oYSmDzYcjlXANkbsb0N0IS/0aDl0huzDGRZWXobis4VmzoqzOyxsczyvxwH6FWxQBXls5wNrtm6drzsr6A==}
     engines: {node: '>=16.7'}
     hasBin: true
     peerDependencies:
       svelte: ^3.44.0
+      vite: ^2.9.10
     dependencies:
       '@sveltejs/vite-plugin-svelte': 1.0.0-next.49_svelte@3.44.0+vite@2.9.13
       chokidar: 3.5.3
@@ -8464,18 +8463,16 @@ packages:
       vite: 2.9.13
     transitivePeerDependencies:
       - diff-match-patch
-      - less
-      - sass
-      - stylus
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.355_svelte@3.48.0:
-    resolution: {integrity: sha512-4M+BZL/kKgw5tMRkAYcpg38hxMX80iz6H9+nv2v6VzvKhD4Pw6zatzMs2D6PCT2uBHnrKGrUCheBBcK8kZdWKg==}
+  /@sveltejs/kit/1.0.0-next.360_svelte@3.48.0+vite@2.9.13:
+    resolution: {integrity: sha512-z1W6oYSmDzYcjlXANkbsb0N0IS/0aDl0huzDGRZWXobis4VmzoqzOyxsczyvxwH6FWxQBXls5wNrtm6drzsr6A==}
     engines: {node: '>=16.7'}
     hasBin: true
     peerDependencies:
       svelte: ^3.44.0
+      vite: ^2.9.10
     dependencies:
       '@sveltejs/vite-plugin-svelte': 1.0.0-next.49_svelte@3.48.0+vite@2.9.13
       chokidar: 3.5.3
@@ -8484,9 +8481,6 @@ packages:
       vite: 2.9.13
     transitivePeerDependencies:
       - diff-match-patch
-      - less
-      - sass
-      - stylus
       - supports-color
     dev: true
 
@@ -9901,6 +9895,15 @@ packages:
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
 
+  /algoliasearch-helper/3.10.0_algoliasearch@4.13.1:
+    resolution: {integrity: sha512-4E4od8qWWDMVvQ3jaRX6Oks/k35ywD011wAA4LbYMMjOtaZV6VWaTjRr4iN2bdaXP2o1BP7SLFMBf3wvnHmd8Q==}
+    peerDependencies:
+      algoliasearch: '>= 3.1 < 6'
+    dependencies:
+      '@algolia/events': 4.0.1
+      algoliasearch: 4.13.1
+    dev: false
+
   /algoliasearch-helper/3.8.2_algoliasearch@4.13.1:
     resolution: {integrity: sha512-AXxiF0zT9oYwl8ZBgU/eRXvfYhz7cBA5YrLPlw9inZHdaYF0QEya/f1Zp1mPYMXc1v6VkHwBq4pk6/vayBLICg==}
     peerDependencies:
@@ -9908,6 +9911,7 @@ packages:
     dependencies:
       '@algolia/events': 4.0.1
       algoliasearch: 4.13.1
+    dev: true
 
   /algoliasearch/4.13.1:
     resolution: {integrity: sha512-dtHUSE0caWTCE7liE1xaL+19AFf6kWEcyn76uhcitWpntqvicFHXKFoZe5JJcv9whQOTRM6+B8qJz6sFj+rDJA==}
@@ -11146,7 +11150,7 @@ packages:
       mississippi: 3.0.0
       mkdirp: 0.5.6
       move-concurrently: 1.0.1
-      promise-inflight: 1.0.1
+      promise-inflight: 1.0.1_bluebird@3.7.2
       rimraf: 2.7.1
       ssri: 6.0.2
       unique-filename: 1.1.1
@@ -20999,6 +21003,17 @@ packages:
     peerDependenciesMeta:
       bluebird:
         optional: true
+    dev: true
+
+  /promise-inflight/1.0.1_bluebird@3.7.2:
+    resolution: {integrity: sha1-mEcocL8igTL8vdhoEputEsPAKeM=}
+    peerDependencies:
+      bluebird: '*'
+    peerDependenciesMeta:
+      bluebird:
+        optional: true
+    dependencies:
+      bluebird: 3.7.2
 
   /promise-props-recursive/1.0.0:
     resolution: {integrity: sha512-kh/4BEytTXST030W1YJHs3bTzlFu4C9EFPtqrG3g8JM8nEi3+WxR0mm19TjiobO2YHbHrCicZGN2Z94OhAU+7Q==}
@@ -21454,36 +21469,36 @@ packages:
       react: 18.2.0
     dev: true
 
-  /react-instantsearch-core/6.26.0_wccoi2hm3lxcwz3rqgfrqrl2pe:
-    resolution: {integrity: sha512-rBfyP05t6SHuBcXiKibzz0jgA8/qLepy4J/RWb9z++GM6wHO/D0Rhs5eFCw9fBJbXKs3iw1FR5BhxuJV1zBhsQ==}
+  /react-instantsearch-core/6.30.0_wccoi2hm3lxcwz3rqgfrqrl2pe:
+    resolution: {integrity: sha512-HodD592g79/nN+9VI9X2s9sLtTFT5Ax5sUJfWWokYhd36qd7IUZF0ZVkFxBLNlS/QnC/lMSI5xJ+8FrDWyS16w==}
     peerDependencies:
       algoliasearch: '>= 3.1 < 5'
       react: '>= 16.3.0 < 19 || 18'
     dependencies:
-      '@babel/runtime': 7.18.3
+      '@babel/runtime': 7.18.6
       algoliasearch: 4.13.1
-      algoliasearch-helper: 3.8.2_algoliasearch@4.13.1
+      algoliasearch-helper: 3.10.0_algoliasearch@4.13.1
       prop-types: 15.8.1
       react: 18.2.0
       react-fast-compare: 3.2.0
     dev: false
 
-  /react-instantsearch-dom/6.26.0_3d5redehl2jjvbpdn3mne6usq4:
-    resolution: {integrity: sha512-ai3FlvfhZ019OmOG9V4fdIA28Vlw9KuvHEsG9Nl4WkB3Ic4aPxuxaPNxnlT1CXTIVFgegptkVxi6A0iQvaTCcA==}
+  /react-instantsearch-dom/6.30.0_3d5redehl2jjvbpdn3mne6usq4:
+    resolution: {integrity: sha512-nTZTtLWY0cW3IrPBNratdl5Kseh1/9f4xCtTEgD9xdhOepEJ2VNOPElKa+b2kGSwwd8ZbgihrxeYSzsOUVS4cg==}
     peerDependencies:
       algoliasearch: '>= 3.1 < 5'
       react: '>= 16.3.0 < 19 || 18'
       react-dom: '>= 16.3.0 < 19 || 18'
     dependencies:
-      '@babel/runtime': 7.18.3
+      '@babel/runtime': 7.18.6
       algoliasearch: 4.13.1
-      algoliasearch-helper: 3.8.2_algoliasearch@4.13.1
+      algoliasearch-helper: 3.10.0_algoliasearch@4.13.1
       classnames: 2.3.1
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-fast-compare: 3.2.0
-      react-instantsearch-core: 6.26.0_wccoi2hm3lxcwz3rqgfrqrl2pe
+      react-instantsearch-core: 6.30.0_wccoi2hm3lxcwz3rqgfrqrl2pe
     dev: false
 
   /react-intl/6.0.4_uoogoktp32kr56oz77spzichqa:
@@ -22431,7 +22446,7 @@ packages:
   /rtl-css-js/1.15.0:
     resolution: {integrity: sha512-99Cu4wNNIhrI10xxUaABHsdDqzalrSRTie4GeCmbGVuehm4oj+fIy8fTzB+16pmKe8Bv9rl+hxIBez6KxExTew==}
     dependencies:
-      '@babel/runtime': 7.18.3
+      '@babel/runtime': 7.18.6
     dev: false
 
   /run-parallel/1.2.0:
