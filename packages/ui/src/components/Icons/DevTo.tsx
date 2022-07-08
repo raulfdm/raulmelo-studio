@@ -1,6 +1,6 @@
 import { IconProps } from './types';
 
-export const DevToIcon = ({ width = 48, ...props }: IconProps) => (
+export const DevToIcon = ({ width, ...props }: IconProps) => (
   <svg
     viewBox="0 0 24 24"
     height={width}
