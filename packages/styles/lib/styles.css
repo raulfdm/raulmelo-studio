@@ -48,11 +48,9 @@
 }
 
 @layer utilities {
-  @variants focus-visible, focus {
-    button,
-    * {
-      @apply focus:outline-black dark:focus:outline-white;
-    }
+  button,
+  * {
+    @apply focus:outline-black dark:focus:outline-white;
   }
 }
 

@@ -31,8 +31,7 @@ Tailwind supports presets so all you need to do is import and set it as preset:
 module.exports = {
   presets: [require('@raulmelo/styles/lib/tailwind.config.cjs')],
   //... overrides like
-  mode: 'jit',
-  purge: ['./src/**/*.{js,ts,tsx}'],
+  content: ['./src/**/*.{js,ts,tsx}'],
   // ... etc
 };
 ```
