@@ -11,7 +11,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-  swcMinify: false,
+  swcMinify: true,
+  compiler: {
+    emotion: true,
+  },
   pageExtensions: ['page.tsx', 'page.ts'],
   experimental: {
     esmExternals: 'loose',
