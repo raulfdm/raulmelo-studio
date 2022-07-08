@@ -6,6 +6,7 @@ import {
   TwitterIcon,
 } from '@raulmelo/ui';
 import Image from 'next/image';
+import { ComponentPropsWithoutRef } from 'react';
 import { defineMessage } from 'react-intl';
 
 import { useLocalization } from '~/hooks/useLocalization';
@@ -13,8 +14,6 @@ import siteData from '~/site-data';
 import { getSocial } from '~/utils/seo';
 
 const message = defineMessage({ id: 'authorPresentation.profileImageAlt' });
-
-const iconClasses = 'w-6 lg:w-8';
 
 export const AuthorPresentation = () => {
   const { locale, formatMessage } = useLocalization();
@@ -41,21 +40,21 @@ export const AuthorPresentation = () => {
           {defaultSeo?.description}
         </p>
         <section className="flex items-center flex-1 pt-5 space-x-4 dark:opacity-90 text-secondary">
-          <a href={devTo.url} data-testid="author__linkedInUrl">
-            <DevToIcon className={iconClasses} />
-          </a>
-          <a href={medium.url} data-testid="author__linkedInUrl">
-            <MediumIcon className={iconClasses} />
-          </a>
-          <a href={github.url} data-testid="author__githubUrl">
-            <GithubIcon className={iconClasses} />
-          </a>
-          <a href={twitter.url} data-testid="author__twitterUrl">
-            <TwitterIcon className={iconClasses} />
-          </a>
-          <a href={linkedIn.url} data-testid="author__linkedInUrl">
-            <LinkedInIcon className={iconClasses} />
-          </a>
+          <IconWrapper href={devTo.url} data-testid="author__linkedInUrl">
+            <DevToIcon />
+          </IconWrapper>
+          <IconWrapper href={medium.url} data-testid="author__linkedInUrl">
+            <MediumIcon />
+          </IconWrapper>
+          <IconWrapper href={github.url} data-testid="author__githubUrl">
+            <GithubIcon />
+          </IconWrapper>
+          <IconWrapper href={twitter.url} data-testid="author__twitterUrl">
+            <TwitterIcon />
+          </IconWrapper>
+          <IconWrapper href={linkedIn.url} data-testid="author__linkedInUrl">
+            <LinkedInIcon />
+          </IconWrapper>
         </section>
       </aside>
       <figure className="relative w-20 h-20 rounded md:w-32 md:h-32">
@@ -71,3 +70,7 @@ export const AuthorPresentation = () => {
     </header>
   );
 };
+
+function IconWrapper(props: ComponentPropsWithoutRef<'a'>) {
+  return <a className="w-6 lg:w-8" {...props} />;
+}
