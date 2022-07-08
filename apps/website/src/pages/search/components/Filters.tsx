@@ -1,38 +1,19 @@
 import { utils } from '@raulmelo/core';
-import React from 'react';
+import classNames from 'classnames';
 import { connectRefinementList } from 'react-instantsearch-dom';
-import tw, { styled } from 'twin.macro';
 
 import { useLocalization } from '~/hooks/useLocalization';
 
 import { RefinementListProps } from '../types';
-
-const FiltersWrapper = tw.div`col-span-full inline-flex flex-wrap m-auto mb-7`;
-const RefinementWrapper = styled.div`
-  &:not(:last-child) {
-    ${tw`mr-6`}
-  }
-`;
-const Title = tw.h3`text-lg font-bold`;
-const List = tw.ul`flex flex-col space-y-2`;
-const ListItem = tw.li``;
-const Label = tw.label`space-x-2 flex items-center cursor-pointer`;
-const LabelText = tw.span`text-lg`;
-const Checkbox = styled.input`
-  &:checked {
-    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='currentColor' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
-  }
-
-  ${tw`rounded checked:bg-secondary hover:checked:bg-secondary focus:checked:bg-secondary focus:checked:ring-secondary focus:ring-secondary`}
-`;
+import styles from './Filter.module.css';
 
 export const Filters = () => {
   return (
-    <FiltersWrapper>
+    <div className="col-span-full inline-flex flex-wrap m-auto mb-7`">
       <ConfiguredLanguageRefinement attribute="language" operator="or" />
       <ConfiguredTypeRefinement attribute="_type" operator="or" />
       <ConfiguredTagsRefinement attribute="tags.name" operator="or" />
-    </FiltersWrapper>
+    </div>
   );
 };
 
@@ -96,29 +77,33 @@ function GenericRefinement({
   renderLabelText,
 }: GenericRefinementProps) {
   return utils.isEmpty(items) ? null : (
-    <RefinementWrapper>
-      <Title>{title}</Title>
+    <div className={styles.RefinementWrapper}>
+      <h3 className="text-lg font-bold">{title}</h3>
 
-      <List>
+      <ul className="flex flex-col space-y-2">
         {items.sort(sortOptionByLabel).map((item) => {
           const handleClick = () => refine(item.value);
           return (
-            <ListItem key={item.label}>
-              <Label>
-                <Checkbox
+            <li key={item.label}>
+              <label className="flex items-center space-x-2 cursor-pointer">
+                <input
+                  className={classNames(
+                    'rounded checked:bg-secondary hover:checked:bg-secondary focus:checked:bg-secondary focus:checked:ring-secondary focus:ring-secondary',
+                    styles.Checkbox,
+                  )}
                   type="checkbox"
                   onClick={handleClick}
                   onKeyPress={createEnterHandler(handleClick)}
                 />
-                <LabelText>
+                <span className="text-lg">
                   {renderLabelText(item.label)} {`(${item.count})`}
-                </LabelText>
-              </Label>
-            </ListItem>
+                </span>
+              </label>
+            </li>
           );
         })}
-      </List>
-    </RefinementWrapper>
+      </ul>
+    </div>
   );
 }
 

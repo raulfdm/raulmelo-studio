@@ -1,15 +1,14 @@
-import '@raulmelo/styles/lib/styles.css';
-import '@raulmelo/ui/dist/style.css';
 import '@raulmelo/ui/dist/prism.css';
+import '@raulmelo/ui/dist/style.css';
+import '@raulmelo/styles/lib/styles.css';
+import '../styles/algolia-global.css';
 
-import { CSSObject, Global } from '@emotion/react';
 import { SupportedLanguages } from '@raulmelo/core';
 import { AnimatePresence, domAnimation, LazyMotion, m } from 'framer-motion';
 import { AppProps } from 'next/dist/shared/lib/router/router';
 import Head from 'next/head';
 import Script from 'next/script';
 import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo';
-import { globalStyles } from 'twin.macro';
 
 import { MenuBar } from '~/components/MenuBar';
 import { analyticsConfig } from '~/config/analytics';
@@ -32,8 +31,6 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
       {/* Global Site Tag (gtag.js) - Google Analytics */}
       <Script src={analyticsConfig.scriptUrl} />
       <Script>{analyticsConfig.gtagLoadScript}</Script>
-
-      <Global styles={globalStyles as CSSObject} />
 
       <SocialProfileJsonLd
         type="Person"

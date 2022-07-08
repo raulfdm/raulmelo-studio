@@ -1,27 +1,12 @@
+import styled from '@emotion/styled';
+import classNames from 'classnames';
 import Link from 'next/link';
-import React from 'react';
 import { FormattedDate } from 'react-intl';
-import tw, { styled, TwStyle } from 'twin.macro';
 
 import { Tag, Tags } from '~/components/Tags';
 import { getTagUrl } from '~/utils/url';
 
 const Wrapper = styled.section``;
-
-const styles = {
-  titleLink: tw`relative inline-block cursor-pointer`,
-  title: tw`font-extrabold`,
-  metaWrapper: tw`flex space-x-4 mb-2.5`,
-  typeBase: tw`px-2 rounded-sm min-width[40px] text-center font-bold text-gray-50 uppercase`,
-  type: {
-    post: tw`bg-indigo-600`,
-    til: tw`bg-yellow-600`,
-  },
-  publishedAt: tw`block font-sans text-md`,
-  subtitle: tw`text-lg lg:text-md text-primary dark:text-gray-200 text-opacity-80 dark:text-opacity-100`,
-  tags: tw`mt-4`,
-  tagLink: tw`underline cursor-pointer`,
-};
 
 export const PostBasic = ({
   title,
@@ -35,15 +20,17 @@ export const PostBasic = ({
   className,
 }: PostBasicProps) => {
   return (
-    <Wrapper as={as} css={className}>
+    <Wrapper as={as} className={className}>
       <Link href={url} passHref>
-        <a css={styles.titleLink}>
-          <h3 css={[styles.title, titleClassName]}>{title}</h3>
+        <a className="relative inline-block cursor-pointer">
+          <h3 className={classNames(['font-extrabold', titleClassName])}>
+            {title}
+          </h3>
         </a>
       </Link>
 
-      <div css={styles.metaWrapper}>
-        <span css={styles.publishedAt}>
+      <div className="flex space-x-4 mb-2.5">
+        <span className="block font-sans text-md">
           <time dateTime={publishedAt}>
             <FormattedDate
               value={publishedAt}
@@ -54,16 +41,30 @@ export const PostBasic = ({
           </time>
         </span>
         {_type ? (
-          <span css={[styles.type[_type], styles.typeBase]}>{_type}</span>
+          <span
+            className={classNames(
+              {
+                'bg-indigo-600': _type === 'post',
+                'bg-yellow-600': _type === 'til',
+              },
+              'px-2 rounded-sm min-w-[40px] text-center font-bold text-gray-50 uppercase',
+            )}
+          >
+            {_type}
+          </span>
         ) : null}
       </div>
-      {subtitle && <p css={styles.subtitle}>{subtitle}</p>}
+      {subtitle && (
+        <p className="text-lg lg:text-md text-primary dark:text-gray-200 text-opacity-80 dark:text-opacity-100">
+          {subtitle}
+        </p>
+      )}
       {tags ? (
-        <Tags css={styles.tags}>
+        <Tags className="mt-4">
           {tags.map(({ name, slug, _id }) => (
             <Tag key={_id}>
               <Link href={getTagUrl(slug)} passHref>
-                <a css={styles.tagLink}>#{name}</a>
+                <a className="underline cursor-pointer">#{name}</a>
               </Link>
             </Tag>
           ))}
@@ -78,10 +79,10 @@ export interface PostBasicProps {
   subtitle?: string;
   url: string;
   _type?: 'post' | 'til';
-  className?: string | TwStyle;
+  className?: string;
   as?: React.ElementType;
   publishedAt: string;
-  titleClassName?: string | TwStyle;
+  titleClassName?: string;
   tags: {
     name: string;
     slug: string;

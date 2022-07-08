@@ -1,7 +1,7 @@
 import { ITilsTil } from '@raulmelo/core/dist/types/domains/posts/queryTils/types';
+import classNames from 'classnames';
 import { NextSeo } from 'next-seo';
 import { FormattedMessage } from 'react-intl';
-import tw from 'twin.macro';
 
 import { ContentTile } from '~/components/ContentTile';
 import { useLocalization } from '~/hooks/useLocalization';
@@ -12,18 +12,7 @@ type TilsHomeProps = {
   tils: ITilsTil[];
 };
 
-const styles = {
-  baseCol: tw`col-span-full lg:col-span-10`,
-  title: tw`text-3xl font-extrabold md:text-4xl`,
-  subtitle: tw`text-lg italic md:text-xl text-opacity-80`,
-  description: tw`my-4 text-md md:text-lg`,
-  tilsList: {
-    wrapper: tw`mt-5`,
-    list: tw`space-y-8`,
-    itemTitle: tw`text-lg lg:text-xl`,
-    notFound: tw`text-lg`,
-  },
-};
+const baseColClass = classNames('col-span-full lg:col-span-10');
 
 export const TilsHome = ({ tils }: TilsHomeProps) => {
   const { formatMessage } = useLocalization();
@@ -34,22 +23,22 @@ export const TilsHome = ({ tils }: TilsHomeProps) => {
         description={formatMessage({ id: 'tilHome.subtitle' })}
       />
 
-      <header css={styles.baseCol}>
-        <h1 css={styles.title}>
+      <header className={baseColClass}>
+        <h1 className="text-3xl font-extrabold md:text-4xl">
           <FormattedMessage id="tilHome.title" />
         </h1>
-        <p css={styles.subtitle}>
+        <p className="text-lg italic md:text-xl text-opacity-80">
           <FormattedMessage id="tilHome.subtitle" />
         </p>
       </header>
 
-      <p css={[styles.baseCol, styles.description]}>
+      <p className={classNames([baseColClass, 'my-4 text-md md:text-lg'])}>
         <FormattedMessage id="tilHome.description" />
       </p>
 
-      <section css={[styles.baseCol, styles.tilsList.wrapper]}>
+      <section className={classNames([baseColClass, 'mt-5'])}>
         {tils.length > 0 ? (
-          <ul css={styles.tilsList.list}>
+          <ul className="space-y-8">
             {tils.map((til) => (
               <li key={til._id}>
                 <ContentTile urlBuilder={getTilUrl} {...til} />
@@ -57,7 +46,7 @@ export const TilsHome = ({ tils }: TilsHomeProps) => {
             ))}
           </ul>
         ) : (
-          <p css={styles.tilsList.notFound}>
+          <p className="text-lg">
             <FormattedMessage id="tilHome.noTil" />
           </p>
         )}

@@ -1,7 +1,7 @@
 import { CloseIcon, MenuIcon } from '@raulmelo/ui';
+import classNames from 'classnames';
 import Link from 'next/link';
-import { FC } from 'react';
-import tw, { css, styled } from 'twin.macro';
+import { ComponentPropsWithRef, FC, forwardRef } from 'react';
 
 import { Logo } from '~/components/Logo';
 import { SideMenu } from '~/components/SideMenu';
@@ -11,18 +11,6 @@ import { useLocalization } from '~/hooks/useLocalization';
 import { LanguageSwitch } from './components/LanguageSwitch';
 import { ThemeSwitch } from './components/ThemeSwitch';
 
-const styles = {
-  wrapper: tw`relative inset-x-0 z-40 h-16 mb-8 duration-200 bg-white shadow  dark:bg-blue-800 transition-theme ease md:mb-12`,
-  inner: css`
-    ${tw`items-center h-full`};
-  `,
-  logoSection: tw`col-span-2`,
-  logo: tw` text-primary`,
-  iconsWrapper: tw`flex justify-end col-span-2 space-x-3 md:col-end-9 lg:col-end-13`,
-  menuButtonBase: tw`flex p-2 place-content-center`,
-  icon: tw`w-6`,
-};
-
 export const MenuBar: FC = () => {
   const { sideMenu } = useApp();
   const { locale } = useLocalization();
@@ -31,23 +19,23 @@ export const MenuBar: FC = () => {
 
   return (
     <>
-      <div css={styles.wrapper}>
-        <nav css={styles.inner} className="grid-container">
-          <section data-testid="menu-bar__logo" css={styles.logoSection}>
+      <div className="relative inset-x-0 z-40 h-16 mb-8 duration-200 bg-white shadow dark:bg-blue-800 transition-theme ease md:mb-12">
+        <nav className="items-center h-full grid-container">
+          <section data-testid="menu-bar__logo" className="col-span-2">
             <Link href="/" locale={locale} passHref>
-              <a css={styles.logo}>
+              <a className="text-primary">
                 <Logo />
               </a>
             </Link>
           </section>
-          <section css={styles.iconsWrapper}>
+          <section className="flex justify-end col-span-2 space-x-3 md:col-end-9 lg:col-end-13">
             <ThemeSwitch />
             <LanguageSwitch />
             <MenuButton
               onClick={sideMenu.toggle}
               data-testid="side-menu-button"
             >
-              <Icon css={styles.icon} />
+              <Icon className="w-6" />
             </MenuButton>
           </section>
         </nav>
@@ -57,6 +45,15 @@ export const MenuBar: FC = () => {
   );
 };
 
-export const MenuButton = styled.button`
-  ${styles.menuButtonBase};
-`;
+export const MenuButton = forwardRef<
+  HTMLButtonElement,
+  ComponentPropsWithRef<'button'>
+>(function MenuButton({ className, ...props }, ref) {
+  return (
+    <button
+      ref={ref}
+      className={classNames('flex p-2 place-content-center', className)}
+      {...props}
+    />
+  );
+});

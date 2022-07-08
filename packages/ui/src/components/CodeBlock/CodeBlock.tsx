@@ -92,9 +92,10 @@ export function CodeBlock({
         ref={setReferenceElement as never}
         type="button"
         title={copyTitle}
-        className={
-          'absolute p-1 transition-colors focus:outline-white top-1 right-1 text-gray-500 hover:text-gray-300'
-        }
+        className="absolute p-1 text-gray-500 transition-colors focus:outline-white top-1 right-1 hover:text-gray-300"
+        style={{
+          backgroundColor: 'var(--syntax-bg)',
+        }}
         onClick={onCopyCode}
       >
         <ClipboardIcon />

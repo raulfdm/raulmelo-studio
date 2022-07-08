@@ -1,17 +1,39 @@
-import tw, { styled } from 'twin.macro';
+import { css } from '@emotion/css';
+import classNames from 'classnames';
 
-export const Tags = styled.ul`
-  ${tw`flex flex-row flex-wrap text-base`};
+const tagsStyle = css`
   > * {
     margin-right: 1rem;
   }
 `;
 
-export const Tag = styled.li`
-  ${tw`
-    font-sans text-center hover:font-bold
-    cursor-default
-    list-none
-    text-secondary
-  `};
-`;
+export function Tags({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<'ul'>) {
+  return (
+    <ul
+      {...props}
+      className={classNames(
+        'flex flex-row flex-wrap text-base',
+        tagsStyle,
+        className,
+      )}
+    />
+  );
+}
+
+export function Tag({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<'li'>) {
+  return (
+    <li
+      {...props}
+      className={classNames(
+        'font-sans text-center list-none cursor-default  hover:font-bold text-secondary',
+        className,
+      )}
+    />
+  );
+}

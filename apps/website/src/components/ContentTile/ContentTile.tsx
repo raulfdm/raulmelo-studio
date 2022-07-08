@@ -1,27 +1,11 @@
 import type { IPostsAndTilsPost } from '@raulmelo/core/dist/types/domains/posts';
 import { ArrowRightIcon } from '@raulmelo/ui';
+import classNames from 'classnames';
 import { m } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
-import tw, { styled } from 'twin.macro';
 
 import { useLocalization } from '~/hooks/useLocalization';
-
-const Title = styled.h3`
-  ${tw`text-lg font-black md:text-xl`};
-  ${({ hover }: { hover: boolean }) => hover && tw`text-secondary`}
-`;
-
-const Subtitle = styled.h4`
-  ${tw`font-medium text-gray-600 dark:text-gray-300 text-md md:text-lg`};
-  ${tw`mb-2.5`};
-`;
-
-const ReadMore = styled.span`
-  ${tw`flex mt-3 font-bold`};
-  ${({ hover }: { hover: boolean }) =>
-    hover && tw`font-extrabold text-secondary`}
-`;
 
 type ContentTileProps = Omit<IPostsAndTilsPost, 'description'> & {
   description?: string;
@@ -47,27 +31,41 @@ export function ContentTile({
 
   return (
     <m.article
-      tw="mb-3"
+      className="mb-3"
       onHoverStart={() => setIsFocused(true)}
       onHoverEnd={() => setIsFocused(false)}
     >
       <Link href={urlBuilder(slug)} passHref>
-        <a tw="relative inline-block cursor-pointer">
-          <Title hover={isFocused}>{title}</Title>
-          {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
+        <a className="relative inline-block cursor-pointer">
+          <h3
+            className={classNames('text-lg font-black md:text-xl', {
+              'text-secondary': isFocused,
+            })}
+          >
+            {title}
+          </h3>
+          {subtitle ? (
+            <h4 className="font-medium text-gray-600 dark:text-gray-300 text-md md:text-lg mb-2.5">
+              {subtitle}
+            </h4>
+          ) : null}
 
-          <span tw="block text-md lg:text-base font-sans mb-2.5">
+          <span className="block text-md lg:text-base font-sans mb-2.5">
             <time dateTime={publishedAt}>{formattedPublishedAt}</time>
           </span>
           {description && (
-            <p tw="text-base md:text-md text-primary dark:text-gray-200 text-opacity-80 dark:text-opacity-100">
+            <p className="text-base md:text-md text-primary dark:text-gray-200 text-opacity-80 dark:text-opacity-100">
               {description}
             </p>
           )}
-          <ReadMore hover={isFocused}>
+          <span
+            className={classNames('flex mt-3 font-bold', {
+              'font-extrabold text-secondary': isFocused,
+            })}
+          >
             {formatMessage({ id: 'blog.readMore' })}
-            <ArrowRightIcon tw="w-4 ml-2" />
-          </ReadMore>
+            <ArrowRightIcon className="w-4 ml-2" />
+          </span>
         </a>
       </Link>
     </m.article>

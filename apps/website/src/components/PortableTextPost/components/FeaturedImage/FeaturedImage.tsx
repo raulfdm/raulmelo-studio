@@ -1,8 +1,7 @@
 import { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
+import classNames from 'classnames';
 import Image from 'next/image';
-import React from 'react';
 import { defineMessages, FormattedMessage } from 'react-intl';
-import tw from 'twin.macro';
 
 import { useLocalization } from '~/hooks/useLocalization';
 
@@ -18,24 +17,16 @@ export type FeaturedImageProps = {
   unsplash?: IBlogPostBySlugApiResponse['unsplash'];
 };
 
-const styles = {
-  wrapper: tw`mb-8 lg:mb-16 col-span-full`,
-  figure: tw`relative h-0 overflow-hidden shadow aspect-w-12 aspect-h-6`,
-  captionLink: tw`underline text-secondary`,
-};
-
-const Caption = tw.p`text-center text-base lg:text-md dark:text-gray-300 mt-4`;
-
 export const FeaturedImage = ({ url, alt, unsplash }: FeaturedImageProps) => {
   const { formatMessage } = useLocalization();
 
   return (
     <div
-      css={styles.wrapper}
+      className="mb-8 lg:mb-16 col-span-full"
       role="img"
       aria-label={formatMessage(messages.featuredImageLabel)}
     >
-      <figure css={styles.figure}>
+      <figure className="relative h-0 overflow-hidden shadow aspect-w-12 aspect-h-6">
         <Image
           src={url}
           layout="fill"
@@ -60,17 +51,29 @@ function UnsplashCaption({ authorName, url }: UnsplashCaptionProps) {
         id="blogPost.unsplashCaption"
         values={{
           authorLink: (
-            <a href={url} tw="underline text-secondary">
+            <a href={url} className="underline text-secondary">
               {authorName}
             </a>
           ),
           unsplashLink: (
-            <a href="https://unsplash.com" tw="underline text-secondary">
+            <a href="https://unsplash.com" className="underline text-secondary">
               Unsplash
             </a>
           ),
         }}
       />
     </Caption>
+  );
+}
+
+function Caption({ className, ...props }: React.ComponentPropsWithoutRef<'p'>) {
+  return (
+    <p
+      className={classNames(
+        'text-center text-base lg:text-md dark:text-gray-300 mt-4',
+        className,
+      )}
+      {...props}
+    />
   );
 }

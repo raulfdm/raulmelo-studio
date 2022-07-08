@@ -1,5 +1,3 @@
-import 'twin.macro';
-
 import { MoonIcon, SunIcon } from '@raulmelo/ui';
 
 import { MenuButton } from '~/components/MenuBar';
@@ -22,7 +20,7 @@ export const ThemeSwitch = () => {
 
   return (
     <MenuButton onClick={toggleTheme} data-testid="theme-switch">
-      <Icon tw="w-6" />
+      <Icon className="w-6" />
     </MenuButton>
   );
 };
