@@ -19,8 +19,6 @@ overrides:
   tslib: 2.4.0
   tailwindcss: 2.2.19
 
-patchedDependencies: {}
-
 importers:
 
   .:
@@ -192,7 +190,7 @@ importers:
       xstate: 4.32.1
     devDependencies:
       '@sveltejs/adapter-vercel': 1.0.0-next.59
-      '@sveltejs/kit': 1.0.0-next.355_svelte@3.48.0
+      '@sveltejs/kit': 1.0.0-next.361_svelte@3.48.0+vite@2.9.13
       '@tailwindcss/aspect-ratio': 0.4.0_tailwindcss@2.2.19
       autoprefixer: 10.4.7_postcss@8.4.14
       eslint-plugin-svelte3: 4.0.0_vypdqzeyqutkgs6qzc7qod4c64
@@ -238,8 +236,8 @@ importers:
       tslib: 2.4.0
       typescript: 4.7.2
     devDependencies:
-      '@sveltejs/adapter-auto': 1.0.0-next.52
-      '@sveltejs/kit': 1.0.0-next.355_svelte@3.44.0
+      '@sveltejs/adapter-auto': 1.0.0-next.54
+      '@sveltejs/kit': 1.0.0-next.361_svelte@3.44.0+vite@2.9.13
       '@typescript-eslint/eslint-plugin': 5.27.0_dszb5tb7atwkjjijmmov4qhi7i
       '@typescript-eslint/parser': 5.27.0_xztl6dhthcahlo6akmb2bmjmle
       autoprefixer: 10.4.7_postcss@8.4.14
@@ -386,14 +384,14 @@ importers:
 
   packages/styles:
     specifiers:
-      '@tailwindcss/aspect-ratio': 0.3.0
-      '@tailwindcss/forms': 0.3.4
-      '@tailwindcss/typography': 0.4.1
+      '@tailwindcss/aspect-ratio': 0.4.0
+      '@tailwindcss/forms': 0.5.2
+      '@tailwindcss/typography': 0.5.3
       tailwindcss: 2.2.19
     dependencies:
-      '@tailwindcss/aspect-ratio': 0.3.0_tailwindcss@2.2.19
-      '@tailwindcss/forms': 0.3.4_tailwindcss@2.2.19
-      '@tailwindcss/typography': 0.4.1_tailwindcss@2.2.19
+      '@tailwindcss/aspect-ratio': 0.4.0_tailwindcss@2.2.19
+      '@tailwindcss/forms': 0.5.2_tailwindcss@2.2.19
+      '@tailwindcss/typography': 0.5.3_tailwindcss@2.2.19
       tailwindcss: 2.2.19_ugi4xkrfysqkt4c4y6hkyfj344
 
   packages/ui:
@@ -8413,26 +8411,26 @@ packages:
       '@styled-system/css': 5.1.5
     dev: false
 
-  /@sveltejs/adapter-auto/1.0.0-next.52:
-    resolution: {integrity: sha512-jOuC7RauiwGg7BQQEZxBGcwtwynNqQSuGJ7MJ9kk5WIrFCMrZSclwnpO1yLmUUYFKvJ61Z7bvVoDqm6+CgLEaw==}
+  /@sveltejs/adapter-auto/1.0.0-next.54:
+    resolution: {integrity: sha512-GT3LmE+Qy4HcMO/CZJJTLWaLrchufo1Z+BVec79u02GNM16y7Q8Jbs1gVg4EKMHV8AqtDxYFsb0j5gUlP8Ol9g==}
     dependencies:
-      '@sveltejs/adapter-cloudflare': 1.0.0-next.23
-      '@sveltejs/adapter-netlify': 1.0.0-next.65
+      '@sveltejs/adapter-cloudflare': 1.0.0-next.25
+      '@sveltejs/adapter-netlify': 1.0.0-next.66
       '@sveltejs/adapter-vercel': 1.0.0-next.59
     transitivePeerDependencies:
       - encoding
       - supports-color
     dev: true
 
-  /@sveltejs/adapter-cloudflare/1.0.0-next.23:
-    resolution: {integrity: sha512-WaDE25Ib3Q9kM1BBxvGxr57vfExg0Q1Wu2H3dSFV4Apw18UHKS89P/U6wd4u4zAzAw+Mcm8gduX/rRs5z0YMwA==}
+  /@sveltejs/adapter-cloudflare/1.0.0-next.25:
+    resolution: {integrity: sha512-fhjH4LInepYxJ6ubuNO38sJeor04cUBKMPF5hpwrXLhKHrYTVwq1Oi7xNVbnrrIQzGRyiHOCvMy8E/MNnO3xLw==}
     dependencies:
       esbuild: 0.14.46
       worktop: 0.8.0-next.14
     dev: true
 
-  /@sveltejs/adapter-netlify/1.0.0-next.65:
-    resolution: {integrity: sha512-81LYVqT0Fez7xqvOdE9ITD7b5kxdzzXjXwJ0ISBfJYt6wqg0fmABm3mcDy3opXau7DoQkhkhnlqkharTHfhJQg==}
+  /@sveltejs/adapter-netlify/1.0.0-next.66:
+    resolution: {integrity: sha512-UypTRnTd+R1O6SaDdc8l3A3c9/mQF8xLNoVb3Ay5ipb7uPU5WmjVYjfLVGyeVy67gztFfeFC/9Esu4OI2Ayx1A==}
     dependencies:
       '@iarna/toml': 2.2.5
       esbuild: 0.14.46
@@ -8450,12 +8448,13 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.355_svelte@3.44.0:
-    resolution: {integrity: sha512-4M+BZL/kKgw5tMRkAYcpg38hxMX80iz6H9+nv2v6VzvKhD4Pw6zatzMs2D6PCT2uBHnrKGrUCheBBcK8kZdWKg==}
-    engines: {node: '>=16.7'}
+  /@sveltejs/kit/1.0.0-next.361_svelte@3.44.0+vite@2.9.13:
+    resolution: {integrity: sha512-F5hvtNIakMqRpVg4kXQWNRnGTpud+N5HsY/Z6SWXndZUEwc2jDYDGq7ytzJp3Ep4+ZbA6yS5YbHiLdZcTMBgWQ==}
+    engines: {node: '>=16.9'}
     hasBin: true
     peerDependencies:
       svelte: ^3.44.0
+      vite: ^2.9.10
     dependencies:
       '@sveltejs/vite-plugin-svelte': 1.0.0-next.49_svelte@3.44.0+vite@2.9.13
       chokidar: 3.5.3
@@ -8464,18 +8463,16 @@ packages:
       vite: 2.9.13
     transitivePeerDependencies:
       - diff-match-patch
-      - less
-      - sass
-      - stylus
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.355_svelte@3.48.0:
-    resolution: {integrity: sha512-4M+BZL/kKgw5tMRkAYcpg38hxMX80iz6H9+nv2v6VzvKhD4Pw6zatzMs2D6PCT2uBHnrKGrUCheBBcK8kZdWKg==}
-    engines: {node: '>=16.7'}
+  /@sveltejs/kit/1.0.0-next.361_svelte@3.48.0+vite@2.9.13:
+    resolution: {integrity: sha512-F5hvtNIakMqRpVg4kXQWNRnGTpud+N5HsY/Z6SWXndZUEwc2jDYDGq7ytzJp3Ep4+ZbA6yS5YbHiLdZcTMBgWQ==}
+    engines: {node: '>=16.9'}
     hasBin: true
     peerDependencies:
       svelte: ^3.44.0
+      vite: ^2.9.10
     dependencies:
       '@sveltejs/vite-plugin-svelte': 1.0.0-next.49_svelte@3.48.0+vite@2.9.13
       chokidar: 3.5.3
@@ -8484,9 +8481,6 @@ packages:
       vite: 2.9.13
     transitivePeerDependencies:
       - diff-match-patch
-      - less
-      - sass
-      - stylus
       - supports-color
     dev: true
 
@@ -8541,40 +8535,30 @@ packages:
     dependencies:
       tslib: 2.4.0
 
-  /@tailwindcss/aspect-ratio/0.3.0_tailwindcss@2.2.19:
-    resolution: {integrity: sha512-DMgWskNJR6FNPLbQ8Xoq/PKV/9DfNKh5dvKB+SM8x7lVl4+pnxlZ3Ns4+yGmurA/ze708HrnCG1tXk85HolJmw==}
-    peerDependencies:
-      tailwindcss: '>=2.0.0 || >=3.0.0-alpha.1'
-    dependencies:
-      tailwindcss: 2.2.19_ugi4xkrfysqkt4c4y6hkyfj344
-    dev: false
-
   /@tailwindcss/aspect-ratio/0.4.0_tailwindcss@2.2.19:
     resolution: {integrity: sha512-WJu0I4PpqNPuutpaA9zDUq2JXR+lorZ7PbLcKNLmb6GL9/HLfC7w3CRsMhJF4BbYd/lkY6CfXOvkYpuGnZfkpQ==}
     peerDependencies:
       tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
     dependencies:
       tailwindcss: 2.2.19_ugi4xkrfysqkt4c4y6hkyfj344
-    dev: true
 
-  /@tailwindcss/forms/0.3.4_tailwindcss@2.2.19:
-    resolution: {integrity: sha512-vlAoBifNJUkagB+PAdW4aHMe4pKmSLroH398UPgIogBFc91D2VlHUxe4pjxQhiJl0Nfw53sHSJSQBSTQBZP3vA==}
+  /@tailwindcss/forms/0.5.2_tailwindcss@2.2.19:
+    resolution: {integrity: sha512-pSrFeJB6Bg1Mrg9CdQW3+hqZXAKsBrSG9MAfFLKy1pVA4Mb4W7C0k7mEhlmS2Dfo/otxrQOET7NJiJ9RrS563w==}
     peerDependencies:
-      tailwindcss: '>=2.0.0'
+      tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
       mini-svg-data-uri: 1.4.4
       tailwindcss: 2.2.19_ugi4xkrfysqkt4c4y6hkyfj344
     dev: false
 
-  /@tailwindcss/typography/0.4.1_tailwindcss@2.2.19:
-    resolution: {integrity: sha512-ovPPLUhs7zAIJfr0y1dbGlyCuPhpuv/jpBoFgqAc658DWGGrOBWBMpAWLw2KlzbNeVk4YBJMzue1ekvIbdw6XA==}
+  /@tailwindcss/typography/0.5.3_tailwindcss@2.2.19:
+    resolution: {integrity: sha512-Cn4MufL/xiTh2Npw26xiL7gP3GFkJH+zWM8DAm/NNEr4gF5N9D6gY9zMNNQUu27m8g0IIk665BUuoU92wVUBkA==}
     peerDependencies:
-      tailwindcss: '>=2.0.0'
+      tailwindcss: '>=3.0.0 || insiders'
     dependencies:
       lodash.castarray: 4.4.0
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
-      lodash.uniq: 4.5.0
       tailwindcss: 2.2.19_ugi4xkrfysqkt4c4y6hkyfj344
     dev: false
 
@@ -17797,7 +17781,7 @@ packages:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
 
   /lodash.castarray/4.4.0:
-    resolution: {integrity: sha1-wCUTUV4wna3dTCTGDP3c9ZdtkRU=}
+    resolution: {integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==}
     dev: false
 
   /lodash.curry/4.1.1:
