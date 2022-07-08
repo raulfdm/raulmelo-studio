@@ -1,6 +1,5 @@
 import { cx } from '@emotion/css';
 import { utils } from '@raulmelo/core';
-import React from 'react';
 import { connectRefinementList } from 'react-instantsearch-dom';
 
 import { useLocalization } from '~/hooks/useLocalization';

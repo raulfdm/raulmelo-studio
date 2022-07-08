@@ -1,49 +1,11 @@
-import 'twin.macro';
-
 import { Popover } from '@headlessui/react';
 import { GlobeIcon } from '@raulmelo/ui';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { usePopper } from 'react-popper';
-import tw, { css, styled } from 'twin.macro';
 
 import { MenuButton } from '~/components/MenuBar';
 import { useLocalization } from '~/hooks/useLocalization';
-
-const styles = {
-  panel: css`
-    ${tw`flex flex-col`};
-    ${tw`shadow-sm`};
-    ${tw`max-w-min`};
-    ${tw`border rounded dark:border-gray-400`};
-    ${tw`divide-y divide-gray-200 dark:divide-gray-500`};
-    ${tw`bg-white dark:bg-blue-800`};
-    ${tw`z-10`};
-  `,
-  arrow: css`
-    ${tw`bg-white dark:bg-blue-800`};
-    ${tw`z-20`};
-    ${tw`w-4 h-4`};
-    ${tw`border-t border-l rounded-sm dark:border-gray-400`};
-    ${tw`top[-8px]`};
-  `,
-  item: css`
-    ${tw`font-sans text-base text-center`};
-    ${tw`cursor-pointer`};
-    ${tw`px-6 py-2`};
-    ${tw`whitespace-nowrap`};
-    ${tw`flex-1`};
-
-    &:disabled {
-      ${tw`cursor-not-allowed`}
-      ${tw`font-semibold text-secondary`};
-    }
-  `,
-};
-
-const Panel = styled.div`
-  ${styles.panel};
-`;
 
 export const LanguageSwitch = () => {
   const { switchToEnglish, switchToPortuguese, locale } = useLocalization();
@@ -87,25 +49,25 @@ export const LanguageSwitch = () => {
   return (
     <Popover>
       <Popover.Button as={MenuButton} ref={setReferenceElement as never}>
-        <GlobeIcon tw="w-6" />
+        <GlobeIcon className="w-6" />
       </Popover.Button>
 
       <Popover.Panel
-        as={Panel}
+        className="z-10 flex flex-col bg-white border divide-y divide-gray-200 rounded shadow-sm max-w-min dark:border-gray-400 dark:divide-gray-500 dark:bg-blue-800"
         ref={setPopperElement as never}
         style={popperStyles.popper}
         {...attributes.popper}
       >
         <div
           ref={setArrowElement as never}
-          css={styles.arrow}
+          className="bg-white dark:bg-blue-800 z-20 w-4 h-4 border-t border-l rounded-sm dark:border-gray-400 top[-8px]"
           style={{
             ...popperStyles.arrow,
             transform: `${popperStyles.arrow.transform} rotate(45deg)`,
           }}
         />
         <Popover.Button
-          css={styles.item}
+          className="flex-1 px-6 py-2 font-sans text-base text-center cursor-pointer whitespace-nowrap disabled:cursor-not-allowed disabled:font-semibold disabled:text-secondary"
           disabled={locale === 'en'}
           onClick={switchToEnglish}
         >
@@ -113,7 +75,7 @@ export const LanguageSwitch = () => {
         </Popover.Button>
 
         <Popover.Button
-          css={styles.item}
+          className="flex-1 px-6 py-2 font-sans text-base text-center cursor-pointer whitespace-nowrap disabled:cursor-not-allowed disabled:font-semibold disabled:text-secondary"
           disabled={locale === 'pt'}
           onClick={switchToPortuguese}
         >

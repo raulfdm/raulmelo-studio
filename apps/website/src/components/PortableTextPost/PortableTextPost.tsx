@@ -1,5 +1,3 @@
-import 'twin.macro';
-
 import { PortableText } from '@portabletext/react';
 import { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts';
 import { ProseContainer } from '@raulmelo/ui';
@@ -104,7 +102,7 @@ export const PortableTextPost = ({
       {featuredImage ? (
         <FeaturedImage url={featuredImage.url} unsplash={unsplash} />
       ) : null}
-      <section tw="w-full col-span-full lg:col-start-2 lg:col-end-12">
+      <section className="w-full col-span-full lg:col-start-2 lg:col-end-12">
         <Header
           title={title}
           subtitle={subtitle}
@@ -116,25 +114,25 @@ export const PortableTextPost = ({
           readingTime={estimatedReadingTime}
         />
         {seriesSection?.top}
-        <ProseContainer tw="mt-8">
+        <ProseContainer className="mt-8">
           <PortableText
             value={content}
             components={portableComponents as never}
           />
         </ProseContainer>
         {seriesSection?.bottom}
-        <hr tw="mt-10 mb-6" />
-        <footer tw="flex justify-between flex-wrap">
+        <hr className="mt-10 mb-6" />
+        <footer className="flex flex-wrap justify-between">
           {tags ? (
-            <div tw="mb-4 mr-4">
-              <span tw="font-extrabold text-md md:text-lg lg:text-xl block mb-4 md:mb-6">
+            <div className="mb-4 mr-4">
+              <span className="block mb-4 font-extrabold text-md md:text-lg lg:text-xl md:mb-6">
                 Tags
               </span>
               <Tags>
                 {tags.map((tag) => (
-                  <Tag key={tag._id} tw="text-base lg:text-lg">
+                  <Tag key={tag._id} className="text-base lg:text-lg">
                     <Link href={getTagUrl(tag.slug)} passHref>
-                      <a tw="underline text-secondary">#{tag.name}</a>
+                      <a className="underline text-secondary">#{tag.name}</a>
                     </Link>
                   </Tag>
                 ))}

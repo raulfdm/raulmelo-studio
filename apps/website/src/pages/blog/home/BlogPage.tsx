@@ -1,6 +1,5 @@
 import { IBlogPagePost } from '@raulmelo/core/dist/types/domains/posts';
 import { NextSeo } from 'next-seo';
-import React from 'react';
 import { defineMessages, FormattedMessage } from 'react-intl';
 
 import { useLocalization } from '~/hooks/useLocalization';

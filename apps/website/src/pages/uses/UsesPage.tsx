@@ -1,6 +1,5 @@
 import { IUsesData } from '@raulmelo/core/dist/types/domains/uses';
 import { IUsesApiResponse } from '@raulmelo/core/dist/types/domains/uses/getUses/types';
-import React from 'react';
 
 import { PortableTextPost } from '~/components/PortableTextPost';
 import { useLocalization } from '~/hooks/useLocalization';

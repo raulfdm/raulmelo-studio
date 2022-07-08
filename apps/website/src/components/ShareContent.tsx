@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { LinkedInIcon, TwitterIcon } from '@raulmelo/ui';
 import qs from 'query-string';
-import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 const Wrapper = styled.div``;

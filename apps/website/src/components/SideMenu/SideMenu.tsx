@@ -1,36 +1,15 @@
+import { cx } from '@emotion/css';
 import { Disclosure } from '@headlessui/react';
 import { ExternalLinkIcon } from '@raulmelo/ui';
 import { m, useAnimation } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useMemo, useRef } from 'react';
-import tw, { css, styled } from 'twin.macro';
 
 //TODO: fix ~/hooks/index
 import { useClickAway } from '~/hooks/index';
 import { useApp } from '~/hooks/useApp';
 import { useLocalization } from '~/hooks/useLocalization';
-
-const styles = {
-  sideMenuPanel: tw`fixed bottom-0 right-0 z-20 h-full min-w-full duration-200 transform translate-x-full bg-white top-16 dark:bg-blue-800 sm:min-w-min sm:w-full sm:max-w-xs transition-theme ease`,
-  sideMenuItem: (isActive: boolean) => css`
-    ${tw`mx-5 text-xl font-black cursor-pointer sm:text-lg`};
-    ${isActive &&
-    tw`border-b-2 sm:pl-3 sm:border-l-2 sm:border-b-0 border-secondary border-opacity-80 transition-theme`}
-  `,
-  sideMenuItemExternalLink: tw`relative inline-flex`,
-  sideMenuItemExternalIcon: tw`absolute top-0 w-4 -right-6`,
-  overlay: (isClosed: boolean) => css`
-    ${tw`absolute inset-0 top-16 z-10 opacity-0 background[rgba(0,0,0,0.7)]`};
-    pointer-events: ${isClosed ? 'none' : 'all'};
-  `,
-  list: tw`flex flex-col py-6`,
-  listItem: tw`px-4 py-2 text-center sm:text-left`,
-};
-
-const Panel = styled(m.nav)`
-  ${styles.sideMenuPanel}
-`;
 
 export const SideMenu = () => {
   const { sideMenu } = useApp();
@@ -66,32 +45,43 @@ export const SideMenu = () => {
     <Disclosure>
       <Disclosure.Panel
         static
-        as={Panel}
+        as={m.nav}
+        className={cx([
+          'fixed bottom-0 right-0 z-20 h-full min-w-full duration-200 transform translate-x-full',
+          'bg-white top-16 dark:bg-blue-800 sm:min-w-min sm:w-full sm:max-w-xs transition-theme ease',
+        ])}
         aria-expanded={!isClosed}
         ref={navRef}
         animate={animation}
         data-testid="sideMenu"
       >
-        <ul css={styles.list}>
+        <ul className="flex flex-col py-6">
           {links.map(({ href, active, itemLabel, newWindow }) => {
             const linkProps = {
               onClick: handleClose,
-              css: styles.sideMenuItem(active),
+              className: cx([
+                'mx-5 text-xl font-black cursor-pointer sm:text-lg',
+                active &&
+                  'border-b-2 sm:pl-3 sm:border-l-2 sm:border-b-0 border-secondary border-opacity-80 transition-theme',
+              ]),
             };
 
             return (
-              <li css={styles.listItem} key={href}>
+              <li className="px-4 py-2 text-center sm:text-left" key={href}>
                 {newWindow ? (
                   <>
                     <a
                       {...linkProps}
-                      css={[linkProps.css, styles.sideMenuItemExternalLink]}
+                      className={cx([
+                        linkProps.className,
+                        'relative inline-flex',
+                      ])}
                       href={href}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       {itemLabel}
-                      <ExternalLinkIcon css={styles.sideMenuItemExternalIcon} />
+                      <ExternalLinkIcon className="absolute top-0 w-4 -right-6" />
                     </a>
                   </>
                 ) : (
@@ -108,7 +98,10 @@ export const SideMenu = () => {
         static
         as={m.div}
         aria-hidden={isClosed}
-        css={styles.overlay(isClosed)}
+        className={cx(
+          'absolute inset-0 top-16 z-10 opacity-0 background[rgba(0,0,0,0.7)]',
+          isClosed ? 'pointer-events-none' : 'pointer-events-auto',
+        )}
         onClick={handleClose}
         animate={state}
         transition={{ ease: 'easeOut', duration: 0.2 }}

@@ -1,5 +1,3 @@
-import 'twin.macro';
-
 import NextImage from 'next/image';
 import type { CSSProperties } from 'react';
 
@@ -28,10 +26,12 @@ export const Image = ({ caption, customWidth, image, alt }: ImageProps) => {
   }
 
   return (
-    <div tw="flex items-center justify-center">
+    <div className="flex items-center justify-center">
       <figure style={figureStyles}>
         <NextImage src={image.url} {...props} alt={alt} quality={90} />
-        {caption ? <figcaption tw="text-center">{caption}</figcaption> : null}
+        {caption ? (
+          <figcaption className="text-center">{caption}</figcaption>
+        ) : null}
       </figure>
     </div>
   );
