@@ -1,6 +1,6 @@
-import '@raulmelo/styles/lib/styles.css';
 import '@raulmelo/ui/dist/style.css';
 import '@raulmelo/ui/dist/prism.css';
+import '@raulmelo/styles/lib/styles.css';
 import '../styles/algolia-global.css';
 
 import { SupportedLanguages } from '@raulmelo/core';
