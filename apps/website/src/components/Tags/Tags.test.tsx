@@ -12,28 +12,12 @@ describe('<Tags>', () => {
 
     const tags = screen.getByRole('list');
     expect(tags).toMatchInlineSnapshot(`
-      .emotion-0 {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-flex-direction: row;
-        -ms-flex-direction: row;
-        flex-direction: row;
-        -webkit-box-flex-wrap: wrap;
-        -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        font-size: 1rem;
-        line-height: 1.3;
-      }
-
       .emotion-0>* {
         margin-right: 1rem;
       }
 
       <ul
-        class="emotion-0 emotion-1"
+        class="flex flex-row flex-wrap text-base emotion-0"
       >
         <li>
           hi

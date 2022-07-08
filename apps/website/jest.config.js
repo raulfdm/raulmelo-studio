@@ -10,6 +10,9 @@ module.exports = {
     'src/**/*.{ts,tsx}',
     '!src/**/index.ts', // Don't want to test barrels
   ],
+  transform: {
+    '.*': ['babel-jest', { configFile: './config/babel.config.js' }],
+  },
   moduleNameMapper: {
     '\\.(css|less)$': 'identity-obj-proxy',
     '^~/components/(.*)': '<rootDir>/src/components/$1',
