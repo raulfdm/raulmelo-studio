@@ -105,7 +105,7 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
         <LazyMotion features={domAnimation} strict>
           <AppContextProvider>
             <MenuBar />
-            <AnimatePresence>
+            <AnimatePresence exitBeforeEnter>
               <m.main
                 className="grid-container"
                 animate="enter"
