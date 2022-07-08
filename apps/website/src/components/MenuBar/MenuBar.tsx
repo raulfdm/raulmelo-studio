@@ -1,7 +1,7 @@
 import { CloseIcon, MenuIcon } from '@raulmelo/ui';
 import classNames from 'classnames';
 import Link from 'next/link';
-import { ComponentPropsWithoutRef, FC, forwardRef } from 'react';
+import { ComponentPropsWithRef, FC, forwardRef } from 'react';
 
 import { Logo } from '~/components/Logo';
 import { SideMenu } from '~/components/SideMenu';
@@ -45,10 +45,10 @@ export const MenuBar: FC = () => {
   );
 };
 
-export const MenuButton = forwardRef(function MenuButton(
-  { className, ...props }: ComponentPropsWithoutRef<'button'>,
-  ref,
-) {
+export const MenuButton = forwardRef<
+  HTMLButtonElement,
+  ComponentPropsWithRef<'button'>
+>(function MenuButton({ className, ...props }, ref) {
   return (
     <button
       ref={ref}
