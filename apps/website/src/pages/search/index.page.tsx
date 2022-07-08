@@ -6,7 +6,6 @@ import { algoliaConfig } from '~/config/algolia';
 import { useLocalization } from '~/hooks/useLocalization';
 
 import { Filters, Hits, PoweredBy, SearchBox } from './components';
-import { AlgoliaGlobalStyles, searchStyles } from './styles';
 import { algoliaDebounceSearchClient } from './utils';
 
 const messages = defineMessages({
@@ -21,20 +20,19 @@ export default function SearchPage() {
   return (
     <>
       <NextSeo title={formatMessage(messages.pageTitle)} noindex />
-      <AlgoliaGlobalStyles />
 
-      <header css={searchStyles.header}>
-        <h1 css={searchStyles.title}>
+      <header className="mb-6 col-span-full">
+        <h1 className="text-3xl font-extrabold md:text-4xl col-span-full">
           <FormattedMessage id="search.pageTitle" />
         </h1>
-        <p css={searchStyles.paragraph}>
+        <p className="text-lg">
           <FormattedMessage
             id="search.paragraph"
             values={{
               a: function Anchor(chunks: never) {
                 return (
                   <a
-                    css={searchStyles.searchLink}
+                    className="underline text-secondary"
                     href="https://www.google.com/search?q=site%3Araulmelo.dev+javascript"
                   >
                     {chunks}

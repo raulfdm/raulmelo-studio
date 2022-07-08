@@ -1,13 +1,12 @@
 import { IconProps } from './types';
 
-export const DevToIcon = ({ width = 48, ...props }: IconProps) => (
+export const DevToIcon = ({ width, ...props }: IconProps) => (
   <svg
     viewBox="0 0 24 24"
     height={width}
     width={width}
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
-    className="StyledIconBase-ea9ulj-0 bWRyML"
     {...props}
   >
     <title>{'DevTo icon'}</title>

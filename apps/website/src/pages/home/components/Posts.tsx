@@ -1,6 +1,5 @@
 import { IPostsAndTilsPost } from '@raulmelo/core/dist/types/domains/posts';
 import { AnimatePresence, m } from 'framer-motion';
-import tw from 'twin.macro';
 
 import { ContentTile } from '~/components/ContentTile';
 import { getPostUrl } from '~/utils/url';
@@ -24,17 +23,13 @@ type PostsProps = {
   title: string;
 };
 
-const styles = {
-  wrapper: tw`col-span-full`,
-  title: tw`mb-4 font-sans text-lg font-extrabold lg:text-xl lg:mb-8`,
-  list: tw`space-y-10`,
-};
-
 export const Posts = ({ posts, title }: PostsProps) => {
   return (
-    <section css={styles.wrapper}>
-      <h2 css={styles.title}>{title}</h2>
-      <m.ul css={styles.list}>
+    <section className="col-span-full">
+      <h2 className="mb-4 font-sans text-lg font-extrabold lg:text-xl lg:mb-8">
+        {title}
+      </h2>
+      <m.ul className="space-y-10">
         <AnimatePresence initial={false}>
           {posts
             ? posts.map((post) => (

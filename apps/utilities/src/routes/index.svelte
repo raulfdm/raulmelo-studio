@@ -5,6 +5,6 @@
 
 <style>
   a {
-    @apply shadow p-4;
+    @apply shadow p-4 block;
   }
 </style>

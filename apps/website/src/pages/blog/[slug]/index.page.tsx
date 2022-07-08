@@ -1,7 +1,6 @@
 import { domains, utils } from '@raulmelo/core';
 import { DotDivider } from '@raulmelo/ui';
 import { GetStaticPaths } from 'next';
-import React from 'react';
 
 import { PortableTextPost } from '~/components/PortableTextPost';
 

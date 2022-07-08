@@ -1,17 +1,9 @@
+import styled from '@emotion/styled';
 import { LinkedInIcon, TwitterIcon } from '@raulmelo/ui';
 import qs from 'query-string';
-import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import tw, { styled, TwStyle } from 'twin.macro';
 
 const Wrapper = styled.div``;
-
-const styles = {
-  title: tw`block mb-4 font-extrabold text-md md:text-lg lg:text-xl md:mb-6`,
-  list: tw`flex space-x-4 text-secondary`,
-  item: tw`w-6 md:w-8`,
-  itemIcon: tw`w-6 md:w-8`,
-};
 
 export const ShareContent = ({
   as,
@@ -20,13 +12,15 @@ export const ShareContent = ({
   twitter,
 }: ShareProps) => {
   return (
-    <Wrapper as={as} css={className}>
-      <span css={styles.title}>
+    <Wrapper as={as} className={className}>
+      <span className="block mb-4 font-extrabold text-md md:text-lg lg:text-xl md:mb-6">
         <FormattedMessage id="blogPost.share" />
       </span>
-      <ul css={styles.list}>
-        <li css={styles.item}>
+      <ul className="flex space-x-4 text-secondary">
+        <li className="w-6 md:w-8">
           <button
+            /* TODO: localize that */
+            title="Share on LinkedIn"
             role="link"
             onClick={() => {
               window.open(
@@ -36,12 +30,14 @@ export const ShareContent = ({
               );
             }}
           >
-            <LinkedInIcon css={styles.itemIcon} />
+            <LinkedInIcon className="w-6 md:w-8" />
           </button>
         </li>
 
-        <li css={styles.item}>
+        <li className="w-6 md:w-8">
           <button
+            /* TODO: localize that */
+            title="Share on Twitter"
             role="link"
             onClick={() => {
               window.open(
@@ -51,7 +47,7 @@ export const ShareContent = ({
               );
             }}
           >
-            <TwitterIcon css={styles.itemIcon} />
+            <TwitterIcon className="w-6 md:w-8" />
           </button>
         </li>
       </ul>
@@ -80,7 +76,7 @@ const linkGenerator = {
 
 type ShareProps = {
   as?: React.ElementType;
-  className?: string | TwStyle;
+  className?: string;
   linkedIn: {
     title: string;
     summary?: string;

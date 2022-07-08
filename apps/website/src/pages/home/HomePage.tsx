@@ -2,9 +2,7 @@ import { IPostsAndTilsApi } from '@raulmelo/core/dist/types/domains/posts';
 import { ArrowRightIcon } from '@raulmelo/ui';
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';
-import React from 'react';
 import { defineMessages } from 'react-intl';
-import tw from 'twin.macro';
 
 import { PostBasic } from '~/components/PostBasic';
 import { useLocalization } from '~/hooks/useLocalization';
@@ -29,16 +27,6 @@ const messages = defineMessages({
     id: 'home.tils.checkAll',
   },
 });
-
-const styles = {
-  divider: tw`mb-8 col-span-full md:col-start-2 md:col-end-6 lg:col-start-3 lg:col-end-10`,
-  postWrapper: tw`mb-6 col-span-full`,
-  postTitle: tw`mb-4 font-sans text-lg font-extrabold lg:text-xl lg:mb-6`,
-  postList: tw`grid grid-cols-1 gap-6 ipad-pro:grid-cols-2`,
-  postCard: tw`p-6 transition-all bg-white rounded-sm shadow dark:bg-blue-800 hover:shadow-lg dark:hover:bg-blue-700`,
-  postCardLink: tw`inline-flex mt-6 text-lg underline cursor-pointer text-secondary`,
-  linkIcon: tw`w-6 ml-2`,
-};
 
 export const HomePage = ({ posts, tils }: IPostsAndTilsApi) => {
   const { formatMessage, locale } = useLocalization();
@@ -66,7 +54,7 @@ export const HomePage = ({ posts, tils }: IPostsAndTilsApi) => {
         }}
       />
 
-      <hr css={styles.divider} />
+      <hr className="mb-8 col-span-full md:col-start-2 md:col-end-6 lg:col-start-3 lg:col-end-10" />
       <PostSection
         title={formatMessage(messages.tilsTitle)}
         posts={tils.map((til) => ({
@@ -84,15 +72,17 @@ export const HomePage = ({ posts, tils }: IPostsAndTilsApi) => {
 
 const PostSection = ({ checkAllLink, posts, title }: PostSectionProps) => {
   return (
-    <section css={styles.postWrapper}>
-      <h2 css={styles.postTitle}>{title}</h2>
-      <ul css={styles.postList}>
+    <section className="mb-6 col-span-full">
+      <h2 className="mb-4 font-sans text-lg font-extrabold lg:text-xl lg:mb-6">
+        {title}
+      </h2>
+      <ul className="grid grid-cols-1 gap-6 ipad-pro:grid-cols-2">
         {posts.map((post) => {
           return (
             <li key={post._id}>
               <PostBasic
-                className={styles.postCard}
-                titleClassName={tw`text-xl`}
+                className="p-6 transition-all bg-white rounded-sm shadow dark:bg-blue-800 hover:shadow-lg dark:hover:bg-blue-700"
+                titleClassName="text-xl"
                 {...post}
               />
             </li>
@@ -100,9 +90,9 @@ const PostSection = ({ checkAllLink, posts, title }: PostSectionProps) => {
         })}
       </ul>
       <Link href={checkAllLink.href} passHref>
-        <a css={styles.postCardLink}>
+        <a className="inline-flex mt-6 text-lg underline cursor-pointer text-secondary">
           {checkAllLink.text}
-          <ArrowRightIcon css={styles.linkIcon} />
+          <ArrowRightIcon className="w-6 ml-2" />
         </a>
       </Link>
     </section>

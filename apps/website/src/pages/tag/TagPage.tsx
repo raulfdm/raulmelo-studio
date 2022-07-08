@@ -1,8 +1,7 @@
 import { utils } from '@raulmelo/core';
 import { NextSeo } from 'next-seo';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { defineMessages, FormattedMessage } from 'react-intl';
-import tw from 'twin.macro';
 
 import { PostBasic } from '~/components/PostBasic';
 import { useLocalization } from '~/hooks/useLocalization';
@@ -21,13 +20,6 @@ const messages = defineMessages({
     id: 'tag.title',
   },
 });
-
-const styles = {
-  pageTitle: tw`mb-4 font-sans text-xl font-extrabold col-span-full lg:text-2xl lg:mb-8`,
-  emptyParagraph: tw`text-lg col-span-full`,
-  postTitle: tw`text-xl lg:text-2xl`,
-  list: tw`pb-5 space-y-6 md:pb-10 col-span-full`,
-};
 
 export const TagPage = ({ tag, content }: TagPageProps) => {
   const { formatMessage } = useLocalization();
@@ -64,20 +56,22 @@ export const TagPage = ({ tag, content }: TagPageProps) => {
 
       <AuthorPresentation />
 
-      <h2 css={styles.pageTitle}>{title}</h2>
+      <h2 className="mb-4 font-sans text-xl font-extrabold col-span-full lg:text-2xl lg:mb-8">
+        {title}
+      </h2>
       {utils.isEmpty(content) ? (
-        <p css={styles.emptyParagraph}>
+        <p className="text-lg col-span-full">
           <FormattedMessage id="tag.empty" />
         </p>
       ) : (
-        <ul css={styles.list}>
+        <ul className="pb-5 space-y-6 md:pb-10 col-span-full">
           {content.map((c) => {
             const getUrl = c._type === 'post' ? getPostUrl : getTilUrl;
 
             return (
               <PostBasic
                 key={c._id}
-                titleClassName={styles.postTitle}
+                titleClassName="text-xl lg:text-2xl"
                 {...c}
                 url={getUrl(c.slug)}
               />

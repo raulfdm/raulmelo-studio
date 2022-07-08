@@ -1,10 +1,11 @@
-//@ts-ignore
+import classNames from 'classnames';
+
 import styles from './DotDivider.module.css';
 
 const Dot = () => (
   <div
     aria-hidden="true"
-    className={`${styles.dot} w-1.5 h-1.5 lg:w[0.475rem] lg:h[0.475rem]`}
+    className={classNames(styles.dot, 'w-1.5 h-1.5 lg:w-2 lg:h-2')}
   />
 );
 /**
