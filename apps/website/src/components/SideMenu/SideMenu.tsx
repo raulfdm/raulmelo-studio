@@ -1,6 +1,6 @@
-import { cx } from '@emotion/css';
 import { Disclosure } from '@headlessui/react';
 import { ExternalLinkIcon } from '@raulmelo/ui';
+import classNames from 'classnames';
 import { m, useAnimation } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -46,10 +46,10 @@ export const SideMenu = () => {
       <Disclosure.Panel
         static
         as={m.nav}
-        className={cx([
+        className={classNames(
           'fixed bottom-0 right-0 z-20 h-full min-w-full duration-200 transform translate-x-full',
           'bg-white top-16 dark:bg-blue-800 sm:min-w-min sm:w-full sm:max-w-xs transition-theme ease',
-        ])}
+        )}
         aria-expanded={!isClosed}
         ref={navRef}
         animate={animation}
@@ -59,7 +59,7 @@ export const SideMenu = () => {
           {links.map(({ href, active, itemLabel, newWindow }) => {
             const linkProps = {
               onClick: handleClose,
-              className: cx([
+              className: classNames([
                 'mx-5 text-xl font-black cursor-pointer sm:text-lg',
                 active &&
                   'border-b-2 sm:pl-3 sm:border-l-2 sm:border-b-0 border-secondary border-opacity-80 transition-theme',
@@ -72,7 +72,7 @@ export const SideMenu = () => {
                   <>
                     <a
                       {...linkProps}
-                      className={cx([
+                      className={classNames([
                         linkProps.className,
                         'relative inline-flex',
                       ])}
@@ -98,8 +98,8 @@ export const SideMenu = () => {
         static
         as={m.div}
         aria-hidden={isClosed}
-        className={cx(
-          'absolute inset-0 top-16 z-10 opacity-0 background[rgba(0,0,0,0.7)]',
+        className={classNames(
+          'absolute inset-0 top-16 z-10',
           isClosed ? 'pointer-events-none' : 'pointer-events-auto',
         )}
         onClick={handleClose}
@@ -107,8 +107,9 @@ export const SideMenu = () => {
         transition={{ ease: 'easeOut', duration: 0.2 }}
         variants={{
           open: {
-            opacity: 1,
+            opacity: 0.7,
             display: 'block',
+            backgroundColor: 'black',
           },
           closed: {
             opacity: 0,

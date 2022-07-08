@@ -1,4 +1,5 @@
-import { css, cx } from '@emotion/css';
+import { css } from '@emotion/css';
+import classNames from 'classnames';
 
 const tagsStyle = css`
   > * {
@@ -13,7 +14,11 @@ export function Tags({
   return (
     <ul
       {...props}
-      className={cx('flex flex-row flex-wrap text-base', tagsStyle, className)}
+      className={classNames(
+        'flex flex-row flex-wrap text-base',
+        tagsStyle,
+        className,
+      )}
     />
   );
 }
@@ -25,7 +30,7 @@ export function Tag({
   return (
     <li
       {...props}
-      className={cx(
+      className={classNames(
         'font-sans text-center list-none cursor-default  hover:font-bold text-secondary',
         className,
       )}

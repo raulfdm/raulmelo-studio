@@ -1,4 +1,4 @@
-import { cx } from '@emotion/css';
+import classNames from 'classnames';
 import { NextSeo } from 'next-seo';
 import { defineMessage, FormattedMessage } from 'react-intl';
 
@@ -9,7 +9,7 @@ const pageTitleMessage = defineMessage({
   description: 'page title',
 });
 
-const baseParagraphClasses = cx(
+const baseParagraphClasses = classNames(
   'col-span-full md:col-start-1 lg:col-start-3 lg:col-end-11',
 );
 
@@ -20,18 +20,18 @@ const Error = () => {
     <>
       <NextSeo title={formatMessage(pageTitleMessage)} nofollow noindex />
 
-      <h1 className="font-black text-center col-span-full font-size[3.5rem] md:font-size[4.5rem] lg:font-size[6rem]">
+      <h1 className="text-5xl font-black text-center col-span-full md:text-7xl lg:text-8xl">
         Oops! <span className="text-base">404</span>
       </h1>
       <p
-        className={cx([
+        className={classNames([
           baseParagraphClasses,
           'mt-3 text-2xl font-extrabold md:text-3xl',
         ])}
       >
         <FormattedMessage id="404.subtitle" />
       </p>
-      <p className={cx([baseParagraphClasses, 'mt-5 text-lg'])}>
+      <p className={classNames([baseParagraphClasses, 'mt-5 text-lg'])}>
         <FormattedMessage id="404.description" />
       </p>
     </>

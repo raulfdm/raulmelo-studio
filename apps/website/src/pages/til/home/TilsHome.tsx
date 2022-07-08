@@ -1,5 +1,5 @@
-import { cx } from '@emotion/css';
 import { ITilsTil } from '@raulmelo/core/dist/types/domains/posts/queryTils/types';
+import classNames from 'classnames';
 import { NextSeo } from 'next-seo';
 import { FormattedMessage } from 'react-intl';
 
@@ -12,7 +12,7 @@ type TilsHomeProps = {
   tils: ITilsTil[];
 };
 
-const baseColClass = cx('col-span-full lg:col-span-10');
+const baseColClass = classNames('col-span-full lg:col-span-10');
 
 export const TilsHome = ({ tils }: TilsHomeProps) => {
   const { formatMessage } = useLocalization();
@@ -32,11 +32,11 @@ export const TilsHome = ({ tils }: TilsHomeProps) => {
         </p>
       </header>
 
-      <p className={cx([baseColClass, 'my-4 text-md md:text-lg'])}>
+      <p className={classNames([baseColClass, 'my-4 text-md md:text-lg'])}>
         <FormattedMessage id="tilHome.description" />
       </p>
 
-      <section className={cx([baseColClass, 'mt-5'])}>
+      <section className={classNames([baseColClass, 'mt-5'])}>
         {tils.length > 0 ? (
           <ul className="space-y-8">
             {tils.map((til) => (

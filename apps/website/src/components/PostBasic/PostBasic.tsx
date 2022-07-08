@@ -1,5 +1,5 @@
-import { cx } from '@emotion/css';
 import styled from '@emotion/styled';
+import classNames from 'classnames';
 import Link from 'next/link';
 import { FormattedDate } from 'react-intl';
 
@@ -23,7 +23,9 @@ export const PostBasic = ({
     <Wrapper as={as} className={className}>
       <Link href={url} passHref>
         <a className="relative inline-block cursor-pointer">
-          <h3 className={cx(['font-extrabold', titleClassName])}>{title}</h3>
+          <h3 className={classNames(['font-extrabold', titleClassName])}>
+            {title}
+          </h3>
         </a>
       </Link>
 
@@ -40,12 +42,12 @@ export const PostBasic = ({
         </span>
         {_type ? (
           <span
-            className={cx(
+            className={classNames(
               {
                 'bg-indigo-600': _type === 'post',
                 'bg-yellow-600': _type === 'til',
               },
-              'px-2 rounded-sm min-width[40px] text-center font-bold text-gray-50 uppercase',
+              'px-2 rounded-sm min-w-[40px] text-center font-bold text-gray-50 uppercase',
             )}
           >
             {_type}

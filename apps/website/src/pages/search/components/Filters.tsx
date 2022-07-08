@@ -1,5 +1,5 @@
-import { cx } from '@emotion/css';
 import { utils } from '@raulmelo/core';
+import classNames from 'classnames';
 import { connectRefinementList } from 'react-instantsearch-dom';
 
 import { useLocalization } from '~/hooks/useLocalization';
@@ -87,7 +87,7 @@ function GenericRefinement({
             <li key={item.label}>
               <label className="flex items-center space-x-2 cursor-pointer">
                 <input
-                  className={cx(
+                  className={classNames(
                     'rounded checked:bg-secondary hover:checked:bg-secondary focus:checked:bg-secondary focus:checked:ring-secondary focus:ring-secondary',
                     styles.Checkbox,
                   )}

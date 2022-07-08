@@ -60,7 +60,7 @@ export const LanguageSwitch = () => {
       >
         <div
           ref={setArrowElement as never}
-          className="bg-white dark:bg-blue-800 z-20 w-4 h-4 border-t border-l rounded-sm dark:border-gray-400 top[-8px]"
+          className="z-20 w-4 h-4 bg-white border-t border-l rounded-sm dark:bg-blue-800 dark:border-gray-400 -top-2"
           style={{
             ...popperStyles.arrow,
             transform: `${popperStyles.arrow.transform} rotate(45deg)`,

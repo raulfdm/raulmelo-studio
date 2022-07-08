@@ -1,5 +1,5 @@
-import { cx } from '@emotion/css';
 import { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
+import classNames from 'classnames';
 import Image from 'next/image';
 import { defineMessages, FormattedMessage } from 'react-intl';
 
@@ -69,7 +69,7 @@ function UnsplashCaption({ authorName, url }: UnsplashCaptionProps) {
 function Caption({ className, ...props }: React.ComponentPropsWithoutRef<'p'>) {
   return (
     <p
-      className={cx(
+      className={classNames(
         'text-center text-base lg:text-md dark:text-gray-300 mt-4',
         className,
       )}

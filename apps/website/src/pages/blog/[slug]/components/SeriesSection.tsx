@@ -1,7 +1,7 @@
-import { cx } from '@emotion/css';
 import type { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
 import { ChevronDownIcon } from '@raulmelo/ui';
 import { useMachine } from '@xstate/react';
+import classNames from 'classnames';
 import { m } from 'framer-motion';
 import Link from 'next/link';
 import { FormattedMessage } from 'react-intl';
@@ -27,7 +27,7 @@ export const SeriesSection = ({
       >
         <div>
           <div
-            className={cx([
+            className={classNames([
               'flex content-between cursor-pointer px-4 py-3',
               'text-lg font-bold md:text-xl duration-300 transition-spacing',
               isExpanded
@@ -67,7 +67,7 @@ export const SeriesSection = ({
               return (
                 <m.li
                   layout
-                  className={cx(
+                  className={classNames(
                     'cursor-pointer m-0 font-sans text-sm md:text-base',
                     {
                       'bg-green-400 hover:bg-green-400 hover:bg-opacity-50':
@@ -93,7 +93,7 @@ export const SeriesSection = ({
 
           <div
             onClick={toggleSection}
-            className={cx([
+            className={classNames([
               'flex content-between cursor-pointer px-4 py-3',
               'font-sans text-base md:text-md duration-300 transition-spacing',
               isExpanded

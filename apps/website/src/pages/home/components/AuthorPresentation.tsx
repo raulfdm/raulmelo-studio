@@ -1,4 +1,3 @@
-import { cx } from '@emotion/css';
 import {
   DevToIcon,
   GithubIcon,
@@ -15,7 +14,7 @@ import { getSocial } from '~/utils/seo';
 
 const message = defineMessage({ id: 'authorPresentation.profileImageAlt' });
 
-const iconClasses = cx('w-6 lg:w-8');
+const iconClasses = 'w-6 lg:w-8';
 
 export const AuthorPresentation = () => {
   const { locale, formatMessage } = useLocalization();
@@ -28,7 +27,7 @@ export const AuthorPresentation = () => {
 
   return (
     <header className="flex flex-col-reverse justify-between md:flex-row mb-7 col-span-full">
-      <aside className="flex flex-col w-full md:max-width[75%] mt-4 md:mt-0">
+      <aside className="flex flex-col w-full md:max-w-[75%] mt-4 md:mt-0">
         <h1
           className="font-sans text-2xl font-black md:text-3xl xl:text-4xl"
           data-testid="author__name"
