@@ -1,10 +1,10 @@
+import { cx } from '@emotion/css';
 import type { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
 import { ChevronDownIcon } from '@raulmelo/ui';
 import { useMachine } from '@xstate/react';
 import { m } from 'framer-motion';
 import Link from 'next/link';
 import { FormattedMessage } from 'react-intl';
-import tw, { css } from 'twin.macro';
 import { createMachine } from 'xstate';
 
 // TODO: review this html markup. It seems having ugly/bad HTML structure.
@@ -18,19 +18,29 @@ export const SeriesSection = ({
 
   const toggleSection = () => send('TOGGLE');
 
+  const isExpanded = current.matches('expanded');
   return (
     <section>
-      <div css={styles.wrapper} data-testid="series-menu">
+      <div
+        className="relative my-8 duration-200 bg-white rounded shadow dark:bg-blue-800 transition-theme ease"
+        data-testid="series-menu"
+      >
         <div>
           <div
-            css={styles.header.wrapper(currentState)}
+            className={cx([
+              'flex content-between cursor-pointer px-4 py-3',
+              'text-lg font-bold md:text-xl duration-300 transition-spacing',
+              isExpanded
+                ? 'pb-2.5 border-b border-gray-100 dark:border-gray-600'
+                : 'pb-0 border-none',
+            ])}
             onClick={toggleSection}
             data-testid="expand-button"
             role="button"
           >
-            <span css={styles.header.title}>{name}</span>
+            <span className="flex-1">{name}</span>
             <m.button
-              css={styles.header.button}
+              className="flex items-center justify-center w-7 h-7"
               initial="collapsed"
               animate={currentState}
               variants={{
@@ -38,13 +48,13 @@ export const SeriesSection = ({
                 collapsed: { rotate: '180deg' },
               }}
             >
-              <ChevronDownIcon css={styles.header.icon} />
+              <ChevronDownIcon className="w-5" />
             </m.button>
           </div>
 
           <m.ul
             layout
-            css={styles.list}
+            className="pb-0 m-0"
             initial={false}
             animate={currentState}
             variants={variants.list}
@@ -57,14 +67,20 @@ export const SeriesSection = ({
               return (
                 <m.li
                   layout
-                  css={styles.item(isCurrentPost)}
+                  className={cx(
+                    'cursor-pointer m-0 font-sans text-sm md:text-base',
+                    {
+                      'bg-green-400 hover:bg-green-400 hover:bg-opacity-50':
+                        isCurrentPost,
+                    },
+                  )}
                   key={_id}
                   data-testid={`post_${_id}`}
                   variants={variants.item}
                 >
                   <Link href={slug} passHref>
                     <a
-                      css={styles.link}
+                      className="block px-4 py-3 no-underline"
                       aria-hidden={currentState === 'collapsed'}
                     >
                       {seriesCopy}
@@ -77,7 +93,13 @@ export const SeriesSection = ({
 
           <div
             onClick={toggleSection}
-            css={styles.footer(currentState)}
+            className={cx([
+              'flex content-between cursor-pointer px-4 py-3',
+              'font-sans text-base md:text-md duration-300 transition-spacing',
+              isExpanded
+                ? 'pt-2.5 border-t border-gray-100 dark:border-gray-600'
+                : 'pt-0 border-none',
+            ])}
             role="button"
           >
             <span>
@@ -166,49 +188,3 @@ const seriesMachine = createMachine({
     },
   },
 });
-
-const styles = {
-  wrapper: css`
-    ${tw`relative`};
-    ${tw`bg-white dark:bg-blue-800`};
-    ${tw`rounded`};
-    ${tw`shadow`};
-    ${tw`my-8`};
-    ${tw`duration-200 transition-theme ease`};
-  `,
-  list: tw`pb-0 m-0`,
-  item: (isCurrentPost: boolean) => css`
-    ${tw`cursor-pointer`};
-    ${tw`m-0`};
-    ${tw`font-sans text-sm md:text-base`};
-    ${isCurrentPost
-      ? tw`bg-green-400`
-      : tw`hover:bg-green-400 hover:bg-opacity-50`};
-  `,
-  link: tw`block px-4 py-3 no-underline`,
-  header: {
-    wrapper: (currentState: SeriesMachineState) => css`
-      ${tw`flex content-between`};
-      ${tw`cursor-pointer`};
-      ${tw`px-4 py-3`};
-      ${tw`text-lg font-bold md:text-xl`};
-      ${tw`duration-300 transition-spacing`};
-      ${currentState === 'expanded'
-        ? tw`pb-2.5 border-b border-gray-100 dark:border-gray-600`
-        : `pb-0 border-none`}
-    `,
-    title: tw`flex-1`,
-    button: tw`flex items-center justify-center w-7 h-7`,
-    icon: tw`w-5`,
-  },
-  footer: (currentState: SeriesMachineState) => css`
-    ${tw`flex content-between`};
-    ${tw`cursor-pointer`};
-    ${tw`px-4 py-3`};
-    ${tw`font-sans text-base md:text-md`};
-    ${tw`duration-300 transition-spacing`};
-    ${currentState === 'expanded'
-      ? tw`pt-2.5 border-t border-gray-100 dark:border-gray-600`
-      : tw`pt-0 border-none`}
-  `,
-};

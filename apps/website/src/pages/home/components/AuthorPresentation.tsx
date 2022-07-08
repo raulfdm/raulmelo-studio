@@ -1,3 +1,4 @@
+import { cx } from '@emotion/css';
 import {
   DevToIcon,
   GithubIcon,
@@ -7,7 +8,6 @@ import {
 } from '@raulmelo/ui';
 import Image from 'next/image';
 import { defineMessage } from 'react-intl';
-import tw from 'twin.macro';
 
 import { useLocalization } from '~/hooks/useLocalization';
 import siteData from '~/site-data';
@@ -15,20 +15,7 @@ import { getSocial } from '~/utils/seo';
 
 const message = defineMessage({ id: 'authorPresentation.profileImageAlt' });
 
-const styles = {
-  header: tw`flex flex-col-reverse justify-between md:flex-row mb-7 col-span-full`,
-  figure: tw`relative w-20 h-20 rounded md:w-32 md:h-32`,
-  image: tw`object-cover rounded-full`,
-  content: {
-    wrapper: tw`flex flex-col w-full md:max-width[75%] mt-4 md:mt-0`,
-    title: tw`font-sans text-2xl font-black md:text-3xl xl:text-4xl`,
-    description: tw`text-md md:text-md xl:text-lg mt-2.5`,
-    icons: {
-      wrapper: tw`flex items-center flex-1 pt-5 space-x-4 dark:opacity-90 text-secondary`,
-      icon: tw`w-6 lg:w-8`,
-    },
-  },
-};
+const iconClasses = cx('w-6 lg:w-8');
 
 export const AuthorPresentation = () => {
   const { locale, formatMessage } = useLocalization();
@@ -40,35 +27,41 @@ export const AuthorPresentation = () => {
   const medium = getSocial('medium');
 
   return (
-    <header css={styles.header}>
-      <aside css={styles.content.wrapper}>
-        <h1 css={styles.content.title} data-testid="author__name">
+    <header className="flex flex-col-reverse justify-between md:flex-row mb-7 col-span-full">
+      <aside className="flex flex-col w-full md:max-width[75%] mt-4 md:mt-0">
+        <h1
+          className="font-sans text-2xl font-black md:text-3xl xl:text-4xl"
+          data-testid="author__name"
+        >
           {siteData.personalInformation.fullName}
         </h1>
-        <p css={styles.content.description} data-testid="author__description">
+        <p
+          className="text-md md:text-md xl:text-lg mt-2.5"
+          data-testid="author__description"
+        >
           {defaultSeo?.description}
         </p>
-        <section css={styles.content.icons.wrapper}>
+        <section className="flex items-center flex-1 pt-5 space-x-4 dark:opacity-90 text-secondary">
           <a href={devTo.url} data-testid="author__linkedInUrl">
-            <DevToIcon css={styles.content.icons.icon} />
+            <DevToIcon className={iconClasses} />
           </a>
           <a href={medium.url} data-testid="author__linkedInUrl">
-            <MediumIcon css={styles.content.icons.icon} />
+            <MediumIcon className={iconClasses} />
           </a>
           <a href={github.url} data-testid="author__githubUrl">
-            <GithubIcon css={styles.content.icons.icon} />
+            <GithubIcon className={iconClasses} />
           </a>
           <a href={twitter.url} data-testid="author__twitterUrl">
-            <TwitterIcon css={styles.content.icons.icon} />
+            <TwitterIcon className={iconClasses} />
           </a>
           <a href={linkedIn.url} data-testid="author__linkedInUrl">
-            <LinkedInIcon css={styles.content.icons.icon} />
+            <LinkedInIcon className={iconClasses} />
           </a>
         </section>
       </aside>
-      <figure css={styles.figure}>
+      <figure className="relative w-20 h-20 rounded md:w-32 md:h-32">
         <Image
-          css={styles.image}
+          className="object-cover rounded-full"
           src={siteData.personalInformation.profilePic.url}
           layout="fill"
           alt={formatMessage(message)}

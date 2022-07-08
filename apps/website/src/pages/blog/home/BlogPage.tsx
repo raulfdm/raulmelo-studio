@@ -1,5 +1,3 @@
-import 'twin.macro';
-
 import { IBlogPagePost } from '@raulmelo/core/dist/types/domains/posts';
 import { NextSeo } from 'next-seo';
 import React from 'react';
@@ -31,10 +29,10 @@ export const Blog = ({ posts }: BlogProps) => {
         description={formatMessage({ id: 'blog.description' })}
       />
 
-      <header tw="col-span-full lg:col-span-10">
-        <h1 tw="text-3xl md:text-4xl font-extrabold">Blog</h1>
+      <header className="col-span-full lg:col-span-10">
+        <h1 className="text-3xl font-extrabold md:text-4xl">Blog</h1>
 
-        <p tw="col-span-full lg:col-span-10 text-md md:text-lg my-4">
+        <p className="my-4 col-span-full lg:col-span-10 text-md md:text-lg">
           <FormattedMessage id="blog.description" />
         </p>
       </header>

@@ -1,19 +1,6 @@
 import { extractCritical } from '@emotion/server';
 import { domAnimation, LazyMotion } from 'framer-motion';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
-import tw, { css } from 'twin.macro';
-
-const styles = {
-  /* padding bottom ensures the same spacing for all spacing*/
-  body: css`
-    ${tw`min-h-screen`};
-    ${tw`bg-white dark:bg-blue-900`};
-    ${tw`text-primary`};
-    ${tw`duration-200 transition-theme ease`};
-    ${tw`relative`};
-    ${tw`pb-12 md:pb-16`};
-  `,
-};
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: any) {
@@ -82,7 +69,7 @@ export default class MyDocument extends Document {
             }}
           ></script>
         </Head>
-        <body css={styles.body}>
+        <body className="relative min-h-screen pb-12 duration-200 bg-white dark:bg-blue-900 text-primary transition-theme ease md:pb-16">
           <LazyMotion features={domAnimation} strict>
             <Main />
           </LazyMotion>
