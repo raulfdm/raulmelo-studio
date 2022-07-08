@@ -13,6 +13,7 @@ import { useLocalization } from '~/hooks/useLocalization';
 
 export const SideMenu = () => {
   const { sideMenu } = useApp();
+
   const { state, handleClose } = sideMenu;
   const links = useLinks();
   const navRef = useRef(null);
@@ -40,6 +41,8 @@ export const SideMenu = () => {
   useEffect(() => {
     sequence();
   }, [isClosed]);
+
+  useCloseSideMenuOnRouteChange(handleClose);
 
   return (
     <Disclosure>
@@ -109,7 +112,7 @@ export const SideMenu = () => {
           open: {
             opacity: 0.7,
             display: 'block',
-            backgroundColor: 'black',
+            backgroundColor: 'rgba(0,0,0)',
           },
           closed: {
             opacity: 0,
@@ -165,4 +168,18 @@ function useLinks() {
       })),
     [locale, asPath],
   );
+}
+
+function useCloseSideMenuOnRouteChange(handler: () => void) {
+  const { events } = useRouter();
+
+  useEffect(() => {
+    events.on('routeChangeComplete', handler);
+
+    return () => {
+      events.off('routeChangeComplete', handler);
+    };
+  }, []);
+
+  return null;
 }
