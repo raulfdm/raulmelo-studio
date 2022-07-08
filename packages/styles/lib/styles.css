@@ -3,18 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --color-black: #2c2c2c;
-    --color-primary: var(--color-black);
-    --color-secondary: #be185d;
-
-    --color-theme-light-primary: rgb(255, 255, 255);
-    --color-theme-dark-primary: rgb(15, 23, 42);
-    --color-theme-dark-secondary: rgba(30, 41, 59, 1);
-
-    --top-menu-height: 4rem;
-  }
-
   * {
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -25,6 +13,16 @@
     @apply font-sans;
     @apply text-primary;
     @apply h-full;
+
+    --color-black: #2c2c2c;
+    --color-primary: var(--color-black);
+    --color-secondary: #be185d;
+
+    --color-theme-light-primary: rgb(255, 255, 255);
+    --color-theme-dark-primary: rgb(15, 23, 42);
+    --color-theme-dark-secondary: rgba(30, 41, 59, 1);
+
+    --top-menu-height: 4rem;
   }
 
   html.dark {
@@ -39,18 +37,15 @@
   }
 
   .prose-container blockquote {
-    color: theme('colors.primary') !important;
+    @apply text-primary;
   }
 
   .prose-container code a {
-    color: theme('colors.secondary') !important;
+    @apply text-secondary;
   }
-}
 
-@layer utilities {
-  button,
-  * {
-    @apply focus:outline-black dark:focus:outline-white;
+  *:focus {
+    @apply focus:outline-black dark:focus:outline-white outline-dotted outline-2;
   }
 }
 
