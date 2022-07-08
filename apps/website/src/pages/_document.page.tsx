@@ -1,25 +1,7 @@
-import { extractCritical } from '@emotion/server';
 import { domAnimation, LazyMotion } from 'framer-motion';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 export default class MyDocument extends Document {
-  static async getInitialProps(ctx: any) {
-    const initialProps = await Document.getInitialProps(ctx);
-    const critical = extractCritical(initialProps.html);
-    initialProps.html = critical.html;
-
-    initialProps.styles = [
-      initialProps.styles,
-      <style
-        key="criticalCss"
-        data-emotion-css={critical.ids.join(' ')}
-        dangerouslySetInnerHTML={{ __html: critical.css }}
-      />,
-    ];
-
-    return initialProps;
-  }
-
   render() {
     return (
       <Html>
