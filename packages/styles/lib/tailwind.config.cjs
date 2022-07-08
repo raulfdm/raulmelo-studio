@@ -21,6 +21,7 @@ module.exports = {
     extend: {
       colors: {
         blue: colors.slate,
+        green: colors.emerald,
         black: 'var(--color-black)',
         primary: 'var(--color-primary)',
         secondary: 'var(--color-secondary)',
