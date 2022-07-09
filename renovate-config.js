@@ -96,7 +96,7 @@ module.exports = {
       groupName: 'emotion',
     },
     {
-      matchPackagePatterns: [
+      matchPackageNames: [
         'eslint-config-next',
         'next',
         '@next/bundle-analyzer',
