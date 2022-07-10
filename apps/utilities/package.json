@@ -2,14 +2,14 @@
   "name": "utilities",
   "version": "0.0.1",
   "scripts": {
-    "dev": "svelte-kit dev",
-    "build": "svelte-kit build",
-    "package": "svelte-kit package",
-    "preview": "svelte-kit preview",
-    "prepare": "svelte-kit sync",
+    "postinstall": "pnpm run typegen",
+    "dev": "vite dev",
+    "build": "scripty",
+    "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "typegen": "scripty"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
@@ -21,12 +21,13 @@
     "eslint": "8.16.0",
     "eslint-plugin-svelte3": "4.0.0",
     "postcss": "8.4.14",
-    "svelte": "3.44.0",
-    "svelte-check": "2.7.1",
-    "svelte-preprocess": "4.10.6",
+    "svelte": "3.49.0",
+    "svelte-check": "2.8.0",
+    "svelte-preprocess": "4.10.7",
     "tailwindcss": "3.1.5",
     "tslib": "2.4.0",
-    "typescript": "4.7.2"
+    "typescript": "4.7.2",
+    "vite": "2.9.14"
   },
   "type": "module"
 }
