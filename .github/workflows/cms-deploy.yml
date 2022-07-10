@@ -4,9 +4,8 @@ on:
   push:
     paths:
       - 'apps/cms/**'
-      - 'config/**'
+      - 'packages/**'
       - '.github/workflows/cms-deploy.yml'
-      - package.json
 
 jobs:
   build:
