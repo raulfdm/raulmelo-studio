@@ -48,20 +48,17 @@ jobs:
       - name: Lint Projects
         run: pnpm --filter fitness-buddy run lint
 
-      - name: Vercel Setup
+      - name: Build application for Preview
         run: |
           vercel pull --yes --token=${VERCEL_API_TOKEN}
+          vercel build
         working-directory: apps/fitness-buddy
+        if: contains('refs/heads/main', github.ref) == false
         env:
+          VERCEL: true # This enables build for vercel using @sveltekit/adapter-auto
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_FITNESS }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID_MAIN }}
           VERCEL_API_TOKEN: ${{ secrets.VERCEL_API_TOKEN }}
-
-      - name: Build application
-        run: vercel build
-        working-directory: apps/fitness-buddy
-        env:
-          VERCEL: true # This enables build for vercel using @sveltekit/adapter-auto
 
       - name: Vercel Deploy - Preview
         uses: amondnet/vercel-action@v20
@@ -73,6 +70,18 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID_MAIN}} #Required
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_FITNESS}} #Required
           working-directory: apps/fitness-buddy
+
+      - name: Build application for Production
+        run: |
+          vercel pull --yes --token=${VERCEL_API_TOKEN}
+          vercel build --prod
+        working-directory: apps/fitness-buddy
+        if: contains('refs/heads/main', github.ref) == true
+        env:
+          VERCEL: true # This enables build for vercel using @sveltekit/adapter-auto
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_FITNESS }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID_MAIN }}
+          VERCEL_API_TOKEN: ${{ secrets.VERCEL_API_TOKEN }}
 
       - name: Vercel Deploy - Production
         uses: amondnet/vercel-action@v20

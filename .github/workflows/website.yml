@@ -51,7 +51,8 @@ jobs:
       - name: Test Projects
         run: pnpm --filter website run test
 
-      - name: Build application
+      - name: Build application for Preview
+        if: contains('refs/heads/main', github.ref) == false
         run: |
           vercel pull --yes --token=${VERCEL_API_TOKEN}
           vercel build
@@ -71,6 +72,17 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID_MAIN}} #Required
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_WEBSITE}} #Required
           working-directory: apps/website
+
+      - name: Build application for Production
+        if: contains('refs/heads/main', github.ref) == true
+        run: |
+          vercel pull --yes --token=${VERCEL_API_TOKEN}
+          vercel build --prod
+        working-directory: apps/website
+        env:
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_WEBSITE }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID_MAIN }}
+          VERCEL_API_TOKEN: ${{ secrets.VERCEL_API_TOKEN }}
 
       - name: Vercel Deploy - Production
         uses: amondnet/vercel-action@v20
