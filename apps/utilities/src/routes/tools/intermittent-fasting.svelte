@@ -24,39 +24,39 @@
   });
 
   $: {
-    calculateForwardValues();
-    calculateBackwardValues();
+    calculateForwardValues(forwardValue);
+    calculateBackwardValues(backwardValue);
+  }
 
-    function calculateForwardValues() {
-      if (forwardValue !== null && Boolean(forwardValue.trim())) {
-        localStorageForward.write(forwardValue);
+  function calculateBackwardValues(backwardValue: string | null) {
+    if (backwardValue !== null && Boolean(backwardValue.trim())) {
+      localStorageBackward.write(backwardValue);
 
-        forwardValues = Array.from(Array(4)).map((_, index) => {
-          const hour = 15 + index;
-          const result = dayjs(forwardValue).add(hour, 'hours').format('HH:mm');
+      backwardValues = Array.from(Array(4)).map((_, index) => {
+        const hour = 15 + index;
+        const result = dayjs(backwardValue)
+          .subtract(hour, 'hours')
+          .format('MMMM D, HH:mm');
 
-          return [hour, result];
-        });
-      } else {
-        forwardValues = [];
-      }
+        return [hour, result];
+      });
+    } else {
+      backwardValues = [];
     }
+  }
 
-    function calculateBackwardValues() {
-      if (backwardValue !== null && Boolean(backwardValue.trim())) {
-        localStorageBackward.write(backwardValue);
+  function calculateForwardValues(forwardValue: string | null) {
+    if (forwardValue !== null && Boolean(forwardValue.trim())) {
+      localStorageForward.write(forwardValue);
 
-        backwardValues = Array.from(Array(4)).map((_, index) => {
-          const hour = 15 + index;
-          const result = dayjs(backwardValue)
-            .subtract(hour, 'hours')
-            .format('MMMM D, HH:mm');
+      forwardValues = Array.from(Array(4)).map((_, index) => {
+        const hour = 15 + index;
+        const result = dayjs(forwardValue).add(hour, 'hours').format('HH:mm');
 
-          return [hour, result];
-        });
-      } else {
-        backwardValues = [];
-      }
+        return [hour, result];
+      });
+    } else {
+      forwardValues = [];
     }
   }
 </script>
