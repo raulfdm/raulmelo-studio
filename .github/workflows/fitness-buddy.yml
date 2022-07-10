@@ -5,32 +5,42 @@ on:
     paths:
       - 'apps/fitness-buddy/**'
       - '.github/workflows/fitness-buddy.yml'
-      - package.json
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Git files setup
+        uses: actions/checkout@v3
+
+      - name: Node Setup
+        uses: actions/setup-node@v3
         with:
           node-version: 16
 
-      - name: Cache pnpm modules
-        uses: actions/cache@v3
+      - uses: pnpm/action-setup@v2.2.2
+        name: Install pnpm
         with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-
+          version: 7
+          run_install: false
 
-      - uses: pnpm/action-setup@v2
-        with:
-          version: latest
-
-      - name: Installing Dependencies
+      - name: Get pnpm store directory
+        id: pnpm-cache
         run: |
-          pnpm install --frozen-lockfile --filter fitness-buddy... --filter .
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install Dependencies
+        run: |
+          pnpm install --global vercel
+          pnpm install --frozen-lockfile --shamefully-hoist
 
       - name: Test Projects
         run: pnpm --filter fitness-buddy run check
@@ -38,5 +48,39 @@ jobs:
       - name: Lint Projects
         run: pnpm --filter fitness-buddy run lint
 
-      - name: Build dependents packages
-        run: pnpm --filter "fitness-buddy..." run build
+      - name: Vercel Setup
+        run: |
+          vercel pull --yes --token=${VERCEL_API_TOKEN}
+        working-directory: apps/fitness-buddy
+        env:
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_FITNESS }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID_MAIN }}
+          VERCEL_API_TOKEN: ${{ secrets.VERCEL_API_TOKEN }}
+
+      - name: Build application
+        run: vercel build
+        working-directory: apps/fitness-buddy
+        env:
+          VERCEL: true # This enables build for vercel using @sveltekit/adapter-auto
+
+      - name: Vercel Deploy - Preview
+        uses: amondnet/vercel-action@v20
+        if: contains('refs/heads/main', github.ref) == false
+        with:
+          vercel-token: ${{ secrets.VERCEL_API_TOKEN }} # Required
+          github-token: ${{ github.token }} #Optional
+          vercel-args: --prebuilt
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID_MAIN}} #Required
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_FITNESS}} #Required
+          working-directory: apps/fitness-buddy
+
+      - name: Vercel Deploy - Production
+        uses: amondnet/vercel-action@v20
+        if: contains('refs/heads/main', github.ref) == true
+        with:
+          vercel-token: ${{ secrets.VERCEL_API_TOKEN }} # Required
+          github-token: ${{ github.token }} #Optional
+          vercel-args: '--prebuilt --prod'
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID_MAIN}} #Required
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_FITNESS}} #Required
+          working-directory: apps/fitness-buddy

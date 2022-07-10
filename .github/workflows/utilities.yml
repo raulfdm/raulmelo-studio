@@ -1,10 +1,10 @@
-name: Website
+name: Website - Utilities
 
 on:
   push:
     paths:
-      - 'apps/website/**'
-      - '.github/workflows/website.yml'
+      - 'apps/utilities/**'
+      - '.github/workflows/utilities.yml'
 
 jobs:
   build:
@@ -39,27 +39,29 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pnpm install --frozen-lockfile --shamefully-hoist
           pnpm install --global vercel
-
-      - name: Build dependent packages
-        run: pnpm --filter "website^..." run build
-
-      - name: Lint Projects
-        run: pnpm --filter website run lint
+          pnpm install --frozen-lockfile --shamefully-hoist
 
       - name: Test Projects
-        run: pnpm --filter website run test
+        run: pnpm --filter utilities run check
 
-      - name: Build application
+      - name: Lint Projects
+        run: pnpm --filter utilities run lint
+
+      - name: Vercel Setup
         run: |
           vercel pull --yes --token=${VERCEL_API_TOKEN}
-          vercel build
-        working-directory: apps/website
+        working-directory: apps/utilities
         env:
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_WEBSITE }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_UTILITIES }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID_MAIN }}
           VERCEL_API_TOKEN: ${{ secrets.VERCEL_API_TOKEN }}
+
+      - name: Build application
+        run: vercel build
+        working-directory: apps/utilities
+        env:
+          VERCEL: true # This enables build for vercel using @sveltekit/adapter-auto
 
       - name: Vercel Deploy - Preview
         uses: amondnet/vercel-action@v20
@@ -69,8 +71,8 @@ jobs:
           github-token: ${{ github.token }} #Optional
           vercel-args: --prebuilt
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID_MAIN}} #Required
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_WEBSITE}} #Required
-          working-directory: apps/website
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_UTILITIES}} #Required
+          working-directory: apps/utilities
 
       - name: Vercel Deploy - Production
         uses: amondnet/vercel-action@v20
@@ -80,5 +82,5 @@ jobs:
           github-token: ${{ github.token }} #Optional
           vercel-args: '--prebuilt --prod'
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID_MAIN}} #Required
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_WEBSITE}} #Required
-          working-directory: apps/website
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_UTILITIES}} #Required
+          working-directory: apps/utilities
