@@ -17,9 +17,9 @@ on:
 jobs:
   renovate:
     environment: Raul Melo
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v32.109.0
