@@ -19,10 +19,10 @@ jobs:
     environment: Raul Melo
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@latest
+      - uses: actions/checkout@3
 
       - name: Self-hosted Renovate
-        uses: renovatebot/github-action@latest
+        uses: renovatebot/github-action@32.109.0
         with:
           configurationFile: renovate-config.js
           token: ${{ secrets.RENOVATE_TOKEN }}
