@@ -11,7 +11,8 @@
     "start": "scripty",
     "test": "scripty",
     "generateRss": "scripty",
-    "shouldBuild": "scripty"
+    "shouldBuild": "scripty",
+    "generate-vercel": "scripty"
   },
   "dependencies": {
     "@emotion/css": "11.9.0",
@@ -20,9 +21,10 @@
     "@headlessui/react": "1.6.6",
     "@popperjs/core": "2.11.5",
     "@portabletext/react": "1.0.6",
-    "@raulmelo/core": "*",
-    "@raulmelo/styles": "*",
-    "@raulmelo/ui": "*",
+    "@raulmelo/core": "workspace:*",
+    "@raulmelo/styles": "workspace:*",
+    "@raulmelo/ui": "workspace:*",
+    "@raulmelo/vercel-utils": "workspace:*",
     "@xstate/react": "3.0.0",
     "algoliasearch": "4.13.1",
     "classnames": "2.3.1",

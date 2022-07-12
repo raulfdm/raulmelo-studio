@@ -55,13 +55,14 @@ jobs:
       - name: Build application for Preview
         if: contains('refs/heads/main', github.ref) == false
         run: |
-          vercel pull --yes --token=${VERCEL_API_TOKEN}
+          pnpm --filter website run generate-vercel
           vercel build
         working-directory: apps/website
         env:
+          VERCEL: true
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_WEBSITE }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID_MAIN }}
-          VERCEL_API_TOKEN: ${{ secrets.VERCEL_API_TOKEN }}
+          ENVIRONMENT: preview
 
       - name: Vercel Deploy - Preview
         uses: amondnet/vercel-action@v20
@@ -77,13 +78,14 @@ jobs:
       - name: Build application for Production
         if: contains('refs/heads/main', github.ref) == true
         run: |
-          vercel pull --yes --token=${VERCEL_API_TOKEN}
+          pnpm --filter website run generate-vercel
           vercel build --prod
         working-directory: apps/website
         env:
+          VERCEL: true
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_WEBSITE }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID_MAIN }}
-          VERCEL_API_TOKEN: ${{ secrets.VERCEL_API_TOKEN }}
+          ENVIRONMENT: production
 
       - name: Vercel Deploy - Production
         uses: amondnet/vercel-action@v20
