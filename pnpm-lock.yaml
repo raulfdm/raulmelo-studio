@@ -159,6 +159,7 @@ importers:
 
   apps/fitness-buddy:
     specifiers:
+      '@raulmelo/vercel-utils': workspace:*
       '@sanity/client': 3.3.2
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
@@ -185,6 +186,7 @@ importers:
       groq: 2.29.3
       xstate: 4.32.1
     devDependencies:
+      '@raulmelo/vercel-utils': link:../../packages/vercel-utils
       '@sveltejs/adapter-auto': 1.0.0-next.55
       '@sveltejs/kit': 1.0.0-next.367_svelte@3.49.0+vite@2.9.14
       '@tailwindcss/aspect-ratio': 0.4.0_tailwindcss@3.1.5
@@ -217,6 +219,7 @@ importers:
 
   apps/utilities:
     specifiers:
+      '@raulmelo/vercel-utils': workspace:*
       '@sveltejs/adapter-auto': next
       '@sveltejs/kit': next
       '@typescript-eslint/eslint-plugin': 5.27.0
@@ -234,6 +237,7 @@ importers:
       typescript: 4.7.2
       vite: 2.9.14
     devDependencies:
+      '@raulmelo/vercel-utils': link:../../packages/vercel-utils
       '@sveltejs/adapter-auto': 1.0.0-next.55
       '@sveltejs/kit': 1.0.0-next.367_svelte@3.49.0+vite@2.9.14
       '@typescript-eslint/eslint-plugin': 5.27.0_dszb5tb7atwkjjijmmov4qhi7i
@@ -262,9 +266,10 @@ importers:
       '@next/bundle-analyzer': 12.2.2
       '@popperjs/core': 2.11.5
       '@portabletext/react': 1.0.6
-      '@raulmelo/core': '*'
-      '@raulmelo/styles': '*'
-      '@raulmelo/ui': '*'
+      '@raulmelo/core': workspace:*
+      '@raulmelo/styles': workspace:*
+      '@raulmelo/ui': workspace:*
+      '@raulmelo/vercel-utils': workspace:*
       '@testing-library/jest-dom': 5.16.4
       '@testing-library/react': 13.3.0
       '@types/debounce-promise': 3.1.4
@@ -313,6 +318,7 @@ importers:
       '@raulmelo/core': link:../../packages/core
       '@raulmelo/styles': link:../../packages/styles
       '@raulmelo/ui': link:../../packages/ui
+      '@raulmelo/vercel-utils': link:../../packages/vercel-utils
       '@xstate/react': 3.0.0_qkj3h26yqjpoza3bh3zse7k4ye
       algoliasearch: 4.13.1
       classnames: 2.3.1
@@ -443,6 +449,9 @@ importers:
       vite: 2.9.14
       webpack: 5.72.1
       xstate: 4.32.1
+
+  packages/vercel-utils:
+    specifiers: {}
 
 packages:
 
