@@ -9,9 +9,11 @@
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "eslint .",
-    "typegen": "scripty"
+    "typegen": "scripty",
+    "generate-vercel": "scripty"
   },
   "devDependencies": {
+    "@raulmelo/vercel-utils": "workspace:*",
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
     "@typescript-eslint/eslint-plugin": "5.27.0",
