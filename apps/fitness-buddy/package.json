@@ -11,7 +11,8 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "scripty",
     "format": "scripty",
-    "typegen": "scripty"
+    "typegen": "scripty",
+    "generate-vercel": "scripty"
   },
   "dependencies": {
     "@sanity/client": "3.3.2",
@@ -21,6 +22,7 @@
     "xstate": "4.32.1"
   },
   "devDependencies": {
+    "@raulmelo/vercel-utils": "workspace:*",
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
     "@tailwindcss/aspect-ratio": "0.4.0",
