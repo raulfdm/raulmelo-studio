@@ -75,7 +75,7 @@ jobs:
         run: |
           pnpm --filter utilities run generate-vercel
           vercel build
-        if: contains('refs/heads/main', github.ref) == false
+        if: contains('refs/heads/main', github.ref) == true
         working-directory: apps/utilities
         env:
           VERCEL: true # This enables build for vercel using @sveltekit/adapter-auto
