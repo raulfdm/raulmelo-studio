@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Git files setup
         uses: actions/checkout@v3
@@ -38,58 +38,10 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install Dependencies
-        run: |
-          pnpm install --global vercel
-          pnpm install --frozen-lockfile --shamefully-hoist
+        run: pnpm install --frozen-lockfile
 
       - name: Test Projects
         run: pnpm --filter utilities run check
 
       - name: Lint Projects
         run: pnpm --filter utilities run lint
-
-      - name: Build application for Preview
-        run: |
-          pnpm --filter utilities run generate-vercel
-          vercel build
-        if: contains('refs/heads/main', github.ref) == false
-        working-directory: apps/utilities
-        env:
-          VERCEL: true # This enables build for vercel using @sveltekit/adapter-auto
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_UTILITIES }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID_MAIN }}
-          ENVIRONMENT: preview
-
-      - name: Vercel Deploy - Preview
-        uses: amondnet/vercel-action@v25
-        if: contains('refs/heads/main', github.ref) == false
-        with:
-          vercel-token: ${{ secrets.VERCEL_API_TOKEN }} # Required
-          github-token: ${{ github.token }} #Optional
-          vercel-args: --prebuilt
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID_MAIN}} #Required
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_UTILITIES}} #Required
-          working-directory: apps/utilities
-
-      - name: Build application for Production
-        run: |
-          pnpm --filter utilities run generate-vercel
-          vercel build
-        if: contains('refs/heads/main', github.ref) == true
-        working-directory: apps/utilities
-        env:
-          VERCEL: true # This enables build for vercel using @sveltekit/adapter-auto
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_UTILITIES }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID_MAIN }}
-          ENVIRONMENT: production
-
-      - name: Vercel Deploy - Production
-        uses: amondnet/vercel-action@v25
-        if: contains('refs/heads/main', github.ref) == true
-        with:
-          vercel-token: ${{ secrets.VERCEL_API_TOKEN }} # Required
-          github-token: ${{ github.token }} #Optional
-          vercel-args: '--prebuilt --prod'
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID_MAIN}} #Required
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_UTILITIES}} #Required
-          working-directory: apps/utilities

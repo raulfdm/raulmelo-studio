@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Git files setup
         uses: actions/checkout@v3
@@ -41,7 +41,7 @@ jobs:
       - name: Install Dependencies
         run: |
           pnpm install --global netlify-cli
-          pnpm install --frozen-lockfile --shamefully-hoist
+          pnpm install --frozen-lockfile
 
       - name: Build Projects
         run: pnpm --F lambdas... run build

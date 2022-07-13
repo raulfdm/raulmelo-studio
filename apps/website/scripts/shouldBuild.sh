@@ -6,5 +6,5 @@
 
 # This command exits with 0 if nothing has changed or 1 if something has changed in:
 #                           \/-- Application
-git diff HEAD^ HEAD --quiet ./apps/website ./packages/
+git diff HEAD^ HEAD --quiet ./ ../../packages/
 #                                          /\--- packages this project depends on

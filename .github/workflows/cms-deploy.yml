@@ -5,12 +5,11 @@ on:
     paths:
       - 'apps/cms/**'
       - 'packages/**'
-      - '!packages/vercel-utils/**'
       - '.github/workflows/cms-deploy.yml'
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Git files setup
         uses: actions/checkout@v3
@@ -42,7 +41,7 @@ jobs:
       - name: Installing Dependencies
         run: |
           pnpm install --global @sanity/cli
-          pnpm install --frozen-lockfile --shamefully-hoist
+          pnpm install --frozen-lockfile
 
       - name: Building
         run: pnpm --filter cms... --stream run build
