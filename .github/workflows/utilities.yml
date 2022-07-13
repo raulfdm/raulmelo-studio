@@ -38,9 +38,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install Dependencies
-        run: |
-          pnpm install --global vercel
-          pnpm install --frozen-lockfile --shamefully-hoist
+        run: pnpm install --frozen-lockfile
 
       - name: Test Projects
         run: pnpm --filter utilities run check
