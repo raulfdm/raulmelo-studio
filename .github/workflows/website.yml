@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Git files setup
         uses: actions/checkout@v3
@@ -51,49 +51,3 @@ jobs:
 
       - name: Test Projects
         run: pnpm --filter website run test
-
-      - name: Build application for Preview
-        if: contains('refs/heads/main', github.ref) == false
-        run: |
-          pnpm --filter website run generate-vercel
-          vercel build
-        working-directory: apps/website
-        env:
-          VERCEL: true
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_WEBSITE }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID_MAIN }}
-          ENVIRONMENT: preview
-
-      - name: Vercel Deploy - Preview
-        uses: amondnet/vercel-action@v25
-        if: contains('refs/heads/main', github.ref) == false
-        with:
-          vercel-token: ${{ secrets.VERCEL_API_TOKEN }} # Required
-          github-token: ${{ github.token }} #Optional
-          vercel-args: --prebuilt
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID_MAIN}} #Required
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_WEBSITE}} #Required
-          working-directory: apps/website
-
-      - name: Build application for Production
-        if: contains('refs/heads/main', github.ref) == true
-        run: |
-          pnpm --filter website run generate-vercel
-          vercel build --prod
-        working-directory: apps/website
-        env:
-          VERCEL: true
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_WEBSITE }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID_MAIN }}
-          ENVIRONMENT: production
-
-      - name: Vercel Deploy - Production
-        uses: amondnet/vercel-action@v25
-        if: contains('refs/heads/main', github.ref) == true
-        with:
-          vercel-token: ${{ secrets.VERCEL_API_TOKEN }} # Required
-          github-token: ${{ github.token }} #Optional
-          vercel-args: '--prebuilt --prod'
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID_MAIN}} #Required
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_WEBSITE}} #Required
-          working-directory: apps/website

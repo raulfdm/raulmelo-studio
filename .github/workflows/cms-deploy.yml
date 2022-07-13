@@ -5,12 +5,11 @@ on:
     paths:
       - 'apps/cms/**'
       - 'packages/**'
-      - '!packages/vercel-utils/**'
       - '.github/workflows/cms-deploy.yml'
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Git files setup
         uses: actions/checkout@v3
