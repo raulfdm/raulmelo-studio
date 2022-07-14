@@ -185,8 +185,8 @@ importers:
       groq: 2.29.3
       xstate: 4.32.1
     devDependencies:
-      '@sveltejs/adapter-auto': 1.0.0-next.57
-      '@sveltejs/kit': 1.0.0-next.370_svelte@3.49.0+vite@2.9.14
+      '@sveltejs/adapter-auto': 1.0.0-next.59
+      '@sveltejs/kit': 1.0.0-next.372_svelte@3.49.0+vite@2.9.14
       '@tailwindcss/aspect-ratio': 0.4.0_tailwindcss@3.1.6
       autoprefixer: 10.4.7_postcss@8.4.14
       eslint-plugin-svelte3: 4.0.0_jxmmfmurkts274jdspwh3cyqve
@@ -234,8 +234,8 @@ importers:
       typescript: 4.7.4
       vite: 2.9.14
     devDependencies:
-      '@sveltejs/adapter-auto': 1.0.0-next.57
-      '@sveltejs/kit': 1.0.0-next.370_svelte@3.49.0+vite@2.9.14
+      '@sveltejs/adapter-auto': 1.0.0-next.59
+      '@sveltejs/kit': 1.0.0-next.372_svelte@3.49.0+vite@2.9.14
       '@typescript-eslint/eslint-plugin': 5.30.6_2vt5mtrqleafs33qg2bhpmbaqm
       '@typescript-eslint/parser': 5.30.6_4x5o4skxv6sl53vpwefgt23khm
       autoprefixer: 10.4.7_postcss@8.4.14
@@ -255,7 +255,7 @@ importers:
     specifiers:
       '@emotion/babel-plugin': 11.9.2
       '@emotion/css': 11.9.0
-      '@emotion/jest': 11.9.3
+      '@emotion/jest': 11.9.4
       '@emotion/react': 11.9.3
       '@emotion/styled': 11.9.3
       '@headlessui/react': 1.6.6
@@ -337,7 +337,7 @@ importers:
       xstate: 4.32.1
     devDependencies:
       '@emotion/babel-plugin': 11.9.2_@babel+core@7.18.6
-      '@emotion/jest': 11.9.3
+      '@emotion/jest': 11.9.4
       '@next/bundle-analyzer': 12.2.2
       '@testing-library/jest-dom': 5.16.4
       '@testing-library/react': 13.3.0_biqbaboplfbrettd7655fr4n2y
@@ -5389,10 +5389,10 @@ packages:
       '@emotion/memoize': 0.7.5
     dev: false
 
-  /@emotion/jest/11.9.3:
-    resolution: {integrity: sha512-fDfZc1ydjjJ+2IDAK+rP+rm469I4u5cIkN3zmGYf0CBW9TLrtM9u9kke3s+i5/M2UpcqLDvtal0EyPBR0A8EWg==}
+  /@emotion/jest/11.9.4:
+    resolution: {integrity: sha512-dbV8gAOHyRTsPeARs4hEruHZ1eSgfOsYnShPRM2c+QoUxtKWrFN7toNDq9uwFrTV2lSul5G1HtgxAIQcWKyM/g==}
     peerDependencies:
-      '@types/jest': ^26.0.14 || ^27.0.0
+      '@types/jest': ^26.0.14 || ^27.0.0 || ^28.0.0
       enzyme-to-json: ^3.2.1
     peerDependenciesMeta:
       '@types/jest':
@@ -8839,19 +8839,19 @@ packages:
       '@styled-system/css': 5.1.5
     dev: false
 
-  /@sveltejs/adapter-auto/1.0.0-next.57:
-    resolution: {integrity: sha512-OuIt5CZzezKvncs8sPwGAv3MbQRKJ7rqofAfMvBiHO4XEtOUneUSaKQ78o3Td6AH3JNfHJQkTykhLBWUOmQLOg==}
+  /@sveltejs/adapter-auto/1.0.0-next.59:
+    resolution: {integrity: sha512-52X2eOjApECUhxYJugO5sXnBuDT26OKkgmib7fvUO4H8gLB2CpCe8yN+WP7D22XJRO3ItJreEDyYlq7K0o7Opw==}
     dependencies:
-      '@sveltejs/adapter-cloudflare': 1.0.0-next.27
+      '@sveltejs/adapter-cloudflare': 1.0.0-next.28
       '@sveltejs/adapter-netlify': 1.0.0-next.68
-      '@sveltejs/adapter-vercel': 1.0.0-next.60
+      '@sveltejs/adapter-vercel': 1.0.0-next.61
     transitivePeerDependencies:
       - encoding
       - supports-color
     dev: true
 
-  /@sveltejs/adapter-cloudflare/1.0.0-next.27:
-    resolution: {integrity: sha512-uon/ciCBalRt8vyeUbEsVjDBHzNC61lTtmqIJi9GbvTm8i4xbHoyJ97+wO9qug75jFg63pjT51sL7b+Cb1MFYw==}
+  /@sveltejs/adapter-cloudflare/1.0.0-next.28:
+    resolution: {integrity: sha512-2vkHZ5s8yo0URjo1ZTShHuoa3QmCfkeGOk8apZkneOPVAjiG3R3+h4C0lGu29lIO4beT6uzYXcq/3ox0LtS91g==}
     dependencies:
       '@cloudflare/workers-types': 3.14.1
       esbuild: 0.14.49
@@ -8867,8 +8867,8 @@ packages:
       tiny-glob: 0.2.9
     dev: true
 
-  /@sveltejs/adapter-vercel/1.0.0-next.60:
-    resolution: {integrity: sha512-Xq+gaxQ2iKvP9G+7C8+r4xScMOUEhBouDEFyLCOzKrwmd+JWBzCl1N0qKeKm71MbR7l4YJn8J+e7105j8x+RXA==}
+  /@sveltejs/adapter-vercel/1.0.0-next.61:
+    resolution: {integrity: sha512-eqL1JovBPtM1h6MFoFHup2MSyR38jUPpZvU2qIozAZJ4MThiOwT6Jyd89znJ3vaSSpRXaQ+GEBs+XDSTpQKJBA==}
     dependencies:
       '@vercel/nft': 0.20.1
       esbuild: 0.14.49
@@ -8877,8 +8877,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.370_svelte@3.49.0+vite@2.9.14:
-    resolution: {integrity: sha512-HAQtw8IjXs9yOPWKpuwpGgDT8x6Dgqm14NmFx0emF52vo5wn3tQzu0cBx299Po2RdRgfSDFKrNqVSlL1hVTHcA==}
+  /@sveltejs/kit/1.0.0-next.372_svelte@3.49.0+vite@2.9.14:
+    resolution: {integrity: sha512-pcnDfV8YQwj7d/SCaKWT7yPBrmgkPH9Dc4UIeX8yTLXDu8IPzI5kukEOy4xf6LjyJsuSGPy1Ch91ULugtVIdAQ==}
     engines: {node: '>=16.9'}
     hasBin: true
     peerDependencies:
