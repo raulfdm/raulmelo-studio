@@ -20,7 +20,7 @@ However, the core technologies here are:
 - [TypeScript](https://www.typescriptlang.org/) - core programming language;
 - [BabelJS](https://babeljs.io/) - for transpiling the code;
 - [scripty](https://www.npmjs.com/package/scripty) - Run npm scripts with bash files;
-- [esbuild](https://github.com/evanw/esbuild) and [vitejs](https://vitejs.dev/) - for bundling packages;
+- [vitejs](https://vitejs.dev/) - for bundling packages;
 - [Jest](https://jestjs.io/) - For unit testing;
 - [PostCSS](https://postcss.org/) and [TailwindCSS](https://tailwindcss.com/) - for styles;
 
