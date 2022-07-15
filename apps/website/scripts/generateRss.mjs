@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { generateRssFeed } from '@raulmelo/core/generateRssFeed';
+import { generateRssFeed } from '@raulmelo/core/scripts';
 import { fileURLToPath } from 'url';
 import * as path from 'path';
 
