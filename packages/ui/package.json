@@ -3,9 +3,21 @@
   "version": "1.0.0",
   "private": true,
   "description": "",
-  "main": "dist/ui.cjs.js",
-  "module": "dist/ui.es.js",
-  "types": "dist/types/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/ui.cjs",
+  "module": "./dist/ui.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/ui.js",
+      "require": "./dist/ui.cjs"
+    },
+    "./styles/prism.css": "./dist/prism.css",
+    "./styles/style.css": "./dist/style.css"
+  },
   "scripts": {
     "build": "scripty",
     "build:css": "scripty",
@@ -44,7 +56,7 @@
     "react-popper": "2.3.0",
     "storybook-css-modules-preset": "1.1.1",
     "tailwindcss": "3.1.6",
-    "vite": "2.9.14",
+    "vite": "3.0.0",
     "webpack": "5.73.0",
     "xstate": "4.32.1"
   }
