@@ -1,6 +1,6 @@
 import type { SupportedLanguages } from 'src';
 
-import { client } from '~config';
+import { client } from '~/config';
 
 import { rssQuery } from './query';
 import type { IRSSApiResponse } from './types';
@@ -11,4 +11,4 @@ export async function queryRssData(
   return client.fetch(rssQuery, { language: language });
 }
 
-export { IRSSApiResponse } from './types';
+export type { IRSSApiResponse } from './types';

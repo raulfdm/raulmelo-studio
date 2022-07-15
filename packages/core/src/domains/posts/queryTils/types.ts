@@ -1,6 +1,6 @@
 import type { PortableTextBlock } from '@portabletext/types';
 
-import { SupportedLanguages } from '../../../types';
+import type { SupportedLanguages } from '~/global-types';
 
 export type ITilsApiResponse = ITilsTil[];
 export interface ITilsTil {

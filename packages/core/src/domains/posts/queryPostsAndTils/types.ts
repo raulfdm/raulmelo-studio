@@ -1,4 +1,4 @@
-import { SupportedLanguages } from '../../../types';
+import type { SupportedLanguages } from '~/global-types';
 
 export interface IPostsAndTilsApi {
   posts: IPostsAndTilsPost[];

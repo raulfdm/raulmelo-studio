@@ -7,22 +7,23 @@
     "moduleResolution": "node",
     "target": "esnext",
     "declaration": true,
-    "outDir": "dist/types",
+    "declarationDir": "./dist/types",
     "emitDeclarationOnly": true,
     "skipLibCheck": true,
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "~config": ["src/config/index.ts"],
-      "~utils": ["src/utils/index.ts"]
-      /**
-        While emitting only the declarations, the paths ain't resolved.
-        https://github.com/microsoft/TypeScript/issues/30952
-
-        That means that when I use src/types in a type.ts, it keeps the alias
-        and in the client the alias is not resolved, leading into "any" type.
-      */
-      // "src/types": ["src/types.ts"]
+      "~/global-types": ["src/types.ts"],
+      "~/config": ["src/config/index.ts"],
+      "~/config/*": ["src/config/*"],
+      "~/utils/*": ["./src/utils"]
     }
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/**/*.spec.ts",
+    "src/**/*.test.*",
+    "vite.config.ts"
+  ]
 }

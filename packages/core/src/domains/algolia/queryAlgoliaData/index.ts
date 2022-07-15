@@ -1,4 +1,4 @@
-import { client } from '~config';
+import { client } from '~/config';
 
 import { AlgoliaObject } from '../types';
 import { algoliaPostsQuery, algoliaTilsQuery } from './query';

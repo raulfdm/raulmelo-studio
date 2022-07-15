@@ -1,4 +1,4 @@
-import type { SupportedLanguages } from '../../../types';
+import type { SupportedLanguages } from '~/global-types';
 
 export interface ISiteData {
   personalInformation: PersonalInformation;

@@ -1,5 +1,6 @@
 import type { PortableTextBlock } from '@portabletext/types';
-import { SupportedLanguages } from 'src';
+
+import type { SupportedLanguages } from '~/global-types';
 
 export interface IUsesApiResponse {
   language: SupportedLanguages;

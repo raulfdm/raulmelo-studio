@@ -1,6 +1,6 @@
-import { client } from '~config';
+import { client } from '~/config';
+import type { SupportedLanguages } from '~/global-types';
 
-import { SupportedLanguages } from '../../../types';
 import { tagsBySlugQuery } from './query';
 import { ITagBySlugPostTag } from './types';
 

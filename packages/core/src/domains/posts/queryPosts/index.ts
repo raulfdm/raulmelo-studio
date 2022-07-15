@@ -1,8 +1,7 @@
-import { SUPPORTED_LANGUAGES } from 'src/config/languages';
+import { client } from '~/config';
+import { SUPPORTED_LANGUAGES } from '~/config/languages';
+import type { AllSupportedLanguages } from '~/global-types';
 
-import { client } from '~config';
-
-import { AllSupportedLanguages } from '../../../types';
 import { postQuery } from './query';
 import { IBlogPageApiResponse } from './types';
 
