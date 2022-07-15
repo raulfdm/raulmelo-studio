@@ -1,5 +1,5 @@
-import '@raulmelo/ui/dist/prism.css';
-import '@raulmelo/ui/dist/style.css';
+import '@raulmelo/ui/styles/prism.css';
+import '@raulmelo/ui/styles/style.css';
 import '@raulmelo/styles/lib/styles.css';
 import '../styles/algolia-global.css';
 
