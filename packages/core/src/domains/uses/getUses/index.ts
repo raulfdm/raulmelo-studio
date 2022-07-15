@@ -1,8 +1,8 @@
-import { client } from '~config';
+import { client } from '~/config';
+import type { SupportedLanguages } from '~/global-types';
 
-import { SupportedLanguages } from '../../../types';
 import { getUsesQuery } from './query';
-import { IUsesApiResponse } from './types';
+import type { IUsesApiResponse } from './types';
 
 export function getUses(
   language: SupportedLanguages,
@@ -10,4 +10,4 @@ export function getUses(
   return client.fetch(getUsesQuery, { language });
 }
 
-export { IUsesApiResponse as IUsesData } from './types';
+export type { IUsesApiResponse as IUsesData } from './types';

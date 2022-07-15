@@ -4,18 +4,18 @@
   "version": "1.0.0",
   "license": "MIT",
   "type": "module",
-  "main": "./dist/cjs/core.js",
-  "module": "./dist/esm/core.js",
+  "main": "./dist/core.cjs",
+  "module": "./dist/core.js",
   "exports": {
     ".": {
-      "require": "./dist/cjs/core.js",
-      "default": "./dist/esm/core.js"
+      "require": "./dist/core.cjs",
+      "default": "./dist/core.js"
     },
-    "./generateSiteData": "./dist/scripts/generateSiteData.mjs",
-    "./generateRssFeed": "./dist/scripts/generateRssFeed.mjs"
+    "./scripts": "./dist/scripts.js"
   },
   "types": "./dist/types/index.d.ts",
   "scripts": {
+    "clean": "scripty",
     "build": "scripty",
     "lint": "scripty",
     "dev": "scripty",
@@ -33,7 +33,8 @@
   "devDependencies": {
     "@portabletext/react": "1.0.6",
     "@portabletext/types": "1.0.3",
-    "@types/ramda": "0.28.15"
+    "@types/ramda": "0.28.15",
+    "vite": "3.0.0"
   },
   "scripty": {
     "path": "./scripts"

@@ -1,4 +1,4 @@
-import { client } from '~config';
+import { client } from '~/config';
 
 import { allTagsQuery } from './query';
 import { ITagsApiResponse } from './types';

@@ -1,4 +1,4 @@
-import { client } from '~config';
+import { client } from '~/config';
 
 import { postQuery } from './query';
 import { IBlogPostBySlugApiResponse } from './types';

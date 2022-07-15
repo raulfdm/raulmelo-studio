@@ -1,4 +1,4 @@
-import { client } from '~config';
+import { client } from '~/config';
 
 import { tilBySlugQuery } from './query';
 import { ITilBySlugApiResponse } from './types';

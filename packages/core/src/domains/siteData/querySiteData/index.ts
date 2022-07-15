@@ -1,4 +1,4 @@
-import { client } from '~config';
+import { client } from '~/config';
 
 import {
   defaultSeoQuery,
@@ -6,7 +6,7 @@ import {
   siteSettingsQuery,
   socialsQuery,
 } from './query';
-import { ISiteData } from './types';
+import type { ISiteData } from './types';
 
 export async function querySiteData(): Promise<ISiteData> {
   const [defaultSeoPt, defaultSeoEn, personalInformation, site, socials] =
@@ -31,4 +31,4 @@ export async function querySiteData(): Promise<ISiteData> {
   return result;
 }
 
-export { ISiteData } from './types';
+export type { ISiteData } from './types';

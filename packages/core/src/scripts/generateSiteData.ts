@@ -1,5 +1,6 @@
 import * as fs from 'fs';
-import { domains } from 'src';
+
+import { domains } from '../.';
 
 interface IConfig {
   outdir: string;
