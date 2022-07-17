@@ -1,43 +1,38 @@
 <script lang="ts">
   import PageTitle from '$lib/components/PageTitle.svelte';
-  import { createLocalStorage } from '$lib/utils/localStorage';
-  import { onMount } from 'svelte';
+  import { useMachine } from '@xstate/svelte';
+  import { ruleOfThreeMachine } from '$lib/machines/ruleOfThree';
 
-  let xValue: string | null = null;
-  let yValue: string | null = null;
-  let result: number | null = null;
-  const localStorage = createLocalStorage<[string, string]>('rule-of-three');
+  const { send, state } = useMachine(ruleOfThreeMachine);
 
-  onMount(() => {
-    const persistedValue = localStorage.read();
-
-    if (persistedValue !== null) {
-      xValue = persistedValue[0];
-      yValue = persistedValue[1];
-    }
-  });
-
-  $: {
-    if (xValue !== null && yValue !== null) {
-      localStorage.write([xValue, yValue]);
-
-      const parsedX = parseInt(xValue, 10);
-      const parsedY = parseInt(yValue, 10);
-
-      result = parseFloat(((parsedY * 100) / parsedX).toFixed(2));
-    } else {
-      result = null;
-    }
+  function onFieldInput(type: 'SET_Y' | 'SET_Z' | 'SET_X') {
+    return (
+      event: Event & {
+        currentTarget: EventTarget & HTMLInputElement;
+      },
+    ) => {
+      send({
+        type,
+        payload: {
+          value: (event.target as HTMLInputElement).value ?? '',
+        },
+      });
+    };
   }
 </script>
 
 <PageTitle>Rule of Three</PageTitle>
 
-<div class="content">
+<div class="flex flex-col max-w-xs gap-4 mx-auto mt-4">
   <div class="row">
     <fieldset>
       <label for="xNumber">X</label>
-      <input id="xNumber" type="number" bind:value={xValue} />
+      <input
+        id="xNumber"
+        type="number"
+        value={$state.context.x}
+        on:input={onFieldInput('SET_X')}
+      />
     </fieldset>
     <span>---</span>
     <p>100</p>
@@ -46,26 +41,30 @@
   <div class="row">
     <fieldset>
       <label for="yNumber">Y</label>
-      <input id="yNumber" class="" type="number" bind:value={yValue} />
+      <input
+        id="yNumber"
+        class=""
+        type="number"
+        value={$state.context.y}
+        on:input={onFieldInput('SET_Y')}
+      />
     </fieldset>
     <span>---</span>
 
-    <p>
-      {#if result !== null}
-        {result}
-      {:else}
-        ?
-      {/if}
-    </p>
+    <fieldset>
+      <label for="yNumber">Z</label>
+      <input
+        id="yNumber"
+        class=""
+        type="number"
+        value={$state.context.z}
+        on:input={onFieldInput('SET_Z')}
+      />
+    </fieldset>
   </div>
 </div>
 
 <style lang="postcss">
-  .content {
-    @apply flex flex-col gap-4 mx-auto mt-4;
-    width: 220px;
-  }
-
   .row {
     @apply flex items-center gap-3 justify-between;
   }
@@ -79,11 +78,15 @@
   }
 
   fieldset input {
-    @apply w-20 px-2 py-1 border;
+    @apply w-28 px-2 py-1 border;
+  }
+
+  .row p,
+  fieldset {
+    @apply w-32;
   }
 
   .row p {
     @apply text-xl font-bold text-center;
-    width: 60px;
   }
 </style>
