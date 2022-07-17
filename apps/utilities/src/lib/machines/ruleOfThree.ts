@@ -1,9 +1,12 @@
 import { createMachine, assign } from 'xstate';
 
+export type RuleOfThreeMode = 'zCalculation' | 'yCalculation';
+
 type RuleOfThreeContext = {
   x: number | null;
   y: number | null;
   z: number | null;
+  mode: RuleOfThreeMode;
 };
 
 type RuleOfThreeEvents =
@@ -24,6 +27,10 @@ type RuleOfThreeEvents =
       payload: {
         value: string;
       };
+    }
+  | {
+      type: 'CHANGE_MODE';
+      payload: RuleOfThreeContext['mode'];
     };
 
 export const ruleOfThreeMachine = createMachine(
@@ -34,6 +41,7 @@ export const ruleOfThreeMachine = createMachine(
       x: null,
       y: null,
       z: null,
+      mode: 'zCalculation',
     },
     schema: {
       context: {} as RuleOfThreeContext,
@@ -43,42 +51,49 @@ export const ruleOfThreeMachine = createMachine(
     on: {
       SET_X: {
         actions: ['setX'],
-        target: 'calculateZ',
+        target: 'calculate',
       },
       SET_Y: {
         actions: ['setY'],
-        target: 'calculateZ',
+        target: 'calculate',
       },
       SET_Z: {
         actions: ['setZ'],
-        target: 'calculateY',
+        target: 'calculate',
+      },
+      CHANGE_MODE: {
+        actions: ['changeMode'],
       },
     },
     states: {
       prepare: {},
-      calculateZ: {
+      calculate: {
         always: [
           {
-            target: 'prepare',
-            actions: ['calculateZ'],
-            cond: 'canCalculateZ',
+            target: 'calculateZ',
+            cond: (context) =>
+              isZCalculationMode(context) && canCalculateZ(context),
+          },
+          {
+            target: 'calculateY',
+            cond: (context) => canCalculateY(context),
           },
           {
             target: 'prepare',
           },
         ],
       },
+      calculateZ: {
+        always: {
+          target: 'prepare',
+          actions: ['calculateZ'],
+        },
+      },
       calculateY: {
-        always: [
-          {
-            target: 'prepare',
-            actions: ['calculateY'],
-            cond: 'canCalculateY',
-          },
-          {
-            target: 'prepare',
-          },
-        ],
+        always: {
+          target: 'prepare',
+          actions: ['calculateY'],
+        },
       },
     },
   },
@@ -117,19 +132,26 @@ export const ruleOfThreeMachine = createMachine(
           return context.y;
         },
       }),
-    },
-    guards: {
-      canCalculateY: (context) => {
-        return context.x !== null && context.x !== undefined;
-      },
-      canCalculateZ: (context) => {
-        return (
-          context.x !== null &&
-          context.x !== undefined &&
-          context.y !== null &&
-          context.y !== undefined
-        );
-      },
+      changeMode: assign({
+        mode: (_, event) => event.payload,
+      }),
     },
   },
 );
+
+function isZCalculationMode(context: RuleOfThreeContext) {
+  return context.mode === 'zCalculation';
+}
+
+function canCalculateY(context: RuleOfThreeContext) {
+  return context.x !== null && context.x !== undefined;
+}
+
+function canCalculateZ(context: RuleOfThreeContext) {
+  return (
+    context.x !== null &&
+    context.x !== undefined &&
+    context.y !== null &&
+    context.y !== undefined
+  );
+}
