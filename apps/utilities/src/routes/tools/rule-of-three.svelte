@@ -1,89 +1,131 @@
 <script lang="ts">
   import PageTitle from '$lib/components/PageTitle.svelte';
-  import { createLocalStorage } from '$lib/utils/localStorage';
-  import { onMount } from 'svelte';
+  import { useMachine } from '@xstate/svelte';
+  import { ruleOfThreeMachine } from '$lib/machines/ruleOfThree';
+  import type { RuleOfThreeMode } from '$lib/machines/ruleOfThree';
 
-  let xValue: string | null = null;
-  let yValue: string | null = null;
-  let result: number | null = null;
-  const localStorage = createLocalStorage<[string, string]>('rule-of-three');
+  const { send, state } = useMachine(ruleOfThreeMachine);
 
-  onMount(() => {
-    const persistedValue = localStorage.read();
+  function onFieldInput(type: 'SET_Y' | 'SET_Z' | 'SET_X') {
+    return (
+      event: Event & {
+        currentTarget: EventTarget & HTMLInputElement;
+      },
+    ) => {
+      send({
+        type,
+        payload: {
+          value: (event.target as HTMLInputElement).value ?? '',
+        },
+      });
+    };
+  }
 
-    if (persistedValue !== null) {
-      xValue = persistedValue[0];
-      yValue = persistedValue[1];
-    }
-  });
-
-  $: {
-    if (xValue !== null && yValue !== null) {
-      localStorage.write([xValue, yValue]);
-
-      const parsedX = parseInt(xValue, 10);
-      const parsedY = parseInt(yValue, 10);
-
-      result = parseFloat(((parsedY * 100) / parsedX).toFixed(2));
-    } else {
-      result = null;
-    }
+  function onModeChange(event: Event) {
+    send({
+      type: 'CHANGE_MODE',
+      payload: (event.target as HTMLInputElement).value as RuleOfThreeMode,
+    });
   }
 </script>
 
 <PageTitle>Rule of Three</PageTitle>
 
-<div class="content">
+<div class="flex flex-col max-w-xs gap-4 mx-auto mt-4">
   <div class="row">
-    <fieldset>
+    <fieldset class="numberFieldset">
       <label for="xNumber">X</label>
-      <input id="xNumber" type="number" bind:value={xValue} />
+      <input
+        id="xNumber"
+        type="number"
+        value={$state.context.x}
+        on:input={onFieldInput('SET_X')}
+      />
     </fieldset>
     <span>---</span>
     <p>100</p>
   </div>
 
   <div class="row">
-    <fieldset>
+    <fieldset class="numberFieldset">
       <label for="yNumber">Y</label>
-      <input id="yNumber" class="" type="number" bind:value={yValue} />
+      <input
+        id="yNumber"
+        type="number"
+        value={$state.context.y}
+        on:input={onFieldInput('SET_Y')}
+        disabled={$state.context.mode === 'yCalculation'}
+      />
     </fieldset>
     <span>---</span>
 
-    <p>
-      {#if result !== null}
-        {result}
-      {:else}
-        ?
-      {/if}
-    </p>
+    <fieldset class="numberFieldset">
+      <label for="yNumber">Z</label>
+      <input
+        id="yNumber"
+        type="number"
+        value={$state.context.z}
+        on:input={onFieldInput('SET_Z')}
+        disabled={$state.context.mode === 'zCalculation'}
+      />
+    </fieldset>
   </div>
+
+  <fieldset class="mt-6" on:change={onModeChange}>
+    <legend class="font-bold">Calculation Mode</legend>
+    <div class="flex gap-6">
+      <div>
+        <input
+          type="radio"
+          id="zCalculation"
+          name="calculationMode"
+          value="zCalculation"
+          checked={$state.context.mode === 'zCalculation'}
+        />
+        <label for="zCalculation">"Z" value</label>
+      </div>
+
+      <div>
+        <input
+          type="radio"
+          id="yCalculation"
+          name="calculationMode"
+          value="yCalculation"
+          checked={$state.context.mode === 'yCalculation'}
+        />
+        <label for="yCalculation">"Y" value</label>
+      </div>
+    </div>
+  </fieldset>
 </div>
 
 <style lang="postcss">
-  .content {
-    @apply flex flex-col gap-4 mx-auto mt-4;
-    width: 220px;
-  }
-
   .row {
     @apply flex items-center gap-3 justify-between;
   }
 
-  fieldset {
+  .numberFieldset {
     @apply flex gap-2 items-center;
   }
 
-  fieldset label {
+  .numberFieldset label {
     @apply inline-block text-2xl font-bold;
   }
 
-  fieldset input {
-    @apply w-20 px-2 py-1 border;
+  .numberFieldset input {
+    @apply w-28 px-2 py-1 border;
+  }
+
+  .numberFieldset input:disabled {
+    @apply bg-gray-200 cursor-not-allowed;
+  }
+
+  .row p,
+  .numberFieldset {
+    @apply w-32;
   }
 
   .row p {
     @apply text-xl font-bold text-center;
-    width: 60px;
   }
 </style>
