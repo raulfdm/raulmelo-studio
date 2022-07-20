@@ -1,6 +1,6 @@
 import { TrainingSheetApi } from '$lib/api';
 
-export async function get() {
+export async function GET() {
   const trainingSheet = await TrainingSheetApi.getSheet();
 
   const suggestedCurrentIndex = trainingSheet.schema.findIndex((s) => {
