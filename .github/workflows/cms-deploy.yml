@@ -41,7 +41,7 @@ jobs:
       - name: Installing Dependencies
         run: |
           pnpm install --global @sanity/cli
-          pnpm install --frozen-lockfile
+          pnpm install --no-frozen-lockfile
 
       - name: Building
         run: pnpm --filter cms... --stream run build
