@@ -41,7 +41,7 @@ jobs:
       - name: Install Dependencies
         run: |
           pnpm install --global netlify-cli
-          pnpm install --frozen-lockfile
+          pnpm install --no-frozen-lockfile
 
       - name: Build Projects
         run: pnpm --F lambdas... run build
