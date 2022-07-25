@@ -292,7 +292,7 @@ importers:
       lodash.throttle: 4.1.1
       next: 12.2.2
       next-compose-plugins: 2.2.1
-      next-seo: 5.4.0
+      next-seo: 5.5.0
       next-sitemap: 3.1.11
       query-string: 7.1.1
       react: 18.2.0
@@ -327,7 +327,7 @@ importers:
       lodash.omit: 4.5.0
       lodash.throttle: 4.1.1
       next: 12.2.2_beenoklgwfttvph5dgxj7na7aq
-      next-seo: 5.4.0_7gpduzaz4csxytrukenoyuq3te
+      next-seo: 5.5.0_7gpduzaz4csxytrukenoyuq3te
       query-string: 7.1.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -11416,7 +11416,7 @@ packages:
       mississippi: 3.0.0
       mkdirp: 0.5.6
       move-concurrently: 1.0.1
-      promise-inflight: 1.0.1
+      promise-inflight: 1.0.1_bluebird@3.7.2
       rimraf: 2.7.1
       ssri: 6.0.2
       unique-filename: 1.1.1
@@ -18662,8 +18662,8 @@ packages:
     resolution: {integrity: sha512-OjJ+fV15FXO2uQXQagLD4C0abYErBjyjE0I0FHpOEIB8upw0hg1ldFP6cqHTJBH1cZqy96OeR3u1dJ+Ez2D4Bg==}
     dev: true
 
-  /next-seo/5.4.0_7gpduzaz4csxytrukenoyuq3te:
-    resolution: {integrity: sha512-R9DhajPwJnR/lsF2hZ8cN8uqr5CVITsRrCG1AF5+ufcaybKYOvnH8sH9MaH4/hpkps3PQ9H71S7J7SPYixAYzQ==}
+  /next-seo/5.5.0_7gpduzaz4csxytrukenoyuq3te:
+    resolution: {integrity: sha512-5ouBHFtx8YrSDW44lj0qIEQ+oMcz6stgoITB+SqHUZbhgizoJsyLmq73gJ0lxtEKpcN8vG2QgRIJfdb8OAPChw==}
     peerDependencies:
       next: ^8.1.1-canary.54 || >=9.0.0
       react: '>=16.0.0 || 18'
@@ -20968,6 +20968,17 @@ packages:
     peerDependenciesMeta:
       bluebird:
         optional: true
+    dev: true
+
+  /promise-inflight/1.0.1_bluebird@3.7.2:
+    resolution: {integrity: sha512-6zWPyEOFaQBJYcGMHBKTKJ3u6TBsnMFOIZSa6ce1e/ZrrsOlnHRHbabMjLiBYKp+n44X9eUI6VUPaukCXHuG4g==}
+    peerDependencies:
+      bluebird: '*'
+    peerDependenciesMeta:
+      bluebird:
+        optional: true
+    dependencies:
+      bluebird: 3.7.2
 
   /promise-props-recursive/1.0.0:
     resolution: {integrity: sha512-kh/4BEytTXST030W1YJHs3bTzlFu4C9EFPtqrG3g8JM8nEi3+WxR0mm19TjiobO2YHbHrCicZGN2Z94OhAU+7Q==}
