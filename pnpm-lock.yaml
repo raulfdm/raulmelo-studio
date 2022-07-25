@@ -220,7 +220,7 @@ importers:
       '@xstate/cli': 0.2.1
       '@xstate/svelte': 2.0.0
       autoprefixer: 10.4.7
-      dayjs: 1.11.3
+      dayjs: 1.11.4
       eslint: 8.20.0
       eslint-plugin-svelte3: 4.0.0
       postcss: 8.4.14
@@ -242,7 +242,7 @@ importers:
       '@typescript-eslint/parser': 5.30.6_he2ccbldppg44uulnyq4rwocfa
       '@xstate/cli': 0.2.1_prettier@2.7.1
       autoprefixer: 10.4.7_postcss@8.4.14
-      dayjs: 1.11.3
+      dayjs: 1.11.4
       eslint: 8.20.0
       eslint-plugin-svelte3: 4.0.0_piwa6j2njmnknm35bh3wz5v52y
       postcss: 8.4.14
@@ -281,7 +281,7 @@ importers:
       algoliasearch: 4.13.1
       autoprefixer: 10.4.7
       classnames: 2.3.1
-      dayjs: 1.11.3
+      dayjs: 1.11.4
       debounce-promise: 3.1.2
       dotenv-flow: 3.2.0
       duplicate-package-checker-webpack-plugin: 3.0.0
@@ -319,7 +319,7 @@ importers:
       '@xstate/react': 3.0.0_ad54ufqkthlhcdffkpeqdmqmtm
       algoliasearch: 4.13.1
       classnames: 2.3.1
-      dayjs: 1.11.3
+      dayjs: 1.11.4
       debounce-promise: 3.1.2
       dotenv-flow: 3.2.0
       flat: 5.0.2
@@ -11416,7 +11416,7 @@ packages:
       mississippi: 3.0.0
       mkdirp: 0.5.6
       move-concurrently: 1.0.1
-      promise-inflight: 1.0.1
+      promise-inflight: 1.0.1_bluebird@3.7.2
       rimraf: 2.7.1
       ssri: 6.0.2
       unique-filename: 1.1.1
@@ -12852,8 +12852,8 @@ packages:
     resolution: {integrity: sha512-yiizelQCqYLUEVT4zqYihOW6Ird7Qyc6fD3Pv5xGxk4+Jz0rsB1dMN2KyNV6jgOHYh5K+sPGCSOknQN4Upa3pg==}
     dev: false
 
-  /dayjs/1.11.3:
-    resolution: {integrity: sha512-xxwlswWOlGhzgQ4TKzASQkUhqERI3egRNqgV4ScR8wlANA/A9tZ7miXa44vTTKEq5l7vWoL5G57bG3zA+Kow0A==}
+  /dayjs/1.11.4:
+    resolution: {integrity: sha512-Zj/lPM5hOvQ1Bf7uAvewDaUcsJoI6JmNqmHhHl3nyumwe0XHwt8sWdOVAPACJzCebL8gQCi+K49w7iKWnGwX9g==}
 
   /debounce-promise/3.1.2:
     resolution: {integrity: sha512-rZHcgBkbYavBeD9ej6sP56XfG53d51CD4dnaw989YX/nZ/ZJfgRx/9ePKmTNiUiyQvh4mtrMoS3OAWW+yoYtpg==}
@@ -20968,6 +20968,17 @@ packages:
     peerDependenciesMeta:
       bluebird:
         optional: true
+    dev: true
+
+  /promise-inflight/1.0.1_bluebird@3.7.2:
+    resolution: {integrity: sha512-6zWPyEOFaQBJYcGMHBKTKJ3u6TBsnMFOIZSa6ce1e/ZrrsOlnHRHbabMjLiBYKp+n44X9eUI6VUPaukCXHuG4g==}
+    peerDependencies:
+      bluebird: '*'
+    peerDependenciesMeta:
+      bluebird:
+        optional: true
+    dependencies:
+      bluebird: 3.7.2
 
   /promise-props-recursive/1.0.0:
     resolution: {integrity: sha512-kh/4BEytTXST030W1YJHs3bTzlFu4C9EFPtqrG3g8JM8nEi3+WxR0mm19TjiobO2YHbHrCicZGN2Z94OhAU+7Q==}
