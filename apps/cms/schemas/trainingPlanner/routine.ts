@@ -55,6 +55,7 @@ export const trainingRoutineSchema = {
                         title: `Rest 'n' Pause 3x`,
                         value: 'rest_and_pause',
                       },
+                      { title: `Warm-Up`, value: 'warm-up' },
                     ],
                   },
                 },
