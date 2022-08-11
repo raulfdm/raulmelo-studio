@@ -1,6 +1,7 @@
 import { domains, utils } from '@raulmelo/core';
 import { DotDivider } from '@raulmelo/ui';
 import { GetStaticPaths } from 'next';
+import { Suspense } from 'react';
 
 import { PortableTextPost } from '~/components/PortableTextPost';
 
@@ -15,7 +16,7 @@ export const BlogPostPage = ({
   const { series, ...restPost } = post;
 
   const allSeries = series ? (
-    <SeriesSection series={series} currentPostId={post._id} />
+    <SeriesSection key={post._id} series={series} currentPostId={post._id} />
   ) : null;
 
   const seriesWithDivider = series ? (
@@ -26,18 +27,20 @@ export const BlogPostPage = ({
   ) : null;
 
   return (
-    <PortableTextPost
-      {...restPost}
-      preview={preview}
-      // share={{
-      //   description: `${post.title}. ${post.subtitle}`,
-      // }}
-      estimatedReadingTime={estimatedReadingTime}
-      seriesSection={{
-        top: allSeries,
-        bottom: seriesWithDivider,
-      }}
-    />
+    <Suspense>
+      <PortableTextPost
+        {...restPost}
+        preview={preview}
+        // share={{
+        //   description: `${post.title}. ${post.subtitle}`,
+        // }}
+        estimatedReadingTime={estimatedReadingTime}
+        seriesSection={{
+          top: allSeries,
+          bottom: seriesWithDivider,
+        }}
+      />
+    </Suspense>
   );
 };
 
