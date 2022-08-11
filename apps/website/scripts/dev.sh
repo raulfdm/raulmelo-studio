@@ -2,5 +2,6 @@
 
 echo "Dev server..."
 
-node ./scripts/fetchSiteData.mjs
+pnpm run typegen && \
+node ./scripts/fetchSiteData.mjs && \
 pnpm next $@
