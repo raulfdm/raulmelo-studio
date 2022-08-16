@@ -242,8 +242,8 @@ importers:
       postcss: 8.4.14
       prettier: 2.7.1
       svelte: 3.49.0
-      svelte-check: 2.8.0_txuy7y23qbwmvahbxqvhcdtlqa
-      svelte-preprocess: 4.10.7_diezqzizu3nhtxoxmrtcunfyzi
+      svelte-check: 2.8.0_nxvsp6sjiltnatqa6jdm4mr6zu
+      svelte-preprocess: 4.10.7_bgntxiihuqhg5mwaa7nczjwpga
       tailwindcss: 3.1.7
       tslib: 2.4.0
       typescript: 4.7.4
@@ -289,7 +289,7 @@ importers:
       next: 12.2.5
       next-compose-plugins: 2.2.1
       next-seo: 5.5.0
-      next-sitemap: 3.1.15
+      next-sitemap: 3.1.18
       query-string: 7.1.1
       react: 18.2.0
       react-dom: 18.2.0
@@ -347,12 +347,12 @@ importers:
       '@types/react': 18.0.15
       '@types/react-dom': 18.0.6
       '@types/react-instantsearch-dom': 6.12.3
-      '@xstate/cli': 0.3.2_prettier@2.7.1
+      '@xstate/cli': 0.3.2
       autoprefixer: 10.4.8_postcss@8.4.16
       duplicate-package-checker-webpack-plugin: 3.0.0
       eslint-config-next: 12.2.5_he2ccbldppg44uulnyq4rwocfa
       next-compose-plugins: 2.2.1
-      next-sitemap: 3.1.15_gzpnnaylvtfluxe3m63vhk6hhm
+      next-sitemap: 3.1.18_gzpnnaylvtfluxe3m63vhk6hhm
       tailwindcss: 3.1.7
       typescript: 4.7.4
 
@@ -7723,6 +7723,21 @@ packages:
       - prettier
       - supports-color
 
+  /@xstate/cli/0.3.2:
+    resolution: {integrity: sha512-IAToG5cVLkGG9XCnFVbnt2bQ3QYce4vDmA3NYpqqx34/wiWf6AimbWy+X7PF1ivLBXVN5xiwcB0YyGiI3jbkQw==}
+    hasBin: true
+    dependencies:
+      '@babel/core': 7.18.10
+      '@xstate/machine-extractor': 0.7.0_wjlsd7gn7ixj33ph2462cugore
+      '@xstate/tools-shared': 1.2.2_wjlsd7gn7ixj33ph2462cugore
+      chokidar: 3.5.3
+      commander: 8.3.0
+      xstate: 4.32.1
+    transitivePeerDependencies:
+      - prettier
+      - supports-color
+    dev: true
+
   /@xstate/cli/0.3.2_prettier@2.7.1:
     resolution: {integrity: sha512-IAToG5cVLkGG9XCnFVbnt2bQ3QYce4vDmA3NYpqqx34/wiWf6AimbWy+X7PF1ivLBXVN5xiwcB0YyGiI3jbkQw==}
     hasBin: true
@@ -7833,6 +7848,18 @@ packages:
     dependencies:
       '@xstate/machine-extractor': 0.7.0_wjlsd7gn7ixj33ph2462cugore
       prettier: 2.7.1
+      xstate: 4.32.1
+    transitivePeerDependencies:
+      - '@babel/core'
+    dev: true
+
+  /@xstate/tools-shared/1.2.2_wjlsd7gn7ixj33ph2462cugore:
+    resolution: {integrity: sha512-L99yPl8C0UcU/3VggLjPUExlLRkF4KmEh+mjFNF8m73IPUtEOxOp6tTAPl18k2Xu5F2EA3GzLKJpTlBOGQyOug==}
+    peerDependencies:
+      prettier: ^2.3.1
+      xstate: ^4
+    dependencies:
+      '@xstate/machine-extractor': 0.7.0_wjlsd7gn7ixj33ph2462cugore
       xstate: 4.32.1
     transitivePeerDependencies:
       - '@babel/core'
@@ -9192,7 +9219,7 @@ packages:
       mississippi: 3.0.0
       mkdirp: 0.5.6
       move-concurrently: 1.0.1
-      promise-inflight: 1.0.1_bluebird@3.7.2
+      promise-inflight: 1.0.1
       rimraf: 2.7.1
       ssri: 6.0.2
       unique-filename: 1.1.1
@@ -9215,7 +9242,7 @@ packages:
       minipass-pipeline: 1.2.4
       mkdirp: 1.0.4
       p-map: 4.0.0
-      promise-inflight: 1.0.1_bluebird@3.7.2
+      promise-inflight: 1.0.1
       rimraf: 3.0.2
       ssri: 8.0.1
       tar: 6.1.11
@@ -16075,8 +16102,8 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /next-sitemap/3.1.15_gzpnnaylvtfluxe3m63vhk6hhm:
-    resolution: {integrity: sha512-zLLbSRQjArBlwQp3SUG1nt9TDdJGvLzRj/sQaV4ZovIl4VlocKuFxlX5aWbVQ7iLhTxr8uGU7v8cFENiZCGRjA==}
+  /next-sitemap/3.1.18_gzpnnaylvtfluxe3m63vhk6hhm:
+    resolution: {integrity: sha512-kt0I8Aeepd8NrsExUnexFwQy8ln8Bx4+cBLfcxflyLyVhlTwchDZ/XA/VzqUbhEAqPDfWkNiezPSP9U9+JblJA==}
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
@@ -18330,15 +18357,13 @@ packages:
       through2: 2.0.5
     dev: false
 
-  /promise-inflight/1.0.1_bluebird@3.7.2:
+  /promise-inflight/1.0.1:
     resolution: {integrity: sha512-6zWPyEOFaQBJYcGMHBKTKJ3u6TBsnMFOIZSa6ce1e/ZrrsOlnHRHbabMjLiBYKp+n44X9eUI6VUPaukCXHuG4g==}
     peerDependencies:
       bluebird: '*'
     peerDependenciesMeta:
       bluebird:
         optional: true
-    dependencies:
-      bluebird: 3.7.2
 
   /promise-props-recursive/1.0.0:
     resolution: {integrity: sha512-kh/4BEytTXST030W1YJHs3bTzlFu4C9EFPtqrG3g8JM8nEi3+WxR0mm19TjiobO2YHbHrCicZGN2Z94OhAU+7Q==}
@@ -20875,6 +20900,34 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
+  /svelte-check/2.8.0_nxvsp6sjiltnatqa6jdm4mr6zu:
+    resolution: {integrity: sha512-HRL66BxffMAZusqe5I5k26mRWQ+BobGd9Rxm3onh7ZVu0nTk8YTKJ9vu3LVPjUGLU9IX7zS+jmwPVhJYdXJ8vg==}
+    hasBin: true
+    peerDependencies:
+      svelte: ^3.24.0
+    dependencies:
+      '@jridgewell/trace-mapping': 0.3.14
+      chokidar: 3.5.3
+      fast-glob: 3.2.11
+      import-fresh: 3.3.0
+      picocolors: 1.0.0
+      sade: 1.8.1
+      svelte: 3.49.0
+      svelte-preprocess: 4.10.7_bgntxiihuqhg5mwaa7nczjwpga
+      typescript: 4.7.4
+    transitivePeerDependencies:
+      - '@babel/core'
+      - coffeescript
+      - less
+      - node-sass
+      - postcss
+      - postcss-load-config
+      - pug
+      - sass
+      - stylus
+      - sugarss
+    dev: true
+
   /svelte-check/2.8.0_txuy7y23qbwmvahbxqvhcdtlqa:
     resolution: {integrity: sha512-HRL66BxffMAZusqe5I5k26mRWQ+BobGd9Rxm3onh7ZVu0nTk8YTKJ9vu3LVPjUGLU9IX7zS+jmwPVhJYdXJ8vg==}
     hasBin: true
@@ -20910,6 +20963,58 @@ packages:
       svelte: '>=3.19.0'
     dependencies:
       svelte: 3.49.0
+    dev: true
+
+  /svelte-preprocess/4.10.7_bgntxiihuqhg5mwaa7nczjwpga:
+    resolution: {integrity: sha512-sNPBnqYD6FnmdBrUmBCaqS00RyCsCpj2BG58A1JBswNF7b0OKviwxqVrOL/CKyJrLSClrSeqQv5BXNg2RUbPOw==}
+    engines: {node: '>= 9.11.2'}
+    requiresBuild: true
+    peerDependencies:
+      '@babel/core': ^7.10.2
+      coffeescript: ^2.5.1
+      less: ^3.11.3 || ^4.0.0
+      node-sass: '*'
+      postcss: ^7 || ^8
+      postcss-load-config: ^2.1.0 || ^3.0.0 || ^4.0.0
+      pug: ^3.0.0
+      sass: ^1.26.8
+      stylus: ^0.55.0
+      sugarss: ^2.0.0
+      svelte: ^3.23.0
+      typescript: ^3.9.5 || ^4.0.0
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+      coffeescript:
+        optional: true
+      less:
+        optional: true
+      node-sass:
+        optional: true
+      postcss:
+        optional: true
+      postcss-load-config:
+        optional: true
+      pug:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@types/pug': 2.0.6
+      '@types/sass': 1.43.1
+      detect-indent: 6.1.0
+      magic-string: 0.25.9
+      postcss: 8.4.14
+      sorcery: 0.10.0
+      strip-indent: 3.0.0
+      svelte: 3.49.0
+      typescript: 4.7.4
     dev: true
 
   /svelte-preprocess/4.10.7_diezqzizu3nhtxoxmrtcunfyzi:
