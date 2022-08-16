@@ -2,6 +2,7 @@
 
 echo "Building website with NextJS"
 
+pnpm run typegen && \
 node ./scripts/fetchSiteData.mjs && \
 pnpm run generateRss && \
 pnpm next build && \
