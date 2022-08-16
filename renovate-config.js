@@ -12,11 +12,10 @@ module.exports = {
    * Renovate options
    */
   baseBranches: ['main'],
-  rebaseWhen: 'conflicted',
   recreateClosed: true,
-  branchPrefix: 'renovate/',
   gitAuthor: 'Renovate Bot <bot@renovateapp.com>',
   includeForks: true,
+  pruneStaleBranches: true,
   packageRules: [
     {
       description: 'lockFileMaintenance',
