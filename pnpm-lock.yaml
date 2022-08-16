@@ -192,7 +192,7 @@ importers:
   apps/lambdas:
     specifiers:
       '@raulmelo/core': workspace:*
-      '@types/aws-lambda': 8.10.101
+      '@types/aws-lambda': 8.10.102
       algoliasearch: 4.14.2
       dotenv-flow: 3.2.0
       netlify-lambda: 2.0.15
@@ -202,7 +202,7 @@ importers:
       dotenv-flow: 3.2.0
       netlify-lambda: 2.0.15
     devDependencies:
-      '@types/aws-lambda': 8.10.101
+      '@types/aws-lambda': 8.10.102
 
   apps/utilities:
     specifiers:
@@ -6958,8 +6958,8 @@ packages:
     resolution: {integrity: sha512-HnYpAE1Y6kRyKM/XkEuiRQhTHvkzMBurTHnpFLYLBGPIylZNPs9jJcuOOYWxPLJCSEtmZT0Y8rHDokKN7rRTig==}
     dev: true
 
-  /@types/aws-lambda/8.10.101:
-    resolution: {integrity: sha512-84geGyVc0H9P9aGbcg/vkDh5akJq0bEf3tizHNR2d1gcm0wsp9IZ/SW6rPxvgjJFi3OeVxDc8WTKCAjoZbogzg==}
+  /@types/aws-lambda/8.10.102:
+    resolution: {integrity: sha512-BT05v46n9KtSHa9SgGuOvm49eSruJ9utD8iNXpdpuUVYk8wOcqmm1LEzpNRkrXxD0CULc38sdLpk6q3Wa2WOwg==}
     dev: true
 
   /@types/babel__core/7.1.19:
@@ -7775,6 +7775,7 @@ packages:
       xstate: 4.32.1
     transitivePeerDependencies:
       - '@types/react'
+    dev: false
 
   /@xstate/react/3.0.0_react@18.2.0+xstate@4.32.1:
     resolution: {integrity: sha512-KHSCfwtb8gZ7QH2luihvmKYI+0lcdHQOmGNRUxUEs4zVgaJCyd8csCEmwPsudpliLdUmyxX2pzUBojFkINpotw==}
@@ -9175,7 +9176,7 @@ packages:
       mississippi: 3.0.0
       mkdirp: 0.5.6
       move-concurrently: 1.0.1
-      promise-inflight: 1.0.1
+      promise-inflight: 1.0.1_bluebird@3.7.2
       rimraf: 2.7.1
       ssri: 6.0.2
       unique-filename: 1.1.1
@@ -9198,7 +9199,7 @@ packages:
       minipass-pipeline: 1.2.4
       mkdirp: 1.0.4
       p-map: 4.0.0
-      promise-inflight: 1.0.1
+      promise-inflight: 1.0.1_bluebird@3.7.2
       rimraf: 3.0.2
       ssri: 8.0.1
       tar: 6.1.11
@@ -18304,13 +18305,15 @@ packages:
       through2: 2.0.5
     dev: false
 
-  /promise-inflight/1.0.1:
+  /promise-inflight/1.0.1_bluebird@3.7.2:
     resolution: {integrity: sha512-6zWPyEOFaQBJYcGMHBKTKJ3u6TBsnMFOIZSa6ce1e/ZrrsOlnHRHbabMjLiBYKp+n44X9eUI6VUPaukCXHuG4g==}
     peerDependencies:
       bluebird: '*'
     peerDependenciesMeta:
       bluebird:
         optional: true
+    dependencies:
+      bluebird: 3.7.2
 
   /promise-props-recursive/1.0.0:
     resolution: {integrity: sha512-kh/4BEytTXST030W1YJHs3bTzlFu4C9EFPtqrG3g8JM8nEi3+WxR0mm19TjiobO2YHbHrCicZGN2Z94OhAU+7Q==}
