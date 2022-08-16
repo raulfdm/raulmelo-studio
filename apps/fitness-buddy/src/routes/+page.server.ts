@@ -1,6 +1,11 @@
-import { TrainingSheetApi } from '$lib/api';
+import { TrainingSheetApi, type ITrainingSheet } from '$lib/api';
 
-export async function get() {
+export type PageData = {
+  trainingSheet: ITrainingSheet;
+  suggestedCurrentIndex: number;
+};
+
+export async function load(): Promise<PageData> {
   const trainingSheet = await TrainingSheetApi.getSheet();
 
   const suggestedCurrentIndex = trainingSheet.schema.findIndex((s) => {
@@ -16,9 +21,7 @@ export async function get() {
   });
 
   return {
-    body: {
-      trainingSheet,
-      suggestedCurrentIndex,
-    },
+    trainingSheet,
+    suggestedCurrentIndex,
   };
 }

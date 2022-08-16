@@ -1,4 +1,8 @@
 <script lang="ts">
+  import type { PageData } from './+page.server';
+
+  export let data: PageData;
+
   import { onMount } from 'svelte';
   import type { ITrainingSheet } from '$lib/api';
   import LoaderSpinner from '$lib/components/LoaderSpinner.svelte';
@@ -6,8 +10,7 @@
   import TrainingDate from '$lib/components/Training/TrainingDate.svelte';
   import TrainingInfo from '$lib/components/Training/TrainingInfo.svelte';
 
-  export let trainingSheet: ITrainingSheet;
-  export let suggestedCurrentIndex: number;
+  const { suggestedCurrentIndex, trainingSheet } = data;
 
   const TRAINING_PERSISTENCE_KEY = `training__currentIndex_${trainingSheet._id}`;
 
