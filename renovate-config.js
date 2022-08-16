@@ -76,6 +76,7 @@ module.exports = {
     },
     {
       matchPackagePatterns: ['@xstate'],
+      matchPackageNames: ['xstate'],
       groupName: 'XState packages',
     },
     {
