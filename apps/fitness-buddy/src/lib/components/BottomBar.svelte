@@ -7,6 +7,10 @@
     <SwordIcon width={24} />
     Training
   </a>
+  <a sveltekit:prefetch href="/new-training" class="link">
+    <SwordIcon width={24} />
+    NEW Training
+  </a>
 </nav>
 
 <style module lang="postcss">
