@@ -30,7 +30,6 @@ export const activityActions = {
   open(trainingKey: string) {
     activityStore.update((store) => {
       const currentTrainingOpen = store.trainingList.get(trainingKey);
-      console.log(currentTrainingOpen);
 
       return {
         ...store,

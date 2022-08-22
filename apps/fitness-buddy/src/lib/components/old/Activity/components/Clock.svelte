@@ -39,7 +39,6 @@
 
     const persistedStore = readTrainingStore() || {};
 
-    console.log($activityStore.currentTraining);
     const persistedContext =
       persistedStore[$activityStore.currentTraining._key];
 

@@ -6,8 +6,6 @@
   import Content from './components/Content.svelte';
   import DropSetCalculator from './components/DropSetCalculator.svelte';
 
-  console.log($activityStore.state);
-
   export const tabs: { value: ITab; label: string }[] = [
     {
       label: 'Clock',

@@ -32,7 +32,6 @@
 <div
   class="wrapper"
   on:click={() => {
-    console.log('OPEN THE TCHECA');
     activityActions.open(training._key);
   }}
 >
