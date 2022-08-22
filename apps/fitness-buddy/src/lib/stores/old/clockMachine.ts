@@ -148,8 +148,6 @@ export const clockMachine = createMachine(
         remainingRest: (context) => context.remainingRest - 1,
       }),
       startNextSession: assign((context, event) => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
         if (event.type === '') {
           audioActions.beep();
           return {

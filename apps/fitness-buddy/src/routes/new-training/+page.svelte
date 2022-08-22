@@ -4,7 +4,6 @@
   export let data: PageData;
 
   import { onMount } from 'svelte';
-  import type { ITrainingSheet } from '$lib/api';
   import LoaderSpinner from '$lib/components/LoaderSpinner.svelte';
 
   import TrainingDate from '$lib/components/Training/TrainingDate.svelte';
