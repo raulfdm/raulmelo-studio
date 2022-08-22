@@ -4,7 +4,9 @@
   "version": "0.0.1",
   "scripts": {
     "postinstall": "pnpm run typegen",
-    "dev": "vite dev",
+    "dev": "run-p dev:*",
+    "dev:svelte": "vite dev",
+    "dev:typegen": "pnpm run typegen",
     "build": "scripty",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
