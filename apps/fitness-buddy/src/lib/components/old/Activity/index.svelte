@@ -70,7 +70,7 @@
     @apply absolute bottom-0 right-0 left-0;
     @apply bg-gray-100;
     @apply rounded-t-2xl p-4;
-    height: 80vh;
+    height: 90%;
     @apply flex flex-col;
   }
 

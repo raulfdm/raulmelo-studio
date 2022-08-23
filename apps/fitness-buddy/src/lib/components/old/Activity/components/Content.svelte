@@ -1,10 +1,11 @@
 <script lang="ts">
   import ContentTitle from '$lib/components/ContentTitle.svelte';
 
-  import { activityStore } from '$lib/stores/activity';
+  import { activityStore } from '$lib/stores/old/activity';
 
   let currentExercise = $activityStore.currentTraining.exercise;
 
+  console.log('currentExercise', currentExercise);
   const youtubeUrl = currentExercise.youtubeVideoId
     ? `https://www.youtube.com/embed/${currentExercise.youtubeVideoId}`
     : undefined;
