@@ -2,6 +2,8 @@
   import BeepAudio from '$lib/components/BeepAudio.svelte';
   import BottomBar from '$lib/components/BottomBar.svelte';
   import TopBar from '$lib/components/TopBar.svelte';
+  import Actvity from '$lib/components/old/Activity/index.svelte';
+
   import '../app.css';
 </script>
 
@@ -20,6 +22,7 @@
 >
   <slot />
 </main>
+<Actvity />
 <BottomBar />
 <BeepAudio />
 

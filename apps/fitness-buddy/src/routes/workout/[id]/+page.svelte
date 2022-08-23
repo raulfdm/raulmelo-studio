@@ -3,7 +3,6 @@
   import TrainingInfo from '$lib/components/old/Activity/components/TrainingInfo.svelte';
   import CardioCard from '$lib/components/CardioCard.svelte';
   import type { ITrainingRoutine } from '$lib/api';
-  import Actvity from '$lib/components/old/Activity/index.svelte';
 
   export let data: {
     trainingRoutine: ITrainingRoutine;
@@ -42,8 +41,6 @@
     {/if}
   </div>
 </div>
-
-<Actvity />
 
 <style lang="postcss" module>
   .title {

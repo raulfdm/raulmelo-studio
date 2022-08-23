@@ -90,7 +90,8 @@ export interface ITraining {
     | 'fst_7'
     | 'gvt'
     | 'rest_and_pause'
-    | 'drop-set';
+    | 'drop-set'
+    | 'warm-up';
   exercise: Exercise;
   repetitions: string;
   restTime: number;
