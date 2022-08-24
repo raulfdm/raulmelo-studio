@@ -12,6 +12,7 @@
     gvt: 'GVT',
     rest_and_pause: `Rest 'n' Pause 3x`,
     'drop-set': `Drop-Set 3x`,
+    'warm-up': 'Warm UP',
   };
 </script>
 
