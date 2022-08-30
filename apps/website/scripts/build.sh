@@ -6,4 +6,5 @@ pnpm run typegen && \
 node ./scripts/fetchSiteData.mjs && \
 pnpm run generateRss && \
 pnpm next build && \
-pnpm next-sitemap --config next-sitemap.config.mjs
+pnpm next-sitemap --config next-sitemap.config.mjs && \
+pnpm exec partytown copylib public/~partytown

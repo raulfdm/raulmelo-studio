@@ -19,6 +19,18 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
 
+          <script
+            data-partytown-config
+            dangerouslySetInnerHTML={{
+              __html: `
+              partytown = {
+                lib: "/_next/static/~partytown/",
+                debug: true
+              };
+            `,
+            }}
+          />
+
           {/**
            * Global Theme handler
            * It needs to be in the header to avoid FOUC (flash of unstyled content)

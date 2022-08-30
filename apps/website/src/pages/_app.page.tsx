@@ -29,8 +29,7 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
       </Head>
 
       {/* Global Site Tag (gtag.js) - Google Analytics */}
-      <Script src={analyticsConfig.scriptUrl} />
-      <Script>{analyticsConfig.gtagLoadScript}</Script>
+      <Script src={analyticsConfig.scriptUrl} strategy="worker" />
 
       <SocialProfileJsonLd
         type="Person"
