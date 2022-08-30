@@ -17,6 +17,7 @@ const nextConfig = {
   },
   pageExtensions: ['page.tsx', 'page.ts'],
   experimental: {
+    nextScriptWorkers: true,
     esmExternals: 'loose',
   },
   reactStrictMode: true,
