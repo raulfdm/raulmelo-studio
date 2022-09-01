@@ -1,4 +1,4 @@
-const GA_TRACKING_ID = '254799560';
+const GA_TRACKING_ID = 'G-HY7TYWWEKD';
 
 export const analyticsConfig = {
   scriptUrl: `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`,
