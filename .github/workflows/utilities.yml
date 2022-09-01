@@ -41,7 +41,7 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Test Projects
-        run: pnpm --filter utilities run check
+        run: pnpm run check --filter utilities
 
       - name: Lint Projects
-        run: pnpm --filter utilities run lint
+        run: pnpm run lint --filter utilities

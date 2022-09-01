@@ -15,6 +15,7 @@
   },
   "types": "./dist/types/index.d.ts",
   "scripts": {
+    "postinstall": "pnpm run build",
     "clean": "scripty",
     "build": "scripty",
     "lint": "scripty",

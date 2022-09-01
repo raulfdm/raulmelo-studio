@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`fn: getPostsToAlgolia returns expected data structure 1`] = `
-Object {
+{
   "date_timestamp": "1637107200",
   "excerpt": "Monorepo architecture has become more popular over the years, which is understandable considering the problem it solves. The biggest challenge, though, is finding an easy-to-use tool for handling such a structure.
 
-If you Google \\"monorepo tool javascript\\", you'll find many articles showing the most popular options we have, and curiously each one attempts to solve that problem in a very different way.
+If you Google "monorepo tool javascript", you'll find many articles showing the most popular options we have, and curiously each one attempts to solve that problem in a very different way.
 
 From the options we have, some are there for a while (like Lerna) but no longer actively maintained; others never went out from draft (like Bolt), others are working fine but only for a specific kind of project.
 
 Unfortunately, we don't have a killer tool that fits all types of JavaScript/Typescript projects and all sizes of teams, and that's understandable.
 
-Yet there's one (\\"new\\") option that might help us in most cases: **pnpm workspaces**.
+Yet there's one ("new") option that might help us in most cases: **pnpm workspaces**.
 
 But before talking about pnpm, let me tell you my monorepo/workspaces usage and how I managed to solve that in the first place.
 
@@ -55,7 +55,7 @@ Yarn Workspaces is a low-level tool that handles the packages installation, crea
 
 You can use either Lerna or Yarn Workspaces to manage your repository, but you may have noticed that they are more complementary than exclusionary. In other words, they work really well together.
 
-Even nowadays, this combination is still a good choice, but some \\"problems\\" might be highlighted:
+Even nowadays, this combination is still a good choice, but some "problems" might be highlighted:
 
 - Yarn Workspaces (at least for v1) is no longer receiving new features and improvements (the last update was from 2018);
 - Lerna documentation is OK, but you have to figure out a lot of things by yourself;
@@ -69,7 +69,7 @@ Even nowadays, this combination is still a good choice, but some \\"problems\\" 
 By the time it was created (in 2015), Lerna had come up to help us with this lack of tooling to manage JS monorepos, and it did amazingly well.
 
 Though because they might not have a dedicated team (or a few people) to work on that, plan the future of the tool, Lerna is slowly dyin",
-  "featuredImage": Object {
+  "featuredImage": {
     "height": 1260,
     "url": "https://cdn.sanity.io/images/gc3hakk3/production/f3be09a1be3373867ac367d2425e80c37958a9bb-2400x1260.png",
     "width": 2400,
@@ -78,23 +78,23 @@ Though because they might not have a dedicated team (or a few people) to work on
   "language": "en",
   "objectID": "Content_fe63b616-8f70-44c3-9227-fd0625ca3103",
   "slug": "replacing-lerna-and-yarn-with-pnpm-workspaces",
-  "tags": Array [
-    Object {
+  "tags": [
+    {
       "_id": "a98ba9c8-b2ec-4fdd-a47d-80714402d9b4",
       "name": "pnpm",
       "slug": "pnpm",
     },
-    Object {
+    {
       "_id": "92be336e-3b55-40df-93e7-7942428bd8b9",
       "name": "Package Manager",
       "slug": "package-manager",
     },
-    Object {
+    {
       "_id": "74087cc8-2774-4aa6-b39d-15f12e457351",
       "name": "JavaScript",
       "slug": "javascript",
     },
-    Object {
+    {
       "_id": "7fc7bb85-6f69-4d28-a04d-1f1a29953880",
       "name": "Monorepo",
       "slug": "monorepo",
@@ -105,7 +105,7 @@ Though because they might not have a dedicated team (or a few people) to work on
 `;
 
 exports[`fn: getPostsToAlgolia returns expected data structure 2`] = `
-Object {
+{
   "date_timestamp": "1625702400",
   "excerpt": "Hey, devs.
 
@@ -200,7 +200,7 @@ asdf install nodejs latest:10.2
 asdf install nodejs latest:14
 asdf install ruby 2.6.5
 asdf instal",
-  "featuredImage": Object {
+  "featuredImage": {
     "height": 3316,
     "url": "https://cdn.sanity.io/images/gc3hakk3/production/e97a867f0e9443c42b8a042e3d714c8594f36f08-5196x3316.jpg",
     "width": 5196,
@@ -210,18 +210,18 @@ asdf instal",
   "objectID": "Content_c1d296f4-35b0-41c2-99be-beff7583f193",
   "slug": "how-to-manage-multiple-runtime-versions-with-a-single-tooling",
   "subtitle": "A quick walkthrough on asdf CLI",
-  "tags": Array [
-    Object {
+  "tags": [
+    {
       "_id": "96f6acec-77a2-4940-b09d-51bb6d036f53",
       "name": "Tooling",
       "slug": "tooling",
     },
-    Object {
+    {
       "_id": "fbdf4642-4a9b-4feb-93ca-64e57f8bb9f6",
       "name": "Software Development",
       "slug": "software-development",
     },
-    Object {
+    {
       "_id": "923bef9b-658c-40cd-8b8a-42291e5d8268",
       "name": "Runtime Management",
       "slug": "runtime-management",
@@ -232,7 +232,7 @@ asdf instal",
 `;
 
 exports[`fn: getPostsToAlgolia returns expected data structure 3`] = `
-Object {
+{
   "date_timestamp": "1625097600",
   "excerpt": "Hello, devs.
 
@@ -268,12 +268,12 @@ const months = ['Jan', 'March', 'April', 'June'];
 // insert exactly in the index one (1, 0) the string \`Feb\`
 months.splice(1, 0, 'Feb');
 
-console.log(months); // Array [\\"Jan\\", \\"Feb\\", \\"March\\", \\"April\\", \\"June\\"]
+console.log(months); // Array ["Jan", "Feb", "March", "April", "June"]
 
-// removes everything from the index 3 til the last el (\\"April\\" and \\"June\\")
+// removes everything from the index 3 til the last el ("April" and "June")
 months.splice(3, months.length)
 
-console.log(months); // [\\"Jan\\", \\"Feb\\", \\"March\\"]
+console.log(months); // ["Jan", "Feb", "March"]
 \`\`\`
 
 
@@ -289,11 +289,11 @@ Every node will have 2 properties:
 
 Maybe the best way to visualize it is by imagining a train.
 
-In a train we always have the \\"head\\" which and from there it's connected the first \\"wagon\\", then a second \\"wagon\\" is connected to the first until the end of the train.
+In a train we always have the "head" which and from there it's connected the first "wagon", then a second "wagon" is connected to the first until the end of the train.
 
 If we want to remove a defective wagon, for example, all we need to do is find this wagon, link the previous wagon to the next wagon, and done.
 
-The principle is the same when we want to add a new \\"wagon\\". All we need is to find where we want to add it, connect the previous and the next wagon into the new one.
+The principle is the same when we want to add a new "wagon". All we need is to find where we want to add it, connect the previous and the next wagon into the new one.
 
 In other words, linked lists are all about creating and modifying connections between nodes.
 
@@ -339,7 +339,7 @@ function LinkedListFactory() {
 }
 \`\`\`
 
- \\"Global\\" variables
+ "Global" variables
 
 Before implementing the methods, we'll need to create 2 variables that will be used in almost all methods:
 
@@ -348,7 +348,7 @@ Before implementing the methods, we'll need to create 2 variables that will be u
 
 \`\`\`js
 function LinkedList",
-  "featuredImage": Object {
+  "featuredImage": {
     "height": 4000,
     "url": "https://cdn.sanity.io/images/gc3hakk3/production/4ecac30d3d148098bc511364a9074ac94ebf2543-6000x4000.jpg",
     "width": 6000,
@@ -358,13 +358,13 @@ function LinkedList",
   "objectID": "Content_9260ffdc-e0b9-4706-a36b-beae7b7c3f2d",
   "slug": "data-structure-with-javascript-linked-list",
   "subtitle": "What is and how to implement a basic linked list in JavaScript",
-  "tags": Array [
-    Object {
+  "tags": [
+    {
       "_id": "5ef50e3e-954a-4f07-a17a-a4c95cd780dc",
       "name": "Computer Science",
       "slug": "computer-science",
     },
-    Object {
+    {
       "_id": "8db1ecbb-65fa-4526-bd3b-b33aa68c15fa",
       "name": "Data Structure",
       "slug": "data-structure",
@@ -375,7 +375,7 @@ function LinkedList",
 `;
 
 exports[`fn: getPostsToAlgolia returns expected data structure 4`] = `
-Object {
+{
   "date_timestamp": "1621641600",
   "excerpt": "When we talk about queue as a data structure, it's exactly the same as you can imagine in real-world examples: a lot of things a line one in front of the other, waiting for something, like the imagine hero shows.
 
@@ -592,7 +592,7 @@ Nothing has changed until here, only our internal data structure.
  Priority
 
 To take into account where to add the element we'll need to loop over all items and check if ",
-  "featuredImage": Object {
+  "featuredImage": {
     "height": 3648,
     "url": "https://cdn.sanity.io/images/gc3hakk3/production/7228f4b494fc6dc189da4dd31ec908bb39659ae3-5472x3648.jpg",
     "width": 5472,
@@ -602,13 +602,13 @@ To take into account where to add the element we'll need to loop over all items 
   "objectID": "Content_826a32b0-6718-4327-a592-6da0bda52e98",
   "slug": "data-structure-with-javascript-queue",
   "subtitle": "How to implement basic, priority and circular queue in JavaScript.",
-  "tags": Array [
-    Object {
+  "tags": [
+    {
       "_id": "5ef50e3e-954a-4f07-a17a-a4c95cd780dc",
       "name": "Computer Science",
       "slug": "computer-science",
     },
-    Object {
+    {
       "_id": "8db1ecbb-65fa-4526-bd3b-b33aa68c15fa",
       "name": "Data Structure",
       "slug": "data-structure",
@@ -619,7 +619,7 @@ To take into account where to add the element we'll need to loop over all items 
 `;
 
 exports[`fn: getPostsToAlgolia returns expected data structure 5`] = `
-Object {
+{
   "date_timestamp": "1618531200",
   "excerpt": "As a JavaScript developer (no matter back or front-end), we often rely upon \`npm scripts\` to automate common tasks like starting a server, building a project, and even performing tasks before or after certain scripts like \`postbuild\`, \`prebuild\`, etc.
 
@@ -628,28 +628,28 @@ When those commands are simple like \`node index.js\`, having them a single line
 (Example extracted from [Material UI package.json](https://github.com/mui-org/material-ui/blob/830c18ba71af19bc0370f1eeb902f9f605144a5d/package.json))
 \`\`\`json
 {
-    \\"scripts\\": {
-      \\"proptypes\\": \\"cross-env BABEL_ENV=development babel-node --extensions \\\\\\".tsx,.ts,.js\\\\\\" ./scripts/generateProptypes.ts\\",
-      \\"deduplicate\\": \\"node scripts/deduplicate.js\\",
-      \\"benchmark:browser\\": \\"yarn workspace benchmark browser\\",
-      \\"build:codesandbox\\": \\"lerna run --parallel --scope \\\\\\"@material-ui/*\\\\\\" build\\",
-      \\"release:version\\": \\"lerna version --exact --no-changelog --no-push --no-git-tag-version\\",
-      \\"release:build\\": \\"lerna run --parallel --scope \\\\\\"@material-ui/*\\\\\\" build\\",
-      \\"release:changelog\\": \\"node scripts/releaseChangelog\\",
-      \\"release:publish\\": \\"lerna publish from-package --dist-tag next --contents build\\",
-      \\"release:publish:dry-run\\": \\"lerna publish from-package --dist-tag next --contents build --registry=\\\\\\"http://localhost:4873/\\\\\\"\\",
-      \\"release:tag\\": \\"node scripts/releaseTag\\",
-      \\"docs:api\\": \\"rimraf ./docs/pages/api-docs && yarn docs:api:build\\",
-      \\"docs:api:build\\": \\"cross-env BABEL_ENV=development __NEXT_EXPORT_TRAILING_SLASH=true babel-node --extensions \\\\\\".tsx,.ts,.js\\\\\\" ./docs/scripts/buildApi.ts  ./docs/pages/api-docs ./packages/material-ui-unstyled/src ./packages/material-ui/src ./packages/material-ui-lab/src --apiPagesManifestPath ./docs/src/pagesApi.js\\",
-      \\"docs:build\\": \\"yarn workspace docs build\\",
-      \\"docs:build-sw\\": \\"yarn workspace docs build-sw\\",
-      \\"docs:build-color-preview\\": \\"babel-node scripts/buildColorTypes\\",
-      \\"docs:deploy\\": \\"yarn workspace docs deploy\\",
-      \\"docs:dev\\": \\"yarn workspace docs dev\\",
-      \\"docs:export\\": \\"yarn workspace docs export\\",
-      \\"docs:icons\\": \\"yarn workspace docs icons\\",
-      \\"docs:size-why\\": \\"cross-env DOCS_STATS_ENABLED=true yarn docs:build\\",
-      \\"docs:start\\": \\"yarn workspace docs start\\",
+    "scripts": {
+      "proptypes": "cross-env BABEL_ENV=development babel-node --extensions \\".tsx,.ts,.js\\" ./scripts/generateProptypes.ts",
+      "deduplicate": "node scripts/deduplicate.js",
+      "benchmark:browser": "yarn workspace benchmark browser",
+      "build:codesandbox": "lerna run --parallel --scope \\"@material-ui/*\\" build",
+      "release:version": "lerna version --exact --no-changelog --no-push --no-git-tag-version",
+      "release:build": "lerna run --parallel --scope \\"@material-ui/*\\" build",
+      "release:changelog": "node scripts/releaseChangelog",
+      "release:publish": "lerna publish from-package --dist-tag next --contents build",
+      "release:publish:dry-run": "lerna publish from-package --dist-tag next --contents build --registry=\\"http://localhost:4873/\\"",
+      "release:tag": "node scripts/releaseTag",
+      "docs:api": "rimraf ./docs/pages/api-docs && yarn docs:api:build",
+      "docs:api:build": "cross-env BABEL_ENV=development __NEXT_EXPORT_TRAILING_SLASH=true babel-node --extensions \\".tsx,.ts,.js\\" ./docs/scripts/buildApi.ts  ./docs/pages/api-docs ./packages/material-ui-unstyled/src ./packages/material-ui/src ./packages/material-ui-lab/src --apiPagesManifestPath ./docs/src/pagesApi.js",
+      "docs:build": "yarn workspace docs build",
+      "docs:build-sw": "yarn workspace docs build-sw",
+      "docs:build-color-preview": "babel-node scripts/buildColorTypes",
+      "docs:deploy": "yarn workspace docs deploy",
+      "docs:dev": "yarn workspace docs dev",
+      "docs:export": "yarn workspace docs export",
+      "docs:icons": "yarn workspace docs icons",
+      "docs:size-why": "cross-env DOCS_STATS_ENABLED=true yarn docs:build",
+      "docs:start": "yarn workspace docs start",
       //.....
     }
 }
@@ -660,28 +660,28 @@ But what if I told you could have those commands extracted into a separate file 
 
 \`\`\`json
 {
-    \\"scripts\\": {
-      \\"proptypes\\": \\"scripty\\",
-      \\"deduplicate\\": \\"scripty\\",
-      \\"benchmark:browser\\": \\"scripty\\",
-      \\"build:codesandbox\\": \\"scripty\\",
-      \\"release:version\\": \\"scripty\\",
-      \\"release:build\\": \\"scripty\\",
-      \\"release:changelog\\": \\"scripty\\",
-      \\"release:publish\\": \\"scripty\\",
-      \\"release:publish:dry-run\\": \\"scripty\\",
-      \\"release:tag\\": \\"scripty\\",
-      \\"docs:api\\": \\"scripty\\",
-      \\"docs:api:build\\": \\"scripty\\",
-      \\"docs:build\\": \\"scripty\\",
-      \\"docs:build-sw\\": \\"scripty\\",
-      \\"docs:build-color-preview\\": \\"scripty\\",
-      \\"docs:deploy\\": \\"scripty\\",
-      \\"docs:dev\\": \\"scripty\\",
-      \\"docs:export\\": \\"scripty\\",
-      \\"docs:icons\\": \\"scripty\\",
-      \\"docs:size-why\\": \\"scripty\\",
-      \\"docs:start\\": \\"scripty\\",
+    "scripts": {
+      "proptypes": "scripty",
+      "deduplicate": "scripty",
+      "benchmark:browser": "scripty",
+      "build:codesandbox": "scripty",
+      "release:version": "scripty",
+      "release:build": "scripty",
+      "release:changelog": "scripty",
+      "release:publish": "scripty",
+      "release:publish:dry-run": "scripty",
+      "release:tag": "scripty",
+      "docs:api": "scripty",
+      "docs:api:build": "scripty",
+      "docs:build": "scripty",
+      "docs:build-sw": "scripty",
+      "docs:build-color-preview": "scripty",
+      "docs:deploy": "scripty",
+      "docs:dev": "scripty",
+      "docs:export": "scripty",
+      "docs:icons": "scripty",
+      "docs:size-why": "scripty",
+      "docs:start": "scripty",
     }
    //.....
 }
@@ -699,8 +699,8 @@ Let's say we have this:
 
 \`\`\`json
 {
-  \\"scripts\\": {
-    \\"lint\\": \\"eslint . --cache --report-unused-disable-directives --ext .js,.ts,.tsx --max-warnings 0\\"
+  "scripts": {
+    "lint": "eslint . --cache --report-unused-disable-directives --ext .js,.ts,.tsx --max-warnings 0"
   }
 }
 
@@ -710,8 +710,8 @@ Using scripty it'll look like this:
 
 \`\`\`json
 {
-  \\"scripts\\": {
-    \\"lint\\": \\"scripty\\"
+  "scripts": {
+    "lint": "scripty"
   }
 }
 \`\`\`
@@ -745,7 +745,7 @@ To have one of those, the file needs to:
 
 
 Also, file extensions are not necessary. You can write a \`test.sh\`, \`test.js\` or only \`test\`. What will define the syntax highlight and the execution w",
-  "featuredImage": Object {
+  "featuredImage": {
     "height": 4312,
     "url": "https://cdn.sanity.io/images/gc3hakk3/production/cde16fb7505ac11b315af8b5ca9179c284a6e6b5-6468x4312.jpg",
     "width": 6468,
@@ -755,13 +755,13 @@ Also, file extensions are not necessary. You can write a \`test.sh\`, \`test.js\
   "objectID": "Content_80be37b1-a1d9-4931-975b-1cf4640f7f7d",
   "slug": "how-to-have-better-npm-scripts",
   "subtitle": "A quick npm package to ease your complex npm scripts",
-  "tags": Array [
-    Object {
+  "tags": [
+    {
       "_id": "74087cc8-2774-4aa6-b39d-15f12e457351",
       "name": "JavaScript",
       "slug": "javascript",
     },
-    Object {
+    {
       "_id": "96f6acec-77a2-4940-b09d-51bb6d036f53",
       "name": "Tooling",
       "slug": "tooling",

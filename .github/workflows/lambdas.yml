@@ -44,16 +44,16 @@ jobs:
           pnpm install --no-frozen-lockfile
 
       - name: Build Projects
-        run: pnpm --F lambdas... run build
+        run: pnpm run build --filter lambdas
 
       - name: Lint Projects
-        run: pnpm --F lambdas run lint
+        run: pnpm run lint --filter lambdas
 
       - name: Test Projects
-        run: pnpm --F lambdas run test
+        run: pnpm run test --filter lambdas
 
       - name: Deploy
-        run: pnpm --F lambdas run deploy
+        run: pnpm run deploy --filter lambdas
         if: contains('refs/heads/main', github.ref)
         env:
           NETLIFY_AUTH_TOKEN: ${{secrets.NETLIFY_AUTH_TOKEN}}
