@@ -9,6 +9,7 @@ type MachineEvents = ToggleMenuEvent | CloseMenuEvent;
 type MachineStates = 'open' | 'closed';
 
 const sideMenuMachine = createMachine({
+  predictableActionArguments: true,
   tsTypes: {} as import('./useSideMenu.typegen').Typegen0,
   schema: {
     actions: {} as MachineEvents,
