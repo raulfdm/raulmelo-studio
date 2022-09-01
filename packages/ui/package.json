@@ -19,7 +19,7 @@
     "./styles/style.css": "./dist/style.css"
   },
   "scripts": {
-    "postinstall": "pnpm run build",
+    "postinstall": "turbo run build --filter ui",
     "build": "scripty",
     "build:css": "scripty",
     "build:storybook": "scripty",

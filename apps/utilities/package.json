@@ -2,9 +2,7 @@
   "name": "utilities",
   "version": "0.0.1",
   "scripts": {
-    "postinstall": "pnpm run typegen",
-    "predev": "pnpm run typegen",
-    "dev": "vite dev",
+    "dev": "scripty",
     "build": "scripty",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
