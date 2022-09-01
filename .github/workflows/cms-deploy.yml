@@ -44,10 +44,10 @@ jobs:
           pnpm install --no-frozen-lockfile
 
       - name: Building
-        run: pnpm --filter cms... --stream run build
+        run: pnpm run build --filter cms
 
       - name: Deploy
-        run: pnpm --filter cms --stream run deploy
+        run: pnpm run deploy --filter cms
         if: contains('refs/heads/main', github.ref)
         env:
           SANITY_AUTH_TOKEN: ${{secrets.SANITY_AUTH_TOKEN}}
