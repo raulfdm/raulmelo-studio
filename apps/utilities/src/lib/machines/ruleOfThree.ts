@@ -35,6 +35,7 @@ type RuleOfThreeEvents =
 
 export const ruleOfThreeMachine = createMachine(
   {
+    predictableActionArguments: true,
     id: 'ruleOfThree',
     initial: 'prepare',
     context: {

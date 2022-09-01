@@ -42,7 +42,7 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Test Projects
-        run: pnpm --filter fitness-buddy run check
+        run: pnpm run check --filter fitness-buddy
 
       - name: Lint Projects
-        run: pnpm --filter fitness-buddy run lint
+        run: pnpm run lint --filter fitness-buddy

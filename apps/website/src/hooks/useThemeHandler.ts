@@ -32,6 +32,7 @@ function saveThemeOnLocalStorage(theme: AppTheme) {
 
 const themeMachine = createMachine(
   {
+    predictableActionArguments: true,
     tsTypes: {} as import('./useThemeHandler.typegen').Typegen0,
     initial: 'unset',
     states: {
