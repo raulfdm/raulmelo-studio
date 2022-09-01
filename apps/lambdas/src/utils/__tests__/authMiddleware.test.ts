@@ -6,8 +6,8 @@ describe('fn: authMiddleware', () => {
 
     expect(await guardedFunction({ headers: {} } as any))
       .toMatchInlineSnapshot(`
-      Object {
-        "body": "{\\"message\\":\\"Unauthorized request\\"}",
+      {
+        "body": "{"message":"Unauthorized request"}",
         "statusCode": 401,
       }
     `);
@@ -19,11 +19,11 @@ describe('fn: authMiddleware', () => {
         },
       } as any),
     ).toMatchInlineSnapshot(`
-    Object {
-      "body": "{\\"message\\":\\"Unauthorized request\\"}",
-      "statusCode": 401,
-    }
-  `);
+      {
+        "body": "{"message":"Unauthorized request"}",
+        "statusCode": 401,
+      }
+    `);
   });
 
   it('calls guarded function if token is correct', async () => {

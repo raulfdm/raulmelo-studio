@@ -33,11 +33,11 @@ describe('fn: updateAlgolia', () => {
 
     it('returns success object', () => {
       expect(result).toMatchInlineSnapshot(`
-            Object {
-              "body": "{\\"message\\":\\"Indexes updated!\\",\\"date\\":\\"2021-03-07T00:00:00.000Z\\"}",
-              "statusCode": 200,
-            }
-          `);
+        {
+          "body": "{"message":"Indexes updated!","date":"2021-03-07T00:00:00.000Z"}",
+          "statusCode": 200,
+        }
+      `);
     });
   });
 
@@ -62,24 +62,24 @@ describe('fn: updateAlgolia', () => {
 
     it('returns with error response ', () => {
       expect(result).toMatchInlineSnapshot(`
-            Object {
-              "body": "{\\"message\\":\\"Something went wrong. Check the logs\\",\\"date\\":\\"2021-03-07T00:00:00.000Z\\"}",
-              "statusCode": 500,
-            }
-          `);
+        {
+          "body": "{"message":"Something went wrong. Check the logs","date":"2021-03-07T00:00:00.000Z"}",
+          "statusCode": 500,
+        }
+      `);
     });
 
     it('consoles the error', () => {
       expect(mockConsoleError).toMatchInlineSnapshot(`
         [MockFunction] {
-          "calls": Array [
-            Array [
+          "calls": [
+            [
               "Error while updating indexes:",
               undefined,
             ],
           ],
-          "results": Array [
-            Object {
+          "results": [
+            {
               "type": "return",
               "value": undefined,
             },
