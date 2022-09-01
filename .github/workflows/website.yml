@@ -42,7 +42,7 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Build dependent packages
-        run: pnpm run build --filter website
+        run: pnpm run build --filter website...
 
       - name: Lint Projects
         run: pnpm run lint --filter website

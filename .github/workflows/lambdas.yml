@@ -44,7 +44,7 @@ jobs:
           pnpm install --no-frozen-lockfile
 
       - name: Build Projects
-        run: pnpm run build --filter lambdas
+        run: pnpm run build --filter lambdas...
 
       - name: Lint Projects
         run: pnpm run lint --filter lambdas

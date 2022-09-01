@@ -44,7 +44,7 @@ jobs:
           pnpm install --no-frozen-lockfile
 
       - name: Building
-        run: pnpm run build --filter cms
+        run: pnpm run build --filter cms...
 
       - name: Deploy
         run: pnpm run deploy --filter cms
