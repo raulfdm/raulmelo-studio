@@ -7,7 +7,7 @@
     "check": "turbo run check",
     "deploy": "turbo run deploy",
     "test": "turbo run test",
-    "clean": "pnpm -r exec rm -rf node_modules"
+    "clean": "rm -rf node_modules && pnpm -r exec rm -rf node_modules"
   },
   "devDependencies": {
     "@babel/core": "7.18.10",

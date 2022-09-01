@@ -19,6 +19,7 @@
     "./styles/style.css": "./dist/style.css"
   },
   "scripts": {
+    "postinstall": "pnpm run build",
     "build": "scripty",
     "build:css": "scripty",
     "build:storybook": "scripty",
