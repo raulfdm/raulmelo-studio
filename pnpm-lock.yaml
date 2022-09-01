@@ -292,7 +292,7 @@ importers:
       next: 12.2.5
       next-compose-plugins: 2.2.1
       next-seo: 5.5.0
-      next-sitemap: 3.1.18
+      next-sitemap: 3.1.21
       query-string: 7.1.1
       react: 18.2.0
       react-dom: 18.2.0
@@ -351,12 +351,12 @@ importers:
       '@types/react': 18.0.17
       '@types/react-dom': 18.0.6
       '@types/react-instantsearch-dom': 6.12.3
-      '@xstate/cli': 0.3.2_prettier@2.7.1
+      '@xstate/cli': 0.3.2
       autoprefixer: 10.4.8_postcss@8.4.16
       duplicate-package-checker-webpack-plugin: 3.0.0
       eslint-config-next: 12.2.5_sorwav4hsh5vncerguqybud76i
       next-compose-plugins: 2.2.1
-      next-sitemap: 3.1.18_gzpnnaylvtfluxe3m63vhk6hhm
+      next-sitemap: 3.1.21_gzpnnaylvtfluxe3m63vhk6hhm
       tailwindcss: 3.1.7_postcss@8.4.16
       typescript: 4.7.4
 
@@ -8680,6 +8680,21 @@ packages:
     resolution: {integrity: sha512-N8tkAACJx2ww8vFMneJmaAgmjAG1tnVBZJRLRcx061tmsLRZHSEZSLuGWnwPtunsSLvSqXQ2wfp7Mgqg1I+2dQ==}
     dev: false
 
+  /@xstate/cli/0.3.2:
+    resolution: {integrity: sha512-IAToG5cVLkGG9XCnFVbnt2bQ3QYce4vDmA3NYpqqx34/wiWf6AimbWy+X7PF1ivLBXVN5xiwcB0YyGiI3jbkQw==}
+    hasBin: true
+    dependencies:
+      '@babel/core': 7.18.10
+      '@xstate/machine-extractor': 0.7.0_4k6ulaymnh3oeijtypgprvgwyq
+      '@xstate/tools-shared': 1.2.2_4k6ulaymnh3oeijtypgprvgwyq
+      chokidar: 3.5.3
+      commander: 8.3.0
+      xstate: 4.33.2
+    transitivePeerDependencies:
+      - prettier
+      - supports-color
+    dev: true
+
   /@xstate/cli/0.3.2_prettier@2.7.1:
     resolution: {integrity: sha512-IAToG5cVLkGG9XCnFVbnt2bQ3QYce4vDmA3NYpqqx34/wiWf6AimbWy+X7PF1ivLBXVN5xiwcB0YyGiI3jbkQw==}
     hasBin: true
@@ -8758,6 +8773,18 @@ packages:
       svelte: 3.49.0
       xstate: 4.33.2
     dev: false
+
+  /@xstate/tools-shared/1.2.2_4k6ulaymnh3oeijtypgprvgwyq:
+    resolution: {integrity: sha512-L99yPl8C0UcU/3VggLjPUExlLRkF4KmEh+mjFNF8m73IPUtEOxOp6tTAPl18k2Xu5F2EA3GzLKJpTlBOGQyOug==}
+    peerDependencies:
+      prettier: ^2.3.1
+      xstate: ^4
+    dependencies:
+      '@xstate/machine-extractor': 0.7.0_4k6ulaymnh3oeijtypgprvgwyq
+      xstate: 4.33.2
+    transitivePeerDependencies:
+      - '@babel/core'
+    dev: true
 
   /@xstate/tools-shared/1.2.2_tri4bc6sevku23wqgf66y22uwe:
     resolution: {integrity: sha512-L99yPl8C0UcU/3VggLjPUExlLRkF4KmEh+mjFNF8m73IPUtEOxOp6tTAPl18k2Xu5F2EA3GzLKJpTlBOGQyOug==}
@@ -17201,8 +17228,8 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /next-sitemap/3.1.18_gzpnnaylvtfluxe3m63vhk6hhm:
-    resolution: {integrity: sha512-kt0I8Aeepd8NrsExUnexFwQy8ln8Bx4+cBLfcxflyLyVhlTwchDZ/XA/VzqUbhEAqPDfWkNiezPSP9U9+JblJA==}
+  /next-sitemap/3.1.21_gzpnnaylvtfluxe3m63vhk6hhm:
+    resolution: {integrity: sha512-8upGCtI91FvjNBpeKDZzrzRBlY4BH6qjG7dMe89sdBzJ9B++PVLTzRPlpLHJYOEPukBROsxi2zVuAvePBtsrdw==}
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
