@@ -5,11 +5,11 @@
   "scripts": {
     "dev": "run-p dev:*",
     "dev:svelte": "vite dev --host",
-    "dev:typegen": "pnpm run typegen",
+    "dev:typegen": "pnpm run typegen --watch",
     "build": "scripty",
     "preview": "vite preview",
-    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "check": "scripty",
+    "check:watch": "scripty",
     "lint": "scripty",
     "format": "scripty",
     "typegen": "scripty"
