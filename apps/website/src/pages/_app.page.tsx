@@ -29,7 +29,14 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
       </Head>
 
       {/* Global Site Tag (gtag.js) - Google Analytics */}
-      <Script src={analyticsConfig.scriptUrl} strategy="worker" />
+      <Script src={analyticsConfig.scriptUrl} strategy="afterInteractive" />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: analyticsConfig.gtagLoadScript,
+        }}
+      />
 
       <SocialProfileJsonLd
         type="Person"
