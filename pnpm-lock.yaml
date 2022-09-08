@@ -154,11 +154,15 @@ importers:
       '@sveltejs/adapter-auto': 1.0.0-next.71
       '@sveltejs/kit': 1.0.0-next.460
       '@tailwindcss/aspect-ratio': 0.4.1
+      '@types/lodash.clonedeep': 4.5.7
+      '@types/lodash.uniqueid': 4.0.7
       '@xstate/cli': 0.3.2
       '@xstate/svelte': 2.0.0
       autoprefixer: 10.4.8
       eslint-plugin-svelte3: 4.0.0
       groq: 2.29.3
+      lodash.clonedeep: 4.5.0
+      lodash.uniqueid: 4.0.1
       postcss: 8.4.16
       prettier: 2.7.1
       prettier-plugin-svelte: 2.7.0
@@ -174,19 +178,23 @@ importers:
       '@xstate/cli': 0.3.2_prettier@2.7.1
       '@xstate/svelte': 2.0.0_bzuyksarrv643udtpgja6i5jsa
       groq: 2.29.3
+      lodash.clonedeep: 4.5.0
+      lodash.uniqueid: 4.0.1
       xstate: 4.33.5
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.71
       '@sveltejs/kit': 1.0.0-next.460_fhgkwirxvgjw2igda6zmhiisma
       '@tailwindcss/aspect-ratio': 0.4.1_tailwindcss@3.1.8
+      '@types/lodash.clonedeep': 4.5.7
+      '@types/lodash.uniqueid': 4.0.7
       autoprefixer: 10.4.8_postcss@8.4.16
       eslint-plugin-svelte3: 4.0.0_sfdub7vxhxkt5wmgvhhmmgyu2e
       postcss: 8.4.16
       prettier: 2.7.1
       prettier-plugin-svelte: 2.7.0_o3ioganyptcsrh6x4hnxvjkpqi
       svelte: 3.49.0
-      svelte-check: 2.9.0_vylzxgme5yisu3bsyvcau4hjtq
-      svelte-preprocess: 4.10.7_fje22ktja5v2dh6nbkissncqme
+      svelte-check: 2.9.0_7ibelsq4ce7pwjsb6t3znabw4u
+      svelte-preprocess: 4.10.7_eukj6rrd5vur5lnckkqvpitj6e
       tailwindcss: 3.1.8_postcss@8.4.16
       typescript: 4.7.4
       vite: 3.1.0-beta.1
@@ -8133,6 +8141,12 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
+  /@types/lodash.clonedeep/4.5.7:
+    resolution: {integrity: sha512-ccNqkPptFIXrpVqUECi60/DFxjNKsfoQxSQsgcBJCX/fuX1wgyQieojkcWH/KpE3xzLoWN/2k+ZeGqIN3paSvw==}
+    dependencies:
+      '@types/lodash': 4.14.182
+    dev: true
+
   /@types/lodash.omit/4.5.7:
     resolution: {integrity: sha512-6q6cNg0tQ6oTWjSM+BcYMBhan54P/gLqBldG4AuXd3nKr0oeVekWNS4VrNEu3BhCSDXtGapi7zjhnna0s03KpA==}
     dependencies:
@@ -8141,6 +8155,12 @@ packages:
 
   /@types/lodash.throttle/4.1.7:
     resolution: {integrity: sha512-znwGDpjCHQ4FpLLx19w4OXDqq8+OvREa05H89obtSyXyOFKL3dDjCslsmfBz0T2FU8dmf5Wx1QvogbINiGIu9g==}
+    dependencies:
+      '@types/lodash': 4.14.182
+    dev: true
+
+  /@types/lodash.uniqueid/4.0.7:
+    resolution: {integrity: sha512-ipMGW5nR+DTR6U5O08k1Ufr1F9iH+F3p7bhdwsnq6V6nCn/HgMq22UalDq4n91+03+pHFKyeXV1Y7vdJrm7S4g==}
     dependencies:
       '@types/lodash': 4.14.182
     dev: true
@@ -16539,6 +16559,10 @@ packages:
     resolution: {integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==}
     dev: false
 
+  /lodash.clonedeep/4.5.0:
+    resolution: {integrity: sha512-H5ZhCF25riFd9uB5UCkVKo61m3S/xZk1x4wA6yp/L3RFP6Z/eHH1ymQcGLo7J3GMPfm0V/7m1tryHuGVxpqEBQ==}
+    dev: false
+
   /lodash.curry/4.1.1:
     resolution: {integrity: sha512-/u14pXGviLaweY5JI0IUzgzF2J6Ne8INyzAZjImcryjgkZ+ebruBxy2/JaOOkTqScddcYtakjhSaeemV8lR0tA==}
     dev: false
@@ -22137,6 +22161,34 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
+  /svelte-check/2.9.0_7ibelsq4ce7pwjsb6t3znabw4u:
+    resolution: {integrity: sha512-9AVrtP7WbfDgCdqTZNPdj5CCCy1OrYMxFVWAWzNw7fl93c9klFJFtqzVXa6fovfQ050CcpUyJE2dPFL9TFAREw==}
+    hasBin: true
+    peerDependencies:
+      svelte: ^3.24.0
+    dependencies:
+      '@jridgewell/trace-mapping': 0.3.15
+      chokidar: 3.5.3
+      fast-glob: 3.2.11
+      import-fresh: 3.3.0
+      picocolors: 1.0.0
+      sade: 1.8.1
+      svelte: 3.49.0
+      svelte-preprocess: 4.10.7_eukj6rrd5vur5lnckkqvpitj6e
+      typescript: 4.7.4
+    transitivePeerDependencies:
+      - '@babel/core'
+      - coffeescript
+      - less
+      - node-sass
+      - postcss
+      - postcss-load-config
+      - pug
+      - sass
+      - stylus
+      - sugarss
+    dev: true
+
   /svelte-check/2.9.0_vylzxgme5yisu3bsyvcau4hjtq:
     resolution: {integrity: sha512-9AVrtP7WbfDgCdqTZNPdj5CCCy1OrYMxFVWAWzNw7fl93c9klFJFtqzVXa6fovfQ050CcpUyJE2dPFL9TFAREw==}
     hasBin: true
@@ -22172,6 +22224,59 @@ packages:
       svelte: '>=3.19.0'
     dependencies:
       svelte: 3.49.0
+    dev: true
+
+  /svelte-preprocess/4.10.7_eukj6rrd5vur5lnckkqvpitj6e:
+    resolution: {integrity: sha512-sNPBnqYD6FnmdBrUmBCaqS00RyCsCpj2BG58A1JBswNF7b0OKviwxqVrOL/CKyJrLSClrSeqQv5BXNg2RUbPOw==}
+    engines: {node: '>= 9.11.2'}
+    requiresBuild: true
+    peerDependencies:
+      '@babel/core': ^7.10.2
+      coffeescript: ^2.5.1
+      less: ^3.11.3 || ^4.0.0
+      node-sass: '*'
+      postcss: ^7 || ^8
+      postcss-load-config: ^2.1.0 || ^3.0.0 || ^4.0.0
+      pug: ^3.0.0
+      sass: ^1.26.8
+      stylus: ^0.55.0
+      sugarss: ^2.0.0
+      svelte: ^3.23.0
+      typescript: ^3.9.5 || ^4.0.0
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+      coffeescript:
+        optional: true
+      less:
+        optional: true
+      node-sass:
+        optional: true
+      postcss:
+        optional: true
+      postcss-load-config:
+        optional: true
+      pug:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@babel/core': 7.18.13
+      '@types/pug': 2.0.6
+      '@types/sass': 1.43.1
+      detect-indent: 6.1.0
+      magic-string: 0.25.9
+      postcss: 8.4.16
+      sorcery: 0.10.0
+      strip-indent: 3.0.0
+      svelte: 3.49.0
+      typescript: 4.7.4
     dev: true
 
   /svelte-preprocess/4.10.7_fje22ktja5v2dh6nbkissncqme:

@@ -3,13 +3,17 @@
 </script>
 
 <nav class="navbar">
-  <a sveltekit:prefetch href="/" class="link">
+  <a data-sveltekit-prefetch href="/" class="link">
     <SwordIcon width={24} />
     Training
   </a>
-  <a sveltekit:prefetch href="/new-training" class="link">
+  <a data-sveltekit-prefetch href="/new-training" class="link">
     <SwordIcon width={24} />
     NEW Training
+  </a>
+  <a data-sveltekit-prefetch href="/tabata-clock" class="link">
+    <!-- <SwordIcon width={24} /> -->
+    Tabata
   </a>
 </nav>
 
