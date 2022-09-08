@@ -1,6 +1,6 @@
 <script lang="ts">
   import BeepAudio from '$lib/components/BeepAudio.svelte';
-  import BottomBar from '$lib/components/BottomBar.svelte';
+  import SideNav from '$lib/components/SideNav.svelte';
   import TopBar from '$lib/components/TopBar.svelte';
   import Actvity from '$lib/components/old/Activity/index.svelte';
 
@@ -23,7 +23,7 @@
   <slot />
 </main>
 <Actvity />
-<BottomBar />
+<SideNav />
 <BeepAudio />
 
 <style lang="postcss">

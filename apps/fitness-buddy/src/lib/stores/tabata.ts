@@ -1,6 +1,6 @@
 import { assign, createMachine } from 'xstate';
 import cloneDeep from 'lodash.clonedeep';
-import uniqueId from 'lodash.uniqueid';
+import { v4 as uuid } from 'uuid';
 
 export type TabataClockContext = {
   prepare: number;
@@ -108,10 +108,7 @@ export const tabataMachine = createMachine(
       setConfig: assign((_, event) => event.payload),
       addNewWorkout: assign({
         workout: (context) => {
-          return [
-            ...context.workout,
-            [uniqueId('workout_'), 0] as [string, number],
-          ];
+          return [...context.workout, [uuid(), 0] as [string, number]];
         },
       }),
       removeWorkout: assign({

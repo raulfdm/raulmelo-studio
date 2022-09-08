@@ -155,14 +155,13 @@ importers:
       '@sveltejs/kit': 1.0.0-next.460
       '@tailwindcss/aspect-ratio': 0.4.1
       '@types/lodash.clonedeep': 4.5.7
-      '@types/lodash.uniqueid': 4.0.7
+      '@types/uuid': 8.3.4
       '@xstate/cli': 0.3.2
       '@xstate/svelte': 2.0.0
       autoprefixer: 10.4.8
       eslint-plugin-svelte3: 4.0.0
       groq: 2.29.3
       lodash.clonedeep: 4.5.0
-      lodash.uniqueid: 4.0.1
       postcss: 8.4.16
       prettier: 2.7.1
       prettier-plugin-svelte: 2.7.0
@@ -171,6 +170,7 @@ importers:
       svelte-preprocess: 4.10.7
       tailwindcss: 3.1.8
       typescript: 4.7.4
+      uuid: 9.0.0
       vite: 3.1.0-beta.1
       xstate: 4.33.5
     dependencies:
@@ -179,14 +179,14 @@ importers:
       '@xstate/svelte': 2.0.0_bzuyksarrv643udtpgja6i5jsa
       groq: 2.29.3
       lodash.clonedeep: 4.5.0
-      lodash.uniqueid: 4.0.1
+      uuid: 9.0.0
       xstate: 4.33.5
     devDependencies:
       '@sveltejs/adapter-auto': 1.0.0-next.71
       '@sveltejs/kit': 1.0.0-next.460_fhgkwirxvgjw2igda6zmhiisma
       '@tailwindcss/aspect-ratio': 0.4.1_tailwindcss@3.1.8
       '@types/lodash.clonedeep': 4.5.7
-      '@types/lodash.uniqueid': 4.0.7
+      '@types/uuid': 8.3.4
       autoprefixer: 10.4.8_postcss@8.4.16
       eslint-plugin-svelte3: 4.0.0_sfdub7vxhxkt5wmgvhhmmgyu2e
       postcss: 8.4.16
@@ -8159,12 +8159,6 @@ packages:
       '@types/lodash': 4.14.182
     dev: true
 
-  /@types/lodash.uniqueid/4.0.7:
-    resolution: {integrity: sha512-ipMGW5nR+DTR6U5O08k1Ufr1F9iH+F3p7bhdwsnq6V6nCn/HgMq22UalDq4n91+03+pHFKyeXV1Y7vdJrm7S4g==}
-    dependencies:
-      '@types/lodash': 4.14.182
-    dev: true
-
   /@types/lodash/4.14.182:
     resolution: {integrity: sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==}
 
@@ -8325,7 +8319,6 @@ packages:
 
   /@types/uuid/8.3.4:
     resolution: {integrity: sha512-c/I8ZRb51j+pYGAu5CrFMRxqZ2ke4y2grEBO5AUjgSkSk+qT2Ea+OdWElz/OiMf5MNpn2b17kuVBwZLQJXzihw==}
-    dev: false
 
   /@types/warning/3.0.0:
     resolution: {integrity: sha512-t/Tvs5qR47OLOr+4E9ckN8AmP2Tf16gWq+/qA4iUGS/OOyHVO8wv2vjJuX8SNOUTJyWb+2t7wJm6cXILFnOROA==}
@@ -23557,6 +23550,11 @@ packages:
 
   /uuid/8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    hasBin: true
+    dev: false
+
+  /uuid/9.0.0:
+    resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
     hasBin: true
     dev: false
 
