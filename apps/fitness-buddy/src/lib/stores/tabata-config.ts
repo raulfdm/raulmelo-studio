@@ -1,6 +1,5 @@
 import { assign, createMachine, interpret } from 'xstate';
 import cloneDeep from 'lodash.clonedeep';
-import pick from 'lodash.pick';
 import { v4 as uuid } from 'uuid';
 
 export type TabataConfigContext = {
