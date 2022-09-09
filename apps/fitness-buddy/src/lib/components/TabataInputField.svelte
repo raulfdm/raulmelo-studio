@@ -25,7 +25,14 @@
   <label for={id} class="col-span-3 mb-2 italic">{label}</label>
   <div class="flex items-center w-full col-span-3 gap-4">
     <button class="action" on:click={onDecreaseClick}>-</button>
-    <input type="number" {id} {value} on:input={internalOnInput} class="w-16" />
+    <input
+      type="number"
+      {id}
+      {value}
+      on:input={internalOnInput}
+      class="w-16"
+      min="1"
+    />
     <button class="action" on:click={onIncreaseClick}>+</button>
   </div>
 </fieldset>
