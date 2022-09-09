@@ -1,6 +1,6 @@
 <script lang="ts">
   import BeepAudio from '$lib/components/BeepAudio.svelte';
-  import BottomBar from '$lib/components/BottomBar.svelte';
+  import SideNav from '$lib/components/SideNav.svelte';
   import TopBar from '$lib/components/TopBar.svelte';
   import Actvity from '$lib/components/old/Activity/index.svelte';
 
@@ -11,19 +11,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Roboto&family=Shadows+Into+Light+Two&Rubik:wght@500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&family=Shadows+Into+Light+Two&Rubik:wght@500;600;700&display=swap"
     rel="stylesheet"
   />
 </svelte:head>
 
 <TopBar />
-<main
-  class="container relative flex flex-col flex-1 h-full p-4 mx-auto overflow-scroll"
->
+<main class="container flex flex-col flex-1 h-full p-4 mx-auto overflow-scroll">
   <slot />
 </main>
 <Actvity />
-<BottomBar />
+<SideNav />
 <BeepAudio />
 
 <style lang="postcss">
@@ -33,9 +31,5 @@
   }
   :global(html) {
     height: -webkit-fill-available;
-  }
-
-  main {
-    height: calc(100vh - 73px - 60px);
   }
 </style>
