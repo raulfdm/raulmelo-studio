@@ -1,32 +1,29 @@
 <script lang="ts">
   import TabataInputField from '$lib/components/TabataInputField.svelte';
   import PlayIcon from '$lib/components/Icons/PlayIcon.svelte';
-  import { tabataMachine } from '$lib/stores/tabata';
-  import type { TabataClockContext } from '$lib/stores/tabata';
-  import { useMachine } from '@xstate/svelte';
+  import { tabataConfigService } from '$lib/stores/tabata-config';
+  import type { TabataConfigContext } from '$lib/stores/tabata-config';
   import { secondsToMinutes } from '$lib/utils/secondsToMinutes';
-  import { onMount } from 'svelte';
   import { createLocalStorage } from '$lib/utils/localStorage';
 
-  const { state, send, service } = useMachine(tabataMachine);
-  const localStoragePersistence =
-    createLocalStorage<TabataClockContext>('tabata_clock');
+  const tabataLocalStorage = createLocalStorage<TabataConfigContext>(
+    'tabata_clock_config',
+  );
 
-  const persistedState = localStoragePersistence.read();
+  const persistedState = tabataLocalStorage.read();
 
   if (persistedState !== null) {
-    send({ type: 'FULL_CONFIG', payload: persistedState });
+    tabataConfigService.send({ type: 'FULL_CONFIG', payload: persistedState });
   }
 
-  onMount(() => {
-    const unsubscribe = service.subscribe((state) => {
-      if (state.changed) {
-        localStoragePersistence.write(state.context);
-      }
-    });
-
-    return unsubscribe;
+  tabataConfigService.subscribe((state) => {
+    if (state.changed && state.matches('configuring')) {
+      tabataLocalStorage.write(state.context);
+    }
   });
+
+  const send = tabataConfigService.send;
+  const state = tabataConfigService;
 
   let totalTime: number;
 
@@ -54,7 +51,7 @@
     };
   }
 
-  function getTotalTime(context: TabataClockContext) {
+  function getTotalTime(context: TabataConfigContext) {
     let totalWorkoutTime = 0;
 
     context.workout.forEach(([_, workout]) => {
@@ -78,7 +75,10 @@
     label="Prepare"
     value={$state.context.prepare}
     onChange={(value) =>
-      send({ type: 'CHANGE_PREPARE', payload: { prepare: value } })}
+      send({
+        type: 'CHANGE_PREPARE',
+        payload: { prepare: value },
+      })}
   />
 
   <section>
@@ -110,7 +110,10 @@
     label="Rest"
     value={$state.context.rest}
     onChange={(value) =>
-      send({ type: 'CHANGE_REST', payload: { rest: value } })}
+      send({
+        type: 'CHANGE_REST',
+        payload: { rest: value },
+      })}
   />
 
   <TabataInputField
@@ -118,7 +121,10 @@
     label="Number of Cycles"
     value={$state.context.cycles}
     onChange={(value) =>
-      send({ type: 'CHANGE_CYCLES', payload: { cycles: value } })}
+      send({
+        type: 'CHANGE_CYCLES',
+        payload: { cycles: value },
+      })}
   />
 
   <TabataInputField
@@ -126,20 +132,23 @@
     label="Cooldown"
     value={$state.context.cooldown}
     onChange={(value) =>
-      send({ type: 'CHANGE_COOLDOWN', payload: { cooldown: value } })}
+      send({
+        type: 'CHANGE_COOLDOWN',
+        payload: { cooldown: value },
+      })}
   />
 </div>
 
 <footer
   class="fixed bottom-0 left-0 right-0 flex items-center justify-center gap-4 px-4 text-lg font-bold text-white rounded bg-emerald-400"
 >
-  <button class="flex items-center gap-2 py-4"
+  <a href="/tabata-clock/run" class="flex items-center gap-2 py-4"
     >Start
     <PlayIcon size="28" />
     <span class="font-bold">
       ({secondsToMinutes(totalTime)})
     </span>
-  </button>
+  </a>
 </footer>
 
 <style>

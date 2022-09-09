@@ -17,9 +17,7 @@
 </svelte:head>
 
 <TopBar />
-<main
-  class="container relative flex flex-col flex-1 h-full p-4 mx-auto overflow-scroll"
->
+<main class="container flex flex-col flex-1 h-full p-4 mx-auto overflow-scroll">
   <slot />
 </main>
 <Actvity />

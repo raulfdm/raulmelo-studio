@@ -1,8 +1,9 @@
-import { assign, createMachine } from 'xstate';
+import { assign, createMachine, interpret } from 'xstate';
 import cloneDeep from 'lodash.clonedeep';
+import pick from 'lodash.pick';
 import { v4 as uuid } from 'uuid';
 
-export type TabataClockContext = {
+export type TabataConfigContext = {
   prepare: number;
   cycles: number;
   workout: [id: string, time: number][];
@@ -51,19 +52,19 @@ type TabataClockEvents =
     }
   | {
       type: 'FULL_CONFIG';
-      payload: TabataClockContext;
+      payload: TabataConfigContext;
     };
 
-export const tabataMachine = createMachine(
+const tabataConfigMachine = createMachine(
   {
     predictableActionArguments: true,
     preserveActionOrder: true,
     initial: 'configuring',
     schema: {
-      context: {} as TabataClockContext,
+      context: {} as TabataConfigContext,
       events: {} as TabataClockEvents,
     },
-    tsTypes: {} as import('./tabata.typegen').Typegen0,
+    tsTypes: {} as import('./tabata-config.typegen').Typegen0,
     context: {
       prepare: 0,
       cycles: 1,
@@ -100,7 +101,6 @@ export const tabataMachine = createMachine(
           },
         },
       },
-      action: {},
     },
   },
   {
@@ -147,3 +147,5 @@ export const tabataMachine = createMachine(
     },
   },
 );
+
+export const tabataConfigService = interpret(tabataConfigMachine).start();
