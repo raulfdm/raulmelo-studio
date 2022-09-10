@@ -53,15 +53,17 @@ export function createTabataClock(tabataConfig: TabataConfigContext) {
           },
         },
         decider: {
-          always: [
-            {
-              target: 'finished',
-              cond: 'hasFinished',
-            },
-            {
-              target: 'running',
-            },
-          ],
+          after: {
+            1000: [
+              {
+                target: 'finished',
+                cond: 'hasFinished',
+              },
+              {
+                target: 'running',
+              },
+            ],
+          },
         },
         paused: {
           on: {

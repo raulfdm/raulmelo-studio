@@ -41,7 +41,7 @@
       }
     }
 
-    if (state.event.type === 'TICK' && state.context.elapsed === 2) {
+    if (state.event.type === 'TICK' && state.context.elapsed === 3) {
       new Audio('/sounds/Warning2.ogg').play();
     }
   });
@@ -70,9 +70,10 @@
     >
   </header>
   <ul class="overflow-auto h-[clamp(200px,_600px,_400px)]">
-    {#each $state.context.listOfActions as action}
+    {#each $state.context.listOfActions as action, index}
       <li
         class="flex items-center justify-between gap-4 px-4 py-2 text-xl border-b border-white"
+        class:active={$state.context._actionIndex === index}
       >
         <span>{action.label}</span>
         <span>{secondsToMinutes(action.duration)}</span>
@@ -89,12 +90,26 @@
   .clock[data-state='prepare'] {
     @apply bg-green-700;
   }
+
+  .clock[data-state='prepare'] .active {
+    @apply bg-green-900;
+  }
   .clock[data-state='workout'] {
     @apply bg-red-700;
   }
+
+  .clock[data-state='workout'] .active {
+    @apply bg-red-900;
+  }
+
   .clock[data-state='rest'] {
     @apply bg-blue-700;
   }
+
+  .clock[data-state='rest'] .active {
+    @apply bg-blue-900;
+  }
+
   .clock[data-complete='true'] {
     @apply bg-gray-900;
   }
