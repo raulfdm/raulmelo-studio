@@ -2,47 +2,64 @@
   import SwordIcon from './Icons/SwordIcon.svelte';
   import ClockIcon from './Icons/ClockIcon.svelte';
   import { sideNavService } from '$lib/stores/sideNav';
+  import { browser } from '$app/environment';
+  import { body } from '$lib/utils/dom';
+
+  let overlayEl: HTMLDivElement;
 
   function onLinkClick() {
     sideNavService.send({ type: 'CLOSE' });
   }
+
+  $: {
+    if (browser) {
+      if ($sideNavService.matches('open')) {
+        console.log(overlayEl);
+        body.preventScroll();
+      } else {
+        body.allowScroll();
+      }
+    }
+  }
 </script>
 
 {#if $sideNavService.matches('open')}
-  <div
-    class="absolute bottom-0 left-0 right-0 top-[60px] bg-black bg-opacity-50"
-  />
-  <nav
-    class="absolute bottom-0 right-0 bg-white flex flex-col top-[60px] w-[clamp(80px,_80%,_150px)]"
-  >
-    <a data-sveltekit-prefetch href="/" class="link" on:click={onLinkClick}>
-      <SwordIcon width={24} />
-      Training
-    </a>
-    <a
-      data-sveltekit-prefetch
-      href="/new-training"
-      class="link"
-      on:click={onLinkClick}
-    >
-      <SwordIcon width={24} />
-      NEW Training
-    </a>
-    <a
-      data-sveltekit-prefetch
-      href="/tabata-clock"
-      class="link"
-      on:click={onLinkClick}
-    >
-      <ClockIcon size="24" />
-      Tabata
-    </a>
-  </nav>
+  <div class="fixed top-0 bottom-0 left-0 right-0 flex">
+    <div
+      class="w-full h-full bg-black bg-opacity-50"
+      on:click={() => sideNavService.send('CLOSE')}
+      bind:this={overlayEl}
+    />
+    <nav class="flex flex-col w-full h-full bg-white">
+      <a data-sveltekit-prefetch href="/" class="link" on:click={onLinkClick}>
+        <SwordIcon width={24} />
+        Training
+      </a>
+      <a
+        data-sveltekit-prefetch
+        href="/new-training"
+        class="link"
+        on:click={onLinkClick}
+      >
+        <SwordIcon width={24} />
+        NEW Training
+      </a>
+      <a
+        data-sveltekit-prefetch
+        href="/tabata-clock"
+        class="link"
+        on:click={onLinkClick}
+      >
+        <ClockIcon size="24" />
+        Tabata
+      </a>
+    </nav>
+  </div>
 {/if}
 
 <style module lang="postcss">
   .link {
-    @apply inline-flex items-center gap-2 p-4 text-xs;
+    @apply inline-flex items-center gap-2 p-4 text-base;
   }
 
   :global(body) {

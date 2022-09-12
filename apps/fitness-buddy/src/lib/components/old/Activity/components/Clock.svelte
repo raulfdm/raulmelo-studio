@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onDestroy, beforeUpdate } from 'svelte';
+  import { onDestroy, beforeUpdate, onMount } from 'svelte';
 
   import PlayIcon from '$lib/components/Icons/PlayIcon.svelte';
   import PauseIcon from '$lib/components/Icons/PauseIcon.svelte';
@@ -33,6 +33,10 @@
   $: isFastForwardButtonDisabled =
     clockState !== 'idle' || !canFastForward(currentClockNew);
   $: isResetButtonDisabled = clockState === 'running' || clockState === 'unset';
+
+  onMount(() => {
+    document.body.scrollTop = 0;
+  });
 
   beforeUpdate(() => {
     clockMachineService.service.start();
