@@ -8,15 +8,23 @@ type TabataClockContext = {
   _actionIndex: number;
 };
 
+type ActionDirection = 'forward' | 'backward';
 type TabataClockEvents =
   | {
       type: 'TICK';
     }
   | {
       type: 'NEXT_ACTION';
+      direction: ActionDirection;
     }
   | {
       type: 'TOGGLE';
+    }
+  | {
+      type: 'FORWARD';
+    }
+  | {
+      type: 'BACKWARD';
     };
 
 export function createTabataClock(tabataConfig: TabataConfigContext) {
@@ -39,11 +47,21 @@ export function createTabataClock(tabataConfig: TabataConfigContext) {
       },
       on: {
         TICK: {
-          actions: ['tickElapsed'],
+          actions: ['tickElapsed', 'onTick'],
         },
         NEXT_ACTION: {
           actions: ['nextAction'],
           target: 'decider',
+        },
+        BACKWARD: {
+          actions: ['backward'],
+          target: 'idle',
+          cond: 'canGoBackwards',
+        },
+        FORWARD: {
+          actions: ['forward'],
+          target: 'idle',
+          cond: 'canGoForwards',
         },
       },
       states: {
@@ -79,6 +97,7 @@ export function createTabataClock(tabataConfig: TabataConfigContext) {
           },
         },
         finished: {
+          entry: 'onFinished',
           type: 'final',
         },
       },
@@ -88,30 +107,28 @@ export function createTabataClock(tabataConfig: TabataConfigContext) {
         tickElapsed: assign({
           elapsed: (context) => context.elapsed - 1,
         }),
-        nextAction: assign((context) => {
-          const nextIndex = context._actionIndex + 1;
-          const nextAction = context.listOfActions[nextIndex];
-
-          const nextContext: TabataClockContext = {
-            ...context,
-            _actionIndex: nextIndex,
-            currentAction: nextAction,
-            elapsed: nextAction.duration,
-          };
-
-          return nextContext;
-        }),
+        nextAction: assign((context, { direction }) =>
+          nextAction(context, direction),
+        ),
+        backward: assign((context) => nextAction(context, 'backward')),
+        forward: assign((context) => nextAction(context, 'forward')),
       },
       guards: {
         hasFinished: (context) =>
           context._actionIndex === context.listOfActions.length - 1,
+        canGoBackwards: (context) => context._actionIndex > 0,
+        canGoForwards: (context) =>
+          context._actionIndex < context.listOfActions.length - 1,
       },
       services: {
         tick: (context) => (callback) => {
           let times = context.elapsed;
           const interval = setInterval(() => {
             if (--times < 0) {
-              callback('NEXT_ACTION');
+              callback({
+                type: 'NEXT_ACTION',
+                direction: 'forward',
+              });
             } else {
               callback('TICK');
             }
@@ -124,6 +141,23 @@ export function createTabataClock(tabataConfig: TabataConfigContext) {
       },
     },
   );
+}
+
+function nextAction(
+  context: TabataClockContext,
+  direction: ActionDirection,
+): TabataClockContext {
+  const nextIndex = context._actionIndex + (direction === 'forward' ? 1 : -1);
+  const nextAction = context.listOfActions[nextIndex];
+
+  const nextContext: TabataClockContext = {
+    ...context,
+    _actionIndex: nextIndex,
+    currentAction: nextAction,
+    elapsed: nextAction.duration,
+  };
+
+  return nextContext;
 }
 
 type ActionItem = {
