@@ -18,6 +18,11 @@ jobs:
     strategy:
       matrix:
         project: [cms, cms-camila]
+        include:
+          - token: 'SANITY_AUTH_TOKEN_CMS'
+            project: cms
+          - token: 'SANITY_AUTH_TOKEN_CSM_CAMILA'
+            project: 'cms-camila'
 
     steps:
       - name: Git files setup
@@ -49,7 +54,7 @@ jobs:
       #     pnpm install --global @sanity/cli
       #     pnpm install --no-frozen-lockfile
       - name: 'TEST 2'
-        run: echo ${{ fromJSON(env.sanityEnvVarsJson)${{matrix.project}} }}
+        run: echo ${{ matrix.token }}
         # run: echo "${{ fromJSON($sanityEnvVarsJson)[${{ matrix.project }}] }}"
 
       # - name: Building
