@@ -4,11 +4,7 @@ import '@raulmelo/ui/dist/prism.css?raw';
 import '../overrides.css?raw';
 
 import { youtubeVideoField } from '@raulmelo/sanity-core';
-import {
-  exerciseSchema,
-  trainingRoutineSchema,
-  trainingSchema,
-} from '@raulmelo/sanity-fitness';
+import { fitnessSchemaFields } from '@raulmelo/sanity-fitness';
 // First, we must import the schema creator
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type';
@@ -57,9 +53,7 @@ export default createSchema({
     /**
      * Training Planner
      */
-    trainingRoutineSchema,
-    exerciseSchema,
-    trainingSchema,
+    ...fitnessSchemaFields,
     /**
      * Fields
      */

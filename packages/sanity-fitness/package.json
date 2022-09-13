@@ -8,7 +8,7 @@
     "dist/"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "pnpm rimraf dist && tsc"
   },
   "peerDependencies": {
     "@raulmelo/sanity-core": "workspace:*"
