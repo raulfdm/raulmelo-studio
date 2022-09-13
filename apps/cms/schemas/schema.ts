@@ -3,7 +3,6 @@ import '@raulmelo/ui/dist/style.css?raw';
 import '@raulmelo/ui/dist/prism.css?raw';
 import '../overrides.css?raw';
 
-import { youtubeVideoField } from '@raulmelo/sanity-core';
 import { fitnessSchemaFields } from '@raulmelo/sanity-fitness';
 // First, we must import the schema creator
 // Then import schema types from any plugins that might expose them
@@ -61,7 +60,6 @@ export default createSchema({
     languageField,
     gifField,
     imageSliderField,
-    youtubeVideoField,
     tweetField,
     codePenField,
     dividerField,
