@@ -15,7 +15,6 @@
   $: {
     if (browser) {
       if ($sideNavService.matches('open')) {
-        console.log(overlayEl);
         body.preventScroll();
       } else {
         body.allowScroll();

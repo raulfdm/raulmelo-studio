@@ -1,28 +1,36 @@
 <script lang="ts">
   import cookie from 'cookie';
-  import { createMachine } from 'xstate';
+  import { createMachine, assign, type EventObject } from 'xstate';
   import { useMachine } from '@xstate/svelte';
   import { SANITY_PROJECT_ID_COOKIE_KEY } from '$lib/utils/api';
   import { DEFAULT_PROJECT_ID } from '$lib/api';
-
-  let projectId =
-    cookie.parse(document.cookie)[SANITY_PROJECT_ID_COOKIE_KEY] || '';
 
   const machine = createMachine(
     {
       predictableActionArguments: true,
       preserveActionOrder: true,
       initial: 'idle',
+      context: {
+        projectId:
+          cookie.parse(document.cookie)[SANITY_PROJECT_ID_COOKIE_KEY] || '',
+      },
       states: {
         idle: {
           on: {
             SAVE: {
               target: 'saved',
-              actions: ['onSave'],
+              actions: ['onSave', 'updateProjectId'],
             },
-            RESTORE: {
-              target: 'restored',
-              actions: ['onRestore'],
+            RESTORE: [
+              {
+                target: 'restored',
+                actions: ['onRestore', 'updateProjectId'],
+                cond: () => confirm('Are you sure you want to restore?'),
+              },
+              { target: 'idle' },
+            ],
+            SET_PROJECT_ID: {
+              actions: ['setProjectId'],
             },
           },
         },
@@ -40,20 +48,34 @@
     },
     {
       actions: {
-        onSave: () => {
+        onRestore: assign({
+          projectId: () => DEFAULT_PROJECT_ID,
+        }),
+        updateProjectId(context) {
           document.cookie = cookie.serialize(
             SANITY_PROJECT_ID_COOKIE_KEY,
-            projectId,
+            context.projectId,
           );
         },
-        onRestore: () => {
-          projectId = DEFAULT_PROJECT_ID;
-        },
+        setProjectId: assign({
+          projectId: (_, event) => {
+            return (event as unknown as { projectId: string }).projectId;
+          },
+        }),
       },
     },
   );
 
   const { send, state } = useMachine(machine);
+
+  function onInput(event: Event) {
+    const { value } = event.target as HTMLInputElement;
+
+    send({
+      type: 'SET_PROJECT_ID',
+      projectId: value,
+    });
+  }
 </script>
 
 <h1 class="mb-4 text-2xl font-bold">Connect another database</h1>
@@ -64,9 +86,10 @@
     <input
       id="projectId"
       type="text"
-      bind:value={projectId}
-      disabled={$state.matches('saved')}
+      value={$state.context.projectId}
+      disabled={$state.matches('idle') === false}
       class="px-3 py-1.5 border rounded w-48"
+      on:input={onInput}
     />
   </fieldset>
 
@@ -92,9 +115,10 @@
   </button>
 </div>
 
-<style lang="postcss">
+<style lang="scss">
   button.save {
     @apply text-pink-600 border-pink-600 bg-pink-50;
+    @apply hover:bg-pink-200;
   }
 
   button.save[data-currentState='saved'] {
@@ -102,7 +126,8 @@
   }
 
   button.restore {
-    @apply text-blue-600 border-blue-600 bg-blue-50;
+    @apply text-blue-600 border-blue-600 bg-white;
+    @apply hover:bg-blue-200;
   }
 
   button.restore[data-currentState='restored'] {

@@ -6,7 +6,6 @@
   };
 
   const schemas = data.trainingSheet.schema || [];
-  console.log(schemas);
 </script>
 
 <svelte:head>
