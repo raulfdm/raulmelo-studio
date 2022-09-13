@@ -426,10 +426,25 @@ importers:
       '@types/ramda': 0.28.15
       vite: 3.0.9
 
+  packages/sanity-core:
+    specifiers:
+      '@raulmelo/ui': workspace:*
+      react: 17.0.2
+      react-dom: 17.0.2
+      typescript: 4.8.2
+    dependencies:
+      '@raulmelo/ui': link:../ui
+    devDependencies:
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      typescript: 4.8.2
+
   packages/sanity-fitness:
     specifiers:
+      '@raulmelo/sanity-core': workspace:*
       typescript: 4.8.2
     devDependencies:
+      '@raulmelo/sanity-core': link:../sanity-core
       typescript: 4.8.2
 
   packages/styles:
@@ -21560,7 +21575,6 @@ packages:
       object-assign: 4.1.1
       react: 17.0.2
       scheduler: 0.20.2
-    dev: false
 
   /react-dom/18.2.0_react@18.2.0:
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
@@ -22249,7 +22263,6 @@ packages:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
-    dev: false
 
   /react/18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
@@ -23015,7 +23028,6 @@ packages:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
-    dev: false
 
   /scheduler/0.23.0:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
