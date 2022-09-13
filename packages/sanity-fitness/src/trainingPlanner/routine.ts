@@ -66,7 +66,11 @@ export const trainingRoutineSchema = {
                   series: 'series',
                   repetitions: 'repetitions',
                 },
-                prepare(selection) {
+                prepare(selection: {
+                  exercise: string;
+                  series: string;
+                  repetitions: string;
+                }) {
                   return {
                     title: selection.exercise,
                     subtitle: `${selection.series}x${selection.repetitions}`,
@@ -95,7 +99,9 @@ export const trainingRoutineSchema = {
     select: {
       routine: 'routine',
     },
-    prepare(selection) {
+    prepare(selection: {
+      routine: { name: string; description: string; date: string };
+    }) {
       return {
         title: selection.routine.name,
         subtitle: `${selection.routine.description} (${selection.routine.date})`,
