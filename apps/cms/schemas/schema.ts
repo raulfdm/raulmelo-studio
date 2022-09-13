@@ -3,6 +3,11 @@ import '@raulmelo/ui/dist/style.css?raw';
 import '@raulmelo/ui/dist/prism.css?raw';
 import '../overrides.css?raw';
 
+import {
+  exerciseSchema,
+  trainingRoutineSchema,
+  trainingSchema,
+} from '@raulmelo/sanity-fitness';
 // First, we must import the schema creator
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type';
@@ -29,9 +34,6 @@ import { imageSliderField } from './customFields/imageSlider';
 import { languageField } from './customFields/language';
 import { tweetField } from './customFields/tweetField';
 import { youtubeVideoField } from './customFields/youtubeVideoField';
-import { exerciseSchema } from './trainingPlanner/exercise';
-import { trainingRoutineSchema } from './trainingPlanner/routine';
-import { trainingSchema } from './trainingPlanner/schema';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
