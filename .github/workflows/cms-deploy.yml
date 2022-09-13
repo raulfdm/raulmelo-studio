@@ -52,7 +52,7 @@ jobs:
           pnpm install --no-frozen-lockfile
 
       - name: 'TEST 2'
-        run: echo "${{ fromJSON(env.sanityEnvVarsJson)[${{ matrix.project }}] }}"
+        run: echo "${{ fromJSON($sanityEnvVarsJson)[${{ matrix.project }}] }}"
 
       # - name: Building
       #   run: pnpm run build --filter ${{ matrix.project }}...
