@@ -7,10 +7,6 @@ on:
       - packages/**
       - .github/workflows/cms-deploy.yml
 
-env:
-  cms: 'SANITY_AUTH_TOKEN_CMS'
-  'cms-camila': SANITY_AUTH_TOKEN_CMS_CAMILA
-
 jobs:
   build_job:
     runs-on: ubuntu-latest
@@ -19,9 +15,9 @@ jobs:
       matrix:
         project: [cms, cms-camila]
         include:
-          - token: 'SANITY_AUTH_TOKEN_CMS'
+          - token: ${{secrets.SANITY_AUTH_TOKEN_CMS_RAUL}}
             project: cms
-          - token: 'SANITY_AUTH_TOKEN_CSM_CAMILA'
+          - token: ${{secrets.SANITY_AUTH_TOKEN_CMS_CAMILA}}
             project: 'cms-camila'
 
     steps:
@@ -33,35 +29,33 @@ jobs:
         with:
           node-version: 16
 
-      # - uses: pnpm/action-setup@v2.2.2
-      #   name: Install pnpm
-      #   with:
-      #     version: 7
-      #     run_install: false
-      # - name: Get pnpm store directory
-      #   id: pnpm-cache
-      #   run: |
-      #     echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-      # - uses: actions/cache@v3
-      #   name: Setup pnpm cache
-      #   with:
-      #     path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-      #     key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-pnpm-store-
-      # - name: Installing Dependencies
-      #   run: |
-      #     pnpm install --global @sanity/cli
-      #     pnpm install --no-frozen-lockfile
-      - name: 'TEST 2'
-        run: echo ${{ matrix.token }}
-        # run: echo "${{ fromJSON($sanityEnvVarsJson)[${{ matrix.project }}] }}"
+      - uses: pnpm/action-setup@v2.2.2
+        name: Install pnpm
+        with:
+          version: 7
+          run_install: false
 
-      # - name: Building
-      #   run: pnpm run build --filter ${{ matrix.project }}...
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Installing Dependencies
+        run: |
+          pnpm install --global @sanity/cli
+          pnpm install --no-frozen-lockfile
 
-      # - name: Deploy
-      #   run: pnpm run deploy --filter ${{ matrix.project }}
-      #   if: contains('refs/heads/main', github.ref)
-      #   env:
-      #     SANITY_AUTH_TOKEN: "${{ matrix.project == 'cms' ? 'SANITY_AUTH_TOKEN_CMS' : 'SANITY_AUTH_TOKEN_CSM_CAMILA'}}"
+      - name: Building
+        run: pnpm run build --filter ${{ matrix.project }}...
+
+      - name: Deploy
+        run: pnpm run deploy --filter ${{ matrix.project }}
+        if: contains('refs/heads/main', github.ref)
+        env:
+          SANITY_AUTH_TOKEN: ${{ matrix.token }}
