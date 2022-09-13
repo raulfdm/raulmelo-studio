@@ -15,7 +15,9 @@
 
   $: currentIndex = null;
   $: currentRoutine =
-    currentIndex !== null ? trainingSheet.schema[currentIndex].routine : null;
+    currentIndex !== null
+      ? (trainingSheet.schema || [])[currentIndex].routine
+      : null;
   $: showAnimation = true;
 
   onMount(() => {

@@ -5,7 +5,6 @@
 
   let currentExercise = $activityStore.currentTraining.exercise;
 
-  console.log('currentExercise', currentExercise);
   const youtubeUrl = currentExercise.youtubeVideoId
     ? `https://www.youtube.com/embed/${currentExercise.youtubeVideoId}`
     : undefined;

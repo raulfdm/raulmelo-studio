@@ -1,7 +1,6 @@
 import { YouTubeIcon, YouTubeIframe } from '@raulmelo/ui';
-import React from 'react';
 
-import { sanityToUiAdapter } from '../../utils/schema';
+import { sanityToUiAdapter } from '../utils/component';
 
 export const youtubeVideoField = {
   type: 'object',

@@ -1,56 +1,30 @@
 import sanityClient from '@sanity/client';
 import groq from 'groq';
 
-const client = sanityClient({
-  projectId: 'gc3hakk3',
-  dataset: 'production',
-  apiVersion: 'v1',
-  useCdn: false,
-});
+export const DEFAULT_PROJECT_ID = 'gc3hakk3';
 
-export const TrainingSheetApi = {
-  async getSheet(): Promise<ITrainingSheet> {
-    const query = groq`
-*[_type=="trainingSchema"]|order(_createdAt desc)[0]{
-  title,
-  _id,
-  schema[] -> {
+export function getTrainingSheetApi(projectId?: string) {
+  const client = sanityClient({
+    projectId: projectId ?? DEFAULT_PROJECT_ID,
+    dataset: 'production',
+    apiVersion: 'v1',
+    useCdn: false,
+  });
+
+  const TrainingSheetApi = {
+    async getSheet(): Promise<ITrainingSheet> {
+      const query = groq`
+  *[_type=="trainingSchema"]|order(_createdAt desc)[0]{
+    title,
     _id,
-    routine{
-      ...,
-      training[] {
-        ...,
-        exercise ->{
-           name,
-          "image": image.asset->{
-            url,
-            "width": metadata.dimensions.width,
-            "height": metadata.dimensions.height,
-          },
-          "youtubeVideoId": video.videoId
-        }
-      }
-    }
-  }
-}
-`;
-
-    return client.fetch(query);
-  },
-  async getById(
-    key: string,
-  ): Promise<
-    ({ _id: ITrainingSchema['_id'] } & ITrainingSchema['routine']) | undefined
-  > {
-    const query = groq`
-    *[_type=="trainingRoutine" && _id == $id][0]{
+    schema[] -> {
       _id,
       routine{
         ...,
         training[] {
           ...,
           exercise ->{
-            name,
+             name,
             "image": image.asset->{
               url,
               "width": metadata.dimensions.width,
@@ -61,16 +35,48 @@ export const TrainingSheetApi = {
         }
       }
     }
-    `;
+  }
+  `;
 
-    const result = await client.fetch<ITrainingSchema>(query, { id: key });
+      return client.fetch(query);
+    },
+    async getById(
+      key: string,
+    ): Promise<
+      ({ _id: ITrainingSchema['_id'] } & ITrainingSchema['routine']) | undefined
+    > {
+      const query = groq`
+      *[_type=="trainingRoutine" && _id == $id][0]{
+        _id,
+        routine{
+          ...,
+          training[] {
+            ...,
+            exercise ->{
+              name,
+              "image": image.asset->{
+                url,
+                "width": metadata.dimensions.width,
+                "height": metadata.dimensions.height,
+              },
+              "youtubeVideoId": video.videoId
+            }
+          }
+        }
+      }
+      `;
 
-    return {
-      _id: result._id,
-      ...result.routine,
-    };
-  },
-};
+      const result = await client.fetch<ITrainingSchema>(query, { id: key });
+
+      return {
+        _id: result._id,
+        ...result.routine,
+      };
+    },
+  };
+
+  return TrainingSheetApi;
+}
 
 interface Image {
   height: number;

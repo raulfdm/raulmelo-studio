@@ -1,6 +1,7 @@
 <script lang="ts">
   import SwordIcon from './Icons/SwordIcon.svelte';
   import ClockIcon from './Icons/ClockIcon.svelte';
+  import DataBaseIcon from './Icons/DataBaseIcon.svelte';
   import { sideNavService } from '$lib/stores/sideNav';
   import { browser } from '$app/environment';
   import { body } from '$lib/utils/dom';
@@ -14,7 +15,6 @@
   $: {
     if (browser) {
       if ($sideNavService.matches('open')) {
-        console.log(overlayEl);
         body.preventScroll();
       } else {
         body.allowScroll();
@@ -52,6 +52,15 @@
       >
         <ClockIcon size="24" />
         Tabata
+      </a>
+      <a
+        data-sveltekit-prefetch
+        href="/db-connection"
+        class="link"
+        on:click={onLinkClick}
+      >
+        <DataBaseIcon size="24" />
+        Conect to another Database
       </a>
     </nav>
   </div>

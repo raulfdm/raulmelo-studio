@@ -1,5 +1,9 @@
+import { Rule } from '@sanity/types';
+
+export const TRAINING_ROUTINE_SCHEMA_NAME = 'trainingRoutine';
+
 export const trainingRoutineSchema = {
-  name: 'trainingRoutine',
+  name: TRAINING_ROUTINE_SCHEMA_NAME,
   title: 'Training Routine',
   type: 'document',
   fields: [
@@ -10,14 +14,17 @@ export const trainingRoutineSchema = {
         {
           name: 'name',
           type: 'string',
+          validation: (Rule: Rule) => Rule.required(),
         },
         {
           name: 'description',
           type: 'string',
+          validation: (Rule: Rule) => Rule.required(),
         },
         {
           name: 'date',
           type: 'date',
+          validation: (Rule: Rule) => Rule.required(),
         },
         {
           name: 'training',
@@ -33,14 +40,26 @@ export const trainingRoutineSchema = {
                   name: 'exercise',
                   type: 'reference',
                   to: { type: 'exercise' },
+                  validation: (Rule: Rule) => Rule.required(),
                 },
-                { name: 'series', title: 'Series', type: 'number' },
+                {
+                  name: 'series',
+                  title: 'Series',
+                  type: 'number',
+                  validation: (Rule: Rule) => Rule.required(),
+                },
                 {
                   name: 'repetitions',
                   title: 'Repetitions',
                   type: 'string',
+                  validation: (Rule: Rule) => Rule.required(),
                 },
-                { name: 'restTime', title: 'Rest Time', type: 'number' },
+                {
+                  name: 'restTime',
+                  title: 'Rest Time',
+                  type: 'number',
+                  validation: (Rule: Rule) => Rule.required(),
+                },
                 {
                   title: 'Advanced Technique',
                   name: 'advancedTechnique',
@@ -66,7 +85,11 @@ export const trainingRoutineSchema = {
                   series: 'series',
                   repetitions: 'repetitions',
                 },
-                prepare(selection) {
+                prepare(selection: {
+                  exercise: string;
+                  series: string;
+                  repetitions: string;
+                }) {
                   return {
                     title: selection.exercise,
                     subtitle: `${selection.series}x${selection.repetitions}`,
@@ -95,7 +118,9 @@ export const trainingRoutineSchema = {
     select: {
       routine: 'routine',
     },
-    prepare(selection) {
+    prepare(selection: {
+      routine: { name: string; description: string; date: string };
+    }) {
       return {
         title: selection.routine.name,
         subtitle: `${selection.routine.description} (${selection.routine.date})`,

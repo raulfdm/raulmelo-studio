@@ -3,13 +3,23 @@ name: CMS deploy
 on:
   push:
     paths:
-      - 'apps/cms/**'
-      - 'packages/**'
-      - '.github/workflows/cms-deploy.yml'
+      - apps/cms/**
+      - packages/**
+      - .github/workflows/cms-deploy.yml
 
 jobs:
-  build:
+  build_job:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        project: [cms, cms-camila]
+        include:
+          - token: SANITY_AUTH_TOKEN_CMS_RAUL
+            project: cms
+          - token: SANITY_AUTH_TOKEN_CMS_CAMILA
+            project: 'cms-camila'
+
     steps:
       - name: Git files setup
         uses: actions/checkout@v3
@@ -29,7 +39,6 @@ jobs:
         id: pnpm-cache
         run: |
           echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
@@ -37,17 +46,16 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
-
       - name: Installing Dependencies
         run: |
           pnpm install --global @sanity/cli
           pnpm install --no-frozen-lockfile
 
       - name: Building
-        run: pnpm run build --filter cms...
+        run: pnpm run build --filter ${{ matrix.project }}...
 
       - name: Deploy
-        run: pnpm run deploy --filter cms
+        run: pnpm run deploy --filter ${{ matrix.project }}
         if: contains('refs/heads/main', github.ref)
         env:
-          SANITY_AUTH_TOKEN: ${{secrets.SANITY_AUTH_TOKEN}}
+          SANITY_AUTH_TOKEN: ${{ secrets[matrix.token] }}

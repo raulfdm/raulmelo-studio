@@ -1,7 +1,6 @@
+import { sanityToUiAdapter } from '@raulmelo/sanity-core';
 import { Gif, GifIcon } from '@raulmelo/ui';
 import React from 'react';
-
-import { sanityToUiAdapter } from '../../utils/schema';
 
 export const gifField = {
   type: 'object',

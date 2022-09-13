@@ -1,0 +1,23 @@
+{
+  "name": "@raulmelo/sanity-fitness",
+  "private": true,
+  "version": "0.0.0-development",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "postinstall": "pnpm run build",
+    "build": "pnpm rimraf dist && tsc"
+  },
+  "peerDependencies": {
+    "@raulmelo/sanity-core": "workspace:*"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@raulmelo/sanity-core": "workspace:*",
+    "@sanity/types": "2.31.1",
+    "typescript": "4.8.2"
+  }
+}

@@ -1,7 +1,6 @@
+import { sanityToUiAdapter } from '@raulmelo/sanity-core';
 import { DividerIcon, DotDivider } from '@raulmelo/ui';
 import React from 'react';
-
-import { sanityToUiAdapter } from '../../utils/schema';
 
 export const dividerField = {
   name: 'divider',
