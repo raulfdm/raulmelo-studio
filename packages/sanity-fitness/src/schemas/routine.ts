@@ -1,3 +1,5 @@
+import { Rule } from '@sanity/types';
+
 export const TRAINING_ROUTINE_SCHEMA_NAME = 'trainingRoutine';
 
 export const trainingRoutineSchema = {
@@ -12,14 +14,17 @@ export const trainingRoutineSchema = {
         {
           name: 'name',
           type: 'string',
+          validation: (Rule: Rule) => Rule.required(),
         },
         {
           name: 'description',
           type: 'string',
+          validation: (Rule: Rule) => Rule.required(),
         },
         {
           name: 'date',
           type: 'date',
+          validation: (Rule: Rule) => Rule.required(),
         },
         {
           name: 'training',
@@ -35,14 +40,26 @@ export const trainingRoutineSchema = {
                   name: 'exercise',
                   type: 'reference',
                   to: { type: 'exercise' },
+                  validation: (Rule: Rule) => Rule.required(),
                 },
-                { name: 'series', title: 'Series', type: 'number' },
+                {
+                  name: 'series',
+                  title: 'Series',
+                  type: 'number',
+                  validation: (Rule: Rule) => Rule.required(),
+                },
                 {
                   name: 'repetitions',
                   title: 'Repetitions',
                   type: 'string',
+                  validation: (Rule: Rule) => Rule.required(),
                 },
-                { name: 'restTime', title: 'Rest Time', type: 'number' },
+                {
+                  name: 'restTime',
+                  title: 'Rest Time',
+                  type: 'number',
+                  validation: (Rule: Rule) => Rule.required(),
+                },
                 {
                   title: 'Advanced Technique',
                   name: 'advancedTechnique',
