@@ -3,6 +3,7 @@ import '@raulmelo/ui/dist/style.css?raw';
 import '@raulmelo/ui/dist/prism.css?raw';
 import '../overrides.css?raw';
 
+import { youtubeVideoField } from '@raulmelo/sanity-core';
 import {
   exerciseSchema,
   trainingRoutineSchema,
@@ -33,7 +34,6 @@ import { detailedImageField } from './customFields/imageField';
 import { imageSliderField } from './customFields/imageSlider';
 import { languageField } from './customFields/language';
 import { tweetField } from './customFields/tweetField';
-import { youtubeVideoField } from './customFields/youtubeVideoField';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({

@@ -1,5 +1,6 @@
 import '@raulmelo/ui/dist/style.css?raw';
 
+import { memoizeAndRemoveStyle } from '@raulmelo/sanity-core';
 import {
   BigQuote,
   ExternalLinkIcon,
@@ -12,7 +13,6 @@ import {
 } from '@raulmelo/ui';
 import React from 'react';
 
-import { memoizeAndRemoveStyle } from '../../utils/schema';
 import { highlightMarker } from './highlightMarker';
 import { strikeThroughMarker } from './strikeThroughMarker';
 

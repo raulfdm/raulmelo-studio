@@ -1,7 +1,6 @@
+import { sanityToUiAdapter } from '@raulmelo/sanity-core';
 import { Tweet, TwitterIcon } from '@raulmelo/ui';
 import React from 'react';
-
-import { sanityToUiAdapter } from '../../utils/schema';
 
 export const tweetField = {
   type: 'object',
