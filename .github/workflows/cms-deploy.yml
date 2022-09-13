@@ -8,7 +8,8 @@ on:
       - .github/workflows/cms-deploy.yml
 
 env:
-  sanityEnvVarsJson: '{"cms":"SANITY_AUTH_TOKEN_CMS","cms-camila":"SANITY_AUTH_TOKEN_CMS_CAMILA"}'
+  cms: 'SANITY_AUTH_TOKEN_CMS'
+  'cms-camila': SANITY_AUTH_TOKEN_CMS_CAMILA
 
 jobs:
   build_job:
@@ -27,32 +28,28 @@ jobs:
         with:
           node-version: 16
 
-      - uses: pnpm/action-setup@v2.2.2
-        name: Install pnpm
-        with:
-          version: 7
-          run_install: false
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Installing Dependencies
-        run: |
-          pnpm install --global @sanity/cli
-          pnpm install --no-frozen-lockfile
-
+      # - uses: pnpm/action-setup@v2.2.2
+      #   name: Install pnpm
+      #   with:
+      #     version: 7
+      #     run_install: false
+      # - name: Get pnpm store directory
+      #   id: pnpm-cache
+      #   run: |
+      #     echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+      # - uses: actions/cache@v3
+      #   name: Setup pnpm cache
+      #   with:
+      #     path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+      #     key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-pnpm-store-
+      # - name: Installing Dependencies
+      #   run: |
+      #     pnpm install --global @sanity/cli
+      #     pnpm install --no-frozen-lockfile
       - name: 'TEST 2'
-        run: echo ${{ fromJSON(env.sanityEnvVarsJson) }}
+        run: echo ${{ fromJSON(env.sanityEnvVarsJson)${{matrix.project}} }}
         # run: echo "${{ fromJSON($sanityEnvVarsJson)[${{ matrix.project }}] }}"
 
       # - name: Building
