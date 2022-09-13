@@ -3,9 +3,9 @@ name: CMS deploy
 on:
   push:
     paths:
-      - 'apps/cms/**'
-      - 'packages/**'
-      - '.github/workflows/cms-deploy.yml'
+      - apps/cms/**
+      - packages/**
+      - .github/workflows/cms-deploy.yml
 
 env:
   sanityEnvVarsJson: '{"cms":"SANITY_AUTH_TOKEN_CMS","cms-camila":"SANITY_AUTH_TOKEN_CMS_CAMILA"}'
