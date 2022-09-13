@@ -8,6 +8,7 @@
     "dist/"
   ],
   "scripts": {
+    "postinstall": "pnpm run build",
     "build": "pnpm rimraf dist && tsc"
   },
   "peerDependencies": {
