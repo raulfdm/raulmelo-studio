@@ -7,9 +7,17 @@ on:
       - 'packages/**'
       - '.github/workflows/cms-deploy.yml'
 
+env:
+  sanityEnvVarsJson: '{"cms":"SANITY_AUTH_TOKEN_CMS","cms-camila":"SANITY_AUTH_TOKEN_CMS_CAMILA"}'
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        project: [cms, cms-camila]
+
     steps:
       - name: Git files setup
         uses: actions/checkout@v3
@@ -43,11 +51,14 @@ jobs:
           pnpm install --global @sanity/cli
           pnpm install --no-frozen-lockfile
 
-      - name: Building
-        run: pnpm run build --filter cms...
+      - name: 'TEST'
+        run: echo "${{ fromJSON(sanityEnvVarsJson)[${{ matrix.project }}] }}"
 
-      - name: Deploy
-        run: pnpm run deploy --filter cms
-        if: contains('refs/heads/main', github.ref)
-        env:
-          SANITY_AUTH_TOKEN: ${{secrets.SANITY_AUTH_TOKEN}}
+      # - name: Building
+      #   run: pnpm run build --filter ${{ matrix.project }}...
+
+      # - name: Deploy
+      #   run: pnpm run deploy --filter ${{ matrix.project }}
+      #   if: contains('refs/heads/main', github.ref)
+      #   env:
+      #     SANITY_AUTH_TOKEN: "${{ matrix.project == 'cms' ? 'SANITY_AUTH_TOKEN_CMS' : 'SANITY_AUTH_TOKEN_CSM_CAMILA'}}"
