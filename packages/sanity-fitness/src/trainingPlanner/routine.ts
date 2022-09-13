@@ -1,5 +1,7 @@
+export const TRAINING_ROUTINE_SCHEMA_NAME = 'trainingRoutine';
+
 export const trainingRoutineSchema = {
-  name: 'trainingRoutine',
+  name: TRAINING_ROUTINE_SCHEMA_NAME,
   title: 'Training Routine',
   type: 'document',
   fields: [

@@ -1,5 +1,7 @@
+export const EXERCISE_SCHEMA_NAME = 'exercise';
+
 export const exerciseSchema = {
-  name: 'exercise',
+  name: EXERCISE_SCHEMA_NAME,
   title: 'Exercise',
   type: 'document',
   fields: [
