@@ -5,25 +5,30 @@
     trainingSheet: ITrainingSheet;
   };
 
-  const { trainingSheet } = data;
+  const schemas = data.trainingSheet.schema || [];
+  console.log(schemas);
 </script>
 
 <svelte:head>
   <title>Fitness Buddy</title>
 </svelte:head>
 
-<nav class="grid grid-cols-2 gap-6">
-  {#each trainingSheet.schema as schema}
-    <a sveltekit:prefetch href={`/workout/${schema._id}`} class="link">
-      <h2 class="title">
-        {schema.routine.name}
-        <span v-if="routine.description" class="subtitle"
-          >{schema.routine.description}</span
-        >
-      </h2>
-    </a>
-  {/each}
-</nav>
+{#if schemas.length > 0}
+  <nav class="grid grid-cols-2 gap-6">
+    {#each schemas as schema}
+      <a sveltekit:prefetch href={`/workout/${schema._id}`} class="link">
+        <h2 class="title">
+          {schema.routine.name}
+          <span v-if="routine.description" class="subtitle"
+            >{schema.routine.description}</span
+          >
+        </h2>
+      </a>
+    {/each}
+  </nav>
+{:else}
+  <p class="text-center">No training sheets found</p>
+{/if}
 
 <style lang="postcss" module>
   .link {
