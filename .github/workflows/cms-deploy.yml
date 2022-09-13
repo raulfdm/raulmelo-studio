@@ -15,9 +15,9 @@ jobs:
       matrix:
         project: [cms, cms-camila]
         include:
-          - token: ${{secrets.SANITY_AUTH_TOKEN_CMS_RAUL}}
+          - token: SANITY_AUTH_TOKEN_CMS_RAUL
             project: cms
-          - token: ${{secrets.SANITY_AUTH_TOKEN_CMS_CAMILA}}
+          - token: SANITY_AUTH_TOKEN_CMS_CAMILA
             project: 'cms-camila'
 
     steps:
@@ -58,4 +58,4 @@ jobs:
         run: pnpm run deploy --filter ${{ matrix.project }}
         if: contains('refs/heads/main', github.ref)
         env:
-          SANITY_AUTH_TOKEN: ${{ matrix.token }}
+          SANITY_AUTH_TOKEN: ${{ secrets[matrix.token] }}
