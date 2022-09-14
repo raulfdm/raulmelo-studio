@@ -56,7 +56,7 @@ importers:
       '@raulmelo/ui': link:../../packages/ui
       '@sanity/base': 2.33.0_e2j7mneen3arr2g7olztmnnfl4
       '@sanity/client': 3.4.1
-      '@sanity/core': 2.33.0_kajyts7cyhozq54bdyjavq5ktq
+      '@sanity/core': 2.33.0_ie2vlfpr7fzleplp7k55p75lea
       '@sanity/data-aspects': 2.29.3
       '@sanity/default-layout': 2.33.0_axtfftc4wndgt3sdrzva57angi
       '@sanity/default-login': 2.33.0_vmyphpcl3u5n4ynbdr3lr7gc3a
@@ -97,7 +97,7 @@ importers:
       '@raulmelo/sanity-core': link:../../packages/sanity-core
       '@raulmelo/sanity-fitness': link:../../packages/sanity-fitness
       '@sanity/base': 2.33.0_e2j7mneen3arr2g7olztmnnfl4
-      '@sanity/core': 2.33.0_ie2vlfpr7fzleplp7k55p75lea
+      '@sanity/core': 2.33.0_oj5jbg2ldmqbgxwq3dy6abnm5a
       '@sanity/data-aspects': 2.29.3
       '@sanity/default-layout': 2.33.0_axtfftc4wndgt3sdrzva57angi
       '@sanity/default-login': 2.33.0_vmyphpcl3u5n4ynbdr3lr7gc3a
@@ -4532,7 +4532,7 @@ packages:
       - webpack-command
     dev: false
 
-  /@sanity/core/2.33.0_kajyts7cyhozq54bdyjavq5ktq:
+  /@sanity/core/2.33.0_oj5jbg2ldmqbgxwq3dy6abnm5a:
     resolution: {integrity: sha512-LthGm1uxPiEZnhSuGdzQJJ62BLYUpwBxYv5ty6v7ablj3Yv97X73gknWvjQnoy8nXHp//IZRuOvNhQlN4dHGzQ==}
     engines: {node: '>=12.0.0'}
     dependencies:
@@ -4545,13 +4545,13 @@ packages:
       '@sanity/export': 2.30.3
       '@sanity/generate-help-url': 3.0.0
       '@sanity/import': 2.33.0
-      '@sanity/plugin-loader': 2.31.1_cpjhnwpvxp3qusqfacmge55zpu
+      '@sanity/plugin-loader': 2.31.1
       '@sanity/resolver': 2.31.1
       '@sanity/schema': 2.31.0
-      '@sanity/server': 2.32.0_elnrdbdwsxcddabv64rm5suve4
+      '@sanity/server': 2.32.0_sfoxds7t5ydpegc3knd667wn6m
       '@sanity/util': 2.31.1
       '@sanity/uuid': 3.0.1
-      '@sanity/webpack-integration': 2.31.1_cpjhnwpvxp3qusqfacmge55zpu
+      '@sanity/webpack-integration': 2.31.1
       chalk: 2.4.2
       chokidar: 3.5.3
       configstore: 5.0.1
@@ -4982,13 +4982,13 @@ packages:
       - supports-color
     dev: false
 
-  /@sanity/plugin-loader/2.31.1_cc22th4lqz27uklrowvotwnbai:
+  /@sanity/plugin-loader/2.31.1:
     resolution: {integrity: sha512-NblTQSAWFdSKf7vY0/9JabFsZH7gGt4uI/inkgd7UgSmEwD3OkIHet0Wc3IXuazxct80QjcH+3UvbqBChsRALg==}
     engines: {node: '>=12.0.0'}
     dependencies:
       '@sanity/resolver': 2.31.1
       '@sanity/util': 2.31.1
-      '@sanity/webpack-integration': 2.31.1_cc22th4lqz27uklrowvotwnbai
+      '@sanity/webpack-integration': 2.31.1
       css-modules-require-hook: 4.1.0
       interop-require: 1.0.0
     transitivePeerDependencies:
@@ -4997,13 +4997,13 @@ packages:
       - webpack
     dev: false
 
-  /@sanity/plugin-loader/2.31.1_cpjhnwpvxp3qusqfacmge55zpu:
+  /@sanity/plugin-loader/2.31.1_cc22th4lqz27uklrowvotwnbai:
     resolution: {integrity: sha512-NblTQSAWFdSKf7vY0/9JabFsZH7gGt4uI/inkgd7UgSmEwD3OkIHet0Wc3IXuazxct80QjcH+3UvbqBChsRALg==}
     engines: {node: '>=12.0.0'}
     dependencies:
       '@sanity/resolver': 2.31.1
       '@sanity/util': 2.31.1
-      '@sanity/webpack-integration': 2.31.1_cpjhnwpvxp3qusqfacmge55zpu
+      '@sanity/webpack-integration': 2.31.1_cc22th4lqz27uklrowvotwnbai
       css-modules-require-hook: 4.1.0
       interop-require: 1.0.0
     transitivePeerDependencies:
@@ -5113,6 +5113,56 @@ packages:
       '@sanity/util': 2.31.1
       '@sanity/webpack-dev-middleware': 2.0.6_webpack@3.12.0
       '@sanity/webpack-integration': 2.31.1_cpjhnwpvxp3qusqfacmge55zpu
+      babel-loader: 8.2.5_liaa2rwgfgmkgdtuabdrfmbypi
+      eventsource-polyfill: 0.9.6
+      express: 4.18.1
+      extract-text-webpack-plugin: 3.0.2_webpack@3.12.0
+      file-loader: 1.1.11_webpack@3.12.0
+      find-config: 1.0.0
+      lodash: 4.17.21
+      postcss-loader: 2.1.6
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      react-hot-loader: 4.13.0_sfoxds7t5ydpegc3knd667wn6m
+      read-pkg-up: 7.0.1
+      require-uncached: 1.0.3
+      resolve: 1.22.1
+      resolve-from: 4.0.0
+      rxjs: 6.6.7
+      strip-ansi: 6.0.1
+      style-loader: 0.20.3
+      symbol-observable: 1.2.0
+      webpack: 3.12.0
+      webpack-hot-middleware: 2.25.1
+    transitivePeerDependencies:
+      - '@types/react'
+      - caniuse-lite
+      - supports-color
+      - webpack-cli
+      - webpack-command
+    dev: false
+
+  /@sanity/server/2.32.0_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-WILMj10wgW4D+xNuO3mlGP7Pie/Fku4lhQh8TifdYXpuZ2ZYR564sqJPGWa3LwSaauTazNgXDpOqFjZ1NhLmNw==}
+    engines: {node: '>=12.0.0'}
+    hasBin: true
+    peerDependencies:
+      react: ^16.9 || ^17
+      react-dom: ^16.9 || ^17
+    dependencies:
+      '@babel/core': 7.19.0
+      '@babel/plugin-proposal-class-properties': 7.18.6_@babel+core@7.19.0
+      '@babel/preset-env': 7.19.0_@babel+core@7.19.0
+      '@babel/preset-react': 7.18.6_@babel+core@7.19.0
+      '@babel/preset-typescript': 7.18.6_@babel+core@7.19.0
+      '@babel/register': 7.18.9_@babel+core@7.19.0
+      '@sanity/css-loader': 0.28.12
+      '@sanity/eventsource': 3.0.3
+      '@sanity/hot-loader-react-dom': 16.14.0
+      '@sanity/resolver': 2.31.1
+      '@sanity/util': 2.31.1
+      '@sanity/webpack-dev-middleware': 2.0.6_webpack@3.12.0
+      '@sanity/webpack-integration': 2.31.1_webpack@3.12.0
       babel-loader: 8.2.5_liaa2rwgfgmkgdtuabdrfmbypi
       eventsource-polyfill: 0.9.6
       express: 4.18.1
@@ -5337,6 +5387,31 @@ packages:
       webpack-log: 1.2.0
     dev: false
 
+  /@sanity/webpack-integration/2.31.1:
+    resolution: {integrity: sha512-pnMnOMKt8dDKkWDXC+KSITJmPCuuN/hnshLYgDm/p7Ulu6X3dLhXh+1XpEa1/minPIXLTu2R0uAcPdTP8ifbcQ==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      webpack: '>= 1.0.0'
+    dependencies:
+      '@sanity/resolver': 2.31.1
+      '@sanity/webpack-loader': 2.31.1
+      css-color-function: 1.3.3
+      dotenv: 8.6.0
+      fs.realpath: 1.0.0
+      p-async-cache: 1.0.3
+      postcss: 8.4.16
+      postcss-calc: 7.0.5
+      postcss-color-function: 4.1.0
+      postcss-cssnext: 3.1.1
+      postcss-custom-properties: 6.3.1
+      postcss-import: 11.1.0
+      postcss-url: 7.3.2
+      resolve: 1.22.1
+    transitivePeerDependencies:
+      - caniuse-lite
+      - supports-color
+    dev: false
+
   /@sanity/webpack-integration/2.31.1_cc22th4lqz27uklrowvotwnbai:
     resolution: {integrity: sha512-pnMnOMKt8dDKkWDXC+KSITJmPCuuN/hnshLYgDm/p7Ulu6X3dLhXh+1XpEa1/minPIXLTu2R0uAcPdTP8ifbcQ==}
     engines: {node: '>=12.0.0'}
@@ -5379,6 +5454,32 @@ packages:
       postcss-calc: 7.0.5
       postcss-color-function: 4.1.0
       postcss-cssnext: 3.1.1_caniuse-lite@1.0.30001399
+      postcss-custom-properties: 6.3.1
+      postcss-import: 11.1.0
+      postcss-url: 7.3.2
+      resolve: 1.22.1
+      webpack: 3.12.0
+    transitivePeerDependencies:
+      - caniuse-lite
+      - supports-color
+    dev: false
+
+  /@sanity/webpack-integration/2.31.1_webpack@3.12.0:
+    resolution: {integrity: sha512-pnMnOMKt8dDKkWDXC+KSITJmPCuuN/hnshLYgDm/p7Ulu6X3dLhXh+1XpEa1/minPIXLTu2R0uAcPdTP8ifbcQ==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      webpack: '>= 1.0.0'
+    dependencies:
+      '@sanity/resolver': 2.31.1
+      '@sanity/webpack-loader': 2.31.1
+      css-color-function: 1.3.3
+      dotenv: 8.6.0
+      fs.realpath: 1.0.0
+      p-async-cache: 1.0.3
+      postcss: 8.4.16
+      postcss-calc: 7.0.5
+      postcss-color-function: 4.1.0
+      postcss-cssnext: 3.1.1
       postcss-custom-properties: 6.3.1
       postcss-import: 11.1.0
       postcss-url: 7.3.2
@@ -9499,7 +9600,7 @@ packages:
       mississippi: 3.0.0
       mkdirp: 0.5.6
       move-concurrently: 1.0.1
-      promise-inflight: 1.0.1
+      promise-inflight: 1.0.1_bluebird@3.7.2
       rimraf: 2.7.1
       ssri: 6.0.2
       unique-filename: 1.1.1
@@ -9522,7 +9623,7 @@ packages:
       minipass-pipeline: 1.2.4
       mkdirp: 1.0.4
       p-map: 4.0.0
-      promise-inflight: 1.0.1
+      promise-inflight: 1.0.1_bluebird@3.7.2
       rimraf: 3.0.2
       ssri: 8.0.1
       tar: 6.1.11
@@ -17770,6 +17871,47 @@ packages:
       postcss-value-parser: 3.3.1
     dev: false
 
+  /postcss-cssnext/3.1.1:
+    resolution: {integrity: sha512-u9e0CYE7zudnr/LK+FL02cwli8cQEwwmzzN3JVeOEZiDs0q8IDfGdI6C9FCkHtIKEEjY3AATW3dqCCvqDK+Sfg==}
+    deprecated: '''postcss-cssnext'' has been deprecated in favor of ''postcss-preset-env''. Read more at https://moox.io/blog/deprecating-cssnext/'
+    peerDependencies:
+      caniuse-lite: ^1.0.30000697
+    dependencies:
+      autoprefixer: 7.2.6
+      caniuse-api: 2.0.0
+      chalk: 2.4.2
+      pixrem: 4.0.1
+      pleeease-filters: 4.0.0
+      postcss: 6.0.23
+      postcss-apply: 0.8.0
+      postcss-attribute-case-insensitive: 2.0.0
+      postcss-calc: 6.0.2
+      postcss-color-function: 4.1.0
+      postcss-color-gray: 4.1.0
+      postcss-color-hex-alpha: 3.0.0
+      postcss-color-hsl: 2.0.0
+      postcss-color-hwb: 3.0.0
+      postcss-color-rebeccapurple: 3.1.0
+      postcss-color-rgb: 2.0.0
+      postcss-color-rgba-fallback: 3.0.0
+      postcss-custom-media: 6.0.0
+      postcss-custom-properties: 6.3.1
+      postcss-custom-selectors: 4.0.1
+      postcss-font-family-system-ui: 3.0.0
+      postcss-font-variant: 3.0.0
+      postcss-image-set-polyfill: 0.3.5
+      postcss-initial: 2.0.0
+      postcss-media-minmax: 3.0.0
+      postcss-nesting: 4.2.1
+      postcss-pseudo-class-any-link: 4.0.0
+      postcss-pseudoelements: 5.0.0
+      postcss-replace-overflow-wrap: 2.0.0
+      postcss-selector-matches: 3.0.1
+      postcss-selector-not: 3.0.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /postcss-cssnext/3.1.1_caniuse-lite@1.0.30001399:
     resolution: {integrity: sha512-u9e0CYE7zudnr/LK+FL02cwli8cQEwwmzzN3JVeOEZiDs0q8IDfGdI6C9FCkHtIKEEjY3AATW3dqCCvqDK+Sfg==}
     deprecated: '''postcss-cssnext'' has been deprecated in favor of ''postcss-preset-env''. Read more at https://moox.io/blog/deprecating-cssnext/'
@@ -18575,14 +18717,6 @@ packages:
       speedometer: 1.0.0
       through2: 2.0.5
 
-  /promise-inflight/1.0.1:
-    resolution: {integrity: sha512-6zWPyEOFaQBJYcGMHBKTKJ3u6TBsnMFOIZSa6ce1e/ZrrsOlnHRHbabMjLiBYKp+n44X9eUI6VUPaukCXHuG4g==}
-    peerDependencies:
-      bluebird: '*'
-    peerDependenciesMeta:
-      bluebird:
-        optional: true
-
   /promise-inflight/1.0.1_bluebird@3.7.2:
     resolution: {integrity: sha512-6zWPyEOFaQBJYcGMHBKTKJ3u6TBsnMFOIZSa6ce1e/ZrrsOlnHRHbabMjLiBYKp+n44X9eUI6VUPaukCXHuG4g==}
     peerDependencies:
@@ -18592,7 +18726,6 @@ packages:
         optional: true
     dependencies:
       bluebird: 3.7.2
-    dev: false
 
   /promise-props-recursive/1.0.0:
     resolution: {integrity: sha512-kh/4BEytTXST030W1YJHs3bTzlFu4C9EFPtqrG3g8JM8nEi3+WxR0mm19TjiobO2YHbHrCicZGN2Z94OhAU+7Q==}
