@@ -97,7 +97,7 @@
   </div>
 </div>
 
-<style>
+<style lang="postcss">
   .clock {
     @apply text-white transition-colors;
   }

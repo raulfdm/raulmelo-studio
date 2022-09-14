@@ -107,7 +107,7 @@ export function createTabataClock(tabataConfig: TabataConfigContext) {
         tickElapsed: assign({
           elapsed: (context) => context.elapsed - 1,
         }),
-        nextAction: assign((context, { direction }) =>
+        nextAction: assign((context, { direction }: any) =>
           nextAction(context, direction),
         ),
         backward: assign((context) => nextAction(context, 'backward')),
