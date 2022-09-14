@@ -140,7 +140,7 @@
 </div>
 
 <footer
-  class="fixed bottom-0 left-0 right-0 flex items-center justify-center gap-4 px-4 text-lg font-bold text-white rounded bg-emerald-400"
+  class="fixed left-0 right-0 flex items-center justify-center gap-4 px-4 text-lg font-bold text-white rounded bottom-4 bg-emerald-400"
 >
   <a href="/tabata-clock/run" class="flex items-center gap-2 py-4"
     >Start
@@ -153,7 +153,6 @@
 
 <style>
   footer {
-    @apply bottom-4;
     right: 50%;
     left: 50%;
     width: min-content;

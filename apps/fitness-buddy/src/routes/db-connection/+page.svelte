@@ -1,6 +1,6 @@
 <script lang="ts">
   import cookie from 'cookie';
-  import { createMachine, assign, type EventObject } from 'xstate';
+  import { createMachine, assign } from 'xstate';
   import { useMachine } from '@xstate/svelte';
   import { SANITY_PROJECT_ID_COOKIE_KEY } from '$lib/utils/api';
   import { DEFAULT_PROJECT_ID } from '$lib/api';
@@ -115,7 +115,7 @@
   </button>
 </div>
 
-<style lang="scss">
+<style lang="postcss">
   button.save {
     @apply text-pink-600 border-pink-600 bg-pink-50;
     @apply hover:bg-pink-200;

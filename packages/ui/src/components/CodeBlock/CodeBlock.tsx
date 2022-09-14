@@ -19,6 +19,7 @@ interface ICodeBlockProps {
 const copyMachine = createMachine(
   {
     predictableActionArguments: true,
+    preserveActionOrder: true,
     tsTypes: {} as import('./CodeBlock.typegen').Typegen0,
     schema: {
       events: {} as { type: 'COPY'; code: string },

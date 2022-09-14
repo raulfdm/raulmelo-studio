@@ -18,9 +18,9 @@
       <a sveltekit:prefetch href={`/workout/${schema._id}`} class="link">
         <h2 class="title">
           {schema.routine.name}
-          <span v-if="routine.description" class="subtitle"
-            >{schema.routine.description}</span
-          >
+          {#if schema.routine.description}
+            <span class="subtitle">{schema.routine.description}</span>
+          {/if}
         </h2>
       </a>
     {/each}
@@ -29,7 +29,7 @@
   <p class="text-center">No training sheets found</p>
 {/if}
 
-<style lang="postcss" module>
+<style lang="postcss">
   .link {
     @apply rounded;
     @apply p-6;

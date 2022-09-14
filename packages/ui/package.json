@@ -19,7 +19,6 @@
     "./styles/style.css": "./dist/style.css"
   },
   "scripts": {
-    "postinstall": "pnpm run build",
     "build": "scripty",
     "build:css": "scripty",
     "build:storybook": "scripty",
@@ -37,30 +36,37 @@
   },
   "dependencies": {
     "@raulmelo/core": "workspace:*",
-    "classnames": "2.3.1",
+    "classnames": "2.3.2",
     "react-refractor": "2.1.7",
     "react-twitter-widgets": "1.11.0",
-    "refractor": "4.7.0"
+    "refractor": "4.8.0"
   },
   "devDependencies": {
+    "@babel/core": "7.19.0",
     "@popperjs/core": "2.11.6",
     "@raulmelo/styles": "workspace:*",
-    "@storybook/addon-actions": "6.5.10",
-    "@storybook/addon-essentials": "6.5.10",
-    "@storybook/addon-links": "6.5.10",
+    "@storybook/addon-actions": "6.5.12",
+    "@storybook/addon-essentials": "6.5.12",
+    "@storybook/addon-links": "6.5.12",
     "@storybook/addon-postcss": "2.0.0",
-    "@storybook/builder-webpack5": "6.5.10",
-    "@storybook/manager-webpack5": "6.5.10",
-    "@storybook/react": "6.5.10",
+    "@storybook/builder-webpack5": "6.5.12",
+    "@storybook/manager-webpack5": "6.5.12",
+    "@storybook/react": "6.5.12",
+    "@types/jest": "29.0.2",
+    "@types/react": "18.0.20",
+    "@types/react-dom": "18.0.6",
+    "@xstate/cli": "0.3.3",
     "@xstate/react": "3.0.1",
-    "@xstate/cli": "0.3.2",
+    "autoprefixer": "10.4.10",
+    "prettier": "2.7.1",
+    "postcss": "8.4.16",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-popper": "2.3.0",
     "storybook-css-modules-preset": "1.1.1",
     "tailwindcss": "3.1.8",
-    "vite": "3.0.9",
+    "vite": "3.1.0",
     "webpack": "5.74.0",
-    "xstate": "4.33.5"
+    "xstate": "4.33.6"
   }
 }

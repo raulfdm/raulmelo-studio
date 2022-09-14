@@ -7,6 +7,7 @@ module.exports = {
   onboarding: true,
   platform: 'github',
   repositories: ['raulfdm/raulmelo-studio'],
+  branchConcurrentLimit: 10,
 
   /**
    * Renovate options

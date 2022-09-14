@@ -173,6 +173,7 @@ const variants = {
 
 const seriesMachine = createMachine({
   predictableActionArguments: true,
+  preserveActionOrder: true,
   tsTypes: {} as import('./SeriesSection.typegen').Typegen0,
   initial: 'collapsed',
   states: {

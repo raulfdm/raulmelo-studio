@@ -17,7 +17,7 @@ module.exports = {
            * Because postcss is installed globally, I have to manually require
            * it at the top-level node_modules.
            */
-          implementation: require('../../../node_modules/postcss'),
+          implementation: require('postcss'),
           /**
            * It's necessary to pass the POSTCSS options here instead a file in
            * the root of this package because for some reason, storybook's
@@ -30,4 +30,11 @@ module.exports = {
     },
   ],
   framework: '@storybook/react',
+  async webpackFinal(config) {
+    config.module.rules.push({
+      test: /.storybook\/preview.js/,
+      resolve: { fullySpecified: false },
+    });
+    return config;
+  },
 };
