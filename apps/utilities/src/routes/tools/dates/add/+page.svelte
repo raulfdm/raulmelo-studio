@@ -66,7 +66,7 @@
     const ruleSet = pluralRules[currentState.value as AddDateInputTypes];
     const selectedRule = value ? pr.select(value) : null;
 
-    return selectedRule === null ? '' : ruleSet.get(selectedRule);
+    return selectedRule === null ? '' : `${value} ${ruleSet.get(selectedRule)}`;
   });
 </script>
 
