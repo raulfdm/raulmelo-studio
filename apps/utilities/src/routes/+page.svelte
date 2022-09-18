@@ -26,6 +26,14 @@
         </li>
       </ul>
     </li>
+    <li>
+      Manipulating Time
+      <ul class="list-inside">
+        <li>
+          <a href="/tools/times/timezone">Timezone</a>
+        </li>
+      </ul>
+    </li>
   </ul>
 
   <style>
