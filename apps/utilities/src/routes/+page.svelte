@@ -17,6 +17,14 @@
   <li>
     <a href="/tools/rule-of-three">Rule of Three</a>
   </li>
+  <li>
+    Manipulating Dates
+    <ul class="list-inside">
+      <li>
+        <a href="/tools/dates/add">Add</a>
+      </li>
+    </ul>
+  </li>
 </ul>
 
 <style>
