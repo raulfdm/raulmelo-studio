@@ -15,9 +15,15 @@
         </li>
       </ul>
     </li>
+
     <li>
       <a href="/tools/rule-of-three">Rule of Three</a>
     </li>
+
+    <li>
+      <a href="/tools/average">Average</a>
+    </li>
+
     <li>
       Manipulating Dates
       <ul class="list-inside">
@@ -26,6 +32,7 @@
         </li>
       </ul>
     </li>
+
     <li>
       Manipulating Time
       <ul class="list-inside">
