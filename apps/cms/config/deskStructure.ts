@@ -1,6 +1,6 @@
 import {
   EXERCISE_SCHEMA_NAME,
-  TRAINING_ROUTINE_SCHEMA_NAME,
+  MEASUREMENT_SCHEMA_NAME,
   TRAINING_SCHEMA_NAME,
 } from '@raulmelo/sanity-fitness';
 import S from '@sanity/desk-tool/structure-builder';
@@ -66,8 +66,8 @@ function getTrainingPlannerMenu() {
             .title('Exercises')
             .child(S.documentTypeList(EXERCISE_SCHEMA_NAME)),
           S.listItem()
-            .title('Routine')
-            .child(S.documentTypeList(TRAINING_ROUTINE_SCHEMA_NAME)),
+            .title('Measurements')
+            .child(S.documentTypeList(MEASUREMENT_SCHEMA_NAME)),
           S.listItem()
             .title('Training Schema')
             .child(S.documentTypeList(TRAINING_SCHEMA_NAME)),
