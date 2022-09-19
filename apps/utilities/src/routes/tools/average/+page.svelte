@@ -1,30 +1,30 @@
 <script lang="ts">
   import PageTitle from '$lib/components/PageTitle.svelte';
 
-  type Numbers = (number | undefined)[];
+  type Numbers = (number | null)[];
 
-  let numbers: Numbers = [undefined];
+  let numbers: Numbers = [null];
   $: average = getAverage(numbers);
   $: validNumbersLength = getValidNumbersLength(numbers);
 
   function addNumber() {
-    numbers = [...numbers, undefined];
+    numbers = [...numbers, null];
   }
 
   function getValidNumbersLength(nums: Numbers) {
-    return numbers.filter((num) => num !== undefined).length;
+    return nums.filter((num) => num !== null).length;
   }
 
   function deleteNumber(index: number) {
     numbers = numbers.filter((_, i) => i !== index);
   }
 
-  function getAverage(nums: (number | undefined)[] = []) {
+  function getAverage(nums: Numbers) {
     let result = 0;
     let dividedBy = 0;
 
     for (const num of nums) {
-      if (num === undefined) {
+      if (num === null) {
         continue;
       }
 
