@@ -67,7 +67,19 @@ function getTrainingPlannerMenu() {
             .child(S.documentTypeList(EXERCISE_SCHEMA_NAME)),
           S.listItem()
             .title('Measurements')
-            .child(S.documentTypeList(MEASUREMENT_SCHEMA_NAME)),
+
+            .child(
+              S.documentTypeList(MEASUREMENT_SCHEMA_NAME).menuItems([
+                S.orderingMenuItem({
+                  title: 'Date Ascending',
+                  by: [{ field: 'date', direction: 'asc' }],
+                }),
+                S.orderingMenuItem({
+                  title: 'Date Descending',
+                  by: [{ field: 'date', direction: 'desc' }],
+                }),
+              ]),
+            ),
           S.listItem()
             .title('Training Schema')
             .child(S.documentTypeList(TRAINING_SCHEMA_NAME)),
