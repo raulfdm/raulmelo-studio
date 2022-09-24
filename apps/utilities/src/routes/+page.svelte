@@ -30,6 +30,9 @@
         <li>
           <a href="/tools/dates/add">Add</a>
         </li>
+        <li>
+          <a href="/tools/dates/subtract">Subtract</a>
+        </li>
       </ul>
     </li>
 
