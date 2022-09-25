@@ -42,6 +42,9 @@
         <li>
           <a href="/tools/times/timezone">Timezone</a>
         </li>
+        <li>
+          <a href="/tools/times/time">Time</a>
+        </li>
       </ul>
     </li>
   </ul>
