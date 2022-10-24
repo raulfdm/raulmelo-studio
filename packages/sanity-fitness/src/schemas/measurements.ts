@@ -30,29 +30,8 @@ export const measurementSchema = {
     },
     {
       group: measurementGroup,
-      name: 'chest',
-      title: 'Peito',
-      type: 'number',
-      validation: (Rule: Rule) => Rule.required(),
-    },
-    {
-      group: measurementGroup,
-      name: 'shoulders',
-      title: 'Ombros',
-      type: 'number',
-      validation: (Rule: Rule) => Rule.required(),
-    },
-    {
-      group: measurementGroup,
       name: 'biceps_left',
       title: 'Bíceps Esquerdo',
-      type: 'number',
-      validation: (Rule: Rule) => Rule.required(),
-    },
-    {
-      group: measurementGroup,
-      name: 'forearm_left',
-      title: 'Antebraço Esquerdo',
       type: 'number',
       validation: (Rule: Rule) => Rule.required(),
     },
@@ -72,6 +51,27 @@ export const measurementSchema = {
     },
     {
       group: measurementGroup,
+      name: 'forearm_left',
+      title: 'Antebraço Esquerdo',
+      type: 'number',
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
+      group: measurementGroup,
+      name: 'shoulders',
+      title: 'Ombros',
+      type: 'number',
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
+      group: measurementGroup,
+      name: 'chest',
+      title: 'Peito',
+      type: 'number',
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
+      group: measurementGroup,
       name: 'abdomen',
       title: 'Abdômen',
       type: 'number',
@@ -86,22 +86,8 @@ export const measurementSchema = {
     },
     {
       group: measurementGroup,
-      name: 'thigh_left',
-      title: 'Coxa Esquerda',
-      type: 'number',
-      validation: (Rule: Rule) => Rule.required(),
-    },
-    {
-      group: measurementGroup,
       name: 'thigh_right',
       title: 'Coxa Direita',
-      type: 'number',
-      validation: (Rule: Rule) => Rule.required(),
-    },
-    {
-      group: measurementGroup,
-      name: 'calf_left',
-      title: 'Panturrilha Esquerda',
       type: 'number',
       validation: (Rule: Rule) => Rule.required(),
     },
@@ -113,23 +99,26 @@ export const measurementSchema = {
       validation: (Rule: Rule) => Rule.required(),
     },
     {
+      group: measurementGroup,
+      name: 'thigh_left',
+      title: 'Coxa Esquerda',
+      type: 'number',
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
+      group: measurementGroup,
+      name: 'calf_left',
+      title: 'Panturrilha Esquerda',
+      type: 'number',
+      validation: (Rule: Rule) => Rule.required(),
+    },
+
+    {
       group: bodyCompositionGroup,
       name: 'weight',
       title: 'Peso',
       type: 'number',
       validation: (Rule: Rule) => Rule.required(),
-    },
-    {
-      group: bodyCompositionGroup,
-      name: 'skeletal_muscle',
-      title: 'Skeletal Muscle (kg)',
-      type: 'number',
-    },
-    {
-      group: bodyCompositionGroup,
-      name: 'fat_mass',
-      title: 'Fat Mass (kg)',
-      type: 'number',
     },
     {
       group: bodyCompositionGroup,
@@ -139,21 +128,54 @@ export const measurementSchema = {
     },
     {
       group: bodyCompositionGroup,
-      name: 'bmi',
-      title: 'BMI',
+      name: 'skeletal_muscle_percentage',
+      title: 'Skeletal Muscle (%)',
       type: 'number',
     },
     {
       group: bodyCompositionGroup,
-      name: 'body_water',
-      title: 'Body Water (kg)',
+      name: 'visceral_fat',
+      title: 'Visceral fat level',
       type: 'number',
+    },
+
+    /**
+     * Deleted Fields
+     */
+    {
+      group: bodyCompositionGroup,
+      name: 'skeletal_muscle',
+      title: 'Skeletal Muscle (kg)',
+      type: 'number',
+      hidden: () => true,
+    },
+    {
+      group: bodyCompositionGroup,
+      name: 'fat_mass',
+      title: 'Fat Mass (kg)',
+      type: 'number',
+      hidden: () => true,
     },
     {
       group: bodyCompositionGroup,
       name: 'bmr',
       title: 'BMR (kcal)',
       type: 'number',
+      hidden: () => true,
+    },
+    {
+      group: bodyCompositionGroup,
+      name: 'body_water',
+      title: 'Body Water (kg)',
+      type: 'number',
+      hidden: () => true,
+    },
+    {
+      group: bodyCompositionGroup,
+      name: 'bmi',
+      title: 'BMI',
+      type: 'number',
+      hidden: () => true,
     },
   ],
   preview: {
