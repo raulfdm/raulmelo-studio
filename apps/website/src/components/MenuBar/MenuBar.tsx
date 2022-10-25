@@ -22,10 +22,8 @@ export const MenuBar: FC = () => {
       <div className="relative inset-x-0 z-40 h-16 mb-8 duration-200 bg-white shadow dark:bg-blue-800 transition-theme ease md:mb-12">
         <nav className="items-center h-full grid-container">
           <section data-testid="menu-bar__logo" className="col-span-2">
-            <Link href="/" locale={locale} passHref>
-              <a className="text-primary">
-                <Logo />
-              </a>
+            <Link href="/" locale={locale} className="text-primary">
+              <Logo />
             </Link>
           </section>
           <section className="flex justify-end col-span-2 space-x-3 md:col-end-9 lg:col-end-13">

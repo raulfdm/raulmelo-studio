@@ -61,10 +61,11 @@ export const AuthorPresentation = () => {
         <Image
           className="object-cover rounded-full"
           src={siteData.personalInformation.profilePic.url}
-          layout="fill"
           alt={formatMessage(message)}
           loading="eager"
           priority
+          width={128}
+          height={128}
         />
       </figure>
     </header>

@@ -28,9 +28,9 @@ export const FeaturedImage = ({ url, alt, unsplash }: FeaturedImageProps) => {
     >
       <figure className="relative h-0 overflow-hidden shadow aspect-w-12 aspect-h-6">
         <Image
+          fill
+          className="object-cover"
           src={url}
-          layout="fill"
-          objectFit="cover"
           alt={alt || formatMessage(messages.featuredImageLabel)}
           loading="eager"
           priority

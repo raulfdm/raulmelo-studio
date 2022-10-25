@@ -28,7 +28,7 @@ export const Image = ({ caption, customWidth, image, alt }: ImageProps) => {
   return (
     <div className="flex items-center justify-center">
       <figure style={figureStyles}>
-        <NextImage src={image.url} {...props} alt={alt} quality={90} />
+        <NextImage src={image.url} {...props} alt={alt || ''} quality={90} />
         {caption ? (
           <figcaption className="text-center">{caption}</figcaption>
         ) : null}

@@ -89,11 +89,12 @@ const PostSection = ({ checkAllLink, posts, title }: PostSectionProps) => {
           );
         })}
       </ul>
-      <Link href={checkAllLink.href} passHref>
-        <a className="inline-flex mt-6 text-lg underline cursor-pointer text-secondary">
-          {checkAllLink.text}
-          <ArrowRightIcon className="w-6 ml-2" />
-        </a>
+      <Link
+        href={checkAllLink.href}
+        className="inline-flex mt-6 text-lg underline cursor-pointer text-secondary"
+      >
+        {checkAllLink.text}
+        <ArrowRightIcon className="w-6 ml-2" />
       </Link>
     </section>
   );

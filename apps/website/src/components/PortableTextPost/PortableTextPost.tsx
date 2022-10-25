@@ -131,8 +131,11 @@ export const PortableTextPost = ({
               <Tags>
                 {tags.map((tag) => (
                   <Tag key={tag._id} className="text-base lg:text-lg">
-                    <Link href={getTagUrl(tag.slug)} passHref>
-                      <a className="underline text-secondary">#{tag.name}</a>
+                    <Link
+                      href={getTagUrl(tag.slug)}
+                      className="underline text-secondary"
+                    >
+                      #{tag.name}
                     </Link>
                   </Tag>
                 ))}

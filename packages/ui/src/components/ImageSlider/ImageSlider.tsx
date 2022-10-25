@@ -99,12 +99,13 @@ export const ImageSlider = (props: ImageSliderProps) => {
   }
 };
 
+type SafeNumber = number | `${number}`;
 export type SliderImageProps = {
   src: string;
   alt: string;
   noCaption?: boolean;
-  width: string | number;
-  height: string | number;
+  width: SafeNumber;
+  height: SafeNumber;
 };
 
 export type ImageSliderProps = {

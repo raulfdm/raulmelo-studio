@@ -88,8 +88,8 @@ export const SideMenu = () => {
                     </a>
                   </>
                 ) : (
-                  <Link href={href} passHref>
-                    <a {...linkProps}>{itemLabel}</a>
+                  <Link href={href} {...linkProps}>
+                    {itemLabel}
                   </Link>
                 )}
               </li>

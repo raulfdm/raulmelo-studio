@@ -35,38 +35,39 @@ export function ContentTile({
       onHoverStart={() => setIsFocused(true)}
       onHoverEnd={() => setIsFocused(false)}
     >
-      <Link href={urlBuilder(slug)} passHref>
-        <a className="relative inline-block cursor-pointer">
-          <h3
-            className={classNames('text-lg font-black md:text-xl', {
-              'text-secondary': isFocused,
-            })}
-          >
-            {title}
-          </h3>
-          {subtitle ? (
-            <h4 className="font-medium text-gray-600 dark:text-gray-300 text-md md:text-lg mb-2.5">
-              {subtitle}
-            </h4>
-          ) : null}
+      <Link
+        href={urlBuilder(slug)}
+        className="relative inline-block cursor-pointer"
+      >
+        <h3
+          className={classNames('text-lg font-black md:text-xl', {
+            'text-secondary': isFocused,
+          })}
+        >
+          {title}
+        </h3>
+        {subtitle ? (
+          <h4 className="font-medium text-gray-600 dark:text-gray-300 text-md md:text-lg mb-2.5">
+            {subtitle}
+          </h4>
+        ) : null}
 
-          <span className="block text-md lg:text-base font-sans mb-2.5">
-            <time dateTime={publishedAt}>{formattedPublishedAt}</time>
-          </span>
-          {description && (
-            <p className="text-base md:text-md text-primary dark:text-gray-200 text-opacity-80 dark:text-opacity-100">
-              {description}
-            </p>
-          )}
-          <span
-            className={classNames('flex mt-3 font-bold', {
-              'font-extrabold text-secondary': isFocused,
-            })}
-          >
-            {formatMessage({ id: 'blog.readMore' })}
-            <ArrowRightIcon className="w-4 ml-2" />
-          </span>
-        </a>
+        <span className="block text-md lg:text-base font-sans mb-2.5">
+          <time dateTime={publishedAt}>{formattedPublishedAt}</time>
+        </span>
+        {description && (
+          <p className="text-base md:text-md text-primary dark:text-gray-200 text-opacity-80 dark:text-opacity-100">
+            {description}
+          </p>
+        )}
+        <span
+          className={classNames('flex mt-3 font-bold', {
+            'font-extrabold text-secondary': isFocused,
+          })}
+        >
+          {formatMessage({ id: 'blog.readMore' })}
+          <ArrowRightIcon className="w-4 ml-2" />
+        </span>
       </Link>
     </m.article>
   );

@@ -124,11 +124,7 @@ export const portableComponents = {
 
       href += slug;
 
-      return (
-        <Link href={href}>
-          <a>{children}</a>
-        </Link>
-      );
+      return <Link href={href}>{children}</Link>;
     },
   },
 };

@@ -21,12 +21,10 @@ export const PostBasic = ({
 }: PostBasicProps) => {
   return (
     <Wrapper as={as} className={className}>
-      <Link href={url} passHref>
-        <a className="relative inline-block cursor-pointer">
-          <h3 className={classNames(['font-extrabold', titleClassName])}>
-            {title}
-          </h3>
-        </a>
+      <Link href={url} className="relative inline-block cursor-pointer">
+        <h3 className={classNames(['font-extrabold', titleClassName])}>
+          {title}
+        </h3>
       </Link>
 
       <div className="flex space-x-4 mb-2.5">
@@ -63,8 +61,8 @@ export const PostBasic = ({
         <Tags className="mt-4">
           {tags.map(({ name, slug, _id }) => (
             <Tag key={_id}>
-              <Link href={getTagUrl(slug)} passHref>
-                <a className="underline cursor-pointer">#{name}</a>
+              <Link href={getTagUrl(slug)} className="underline cursor-pointer">
+                #{name}
               </Link>
             </Tag>
           ))}
