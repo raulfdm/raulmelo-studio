@@ -1,18 +1,10 @@
-import styled from '@emotion/styled';
 import { LinkedInIcon, TwitterIcon } from '@raulmelo/ui';
 import qs from 'query-string';
 import { FormattedMessage } from 'react-intl';
 
-const Wrapper = styled.div``;
-
-export const ShareContent = ({
-  as,
-  className,
-  linkedIn,
-  twitter,
-}: ShareProps) => {
+export const ShareContent = ({ className, linkedIn, twitter }: ShareProps) => {
   return (
-    <Wrapper as={as} className={className}>
+    <div className={className}>
       <span className="block mb-4 font-extrabold text-md md:text-lg lg:text-xl md:mb-6">
         <FormattedMessage id="blogPost.share" />
       </span>
@@ -51,7 +43,7 @@ export const ShareContent = ({
           </button>
         </li>
       </ul>
-    </Wrapper>
+    </div>
   );
 };
 
@@ -75,7 +67,6 @@ const linkGenerator = {
 };
 
 type ShareProps = {
-  as?: React.ElementType;
   className?: string;
   linkedIn: {
     title: string;

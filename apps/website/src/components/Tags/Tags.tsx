@@ -1,11 +1,4 @@
-import { css } from '@emotion/css';
 import classNames from 'classnames';
-
-const tagsStyle = css`
-  > * {
-    margin-right: 1rem;
-  }
-`;
 
 export function Tags({
   className,
@@ -16,7 +9,7 @@ export function Tags({
       {...props}
       className={classNames(
         'flex flex-row flex-wrap text-base',
-        tagsStyle,
+        'tags-list',
         className,
       )}
     />
