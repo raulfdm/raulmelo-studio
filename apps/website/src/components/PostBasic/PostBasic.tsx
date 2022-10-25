@@ -1,12 +1,9 @@
-import styled from '@emotion/styled';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { FormattedDate } from 'react-intl';
 
 import { Tag, Tags } from '~/components/Tags';
 import { getTagUrl } from '~/utils/url';
-
-const Wrapper = styled.section``;
 
 export const PostBasic = ({
   title,
@@ -16,11 +13,10 @@ export const PostBasic = ({
   publishedAt,
   tags,
   titleClassName,
-  as = 'section',
   className,
 }: PostBasicProps) => {
   return (
-    <Wrapper as={as} className={className}>
+    <section className={className}>
       <Link href={url} className="relative inline-block cursor-pointer">
         <h3 className={classNames(['font-extrabold', titleClassName])}>
           {title}
@@ -68,7 +64,7 @@ export const PostBasic = ({
           ))}
         </Tags>
       ) : null}
-    </Wrapper>
+    </section>
   );
 };
 
@@ -78,7 +74,6 @@ export interface PostBasicProps {
   url: string;
   _type?: 'post' | 'til';
   className?: string;
-  as?: React.ElementType;
   publishedAt: string;
   titleClassName?: string;
   tags: {

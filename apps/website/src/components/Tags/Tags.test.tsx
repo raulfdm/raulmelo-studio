@@ -12,12 +12,8 @@ describe('<Tags>', () => {
 
     const tags = screen.getByRole('list');
     expect(tags).toMatchInlineSnapshot(`
-      .emotion-0>* {
-        margin-right: 1rem;
-      }
-
       <ul
-        class="flex flex-row flex-wrap text-base emotion-0"
+        class="flex flex-row flex-wrap text-base tags-list"
       >
         <li>
           hi

@@ -4,7 +4,6 @@ module.exports = {
   ...defaultConfig,
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['./jest.setup.js'],
-  snapshotSerializers: ['@emotion/jest/serializer'],
   modulePathIgnorePatterns: ['<rootDir>/.next'],
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',

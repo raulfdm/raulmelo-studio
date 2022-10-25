@@ -2,6 +2,7 @@ import '@raulmelo/ui/styles/prism.css';
 import '@raulmelo/ui/styles/style.css';
 import '@raulmelo/styles/lib/styles.css';
 import '../styles/algolia-global.css';
+import '../styles/globals.css';
 
 import { SupportedLanguages } from '@raulmelo/core';
 import { AnimatePresence, domAnimation, LazyMotion, m } from 'framer-motion';

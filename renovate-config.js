@@ -93,10 +93,6 @@ module.exports = {
       groupName: 'Storybook',
     },
     {
-      matchPackagePatterns: ['@emotion', 'emotion'],
-      groupName: 'emotion',
-    },
-    {
       matchPackageNames: [
         'eslint-config-next',
         'next',
