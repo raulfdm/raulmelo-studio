@@ -14,6 +14,7 @@ export function ImageSliderAdapter({ value }: SanityBlock) {
     const src = utils.imgUrlFor(image).url();
 
     const imgDimensions = utils.getImageDimensionsFromSanityImageUrl(src);
+
     return {
       alt,
       caption,
@@ -27,7 +28,7 @@ export function ImageSliderAdapter({ value }: SanityBlock) {
     <ImageSlider
       images={adaptedImages}
       renderImage={(img) => {
-        return <NextImage {...img} layout="responsive" />;
+        return <NextImage {...img} />;
       }}
     />
   );

@@ -78,13 +78,12 @@ export const SeriesSection = ({
                   data-testid={`post_${_id}`}
                   variants={variants.item}
                 >
-                  <Link href={slug} passHref>
-                    <a
-                      className="block px-4 py-3 no-underline"
-                      aria-hidden={currentState === 'collapsed'}
-                    >
-                      {seriesCopy}
-                    </a>
+                  <Link
+                    href={slug}
+                    className="block px-4 py-3 no-underline"
+                    aria-hidden={currentState === 'collapsed'}
+                  >
+                    {seriesCopy}
                   </Link>
                 </m.li>
               );
