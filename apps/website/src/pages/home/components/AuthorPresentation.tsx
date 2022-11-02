@@ -7,13 +7,32 @@ import {
 } from '@raulmelo/ui';
 import Image from 'next/image';
 import { ComponentPropsWithoutRef } from 'react';
-import { defineMessage } from 'react-intl';
+import { defineMessages } from 'react-intl';
 
 import { useLocalization } from '~/hooks/useLocalization';
 import siteData from '~/site-data';
 import { getSocial } from '~/utils/seo';
 
-const message = defineMessage({ id: 'authorPresentation.profileImageAlt' });
+const messages = defineMessages({
+  profileImageAlt: {
+    id: 'authorPresentation.profileImageAlt',
+  },
+  twitter: {
+    id: 'authorPresentation.twitterLinkTitle',
+  },
+  linkedIn: {
+    id: 'authorPresentation.linkedInLinkTitle',
+  },
+  github: {
+    id: 'authorPresentation.githubLinkTitle',
+  },
+  devTo: {
+    id: 'authorPresentation.devToLinkTitle',
+  },
+  medium: {
+    id: 'authorPresentation.mediumLinkTitle',
+  },
+});
 
 export const AuthorPresentation = () => {
   const { locale, formatMessage } = useLocalization();
@@ -40,19 +59,39 @@ export const AuthorPresentation = () => {
           {defaultSeo?.description}
         </p>
         <section className="flex items-center flex-1 pt-5 space-x-4 dark:opacity-90 text-secondary">
-          <IconWrapper href={devTo.url} data-testid="author__linkedInUrl">
+          <IconWrapper
+            href={devTo.url}
+            data-testid="author__linkedInUrl"
+            title={formatMessage(messages.devTo)}
+          >
             <DevToIcon />
           </IconWrapper>
-          <IconWrapper href={medium.url} data-testid="author__linkedInUrl">
+          <IconWrapper
+            href={medium.url}
+            data-testid="author__linkedInUrl"
+            title={formatMessage(messages.medium)}
+          >
             <MediumIcon />
           </IconWrapper>
-          <IconWrapper href={github.url} data-testid="author__githubUrl">
+          <IconWrapper
+            href={github.url}
+            data-testid="author__githubUrl"
+            title={formatMessage(messages.github)}
+          >
             <GithubIcon />
           </IconWrapper>
-          <IconWrapper href={twitter.url} data-testid="author__twitterUrl">
+          <IconWrapper
+            href={twitter.url}
+            data-testid="author__twitterUrl"
+            title={formatMessage(messages.twitter)}
+          >
             <TwitterIcon />
           </IconWrapper>
-          <IconWrapper href={linkedIn.url} data-testid="author__linkedInUrl">
+          <IconWrapper
+            href={linkedIn.url}
+            data-testid="author__linkedInUrl"
+            title={formatMessage(messages.linkedIn)}
+          >
             <LinkedInIcon />
           </IconWrapper>
         </section>
@@ -61,7 +100,7 @@ export const AuthorPresentation = () => {
         <Image
           className="object-cover rounded-full"
           src={siteData.personalInformation.profilePic.url}
-          alt={formatMessage(message)}
+          alt={formatMessage(messages.profileImageAlt)}
           loading="eager"
           priority
           width={128}
