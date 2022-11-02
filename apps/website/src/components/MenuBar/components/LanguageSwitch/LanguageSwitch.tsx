@@ -2,13 +2,19 @@ import { Popover } from '@headlessui/react';
 import { GlobeIcon } from '@raulmelo/ui';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { defineMessage } from 'react-intl';
 import { usePopper } from 'react-popper';
 
 import { MenuButton } from '~/components/MenuBar';
 import { useLocalization } from '~/hooks/useLocalization';
 
+const languageSwitchMessage = defineMessage({
+  id: 'menu.languageButtonAriaLabel',
+});
+
 export const LanguageSwitch = () => {
-  const { switchToEnglish, switchToPortuguese, locale } = useLocalization();
+  const { switchToEnglish, switchToPortuguese, locale, formatMessage } =
+    useLocalization();
   const { asPath } = useRouter();
 
   const [referenceElement, setReferenceElement] = useState(null);
@@ -48,7 +54,11 @@ export const LanguageSwitch = () => {
 
   return (
     <Popover>
-      <Popover.Button as={MenuButton} ref={setReferenceElement as never}>
+      <Popover.Button
+        as={MenuButton}
+        ref={setReferenceElement as never}
+        aria-label={formatMessage(languageSwitchMessage)}
+      >
         <GlobeIcon className="w-6" />
       </Popover.Button>
 
@@ -70,6 +80,7 @@ export const LanguageSwitch = () => {
           className="flex-1 px-6 py-2 font-sans text-base text-center cursor-pointer whitespace-nowrap disabled:cursor-not-allowed disabled:font-semibold disabled:text-secondary"
           disabled={locale === 'en'}
           onClick={switchToEnglish}
+          aria-label="Switch to English"
         >
           English
         </Popover.Button>
@@ -78,6 +89,7 @@ export const LanguageSwitch = () => {
           className="flex-1 px-6 py-2 font-sans text-base text-center cursor-pointer whitespace-nowrap disabled:cursor-not-allowed disabled:font-semibold disabled:text-secondary"
           disabled={locale === 'pt'}
           onClick={switchToPortuguese}
+          aria-label="Mudar para Português"
         >
           Português
         </Popover.Button>

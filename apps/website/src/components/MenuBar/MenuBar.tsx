@@ -2,6 +2,7 @@ import { CloseIcon, MenuIcon } from '@raulmelo/ui';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { ComponentPropsWithRef, FC, forwardRef } from 'react';
+import { defineMessages } from 'react-intl';
 
 import { Logo } from '~/components/Logo';
 import { SideMenu } from '~/components/SideMenu';
@@ -11,9 +12,18 @@ import { useLocalization } from '~/hooks/useLocalization';
 import { LanguageSwitch } from './components/LanguageSwitch';
 import { ThemeSwitch } from './components/ThemeSwitch';
 
+const messages = defineMessages({
+  sideMenuButton: {
+    id: 'menu.sideMenuButtonAriaLabel',
+  },
+  logoLink: {
+    id: 'menu.logoAriaLabel',
+  },
+});
+
 export const MenuBar: FC = () => {
   const { sideMenu } = useApp();
-  const { locale } = useLocalization();
+  const { locale, formatMessage } = useLocalization();
 
   const Icon = sideMenu.isClosed ? MenuIcon : CloseIcon;
 
@@ -22,7 +32,12 @@ export const MenuBar: FC = () => {
       <div className="relative inset-x-0 z-40 h-16 mb-8 duration-200 bg-white shadow dark:bg-blue-800 transition-theme ease md:mb-12">
         <nav className="items-center h-full grid-container">
           <section data-testid="menu-bar__logo" className="col-span-2">
-            <Link href="/" locale={locale} className="text-primary">
+            <Link
+              href="/"
+              locale={locale}
+              className="text-primary"
+              aria-label={formatMessage(messages.logoLink)}
+            >
               <Logo />
             </Link>
           </section>
@@ -31,6 +46,7 @@ export const MenuBar: FC = () => {
             <LanguageSwitch />
             <MenuButton
               onClick={sideMenu.toggle}
+              aria-label={formatMessage(messages.sideMenuButton)}
               data-testid="side-menu-button"
             >
               <Icon className="w-6" />
