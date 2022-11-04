@@ -1,4 +1,6 @@
-export const usesSchema = {
+import { defineField } from 'sanity';
+
+export const usesSchema = defineField({
   name: 'uses',
   title: 'Uses',
   type: 'document',
@@ -43,10 +45,10 @@ export const usesSchema = {
     select: {
       language: 'language',
     },
-    prepare(selection: { language: string }) {
+    prepare(selection) {
       return {
         title: `In ${selection.language.toUpperCase()}`,
       };
     },
   },
-};
+});

@@ -1,4 +1,6 @@
-export const defaultSeoSchema = {
+import { defineField } from 'sanity';
+
+export const defaultSeoSchema = defineField({
   name: 'defaultSeo',
   title: 'Default SEO',
   type: 'document',
@@ -23,10 +25,10 @@ export const defaultSeoSchema = {
       title: 'title',
       language: 'language',
     },
-    prepare(selection: { title: string; language: string }) {
+    prepare(selection) {
       return {
         title: `In ${selection.language.toUpperCase()}`,
       };
     },
   },
-};
+});

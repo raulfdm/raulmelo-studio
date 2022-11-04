@@ -16,5 +16,8 @@ export const sanityBaseConfig: Config = {
     media(),
   ],
   title: `Raul's CMS`,
-  schema,
+  /**
+   * TODO: fix fitness types to use `defineField`
+   */
+  schema: schema as any,
 };

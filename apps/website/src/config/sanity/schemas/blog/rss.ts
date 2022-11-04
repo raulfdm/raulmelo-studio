@@ -1,4 +1,6 @@
-export const rssSchema = {
+import { defineField } from 'sanity';
+
+export const rssSchema = defineField({
   name: 'rss',
   title: 'RSS Settings',
   type: 'document',
@@ -23,10 +25,10 @@ export const rssSchema = {
       title: 'title',
       language: 'language',
     },
-    prepare(selection: { title: string; language: string }) {
+    prepare(selection) {
       return {
         title: `In ${selection.language.toUpperCase()}`,
       };
     },
   },
-};
+});

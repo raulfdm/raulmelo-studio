@@ -1,4 +1,6 @@
-export const postSeries = {
+import { defineField, defineType } from 'sanity';
+
+export const postSeries = defineType({
   name: 'postSeries',
   title: 'Post Series',
   type: 'document',
@@ -21,7 +23,7 @@ export const postSeries = {
         maxLength: 96,
       },
     },
-    {
+    defineField({
       name: 'posts',
       type: 'array',
       of: [
@@ -31,7 +33,7 @@ export const postSeries = {
         },
       ],
       validation: (Rule) => Rule.unique(),
-    },
+    }),
   ],
   preview: {
     select: {
@@ -50,4 +52,4 @@ export const postSeries = {
       return { title: name, subtitle: `${numberOfPosts} ${plural}` };
     },
   },
-};
+});

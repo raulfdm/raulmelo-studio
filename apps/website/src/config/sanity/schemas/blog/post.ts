@@ -1,4 +1,6 @@
-export const postSchema = {
+import { defineField, defineType } from 'sanity';
+
+export const postSchema = defineType({
   name: 'post',
   title: 'Post',
   type: 'document',
@@ -23,11 +25,11 @@ export const postSchema = {
     },
   ],
   fields: [
-    {
+    defineField({
       group: 'meta',
       type: 'language',
       name: 'language',
-    },
+    }),
     {
       group: 'post',
       name: 'title',
@@ -156,4 +158,4 @@ export const postSchema = {
       return result;
     },
   },
-};
+});
