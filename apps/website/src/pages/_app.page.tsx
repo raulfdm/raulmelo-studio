@@ -5,23 +5,36 @@ import '../styles/algolia-global.css';
 import '../styles/globals.css';
 
 import { SupportedLanguages } from '@raulmelo/core';
-import { AnimatePresence, domAnimation, LazyMotion, m } from 'framer-motion';
+import { NextPage } from 'next';
 import { AppProps } from 'next/dist/shared/lib/router/router';
 import Head from 'next/head';
 import Script from 'next/script';
 import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo';
+import { ReactElement, ReactNode } from 'react';
 
-import { MenuBar } from '~/components/MenuBar';
+import { DefaultLayout } from '~/components/layouts/DefaultLayout';
 import { analyticsConfig } from '~/config/analytics';
-import { AppContextProvider } from '~/contexts/app';
-import { LocalizationProvider } from '~/contexts/Localization';
 import siteData from '~/site-data';
 import { getSocial } from '~/utils/seo';
 
-const MyApp = ({ Component, pageProps, router }: AppProps) => {
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+const MyApp = ({ Component, pageProps, router }: AppPropsWithLayout) => {
   const defaultSeo = siteData.defaultSeo[router.locale as SupportedLanguages];
 
   const twitterData = getSocial('twitter');
+  const getLayout =
+    Component.getLayout ??
+    ((page) => (
+      <DefaultLayout currentRoute={router.route}>{page}</DefaultLayout>
+    ));
 
   return (
     <>
@@ -104,30 +117,7 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
           },
         ]}
       />
-
-      <LocalizationProvider>
-        <LazyMotion features={domAnimation} strict>
-          <AppContextProvider>
-            <MenuBar />
-            <AnimatePresence mode="wait">
-              <m.main
-                className="grid-container"
-                animate="enter"
-                exit="exit"
-                initial={false}
-                key={router.route}
-                variants={{
-                  initial: { opacity: 0, x: 40 },
-                  enter: { opacity: 1, x: 0 },
-                  exit: { opacity: 0, x: -40 },
-                }}
-              >
-                <Component {...pageProps} />
-              </m.main>
-            </AnimatePresence>
-          </AppContextProvider>
-        </LazyMotion>
-      </LocalizationProvider>
+      {getLayout(<Component {...pageProps} />)}
     </>
   );
 };
