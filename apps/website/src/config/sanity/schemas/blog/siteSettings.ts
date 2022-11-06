@@ -4,6 +4,8 @@ export const siteSettingsSchemaType = defineType({
   name: 'siteSettings',
   title: 'Site Settings',
   type: 'document',
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
   fields: [
     defineField({
