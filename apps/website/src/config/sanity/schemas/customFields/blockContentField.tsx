@@ -10,8 +10,8 @@ import {
   LinkIcon,
 } from '@raulmelo/ui';
 
-import { highlightMarker } from './highlightMarker';
-import { strikeThroughMarker } from './strikeThroughMarker';
+import { highlightMarkerField } from './highlightMarkerField';
+import { strikeThroughMarkerField } from './strikeThroughMarkerField';
 
 export const blockContentField = {
   title: 'Block Content',
@@ -82,8 +82,8 @@ export const blockContentField = {
         decorators: [
           { title: 'Strong', value: 'strong' },
           { title: 'Emphasis', value: 'em' },
-          strikeThroughMarker,
-          highlightMarker,
+          strikeThroughMarkerField,
+          highlightMarkerField,
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [

@@ -1,24 +1,24 @@
-import { defineField } from 'sanity';
+import { defineField, defineType } from 'sanity';
 
-export const defaultSeoSchema = defineField({
+export const defaultSeoSchemaType = defineType({
   name: 'defaultSeo',
   title: 'Default SEO',
   type: 'document',
   fields: [
-    {
+    defineField({
       type: 'language',
       name: 'language',
-    },
-    {
+    }),
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
-    },
-    {
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'text',
-    },
+    }),
   ],
   preview: {
     select: {

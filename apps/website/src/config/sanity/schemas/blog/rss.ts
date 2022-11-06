@@ -1,24 +1,24 @@
-import { defineField } from 'sanity';
+import { defineField, defineType } from 'sanity';
 
-export const rssSchema = defineField({
+export const rssSchemaType = defineType({
   name: 'rss',
   title: 'RSS Settings',
   type: 'document',
   fields: [
-    {
+    defineField({
       type: 'language',
       name: 'language',
-    },
-    {
+    }),
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
-    },
-    {
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'text',
-    },
+    }),
   ],
   preview: {
     select: {

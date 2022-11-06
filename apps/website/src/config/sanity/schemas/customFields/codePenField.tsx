@@ -1,6 +1,5 @@
 import { sanityToUiAdapter } from '@raulmelo/sanity-core';
 import { CodePenIcon, CodePenIframe } from '@raulmelo/ui';
-import React from 'react';
 
 export const codePenField = {
   type: 'object',
