@@ -3,7 +3,10 @@ module.exports = {
   extends: '../../.eslintrc.js',
   rules: {
     '@typescript-eslint/consistent-type-assertions': 'error',
-    '@typescript-eslint/consistent-type-imports': 'error',
+    '@typescript-eslint/consistent-type-imports': [
+      'error',
+      { disallowTypeAnnotations: false },
+    ],
   },
   overrides: [
     {
