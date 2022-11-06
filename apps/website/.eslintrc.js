@@ -1,6 +1,10 @@
 module.exports = {
   root: true,
   extends: '../../.eslintrc.js',
+  rules: {
+    '@typescript-eslint/consistent-type-assertions': 'error',
+    '@typescript-eslint/consistent-type-imports': 'error',
+  },
   overrides: [
     {
       files: ['*.test.*'],
