@@ -1,7 +1,8 @@
 import { CloseIcon, MenuIcon } from '@raulmelo/ui';
 import classNames from 'classnames';
 import Link from 'next/link';
-import { ComponentPropsWithRef, FC, forwardRef } from 'react';
+import type { ComponentPropsWithRef, FC} from 'react';
+import { forwardRef } from 'react';
 import { defineMessages } from 'react-intl';
 
 import { Logo } from '~/components/Logo';

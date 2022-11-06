@@ -1,10 +1,12 @@
-import { SupportedLanguages } from '@raulmelo/core';
+import type { SupportedLanguages } from '@raulmelo/core';
 import { useContext } from 'react';
-import { IntlShape, useIntl } from 'react-intl';
+import type { IntlShape} from 'react-intl';
+import { useIntl } from 'react-intl';
 
+import type {
+  LocalizationContextType} from '~/contexts/Localization';
 import {
-  LocalizationContext,
-  LocalizationContextType,
+  LocalizationContext
 } from '~/contexts/Localization';
 
 /**

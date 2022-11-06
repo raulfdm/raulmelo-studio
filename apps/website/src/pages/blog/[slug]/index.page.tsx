@@ -1,12 +1,12 @@
 import { domains, utils } from '@raulmelo/core';
 import { DotDivider } from '@raulmelo/ui';
-import { GetStaticPaths } from 'next';
+import type { GetStaticPaths } from 'next';
 import { Suspense } from 'react';
 
 import { PortableTextPost } from '~/components/PortableTextPost';
 
 import { SeriesSection } from './components/SeriesSection';
-import { BlogPostProps, GetStaticProps } from './types';
+import type { BlogPostProps, GetStaticProps } from './types';
 
 export const BlogPostPage = ({
   post,

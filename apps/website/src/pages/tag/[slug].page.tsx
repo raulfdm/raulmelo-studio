@@ -1,8 +1,9 @@
-import { domains, SupportedLanguages } from '@raulmelo/core';
-import { GetStaticPaths } from 'next';
+import type { SupportedLanguages } from '@raulmelo/core';
+import { domains } from '@raulmelo/core';
+import type { GetStaticPaths } from 'next';
 
 import { TagPage } from './TagPage';
-import { TagPageParams, TagPageProps } from './types';
+import type { TagPageParams, TagPageProps } from './types';
 
 const Tag = (props: TagPageProps) => <TagPage {...props} />;
 

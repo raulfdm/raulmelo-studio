@@ -1,5 +1,6 @@
 import { NextStudio } from 'next-sanity/studio';
-import { ReactElement, useEffect } from 'react';
+import type { ReactElement} from 'react';
+import { useEffect } from 'react';
 import { defineConfig } from 'sanity';
 
 import { sanityBaseConfig } from '~/config/sanity';

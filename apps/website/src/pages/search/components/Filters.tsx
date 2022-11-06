@@ -4,7 +4,7 @@ import { connectRefinementList } from 'react-instantsearch-dom';
 
 import { useLocalization } from '~/hooks/useLocalization';
 
-import { RefinementListProps } from '../types';
+import type { RefinementListProps } from '../types';
 import styles from './Filter.module.css';
 
 export const Filters = () => {

@@ -1,5 +1,5 @@
-import { IUsesData } from '@raulmelo/core/dist/types/domains/uses';
-import { IUsesApiResponse } from '@raulmelo/core/dist/types/domains/uses/getUses/types';
+import type { IUsesData } from '@raulmelo/core/dist/types/domains/uses';
+import type { IUsesApiResponse } from '@raulmelo/core/dist/types/domains/uses/getUses/types';
 
 import { PortableTextPost } from '~/components/PortableTextPost';
 import { useLocalization } from '~/hooks/useLocalization';

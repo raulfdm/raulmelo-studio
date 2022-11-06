@@ -1,4 +1,4 @@
-import { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
+import type { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
 
 export type BlogPostProps = {
   post: IBlogPostBySlugApiResponse;

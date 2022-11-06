@@ -6,7 +6,7 @@ import {
   TwitterIcon,
 } from '@raulmelo/ui';
 import Image from 'next/image';
-import { ComponentPropsWithoutRef } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 import { defineMessages } from 'react-intl';
 
 import { useLocalization } from '~/hooks/useLocalization';

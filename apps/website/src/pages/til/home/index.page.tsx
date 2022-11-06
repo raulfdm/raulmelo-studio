@@ -1,6 +1,7 @@
-import { AllSupportedLanguages, domains } from '@raulmelo/core';
-import { ITilsTil } from '@raulmelo/core/dist/types/domains/posts/queryTils/types';
-import { GetStaticProps } from 'next';
+import type { AllSupportedLanguages} from '@raulmelo/core';
+import { domains } from '@raulmelo/core';
+import type { ITilsTil } from '@raulmelo/core/dist/types/domains/posts/queryTils/types';
+import type { GetStaticProps } from 'next';
 
 import { TilsHome } from './TilsHome';
 

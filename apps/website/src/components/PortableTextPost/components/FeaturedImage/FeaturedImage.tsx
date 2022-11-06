@@ -1,4 +1,4 @@
-import { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
+import type { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
 import classNames from 'classnames';
 import Image from 'next/image';
 import { defineMessages, FormattedMessage } from 'react-intl';

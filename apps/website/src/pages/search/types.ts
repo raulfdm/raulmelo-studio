@@ -1,4 +1,4 @@
-import { AlgoliaObject } from '@raulmelo/core/dist/types/domains/algolia';
+import type { AlgoliaObject } from '@raulmelo/core/dist/types/domains/algolia';
 
 export type HitAlgolia = AlgoliaObject;
 
