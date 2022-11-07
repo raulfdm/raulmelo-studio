@@ -1,5 +1,5 @@
-import { SupportedLanguages } from '@raulmelo/core';
-import {
+import type { SupportedLanguages } from '@raulmelo/core';
+import type {
   ITagBySlugBlogPost,
   ITagBySlugPostTag,
   ITagBySlugTilPost,

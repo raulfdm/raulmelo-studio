@@ -1,5 +1,4 @@
 import { CodeBlock, CodeIcon, LANGUAGES_MAP } from '@raulmelo/ui';
-import React from 'react';
 
 export const codeField = {
   type: 'object',

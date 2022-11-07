@@ -1,4 +1,4 @@
-import { IBlogPagePost } from '@raulmelo/core/dist/types/domains/posts';
+import type { IBlogPagePost } from '@raulmelo/core/dist/types/domains/posts';
 import { NextSeo } from 'next-seo';
 import { defineMessages, FormattedMessage } from 'react-intl';
 

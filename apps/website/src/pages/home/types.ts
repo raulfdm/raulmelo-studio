@@ -1,4 +1,4 @@
-import { PostBasicProps } from '~/components/PostBasic';
+import type { PostBasicProps } from '~/components/PostBasic';
 
 export type PostSectionProps = {
   title: string;

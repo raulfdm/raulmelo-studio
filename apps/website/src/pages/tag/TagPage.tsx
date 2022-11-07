@@ -10,7 +10,7 @@ import { getTilUrl } from '~/pages/til/home/utils';
 import siteData from '~/site-data';
 import { getPostUrl, getTagUrl } from '~/utils/url';
 
-import { TagPageProps } from './types';
+import type { TagPageProps } from './types';
 
 const messages = defineMessages({
   description: {

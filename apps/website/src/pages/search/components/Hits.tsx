@@ -4,7 +4,7 @@ import { PostBasic } from '~/components/PostBasic';
 import { getTilUrl } from '~/pages/til/home/utils';
 import { getPostUrl } from '~/utils/url';
 
-import { HitAlgolia } from '../types';
+import type { HitAlgolia } from '../types';
 
 export const Hits = () => {
   return (

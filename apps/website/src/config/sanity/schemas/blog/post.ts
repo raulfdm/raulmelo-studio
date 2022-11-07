@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity';
 
-export const postSchema = defineType({
+export const postSchemaType = defineType({
   name: 'post',
   title: 'Post',
   type: 'document',
@@ -30,13 +30,13 @@ export const postSchema = defineType({
       type: 'language',
       name: 'language',
     }),
-    {
+    defineField({
       group: 'post',
       name: 'title',
       title: 'Title',
       type: 'string',
-    },
-    {
+    }),
+    defineField({
       group: 'meta',
       name: 'slug',
       title: 'Slug',
@@ -45,14 +45,14 @@ export const postSchema = defineType({
         source: 'title',
         maxLength: 96,
       },
-    },
-    {
+    }),
+    defineField({
       group: 'post',
       name: 'subtitle',
       title: 'Subtitle',
       type: 'string',
-    },
-    {
+    }),
+    defineField({
       group: 'post',
       name: 'description',
       title: 'Description',
@@ -61,25 +61,25 @@ export const postSchema = defineType({
         Rule.min(5).error('Description too short.'),
         Rule.max(150).error('Description is too long.'),
       ],
-    },
-    {
+    }),
+    defineField({
       group: 'meta',
       name: 'publishedAt',
       title: 'Published at',
       type: 'date',
-    },
-    {
+    }),
+    defineField({
       group: 'meta',
       name: 'seriesCopy',
       title: 'Series Copy',
       type: 'string',
-    },
-    {
+    }),
+    defineField({
       type: 'blockContent',
       group: 'post',
       name: 'content',
-    },
-    {
+    }),
+    defineField({
       group: 'media',
       name: 'featuredImage',
       title: 'Featured Image',
@@ -87,28 +87,28 @@ export const postSchema = defineType({
       options: {
         hotspot: true,
       },
-    },
-    {
+    }),
+    defineField({
       group: 'media',
       name: 'imgCaption',
       title: 'Image Caption',
       type: 'string',
-    },
-    {
+    }),
+    defineField({
       group: 'reference',
       name: 'tags',
       title: 'Tags',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'tag' } }],
-    },
-    {
+    }),
+    defineField({
       group: 'reference',
       name: 'postSeries',
       title: 'Post Series',
       type: 'reference',
       to: [{ type: 'postSeries' }],
-    },
-    {
+    }),
+    defineField({
       group: 'media',
       title: 'Unsplash',
       name: 'unsplash',
@@ -121,7 +121,7 @@ export const postSchema = defineType({
         },
         { name: 'url', type: 'string', title: 'URL' },
       ],
-    },
+    }),
   ],
 
   orderings: [

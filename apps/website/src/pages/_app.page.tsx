@@ -4,13 +4,13 @@ import '@raulmelo/styles/lib/styles.css';
 import '../styles/algolia-global.css';
 import '../styles/globals.css';
 
-import { SupportedLanguages } from '@raulmelo/core';
-import { NextPage } from 'next';
-import { AppProps } from 'next/dist/shared/lib/router/router';
+import type { SupportedLanguages } from '@raulmelo/core';
+import type { NextPage } from 'next';
+import type { AppProps } from 'next/dist/shared/lib/router/router';
 import Head from 'next/head';
 import Script from 'next/script';
 import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo';
-import { ReactElement, ReactNode } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 
 import { DefaultLayout } from '~/components/layouts/DefaultLayout';
 import { analyticsConfig } from '~/config/analytics';

@@ -1,4 +1,4 @@
-import { IPostsAndTilsApi } from '@raulmelo/core/dist/types/domains/posts';
+import type { IPostsAndTilsApi } from '@raulmelo/core/dist/types/domains/posts';
 import { ArrowRightIcon } from '@raulmelo/ui';
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';
@@ -11,7 +11,7 @@ import siteData from '~/site-data';
 import { getPostUrl } from '~/utils/url';
 
 import { AuthorPresentation } from './components/AuthorPresentation';
-import { PostSectionProps } from './types';
+import type { PostSectionProps } from './types';
 
 const messages = defineMessages({
   postsTitle: {

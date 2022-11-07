@@ -1,7 +1,7 @@
 import { StrikethroughIcon } from '@raulmelo/ui';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
-export const strikeThroughMarker = {
+export const strikeThroughMarkerField = {
   title: 'Strike Through',
   value: 'strikethrough',
   blockEditor: {

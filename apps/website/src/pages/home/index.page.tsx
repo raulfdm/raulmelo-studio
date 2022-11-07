@@ -1,6 +1,7 @@
-import { domains, SupportedLanguages } from '@raulmelo/core';
-import { IPostsAndTilsApi } from '@raulmelo/core/dist/types/domains/posts';
-import { GetStaticProps } from 'next';
+import type { SupportedLanguages } from '@raulmelo/core';
+import { domains } from '@raulmelo/core';
+import type { IPostsAndTilsApi } from '@raulmelo/core/dist/types/domains/posts';
+import type { GetStaticProps } from 'next';
 
 import { HomePage } from './HomePage';
 

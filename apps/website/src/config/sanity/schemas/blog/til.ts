@@ -1,4 +1,6 @@
-export const til = {
+import { defineField, defineType } from 'sanity';
+
+export const tilSchemaType = defineType({
   name: 'til',
   title: 'TIL - Today I Learned',
   type: 'document',
@@ -18,18 +20,18 @@ export const til = {
     },
   ],
   fields: [
-    {
+    defineField({
       group: 'meta',
       type: 'language',
       name: 'language',
-    },
-    {
+    }),
+    defineField({
       group: 'post',
       name: 'title',
       title: 'Title',
       type: 'string',
-    },
-    {
+    }),
+    defineField({
       group: 'meta',
       name: 'slug',
       title: 'Slug',
@@ -38,25 +40,25 @@ export const til = {
         source: 'title',
         maxLength: 96,
       },
-    },
-    {
+    }),
+    defineField({
       group: 'meta',
       name: 'publishedAt',
       title: 'Published at',
       type: 'date',
-    },
-    {
+    }),
+    defineField({
       group: 'post',
       type: 'blockContent',
       name: 'content',
-    },
-    {
+    }),
+    defineField({
       group: 'references',
       name: 'tags',
       title: 'Tags',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'tag' } }],
-    },
+    }),
   ],
 
   orderings: [
@@ -77,4 +79,4 @@ export const til = {
       title: 'title',
     },
   },
-};
+});

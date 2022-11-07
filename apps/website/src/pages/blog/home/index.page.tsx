@@ -1,6 +1,7 @@
-import { domains, SupportedLanguages } from '@raulmelo/core';
-import { IBlogPagePost } from '@raulmelo/core/dist/types/domains/posts';
-import { GetStaticProps } from 'next';
+import type { SupportedLanguages } from '@raulmelo/core';
+import { domains } from '@raulmelo/core';
+import type { IBlogPagePost } from '@raulmelo/core/dist/types/domains/posts';
+import type { GetStaticProps } from 'next';
 
 import { Blog } from './BlogPage';
 

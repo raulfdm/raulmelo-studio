@@ -1,7 +1,9 @@
-import { domains, SupportedLanguages, utils } from '@raulmelo/core';
-import { GetStaticProps } from 'next';
+import type { SupportedLanguages} from '@raulmelo/core';
+import { domains, utils } from '@raulmelo/core';
+import type { GetStaticProps } from 'next';
 
-import { UsesPage, UsesPageProps } from './UsesPage';
+import type { UsesPageProps } from './UsesPage';
+import { UsesPage } from './UsesPage';
 
 const Uses = ({ uses, seo, title, estimatedReadingTime }: UsesPageProps) => {
   return (

@@ -1,9 +1,10 @@
 import { PortableText } from '@portabletext/react';
-import { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts';
+import type { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts';
 import { ProseContainer } from '@raulmelo/ui';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ArticleJsonLd, NextSeo, NextSeoProps } from 'next-seo';
+import type { NextSeoProps } from 'next-seo';
+import { ArticleJsonLd, NextSeo } from 'next-seo';
 import { useMemo } from 'react';
 
 import { ShareContent } from '~/components/ShareContent';

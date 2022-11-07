@@ -1,6 +1,6 @@
 import { domains, utils } from '@raulmelo/core';
-import { ITilsTil } from '@raulmelo/core/dist/types/domains/posts/queryTils/types';
-import { GetStaticPaths } from 'next';
+import type { ITilsTil } from '@raulmelo/core/dist/types/domains/posts/queryTils/types';
+import type { GetStaticPaths } from 'next';
 
 import { PortableTextPost } from '~/components/PortableTextPost';
 

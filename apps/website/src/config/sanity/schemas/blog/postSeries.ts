@@ -1,20 +1,20 @@
 import { defineField, defineType } from 'sanity';
 
-export const postSeries = defineType({
+export const postSeriesSchemaType = defineType({
   name: 'postSeries',
   title: 'Post Series',
   type: 'document',
   fields: [
-    {
+    defineField({
       type: 'language',
       name: 'language',
-    },
-    {
+    }),
+    defineField({
       name: 'name',
       title: 'Name',
       type: 'string',
-    },
-    {
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -22,7 +22,7 @@ export const postSeries = defineType({
         source: 'name',
         maxLength: 96,
       },
-    },
+    }),
     defineField({
       name: 'posts',
       type: 'array',

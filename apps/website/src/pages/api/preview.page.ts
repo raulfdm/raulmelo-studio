@@ -1,5 +1,5 @@
 import { domains } from '@raulmelo/core';
-import { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(
   req: NextApiRequest,

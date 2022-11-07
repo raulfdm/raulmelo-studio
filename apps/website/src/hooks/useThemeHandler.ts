@@ -1,4 +1,5 @@
-import { AppTheme, utils } from '@raulmelo/core';
+import type { AppTheme} from '@raulmelo/core';
+import { utils } from '@raulmelo/core';
 import { useMachine } from '@xstate/react';
 import { createMachine } from 'xstate';
 

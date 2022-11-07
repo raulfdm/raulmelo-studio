@@ -1,7 +1,8 @@
 // TODO: fix SideMenu
 import React, { createContext } from 'react';
 
-import { UseSideMenu, useSideMenu } from '~/components/SideMenu/useSideMenu';
+import type { UseSideMenu} from '~/components/SideMenu/useSideMenu';
+import { useSideMenu } from '~/components/SideMenu/useSideMenu';
 
 type AppContextTypes = { sideMenu: UseSideMenu };
 

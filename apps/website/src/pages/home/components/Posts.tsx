@@ -1,4 +1,4 @@
-import { IPostsAndTilsPost } from '@raulmelo/core/dist/types/domains/posts';
+import type { IPostsAndTilsPost } from '@raulmelo/core/dist/types/domains/posts';
 import { AnimatePresence, m } from 'framer-motion';
 
 import { ContentTile } from '~/components/ContentTile';
