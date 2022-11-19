@@ -1,26 +1,41 @@
 {
+  "name": "website-remix",
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "remix build",
-    "dev": "remix dev"
+    "build": "npm run build:css && remix build",
+    "build:css": "tailwindcss -m -i ./styles/app.css -o app/styles/app.css",
+    "dev": "pnpm run build && concurrently \"npm run dev:css\" \"remix dev\"",
+    "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css"
   },
   "dependencies": {
-    "@remix-run/node": "^1.7.5",
-    "@remix-run/react": "^1.7.5",
-    "@remix-run/vercel": "^1.7.5",
-    "@vercel/node": "^2.6.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@raulmelo/core": "workspace:*",
+    "@raulmelo/sanity-core": "workspace:*",
+    "@raulmelo/sanity-fitness": "workspace:*",
+    "@raulmelo/styles": "workspace:*",
+    "@raulmelo/ui": "workspace:*",
+    "@remix-run/node": "1.7.5",
+    "@remix-run/react": "1.7.5",
+    "@remix-run/vercel": "1.7.5",
+    "@vercel/node": "2.6.2",
+    "accept-language-parser": "1.5.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tiny-invariant": "1.3.1"
   },
   "devDependencies": {
-    "@remix-run/dev": "^1.7.5",
-    "@remix-run/eslint-config": "^1.7.5",
-    "@remix-run/serve": "^1.7.5",
-    "@types/react": "^18.0.25",
-    "@types/react-dom": "^18.0.8",
-    "eslint": "^8.27.0",
-    "typescript": "^4.8.4"
+    "@remix-run/dev": "1.7.5",
+    "@remix-run/eslint-config": "1.7.5",
+    "@remix-run/serve": "1.7.5",
+    "@types/accept-language-parser": "1.5.3",
+    "@types/react": "18.0.25",
+    "@types/react-dom": "18.0.8",
+    "autoprefixer": "10.4.13",
+    "concurrently": "7.4.0",
+    "eslint": "8.27.0",
+    "postcss": "8.4.16",
+    "tailwindcss": "3.2.4",
+    "typescript": "4.8.4"
   },
   "engines": {
     "node": ">=14"
