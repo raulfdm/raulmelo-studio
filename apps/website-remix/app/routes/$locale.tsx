@@ -1,4 +1,6 @@
+import { AppContextProvider } from '$infrastructure/contexts/App';
 import { LocalizationProvider } from '$infrastructure/contexts/Localization';
+import { MenuBar } from '$ui/MenuBar';
 import type { SupportedLanguages } from '@raulmelo/core';
 import type { LoaderArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
@@ -24,7 +26,6 @@ export async function loader({ params }: LoaderArgs) {
   } else {
     throw new Error('Locale not supported');
   }
-  console.log(typeof messages);
 
   return json({
     locale: params.locale as SupportedLanguages,
@@ -37,7 +38,10 @@ export default function LocalizedRoute() {
 
   return (
     <LocalizationProvider language={locale} messages={messages}>
-      <Outlet />
+      <AppContextProvider>
+        <MenuBar />
+        <Outlet />
+      </AppContextProvider>
     </LocalizationProvider>
   );
 }
