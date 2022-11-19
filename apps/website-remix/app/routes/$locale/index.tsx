@@ -1,3 +1,4 @@
+import { useLocalization } from '$infrastructure/contexts/Localization';
 import type { LoaderArgs } from '@remix-run/node';
 import { redirect } from '@remix-run/node';
 import invariant from 'tiny-invariant';
@@ -5,7 +6,7 @@ import invariant from 'tiny-invariant';
 const availableLocales = ['en', 'pt'];
 
 export function loader({ context, params, request }: LoaderArgs) {
-  invariant(typeof params.lang === 'string', 'lang is required');
+  invariant(typeof params.locale === 'string', 'lang is required');
 
   // if (!availableLocales.includes(params.lang)) {
   //   return redirect('/en');
@@ -15,6 +16,9 @@ export function loader({ context, params, request }: LoaderArgs) {
 }
 
 export default function Index() {
+  // const all = useLocalization();
+
+  // console.log(all);
   return (
     <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.4' }}>
       <h1>Welcome to Remix</h1>
