@@ -40,7 +40,9 @@ export default function LocalizedRoute() {
     <LocalizationProvider language={locale} messages={messages}>
       <AppContextProvider>
         <MenuBar />
-        <Outlet />
+        <main className="grid-container">
+          <Outlet />
+        </main>
       </AppContextProvider>
     </LocalizationProvider>
   );
