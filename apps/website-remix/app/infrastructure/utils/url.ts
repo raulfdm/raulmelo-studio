@@ -27,15 +27,30 @@ export function getTilUrl(slug: string): string {
   return `/til/${slug}`;
 }
 
-export function pathWithoutLocale(path: string): string {
+export function getPathnameWithoutLocale(pathname: string): string {
   /**
    * TODO: enhance this to use "support language" as const, not only types
    */
-  const hasLocale = path.startsWith('/en') || path.startsWith('/pt');
+  const hasLocale = pathname.startsWith('/en') || pathname.startsWith('/pt');
 
   if (!hasLocale) {
-    return path;
+    return pathname;
   }
 
-  return path.substring(3, path.length);
+  const result = pathname.substring(3, pathname.length);
+
+  return result === '' ? '/' : result;
+}
+
+export function getPathnameWithLocale(
+  pathname: string,
+  locale: SupportedLanguages,
+) {
+  const hasLocale = pathname.startsWith(`/${locale}`);
+
+  if (hasLocale) {
+    return pathname;
+  }
+
+  return `/${locale}${pathname}`;
 }
