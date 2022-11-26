@@ -26,3 +26,16 @@ export function getTagUrl(tagSlug: string): string {
 export function getTilUrl(slug: string): string {
   return `/til/${slug}`;
 }
+
+export function pathWithoutLocale(path: string): string {
+  /**
+   * TODO: enhance this to use "support language" as const, not only types
+   */
+  const hasLocale = path.startsWith('/en') || path.startsWith('/pt');
+
+  if (!hasLocale) {
+    return path;
+  }
+
+  return path.substring(3, path.length);
+}
