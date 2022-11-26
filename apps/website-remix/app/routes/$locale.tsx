@@ -4,8 +4,9 @@ import { MenuBar } from '$ui/MenuBar';
 import type { SupportedLanguages } from '@raulmelo/core';
 import type { LoaderArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
-import { Outlet, useLoaderData } from '@remix-run/react';
+import { Outlet, useLoaderData, useLocation } from '@remix-run/react';
 import flat from 'flat';
+import { AnimatePresence, domAnimation, LazyMotion, m } from 'framer-motion';
 import invariant from 'tiny-invariant';
 
 export async function loader({ params }: LoaderArgs) {
@@ -35,14 +36,30 @@ export async function loader({ params }: LoaderArgs) {
 
 export default function LocalizedRoute() {
   const { locale, messages } = useLoaderData<typeof loader>();
+  const { pathname } = useLocation();
 
   return (
     <LocalizationProvider language={locale} messages={messages}>
       <AppContextProvider>
-        <MenuBar />
-        <main className="grid-container">
-          <Outlet />
-        </main>
+        <LazyMotion features={domAnimation} strict>
+          <MenuBar />
+          <AnimatePresence mode="wait">
+            <m.main
+              key={pathname}
+              className="grid-container"
+              animate="enter"
+              exit="exit"
+              initial={false}
+              variants={{
+                initial: { opacity: 0, x: 40 },
+                enter: { opacity: 1, x: 0 },
+                exit: { opacity: 0, x: -40 },
+              }}
+            >
+              <Outlet />
+            </m.main>
+          </AnimatePresence>
+        </LazyMotion>
       </AppContextProvider>
     </LocalizationProvider>
   );

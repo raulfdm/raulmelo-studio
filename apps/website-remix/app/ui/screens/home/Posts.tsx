@@ -1,8 +1,8 @@
+import { useLocalization } from '$infrastructure/contexts/Localization';
+import { getPostUrl } from '$infrastructure/utils/url';
+import { ContentTile } from '$ui/ContentTile';
 import type { IPostsAndTilsPost } from '@raulmelo/core/dist/types/domains/posts';
 import { AnimatePresence, m } from 'framer-motion';
-
-import { ContentTile } from '~/components/ContentTile';
-import { getPostUrl } from '~/utils/url';
 
 const itemsAnimationVariants = {
   visible: (index: number) => ({
@@ -24,6 +24,8 @@ type PostsProps = {
 };
 
 export const Posts = ({ posts, title }: PostsProps) => {
+  const { locale } = useLocalization();
+
   return (
     <section className="col-span-full">
       <h2 className="mb-4 font-sans text-lg font-extrabold lg:text-xl lg:mb-8">
@@ -46,7 +48,10 @@ export const Posts = ({ posts, title }: PostsProps) => {
                     },
                   }}
                 >
-                  <ContentTile urlBuilder={getPostUrl} {...post} />
+                  <ContentTile
+                    urlBuilder={(slug) => getPostUrl(slug, locale)}
+                    {...post}
+                  />
                 </m.li>
               ))
             : null}

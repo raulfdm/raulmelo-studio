@@ -1,9 +1,11 @@
 import { useApp } from '$infrastructure/contexts/App';
 import { useLocalization } from '$infrastructure/contexts/Localization';
+import { useAppLocation } from '$infrastructure/hooks/useAppLocation';
 import { useClickAway } from '$infrastructure/hooks/useClickAway';
+import { getPathnameWithLocale } from '$infrastructure/utils/url';
 import { Disclosure } from '@headlessui/react';
 import { ExternalLinkIcon } from '@raulmelo/ui';
-import { Link, useLocation } from '@remix-run/react';
+import { Link } from '@remix-run/react';
 import classNames from 'classnames';
 import { m, useAnimation } from 'framer-motion';
 import { useEffect, useMemo, useRef } from 'react';
@@ -38,8 +40,6 @@ export const SideMenu = () => {
   useEffect(() => {
     sequence();
   }, [isClosed]);
-
-  // useCloseSideMenuOnRouteChange(handleClose);
 
   return (
     <Disclosure>
@@ -123,7 +123,7 @@ export const SideMenu = () => {
 
 function useLinks() {
   const { formatMessage, locale } = useLocalization();
-  const { pathname } = useLocation();
+  const { pathnameWithoutLocale } = useAppLocation();
 
   return useMemo(
     () =>
@@ -157,26 +157,28 @@ function useLinks() {
           localeId: 'sideMenu.rss',
           newWindow: true,
         },
-      ].map(({ href, localeId, newWindow = false }) => ({
-        itemLabel: formatMessage({ id: localeId }),
-        active: pathname === href,
-        href,
-        newWindow,
-      })),
-    [locale, pathname],
+      ].map(({ href, localeId, newWindow = false }, index) => {
+        let isActive = pathnameWithoutLocale === href;
+
+        /**
+         * In the server side, the pathnameWithoutLocale will be empty.
+         * That's because it'll first figure out which route to render,
+         * and then it'll render it.
+         *
+         * Though this is broken. I have to figure out a way to fix it.
+         */
+        if (pathnameWithoutLocale === '' && index === 0) {
+          isActive = true;
+        }
+
+        return {
+          itemLabel: formatMessage({ id: localeId }),
+          active: isActive,
+          href: getPathnameWithLocale(href, locale),
+          newWindow,
+        };
+      }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [locale, pathnameWithoutLocale],
   );
 }
-
-// function useCloseSideMenuOnRouteChange(handler: () => void) {
-//   const { events } = useRouter();
-
-//   useEffect(() => {
-//     events.on('routeChangeComplete', handler);
-
-//     return () => {
-//       events.off('routeChangeComplete', handler);
-//     };
-//   }, []);
-
-//   return null;
-// }
