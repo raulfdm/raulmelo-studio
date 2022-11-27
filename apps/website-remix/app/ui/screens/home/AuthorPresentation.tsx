@@ -99,7 +99,7 @@ export function AuthorPresentation({ siteData }: { siteData: ISiteData }) {
       <figure className="relative w-20 h-20 rounded md:w-32 md:h-32">
         <img
           className="object-cover rounded-full"
-          src={siteData.personalInformation.profilePic.url}
+          src={`${siteData.personalInformation.profilePic.url}?w=128&auto=format&q=100`}
           alt={formatMessage(messages.profileImageAlt)}
           width={128}
           height={128}
