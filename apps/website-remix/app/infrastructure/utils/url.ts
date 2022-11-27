@@ -5,26 +5,17 @@ import type { SupportedLanguages } from '@raulmelo/core';
  */
 export function getPostUrl(
   postSlug: string,
-  locale?: SupportedLanguages,
+  locale: SupportedLanguages,
 ): string {
-  const result = `/blog/${postSlug}`;
-
-  /**
-   * I only want to generate url with locale when it's pt
-   */
-  if (locale && locale !== 'en') {
-    return `/${locale}${result}`;
-  }
-
-  return result;
+  return getPathnameWithLocale(`/blog/${postSlug}`, locale);
 }
 
-export function getTagUrl(tagSlug: string): string {
-  return `/tag/${tagSlug}`;
+export function getTagUrl(tagSlug: string, locale: SupportedLanguages): string {
+  return getPathnameWithLocale(`/tag/${tagSlug}`, locale);
 }
 
-export function getTilUrl(slug: string): string {
-  return `/til/${slug}`;
+export function getTilUrl(slug: string, locale: SupportedLanguages): string {
+  return getPathnameWithLocale(`/til/${slug}`, locale);
 }
 
 export function getPathnameWithoutLocale(pathname: string): string {
