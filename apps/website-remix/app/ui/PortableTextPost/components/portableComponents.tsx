@@ -12,6 +12,7 @@ import {
   YouTubeIframe,
 } from '@raulmelo/ui';
 import { Link } from '@remix-run/react';
+import { Fragment } from 'react';
 
 import { defineMessages } from 'react-intl';
 
@@ -57,17 +58,17 @@ export const portableComponents = {
     blockquote: ({ children }: { children: string[] }) => {
       const updatedChildren = children
         .filter((c) => c !== '')
-        .reduce((accumulator, current) => {
+        .reduce((accumulator, current, currentIndex) => {
           if (current.length === 0) {
             return accumulator;
           }
 
           if (current === '\n') {
-            accumulator.push(<br />);
+            accumulator.push(<br key={currentIndex} />);
             return accumulator;
           }
 
-          accumulator.push(current);
+          accumulator.push(<Fragment key={current}>{current}</Fragment>);
           return accumulator;
         }, [] as (React.ReactNode | string)[]);
 
