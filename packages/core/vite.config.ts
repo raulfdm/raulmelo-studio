@@ -9,6 +9,12 @@ import { defineConfig } from 'vite';
  * it'll be also considered as "external" and the resolve.alias won't work at all.
  */
 function isExternal(id: string) {
+  /**
+   * I actually want to bundle up ramda utilities
+   */
+  if (id.startsWith('ramda/')) {
+    return false;
+  }
   return !id.startsWith('.') && !path.isAbsolute(id) && !id.startsWith('~/');
 }
 
