@@ -9,7 +9,11 @@ import { Link, useLoaderData } from '@remix-run/react';
 import type { ISiteData } from '@raulmelo/core/dist/types/domains/siteData';
 import { defineMessages } from 'react-intl';
 import type { IPostsAndTilsApi } from '@raulmelo/core/dist/types/domains/posts';
-import { getPostUrl, getTilUrl } from '$infrastructure/utils/url';
+import {
+  getPathnameWithLocale,
+  getPostUrl,
+  getTilUrl,
+} from '$infrastructure/utils/url';
 import type { PostBasicProps } from '$ui/PostBasic';
 import { PostBasic } from '$ui/PostBasic';
 import { ArrowRightIcon } from '@raulmelo/ui';
@@ -33,7 +37,7 @@ const messages = defineMessages({
   },
 });
 
-export async function loader({ context, params, request }: LoaderArgs) {
+export async function loader({ params }: LoaderArgs) {
   invariant(typeof params.locale === 'string', 'lang is required');
 
   const NUMBER_OF_POSTS = 2;
@@ -54,7 +58,7 @@ export async function loader({ context, params, request }: LoaderArgs) {
 
 export default function Index() {
   const { siteData, posts, tils } = useLoaderData<LoaderData>();
-  const { formatMessage } = useLocalization();
+  const { formatMessage, locale } = useLocalization();
 
   return (
     <>
@@ -65,10 +69,10 @@ export default function Index() {
           ...post,
           publishedAt: post.publishedAt,
           tags: post.tags,
-          url: getPostUrl(post.slug),
+          url: getPostUrl(post.slug, locale),
         }))}
         checkAllLink={{
-          href: '/blog',
+          href: getPathnameWithLocale('/blog', locale),
           text: formatMessage(messages.postsCheckAll),
         }}
       />
@@ -78,10 +82,10 @@ export default function Index() {
         title={formatMessage(messages.tilsTitle)}
         posts={tils.map((til) => ({
           ...til,
-          url: getTilUrl(til.slug),
+          url: getTilUrl(til.slug, locale),
         }))}
         checkAllLink={{
-          href: '/til',
+          href: getPathnameWithLocale('/til', locale),
           text: formatMessage(messages.tilsCheckAll),
         }}
       />
