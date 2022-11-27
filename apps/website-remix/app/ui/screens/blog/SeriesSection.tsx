@@ -1,3 +1,5 @@
+import { useLocalization } from '$infrastructure/contexts/Localization';
+import { getPostUrl } from '$infrastructure/utils/url';
 import type { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
 import { ChevronDownIcon } from '@raulmelo/ui';
 import { Link } from '@remix-run/react';
@@ -13,12 +15,14 @@ export const SeriesSection = ({
   currentPostId,
 }: SeriesSectionProps) => {
   const [current, send] = useMachine(seriesMachine);
+  const { locale } = useLocalization();
   const { name, posts } = series;
   const currentState = current.value as SeriesMachineState;
 
   const toggleSection = () => send('TOGGLE');
 
   const isExpanded = current.matches('expanded');
+
   return (
     <section>
       <div
@@ -79,7 +83,7 @@ export const SeriesSection = ({
                   variants={variants.item}
                 >
                   <Link
-                    to={slug}
+                    to={getPostUrl(slug, locale)}
                     className="block px-4 py-3 no-underline"
                     aria-hidden={currentState === 'collapsed'}
                   >
