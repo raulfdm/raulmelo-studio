@@ -13,35 +13,34 @@ import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
   profileImageAlt: {
-    id: 'authorPresentation.profileImageAlt',
+    id: `authorPresentation.profileImageAlt`,
   },
   twitter: {
-    id: 'authorPresentation.twitterLinkTitle',
+    id: `authorPresentation.twitterLinkTitle`,
   },
   linkedIn: {
-    id: 'authorPresentation.linkedInLinkTitle',
+    id: `authorPresentation.linkedInLinkTitle`,
   },
   github: {
-    id: 'authorPresentation.githubLinkTitle',
+    id: `authorPresentation.githubLinkTitle`,
   },
   devTo: {
-    id: 'authorPresentation.devToLinkTitle',
+    id: `authorPresentation.devToLinkTitle`,
   },
   medium: {
-    id: 'authorPresentation.mediumLinkTitle',
+    id: `authorPresentation.mediumLinkTitle`,
   },
 });
 
 export function AuthorPresentation({ siteData }: { siteData: ISiteData }) {
   const { locale, formatMessage } = useLocalization();
 
-  console.log({ locale, siteData });
   const defaultSeo = siteData.defaultSeo[locale];
-  const github = getSocial('github', siteData);
-  const twitter = getSocial('twitter', siteData);
-  const linkedIn = getSocial('linkedin', siteData);
-  const devTo = getSocial('dev.to', siteData);
-  const medium = getSocial('medium', siteData);
+  const github = getSocial(`github`, siteData);
+  const twitter = getSocial(`twitter`, siteData);
+  const linkedIn = getSocial(`linkedin`, siteData);
+  const devTo = getSocial(`dev.to`, siteData);
+  const medium = getSocial(`medium`, siteData);
 
   return (
     <header className="flex flex-col-reverse justify-between md:flex-row mb-7 col-span-full">
@@ -109,6 +108,6 @@ export function AuthorPresentation({ siteData }: { siteData: ISiteData }) {
   );
 }
 
-function IconWrapper(props: ComponentPropsWithoutRef<'a'>) {
+function IconWrapper(props: ComponentPropsWithoutRef<`a`>) {
   return <a className="w-6 lg:w-8" {...props} />;
 }
