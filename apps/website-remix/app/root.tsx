@@ -22,9 +22,9 @@ export const meta: MetaFunction = () => ({
 
 export function links() {
   return [
-    { rel: `stylesheet`, href: appStyles },
     { rel: `stylesheet`, href: prismStyles },
     { rel: `stylesheet`, href: baseUiStyles },
+    { rel: `stylesheet`, href: appStyles },
     /**
      * Proxima Nova Font
      */
