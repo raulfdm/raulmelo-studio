@@ -15,7 +15,6 @@ export function Filters({
   typeTitle: string;
   tagsTitle: string;
 }) {
-  console.log(languageTitle, typeTitle, tagsTitle);
   return (
     <div className="col-span-full inline-flex flex-wrap m-auto mb-7`">
       <LanguageRefinement title={languageTitle} />
@@ -84,31 +83,32 @@ function GenericRefinement({ title, refine, items, renderLabelText }: any) {
       <h3 className="text-lg font-bold">{title}</h3>
 
       <ul className="flex flex-col space-y-2">
-        {items.sort(sortOptionByLabel).map((item) => {
-          function handleClick() {
-            console.log(item);
-            refine(item.value);
-          }
+        {items
+          .sort(sortOptionByLabel)
+          .map((item: { value: string; label: string; count: number }) => {
+            function handleClick() {
+              refine(item.value);
+            }
 
-          return (
-            <li key={item.label}>
-              <label className="flex items-center space-x-2 cursor-pointer">
-                <input
-                  className={classNames(
-                    `rounded checked:bg-secondary hover:checked:bg-secondary focus:checked:bg-secondary focus:checked:ring-secondary focus:ring-secondary`,
-                    `search__checkbox`,
-                  )}
-                  type="checkbox"
-                  onClick={handleClick}
-                  onKeyPress={createEnterHandler(handleClick)}
-                />
-                <span className="text-lg">
-                  {renderLabelText(item.label)} {`(${item.count})`}
-                </span>
-              </label>
-            </li>
-          );
-        })}
+            return (
+              <li key={item.label}>
+                <label className="flex items-center space-x-2 cursor-pointer">
+                  <input
+                    className={classNames(
+                      `rounded checked:bg-secondary hover:checked:bg-secondary focus:checked:bg-secondary focus:checked:ring-secondary focus:ring-secondary`,
+                      `search__checkbox`,
+                    )}
+                    type="checkbox"
+                    onClick={handleClick}
+                    onKeyPress={createEnterHandler(handleClick)}
+                  />
+                  <span className="text-lg">
+                    {renderLabelText(item.label)} {`(${item.count})`}
+                  </span>
+                </label>
+              </li>
+            );
+          })}
       </ul>
     </div>
   );

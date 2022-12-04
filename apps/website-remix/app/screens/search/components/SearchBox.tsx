@@ -1,19 +1,9 @@
 import { SearchBox as SearchBoxComp } from 'react-instantsearch-hooks-web';
 
-// const messages = defineMessages({
-//   input: {
-//     id: 'search.input',
-//   },
-// });
-
-export function SearchBox() {
+export function SearchBox({ placeholder }: { placeholder: string }) {
   return (
     <div className="col-span-full">
-      <SearchBoxComp
-        searchAsYouType
-        autoFocus
-        // translations={{ placeholder: <>h1</> }}
-      />
+      <SearchBoxComp searchAsYouType autoFocus placeholder={placeholder} />
     </div>
   );
 }

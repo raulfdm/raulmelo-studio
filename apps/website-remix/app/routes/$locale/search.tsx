@@ -1,17 +1,6 @@
-import {
-  Filters,
-  Hits,
-  PoweredByAlgolia,
-  SearchBox,
-} from '$screens/search/components';
 import { FormattedMessage, IntlProvider } from 'react-intl';
 
-import { searchClient } from '$screens/search/searchClient';
-
-import {
-  InstantSearchSSRProvider,
-  InstantSearch,
-} from 'react-instantsearch-hooks-web';
+import { InstantSearchSSRProvider } from 'react-instantsearch-hooks-web';
 import { getServerState } from 'react-instantsearch-hooks-server';
 import type { LoaderArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
@@ -20,6 +9,7 @@ import { useLocalization } from '$infrastructure/contexts/Localization';
 import { getLocales } from '$infrastructure/i18n/getLocales';
 import invariant from 'tiny-invariant';
 import type { SupportedLanguages } from '@raulmelo/core';
+import { Search } from '$screens/search/components/Search';
 
 export async function loader({ params }: LoaderArgs) {
   invariant(typeof params.locale === `string`, `lang is required`);
@@ -35,6 +25,7 @@ export async function loader({ params }: LoaderArgs) {
         languageTitle={messages[`search.filters.lang`]}
         tagsTitle={messages[`search.filters.tags`]}
         typeTitle={messages[`search.filters.type`]}
+        inputSearchPlaceholder={messages[`search.input`]}
       />
     </IntlProvider>,
   );
@@ -79,30 +70,9 @@ export default function SearchRoute() {
           tagsTitle={formatMessage({ id: `search.filters.tags` })}
           languageTitle={formatMessage({ id: `search.filters.lang` })}
           typeTitle={formatMessage({ id: `search.filters.type` })}
+          inputSearchPlaceholder={formatMessage({ id: `search.input` })}
         />
       </InstantSearchSSRProvider>
     </>
-  );
-}
-
-type SearchProps = {
-  locale: SupportedLanguages;
-  tagsTitle: string;
-  typeTitle: string;
-  languageTitle: string;
-};
-
-function Search({ locale, tagsTitle, languageTitle, typeTitle }: SearchProps) {
-  return (
-    <InstantSearch searchClient={searchClient} indexName={ENV.search.indexName}>
-      <SearchBox />
-      <Filters
-        tagsTitle={tagsTitle}
-        languageTitle={languageTitle}
-        typeTitle={typeTitle}
-      />
-      <Hits locale={locale} />
-      <PoweredByAlgolia />
-    </InstantSearch>
   );
 }
