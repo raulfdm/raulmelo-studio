@@ -1,4 +1,5 @@
 import { FormattedMessage, IntlProvider } from 'react-intl';
+import { renderToString } from 'react-dom/server';
 
 import { InstantSearchSSRProvider } from 'react-instantsearch-hooks-web';
 import { getServerState } from 'react-instantsearch-hooks-server';
@@ -28,6 +29,7 @@ export async function loader({ params }: LoaderArgs) {
         inputSearchPlaceholder={messages[`search.input`]}
       />
     </IntlProvider>,
+    { renderToString },
   );
 
   return json({
