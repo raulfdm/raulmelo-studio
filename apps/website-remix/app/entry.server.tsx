@@ -6,6 +6,9 @@ import {
   getRecommendedLocaleFromRequest,
   localeCookie,
 } from '$infrastructure/utils/i18n';
+import { getPublicEnvironmentVariables } from '$infrastructure/config/publicAppConfig';
+
+global.ENV = getPublicEnvironmentVariables();
 
 /**
  * TODO: move this to another page

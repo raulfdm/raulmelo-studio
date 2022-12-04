@@ -2,6 +2,7 @@ import prismStyles from '@raulmelo/ui/styles/prism.css';
 import baseUiStyles from '@raulmelo/ui/styles/style.css';
 import appStyles from './styles/app.css';
 import type { MetaFunction } from '@remix-run/node';
+import { json } from '@remix-run/node';
 import {
   Links,
   LiveReload,
@@ -9,44 +10,54 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from '@remix-run/react';
+import { getPublicEnvironmentVariables } from '$infrastructure/config/publicAppConfig';
 
 export const meta: MetaFunction = () => ({
-  charset: 'utf-8',
-  title: 'New Remix App',
-  viewport: 'width=device-width,initial-scale=1',
+  charset: `utf-8`,
+  title: `New Remix App`,
+  viewport: `width=device-width,initial-scale=1`,
 });
 
 export function links() {
   return [
-    { rel: 'stylesheet', href: appStyles },
-    { rel: 'stylesheet', href: prismStyles },
-    { rel: 'stylesheet', href: baseUiStyles },
+    { rel: `stylesheet`, href: appStyles },
+    { rel: `stylesheet`, href: prismStyles },
+    { rel: `stylesheet`, href: baseUiStyles },
     /**
      * Proxima Nova Font
      */
-    { rel: 'stylesheet', href: 'https://use.typekit.net/rsd6fwc.css' },
+    { rel: `stylesheet`, href: `https://use.typekit.net/rsd6fwc.css` },
     /**
      * TODO: is this necessary at this level? maybe only on blog/til?
      */
     {
-      rel: 'preconnect',
-      href: 'https://fonts.gstatic.com',
-      crossOrigin: 'true',
+      rel: `preconnect`,
+      href: `https://fonts.gstatic.com`,
+      crossOrigin: `true`,
     },
     {
-      rel: 'preconnect',
-      href: 'https://fonts.googleapis.com',
-      crossOrigin: 'true',
+      rel: `preconnect`,
+      href: `https://fonts.googleapis.com`,
+      crossOrigin: `true`,
     },
     {
-      rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap',
+      rel: `stylesheet`,
+      href: `https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap`,
     },
   ];
 }
 
-export default function App(...args: any) {
+export function loader() {
+  return json({
+    ENV: getPublicEnvironmentVariables(),
+  });
+}
+
+export default function App() {
+  const { ENV } = useLoaderData<typeof loader>();
+
   return (
     <html lang="en">
       <head>
@@ -86,6 +97,11 @@ export default function App(...args: any) {
       </head>
       <body className="relative min-h-screen pb-12 duration-200 bg-white dark:bg-blue-900 text-primary transition-theme ease md:pb-16">
         <Outlet />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.ENV = ${JSON.stringify(ENV)}`,
+          }}
+        />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
