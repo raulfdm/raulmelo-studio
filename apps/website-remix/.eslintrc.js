@@ -1,23 +1,24 @@
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
   root: true,
-  extends: ['@remix-run/eslint-config', '@remix-run/eslint-config/node'],
+  extends: [`@remix-run/eslint-config`, `@remix-run/eslint-config/node`],
   rules: {
-    '@typescript-eslint/consistent-type-assertions': 'error',
+    '@typescript-eslint/consistent-type-assertions': `error`,
     '@typescript-eslint/consistent-type-imports': [
-      'error',
+      `error`,
       { disallowTypeAnnotations: false },
     ],
+    quotes: [`error`, `backtick`],
   },
   overrides: [
     {
-      files: ['*.test.*'],
+      files: [`*.test.*`],
       rules: {
-        '@typescript-eslint/ban-ts-comment': 'off',
-        '@typescript-eslint/no-explicit-any': 'off',
-        'jsx-a11y/anchor-is-valid': 'off',
-        'jsx-a11y/alt-text': 'off',
-        'react/no-unescaped-entities': 'off',
+        '@typescript-eslint/ban-ts-comment': `off`,
+        '@typescript-eslint/no-explicit-any': `off`,
+        'jsx-a11y/anchor-is-valid': `off`,
+        'jsx-a11y/alt-text': `off`,
+        'react/no-unescaped-entities': `off`,
       },
     },
   ],
