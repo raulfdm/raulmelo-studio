@@ -17,8 +17,8 @@ export const SideMenu = () => {
   const links = useLinks();
   const navRef = useRef(null);
 
-  const isClosed = state === 'closed';
-  useClickAway(navRef, handleClose, ['mouseevent', 'scroll']);
+  const isClosed = state === `closed`;
+  useClickAway(navRef, handleClose, [`mouseevent`, `scroll`]);
 
   /**
    * The following animation exists because I need to coordinate the animations.
@@ -30,9 +30,9 @@ export const SideMenu = () => {
   async function sequence() {
     if (isClosed) {
       await animation.start({ transform: `translate3d(100%, 0, 0)` });
-      await animation.start({ display: 'none' });
+      await animation.start({ display: `none` });
     } else {
-      await animation.start({ display: 'block' });
+      await animation.start({ display: `block` });
       await animation.start({ transform: `translate3d(0%, 0, 0)` });
     }
   }
@@ -47,8 +47,8 @@ export const SideMenu = () => {
         static
         as={m.nav}
         className={classNames(
-          'fixed bottom-0 right-0 z-20 h-full min-w-full duration-200 transform translate-x-full',
-          'bg-white top-16 dark:bg-blue-800 sm:min-w-min sm:w-full sm:max-w-xs transition-theme ease',
+          `fixed bottom-0 right-0 z-20 h-full min-w-full duration-200 transform translate-x-full`,
+          `bg-white top-16 dark:bg-blue-800 sm:min-w-min sm:w-full sm:max-w-xs transition-theme ease`,
         )}
         aria-expanded={!isClosed}
         ref={navRef}
@@ -60,9 +60,9 @@ export const SideMenu = () => {
             const linkProps = {
               onClick: handleClose,
               className: classNames([
-                'mx-5 text-xl font-black cursor-pointer sm:text-lg',
+                `mx-5 text-xl font-black cursor-pointer sm:text-lg`,
                 active &&
-                  'border-b-2 sm:pl-3 sm:border-l-2 sm:border-b-0 border-secondary border-opacity-80 transition-theme',
+                  `border-b-2 sm:pl-3 sm:border-l-2 sm:border-b-0 border-secondary border-opacity-80 transition-theme`,
               ]),
             };
 
@@ -74,7 +74,7 @@ export const SideMenu = () => {
                       {...linkProps}
                       className={classNames([
                         linkProps.className,
-                        'relative inline-flex',
+                        `relative inline-flex`,
                       ])}
                       href={href}
                       target="_blank"
@@ -99,21 +99,21 @@ export const SideMenu = () => {
         as={m.div}
         aria-hidden={isClosed}
         className={classNames(
-          'absolute inset-0 top-16 z-10',
-          isClosed ? 'pointer-events-none' : 'pointer-events-auto',
+          `absolute inset-0 top-16 z-10`,
+          isClosed ? `pointer-events-none` : `pointer-events-auto`,
         )}
         onClick={handleClose}
         animate={state}
-        transition={{ ease: 'easeOut', duration: 0.2 }}
+        transition={{ ease: `easeOut`, duration: 0.2 }}
         variants={{
           open: {
             opacity: 0.7,
-            display: 'block',
-            backgroundColor: 'rgba(0,0,0)',
+            display: `block`,
+            backgroundColor: `rgba(0,0,0)`,
           },
           closed: {
             opacity: 0,
-            display: 'none',
+            display: `none`,
           },
         }}
       />
@@ -129,55 +129,58 @@ function useLinks() {
     () =>
       [
         {
-          href: '/',
-          localeId: 'sideMenu.home',
+          href: `/`,
+          localeId: `sideMenu.home`,
         },
         {
-          href: '/blog',
-          localeId: 'sideMenu.blog',
+          href: `/blog`,
+          localeId: `sideMenu.blog`,
         },
         {
-          href: '/til',
-          localeId: 'sideMenu.til',
+          href: `/til`,
+          localeId: `sideMenu.til`,
         },
         {
-          href: '/search',
-          localeId: 'sideMenu.search',
+          href: `/search`,
+          localeId: `sideMenu.search`,
         },
         {
-          href: '/uses',
-          localeId: 'sideMenu.uses',
+          href: `/uses`,
+          localeId: `sideMenu.uses`,
         },
         {
-          href: '/cv',
-          localeId: 'sideMenu.cv',
+          href: `/cv`,
+          localeId: `sideMenu.cv`,
+          noLocale: true,
         },
         {
-          href: locale === 'en' ? '/rss.xml' : '/rss-pt.xml',
-          localeId: 'sideMenu.rss',
+          href: locale === `en` ? `/rss.xml` : `/rss-pt.xml`,
+          localeId: `sideMenu.rss`,
           newWindow: true,
         },
-      ].map(({ href, localeId, newWindow = false }, index) => {
-        let isActive = pathnameWithoutLocale === href;
+      ].map(
+        ({ href, localeId, newWindow = false, noLocale = false }, index) => {
+          let isActive = pathnameWithoutLocale === href;
 
-        /**
-         * In the server side, the pathnameWithoutLocale will be empty.
-         * That's because it'll first figure out which route to render,
-         * and then it'll render it.
-         *
-         * Though this is broken. I have to figure out a way to fix it.
-         */
-        if (pathnameWithoutLocale === '' && index === 0) {
-          isActive = true;
-        }
+          /**
+           * In the server side, the pathnameWithoutLocale will be empty.
+           * That's because it'll first figure out which route to render,
+           * and then it'll render it.
+           *
+           * Though this is broken. I have to figure out a way to fix it.
+           */
+          if (pathnameWithoutLocale === `` && index === 0) {
+            isActive = true;
+          }
 
-        return {
-          itemLabel: formatMessage({ id: localeId }),
-          active: isActive,
-          href: getPathnameWithLocale(href, locale),
-          newWindow,
-        };
-      }),
+          return {
+            itemLabel: formatMessage({ id: localeId }),
+            active: isActive,
+            href: noLocale ? href : getPathnameWithLocale(href, locale),
+            newWindow,
+          };
+        },
+      ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [locale, pathnameWithoutLocale],
   );
