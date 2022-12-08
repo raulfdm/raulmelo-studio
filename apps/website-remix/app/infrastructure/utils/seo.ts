@@ -20,7 +20,7 @@ export function getSocial(name: string, siteData: ISiteData): Social {
 type GraphOptions = {
   title: string;
   description?: string;
-  type?: `article`;
+  type: `article` | `website`;
   url?: string;
   article?: {
     publishedTime: string;
@@ -172,6 +172,10 @@ export function getSEOTags(info: GraphOptions): Record<string, string> {
 
   if (info.description) {
     result.description = info.description;
+  }
+
+  if (info.url) {
+    result.canonical = info.url;
   }
 
   for (const option of allOptions) {
