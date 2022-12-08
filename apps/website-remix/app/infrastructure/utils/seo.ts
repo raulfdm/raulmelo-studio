@@ -22,6 +22,7 @@ type GraphOptions = {
   description?: string;
   type: `article` | `website`;
   url?: string;
+  noIndex?: boolean;
   article?: {
     publishedTime: string;
     modifiedTime: string;
@@ -169,6 +170,10 @@ export function getSEOTags(info: GraphOptions): Record<string, string> {
   const result: Record<string, string> = {
     title: info.title,
   };
+
+  if (info.noIndex) {
+    result.robots = `noindex`;
+  }
 
   if (info.description) {
     result.description = info.description;
