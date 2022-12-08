@@ -5,7 +5,7 @@ import { useClickAway } from '$infrastructure/hooks/useClickAway';
 import { getPathnameWithLocale } from '$infrastructure/utils/url';
 import { Disclosure } from '@headlessui/react';
 import { ExternalLinkIcon } from '@raulmelo/ui';
-import { Link, useLocation } from '@remix-run/react';
+import { Link } from '@remix-run/react';
 import classNames from 'classnames';
 import { m, useAnimation } from 'framer-motion';
 import { useEffect, useMemo, useRef } from 'react';
@@ -16,7 +16,7 @@ export const SideMenu = () => {
   const { state, handleClose } = sideMenu;
   const links = useLinks();
   const navRef = useRef(null);
-  const { pathname } = useLocation();
+  const { pathname } = useAppLocation();
 
   const { locale } = useLocalization();
 
