@@ -136,14 +136,14 @@ function getArticleTags({
   if (publishedTime) {
     result.push({
       property: `article:published_time`,
-      content: publishedTime,
+      content: new Date(publishedTime).toISOString(),
     });
   }
 
   if (modifiedTime) {
     result.push({
       property: `article:modified_time`,
-      content: modifiedTime,
+      content: new Date(modifiedTime).toISOString(),
     });
   }
 
