@@ -1,5 +1,6 @@
 import { useLocalization } from '$infrastructure/contexts/Localization';
 import { getLocales } from '$infrastructure/i18n/getLocales.server';
+import { getSEOTags } from '$infrastructure/utils/seo';
 import { getTilUrl } from '$infrastructure/utils/url';
 import { ContentTile } from '$ui/ContentTile';
 import type { AllSupportedLanguages, SupportedLanguages } from '@raulmelo/core';
@@ -20,10 +21,11 @@ type LoaderData = {
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   const { messages } = data;
 
-  return {
+  return getSEOTags({
     title: `Raul Melo - ${messages[`tilHome.title`]}`,
     description: messages[`tilHome.title`],
-  };
+    type: `website`,
+  });
 };
 
 export async function loader({ params }: LoaderArgs) {
