@@ -4,9 +4,9 @@ import ptLocales from '$infrastructure/locales/pt.json';
 
 type LocaleMessages = typeof ptLocales | typeof enLocales;
 
-export async function getLocales(
-  locale: string,
-): Promise<Record<string, string>> {
+export type FlatMessages = Record<string, string>;
+
+export async function getLocales(locale: string): Promise<FlatMessages> {
   let messages: LocaleMessages;
 
   switch (locale) {
