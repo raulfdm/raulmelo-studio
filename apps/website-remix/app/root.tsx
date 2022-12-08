@@ -1,7 +1,7 @@
 import prismStyles from '@raulmelo/ui/styles/prism.css';
 import baseUiStyles from '@raulmelo/ui/styles/style.css';
 import appStyles from './styles/app.css';
-import type { MetaFunction } from '@remix-run/node';
+import type { LoaderArgs, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import {
   Links,
@@ -13,6 +13,7 @@ import {
   useLoaderData,
 } from '@remix-run/react';
 import { getPublicEnvironmentVariables } from '$infrastructure/config/publicAppConfig';
+import { StructuredData } from 'remix-utils';
 
 export const meta: MetaFunction = () => ({
   charset: `utf-8`,
@@ -49,20 +50,24 @@ export function links() {
   ];
 }
 
-export function loader() {
+export function loader({ params }: LoaderArgs) {
+  const locale = params.locale || `en`;
   return json({
     ENV: getPublicEnvironmentVariables(),
+    locale,
   });
 }
 
 export default function App() {
-  const { ENV } = useLoaderData<typeof loader>();
+  const { ENV, locale } = useLoaderData<typeof loader>();
 
   return (
-    <html lang="en">
+    <html lang={locale}>
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <Meta />
         <Links />
+        <StructuredData />
         {/**
          * Global Theme handler
          * It needs to be in the header to avoid FOUC (flash of unstyled content)
@@ -75,6 +80,7 @@ export default function App() {
          * In that sense, if I move this to `_app` it'll only be loaded
          * after some elements are present already (incorrect behaviour).
          */}
+
         <script
           dangerouslySetInnerHTML={{
             __html: `
