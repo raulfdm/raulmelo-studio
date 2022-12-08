@@ -1,5 +1,6 @@
 import { AppContextProvider } from '$infrastructure/contexts/App';
 import { LocalizationProvider } from '$infrastructure/contexts/Localization';
+import { getLocales } from '$infrastructure/i18n/getLocales.server';
 import { MenuBar } from '$ui/MenuBar';
 import type { SupportedLanguages } from '@raulmelo/core';
 import type { LoaderArgs } from '@remix-run/node';
@@ -10,23 +11,9 @@ import { AnimatePresence, domAnimation, LazyMotion, m } from 'framer-motion';
 import invariant from 'tiny-invariant';
 
 export async function loader({ params }: LoaderArgs) {
-  invariant(typeof params.locale === 'string', 'lang is required');
+  invariant(typeof params.locale === `string`, `lang is required`);
 
-  const currentLocale = params.locale as SupportedLanguages;
-
-  let messages: Record<string, string> = {};
-
-  if (currentLocale === 'en') {
-    messages = (await import(
-      '$infrastructure/locales/en.json'
-    )) as unknown as Record<string, string>;
-  } else if (currentLocale === 'pt') {
-    messages = (await import(
-      '$infrastructure/locales/pt.json'
-    )) as unknown as Record<string, string>;
-  } else {
-    throw new Error('Locale not supported');
-  }
+  const messages = await getLocales(params.locale as SupportedLanguages);
 
   return json({
     locale: params.locale as SupportedLanguages,

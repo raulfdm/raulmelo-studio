@@ -14,7 +14,7 @@ global.ENV = getPublicEnvironmentVariables();
  * TODO: move this to another page
  */
 
-const locales = ['en', 'pt'];
+const locales = [`en`, `pt`];
 
 export default async function handleRequest(
   request: Request,
@@ -34,9 +34,9 @@ export default async function handleRequest(
    * Because we always fallback to `en`, if they have a not supported language,
    * we don't need to worry.
    */
-  if (url.pathname === '/') {
+  if (url.pathname === `/`) {
     const parsedSetLocaleCookie = await localeCookie.parse(
-      request.headers.get('Cookie'),
+      request.headers.get(`Cookie`),
     );
 
     const recommendedLocale =
@@ -68,9 +68,9 @@ export default async function handleRequest(
     <RemixServer context={remixContext} url={request.url} />,
   );
 
-  responseHeaders.set('Content-Type', 'text/html');
+  responseHeaders.set(`Content-Type`, `text/html`);
 
-  return new Response('<!DOCTYPE html>' + markup, {
+  return new Response(`<!DOCTYPE html>` + markup, {
     headers: responseHeaders,
     status: responseStatusCode,
   });

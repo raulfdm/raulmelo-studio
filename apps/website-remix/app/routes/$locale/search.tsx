@@ -1,16 +1,34 @@
 import { FormattedMessage, IntlProvider } from 'react-intl';
 import { renderToString } from 'react-dom/server';
 
+import type { InstantSearchServerState } from 'react-instantsearch-hooks-web';
 import { InstantSearchSSRProvider } from 'react-instantsearch-hooks-web';
 import { getServerState } from 'react-instantsearch-hooks-server';
-import type { LoaderArgs } from '@remix-run/node';
+import type { LoaderArgs, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import { useLocalization } from '$infrastructure/contexts/Localization';
-import { getLocales } from '$infrastructure/i18n/getLocales';
+import type { FlatMessages } from '$infrastructure/i18n/getLocales.server';
+import { getLocales } from '$infrastructure/i18n/getLocales.server';
 import invariant from 'tiny-invariant';
 import type { SupportedLanguages } from '@raulmelo/core';
 import { Search } from '$screens/search/components/Search';
+import { getSEOTags } from '$infrastructure/utils/seo';
+
+type LoaderData = {
+  searchServerState: InstantSearchServerState;
+  messages: FlatMessages;
+};
+
+export const meta: MetaFunction<LoaderData> = ({ data }) => {
+  const { messages } = data;
+
+  return getSEOTags({
+    title: `Raul Melo - ${messages[`search.pageTitle`]}`,
+    type: `website`,
+    noIndex: true,
+  });
+};
 
 export async function loader({ params }: LoaderArgs) {
   invariant(typeof params.locale === `string`, `lang is required`);
@@ -32,13 +50,14 @@ export async function loader({ params }: LoaderArgs) {
     { renderToString },
   );
 
-  return json({
+  return json<LoaderData>({
     searchServerState,
+    messages,
   });
 }
 
 export default function SearchRoute() {
-  const { searchServerState } = useLoaderData<typeof loader>();
+  const { searchServerState } = useLoaderData<LoaderData>();
   const { locale, formatMessage } = useLocalization();
 
   return (

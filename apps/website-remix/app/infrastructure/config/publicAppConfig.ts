@@ -10,7 +10,7 @@ export function getPublicEnvironmentVariables() {
   };
 }
 
-type PublicEnv = ReturnType<typeof getPublicEnvironmentVariables>;
+export type PublicEnv = ReturnType<typeof getPublicEnvironmentVariables>;
 
 declare global {
   var ENV: PublicEnv;

@@ -5,7 +5,7 @@ import { useClickAway } from '$infrastructure/hooks/useClickAway';
 import { getPathnameWithLocale } from '$infrastructure/utils/url';
 import { Disclosure } from '@headlessui/react';
 import { ExternalLinkIcon } from '@raulmelo/ui';
-import { Link } from '@remix-run/react';
+import { Link, useLocation } from '@remix-run/react';
 import classNames from 'classnames';
 import { m, useAnimation } from 'framer-motion';
 import { useEffect, useMemo, useRef } from 'react';
@@ -16,6 +16,9 @@ export const SideMenu = () => {
   const { state, handleClose } = sideMenu;
   const links = useLinks();
   const navRef = useRef(null);
+  const { pathname } = useLocation();
+
+  const { locale } = useLocalization();
 
   const isClosed = state === `closed`;
   useClickAway(navRef, handleClose, [`mouseevent`, `scroll`]);
@@ -61,10 +64,11 @@ export const SideMenu = () => {
               onClick: handleClose,
               className: classNames([
                 `mx-5 text-xl font-black cursor-pointer sm:text-lg`,
-                active &&
-                  `border-b-2 sm:pl-3 sm:border-l-2 sm:border-b-0 border-secondary border-opacity-80 transition-theme`,
+                `side-menu-item`,
               ]),
             };
+
+            const isActive = pathname === getPathnameWithLocale(href, locale);
 
             return (
               <li className="px-4 py-2 text-center sm:text-left" key={href}>
@@ -85,7 +89,7 @@ export const SideMenu = () => {
                     </a>
                   </>
                 ) : (
-                  <Link to={href} {...linkProps}>
+                  <Link to={href} {...linkProps} data-active={isActive}>
                     {itemLabel}
                   </Link>
                 )}
@@ -158,29 +162,13 @@ function useLinks() {
           localeId: `sideMenu.rss`,
           newWindow: true,
         },
-      ].map(
-        ({ href, localeId, newWindow = false, noLocale = false }, index) => {
-          let isActive = pathnameWithoutLocale === href;
-
-          /**
-           * In the server side, the pathnameWithoutLocale will be empty.
-           * That's because it'll first figure out which route to render,
-           * and then it'll render it.
-           *
-           * Though this is broken. I have to figure out a way to fix it.
-           */
-          if (pathnameWithoutLocale === `` && index === 0) {
-            isActive = true;
-          }
-
-          return {
-            itemLabel: formatMessage({ id: localeId }),
-            active: isActive,
-            href: noLocale ? href : getPathnameWithLocale(href, locale),
-            newWindow,
-          };
-        },
-      ),
+      ].map(({ href, localeId, newWindow = false, noLocale = false }) => {
+        return {
+          itemLabel: formatMessage({ id: localeId }),
+          href: noLocale ? href : getPathnameWithLocale(href, locale),
+          newWindow,
+        };
+      }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [locale, pathnameWithoutLocale],
   );

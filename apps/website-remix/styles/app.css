@@ -4,6 +4,12 @@
   margin-right: 1rem;
 }
 
+/* Side Menu */
+
+.side-menu-item[data-active='true'] {
+  @apply border-b-2 sm:pl-3 sm:border-l-2 sm:border-b-0 border-secondary border-opacity-80 transition-theme;
+}
+
 /* Search Styles */
 .search__refinementWrapper:not(:last-child) {
   @apply mr-6;

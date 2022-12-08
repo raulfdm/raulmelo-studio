@@ -1,10 +1,12 @@
 import { useLocalization } from '$infrastructure/contexts/Localization';
+import { getLocales } from '$infrastructure/i18n/getLocales.server';
+import { getSEOTags } from '$infrastructure/utils/seo';
 import { getTilUrl } from '$infrastructure/utils/url';
 import { ContentTile } from '$ui/ContentTile';
-import type { AllSupportedLanguages } from '@raulmelo/core';
+import type { AllSupportedLanguages, SupportedLanguages } from '@raulmelo/core';
 import { domains } from '@raulmelo/core';
 import type { ITilsApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryTils/types';
-import type { LoaderArgs } from '@remix-run/node';
+import type { LoaderArgs, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import classNames from 'classnames';
@@ -13,6 +15,17 @@ import invariant from 'tiny-invariant';
 
 type LoaderData = {
   tils: ITilsApiResponse;
+  messages: Record<string, string>;
+};
+
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  const { messages } = data;
+
+  return getSEOTags({
+    title: `Raul Melo - ${messages[`tilHome.title`]}`,
+    description: messages[`tilHome.title`],
+    type: `website`,
+  });
 };
 
 export async function loader({ params }: LoaderArgs) {
@@ -24,6 +37,7 @@ export async function loader({ params }: LoaderArgs) {
 
   return json<LoaderData>({
     tils,
+    messages: await getLocales(params.locale as SupportedLanguages),
   });
 }
 
@@ -35,11 +49,6 @@ export default function TilsHome() {
 
   return (
     <>
-      {/* <NextSeo
-        title={formatMessage({ id: 'tilHome.title' })}
-        description={formatMessage({ id: 'tilHome.subtitle' })}
-      /> */}
-
       <header className={baseColClass}>
         <h1 className="text-3xl font-extrabold md:text-4xl">
           <FormattedMessage id="tilHome.title" />
