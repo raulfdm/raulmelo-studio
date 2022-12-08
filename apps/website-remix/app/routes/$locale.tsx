@@ -1,6 +1,6 @@
 import { AppContextProvider } from '$infrastructure/contexts/App';
 import { LocalizationProvider } from '$infrastructure/contexts/Localization';
-import { getLocales } from '$infrastructure/i18n/getLocales';
+import { getLocales } from '$infrastructure/i18n/getLocales.server';
 import { MenuBar } from '$ui/MenuBar';
 import type { SupportedLanguages } from '@raulmelo/core';
 import type { LoaderArgs } from '@remix-run/node';

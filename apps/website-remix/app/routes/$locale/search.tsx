@@ -7,7 +7,7 @@ import type { LoaderArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import { useLocalization } from '$infrastructure/contexts/Localization';
-import { getLocales } from '$infrastructure/i18n/getLocales';
+import { getLocales } from '$infrastructure/i18n/getLocales.server';
 import invariant from 'tiny-invariant';
 import type { SupportedLanguages } from '@raulmelo/core';
 import { Search } from '$screens/search/components/Search';

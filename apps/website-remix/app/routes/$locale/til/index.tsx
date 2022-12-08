@@ -1,5 +1,5 @@
 import { useLocalization } from '$infrastructure/contexts/Localization';
-import { getLocales } from '$infrastructure/i18n/getLocales';
+import { getLocales } from '$infrastructure/i18n/getLocales.server';
 import { getTilUrl } from '$infrastructure/utils/url';
 import { ContentTile } from '$ui/ContentTile';
 import type { AllSupportedLanguages, SupportedLanguages } from '@raulmelo/core';
@@ -19,6 +19,7 @@ type LoaderData = {
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   const { messages } = data;
+
   return {
     title: `Raul Melo - ${messages[`tilHome.title`]}`,
     description: messages[`tilHome.title`],
