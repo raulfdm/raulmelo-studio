@@ -4,6 +4,7 @@
   "sideEffects": false,
   "scripts": {
     "test": "vitest",
+    "test:watch": "vitest --watch",
     "build": "npm run build:css && remix build",
     "build:css": "tailwindcss -m -i ./styles/app.css -o app/styles/app.css",
     "dev": "pnpm run build && concurrently \"npm run dev:css\" \"remix dev\"",
