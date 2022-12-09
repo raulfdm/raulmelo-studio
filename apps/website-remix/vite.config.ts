@@ -5,7 +5,14 @@ export default defineConfig({
   plugins: [react()],
   test: {
     globals: true,
-    environment: 'jsdom',
-    setupFiles: './setupTest.ts',
+    environment: `jsdom`,
+    setupFiles: `./setupTest.ts`,
+  },
+  resolve: {
+    alias: {
+      $infrastructure: `./app/infrastructure`,
+      $ui: `./app/ui`,
+      $screens: `./app/screens`,
+    },
   },
 });
