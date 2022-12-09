@@ -1,3 +1,4 @@
+import { useLocalization } from '$infrastructure/contexts/Localization';
 import { getTagUrl } from '$infrastructure/utils/url';
 import { Tag, Tags } from '$ui/Tags';
 import { Link } from '@remix-run/react';
@@ -14,10 +15,12 @@ export const PostBasic = ({
   titleClassName,
   className,
 }: PostBasicProps) => {
+  const { locale } = useLocalization();
+
   return (
     <section className={className}>
       <Link to={url} className="relative inline-block cursor-pointer">
-        <h3 className={classNames(['font-extrabold', titleClassName])}>
+        <h3 className={classNames([`font-extrabold`, titleClassName])}>
           {title}
         </h3>
       </Link>
@@ -37,10 +40,10 @@ export const PostBasic = ({
           <span
             className={classNames(
               {
-                'bg-indigo-600': _type === 'post',
-                'bg-yellow-600': _type === 'til',
+                'bg-indigo-600': _type === `post`,
+                'bg-yellow-600': _type === `til`,
               },
-              'px-2 rounded-sm min-w-[40px] text-center font-bold text-gray-50 uppercase',
+              `px-2 rounded-sm min-w-[40px] text-center font-bold text-gray-50 uppercase`,
             )}
           >
             {_type}
@@ -56,7 +59,10 @@ export const PostBasic = ({
         <Tags className="mt-4">
           {tags.map(({ name, slug, _id }) => (
             <Tag key={_id}>
-              <Link to={getTagUrl(slug)} className="underline cursor-pointer">
+              <Link
+                to={getTagUrl(slug, locale)}
+                className="underline cursor-pointer"
+              >
                 #{name}
               </Link>
             </Tag>
@@ -71,7 +77,7 @@ export interface PostBasicProps {
   title: string;
   subtitle?: string;
   url: string;
-  _type?: 'post' | 'til';
+  _type?: `post` | `til`;
   className?: string;
   publishedAt: string;
   titleClassName?: string;

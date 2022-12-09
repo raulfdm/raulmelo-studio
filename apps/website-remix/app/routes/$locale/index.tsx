@@ -24,21 +24,21 @@ type LoaderData = {
 
 const messages = defineMessages({
   postsTitle: {
-    id: 'home.posts.title',
+    id: `home.posts.title`,
   },
   postsCheckAll: {
-    id: 'home.posts.checkAll',
+    id: `home.posts.checkAll`,
   },
   tilsTitle: {
-    id: 'home.tils.title',
+    id: `home.tils.title`,
   },
   tilsCheckAll: {
-    id: 'home.tils.checkAll',
+    id: `home.tils.checkAll`,
   },
 });
 
 export async function loader({ params }: LoaderArgs) {
-  invariant(typeof params.locale === 'string', 'lang is required');
+  invariant(typeof params.locale === `string`, `lang is required`);
 
   const NUMBER_OF_POSTS = 2;
   const [siteData, { posts, tils }] = await Promise.all([
@@ -72,7 +72,7 @@ export default function Index() {
           url: getPostUrl(post.slug, locale),
         }))}
         checkAllLink={{
-          href: getPathnameWithLocale('/blog', locale),
+          href: getPathnameWithLocale(`/blog`, locale),
           text: formatMessage(messages.postsCheckAll),
         }}
       />
@@ -85,7 +85,7 @@ export default function Index() {
           url: getTilUrl(til.slug, locale),
         }))}
         checkAllLink={{
-          href: getPathnameWithLocale('/til', locale),
+          href: getPathnameWithLocale(`/til`, locale),
           text: formatMessage(messages.tilsCheckAll),
         }}
       />
