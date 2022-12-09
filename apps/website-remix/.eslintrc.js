@@ -9,6 +9,11 @@ module.exports = {
       { disallowTypeAnnotations: false },
     ],
     quotes: [`error`, `backtick`],
+    'no-unused-vars': `off`,
+    '@typescript-eslint/no-unused-vars': [
+      `warn`,
+      { destructuredArrayIgnorePattern: `^_` },
+    ],
   },
   overrides: [
     {
