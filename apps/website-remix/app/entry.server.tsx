@@ -16,6 +16,8 @@ global.ENV = getPublicEnvironmentVariables();
 
 const locales = [`en`, `pt`];
 
+const ROUTES_WITHOUT_LOCALE = new Set([`/admin`]);
+
 export default async function handleRequest(
   request: Request,
   responseStatusCode: number,
@@ -24,17 +26,24 @@ export default async function handleRequest(
 ) {
   const url = new URL(request.url);
 
-  /**
-   * When the user hits `/`, based on accepted-languages from headers, we redirect
-   * they to one of the supported languages.
-   *
-   * This is useful when the user has their browser set to a primary language we
-   * support.
-   *
-   * Because we always fallback to `en`, if they have a not supported language,
-   * we don't need to worry.
-   */
-  if (url.pathname === `/`) {
+  const isHomePage = url.pathname === `/`;
+  const isKnownLocale = locales.some((locale) =>
+    url.pathname.startsWith(`/${locale}`),
+  );
+
+  if (isAllowedRouteWithoutLocale(url.pathname)) {
+    return renderApp();
+  } else if (isHomePage) {
+    /**
+     * When the user hits `/`, based on accepted-languages from headers, we redirect
+     * they to one of the supported languages.
+     *
+     * This is useful when the user has their browser set to a primary language we
+     * support.
+     *
+     * Because we always fallback to `en`, if they have a not supported language,
+     * we don't need to worry.
+     */
     const parsedSetLocaleCookie = await localeCookie.parse(
       request.headers.get(`Cookie`),
     );
@@ -60,18 +69,39 @@ export default async function handleRequest(
      *
      * If this URL does not exist, then it'll follow the normal flow hitting 404.
      */
-  } else if (!locales.some((locale) => url.pathname.startsWith(`/${locale}`))) {
+  } else if (isKnownLocale === false) {
     return redirect(`/en${url.pathname}`);
+  } else {
+    return renderApp();
   }
 
-  const markup = renderToString(
-    <RemixServer context={remixContext} url={request.url} />,
-  );
+  function renderApp() {
+    const markup = renderToString(
+      <RemixServer context={remixContext} url={request.url} />,
+    );
 
-  responseHeaders.set(`Content-Type`, `text/html`);
+    responseHeaders.set(`Content-Type`, `text/html`);
 
-  return new Response(`<!DOCTYPE html>` + markup, {
-    headers: responseHeaders,
-    status: responseStatusCode,
-  });
+    return new Response(`<!DOCTYPE html>` + markup, {
+      headers: responseHeaders,
+      status: responseStatusCode,
+    });
+  }
+}
+
+function isAllowedRouteWithoutLocale(pathname: string) {
+  if (ROUTES_WITHOUT_LOCALE.has(pathname)) {
+    return true;
+  }
+
+  let isAllowed = false;
+
+  for (const allowedRoute of ROUTES_WITHOUT_LOCALE.values()) {
+    if (pathname.startsWith(allowedRoute)) {
+      isAllowed = true;
+      break;
+    }
+  }
+
+  return isAllowed;
 }
