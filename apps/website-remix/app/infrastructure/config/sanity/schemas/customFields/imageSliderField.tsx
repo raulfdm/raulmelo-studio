@@ -27,22 +27,21 @@ export const imageSliderField = {
       ],
     },
   ],
-  preview: {
-    select: {
-      images: `images`,
-    },
-    component: ({ value }: { value: SanityImageSliderProps }) => {
-      if (value.images === undefined || utils.isEmpty(value.images)) {
+  components: {
+    preview: ({ images }: SanityImageSliderProps) => {
+      if (images === undefined || utils.isEmpty(images)) {
         return null;
       }
 
-      const images = value.images.filter(filterEmptyImage);
+      const filteredImages = images.filter(filterEmptyImage);
 
-      if (images.length === 0) {
+      if (filteredImages.length === 0) {
         return null;
       }
 
-      return <ImageSlider images={images.map(prepareImages) as never} />;
+      return (
+        <ImageSlider images={filteredImages.map(prepareImages) as never} />
+      );
 
       function filterEmptyImage(sanityImage: SanityImageSliderImage) {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -73,6 +72,11 @@ export const imageSliderField = {
           ...props,
         };
       }
+    },
+  },
+  preview: {
+    select: {
+      images: `images`,
     },
   },
 };

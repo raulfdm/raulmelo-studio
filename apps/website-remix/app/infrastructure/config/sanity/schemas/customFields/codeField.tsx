@@ -24,46 +24,47 @@ export const codeField = {
       type: `string`,
       name: `highlightedLines`,
       title: `Lines to Highlight`,
-      description:
-        `Comma-separated list of lines to highlight (e.g., 1,2,4-6). The dash means a range`,
+      description: `Comma-separated list of lines to highlight (e.g., 1,2,4-6). The dash means a range`,
     },
     {
       type: `text`,
       name: `code`,
     },
   ],
-  preview: {
-    select: {
-      code: `code`,
-      language: `language`,
-      filename: `filename`,
-      highlightedLines: `highlightedLines`,
-    },
-    component: ({
-      value,
+  components: {
+    preview: ({
+      code,
+      language,
+      filename,
+      highlightedLines,
     }: {
-      value: {
-        code?: string;
-        filename: string;
-        highlightedLines: string;
-        language: string;
-      };
+      code?: string;
+      filename: string;
+      highlightedLines: string;
+      language: string;
     }) => {
-      const { code, language, filename, highlightedLines } = value;
       const lang = LANGUAGES_MAP.get(language);
 
       if (!code) {
         return null;
       }
 
-      const props = {
+      const compProps = {
         language: lang,
         code,
         filename,
         highlightedLines,
       };
 
-      return <CodeBlock {...props} />;
+      return <CodeBlock {...compProps} />;
+    },
+  },
+  preview: {
+    select: {
+      code: `code`,
+      language: `language`,
+      filename: `filename`,
+      highlightedLines: `highlightedLines`,
     },
   },
 };

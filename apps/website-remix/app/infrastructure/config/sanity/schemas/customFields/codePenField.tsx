@@ -1,4 +1,3 @@
-import { sanityToUiAdapter } from '@raulmelo/sanity-core';
 import { CodePenIcon, CodePenIframe } from '@raulmelo/ui';
 
 export const codePenField = {
@@ -18,10 +17,12 @@ export const codePenField = {
       title: `Iframe height`,
     },
   ],
+  components: {
+    component: CodePenIframe,
+  },
   preview: {
     select: {
       directUrl: `directUrl`,
     },
-    component: sanityToUiAdapter(CodePenIframe),
   },
 };

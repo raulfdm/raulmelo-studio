@@ -1,4 +1,3 @@
-import { sanityToUiAdapter } from '@raulmelo/sanity-core';
 import { Gif, GifIcon } from '@raulmelo/ui';
 
 export const gifField = {
@@ -24,6 +23,9 @@ export const gifField = {
       type: `number`,
     },
   ],
+  components: {
+    preview: Gif,
+  },
   preview: {
     select: {
       src: `src`,
@@ -31,6 +33,5 @@ export const gifField = {
       width: `width`,
       height: `height`,
     },
-    component: sanityToUiAdapter(Gif),
   },
 };

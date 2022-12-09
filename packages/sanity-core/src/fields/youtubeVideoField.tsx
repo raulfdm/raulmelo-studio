@@ -1,7 +1,5 @@
 import { YouTubeIcon, YouTubeIframe } from '@raulmelo/ui';
 
-import { sanityToUiAdapter } from '../utils/component';
-
 export const youtubeVideoField = {
   type: 'object',
   name: 'youtubeVideo',
@@ -14,10 +12,12 @@ export const youtubeVideoField = {
       title: 'The video ID',
     },
   ],
+  components: {
+    component: YouTubeIframe,
+  },
   preview: {
     select: {
       videoId: 'videoId',
     },
-    component: sanityToUiAdapter(YouTubeIframe),
   },
 };

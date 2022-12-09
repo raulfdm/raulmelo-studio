@@ -1,9 +1,7 @@
 import { utils } from '@raulmelo/core';
 import { ImageSlider } from '@raulmelo/ui';
 
-export function ImageSliderAdapter({ value }: SanityBlock) {
-  const { images } = value;
-
+export function ImageSliderAdapter({ images }: SanityBlock) {
   if (utils.isNil(images) || utils.isEmpty(images)) {
     return null;
   }
@@ -33,11 +31,10 @@ export function ImageSliderAdapter({ value }: SanityBlock) {
   );
 }
 
-interface SanityBlock {
-  value: ImageSliderValue;
+type SanityBlock = ImageSliderValue & {
   isInline: boolean;
   index: number;
-}
+};
 
 interface ImageSliderValue {
   _key: string;

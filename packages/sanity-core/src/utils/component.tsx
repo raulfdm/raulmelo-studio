@@ -1,6 +1,11 @@
 import React from 'react';
 
 /**
+ * TODO: remove this utility. Sanity 3 will spread the props instead of wrapping
+ * it in a "value" object.
+ */
+
+/**
  * Whenever we define a `preview.component`, sanity does not spread the values
  * from the field, instead, it adds a type called "value" that contains whatever
  * we defined in the `preview.select` object.
@@ -16,7 +21,6 @@ export function sanityToUiAdapter(
     return <Component {...props} />;
   };
 }
-
 export function memoizeAndRemoveStyle(
   Component: (props: any) => JSX.Element | null,
 ) {

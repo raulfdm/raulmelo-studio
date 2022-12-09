@@ -1,4 +1,3 @@
-import { sanityToUiAdapter } from '@raulmelo/sanity-core';
 import { Tweet, TwitterIcon } from '@raulmelo/ui';
 
 export const tweetField = {
@@ -13,10 +12,12 @@ export const tweetField = {
       title: `The tweet ID`,
     },
   ],
+  components: {
+    preview: Tweet,
+  },
   preview: {
     select: {
       tweetId: `tweetId`,
     },
-    component: sanityToUiAdapter(Tweet),
   },
 };

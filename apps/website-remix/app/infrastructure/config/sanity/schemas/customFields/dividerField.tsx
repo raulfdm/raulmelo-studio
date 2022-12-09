@@ -1,4 +1,3 @@
-import { sanityToUiAdapter } from '@raulmelo/sanity-core';
 import { DividerIcon, DotDivider } from '@raulmelo/ui';
 
 export const dividerField = {
@@ -13,7 +12,7 @@ export const dividerField = {
       type: `boolean`,
     },
   ],
-  preview: {
-    component: sanityToUiAdapter(DotDivider),
+  components: {
+    preview: DotDivider,
   },
 };

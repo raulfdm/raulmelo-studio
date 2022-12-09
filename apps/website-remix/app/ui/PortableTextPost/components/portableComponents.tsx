@@ -22,10 +22,10 @@ import { ImageSliderAdapter } from './ImageSliderAdapter';
 
 const messages = defineMessages({
   copyButtonTitle: {
-    id: 'blogPost.copyButton.title',
+    id: `blogPost.copyButton.title`,
   },
   copyButtonSuccess: {
-    id: 'blogPost.copyButton.success',
+    id: `blogPost.copyButton.success`,
   },
 });
 
@@ -57,13 +57,13 @@ export const portableComponents = {
     },
     blockquote: ({ children }: { children: string[] }) => {
       const updatedChildren = children
-        .filter((c) => c !== '')
+        .filter((c) => c !== ``)
         .reduce((accumulator, current, currentIndex) => {
           if (current.length === 0) {
             return accumulator;
           }
 
-          if (current === '\n') {
+          if (current === `\n`) {
             accumulator.push(<br key={currentIndex} />);
             return accumulator;
           }
@@ -85,45 +85,44 @@ export const portableComponents = {
     },
     link: ({
       children,
-      value,
+      blank,
+      href,
     }: {
       children: React.ReactNode;
-      value: { href: string; blank: boolean };
+      href: string;
+      blank: boolean;
     }) => {
-      const { href, blank } = value;
       const props = {
         href,
         children,
       } as React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
       if (blank === true) {
-        props.target = '_blank';
-        props.rel = 'noopener noreferrer';
+        props.target = `_blank`;
+        props.rel = `noopener noreferrer`;
       }
 
       return <a {...props} />;
     },
     internalLink: ({
       children,
-      value,
+      itemMeta,
     }: {
       children: React.ReactNode;
-      value: {
-        itemMeta: {
-          slug: string;
-          _type: 'post' | 'til';
-        };
+      itemMeta: {
+        slug: string;
+        _type: `post` | `til`;
       };
     }) => {
-      const { slug, _type } = value.itemMeta;
-      let href = '';
+      const { slug, _type } = itemMeta;
+      let href = ``;
       // eslint-disable-next-line react-hooks/rules-of-hooks
       const { locale } = useLocalization();
 
-      if (_type === 'post') {
-        href = getPathnameWithLocale('/blog', locale);
-      } else if (_type === 'til') {
-        href = getPathnameWithLocale('/til/', locale);
+      if (_type === `post`) {
+        href = getPathnameWithLocale(`/blog`, locale);
+      } else if (_type === `til`) {
+        href = getPathnameWithLocale(`/til/`, locale);
       }
 
       href += slug;
