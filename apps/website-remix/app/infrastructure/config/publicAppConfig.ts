@@ -7,6 +7,7 @@ import { appConfig } from './index.server';
 export function getPublicEnvironmentVariables() {
   return {
     search: appConfig.search,
+    googleAnalyticsId: appConfig.googleAnalyticsId,
   };
 }
 

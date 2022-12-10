@@ -4,4 +4,5 @@ export type AppConfig = {
     searchOnlyApiKey: string;
     appId: string;
   };
+  googleAnalyticsId: string;
 };
