@@ -20,6 +20,9 @@ import type { ISiteData } from '@raulmelo/core/dist/types/domains/siteData';
 import { domains } from '@raulmelo/core';
 import { getSEOTags } from '$infrastructure/utils/seo';
 import type { Organization, Person } from 'schema-dts';
+import { useEffect } from 'react';
+import { gtag } from '$infrastructure/utils/gtag.client';
+import { useAppLocation } from '$infrastructure/hooks/useAppLocation';
 
 type LoaderData = {
   ENV: PublicEnv;
@@ -153,6 +156,13 @@ export async function loader({ params, request }: LoaderArgs) {
 
 export default function App() {
   const { ENV, locale } = useLoaderData<typeof loader>();
+  const location = useAppLocation();
+
+  useEffect(() => {
+    if (ENV.googleAnalyticsId.length) {
+      gtag.pageview(location.pathname!, ENV.googleAnalyticsId);
+    }
+  }, [location.pathname, ENV.googleAnalyticsId]);
 
   return (
     <html lang={locale}>
@@ -191,7 +201,28 @@ export default function App() {
                 })()
               `,
           }}
-        ></script>
+        />
+
+        {process.env.NODE_ENV !== `development` ? (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${ENV.googleAnalyticsId}`}
+            />
+            <script
+              async
+              id="gtag-init"
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${ENV.googleAnalyticsId}',{ page_path: window.location.pathname });
+                `,
+              }}
+            />
+          </>
+        ) : null}
       </head>
       <body className="relative min-h-screen pb-12 duration-200 bg-white dark:bg-blue-900 text-primary transition-theme ease md:pb-16">
         <Outlet />

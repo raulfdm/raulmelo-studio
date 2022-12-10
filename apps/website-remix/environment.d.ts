@@ -12,6 +12,7 @@ declare global {
       ALGOLIA_APP_ID?: string;
       ALGOLIA_SEARCH_KEY?: string;
       ALGOLIA_INDEX_NAME?: string;
+      GOOGLE_ANALYTICS_ID?: string;
     }
   }
 }
