@@ -5,7 +5,18 @@ import { measurementSchema } from './schemas/measurements';
 import { trainingRoutineSchema } from './schemas/routine';
 import { trainingSchema } from './schemas/training';
 
-export const fitnessSchemaFields = [
+/**
+ * No idea why but TS is complaining about the type inference on the array
+ */
+type FitnessSchemaFields = (
+  | typeof exerciseSchema
+  | typeof trainingRoutineSchema
+  | typeof trainingSchema
+  | typeof measurementSchema
+  | typeof youtubeVideoField
+)[];
+
+export const fitnessSchemaFields: FitnessSchemaFields = [
   exerciseSchema,
   trainingRoutineSchema,
   trainingSchema,
