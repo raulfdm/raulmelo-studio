@@ -1,8 +1,8 @@
-import { Rule } from '@sanity/types';
+import { defineField, defineType } from 'sanity';
 
 export const TRAINING_ROUTINE_SCHEMA_NAME = 'trainingRoutine';
 
-export const trainingRoutineSchema = {
+export const trainingRoutineSchema = defineType({
   name: TRAINING_ROUTINE_SCHEMA_NAME,
   title: 'Training Routine',
   type: 'document',
@@ -11,22 +11,22 @@ export const trainingRoutineSchema = {
       type: 'object',
       name: 'routine',
       fields: [
-        {
+        defineField({
           name: 'name',
           type: 'string',
-          validation: (Rule: Rule) => Rule.required(),
-        },
-        {
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
           name: 'description',
           type: 'string',
-          validation: (Rule: Rule) => Rule.required(),
-        },
-        {
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
           name: 'date',
           type: 'date',
-          validation: (Rule: Rule) => Rule.required(),
-        },
-        {
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
           name: 'training',
           title: 'Training',
           type: 'array',
@@ -36,31 +36,31 @@ export const trainingRoutineSchema = {
               name: 'training',
               title: 'Training',
               fields: [
-                {
+                defineField({
                   name: 'exercise',
                   type: 'reference',
                   to: { type: 'exercise' },
-                  validation: (Rule: Rule) => Rule.required(),
-                },
-                {
+                  validation: (Rule) => Rule.required(),
+                }),
+                defineField({
                   name: 'series',
                   title: 'Series',
                   type: 'number',
-                  validation: (Rule: Rule) => Rule.required(),
-                },
-                {
+                  validation: (Rule) => Rule.required(),
+                }),
+                defineField({
                   name: 'repetitions',
                   title: 'Repetitions',
                   type: 'string',
-                  validation: (Rule: Rule) => Rule.required(),
-                },
-                {
+                  validation: (Rule) => Rule.required(),
+                }),
+                defineField({
                   name: 'restTime',
                   title: 'Rest Time',
                   type: 'number',
-                  validation: (Rule: Rule) => Rule.required(),
-                },
-                {
+                  validation: (Rule) => Rule.required(),
+                }),
+                defineField({
                   title: 'Advanced Technique',
                   name: 'advancedTechnique',
                   type: 'string',
@@ -77,7 +77,7 @@ export const trainingRoutineSchema = {
                       { title: `Warm-Up`, value: 'warm-up' },
                     ],
                   },
-                },
+                }),
               ],
               preview: {
                 select: {
@@ -85,21 +85,33 @@ export const trainingRoutineSchema = {
                   series: 'series',
                   repetitions: 'repetitions',
                 },
-                prepare(selection: {
-                  exercise: string;
-                  series: string;
-                  repetitions: string;
-                }) {
-                  return {
-                    title: selection.exercise,
-                    subtitle: `${selection.series}x${selection.repetitions}`,
+                prepare(value) {
+                  const { exercise, repetitions, series } = value as {
+                    exercise?: string;
+                    series?: number;
+                    repetitions?: string;
                   };
+
+                  const result: { title: string; subtitle?: string } = {
+                    title: 'New Training',
+                    subtitle: undefined,
+                  };
+
+                  if (exercise) {
+                    result.title = exercise;
+                  }
+
+                  if (series && repetitions) {
+                    result.subtitle = `${series}x${repetitions}`;
+                  }
+
+                  return result;
                 },
               },
             },
           ],
-        },
-        {
+        }),
+        defineField({
           name: 'cardio',
           type: 'object',
           fields: [
@@ -110,7 +122,7 @@ export const trainingRoutineSchema = {
               type: 'number',
             },
           ],
-        },
+        }),
       ],
     },
   ],
@@ -127,4 +139,4 @@ export const trainingRoutineSchema = {
       };
     },
   },
-};
+});
