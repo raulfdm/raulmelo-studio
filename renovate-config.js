@@ -68,12 +68,7 @@ module.exports = {
     },
     {
       matchPackagePatterns: ['babel'],
-      excludePackageNames: ['babel-jest'],
       groupName: 'babel',
-    },
-    {
-      matchPackagePatterns: ['jest'],
-      groupName: 'Jest',
     },
     {
       matchPackagePatterns: ['@xstate'],

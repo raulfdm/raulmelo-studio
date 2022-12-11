@@ -77,10 +77,6 @@ module.exports = {
     {
       files: ['*.test.js', '**/__test__/*.js'],
       ...baseJs,
-      plugins: ['jest'],
-      env: {
-        'jest/globals': true,
-      },
     },
     /**
      * Regular JavaScript
