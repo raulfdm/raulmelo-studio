@@ -5,8 +5,10 @@ import { appConfig } from './index.server';
  * BE AWARE ABOUT WHAT YOU EXPOSE HERE.
  */
 export function getPublicEnvironmentVariables() {
+  const { adminApiKey, ...search } = appConfig.search;
+
   return {
-    search: appConfig.search,
+    search,
     googleAnalyticsId: appConfig.googleAnalyticsId,
   };
 }
@@ -14,7 +16,7 @@ export function getPublicEnvironmentVariables() {
 export type PublicEnv = ReturnType<typeof getPublicEnvironmentVariables>;
 
 declare global {
-  var ENV: PublicEnv;
+  const ENV: PublicEnv;
   interface Window {
     ENV: PublicEnv;
   }
