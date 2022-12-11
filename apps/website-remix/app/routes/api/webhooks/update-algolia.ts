@@ -3,6 +3,12 @@ import { domains } from '@raulmelo/core';
 import type { ActionArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import algolia from 'algoliasearch';
+import invariant from 'tiny-invariant';
+
+invariant(
+  process.env.PRIVATE_ADMIN_PASSWORD,
+  `PRIVATE_ADMIN_PASSWORD is required`,
+);
 
 export function loader() {
   return json({ message: `Not allowed` });
@@ -20,7 +26,7 @@ export async function action({ request }: ActionArgs) {
       throw new Error(`Authorization code is required`);
     }
 
-    if (authorization !== process.env.ADMIN_PASSWORD) {
+    if (authorization !== process.env.PRIVATE_ADMIN_PASSWORD) {
       throw new Error(`Unauthorized`);
     }
 

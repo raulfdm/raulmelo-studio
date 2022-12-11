@@ -14,6 +14,7 @@ declare global {
       ALGOLIA_INDEX_NAME?: string;
       PRIVATE_ALGOLIA_ADMIN_KEY?: string;
       GOOGLE_ANALYTICS_ID?: string;
+      PRIVATE_ADMIN_PASSWORD?: string;
     }
   }
 }
