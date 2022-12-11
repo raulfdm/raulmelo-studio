@@ -1,5 +1,9 @@
 import { client } from '~/config';
 
+/**
+ * TODO: fix this import
+ */
+import { contentBlockToMarkdown } from '../../../utils/contentBlockToMarkdown';
 import { AlgoliaObject } from '../types';
 import { algoliaPostsQuery, algoliaTilsQuery } from './query';
 import { IAlgoliaContent } from './types';
@@ -17,7 +21,7 @@ export async function queryAlgoliaData() {
     const result: AlgoliaObject = {
       _id,
       objectID: `Content_${_id}`,
-      excerpt: getExcerpt(content),
+      excerpt: getExcerpt(contentBlockToMarkdown(content)),
       date_timestamp: getDateTimestamp(publishedAt),
       tags: tags || [],
       _type,

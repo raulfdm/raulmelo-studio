@@ -1,8 +1,9 @@
+import { PortableTextBlock } from '@portabletext/types';
 import { SupportedLanguages } from 'src';
 
 interface CommonContent {
   _id: string;
-  content: string;
+  content: PortableTextBlock;
   language: SupportedLanguages;
   publishedAt: string;
   slug: string;

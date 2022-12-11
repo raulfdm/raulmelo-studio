@@ -3,6 +3,7 @@ export type AppConfig = {
     indexName: string;
     searchOnlyApiKey: string;
     appId: string;
+    adminApiKey: string;
   };
   googleAnalyticsId: string;
 };
