@@ -8,6 +8,8 @@ export function loader() {
   return json({ message: `Not allowed` });
 }
 
+const client = algolia(appConfig.search.appId, appConfig.search.adminApiKey);
+
 export async function action({ request }: ActionArgs) {
   try {
     const { authorization } = (await request.json()) as {
@@ -18,20 +20,19 @@ export async function action({ request }: ActionArgs) {
       throw new Error(`Authorization code is required`);
     }
 
+    if (authorization !== process.env.ADMIN_PASSWORD) {
+      throw new Error(`Unauthorized`);
+    }
+
     const algoliaData = await domains.algolia.queryAlgoliaData();
 
-    // const client = algolia(
-    //   appConfig.search.appId,
-    //   appConfig.search.adminApiKey,
-    // );
-    // const index = client.initIndex(appConfig.search.indexName);
+    const index = client.initIndex(appConfig.search.indexName);
 
-    // await index.saveObjects(algoliaData);
+    await index.saveObjects(algoliaData);
 
     return json({
       message: `Success`,
       date: new Date().toISOString(),
-      algoliaData,
     });
   } catch (error) {
     if (error instanceof SyntaxError) {
@@ -45,7 +46,11 @@ export async function action({ request }: ActionArgs) {
       return new Response(error.message, { status: 400 });
     }
 
-    console.log(error);
+    if (error instanceof Error && error.message.includes(`Unauthorized`)) {
+      return new Response(error.message, { status: 401 });
+    }
+
+    console.error(error);
 
     return new Response(`Something went wrong`, { status: 500 });
   }
