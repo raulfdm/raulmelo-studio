@@ -35,13 +35,9 @@ describe('<ImageSlider />', () => {
      *
      * https://github.com/tannerlinsley/react-virtual/issues/29#issuecomment-657519522
      */
-    window.Element.prototype.getBoundingClientRect = jest
+    window.Element.prototype.getBoundingClientRect = vi
       .fn()
       .mockReturnValue({ height: 300, width: 400 });
-  });
-
-  beforeEach(() => {
-    jest.clearAllMocks();
   });
 
   it('matches snapshot', () => {
@@ -111,11 +107,6 @@ describe('<ImageSlider />', () => {
   });
 
   describe('Actions', () => {
-    it('does not render if img is not present', () => {
-      render(<ImageSlider images={images} />);
-      expect(screen.queryByTestId('actions-wrapper')).not.toBeInTheDocument();
-    });
-
     it('does not render if only has a single image', () => {
       const singleImageList = images.slice(0, 1);
       const { rerender, queryByTestId } = render(

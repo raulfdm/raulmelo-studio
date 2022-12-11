@@ -1,7 +1,7 @@
-//@ts-ignore
 import styles from './YouTubeIframe.module.css';
 
 export function YouTubeIframe({ src, videoId }: YouTubeIframeProps) {
+  console.log('videoId', videoId);
   if (src) {
     throw new Error(
       `YouTubeIframe: "src" is no longer allowed. Use "videoId" instead`,

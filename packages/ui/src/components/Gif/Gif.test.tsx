@@ -23,29 +23,6 @@ describe('<Gif />', () => {
     expect(figure).toHaveStyle('max-width: 300px');
   });
 
-  it('throws an error if width or height is undefined', () => {
-    expect(() =>
-      //@ts-ignore
-      render(<Gif width="300" />),
-    ).toThrowErrorMatchingInlineSnapshot(
-      `"Width and Height are required: Image src: undefined"`,
-    );
-
-    expect(() =>
-      //@ts-ignore
-      render(<Gif height="300" />),
-    ).toThrowErrorMatchingInlineSnapshot(
-      `"Width and Height are required: Image src: undefined"`,
-    );
-
-    expect(() =>
-      //@ts-ignore
-      render(<Gif />),
-    ).toThrowErrorMatchingInlineSnapshot(
-      `"Width and Height are required: Image src: undefined"`,
-    );
-  });
-
   describe('img', () => {
     it('renders img with src sent', () => {
       render(<Gif {...defaultProps} />);
@@ -65,7 +42,7 @@ describe('<Gif />', () => {
         <img data-testid="very-custom-comp" style={{ margin: 10 }} {...props} />
       );
 
-      render(<Gif {...defaultProps} ImageComponent={CustomImage} />);
+      render(<Gif {...defaultProps} renderImage={CustomImage} />);
 
       const container = screen.getByTestId(
         'very-custom-comp',

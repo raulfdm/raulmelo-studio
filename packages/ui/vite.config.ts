@@ -1,3 +1,4 @@
+import react from '@vitejs/plugin-react';
 import path from 'path';
 import { defineConfig } from 'vite';
 
@@ -17,8 +18,13 @@ function isExternal(id: string) {
 }
 
 export default defineConfig(() => ({
-  esbuild: {
-    jsxInject: "import React from 'react'",
+  plugins: [react()],
+  test: {
+    clearMocks: true,
+    globals: true,
+    environment: 'jsdom',
+    css: true,
+    setupFiles: ['./config/testSetup.ts'],
   },
   build: {
     lib: {

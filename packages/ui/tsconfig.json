@@ -8,7 +8,11 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "lib": ["dom", "esnext", "dom.iterable"],
+    "lib": [
+      "dom",
+      "esnext",
+      "dom.iterable"
+    ],
     "module": "esnext",
     "declaration": true,
     "declarationDir": "./dist/types",
@@ -16,13 +20,20 @@
     "strict": true,
     "target": "esnext",
     "allowSyntheticDefaultImports": true,
+    "types": [
+      "vite/client",
+      "vitest/globals"
+    ],
     "plugins": [
       {
         "name": "typescript-plugin-css-modules"
       }
     ]
   },
-  "include": ["./src", "*.d.ts"],
+  "include": [
+    "./src",
+    "*.d.ts"
+  ],
   "exclude": [
     "node_modules",
     "dist",

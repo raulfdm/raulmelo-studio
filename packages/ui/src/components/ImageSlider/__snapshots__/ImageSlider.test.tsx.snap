@@ -1,99 +1,38 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
 
-exports[`<ImageSlider /> matches snapshot 1`] = `
-.emotion-0 {
-  position: relative;
-  padding: 0.5rem;
-}
-
-.emotion-1.emotion-1 {
-  margin: 0;
-}
-
-.emotion-3 {
-  text-align: center;
-}
-
-.emotion-4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  position: absolute;
-  right: 0px;
-  left: 0px;
-  top: 0px;
-  height: 1.75rem;
-  margin-left: -0.75rem;
-  margin-right: -0.75rem;
-  -webkit-transform: translateY(150px);
-  -moz-transform: translateY(150px);
-  -ms-transform: translateY(150px);
-  transform: translateY(150px);
-}
-
-.emotion-5 {
-  width: 2rem;
-  height: 2rem;
-  padding: 0.5rem;
-  z-index: 10;
-  --tw-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow);
-  font-size: 1.333rem;
-  line-height: 1.3;
-  border-radius: 9999px;
-  --tw-bg-opacity: 1;
-  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
-  transition-property: background-color,color,fill,opacity,border,shadow;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 200ms;
-}
-
-.dark .emotion-5 {
-  --tw-bg-opacity: 1;
-  background-color: rgba(51, 65, 85, var(--tw-bg-opacity));
-}
-
+exports[`<ImageSlider /> > matches snapshot 1`] = `
 <div
-  class="emotion-0"
+  class="relative p-2 mx-auto"
   data-testid="image-slider"
 >
   <figure
-    class="emotion-1 emotion-2"
     data-sliderfigure="true"
+    style="margin: 0px;"
   >
-    <span
-      style="box-sizing: border-box; display: block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;"
-    >
-      <span
-        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 66.66666666666666% 0px 0px 0px;"
-      />
-      <img
-        alt="random picture"
-        data-nimg="responsive"
-        decoding="async"
-        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-      />
-      <noscript />
-    </span>
+    <img
+      alt="random picture"
+      class="mx-auto"
+      height="200"
+      src="/test.png"
+      width="300"
+    />
     <figcaption
-      class="emotion-3"
+      class="text-center"
       data-testid="caption"
     >
       random picture
     </figcaption>
   </figure>
   <div
-    class="emotion-4"
+    class="absolute top-0 left-0 right-0 flex justify-between -mx-3 transform h-7"
     data-testid="actions-wrapper"
+    style="transform: translateY(150px);"
   >
     <button
-      class="emotion-5 emotion-6"
+      aria-label="Previous image"
+      class="z-10 w-8 h-8 p-2 text-lg duration-200 bg-white rounded-full shadow dark:bg-blue-700 transition-theme ease "
       data-testid="prev-image"
+      type="button"
     >
       <svg
         fill="none"
@@ -111,8 +50,10 @@ exports[`<ImageSlider /> matches snapshot 1`] = `
       </svg>
     </button>
     <button
-      class="emotion-5 emotion-6"
+      aria-label="Next image"
+      class="z-10 w-8 h-8 p-2 text-lg duration-200 bg-white rounded-full shadow dark:bg-blue-700 transition-theme ease "
       data-testid="next-image"
+      type="button"
     >
       <svg
         fill="none"
