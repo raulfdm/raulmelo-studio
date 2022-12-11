@@ -1,7 +1,7 @@
-const defaultConfig = require('../../config/jest.config');
-
 module.exports = {
-  ...defaultConfig,
+  clearMocks: true,
+  collectCoverage: true,
+  testMatch: ['**/?(*.)+(spec|test).[tj]s?(x)'],
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['./jest.setup.js'],
   modulePathIgnorePatterns: ['<rootDir>/.next'],

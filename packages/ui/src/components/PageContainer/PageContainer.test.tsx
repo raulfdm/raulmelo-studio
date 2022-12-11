@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 
-import { ProseContainer } from '.';
+import { PageContainer } from './index';
 
-describe('<ProseContainer />', () => {
+describe('<PageContainer />', () => {
   it('renders element', () => {
-    render(<ProseContainer>hey</ProseContainer>);
+    render(<PageContainer>hey</PageContainer>);
 
-    expect(screen.getByRole('article')).toBeInTheDocument();
-    expect(screen.getByRole('article')).toHaveTextContent('hey');
+    expect(screen.getByTestId('page-container')).toBeInTheDocument();
+    expect(screen.getByTestId('page-container')).toHaveTextContent('hey');
   });
 });

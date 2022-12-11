@@ -35,9 +35,10 @@ const libConfig: Record<LibTypes, { entry: string; fileName: string }> = {
 
 const currentConfig = libConfig[LIB];
 
-// console.log('AHH', fileURLToPath(new URL('./src/config', import.meta.url)));
-
 const config = defineConfig(() => ({
+  test: {
+    globals: true,
+  },
   resolve: {
     alias: [
       {

@@ -18,8 +18,12 @@ describe('<YouTubeIframe />', () => {
   });
 
   it('throws an error if neither "src" nor "directUrl" has been passed', () => {
-    expect(() => render(<YouTubeIframe />)).toThrowErrorMatchingInlineSnapshot(
-      `"YouTubeIframe: \\"videoId\\" is required"`,
+    const errorSpy = vi.spyOn(console, 'error');
+
+    render(<YouTubeIframe />);
+
+    expect(errorSpy).toHaveBeenCalledWith(
+      `YouTubeIframe: "videoId" is required`,
     );
   });
 });
