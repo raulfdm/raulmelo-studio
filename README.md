@@ -5,7 +5,6 @@
 |                                                                                                                                                                              Pipeline Status |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | [![Fitness Buddy](https://github.com/raulfdm/raulmelo-studio/actions/workflows/fitness-buddy.yml/badge.svg)](https://github.com/raulfdm/raulmelo-studio/actions/workflows/fitness-buddy.yml) |
-|                   [![Lambdas](https://github.com/raulfdm/raulmelo-studio/actions/workflows/lambdas.yml/badge.svg)](https://github.com/raulfdm/raulmelo-studio/actions/workflows/lambdas.yml) |
 |                [![Packages](https://github.com/raulfdm/raulmelo-studio/actions/workflows/packages.yml/badge.svg)](https://github.com/raulfdm/raulmelo-studio/actions/workflows/packages.yml) |
 |                   [![Website](https://github.com/raulfdm/raulmelo-studio/actions/workflows/website.yml/badge.svg)](https://github.com/raulfdm/raulmelo-studio/actions/workflows/website.yml) |
 

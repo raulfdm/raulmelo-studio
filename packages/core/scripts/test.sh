@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-echo "Testing Lambda Functions"
+echo "Testing Core"
 ./../../scripts/common/test.sh $@
