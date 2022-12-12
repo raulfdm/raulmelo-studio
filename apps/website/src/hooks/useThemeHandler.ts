@@ -1,4 +1,4 @@
-import type { AppTheme} from '@raulmelo/core';
+import type { AppTheme } from '@raulmelo/core';
 import { utils } from '@raulmelo/core';
 import { useMachine } from '@xstate/react';
 import { createMachine } from 'xstate';
@@ -96,7 +96,7 @@ const themeMachine = createMachine(
 );
 
 export function useThemeHandler() {
-  const [state, send] = useMachine(() => themeMachine);
+  const [state, send] = useMachine(() => themeMachine, {} as any);
 
   return {
     currentTheme: state.value as AppTheme,
