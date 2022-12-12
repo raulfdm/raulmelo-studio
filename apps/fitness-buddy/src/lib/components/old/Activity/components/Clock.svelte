@@ -20,7 +20,7 @@
   import TrashIcon from '$lib/components/Icons/TrashIcon.svelte';
   import { useMachine } from '@xstate/svelte';
 
-  const clockMachineService = useMachine(clockMachine);
+  const clockMachineService = useMachine(clockMachine, {} as any);
 
   clockMachineService.service.start();
 

@@ -15,7 +15,11 @@
 {#if schemas.length > 0}
   <nav class="grid grid-cols-2 gap-6">
     {#each schemas as schema}
-      <a sveltekit:prefetch href={`/workout/${schema._id}`} class="link">
+      <a
+        data-sveltekit-preload-data="hover"
+        href={`/workout/${schema._id}`}
+        class="link"
+      >
         <h2 class="title">
           {schema.routine.name}
           {#if schema.routine.description}
