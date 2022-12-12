@@ -100,6 +100,10 @@ module.exports = {
       groupName: 'TS Lint',
     },
     {
+      matchPackagePatterns: ['@remix-run', 'remix'],
+      groupName: 'Remix',
+    },
+    {
       groupName: 'Tailwind',
       matchPackagePatterns: [
         'tailwindcss',
