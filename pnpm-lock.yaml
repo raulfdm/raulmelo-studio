@@ -167,7 +167,7 @@ importers:
       next-seo: 5.15.0
       next-sitemap: 3.1.32
       prettier: 2.8.1
-      query-string: 8.0.0
+      query-string: 8.0.3
       react: 18.2.0
       react-dom: 18.2.0
       react-instantsearch-dom: 6.38.1
@@ -198,7 +198,7 @@ importers:
       lodash.throttle: 4.1.1
       next: 13.0.6_672uxklweod7ene3nqtsh262ca
       next-seo: 5.15.0_6jx7hpii6hgsrmhxgqrmo3277u
-      query-string: 8.0.0
+      query-string: 8.0.3
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-instantsearch-dom: 6.38.1_fzyfqr3mixyxftdbf7mmfo2jb4
@@ -273,7 +273,7 @@ importers:
       lodash.merge: 4.6.2
       postcss: 8.4.20
       postcss-import: 15.1.0
-      query-string: 8.0.0
+      query-string: 8.0.3
       react: 18.2.0
       react-dom: 18.2.0
       react-instantsearch-hooks-server: 6.38.1
@@ -313,7 +313,7 @@ importers:
       flat: 5.0.2
       framer-motion: 7.7.2_biqbaboplfbrettd7655fr4n2y
       lodash.merge: 4.6.2
-      query-string: 8.0.0
+      query-string: 8.0.3
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-instantsearch-hooks-server: 6.38.1_fzyfqr3mixyxftdbf7mmfo2jb4
@@ -321,7 +321,7 @@ importers:
       react-intl: 6.2.5_o77wnou4wwnegu5woljtklrzru
       react-popper: 2.3.0_r6q5zrenym2zg7je7hgi674bti
       react-use: 17.4.0_biqbaboplfbrettd7655fr4n2y
-      remix-utils: 5.0.1_fw2eur6jt4aammt6e3idqtih4q
+      remix-utils: 5.0.1_vnfonsfmhr2j74rysuehxslvcm
       sanity: 3.0.6_ph7a4h4zuhs3ikef4sgg5pirqm
       sanity-plugin-media: 2.0.2_63w7ssxyc4ugcxm7bnnsilvrsq
       schema-dts: 1.1.0_typescript@4.9.4
@@ -2146,6 +2146,34 @@ packages:
       '@lezer/common': 1.0.2
     dev: false
 
+  /@codemirror/autocomplete/6.3.4_u5gbqo7aojmu77edc2eyyk25be:
+    resolution: {integrity: sha512-irxKsTSjS0OkfMWWt9YxtNK97++/E+XIHfKnRpSVfZyHzda/amYF0BR+T8mMkrGQWidx2zApxHx08GT13egyQA==}
+    peerDependencies:
+      '@codemirror/language': ^6.0.0
+      '@codemirror/state': ^6.0.0
+      '@codemirror/view': ^6.0.0
+      '@lezer/common': ^1.0.0
+    dependencies:
+      '@codemirror/language': 6.3.1
+      '@codemirror/state': 6.1.4
+      '@codemirror/view': 6.7.1
+      '@lezer/common': 1.0.2
+    dev: false
+
+  /@codemirror/autocomplete/6.4.0_u5gbqo7aojmu77edc2eyyk25be:
+    resolution: {integrity: sha512-HLF2PnZAm1s4kGs30EiqKMgD7XsYaQ0XJnMR0rofEWQ5t5D60SfqpDIkIh1ze5tiEbyUWm8+VJ6W1/erVvBMIA==}
+    peerDependencies:
+      '@codemirror/language': ^6.0.0
+      '@codemirror/state': ^6.0.0
+      '@codemirror/view': ^6.0.0
+      '@lezer/common': ^1.0.0
+    dependencies:
+      '@codemirror/language': 6.3.1
+      '@codemirror/state': 6.1.4
+      '@codemirror/view': 6.7.1
+      '@lezer/common': 1.0.2
+    dev: false
+
   /@codemirror/commands/6.1.2:
     resolution: {integrity: sha512-sO3jdX1s0pam6lIdeSJLMN3DQ6mPEbM4yLvyKkdqtmd/UDwhXA5+AwFJ89rRXm6vTeOXBsE5cAmlos/t7MJdgg==}
     dependencies:
@@ -2203,12 +2231,20 @@ packages:
     dependencies:
       '@codemirror/language': 6.3.1
       '@codemirror/state': 6.1.4
-      '@codemirror/view': 6.7.0
+      '@codemirror/view': 6.7.1
       '@lezer/highlight': 1.1.3
     dev: false
 
   /@codemirror/view/6.7.0:
     resolution: {integrity: sha512-sI3CngHQlguxAquc2oZ4sMFDgTJiCnKkRcFmw5apqcnNLvQfQtEDIlYvCVl1adJ6UV7ZUV9wOdqkeJ8kz2+5gg==}
+    dependencies:
+      '@codemirror/state': 6.1.4
+      style-mod: 4.0.0
+      w3c-keyname: 2.2.6
+    dev: false
+
+  /@codemirror/view/6.7.1:
+    resolution: {integrity: sha512-kYtS+uqYw/q/0ytYxpkqE1JVuK5NsbmBklWYhwLFTKO9gVuTdh/kDEeZPKorbqHcJ+P+ucrhcsS1czVweOpT2g==}
     dependencies:
       '@codemirror/state': 6.1.4
       style-mod: 4.0.0
@@ -4072,7 +4108,7 @@ packages:
       rxjs: ^6.5.3
       styled-components: ^5.2
     dependencies:
-      '@codemirror/autocomplete': 6.3.4_2oew43mvjdijhmfrdvqmoytsm4
+      '@codemirror/autocomplete': 6.3.4_u5gbqo7aojmu77edc2eyyk25be
       '@codemirror/commands': 6.1.2
       '@codemirror/lang-javascript': 6.1.2
       '@codemirror/language': 6.3.1
@@ -6582,7 +6618,7 @@ packages:
       '@codemirror/state': '>=6.0.0'
       '@codemirror/view': '>=6.0.0'
     dependencies:
-      '@codemirror/autocomplete': 6.3.4_2oew43mvjdijhmfrdvqmoytsm4
+      '@codemirror/autocomplete': 6.3.4_u5gbqo7aojmu77edc2eyyk25be
       '@codemirror/commands': 6.1.2
       '@codemirror/language': 6.3.1
       '@codemirror/lint': 6.1.0
@@ -8587,13 +8623,13 @@ packages:
   /codemirror/6.0.1_@lezer+common@1.0.2:
     resolution: {integrity: sha512-J8j+nZ+CdWmIeFIGXEFbFPtpiYacFMDR8GlHK3IyHQJMCaVRfGx9NT+Hxivv1ckLWPvNdZqndbr/7lVhrf/Svg==}
     dependencies:
-      '@codemirror/autocomplete': 6.3.4_2oew43mvjdijhmfrdvqmoytsm4
+      '@codemirror/autocomplete': 6.4.0_u5gbqo7aojmu77edc2eyyk25be
       '@codemirror/commands': 6.1.2
       '@codemirror/language': 6.3.1
       '@codemirror/lint': 6.1.0
       '@codemirror/search': 6.2.3
       '@codemirror/state': 6.1.4
-      '@codemirror/view': 6.7.0
+      '@codemirror/view': 6.7.1
     transitivePeerDependencies:
       - '@lezer/common'
     dev: false
@@ -17624,8 +17660,8 @@ packages:
     engines: {node: '>=0.6'}
     dev: false
 
-  /query-string/8.0.0:
-    resolution: {integrity: sha512-mB9U/uR7+1ZTzHMMlkk06qH74bKeNkZXzZXxLpoOfypAR9AVhVcYhvOnFtiosoS6Mf7rNwsLhnzeefgZMgCE/A==}
+  /query-string/8.0.3:
+    resolution: {integrity: sha512-RtRwkRFCLPQWz27ETbeqIA9UdaLv2Ps7EiNjIS57BaZyx/gWi4QKq7K4+rYBEHToSo/dvLZ+S1fEOKcacojA/Q==}
     engines: {node: '>=14.16'}
     dependencies:
       decode-uri-component: 0.2.2
@@ -18533,7 +18569,7 @@ packages:
       mdast-squeeze-paragraphs: 4.0.0
     dev: true
 
-  /remix-utils/5.0.1_fw2eur6jt4aammt6e3idqtih4q:
+  /remix-utils/5.0.1_vnfonsfmhr2j74rysuehxslvcm:
     resolution: {integrity: sha512-knt8pmcWECIurYlR+gTOaNF8AkfIlAjOyS5/kPMVkIXt16BjfjyPMG6HrAK1Npvl1cpURq623PBrfGezvBeXFg==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -18550,7 +18586,7 @@ packages:
       schema-dts: 1.1.0_typescript@4.9.4
       type-fest: 2.19.0
       uuid: 8.3.2
-      zod: 3.19.1
+      zod: 3.20.2
     transitivePeerDependencies:
       - typescript
     dev: false
@@ -22242,8 +22278,8 @@ packages:
       compress-commons: 4.1.1
       readable-stream: 3.6.0
 
-  /zod/3.19.1:
-    resolution: {integrity: sha512-LYjZsEDhCdYET9ikFu6dVPGp2YH9DegXjdJToSzD9rO6fy4qiRYFoyEYwps88OseJlPyl2NOe2iJuhEhL7IpEA==}
+  /zod/3.20.2:
+    resolution: {integrity: sha512-1MzNQdAvO+54H+EaK5YpyEy0T+Ejo/7YLHS93G3RnYWh5gaotGHwGeN/ZO687qEDU2y4CdStQYXVHIgrUl5UVQ==}
     dev: false
 
   /zwitch/1.0.5:
