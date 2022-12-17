@@ -1,5 +1,13 @@
-export type SupportedLanguages = 'en' | 'pt';
+import { z } from 'zod';
 
-export type AllSupportedLanguages = SupportedLanguages | 'all';
+export const supportedLanguagesSchema = z.enum(['en', 'pt']);
+export type SupportedLanguages = z.infer<typeof supportedLanguagesSchema>;
 
-export type AppTheme = 'dark' | 'light';
+export const allLanguagesSchema = z.union([
+  supportedLanguagesSchema,
+  z.enum(['all']),
+]);
+export type AllLanguages = z.infer<typeof allLanguagesSchema>;
+
+export const appThemeSchema = z.enum(['dark', 'light']);
+export type AppTheme = z.infer<typeof appThemeSchema>;
