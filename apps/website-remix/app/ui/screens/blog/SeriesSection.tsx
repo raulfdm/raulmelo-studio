@@ -1,6 +1,6 @@
 import { useLocalization } from '$infrastructure/contexts/Localization';
 import { getPostUrl } from '$infrastructure/utils/url';
-import type { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
+import type { BlogPostBySlug } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
 import { ChevronDownIcon } from '@raulmelo/ui';
 import { Link } from '@remix-run/react';
 import { useMachine } from '@xstate/react';
@@ -14,14 +14,17 @@ export const SeriesSection = ({
   series,
   currentPostId,
 }: SeriesSectionProps) => {
-  const [current, send] = useMachine(seriesMachine);
+  /**
+   * TODO: fix me
+   */
+  const [current, send] = useMachine(seriesMachine, {} as any);
   const { locale } = useLocalization();
   const { name, posts } = series;
   const currentState = current.value as SeriesMachineState;
 
-  const toggleSection = () => send('TOGGLE');
+  const toggleSection = () => send(`TOGGLE`);
 
-  const isExpanded = current.matches('expanded');
+  const isExpanded = current.matches(`expanded`);
 
   return (
     <section>
@@ -32,11 +35,11 @@ export const SeriesSection = ({
         <div>
           <div
             className={classNames([
-              'flex content-between cursor-pointer px-4 py-3',
-              'text-lg font-bold md:text-xl duration-300 transition-spacing',
+              `flex content-between cursor-pointer px-4 py-3`,
+              `text-lg font-bold md:text-xl duration-300 transition-spacing`,
               isExpanded
-                ? 'pb-2.5 border-b border-gray-100 dark:border-gray-600'
-                : 'pb-0 border-none',
+                ? `pb-2.5 border-b border-gray-100 dark:border-gray-600`
+                : `pb-0 border-none`,
             ])}
             onClick={toggleSection}
             data-testid="expand-button"
@@ -48,8 +51,8 @@ export const SeriesSection = ({
               initial="collapsed"
               animate={currentState}
               variants={{
-                expanded: { rotate: '0deg' },
-                collapsed: { rotate: '180deg' },
+                expanded: { rotate: `0deg` },
+                collapsed: { rotate: `180deg` },
               }}
             >
               <ChevronDownIcon className="w-5" />
@@ -72,7 +75,7 @@ export const SeriesSection = ({
                 <m.li
                   layout
                   className={classNames(
-                    'cursor-pointer m-0 font-sans text-sm md:text-base',
+                    `cursor-pointer m-0 font-sans text-sm md:text-base`,
                     {
                       'bg-green-400 hover:bg-green-400 hover:bg-opacity-50':
                         isCurrentPost,
@@ -85,7 +88,7 @@ export const SeriesSection = ({
                   <Link
                     to={getPostUrl(slug, locale)}
                     className="block px-4 py-3 no-underline"
-                    aria-hidden={currentState === 'collapsed'}
+                    aria-hidden={currentState === `collapsed`}
                   >
                     {seriesCopy}
                   </Link>
@@ -97,11 +100,11 @@ export const SeriesSection = ({
           <div
             onClick={toggleSection}
             className={classNames([
-              'flex content-between cursor-pointer px-4 py-3',
-              'font-sans text-base md:text-md duration-300 transition-spacing',
+              `flex content-between cursor-pointer px-4 py-3`,
+              `font-sans text-base md:text-md duration-300 transition-spacing`,
               isExpanded
-                ? 'pt-2.5 border-t border-gray-100 dark:border-gray-600'
-                : 'pt-0 border-none',
+                ? `pt-2.5 border-t border-gray-100 dark:border-gray-600`
+                : `pt-0 border-none`,
             ])}
             role="button"
           >
@@ -122,23 +125,23 @@ export const SeriesSection = ({
 
 interface SeriesSectionProps {
   currentPostId: string;
-  series: NonNullable<IBlogPostBySlugApiResponse['series']>;
+  series: NonNullable<BlogPostBySlug[`series`]>;
   divider?: boolean;
 }
 
-type SeriesMachineState = 'expanded' | 'collapsed';
+type SeriesMachineState = `expanded` | `collapsed`;
 
 const variants = {
   list: {
     expanded: {
-      height: 'auto',
+      height: `auto`,
       opacity: 1,
       transition: {
         delayChildren: 0.2,
         restDelta: 2,
         staggerChildren: 0.07,
         stiffness: 40,
-        type: 'spring',
+        type: `spring`,
       },
     },
     collapsed: {
@@ -150,14 +153,14 @@ const variants = {
         staggerChildren: 0.05,
         staggerDirection: -1,
         stiffness: 400,
-        type: 'spring',
+        type: `spring`,
       },
     },
   },
   item: {
     expanded: {
       y: 0,
-      height: 'auto',
+      height: `auto`,
       opacity: 1,
       transition: {
         stiffness: 1000,
@@ -177,18 +180,18 @@ const variants = {
 const seriesMachine = createMachine({
   predictableActionArguments: true,
   preserveActionOrder: true,
-  tsTypes: {} as import('./SeriesSection.typegen').Typegen0,
-  initial: 'collapsed',
+  tsTypes: {} as import(`./SeriesSection.typegen`).Typegen0,
+  initial: `collapsed`,
   states: {
     collapsed: {
       on: {
-        TOGGLE: 'expanded',
+        TOGGLE: `expanded`,
       },
     },
     expanded: {
       on: {
-        TOGGLE: 'collapsed',
-        CLOSE: 'collapsed',
+        TOGGLE: `collapsed`,
+        CLOSE: `collapsed`,
       },
     },
   },

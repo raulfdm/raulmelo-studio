@@ -1,5 +1,5 @@
 import { PortableText } from '@portabletext/react';
-import type { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts';
+import type { BlogPostBySlug } from '@raulmelo/core/dist/types/domains/posts';
 import { ProseContainer } from '@raulmelo/ui';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -157,18 +157,18 @@ export const PortableTextPost = ({
 
 interface PortableTextPostProps
   extends Omit<
-    IBlogPostBySlugApiResponse,
+    BlogPostBySlug,
     '_id' | 'unsplash' | 'featuredImage' | 'description' | 'slug' | 'tags'
   > {
   estimatedReadingTime: number;
   nextSeo?: NextSeoProps;
   preview?: boolean;
-  unsplash?: IBlogPostBySlugApiResponse['unsplash'];
-  featuredImage?: IBlogPostBySlugApiResponse['featuredImage'];
-  description?: IBlogPostBySlugApiResponse['description'];
+  unsplash?: BlogPostBySlug['unsplash'];
+  featuredImage?: BlogPostBySlug['featuredImage'];
+  description?: BlogPostBySlug['description'];
   seriesSection?: {
     top: JSX.Element | null;
     bottom: JSX.Element | null;
   };
-  tags?: IBlogPostBySlugApiResponse['tags'];
+  tags?: BlogPostBySlug['tags'];
 }

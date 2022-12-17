@@ -1,4 +1,4 @@
-import type { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
+import type { BlogPostBySlug } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
 import { ChevronDownIcon } from '@raulmelo/ui';
 import { useMachine } from '@xstate/react';
 import classNames from 'classnames';
@@ -118,7 +118,7 @@ export const SeriesSection = ({
 
 interface SeriesSectionProps {
   currentPostId: string;
-  series: NonNullable<IBlogPostBySlugApiResponse['series']>;
+  series: NonNullable<BlogPostBySlug['series']>;
   divider?: boolean;
 }
 

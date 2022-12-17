@@ -1,13 +1,13 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { domains, SupportedLanguages } from '../.';
 import { SUPPORTED_LANGUAGES } from '../config/languages';
 import { sortPostsByPublishedDate } from '../domains/posts';
 import type {
   IRSSApiResponse,
   IRSSDataPost,
 } from '../domains/rss/queryRssData/types';
+import { domains, SupportedLanguages } from '../index';
 
 type IRssConfig = Omit<IRSSApiResponse, 'posts' | 'tils'>;
 

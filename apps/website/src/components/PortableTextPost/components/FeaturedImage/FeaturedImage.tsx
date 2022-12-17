@@ -1,4 +1,4 @@
-import type { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
+import type { BlogPostBySlug } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
 import classNames from 'classnames';
 import Image from 'next/image';
 import { defineMessages, FormattedMessage } from 'react-intl';
@@ -14,7 +14,7 @@ const messages = defineMessages({
 export type FeaturedImageProps = {
   url: string;
   alt?: string;
-  unsplash?: IBlogPostBySlugApiResponse['unsplash'];
+  unsplash?: BlogPostBySlug['unsplash'];
 };
 
 export const FeaturedImage = ({ url, alt, unsplash }: FeaturedImageProps) => {
@@ -42,7 +42,7 @@ export const FeaturedImage = ({ url, alt, unsplash }: FeaturedImageProps) => {
   );
 };
 
-type UnsplashCaptionProps = NonNullable<IBlogPostBySlugApiResponse['unsplash']>;
+type UnsplashCaptionProps = NonNullable<BlogPostBySlug['unsplash']>;
 
 function UnsplashCaption({ authorName, url }: UnsplashCaptionProps) {
   return (

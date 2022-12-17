@@ -1,7 +1,7 @@
-import type { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
+import type { BlogPostBySlug } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
 
 export type BlogPostProps = {
-  post: IBlogPostBySlugApiResponse;
+  post: BlogPostBySlug;
   preview: boolean;
   estimatedReadingTime: number;
 };
