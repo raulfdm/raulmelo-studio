@@ -6,16 +6,23 @@ import {
   siteSettingsQuery,
   socialsQuery,
 } from './query';
-import type { ISiteData } from './types';
+import type {
+  DefaultSeo,
+  PersonalInformation,
+  SiteData,
+  SiteSettings,
+  Social,
+} from './schema';
+import { siteDataSchema } from './schema';
 
-export async function querySiteData(): Promise<ISiteData> {
+export async function querySiteData(): Promise<SiteData> {
   const [defaultSeoPt, defaultSeoEn, personalInformation, site, socials] =
     await Promise.all([
-      client.fetch(defaultSeoQuery, { language: 'pt' }),
-      client.fetch(defaultSeoQuery, { language: 'en' }),
-      client.fetch(personalInfoQuery),
-      client.fetch(siteSettingsQuery),
-      client.fetch(socialsQuery),
+      client.fetch<DefaultSeo>(defaultSeoQuery, { language: 'pt' }),
+      client.fetch<DefaultSeo>(defaultSeoQuery, { language: 'en' }),
+      client.fetch<PersonalInformation>(personalInfoQuery),
+      client.fetch<SiteSettings>(siteSettingsQuery),
+      client.fetch<Social>(socialsQuery),
     ]);
 
   const result = {
@@ -28,7 +35,7 @@ export async function querySiteData(): Promise<ISiteData> {
     },
   };
 
-  return result;
+  return siteDataSchema.parse(result);
 }
 
-export type { ISiteData } from './types';
+export { DefaultSeo, PersonalInformation, SiteData, SiteSettings, Social };
