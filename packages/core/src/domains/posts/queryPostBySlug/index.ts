@@ -1,16 +1,15 @@
 import { client } from '~/config';
 
 import { postQuery } from './query';
-import { IBlogPostBySlugApiResponse } from './types';
+import type { BlogPostBySlug } from './types';
+import { blogPostBySlugSchema } from './types';
 
-export async function queryPostBySlug(
-  slug: string,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  preview = false,
-): Promise<IBlogPostBySlugApiResponse> {
-  return client.fetch<IBlogPostBySlugApiResponse>(postQuery, {
+export async function queryPostBySlug(slug: string): Promise<BlogPostBySlug> {
+  const result = await client.fetch<BlogPostBySlug>(postQuery, {
     slug,
   });
+
+  return blogPostBySlugSchema.parse(result);
 }
 
-export type { IBlogPostBySlugApiResponse } from './types';
+export type { BlogPostBySlug } from './types';

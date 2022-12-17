@@ -1,47 +1,50 @@
-import type { PortableTextBlock } from '@portabletext/types';
-import { SupportedLanguages } from 'src';
+import { z } from 'zod';
 
-export interface IBlogPostBySlugApiResponse {
-  _id: string;
-  content: PortableTextBlock;
-  title: string;
-  subtitle?: string;
-  description: string;
-  publishedAt: string;
-  slug: string;
-  language: SupportedLanguages;
-  featuredImage: IBlogPostBySlugFeaturedImage;
-  tags: IBlogPostBySlugPostTag[];
-  unsplash: IBlogPostBySlugUnsplash;
-  imageCaption?: string;
-  series?: IBlogPostBySlugSeries;
-}
+import { supportedLanguagesSchema } from '~/global-types';
 
-interface IBlogPostBySlugSeries {
-  name: string;
-  posts: IBlogPostBySlugSeriesPost[];
-}
+const seriesPostSchema = z.object({
+  _id: z.string(),
+  seriesCopy: z.string(),
+  slug: z.string(),
+  publishedAt: z.string(),
+});
 
-interface IBlogPostBySlugSeriesPost {
-  _id: string;
-  seriesCopy: string;
-  slug: string;
-  publishedAt: Date;
-}
+const featuredImageSchema = z.object({
+  url: z.string(),
+  width: z.number(),
+  height: z.number(),
+});
 
-interface IBlogPostBySlugFeaturedImage {
-  url: string;
-  width: number;
-  height: number;
-}
+const postTagSchema = z.object({
+  _id: z.string(),
+  slug: z.string(),
+  name: z.string(),
+});
 
-interface IBlogPostBySlugPostTag {
-  _id: string;
-  slug: string;
-  name: string;
-}
+const unsplashSchema = z.object({
+  authorName: z.string(),
+  url: z.string(),
+});
 
-interface IBlogPostBySlugUnsplash {
-  authorName: string;
-  url: string;
-}
+const seriesSchema = z.object({
+  name: z.string(),
+  posts: z.array(seriesPostSchema),
+});
+
+export const blogPostBySlugSchema = z.object({
+  _id: z.string(),
+  content: z.any(),
+  description: z.string(),
+  featuredImage: featuredImageSchema.optional(),
+  imageCaption: z.string().optional(),
+  language: supportedLanguagesSchema,
+  publishedAt: z.string(),
+  series: seriesSchema.optional(),
+  slug: z.string(),
+  subtitle: z.string().optional(),
+  tags: z.array(postTagSchema),
+  title: z.string(),
+  unsplash: unsplashSchema.optional(),
+});
+
+export type BlogPostBySlug = z.infer<typeof blogPostBySlugSchema>;
