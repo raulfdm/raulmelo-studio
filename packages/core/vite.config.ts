@@ -25,16 +25,11 @@ const config = defineConfig({
     globals: true,
   },
   resolve: {
-    alias: [
-      {
-        find: /^~\/utils/,
-        replacement: path.resolve(__dirname, './src/utils/index.ts'),
-      },
-      {
-        find: /^~\/config/,
-        replacement: path.resolve(__dirname, './src/config/'),
-      },
-    ],
+    alias: {
+      '~/global-types': path.resolve(__dirname, './src/types.ts'),
+      '~/utils': path.resolve(__dirname, './src/utils/index.ts'),
+      '~/config': path.resolve(__dirname, './src/config/'),
+    },
   },
 
   build: {
