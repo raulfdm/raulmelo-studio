@@ -1,6 +1,5 @@
-import type { SupportedLanguages } from 'src';
-
-import { client } from '~/config';
+import type { SupportedLanguages } from '$config/languages';
+import { client } from '$config/sanity';
 
 import { rssQuery } from './query';
 import type { IRSSApiResponse } from './types';

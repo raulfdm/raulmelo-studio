@@ -1,4 +1,4 @@
-import { SupportedLanguages } from 'src/types';
+import type { SupportedLanguages } from '$config/languages';
 
 export type ITagBySlugApiResponse = ITagBySlugPostTag[];
 

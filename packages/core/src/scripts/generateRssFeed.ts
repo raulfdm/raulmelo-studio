@@ -1,13 +1,11 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { SUPPORTED_LANGUAGES } from '../config/languages';
-import { sortPostsByPublishedDate } from '../domains/posts';
-import type {
-  IRSSApiResponse,
-  IRSSDataPost,
-} from '../domains/rss/queryRssData/types';
-import { domains, SupportedLanguages } from '../index';
+import type { SupportedLanguages } from '$config/languages';
+import { domains } from '$domains';
+import { sortPostsByPublishedDate } from '$domains/posts';
+import type { IRSSApiResponse } from '$domains/rss';
+import type { IRSSDataPost } from '$domains/rss/queryRssData/types';
 
 type IRssConfig = Omit<IRSSApiResponse, 'posts' | 'tils'>;
 
@@ -18,7 +16,7 @@ interface IConfig {
 export async function generateRssFeed(config: IConfig): Promise<void> {
   const { outdir } = config;
 
-  for await (const language of SUPPORTED_LANGUAGES.all) {
+  for await (const language of ['en', 'pt'] as const) {
     const { tils, posts, ...restData } = await domains.rss.queryRssData(
       language,
     );

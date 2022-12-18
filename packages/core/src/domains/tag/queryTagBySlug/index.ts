@@ -1,8 +1,8 @@
-import { client } from '~/config';
-import type { SupportedLanguages } from '~/global-types';
+import type { SupportedLanguages } from '$config/languages';
+import { client } from '$config/sanity';
 
 import { tagsBySlugQuery } from './query';
-import { ITagBySlugPostTag } from './types';
+import type { ITagBySlugPostTag } from './types';
 
 export async function queryTagBySlug(
   slug: string,

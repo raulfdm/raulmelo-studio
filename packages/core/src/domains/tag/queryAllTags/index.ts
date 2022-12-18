@@ -1,10 +1,12 @@
-import { client } from '~/config';
+import { client } from '$config/sanity';
 
 import { allTagsQuery } from './query';
-import { ITagsApiResponse } from './types';
+import { Tag, tagsSchema } from './schema';
 
-export function queryAllTags(): Promise<ITagsApiResponse> {
-  return client.fetch(allTagsQuery);
+export async function queryAllTags(): Promise<Tag[]> {
+  const result = await client.fetch(allTagsQuery);
+
+  return tagsSchema.parse(result);
 }
 
-export * from './types';
+export { Tag };

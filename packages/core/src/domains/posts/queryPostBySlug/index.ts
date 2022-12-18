@@ -1,4 +1,4 @@
-import { client } from '~/config';
+import { client } from '$config/sanity';
 
 import { postQuery } from './query';
 import type { BlogPostBySlug } from './types';

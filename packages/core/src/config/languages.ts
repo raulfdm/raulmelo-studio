@@ -8,5 +8,7 @@ export const SUPPORTED_LANGUAGES_WITH_ALL = [
   ...SUPPORTED_LANGUAGES,
   'all',
 ] as const;
-export const allLanguagesSchema = z.enum(SUPPORTED_LANGUAGES_WITH_ALL);
-export type AllLanguages = z.infer<typeof allLanguagesSchema>;
+export const supportedLanguagesWithAll = z.enum(SUPPORTED_LANGUAGES_WITH_ALL);
+export type SupportedLanguagesWithAll = z.infer<
+  typeof supportedLanguagesWithAll
+>;

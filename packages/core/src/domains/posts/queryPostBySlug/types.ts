@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { supportedLanguagesSchema } from '~/global-types';
+import { supportedLanguagesSchema } from '$config/languages';
 
 const seriesPostSchema = z.object({
   _id: z.string(),

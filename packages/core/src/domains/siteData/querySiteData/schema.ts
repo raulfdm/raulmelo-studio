@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { supportedLanguagesSchema } from '~/global-types';
+import { supportedLanguagesSchema } from '$config/languages';
 
 const profilePicSchema = z.object({
   width: z.number(),

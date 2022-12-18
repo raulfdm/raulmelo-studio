@@ -1,5 +1,5 @@
-import { client } from '~/config';
-import type { SupportedLanguages } from '~/global-types';
+import type { SupportedLanguages } from '$config/languages';
+import { client } from '$config/sanity';
 
 import { postQuery, tilQuery } from './query';
 import type { IPostsAndTilsApi } from './types';

@@ -1,14 +1,14 @@
-import { client } from '~/config';
-import { SUPPORTED_LANGUAGES } from '~/config/languages';
-import type { AllLanguages } from '~/global-types';
+import type { SupportedLanguagesWithAll } from '$config/languages';
+import { SUPPORTED_LANGUAGES } from '$config/languages';
+import { client } from '$config/sanity';
 
 import { postQuery } from './query';
-import { IBlogPageApiResponse } from './types';
+import type { IBlogPageApiResponse } from './types';
 
 export function queryPosts(
-  language: AllLanguages,
+  language: SupportedLanguagesWithAll,
 ): Promise<IBlogPageApiResponse> {
-  const languages = language === 'all' ? SUPPORTED_LANGUAGES.all : [language];
+  const languages = language === 'all' ? SUPPORTED_LANGUAGES : [language];
 
   return client.fetch(postQuery, { languages });
 }

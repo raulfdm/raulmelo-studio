@@ -1,12 +1,9 @@
-import { client } from '~/config';
+import { client } from '$config/sanity';
+import { contentBlockToMarkdown } from '$utils/contentBlockToMarkdown';
 
-/**
- * TODO: fix this import
- */
-import { contentBlockToMarkdown } from '../../../utils/contentBlockToMarkdown';
-import { AlgoliaObject } from '../types';
+import type { AlgoliaObject } from '../types';
 import { algoliaPostsQuery, algoliaTilsQuery } from './query';
-import { IAlgoliaContent } from './types';
+import type { IAlgoliaContent } from './types';
 
 export async function queryAlgoliaData() {
   const posts = await client.fetch(algoliaPostsQuery);

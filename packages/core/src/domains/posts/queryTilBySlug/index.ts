@@ -1,7 +1,7 @@
-import { client } from '~/config';
+import { client } from '$config/sanity';
 
 import { tilBySlugQuery } from './query';
-import { ITilBySlugApiResponse } from './types';
+import type { ITilBySlugApiResponse } from './types';
 
 export async function queryTilBySlug(
   slug: string,
