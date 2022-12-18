@@ -26,9 +26,8 @@ const config = defineConfig({
   },
   resolve: {
     alias: {
-      '~/global-types': path.resolve(__dirname, './src/types.ts'),
-      '~/utils': path.resolve(__dirname, './src/utils/index.ts'),
-      '~/config': path.resolve(__dirname, './src/config/'),
+      $utils: path.resolve(__dirname, './src/utils/index.ts'),
+      $config: path.resolve(__dirname, './src/config/'),
     },
   },
 
