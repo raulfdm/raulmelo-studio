@@ -3,6 +3,12 @@
 import path from 'path';
 import { defineConfig } from 'vite';
 
+const aliases = {
+  $utils: path.resolve(__dirname, './src/utils'),
+  $config: path.resolve(__dirname, './src/config'),
+  $domains: path.resolve(__dirname, './src/domains'),
+};
+
 /**
  * This function receives the full import path and we can determine
  * if it's an external module or not.
@@ -17,7 +23,11 @@ function isExternal(id: string) {
   if (id.startsWith('ramda/')) {
     return false;
   }
-  return !id.startsWith('.') && !path.isAbsolute(id) && !id.startsWith('~/');
+  return (
+    !id.startsWith('.') &&
+    !path.isAbsolute(id) &&
+    !Object.keys(aliases).some((alias) => id.startsWith(alias))
+  );
 }
 
 const config = defineConfig({
@@ -25,13 +35,9 @@ const config = defineConfig({
     globals: true,
   },
   resolve: {
-    alias: {
-      $utils: path.resolve(__dirname, './src/utils/index.ts'),
-      $config: path.resolve(__dirname, './src/config/'),
-      $domains: path.resolve(__dirname, './src/domains/'),
-    },
+    preserveSymlinks: true,
+    alias: aliases,
   },
-
   build: {
     outDir: 'dist',
     sourcemap: true,
