@@ -14,7 +14,7 @@ export async function queryTils(
 
   const result = await client.fetch(tilQuery, { languages });
 
-  return tilSchema.parse(result);
+  return tilsSchema.parse(result);
 }
 
 const tilQuery = groq`
@@ -60,4 +60,6 @@ const tilSchema = z.object({
   slug: z.string(),
   tags: z.array(tilTagSchema),
 });
-type Tils = z.infer<typeof tilSchema>;
+
+const tilsSchema = z.array(tilSchema);
+type Tils = z.infer<typeof tilsSchema>;

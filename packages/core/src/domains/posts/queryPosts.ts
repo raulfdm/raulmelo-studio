@@ -53,11 +53,13 @@ const blogPagePostSchema = z.object({
   title: z.string(),
   subtitle: z.string().optional(),
   description: z.string(),
-  featuredImage: z.object({
-    width: z.number(),
-    height: z.number(),
-    url: z.string(),
-  }),
+  featuredImage: z
+    .object({
+      width: z.number(),
+      height: z.number(),
+      url: z.string(),
+    })
+    .optional(),
   tags: z.array(
     z.object({
       slug: z.string(),
@@ -65,11 +67,13 @@ const blogPagePostSchema = z.object({
       _id: z.string(),
     }),
   ),
-  series: z.object({
-    slug: z.string(),
-    name: z.string(),
-    _id: z.string(),
-  }),
+  series: z
+    .object({
+      slug: z.string(),
+      name: z.string(),
+      _id: z.string(),
+    })
+    .optional(),
 });
 
 const blogPostPageListSchema = z.array(blogPagePostSchema);
