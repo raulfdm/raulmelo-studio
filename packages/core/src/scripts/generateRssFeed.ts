@@ -4,10 +4,9 @@ import * as path from 'path';
 import type { SupportedLanguages } from '$config/languages';
 import { domains } from '$domains';
 import { sortPostsByPublishedDate } from '$domains/posts';
-import type { IRSSApiResponse } from '$domains/rss';
-import type { IRSSDataPost } from '$domains/rss/queryRssData/types';
+import type { Rss, RssDataPost } from '$domains/rss';
 
-type IRssConfig = Omit<IRSSApiResponse, 'posts' | 'tils'>;
+type IRssConfig = Omit<Rss, 'posts' | 'tils'>;
 
 interface IConfig {
   outdir: string;
@@ -53,7 +52,7 @@ export async function generateRssFeed(config: IConfig): Promise<void> {
   }
 }
 
-function getRssXml(content: IRSSDataPost[], rss: IRssConfig) {
+function getRssXml(content: RssDataPost[], rss: IRssConfig) {
   const rssItemsXml = content.map(getRssItem).join('');
 
   const latestPostDate = humanizeDate(content[0].publishedAt);
@@ -83,7 +82,7 @@ function getRssXml(content: IRSSDataPost[], rss: IRssConfig) {
     description,
     slug,
     title,
-  }: IRSSDataPost) {
+  }: RssDataPost) {
     const postHref = `${rss.siteUrl}/${urlPrefix}/${slug}`;
 
     return `
@@ -101,6 +100,6 @@ function getRssXml(content: IRSSDataPost[], rss: IRssConfig) {
   }
 }
 
-function humanizeDate(date: Date) {
+function humanizeDate(date: string) {
   return new Date(date).toUTCString();
 }

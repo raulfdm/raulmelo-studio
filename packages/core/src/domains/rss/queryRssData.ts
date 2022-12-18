@@ -40,6 +40,7 @@ const dataPostSchema = z.object({
   title: z.string(),
   urlPrefix: z.union([z.literal('blog'), z.literal('til')]),
 });
+export type RssDataPost = z.infer<typeof dataPostSchema>;
 
 const rssSchema = z.object({
   description: z.string(),
@@ -50,4 +51,4 @@ const rssSchema = z.object({
   title: z.string(),
 });
 
-type Rss = z.infer<typeof rssSchema>;
+export type Rss = z.infer<typeof rssSchema>;
