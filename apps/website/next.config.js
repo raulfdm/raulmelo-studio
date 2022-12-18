@@ -21,6 +21,9 @@ const nextConfig = {
     locales: ['en', 'pt'],
     defaultLocale: 'en',
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   async rewrites() {
     return [
       {
