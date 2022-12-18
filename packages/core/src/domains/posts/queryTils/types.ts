@@ -1,6 +1,6 @@
 import type { PortableTextBlock } from '@portabletext/types';
 
-import type { SupportedLanguages } from '~/global-types';
+import type { SupportedLanguages } from '$config/languages';
 
 export type ITilsApiResponse = ITilsTil[];
 export interface ITilsTil {

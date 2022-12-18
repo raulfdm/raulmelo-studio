@@ -1,6 +1,6 @@
 import type { PortableTextBlock } from '@portabletext/types';
 
-import type { SupportedLanguages } from '$config';
+import type { SupportedLanguages } from '$config/languages';
 
 interface CommonContent {
   _id: string;

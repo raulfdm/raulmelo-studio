@@ -1,7 +1,8 @@
 import { client } from '$config/sanity';
 
 import { allTagsQuery } from './query';
-import { Tag, tagsSchema } from './schema';
+import type { Tag } from './schema';
+import { tagsSchema } from './schema';
 
 export async function queryAllTags(): Promise<Tag[]> {
   const result = await client.fetch(allTagsQuery);
@@ -9,4 +10,4 @@ export async function queryAllTags(): Promise<Tag[]> {
   return tagsSchema.parse(result);
 }
 
-export { Tag };
+export type { Tag } from './schema';
