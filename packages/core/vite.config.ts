@@ -28,6 +28,7 @@ const config = defineConfig({
     alias: {
       $utils: path.resolve(__dirname, './src/utils/index.ts'),
       $config: path.resolve(__dirname, './src/config/'),
+      $domains: path.resolve(__dirname, './src/domains/'),
     },
   },
 
