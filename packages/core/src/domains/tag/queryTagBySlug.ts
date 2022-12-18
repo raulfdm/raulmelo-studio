@@ -82,6 +82,7 @@ const tagCommonSchema = z.object({
 const tagTilSchema = tagCommonSchema.extend({
   _type: z.literal('til'),
 });
+export type TagTil = z.infer<typeof tagTilSchema>;
 
 const tagPostSchema = tagCommonSchema.extend({
   _type: z.literal('post'),
@@ -89,6 +90,7 @@ const tagPostSchema = tagCommonSchema.extend({
   description: z.string(),
   featuredImage: featuredImageSchema.optional(),
 });
+export type TagPost = z.infer<typeof tagPostSchema>;
 
 const tagBySlugPost = z.object({
   _id: z.string(),

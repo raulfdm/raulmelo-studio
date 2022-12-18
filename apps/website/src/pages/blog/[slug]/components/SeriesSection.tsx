@@ -1,4 +1,3 @@
-import type { BlogPostBySlug } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
 import { ChevronDownIcon } from '@raulmelo/ui';
 import { useMachine } from '@xstate/react';
 import classNames from 'classnames';
@@ -6,6 +5,19 @@ import { m } from 'framer-motion';
 import Link from 'next/link';
 import { FormattedMessage } from 'react-intl';
 import { createMachine } from 'xstate';
+
+interface SeriesSectionProps {
+  currentPostId: string;
+  series: {
+    name: string;
+    posts: {
+      _id: string;
+      seriesCopy: string;
+      slug: string;
+    }[];
+  };
+  divider?: boolean;
+}
 
 // TODO: review this html markup. It seems having ugly/bad HTML structure.
 export const SeriesSection = ({
@@ -115,12 +127,6 @@ export const SeriesSection = ({
     </section>
   );
 };
-
-interface SeriesSectionProps {
-  currentPostId: string;
-  series: NonNullable<BlogPostBySlug['series']>;
-  divider?: boolean;
-}
 
 type SeriesMachineState = 'expanded' | 'collapsed';
 

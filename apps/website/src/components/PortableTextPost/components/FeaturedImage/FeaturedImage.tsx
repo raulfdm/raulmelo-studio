@@ -1,4 +1,3 @@
-import type { BlogPostBySlug } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
 import classNames from 'classnames';
 import Image from 'next/image';
 import { defineMessages, FormattedMessage } from 'react-intl';
@@ -14,7 +13,10 @@ const messages = defineMessages({
 export type FeaturedImageProps = {
   url: string;
   alt?: string;
-  unsplash?: BlogPostBySlug['unsplash'];
+  unsplash?: {
+    authorName: string;
+    url: string;
+  };
 };
 
 export const FeaturedImage = ({ url, alt, unsplash }: FeaturedImageProps) => {
@@ -42,7 +44,7 @@ export const FeaturedImage = ({ url, alt, unsplash }: FeaturedImageProps) => {
   );
 };
 
-type UnsplashCaptionProps = NonNullable<BlogPostBySlug['unsplash']>;
+type UnsplashCaptionProps = NonNullable<FeaturedImageProps['unsplash']>;
 
 function UnsplashCaption({ authorName, url }: UnsplashCaptionProps) {
   return (

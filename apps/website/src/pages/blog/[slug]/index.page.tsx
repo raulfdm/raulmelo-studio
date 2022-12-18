@@ -8,12 +8,8 @@ import { PortableTextPost } from '~/components/PortableTextPost';
 import { SeriesSection } from './components/SeriesSection';
 import type { BlogPostProps, GetStaticProps } from './types';
 
-export const BlogPostPage = ({
-  post,
-  preview,
-  estimatedReadingTime,
-}: BlogPostProps) => {
-  const { series, ...restPost } = post;
+export const BlogPostPage = ({ post, estimatedReadingTime }: BlogPostProps) => {
+  const { series, ...restPost } = post as any;
 
   const allSeries = series ? (
     <SeriesSection key={post._id} series={series} currentPostId={post._id} />
@@ -30,10 +26,6 @@ export const BlogPostPage = ({
     <Suspense>
       <PortableTextPost
         {...restPost}
-        preview={preview}
-        // share={{
-        //   description: `${post.title}. ${post.subtitle}`,
-        // }}
         estimatedReadingTime={estimatedReadingTime}
         seriesSection={{
           top: allSeries,
@@ -45,7 +37,7 @@ export const BlogPostPage = ({
 };
 
 export const getStaticProps = async ({ params, preview }: GetStaticProps) => {
-  const post = await domains.posts.queryPostBySlug(params.slug, preview);
+  const post = await domains.posts.queryPostBySlug(params.slug);
 
   if (utils.isNil(post) || utils.isEmpty(post)) {
     return {

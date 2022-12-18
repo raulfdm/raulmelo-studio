@@ -1,4 +1,4 @@
-import type { IPostsAndTilsPost } from '@raulmelo/core/dist/types/domains/posts';
+import type { PostAndTil } from '@raulmelo/core/dist/types/domains/posts';
 import { AnimatePresence, m } from 'framer-motion';
 
 import { ContentTile } from '~/components/ContentTile';
@@ -19,7 +19,7 @@ const itemsAnimationVariants = {
 };
 
 type PostsProps = {
-  posts: IPostsAndTilsPost[];
+  posts: PostAndTil[];
   title: string;
 };
 

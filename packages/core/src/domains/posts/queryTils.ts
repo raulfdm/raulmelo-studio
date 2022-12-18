@@ -60,6 +60,7 @@ const tilSchema = z.object({
   slug: z.string(),
   tags: z.array(tilTagSchema),
 });
+export type Til = z.infer<typeof tilSchema>;
 
 const tilsSchema = z.array(tilSchema);
 type Tils = z.infer<typeof tilsSchema>;

@@ -100,4 +100,5 @@ const postsAndTilsSchema = z.object({
   tils: z.array(tilSchema),
 });
 
-type PostsAndTils = z.infer<typeof postsAndTilsSchema>;
+export type PostsAndTils = z.infer<typeof postsAndTilsSchema>;
+export type PostOrTil = z.infer<typeof postSchema> | z.infer<typeof tilSchema>;

@@ -114,4 +114,4 @@ const blogPostBySlugSchema = z.object({
   unsplash: unsplashSchema.optional(),
 });
 
-type BlogPostBySlug = z.infer<typeof blogPostBySlugSchema>;
+export type BlogPostBySlug = z.infer<typeof blogPostBySlugSchema>;

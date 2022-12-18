@@ -1,5 +1,4 @@
-import type { IUsesData } from '@raulmelo/core/dist/types/domains/uses';
-import type { IUsesApiResponse } from '@raulmelo/core/dist/types/domains/uses/getUses/types';
+import type { Uses } from '@raulmelo/core/dist/types/domains/uses';
 
 import { PortableTextPost } from '~/components/PortableTextPost';
 import { useLocalization } from '~/hooks/useLocalization';
@@ -7,9 +6,9 @@ import siteData from '~/site-data';
 import { getPostUrl } from '~/utils/url';
 
 export type UsesPageProps = {
-  seo: IUsesData['seo'];
+  seo: Uses['seo'];
   title: string;
-  uses: IUsesApiResponse;
+  uses: Uses;
   estimatedReadingTime: number;
 };
 

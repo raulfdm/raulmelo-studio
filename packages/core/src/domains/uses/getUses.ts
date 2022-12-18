@@ -50,4 +50,4 @@ const usesSchema = z.object({
   seo: usesSeoSchema,
   content: z.any(),
 });
-type Uses = z.infer<typeof usesSchema>;
+export type Uses = z.infer<typeof usesSchema>;
