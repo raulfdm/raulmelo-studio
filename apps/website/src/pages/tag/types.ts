@@ -1,15 +1,17 @@
 import type { SupportedLanguages } from '@raulmelo/core';
 import type {
-  TagPost,
-  TagTil,
+  QueryTagBySlugPost,
+  QueryTagBySlugTil,
 } from '@raulmelo/core/dist/types/domains/tag/queryTagBySlug';
 
+type TagOrPost = QueryTagBySlugPost | QueryTagBySlugTil;
+
+type ITagPageContent = TagOrPost[];
+
 export type TagPageProps = {
-  tag: TagPost['tags'][number];
+  tag: NonNullable<QueryTagBySlugPost['tags']>[number];
   content: ITagPageContent;
 };
-
-type ITagPageContent = (TagPost | TagTil)[];
 
 export interface TagPageParams {
   params: {

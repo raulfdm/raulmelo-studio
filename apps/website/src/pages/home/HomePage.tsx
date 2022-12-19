@@ -1,4 +1,4 @@
-import type { PostsAndTils } from '@raulmelo/core/dist/types/domains/posts';
+import type { QueryPostsAndTilsReturnType } from '@raulmelo/core/dist/types/domains/posts/queryPostsAndTils';
 import { ArrowRightIcon } from '@raulmelo/ui';
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';
@@ -28,7 +28,7 @@ const messages = defineMessages({
   },
 });
 
-export const HomePage = ({ posts, tils }: PostsAndTils) => {
+export const HomePage = ({ posts, tils }: QueryPostsAndTilsReturnType) => {
   const { formatMessage, locale } = useLocalization();
   const defaultSeo = siteData.defaultSeo[locale];
 

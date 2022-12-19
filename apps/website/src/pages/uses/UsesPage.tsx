@@ -1,4 +1,4 @@
-import type { Uses } from '@raulmelo/core/dist/types/domains/uses';
+import type { GetUsesReturnType } from '@raulmelo/core/dist/types/domains/uses';
 
 import { PortableTextPost } from '~/components/PortableTextPost';
 import { useLocalization } from '~/hooks/useLocalization';
@@ -6,9 +6,9 @@ import siteData from '~/site-data';
 import { getPostUrl } from '~/utils/url';
 
 export type UsesPageProps = {
-  seo: Uses['seo'];
+  seo: GetUsesReturnType['seo'];
   title: string;
-  uses: Uses;
+  uses: GetUsesReturnType;
   estimatedReadingTime: number;
 };
 

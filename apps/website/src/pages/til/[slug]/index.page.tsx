@@ -1,13 +1,15 @@
 import { domains, utils } from '@raulmelo/core';
-import type { Til } from '@raulmelo/core/dist/types/domains/posts/queryTils';
+import type { QueryTilsReturnType } from '@raulmelo/core/dist/types/domains/posts/queryTils';
 import type { GetStaticPaths } from 'next';
 
 import { PortableTextPost } from '~/components/PortableTextPost';
 
 const { isEmpty, isNil } = utils;
 
+type Til = QueryTilsReturnType[number];
+
 type Props = {
-  til: any;
+  til: Til;
   estimatedReadingTime: number;
 };
 
@@ -24,7 +26,7 @@ type Params = {
   preview?: boolean;
 };
 
-export const getStaticProps = async ({ params, preview }: Params) => {
+export const getStaticProps = async ({ params }: Params) => {
   const til = await domains.posts.queryTilBySlug(params.slug);
 
   // https://github.com/vercel/next.js/issues/16681#issuecomment-792314687
@@ -37,8 +39,6 @@ export const getStaticProps = async ({ params, preview }: Params) => {
   return {
     props: {
       til,
-      // TODO: add a banner for "preview mode"
-      preview: Boolean(preview),
       estimatedReadingTime: utils.content.getEstimatedReadingTime(til.content),
     },
     revalidate: 60,

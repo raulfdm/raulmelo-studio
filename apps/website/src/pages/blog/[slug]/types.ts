@@ -1,7 +1,7 @@
-import type { BlogPostBySlug } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug';
+import type { QueryPostBySlugReturnType } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug';
 
 export type BlogPostProps = {
-  post: BlogPostBySlug;
+  post: QueryPostBySlugReturnType;
   estimatedReadingTime: number;
 };
 

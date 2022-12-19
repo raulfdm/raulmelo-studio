@@ -1,9 +1,11 @@
 import type { SupportedLanguagesWithAll } from '@raulmelo/core';
 import { domains } from '@raulmelo/core';
-import type { Til } from '@raulmelo/core/dist/types/domains/posts/queryTils';
+import type { QueryTilsReturnType } from '@raulmelo/core/dist/types/domains/posts/queryTils';
 import type { GetStaticProps } from 'next';
 
 import { TilsHome } from './TilsHome';
+
+type Til = QueryTilsReturnType[number];
 
 const TilsPage = (props: { tils: Til[] }) => <TilsHome {...props} />;
 

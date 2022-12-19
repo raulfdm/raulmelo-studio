@@ -9,7 +9,7 @@ import { SeriesSection } from './components/SeriesSection';
 import type { BlogPostProps, GetStaticProps } from './types';
 
 export const BlogPostPage = ({ post, estimatedReadingTime }: BlogPostProps) => {
-  const { series, ...restPost } = post as any;
+  const { series, ...restPost } = post;
 
   const allSeries = series ? (
     <SeriesSection key={post._id} series={series} currentPostId={post._id} />
@@ -25,7 +25,7 @@ export const BlogPostPage = ({ post, estimatedReadingTime }: BlogPostProps) => {
   return (
     <Suspense>
       <PortableTextPost
-        {...restPost}
+        {...(restPost as any)}
         estimatedReadingTime={estimatedReadingTime}
         seriesSection={{
           top: allSeries,

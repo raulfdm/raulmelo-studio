@@ -1,11 +1,13 @@
 import type { SupportedLanguages } from '@raulmelo/core';
 import { domains } from '@raulmelo/core';
-import type { PostsAndTils } from '@raulmelo/core/dist/types/domains/posts';
+import type { QueryPostsAndTilsReturnType } from '@raulmelo/core/dist/types/domains/posts/queryPostsAndTils';
 import type { GetStaticProps } from 'next';
 
 import { HomePage } from './HomePage';
 
-const Home = (props: PostsAndTils) => <HomePage {...props} />;
+export default function Home(props: QueryPostsAndTilsReturnType) {
+  return <HomePage {...props} />;
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const NUMBER_OF_POSTS = 2;
@@ -21,5 +23,3 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     },
   };
 };
-
-export default Home;

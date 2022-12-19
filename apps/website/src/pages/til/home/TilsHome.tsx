@@ -1,4 +1,4 @@
-import type { Til } from '@raulmelo/core/dist/types/domains/posts/queryTils';
+import type { QueryTilsReturnType } from '@raulmelo/core/dist/types/domains/posts/queryTils';
 import classNames from 'classnames';
 import { NextSeo } from 'next-seo';
 import { FormattedMessage } from 'react-intl';
@@ -7,6 +7,8 @@ import { ContentTile } from '~/components/ContentTile';
 import { useLocalization } from '~/hooks/useLocalization';
 
 import { getTilUrl } from './utils';
+
+type Til = QueryTilsReturnType[number];
 
 type TilsHomeProps = {
   tils: Til[];
