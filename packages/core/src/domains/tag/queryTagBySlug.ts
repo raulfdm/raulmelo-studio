@@ -79,7 +79,7 @@ const tagCommonSchema = z.object({
   slug: z.string(),
   title: z.string(),
   language: supportedLanguagesSchema,
-  tags: z.array(tagSchema),
+  tags: z.array(tagSchema).optional(),
 });
 
 const tagTilSchema = tagCommonSchema.extend({

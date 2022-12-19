@@ -60,13 +60,15 @@ const blogPagePostSchema = z.object({
       url: z.string(),
     })
     .optional(),
-  tags: z.array(
-    z.object({
-      slug: z.string(),
-      name: z.string(),
-      _id: z.string(),
-    }),
-  ),
+  tags: z
+    .array(
+      z.object({
+        slug: z.string(),
+        name: z.string(),
+        _id: z.string(),
+      }),
+    )
+    .optional(),
   series: z
     .object({
       slug: z.string(),

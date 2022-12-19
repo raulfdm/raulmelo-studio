@@ -68,5 +68,5 @@ const tilBySlugSchema = z.object({
   language: supportedLanguagesSchema,
   slug: z.string(),
   content: z.any(),
-  tags: z.array(tagSchema),
+  tags: z.array(tagSchema).optional(),
 });

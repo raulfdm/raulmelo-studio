@@ -60,7 +60,7 @@ const tilSchema = z.object({
   language: supportedLanguagesSchema,
   content: z.any(),
   slug: z.string(),
-  tags: z.array(tilTagSchema),
+  tags: z.array(tilTagSchema).optional(),
 });
 
 const tilsSchema = z.array(tilSchema);

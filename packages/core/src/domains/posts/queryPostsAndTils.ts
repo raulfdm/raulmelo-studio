@@ -87,7 +87,7 @@ const postSchema = z.object({
   subtitle: z.string().optional(),
   description: z.string(),
   featuredImage: featuredImageSchema.optional(),
-  tags: z.array(tagSchema),
+  tags: z.array(tagSchema).optional(),
 });
 
 const tilSchema = z.object({
@@ -96,7 +96,7 @@ const tilSchema = z.object({
   language: supportedLanguagesSchema,
   publishedAt: z.string(),
   slug: z.string(),
-  tags: z.array(tagSchema),
+  tags: z.array(tagSchema).optional(),
 });
 
 const postsAndTilsSchema = z.object({

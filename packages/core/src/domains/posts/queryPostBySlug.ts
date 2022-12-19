@@ -113,7 +113,7 @@ const blogPostBySlugSchema = z.object({
   series: seriesSchema.optional(),
   slug: z.string(),
   subtitle: z.string().optional(),
-  tags: z.array(postTagSchema),
+  tags: z.array(postTagSchema).optional(),
   title: z.string(),
   unsplash: unsplashSchema.optional(),
 });
