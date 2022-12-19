@@ -1,3 +1,4 @@
+import type { PortableTextBlock } from '@portabletext/types';
 import groq from 'groq';
 import { z } from 'zod';
 
@@ -67,6 +68,6 @@ const tilBySlugSchema = z.object({
   title: z.string(),
   language: supportedLanguagesSchema,
   slug: z.string(),
-  content: z.any(),
+  content: z.any().transform((value) => value as PortableTextBlock),
   tags: z.array(tagSchema).optional(),
 });

@@ -1,3 +1,4 @@
+import type { PortableTextBlock } from '@portabletext/types';
 import groq from 'groq';
 import { z } from 'zod';
 
@@ -89,7 +90,7 @@ const algoliaTilsQuery = groq`
 
 const commonContentSchema = z.object({
   _id: z.string(),
-  content: z.any(),
+  content: z.any().transform((value) => value as PortableTextBlock),
   language: supportedLanguagesSchema,
   publishedAt: z.string(),
   slug: z.string(),

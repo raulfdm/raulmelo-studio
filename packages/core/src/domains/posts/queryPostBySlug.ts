@@ -1,3 +1,4 @@
+import type { PortableTextBlock } from '@portabletext/types';
 import groq from 'groq';
 import { z } from 'zod';
 
@@ -104,7 +105,7 @@ const seriesSchema = z.object({
 
 const blogPostBySlugSchema = z.object({
   _id: z.string(),
-  content: z.any(),
+  content: z.any().transform((value) => value as PortableTextBlock),
   description: z.string(),
   featuredImage: featuredImageSchema.optional(),
   imageCaption: z.string().optional(),
