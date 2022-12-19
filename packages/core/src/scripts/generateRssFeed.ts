@@ -1,15 +1,12 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { domains, SupportedLanguages } from '../.';
-import { SUPPORTED_LANGUAGES } from '../config/languages';
-import { sortPostsByPublishedDate } from '../domains/posts';
-import type {
-  IRSSApiResponse,
-  IRSSDataPost,
-} from '../domains/rss/queryRssData/types';
+import type { SupportedLanguages } from '$config/languages';
+import { domains } from '$domains';
+import { sortPostsByPublishedDate } from '$domains/posts';
+import type { QueryRssDataReturnType } from '$domains/rss';
 
-type IRssConfig = Omit<IRSSApiResponse, 'posts' | 'tils'>;
+type IRssConfig = Omit<QueryRssDataReturnType, 'posts' | 'tils'>;
 
 interface IConfig {
   outdir: string;
@@ -18,7 +15,7 @@ interface IConfig {
 export async function generateRssFeed(config: IConfig): Promise<void> {
   const { outdir } = config;
 
-  for await (const language of SUPPORTED_LANGUAGES.all) {
+  for await (const language of ['en', 'pt'] as const) {
     const { tils, posts, ...restData } = await domains.rss.queryRssData(
       language,
     );
@@ -55,7 +52,7 @@ export async function generateRssFeed(config: IConfig): Promise<void> {
   }
 }
 
-function getRssXml(content: IRSSDataPost[], rss: IRssConfig) {
+function getRssXml(content: QueryRssDataReturnType['posts'], rss: IRssConfig) {
   const rssItemsXml = content.map(getRssItem).join('');
 
   const latestPostDate = humanizeDate(content[0].publishedAt);
@@ -85,7 +82,7 @@ function getRssXml(content: IRSSDataPost[], rss: IRssConfig) {
     description,
     slug,
     title,
-  }: IRSSDataPost) {
+  }: QueryRssDataReturnType['posts'][number]) {
     const postHref = `${rss.siteUrl}/${urlPrefix}/${slug}`;
 
     return `
@@ -103,6 +100,6 @@ function getRssXml(content: IRSSDataPost[], rss: IRssConfig) {
   }
 }
 
-function humanizeDate(date: Date) {
+function humanizeDate(date: string) {
   return new Date(date).toUTCString();
 }

@@ -1,24 +1,21 @@
 import { domains, utils } from '@raulmelo/core';
-import type { ITilsTil } from '@raulmelo/core/dist/types/domains/posts/queryTils/types';
+import type { QueryTilsReturnType } from '@raulmelo/core/dist/types/domains/posts/queryTils';
 import type { GetStaticPaths } from 'next';
 
 import { PortableTextPost } from '~/components/PortableTextPost';
 
 const { isEmpty, isNil } = utils;
 
+type Til = QueryTilsReturnType[number];
+
 type Props = {
-  til: ITilsTil;
-  preview: boolean;
+  til: Til;
   estimatedReadingTime: number;
 };
 
-const TilPostPage = ({ til, preview, estimatedReadingTime }: Props) => {
+const TilPostPage = ({ til, estimatedReadingTime }: Props) => {
   return (
-    <PortableTextPost
-      {...til}
-      preview={preview}
-      estimatedReadingTime={estimatedReadingTime}
-    />
+    <PortableTextPost {...til} estimatedReadingTime={estimatedReadingTime} />
   );
 };
 
@@ -29,8 +26,8 @@ type Params = {
   preview?: boolean;
 };
 
-export const getStaticProps = async ({ params, preview }: Params) => {
-  const til = await domains.posts.queryTilBySlug(params.slug, preview);
+export const getStaticProps = async ({ params }: Params) => {
+  const til = await domains.posts.queryTilBySlug(params.slug);
 
   // https://github.com/vercel/next.js/issues/16681#issuecomment-792314687
   if (isNil(til) || isEmpty(til)) {
@@ -42,8 +39,6 @@ export const getStaticProps = async ({ params, preview }: Params) => {
   return {
     props: {
       til,
-      // TODO: add a banner for "preview mode"
-      preview: Boolean(preview),
       estimatedReadingTime: utils.content.getEstimatedReadingTime(til.content),
     },
     revalidate: 60,
@@ -58,7 +53,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: 'blocking',
   };
 
-  function generatePath(til: ITilsTil) {
+  function generatePath(til: Til) {
     return {
       params: {
         slug: til.slug,

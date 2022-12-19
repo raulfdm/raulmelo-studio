@@ -1,5 +1,5 @@
 import { PortableText } from '@portabletext/react';
-import type { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts';
+import type { SupportedLanguages } from '@raulmelo/core';
 import { ProseContainer } from '@raulmelo/ui';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -17,6 +17,36 @@ import { FeaturedImage } from './components/FeaturedImage';
 import { Header } from './components/Header';
 import { portableComponents } from './components/portableComponents';
 import { PreviewBanner } from './components/PreviewBanner/PreviewBanner';
+
+type PortableTextPostProps = {
+  language: SupportedLanguages;
+  content: any;
+  title: string;
+  subtitle?: string;
+  publishedAt: string;
+  estimatedReadingTime: number;
+  nextSeo?: NextSeoProps;
+  preview?: boolean;
+  unsplash?: {
+    authorName: string;
+    url: string;
+  };
+  featuredImage?: {
+    url: string;
+    width: number;
+    height: number;
+  };
+  description?: string;
+  seriesSection?: {
+    top: JSX.Element | null;
+    bottom: JSX.Element | null;
+  };
+  tags?: {
+    _id: string;
+    name: string;
+    slug: string;
+  }[];
+};
 
 export const PortableTextPost = ({
   content,
@@ -154,21 +184,3 @@ export const PortableTextPost = ({
     </>
   );
 };
-
-interface PortableTextPostProps
-  extends Omit<
-    IBlogPostBySlugApiResponse,
-    '_id' | 'unsplash' | 'featuredImage' | 'description' | 'slug' | 'tags'
-  > {
-  estimatedReadingTime: number;
-  nextSeo?: NextSeoProps;
-  preview?: boolean;
-  unsplash?: IBlogPostBySlugApiResponse['unsplash'];
-  featuredImage?: IBlogPostBySlugApiResponse['featuredImage'];
-  description?: IBlogPostBySlugApiResponse['description'];
-  seriesSection?: {
-    top: JSX.Element | null;
-    bottom: JSX.Element | null;
-  };
-  tags?: IBlogPostBySlugApiResponse['tags'];
-}

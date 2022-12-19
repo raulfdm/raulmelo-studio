@@ -2,8 +2,8 @@ import { getSEOTags } from '$infrastructure/utils/seo';
 import { PortableTextPost } from '$ui/PortableTextPost';
 import { SeriesSection } from '$ui/screens/blog/SeriesSection';
 import { domains, utils } from '@raulmelo/core';
-import type { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts';
-import type { ISiteData } from '@raulmelo/core/dist/types/domains/siteData';
+import type { BlogPostBySlug } from '@raulmelo/core/dist/types/domains/posts';
+import type { SiteData } from '@raulmelo/core/dist/types/domains/siteData';
 import { DotDivider } from '@raulmelo/ui';
 import type { LoaderArgs, MetaFunction, SerializeFrom } from '@remix-run/node';
 import { json } from '@remix-run/node';
@@ -13,9 +13,9 @@ import type { BlogPosting } from 'schema-dts';
 import invariant from 'tiny-invariant';
 
 type LoaderData = {
-  post: IBlogPostBySlugApiResponse;
+  post: BlogPostBySlug;
   estimatedReadingTime: number;
-  siteData: ISiteData;
+  siteData: SiteData;
   url: string;
 };
 

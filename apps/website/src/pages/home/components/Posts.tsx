@@ -1,4 +1,4 @@
-import type { IPostsAndTilsPost } from '@raulmelo/core/dist/types/domains/posts';
+import type { QueryPostsAndTilsReturnType } from '@raulmelo/core/dist/types/domains/posts/queryPostsAndTils';
 import { AnimatePresence, m } from 'framer-motion';
 
 import { ContentTile } from '~/components/ContentTile';
@@ -19,7 +19,9 @@ const itemsAnimationVariants = {
 };
 
 type PostsProps = {
-  posts: IPostsAndTilsPost[];
+  posts:
+    | QueryPostsAndTilsReturnType['posts']
+    | QueryPostsAndTilsReturnType['tils'];
   title: string;
 };
 

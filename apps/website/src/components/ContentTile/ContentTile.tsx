@@ -1,4 +1,3 @@
-import type { IPostsAndTilsPost } from '@raulmelo/core/dist/types/domains/posts';
 import { ArrowRightIcon } from '@raulmelo/ui';
 import classNames from 'classnames';
 import { m } from 'framer-motion';
@@ -7,8 +6,12 @@ import { useState } from 'react';
 
 import { useLocalization } from '~/hooks/useLocalization';
 
-type ContentTileProps = Omit<IPostsAndTilsPost, 'description'> & {
+type ContentTileProps = {
   description?: string;
+  slug: string;
+  publishedAt: string;
+  title: string;
+  subtitle?: string;
   urlBuilder: (slug: string) => string;
 };
 

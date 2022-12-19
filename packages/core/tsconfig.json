@@ -13,10 +13,18 @@
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "~/global-types": ["src/types.ts"],
-      "~/config": ["src/config/index.ts"],
-      "~/config/*": ["src/config/*"],
-      "~/utils/*": ["./src/utils"]
+      "$config/*": [
+        "src/config/*"
+      ],
+      "$utils/*": [
+        "./src/utils/*"
+      ],
+      "$domains": [
+        "./src/domains/index.ts"
+      ],
+      "$domains/*": [
+        "./src/domains/*"
+      ]
     }
   },
   "exclude": [

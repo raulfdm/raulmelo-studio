@@ -1,18 +1,18 @@
 import { useLocalization } from '$infrastructure/contexts/Localization';
-import type { IBlogPostBySlugApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
+import type { BlogPostBySlug } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
 import classNames from 'classnames';
 import { defineMessages, FormattedMessage } from 'react-intl';
 
 const messages = defineMessages({
   featuredImageLabel: {
-    id: 'blogPost.featuredImage',
+    id: `blogPost.featuredImage`,
   },
 });
 
 export type FeaturedImageProps = {
   url: string;
   alt?: string;
-  unsplash?: IBlogPostBySlugApiResponse['unsplash'];
+  unsplash?: BlogPostBySlug[`unsplash`];
 };
 
 export const FeaturedImage = ({ url, alt, unsplash }: FeaturedImageProps) => {
@@ -38,7 +38,7 @@ export const FeaturedImage = ({ url, alt, unsplash }: FeaturedImageProps) => {
   );
 };
 
-type UnsplashCaptionProps = NonNullable<IBlogPostBySlugApiResponse['unsplash']>;
+type UnsplashCaptionProps = NonNullable<BlogPostBySlug[`unsplash`]>;
 
 function UnsplashCaption({ authorName, url }: UnsplashCaptionProps) {
   return (
@@ -62,11 +62,11 @@ function UnsplashCaption({ authorName, url }: UnsplashCaptionProps) {
   );
 }
 
-function Caption({ className, ...props }: React.ComponentPropsWithoutRef<'p'>) {
+function Caption({ className, ...props }: React.ComponentPropsWithoutRef<`p`>) {
   return (
     <p
       className={classNames(
-        'text-center text-base lg:text-md dark:text-gray-300 mt-4',
+        `text-center text-base lg:text-md dark:text-gray-300 mt-4`,
         className,
       )}
       {...props}

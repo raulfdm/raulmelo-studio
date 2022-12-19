@@ -1,9 +1,25 @@
+import type { QueryPostsAndTilsReturnType } from '@raulmelo/core/dist/types/domains/posts';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { FormattedDate } from 'react-intl';
 
 import { Tag, Tags } from '~/components/Tags';
 import { getTagUrl } from '~/utils/url';
+
+type PostOrUtil =
+  | QueryPostsAndTilsReturnType['posts'][number]
+  | QueryPostsAndTilsReturnType['tils'][number];
+
+export type PostBasicProps = Pick<
+  PostOrUtil,
+  'title' | 'publishedAt' | 'tags'
+> & {
+  titleClassName?: string;
+  className?: string;
+  _type?: 'post' | 'til';
+  url?: string;
+  subtitle?: string;
+};
 
 export const PostBasic = ({
   title,
@@ -15,13 +31,13 @@ export const PostBasic = ({
   titleClassName,
   className,
 }: PostBasicProps) => {
+  const titleComp = (
+    <h3 className={classNames(['font-extrabold', titleClassName])}>{title}</h3>
+  );
+
   return (
     <section className={className}>
-      <Link href={url} className="relative inline-block cursor-pointer">
-        <h3 className={classNames(['font-extrabold', titleClassName])}>
-          {title}
-        </h3>
-      </Link>
+      {renderTitle()}
 
       <div className="flex space-x-4 mb-2.5">
         <span className="block font-sans text-md">
@@ -66,19 +82,20 @@ export const PostBasic = ({
       ) : null}
     </section>
   );
-};
 
-export interface PostBasicProps {
-  title: string;
-  subtitle?: string;
-  url: string;
-  _type?: 'post' | 'til';
-  className?: string;
-  publishedAt: string;
-  titleClassName?: string;
-  tags: {
-    name: string;
-    slug: string;
-    _id: string;
-  }[];
-}
+  function renderTitle() {
+    if (url) {
+      return (
+        <Link
+          href={url}
+          className="relative inline-block cursor-pointer"
+          title={title}
+        >
+          {titleComp}
+        </Link>
+      );
+    }
+
+    return titleComp;
+  }
+};

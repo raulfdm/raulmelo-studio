@@ -1,6 +1,6 @@
 import imageUrlBuilder from '@sanity/image-url';
 
-import { sanityConfig } from '~/config';
+import { sanityConfig } from '$config/sanity';
 
 import { isNil } from './ramda';
 

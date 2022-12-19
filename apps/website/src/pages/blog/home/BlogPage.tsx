@@ -1,4 +1,4 @@
-import type { IBlogPagePost } from '@raulmelo/core/dist/types/domains/posts';
+import type { QueryPostsReturnType } from '@raulmelo/core/dist/types/domains/posts/queryPosts';
 import { NextSeo } from 'next-seo';
 import { defineMessages, FormattedMessage } from 'react-intl';
 
@@ -15,7 +15,7 @@ const messages = defineMessages({
 });
 
 type BlogProps = {
-  posts: IBlogPagePost[];
+  posts: QueryPostsReturnType;
 };
 
 export const Blog = ({ posts }: BlogProps) => {

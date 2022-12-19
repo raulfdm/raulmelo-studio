@@ -1,6 +1,5 @@
 import * as algolia from './algolia';
 import * as posts from './posts';
-import * as preview from './preview';
 import * as rss from './rss';
 import * as siteData from './siteData';
 import * as tag from './tag';
@@ -12,6 +11,5 @@ export const domains = {
   uses,
   tag,
   posts,
-  preview,
   rss,
 };

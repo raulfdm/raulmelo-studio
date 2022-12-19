@@ -1,11 +1,11 @@
 import type { SupportedLanguages } from '@raulmelo/core';
 import { domains } from '@raulmelo/core';
-import type { IBlogPagePost } from '@raulmelo/core/dist/types/domains/posts';
+import type { QueryPostsReturnType } from '@raulmelo/core/dist/types/domains/posts/queryPosts';
 import type { GetStaticProps } from 'next';
 
 import { Blog } from './BlogPage';
 
-type BlogPageProps = { posts: IBlogPagePost[] };
+type BlogPageProps = { posts: QueryPostsReturnType };
 
 const BlogPage = ({ posts }: BlogPageProps) => {
   return <Blog posts={posts} />;

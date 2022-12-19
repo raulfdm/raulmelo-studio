@@ -16,7 +16,8 @@ import type { PublicEnv } from '$infrastructure/config/publicAppConfig';
 import { getPublicEnvironmentVariables } from '$infrastructure/config/publicAppConfig';
 import type { StructuredDataFunction } from 'remix-utils';
 import { StructuredData } from 'remix-utils';
-import type { ISiteData } from '@raulmelo/core/dist/types/domains/siteData';
+import type { SiteData } from '@raulmelo/core/dist/types/domains/siteData';
+import type { SupportedLanguages } from '@raulmelo/core';
 import { domains } from '@raulmelo/core';
 import { getSEOTags } from '$infrastructure/utils/seo';
 import type { Organization, Person } from 'schema-dts';
@@ -26,8 +27,8 @@ import { useAppLocation } from '$infrastructure/hooks/useAppLocation';
 
 type LoaderData = {
   ENV: PublicEnv;
-  locale: string;
-  siteData: ISiteData;
+  locale: SupportedLanguages;
+  siteData: SiteData;
   pathname: string;
   origin: string;
   url: string;
@@ -59,7 +60,7 @@ export const handle = { structuredData };
 export const meta: MetaFunction = ({ data }) => {
   const { siteData, locale, pathname } = data as LoaderData;
 
-  const defaultSeo = siteData.defaultSeo[locale];
+  const defaultSeo = siteData.defaultSeo[locale]!;
 
   return {
     charset: `utf-8`,
@@ -138,7 +139,7 @@ export function links() {
 }
 
 export async function loader({ params, request }: LoaderArgs) {
-  const locale = params.locale || `en`;
+  const locale = (params.locale || `en`) as SupportedLanguages;
 
   const siteData = await domains.siteData.querySiteData();
 
