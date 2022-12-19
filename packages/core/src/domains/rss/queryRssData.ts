@@ -6,7 +6,7 @@ import { supportedLanguagesSchema } from '$config/languages';
 import { client } from '$config/sanity';
 
 export async function queryRssData(language: SupportedLanguages) {
-  const result = client.fetch(rssQuery, { language: language });
+  const result = await client.fetch(rssQuery, { language: language });
 
   return rssSchema.parse(result);
 }
