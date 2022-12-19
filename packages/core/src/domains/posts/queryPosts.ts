@@ -8,15 +8,15 @@ import {
 } from '$config/languages';
 import { client } from '$config/sanity';
 
-export async function queryPosts(
-  language: SupportedLanguagesWithAll,
-): Promise<BlogPostPageList> {
+export async function queryPosts(language: SupportedLanguagesWithAll) {
   const languages = language === 'all' ? SUPPORTED_LANGUAGES : [language];
 
   const result = await client.fetch(postQuery, { languages });
 
   return blogPostPageListSchema.parse(result);
 }
+
+export type QueryPostsReturnType = Awaited<ReturnType<typeof queryPosts>>;
 
 const postQuery = groq`
 *[_type == "post" && language in $languages && !(_id in path('drafts.**'))] | order(publishedAt desc){
@@ -77,4 +77,3 @@ const blogPagePostSchema = z.object({
 });
 
 const blogPostPageListSchema = z.array(blogPagePostSchema);
-type BlogPostPageList = z.infer<typeof blogPostPageListSchema>;

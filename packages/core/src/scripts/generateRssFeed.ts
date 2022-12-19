@@ -4,9 +4,9 @@ import * as path from 'path';
 import type { SupportedLanguages } from '$config/languages';
 import { domains } from '$domains';
 import { sortPostsByPublishedDate } from '$domains/posts';
-import type { Rss, RssDataPost } from '$domains/rss';
+import type { QueryRssDataReturnType } from '$domains/rss';
 
-type IRssConfig = Omit<Rss, 'posts' | 'tils'>;
+type IRssConfig = Omit<QueryRssDataReturnType, 'posts' | 'tils'>;
 
 interface IConfig {
   outdir: string;
@@ -52,7 +52,7 @@ export async function generateRssFeed(config: IConfig): Promise<void> {
   }
 }
 
-function getRssXml(content: RssDataPost[], rss: IRssConfig) {
+function getRssXml(content: QueryRssDataReturnType['posts'], rss: IRssConfig) {
   const rssItemsXml = content.map(getRssItem).join('');
 
   const latestPostDate = humanizeDate(content[0].publishedAt);
@@ -82,7 +82,7 @@ function getRssXml(content: RssDataPost[], rss: IRssConfig) {
     description,
     slug,
     title,
-  }: RssDataPost) {
+  }: QueryRssDataReturnType['posts'][number]) {
     const postHref = `${rss.siteUrl}/${urlPrefix}/${slug}`;
 
     return `

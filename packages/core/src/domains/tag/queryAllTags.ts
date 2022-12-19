@@ -3,11 +3,13 @@ import { z } from 'zod';
 
 import { client } from '$config/sanity';
 
-export async function queryAllTags(): Promise<Tag[]> {
+export async function queryAllTags() {
   const result = await client.fetch(allTagsQuery);
 
   return tagsSchema.parse(result);
 }
+
+export type QueryAllTagsReturnType = Awaited<ReturnType<typeof queryAllTags>>;
 
 const allTagsQuery = groq`
 *[_type == "tag" && !(_id in path('drafts.**'))] | order(slug.current asc){
@@ -18,6 +20,5 @@ const allTagsQuery = groq`
 const tagSchema = z.object({
   slug: z.string(),
 });
-type Tag = z.infer<typeof tagSchema>;
 
 const tagsSchema = z.array(tagSchema);

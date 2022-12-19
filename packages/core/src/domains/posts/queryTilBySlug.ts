@@ -4,13 +4,17 @@ import { z } from 'zod';
 import { supportedLanguagesSchema } from '$config/languages';
 import { client } from '$config/sanity';
 
-export async function queryTilBySlug(slug: string): Promise<TilBySlug> {
+export async function queryTilBySlug(slug: string) {
   const result = await client.fetch(tilBySlugQuery, {
     slug,
   });
 
   return tilBySlugSchema.parse(result);
 }
+
+export type QueryTilBySlugReturnType = Awaited<
+  ReturnType<typeof queryTilBySlug>
+>;
 
 const tilBySlugQuery = groq`
 *[_type=="til" && slug.current == $slug && !(_id in path('drafts.**'))][0]{
@@ -66,5 +70,3 @@ const tilBySlugSchema = z.object({
   content: z.any(),
   tags: z.array(tagSchema),
 });
-
-type TilBySlug = z.infer<typeof tilBySlugSchema>;

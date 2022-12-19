@@ -4,14 +4,14 @@ import { z } from 'zod';
 import { supportedLanguagesSchema } from '$config/languages';
 import { client } from '$config/sanity';
 
-export async function querySiteData(): Promise<SiteData> {
+export async function querySiteData() {
   const [defaultSeoPt, defaultSeoEn, personalInformation, site, socials] =
     await Promise.all([
-      client.fetch<DefaultSeo>(defaultSeoQuery, { language: 'pt' }),
-      client.fetch<DefaultSeo>(defaultSeoQuery, { language: 'en' }),
-      client.fetch<PersonalInformation>(personalInfoQuery),
-      client.fetch<SiteSettings>(siteSettingsQuery),
-      client.fetch<Social>(socialsQuery),
+      client.fetch(defaultSeoQuery, { language: 'pt' }),
+      client.fetch(defaultSeoQuery, { language: 'en' }),
+      client.fetch(personalInfoQuery),
+      client.fetch(siteSettingsQuery),
+      client.fetch(socialsQuery),
     ]);
 
   const result = {
@@ -26,6 +26,8 @@ export async function querySiteData(): Promise<SiteData> {
 
   return siteDataSchema.parse(result);
 }
+
+export type QuerySiteDataReturnType = Awaited<ReturnType<typeof querySiteData>>;
 
 const defaultSeoQuery = groq`
 *[_type == "defaultSeo" && language == $language][0]{
@@ -75,26 +77,22 @@ const defaultSeoSchema = z.object({
   language: z.string(),
   description: z.string(),
 });
-type DefaultSeo = z.infer<typeof defaultSeoSchema>;
 
 const personalInfoSchema = z.object({
   fullName: z.string(),
   profilePic: profilePicSchema,
 });
-type PersonalInformation = z.infer<typeof personalInfoSchema>;
 
 const socialSchema = z.object({
   url: z.string(),
   username: z.string(),
   name: z.string(),
 });
-type Social = z.infer<typeof socialSchema>;
 
 const siteSettings = z.object({
   url: z.string(),
   seoImage: profilePicSchema,
 });
-type SiteSettings = z.infer<typeof siteSettings>;
 
 const siteDataSchema = z.object({
   personalInformation: personalInfoSchema,
@@ -102,4 +100,3 @@ const siteDataSchema = z.object({
   defaultSeo: z.record(supportedLanguagesSchema, defaultSeoSchema),
   socials: z.array(socialSchema),
 });
-export type SiteData = z.infer<typeof siteDataSchema>;

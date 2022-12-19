@@ -5,11 +5,13 @@ import type { SupportedLanguages } from '$config/languages';
 import { supportedLanguagesSchema } from '$config/languages';
 import { client } from '$config/sanity';
 
-export async function queryRssData(language: SupportedLanguages): Promise<Rss> {
+export async function queryRssData(language: SupportedLanguages) {
   const result = client.fetch(rssQuery, { language: language });
 
   return rssSchema.parse(result);
 }
+
+export type QueryRssDataReturnType = Awaited<ReturnType<typeof queryRssData>>;
 
 const rssQuery = groq`
 *[_type=="rss" && language == $language][0]{
@@ -40,7 +42,6 @@ const dataPostSchema = z.object({
   title: z.string(),
   urlPrefix: z.union([z.literal('blog'), z.literal('til')]),
 });
-export type RssDataPost = z.infer<typeof dataPostSchema>;
 
 const rssSchema = z.object({
   description: z.string(),
@@ -50,5 +51,3 @@ const rssSchema = z.object({
   posts: z.array(dataPostSchema),
   title: z.string(),
 });
-
-export type Rss = z.infer<typeof rssSchema>;

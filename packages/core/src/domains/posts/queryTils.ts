@@ -2,13 +2,13 @@ import groq from 'groq';
 import { z } from 'zod';
 
 import type { SupportedLanguagesWithAll } from '$config/languages';
-import { supportedLanguagesSchema } from '$config/languages';
-import { SUPPORTED_LANGUAGES_WITH_ALL } from '$config/languages';
+import {
+  SUPPORTED_LANGUAGES_WITH_ALL,
+  supportedLanguagesSchema,
+} from '$config/languages';
 import { client } from '$config/sanity';
 
-export async function queryTils(
-  language: SupportedLanguagesWithAll,
-): Promise<Tils> {
+export async function queryTils(language: SupportedLanguagesWithAll) {
   const languages =
     language === 'all' ? SUPPORTED_LANGUAGES_WITH_ALL : [language];
 
@@ -16,6 +16,8 @@ export async function queryTils(
 
   return tilsSchema.parse(result);
 }
+
+export type QueryTilsReturnType = Awaited<ReturnType<typeof queryTils>>;
 
 const tilQuery = groq`
 *[_type == "til" && language in $languages && !(_id in path('drafts.**'))] | order(publishedAt desc){
@@ -60,7 +62,5 @@ const tilSchema = z.object({
   slug: z.string(),
   tags: z.array(tilTagSchema),
 });
-export type Til = z.infer<typeof tilSchema>;
 
 const tilsSchema = z.array(tilSchema);
-type Tils = z.infer<typeof tilsSchema>;

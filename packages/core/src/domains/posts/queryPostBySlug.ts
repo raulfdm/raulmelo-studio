@@ -4,13 +4,17 @@ import { z } from 'zod';
 import { supportedLanguagesSchema } from '$config/languages';
 import { client } from '$config/sanity';
 
-export async function queryPostBySlug(slug: string): Promise<BlogPostBySlug> {
-  const result = await client.fetch<BlogPostBySlug>(postQuery, {
+export async function queryPostBySlug(slug: string) {
+  const result = await client.fetch(postQuery, {
     slug,
   });
 
   return blogPostBySlugSchema.parse(result);
 }
+
+export type QueryPostBySlugReturnType = Awaited<
+  ReturnType<typeof queryPostBySlug>
+>;
 
 const postQuery = groq`
 *[_type=="post" && slug.current == $slug && !(_id in path('drafts.**'))][0]{
@@ -113,5 +117,3 @@ const blogPostBySlugSchema = z.object({
   title: z.string(),
   unsplash: unsplashSchema.optional(),
 });
-
-export type BlogPostBySlug = z.infer<typeof blogPostBySlugSchema>;

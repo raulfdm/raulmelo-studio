@@ -8,7 +8,7 @@ import { client } from '$config/sanity';
 export async function queryPostsAndTils(
   locale: SupportedLanguages,
   numberOfPosts = 2,
-): Promise<PostsAndTils> {
+) {
   const params = {
     start: 0,
     end: numberOfPosts - 1,
@@ -24,6 +24,10 @@ export async function queryPostsAndTils(
     tils,
   });
 }
+
+export type QueryPostsAndTilsReturnType = Awaited<
+  ReturnType<typeof queryPostsAndTils>
+>;
 
 const postQuery = groq`
 *[_type == "post" && language == $language && !(_id in path('drafts.**'))] |order(publishedAt desc)[$start..$end]{
@@ -99,6 +103,3 @@ const postsAndTilsSchema = z.object({
   posts: z.array(postSchema),
   tils: z.array(tilSchema),
 });
-
-export type PostsAndTils = z.infer<typeof postsAndTilsSchema>;
-export type PostOrTil = z.infer<typeof postSchema> | z.infer<typeof tilSchema>;

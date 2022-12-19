@@ -8,7 +8,7 @@ import { client } from '$config/sanity';
 export async function queryTagBySlug(
   slug: string,
   language: SupportedLanguages,
-): Promise<TagBySlugPost> {
+) {
   const result = await client.fetch(tagsBySlugQuery, {
     slug,
     language,
@@ -16,6 +16,9 @@ export async function queryTagBySlug(
 
   return tagBySlugPost.parse(result);
 }
+export type QueryTagBySlugReturnType = Awaited<
+  ReturnType<typeof queryTagBySlug>
+>;
 
 const tagsBySlugQuery = groq`
 *[_type == "tag" && slug.current == $slug && !(_id in path('drafts.**'))][0]{
@@ -82,7 +85,6 @@ const tagCommonSchema = z.object({
 const tagTilSchema = tagCommonSchema.extend({
   _type: z.literal('til'),
 });
-export type TagTil = z.infer<typeof tagTilSchema>;
 
 const tagPostSchema = tagCommonSchema.extend({
   _type: z.literal('post'),
@@ -90,7 +92,6 @@ const tagPostSchema = tagCommonSchema.extend({
   description: z.string(),
   featuredImage: featuredImageSchema.optional(),
 });
-export type TagPost = z.infer<typeof tagPostSchema>;
 
 const tagBySlugPost = z.object({
   _id: z.string(),
@@ -99,4 +100,3 @@ const tagBySlugPost = z.object({
   posts: z.array(tagPostSchema),
   tils: z.array(tagTilSchema),
 });
-type TagBySlugPost = z.infer<typeof tagBySlugPost>;

@@ -5,11 +5,13 @@ import type { SupportedLanguages } from '$config/languages';
 import { supportedLanguagesSchema } from '$config/languages';
 import { client } from '$config/sanity';
 
-export async function getUses(language: SupportedLanguages): Promise<Uses> {
+export async function getUses(language: SupportedLanguages) {
   const result = await client.fetch(getUsesQuery, { language });
 
   return usesSchema.parse(result);
 }
+
+export type GetUsesReturnType = Awaited<ReturnType<typeof getUses>>;
 
 const getUsesQuery = groq`
 *[_type=="uses" && language == $language][0]{
@@ -50,4 +52,3 @@ const usesSchema = z.object({
   seo: usesSeoSchema,
   content: z.any(),
 });
-export type Uses = z.infer<typeof usesSchema>;
