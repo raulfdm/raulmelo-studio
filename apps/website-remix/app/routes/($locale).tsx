@@ -1,22 +1,21 @@
 import { AppContextProvider } from '$infrastructure/contexts/App';
 import { LocalizationProvider } from '$infrastructure/contexts/Localization';
 import { getLocales } from '$infrastructure/i18n/getLocales.server';
+import { getParamLocaleOrDefault } from '$infrastructure/utils/i18n';
 import { MenuBar } from '$ui/MenuBar';
-import type { SupportedLanguages } from '@raulmelo/core';
 import type { LoaderArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Outlet, useLoaderData, useLocation } from '@remix-run/react';
 import flat from 'flat';
 import { AnimatePresence, domAnimation, LazyMotion, m } from 'framer-motion';
-import invariant from 'tiny-invariant';
 
 export async function loader({ params }: LoaderArgs) {
-  invariant(typeof params.locale === `string`, `lang is required`);
+  const locale = getParamLocaleOrDefault(params);
 
-  const messages = await getLocales(params.locale as SupportedLanguages);
+  const messages = await getLocales(locale);
 
   return json({
-    locale: params.locale as SupportedLanguages,
+    locale,
     messages: flat(messages) as Record<string, string>,
   });
 }

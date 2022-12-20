@@ -16,6 +16,7 @@ import { AuthorPresentation } from '$ui/screens/home/AuthorPresentation';
 import { getPostUrl, getTilUrl } from '$infrastructure/utils/url';
 import { PostBasic } from '$ui/PostBasic';
 import { serverIntl } from '$infrastructure/i18n/getServerSideLocales.server';
+import { getParamLocaleOrDefault } from '$infrastructure/utils/i18n';
 
 const messages = defineMessages({
   description: {
@@ -37,11 +38,12 @@ type LoaderData = {
 };
 
 export async function loader({ params }: LoaderArgs) {
-  invariant(params.locale, `Locale is required`);
   invariant(params.slug, `Slug is required`);
 
+  const locale = getParamLocaleOrDefault(params);
+
   const [tag, siteData] = await Promise.all([
-    domains.tag.queryTagBySlug(params.slug, params.locale),
+    domains.tag.queryTagBySlug(params.slug, locale),
     domains.siteData.querySiteData(),
   ]);
 
@@ -50,7 +52,7 @@ export async function loader({ params }: LoaderArgs) {
     ...tag.tils,
   ]);
 
-  const { formatMessage } = serverIntl[params.locale as SupportedLanguages];
+  const { formatMessage } = serverIntl[locale];
 
   const meta = {
     title: `Raul Melo - ${formatMessage(messages.title, { tag: tag.name })}`,

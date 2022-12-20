@@ -10,19 +10,21 @@ import { useApp } from '$infrastructure/contexts/App';
 import { LanguageSwitch } from './components/LanguageSwitch';
 import { ThemeSwitch } from './components/ThemeSwitch';
 import { SideMenu } from '$ui/SideMenu';
+import { getPathnameWithLocale } from '$infrastructure/utils/url';
 
 const messages = defineMessages({
   sideMenuButton: {
-    id: 'menu.sideMenuButtonAriaLabel',
+    id: `menu.sideMenuButtonAriaLabel`,
   },
   logoLink: {
-    id: 'menu.logoAriaLabel',
+    id: `menu.logoAriaLabel`,
   },
 });
 
 export function MenuBar() {
   const { sideMenu } = useApp();
   const { formatMessage } = useLocalization();
+  const { locale } = useLocalization();
 
   const Icon = sideMenu.isClosed ? MenuIcon : CloseIcon;
 
@@ -32,7 +34,7 @@ export function MenuBar() {
         <nav className="items-center h-full grid-container">
           <section data-testid="menu-bar__logo" className="col-span-2">
             <Link
-              to="/"
+              to={getPathnameWithLocale(`/`, locale)}
               className="text-primary"
               aria-label={formatMessage(messages.logoLink)}
             >
@@ -59,12 +61,12 @@ export function MenuBar() {
 
 export const MenuButton = forwardRef<
   HTMLButtonElement,
-  ComponentPropsWithRef<'button'>
+  ComponentPropsWithRef<`button`>
 >(function MenuButton({ className, ...props }, ref) {
   return (
     <button
       ref={ref}
-      className={classNames('flex p-2 place-content-center', className)}
+      className={classNames(`flex p-2 place-content-center`, className)}
       {...props}
     />
   );

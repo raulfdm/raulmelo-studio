@@ -17,6 +17,7 @@ import {
 import type { PostBasicProps } from '$ui/PostBasic';
 import { PostBasic } from '$ui/PostBasic';
 import { ArrowRightIcon } from '@raulmelo/ui';
+import { getParamLocaleOrDefault } from '$infrastructure/utils/i18n';
 
 type LoaderData = {
   siteData: ISiteData;
@@ -38,15 +39,12 @@ const messages = defineMessages({
 });
 
 export async function loader({ params }: LoaderArgs) {
-  invariant(typeof params.locale === `string`, `lang is required`);
+  const locale = getParamLocaleOrDefault(params);
 
   const NUMBER_OF_POSTS = 2;
   const [siteData, { posts, tils }] = await Promise.all([
     domains.siteData.querySiteData(),
-    domains.posts.queryPostsAndTils(
-      params.locale as SupportedLanguages,
-      NUMBER_OF_POSTS,
-    ),
+    domains.posts.queryPostsAndTils(locale, NUMBER_OF_POSTS),
   ]);
 
   return json<LoaderData>({

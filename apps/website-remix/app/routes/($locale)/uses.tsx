@@ -1,4 +1,5 @@
 import { useLocalization } from '$infrastructure/contexts/Localization';
+import { getParamLocaleOrDefault } from '$infrastructure/utils/i18n';
 import { getSEOTags } from '$infrastructure/utils/seo';
 import { PortableTextPost } from '$ui/PortableTextPost';
 import { domains, utils } from '@raulmelo/core';
@@ -9,7 +10,6 @@ import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import type { StructuredDataFunction } from 'remix-utils';
 import type { BlogPosting } from 'schema-dts';
-import invariant from 'tiny-invariant';
 
 type LoaderData = {
   uses: IUsesApiResponse;
@@ -68,10 +68,10 @@ export const meta: MetaFunction = ({ data }) => {
 };
 
 export async function loader({ params, request }: LoaderArgs) {
-  invariant(params.locale, `locale is required`);
+  const locale = getParamLocaleOrDefault(params);
 
   const [uses, siteData] = await Promise.all([
-    domains.uses.getUses(params.locale),
+    domains.uses.getUses(locale),
     domains.siteData.querySiteData(),
   ]);
 

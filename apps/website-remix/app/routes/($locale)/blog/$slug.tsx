@@ -2,8 +2,8 @@ import { getSEOTags } from '$infrastructure/utils/seo';
 import { PortableTextPost } from '$ui/PortableTextPost';
 import { SeriesSection } from '$ui/screens/blog/SeriesSection';
 import { domains, utils } from '@raulmelo/core';
-import type { BlogPostBySlug } from '@raulmelo/core/dist/types/domains/posts';
-import type { SiteData } from '@raulmelo/core/dist/types/domains/siteData';
+import type { QueryPostBySlugReturnType } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug';
+import type { QuerySiteDataReturnType } from '@raulmelo/core/dist/types/domains/siteData/querySiteData';
 import { DotDivider } from '@raulmelo/ui';
 import type { LoaderArgs, MetaFunction, SerializeFrom } from '@remix-run/node';
 import { json } from '@remix-run/node';
@@ -13,9 +13,9 @@ import type { BlogPosting } from 'schema-dts';
 import invariant from 'tiny-invariant';
 
 type LoaderData = {
-  post: BlogPostBySlug;
+  post: QueryPostBySlugReturnType;
   estimatedReadingTime: number;
-  siteData: SiteData;
+  siteData: QuerySiteDataReturnType;
   url: string;
 };
 
@@ -91,7 +91,7 @@ export const meta: MetaFunction = ({ data }) => {
     article: {
       modifiedTime: post.publishedAt,
       publishedTime: post.publishedAt,
-      tags: post.tags.map((tag) => tag.name),
+      tags: post.tags?.map((tag) => tag.name),
     },
     image,
   });
@@ -99,7 +99,6 @@ export const meta: MetaFunction = ({ data }) => {
 
 export async function loader({ params, request }: LoaderArgs) {
   invariant(params.slug, `Slug is required`);
-  invariant(params.locale, `locale is required`);
 
   const [post, siteData] = await Promise.all([
     domains.posts.queryPostBySlug(params.slug),

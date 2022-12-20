@@ -76,9 +76,11 @@ export function getNextPathname(
   nextLocale: SupportedLanguages,
   pathname: string,
 ) {
-  const [first, _locale, ...rest] = pathname.split(`/`);
+  const [slash, _locale, ...restPath] = pathname.split(`/`);
 
-  const nextPathName = [first, nextLocale, ...rest].join(`/`);
+  if (nextLocale === `en`) {
+    return [slash, ...restPath].join(`/`);
+  }
 
-  return nextPathName;
+  return [slash, nextLocale, ...restPath].join(`/`);
 }
