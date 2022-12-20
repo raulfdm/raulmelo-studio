@@ -10,10 +10,9 @@ import { useLoaderData } from '@remix-run/react';
 import { useLocalization } from '$infrastructure/contexts/Localization';
 import type { FlatMessages } from '$infrastructure/i18n/getLocales.server';
 import { getLocales } from '$infrastructure/i18n/getLocales.server';
-import invariant from 'tiny-invariant';
-import type { SupportedLanguages } from '@raulmelo/core';
 import { Search } from '$screens/search/components/Search';
 import { getSEOTags } from '$infrastructure/utils/seo';
+import { getParamLocaleOrDefault } from '$infrastructure/utils/i18n';
 
 type LoaderData = {
   searchServerState: InstantSearchServerState;
@@ -31,16 +30,14 @@ export const meta: MetaFunction<LoaderData> = ({ data }) => {
 };
 
 export async function loader({ params }: LoaderArgs) {
-  invariant(typeof params.locale === `string`, `lang is required`);
+  const locale = getParamLocaleOrDefault(params);
 
-  const currentLocale = params.locale as SupportedLanguages;
-
-  const messages = await getLocales(currentLocale);
+  const messages = await getLocales(locale);
 
   const searchServerState = await getServerState(
-    <IntlProvider locale={currentLocale} messages={messages}>
+    <IntlProvider locale={locale} messages={messages}>
       <Search
-        locale={currentLocale}
+        locale={locale}
         languageTitle={messages[`search.filters.lang`]}
         tagsTitle={messages[`search.filters.tags`]}
         typeTitle={messages[`search.filters.type`]}

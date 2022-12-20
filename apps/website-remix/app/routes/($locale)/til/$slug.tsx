@@ -1,4 +1,5 @@
 import { getLocales } from '$infrastructure/i18n/getLocales.server';
+import { getParamLocaleOrDefault } from '$infrastructure/utils/i18n';
 import { getSEOTags } from '$infrastructure/utils/seo';
 import { PortableTextPost } from '$ui/PortableTextPost';
 import { domains, utils } from '@raulmelo/core';
@@ -78,10 +79,10 @@ export const meta: MetaFunction<LoaderData> = ({ data }) => {
 
 export async function loader({ params, request }: LoaderArgs) {
   invariant(params.slug, `slug is required`);
-  invariant(params.locale, `locale is required`);
+  const locale = getParamLocaleOrDefault(params);
 
   const [til, siteData] = await Promise.all([
-    domains.posts.queryTilBySlug(params.slug, false),
+    domains.posts.queryTilBySlug(params.slug),
     domains.siteData.querySiteData(),
   ]);
 
@@ -91,7 +92,7 @@ export async function loader({ params, request }: LoaderArgs) {
     });
   }
 
-  const messages = await getLocales(params.locale);
+  const messages = await getLocales(locale);
 
   return json<LoaderData>({
     til,

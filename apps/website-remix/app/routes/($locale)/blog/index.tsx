@@ -1,9 +1,9 @@
 import { useLocalization } from '$infrastructure/contexts/Localization';
 import type { FlatMessages } from '$infrastructure/i18n/getLocales.server';
 import { getLocales } from '$infrastructure/i18n/getLocales.server';
+import { getParamLocaleOrDefault } from '$infrastructure/utils/i18n';
 import { getSEOTags } from '$infrastructure/utils/seo';
 import { Posts } from '$ui/screens/home/Posts';
-import type { SupportedLanguages } from '@raulmelo/core';
 import { domains } from '@raulmelo/core';
 import type { IBlogPagePost } from '@raulmelo/core/dist/types/domains/posts';
 import type { LoaderArgs, MetaFunction } from '@remix-run/node';
@@ -11,7 +11,6 @@ import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 
 import { defineMessages, FormattedMessage } from 'react-intl';
-import invariant from 'tiny-invariant';
 
 type LoaderData = {
   posts: IBlogPagePost[];
@@ -38,11 +37,11 @@ export const meta: MetaFunction = ({ data }) => {
 };
 
 export async function loader({ params }: LoaderArgs) {
-  invariant(params.locale, `Locale is required`);
+  const locale = getParamLocaleOrDefault(params);
 
   const [posts, messages] = await Promise.all([
-    domains.posts.queryPosts(params.locale as SupportedLanguages),
-    getLocales(params.locale),
+    domains.posts.queryPosts(locale),
+    getLocales(locale),
   ]);
 
   return json<LoaderData>({ posts, messages });

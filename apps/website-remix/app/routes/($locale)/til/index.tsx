@@ -1,5 +1,6 @@
 import { useLocalization } from '$infrastructure/contexts/Localization';
 import { getLocales } from '$infrastructure/i18n/getLocales.server';
+import { getParamLocaleOrDefault } from '$infrastructure/utils/i18n';
 import { getSEOTags } from '$infrastructure/utils/seo';
 import { getTilUrl } from '$infrastructure/utils/url';
 import { ContentTile } from '$ui/ContentTile';
@@ -11,7 +12,6 @@ import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
-import invariant from 'tiny-invariant';
 
 type LoaderData = {
   tils: ITilsApiResponse;
@@ -29,15 +29,13 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 };
 
 export async function loader({ params }: LoaderArgs) {
-  invariant(params.locale, `locale is required`);
+  const locale = getParamLocaleOrDefault(params);
 
-  const tils = await domains.posts.queryTils(
-    params.locale as AllSupportedLanguages,
-  );
+  const tils = await domains.posts.queryTils(locale);
 
   return json<LoaderData>({
     tils,
-    messages: await getLocales(params.locale as SupportedLanguages),
+    messages: await getLocales(locale),
   });
 }
 
