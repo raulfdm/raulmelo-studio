@@ -3,8 +3,6 @@ import { createCookie } from '@remix-run/node';
 import type { Params } from '@remix-run/react';
 import acceptLanguage from 'accept-language-parser';
 
-type Locale = `en` | `pt`;
-
 export const localeCookie = createCookie(`raulmelo_v20220524_locale`, {
   path: `/`,
   httpOnly: true,
@@ -17,14 +15,18 @@ export const localeCookie = createCookie(`raulmelo_v20220524_locale`, {
 
 const FALLBACK_LOCALE = `en`;
 
-export function getRecommendedLocaleFromRequest(request: Request): Locale {
+export function getRecommendedLocaleFromRequest(
+  request: Request,
+): SupportedLanguages {
   const { headers } = request;
 
   const acceptLanguageFromHeaders = headers.get(`accept-language`) || ``;
 
   return (
-    acceptLanguage.pick<Locale>([`pt`, `en`], acceptLanguageFromHeaders) ||
-    FALLBACK_LOCALE
+    acceptLanguage.pick<SupportedLanguages>(
+      [`en`, `pt`],
+      acceptLanguageFromHeaders,
+    ) || FALLBACK_LOCALE
   );
 }
 
