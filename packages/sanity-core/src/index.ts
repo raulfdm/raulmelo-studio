@@ -1,2 +1,2 @@
-export * from './fields/youtubeVideoField';
-export * from './utils/component';
+export { mainProjectConfig } from './config/main';
+export { createSanityConfig } from './domains/fitness/config';

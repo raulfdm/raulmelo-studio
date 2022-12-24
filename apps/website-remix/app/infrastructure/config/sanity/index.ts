@@ -7,8 +7,8 @@ import { deskStructure } from './deskStructure';
 import { schema } from './schemas';
 
 export const sanityBaseConfig: Config = {
-  projectId: `gc3hakk3`,
-  dataset: `production`,
+  // projectId: `gc3hakk3`,
+  // dataset: `production`,
   basePath: `/admin`,
 
   plugins: [

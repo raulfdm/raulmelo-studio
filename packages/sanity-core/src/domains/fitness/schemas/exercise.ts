@@ -1,8 +1,7 @@
 import { defineField, defineType } from 'sanity';
-export const EXERCISE_SCHEMA_NAME = 'exercise';
 
 export const exerciseSchema = defineType({
-  name: EXERCISE_SCHEMA_NAME,
+  name: 'exercise',
   title: 'Exercise',
   type: 'document',
   fields: [

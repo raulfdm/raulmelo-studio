@@ -1,12 +1,10 @@
 import { defineField, defineType } from 'sanity';
 
-export const MEASUREMENT_SCHEMA_NAME = 'measurementSchema';
-
 const measurementGroup = 'measurement';
 const bodyCompositionGroup = 'bodyComposition';
 
 export const measurementSchema = defineType({
-  name: MEASUREMENT_SCHEMA_NAME,
+  name: 'measurementSchema',
   title: 'Measurements',
   type: 'document',
   groups: [
