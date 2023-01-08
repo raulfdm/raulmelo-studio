@@ -2,4 +2,4 @@
 
 echo "Linting"
 ./scripts/prettify.sh --check && \
-eslint --ignore-path .gitignore .
+eslint .
