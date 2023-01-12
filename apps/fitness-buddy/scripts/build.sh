@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-vite build
+pnpm svelte-kit sync && vite build
