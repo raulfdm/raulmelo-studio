@@ -1,7 +1,5 @@
 <script lang="ts">
-	import { Studio, defineConfig, renderStudio } from 'sanity';
-	import type { Config } from 'sanity';
-	// import { deskTool } from 'sanity/desk';
+	import { defineConfig, renderStudio } from 'sanity';
 	import { onMount } from 'svelte';
 	import { sanityBaseConfig } from '$lib/config/sanity/config';
 
@@ -24,7 +22,7 @@
 	}
 
 	/* Fix if you're using Tailwind.css */
-	*:not([data-ui='Popover__arrow']):not([data-ui='Tooltip__arrow']) > svg {
+	:global(*:not([data-ui='Popover__arrow']):not([data-ui='Tooltip__arrow']) > svg) {
 		display: inline;
 	}
 </style>
