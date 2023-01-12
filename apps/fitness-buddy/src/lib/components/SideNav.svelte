@@ -31,37 +31,23 @@
       bind:this={overlayEl}
     />
     <nav class="flex flex-col w-full h-full bg-white">
-      <a data-sveltekit-prefetch href="/" class="link" on:click={onLinkClick}>
+      <a href="/" class="link" on:click={onLinkClick}>
         <SwordIcon width={24} />
         Training
       </a>
-      <a
-        data-sveltekit-prefetch
-        href="/new-training"
-        class="link"
-        on:click={onLinkClick}
-      >
+      <a href="/new-training" class="link" on:click={onLinkClick}>
         <SwordIcon width={24} />
         NEW Training
       </a>
-      <a
-        data-sveltekit-prefetch
-        href="/tabata-clock"
-        class="link"
-        on:click={onLinkClick}
-      >
+      <a href="/tabata-clock" class="link" on:click={onLinkClick}>
         <ClockIcon size="24" />
         Tabata
       </a>
-      <a
-        data-sveltekit-prefetch
-        href="/db-connection"
-        class="link"
-        on:click={onLinkClick}
-      >
+      <a href="/db-connection" class="link" on:click={onLinkClick}>
         <DataBaseIcon size="24" />
         Conect to another Database
       </a>
+      <a href="/admin" class="link" on:click={onLinkClick}> Admin </a>
     </nav>
   </div>
 {/if}

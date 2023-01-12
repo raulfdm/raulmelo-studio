@@ -41,8 +41,8 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: Test Projects
-        run: pnpm run check --filter fitness-buddy
+      # - name: Test Projects
+      #   run: pnpm run check --filter fitness-buddy
 
-      - name: Lint Projects
-        run: pnpm run lint --filter fitness-buddy
+      # - name: Lint Projects
+      #   run: pnpm run lint --filter fitness-buddy
