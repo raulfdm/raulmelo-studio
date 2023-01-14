@@ -2,11 +2,9 @@
 	import ContentTitle from '$lib/components/ContentTitle.svelte';
 	import TrainingInfo from '$lib/components/old/Activity/components/TrainingInfo.svelte';
 	import CardioCard from '$lib/components/CardioCard.svelte';
-	import type { SheetTraining } from '$lib/infrastructure/models/getSheet';
+	import type { PageData } from './$types';
 
-	export let data: {
-		trainingRoutine: SheetTraining;
-	};
+	export let data: PageData;
 
 	const { trainingRoutine } = data;
 </script>

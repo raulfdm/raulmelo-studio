@@ -1,9 +1,7 @@
 <script lang="ts">
-	import type { Sheet } from '$lib/infrastructure/models/getSheet';
+	import type { PageData } from './$types';
 
-	export let data: {
-		trainingSheet: Sheet;
-	};
+	export let data: PageData;
 
 	const schemas = data.trainingSheet.schema || [];
 </script>

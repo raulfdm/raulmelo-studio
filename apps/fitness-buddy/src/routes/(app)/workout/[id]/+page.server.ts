@@ -1,13 +1,13 @@
 import { getTrainingById } from '$lib/infrastructure/models/getTrainingById';
 
-export async function load({ params }) {
+import type { PageServerLoad } from './$types';
+
+export const load = (async ({ params }) => {
 	const { id } = params;
 
 	const trainingRoutine = await getTrainingById(id);
 
-	console.log(trainingRoutine);
-
 	return {
 		trainingRoutine
 	};
-}
+}) satisfies PageServerLoad;

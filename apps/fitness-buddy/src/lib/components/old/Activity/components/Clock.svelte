@@ -66,7 +66,6 @@
 		}
 	});
 
-	console.log(clockState);
 	onDestroy(() => {
 		const clockContextWithState = {
 			...currentClockNew,

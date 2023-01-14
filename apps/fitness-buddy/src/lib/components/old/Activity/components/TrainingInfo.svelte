@@ -25,8 +25,6 @@
 		workoutInfo += ` - ${advanced}`;
 	}
 
-	console.log(training);
-
 	onMount(() => {
 		activityActions.addTraining(training);
 	});
