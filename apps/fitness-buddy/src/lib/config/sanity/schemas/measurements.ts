@@ -28,13 +28,6 @@ export const measurementSchema = defineType({
 		}),
 		defineField({
 			group: measurementGroup,
-			name: 'biceps_left',
-			title: 'Bíceps Esquerdo',
-			type: 'number',
-			validation: (Rule) => Rule.min(0).required()
-		}),
-		defineField({
-			group: measurementGroup,
 			name: 'biceps_right',
 			title: 'Bíceps Direito',
 			type: 'number',
@@ -44,6 +37,13 @@ export const measurementSchema = defineType({
 			group: measurementGroup,
 			name: 'forearm_right',
 			title: 'Antebraço Direito',
+			type: 'number',
+			validation: (Rule) => Rule.min(0).required()
+		}),
+		defineField({
+			group: measurementGroup,
+			name: 'biceps_left',
+			title: 'Bíceps Esquerdo',
 			type: 'number',
 			validation: (Rule) => Rule.min(0).required()
 		}),
