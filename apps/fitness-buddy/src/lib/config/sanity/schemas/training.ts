@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity';
+import { trainingRoutineSchema } from './routine';
 
 export const trainingSchema = defineType({
 	name: 'trainingSchema',
@@ -31,7 +32,7 @@ export const trainingSchema = defineType({
 				{
 					name: 'routine',
 					type: 'reference',
-					to: { type: 'trainingRoutine' },
+					to: { type: trainingRoutineSchema.name },
 					validation: (Rule) => Rule.required()
 				}
 			]
