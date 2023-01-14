@@ -5,10 +5,11 @@ import { visionTool } from '@sanity/vision';
 
 import { deskStructure } from './deskStructure';
 import { schema } from './schemas';
+import { baseSanityConfig } from './baseConfig';
 
-export const sanityBaseConfig: Config = {
-	projectId: `gc3hakk3`,
-	dataset: `production`,
+export const workspaceConfig: Config = {
+	projectId: baseSanityConfig.projectId,
+	dataset: baseSanityConfig.dataset,
 	basePath: `/admin`,
 
 	plugins: [
@@ -21,6 +22,6 @@ export const sanityBaseConfig: Config = {
 			defaultDataset: `production`
 		})
 	],
-	title: `Raul's CMS`,
+	title: `Fitness Buddy`,
 	schema: schema as any
 };
