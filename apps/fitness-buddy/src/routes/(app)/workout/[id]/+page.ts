@@ -1,6 +1,6 @@
 import { getTrainingById } from '$lib/infrastructure/models/getTrainingById';
 
-import type { PageServerLoad } from './$types';
+import type { PageLoad } from './$types';
 
 export const load = (async ({ params }) => {
 	const { id } = params;
@@ -10,4 +10,4 @@ export const load = (async ({ params }) => {
 	return {
 		trainingRoutine
 	};
-}) satisfies PageServerLoad;
+}) satisfies PageLoad;
