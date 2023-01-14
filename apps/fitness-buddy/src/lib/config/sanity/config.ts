@@ -3,7 +3,7 @@ import { deskTool } from 'sanity/desk';
 import { media } from 'sanity-plugin-media';
 import { visionTool } from '@sanity/vision';
 
-// import { deskStructure } from './deskStructure';
+import { deskStructure } from './deskStructure';
 import { schema } from './schemas';
 
 export const sanityBaseConfig: Config = {
@@ -13,17 +13,14 @@ export const sanityBaseConfig: Config = {
 
 	plugins: [
 		deskTool({
-			// structure: deskStructure,
+			structure: deskStructure
 		}),
-		// media(),
+		media(),
 		visionTool({
 			defaultApiVersion: `v1`,
 			defaultDataset: `production`
 		})
 	],
 	title: `Raul's CMS`,
-	/**
-	 * TODO: fix fitness types to use `defineField`
-	 */
-	schema
+	schema: schema as any
 };
