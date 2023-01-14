@@ -1,16 +1,13 @@
-import { getTrainingSheetApi, type ITrainingSheet } from '$lib/api';
-import { getProjectIdFromRequestCookie } from '$lib/utils/api';
+import { getSheet, type Sheet } from '$lib/infrastructure/models/getSheet';
 
 export type PageData = {
-  trainingSheet: ITrainingSheet;
+	trainingSheet: Sheet;
 };
 
-export async function load({ request }): Promise<PageData> {
-  const projectId = getProjectIdFromRequestCookie(request);
+export async function load(): Promise<PageData> {
+	const trainingSheet = await getSheet();
 
-  const trainingSheet = await getTrainingSheetApi(projectId).getSheet();
-
-  return {
-    trainingSheet,
-  };
+	return {
+		trainingSheet
+	};
 }

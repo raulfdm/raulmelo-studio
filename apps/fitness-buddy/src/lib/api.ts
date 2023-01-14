@@ -1,51 +1,14 @@
-import sanityClient from '@sanity/client';
 import groq from 'groq';
 
-export const DEFAULT_PROJECT_ID = 'gc3hakk3';
-
-export function getTrainingSheetApi(projectId?: string) {
-  const client = sanityClient({
-    projectId: projectId ?? DEFAULT_PROJECT_ID,
-    dataset: 'production',
-    apiVersion: 'v1',
-    useCdn: false,
-  });
-
-  const TrainingSheetApi = {
-    async getSheet(): Promise<ITrainingSheet> {
-      const query = groq`
-  *[_type=="trainingSchema"]|order(_createdAt desc)[0]{
-    title,
-    _id,
-    schema[] -> {
-      _id,
-      routine{
-        ...,
-        training[] {
-          ...,
-          exercise ->{
-             name,
-            "image": image.asset->{
-              url,
-              "width": metadata.dimensions.width,
-              "height": metadata.dimensions.height,
-            },
-            "youtubeVideoId": video.videoId
-          }
-        }
-      }
-    }
-  }
-  `;
-
-      return client.fetch(query);
-    },
-    async getById(
-      key: string,
-    ): Promise<
-      ({ _id: ITrainingSchema['_id'] } & ITrainingSchema['routine']) | undefined
-    > {
-      const query = groq`
+export function getTrainingSheetApi() {
+	const TrainingSheetApi = {
+		async getSheet(): Promise<ITrainingSheet> {
+			return client.fetch(query);
+		},
+		async getById(
+			key: string
+		): Promise<({ _id: ITrainingSchema['_id'] } & ITrainingSchema['routine']) | undefined> {
+			const query = groq`
       *[_type=="trainingRoutine" && _id == $id][0]{
         _id,
         routine{
@@ -66,62 +29,56 @@ export function getTrainingSheetApi(projectId?: string) {
       }
       `;
 
-      const result = await client.fetch<ITrainingSchema>(query, { id: key });
+			const result = await client.fetch<ITrainingSchema>(query, { id: key });
 
-      return {
-        _id: result._id,
-        ...result.routine,
-      };
-    },
-  };
+			return {
+				_id: result._id,
+				...result.routine
+			};
+		}
+	};
 
-  return TrainingSheetApi;
+	return TrainingSheetApi;
 }
 
 interface Image {
-  height: number;
-  url: string;
-  width: number;
+	height: number;
+	url: string;
+	width: number;
 }
 
 interface Exercise {
-  image?: Image;
-  name: string;
-  youtubeVideoId?: string;
+	image?: Image;
+	name: string;
+	youtubeVideoId?: string;
 }
 
 export interface ITraining {
-  advancedTechnique?:
-    | 'bi_set'
-    | 'fst_7'
-    | 'gvt'
-    | 'rest_and_pause'
-    | 'drop-set'
-    | 'warm-up';
-  exercise: Exercise;
-  repetitions: string;
-  restTime: number;
-  series: number;
-  _key: string;
+	advancedTechnique?: 'bi_set' | 'fst_7' | 'gvt' | 'rest_and_pause' | 'drop-set' | 'warm-up';
+	exercise: Exercise;
+	repetitions: string;
+	restTime: number;
+	series: number;
+	_key: string;
 }
 
 export interface ITrainingRoutine {
-  cardio?: {
-    time: number;
-  };
-  date: Date;
-  description: string;
-  name: string;
-  training: ITraining[];
+	cardio?: {
+		time: number;
+	};
+	date: Date;
+	description: string;
+	name: string;
+	training: ITraining[];
 }
 
 export interface ITrainingSchema {
-  _id: string;
-  routine: ITrainingRoutine;
+	_id: string;
+	routine: ITrainingRoutine;
 }
 
 export interface ITrainingSheet {
-  _id: string;
-  schema: ITrainingSchema[];
-  title: string;
+	_id: string;
+	schema: ITrainingSchema[];
+	title: string;
 }
