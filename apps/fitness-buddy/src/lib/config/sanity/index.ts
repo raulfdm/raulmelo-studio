@@ -7,23 +7,23 @@ import { deskStructure } from './deskStructure';
 import { schema } from './schemas';
 
 export const sanityBaseConfig: Config = {
-  projectId: `gc3hakk3`,
-  dataset: `production`,
-  basePath: `/admin`,
+	projectId: `gc3hakk3`,
+	dataset: `production`,
+	basePath: `/admin`,
 
-  plugins: [
-    deskTool({
-      structure: deskStructure,
-    }),
-    media(),
-    visionTool({
-      defaultApiVersion: `v1`,
-      defaultDataset: `production`,
-    }),
-  ],
-  title: `Raul's CMS`,
-  /**
-   * TODO: fix fitness types to use `defineField`
-   */
-  schema: schema as any,
+	plugins: [
+		deskTool({
+			structure: deskStructure
+		}),
+		media(),
+		visionTool({
+			defaultApiVersion: `v1`,
+			defaultDataset: `production`
+		})
+	],
+	title: `Raul's CMS`,
+	/**
+	 * TODO: fix fitness types to use `defineField`
+	 */
+	schema: schema as any
 };
