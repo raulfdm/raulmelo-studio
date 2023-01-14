@@ -1,11 +1,11 @@
-import { getTrainingSheetApi } from '$lib/api';
-import { getProjectIdFromRequestCookie } from '$lib/utils/api';
+import { getTrainingById } from '$lib/infrastructure/models/getTrainingById';
 
-export async function load({ params, request }) {
-	const projectId = getProjectIdFromRequestCookie(request);
+export async function load({ params }) {
 	const { id } = params;
 
-	const trainingRoutine = await getTrainingSheetApi(projectId).getById(id);
+	const trainingRoutine = await getTrainingById(id);
+
+	console.log(trainingRoutine);
 
 	return {
 		trainingRoutine

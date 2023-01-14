@@ -65,13 +65,15 @@ const routineSchema = z.object({
 	date: z.string(),
 	description: z.string(),
 	name: z.string(),
-	training: z.array(trainingSchema)
+	training: z.array(trainingSchema).optional()
 });
 
-const sheetTrainingSchema = z.object({
+export const sheetTrainingSchema = z.object({
 	_id: z.string(),
 	routine: routineSchema
 });
+
+export type SheetTraining = z.infer<typeof sheetTrainingSchema>;
 
 const sheetSchema = z.object({
 	_id: z.string(),
