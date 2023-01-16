@@ -1,9 +1,9 @@
 <script lang="ts">
+	import { workspaceConfig } from '$lib/infrastructure/config/sanity/workspaceConfig';
 	import { defineConfig, renderStudio } from 'sanity';
 	import { onMount } from 'svelte';
-	import { sanityBaseConfig } from '$lib/config/sanity/config';
 
-	const config = defineConfig(sanityBaseConfig);
+	const config = defineConfig(workspaceConfig);
 
 	onMount(() => {
 		renderStudio(document.getElementById('sanity-studio'), config);

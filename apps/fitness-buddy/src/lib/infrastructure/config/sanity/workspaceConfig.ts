@@ -3,27 +3,25 @@ import { deskTool } from 'sanity/desk';
 import { media } from 'sanity-plugin-media';
 import { visionTool } from '@sanity/vision';
 
-// import { deskStructure } from './deskStructure';
+import { deskStructure } from './deskStructure';
 import { schema } from './schemas';
+import { baseSanityConfig } from './baseConfig';
 
-export const sanityBaseConfig: Config = {
-	projectId: `gc3hakk3`,
-	dataset: `production`,
+export const workspaceConfig: Config = {
+	projectId: baseSanityConfig.projectId,
+	dataset: baseSanityConfig.dataset,
 	basePath: `/admin`,
 
 	plugins: [
 		deskTool({
-			// structure: deskStructure,
+			structure: deskStructure
 		}),
-		// media(),
+		media(),
 		visionTool({
 			defaultApiVersion: `v1`,
 			defaultDataset: `production`
 		})
 	],
-	title: `Raul's CMS`,
-	/**
-	 * TODO: fix fitness types to use `defineField`
-	 */
-	schema
+	title: `Fitness Buddy`,
+	schema: schema as any
 };

@@ -8,6 +8,7 @@
 		"dev:typegen": "pnpm run typegen --watch",
 		"build": "scripty",
 		"preview": "vite preview",
+		"sync": "svelte-kit sync",
 		"check": "scripty",
 		"check:watch": "scripty",
 		"test:unit": "vitest",
@@ -16,19 +17,20 @@
 		"typegen": "scripty"
 	},
 	"dependencies": {
+		"@raulmelo/sanity-core": "workspace:*",
 		"@sanity/client": "4.0.1",
 		"@sanity/vision": "3.2.3",
-		"@raulmelo/sanity-core": "workspace:*",
 		"@xstate/cli": "0.4.1",
 		"@xstate/svelte": "2.0.1",
 		"cookie": "0.5.0",
 		"groq": "3.2.3",
 		"lodash.clonedeep": "4.5.0",
+		"react": "18.2.0",
 		"sanity": "3.2.3",
 		"sanity-plugin-media": "2.0.2",
 		"uuid": "9.0.0",
 		"xstate": "4.35.2",
-		"react": "18.2.0"
+		"zod": "3.20.2"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "1.0.0",
