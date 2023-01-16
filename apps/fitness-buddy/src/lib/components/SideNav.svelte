@@ -32,10 +32,6 @@
 				<SwordIcon width={24} />
 				Training
 			</a>
-			<a href="/new-training" class="link" on:click={onLinkClick}>
-				<SwordIcon width={24} />
-				NEW Training
-			</a>
 			<a href="/tabata-clock" class="link" on:click={onLinkClick}>
 				<ClockIcon size="24" />
 				Tabata
