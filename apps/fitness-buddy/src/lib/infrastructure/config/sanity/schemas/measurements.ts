@@ -31,84 +31,84 @@ export const measurementSchema = defineType({
 			name: 'biceps_right',
 			title: 'Bíceps Direito',
 			type: 'number',
-			validation: (Rule) => Rule.min(0).required()
+			validation: (Rule) => Rule.required()
 		}),
 		defineField({
 			group: measurementGroup,
 			name: 'forearm_right',
 			title: 'Antebraço Direito',
 			type: 'number',
-			validation: (Rule) => Rule.min(0).required()
+			validation: (Rule) => Rule.required()
 		}),
 		defineField({
 			group: measurementGroup,
 			name: 'biceps_left',
 			title: 'Bíceps Esquerdo',
 			type: 'number',
-			validation: (Rule) => Rule.min(0).required()
+			validation: (Rule) => Rule.required()
 		}),
 		defineField({
 			group: measurementGroup,
 			name: 'forearm_left',
 			title: 'Antebraço Esquerdo',
 			type: 'number',
-			validation: (Rule) => Rule.min(0).required()
+			validation: (Rule) => Rule.required()
 		}),
 		defineField({
 			group: measurementGroup,
 			name: 'shoulders',
 			title: 'Ombros',
 			type: 'number',
-			validation: (Rule) => Rule.min(0).required()
+			validation: (Rule) => Rule.required()
 		}),
 		defineField({
 			group: measurementGroup,
 			name: 'chest',
 			title: 'Peito',
 			type: 'number',
-			validation: (Rule) => Rule.min(0).required()
+			validation: (Rule) => Rule.required()
 		}),
 		defineField({
 			group: measurementGroup,
 			name: 'abdomen',
 			title: 'Abdômen',
 			type: 'number',
-			validation: (Rule) => Rule.min(0).required()
+			validation: (Rule) => Rule.required()
 		}),
 		defineField({
 			group: measurementGroup,
 			name: 'glute',
 			title: 'Glúteos',
 			type: 'number',
-			validation: (Rule) => Rule.min(0).required()
+			validation: (Rule) => Rule.required()
 		}),
 		defineField({
 			group: measurementGroup,
 			name: 'thigh_right',
 			title: 'Coxa Direita',
 			type: 'number',
-			validation: (Rule) => Rule.min(0).required()
+			validation: (Rule) => Rule.required()
 		}),
 		defineField({
 			group: measurementGroup,
 			name: 'calf_right',
 			title: 'Panturrilha Direita',
 			type: 'number',
-			validation: (Rule) => Rule.min(0).required()
+			validation: (Rule) => Rule.required()
 		}),
 		defineField({
 			group: measurementGroup,
 			name: 'thigh_left',
 			title: 'Coxa Esquerda',
 			type: 'number',
-			validation: (Rule) => Rule.min(0).required()
+			validation: (Rule) => Rule.required()
 		}),
 		defineField({
 			group: measurementGroup,
 			name: 'calf_left',
 			title: 'Panturrilha Esquerda',
 			type: 'number',
-			validation: (Rule) => Rule.min(0).required()
+			validation: (Rule) => Rule.required()
 		}),
 
 		defineField({
@@ -116,28 +116,25 @@ export const measurementSchema = defineType({
 			name: 'weight',
 			title: 'Peso',
 			type: 'number',
-			validation: (Rule) => Rule.min(0).required()
+			validation: (Rule) => Rule.required()
 		}),
 		defineField({
 			group: bodyCompositionGroup,
 			name: 'body_fat',
 			title: 'Body Fat (%)',
-			type: 'number',
-			validation: (Rule) => Rule.min(0)
+			type: 'number'
 		}),
 		defineField({
 			group: bodyCompositionGroup,
 			name: 'skeletal_muscle_percentage',
 			title: 'Skeletal Muscle (%)',
-			type: 'number',
-			validation: (Rule) => Rule.min(0)
+			type: 'number'
 		}),
 		defineField({
 			group: bodyCompositionGroup,
 			name: 'visceral_fat',
 			title: 'Visceral fat level',
-			type: 'number',
-			validation: (Rule) => Rule.min(0)
+			type: 'number'
 		}),
 
 		/**
