@@ -16,7 +16,16 @@ const query = groq`
           "width": metadata.dimensions.width,
           "height": metadata.dimensions.height,
         },
-        "youtubeVideoId": video.videoId
+        "youtubeVideoId": video.videoId,
+        alternatives[] -> {
+						_id,
+						name,
+							"image": image.asset->{
+								url,
+								"width": metadata.dimensions.width,
+								"height": metadata.dimensions.height,
+							},
+					}
       }
     }
   }
