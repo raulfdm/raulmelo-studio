@@ -1,0 +1,124 @@
+---
+import IconWrapper from './IconWrapper.astro';
+import DevToIcon from '../../Icons/DevTo.astro';
+import MediumIcon from '../../Icons/Medium.astro';
+import GithubIcon from '../../Icons/Github.astro';
+import LinkedInIcon from '../../Icons/LinkedIn.astro';
+import TwitterIcon from '../../Icons/Twitter.astro';
+
+const siteData = {
+  personalInformation: {
+    fullName: 'Raul Melo',
+    profilePic: {
+      url: 'https://cdn.sanity.io/images/gc3hakk3/production/a433e3c13c7b577e084373123379ef42b5ba9366-511x512.png?w=128&auto=format&q=100',
+    },
+  },
+};
+
+const defaultSeo = {
+  description:
+    'I’m a software engineer, passionate about building products that help people. I’m currently working at @getstream as a Senior Frontend Engineer.',
+};
+
+const devTo = {
+  url: 'https://dev.to/raulfdm',
+};
+
+const medium = {
+  url: 'https://medium.com/@raulfdm',
+};
+
+const github = {
+  url: 'https://github.com/raulfdm',
+};
+
+const twitter = {
+  url: 'https://twitter.com/raulfdm',
+};
+
+const linkedIn = {
+  url: 'https://www.linkedin.com/in/raulfdm/',
+};
+
+const messages = {
+  devTo: 'Dev.to',
+  medium: 'Medium',
+  github: 'Github',
+  twitter: 'Twitter',
+  linkedIn: 'LinkedIn',
+  profileImageAlt: 'Profile image',
+};
+
+function formatMessage(a: string) {
+  return a;
+}
+---
+
+<header
+  class="flex flex-col-reverse justify-between md:flex-row mb-7 col-span-full"
+>
+  <aside class="flex flex-col w-full md:max-w-[75%] mt-4 md:mt-0">
+    <h1
+      class="font-sans text-2xl font-black md:text-3xl xl:text-4xl"
+      data-testid="author__name"
+    >
+      {siteData.personalInformation.fullName}
+    </h1>
+    <p
+      class="text-md md:text-md xl:text-lg mt-2.5"
+      data-testid="author__description"
+    >
+      {defaultSeo?.description}
+    </p>
+    <section
+      class="flex items-center flex-1 pt-5 space-x-4 dark:opacity-90 text-secondary"
+    >
+      <IconWrapper
+        href={devTo.url}
+        data-testid="author__linkedInUrl"
+        title={formatMessage(messages.devTo)}
+      >
+        <DevToIcon />
+      </IconWrapper>
+      <IconWrapper
+        href={medium.url}
+        data-testid="author__linkedInUrl"
+        title={formatMessage(messages.medium)}
+      >
+        <MediumIcon />
+      </IconWrapper>
+      <IconWrapper
+        href={github.url}
+        data-testid="author__githubUrl"
+        title={formatMessage(messages.github)}
+      >
+        <GithubIcon />
+      </IconWrapper>
+      <IconWrapper
+        href={twitter.url}
+        data-testid="author__twitterUrl"
+        title={formatMessage(messages.twitter)}
+      >
+        <TwitterIcon />
+      </IconWrapper>
+      <IconWrapper
+        href={linkedIn.url}
+        data-testid="author__linkedInUrl"
+        title={formatMessage(messages.linkedIn)}
+      >
+        <LinkedInIcon />
+      </IconWrapper>
+    </section>
+  </aside>
+  <figure class="relative w-20 h-20 rounded md:w-32 md:h-32">
+    <!-- <Image
+      class="object-cover rounded-full"
+      src={siteData.personalInformation.profilePic.url}
+      alt={formatMessage(messages.profileImageAlt)}
+      loading="eager"
+      priority
+      width={128}
+      height={128}
+    /> -->
+  </figure>
+</header>
