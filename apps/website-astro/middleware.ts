@@ -16,7 +16,7 @@ function getLocale(request: Request) {
 export default function middleware(request: Request) {
   const url = new URL(request.url);
 
-  console.log('URL REQUESTED', url);
+  console.log('URL REQUESTED', url.toString());
 
   const pathnameIsMissingLocale = supportedLocales.every(
     (locale) =>
@@ -42,7 +42,10 @@ export default function middleware(request: Request) {
      * Since english is the default, we always rewrite instead of redirecting
      */
     if (locale === 'en') {
-      const nextUrl = new URL(`/en/${url.pathname}`, request.url);
+      const nextUrl = new URL(
+        normalizePathname(`/en/${url.pathname}`),
+        request.url,
+      );
       console.log('ENGLISH CASE. Rewriting', nextUrl.toString());
 
       return rewrite(nextUrl);
@@ -52,12 +55,16 @@ export default function middleware(request: Request) {
      * If it's portuguese, then we need to redirect
      */
     const nextUrl = new URL(
-      `/${locale}/${url.pathname}`,
+      normalizePathname(`/${locale}/${url.pathname}`),
       request.url,
     ).toString();
     console.log('PORTUGUESE CASE. Redirecting', nextUrl);
     return Response.redirect(nextUrl);
   }
+}
+
+function normalizePathname(pathname: string) {
+  return pathname.replaceAll('//', '/');
 }
 
 export const config = {
