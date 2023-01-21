@@ -69,5 +69,5 @@ function normalizePathname(pathname: string) {
 
 export const config = {
   // Only run the middleware on the admin route
-  matcher: ['/((?!api|_next/static|favicon.ico|@fs|@vite).*)'],
+  matcher: ['/((?!api|favicon.ico|assets|@fs|@vite).*)'],
 };
