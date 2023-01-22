@@ -11,6 +11,7 @@ export default defineConfig({
   }),
   vite: {
     ssr: {
+      external: ['@raulmelo/core'],
       noExternal: ['@raulmelo/ui', '@raulmelo/styles'],
     },
   },
