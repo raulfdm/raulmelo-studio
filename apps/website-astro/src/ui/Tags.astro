@@ -1,19 +1,21 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
-import classNames from 'classnames';
 
 export type Props = HTMLAttributes<'ul'>;
 
-const props = Astro.props;
+const { class: className, ...props } = Astro.props;
 ---
 
 <ul
   {...props}
-  class={classNames(
-    'flex flex-row flex-wrap text-base',
-    'tags-list',
-    props.class,
-  )}
+  class={'flex flex-row flex-wrap text-base tag-comp-list'}
+  class:list={[className]}
 >
   <slot />
 </ul>
+
+<style is:global>
+  .tag-comp-list > li {
+    margin-right: 1rem;
+  }
+</style>

@@ -52,6 +52,8 @@ const { title, lang } = Astro.props;
   <body
     class="relative min-h-screen pb-12 duration-200 bg-white dark:bg-blue-900 text-primary transition-theme ease md:pb-16"
   >
-    <slot />
+    <main class="grid-container">
+      <slot />
+    </main>
   </body>
 </html>
