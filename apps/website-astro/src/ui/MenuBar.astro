@@ -1,0 +1,46 @@
+---
+export type Props = {
+  lang: SupportedLanguages;
+};
+
+import { getPathnameWithLocale } from '@/infrastructure/utils/url';
+import type { SupportedLanguages } from '@raulmelo/core';
+import Logo from './Logo.astro';
+
+const { lang } = Astro.props;
+---
+
+<!-- 
+
+
+     <a
+        href={getPathnameWithLocale(`/`, locale)}
+        class="text-primary"
+        aria-label={formatMessage(messages.logoLink)}
+      >
+ -->
+<div
+  class="relative inset-x-0 z-40 h-16 mb-8 duration-200 bg-white shadow dark:bg-blue-800 transition-theme ease md:mb-12"
+>
+  <nav class="items-center h-full grid-container">
+    <section data-testid="menu-bar__logo" class="col-span-2">
+      <a href={getPathnameWithLocale(`/`, lang)} class="text-primary">
+        <Logo />
+      </a>
+    </section>
+    <section
+      class="flex justify-end col-span-2 space-x-3 md:col-end-9 lg:col-end-13"
+    >
+      <!-- <ThemeSwitch /> -->
+      <!-- <LanguageSwitch /> -->
+      <!-- <MenuButton
+        onClick={sideMenu.toggle}
+        aria-label={formatMessage(messages.sideMenuButton)}
+        data-testid="side-menu-button"
+      >
+        <Icon class="w-6" />
+      </MenuButton> -->
+    </section>
+  </nav>
+</div>
+<!-- <SideMenu /> -->

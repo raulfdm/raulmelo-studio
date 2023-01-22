@@ -1,12 +1,15 @@
 ---
 export interface Props {
   title: string;
-  lang: string;
+  lang: SupportedLanguages;
 }
 
 import '@raulmelo/ui/styles/prism.css';
 import '@raulmelo/ui/styles/style.css';
 import '@raulmelo/styles/lib/styles.css';
+
+import MenuBar from '@/ui/MenuBar.astro';
+import type { SupportedLanguages } from '@raulmelo/core';
 
 const { title, lang } = Astro.props;
 ---
@@ -52,6 +55,7 @@ const { title, lang } = Astro.props;
   <body
     class="relative min-h-screen pb-12 duration-200 bg-white dark:bg-blue-900 text-primary transition-theme ease md:pb-16"
   >
+    <MenuBar lang={lang} />
     <main class="grid-container">
       <slot />
     </main>
