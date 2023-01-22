@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AuthorPresentation from '@/ui/screens/home/AuthorPresentation.astro';
+import PostSection from '@/ui/screens/home/PostSection.astro';
+import type { SupportedLanguages } from '@raulmelo/core';
+
+const { lang } = Astro.params as { lang: SupportedLanguages };
+---
+
+<Layout title="Home page" lang={lang}>
+  <AuthorPresentation />
+
+  <PostSection
+    title="Blog"
+    checkAllLink={{ href: '/blog', text: 'FOO' }}
+    lang={lang}
+  />
+
+  <hr
+    class="mb-8 col-span-full md:col-start-2 md:col-end-6 lg:col-start-3 lg:col-end-10"
+  />
+
+  <PostSection
+    title="TIL"
+    checkAllLink={{ href: '/blog', text: 'FOO' }}
+    lang={lang}
+  />
+</Layout>
