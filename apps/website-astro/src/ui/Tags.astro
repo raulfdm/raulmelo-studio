@@ -1,0 +1,19 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import classNames from 'classnames';
+
+export type Props = HTMLAttributes<'ul'>;
+
+const props = Astro.props;
+---
+
+<ul
+  {...props}
+  class={classNames(
+    'flex flex-row flex-wrap text-base',
+    'tags-list',
+    props.class,
+  )}
+>
+  <slot />
+</ul>

@@ -1,0 +1,43 @@
+---
+export type Props = {
+  title: string;
+  checkAllLink: {
+    href: string;
+    text: string;
+  };
+  lang: SupportedLanguages;
+};
+
+import ArrowRightIcon from '@/ui/Icons/ArrowRight.astro';
+import type { SupportedLanguages } from '@raulmelo/core';
+
+const { title, checkAllLink } = Astro.props;
+---
+
+<section class="mb-6 col-span-full">
+  <h2 class="mb-4 font-sans text-lg font-extrabold lg:text-xl lg:mb-6">
+    {title}
+  </h2>
+  <ul class="grid grid-cols-1 gap-6 ipad-pro:grid-cols-2">
+    <!-- {
+      posts.map((post) => {
+        return (
+          <li key={post._id}>
+            <PostBasic
+              class="p-6 transition-all bg-white rounded-sm shadow dark:bg-blue-800 hover:shadow-lg dark:hover:bg-blue-700"
+              titleClassName="text-xl"
+              {...post}
+            />
+          </li>
+        );
+      })
+    } -->
+  </ul>
+  <a
+    href={checkAllLink.href}
+    class="inline-flex mt-6 text-lg underline cursor-pointer text-secondary"
+  >
+    {checkAllLink.text}
+    <ArrowRightIcon class="w-6 ml-2" />
+  </a>
+</section>

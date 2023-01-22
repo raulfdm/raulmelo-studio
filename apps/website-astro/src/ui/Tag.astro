@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import classNames from 'classnames';
+
+export type Props = HTMLAttributes<'li'>;
+
+const props = Astro.props;
+---
+
+<li
+  {...props}
+  class={classNames(
+    'font-sans text-center list-none cursor-default  hover:font-bold text-secondary',
+    props.class,
+  )}
+>
+  <slot />
+</li>
