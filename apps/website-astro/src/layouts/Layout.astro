@@ -4,6 +4,10 @@ export interface Props {
   lang: string;
 }
 
+import '@raulmelo/ui/styles/prism.css';
+import '@raulmelo/ui/styles/style.css';
+import '@raulmelo/styles/lib/styles.css';
+
 const { title, lang } = Astro.props;
 ---
 
@@ -15,6 +19,35 @@ const { title, lang } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin="true"
+    />
+    {/* Proxima Nova Font */}
+    <link rel="stylesheet" href="https://use.typekit.net/rsd6fwc.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      (function themeHandler() {
+        if (
+          window.__theme === 'dark' ||
+          localStorage.theme === 'dark' ||
+          (!('theme' in localStorage) &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+          window.__theme = 'dark';
+        } else {
+          document.documentElement.classList.remove('dark');
+          window.__theme = 'light';
+        }
+      })();
+    </script>
   </head>
   <body
     class="relative min-h-screen pb-12 duration-200 bg-white dark:bg-blue-900 text-primary transition-theme ease md:pb-16"

@@ -9,4 +9,9 @@ export default defineConfig({
   adapter: vercel({
     includeFiles: ['middleware.ts'],
   }),
+  vite: {
+    ssr: {
+      noExternal: ['@raulmelo/ui', '@raulmelo/styles'],
+    },
+  },
 });
