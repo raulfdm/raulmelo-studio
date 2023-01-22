@@ -1,4 +1,15 @@
 ---
+export type Props = {
+  siteData: QuerySiteDataReturnType;
+  lang: SupportedLanguages;
+};
+
+import type { SupportedLanguages } from '@raulmelo/core';
+import type { QuerySiteDataReturnType } from '@raulmelo/core/dist/types/domains/siteData';
+
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { getSocial } from '@/infrastructure/utils/seo';
+
 import IconWrapper from './IconWrapper.astro';
 import DevToIcon from '../../Icons/DevTo.astro';
 import MediumIcon from '../../Icons/Medium.astro';
@@ -6,52 +17,17 @@ import GithubIcon from '../../Icons/Github.astro';
 import LinkedInIcon from '../../Icons/LinkedIn.astro';
 import TwitterIcon from '../../Icons/Twitter.astro';
 
-const siteData = {
-  personalInformation: {
-    fullName: 'Raul Melo',
-    profilePic: {
-      url: 'https://cdn.sanity.io/images/gc3hakk3/production/a433e3c13c7b577e084373123379ef42b5ba9366-511x512.png?w=128&auto=format&q=100',
-    },
-  },
-};
+const { siteData, lang } = Astro.props;
 
-const defaultSeo = {
-  description:
-    'I’m a software engineer, passionate about building products that help people. I’m currently working at @getstream as a Senior Frontend Engineer.',
-};
+const defaultSeo = siteData.defaultSeo[lang];
 
-const devTo = {
-  url: 'https://dev.to/raulfdm',
-};
+const intl = getIntl(lang);
 
-const medium = {
-  url: 'https://medium.com/@raulfdm',
-};
-
-const github = {
-  url: 'https://github.com/raulfdm',
-};
-
-const twitter = {
-  url: 'https://twitter.com/raulfdm',
-};
-
-const linkedIn = {
-  url: 'https://www.linkedin.com/in/raulfdm/',
-};
-
-const messages = {
-  devTo: 'Dev.to',
-  medium: 'Medium',
-  github: 'Github',
-  twitter: 'Twitter',
-  linkedIn: 'LinkedIn',
-  profileImageAlt: 'Profile image',
-};
-
-function formatMessage(a: string) {
-  return a;
-}
+const github = getSocial(`github`, siteData);
+const twitter = getSocial(`twitter`, siteData);
+const linkedIn = getSocial(`linkedin`, siteData);
+const devTo = getSocial(`dev.to`, siteData);
+const medium = getSocial(`medium`, siteData);
 ---
 
 <header
@@ -76,35 +52,45 @@ function formatMessage(a: string) {
       <IconWrapper
         href={devTo.url}
         data-testid="author__linkedInUrl"
-        title={formatMessage(messages.devTo)}
+        title={intl.formatMessage({
+          id: `authorPresentation.devToLinkTitle`,
+        })}
       >
         <DevToIcon />
       </IconWrapper>
       <IconWrapper
         href={medium.url}
         data-testid="author__linkedInUrl"
-        title={formatMessage(messages.medium)}
+        title={intl.formatMessage({
+          id: `authorPresentation.mediumLinkTitle`,
+        })}
       >
         <MediumIcon />
       </IconWrapper>
       <IconWrapper
         href={github.url}
         data-testid="author__githubUrl"
-        title={formatMessage(messages.github)}
+        title={intl.formatMessage({
+          id: `authorPresentation.githubLinkTitle`,
+        })}
       >
         <GithubIcon />
       </IconWrapper>
       <IconWrapper
         href={twitter.url}
         data-testid="author__twitterUrl"
-        title={formatMessage(messages.twitter)}
+        title={intl.formatMessage({
+          id: `authorPresentation.twitterLinkTitle`,
+        })}
       >
         <TwitterIcon />
       </IconWrapper>
       <IconWrapper
         href={linkedIn.url}
         data-testid="author__linkedInUrl"
-        title={formatMessage(messages.linkedIn)}
+        title={intl.formatMessage({
+          id: `authorPresentation.linkedInLinkTitle`,
+        })}
       >
         <LinkedInIcon />
       </IconWrapper>
@@ -114,7 +100,7 @@ function formatMessage(a: string) {
     <!-- <Image
       class="object-cover rounded-full"
       src={siteData.personalInformation.profilePic.url}
-      alt={formatMessage(messages.profileImageAlt)}
+      alt={intl.formatMessage(messages.profileImageAlt)}
       loading="eager"
       priority
       width={128}

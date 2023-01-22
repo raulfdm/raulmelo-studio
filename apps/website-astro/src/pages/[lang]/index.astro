@@ -1,18 +1,50 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import { domains, SupportedLanguages } from '@raulmelo/core';
+
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import {
+  getPathnameWithLocale,
+  getPostUrl,
+  getTilUrl,
+} from '@/infrastructure/utils/url';
 import AuthorPresentation from '@/ui/screens/home/AuthorPresentation.astro';
 import PostSection from '@/ui/screens/home/PostSection.astro';
-import type { SupportedLanguages } from '@raulmelo/core';
+
+import Layout from '../../layouts/Layout.astro';
 
 const { lang } = Astro.params as { lang: SupportedLanguages };
+
+const NUMBER_OF_POSTS = 2;
+const [siteData, { posts, tils }] = await Promise.all([
+  domains.siteData.querySiteData(),
+  domains.posts.queryPostsAndTils(lang, NUMBER_OF_POSTS),
+]);
+
+const intl = getIntl(lang);
 ---
 
 <Layout title="Home page" lang={lang}>
-  <AuthorPresentation />
+  <AuthorPresentation siteData={siteData} lang={lang} />
 
   <PostSection
-    title="Blog"
-    checkAllLink={{ href: '/blog', text: 'FOO' }}
+    title={intl.formatMessage({
+      id: `home.posts.title`,
+    })}
+    posts={posts.map(
+      (post) =>
+        ({
+          ...post,
+          publishedAt: post.publishedAt,
+          tags: post.tags,
+          url: getPostUrl(post.slug, lang),
+        } as any),
+    )}
+    checkAllLink={{
+      href: getPathnameWithLocale(`/blog`, lang),
+      text: intl.formatMessage({
+        id: `home.posts.checkAll`,
+      }),
+    }}
     lang={lang}
   />
 
@@ -21,8 +53,22 @@ const { lang } = Astro.params as { lang: SupportedLanguages };
   />
 
   <PostSection
-    title="TIL"
-    checkAllLink={{ href: '/blog', text: 'FOO' }}
     lang={lang}
+    title={intl.formatMessage({
+      id: `home.tils.title`,
+    })}
+    posts={tils.map(
+      (til) =>
+        ({
+          ...til,
+          url: getTilUrl(til.slug, lang),
+        } as any),
+    )}
+    checkAllLink={{
+      href: getPathnameWithLocale(`/til`, lang),
+      text: intl.formatMessage({
+        id: `home.tils.checkAll`,
+      }),
+    }}
   />
 </Layout>

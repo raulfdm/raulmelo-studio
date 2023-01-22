@@ -6,12 +6,14 @@ export type Props = {
     text: string;
   };
   lang: SupportedLanguages;
+  posts: PostBasicProps[];
 };
 
 import ArrowRightIcon from '@/ui/Icons/ArrowRight.astro';
+import PostBasic, { type Props as PostBasicProps } from '@/ui/PostBasic.astro';
 import type { SupportedLanguages } from '@raulmelo/core';
 
-const { title, checkAllLink } = Astro.props;
+const { title, checkAllLink, posts } = Astro.props;
 ---
 
 <section class="mb-6 col-span-full">
@@ -19,10 +21,10 @@ const { title, checkAllLink } = Astro.props;
     {title}
   </h2>
   <ul class="grid grid-cols-1 gap-6 ipad-pro:grid-cols-2">
-    <!-- {
+    {
       posts.map((post) => {
         return (
-          <li key={post._id}>
+          <li>
             <PostBasic
               class="p-6 transition-all bg-white rounded-sm shadow dark:bg-blue-800 hover:shadow-lg dark:hover:bg-blue-700"
               titleClassName="text-xl"
@@ -31,7 +33,7 @@ const { title, checkAllLink } = Astro.props;
           </li>
         );
       })
-    } -->
+    }
   </ul>
   <a
     href={checkAllLink.href}

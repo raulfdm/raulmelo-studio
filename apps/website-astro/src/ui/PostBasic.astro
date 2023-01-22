@@ -1,6 +1,5 @@
 ---
 import classNames from 'classnames';
-// import { FormattedDate } from 'react-intl';
 
 import { getTagUrl } from '@/infrastructure/utils/url';
 
@@ -9,18 +8,17 @@ import Tags from './Tags.astro';
 import type { SupportedLanguages } from '@raulmelo/core';
 
 export type Props = {
-  locale: SupportedLanguages;
+  lang: SupportedLanguages;
   title: string;
   subtitle?: string;
   url: string;
   _type?: `post` | `til`;
-  className?: string;
+  class?: string;
   publishedAt: string;
   titleClassName?: string;
   tags: {
     name: string;
     slug: string;
-    _id: string;
   }[];
 };
 
@@ -30,13 +28,14 @@ const {
   title,
   url,
   _type,
-  className,
   subtitle,
   titleClassName,
+  lang,
+  ...props
 } = Astro.props;
 ---
 
-<section class={className}>
+<section class={props.class}>
   <a href={url} class="relative inline-block cursor-pointer">
     <h3 class={classNames([`font-extrabold`, titleClassName])}>
       {title}
@@ -80,9 +79,9 @@ const {
   {
     tags ? (
       <Tags class="mt-4">
-        {tags.map(({ name, slug, _id }) => (
+        {tags.map(({ name, slug }) => (
           <Tag>
-            <a href={getTagUrl(slug, locale)} class="underline cursor-pointer">
+            <a href={getTagUrl(slug, lang)} class="underline cursor-pointer">
               #{name}
             </a>
           </Tag>
