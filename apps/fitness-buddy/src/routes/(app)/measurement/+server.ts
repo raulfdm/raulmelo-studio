@@ -1,8 +1,10 @@
 import { getMeasurements } from '$lib/infrastructure/models/getMeasurements';
 
 export async function GET() {
-	const a = await getMeasurements();
-	const response = `const measurements = ${JSON.stringify(a, null, 2)};
+	const measurements = await getMeasurements();
+	const { _createdAt, ...data } = measurements;
+	const response = `// Measurement from ${_createdAt}
+const measurements = ${JSON.stringify(data, null, 2)};
 document.querySelector("input#peitoral").value = measurements.chest;
 document.querySelector("input#biceps_esquerdo").value = measurements.biceps_left;
 document.querySelector("input#antebraco_esquerdo").value = measurements.forearm_left;
