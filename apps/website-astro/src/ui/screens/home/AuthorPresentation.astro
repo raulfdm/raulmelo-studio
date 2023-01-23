@@ -6,6 +6,7 @@ export type Props = {
 
 import type { SupportedLanguages } from '@raulmelo/core';
 import type { QuerySiteDataReturnType } from '@raulmelo/core/dist/types/domains/siteData';
+import { Image } from '@astrojs/image/components';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { getSocial } from '@/infrastructure/utils/seo';
@@ -97,14 +98,16 @@ const medium = getSocial(`medium`, siteData);
     </section>
   </aside>
   <figure class="relative w-20 h-20 rounded md:w-32 md:h-32">
-    <!-- <Image
+    <Image
       class="object-cover rounded-full"
       src={siteData.personalInformation.profilePic.url}
-      alt={intl.formatMessage(messages.profileImageAlt)}
+      alt={intl.formatMessage({
+        id: `authorPresentation.profileImageAlt`,
+      })}
       loading="eager"
       priority
       width={128}
       height={128}
-    /> -->
+    />
   </figure>
 </header>
