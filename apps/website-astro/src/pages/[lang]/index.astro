@@ -14,6 +14,8 @@ import Layout from '../../layouts/Layout.astro';
 
 const { lang } = Astro.params as { lang: SupportedLanguages };
 
+console.log(lang);
+
 const NUMBER_OF_POSTS = 2;
 const [siteData, { posts, tils }] = await Promise.all([
   domains.siteData.querySiteData(),
