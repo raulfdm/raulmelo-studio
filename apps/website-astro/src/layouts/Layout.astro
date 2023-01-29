@@ -24,18 +24,20 @@ const { title, lang } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <link
+
+    {/* Proxima Nova Font */}
+    <link rel="stylesheet" href="https://use.typekit.net/rsd6fwc.css" />
+    <!-- TODO: add those only in the "Blog/TIL layout" -->
+    <!-- <link
       rel="preconnect"
       href="https://fonts.gstatic.com"
       crossorigin="true"
-    />
-    {/* Proxima Nova Font */}
-    <link rel="stylesheet" href="https://use.typekit.net/rsd6fwc.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
+    /> -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" /> -->
+    <!-- <link
       href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap"
       rel="stylesheet"
-    />
+    /> -->
 
     <script>
       (function themeHandler() {

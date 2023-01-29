@@ -17,7 +17,7 @@ export default defineConfig({
   adapter: vercel({}),
   vite: {
     ssr: {
-      external: ['@raulmelo/core', '@raulmelo/ui'],
+      external: ['@raulmelo/core', '@raulmelo/ui', '@formatjs/intl'],
       noExternal: ['@raulmelo/styles'],
     },
   },
