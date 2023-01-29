@@ -60,7 +60,7 @@ const exerciseSchema = z.object({
 				_id: z.string(),
 				name: z.string(),
 				image: imageSchema
-			})
+			}).optional()
 		)
 		.optional()
 });
@@ -79,7 +79,7 @@ const trainingSchema = z.object({
 const routineSchema = z.object({
 	cardio: z
 		.object({
-			time: z.number()
+			time: z.number().optional()
 		})
 		.optional(),
 	date: z.string(),
