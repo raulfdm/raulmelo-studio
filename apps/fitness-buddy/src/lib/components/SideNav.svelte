@@ -37,6 +37,7 @@
 				Tabata
 			</a>
 			<a href="/admin" class="link" on:click={onLinkClick}> Admin </a>
+			<a href="/exercises" class="link" on:click={onLinkClick}> Exercises </a>
 		</nav>
 	</div>
 {/if}
