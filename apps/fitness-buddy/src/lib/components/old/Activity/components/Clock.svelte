@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { onDestroy, beforeUpdate, onMount } from 'svelte';
 
-	import { secondsToMinutes } from '$lib/utils/secondsToMinutes';
 	import {
 		IconPlayerPlay,
 		IconPlayerTrackNext,
@@ -95,7 +94,7 @@
 		<section>
 			<h3>Time left</h3>
 			<span class="text-7xl countdown">
-				<span style={`--value:${$state.context.remainingRest || 0};`} />
+				<span style={`--value:${$state.context.remainingRest};`} />
 			</span>
 		</section>
 	</div>
