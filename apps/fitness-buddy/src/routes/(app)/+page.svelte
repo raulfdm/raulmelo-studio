@@ -13,7 +13,7 @@
 {#if schemas.length > 0}
 	<nav class="grid grid-cols-2 gap-6">
 		{#each schemas as schema}
-			<a data-sveltekit-preload-data="hover" href={`/workout/${schema._id}`} class="link">
+			<a data-sveltekit-preload-data="hover" href={`/workout/${schema._id}`} class="workout-link">
 				<h2 class="title">
 					{schema.routine.name}
 					{#if schema.routine.description}
@@ -28,7 +28,7 @@
 {/if}
 
 <style lang="postcss">
-	.link {
+	.workout-link {
 		@apply rounded;
 		@apply p-6;
 		@apply shadow;

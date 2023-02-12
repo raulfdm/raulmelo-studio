@@ -1,53 +1,53 @@
 <script lang="ts">
-	import SwordIcon from './Icons/SwordIcon.svelte';
-	import ClockIcon from './Icons/ClockIcon.svelte';
-	import { sideNavService } from '$lib/stores/sideNav';
-	import { browser } from '$app/environment';
-	import { body } from '$lib/utils/dom';
+	import { toggleSideNav } from '$lib/stores/sideNav';
+	import { IconClock, IconAxe, IconYoga, IconUser } from '@tabler/icons-svelte';
+	import { page } from '$app/stores';
 
 	function onLinkClick() {
-		sideNavService.send({ type: 'CLOSE' });
-	}
-
-	$: {
-		if (browser) {
-			if ($sideNavService.matches('open')) {
-				body.preventScroll();
-			} else {
-				body.allowScroll();
-			}
-		}
+		toggleSideNav();
 	}
 </script>
 
-{#if $sideNavService.matches('open')}
-	<div class="fixed top-0 bottom-0 left-0 right-0 flex">
-		<div
-			class="w-full h-full bg-black bg-opacity-50"
-			on:click={() => sideNavService.send('CLOSE')}
-			on:keydown={() => sideNavService.send('CLOSE')}
-		/>
-		<nav class="flex flex-col w-full h-full bg-white">
-			<a href="/" class="link" on:click={onLinkClick}>
-				<SwordIcon width={24} />
-				Training
-			</a>
-			<a href="/tabata-clock" class="link" on:click={onLinkClick}>
-				<ClockIcon size="24" />
-				Tabata
-			</a>
-			<a href="/admin" class="link" on:click={onLinkClick}> Admin </a>
-			<a href="/exercises" class="link" on:click={onLinkClick}> Exercises </a>
-		</nav>
-	</div>
-{/if}
+<ul class="p-4 space-y-2 bg-base-100 menu w-60 md:w-80">
+	<li class="menu-title">
+		<span>App</span>
+	</li>
+	<li>
+		<a href="/" class:active={$page.url.pathname === '/'} on:click={onLinkClick}>
+			<IconAxe width={24} />
+			Training
+		</a>
+	</li>
+	<li>
+		<a
+			href="/tabata-clock"
+			class:active={$page.url.pathname === '/tabata-clock'}
+			on:click={onLinkClick}
+		>
+			<IconClock />
+			Tabata Clock
+		</a>
+	</li>
+	<li>
+		<a href="/exercises" class:active={$page.url.pathname === '/exercises'} on:click={onLinkClick}>
+			<IconYoga />
+			Exercises
+		</a>
+	</li>
 
-<style module lang="postcss">
-	.link {
-		@apply inline-flex items-center gap-2 p-4 text-base;
-	}
+	<li class="menu-title">
+		<span>Management</span>
+	</li>
+	<li>
+		<a href="/admin" on:click={onLinkClick}>
+			<IconUser />
+			Admin
+		</a>
+	</li>
+</ul>
 
-	:global(body) {
-		--nav-height: 60px;
+<style>
+	.menu-title:not(:first-child) {
+		@apply mt-4;
 	}
 </style>

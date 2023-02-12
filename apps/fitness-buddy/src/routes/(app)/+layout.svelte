@@ -3,8 +3,15 @@
 	import SideNav from '$lib/components/SideNav.svelte';
 	import TopBar from '$lib/components/TopBar.svelte';
 	import Actvity from '$lib/components/old/Activity/index.svelte';
+	import { sideNavService, toggleSideNav } from '$lib/stores/sideNav';
 
 	import '$lib/styles/app.css';
+
+	let isMenuOpen = sideNavService.getSnapshot().matches('open');
+
+	sideNavService.onTransition((state) => {
+		isMenuOpen = state.matches('open');
+	});
 </script>
 
 <svelte:head>
@@ -16,20 +23,19 @@
 	/>
 </svelte:head>
 
-<TopBar />
-<main class="container flex flex-col flex-1 h-full p-4 mx-auto mt-16 overflow-scroll">
-	<slot />
-</main>
-<Actvity />
-<SideNav />
-<BeepAudio />
+<div class="drawer">
+	<input id="my-drawer" type="checkbox" class="drawer-toggle" checked={isMenuOpen} />
+	<div class="drawer-content">
+		<TopBar />
+		<main class="container p-4 mx-auto">
+			<slot />
+		</main>
+	</div>
+	<div class="drawer-side">
+		<button class="drawer-overlay" on:click={toggleSideNav} on:keypress={toggleSideNav} />
+		<SideNav />
+	</div>
+</div>
 
-<style lang="postcss">
-	:global(body) {
-		min-height: 100vh;
-		min-height: -webkit-fill-available;
-	}
-	:global(html) {
-		height: -webkit-fill-available;
-	}
-</style>
+<BeepAudio />
+<Actvity />

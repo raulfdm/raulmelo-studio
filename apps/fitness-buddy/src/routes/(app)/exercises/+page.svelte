@@ -54,10 +54,10 @@
 	/>
 	{#if searchQuery && shouldShowSearchResults}
 		<div
-			class="z-10 flex flex-col w-full max-w-xs gap-2 overflow-auto bg-white border border-t-0 rounded-t-none max-h-40 rounded-xl"
+			class="z-10 flex flex-col w-full max-w-xs gap-2 mt-2 overflow-auto border border-base-content border-opacity-20 bg-base-100 max-h-40 rounded-xl"
 		>
 			{#each searchResults as { item: exercise }}
-				<button on:click={() => handleExerciseClick(exercise)} class="hover:bg-pink-200">
+				<button on:click={() => handleExerciseClick(exercise)} class="hover:bg-primary">
 					<h2 class="m-4 font-semibold text-left ">
 						{exercise.name}
 					</h2>
