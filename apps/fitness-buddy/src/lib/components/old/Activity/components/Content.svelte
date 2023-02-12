@@ -1,37 +1,27 @@
 <script lang="ts">
-  import ContentTitle from '$lib/components/ContentTitle.svelte';
+	import { IconBrandYoutube } from '@tabler/icons-svelte';
 
-  import { activityStore } from '$lib/stores/old/activity';
+	import { activityStore } from '$lib/stores/old/activity';
 
-  let currentExercise = $activityStore.currentTraining.exercise;
+	let currentExercise = $activityStore.currentTraining.exercise;
 
-  const youtubeUrl = currentExercise.youtubeVideoId
-    ? `https://www.youtube.com/embed/${currentExercise.youtubeVideoId}`
-    : undefined;
+	const youtubeUrl = currentExercise.youtubeVideoId
+		? `https://www.youtube.com/watch?v=${currentExercise.youtubeVideoId}`
+		: undefined;
 </script>
 
-<ContentTitle title="Video" />
-
-<div class="aspect-w-2 aspect-h-1">
-  <iframe
-    src={youtubeUrl}
-    title="YouTube video player"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
-  />
-</div>
-
-<br />
-
 {#if currentExercise?.image?.url}
-  <ContentTitle title="Image" />
+	<figure class="aspect-w-16 aspect-h-9">
+		<img
+			class="object-cover object-center w-full h-full"
+			src={currentExercise.image.url}
+			alt={currentExercise.name}
+		/>
+	</figure>
+{/if}
 
-  <figure class="aspect-w-16 aspect-h-9">
-    <img
-      class="object-cover object-center w-full h-full"
-      src={currentExercise.image.url}
-      alt={currentExercise.name}
-    />
-  </figure>
+{#if youtubeUrl}
+	<a href={youtubeUrl} target="_blank" rel="noreferrer" class="grid mt-4 place-items-center">
+		<IconBrandYoutube size={36} />
+	</a>
 {/if}
