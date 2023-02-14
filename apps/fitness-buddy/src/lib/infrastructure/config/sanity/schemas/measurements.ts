@@ -122,14 +122,15 @@ export const measurementSchema = defineType({
 			group: bodyCompositionGroup,
 			name: 'body_fat',
 			title: 'Body Fat (%)',
-			type: 'number'
+			type: 'number',
+			validation: (Rule) => Rule.min(0).required()
 		}),
 		defineField({
 			group: bodyCompositionGroup,
 			name: 'skeletal_muscle_percentage',
 			title: 'Skeletal Muscle (%)',
 			type: 'number',
-			validation: (Rule) => Rule.integer()
+			validation: (Rule) => Rule.min(0).required()
 		}),
 		defineField({
 			group: bodyCompositionGroup,
