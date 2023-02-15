@@ -27,7 +27,7 @@
 	<input id="my-drawer" type="checkbox" class="drawer-toggle" checked={isMenuOpen} />
 	<div class="drawer-content">
 		<TopBar />
-		<main class="container p-4 mx-auto">
+		<main class="container p-4 mx-auto mt-16">
 			<slot />
 		</main>
 	</div>

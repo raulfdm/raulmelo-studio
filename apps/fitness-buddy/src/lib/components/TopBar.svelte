@@ -3,7 +3,7 @@
 	import { IconMenu2 } from '@tabler/icons-svelte';
 </script>
 
-<header class="px-4 navbar bg-primary text-base-100">
+<header class="fixed px-4 navbar bg-primary text-base-100">
 	<div class="flex-1">
 		<span class="text-xl normal-case font-title">My Fitness Buddy</span>
 	</div>

@@ -56,11 +56,13 @@ const exerciseSchema = z.object({
 	youtubeVideoId: z.string().optional(),
 	alternatives: z
 		.array(
-			z.object({
-				_id: z.string(),
-				name: z.string(),
-				image: imageSchema
-			}).optional()
+			z
+				.object({
+					_id: z.string(),
+					name: z.string(),
+					image: imageSchema
+				})
+				.optional()
 		)
 		.optional()
 });
@@ -75,6 +77,8 @@ const trainingSchema = z.object({
 	series: z.number(),
 	_key: z.string()
 });
+
+export type ITraining = z.infer<typeof trainingSchema>;
 
 const routineSchema = z.object({
 	cardio: z

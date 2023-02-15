@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { ITraining } from '$lib/api';
+
 	import { activityActions } from '$lib/stores/old/activity';
+	import type { ITraining } from '$lib/infrastructure/models/getSheet';
 
 	const ADVANCED_TECHNIQUES: {
 		[key in NonNullable<ITraining['advancedTechnique']>]: string;
