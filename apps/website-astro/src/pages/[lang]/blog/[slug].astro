@@ -3,10 +3,17 @@ import { domains, utils, SupportedLanguages } from '@raulmelo/core';
 import Layout from '@/layouts/Layout.astro';
 import { PortableTextPost } from '@/ui/PortableTextPost';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
-import { ProseContainer } from '@raulmelo/ui';
+import { DotDivider, ProseContainer } from '@raulmelo/ui';
 
 import FeaturedImage from '@/ui/screens/blog/FeaturedImage.astro';
 import PostHeading from '@/ui/screens/blog/PostHeading.astro';
+import Tags from '@/ui/Tags.astro';
+import Tag from '@/ui/Tag.astro';
+import { getTagUrl } from '@/infrastructure/utils/url';
+import ShareContent from '@/ui/ShareContent.astro';
+import SeriesSection from '@/ui/screens/blog/SeriesSection.astro';
+import { LazyMotion } from 'framer-motion';
+import { domAnimation } from 'framer-motion';
 
 const { lang, slug } = Astro.params as {
   slug: string;
@@ -91,8 +98,77 @@ const intl = getIntl(lang);
         },
       )}
     />
+    {
+      post.series ? (
+        <SeriesSection
+          client:load
+          series={post.series}
+          currentPostId={post._id}
+          seriesLabel={intl.formatMessage(
+            {
+              id: 'series.sectionDescription',
+            },
+            {
+              seriesAmount: post.series.posts.length,
+            },
+          )}
+        />
+      ) : null
+    }
     <ProseContainer class="mt-8">
-      <PortableTextPost post={post} />
+      <PortableTextPost />
     </ProseContainer>
+    {
+      post.series ? (
+        <>
+          <DotDivider />
+          <SeriesSection
+            client:load
+            series={post.series}
+            currentPostId={post._id}
+            seriesLabel={intl.formatMessage(
+              {
+                id: 'series.sectionDescription',
+              },
+              {
+                seriesAmount: post.series.posts.length,
+              },
+            )}
+          />
+        </>
+      ) : null
+    }
+
+    <hr class="mt-10 mb-6" />
+
+    <footer class="flex flex-wrap justify-between">
+      {
+        post.tags ? (
+          <div class="mb-4 mr-4">
+            <span class="block mb-4 font-extrabold text-md md:text-lg lg:text-xl md:mb-6">
+              Tags
+            </span>
+            <Tags>
+              {post.tags.map((tag) => (
+                <Tag class="text-base lg:text-lg">
+                  <a
+                    href={getTagUrl(tag.slug, lang)}
+                    class="underline text-secondary"
+                  >
+                    #{tag.name}
+                  </a>
+                </Tag>
+              ))}
+            </Tags>
+          </div>
+        ) : null
+      }
+
+      <ShareContent
+        titleLabel={intl.formatMessage({ id: 'blogPost.share' })}
+        twitter={{ text: post.description }}
+        linkedIn={{ title: post.title, summary: post.description }}
+      />
+    </footer>
   </section>
 </Layout>

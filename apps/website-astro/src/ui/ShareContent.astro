@@ -1,0 +1,62 @@
+---
+import { LinkedInIcon, TwitterIcon } from '@raulmelo/ui';
+import qs from 'query-string';
+
+type Props = {
+  titleLabel: string;
+  linkedIn: {
+    title: string;
+    summary?: string;
+  };
+  twitter: {
+    text: string;
+  };
+};
+
+const { linkedIn, twitter, titleLabel } = Astro.props;
+
+const linkIdUrl = `https://www.linkedin.com/shareArticle?${qs.stringify(
+  { url: Astro.request.url, ...linkedIn },
+  { encode: true, strict: true },
+)}`;
+
+const twitterUrl = `https://twitter.com/share?${qs.stringify(
+  {
+    url: Astro.request.url,
+    via: 'raul_fdm',
+    ...twitter,
+  },
+  { encode: true, strict: true },
+)}`;
+---
+
+<div>
+  <span class="block mb-4 font-extrabold text-md md:text-lg lg:text-xl md:mb-6">
+    {titleLabel}
+  </span>
+  <ul class="flex space-x-4 text-secondary">
+    <li class="w-6 md:w-8">
+      <!-- TODO: localize the title -->
+      <a
+        href={linkIdUrl}
+        title="Share on LinkedIn"
+        target="_blank"
+        rel="noopener"
+      >
+        <LinkedInIcon className="w-6 md:w-8" />
+      </a>
+    </li>
+
+    <li class="w-6 md:w-8">
+      <!-- TODO: localize the title -->
+      <a
+        href={twitterUrl}
+        title="Share on Twitter"
+        target="_blank"
+        rel="noopener"
+      >
+        <TwitterIcon className="w-6 md:w-8" />
+      </a>
+    </li>
+  </ul>
+</div>
