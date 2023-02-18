@@ -1,0 +1,95 @@
+---
+import {
+  domains,
+  SupportedLanguages,
+  supportedLanguagesSchema,
+  SUPPORTED_LANGUAGES,
+} from '@raulmelo/core';
+
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import {
+  getPathnameWithLocale,
+  getPostUrl,
+  getTilUrl,
+} from '@/infrastructure/utils/url';
+import AuthorPresentation from '@/ui/screens/home/AuthorPresentation.astro';
+import PostSection from '@/ui/screens/home/PostSection.astro';
+
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  return SUPPORTED_LANGUAGES.map((lang) => ({
+    params: { lang },
+  }));
+}
+
+const { lang } = Astro.params as { lang: SupportedLanguages };
+
+const { success } = supportedLanguagesSchema.safeParse(lang);
+
+/**
+ * Didn't get yet why but "lang" could be `favicon.ico`. If that's the case
+ * we just redirect to the root path.
+ */
+if (!success) {
+  return Astro.redirect(`/${lang}`);
+}
+
+const NUMBER_OF_POSTS = 2;
+const [siteData, { posts, tils }] = await Promise.all([
+  domains.siteData.querySiteData(),
+  domains.posts.queryPostsAndTils(lang, NUMBER_OF_POSTS),
+]);
+
+const intl = getIntl(lang);
+---
+
+<Layout title="Home page" lang={lang}>
+  <AuthorPresentation siteData={siteData} lang={lang} />
+
+  <PostSection
+    title={intl.formatMessage({
+      id: `home.posts.title`,
+    })}
+    posts={posts.map(
+      (post) =>
+        ({
+          ...post,
+          publishedAt: post.publishedAt,
+          tags: post.tags,
+          url: getPostUrl(post.slug, lang),
+        } as any),
+    )}
+    checkAllLink={{
+      href: getPathnameWithLocale(`/blog`, lang),
+      text: intl.formatMessage({
+        id: `home.posts.checkAll`,
+      }),
+    }}
+    lang={lang}
+  />
+
+  <hr
+    class="mb-8 col-span-full md:col-start-2 md:col-end-6 lg:col-start-3 lg:col-end-10"
+  />
+
+  <PostSection
+    lang={lang}
+    title={intl.formatMessage({
+      id: `home.tils.title`,
+    })}
+    posts={tils.map(
+      (til) =>
+        ({
+          ...til,
+          url: getTilUrl(til.slug, lang),
+        } as any),
+    )}
+    checkAllLink={{
+      href: getPathnameWithLocale(`/til`, lang),
+      text: intl.formatMessage({
+        id: `home.tils.checkAll`,
+      }),
+    }}
+  />
+</Layout>

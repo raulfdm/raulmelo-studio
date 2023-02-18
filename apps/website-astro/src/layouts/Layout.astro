@@ -1,35 +1,70 @@
 ---
 export interface Props {
-	title: string;
+  title: string;
+  lang: SupportedLanguages;
 }
 
-const { title } = Astro.props;
+import '@raulmelo/ui/styles/prism.css';
+import '@raulmelo/ui/styles/style.css';
+import '@raulmelo/styles/lib/styles.css';
+
+import { MenuBar } from '@/ui/MenuBar';
+import type { SupportedLanguages } from '@raulmelo/core';
+import { LazyMotion, domAnimation } from 'framer-motion';
+import Logo from '@/ui/Logo.astro';
+
+const { title, lang } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    {/* Proxima Nova Font */}
+    <link rel="stylesheet" href="https://use.typekit.net/rsd6fwc.css" />
+    <!-- TODO: add those only in the "Blog/TIL layout" -->
+    <!-- <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin="true"
+    /> -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" /> -->
+    <!-- <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap"
+      rel="stylesheet"
+    /> -->
+
+    <script>
+      (function themeHandler() {
+        if (
+          window.__theme === 'dark' ||
+          localStorage.theme === 'dark' ||
+          (!('theme' in localStorage) &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+          window.__theme = 'dark';
+        } else {
+          document.documentElement.classList.remove('dark');
+          window.__theme = 'light';
+        }
+      })();
+    </script>
+  </head>
+  <body
+    class="relative min-h-screen pb-12 duration-200 bg-white dark:bg-blue-900 text-primary transition-theme ease md:pb-16"
+  >
+    <MenuBar lang={lang} client:load>
+      <Logo slot="logo" />
+    </MenuBar>
+
+    <main class="grid-container">
+      <slot />
+    </main>
+  </body>
 </html>
-<style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-</style>

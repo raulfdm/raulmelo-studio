@@ -1,0 +1,15 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+export type Props = HTMLAttributes<'li'>;
+
+const { class: className, ...props } = Astro.props;
+---
+
+<li
+  {...props}
+  class="flex flex-col items-center justify-center"
+  class:list={[className]}
+>
+  <slot />
+</li>

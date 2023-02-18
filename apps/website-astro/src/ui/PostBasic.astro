@@ -1,0 +1,92 @@
+---
+import classNames from 'classnames';
+
+import { getTagUrl } from '@/infrastructure/utils/url';
+
+import Tag from './Tag.astro';
+import Tags from './Tags.astro';
+import type { SupportedLanguages } from '@raulmelo/core';
+
+export type Props = {
+  lang: SupportedLanguages;
+  title: string;
+  subtitle?: string;
+  url: string;
+  _type?: `post` | `til`;
+  class?: string;
+  publishedAt: string;
+  titleClassName?: string;
+  tags: {
+    name: string;
+    slug: string;
+  }[];
+};
+
+const {
+  publishedAt,
+  tags,
+  title,
+  url,
+  _type,
+  subtitle,
+  titleClassName,
+  lang,
+  ...props
+} = Astro.props;
+---
+
+<section class={props.class}>
+  <a href={url} class="relative inline-block cursor-pointer">
+    <h3 class={classNames([`font-extrabold`, titleClassName])}>
+      {title}
+    </h3>
+  </a>
+
+  <div class="flex space-x-4 mb-2.5">
+    <span class="block font-sans text-md">
+      <time datetime={publishedAt}>
+        <!-- <FormattedDate
+          value={publishedAt}
+          year="numeric"
+          month="short"
+          day="2-digit"
+        /> -->
+      </time>
+    </span>
+    {
+      _type ? (
+        <span
+          class={classNames(
+            {
+              'bg-indigo-600': _type === `post`,
+              'bg-yellow-600': _type === `til`,
+            },
+            `px-2 rounded-sm min-w-[40px] text-center font-bold text-gray-50 uppercase`,
+          )}
+        >
+          {_type}
+        </span>
+      ) : null
+    }
+  </div>
+  {
+    subtitle ? (
+      <p class="text-lg lg:text-md text-primary dark:text-gray-200 text-opacity-80 dark:text-opacity-100">
+        {subtitle}
+      </p>
+    ) : null
+  }
+  {
+    tags ? (
+      <Tags class="mt-4">
+        {tags.map(({ name, slug }) => (
+          <Tag>
+            <a href={getTagUrl(slug, lang)} class="underline cursor-pointer">
+              #{name}
+            </a>
+          </Tag>
+        ))}
+      </Tags>
+    ) : null
+  }
+</section>
