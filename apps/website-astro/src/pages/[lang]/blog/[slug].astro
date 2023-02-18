@@ -5,6 +5,7 @@ import { PortableTextPost } from '@/ui/PortableTextPost';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 
 import FeaturedImage from '@/ui/screens/blog/FeaturedImage.astro';
+import PostHeading from '@/ui/screens/blog/PostHeading.astro';
 
 const { lang, slug } = Astro.params as {
   slug: string;
@@ -57,15 +58,38 @@ const intl = getIntl(lang);
 ---
 
 <Layout lang={lang} title={post.title}>
-  {
-    post.featuredImage ? (
-      <FeaturedImage
-        lang={lang}
-        featuredImage={post.featuredImage}
-        unsplash={post.unsplash}
-      />
-    ) : null
-  }
+  <section class="w-full col-span-full lg:col-start-2 lg:col-end-12">
+    {
+      post.featuredImage ? (
+        <FeaturedImage
+          lang={lang}
+          featuredImage={post.featuredImage}
+          unsplash={post.unsplash}
+        />
+      ) : null
+    }
 
-  <PortableTextPost post={post} />
+    <PostHeading
+      title={post.title}
+      subtitle={post.subtitle}
+      publishedDateLabel={intl.formatMessage(
+        {
+          id: 'blogPost.publishedAt',
+        },
+        {
+          publishedDate: post.publishedAt,
+        },
+      )}
+      readingTimeLabel={intl.formatMessage(
+        {
+          id: 'blogPost.readingTime',
+        },
+        {
+          publishedDate: post.publishedAt,
+          readingTime: estimatedReadingTime,
+        },
+      )}
+    />
+    <PortableTextPost post={post} />
+  </section>
 </Layout>
