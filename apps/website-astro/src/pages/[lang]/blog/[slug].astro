@@ -3,6 +3,7 @@ import { domains, utils, SupportedLanguages } from '@raulmelo/core';
 import Layout from '@/layouts/Layout.astro';
 import { PortableTextPost } from '@/ui/PortableTextPost';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { ProseContainer } from '@raulmelo/ui';
 
 import FeaturedImage from '@/ui/screens/blog/FeaturedImage.astro';
 import PostHeading from '@/ui/screens/blog/PostHeading.astro';
@@ -90,6 +91,8 @@ const intl = getIntl(lang);
         },
       )}
     />
-    <PortableTextPost post={post} />
+    <ProseContainer class="mt-8">
+      <PortableTextPost post={post} />
+    </ProseContainer>
   </section>
 </Layout>

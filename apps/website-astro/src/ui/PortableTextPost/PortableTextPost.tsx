@@ -51,17 +51,6 @@ export const PortableTextPost = ({ post }: PortableTextPostProps) => {
 
   // return (
   //   <>
-  //     <section className="w-full col-span-full lg:col-start-2 lg:col-end-12">
-  //       <Header
-  //         title={title}
-  //         subtitle={subtitle}
-  //         publishedDate={formatDate(new Date(publishedAt), {
-  //           year: 'numeric',
-  //           month: 'short',
-  //           day: '2-digit',
-  //         })}
-  //         readingTime={estimatedReadingTime}
-  //       />
   //       {seriesSection?.top}
   //       <ProseContainer className="mt-8">
   //         <PortableText
