@@ -32,8 +32,6 @@ export function SideMenu({
     sequence();
   }, [isClosed]);
 
-  console.log(isClosed);
-
   return (
     <Disclosure>
       <Disclosure.Panel

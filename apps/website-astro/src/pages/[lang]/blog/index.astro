@@ -1,0 +1,25 @@
+---
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { domains, SupportedLanguages } from '@raulmelo/core';
+
+import { Posts } from '@/ui/screens/blog/Posts';
+import Layout from '@/layouts/Layout.astro';
+
+const { lang } = Astro.params as { lang: SupportedLanguages };
+
+const posts = await domains.posts.queryPosts(lang as SupportedLanguages);
+
+const intl = getIntl(lang);
+---
+
+<Layout lang={lang} title="Blog">
+  <header class="col-span-full lg:col-span-10">
+    <h1 class="text-3xl font-extrabold md:text-4xl">Blog</h1>
+
+    <p class="my-4 col-span-full lg:col-span-10 text-md md:text-lg">
+      {intl.formatMessage({ id: 'blog.description' })}
+    </p>
+  </header>
+
+  <Posts client:load lang={lang} posts={posts} />
+</Layout>

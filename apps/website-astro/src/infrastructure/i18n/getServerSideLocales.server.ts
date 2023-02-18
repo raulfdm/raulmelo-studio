@@ -41,4 +41,4 @@ export function getIntl(
   return serverIntl[locale];
 }
 
-export type Intl = ReturnType<typeof getIntl>;
+export type AppIntl = ReturnType<typeof getIntl>;
