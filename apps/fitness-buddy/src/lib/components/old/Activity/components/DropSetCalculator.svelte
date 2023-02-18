@@ -1,104 +1,140 @@
 <script lang="ts">
-  let times = 3;
+	import { onMount } from 'svelte';
 
-  let result: string[] = [];
-  let initialWeight = 10;
-  let percentage = 0.8;
-  let round = false;
+	let times = 3;
 
-  function calculate() {
-    let next: number = initialWeight;
-    let nextResult = [];
+	let result: number[] = [];
+	let initialWeight = 10;
+	let percentage = 0.8;
+	let round = false;
+	let firstElement: HTMLInputElement;
 
-    for (let index = 0; index < times; index++) {
-      next = parseFloat((next * percentage).toPrecision(3));
+	onMount(() => {
+		firstElement.focus();
+	});
 
-      if (round) {
-        next = Math.round(next);
-      }
+	function calculate() {
+		let next: number = initialWeight;
+		let nextResult = [];
 
-      nextResult.push(next);
-    }
+		for (let index = 0; index < times; index++) {
+			next = parseFloat((next * percentage).toPrecision(3));
 
-    result = nextResult;
-  }
+			if (round) {
+				next = Math.round(next);
+			}
+
+			nextResult.push(next);
+		}
+
+		result = nextResult;
+	}
+
+	function onFocus(event: FocusEvent) {
+		const target = event.target as HTMLInputElement;
+		target.select();
+	}
 </script>
 
-<fieldset>
-  <label for="initialWeight">Initial Weight:</label>
-  <input type="number" id="initialWeight" bind:value={initialWeight} />
-</fieldset>
+<div class="space-y-2">
+	<div class="px-2 space-y-2">
+		<div class="form-control">
+			<label class="label" for="initialWeight">
+				<span class="label-text">Initial Weight</span>
+			</label>
+			<input
+				type="number"
+				id="initialWeight"
+				inputmode="decimal"
+				bind:value={initialWeight}
+				placeholder="Weight"
+				bind:this={firstElement}
+				on:focus={onFocus}
+			/>
+		</div>
 
-<fieldset>
-  <label for="percentage">Percentage:</label>
-  <input type="number" id="percentage" bind:value={percentage} />
-</fieldset>
+		<div class="form-control">
+			<label class="label" for="percentage">
+				<span class="label-text">Percentage</span>
+			</label>
+			<input
+				type="number"
+				inputmode="numeric"
+				id="percentage"
+				bind:value={percentage}
+				placeholder="%"
+				on:focus={onFocus}
+			/>
+		</div>
 
-<fieldset>
-  <label for="round">Round:</label>
-  <input type="checkbox" id="round" bind:value={round} />
-</fieldset>
+		<div class="form-control">
+			<label class="label" for="timers">
+				<span class="label-text">Times</span>
+			</label>
+			<input
+				type="number"
+				id="timers"
+				inputmode="numeric"
+				bind:value={times}
+				placeholder="x"
+				on:focus={onFocus}
+			/>
+		</div>
+		<div class="form-control">
+			<label class="cursor-pointer label" for="round">
+				<span class="label-text">Round</span>
+			</label>
+			<input
+				type="checkbox"
+				id="round"
+				bind:value={round}
+				placeholder="x"
+				class="checkbox checkbox-secondary"
+			/>
+		</div>
+	</div>
 
-<fieldset>
-  <label for="initialWeight">Times:</label>
-  <input type="number" id="initialWeight" bind:value={times} />
-</fieldset>
+	<button on:click={calculate} class="block mt-4 ml-auto btn btn-accent">Calculate</button>
 
-<button
-  on:click={calculate}
-  class="px-4 py-2 mt-4 font-semibold text-blue-700 bg-blue-200 rounded-lg"
-  >Calculate</button
->
+	{#if result.length > 0}
+		<div class="divider" />
 
-<hr class="my-4" />
+		<section>
+			<h2 class="my-3 text-xl font-bold text-center text-gray-600">Result</h2>
 
-<h2 class="resultTitle">Result</h2>
-
-<table class="table-auto">
-  <thead>
-    <tr>
-      <th>Order</th>
-      <th>Weight(kg)</th>
-    </tr>
-  </thead>
-  <tbody>
-    {#each result as result, index}
-      <tr>
-        <td>{index + 1}</td>
-        <td>{result}</td>
-      </tr>
-    {/each}
-  </tbody>
-</table>
+			<div class="overflow-x-auto">
+				<table class="table mx-auto">
+					<thead>
+						<tr>
+							<th>Order</th>
+							<th>Weight(kg)</th>
+						</tr>
+					</thead>
+					<tbody>
+						{#each result as result, index}
+							<tr>
+								<th>{index + 1}</th>
+								<td>{result}</td>
+							</tr>
+						{/each}
+					</tbody>
+				</table>
+			</div>
+		</section>
+	{/if}
+</div>
 
 <style lang="postcss">
-  fieldset {
-    @apply grid grid-flow-col grid-cols-6 mb-2;
-    place-items: baseline;
-  }
+	.form-control label {
+		@apply font-bold w-full max-w-xs;
+	}
 
-  label {
-    @apply col-span-2 font-bold;
-  }
-  input {
-    @apply col-span-4;
-  }
+	.form-control input:not([type='checkbox']) {
+		@apply w-full max-w-[200px] input input-bordered input-sm;
+	}
 
-  input {
-    @apply bg-transparent p-1;
-  }
-  input[type='number'] {
-    @apply border-b border-gray-300;
-  }
-
-  .resultTitle {
-    @apply text-center font-bold text-xl my-3 text-gray-600;
-  }
-
-  table {
-    @apply w-80 mx-auto;
-  }
-  td {
-    @apply text-center border border-gray-500;
-  }
+	td,
+	th {
+		@apply text-center;
+	}
 </style>

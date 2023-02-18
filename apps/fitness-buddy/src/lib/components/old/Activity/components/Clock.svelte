@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { onDestroy, beforeUpdate, onMount } from 'svelte';
 
-	import PlayIcon from '$lib/components/Icons/PlayIcon.svelte';
-	import PauseIcon from '$lib/components/Icons/PauseIcon.svelte';
-
-	import { secondsToMinutes } from '$lib/utils/secondsToMinutes';
-	import FastForwardIcon from '$lib/components/Icons/FastForwardIcon.svelte';
-	import RewindIcon from '$lib/components/Icons/RewindIcon.svelte';
+	import {
+		IconPlayerPlay,
+		IconPlayerTrackNext,
+		IconPlayerTrackPrev,
+		IconPlayerPause,
+		IconTrash
+	} from '@tabler/icons-svelte';
 	import {
 		persistClockInfo,
 		continueTimer,
@@ -17,7 +18,6 @@
 	} from '$lib/stores/old/clockMachine';
 	import type { ClockMachineState } from '$lib/stores/old/clockMachine';
 	import { activityStore } from '$lib/stores/old/activity';
-	import TrashIcon from '$lib/components/Icons/TrashIcon.svelte';
 	import { useMachine } from '@xstate/svelte';
 
 	const clockMachineService = useMachine(clockMachine, {} as any);
@@ -80,20 +80,26 @@
 	});
 </script>
 
-<div class="clockWrapper">
-	<div class="info">
+<div class="flex flex-col justify-around h-full">
+	<div class="space-y-4">
 		<section>
 			<h3>Series</h3>
-			<span>{currentClockNew.remainingSeries}/{currentClockNew.totalSeries}</span>
+			<span class="text-5xl countdown">
+				<span style={`--value:${currentClockNew.remainingSeries};`} />
+				/
+				<span style={`--value:${currentClockNew.totalSeries};`} />
+			</span>
 		</section>
 
 		<section>
 			<h3>Time left</h3>
-			<span>{secondsToMinutes($state.context.remainingRest)}</span>
+			<span class="text-7xl countdown">
+				<span style={`--value:${$state.context.remainingRest};`} />
+			</span>
 		</section>
 	</div>
 
-	<div class="actions">
+	<div class="grid w-full grid-flow-col mt-14 actions">
 		<button
 			class="action"
 			disabled={isRewindButtonDisabled}
@@ -101,7 +107,7 @@
 				send('REWIND');
 			}}
 		>
-			<RewindIcon size="60" />
+			<IconPlayerTrackPrev size={48} />
 		</button>
 
 		<button
@@ -111,9 +117,9 @@
 			}}
 		>
 			{#if clockState === 'pause' || clockState === 'idle'}
-				<PlayIcon size="80" />
+				<IconPlayerPlay size={64} />
 			{:else}
-				<PauseIcon size="80" />
+				<IconPlayerPause size={64} />
 			{/if}
 		</button>
 
@@ -124,14 +130,14 @@
 				send('FAST_FORWARD');
 			}}
 		>
-			<FastForwardIcon size="60" />
+			<IconPlayerTrackNext size={48} />
 		</button>
 	</div>
 
-	<section class="resetWrapper">
-		<h3 class="sectionTitle">Reset Counter</h3>
+	<section class="grid mt-12 place-items-center">
+		<h3>Reset Counter</h3>
 		<button
-			class="reset"
+			class="text-gray-400 disabled:opacity-50"
 			disabled={isResetButtonDisabled}
 			on:click={() => {
 				if (confirm('Are you sure you want to clear the clock?')) {
@@ -139,52 +145,29 @@
 				}
 			}}
 		>
-			<TrashIcon size="32" />
+			<IconTrash size={32} />
 		</button>
 	</section>
 </div>
 
 <style lang="postcss">
-	.clockWrapper {
-		@apply flex flex-col h-full justify-around;
-	}
-	.info {
-		@apply space-y-4;
-	}
-	h3 {
+	section > h3 {
 		@apply text-center text-lg font-bold mb-2;
 	}
 
-	span {
-		@apply text-center font-bold mb-2 text-6xl block text-gray-500;
+	.countdown {
+		@apply text-center font-bold text-gray-500 font-mono block;
 		font-variant-numeric: tabular-nums;
 	}
-	.actions {
-		@apply mt-14 w-full grid grid-flow-col;
-	}
 
-	.action {
-		@apply text-blue-400;
+	.actions button {
+		@apply text-accent-focus;
 		@apply justify-self-center;
 	}
-
-	.action:disabled {
-		@apply opacity-50;
+	.actions button.start {
+		@apply text-secondary-focus;
 	}
-
-	.start {
-		@apply text-pink-600;
-	}
-
-	.resetWrapper {
-		@apply grid place-items-center mt-12;
-	}
-
-	.reset {
-		@apply text-gray-400;
-	}
-
-	.reset:disabled {
+	.actions button:disabled {
 		@apply opacity-50;
 	}
 </style>

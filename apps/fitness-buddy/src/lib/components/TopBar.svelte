@@ -1,23 +1,15 @@
 <script lang="ts">
-  import MenuClosedIcon from '$lib/components/Icons/MenuClosedIcon.svelte';
-  import { sideNavService } from '$lib/stores/sideNav';
+	import { toggleSideNav } from '$lib/stores/sideNav';
+	import { IconMenu2 } from '@tabler/icons-svelte';
 </script>
 
-<header
-  class="fixed top-0 left-0 right-0 flex items-center px-4 py-3 text-white bg-pink-600"
->
-  <h2 class="flex-1 text-3xl text-center font-title">My Fitness Buddy</h2>
-  <button
-    class="grid w-8 h-8 place-items-center"
-    on:click={() => sideNavService.send({ type: 'TOGGLE' })}
-  >
-    <MenuClosedIcon size="24" />
-  </button>
+<header class="fixed px-4 navbar bg-primary text-base-100">
+	<div class="flex-1">
+		<span class="text-xl normal-case font-title">My Fitness Buddy</span>
+	</div>
+	<div class="flex-none">
+		<button class="btn btn-square btn-ghost" on:click={toggleSideNav}>
+			<IconMenu2 />
+		</button>
+	</div>
 </header>
-
-<style>
-  header {
-    box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px -1px,
-      rgb(0 0 0 / 14%) 0px 4px 5px 0px, rgb(0 0 0 / 12%) 0px 1px 10px 0px;
-  }
-</style>

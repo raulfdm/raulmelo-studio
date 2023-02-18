@@ -23,17 +23,21 @@
 
 	<hr class="my-6" />
 
-	<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+	<div class="space-y-4">
 		{#if trainingRoutine.routine.training}
-			<ContentTitle title="Workout" />
-			{#each trainingRoutine.routine.training as training}
-				<TrainingInfo {training} />
-			{/each}
+			<section>
+				<ContentTitle title="Workout" />
+				{#each trainingRoutine.routine.training as training}
+					<TrainingInfo {training} />
+				{/each}
+			</section>
 		{/if}
 
 		{#if trainingRoutine.routine.cardio?.time}
-			<ContentTitle title="Cardio" />
-			<CardioCard cardioTime={trainingRoutine.routine.cardio.time} />
+			<section>
+				<ContentTitle title="Cardio" />
+				<CardioCard cardioTime={trainingRoutine.routine.cardio.time} />
+			</section>
 		{/if}
 	</div>
 </div>

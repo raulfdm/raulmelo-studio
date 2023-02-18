@@ -4,6 +4,7 @@ import { sanityApiClient } from '../config/sanity/client';
 
 const query = groq`
 *[_type == 'measurementSchema'] |  order(_createdAt desc)[0]{
+	_createdAt,
   abdomen,
   weight,
   glute,
@@ -29,6 +30,7 @@ export async function getMeasurements(): Promise<Measurement> {
 }
 
 const measurementsSchema = z.object({
+	_createdAt: z.string(),
 	abdomen: z.number(),
 	weight: z.number(),
 	glute: z.number(),
