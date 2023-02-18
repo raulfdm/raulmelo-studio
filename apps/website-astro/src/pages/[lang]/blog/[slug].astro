@@ -1,0 +1,22 @@
+---
+import { domains, utils, SupportedLanguages } from '@raulmelo/core';
+
+const { lang, slug } = Astro.params as {
+  slug: string;
+  lang: SupportedLanguages;
+};
+
+const post = await domains.posts.queryPostBySlug(slug);
+
+if (utils.isNil(post) || utils.isEmpty(post)) {
+  return {
+    notFound: true,
+  };
+}
+
+const estimatedReadingTime = utils.content.getEstimatedReadingTime(
+  post.content,
+);
+---
+
+<h1>Hello {post}</h1>
