@@ -1,5 +1,10 @@
 ---
-import { domains, SupportedLanguages } from '@raulmelo/core';
+import {
+  domains,
+  SupportedLanguages,
+  supportedLanguagesSchema,
+  SUPPORTED_LANGUAGES,
+} from '@raulmelo/core';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import {
@@ -12,9 +17,23 @@ import PostSection from '@/ui/screens/home/PostSection.astro';
 
 import Layout from '../../layouts/Layout.astro';
 
+export async function getStaticPaths() {
+  return SUPPORTED_LANGUAGES.map((lang) => ({
+    params: { lang },
+  }));
+}
+
 const { lang } = Astro.params as { lang: SupportedLanguages };
 
-console.log(lang);
+const { success } = supportedLanguagesSchema.safeParse(lang);
+
+/**
+ * Didn't get yet why but "lang" could be `favicon.ico`. If that's the case
+ * we just redirect to the root path.
+ */
+if (!success) {
+  return Astro.redirect(`/${lang}`);
+}
 
 const NUMBER_OF_POSTS = 2;
 const [siteData, { posts, tils }] = await Promise.all([
