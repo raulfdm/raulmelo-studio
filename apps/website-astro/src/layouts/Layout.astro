@@ -40,20 +40,17 @@ const { title, lang } = Astro.props;
     /> -->
 
     <script>
-      (function themeHandler() {
-        if (
-          window.__theme === 'dark' ||
-          localStorage.theme === 'dark' ||
-          (!('theme' in localStorage) &&
-            window.matchMedia('(prefers-color-scheme: dark)').matches)
-        ) {
-          document.documentElement.classList.add('dark');
-          window.__theme = 'dark';
-        } else {
-          document.documentElement.classList.remove('dark');
-          window.__theme = 'light';
-        }
-      })();
+      if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+        window.__theme = 'dark';
+      } else {
+        document.documentElement.classList.remove('dark');
+        window.__theme = 'light';
+      }
     </script>
   </head>
   <body
