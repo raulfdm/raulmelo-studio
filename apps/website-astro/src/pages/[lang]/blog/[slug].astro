@@ -1,5 +1,6 @@
 ---
 import { domains, utils, SupportedLanguages } from '@raulmelo/core';
+import Layout from '@/layouts/Layout.astro';
 
 const { lang, slug } = Astro.params as {
   slug: string;
@@ -19,4 +20,6 @@ const estimatedReadingTime = utils.content.getEstimatedReadingTime(
 );
 ---
 
-<h1>Hello {post}</h1>
+<Layout lang={lang} title={post.title}>
+  <h1>Hello {post}</h1>
+</Layout>
