@@ -9,6 +9,10 @@ const passThroughRoutes = ['/cv'];
 export default function middleware(request: Request) {
   const url = new URL(request.url);
 
+  if (passThroughRoutes.includes(url.pathname)) {
+    return;
+  }
+
   const pathnameIsMissingLocale = supportedLocales.every(
     (locale) =>
       !url.pathname.startsWith(`/${locale}/`) && url.pathname !== `/${locale}`,
@@ -38,5 +42,5 @@ function normalizePathname(pathname: string) {
 }
 
 export const config = {
-  matcher: ['/((?!api|favicon.ico|assets|_image|@fs|@vite).*)'],
+  matcher: ['/((?!api|favicon.ico|assets|_astro|_image|@fs|@vite).*)'],
 };
