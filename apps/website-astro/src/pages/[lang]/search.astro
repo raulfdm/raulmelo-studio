@@ -1,23 +1,10 @@
 ---
-// import { NextSeo } from 'next-seo';
-// import { InstantSearch } from 'react-instantsearch-dom';
-// import { defineMessages, FormattedMessage } from 'react-intl';
-
+import '@/ui/screens/search/Search.css';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import Layout from '@/layouts/Layout.astro';
+import { Search } from '@/ui/screens/search/Search';
 import type { SupportedLanguages } from '@raulmelo/core';
 
-// import { algoliaConfig } from '~/config/algolia';
-// import { useLocalization } from '~/hooks/useLocalization';
-
-// import { Filters, Hits, PoweredBy, SearchBox } from './components';
-// import { algoliaDebounceSearchClient } from './utils';
-
-// const messages = defineMessages({
-//   pageTitle: {
-//     id: 'search.pageTitle',
-//   },
-// });
 const { lang } = Astro.params as { lang: SupportedLanguages };
 
 const intl = getIntl(lang);
@@ -49,14 +36,13 @@ const intl = getIntl(lang);
       }
     </p>
   </header>
+
+  <Search
+    client:load
+    lang={lang}
+    tagsTitle={intl.formatMessage({ id: `search.filters.tags` })}
+    languageTitle={intl.formatMessage({ id: `search.filters.lang` })}
+    typeTitle={intl.formatMessage({ id: `search.filters.type` })}
+    inputSearchPlaceholder={intl.formatMessage({ id: `search.input` })}
+  />
 </Layout>
-<!-- 
-<InstantSearch
-  searchClient={algoliaDebounceSearchClient}
-  indexName={algoliaConfig.indexName}
->
-  <SearchBox />
-  <Filters />
-  <Hits />
-  <PoweredBy />
-</InstantSearch> -->
