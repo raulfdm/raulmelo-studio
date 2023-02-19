@@ -1,13 +1,28 @@
 ---
 import '@/ui/screens/search/Search.css';
+import { renderToString } from 'react-dom/server';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import Layout from '@/layouts/Layout.astro';
 import { Search } from '@/ui/screens/search/Search';
 import type { SupportedLanguages } from '@raulmelo/core';
+import { getServerState } from 'react-instantsearch-hooks-server';
+import { InstantSearchSSRProvider } from 'react-instantsearch-hooks-web';
+import { SearchSSR } from '@/ui/screens/search/SearchSSR';
 
 const { lang } = Astro.params as { lang: SupportedLanguages };
 
 const intl = getIntl(lang);
+
+const searchServerState = await getServerState(
+  Search({
+    lang: lang,
+    tagsTitle: intl.formatMessage({ id: `search.filters.tags` }),
+    languageTitle: intl.formatMessage({ id: `search.filters.lang` }),
+    typeTitle: intl.formatMessage({ id: `search.filters.type` }),
+    inputSearchPlaceholder: intl.formatMessage({ id: `search.input` }),
+  }),
+  { renderToString },
+);
 ---
 
 <Layout lang={lang} title={intl.formatMessage({ id: 'search.pageTitle' })}>
@@ -37,12 +52,5 @@ const intl = getIntl(lang);
     </p>
   </header>
 
-  <Search
-    client:load
-    lang={lang}
-    tagsTitle={intl.formatMessage({ id: `search.filters.tags` })}
-    languageTitle={intl.formatMessage({ id: `search.filters.lang` })}
-    typeTitle={intl.formatMessage({ id: `search.filters.type` })}
-    inputSearchPlaceholder={intl.formatMessage({ id: `search.input` })}
-  />
+  <SearchSSR lang={lang} searchServerState={searchServerState} />
 </Layout>
