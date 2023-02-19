@@ -4,8 +4,14 @@ import Negotiator from 'negotiator';
 const supportedLocales = ['en', 'pt'];
 const defaultLocale = 'en';
 
+const passThroughRoutes = ['/cv'];
+
 export default function middleware(request: Request) {
   const url = new URL(request.url);
+
+  if (passThroughRoutes.includes(url.pathname)) {
+    return;
+  }
 
   const pathnameIsMissingLocale = supportedLocales.every(
     (locale) =>
@@ -36,6 +42,5 @@ function normalizePathname(pathname: string) {
 }
 
 export const config = {
-  // Only run the middleware on the admin route
   matcher: ['/((?!api|favicon.ico|assets|_astro|_image|@fs|@vite).*)'],
 };
