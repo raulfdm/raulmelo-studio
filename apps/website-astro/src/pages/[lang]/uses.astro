@@ -1,0 +1,76 @@
+---
+import { domains, utils, SupportedLanguages } from '@raulmelo/core';
+import Layout from '@/layouts/Layout.astro';
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { ProseContainer } from '@raulmelo/ui';
+
+import PostHeading from '@/ui/screens/blog/PostHeading.astro';
+import Tags from '@/ui/Tags.astro';
+import Tag from '@/ui/Tag.astro';
+import { getTagUrl } from '@/infrastructure/utils/url';
+import ShareContent from '@/ui/ShareContent.astro';
+import PortableText from '@/ui/PortableText/PortableText.astro';
+
+const { lang } = Astro.params as {
+  slug: string;
+  lang: SupportedLanguages;
+};
+
+const uses = await domains.uses.getUses(lang as SupportedLanguages);
+
+if (utils.isNil(uses) || utils.isEmpty(uses)) {
+  return Astro.redirect('/404');
+}
+
+const intl = getIntl(lang);
+
+// TODO: add Missing SEO (get from the original set)
+// const seoInfo = useMemo(() => {
+//   const date = new Date(publishedAt).toISOString();
+
+//   return {
+//     title: title,
+//     /**
+//      * This enforce parsing double quotes correctly.
+//      * - no parsing: "the description will be "like this""
+//      * - parsing: "the description will be \"like this\""
+//      */
+//     description: `${description}`,
+//     url: `${siteData.site.url}${asPath}`,
+//     published: date,
+//     modified: date,
+//     image: {
+//       url: featuredImage?.url ?? siteData.site.seoImage.url,
+//       width: featuredImage?.width ?? siteData.site.seoImage.width,
+//       height: featuredImage?.height ?? siteData.site.seoImage.height,
+//     },
+//   };
+// }, [
+//   title,
+//   description,
+//   featuredImage,
+//   publishedAt,
+//   asPath,
+//   siteData.site.url,
+// ]);
+---
+
+<Layout lang={lang} title={uses.title}>
+  <section class="w-full col-span-full lg:col-start-2 lg:col-end-12">
+    <PostHeading title={uses.title} />
+
+    <ProseContainer class="mt-8">
+      <PortableText value={uses.content} />
+    </ProseContainer>
+
+    <hr class="mt-10 mb-6" />
+
+    <footer class="flex flex-wrap justify-between">
+      <ShareContent
+        titleLabel={intl.formatMessage({ id: 'blogPost.share' })}
+        twitter={{ text: uses.seo.description }}
+        linkedIn={{ title: uses.seo.title, summary: uses.seo.description }}
+      />
+    </footer>
+  </section>
+</Layout>
