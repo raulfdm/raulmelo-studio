@@ -10,9 +10,6 @@ export const portableComponents = {
     tweet: sanityToUiAdapter(Tweet),
   },
   // block: {
-  //   bigQuote: ({ children }: { children: React.ReactNode }) => {
-  //     return <BigQuote>{children}</BigQuote>;
-  //   },
   //   blockquote: ({ children }: { children: string[] }) => {
   //     const updatedChildren = children
   //       .filter((c) => c !== '')

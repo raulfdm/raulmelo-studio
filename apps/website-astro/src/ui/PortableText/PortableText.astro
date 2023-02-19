@@ -9,6 +9,7 @@ import Strikethrough from './Strikethrough.astro';
 import ImageSlider from './ImageSlider.astro';
 import Highlight from './Highlight.astro';
 import BigQuote from './BigQuote.astro';
+import CodeBlock from './CodeBlock.astro';
 
 type PortableTextProps = Parameters<typeof PortableText>[0];
 
@@ -26,6 +27,7 @@ const {
       detailedImage: Image,
       gif: Gif,
       imageSlider: ImageSlider,
+      code: CodeBlock,
     },
     mark: {
       strikethrough: Strikethrough,
