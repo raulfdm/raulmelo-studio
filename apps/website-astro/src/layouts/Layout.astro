@@ -53,7 +53,7 @@ const { title, lang } = Astro.props;
   <body
     class="relative min-h-screen pb-12 duration-200 bg-white dark:bg-blue-900 text-primary transition-theme ease md:pb-16"
   >
-    <MenuBar lang={lang} client:load>
+    <MenuBar lang={lang} pathname={Astro.url.pathname} client:load>
       <Logo slot="logo" />
     </MenuBar>
 
