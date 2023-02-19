@@ -8,6 +8,7 @@ import Gif from './Gif.astro';
 import Strikethrough from './Strikethrough.astro';
 import ImageSlider from './ImageSlider.astro';
 import Highlight from './Highlight.astro';
+import BigQuote from './BigQuote.astro';
 
 type PortableTextProps = Parameters<typeof PortableText>[0];
 
@@ -29,6 +30,9 @@ const {
     mark: {
       strikethrough: Strikethrough,
       highlight: Highlight,
+    },
+    block: {
+      bigQuote: BigQuote,
     },
   },
   ...attrs

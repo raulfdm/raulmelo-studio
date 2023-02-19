@@ -1,0 +1,13 @@
+---
+import { BigQuote } from '@raulmelo/ui';
+
+type Props = {
+  node: {
+    children: { text: string }[];
+  };
+};
+
+const [child] = Astro.props.node.children;
+---
+
+<BigQuote>{child.text}</BigQuote>
