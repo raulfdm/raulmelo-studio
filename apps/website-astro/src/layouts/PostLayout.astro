@@ -1,0 +1,24 @@
+---
+import Layout, { Props as LayoutProps } from './Layout.astro';
+
+type Props = LayoutProps;
+
+const { lang, title } = Astro.props;
+---
+
+<Layout lang={lang} title={title}>
+  <Fragment slot="head">
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin="true"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </Fragment>
+
+  <slot />
+</Layout>

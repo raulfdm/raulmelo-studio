@@ -1,7 +1,5 @@
 ---
 import { domains, utils, SupportedLanguages } from '@raulmelo/core';
-import Layout from '@/layouts/Layout.astro';
-import { portableComponents } from '@/ui/portableComponents';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { DotDivider, ProseContainer } from '@raulmelo/ui';
 
@@ -13,6 +11,7 @@ import { getTagUrl } from '@/infrastructure/utils/url';
 import ShareContent from '@/ui/ShareContent.astro';
 import SeriesSection from '@/ui/screens/blog/SeriesSection.astro';
 import PortableText from '@/ui/PortableText/PortableText.astro';
+import PostLayout from '@/layouts/PostLayout.astro';
 
 const { lang, slug } = Astro.params as {
   slug: string;
@@ -64,7 +63,7 @@ const intl = getIntl(lang);
 // ]);
 ---
 
-<Layout lang={lang} title={post.title}>
+<PostLayout lang={lang} title={post.title}>
   <section class="w-full col-span-full lg:col-start-2 lg:col-end-12">
     {
       post.featuredImage ? (
@@ -168,4 +167,4 @@ const intl = getIntl(lang);
       />
     </footer>
   </section>
-</Layout>
+</PostLayout>

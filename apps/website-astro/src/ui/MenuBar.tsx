@@ -5,6 +5,7 @@ import { CloseIcon, MenuIcon } from '@raulmelo/ui';
 import { domAnimation, LazyMotion } from 'framer-motion';
 import { MenuButton } from './MenuBarButton';
 import { SideMenu, useSideMenu } from './SideMenu';
+import { ThemeSwitch } from './ThemeSwitch';
 
 type MenuBarProps = {
   lang: SupportedLanguages;
@@ -33,7 +34,12 @@ export function MenuBar({ lang, logo }: MenuBarProps) {
             </a>
           </section>
           <section className="flex justify-end col-span-2 space-x-3 md:col-end-9 lg:col-end-13">
-            {/* <ThemeSwitch />
+            <ThemeSwitch
+              label={intl.formatMessage({
+                id: 'menu.themeButtonAriaLabel',
+              })}
+            />
+            {/* 
         <LanguageSwitch /> */}
             <MenuButton
               onClick={sideMenu.toggle}
