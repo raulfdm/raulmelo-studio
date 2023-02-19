@@ -1,5 +1,6 @@
 ---
-import { Image } from '@astrojs/image/components';
+import { calculateAspectRatio } from '@/infrastructure/utils/image';
+import { Picture } from '@astrojs/image/components';
 
 type Props = {
   node: {
@@ -17,13 +18,12 @@ const {
 } = Astro.props;
 ---
 
-<figure class="relative h-0 overflow-hidden shadow aspect-w-12 aspect-h-6">
-  <Image
-    class="object-cover"
-    loading="lazy"
-    src={`${image.url}?auto=format`}
-    width={image.width}
-    height={image.height}
-    alt={caption}
-  />
-</figure>
+<Picture
+  class="object-cover mx-auto"
+  src={`${image.url}?auto=format&fit=max`}
+  aspectRatio={calculateAspectRatio(image.width, image.height)}
+  widths={[200, 400, 640, 768, 1037]}
+  sizes="(max-width: 1037px) 100vw, 1037px"
+  formats={['avif', 'jpeg', 'png', 'webp']}
+  alt={caption}
+/>

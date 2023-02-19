@@ -1,0 +1,11 @@
+---
+import { YouTubeIframe } from '@raulmelo/ui';
+
+type Props = {
+  node: any;
+};
+
+const { node } = Astro.props;
+---
+
+<YouTubeIframe {...node} client:visible />

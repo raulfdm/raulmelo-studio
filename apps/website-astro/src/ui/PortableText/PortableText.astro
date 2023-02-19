@@ -13,6 +13,7 @@ import CodeBlock from './CodeBlock.astro';
 import CodePen from './CodePen.astro';
 import Tweet from './Tweet.astro';
 import InternalLink from './InternalLink.astro';
+import YoutubeVideo from './Youtube.astro';
 
 type PortableTextProps = Parameters<typeof PortableText>[0];
 
@@ -33,6 +34,7 @@ const {
       code: CodeBlock,
       codePen: CodePen,
       tweet: Tweet,
+      youtubeVideo: YoutubeVideo,
     },
     mark: {
       strikethrough: Strikethrough,
@@ -46,7 +48,6 @@ const {
   ...attrs
 } = Astro.props;
 
-console.log(attrs);
 const portableTextProps = {
   value: value,
   components: mergeComponents({}, components),

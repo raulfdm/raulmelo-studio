@@ -3,10 +3,6 @@ import { ImageAdapter } from './ImageAdapter';
 import { ImageSliderAdapter } from './ImageSliderAdapter';
 
 export const portableComponents = {
-  hardBreak: false,
-  types: {
-    youtubeVideo: sanityToUiAdapter(YouTubeIframe),
-  },
   // block: {
   //   blockquote: ({ children }: { children: string[] }) => {
   //     const updatedChildren = children
@@ -15,16 +11,13 @@ export const portableComponents = {
   //         if (current.length === 0) {
   //           return accumulator;
   //         }
-
   //         if (current === '\n') {
   //           accumulator.push(<br />);
   //           return accumulator;
   //         }
-
   //         accumulator.push(current);
   //         return accumulator;
   //       }, [] as (React.ReactNode | string)[]);
-
   //     return <blockquote>{updatedChildren}</blockquote>;
   //   },
   // },
@@ -41,12 +34,10 @@ export const portableComponents = {
   //       href,
   //       children,
   //     } as React.AnchorHTMLAttributes<HTMLAnchorElement>;
-
   //     if (blank === true) {
   //       props.target = '_blank';
   //       props.rel = 'noopener noreferrer';
   //     }
-
   //     return <a {...props} />;
   //   },
   // },
