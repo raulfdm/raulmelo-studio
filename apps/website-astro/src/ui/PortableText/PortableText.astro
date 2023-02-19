@@ -1,6 +1,5 @@
 ---
 import { PortableText } from 'astro-portabletext';
-import { mergeComponents } from 'astro-portabletext/utils';
 
 import Divider from './Divider.astro';
 import Image from './Image.astro';
@@ -22,36 +21,34 @@ export interface Props {
   components?: PortableTextProps['components'];
 }
 
-const {
-  value,
-  components = {
-    type: {
-      divider: Divider,
-      image: Image,
-      detailedImage: Image,
-      gif: Gif,
-      imageSlider: ImageSlider,
-      code: CodeBlock,
-      codePen: CodePen,
-      tweet: Tweet,
-      youtubeVideo: YoutubeVideo,
-    },
-    mark: {
-      strikethrough: Strikethrough,
-      highlight: Highlight,
-      internalLink: InternalLink,
-    },
-    block: {
-      bigQuote: BigQuote,
-    },
+const { value } = Astro.props;
+
+const components = {
+  type: {
+    divider: Divider,
+    image: Image,
+    detailedImage: Image,
+    gif: Gif,
+    imageSlider: ImageSlider,
+    code: CodeBlock,
+    codePen: CodePen,
+    tweet: Tweet,
+    youtubeVideo: YoutubeVideo,
   },
-  ...attrs
-} = Astro.props;
+  mark: {
+    strikethrough: Strikethrough,
+    highlight: Highlight,
+    internalLink: InternalLink,
+  },
+  block: {
+    bigQuote: BigQuote,
+  },
+} as any;
 
 const portableTextProps = {
   value: value,
-  components: mergeComponents({}, components),
+  components,
 };
 ---
 
-<PortableText {...portableTextProps} {...attrs} />
+<PortableText {...portableTextProps} />
