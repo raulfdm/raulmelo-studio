@@ -9,10 +9,6 @@ const passThroughRoutes = ['/cv'];
 export default function middleware(request: Request) {
   const url = new URL(request.url);
 
-  if (passThroughRoutes.includes(url.pathname)) {
-    return;
-  }
-
   const pathnameIsMissingLocale = supportedLocales.every(
     (locale) =>
       !url.pathname.startsWith(`/${locale}/`) && url.pathname !== `/${locale}`,
