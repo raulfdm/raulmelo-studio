@@ -2,8 +2,8 @@
 import type { PostBySlug } from './types';
 
 type Props = Pick<PostBySlug, 'title' | 'subtitle'> & {
-  publishedDateLabel: string;
-  readingTimeLabel: string;
+  publishedDateLabel?: string;
+  readingTimeLabel?: string;
 };
 
 const { title, subtitle, publishedDateLabel, readingTimeLabel } = Astro.props;
@@ -20,8 +20,12 @@ const { title, subtitle, publishedDateLabel, readingTimeLabel } = Astro.props;
       </p>
     )
   }
-  <p class="mt-6 mb-4 text-base text-right lg:text-md">
-    {publishedDateLabel}
-    {readingTimeLabel}
-  </p>
+  {
+    publishedDateLabel || readingTimeLabel ? (
+      <p class="mt-6 mb-4 text-base text-right lg:text-md">
+        {publishedDateLabel}
+        {readingTimeLabel}
+      </p>
+    ) : null
+  }
 </header>
