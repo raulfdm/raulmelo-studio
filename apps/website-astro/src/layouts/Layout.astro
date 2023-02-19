@@ -10,7 +10,6 @@ import '@raulmelo/styles/lib/styles.css';
 
 import { MenuBar } from '@/ui/MenuBar';
 import type { SupportedLanguages } from '@raulmelo/core';
-import { LazyMotion, domAnimation } from 'framer-motion';
 import Logo from '@/ui/Logo.astro';
 
 const { title, lang } = Astro.props;
@@ -25,32 +24,30 @@ const { title, lang } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
 
+    <slot name="head" />
     {/* Proxima Nova Font */}
     <link rel="stylesheet" href="https://use.typekit.net/rsd6fwc.css" />
-    <!-- TODO: add those only in the "Blog/TIL layout" -->
-    <!-- <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin="true"
-    /> -->
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" /> -->
-    <!-- <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap"
-      rel="stylesheet"
-    /> -->
 
-    <script>
-      if (
-        localStorage.theme === 'dark' ||
-        (!('theme' in localStorage) &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches)
-      ) {
-        document.documentElement.classList.add('dark');
-        window.__theme = 'dark';
-      } else {
+    <script is:inline>
+      const theme = (() => {
+        if (
+          typeof localStorage !== 'undefined' &&
+          localStorage.getItem('theme')
+        ) {
+          return localStorage.getItem('theme');
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+        return 'light';
+      })();
+
+      if (theme === 'light') {
         document.documentElement.classList.remove('dark');
-        window.__theme = 'light';
+      } else {
+        document.documentElement.classList.add('dark');
       }
+      window.localStorage.setItem('theme', theme);
     </script>
   </head>
   <body
