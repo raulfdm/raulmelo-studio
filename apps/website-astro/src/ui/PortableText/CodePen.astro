@@ -1,0 +1,15 @@
+---
+import { CodePenIframe } from '@raulmelo/ui';
+
+type Props = {
+  node: {
+    directUrl: string;
+    src: string;
+    height?: string;
+  };
+};
+
+const { node } = Astro.props;
+---
+
+<CodePenIframe {...node} client:visible />

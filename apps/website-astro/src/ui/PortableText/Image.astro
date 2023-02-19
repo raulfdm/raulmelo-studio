@@ -1,0 +1,29 @@
+---
+import { calculateAspectRatio } from '@/infrastructure/utils/image';
+import { Picture } from '@astrojs/image/components';
+
+type Props = {
+  node: {
+    caption: string;
+    image: {
+      url: string;
+      width: number;
+      height: number;
+    };
+  };
+};
+
+const {
+  node: { image, caption },
+} = Astro.props;
+---
+
+<Picture
+  class="object-cover mx-auto"
+  src={`${image.url}?auto=format&fit=max`}
+  aspectRatio={calculateAspectRatio(image.width, image.height)}
+  widths={[200, 400, 640, 768, 1037]}
+  sizes="(max-width: 1037px) 100vw, 1037px"
+  formats={['avif', 'jpeg', 'png', 'webp']}
+  alt={caption}
+/>

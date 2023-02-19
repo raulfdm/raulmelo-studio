@@ -1,0 +1,59 @@
+---
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import type { domains, SupportedLanguages } from '@raulmelo/core';
+import { Picture } from '@astrojs/image/components';
+
+type Post = Awaited<ReturnType<typeof domains.posts.queryPostBySlug>>;
+
+type Props = {
+  lang: SupportedLanguages;
+  featuredImage: NonNullable<Post['featuredImage']>;
+  unsplash?: Post['unsplash'];
+};
+
+const { lang, featuredImage, unsplash } = Astro.props;
+
+const intl = getIntl(lang);
+---
+
+<div
+  class="mb-8 lg:mb-16 col-span-full"
+  role="img"
+  aria-label={intl.formatMessage({ id: 'blogPost.featuredImage' })}
+>
+  <div class="aspect-w-12 aspect-h-6">
+    <Picture
+      fit="cover"
+      src={featuredImage.url}
+      alt={intl.formatMessage({ id: 'blogPost.featuredImage' })}
+      loading="eager"
+      widths={[200, 400, 640, 768, 1037]}
+      sizes="(min-width: 1037px) 1037px, 100vw"
+      aspectRatio={12 / 6}
+    />
+  </div>
+
+  {
+    unsplash ? (
+      <p class="mt-4 text-base text-center lg:text-md dark:text-gray-300">
+        {intl.formatMessage(
+          {
+            id: 'blogPost.unsplashCaption',
+          },
+          {
+            authorLink: (
+              <a href={unsplash.url} class="underline text-secondary">
+                {unsplash.authorName}
+              </a>
+            ),
+            unsplashLink: (
+              <a href="https://unsplash.com" class="underline text-secondary">
+                Unsplash
+              </a>
+            ),
+          },
+        )}
+      </p>
+    ) : null
+  }
+</div>

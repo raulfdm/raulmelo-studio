@@ -1,0 +1,42 @@
+---
+import { Image } from '@astrojs/image/components';
+import { utils } from '@raulmelo/core';
+import { ImageSlider } from '@raulmelo/ui';
+
+type ImageNode = {
+  alt: string;
+  caption: string;
+  image: {
+    asset: {
+      _ref: string;
+    };
+  };
+};
+
+type Props = {
+  node: {
+    images: ImageNode[];
+  };
+};
+
+const { images } = Astro.props.node;
+
+const isImageEmpty = utils.isNil(images) || utils.isEmpty(images);
+
+const adaptedImages = images.map((img) => {
+  const { alt, caption, image } = img;
+  const src = utils.imgUrlFor(image).url();
+
+  const imgDimensions = utils.getImageDimensionsFromSanityImageUrl(src);
+
+  return {
+    alt,
+    caption,
+    height: imgDimensions.height,
+    width: imgDimensions.width,
+    src: `${src}?fit=crop&auto=format`,
+  };
+});
+---
+
+{isImageEmpty ? null : <ImageSlider images={adaptedImages} client:visible />}

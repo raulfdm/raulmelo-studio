@@ -1,0 +1,14 @@
+---
+import { Gif } from '@raulmelo/ui';
+
+type Props = {
+  node: {
+    caption: string;
+    src: string;
+    width?: number;
+  };
+};
+const { node } = Astro.props;
+---
+
+<Gif {...node} />

@@ -1,0 +1,54 @@
+---
+import { PortableText } from 'astro-portabletext';
+
+import Divider from './Divider.astro';
+import Image from './Image.astro';
+import Gif from './Gif.astro';
+import Strikethrough from './Strikethrough.astro';
+import ImageSlider from './ImageSlider.astro';
+import Highlight from './Highlight.astro';
+import BigQuote from './BigQuote.astro';
+import CodeBlock from './CodeBlock.astro';
+import CodePen from './CodePen.astro';
+import Tweet from './Tweet.astro';
+import InternalLink from './InternalLink.astro';
+import YoutubeVideo from './Youtube.astro';
+
+type PortableTextProps = Parameters<typeof PortableText>[0];
+
+export interface Props {
+  value: PortableTextProps['value'];
+  components?: PortableTextProps['components'];
+}
+
+const { value } = Astro.props;
+
+const components = {
+  type: {
+    divider: Divider,
+    image: Image,
+    detailedImage: Image,
+    gif: Gif,
+    imageSlider: ImageSlider,
+    code: CodeBlock,
+    codePen: CodePen,
+    tweet: Tweet,
+    youtubeVideo: YoutubeVideo,
+  },
+  mark: {
+    strikethrough: Strikethrough,
+    highlight: Highlight,
+    internalLink: InternalLink,
+  },
+  block: {
+    bigQuote: BigQuote,
+  },
+} as any;
+
+const portableTextProps = {
+  value: value,
+  components,
+};
+---
+
+<PortableText {...portableTextProps} />

@@ -1,0 +1,171 @@
+---
+import { domains, utils, SupportedLanguages } from '@raulmelo/core';
+import Layout from '@/layouts/Layout.astro';
+import { portableComponents } from '@/ui/portableComponents';
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { DotDivider, ProseContainer } from '@raulmelo/ui';
+
+import FeaturedImage from '@/ui/screens/blog/FeaturedImage.astro';
+import PostHeading from '@/ui/screens/blog/PostHeading.astro';
+import Tags from '@/ui/Tags.astro';
+import Tag from '@/ui/Tag.astro';
+import { getTagUrl } from '@/infrastructure/utils/url';
+import ShareContent from '@/ui/ShareContent.astro';
+import SeriesSection from '@/ui/screens/blog/SeriesSection.astro';
+import PortableText from '@/ui/PortableText/PortableText.astro';
+
+const { lang, slug } = Astro.params as {
+  slug: string;
+  lang: SupportedLanguages;
+};
+
+const post = await domains.posts.queryPostBySlug(slug);
+
+if (utils.isNil(post) || utils.isEmpty(post)) {
+  return {
+    notFound: true,
+  };
+}
+
+const estimatedReadingTime = utils.content.getEstimatedReadingTime(
+  post.content,
+);
+
+const intl = getIntl(lang);
+
+// TODO: add Missing SEO (get from the original set)
+// const seoInfo = useMemo(() => {
+//   const date = new Date(publishedAt).toISOString();
+
+//   return {
+//     title: title,
+//     /**
+//      * This enforce parsing double quotes correctly.
+//      * - no parsing: "the description will be "like this""
+//      * - parsing: "the description will be \"like this\""
+//      */
+//     description: `${description}`,
+//     url: `${siteData.site.url}${asPath}`,
+//     published: date,
+//     modified: date,
+//     image: {
+//       url: featuredImage?.url ?? siteData.site.seoImage.url,
+//       width: featuredImage?.width ?? siteData.site.seoImage.width,
+//       height: featuredImage?.height ?? siteData.site.seoImage.height,
+//     },
+//   };
+// }, [
+//   title,
+//   description,
+//   featuredImage,
+//   publishedAt,
+//   asPath,
+//   siteData.site.url,
+// ]);
+---
+
+<Layout lang={lang} title={post.title}>
+  <section class="w-full col-span-full lg:col-start-2 lg:col-end-12">
+    {
+      post.featuredImage ? (
+        <FeaturedImage
+          lang={lang}
+          featuredImage={post.featuredImage}
+          unsplash={post.unsplash}
+        />
+      ) : null
+    }
+
+    <PostHeading
+      title={post.title}
+      subtitle={post.subtitle}
+      publishedDateLabel={intl.formatMessage(
+        {
+          id: 'blogPost.publishedAt',
+        },
+        {
+          publishedDate: post.publishedAt,
+        },
+      )}
+      readingTimeLabel={intl.formatMessage(
+        {
+          id: 'blogPost.readingTime',
+        },
+        {
+          publishedDate: post.publishedAt,
+          readingTime: estimatedReadingTime,
+        },
+      )}
+    />
+    {
+      post.series ? (
+        <SeriesSection
+          series={post.series}
+          currentPostId={post._id}
+          seriesLabel={intl.formatMessage(
+            {
+              id: 'series.sectionDescription',
+            },
+            {
+              seriesAmount: post.series.posts.length,
+            },
+          )}
+        />
+      ) : null
+    }
+    <ProseContainer class="mt-8">
+      <PortableText value={post.content} />
+    </ProseContainer>
+    {
+      post.series ? (
+        <>
+          <DotDivider />
+          <SeriesSection
+            series={post.series}
+            currentPostId={post._id}
+            seriesLabel={intl.formatMessage(
+              {
+                id: 'series.sectionDescription',
+              },
+              {
+                seriesAmount: post.series.posts.length,
+              },
+            )}
+          />
+        </>
+      ) : null
+    }
+
+    <hr class="mt-10 mb-6" />
+
+    <footer class="flex flex-wrap justify-between">
+      {
+        post.tags ? (
+          <div class="mb-4 mr-4">
+            <span class="block mb-4 font-extrabold text-md md:text-lg lg:text-xl md:mb-6">
+              Tags
+            </span>
+            <Tags>
+              {post.tags.map((tag) => (
+                <Tag class="text-base lg:text-lg">
+                  <a
+                    href={getTagUrl(tag.slug, lang)}
+                    class="underline text-secondary"
+                  >
+                    #{tag.name}
+                  </a>
+                </Tag>
+              ))}
+            </Tags>
+          </div>
+        ) : null
+      }
+
+      <ShareContent
+        titleLabel={intl.formatMessage({ id: 'blogPost.share' })}
+        twitter={{ text: post.description }}
+        linkedIn={{ title: post.title, summary: post.description }}
+      />
+    </footer>
+  </section>
+</Layout>

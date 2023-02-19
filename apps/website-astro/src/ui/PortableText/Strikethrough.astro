@@ -1,0 +1,17 @@
+---
+type Props = {
+  node: {
+    children: { _type: string; text: string }[];
+  };
+};
+
+const { node } = Astro.props;
+
+const [firstChild] = node.children;
+
+if (!firstChild || !firstChild.text) {
+  console.error('StrikeThrough component requires a text child');
+}
+---
+
+<s>{firstChild.text}</s>
