@@ -24,3 +24,5 @@ interface ImportMetaEnv {
   PUBLIC_ALGOLIA_INDEX_NAME: string;
   PUBLIC_GOOGLE_ANALYTICS_ID: string;
 }
+
+export {};
