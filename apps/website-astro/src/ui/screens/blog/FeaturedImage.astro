@@ -21,15 +21,17 @@ const intl = getIntl(lang);
   role="img"
   aria-label={intl.formatMessage({ id: 'blogPost.featuredImage' })}
 >
-  <Picture
-    class="object-cover"
-    src={featuredImage.url}
-    alt={intl.formatMessage({ id: 'blogPost.featuredImage' })}
-    loading="eager"
-    widths={[200, 400, 640, 768, 1037]}
-    sizes="(min-width: 1037px) 1037px, 100vw"
-    aspectRatio={12 / 6}
-  />
+  <div class="aspect-w-12 aspect-h-6">
+    <Picture
+      fit="cover"
+      src={featuredImage.url}
+      alt={intl.formatMessage({ id: 'blogPost.featuredImage' })}
+      loading="eager"
+      widths={[200, 400, 640, 768, 1037]}
+      sizes="(min-width: 1037px) 1037px, 100vw"
+      aspectRatio={12 / 6}
+    />
+  </div>
 
   {
     unsplash ? (
