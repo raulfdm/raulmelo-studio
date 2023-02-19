@@ -1,7 +1,7 @@
 ---
 import { domains, utils, SupportedLanguages } from '@raulmelo/core';
 import Layout from '@/layouts/Layout.astro';
-import { PortableTextPost } from '@/ui/PortableTextPost';
+import { portableComponents } from '@/ui/portableComponents';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { DotDivider, ProseContainer } from '@raulmelo/ui';
 
@@ -12,8 +12,7 @@ import Tag from '@/ui/Tag.astro';
 import { getTagUrl } from '@/infrastructure/utils/url';
 import ShareContent from '@/ui/ShareContent.astro';
 import SeriesSection from '@/ui/screens/blog/SeriesSection.astro';
-import { LazyMotion } from 'framer-motion';
-import { domAnimation } from 'framer-motion';
+import PortableText from '@/ui/PortableText/PortableText.astro';
 
 const { lang, slug } = Astro.params as {
   slug: string;
@@ -101,7 +100,6 @@ const intl = getIntl(lang);
     {
       post.series ? (
         <SeriesSection
-          client:load
           series={post.series}
           currentPostId={post._id}
           seriesLabel={intl.formatMessage(
@@ -116,14 +114,13 @@ const intl = getIntl(lang);
       ) : null
     }
     <ProseContainer class="mt-8">
-      <PortableTextPost />
+      <PortableText value={post.content} />
     </ProseContainer>
     {
       post.series ? (
         <>
           <DotDivider />
           <SeriesSection
-            client:load
             series={post.series}
             currentPostId={post._id}
             seriesLabel={intl.formatMessage(

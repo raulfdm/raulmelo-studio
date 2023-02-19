@@ -1,0 +1,40 @@
+---
+import { PortableText } from 'astro-portabletext';
+import { mergeComponents } from 'astro-portabletext/utils';
+
+import Divider from './Divider.astro';
+import Image from './Image.astro';
+import Gif from './Gif.astro';
+import Strikethrough from './Strikethrough.astro';
+
+type PortableTextProps = Parameters<typeof PortableText>[0];
+
+export interface Props {
+  value: PortableTextProps['value'];
+  components?: PortableTextProps['components'];
+}
+
+const {
+  value,
+  components = {
+    type: {
+      divider: Divider,
+      image: Image,
+      detailedImage: Image,
+      gif: Gif,
+    },
+    mark: {
+      strikethrough: Strikethrough,
+    },
+  },
+  ...attrs
+} = Astro.props;
+
+console.log(attrs);
+const portableTextProps = {
+  value: value,
+  components: mergeComponents({}, components),
+};
+---
+
+<PortableText {...portableTextProps} {...attrs} />

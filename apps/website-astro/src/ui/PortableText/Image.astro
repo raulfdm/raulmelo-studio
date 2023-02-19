@@ -1,0 +1,29 @@
+---
+import { Image } from '@astrojs/image/components';
+
+type Props = {
+  node: {
+    caption: string;
+    image: {
+      url: string;
+      width: number;
+      height: number;
+    };
+  };
+};
+
+const {
+  node: { image, caption },
+} = Astro.props;
+---
+
+<figure class="relative h-0 overflow-hidden shadow aspect-w-12 aspect-h-6">
+  <Image
+    class="object-cover"
+    loading="lazy"
+    src={`${image.url}?auto=format`}
+    width={image.width}
+    height={image.height}
+    alt={caption}
+  />
+</figure>

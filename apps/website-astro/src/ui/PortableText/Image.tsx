@@ -1,4 +1,3 @@
-import NextImage from 'next/image';
 import type { CSSProperties } from 'react';
 
 type ImageProps = {
@@ -28,7 +27,12 @@ export const Image = ({ caption, customWidth, image, alt }: ImageProps) => {
   return (
     <div className="flex items-center justify-center">
       <figure style={figureStyles}>
-        <NextImage src={image.url} {...props} alt={alt || ''} quality={90} />
+        <img
+          src={`${image.url}?auto=format&max-w=1037&fit=max`}
+          {...props}
+          alt={alt || ''}
+          loading="lazy"
+        />
         {caption ? (
           <figcaption className="text-center">{caption}</figcaption>
         ) : null}

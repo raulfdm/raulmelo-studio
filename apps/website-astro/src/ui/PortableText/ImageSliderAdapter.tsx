@@ -1,6 +1,5 @@
 import { utils } from '@raulmelo/core';
 import { ImageSlider } from '@raulmelo/ui';
-import NextImage from 'next/image';
 
 export function ImageSliderAdapter({ value }: SanityBlock) {
   const { images } = value;
@@ -28,7 +27,7 @@ export function ImageSliderAdapter({ value }: SanityBlock) {
     <ImageSlider
       images={adaptedImages}
       renderImage={(img) => {
-        return <NextImage {...img} />;
+        return <img {...img} src={`${img.src}?auto=format`} loading="lazy" />;
       }}
     />
   );
