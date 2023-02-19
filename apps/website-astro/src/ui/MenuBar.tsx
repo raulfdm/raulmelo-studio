@@ -6,13 +6,15 @@ import { domAnimation, LazyMotion } from 'framer-motion';
 import { MenuButton } from './MenuBarButton';
 import { SideMenu, useSideMenu } from './SideMenu';
 import { ThemeSwitch } from './ThemeSwitch';
+import { LanguageSwitch } from './LanguageSwitch';
 
 type MenuBarProps = {
   lang: SupportedLanguages;
   logo?: any;
+  pathname: string;
 };
 
-export function MenuBar({ lang, logo }: MenuBarProps) {
+export function MenuBar({ lang, logo, pathname }: MenuBarProps) {
   const sideMenu = useSideMenu();
   const intl = getIntl(lang);
 
@@ -39,8 +41,13 @@ export function MenuBar({ lang, logo }: MenuBarProps) {
                 id: 'menu.themeButtonAriaLabel',
               })}
             />
-            {/* 
-        <LanguageSwitch /> */}
+            <LanguageSwitch
+              lang={lang}
+              pathname={pathname}
+              label={intl.formatMessage({
+                id: 'menu.languageButtonAriaLabel',
+              })}
+            />
             <MenuButton
               onClick={sideMenu.toggle}
               aria-label={intl.formatMessage({
