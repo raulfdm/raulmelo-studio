@@ -1,0 +1,35 @@
+---
+import { getPostUrl, getTilUrl } from '@/infrastructure/utils/url';
+import type { SupportedLanguages } from '@raulmelo/core';
+
+/**
+ * This component is a bit problematic.
+ *
+ * When I created it I didn't take into account that a referenced post could have
+ * its own `lang`.
+ *
+ * As a workaround, I'm sending the current `lang` as a param to the component but
+ * I never can reference a post in a different language. :(
+ */
+type Props = {
+  node: {
+    children: { text: string }[];
+    markDef: {
+      itemMeta: {
+        _type: 'post' | 'til';
+        slug: string;
+      };
+    };
+  };
+};
+
+const { children, markDef } = Astro.props.node;
+const { _type, slug } = markDef.itemMeta;
+const { lang } = Astro.params as { lang: SupportedLanguages };
+
+const content = children[0].text;
+
+const href = _type === 'post' ? getPostUrl(slug, lang) : getTilUrl(slug, lang);
+---
+
+<a href={href} data-testid="internal-link">{content}</a>

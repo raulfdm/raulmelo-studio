@@ -12,6 +12,7 @@ import BigQuote from './BigQuote.astro';
 import CodeBlock from './CodeBlock.astro';
 import CodePen from './CodePen.astro';
 import Tweet from './Tweet.astro';
+import InternalLink from './InternalLink.astro';
 
 type PortableTextProps = Parameters<typeof PortableText>[0];
 
@@ -36,6 +37,7 @@ const {
     mark: {
       strikethrough: Strikethrough,
       highlight: Highlight,
+      internalLink: InternalLink,
     },
     block: {
       bigQuote: BigQuote,

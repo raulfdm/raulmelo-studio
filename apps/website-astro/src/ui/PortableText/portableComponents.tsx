@@ -6,7 +6,6 @@ export const portableComponents = {
   hardBreak: false,
   types: {
     youtubeVideo: sanityToUiAdapter(YouTubeIframe),
-    tweet: sanityToUiAdapter(Tweet),
   },
   // block: {
   //   blockquote: ({ children }: { children: string[] }) => {
@@ -49,31 +48,6 @@ export const portableComponents = {
   //     }
 
   //     return <a {...props} />;
-  //   },
-  //   internalLink: ({
-  //     children,
-  //     value,
-  //   }: {
-  //     children: React.ReactNode;
-  //     value: {
-  //       itemMeta: {
-  //         slug: string;
-  //         _type: 'post' | 'til';
-  //       };
-  //     };
-  //   }) => {
-  //     const { slug, _type } = value.itemMeta;
-  //     let href = '';
-
-  //     if (_type === 'post') {
-  //       href = '/blog/';
-  //     } else if (_type === 'til') {
-  //       href = '/til/';
-  //     }
-
-  //     href += slug;
-
-  //     return <a href={href}>{children}</a>;
   //   },
   // },
 };
