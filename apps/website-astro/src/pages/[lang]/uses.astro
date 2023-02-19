@@ -1,15 +1,12 @@
 ---
 import { domains, utils, SupportedLanguages } from '@raulmelo/core';
-import Layout from '@/layouts/Layout.astro';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { ProseContainer } from '@raulmelo/ui';
 
 import PostHeading from '@/ui/screens/blog/PostHeading.astro';
-import Tags from '@/ui/Tags.astro';
-import Tag from '@/ui/Tag.astro';
-import { getTagUrl } from '@/infrastructure/utils/url';
 import ShareContent from '@/ui/ShareContent.astro';
 import PortableText from '@/ui/PortableText/PortableText.astro';
+import PostLayout from '@/layouts/PostLayout.astro';
 
 const { lang } = Astro.params as {
   slug: string;
@@ -55,7 +52,7 @@ const intl = getIntl(lang);
 // ]);
 ---
 
-<Layout lang={lang} title={uses.title}>
+<PostLayout lang={lang} title={uses.title}>
   <section class="w-full col-span-full lg:col-start-2 lg:col-end-12">
     <PostHeading title={uses.title} />
 
@@ -73,4 +70,4 @@ const intl = getIntl(lang);
       />
     </footer>
   </section>
-</Layout>
+</PostLayout>
