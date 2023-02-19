@@ -10,6 +10,8 @@ import ImageSlider from './ImageSlider.astro';
 import Highlight from './Highlight.astro';
 import BigQuote from './BigQuote.astro';
 import CodeBlock from './CodeBlock.astro';
+import CodePen from './CodePen.astro';
+import Tweet from './Tweet.astro';
 
 type PortableTextProps = Parameters<typeof PortableText>[0];
 
@@ -28,6 +30,8 @@ const {
       gif: Gif,
       imageSlider: ImageSlider,
       code: CodeBlock,
+      codePen: CodePen,
+      tweet: Tweet,
     },
     mark: {
       strikethrough: Strikethrough,

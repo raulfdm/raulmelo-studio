@@ -1,0 +1,11 @@
+---
+import { Tweet } from '@raulmelo/ui';
+
+type Props = {
+  node: any;
+};
+
+const { node } = Astro.props;
+---
+
+<Tweet {...node} client:visible />

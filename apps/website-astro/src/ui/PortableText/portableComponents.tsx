@@ -6,7 +6,6 @@ export const portableComponents = {
   hardBreak: false,
   types: {
     youtubeVideo: sanityToUiAdapter(YouTubeIframe),
-    codePen: sanityToUiAdapter(CodePenIframe),
     tweet: sanityToUiAdapter(Tweet),
   },
   // block: {
