@@ -129,9 +129,20 @@ export const trainingRoutineSchema = defineType({
 			routine: 'routine'
 		},
 		prepare(selection: { routine: { name: string; description: string; date: string } }) {
+			let subtitle = '';
+
+			if (selection.routine.description) {
+				subtitle += selection.routine.description;
+			}
+
+			if (selection.routine.date) {
+				subtitle += ` (${Intl.DateTimeFormat('pt-BR', { weekday: 'long', day: 'numeric' }).format(
+					new Date(selection.routine.date)
+				)})`;
+			}
 			return {
 				title: selection.routine.name,
-				subtitle: `${selection.routine.description} (${selection.routine.date})`
+				subtitle: subtitle
 			};
 		}
 	}
