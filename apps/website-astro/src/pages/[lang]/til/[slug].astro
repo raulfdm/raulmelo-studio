@@ -2,7 +2,6 @@
 import { domains, utils, SupportedLanguages } from '@raulmelo/core';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { ProseContainer } from '@raulmelo/ui';
-
 import PostHeading from '@/ui/screens/blog/PostHeading.astro';
 import Tags from '@/ui/Tags.astro';
 import Tag from '@/ui/Tag.astro';
@@ -10,6 +9,7 @@ import { getTagUrl } from '@/infrastructure/utils/url';
 import ShareContent from '@/ui/ShareContent.astro';
 import PortableText from '@/ui/PortableText/PortableText.astro';
 import PostLayout from '@/layouts/PostLayout.astro';
+import DefaultSEO from '@/ui/DefaultSEO.astro';
 
 const { lang, slug } = Astro.params as {
   slug: string;
@@ -59,6 +59,9 @@ const intl = getIntl(lang);
 ---
 
 <PostLayout lang={lang} title={til.title}>
+  <DefaultSEO title={til.title} title={til.title} description={til.} />
+  <!-- <DefaultSEO slot="seo" title="VAI TOMAR NO CU, COM TODO RESPEITO" /> -->
+
   <section class="w-full col-span-full lg:col-start-2 lg:col-end-12">
     <PostHeading
       title={til.title}
