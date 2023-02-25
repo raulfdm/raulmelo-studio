@@ -1,6 +1,6 @@
 ---
 export interface Props {
-  title: string;
+  title?: string;
   lang: SupportedLanguages;
 }
 
@@ -11,23 +11,33 @@ import '@raulmelo/styles/lib/styles.css';
 import { MenuBar } from '@/ui/MenuBar';
 import type { SupportedLanguages } from '@raulmelo/core';
 import Logo from '@/ui/Logo.astro';
+import DefaultSEO from '@/ui/DefaultSEO.astro';
+
+import { domains } from '@raulmelo/core';
 
 const { title, lang } = Astro.props;
+const siteData = await domains.siteData.querySiteData();
 ---
 
 <!DOCTYPE html>
 <html lang={lang}>
   <head>
+    <!-- Base -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <!-- Base-end -->
 
+    <!-- Custom Props -->
     <slot name="head" />
-    {/* Proxima Nova Font */}
-    <link rel="stylesheet" href="https://use.typekit.net/rsd6fwc.css" />
+    <!-- Custom Props-end -->
 
+    <!-- Proxima Nova Font -->
+    <link rel="stylesheet" href="https://use.typekit.net/rsd6fwc.css" />
+    <!-- Proxima Nova Font-end -->
+
+    <!-- Theme Script -->
     <script is:inline>
       const theme = (() => {
         if (
@@ -47,8 +57,16 @@ const { title, lang } = Astro.props;
       } else {
         document.documentElement.classList.add('dark');
       }
+      window.__theme = theme;
       window.localStorage.setItem('theme', theme);
     </script>
+    <!-- Theme Script-end -->
+
+    <!-- SEO -->
+    <slot name="seo">
+      <!-- <DefaultSEO /> -->
+    </slot>
+    <!-- SEO-end -->
   </head>
   <body
     class="relative min-h-screen pb-12 duration-200 bg-white dark:bg-blue-900 text-primary transition-theme ease md:pb-16"
