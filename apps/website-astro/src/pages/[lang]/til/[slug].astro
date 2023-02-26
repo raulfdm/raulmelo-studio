@@ -26,41 +26,18 @@ if (utils.isNil(til) || utils.isEmpty(til)) {
 const estimatedReadingTime = utils.content.getEstimatedReadingTime(til.content);
 
 const intl = getIntl(lang);
-
-// TODO: add Missing SEO (get from the original set)
-// const seoInfo = useMemo(() => {
-//   const date = new Date(publishedAt).toISOString();
-
-//   return {
-//     title: title,
-//     /**
-//      * This enforce parsing double quotes correctly.
-//      * - no parsing: "the description will be "like this""
-//      * - parsing: "the description will be \"like this\""
-//      */
-//     description: `${description}`,
-//     url: `${siteData.site.url}${asPath}`,
-//     published: date,
-//     modified: date,
-//     image: {
-//       url: featuredImage?.url ?? siteData.site.seoImage.url,
-//       width: featuredImage?.width ?? siteData.site.seoImage.width,
-//       height: featuredImage?.height ?? siteData.site.seoImage.height,
-//     },
-//   };
-// }, [
-//   title,
-//   description,
-//   featuredImage,
-//   publishedAt,
-//   asPath,
-//   siteData.site.url,
-// ]);
 ---
 
-<PostLayout lang={lang} title={til.title}>
-  <DefaultSEO title={til.title} title={til.title} description={til.} />
-  <!-- <DefaultSEO slot="seo" title="VAI TOMAR NO CU, COM TODO RESPEITO" /> -->
+<PostLayout title={til.title}>
+  <!-- <DefaultSEO
+    title={til.title}
+    description={til.title}
+    article={{
+      modifiedTime: til.publishedAt,
+      publishedTime: til.publishedAt,
+      tags: til.tags?.map((tag) => tag.name) || [],
+    }}
+  /> -->
 
   <section class="w-full col-span-full lg:col-start-2 lg:col-end-12">
     <PostHeading

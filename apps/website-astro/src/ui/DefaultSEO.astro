@@ -1,18 +1,20 @@
 ---
 import { SEO, Props as SeoProps } from 'astro-seo';
 import { domains, SupportedLanguages } from '@raulmelo/core';
-import defaults from 'lodash.defaultsdeep';
-import type { PartialDeep } from 'type-fest';
-import { z } from 'zod';
 
-type Props = {
+export type Props = {
+  lang: SupportedLanguages;
   title?: string;
   description?: string;
   image?: NonNullable<SeoProps['openGraph']>['image'];
+  article?: {
+    publishedTime: string;
+    modifiedTime: string;
+    tags: string[];
+  };
 };
 
-const { lang } = Astro.params as { lang: SupportedLanguages };
-const { title, description, image } = Astro.props;
+const { title, description, image, article, lang } = Astro.props;
 
 const siteData = await domains.siteData.querySiteData();
 
@@ -34,6 +36,13 @@ const nextImage = image || {
   alt: siteData.personalInformation.fullName,
 };
 
+const nextArticle = article
+  ? ({
+      ...article,
+      authors: [siteData.personalInformation.fullName],
+    } satisfies NonNullable<SeoProps['openGraph']>['article'])
+  : undefined;
+
 const defaultOpenGraph = {
   optional: {
     siteName: siteData.personalInformation.fullName,
@@ -45,6 +54,7 @@ const defaultOpenGraph = {
     type: 'website',
     image: imageUrl,
   },
+  article: nextArticle,
 } satisfies SeoProps['openGraph'];
 
 const defaultTwitter = {

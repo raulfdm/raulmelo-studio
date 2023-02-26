@@ -3,12 +3,10 @@ import Layout, { Props as LayoutProps } from './Layout.astro';
 
 type Props = LayoutProps;
 
-const { lang, title, ...props } = Astro.props;
-
-console.log(props);
+const { title } = Astro.props;
 ---
 
-<Layout lang={lang} title={title}>
+<Layout title={title}>
   <!-- <Fragment slot="head">
     <link
       rel="preconnect"
@@ -24,5 +22,3 @@ console.log(props);
 
   <slot />
 </Layout>
-
-<slot name="seo" />

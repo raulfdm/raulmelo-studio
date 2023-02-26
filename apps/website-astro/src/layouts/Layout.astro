@@ -1,8 +1,7 @@
 ---
-export interface Props {
+export type Props = {
   title?: string;
-  lang: SupportedLanguages;
-}
+} & Omit<SeoProps, 'lang'>;
 
 import '@raulmelo/ui/styles/prism.css';
 import '@raulmelo/ui/styles/style.css';
@@ -11,12 +10,11 @@ import '@raulmelo/styles/lib/styles.css';
 import { MenuBar } from '@/ui/MenuBar';
 import type { SupportedLanguages } from '@raulmelo/core';
 import Logo from '@/ui/Logo.astro';
-import DefaultSEO from '@/ui/DefaultSEO.astro';
+import DefaultSEO, { type Props as SeoProps } from '@/ui/DefaultSEO.astro';
 
-import { domains } from '@raulmelo/core';
+const { title } = Astro.props;
 
-const { title, lang } = Astro.props;
-const siteData = await domains.siteData.querySiteData();
+const { lang } = Astro.params as { lang: SupportedLanguages };
 ---
 
 <!DOCTYPE html>
@@ -63,9 +61,7 @@ const siteData = await domains.siteData.querySiteData();
     <!-- Theme Script-end -->
 
     <!-- SEO -->
-    <slot name="seo">
-      <!-- <DefaultSEO /> -->
-    </slot>
+    <DefaultSEO title={title} lang={lang} />
     <!-- SEO-end -->
   </head>
   <body

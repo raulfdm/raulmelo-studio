@@ -38,7 +38,7 @@ const [siteData, { posts, tils }] = await Promise.all([
 const intl = getIntl(lang);
 ---
 
-<Layout title="Home page" lang={lang}>
+<Layout title="Home page">
   <AuthorPresentation siteData={siteData} lang={lang} />
 
   <PostSection
