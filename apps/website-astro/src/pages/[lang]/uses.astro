@@ -7,6 +7,10 @@ import PostHeading from '@/ui/screens/blog/PostHeading.astro';
 import ShareContent from '@/ui/ShareContent.astro';
 import PortableText from '@/ui/PortableText/PortableText.astro';
 import PostLayout from '@/ui/layouts/PostLayout.astro';
+import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
+
+export const prerender = true;
+export const getStaticPaths = languageGetStaticPaths;
 
 const { lang } = Astro.params as {
   slug: string;

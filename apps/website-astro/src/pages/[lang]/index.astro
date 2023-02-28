@@ -15,8 +15,13 @@ import AuthorPresentation from '@/ui/screens/home/AuthorPresentation.astro';
 import PostSection from '@/ui/screens/home/PostSection.astro';
 
 import Layout from '@/ui/layouts/Layout.astro';
+import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 
 const { lang } = Astro.params as { lang: SupportedLanguages };
+
+export const prerender = true;
+
+export const getStaticPaths = languageGetStaticPaths;
 
 const { success } = supportedLanguagesSchema.safeParse(lang);
 

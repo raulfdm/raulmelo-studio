@@ -15,6 +15,19 @@ const { lang, slug } = Astro.params as {
   lang: SupportedLanguages;
 };
 
+export async function getStaticPaths() {
+  const tils = await domains.posts.queryTils('all');
+
+  return tils.map((til) => ({
+    params: {
+      slug: til.slug,
+      lang: til.language,
+    },
+  }));
+}
+
+export const prerender = true;
+
 const til = await domains.posts.queryTilBySlug(slug);
 
 // https://github.com/vercel/next.js/issues/16681#issuecomment-792314687
