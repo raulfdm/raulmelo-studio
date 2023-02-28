@@ -10,12 +10,23 @@ import ShareContent from '@/ui/ShareContent.astro';
 import PortableText from '@/ui/PortableText/PortableText.astro';
 import PostLayout from '@/ui/layouts/PostLayout.astro';
 
-export const prerender = true;
-
 const { lang, slug } = Astro.params as {
   slug: string;
   lang: SupportedLanguages;
 };
+
+export async function getStaticPaths() {
+  const tils = await domains.posts.queryTils('all');
+
+  return tils.map((til) => ({
+    params: {
+      slug: til.slug,
+      lang: til.language,
+    },
+  }));
+}
+
+export const prerender = true;
 
 const til = await domains.posts.queryTilBySlug(slug);
 

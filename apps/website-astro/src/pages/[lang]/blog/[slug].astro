@@ -13,12 +13,23 @@ import SeriesSection from '@/ui/screens/blog/SeriesSection.astro';
 import PortableText from '@/ui/PortableText/PortableText.astro';
 import PostLayout from '@/ui/layouts/PostLayout.astro';
 
-export const prerender = true;
-
 const { lang, slug } = Astro.params as {
   slug: string;
   lang: SupportedLanguages;
 };
+
+export async function getStaticPaths() {
+  const posts = await domains.posts.queryPosts('all');
+
+  return posts.map((post) => ({
+    params: {
+      slug: post.slug,
+      lang: post.language,
+    },
+  }));
+}
+
+export const prerender = true;
 
 const post = await domains.posts.queryPostBySlug(slug);
 

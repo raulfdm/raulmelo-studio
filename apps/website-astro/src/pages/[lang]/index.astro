@@ -16,9 +16,24 @@ import PostSection from '@/ui/screens/home/PostSection.astro';
 
 import Layout from '@/ui/layouts/Layout.astro';
 
+const { lang } = Astro.params as { lang: SupportedLanguages };
+
 export const prerender = true;
 
-const { lang } = Astro.params as { lang: SupportedLanguages };
+export function getStaticPaths() {
+  return [
+    {
+      params: {
+        lang: 'en',
+      },
+    },
+    {
+      params: {
+        lang: 'pt',
+      },
+    },
+  ];
+}
 
 const { success } = supportedLanguagesSchema.safeParse(lang);
 
