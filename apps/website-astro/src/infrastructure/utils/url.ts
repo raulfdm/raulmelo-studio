@@ -9,9 +9,9 @@ export function getPostUrl(
 ): string {
   const nextUrl = `/blog/${postSlug}`;
 
-  if (locale === `en`) {
-    return nextUrl;
-  }
+  // if (locale === `en`) {
+  //   return nextUrl;
+  // }
 
   return getPathnameWithLocale(nextUrl, locale);
 }
@@ -19,9 +19,9 @@ export function getPostUrl(
 export function getTagUrl(tagSlug: string, locale: SupportedLanguages): string {
   const nextUrl = `/tag/${tagSlug}`;
 
-  if (locale === `en`) {
-    return nextUrl;
-  }
+  // if (locale === `en`) {
+  //   return nextUrl;
+  // }
 
   return getPathnameWithLocale(nextUrl, locale);
 }
@@ -29,9 +29,9 @@ export function getTagUrl(tagSlug: string, locale: SupportedLanguages): string {
 export function getTilUrl(slug: string, locale: SupportedLanguages): string {
   const nextUrl = `/til/${slug}`;
 
-  if (locale === `en`) {
-    return nextUrl;
-  }
+  // if (locale === `en`) {
+  //   return nextUrl;
+  // }
 
   return getPathnameWithLocale(nextUrl, locale);
 }
@@ -57,7 +57,7 @@ export function getPathnameWithLocale(
 ) {
   const hasLocale = pathname.startsWith(`/${locale}`);
 
-  if (locale === `en` || hasLocale) {
+  if (/* locale === `en` || */ hasLocale) {
     return pathname;
   }
 
