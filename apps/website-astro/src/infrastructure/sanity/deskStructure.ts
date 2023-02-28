@@ -23,7 +23,6 @@ export function deskStructure(S: StructureBuilder) {
             .title(`Collections`)
             .items(
               S.documentTypeListItems().filter((listItem) => {
-                console.log(listItem);
                 return !typeIdsToIgnore.includes(listItem.getId() as string);
               }),
             ),
