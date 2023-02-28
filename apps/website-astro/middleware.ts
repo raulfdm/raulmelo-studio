@@ -4,12 +4,10 @@ import Negotiator from 'negotiator';
 const supportedLocales = ['en', 'pt'];
 const defaultLocale = 'en';
 
-const passThroughRoutes = ['/cv'];
-
 export default function middleware(request: Request) {
   const url = new URL(request.url);
 
-  if (passThroughRoutes.includes(url.pathname)) {
+  if (skipMiddleware(request.url)) {
     return;
   }
 
@@ -27,6 +25,22 @@ export default function middleware(request: Request) {
 
     return Response.redirect(nextUrl);
   }
+}
+
+const passThroughRoutes = ['/cv', '/admin'];
+
+function skipMiddleware(url: string) {
+  let shouldSkip = false;
+  const pathname = new URL(url).pathname;
+
+  for (const route of passThroughRoutes) {
+    if (pathname.startsWith(route)) {
+      shouldSkip = true;
+      break;
+    }
+  }
+
+  return shouldSkip;
 }
 
 function getLocale(request: Request) {
