@@ -4,10 +4,10 @@ import vercel from '@astrojs/vercel/serverless';
 import react from '@astrojs/react';
 import image from '@astrojs/image';
 
-// https://astro.build/config
 import sitemap from '@astrojs/sitemap';
 
-// https://astro.build/config
+import robotsTxt from 'astro-robots-txt';
+
 export default defineConfig({
   site: 'https://raulmelo.dev',
   integrations: [
@@ -26,6 +26,15 @@ export default defineConfig({
           pt: 'pt-BR',
         },
       },
+    }),
+    robotsTxt({
+      policy: [
+        {
+          userAgent: '*',
+          allow: '/',
+          disallow: ['/search', '/404'],
+        },
+      ],
     }),
   ],
   output: 'server',
