@@ -6,6 +6,8 @@ import Layout from '@/ui/layouts/Layout.astro';
 import classNames from 'classnames';
 import { Tils } from '@/ui/screens/tils/Tils';
 
+export const prerender = true;
+
 const { lang } = Astro.params as { lang: SupportedLanguages };
 
 const tils = await domains.posts.queryTils(lang as SupportedLanguages);

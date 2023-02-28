@@ -8,6 +8,8 @@ import ShareContent from '@/ui/ShareContent.astro';
 import PortableText from '@/ui/PortableText/PortableText.astro';
 import PostLayout from '@/ui/layouts/PostLayout.astro';
 
+export const prerender = true;
+
 const { lang } = Astro.params as {
   slug: string;
   lang: SupportedLanguages;

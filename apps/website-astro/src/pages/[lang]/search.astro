@@ -10,6 +10,8 @@ import { SearchSSR } from '@/ui/screens/search/SearchSSR';
 
 const { lang } = Astro.params as { lang: SupportedLanguages };
 
+export const prerender = true;
+
 const intl = getIntl(lang);
 
 const searchServerState = await getServerState(

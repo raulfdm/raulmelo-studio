@@ -16,6 +16,8 @@ import PostSection from '@/ui/screens/home/PostSection.astro';
 
 import Layout from '@/ui/layouts/Layout.astro';
 
+export const prerender = true;
+
 const { lang } = Astro.params as { lang: SupportedLanguages };
 
 const { success } = supportedLanguagesSchema.safeParse(lang);
