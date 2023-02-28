@@ -1,9 +1,11 @@
-import { getPathnameWithoutLocale } from '@/infrastructure/utils/url';
 import { Popover } from '@headlessui/react';
-import type { SupportedLanguages } from '@raulmelo/core';
+import { type SupportedLanguages } from '@raulmelo/core';
 import { GlobeIcon } from '@raulmelo/ui';
 import { useState } from 'react';
 import { usePopper } from 'react-popper';
+
+import { getPathnameWithoutLocale } from '@/infrastructure/utils/url';
+
 import { MenuButton } from '../MenuBarButton';
 
 type LanguageSwitchProps = {
@@ -20,15 +22,15 @@ export function LanguageSwitch({ pathname, label, lang }: LanguageSwitchProps) {
     referenceElement,
     popperElement,
     {
-      placement: 'bottom-end',
+      placement: `bottom-end`,
       modifiers: [
         {
-          name: 'offset',
+          name: `offset`,
           options: {
             offset: [0, 12],
           },
         },
-        { name: 'arrow', options: { element: arrowElement, padding: 5 } },
+        { name: `arrow`, options: { element: arrowElement, padding: 5 } },
       ],
     },
   );
@@ -74,8 +76,8 @@ export function LanguageSwitch({ pathname, label, lang }: LanguageSwitchProps) {
         />
         <Popover.Button
           className="flex-1 px-6 py-2 font-sans text-base text-center cursor-pointer whitespace-nowrap disabled:cursor-not-allowed disabled:font-semibold disabled:text-secondary"
-          disabled={lang === 'en'}
-          onClick={() => changeLocale('en')}
+          disabled={lang === `en`}
+          onClick={() => changeLocale(`en`)}
           aria-label="Switch to English"
         >
           English
@@ -83,8 +85,8 @@ export function LanguageSwitch({ pathname, label, lang }: LanguageSwitchProps) {
 
         <Popover.Button
           className="flex-1 px-6 py-2 font-sans text-base text-center cursor-pointer whitespace-nowrap disabled:cursor-not-allowed disabled:font-semibold disabled:text-secondary"
-          disabled={lang === 'pt'}
-          onClick={() => changeLocale('pt')}
+          disabled={lang === `pt`}
+          onClick={() => changeLocale(`pt`)}
           aria-label="Mudar para Português"
         >
           Português

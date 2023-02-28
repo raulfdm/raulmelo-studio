@@ -1,12 +1,14 @@
-import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
-import { getPathnameWithLocale } from '@/infrastructure/utils/url';
-import type { SupportedLanguages } from '@raulmelo/core';
+import { type SupportedLanguages } from '@raulmelo/core';
 import { CloseIcon, MenuIcon } from '@raulmelo/ui';
 import { domAnimation, LazyMotion } from 'framer-motion';
+
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { getPathnameWithLocale } from '@/infrastructure/utils/url';
+
+import { LanguageSwitch } from './LanguageSwitch';
 import { MenuButton } from './MenuBarButton';
 import { SideMenu, useSideMenu } from './SideMenu';
 import { ThemeSwitch } from './ThemeSwitch';
-import { LanguageSwitch } from './LanguageSwitch';
 
 type MenuBarProps = {
   lang: SupportedLanguages;
@@ -38,14 +40,14 @@ export function MenuBar({ lang, logo, pathname }: MenuBarProps) {
           <section className="flex justify-end col-span-2 space-x-3 md:col-end-9 lg:col-end-13">
             <ThemeSwitch
               label={intl.formatMessage({
-                id: 'menu.themeButtonAriaLabel',
+                id: `menu.themeButtonAriaLabel`,
               })}
             />
             <LanguageSwitch
               lang={lang}
               pathname={pathname}
               label={intl.formatMessage({
-                id: 'menu.languageButtonAriaLabel',
+                id: `menu.languageButtonAriaLabel`,
               })}
             />
             <MenuButton

@@ -10,7 +10,7 @@ const { node } = Astro.props;
 const [firstChild] = node.children;
 
 if (!firstChild || !firstChild.text) {
-  console.error('StrikeThrough component requires a text child');
+  console.error(`StrikeThrough component requires a text child`);
 }
 ---
 

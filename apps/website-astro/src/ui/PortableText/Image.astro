@@ -1,6 +1,7 @@
 ---
-import { calculateAspectRatio } from '@/infrastructure/utils/image';
 import { Picture } from '@astrojs/image/components';
+
+import { calculateAspectRatio } from '@/infrastructure/utils/image';
 
 type Props = {
   node: {
@@ -24,7 +25,7 @@ const {
   aspectRatio={calculateAspectRatio(image.width, image.height)}
   widths={[200, 400, 640, 768, 1037]}
   sizes="(max-width: 1037px) 100vw, 1037px"
-  formats={['avif', 'jpeg', 'png', 'webp']}
+  formats={[`avif`, `jpeg`, `png`, `webp`]}
   alt={caption}
   width={image.width}
   height={image.height}

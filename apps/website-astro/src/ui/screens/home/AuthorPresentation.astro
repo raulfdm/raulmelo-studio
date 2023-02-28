@@ -4,19 +4,19 @@ export type Props = {
   lang: SupportedLanguages;
 };
 
-import type { SupportedLanguages } from '@raulmelo/core';
-import type { QuerySiteDataReturnType } from '@raulmelo/core/dist/types/domains/siteData';
 import { Image } from '@astrojs/image/components';
+import { type SupportedLanguages } from '@raulmelo/core';
+import { type QuerySiteDataReturnType } from '@raulmelo/core/dist/types/domains/siteData';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { getSocial } from '@/infrastructure/utils/seo';
 
-import IconWrapper from './IconWrapper.astro';
 import DevToIcon from '../../Icons/DevTo.astro';
-import MediumIcon from '../../Icons/Medium.astro';
 import GithubIcon from '../../Icons/Github.astro';
 import LinkedInIcon from '../../Icons/LinkedIn.astro';
+import MediumIcon from '../../Icons/Medium.astro';
 import TwitterIcon from '../../Icons/Twitter.astro';
+import IconWrapper from './IconWrapper.astro';
 
 const { siteData, lang } = Astro.props;
 

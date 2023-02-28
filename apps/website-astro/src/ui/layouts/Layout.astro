@@ -1,5 +1,5 @@
 ---
-type OmittedSeoProps = Omit<SeoProps, 'lang'>;
+type OmittedSeoProps = Omit<SeoProps, `lang`>;
 
 export type Props = {
   title?: string;
@@ -11,10 +11,11 @@ import '@raulmelo/ui/styles/prism.css';
 import '@raulmelo/ui/styles/style.css';
 import '@raulmelo/styles/lib/styles.css';
 
-import { MenuBar } from '@/ui/MenuBar';
-import type { SupportedLanguages } from '@raulmelo/core';
-import Logo from '@/ui/Logo.astro';
+import { type SupportedLanguages } from '@raulmelo/core';
+
 import DefaultSEO, { type Props as SeoProps } from '@/ui/DefaultSEO.astro';
+import Logo from '@/ui/Logo.astro';
+import { MenuBar } from '@/ui/MenuBar';
 
 const { title, seo, lang } = Astro.props;
 
@@ -45,24 +46,24 @@ const nextLang = lang || langFromParams;
     <script is:inline>
       const theme = (() => {
         if (
-          typeof localStorage !== 'undefined' &&
-          localStorage.getItem('theme')
+          typeof localStorage !== `undefined` &&
+          localStorage.getItem(`theme`)
         ) {
-          return localStorage.getItem('theme');
+          return localStorage.getItem(`theme`);
         }
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'dark';
+        if (window.matchMedia(`(prefers-color-scheme: dark)`).matches) {
+          return `dark`;
         }
-        return 'light';
+        return `light`;
       })();
 
-      if (theme === 'light') {
-        document.documentElement.classList.remove('dark');
+      if (theme === `light`) {
+        document.documentElement.classList.remove(`dark`);
       } else {
-        document.documentElement.classList.add('dark');
+        document.documentElement.classList.add(`dark`);
       }
       window.__theme = theme;
-      window.localStorage.setItem('theme', theme);
+      window.localStorage.setItem(`theme`, theme);
     </script>
     <!-- Theme Script-end -->
   </head>

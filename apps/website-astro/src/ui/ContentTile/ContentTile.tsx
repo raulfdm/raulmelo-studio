@@ -37,7 +37,7 @@ export function ContentTile({
         className="relative inline-block cursor-pointer"
       >
         <h3
-          className={classNames('text-lg font-black md:text-xl', {
+          className={classNames(`text-lg font-black md:text-xl`, {
             'text-secondary': isFocused,
           })}
         >
@@ -58,7 +58,7 @@ export function ContentTile({
           </p>
         )}
         <span
-          className={classNames('flex mt-3 font-bold', {
+          className={classNames(`flex mt-3 font-bold`, {
             'font-extrabold text-secondary': isFocused,
           })}
         >

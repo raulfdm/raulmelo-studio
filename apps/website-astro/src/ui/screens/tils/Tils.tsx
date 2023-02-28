@@ -1,8 +1,9 @@
+import { type domains, type SupportedLanguages } from '@raulmelo/core';
+import { domAnimation, LazyMotion } from 'framer-motion';
+
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { getTilUrl } from '@/infrastructure/utils/url';
 import { ContentTile } from '@/ui/ContentTile';
-import type { domains, SupportedLanguages } from '@raulmelo/core';
-import { domAnimation, LazyMotion } from 'framer-motion';
 
 type Tils = Awaited<ReturnType<typeof domains.posts.queryTils>>;
 
@@ -22,12 +23,12 @@ export function Tils({ tils, lang }: TilsProps) {
             <ContentTile
               formatDate={(date) =>
                 intl.formatDate(date, {
-                  month: 'long',
-                  day: 'numeric',
-                  year: 'numeric',
+                  month: `long`,
+                  day: `numeric`,
+                  year: `numeric`,
                 })
               }
-              readMoreLabel={intl.formatMessage({ id: 'tilHome.readMore' })}
+              readMoreLabel={intl.formatMessage({ id: `tilHome.readMore` })}
               urlBuilder={(slug) => getTilUrl(slug, lang)}
               {...til}
             />

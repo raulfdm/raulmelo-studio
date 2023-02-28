@@ -23,7 +23,7 @@ const linkIdUrl = `https://www.linkedin.com/shareArticle?${qs.stringify(
 const twitterUrl = `https://twitter.com/share?${qs.stringify(
   {
     url: Astro.request.url,
-    via: 'raul_fdm',
+    via: `raul_fdm`,
     ...twitter,
   },
   { encode: true, strict: true },

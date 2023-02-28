@@ -1,5 +1,5 @@
 import { Highlight, HighlightIcon } from '@raulmelo/ui';
-import type { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 export const highlightMarkerField = {
   title: `Highlight`,

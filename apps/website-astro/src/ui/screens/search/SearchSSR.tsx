@@ -1,9 +1,11 @@
-import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
-import type { SupportedLanguages } from '@raulmelo/core';
+import { type SupportedLanguages } from '@raulmelo/core';
 import {
-  InstantSearchServerState,
+  type InstantSearchServerState,
   InstantSearchSSRProvider,
 } from 'react-instantsearch-hooks-web';
+
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+
 import { Search } from './Search';
 
 type Props = {

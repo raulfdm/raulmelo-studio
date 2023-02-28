@@ -9,9 +9,10 @@ export type Props = {
   posts: PostBasicProps[];
 };
 
+import { type SupportedLanguages } from '@raulmelo/core';
+
 import ArrowRightIcon from '@/ui/Icons/ArrowRight.astro';
 import PostBasic, { type Props as PostBasicProps } from '@/ui/PostBasic.astro';
-import type { SupportedLanguages } from '@raulmelo/core';
 
 const { title, checkAllLink, posts } = Astro.props;
 ---

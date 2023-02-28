@@ -1,12 +1,12 @@
 ---
+import { type SupportedLanguages } from '@raulmelo/core';
 import classNames from 'classnames';
 
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { getTagUrl } from '@/infrastructure/utils/url';
 
 import Tag from './Tag.astro';
 import Tags from './Tags.astro';
-import type { SupportedLanguages } from '@raulmelo/core';
-import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 
 export type Props = {
   lang: SupportedLanguages;
@@ -51,9 +51,9 @@ const intl = getIntl(lang);
       <time datetime={publishedAt}>
         {
           intl.formatDate(new Date(publishedAt), {
-            year: 'numeric',
-            month: 'short',
-            day: '2-digit',
+            year: `numeric`,
+            month: `short`,
+            day: `2-digit`,
           })
         }
       </time>

@@ -1,6 +1,8 @@
-import type { IntlShape } from '@formatjs/intl';
-import { createIntl, createIntlCache } from '@formatjs/intl';
-import { SupportedLanguages, supportedLanguagesSchema } from '@raulmelo/core';
+import { createIntl, createIntlCache, type IntlShape } from '@formatjs/intl';
+import {
+  type SupportedLanguages,
+  supportedLanguagesSchema,
+} from '@raulmelo/core';
 import flat from 'flat';
 
 import enLocales from './locales/en.json';

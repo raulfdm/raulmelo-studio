@@ -1,7 +1,8 @@
 ---
-import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
-import type { SupportedLanguages } from '@raulmelo/core';
+import { type SupportedLanguages } from '@raulmelo/core';
 import { CodeBlock } from '@raulmelo/ui';
+
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 
 type Props = {
   node: {
@@ -23,6 +24,6 @@ const intl = getIntl(lang);
   highlightedLines={highlightedLines}
   language={language}
   filename={filename}
-  copyTitle={intl.formatMessage({ id: 'blogPost.copyButton.title' })}
-  copyTooltipTitle={intl.formatMessage({ id: 'blogPost.copyButton.success' })}
+  copyTitle={intl.formatMessage({ id: `blogPost.copyButton.title` })}
+  copyTooltipTitle={intl.formatMessage({ id: `blogPost.copyButton.success` })}
 />

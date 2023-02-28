@@ -5,7 +5,7 @@ declare global {
     /**
      * TODO: add a proper type for this (AppTheme)
      */
-    __theme: 'light' | 'dark';
+    __theme: `light` | `dark`;
   }
 }
 

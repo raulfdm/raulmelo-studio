@@ -1,10 +1,12 @@
-import type { SupportedLanguages } from '@raulmelo/core';
-import { supportedLanguagesSchema } from '@raulmelo/core';
+import {
+  type SupportedLanguages,
+  supportedLanguagesSchema,
+} from '@raulmelo/core';
 
 export function getLangFromURL(url: string): null | SupportedLanguages {
   const pathname = new URL(url).pathname;
 
-  const [_, locale] = pathname.split('/');
+  const [_, locale] = pathname.split(`/`);
 
   const result = supportedLanguagesSchema.safeParse(locale);
 

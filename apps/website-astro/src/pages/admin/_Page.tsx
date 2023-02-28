@@ -1,5 +1,6 @@
+import { defineConfig,Studio } from 'sanity';
+
 import { sanityBaseConfig } from '@/infrastructure/sanity';
-import { Studio, defineConfig } from 'sanity';
 
 const config = defineConfig(sanityBaseConfig);
 

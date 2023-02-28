@@ -1,5 +1,5 @@
 import { utils } from '@raulmelo/core';
-import type { SanityImageSource } from '@raulmelo/core/dist/types/utils/image';
+import { type SanityImageSource } from '@raulmelo/core/dist/types/utils/image';
 import { ImageSlider, ViewCarouselIcon } from '@raulmelo/ui';
 
 export const imageSliderField = {

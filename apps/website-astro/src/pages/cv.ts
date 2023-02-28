@@ -1,4 +1,4 @@
-import type { APIContext } from 'astro';
+import { type APIContext } from 'astro';
 
 export function get({ redirect }: APIContext) {
   return redirect(

@@ -2,12 +2,12 @@ export function languageGetStaticPaths() {
   return [
     {
       params: {
-        lang: 'en',
+        lang: `en`,
       },
     },
     {
       params: {
-        lang: 'pt',
+        lang: `pt`,
       },
     },
   ];

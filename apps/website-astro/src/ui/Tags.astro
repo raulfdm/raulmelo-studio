@@ -1,14 +1,14 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
+import { type HTMLAttributes } from 'astro/types';
 
-export type Props = HTMLAttributes<'ul'>;
+export type Props = HTMLAttributes<`ul`>;
 
 const { class: className, ...props } = Astro.props;
 ---
 
 <ul
   {...props}
-  class:list={['flex flex-row flex-wrap text-base tag-comp-list', className]}
+  class:list={[`flex flex-row flex-wrap text-base tag-comp-list`, className]}
 >
   <slot />
 </ul>

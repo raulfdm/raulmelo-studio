@@ -1,6 +1,6 @@
-import type { UseSideMenu } from '@/ui/SideMenu';
-import { useSideMenu } from '@/ui/SideMenu';
 import React, { createContext, useContext } from 'react';
+
+import { type UseSideMenu, useSideMenu } from '@/ui/SideMenu';
 
 type AppContextTypes = { sideMenu: UseSideMenu };
 
@@ -23,7 +23,7 @@ export function useAppContext() {
 
   if (!context) {
     throw new Error(
-      'useAppContext must be used under AppContextProvider context',
+      `useAppContext must be used under AppContextProvider context`,
     );
   }
 

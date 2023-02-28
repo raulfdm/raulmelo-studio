@@ -1,14 +1,15 @@
 ---
-import { domains, utils, SupportedLanguages } from '@raulmelo/core';
-import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { domains, type SupportedLanguages,utils } from '@raulmelo/core';
 import { ProseContainer } from '@raulmelo/ui';
-import PostHeading from '@/ui/screens/blog/PostHeading.astro';
-import Tags from '@/ui/Tags.astro';
-import Tag from '@/ui/Tag.astro';
+
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { getTagUrl } from '@/infrastructure/utils/url';
-import ShareContent from '@/ui/ShareContent.astro';
-import PortableText from '@/ui/PortableText/PortableText.astro';
 import PostLayout from '@/ui/layouts/PostLayout.astro';
+import PortableText from '@/ui/PortableText/PortableText.astro';
+import PostHeading from '@/ui/screens/blog/PostHeading.astro';
+import ShareContent from '@/ui/ShareContent.astro';
+import Tag from '@/ui/Tag.astro';
+import Tags from '@/ui/Tags.astro';
 
 const { lang, slug } = Astro.params as {
   slug: string;
@@ -16,7 +17,7 @@ const { lang, slug } = Astro.params as {
 };
 
 export async function getStaticPaths() {
-  const tils = await domains.posts.queryTils('all');
+  const tils = await domains.posts.queryTils(`all`);
 
   return tils.map((til) => ({
     params: {
@@ -32,7 +33,7 @@ const til = await domains.posts.queryTilBySlug(slug);
 
 // https://github.com/vercel/next.js/issues/16681#issuecomment-792314687
 if (utils.isNil(til) || utils.isEmpty(til)) {
-  return Astro.redirect('/404');
+  return Astro.redirect(`/404`);
 }
 
 const estimatedReadingTime = utils.content.getEstimatedReadingTime(til.content);
@@ -56,19 +57,19 @@ const intl = getIntl(lang);
       title={til.title}
       publishedDateLabel={intl.formatMessage(
         {
-          id: 'blogPost.publishedAt',
+          id: `blogPost.publishedAt`,
         },
         {
           publishedDate: intl.formatDate(new Date(til.publishedAt), {
-            year: 'numeric',
-            month: 'short',
-            day: '2-digit',
+            year: `numeric`,
+            month: `short`,
+            day: `2-digit`,
           }),
         },
       )}
       readingTimeLabel={intl.formatMessage(
         {
-          id: 'blogPost.readingTime',
+          id: `blogPost.readingTime`,
         },
         {
           publishedDate: til.publishedAt,
@@ -106,7 +107,7 @@ const intl = getIntl(lang);
       }
 
       <ShareContent
-        titleLabel={intl.formatMessage({ id: 'blogPost.share' })}
+        titleLabel={intl.formatMessage({ id: `blogPost.share` })}
         twitter={{ text: `TIL ${til.title}` }}
         linkedIn={{ title: til.title, summary: `TIL ${til.title}` }}
       />

@@ -1,7 +1,7 @@
 ---
-import type { PostBySlug } from './types';
+import { type PostBySlug } from './types';
 
-type Props = Pick<PostBySlug, 'title' | 'subtitle'> & {
+type Props = Pick<PostBySlug, `title` | `subtitle`> & {
   publishedDateLabel?: string;
   readingTimeLabel?: string;
 };

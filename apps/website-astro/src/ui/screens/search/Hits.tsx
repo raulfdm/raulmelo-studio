@@ -1,10 +1,11 @@
-import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
-import { getPostUrl, getTilUrl } from '@/infrastructure/utils/url';
-import type { SupportedLanguages } from '@raulmelo/core';
+import { type SupportedLanguages } from '@raulmelo/core';
 import classNames from 'classnames';
 import { Hits as HitsComp } from 'react-instantsearch-hooks-web';
 
-import type { HitAlgolia } from './types';
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { getPostUrl, getTilUrl } from '@/infrastructure/utils/url';
+
+import { type HitAlgolia } from './types';
 
 type HitsProps = {
   lang: SupportedLanguages;
@@ -33,10 +34,10 @@ export function Hits({ lang }: HitsProps) {
 
 type HitProps = Pick<
   HitAlgolia,
-  '_type' | 'title' | 'publishedAt' | 'subtitle'
+  `_type` | `title` | `publishedAt` | `subtitle`
 > & {
   href: string;
-  lang: HitsProps['lang'];
+  lang: HitsProps[`lang`];
 };
 
 function Hit({ _type, href, title, publishedAt, subtitle, lang }: HitProps) {
@@ -52,9 +53,9 @@ function Hit({ _type, href, title, publishedAt, subtitle, lang }: HitProps) {
         <span className="block font-sans text-md">
           <time dateTime={publishedAt}>
             {intl.formatDate(publishedAt, {
-              year: 'numeric',
-              month: 'short',
-              day: '2-digit',
+              year: `numeric`,
+              month: `short`,
+              day: `2-digit`,
             })}
           </time>
         </span>

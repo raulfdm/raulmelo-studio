@@ -1,21 +1,20 @@
 ---
 import {
   domains,
-  SupportedLanguages,
+  type SupportedLanguages,
   supportedLanguagesSchema,
 } from '@raulmelo/core';
 
+import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import {
   getPathnameWithLocale,
   getPostUrl,
   getTilUrl,
 } from '@/infrastructure/utils/url';
+import Layout from '@/ui/layouts/Layout.astro';
 import AuthorPresentation from '@/ui/screens/home/AuthorPresentation.astro';
 import PostSection from '@/ui/screens/home/PostSection.astro';
-
-import Layout from '@/ui/layouts/Layout.astro';
-import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 
 const { lang } = Astro.params as { lang: SupportedLanguages };
 

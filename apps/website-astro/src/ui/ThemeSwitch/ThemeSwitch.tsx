@@ -1,25 +1,26 @@
 import { MoonIcon, SunIcon } from '@raulmelo/ui';
 import { useEffect, useState } from 'react';
+
 import { MenuButton } from '../MenuBarButton';
 
 type ThemeSwitchProps = {
   label: string;
 };
 
-type Theme = 'dark' | 'light';
+type Theme = `dark` | `light`;
 export function ThemeSwitch({ label }: ThemeSwitchProps) {
   const [isMounted, setIsMounted] = useState(false);
   const [theme, setTheme] = useState<Theme>(
-    (localStorage.getItem('theme') as Theme) ?? 'light',
+    (localStorage.getItem(`theme`) as Theme) ?? `light`,
   );
 
   useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
+    if (theme === `dark`) {
+      document.documentElement.classList.add(`dark`);
     } else {
-      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.remove(`dark`);
     }
-    localStorage.setItem('theme', theme);
+    localStorage.setItem(`theme`, theme);
   }, [theme]);
 
   useEffect(() => {
@@ -30,7 +31,7 @@ export function ThemeSwitch({ label }: ThemeSwitchProps) {
     return null;
   }
 
-  const Icon = theme === 'light' ? MoonIcon : SunIcon;
+  const Icon = theme === `light` ? MoonIcon : SunIcon;
 
   return (
     <MenuButton
@@ -43,6 +44,6 @@ export function ThemeSwitch({ label }: ThemeSwitchProps) {
   );
 
   function handleClick() {
-    setTheme(theme === 'light' ? 'dark' : 'light');
+    setTheme(theme === `light` ? `dark` : `light`);
   }
 }

@@ -1,9 +1,10 @@
+import { type SupportedLanguages } from '@raulmelo/core';
+import { type QueryPostsAndTilsReturnType } from '@raulmelo/core/dist/types/domains/posts/queryPostsAndTils';
+import { AnimatePresence, domAnimation, LazyMotion, m } from 'framer-motion';
+
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { getPostUrl } from '@/infrastructure/utils/url';
 import { ContentTile } from '@/ui/ContentTile';
-import type { SupportedLanguages } from '@raulmelo/core';
-import type { QueryPostsAndTilsReturnType } from '@raulmelo/core/dist/types/domains/posts/queryPostsAndTils';
-import { AnimatePresence, domAnimation, LazyMotion, m } from 'framer-motion';
 
 const itemsAnimationVariants = {
   visible: (index: number) => ({
@@ -21,16 +22,16 @@ const itemsAnimationVariants = {
 
 type PostsProps = {
   posts:
-    | QueryPostsAndTilsReturnType['posts']
-    | QueryPostsAndTilsReturnType['tils'];
+    | QueryPostsAndTilsReturnType[`posts`]
+    | QueryPostsAndTilsReturnType[`tils`];
   lang: SupportedLanguages;
 };
 
 export const Posts = ({ posts, lang }: PostsProps) => {
   const intl = getIntl(lang);
 
-  const readMoreLabel = intl.formatMessage({ id: 'blog.readMore' });
-  const title = intl.formatMessage({ id: 'blog.title.latests' });
+  const readMoreLabel = intl.formatMessage({ id: `blog.readMore` });
+  const title = intl.formatMessage({ id: `blog.title.latests` });
 
   return (
     <section className="col-span-full">
@@ -58,9 +59,9 @@ export const Posts = ({ posts, lang }: PostsProps) => {
                     <ContentTile
                       formatDate={function (date) {
                         return intl.formatDate(date, {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric',
+                          year: `numeric`,
+                          month: `long`,
+                          day: `numeric`,
                         });
                       }}
                       urlBuilder={(slug) => getPostUrl(slug, lang)}

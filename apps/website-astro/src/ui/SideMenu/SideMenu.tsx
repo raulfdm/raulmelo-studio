@@ -1,17 +1,18 @@
-import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
-import { getPathnameWithLocale } from '@/infrastructure/utils/url';
-import type { SupportedLanguages } from '@raulmelo/core';
+import { Disclosure } from '@headlessui/react';
+import { type SupportedLanguages } from '@raulmelo/core';
 import { ExternalLinkIcon } from '@raulmelo/ui';
 import classNames from 'classnames';
-import { Disclosure } from '@headlessui/react';
 import { m, useAnimation } from 'framer-motion';
 import { useEffect, useRef } from 'react';
+
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { getPathnameWithLocale } from '@/infrastructure/utils/url';
 
 type SideMenuProps = {
   lang: SupportedLanguages;
   isClosed: boolean;
   handleClose: () => void;
-  state: 'open' | 'closed';
+  state: `open` | `closed`;
 };
 
 export function SideMenu({
@@ -52,10 +53,10 @@ export function SideMenu({
               ? {
                   target: `_blank`,
                   rel: `noreferrer`,
-                  className: 'relative inline-flex',
+                  className: `relative inline-flex`,
                 }
               : {
-                  rel: '',
+                  rel: ``,
                 };
 
             let { rel } = newWindowProps;

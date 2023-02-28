@@ -1,31 +1,31 @@
 import { useMachine } from '@xstate/react';
 import { createMachine } from 'xstate';
 
-type CloseMenuEvent = { type: 'CLOSE' };
-type ToggleMenuEvent = { type: 'TOGGLE' };
+type CloseMenuEvent = { type: `CLOSE` };
+type ToggleMenuEvent = { type: `TOGGLE` };
 
 type MachineEvents = ToggleMenuEvent | CloseMenuEvent;
 
-type MachineStates = 'open' | 'closed';
+type MachineStates = `open` | `closed`;
 
 const sideMenuMachine = createMachine({
   predictableActionArguments: true,
   preserveActionOrder: true,
-  tsTypes: {} as import('./useSideMenu.typegen').Typegen0,
+  tsTypes: {} as import(`./useSideMenu.typegen`).Typegen0,
   schema: {
     actions: {} as MachineEvents,
   },
-  initial: 'closed',
+  initial: `closed`,
   states: {
     open: {
       on: {
-        TOGGLE: 'closed',
-        CLOSE: 'closed',
+        TOGGLE: `closed`,
+        CLOSE: `closed`,
       },
     },
     closed: {
       on: {
-        TOGGLE: 'open',
+        TOGGLE: `open`,
       },
     },
   },
@@ -35,13 +35,13 @@ export function useSideMenu(): UseSideMenu {
   const [current, send] = useMachine(sideMenuMachine);
 
   function handleClose() {
-    send('CLOSE');
+    send(`CLOSE`);
   }
 
   return {
     state: current.value as MachineStates,
-    isClosed: current.value === 'closed',
-    toggle: () => send('TOGGLE'),
+    isClosed: current.value === `closed`,
+    toggle: () => send(`TOGGLE`),
     handleClose,
   };
 }

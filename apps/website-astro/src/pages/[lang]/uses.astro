@@ -1,13 +1,13 @@
 ---
-import { domains, utils, SupportedLanguages } from '@raulmelo/core';
-import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { domains, type SupportedLanguages,utils } from '@raulmelo/core';
 import { ProseContainer } from '@raulmelo/ui';
 
+import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import PostLayout from '@/ui/layouts/PostLayout.astro';
+import PortableText from '@/ui/PortableText/PortableText.astro';
 import PostHeading from '@/ui/screens/blog/PostHeading.astro';
 import ShareContent from '@/ui/ShareContent.astro';
-import PortableText from '@/ui/PortableText/PortableText.astro';
-import PostLayout from '@/ui/layouts/PostLayout.astro';
-import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 
 export const prerender = true;
 export const getStaticPaths = languageGetStaticPaths;
@@ -20,7 +20,7 @@ const { lang } = Astro.params as {
 const uses = await domains.uses.getUses(lang as SupportedLanguages);
 
 if (utils.isNil(uses) || utils.isEmpty(uses)) {
-  return Astro.redirect('/404');
+  return Astro.redirect(`/404`);
 }
 
 const intl = getIntl(lang);
@@ -49,7 +49,7 @@ const intl = getIntl(lang);
 
     <footer class="flex flex-wrap justify-between">
       <ShareContent
-        titleLabel={intl.formatMessage({ id: 'blogPost.share' })}
+        titleLabel={intl.formatMessage({ id: `blogPost.share` })}
         twitter={{ text: uses.seo.description }}
         linkedIn={{ title: uses.seo.title, summary: uses.seo.description }}
       />

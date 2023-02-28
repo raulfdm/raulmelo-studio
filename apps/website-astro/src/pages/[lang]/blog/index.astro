@@ -1,10 +1,10 @@
 ---
-import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
-import { domains, SupportedLanguages } from '@raulmelo/core';
+import { domains, type SupportedLanguages } from '@raulmelo/core';
 
-import { Posts } from '@/ui/screens/blog/Posts';
-import Layout from '@/ui/layouts/Layout.astro';
 import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import Layout from '@/ui/layouts/Layout.astro';
+import { Posts } from '@/ui/screens/blog/Posts';
 
 export const prerender = true;
 export const getStaticPaths = languageGetStaticPaths;
@@ -21,7 +21,7 @@ const intl = getIntl(lang);
     <h1 class="text-3xl font-extrabold md:text-4xl">Blog</h1>
 
     <p class="my-4 col-span-full lg:col-span-10 text-md md:text-lg">
-      {intl.formatMessage({ id: 'blog.description' })}
+      {intl.formatMessage({ id: `blog.description` })}
     </p>
   </header>
 

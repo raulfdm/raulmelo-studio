@@ -1,11 +1,11 @@
-import type { SupportedLanguages } from '@raulmelo/core';
+import { type SupportedLanguages } from '@raulmelo/core';
 import { InstantSearch } from 'react-instantsearch-hooks-web';
 
-import { searchClient } from './searchClient';
 import { Filters } from './Filters';
 import { Hits } from './Hits';
 import { PoweredByAlgolia } from './PoweredBy';
 import { SearchBox } from './SearchBox';
+import { searchClient } from './searchClient';
 
 type SearchProps = {
   lang: SupportedLanguages;

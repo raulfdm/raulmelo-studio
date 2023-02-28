@@ -1,6 +1,7 @@
 ---
+import { type SupportedLanguages } from '@raulmelo/core';
+
 import { getPostUrl, getTilUrl } from '@/infrastructure/utils/url';
-import type { SupportedLanguages } from '@raulmelo/core';
 
 /**
  * This component is a bit problematic.
@@ -16,7 +17,7 @@ type Props = {
     children: { text: string }[];
     markDef: {
       itemMeta: {
-        _type: 'post' | 'til';
+        _type: `post` | `til`;
         slug: string;
       };
     };
@@ -29,7 +30,7 @@ const { lang } = Astro.params as { lang: SupportedLanguages };
 
 const content = children[0].text;
 
-const href = _type === 'post' ? getPostUrl(slug, lang) : getTilUrl(slug, lang);
+const href = _type === `post` ? getPostUrl(slug, lang) : getTilUrl(slug, lang);
 ---
 
 <a href={href} data-testid="internal-link">{content}</a>

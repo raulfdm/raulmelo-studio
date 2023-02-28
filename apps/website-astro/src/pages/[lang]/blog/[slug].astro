@@ -1,17 +1,17 @@
 ---
-import { domains, utils, SupportedLanguages } from '@raulmelo/core';
-import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { domains, type SupportedLanguages,utils } from '@raulmelo/core';
 import { DotDivider, ProseContainer } from '@raulmelo/ui';
 
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { getTagUrl } from '@/infrastructure/utils/url';
+import PostLayout from '@/ui/layouts/PostLayout.astro';
+import PortableText from '@/ui/PortableText/PortableText.astro';
 import FeaturedImage from '@/ui/screens/blog/FeaturedImage.astro';
 import PostHeading from '@/ui/screens/blog/PostHeading.astro';
-import Tags from '@/ui/Tags.astro';
-import Tag from '@/ui/Tag.astro';
-import { getTagUrl } from '@/infrastructure/utils/url';
-import ShareContent from '@/ui/ShareContent.astro';
 import SeriesSection from '@/ui/screens/blog/SeriesSection.astro';
-import PortableText from '@/ui/PortableText/PortableText.astro';
-import PostLayout from '@/ui/layouts/PostLayout.astro';
+import ShareContent from '@/ui/ShareContent.astro';
+import Tag from '@/ui/Tag.astro';
+import Tags from '@/ui/Tags.astro';
 
 const { lang, slug } = Astro.params as {
   slug: string;
@@ -19,7 +19,7 @@ const { lang, slug } = Astro.params as {
 };
 
 export async function getStaticPaths() {
-  const posts = await domains.posts.queryPosts('all');
+  const posts = await domains.posts.queryPosts(`all`);
 
   return posts.map((post) => ({
     params: {
@@ -59,7 +59,7 @@ const intl = getIntl(lang);
       url: post.featuredImage.url,
       width: post.featuredImage.width,
       height: post.featuredImage.height,
-      alt: intl.formatMessage({ id: 'blogPost.featuredImage' }),
+      alt: intl.formatMessage({ id: `blogPost.featuredImage` }),
     },
     article: {
       publishedTime: post.publishedAt,
@@ -83,19 +83,19 @@ const intl = getIntl(lang);
       subtitle={post.subtitle}
       publishedDateLabel={intl.formatMessage(
         {
-          id: 'blogPost.publishedAt',
+          id: `blogPost.publishedAt`,
         },
         {
           publishedDate: intl.formatDate(new Date(post.publishedAt), {
-            year: 'numeric',
-            month: 'short',
-            day: '2-digit',
+            year: `numeric`,
+            month: `short`,
+            day: `2-digit`,
           }),
         },
       )}
       readingTimeLabel={intl.formatMessage(
         {
-          id: 'blogPost.readingTime',
+          id: `blogPost.readingTime`,
         },
         {
           publishedDate: post.publishedAt,
@@ -110,7 +110,7 @@ const intl = getIntl(lang);
           currentPostId={post._id}
           seriesLabel={intl.formatMessage(
             {
-              id: 'series.sectionDescription',
+              id: `series.sectionDescription`,
             },
             {
               seriesAmount: post.series.posts.length,
@@ -131,7 +131,7 @@ const intl = getIntl(lang);
             currentPostId={post._id}
             seriesLabel={intl.formatMessage(
               {
-                id: 'series.sectionDescription',
+                id: `series.sectionDescription`,
               },
               {
                 seriesAmount: post.series.posts.length,
@@ -168,7 +168,7 @@ const intl = getIntl(lang);
       }
 
       <ShareContent
-        titleLabel={intl.formatMessage({ id: 'blogPost.share' })}
+        titleLabel={intl.formatMessage({ id: `blogPost.share` })}
         twitter={{ text: post.description }}
         linkedIn={{ title: post.title, summary: post.description }}
       />

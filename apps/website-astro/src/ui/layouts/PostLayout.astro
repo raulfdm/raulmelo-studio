@@ -1,5 +1,5 @@
 ---
-import Layout, { Props as LayoutProps } from './Layout.astro';
+import Layout, { type Props as LayoutProps } from './Layout.astro';
 
 type Props = LayoutProps;
 
@@ -13,17 +13,17 @@ const { links = [], ...restSeo } = seo || {};
     ...restSeo,
     links: [
       {
-        rel: 'preconnect',
-        href: 'https://fonts.gstatic.com',
-        crossorigin: 'true',
+        rel: `preconnect`,
+        href: `https://fonts.gstatic.com`,
+        crossorigin: `true`,
       },
       {
-        rel: 'preconnect',
-        href: 'https://fonts.googleapis.com',
+        rel: `preconnect`,
+        href: `https://fonts.googleapis.com`,
       },
       {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap',
+        rel: `stylesheet`,
+        href: `https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap`,
       },
       ...links,
     ],
