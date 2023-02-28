@@ -1,5 +1,5 @@
 ---
-import { SEO, Props as SeoProps } from 'astro-seo';
+import { SEO, Props as SeoProps, Link, Meta } from 'astro-seo';
 import { domains, SupportedLanguages } from '@raulmelo/core';
 
 export type Props = {
@@ -12,9 +12,19 @@ export type Props = {
     modifiedTime: string;
     tags: string[];
   };
+  links?: Partial<Link>[];
+  metas?: Partial<Meta>[];
 };
 
-const { title, description, image, article, lang } = Astro.props;
+const {
+  title,
+  description,
+  image,
+  article,
+  lang,
+  links = [],
+  metas = [],
+} = Astro.props;
 
 const siteData = await domains.siteData.querySiteData();
 
@@ -70,8 +80,8 @@ const defaultTwitter = {
   title={title}
   titleDefault={langSeo.title}
   titleTemplate={`%s · ${siteData.personalInformation.fullName}`}
-  description={langSeo.description}
-  canonical={siteData.site.url + (Astro.url.pathname || '')}
+  description={nextDescription}
+  canonical={Astro.url.href}
   openGraph={defaultOpenGraph}
   twitter={defaultTwitter}
   extend={{
@@ -99,10 +109,12 @@ const defaultTwitter = {
         sizes: '16x16',
         href: '/favicon-16x16.png',
       },
+      ...links,
     ] as any,
     meta: [
       { name: 'monetization', content: '$ilp.uphold.com/Aa8j4MXjnPHg' },
       { name: 'theme-color', content: '#ffffff' },
+      ...metas,
     ],
   }}
 />
