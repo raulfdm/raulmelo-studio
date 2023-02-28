@@ -2,10 +2,15 @@
 import { Page } from './_Page';
 ---
 
-<Page client:only />
+<!DOCTYPE html>
+<html>
+  <body>
+    <Page client:only />
+  </body>
+</html>
 
-<style>
-  :global(html),
+<style is:global>
+  html,
   body {
     height: 100%;
   }
