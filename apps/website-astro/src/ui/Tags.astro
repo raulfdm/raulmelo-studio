@@ -8,8 +8,7 @@ const { class: className, ...props } = Astro.props;
 
 <ul
   {...props}
-  class={'flex flex-row flex-wrap text-base tag-comp-list'}
-  class:list={[className]}
+  class:list={['flex flex-row flex-wrap text-base tag-comp-list', className]}
 >
   <slot />
 </ul>

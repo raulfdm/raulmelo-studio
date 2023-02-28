@@ -264,6 +264,7 @@ importers:
   apps/website-astro:
     specifiers:
       '@astrojs/image': ^0.15.0
+      '@astrojs/prefetch': ^0.1.2
       '@astrojs/react': 2.0.2
       '@astrojs/sitemap': ^1.1.0
       '@astrojs/tailwind': 3.0.1
@@ -308,6 +309,7 @@ importers:
       zod: 3.20.6
     dependencies:
       '@astrojs/image': 0.15.0_astro@2.0.14+sharp@0.31.3
+      '@astrojs/prefetch': 0.1.2
       '@astrojs/react': 2.0.2_3xleytyzprlgycb2ded54tx72i
       '@astrojs/sitemap': 1.1.0
       '@astrojs/tailwind': 3.0.1_hf2kjfio2dr6w52rh4mpociq2u
@@ -897,6 +899,12 @@ packages:
       vfile: 5.3.7
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@astrojs/prefetch/0.1.2:
+    resolution: {integrity: sha512-Plf1GLKDyvTHjEKVMH922wc1AmvlFYvEXrbdaMAlgJuoqTRXirP1CennildFHndTetH8swWMlVGwxdG57dN7cA==}
+    dependencies:
+      throttles: 1.0.1
     dev: false
 
   /@astrojs/prism/2.0.0:
@@ -24277,6 +24285,11 @@ packages:
   /throttle-debounce/3.0.1:
     resolution: {integrity: sha512-dTEWWNu6JmeVXY0ZYoPuH5cRIwc0MeGbJwah9KUNYSJwommQpCzTySTpEe8Gs1J23aeWEuAobe4Ag7EHVt/LOg==}
     engines: {node: '>=10'}
+    dev: false
+
+  /throttles/1.0.1:
+    resolution: {integrity: sha512-fab7Xg+zELr9KOv4fkaBoe/b3L0GMGLd0IBSCn16GoE/Qx6/OfCr1eGNyEcDU2pUA79qQfZ8kPQWlRuok4YwTw==}
+    engines: {node: '>=6'}
     dev: false
 
   /through/2.3.8:

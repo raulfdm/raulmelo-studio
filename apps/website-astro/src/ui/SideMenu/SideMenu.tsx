@@ -47,20 +47,29 @@ export function SideMenu({
         data-testid="sideMenu"
       >
         <ul className="flex flex-col py-6">
-          {links.map(({ href, itemLabel, newWindow }) => {
+          {links.map(({ href, itemLabel, newWindow, prefetch }) => {
             const newWindowProps = newWindow
               ? {
                   target: `_blank`,
                   rel: `noreferrer`,
                   className: 'relative inline-flex',
                 }
-              : {};
+              : {
+                  rel: '',
+                };
+
+            let { rel } = newWindowProps;
+
+            if (prefetch) {
+              rel = `prefetch ${rel}`.trim();
+            }
 
             return (
               <li className="px-4 py-2 text-center sm:text-left" key={href}>
                 <a
                   href={href}
                   {...newWindowProps}
+                  rel={rel}
                   className={classNames([
                     `mx-5 text-xl font-black cursor-pointer sm:text-lg`,
                     `side-menu-item`,
@@ -121,38 +130,53 @@ function useLinks(lang: SupportedLanguages) {
     {
       href: `/`,
       localeId: `sideMenu.home`,
+      prefetch: true,
     },
     {
       href: `/blog`,
       localeId: `sideMenu.blog`,
+      prefetch: true,
     },
     {
       href: `/til`,
       localeId: `sideMenu.til`,
+      prefetch: true,
     },
     {
       href: `/search`,
       localeId: `sideMenu.search`,
+      prefetch: false,
     },
     {
       href: `/uses`,
       localeId: `sideMenu.uses`,
+      prefetch: true,
     },
     {
       href: `/cv`,
       localeId: `sideMenu.cv`,
       noLocale: true,
+      prefetch: false,
     },
     {
       href: lang === `en` ? `/rss.xml` : `/rss-pt.xml`,
       localeId: `sideMenu.rss`,
       newWindow: true,
     },
-  ].map(({ href, localeId, newWindow = false, noLocale = false }) => {
-    return {
-      itemLabel: localeId,
-      href: noLocale ? href : getPathnameWithLocale(href, lang),
-      newWindow,
-    };
-  });
+  ].map(
+    ({
+      href,
+      localeId,
+      newWindow = false,
+      noLocale = false,
+      prefetch = false,
+    }) => {
+      return {
+        itemLabel: localeId,
+        href: noLocale ? href : getPathnameWithLocale(href, lang),
+        newWindow,
+        prefetch,
+      };
+    },
+  );
 }
