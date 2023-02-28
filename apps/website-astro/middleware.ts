@@ -42,5 +42,7 @@ function normalizePathname(pathname: string) {
 }
 
 export const config = {
-  matcher: ['/((?!api|favicon.ico|assets|_astro|_image|build|@fs|@vite).*)'],
+  matcher: [
+    '/((?!api|favicon.ico|assets|_astro|_image|build|@fs|@vite|build).*)',
+  ],
 };
