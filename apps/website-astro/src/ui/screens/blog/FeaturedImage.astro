@@ -27,9 +27,11 @@ const intl = getIntl(lang);
       src={featuredImage.url}
       alt={intl.formatMessage({ id: 'blogPost.featuredImage' })}
       loading="eager"
-      widths={[200, 400, 640, 768, 1037]}
-      sizes="(min-width: 1037px) 1037px, 100vw"
+      widths={[200, 400, 640, 768, 1037, 1248]}
+      sizes="(min-width: 1248px) 1248px, 100vw"
       aspectRatio={12 / 6}
+      width={featuredImage.width}
+      height={featuredImage.height}
     />
   </div>
 

@@ -46,7 +46,11 @@ const intl = getIntl(lang);
           id: 'blogPost.publishedAt',
         },
         {
-          publishedDate: til.publishedAt,
+          publishedDate: intl.formatDate(new Date(til.publishedAt), {
+            year: 'numeric',
+            month: 'short',
+            day: '2-digit',
+          }),
         },
       )}
       readingTimeLabel={intl.formatMessage(

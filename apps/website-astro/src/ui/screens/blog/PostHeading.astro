@@ -23,8 +23,7 @@ const { title, subtitle, publishedDateLabel, readingTimeLabel } = Astro.props;
   {
     publishedDateLabel || readingTimeLabel ? (
       <p class="mt-6 mb-4 text-base text-right lg:text-md">
-        {publishedDateLabel}
-        {readingTimeLabel}
+        {`${publishedDateLabel}${readingTimeLabel}`}
       </p>
     ) : null
   }

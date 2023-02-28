@@ -15,7 +15,7 @@ const intl = getIntl(lang);
 const baseColClass = 'col-span-full lg:col-span-10';
 ---
 
-<Layout title="Blog">
+<Layout title={intl.formatMessage({ id: 'tilHome.title' })}>
   <header class={baseColClass}>
     <h1 class="text-3xl font-extrabold md:text-4xl">
       {intl.formatMessage({ id: 'tilHome.title' })}
