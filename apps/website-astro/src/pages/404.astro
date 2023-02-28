@@ -1,0 +1,43 @@
+---
+import { getLanguageFromAcceptLanguage } from '@/infrastructure/i18n/getLanguageFromAcceptLanguage.server';
+import { getLangFromURL } from '@/infrastructure/i18n/getLangFromURL';
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import Layout from '@/ui/layouts/Layout.astro';
+
+let lang = getLangFromURL(Astro.request.url);
+
+if (lang === null) {
+  lang = getLanguageFromAcceptLanguage(
+    Astro.request.headers.get('Accept-Language') || '',
+  );
+}
+
+const intl = getIntl(lang);
+---
+
+<Layout
+  lang={lang}
+  title={intl.formatMessage({ id: '404.title' })}
+  seo={{
+    nofollow: true,
+    noindex: true,
+  }}
+>
+  <h1
+    class="text-2xl font-black text-center col-span-full md:text-3xl lg:text-4xl"
+  >
+    Oops! <span class="text-base">404</span>
+  </h1>
+  <p class="mt-3 text-2xl font-extrabold md:text-3xl">
+    {intl.formatMessage({ id: '404.subtitle' })}
+    <p class="mt-5 text-lg">
+      {intl.formatMessage({ id: '404.description' })}
+    </p>
+  </p>
+
+  <style lang="postcss">
+    p {
+      @apply col-span-full md:col-start-1 lg:col-start-3 lg:col-end-11;
+    }
+  </style>
+</Layout>

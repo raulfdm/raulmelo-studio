@@ -4,6 +4,7 @@ type OmittedSeoProps = Omit<SeoProps, 'lang'>;
 export type Props = {
   title?: string;
   seo?: OmittedSeoProps;
+  lang?: SupportedLanguages;
 };
 
 import '@raulmelo/ui/styles/prism.css';
@@ -15,13 +16,15 @@ import type { SupportedLanguages } from '@raulmelo/core';
 import Logo from '@/ui/Logo.astro';
 import DefaultSEO, { type Props as SeoProps } from '@/ui/DefaultSEO.astro';
 
-const { title, seo } = Astro.props;
+const { title, seo, lang } = Astro.props;
 
-const { lang } = Astro.params as { lang: SupportedLanguages };
+const { lang: langFromParams } = Astro.params as { lang: SupportedLanguages };
+
+const nextLang = lang || langFromParams;
 ---
 
 <!DOCTYPE html>
-<html lang={lang}>
+<html lang={nextLang}>
   <head>
     <!-- Base -->
     <meta charset="UTF-8" />
@@ -31,7 +34,7 @@ const { lang } = Astro.params as { lang: SupportedLanguages };
     <!-- Base-end -->
 
     <!-- SEO -->
-    <DefaultSEO title={title} lang={lang} {...seo} />
+    <DefaultSEO title={title} lang={nextLang} {...seo} />
     <!-- SEO-end -->
 
     <!-- Proxima Nova Font -->
@@ -66,7 +69,7 @@ const { lang } = Astro.params as { lang: SupportedLanguages };
   <body
     class="relative min-h-screen pb-12 duration-200 bg-white dark:bg-blue-900 text-primary transition-theme ease md:pb-16"
   >
-    <MenuBar lang={lang} pathname={Astro.url.pathname} client:load>
+    <MenuBar lang={nextLang} pathname={Astro.url.pathname} client:load>
       <Logo slot="logo" />
     </MenuBar>
 
