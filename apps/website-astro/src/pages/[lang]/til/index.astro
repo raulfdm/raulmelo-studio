@@ -5,8 +5,10 @@ import { domains, SupportedLanguages } from '@raulmelo/core';
 import Layout from '@/ui/layouts/Layout.astro';
 import classNames from 'classnames';
 import { Tils } from '@/ui/screens/tils/Tils';
+import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 
 export const prerender = true;
+export const getStaticPaths = languageGetStaticPaths;
 
 const { lang } = Astro.params as { lang: SupportedLanguages };
 

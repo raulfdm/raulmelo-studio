@@ -7,10 +7,12 @@ import { Search } from '@/ui/screens/search/Search';
 import type { SupportedLanguages } from '@raulmelo/core';
 import { getServerState } from 'react-instantsearch-hooks-server';
 import { SearchSSR } from '@/ui/screens/search/SearchSSR';
+import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 
 const { lang } = Astro.params as { lang: SupportedLanguages };
 
 export const prerender = true;
+export const getStaticPaths = languageGetStaticPaths;
 
 const intl = getIntl(lang);
 
