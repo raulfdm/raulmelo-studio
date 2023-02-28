@@ -74,6 +74,39 @@ const defaultTwitter = {
   image: nextImage.url,
   site: siteData.site.url,
 } satisfies SeoProps['twitter'];
+
+const socialJsonLD = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: siteData.personalInformation.fullName,
+  url: siteData.site.url,
+  sameAs: siteData.socials.map((social) => social.url),
+};
+
+const logoJsonLD = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  logo: `${siteData.site.url}/logo.png`,
+  url: siteData.site.url,
+};
+const articleJsonLD = nextArticle
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      datePublished: nextArticle.publishedTime,
+      description: nextDescription,
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': Astro.url.href,
+      },
+      headline: nextTitle,
+      image: [nextImage.url],
+      dateModified: nextArticle.modifiedTime,
+      author: [
+        { '@type': 'Person', name: siteData.personalInformation.fullName },
+      ],
+    }
+  : undefined;
 ---
 
 <SEO
@@ -118,3 +151,16 @@ const defaultTwitter = {
     ],
   }}
 />
+
+<script type="application/ld+json" set:html={JSON.stringify(logoJsonLD)}
+></script>
+<script type="application/ld+json" set:html={JSON.stringify(socialJsonLD)}
+></script>
+{
+  articleJsonLD && (
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(articleJsonLD)}
+    />
+  )
+}
