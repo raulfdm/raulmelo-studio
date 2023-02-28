@@ -34,6 +34,8 @@ const {
   ...props
 } = Astro.props;
 
+console.log(url);
+
 const { lang } = Astro.params as { lang: SupportedLanguages };
 
 const intl = getIntl(lang);

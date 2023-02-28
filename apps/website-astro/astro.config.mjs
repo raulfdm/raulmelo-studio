@@ -3,10 +3,9 @@ import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel/serverless';
 import react from '@astrojs/react';
 import image from '@astrojs/image';
-
 import sitemap from '@astrojs/sitemap';
-
 import robotsTxt from 'astro-robots-txt';
+import prefetch from '@astrojs/prefetch';
 
 export default defineConfig({
   site: 'https://raulmelo.dev',
@@ -36,6 +35,7 @@ export default defineConfig({
         },
       ],
     }),
+    prefetch(),
   ],
   output: 'server',
   adapter: vercel({}),
