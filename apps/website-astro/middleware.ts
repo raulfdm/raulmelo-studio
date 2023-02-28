@@ -1,7 +1,6 @@
-import {
-  getLanguageFromAcceptLanguage,
-  supportedLocales,
-} from '@/infrastructure/i18n/getLanguageFromAcceptLanguage.server';
+import { match } from '@formatjs/intl-localematcher';
+import type { SupportedLanguages } from '@raulmelo/core';
+import Negotiator from 'negotiator';
 
 export default function middleware(request: Request) {
   const url = new URL(request.url);
@@ -42,6 +41,23 @@ function skipMiddleware(url: string) {
   }
 
   return shouldSkip;
+}
+
+export const supportedLocales = ['en', 'pt'];
+const defaultLocale = 'en';
+
+export function getLanguageFromAcceptLanguage(acceptLanguageHeader: string) {
+  const languages = new Negotiator({
+    headers: {
+      'accept-language': acceptLanguageHeader,
+    },
+  }).languages(supportedLocales);
+
+  return match(
+    languages,
+    supportedLocales,
+    defaultLocale,
+  ) as SupportedLanguages;
 }
 
 function normalizePathname(pathname: string) {

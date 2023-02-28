@@ -5,7 +5,6 @@ export function getLangFromURL(url: string): null | SupportedLanguages {
   const pathname = new URL(url).pathname;
 
   const [_, locale] = pathname.split('/');
-  console.log('pathname', pathname);
 
   const result = supportedLanguagesSchema.safeParse(locale);
 
