@@ -8,8 +8,7 @@ import Tag from '@/ui/Tag.astro';
 import { getTagUrl } from '@/infrastructure/utils/url';
 import ShareContent from '@/ui/ShareContent.astro';
 import PortableText from '@/ui/PortableText/PortableText.astro';
-import PostLayout from '@/layouts/PostLayout.astro';
-import DefaultSEO from '@/ui/DefaultSEO.astro';
+import PostLayout from '@/ui/layouts/PostLayout.astro';
 
 const { lang, slug } = Astro.params as {
   slug: string;
@@ -28,17 +27,17 @@ const estimatedReadingTime = utils.content.getEstimatedReadingTime(til.content);
 const intl = getIntl(lang);
 ---
 
-<PostLayout title={til.title}>
-  <!-- <DefaultSEO
-    title={til.title}
-    description={til.title}
-    article={{
+<PostLayout
+  title={til.title}
+  seo={{
+    description: til.title,
+    article: {
+      tags: til.tags?.map((tag) => tag.name) ?? [],
       modifiedTime: til.publishedAt,
       publishedTime: til.publishedAt,
-      tags: til.tags?.map((tag) => tag.name) || [],
-    }}
-  /> -->
-
+    },
+  }}
+>
   <section class="w-full col-span-full lg:col-start-2 lg:col-end-12">
     <PostHeading
       title={til.title}
