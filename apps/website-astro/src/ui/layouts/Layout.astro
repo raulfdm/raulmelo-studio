@@ -1,7 +1,10 @@
 ---
+type OmittedSeoProps = Omit<SeoProps, 'lang'>;
+
 export type Props = {
   title?: string;
-} & Omit<SeoProps, 'lang'>;
+  seo?: OmittedSeoProps;
+};
 
 import '@raulmelo/ui/styles/prism.css';
 import '@raulmelo/ui/styles/style.css';
@@ -12,7 +15,7 @@ import type { SupportedLanguages } from '@raulmelo/core';
 import Logo from '@/ui/Logo.astro';
 import DefaultSEO, { type Props as SeoProps } from '@/ui/DefaultSEO.astro';
 
-const { title } = Astro.props;
+const { title, seo } = Astro.props;
 
 const { lang } = Astro.params as { lang: SupportedLanguages };
 ---
@@ -27,9 +30,9 @@ const { lang } = Astro.params as { lang: SupportedLanguages };
     <meta name="generator" content={Astro.generator} />
     <!-- Base-end -->
 
-    <!-- Custom Props -->
-    <slot name="head" />
-    <!-- Custom Props-end -->
+    <!-- SEO -->
+    <DefaultSEO title={title} lang={lang} {...seo} />
+    <!-- SEO-end -->
 
     <!-- Proxima Nova Font -->
     <link rel="stylesheet" href="https://use.typekit.net/rsd6fwc.css" />
@@ -59,10 +62,6 @@ const { lang } = Astro.params as { lang: SupportedLanguages };
       window.localStorage.setItem('theme', theme);
     </script>
     <!-- Theme Script-end -->
-
-    <!-- SEO -->
-    <DefaultSEO title={title} lang={lang} />
-    <!-- SEO-end -->
   </head>
   <body
     class="relative min-h-screen pb-12 duration-200 bg-white dark:bg-blue-900 text-primary transition-theme ease md:pb-16"
