@@ -4,12 +4,10 @@ import Negotiator from 'negotiator';
 const supportedLocales = ['en', 'pt'];
 const defaultLocale = 'en';
 
-const passThroughRoutes = ['/cv'];
-
 export default function middleware(request: Request) {
   const url = new URL(request.url);
 
-  if (passThroughRoutes.includes(url.pathname)) {
+  if (skipMiddleware(request.url)) {
     return;
   }
 
@@ -29,6 +27,22 @@ export default function middleware(request: Request) {
   }
 }
 
+const passThroughRoutes = ['/cv', '/admin'];
+
+function skipMiddleware(url: string) {
+  let shouldSkip = false;
+  const pathname = new URL(url).pathname;
+
+  for (const route of passThroughRoutes) {
+    if (pathname.startsWith(route)) {
+      shouldSkip = true;
+      break;
+    }
+  }
+
+  return shouldSkip;
+}
+
 function getLocale(request: Request) {
   const languages = new Negotiator({
     headers: request.headers as any,
@@ -42,7 +56,5 @@ function normalizePathname(pathname: string) {
 }
 
 export const config = {
-  matcher: [
-    '/((?!api|favicon.ico|assets|_astro|_image|build|@fs|@vite|build).*)',
-  ],
+  matcher: ['/((?!api|favicon.ico|assets|_astro|_image|build|@fs|@vite).*)'],
 };
