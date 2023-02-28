@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "pnpm run build:xstate && pnpm run build:astro",
+    "build:astro": "astro build",
+    "build:xstate": "xstate typegen \"src/**/*.ts?(x)\"",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint \"src/**/*.{ts,astro,tsx}\""
@@ -62,6 +64,7 @@
   "devDependencies": {
     "@types/flat": "5.0.2",
     "@types/lodash.defaultsdeep": "4.6.7",
-    "@types/negotiator": "0.6.1"
+    "@types/negotiator": "0.6.1",
+    "@xstate/cli": "0.4.2"
   }
 }

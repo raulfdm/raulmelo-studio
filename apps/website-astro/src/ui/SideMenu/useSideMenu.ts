@@ -11,7 +11,7 @@ type MachineStates = `open` | `closed`;
 const sideMenuMachine = createMachine({
   predictableActionArguments: true,
   preserveActionOrder: true,
-  tsTypes: {} as import(`./useSideMenu.typegen`).Typegen0,
+  tsTypes: {} as import('./useSideMenu.typegen').Typegen0,
   schema: {
     actions: {} as MachineEvents,
   },

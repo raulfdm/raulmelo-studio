@@ -10,7 +10,9 @@ module.exports = {
       `error`,
       { disallowTypeAnnotations: false, fixStyle: `inline-type-imports` },
     ],
-    quotes: [`error`, `backtick`],
+    quotes: `off`,
+    '@typescript-eslint/quotes': [`error`, `backtick`],
+
     'no-unused-vars': `off`,
     '@typescript-eslint/no-unused-vars': [
       `warn`,
