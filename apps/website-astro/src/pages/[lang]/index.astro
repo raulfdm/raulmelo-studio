@@ -3,7 +3,6 @@ import {
   domains,
   SupportedLanguages,
   supportedLanguagesSchema,
-  SUPPORTED_LANGUAGES,
 } from '@raulmelo/core';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
@@ -15,7 +14,7 @@ import {
 import AuthorPresentation from '@/ui/screens/home/AuthorPresentation.astro';
 import PostSection from '@/ui/screens/home/PostSection.astro';
 
-import Layout from '../../layouts/Layout.astro';
+import Layout from '@/ui/layouts/Layout.astro';
 
 const { lang } = Astro.params as { lang: SupportedLanguages };
 
