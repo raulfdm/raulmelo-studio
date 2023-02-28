@@ -14,6 +14,8 @@ export type Props = {
   };
   links?: Partial<Link>[];
   metas?: Partial<Meta>[];
+  nofollow?: boolean;
+  noindex?: boolean;
 };
 
 const {
@@ -24,6 +26,8 @@ const {
   lang,
   links = [],
   metas = [],
+  nofollow = false,
+  noindex = false,
 } = Astro.props;
 
 const siteData = await domains.siteData.querySiteData();
@@ -110,6 +114,8 @@ const articleJsonLD = nextArticle
 ---
 
 <SEO
+  nofollow={nofollow}
+  noindex={noindex}
   title={title}
   titleDefault={langSeo.title}
   titleTemplate={`%s · ${siteData.personalInformation.fullName}`}

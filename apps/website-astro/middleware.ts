@@ -1,8 +1,6 @@
 import { match } from '@formatjs/intl-localematcher';
+import type { SupportedLanguages } from '@raulmelo/core';
 import Negotiator from 'negotiator';
-
-const supportedLocales = ['en', 'pt'];
-const defaultLocale = 'en';
 
 export default function middleware(request: Request) {
   const url = new URL(request.url);
@@ -17,7 +15,9 @@ export default function middleware(request: Request) {
   );
 
   if (pathnameIsMissingLocale) {
-    const locale = getLocale(request);
+    const locale = getLanguageFromAcceptLanguage(
+      request.headers.get('accept-language') || '',
+    );
 
     const normalizedPathname = normalizePathname(`/${locale}/${url.pathname}`);
 
@@ -43,12 +43,21 @@ function skipMiddleware(url: string) {
   return shouldSkip;
 }
 
-function getLocale(request: Request) {
+export const supportedLocales = ['en', 'pt'];
+const defaultLocale = 'en';
+
+export function getLanguageFromAcceptLanguage(acceptLanguageHeader: string) {
   const languages = new Negotiator({
-    headers: request.headers as any,
+    headers: {
+      'accept-language': acceptLanguageHeader,
+    },
   }).languages(supportedLocales);
 
-  return match(languages, supportedLocales, defaultLocale);
+  return match(
+    languages,
+    supportedLocales,
+    defaultLocale,
+  ) as SupportedLanguages;
 }
 
 function normalizePathname(pathname: string) {
