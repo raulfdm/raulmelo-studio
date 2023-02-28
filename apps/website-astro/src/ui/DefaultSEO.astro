@@ -1,0 +1,166 @@
+---
+import { SEO, Props as SeoProps, Link, Meta } from 'astro-seo';
+import { domains, SupportedLanguages } from '@raulmelo/core';
+
+export type Props = {
+  lang: SupportedLanguages;
+  title?: string;
+  description?: string;
+  image?: NonNullable<SeoProps['openGraph']>['image'];
+  article?: {
+    publishedTime: string;
+    modifiedTime: string;
+    tags: string[];
+  };
+  links?: Partial<Link>[];
+  metas?: Partial<Meta>[];
+};
+
+const {
+  title,
+  description,
+  image,
+  article,
+  lang,
+  links = [],
+  metas = [],
+} = Astro.props;
+
+const siteData = await domains.siteData.querySiteData();
+
+const langSeo = siteData.defaultSeo[lang] as NonNullable<
+  typeof siteData.defaultSeo['en' | 'pt']
+>;
+
+const seoTwitterInfo = siteData.socials.find(
+  (social) => social.name === 'Twitter',
+)!;
+
+const imageUrl = image ? image.url! : siteData.site.seoImage.url;
+const nextTitle = title || siteData.personalInformation.fullName;
+const nextDescription = description || langSeo.description;
+const nextImage = image || {
+  url: siteData.site.seoImage.url,
+  width: 1024,
+  height: 512,
+  alt: siteData.personalInformation.fullName,
+};
+
+const nextArticle = article
+  ? ({
+      ...article,
+      authors: [siteData.personalInformation.fullName],
+    } satisfies NonNullable<SeoProps['openGraph']>['article'])
+  : undefined;
+
+const defaultOpenGraph = {
+  optional: {
+    siteName: siteData.personalInformation.fullName,
+    description: nextDescription,
+  },
+  image: nextImage,
+  basic: {
+    title: title || nextTitle,
+    type: 'website',
+    image: imageUrl,
+  },
+  article: nextArticle,
+} satisfies SeoProps['openGraph'];
+
+const defaultTwitter = {
+  card: 'summary_large_image',
+  creator: seoTwitterInfo.username,
+  description: nextDescription,
+  image: nextImage.url,
+  site: siteData.site.url,
+} satisfies SeoProps['twitter'];
+
+const socialJsonLD = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: siteData.personalInformation.fullName,
+  url: siteData.site.url,
+  sameAs: siteData.socials.map((social) => social.url),
+};
+
+const logoJsonLD = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  logo: `${siteData.site.url}/logo.png`,
+  url: siteData.site.url,
+};
+const articleJsonLD = nextArticle
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      datePublished: nextArticle.publishedTime,
+      description: nextDescription,
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': Astro.url.href,
+      },
+      headline: nextTitle,
+      image: [nextImage.url],
+      dateModified: nextArticle.modifiedTime,
+      author: [
+        { '@type': 'Person', name: siteData.personalInformation.fullName },
+      ],
+    }
+  : undefined;
+---
+
+<SEO
+  title={title}
+  titleDefault={langSeo.title}
+  titleTemplate={`%s · ${siteData.personalInformation.fullName}`}
+  description={nextDescription}
+  canonical={Astro.url.href}
+  openGraph={defaultOpenGraph}
+  twitter={defaultTwitter}
+  extend={{
+    link: [
+      { rel: 'manifest', href: '/site.webmanifest' },
+      {
+        rel: 'mask-icon',
+        href: '/safari-pinned-tab.svg',
+        color: '#000000',
+      },
+      {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/apple-touch-icon.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/favicon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/favicon-16x16.png',
+      },
+      ...links,
+    ] as any,
+    meta: [
+      { name: 'monetization', content: '$ilp.uphold.com/Aa8j4MXjnPHg' },
+      { name: 'theme-color', content: '#ffffff' },
+      ...metas,
+    ],
+  }}
+/>
+
+<script type="application/ld+json" set:html={JSON.stringify(logoJsonLD)}
+></script>
+<script type="application/ld+json" set:html={JSON.stringify(socialJsonLD)}
+></script>
+{
+  articleJsonLD && (
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(articleJsonLD)}
+    />
+  )
+}

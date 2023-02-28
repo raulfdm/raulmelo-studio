@@ -2,11 +2,10 @@
 import '@/ui/screens/search/Search.css';
 import { renderToString } from 'react-dom/server';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
-import Layout from '@/layouts/Layout.astro';
+import Layout from '@/ui/layouts/Layout.astro';
 import { Search } from '@/ui/screens/search/Search';
 import type { SupportedLanguages } from '@raulmelo/core';
 import { getServerState } from 'react-instantsearch-hooks-server';
-import { InstantSearchSSRProvider } from 'react-instantsearch-hooks-web';
 import { SearchSSR } from '@/ui/screens/search/SearchSSR';
 
 const { lang } = Astro.params as { lang: SupportedLanguages };
@@ -25,7 +24,7 @@ const searchServerState = await getServerState(
 );
 ---
 
-<Layout lang={lang} title={intl.formatMessage({ id: 'search.pageTitle' })}>
+<Layout title={intl.formatMessage({ id: 'search.pageTitle' })}>
   <!-- <NextSeo title={formatMessage(messages.pageTitle)} noindex /> -->
   <header class="mb-6 col-span-full">
     <h1 class="text-3xl font-extrabold md:text-4xl col-span-full">

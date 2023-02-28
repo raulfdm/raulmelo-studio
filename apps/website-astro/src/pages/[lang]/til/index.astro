@@ -2,7 +2,7 @@
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { domains, SupportedLanguages } from '@raulmelo/core';
 
-import Layout from '@/layouts/Layout.astro';
+import Layout from '@/ui/layouts/Layout.astro';
 import classNames from 'classnames';
 import { Tils } from '@/ui/screens/tils/Tils';
 
@@ -15,7 +15,7 @@ const intl = getIntl(lang);
 const baseColClass = 'col-span-full lg:col-span-10';
 ---
 
-<Layout lang={lang} title="Blog">
+<Layout title={intl.formatMessage({ id: 'tilHome.title' })}>
   <header class={baseColClass}>
     <h1 class="text-3xl font-extrabold md:text-4xl">
       {intl.formatMessage({ id: 'tilHome.title' })}

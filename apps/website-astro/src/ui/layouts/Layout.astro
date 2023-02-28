@@ -1,8 +1,10 @@
 ---
-export interface Props {
-  title: string;
-  lang: SupportedLanguages;
-}
+type OmittedSeoProps = Omit<SeoProps, 'lang'>;
+
+export type Props = {
+  title?: string;
+  seo?: OmittedSeoProps;
+};
 
 import '@raulmelo/ui/styles/prism.css';
 import '@raulmelo/ui/styles/style.css';
@@ -11,23 +13,32 @@ import '@raulmelo/styles/lib/styles.css';
 import { MenuBar } from '@/ui/MenuBar';
 import type { SupportedLanguages } from '@raulmelo/core';
 import Logo from '@/ui/Logo.astro';
+import DefaultSEO, { type Props as SeoProps } from '@/ui/DefaultSEO.astro';
 
-const { title, lang } = Astro.props;
+const { title, seo } = Astro.props;
+
+const { lang } = Astro.params as { lang: SupportedLanguages };
 ---
 
 <!DOCTYPE html>
 <html lang={lang}>
   <head>
+    <!-- Base -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <!-- Base-end -->
 
-    <slot name="head" />
-    {/* Proxima Nova Font */}
+    <!-- SEO -->
+    <DefaultSEO title={title} lang={lang} {...seo} />
+    <!-- SEO-end -->
+
+    <!-- Proxima Nova Font -->
     <link rel="stylesheet" href="https://use.typekit.net/rsd6fwc.css" />
+    <!-- Proxima Nova Font-end -->
 
+    <!-- Theme Script -->
     <script is:inline>
       const theme = (() => {
         if (
@@ -47,8 +58,10 @@ const { title, lang } = Astro.props;
       } else {
         document.documentElement.classList.add('dark');
       }
+      window.__theme = theme;
       window.localStorage.setItem('theme', theme);
     </script>
+    <!-- Theme Script-end -->
   </head>
   <body
     class="relative min-h-screen pb-12 duration-200 bg-white dark:bg-blue-900 text-primary transition-theme ease md:pb-16"

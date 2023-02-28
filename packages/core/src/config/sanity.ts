@@ -1,4 +1,4 @@
-import sanityClient from '@sanity/client';
+import { createClient } from '@sanity/client';
 
 export const sanityConfig = {
   projectId: 'gc3hakk3',
@@ -7,4 +7,4 @@ export const sanityConfig = {
   useCdn: false, // `false` if you want to ensure fresh data
 };
 
-export const client = sanityClient(sanityConfig);
+export const client = createClient(sanityConfig);
