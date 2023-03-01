@@ -1,5 +1,5 @@
 import { match } from '@formatjs/intl-localematcher';
-import { type SupportedLanguages } from '@raulmelo/core/config';
+import type { SupportedLanguages } from '@raulmelo/core/config';
 import Negotiator from 'negotiator';
 
 export default function middleware(request: Request) {
