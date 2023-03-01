@@ -1,8 +1,8 @@
-import type { SupportedLanguages } from '@raulmelo/core';
+import type { SupportedLanguages } from '@raulmelo/core/config';
 import type {
   QueryTagBySlugPost,
   QueryTagBySlugTil,
-} from '@raulmelo/core/dist/types/domains/tag/queryTagBySlug';
+} from '@raulmelo/core/domains';
 
 type TagOrPost = QueryTagBySlugPost | QueryTagBySlugTil;
 

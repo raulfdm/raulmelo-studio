@@ -4,7 +4,7 @@ import '@raulmelo/styles/lib/styles.css';
 import '../styles/algolia-global.css';
 import '../styles/globals.css';
 
-import type { SupportedLanguages } from '@raulmelo/core';
+import type { SupportedLanguages } from '@raulmelo/core/config';
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/dist/shared/lib/router/router';
 import Head from 'next/head';

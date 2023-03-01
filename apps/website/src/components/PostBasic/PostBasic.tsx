@@ -1,4 +1,4 @@
-import type { QueryPostsAndTilsReturnType } from '@raulmelo/core/dist/types/domains/posts';
+import type { QueryPostsAndTilsReturnType } from '@raulmelo/core/domains';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { FormattedDate } from 'react-intl';

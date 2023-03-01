@@ -1,4 +1,4 @@
-import type { QueryPostsReturnType } from '@raulmelo/core/dist/types/domains/posts/queryPosts';
+import type { QueryPostsReturnType } from '@raulmelo/core/domains';
 import { NextSeo } from 'next-seo';
 import { defineMessages, FormattedMessage } from 'react-intl';
 

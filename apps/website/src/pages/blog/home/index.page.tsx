@@ -1,6 +1,6 @@
-import type { SupportedLanguages } from '@raulmelo/core';
-import { domains } from '@raulmelo/core';
-import type { QueryPostsReturnType } from '@raulmelo/core/dist/types/domains/posts/queryPosts';
+import type { SupportedLanguages } from '@raulmelo/core/config';
+import type { QueryPostsReturnType } from '@raulmelo/core/domains';
+import { queryPosts } from '@raulmelo/core/domains';
 import type { GetStaticProps } from 'next';
 
 import { Blog } from './BlogPage';
@@ -12,7 +12,7 @@ const BlogPage = ({ posts }: BlogPageProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const posts = await domains.posts.queryPosts(locale as SupportedLanguages);
+  const posts = await queryPosts(locale as SupportedLanguages);
 
   return {
     props: {

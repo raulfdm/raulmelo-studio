@@ -1,13 +1,10 @@
-import type { SupportedLanguages } from '@raulmelo/core';
+import type { SupportedLanguages } from '@raulmelo/core/config';
 import { useContext } from 'react';
-import type { IntlShape} from 'react-intl';
+import type { IntlShape } from 'react-intl';
 import { useIntl } from 'react-intl';
 
-import type {
-  LocalizationContextType} from '~/contexts/Localization';
-import {
-  LocalizationContext
-} from '~/contexts/Localization';
+import type { LocalizationContextType } from '~/contexts/Localization';
+import { LocalizationContext } from '~/contexts/Localization';
 
 /**
  * react-intl has "locale" which is a string.

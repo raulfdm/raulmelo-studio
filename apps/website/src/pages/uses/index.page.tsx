@@ -1,5 +1,6 @@
-import type { SupportedLanguages} from '@raulmelo/core';
-import { domains, utils } from '@raulmelo/core';
+import type { SupportedLanguages } from '@raulmelo/core/config';
+import { getUses } from '@raulmelo/core/domains';
+import { getEstimatedReadingTime } from '@raulmelo/core/utils';
 import type { GetStaticProps } from 'next';
 
 import type { UsesPageProps } from './UsesPage';
@@ -17,11 +18,9 @@ const Uses = ({ uses, seo, title, estimatedReadingTime }: UsesPageProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const uses = await domains.uses.getUses(locale as SupportedLanguages);
+  const uses = await getUses(locale as SupportedLanguages);
 
-  const estimatedReadingTime = utils.content.getEstimatedReadingTime(
-    uses.content,
-  );
+  const estimatedReadingTime = getEstimatedReadingTime(uses.content);
   return {
     props: {
       uses,

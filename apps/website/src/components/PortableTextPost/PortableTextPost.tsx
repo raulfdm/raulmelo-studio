@@ -1,5 +1,5 @@
 import { PortableText } from '@portabletext/react';
-import type { SupportedLanguages } from '@raulmelo/core';
+import type { SupportedLanguages } from '@raulmelo/core/config';
 import { ProseContainer } from '@raulmelo/ui';
 import Link from 'next/link';
 import { useRouter } from 'next/router';

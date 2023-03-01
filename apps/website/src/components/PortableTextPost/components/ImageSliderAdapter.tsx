@@ -1,19 +1,24 @@
-import { utils } from '@raulmelo/core';
+import {
+  getImageDimensionsFromSanityImageUrl,
+  imgUrlFor,
+  isEmpty,
+  isNil,
+} from '@raulmelo/core/utils';
 import { ImageSlider } from '@raulmelo/ui';
 import NextImage from 'next/image';
 
 export function ImageSliderAdapter({ value }: SanityBlock) {
   const { images } = value;
 
-  if (utils.isNil(images) || utils.isEmpty(images)) {
+  if (isNil(images) || isEmpty(images)) {
     return null;
   }
 
   const adaptedImages = images.map((img) => {
     const { alt, caption, height, width, image } = img;
-    const src = utils.imgUrlFor(image).url();
+    const src = imgUrlFor(image).url();
 
-    const imgDimensions = utils.getImageDimensionsFromSanityImageUrl(src);
+    const imgDimensions = getImageDimensionsFromSanityImageUrl(src);
 
     return {
       alt,

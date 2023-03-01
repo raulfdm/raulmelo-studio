@@ -1,4 +1,5 @@
-import { domains, utils } from '@raulmelo/core';
+import { queryPostBySlug, queryPosts } from '@raulmelo/core/domains';
+import { getEstimatedReadingTime, isEmpty, isNil } from '@raulmelo/core/utils';
 import { DotDivider } from '@raulmelo/ui';
 import type { GetStaticPaths } from 'next';
 import { Suspense } from 'react';
@@ -37,17 +38,15 @@ export const BlogPostPage = ({ post, estimatedReadingTime }: BlogPostProps) => {
 };
 
 export const getStaticProps = async ({ params, preview }: GetStaticProps) => {
-  const post = await domains.posts.queryPostBySlug(params.slug);
+  const post = await queryPostBySlug(params.slug);
 
-  if (utils.isNil(post) || utils.isEmpty(post)) {
+  if (isNil(post) || isEmpty(post)) {
     return {
       notFound: true,
     };
   }
 
-  const estimatedReadingTime = utils.content.getEstimatedReadingTime(
-    post.content,
-  );
+  const estimatedReadingTime = getEstimatedReadingTime(post.content);
 
   return {
     props: {
@@ -60,7 +59,7 @@ export const getStaticProps = async ({ params, preview }: GetStaticProps) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await domains.posts.queryPosts('all');
+  const posts = await queryPosts('all');
 
   const paths = posts.map((post) => ({
     params: {

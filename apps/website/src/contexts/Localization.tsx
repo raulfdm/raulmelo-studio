@@ -1,4 +1,4 @@
-import type { SupportedLanguages } from '@raulmelo/core';
+import type { SupportedLanguages } from '@raulmelo/core/config';
 import flat from 'flat';
 import { useRouter } from 'next/router';
 import { createContext, useMemo } from 'react';

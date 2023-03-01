@@ -1,4 +1,4 @@
-import { utils } from '@raulmelo/core';
+import { isEmpty } from '@raulmelo/core/utils';
 import { NextSeo } from 'next-seo';
 import { useMemo } from 'react';
 import { defineMessages, FormattedMessage } from 'react-intl';
@@ -59,7 +59,7 @@ export const TagPage = ({ tag, content }: TagPageProps) => {
       <h2 className="mb-4 font-sans text-xl font-extrabold col-span-full lg:text-2xl lg:mb-8">
         {title}
       </h2>
-      {utils.isEmpty(content) ? (
+      {isEmpty(content) ? (
         <p className="text-lg col-span-full">
           <FormattedMessage id="tag.empty" />
         </p>

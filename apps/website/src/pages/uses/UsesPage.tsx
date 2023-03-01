@@ -1,4 +1,4 @@
-import type { GetUsesReturnType } from '@raulmelo/core/dist/types/domains/uses';
+import type { GetUsesReturnType } from '@raulmelo/core/domains';
 
 import { PortableTextPost } from '~/components/PortableTextPost';
 import { useLocalization } from '~/hooks/useLocalization';

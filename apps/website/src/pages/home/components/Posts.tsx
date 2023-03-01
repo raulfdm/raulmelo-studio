@@ -1,4 +1,4 @@
-import type { QueryPostsAndTilsReturnType } from '@raulmelo/core/dist/types/domains/posts/queryPostsAndTils';
+import type { QueryPostsAndTilsReturnType } from '@raulmelo/core/domains';
 import { AnimatePresence, m } from 'framer-motion';
 
 import { ContentTile } from '~/components/ContentTile';
