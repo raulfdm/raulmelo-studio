@@ -1,5 +1,5 @@
 import { Popover } from '@headlessui/react';
-import { type SupportedLanguages } from '@raulmelo/core';
+import { type SupportedLanguages } from '@raulmelo/core/config';
 import { GlobeIcon } from '@raulmelo/ui';
 import { useState } from 'react';
 import { usePopper } from 'react-popper';

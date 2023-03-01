@@ -1,5 +1,6 @@
 ---
-import { domains, type SupportedLanguages } from '@raulmelo/core';
+import { type SupportedLanguages } from '@raulmelo/core/config';
+import { queryTils } from '@raulmelo/core/domains';
 import classNames from 'classnames';
 
 import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
@@ -12,7 +13,7 @@ export const getStaticPaths = languageGetStaticPaths;
 
 const { lang } = Astro.params as { lang: SupportedLanguages };
 
-const tils = await domains.posts.queryTils(lang as SupportedLanguages);
+const tils = await queryTils(lang as SupportedLanguages);
 
 const intl = getIntl(lang);
 

@@ -1,5 +1,5 @@
 import { Disclosure } from '@headlessui/react';
-import { type SupportedLanguages } from '@raulmelo/core';
+import { type SupportedLanguages } from '@raulmelo/core/config';
 import { ExternalLinkIcon } from '@raulmelo/ui';
 import classNames from 'classnames';
 import { m, useAnimation } from 'framer-motion';

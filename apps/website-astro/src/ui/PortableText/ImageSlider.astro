@@ -1,5 +1,10 @@
 ---
-import { utils } from '@raulmelo/core';
+import {
+  getImageDimensionsFromSanityImageUrl,
+  imgUrlFor,
+  isEmpty,
+  isNil,
+} from '@raulmelo/core/utils';
 import { ImageSlider } from '@raulmelo/ui';
 
 type ImageNode = {
@@ -20,13 +25,13 @@ type Props = {
 
 const { images } = Astro.props.node;
 
-const isImageEmpty = utils.isNil(images) || utils.isEmpty(images);
+const isImageEmpty = isNil(images) || isEmpty(images);
 
 const adaptedImages = images.map((img) => {
   const { alt, caption, image } = img;
-  const src = utils.imgUrlFor(image).url();
+  const src = imgUrlFor(image).url();
 
-  const imgDimensions = utils.getImageDimensionsFromSanityImageUrl(src);
+  const imgDimensions = getImageDimensionsFromSanityImageUrl(src);
 
   return {
     alt,

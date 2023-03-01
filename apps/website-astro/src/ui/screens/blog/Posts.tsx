@@ -1,5 +1,5 @@
-import { type SupportedLanguages } from '@raulmelo/core';
-import { type QueryPostsAndTilsReturnType } from '@raulmelo/core/dist/types/domains/posts/queryPostsAndTils';
+import { type SupportedLanguages } from '@raulmelo/core/config';
+import { type QueryPostsAndTilsReturnType } from '@raulmelo/core/domains';
 import { AnimatePresence, domAnimation, LazyMotion, m } from 'framer-motion';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';

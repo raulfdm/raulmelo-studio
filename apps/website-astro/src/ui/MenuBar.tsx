@@ -1,4 +1,4 @@
-import { type SupportedLanguages } from '@raulmelo/core';
+import { type SupportedLanguages } from '@raulmelo/core/config';
 import { CloseIcon, MenuIcon } from '@raulmelo/ui';
 import { domAnimation, LazyMotion } from 'framer-motion';
 

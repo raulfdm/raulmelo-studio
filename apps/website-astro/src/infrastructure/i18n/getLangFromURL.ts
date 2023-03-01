@@ -1,7 +1,7 @@
 import {
   type SupportedLanguages,
   supportedLanguagesSchema,
-} from '@raulmelo/core';
+} from '@raulmelo/core/config';
 
 export function getLangFromURL(url: string): null | SupportedLanguages {
   const pathname = new URL(url).pathname;

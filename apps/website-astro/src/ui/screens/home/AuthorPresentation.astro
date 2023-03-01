@@ -5,8 +5,8 @@ export type Props = {
 };
 
 import { Image } from '@astrojs/image/components';
-import { type SupportedLanguages } from '@raulmelo/core';
-import { type QuerySiteDataReturnType } from '@raulmelo/core/dist/types/domains/siteData';
+import { type SupportedLanguages } from '@raulmelo/core/config';
+import { type QuerySiteDataReturnType } from '@raulmelo/core/domains';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { getSocial } from '@/infrastructure/utils/seo';

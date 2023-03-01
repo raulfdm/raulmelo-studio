@@ -1,4 +1,4 @@
-import { type QuerySiteDataReturnType } from '@raulmelo/core/dist/types/domains/siteData';
+import { type QuerySiteDataReturnType } from '@raulmelo/core/domains';
 
 type Social = QuerySiteDataReturnType[`socials`][0];
 

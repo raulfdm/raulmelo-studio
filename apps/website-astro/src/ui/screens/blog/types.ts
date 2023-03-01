@@ -1,5 +1,3 @@
-import { type domains } from '@raulmelo/core';
+import { type QueryPostBySlugReturnType } from '@raulmelo/core/domains';
 
-export type PostBySlug = Awaited<
-  ReturnType<typeof domains.posts.queryPostBySlug>
->;
+export type PostBySlug = QueryPostBySlugReturnType;

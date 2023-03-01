@@ -1,14 +1,13 @@
-import { type domains, type SupportedLanguages } from '@raulmelo/core';
+import { type SupportedLanguages } from '@raulmelo/core/config';
+import { type QueryTilsReturnType } from '@raulmelo/core/domains';
 import { domAnimation, LazyMotion } from 'framer-motion';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { getTilUrl } from '@/infrastructure/utils/url';
 import { ContentTile } from '@/ui/ContentTile';
 
-type Tils = Awaited<ReturnType<typeof domains.posts.queryTils>>;
-
 type TilsProps = {
-  tils: Tils;
+  tils: QueryTilsReturnType;
   lang: SupportedLanguages;
 };
 

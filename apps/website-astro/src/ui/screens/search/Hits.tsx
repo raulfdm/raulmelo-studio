@@ -1,4 +1,4 @@
-import { type SupportedLanguages } from '@raulmelo/core';
+import { type SupportedLanguages } from '@raulmelo/core/config';
 import classNames from 'classnames';
 import { Hits as HitsComp } from 'react-instantsearch-hooks-web';
 
