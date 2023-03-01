@@ -1,5 +1,7 @@
 ---
-import { domains, type SupportedLanguages,utils } from '@raulmelo/core';
+import { type SupportedLanguages } from '@raulmelo/core/config';
+import { getUses } from '@raulmelo/core/domains';
+import { isEmpty, isNil } from '@raulmelo/core/utils';
 import { ProseContainer } from '@raulmelo/ui';
 
 import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
@@ -17,9 +19,9 @@ const { lang } = Astro.params as {
   lang: SupportedLanguages;
 };
 
-const uses = await domains.uses.getUses(lang as SupportedLanguages);
+const uses = await getUses(lang as SupportedLanguages);
 
-if (utils.isNil(uses) || utils.isEmpty(uses)) {
+if (isNil(uses) || isEmpty(uses)) {
   return Astro.redirect(`/404`);
 }
 

@@ -1,5 +1,7 @@
 ---
-import { domains, type SupportedLanguages,utils } from '@raulmelo/core';
+import { type SupportedLanguages } from '@raulmelo/core/config';
+import { queryTilBySlug, queryTils } from '@raulmelo/core/domains';
+import { getEstimatedReadingTime, isEmpty, isNil } from '@raulmelo/core/utils';
 import { ProseContainer } from '@raulmelo/ui';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
@@ -17,7 +19,7 @@ const { lang, slug } = Astro.params as {
 };
 
 export async function getStaticPaths() {
-  const tils = await domains.posts.queryTils(`all`);
+  const tils = await queryTils(`all`);
 
   return tils.map((til) => ({
     params: {
@@ -29,14 +31,14 @@ export async function getStaticPaths() {
 
 export const prerender = true;
 
-const til = await domains.posts.queryTilBySlug(slug);
+const til = await queryTilBySlug(slug);
 
 // https://github.com/vercel/next.js/issues/16681#issuecomment-792314687
-if (utils.isNil(til) || utils.isEmpty(til)) {
+if (isNil(til) || isEmpty(til)) {
   return Astro.redirect(`/404`);
 }
 
-const estimatedReadingTime = utils.content.getEstimatedReadingTime(til.content);
+const estimatedReadingTime = getEstimatedReadingTime(til.content);
 
 const intl = getIntl(lang);
 ---

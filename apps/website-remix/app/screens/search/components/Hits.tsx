@@ -1,6 +1,6 @@
-import { getPostUrl, getTilUrl } from '$infrastructure/utils/url';
+import getPostUrl, { getTilUrl } from '$infrastructure/utils/url';
 import { PostBasic } from '$ui/PostBasic';
-import type { SupportedLanguages } from '@raulmelo/core';
+import type { SupportedLanguages } from '@raulmelo/core/config';
 import { Hits as HitsComp } from 'react-instantsearch-hooks-web';
 
 import type { HitAlgolia } from '../types';

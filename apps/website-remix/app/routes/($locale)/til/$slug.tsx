@@ -2,9 +2,13 @@ import { getLocales } from '$infrastructure/i18n/getLocales.server';
 import { getParamLocaleOrDefault } from '$infrastructure/utils/i18n';
 import { getSEOTags } from '$infrastructure/utils/seo';
 import { PortableTextPost } from '$ui/PortableTextPost';
-import { domains, utils } from '@raulmelo/core';
-import type { ITilsTil } from '@raulmelo/core/dist/types/domains/posts/queryTils/types';
-import type { ISiteData } from '@raulmelo/core/dist/types/domains/siteData';
+import { getEstimatedReadingTime, isEmpty, isNil } from '@raulmelo/core/utils';
+import type {
+  QueryTilsReturnType,
+  QuerySiteDataReturnType,
+} from '@raulmelo/core/domains';
+import { queryTilBySlug, querySiteData } from '@raulmelo/core/domains';
+
 import type { LoaderArgs, MetaFunction, SerializeFrom } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
@@ -13,9 +17,9 @@ import type { BlogPosting } from 'schema-dts';
 import invariant from 'tiny-invariant';
 
 type LoaderData = {
-  til: ITilsTil;
+  til: QueryTilsReturnType[number];
   estimatedReadingTime: number;
-  siteData: ISiteData;
+  siteData: QuerySiteDataReturnType;
   url: string;
   messages: Record<string, string>;
 };
@@ -82,11 +86,11 @@ export async function loader({ params, request }: LoaderArgs) {
   const locale = getParamLocaleOrDefault(params);
 
   const [til, siteData] = await Promise.all([
-    domains.posts.queryTilBySlug(params.slug),
-    domains.siteData.querySiteData(),
+    queryTilBySlug(params.slug),
+    querySiteData(),
   ]);
 
-  if (utils.isNil(til) || utils.isEmpty(til)) {
+  if (isNil(til) || isEmpty(til)) {
     throw new Response(`Not Found`, {
       status: 404,
     });
@@ -96,7 +100,7 @@ export async function loader({ params, request }: LoaderArgs) {
 
   return json<LoaderData>({
     til,
-    estimatedReadingTime: utils.content.getEstimatedReadingTime(til.content),
+    estimatedReadingTime: getEstimatedReadingTime(til.content),
     siteData,
     url: request.url,
     messages,

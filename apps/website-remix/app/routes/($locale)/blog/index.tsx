@@ -4,8 +4,8 @@ import { getLocales } from '$infrastructure/i18n/getLocales.server';
 import { getParamLocaleOrDefault } from '$infrastructure/utils/i18n';
 import { getSEOTags } from '$infrastructure/utils/seo';
 import { Posts } from '$ui/screens/home/Posts';
-import { domains } from '@raulmelo/core';
-import type { IBlogPagePost } from '@raulmelo/core/dist/types/domains/posts';
+import type { QueryPostsReturnType } from '@raulmelo/core/domains';
+import { queryPosts } from '@raulmelo/core/domains';
 import type { LoaderArgs, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
@@ -13,7 +13,7 @@ import { useLoaderData } from '@remix-run/react';
 import { defineMessages, FormattedMessage } from 'react-intl';
 
 type LoaderData = {
-  posts: IBlogPagePost[];
+  posts: QueryPostsReturnType[];
   messages: FlatMessages;
 };
 
@@ -40,7 +40,7 @@ export async function loader({ params }: LoaderArgs) {
   const locale = getParamLocaleOrDefault(params);
 
   const [posts, messages] = await Promise.all([
-    domains.posts.queryPosts(locale),
+    queryPosts(locale),
     getLocales(locale),
   ]);
 

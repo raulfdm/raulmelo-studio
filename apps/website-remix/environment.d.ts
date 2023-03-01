@@ -1,4 +1,4 @@
-import type { AppTheme } from '@raulmelo/core';
+import type { AppTheme } from '@raulmelo/core/config';
 
 declare global {
   interface Window {

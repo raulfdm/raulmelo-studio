@@ -1,6 +1,7 @@
 ---
-import { domains, type SupportedLanguages } from '@raulmelo/core';
-import { type Link, type Meta,type Props as SeoProps, SEO } from 'astro-seo';
+import { type SupportedLanguages } from '@raulmelo/core/config';
+import { querySiteData } from '@raulmelo/core/domains';
+import { type Link, type Meta, type Props as SeoProps, SEO } from 'astro-seo';
 
 export type Props = {
   lang: SupportedLanguages;
@@ -30,7 +31,7 @@ const {
   noindex = false,
 } = Astro.props;
 
-const siteData = await domains.siteData.querySiteData();
+const siteData = await querySiteData();
 
 const langSeo = siteData.defaultSeo[lang] as NonNullable<
   typeof siteData.defaultSeo[`en` | `pt`]

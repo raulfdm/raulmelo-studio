@@ -1,5 +1,9 @@
-import type { SupportedLanguages } from '@raulmelo/core';
-import { domains } from '@raulmelo/core';
+import type { SupportedLanguages } from '@raulmelo/core/config';
+import {
+  queryAllTags,
+  queryTagBySlug,
+  sortPostsByPublishedDate,
+} from '@raulmelo/core/domains';
 import type { GetStaticPaths } from 'next';
 
 import { TagPage } from './TagPage';
@@ -8,12 +12,9 @@ import type { TagPageParams, TagPageProps } from './types';
 const Tag = (props: TagPageProps) => <TagPage {...props} />;
 
 export const getStaticProps = async ({ params, locale }: TagPageParams) => {
-  const tag = await domains.tag.queryTagBySlug(params.slug, locale);
+  const tag = await queryTagBySlug(params.slug, locale);
 
-  const content = domains.posts.sortPostsByPublishedDate([
-    ...tag.posts,
-    ...tag.tils,
-  ]);
+  const content = sortPostsByPublishedDate([...tag.posts, ...tag.tils]);
 
   return {
     props: {
@@ -25,7 +26,7 @@ export const getStaticProps = async ({ params, locale }: TagPageParams) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const postTags = await domains.tag.queryAllTags();
+  const postTags = await queryAllTags();
 
   const paths: TagPageParams[] = [];
 

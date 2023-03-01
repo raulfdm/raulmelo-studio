@@ -1,5 +1,7 @@
 ---
-import { domains, type SupportedLanguages,utils } from '@raulmelo/core';
+import { type SupportedLanguages } from '@raulmelo/core/config';
+import { queryPostBySlug, queryPosts } from '@raulmelo/core/domains';
+import { getEstimatedReadingTime, isEmpty, isNil } from '@raulmelo/core/utils';
 import { DotDivider, ProseContainer } from '@raulmelo/ui';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
@@ -19,7 +21,7 @@ const { lang, slug } = Astro.params as {
 };
 
 export async function getStaticPaths() {
-  const posts = await domains.posts.queryPosts(`all`);
+  const posts = await queryPosts(`all`);
 
   return posts.map((post) => ({
     params: {
@@ -31,17 +33,15 @@ export async function getStaticPaths() {
 
 export const prerender = true;
 
-const post = await domains.posts.queryPostBySlug(slug);
+const post = await queryPostBySlug(slug);
 
-if (utils.isNil(post) || utils.isEmpty(post)) {
+if (isNil(post) || isEmpty(post)) {
   return {
     notFound: true,
   };
 }
 
-const estimatedReadingTime = utils.content.getEstimatedReadingTime(
-  post.content,
-);
+const estimatedReadingTime = getEstimatedReadingTime(post.content);
 
 const intl = getIntl(lang);
 ---

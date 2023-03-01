@@ -1,5 +1,5 @@
-import type { AppTheme } from '@raulmelo/core';
-import { utils } from '@raulmelo/core';
+import type { AppTheme } from '@raulmelo/core/config';
+import { isBrowserApiAvailable } from '@raulmelo/core/utils';
 import { useMachine } from '@xstate/react';
 import { createMachine } from 'xstate';
 
@@ -83,7 +83,7 @@ const themeMachine = createMachine(
          * Because NEXT will run this on node first, I have to check
          * if the window is defined before checking the __theme property.
          */
-        if (utils.isBrowserApiAvailable.window) {
+        if (typeof window !== 'undefined') {
           if (window.__theme) {
             result = window.__theme === 'light';
           }

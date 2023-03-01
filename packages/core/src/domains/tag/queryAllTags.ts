@@ -1,7 +1,7 @@
 import groq from 'groq';
 import { z } from 'zod';
 
-import { client } from '$config/sanity';
+import { client } from '@/config';
 
 export async function queryAllTags() {
   const result = await client.fetch(allTagsQuery);

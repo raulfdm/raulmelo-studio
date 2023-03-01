@@ -1,5 +1,5 @@
 import { match } from '@formatjs/intl-localematcher';
-import { SupportedLanguages } from '@raulmelo/core';
+import type { SupportedLanguages } from '@raulmelo/core/config';
 import Negotiator from 'negotiator';
 
 export default function middleware(request: Request) {
@@ -16,7 +16,7 @@ export default function middleware(request: Request) {
 
   if (pathnameIsMissingLocale) {
     const locale = getLanguageFromAcceptLanguage(
-      request.headers.get('accept-language') || '',
+      request.headers.get(`accept-language`) || ``,
     );
 
     const normalizedPathname = normalizePathname(`/${locale}/${url.pathname}`);
@@ -27,7 +27,7 @@ export default function middleware(request: Request) {
   }
 }
 
-const passThroughRoutes = ['/cv', '/admin'];
+const passThroughRoutes = [`/cv`, `/admin`];
 
 function skipMiddleware(url: string) {
   let shouldSkip = false;
@@ -43,8 +43,8 @@ function skipMiddleware(url: string) {
   return shouldSkip;
 }
 
-export const supportedLocales = ['en', 'pt'];
-const defaultLocale = 'en';
+export const supportedLocales = [`en`, `pt`];
+const defaultLocale = `en`;
 
 export function getLanguageFromAcceptLanguage(acceptLanguageHeader: string) {
   const languages = new Negotiator({
@@ -61,9 +61,10 @@ export function getLanguageFromAcceptLanguage(acceptLanguageHeader: string) {
 }
 
 function normalizePathname(pathname: string) {
-  return pathname.replaceAll('//', '/');
+  return pathname.replaceAll(`//`, `/`);
 }
 
 export const config = {
+  // eslint-disable-next-line @typescript-eslint/quotes
   matcher: ['/((?!api|favicon.ico|assets|_astro|_image|build|@fs|@vite).*)'],
 };

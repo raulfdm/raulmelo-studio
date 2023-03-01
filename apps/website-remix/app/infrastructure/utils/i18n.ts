@@ -1,4 +1,4 @@
-import type { SupportedLanguages } from '@raulmelo/core';
+import type { SupportedLanguages } from '@raulmelo/core/config';
 import { createCookie } from '@remix-run/node';
 import type { Params } from '@remix-run/react';
 import acceptLanguage from 'accept-language-parser';

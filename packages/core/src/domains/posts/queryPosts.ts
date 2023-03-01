@@ -1,12 +1,12 @@
 import groq from 'groq';
 import { z } from 'zod';
 
-import type { SupportedLanguagesWithAll } from '$config/languages';
 import {
+  client,
   SUPPORTED_LANGUAGES,
   supportedLanguagesSchema,
-} from '$config/languages';
-import { client } from '$config/sanity';
+  type SupportedLanguagesWithAll,
+} from '@/config';
 
 export async function queryPosts(language: SupportedLanguagesWithAll) {
   const languages = language === 'all' ? SUPPORTED_LANGUAGES : [language];

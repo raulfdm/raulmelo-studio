@@ -1,4 +1,4 @@
-import { utils } from '@raulmelo/core';
+import { isEmpty } from '@raulmelo/core/utils';
 import classNames from 'classnames';
 import { connectRefinementList } from 'react-instantsearch-dom';
 
@@ -76,7 +76,7 @@ function GenericRefinement({
   items,
   renderLabelText,
 }: GenericRefinementProps) {
-  return utils.isEmpty(items) ? null : (
+  return isEmpty(items) ? null : (
     <div className={styles.RefinementWrapper}>
       <h3 className="text-lg font-bold">{title}</h3>
 

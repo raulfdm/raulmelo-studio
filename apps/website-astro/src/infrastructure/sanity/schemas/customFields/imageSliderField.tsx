@@ -1,5 +1,8 @@
-import { utils } from '@raulmelo/core';
-import { type SanityImageSource } from '@raulmelo/core/dist/types/utils/image';
+import {
+  imgUrlFor,
+  isEmpty,
+  type SanityImageSource,
+} from '@raulmelo/core/utils';
 import { ImageSlider, ViewCarouselIcon } from '@raulmelo/ui';
 
 export const imageSliderField = {
@@ -29,7 +32,7 @@ export const imageSliderField = {
   ],
   components: {
     preview: ({ images }: SanityImageSliderProps) => {
-      if (images === undefined || utils.isEmpty(images)) {
+      if (images === undefined || isEmpty(images)) {
         return null;
       }
 
@@ -65,7 +68,7 @@ export const imageSliderField = {
 
       function prepareImages(sanityImage: SanityImageSliderImage) {
         const { image, ...props } = sanityImage;
-        const remoteImage = utils.imgUrlFor(image);
+        const remoteImage = imgUrlFor(image);
 
         return {
           src: remoteImage.url(),

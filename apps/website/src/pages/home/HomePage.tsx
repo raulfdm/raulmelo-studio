@@ -1,4 +1,4 @@
-import type { QueryPostsAndTilsReturnType } from '@raulmelo/core/dist/types/domains/posts/queryPostsAndTils';
+import type { QueryPostsAndTilsReturnType } from '@raulmelo/core/domains';
 import { ArrowRightIcon } from '@raulmelo/ui';
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';

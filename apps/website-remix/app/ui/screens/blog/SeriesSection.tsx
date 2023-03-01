@@ -1,5 +1,5 @@
 import { useLocalization } from '$infrastructure/contexts/Localization';
-import { getPostUrl } from '$infrastructure/utils/url';
+import getPostUrl from '$infrastructure/utils/url';
 import type { BlogPostBySlug } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug/types';
 import { ChevronDownIcon } from '@raulmelo/ui';
 import { Link } from '@remix-run/react';

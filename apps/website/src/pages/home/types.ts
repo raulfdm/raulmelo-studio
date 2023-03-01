@@ -1,4 +1,4 @@
-import type { QueryPostsAndTilsReturnType } from '@raulmelo/core/dist/types/domains/posts';
+import type { QueryPostsAndTilsReturnType } from '@raulmelo/core/domains';
 
 export type PostSectionProps = {
   title: string;

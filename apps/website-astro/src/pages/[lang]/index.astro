@@ -1,9 +1,9 @@
 ---
 import {
-  domains,
   type SupportedLanguages,
   supportedLanguagesSchema,
-} from '@raulmelo/core';
+} from '@raulmelo/core/config';
+import { queryPostsAndTils, querySiteData } from '@raulmelo/core/domains';
 
 import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
@@ -34,8 +34,8 @@ if (!success) {
 
 const NUMBER_OF_POSTS = 2;
 const [siteData, { posts, tils }] = await Promise.all([
-  domains.siteData.querySiteData(),
-  domains.posts.queryPostsAndTils(lang, NUMBER_OF_POSTS),
+  querySiteData(),
+  queryPostsAndTils(lang, NUMBER_OF_POSTS),
 ]);
 
 const intl = getIntl(lang);

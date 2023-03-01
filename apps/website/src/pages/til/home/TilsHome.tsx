@@ -1,4 +1,4 @@
-import type { QueryTilsReturnType } from '@raulmelo/core/dist/types/domains/posts/queryTils';
+import type { QueryTilsReturnType } from '@raulmelo/core/domains';
 import classNames from 'classnames';
 import { NextSeo } from 'next-seo';
 import { FormattedMessage } from 'react-intl';

@@ -2,7 +2,7 @@ import { createIntl, createIntlCache, type IntlShape } from '@formatjs/intl';
 import {
   type SupportedLanguages,
   supportedLanguagesSchema,
-} from '@raulmelo/core';
+} from '@raulmelo/core/config';
 import flat from 'flat';
 
 import enLocales from './locales/en.json';

@@ -1,19 +1,37 @@
 {
   "private": true,
   "name": "@raulmelo/core",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "license": "MIT",
   "type": "module",
-  "main": "./dist/core.cjs",
-  "module": "./dist/core.js",
+  "files": [
+    "dist",
+    "index.d.ts",
+    "config.d.ts",
+    "domains.d.ts",
+    "utils.d.ts",
+    "scripts.d.ts",
+    "types"
+  ],
   "exports": {
-    ".": {
-      "require": "./dist/core.cjs",
-      "default": "./dist/core.js"
+    "./domains": {
+      "require": "./dist/domains/index.cjs",
+      "default": "./dist/domains/index.js"
     },
-    "./scripts": "./dist/scripts.js"
+    "./utils": {
+      "require": "./dist/utils/index.cjs",
+      "default": "./dist/utils/index.js"
+    },
+    "./config": {
+      "require": "./dist/config/index.cjs",
+      "default": "./dist/config/index.js"
+    },
+    "./scripts": {
+      "require": "./dist/scripts/index.cjs",
+      "default": "./dist/scripts/index.js"
+    }
   },
-  "types": "./dist/types/index.d.ts",
+  "types": "./index.d.ts",
   "scripts": {
     "clean": "scripty",
     "build": "scripty",
@@ -23,26 +41,26 @@
   },
   "dependencies": {
     "@sanity/block-content-to-markdown": "0.0.5",
-    "@sanity/client": "5.2.1",
+    "@sanity/client": "5.2.2",
     "@sanity/image-url": "1.0.2",
-    "groq": "3.4.0",
+    "groq": "3.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "zod": "3.20.6"
   },
   "devDependencies": {
-    "@portabletext/react": "2.0.1",
+    "@portabletext/react": "2.0.2",
     "@portabletext/types": "2.0.2",
-    "@types/node": "18.14.0",
+    "@types/node": "18.14.2",
     "@types/ramda": "0.28.23",
-    "@typescript-eslint/parser": "5.52.0",
-    "eslint": "8.34.0",
+    "@typescript-eslint/parser": "5.54.0",
+    "eslint": "8.35.0",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-simple-import-sort": "10.0.0",
     "ramda": "0.28.0",
     "typescript": "4.9.5",
-    "vite": "4.1.2",
-    "vitest": "0.28.5"
+    "vite": "4.1.4",
+    "vitest": "0.29.2"
   },
   "scripty": {
     "path": "./scripts"

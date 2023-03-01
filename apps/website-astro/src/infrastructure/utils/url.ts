@@ -1,4 +1,4 @@
-import { type SupportedLanguages } from '@raulmelo/core';
+import { type SupportedLanguages } from '@raulmelo/core/config';
 
 /**
  * TODO: Move those functions to core/domains/*

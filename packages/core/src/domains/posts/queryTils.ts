@@ -2,12 +2,12 @@ import type { PortableTextBlock } from '@portabletext/types';
 import groq from 'groq';
 import { z } from 'zod';
 
-import type { SupportedLanguagesWithAll } from '$config/languages';
 import {
+  client,
   SUPPORTED_LANGUAGES_WITH_ALL,
   supportedLanguagesSchema,
-} from '$config/languages';
-import { client } from '$config/sanity';
+  type SupportedLanguagesWithAll,
+} from '@/config';
 
 export async function queryTils(language: SupportedLanguagesWithAll) {
   const languages =
@@ -18,7 +18,7 @@ export async function queryTils(language: SupportedLanguagesWithAll) {
   return tilsSchema.parse(result);
 }
 
-export type QueryTilsReturnType = Awaited<ReturnType<typeof queryTils>>;
+export type QueryTilsReturnType = z.infer<typeof tilsSchema>;
 
 const tilQuery = groq`
 *[_type == "til" && language in $languages && !(_id in path('drafts.**'))] | order(publishedAt desc){

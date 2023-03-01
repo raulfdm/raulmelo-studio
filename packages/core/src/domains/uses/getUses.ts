@@ -2,9 +2,11 @@ import type { PortableTextBlock } from '@portabletext/types';
 import groq from 'groq';
 import { z } from 'zod';
 
-import type { SupportedLanguages } from '$config/languages';
-import { supportedLanguagesSchema } from '$config/languages';
-import { client } from '$config/sanity';
+import {
+  client,
+  type SupportedLanguages,
+  supportedLanguagesSchema,
+} from '@/config';
 
 export async function getUses(language: SupportedLanguages) {
   const result = await client.fetch(getUsesQuery, { language });

@@ -1,22 +1,22 @@
-import type { SupportedLanguages } from '@raulmelo/core';
-import { domains, utils } from '@raulmelo/core';
+import type {
+  QuerySiteDataReturnType,
+  QueryTagBySlugReturnType,
+  QueryTagBySlugTil,
+  QueryTagBySlugPost,
+} from '@raulmelo/core/domains';
+import {
+  querySiteData,
+  queryTagBySlug,
+  sortPostsByPublishedDate,
+} from '@raulmelo/core/domains';
 import { defineMessages, FormattedMessage } from 'react-intl';
 import { useLoaderData } from '@remix-run/react';
-import type {
-  ITagBySlugBlogPost,
-  ITagBySlugPostTag,
-  ITagBySlugTilPost,
-} from '@raulmelo/core/dist/types/domains/tag/queryTagBySlug/types';
-import type { LoaderArgs, MetaFunction } from '@remix-run/node';
-import { json } from '@remix-run/node';
-import invariant from 'tiny-invariant';
-import { useLocalization } from '$infrastructure/contexts/Localization';
-import type { ISiteData } from '@raulmelo/core/dist/types/domains/siteData';
-import { AuthorPresentation } from '$ui/screens/home/AuthorPresentation';
-import { getPostUrl, getTilUrl } from '$infrastructure/utils/url';
+
+import getPostUrl, { getTilUrl } from '$infrastructure/utils/url';
 import { PostBasic } from '$ui/PostBasic';
 import { serverIntl } from '$infrastructure/i18n/getServerSideLocales.server';
 import { getParamLocaleOrDefault } from '$infrastructure/utils/i18n';
+import { isEmpty } from '@raulmelo/core/utils';
 
 const messages = defineMessages({
   description: {
@@ -28,9 +28,9 @@ const messages = defineMessages({
 });
 
 type LoaderData = {
-  tag: ITagBySlugPostTag;
-  content: (ITagBySlugBlogPost | ITagBySlugTilPost)[];
-  siteData: ISiteData;
+  tag: QueryTagBySlugReturnType;
+  content: (QueryTagBySlugTil | QueryTagBySlugPost)[];
+  siteData: QuerySiteDataReturnType;
   meta: {
     title: string;
     description: string;
@@ -43,14 +43,11 @@ export async function loader({ params }: LoaderArgs) {
   const locale = getParamLocaleOrDefault(params);
 
   const [tag, siteData] = await Promise.all([
-    domains.tag.queryTagBySlug(params.slug, locale),
-    domains.siteData.querySiteData(),
+    queryTagBySlug(params.slug, locale),
+    querySiteData(),
   ]);
 
-  const content = domains.posts.sortPostsByPublishedDate([
-    ...tag.posts,
-    ...tag.tils,
-  ]);
+  const content = sortPostsByPublishedDate([...tag.posts, ...tag.tils]);
 
   const { formatMessage } = serverIntl[locale];
 
@@ -82,13 +79,13 @@ export default function TagSlugRoute() {
       <h2 className="mb-4 font-sans text-xl font-extrabold col-span-full lg:text-2xl lg:mb-8">
         {formatMessage(messages.title, { tag: tag.name })}
       </h2>
-      {utils.isEmpty(content) ? (
+      {isEmpty(content) ? (
         <p className="text-lg col-span-full">
           <FormattedMessage id="tag.empty" />
         </p>
       ) : (
         <ul className="pb-5 space-y-6 md:pb-10 col-span-full">
-          {content.map((c) => {
+          {content.map((c: any) => {
             const getUrl = c._type === `post` ? getPostUrl : getTilUrl;
 
             return (

@@ -1,9 +1,9 @@
-import type { SupportedLanguages } from '@raulmelo/core';
+import type { SupportedLanguages } from '@raulmelo/core/config';
 
 /**
  * TODO: Move those functions to core/domains/*
  */
-export function getPostUrl(
+export default function getPostUrl(
   postSlug: string,
   locale: SupportedLanguages,
 ): string {

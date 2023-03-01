@@ -3,7 +3,7 @@ import { createIntl, createIntlCache } from '@formatjs/intl';
 import flat from 'flat';
 import enLocales from '$infrastructure/locales/en.json';
 import ptLocales from '$infrastructure/locales/pt.json';
-import type { SupportedLanguages } from '@raulmelo/core';
+import type { SupportedLanguages } from '@raulmelo/core/config';
 
 /**
  * Caches prevent memory leaks and improve performance by caching

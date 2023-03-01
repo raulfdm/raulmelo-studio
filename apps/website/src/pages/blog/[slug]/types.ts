@@ -1,4 +1,4 @@
-import type { QueryPostBySlugReturnType } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug';
+import type { QueryPostBySlugReturnType } from '@raulmelo/core/domains';
 
 export type BlogPostProps = {
   post: QueryPostBySlugReturnType;

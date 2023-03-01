@@ -1,12 +1,12 @@
-import type { AppTheme} from '@raulmelo/core';
-import { utils } from '@raulmelo/core';
+import type { AppTheme } from '@raulmelo/core/config';
+import { isBrowserApiAvailable } from '@raulmelo/core/utils';
 import { useMachine } from '@xstate/react';
 import { createMachine } from 'xstate';
 
 /* TODO: find a way to consume this value from a single source of truth */
 const colorMap = {
-  light: '#FFFFFF',
-  dark: 'rgb(15, 23, 42)',
+  light: `#FFFFFF`,
+  dark: `rgb(15, 23, 42)`,
 };
 
 function removeThemeClass(theme: AppTheme) {
@@ -20,14 +20,14 @@ function setThemeClass(theme: AppTheme) {
     document.documentElement.classList.add(theme);
     window.__theme = theme;
     document
-      .querySelector('meta[name="theme-color"]')
-      ?.setAttribute('content', colorMap[theme]);
+      .querySelector(`meta[name="theme-color"]`)
+      ?.setAttribute(`content`, colorMap[theme]);
   };
 }
 
 function saveThemeOnLocalStorage(theme: AppTheme) {
   return () => {
-    localStorage.setItem('theme', theme);
+    localStorage.setItem(`theme`, theme);
   };
 }
 
@@ -35,41 +35,42 @@ const themeMachine = createMachine(
   {
     predictableActionArguments: true,
     preserveActionOrder: true,
+    // eslint-disable-next-line quotes
     tsTypes: {} as import('./useThemeHandler.typegen').Typegen0,
-    initial: 'unset',
+    initial: `unset`,
     states: {
       unset: {
         always: [
           {
-            target: 'light',
-            cond: 'isLight',
+            target: `light`,
+            cond: `isLight`,
           },
           {
-            target: 'dark',
+            target: `dark`,
           },
         ],
       },
       light: {
         entry: [
-          setThemeClass('light'),
-          saveThemeOnLocalStorage('light'),
-          removeThemeClass('dark'),
+          setThemeClass(`light`),
+          saveThemeOnLocalStorage(`light`),
+          removeThemeClass(`dark`),
         ],
         on: {
           TOGGLE: {
-            target: 'dark',
+            target: `dark`,
           },
         },
       },
       dark: {
         entry: [
-          setThemeClass('dark'),
-          saveThemeOnLocalStorage('dark'),
-          removeThemeClass('light'),
+          setThemeClass(`dark`),
+          saveThemeOnLocalStorage(`dark`),
+          removeThemeClass(`light`),
         ],
         on: {
           TOGGLE: {
-            target: 'light',
+            target: `light`,
           },
         },
       },
@@ -83,9 +84,9 @@ const themeMachine = createMachine(
          * Because NEXT will run this on node first, I have to check
          * if the window is defined before checking the __theme property.
          */
-        if (utils.isBrowserApiAvailable.window) {
+        if (isBrowserApiAvailable.window) {
           if (window.__theme) {
-            result = window.__theme === 'light';
+            result = window.__theme === `light`;
           }
         }
 
@@ -100,6 +101,6 @@ export function useThemeHandler() {
 
   return {
     currentTheme: state.value as AppTheme,
-    toggleTheme: () => send('TOGGLE'),
+    toggleTheme: () => send(`TOGGLE`),
   };
 }

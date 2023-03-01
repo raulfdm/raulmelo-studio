@@ -1,4 +1,4 @@
-import type { SupportedLanguages } from '@raulmelo/core';
+import type { SupportedLanguages } from '@raulmelo/core/config';
 import { InstantSearch } from 'react-instantsearch-hooks-web';
 
 import { searchClient } from '../searchClient';
