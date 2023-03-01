@@ -1,12 +1,13 @@
-import { utils } from '@raulmelo/core';
-
+import {
+  imgUrlFor,
+  getImageDimensionsFromSanityImageUrl,
+  type SanityImageSource,
+} from '@raulmelo/core/utils';
 import { Image } from './Image';
 
-type SanityImageSource = Parameters<typeof utils[`imgUrlFor`]>;
-
 export function ImageAdapter({ asset }: { asset: SanityImageSource }) {
-  const src = utils.imgUrlFor(asset).url();
-  const imgDimensions = utils.getImageDimensionsFromSanityImageUrl(src);
+  const src = imgUrlFor(asset).url();
+  const imgDimensions = getImageDimensionsFromSanityImageUrl(src);
 
   return <Image {...imgDimensions} image={{ url: src, ...imgDimensions }} />;
 }

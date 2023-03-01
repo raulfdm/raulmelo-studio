@@ -1,9 +1,12 @@
 import { getSEOTags } from '$infrastructure/utils/seo';
 import { PortableTextPost } from '$ui/PortableTextPost';
 import { SeriesSection } from '$ui/screens/blog/SeriesSection';
-import { domains, utils } from '@raulmelo/core';
-import type { QueryPostBySlugReturnType } from '@raulmelo/core/dist/types/domains/posts/queryPostBySlug';
-import type { QuerySiteDataReturnType } from '@raulmelo/core/dist/types/domains/siteData/querySiteData';
+import type {
+  QueryPostBySlugReturnType,
+  QuerySiteDataReturnType,
+} from '@raulmelo/core/domains';
+import { queryPostBySlug, querySiteData } from '@raulmelo/core/domains';
+import { getEstimatedReadingTime, isEmpty, isNil } from '@raulmelo/core/utils';
 import { DotDivider } from '@raulmelo/ui';
 import type { LoaderArgs, MetaFunction, SerializeFrom } from '@remix-run/node';
 import { json } from '@remix-run/node';
@@ -101,17 +104,15 @@ export async function loader({ params, request }: LoaderArgs) {
   invariant(params.slug, `Slug is required`);
 
   const [post, siteData] = await Promise.all([
-    domains.posts.queryPostBySlug(params.slug),
-    domains.siteData.querySiteData(),
+    queryPostBySlug(params.slug),
+    querySiteData(),
   ]);
 
-  if (utils.isNil(post) || utils.isEmpty(post)) {
+  if (isNil(post) || isEmpty(post)) {
     throw new Response(`Not Found`, { status: 404 });
   }
 
-  const estimatedReadingTime = utils.content.getEstimatedReadingTime(
-    post.content,
-  );
+  const estimatedReadingTime = getEstimatedReadingTime(post.content);
 
   return json<LoaderData>({
     post,

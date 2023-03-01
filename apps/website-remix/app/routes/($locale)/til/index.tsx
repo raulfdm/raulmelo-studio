@@ -4,9 +4,8 @@ import { getParamLocaleOrDefault } from '$infrastructure/utils/i18n';
 import { getSEOTags } from '$infrastructure/utils/seo';
 import { getTilUrl } from '$infrastructure/utils/url';
 import { ContentTile } from '$ui/ContentTile';
-import type { AllSupportedLanguages, SupportedLanguages } from '@raulmelo/core';
-import { domains } from '@raulmelo/core';
-import type { ITilsApiResponse } from '@raulmelo/core/dist/types/domains/posts/queryTils/types';
+import type { QueryTilsReturnType } from '@raulmelo/core/domains';
+import { queryTils } from '@raulmelo/core/domains';
 import type { LoaderArgs, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
@@ -14,7 +13,7 @@ import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
 type LoaderData = {
-  tils: ITilsApiResponse;
+  tils: QueryTilsReturnType;
   messages: Record<string, string>;
 };
 
@@ -31,7 +30,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 export async function loader({ params }: LoaderArgs) {
   const locale = getParamLocaleOrDefault(params);
 
-  const tils = await domains.posts.queryTils(locale);
+  const tils = await queryTils(locale);
 
   return json<LoaderData>({
     tils,

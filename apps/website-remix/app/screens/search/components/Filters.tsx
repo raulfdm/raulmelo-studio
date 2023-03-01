@@ -1,5 +1,5 @@
-import type { SupportedLanguages } from '@raulmelo/core';
-import { utils } from '@raulmelo/core';
+import type { SupportedLanguages } from '@raulmelo/core/config';
+import { isEmpty } from '@raulmelo/core/utils';
 import classNames from 'classnames';
 
 import { useRefinementList } from 'react-instantsearch-hooks-web';
@@ -78,7 +78,7 @@ function TagsRefinement({ title }: { title: string }) {
 }
 
 function GenericRefinement({ title, refine, items, renderLabelText }: any) {
-  return utils.isEmpty(items) ? null : (
+  return isEmpty(items) ? null : (
     <div className="search__refinementWrapper">
       <h3 className="text-lg font-bold">{title}</h3>
 

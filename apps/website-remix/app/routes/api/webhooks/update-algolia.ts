@@ -1,5 +1,5 @@
 import { appConfig } from '$infrastructure/config/index.server';
-import { domains } from '@raulmelo/core';
+import { queryAlgoliaData } from '@raulmelo/core/domains';
 import type { ActionArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import algolia from 'algoliasearch';
@@ -30,7 +30,7 @@ export async function action({ request }: ActionArgs) {
       throw new Error(`Unauthorized`);
     }
 
-    const algoliaData = await domains.algolia.queryAlgoliaData();
+    const algoliaData = await queryAlgoliaData();
 
     const index = client.initIndex(appConfig.search.indexName);
 

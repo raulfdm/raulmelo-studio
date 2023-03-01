@@ -17,6 +17,7 @@ module.exports = {
   server: process.env.NODE_ENV === `development` ? undefined : `./server.js`,
   ignoredRouteFiles: [`**/.*`],
   serverDependenciesToBundle: [
+    `@raulmelo/core`,
     `query-string`,
     /**
      * Without this being included it'll throw an error in Vercel because

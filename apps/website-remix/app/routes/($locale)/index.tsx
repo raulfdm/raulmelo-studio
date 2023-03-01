@@ -2,26 +2,25 @@ import { useLocalization } from '$infrastructure/contexts/Localization';
 import { AuthorPresentation } from '$ui/screens/home/AuthorPresentation';
 import type { LoaderArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
-import invariant from 'tiny-invariant';
-import type { SupportedLanguages } from '@raulmelo/core';
-import { domains } from '@raulmelo/core';
 import { Link, useLoaderData } from '@remix-run/react';
-import type { ISiteData } from '@raulmelo/core/dist/types/domains/siteData';
 import { defineMessages } from 'react-intl';
-import type { IPostsAndTilsApi } from '@raulmelo/core/dist/types/domains/posts';
-import {
+import getPostUrl, {
   getPathnameWithLocale,
-  getPostUrl,
   getTilUrl,
 } from '$infrastructure/utils/url';
 import type { PostBasicProps } from '$ui/PostBasic';
 import { PostBasic } from '$ui/PostBasic';
 import { ArrowRightIcon } from '@raulmelo/ui';
 import { getParamLocaleOrDefault } from '$infrastructure/utils/i18n';
+import type {
+  QueryPostsAndTilsReturnType,
+  QuerySiteDataReturnType,
+} from '@raulmelo/core/domains';
+import { queryPostsAndTils, querySiteData } from '@raulmelo/core/domains';
 
 type LoaderData = {
-  siteData: ISiteData;
-} & IPostsAndTilsApi;
+  siteData: QuerySiteDataReturnType;
+} & QueryPostsAndTilsReturnType;
 
 const messages = defineMessages({
   postsTitle: {
@@ -43,8 +42,8 @@ export async function loader({ params }: LoaderArgs) {
 
   const NUMBER_OF_POSTS = 2;
   const [siteData, { posts, tils }] = await Promise.all([
-    domains.siteData.querySiteData(),
-    domains.posts.queryPostsAndTils(locale, NUMBER_OF_POSTS),
+    querySiteData(),
+    queryPostsAndTils(locale, NUMBER_OF_POSTS),
   ]);
 
   return json<LoaderData>({
@@ -63,7 +62,7 @@ export default function Index() {
       <AuthorPresentation siteData={siteData} />
       <PostSection
         title={formatMessage(messages.postsTitle)}
-        posts={posts.map((post) => ({
+        posts={posts.map((post: any) => ({
           ...post,
           publishedAt: post.publishedAt,
           tags: post.tags,
@@ -78,7 +77,7 @@ export default function Index() {
       <hr className="mb-8 col-span-full md:col-start-2 md:col-end-6 lg:col-start-3 lg:col-end-10" />
       <PostSection
         title={formatMessage(messages.tilsTitle)}
-        posts={tils.map((til) => ({
+        posts={tils.map((til: any) => ({
           ...til,
           url: getTilUrl(til.slug, locale),
         }))}

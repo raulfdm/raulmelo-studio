@@ -1,5 +1,5 @@
 import { useLocalization } from '$infrastructure/contexts/Localization';
-import { getPostUrl } from '$infrastructure/utils/url';
+import getPostUrl from '$infrastructure/utils/url';
 import { ContentTile } from '$ui/ContentTile';
 import type { IPostsAndTilsPost } from '@raulmelo/core/dist/types/domains/posts';
 import { AnimatePresence, m } from 'framer-motion';

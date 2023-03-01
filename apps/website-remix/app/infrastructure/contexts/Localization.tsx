@@ -1,5 +1,5 @@
 import { useAppLocation } from '$infrastructure/hooks/useAppLocation';
-import type { SupportedLanguages } from '@raulmelo/core';
+import type { SupportedLanguages } from '@raulmelo/core/config';
 import { useNavigate } from '@remix-run/react';
 import { createContext, useContext } from 'react';
 import type { IntlShape } from 'react-intl';

@@ -2,9 +2,12 @@ import { useLocalization } from '$infrastructure/contexts/Localization';
 import { getParamLocaleOrDefault } from '$infrastructure/utils/i18n';
 import { getSEOTags } from '$infrastructure/utils/seo';
 import { PortableTextPost } from '$ui/PortableTextPost';
-import { domains, utils } from '@raulmelo/core';
-import type { ISiteData } from '@raulmelo/core/dist/types/domains/siteData';
-import type { IUsesApiResponse } from '@raulmelo/core/dist/types/domains/uses/getUses/types';
+import type {
+  GetUsesReturnType,
+  QuerySiteDataReturnType,
+} from '@raulmelo/core/domains';
+import { getUses, querySiteData } from '@raulmelo/core/domains';
+import { getEstimatedReadingTime } from '@raulmelo/core/utils';
 import type { LoaderArgs, MetaFunction, SerializeFrom } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
@@ -12,9 +15,9 @@ import type { StructuredDataFunction } from 'remix-utils';
 import type { BlogPosting } from 'schema-dts';
 
 type LoaderData = {
-  uses: IUsesApiResponse;
+  uses: GetUsesReturnType;
   estimatedReadingTime: number;
-  siteData: ISiteData;
+  siteData: QuerySiteDataReturnType;
   url: string;
 };
 
@@ -71,13 +74,11 @@ export async function loader({ params, request }: LoaderArgs) {
   const locale = getParamLocaleOrDefault(params);
 
   const [uses, siteData] = await Promise.all([
-    domains.uses.getUses(locale),
-    domains.siteData.querySiteData(),
+    getUses(locale),
+    querySiteData(),
   ]);
 
-  const estimatedReadingTime = utils.content.getEstimatedReadingTime(
-    uses.content,
-  );
+  const estimatedReadingTime = getEstimatedReadingTime(uses.content);
 
   return json<LoaderData>({
     uses,

@@ -16,19 +16,19 @@ import type { PublicEnv } from '$infrastructure/config/publicAppConfig';
 import { getPublicEnvironmentVariables } from '$infrastructure/config/publicAppConfig';
 import type { StructuredDataFunction } from 'remix-utils';
 import { StructuredData } from 'remix-utils';
-import type { SiteData } from '@raulmelo/core/dist/types/domains/siteData';
-import type { SupportedLanguages } from '@raulmelo/core';
-import { domains } from '@raulmelo/core';
 import { getSEOTags } from '$infrastructure/utils/seo';
 import type { Organization, Person } from 'schema-dts';
 import { useEffect } from 'react';
 import { gtag } from '$infrastructure/utils/gtag.client';
 import { useAppLocation } from '$infrastructure/hooks/useAppLocation';
+import type { SupportedLanguages } from '@raulmelo/core/config';
+import type { QuerySiteDataReturnType } from '@raulmelo/core/domains';
+import { querySiteData } from '@raulmelo/core/domains';
 
 type LoaderData = {
   ENV: PublicEnv;
   locale: SupportedLanguages;
-  siteData: SiteData;
+  siteData: QuerySiteDataReturnType;
   pathname: string;
   origin: string;
   url: string;
@@ -141,7 +141,7 @@ export function links() {
 export async function loader({ params, request }: LoaderArgs) {
   const locale = (params.locale || `en`) as SupportedLanguages;
 
-  const siteData = await domains.siteData.querySiteData();
+  const siteData = await querySiteData();
 
   const url = new URL(request.url);
 
