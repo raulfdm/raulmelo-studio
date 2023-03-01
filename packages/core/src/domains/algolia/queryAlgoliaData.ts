@@ -2,9 +2,8 @@ import type { PortableTextBlock } from '@portabletext/types';
 import groq from 'groq';
 import { z } from 'zod';
 
-import { supportedLanguagesSchema } from '$config/languages';
-import { client } from '$config/sanity';
-import { contentBlockToMarkdown } from '$utils/contentBlockToMarkdown';
+import { client, supportedLanguagesSchema } from '@/config';
+import { contentBlockToMarkdown } from '@/utils';
 
 export async function queryAlgoliaData() {
   const posts = await client.fetch(algoliaPostsQuery);

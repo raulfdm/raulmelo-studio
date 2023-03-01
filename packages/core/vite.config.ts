@@ -4,9 +4,10 @@ import path from 'path';
 import { defineConfig } from 'vite';
 
 const aliases = {
-  $utils: path.resolve(__dirname, './src/utils'),
-  $config: path.resolve(__dirname, './src/config'),
-  $domains: path.resolve(__dirname, './src/domains'),
+  '@/utils': path.resolve(__dirname, './src/utils'),
+  '@/config': path.resolve(__dirname, './src/config'),
+  '@/domains': path.resolve(__dirname, './src/domains'),
+  '@/scripts': path.resolve(__dirname, './src/scripts'),
 };
 
 /**
@@ -35,7 +36,6 @@ const config = defineConfig({
     globals: true,
   },
   resolve: {
-    preserveSymlinks: true,
     alias: aliases,
   },
   build: {
@@ -43,12 +43,17 @@ const config = defineConfig({
     sourcemap: true,
     emptyOutDir: false,
     lib: {
-      fileName: '[name]',
-      entry: {
-        core: path.resolve(__dirname, 'src/index.ts'),
-        scripts: path.resolve(__dirname, 'src/scripts/index.ts'),
+      fileName: (format, entry) => {
+        const extension = format === 'cjs' ? 'cjs' : 'js';
+        return `${entry}/index.${extension}`;
       },
-      formats: ['es', 'cjs'],
+      entry: {
+        domains: path.resolve(__dirname, 'src/domains/index.ts'),
+        scripts: path.resolve(__dirname, 'src/scripts/index.ts'),
+        utils: path.resolve(__dirname, 'src/utils/index.ts'),
+        config: path.resolve(__dirname, 'src/config/index.ts'),
+      },
+      formats: ['es'],
     },
     rollupOptions: {
       external: isExternal,

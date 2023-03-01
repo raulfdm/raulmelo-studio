@@ -2,8 +2,7 @@ import type { PortableTextBlock } from '@portabletext/types';
 import groq from 'groq';
 import { z } from 'zod';
 
-import { supportedLanguagesSchema } from '$config/languages';
-import { client } from '$config/sanity';
+import { client, supportedLanguagesSchema } from '@/config';
 
 export async function queryTilBySlug(slug: string) {
   const result = await client.fetch(tilBySlugQuery, {

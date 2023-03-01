@@ -1,7 +1,11 @@
-import head from 'ramda/src/head';
-import isEmpty from 'ramda/src/isEmpty';
-import isNil from 'ramda/src/isNil';
-import not from 'ramda/src/not';
-import omit from 'ramda/src/omit';
+import Rhead from 'ramda/src/head';
+import RisEmpty from 'ramda/src/isEmpty';
+import RisNil from 'ramda/src/isNil';
+import Rnot from 'ramda/src/not';
+import Romit from 'ramda/src/omit';
 
-export { head, isEmpty, isNil, not, omit };
+export const isNil = RisNil;
+export const not = Rnot;
+export const head = Rhead;
+export const isEmpty = RisEmpty;
+export const omit = Romit;

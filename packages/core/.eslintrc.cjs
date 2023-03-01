@@ -5,7 +5,7 @@ module.exports = {
     '@typescript-eslint/consistent-type-assertions': 'error',
     '@typescript-eslint/consistent-type-imports': [
       'error',
-      { disallowTypeAnnotations: false },
+      { disallowTypeAnnotations: false, fixStyle: 'inline-type-imports' },
     ],
   },
 };

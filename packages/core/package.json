@@ -1,19 +1,37 @@
 {
   "private": true,
   "name": "@raulmelo/core",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "license": "MIT",
   "type": "module",
-  "main": "./dist/core.cjs",
-  "module": "./dist/core.js",
+  "files": [
+    "dist",
+    "index.d.ts",
+    "config.d.ts",
+    "domains.d.ts",
+    "utils.d.ts",
+    "scripts.d.ts",
+    "types"
+  ],
   "exports": {
-    ".": {
-      "require": "./dist/core.cjs",
-      "default": "./dist/core.js"
+    "./domains": {
+      "require": "./dist/domains/index.cjs",
+      "default": "./dist/domains/index.js"
     },
-    "./scripts": "./dist/scripts.js"
+    "./utils": {
+      "require": "./dist/utils/index.cjs",
+      "default": "./dist/utils/index.js"
+    },
+    "./config": {
+      "require": "./dist/config/index.cjs",
+      "default": "./dist/config/index.js"
+    },
+    "./scripts": {
+      "require": "./dist/scripts/index.cjs",
+      "default": "./dist/scripts/index.js"
+    }
   },
-  "types": "./dist/types/index.d.ts",
+  "types": "./index.d.ts",
   "scripts": {
     "clean": "scripty",
     "build": "scripty",

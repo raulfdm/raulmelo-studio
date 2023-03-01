@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 
-import { domains } from '$domains';
+import { querySiteData } from '@/domains';
 
 interface IConfig {
   outdir: string;
@@ -11,8 +11,7 @@ export async function generateSiteData(config: IConfig): Promise<void> {
   const { outdir, fileName = 'site-data' } = config;
 
   try {
-    const { personalInformation, ...rest } =
-      await domains.siteData.querySiteData();
+    const { personalInformation, ...rest } = await querySiteData();
 
     const { profilePic, ...restPersonalInfo } = personalInformation;
     /**

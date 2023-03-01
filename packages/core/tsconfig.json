@@ -7,23 +7,24 @@
     "moduleResolution": "node",
     "target": "esnext",
     "declaration": true,
-    "declarationDir": "./dist/types",
+    "declarationDir": "./dist",
     "emitDeclarationOnly": true,
     "skipLibCheck": true,
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
+    "declarationMap": true,
     "paths": {
-      "$config/*": [
-        "src/config/*"
+      "@/config": [
+        "src/config/index.ts"
       ],
-      "$utils/*": [
-        "./src/utils/*"
+      "@/utils": [
+        "./src/utils/index.ts"
       ],
-      "$domains": [
+      "@/domains": [
         "./src/domains/index.ts"
       ],
-      "$domains/*": [
-        "./src/domains/*"
+      "@/scripts/*": [
+        "./src/scripts/index.ts"
       ]
     }
   },

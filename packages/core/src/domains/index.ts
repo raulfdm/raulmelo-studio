@@ -1,15 +1,6 @@
-import * as algolia from './algolia';
-import * as posts from './posts';
-import * as rss from './rss';
-import * as siteData from './siteData';
-import * as tag from './tag';
-import * as uses from './uses';
-
-export const domains = {
-  siteData,
-  algolia,
-  uses,
-  tag,
-  posts,
-  rss,
-};
+export * from './algolia';
+export * from './posts';
+export * from './rss';
+export * from './siteData';
+export * from './tag';
+export * from './uses';

@@ -1,10 +1,12 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-import type { SupportedLanguages } from '$config/languages';
-import { domains } from '$domains';
-import { sortPostsByPublishedDate } from '$domains/posts';
-import type { QueryRssDataReturnType } from '$domains/rss';
+import { type SupportedLanguages } from '@/config';
+import {
+  queryRssData,
+  type QueryRssDataReturnType,
+  sortPostsByPublishedDate,
+} from '@/domains';
 
 type IRssConfig = Omit<QueryRssDataReturnType, 'posts' | 'tils'>;
 
@@ -16,9 +18,7 @@ export async function generateRssFeed(config: IConfig): Promise<void> {
   const { outdir } = config;
 
   for await (const language of ['en', 'pt'] as const) {
-    const { tils, posts, ...restData } = await domains.rss.queryRssData(
-      language,
-    );
+    const { tils, posts, ...restData } = await queryRssData(language);
 
     const rssConfig: IRssConfig = {
       ...restData,
