@@ -10,12 +10,12 @@ import { type QuerySiteDataReturnType } from '@raulmelo/core/domains';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { getSocial } from '@/infrastructure/utils/seo';
+import DevToIcon from '@/ui/Icons/DevTo.astro';
+import GithubIcon from '@/ui/Icons/Github.astro';
+import LinkedInIcon from '@/ui/Icons/LinkedIn.astro';
+import MediumIcon from '@/ui/Icons/Medium.astro';
+import TwitterIcon from '@/ui/Icons/Twitter.astro';
 
-import DevToIcon from '../../Icons/DevTo.astro';
-import GithubIcon from '../../Icons/Github.astro';
-import LinkedInIcon from '../../Icons/LinkedIn.astro';
-import MediumIcon from '../../Icons/Medium.astro';
-import TwitterIcon from '../../Icons/Twitter.astro';
 import IconWrapper from './IconWrapper.astro';
 
 const { siteData, lang } = Astro.props;

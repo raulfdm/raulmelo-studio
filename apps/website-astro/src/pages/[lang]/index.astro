@@ -13,8 +13,9 @@ import {
   getTilUrl,
 } from '@/infrastructure/utils/url';
 import Layout from '@/ui/layouts/Layout.astro';
-import AuthorPresentation from '@/ui/screens/home/AuthorPresentation.astro';
-import PostSection from '@/ui/screens/home/PostSection.astro';
+
+import AuthorPresentation from './_ui/AuthorPresentation.astro';
+import PostSection from './_ui/PostSection.astro';
 
 const { lang } = Astro.params as { lang: SupportedLanguages };
 
