@@ -65,7 +65,7 @@ const defaultOpenGraph = {
   },
   image: nextImage,
   basic: {
-    title: title || nextTitle,
+    title: nextTitle,
     type: `website`,
     image: imageUrl,
   },
@@ -117,7 +117,6 @@ const articleJsonLD = nextArticle
 <SEO
   nofollow={nofollow}
   noindex={noindex}
-  title={title}
   titleDefault={langSeo.title}
   titleTemplate={`%s · ${siteData.personalInformation.fullName}`}
   description={nextDescription}
