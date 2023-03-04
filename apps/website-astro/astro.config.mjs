@@ -6,43 +6,35 @@ import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel/serverless';
 import { defineConfig } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
+import svelte from "@astrojs/svelte";
 
+// https://astro.build/config
 export default defineConfig({
   site: `https://raulmelo.dev`,
-  integrations: [
-    tailwind(),
-    react(),
-    image({
-      serviceEntryPoint: `@astrojs/image/sharp`,
-    }),
-    sitemap({
-      filter: (page) =>
-        !page.url.includes(`/404`) && !page.url.includes(`/search`),
-      i18n: {
-        defaultLocale: `en`,
-        locales: {
-          en: `en-UK`,
-          pt: `pt-BR`,
-        },
-      },
-    }),
-    robotsTxt({
-      policy: [
-        {
-          userAgent: `*`,
-          allow: `/`,
-          disallow: [`/search`, `/404`],
-        },
-      ],
-    }),
-    prefetch(),
-  ],
+  integrations: [tailwind(), react(), image({
+    serviceEntryPoint: `@astrojs/image/sharp`
+  }), sitemap({
+    filter: page => !page.url.includes(`/404`) && !page.url.includes(`/search`),
+    i18n: {
+      defaultLocale: `en`,
+      locales: {
+        en: `en-UK`,
+        pt: `pt-BR`
+      }
+    }
+  }), robotsTxt({
+    policy: [{
+      userAgent: `*`,
+      allow: `/`,
+      disallow: [`/search`, `/404`]
+    }]
+  }), prefetch(), svelte()],
   output: `server`,
   adapter: vercel({}),
   vite: {
     ssr: {
       external: [`@raulmelo/core`, `@raulmelo/ui`, `@formatjs/intl`],
-      noExternal: [`@raulmelo/styles`],
-    },
-  },
+      noExternal: [`@raulmelo/styles`]
+    }
+  }
 });
