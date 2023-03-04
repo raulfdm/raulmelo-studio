@@ -29,9 +29,9 @@ const { success } = supportedLanguagesSchema.safeParse(lang);
  * Didn't get yet why but "lang" could be `favicon.ico`. If that's the case
  * we just redirect to the root path.
  */
-if (!success) {
-  return Astro.redirect(Astro.request.url);
-}
+// if (!success) {
+//   return Astro.redirect(Astro.request.url);
+// }
 
 const NUMBER_OF_POSTS = 2;
 const [siteData, { posts, tils }] = await Promise.all([
