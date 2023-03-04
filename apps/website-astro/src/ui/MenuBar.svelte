@@ -10,6 +10,7 @@
     toggleSideMenu,
   } from '@/infrastructure/stores/sideMenu';
   import MenuBarLanguageSwitch from './MenuBarLanguageSwitch.svelte';
+  import MenuBarThemeSwitch from './MenuBarThemeSwitch.svelte';
 
   export let lang: SupportedLanguages;
 
@@ -34,6 +35,7 @@
     <section
       class="flex items-center justify-end col-span-2 space-x-3 md:col-end-9 lg:col-end-13"
     >
+      <MenuBarThemeSwitch />
       <MenuBarLanguageSwitch />
       <MenuButton
         on:click={toggleSideMenu}
