@@ -1,13 +1,17 @@
 <script lang="ts">
   import classNames from 'classnames';
 
-  export let className = '';
+  let className = '';
+
+  export { className as class };
 </script>
 
 <button
-  class={classNames(`flex p-2 place-content-center`, className)}
   on:click
+  on:keydown
+  on:keyup
   {...$$restProps}
+  class={classNames(`flex p-2 place-content-center`, className)}
 >
   <slot />
 </button>

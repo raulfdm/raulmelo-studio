@@ -9,6 +9,7 @@
     sideMenuStore,
     toggleSideMenu,
   } from '@/infrastructure/stores/sideMenu';
+  import MenuBarLanguageSwitch from './MenuBarLanguageSwitch.svelte';
 
   export let lang: SupportedLanguages;
 
@@ -31,8 +32,9 @@
       </a>
     </section>
     <section
-      class="flex justify-end col-span-2 space-x-3 md:col-end-9 lg:col-end-13"
+      class="flex items-center justify-end col-span-2 space-x-3 md:col-end-9 lg:col-end-13"
     >
+      <MenuBarLanguageSwitch />
       <MenuButton
         on:click={toggleSideMenu}
         aria-label={intl.formatMessage({
