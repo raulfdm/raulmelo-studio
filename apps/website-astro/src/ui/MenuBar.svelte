@@ -3,13 +3,14 @@
   import { getPathnameWithLocale } from '@/infrastructure/utils/url';
   import { SupportedLanguages } from '@raulmelo/core/config';
   import Logo from './Logo.svelte';
+  import MenuButton from './MenuBarButton.svelte';
+  import { IconMenu2, IconX } from '@tabler/icons-svelte';
 
   export let lang: SupportedLanguages;
-  export let logo: any;
 
   const intl = getIntl(lang);
 
-  console.log($$props, logo);
+  const Icon = true ? IconMenu2 : IconX;
 </script>
 
 <div
@@ -30,7 +31,17 @@
     <section
       class="flex justify-end col-span-2 space-x-3 md:col-end-9 lg:col-end-13"
     >
-      Hoi
+      <MenuButton
+        onClick={() => {
+          console.log('click');
+        }}
+        aria-label={intl.formatMessage({
+          id: `menu.sideMenuButtonAriaLabel`,
+        })}
+        data-testid="side-menu-button"
+      >
+        <Icon class="w-6" />
+      </MenuButton>
     </section>
   </nav>
 </div>
