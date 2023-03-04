@@ -1,16 +1,18 @@
 <script lang="ts">
   import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
   import { getPathnameWithLocale } from '@/infrastructure/utils/url';
-  import { SupportedLanguages } from '@raulmelo/core/config';
+  import { type SupportedLanguages } from '@raulmelo/core/config';
   import Logo from './Logo.svelte';
   import MenuButton from './MenuBarButton.svelte';
   import { IconMenu2, IconX } from '@tabler/icons-svelte';
+  import {
+    sideMenuStore,
+    toggleSideMenu,
+  } from '@/infrastructure/stores/sideMenu';
 
   export let lang: SupportedLanguages;
 
   const intl = getIntl(lang);
-
-  const Icon = true ? IconMenu2 : IconX;
 </script>
 
 <div
@@ -32,15 +34,17 @@
       class="flex justify-end col-span-2 space-x-3 md:col-end-9 lg:col-end-13"
     >
       <MenuButton
-        onClick={() => {
-          console.log('click');
-        }}
+        on:click={toggleSideMenu}
         aria-label={intl.formatMessage({
           id: `menu.sideMenuButtonAriaLabel`,
         })}
         data-testid="side-menu-button"
       >
-        <Icon class="w-6" />
+        {#if $sideMenuStore === false}
+          <IconMenu2 class="w-6" />
+        {:else}
+          <IconX class="w-6" />
+        {/if}
       </MenuButton>
     </section>
   </nav>

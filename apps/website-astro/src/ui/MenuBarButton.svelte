@@ -7,7 +7,7 @@
 <button
   class={classNames(`flex p-2 place-content-center`, className)}
   on:click
-  {...$$props}
+  {...$$restProps}
 >
   <slot />
 </button>
