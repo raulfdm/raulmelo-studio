@@ -300,6 +300,7 @@ importers:
       eslint-plugin-simple-import-sort: 10.0.0
       flat: 5.0.2
       framer-motion: 10.0.1
+      hast-util-to-html: 8.0.4
       lodash.defaultsdeep: 4.6.1
       negotiator: 0.6.3
       query-string: 8.1.0
@@ -308,6 +309,7 @@ importers:
       react-instantsearch-hooks-server: 6.40.1
       react-instantsearch-hooks-web: 6.40.1
       react-popper: 2.3.0
+      refractor: 4.8.0
       sanity: 3.5.1
       sanity-plugin-media: 2.0.5
       sharp: 0.31.3
@@ -352,6 +354,7 @@ importers:
       eslint-plugin-simple-import-sort: 10.0.0_eslint@8.35.0
       flat: 5.0.2
       framer-motion: 10.0.1_biqbaboplfbrettd7655fr4n2y
+      hast-util-to-html: 8.0.4
       lodash.defaultsdeep: 4.6.1
       negotiator: 0.6.3
       query-string: 8.1.0
@@ -360,6 +363,7 @@ importers:
       react-instantsearch-hooks-server: 6.40.1_lcvw2wliyvolumce2ki4t5bwom
       react-instantsearch-hooks-web: 6.40.1_lcvw2wliyvolumce2ki4t5bwom
       react-popper: 2.3.0_r6q5zrenym2zg7je7hgi674bti
+      refractor: 4.8.0
       sanity: 3.5.1_bvuafbny56uns7i3iq7gj2j2ru
       sanity-plugin-media: 2.0.5_f2xkwm7m6xfotwpctenzpoypt4
       sharp: 0.31.3
@@ -374,7 +378,7 @@ importers:
       '@types/flat': 5.0.2
       '@types/lodash.defaultsdeep': 4.6.7
       '@types/negotiator': 0.6.1
-      '@xstate/cli': 0.4.2_prettier@2.8.1
+      '@xstate/cli': 0.4.2_prettier@2.8.4
 
   apps/website-remix:
     specifiers:
@@ -9693,21 +9697,6 @@ packages:
       - supports-color
     dev: true
 
-  /@xstate/cli/0.4.2_prettier@2.8.1:
-    resolution: {integrity: sha512-lxj7YrpCl3azlzHO98oBp+qklKUvkw3AjWG815pVyNNf5Wm7JunYtPkGiqif6wCg1K/7V0x8cMdLzxhFkKBk9w==}
-    hasBin: true
-    dependencies:
-      '@babel/core': 7.21.0
-      '@xstate/machine-extractor': 0.9.0_xstate@4.37.0
-      '@xstate/tools-shared': 2.0.2_zrhzzrj2kqlcfr3recrjhrbbuu
-      chokidar: 3.5.3
-      commander: 8.3.0
-      xstate: 4.37.0
-    transitivePeerDependencies:
-      - prettier
-      - supports-color
-    dev: true
-
   /@xstate/cli/0.4.2_prettier@2.8.3:
     resolution: {integrity: sha512-lxj7YrpCl3azlzHO98oBp+qklKUvkw3AjWG815pVyNNf5Wm7JunYtPkGiqif6wCg1K/7V0x8cMdLzxhFkKBk9w==}
     hasBin: true
@@ -9883,19 +9872,6 @@ packages:
       xstate: 4.37.0
     transitivePeerDependencies:
       - supports-color
-
-  /@xstate/tools-shared/2.0.2_zrhzzrj2kqlcfr3recrjhrbbuu:
-    resolution: {integrity: sha512-Lg8RD19Jq62M8KsnSF8Tenqo0a8/j7eqzHCpxG7ewc9PklkOcLvOWN4rrGTtYG5zkxJNQTXq8kt2x0TsWwnumQ==}
-    peerDependencies:
-      prettier: ^2.3.1
-      xstate: ^4
-    dependencies:
-      '@xstate/machine-extractor': 0.9.0_xstate@4.37.0
-      prettier: 2.8.1
-      xstate: 4.37.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
 
   /@xtuc/ieee754/1.2.0:
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -11859,10 +11835,6 @@ packages:
 
   /comma-separated-tokens/1.0.8:
     resolution: {integrity: sha512-GHuDRO12Sypu2cV70d1dkA2EUmXHgntrzbpvOB+Qy+49ypNfGgFQIC2fhhXbnyrJRynDCAARsT7Ou0M6hirpfw==}
-
-  /comma-separated-tokens/2.0.2:
-    resolution: {integrity: sha512-G5yTt3KQN4Yn7Yk4ed73hlZ1evrFKXeUW3086p3PRFNp7m2vIjI6Pg+Kgb+oyzhd9F2qdcoj67+y3SdxL5XWsg==}
-    dev: false
 
   /comma-separated-tokens/2.0.3:
     resolution: {integrity: sha512-Fu4hJdvzeylCfQPp9SGWidpzrMs7tTrlu6Vb8XGaRGck8QSNZJJp538Wrb60Lax4fPwR64ViY468OIUTbRlGZg==}
@@ -16286,12 +16258,6 @@ packages:
   /hast-util-parse-selector/2.2.5:
     resolution: {integrity: sha512-7j6mrk/qqkSehsM92wQjdIgWM2/BW61u/53G6xmC8i1OmEdKLHbk419QKQUjz6LglWsfqoiHmyMRkP1BGjecNQ==}
 
-  /hast-util-parse-selector/3.1.0:
-    resolution: {integrity: sha512-AyjlI2pTAZEOeu7GeBPZhROx0RHBnydkQIXlhnFzDi0qfXTmGUWoCYZtomHbrdrheV4VFUlPcfJ6LMF5T6sQzg==}
-    dependencies:
-      '@types/hast': 2.3.4
-    dev: false
-
   /hast-util-parse-selector/3.1.1:
     resolution: {integrity: sha512-jdlwBjEexy1oGz0aJ2f4GKMaVKkA9jwjr4MjAAI22E5fM/TXVZHuS5OpONtdeIkRKqAaryQ2E9xNQxijoThSZA==}
     dependencies:
@@ -16399,16 +16365,6 @@ packages:
       hast-util-parse-selector: 2.2.5
       property-information: 5.6.0
       space-separated-tokens: 1.1.5
-
-  /hastscript/7.0.2:
-    resolution: {integrity: sha512-uA8ooUY4ipaBvKcMuPehTAB/YfFLSSzCwFSwT6ltJbocFUKH/GDHLN+tflq7lSRf9H86uOuxOFkh1KgIy3Gg2g==}
-    dependencies:
-      '@types/hast': 2.3.4
-      comma-separated-tokens: 2.0.2
-      hast-util-parse-selector: 3.1.0
-      property-information: 6.1.1
-      space-separated-tokens: 2.0.1
-    dev: false
 
   /hastscript/7.2.0:
     resolution: {integrity: sha512-TtYPq24IldU8iKoJQqvZOuhi5CyCQRAbvDOX0x1eW6rsHSxa/1i2CCiptNTotGHJ3VoHRGmqiv6/D3q113ikkw==}
@@ -21704,10 +21660,6 @@ packages:
     dependencies:
       xtend: 4.0.2
 
-  /property-information/6.1.1:
-    resolution: {integrity: sha512-hrzC564QIl0r0vy4l6MvRLhafmUowhO/O3KgVSoXIbbA2Sz4j8HGpJc6T2cubRVwMwpdiG/vKGfhT4IixmKN9w==}
-    dev: false
-
   /property-information/6.2.0:
     resolution: {integrity: sha512-kma4U7AFCTwpqq5twzC1YVIDXSqg6qQK6JN0smOw8fgRy1OkMi0CYSzFmsy6dnqSenamAtj0CyXMUJ1Mf6oROg==}
 
@@ -22689,7 +22641,7 @@ packages:
     dependencies:
       '@types/hast': 2.3.4
       '@types/prismjs': 1.26.0
-      hastscript: 7.0.2
+      hastscript: 7.2.0
       parse-entities: 4.0.0
     dev: false
 
@@ -24456,10 +24408,6 @@ packages:
 
   /space-separated-tokens/1.1.5:
     resolution: {integrity: sha512-q/JSVd1Lptzhf5bkYm4ob4iWPjx0KiRe3sRFBNrVqbJkFaBm5vbbowy1mymoPNLRa52+oadOhJ+K49wsSeSjTA==}
-
-  /space-separated-tokens/2.0.1:
-    resolution: {integrity: sha512-ekwEbFp5aqSPKaqeY1PGrlGQxPNaq+Cnx4+bE2D8sciBQrHpbwoBbawqTN2+6jPs9IdWxxiUcN0K2pkczD3zmw==}
-    dev: false
 
   /space-separated-tokens/2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
