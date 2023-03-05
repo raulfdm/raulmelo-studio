@@ -1,0 +1,35 @@
+<script lang="ts">
+  import { IconExternalLink } from '@tabler/icons-svelte';
+  import { type SideMenuLink } from './links';
+
+  export let href: SideMenuLink['href'];
+  export let itemLabel: SideMenuLink['itemLabel'];
+  export let newWindow: SideMenuLink['newWindow'];
+  export let prefetch: SideMenuLink['prefetch'];
+
+  const extraProps = newWindow
+    ? {
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      }
+    : {
+        rel: '',
+      };
+
+  if (prefetch) {
+    extraProps['rel'] = `prefetch ${extraProps.rel}`.trim();
+  }
+</script>
+
+<li class="px-4 py-2 text-center sm:text-left">
+  <a
+    {href}
+    class="relative mx-5 text-xl font-black cursor-pointer sm:text-lg"
+    {...extraProps}
+  >
+    {itemLabel}
+    {#if newWindow}
+      <IconExternalLink class="absolute top-0 w-4 -right-6" />
+    {/if}
+  </a>
+</li>

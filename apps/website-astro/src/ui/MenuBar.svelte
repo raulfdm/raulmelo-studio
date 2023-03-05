@@ -11,6 +11,7 @@
   } from '@/infrastructure/stores/sideMenu';
   import MenuBarLanguageSwitch from './MenuBarLanguageSwitch.svelte';
   import MenuBarThemeSwitch from './MenuBarThemeSwitch.svelte';
+  import { SideMenu } from './SideMenu';
 
   export let lang: SupportedLanguages;
 
@@ -53,6 +54,8 @@
     </section>
   </nav>
 </div>
+
+<SideMenu {lang} />
 
 <!-- 
 
