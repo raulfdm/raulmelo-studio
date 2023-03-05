@@ -9,7 +9,7 @@ import { getTagUrl } from '@/infrastructure/utils/url';
 import PostLayout from '@/ui/layouts/PostLayout.astro';
 import PortableText from '@/ui/PortableText/PortableText.astro';
 import PostHeading from '@/ui/PostHeading.astro';
-import ShareContent from '@/ui/ShareContent.astro';
+import { ShareContent } from '@/ui/ShareContent';
 import { Tag, Tags } from '@/ui/Tags';
 
 const { lang, slug } = Astro.params as {
