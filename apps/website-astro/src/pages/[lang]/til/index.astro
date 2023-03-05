@@ -7,7 +7,7 @@ import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import Layout from '@/ui/layouts/Layout.astro';
 
-import { Tils } from './_ui/Tils';
+import Tils from './_ui/Tils.svelte';
 
 export const prerender = true;
 export const getStaticPaths = languageGetStaticPaths;
