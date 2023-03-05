@@ -1,11 +1,15 @@
 <script lang="ts">
   import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
-  import { sideMenuStore } from '@/infrastructure/stores/sideMenu';
+  import {
+    sideMenuStore,
+    closeSideMenu,
+  } from '@/infrastructure/stores/sideMenu';
   import { type SupportedLanguages } from '@raulmelo/core/config';
   import { Disclosure, DisclosurePanel } from '@rgossiaux/svelte-headlessui';
   import classNames from 'classnames';
   import { fly, fade } from 'svelte/transition';
   import { useSideMenuLinks } from './links';
+  import { clickAway } from '@/infrastructure/directives/clickAway';
 
   import SideMenuList from './SideMenuList.svelte';
   import SideMenuListItem from './SideMenuListItem.svelte';
@@ -25,6 +29,8 @@
       <DisclosurePanel
         static
         as="nav"
+        use={[clickAway]}
+        on:click_away={closeSideMenu}
         class={classNames([
           'ml-auto',
           'h-full min-w-full sm:min-w-min sm:w-full sm:max-w-xs',
