@@ -1,35 +1,33 @@
----
-export type Props = {
-  siteData: QuerySiteDataReturnType;
-  lang: SupportedLanguages;
-};
+<script lang="ts">
+  // import { Image } from '@astrojs/image/components';
+  import { type SupportedLanguages } from '@raulmelo/core/config';
+  import { type QuerySiteDataReturnType } from '@raulmelo/core/domains';
 
-import { Image } from '@astrojs/image/components';
-import { type SupportedLanguages } from '@raulmelo/core/config';
-import { type QuerySiteDataReturnType } from '@raulmelo/core/domains';
+  import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+  import { getSocial } from '@/infrastructure/utils/seo';
+  import {
+    IconBrandGithub,
+    IconBrandMedium,
+    IconBrandLinkedin,
+    IconBrandTwitter,
+  } from '@tabler/icons-svelte';
+  import DevToIcon from '@/ui/Icons/DevTo.svelte';
 
-import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
-import { getSocial } from '@/infrastructure/utils/seo';
-import DevToIcon from '@/ui/Icons/DevTo.astro';
-import GithubIcon from '@/ui/Icons/Github.astro';
-import LinkedInIcon from '@/ui/Icons/LinkedIn.astro';
-import MediumIcon from '@/ui/Icons/Medium.astro';
-import TwitterIcon from '@/ui/Icons/Twitter.astro';
+  import IconWrapper from './IconWrapper.svelte';
 
-import IconWrapper from './IconWrapper.astro';
+  export let lang: SupportedLanguages;
+  export let siteData: QuerySiteDataReturnType;
 
-const { siteData, lang } = Astro.props;
+  const defaultSeo = siteData.defaultSeo[lang];
 
-const defaultSeo = siteData.defaultSeo[lang];
+  const intl = getIntl(lang);
 
-const intl = getIntl(lang);
-
-const github = getSocial(`github`, siteData);
-const twitter = getSocial(`twitter`, siteData);
-const linkedIn = getSocial(`linkedin`, siteData);
-const devTo = getSocial(`dev.to`, siteData);
-const medium = getSocial(`medium`, siteData);
----
+  const github = getSocial(`github`, siteData);
+  const twitter = getSocial(`twitter`, siteData);
+  const linkedIn = getSocial(`linkedin`, siteData);
+  const devTo = getSocial(`dev.to`, siteData);
+  const medium = getSocial(`medium`, siteData);
+</script>
 
 <header
   class="flex flex-col-reverse justify-between md:flex-row mb-7 col-span-full"
@@ -57,7 +55,7 @@ const medium = getSocial(`medium`, siteData);
           id: `authorPresentation.devToLinkTitle`,
         })}
       >
-        <DevToIcon />
+        <DevToIcon size={32} />
       </IconWrapper>
       <IconWrapper
         href={medium.url}
@@ -66,7 +64,7 @@ const medium = getSocial(`medium`, siteData);
           id: `authorPresentation.mediumLinkTitle`,
         })}
       >
-        <MediumIcon />
+        <IconBrandMedium size={32} />
       </IconWrapper>
       <IconWrapper
         href={github.url}
@@ -75,7 +73,7 @@ const medium = getSocial(`medium`, siteData);
           id: `authorPresentation.githubLinkTitle`,
         })}
       >
-        <GithubIcon />
+        <IconBrandGithub size={32} />
       </IconWrapper>
       <IconWrapper
         href={twitter.url}
@@ -84,7 +82,7 @@ const medium = getSocial(`medium`, siteData);
           id: `authorPresentation.twitterLinkTitle`,
         })}
       >
-        <TwitterIcon />
+        <IconBrandTwitter size={32} />
       </IconWrapper>
       <IconWrapper
         href={linkedIn.url}
@@ -93,20 +91,11 @@ const medium = getSocial(`medium`, siteData);
           id: `authorPresentation.linkedInLinkTitle`,
         })}
       >
-        <LinkedInIcon />
+        <IconBrandLinkedin size={32} />
       </IconWrapper>
     </section>
   </aside>
   <figure class="relative w-20 h-20 rounded md:w-32 md:h-32">
-    <Image
-      class="object-cover rounded-full"
-      src={siteData.personalInformation.profilePic.url}
-      alt={intl.formatMessage({
-        id: `authorPresentation.profileImageAlt`,
-      })}
-      loading="eager"
-      width={128}
-      height={128}
-    />
+    <slot name="img" />
   </figure>
 </header>
