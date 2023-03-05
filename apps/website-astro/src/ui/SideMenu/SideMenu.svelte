@@ -20,7 +20,12 @@
   const intl = getIntl(lang);
 </script>
 
-<Disclosure class="absolute top-0 bottom-0 left-0 right-0 z-20">
+<Disclosure
+  class={classNames([
+    'absolute top-0 bottom-0 left-0 right-0 z-20',
+    $sideMenuStore ? 'z-20' : '-z-20',
+  ])}
+>
   {#if $sideMenuStore === true}
     <div
       transition:fly={{ x: 400, opacity: 1, duration: 200 }}
