@@ -6,7 +6,6 @@
   } from '@rgossiaux/svelte-headlessui';
   import { createPopperActions } from 'svelte-popperjs';
   import { IconWorld } from '@tabler/icons-svelte';
-  import MenuBarButton from './MenuBarButton.svelte';
   import { getPathnameWithoutLocale } from '@/infrastructure/utils/url';
   import { type SupportedLanguages } from '@raulmelo/core/config';
 

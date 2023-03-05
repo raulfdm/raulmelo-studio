@@ -7,7 +7,7 @@ import { getPathnameWithLocale } from '@/infrastructure/utils/url';
 
 import { LanguageSwitch } from './LanguageSwitch';
 import { MenuButton } from './MenuBarButton';
-import { SideMenu, useSideMenu } from './SideMenu_legacy';
+import { SideMenu, useSideMenu } from './SideMenu';
 import { ThemeSwitch } from './ThemeSwitch';
 
 type MenuBarProps = {

@@ -2,16 +2,11 @@
   import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
   import { getPathnameWithLocale } from '@/infrastructure/utils/url';
   import { type SupportedLanguages } from '@raulmelo/core/config';
-  import Logo from './Logo.svelte';
-  import MenuButton from './MenuBarButton.svelte';
-  import { IconMenu2, IconX } from '@tabler/icons-svelte';
-  import {
-    sideMenuStore,
-    toggleSideMenu,
-  } from '@/infrastructure/stores/sideMenu';
+  import Logo from '../Logo.svelte';
   import MenuBarLanguageSwitch from './MenuBarLanguageSwitch.svelte';
   import MenuBarThemeSwitch from './MenuBarThemeSwitch.svelte';
-  import { SideMenu } from './SideMenu';
+  import { SideMenu } from '../SideMenu';
+  import MenuBarSideMenuButton from './MenuBarSideMenuButton.svelte';
 
   export let lang: SupportedLanguages;
 
@@ -38,19 +33,11 @@
     >
       <MenuBarThemeSwitch />
       <MenuBarLanguageSwitch />
-      <MenuButton
-        on:click={toggleSideMenu}
-        aria-label={intl.formatMessage({
+      <MenuBarSideMenuButton
+        ariaLabel={intl.formatMessage({
           id: `menu.sideMenuButtonAriaLabel`,
         })}
-        data-testid="side-menu-button"
-      >
-        {#if $sideMenuStore === false}
-          <IconMenu2 class="w-6" />
-        {:else}
-          <IconX class="w-6" />
-        {/if}
-      </MenuButton>
+      />
     </section>
   </nav>
 </div>
