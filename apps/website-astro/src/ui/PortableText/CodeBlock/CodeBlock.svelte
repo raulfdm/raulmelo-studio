@@ -1,17 +1,17 @@
 <script lang="ts">
-  import { refractor } from './configuredRefractor';
-  import { toHtml } from 'hast-util-to-html';
   import { IconClipboard } from '@tabler/icons-svelte';
   import classNames from 'classnames';
   import { createPopperActions } from 'svelte-popperjs';
   import { useMachine } from '@xstate/svelte';
   import { copyMachine } from './copyMachine';
+  import { highlight } from '@raulmelo/refractor';
 
   export let code: string;
   export let language = 'plaintext';
   export let filename: string | undefined = undefined;
   export let copyTitle = 'Copy code';
   export let copyTooltipTitle = 'Copied!';
+  export let highlightedLines: string | undefined = undefined;
 
   const [popperRef, popperContent] = createPopperActions({
     placement: 'bottom-end',
@@ -29,12 +29,7 @@
 
   const { state, send } = useMachine(copyMachine);
 
-  if (!refractor.registered(language)) {
-    language = 'plaintext';
-  }
-
-  const tree = refractor.highlight(code, language);
-  const langClass = `language-${language}`;
+  const { classLang, html } = highlight(code, language, highlightedLines);
 
   function onCopyCode() {
     send({ type: 'COPY', code });
@@ -73,7 +68,7 @@
       <span>{filename}</span>
     </div>
   {/if}
-  <pre class={`refractor ${langClass}`}><code class={langClass}
-      >{@html toHtml(tree)}</code
+  <pre class={`refractor ${classLang}`}><code class={classLang}
+      >{@html html}</code
     ></pre>
 </div>
