@@ -58,7 +58,7 @@
       <DisclosurePanel
         static
         as="div"
-        class="absolute inset-0 bg-black pointer-events-none opacity-70 top-16"
+        class="absolute inset-0 bg-[black] pointer-events-none opacity-70 top-16"
       />
     </div>
   {/if}

@@ -14,7 +14,6 @@ import '@raulmelo/styles/lib/styles.css';
 import { type SupportedLanguages } from '@raulmelo/core/config';
 
 import DefaultSEO, { type Props as SeoProps } from '@/ui/DefaultSEO.astro';
-import Logo from '@/ui/Logo.svelte';
 import { MenuBar } from '@/ui/MenuBar';
 
 const { title, seo, lang } = Astro.props;
@@ -70,9 +69,7 @@ const nextLang = lang || langFromParams;
   <body
     class="relative min-h-screen pb-12 duration-200 bg-white dark:bg-blue-900 text-primary transition-theme ease md:pb-16"
   >
-    <MenuBar lang={nextLang} pathname={Astro.url.pathname} client:load>
-      <Logo slot="logo" />
-    </MenuBar>
+    <MenuBar lang={nextLang} pathname={Astro.url.pathname} client:load />
 
     <main class="grid-container">
       <slot />

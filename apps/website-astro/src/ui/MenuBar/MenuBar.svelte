@@ -9,8 +9,27 @@
   import MenuBarSideMenuButton from './MenuBarSideMenuButton.svelte';
 
   export let lang: SupportedLanguages;
+  export let pathname: string;
 
   const intl = getIntl(lang);
+
+  /**
+   * Having this option in a post Page leads into an undesired behaviour.
+   *
+   * Not all posts has translations. It means that if the user try to switch
+   * locale in a post which does not its equivalent in the selected language,
+   * it'll throw redirects the user to a 404 page.
+   *
+   * For handling posts translations I have the "AvailableTranslations" component
+   * which allow the user know when this post has translations available and also
+   * redirects he/she for the correct page
+   */
+  function shouldHideLanguage() {
+    const isBlogPost = pathname.match(/\/blog\/.*/);
+    const isTilPost = pathname.match(/\/til\/.*/);
+
+    return isBlogPost || isTilPost;
+  }
 </script>
 
 <div
@@ -32,7 +51,9 @@
       class="flex items-center justify-end col-span-2 space-x-3 md:col-end-9 lg:col-end-13"
     >
       <MenuBarThemeSwitch />
-      <MenuBarLanguageSwitch />
+      {#if !shouldHideLanguage()}
+        <MenuBarLanguageSwitch />
+      {/if}
       <MenuBarSideMenuButton
         ariaLabel={intl.formatMessage({
           id: `menu.sideMenuButtonAriaLabel`,
