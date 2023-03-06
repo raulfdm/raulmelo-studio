@@ -1,8 +1,9 @@
 ---
 import { type SupportedLanguages } from '@raulmelo/core/config';
-import { CodeBlock } from '@raulmelo/ui';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+
+import CodeBlockSvelte from './CodeBlock/CodeBlock.svelte';
 
 type Props = {
   node: {
@@ -18,12 +19,12 @@ const { lang } = Astro.params as { lang: SupportedLanguages };
 const intl = getIntl(lang);
 ---
 
-<CodeBlock
-  client:only="react"
+<CodeBlockSvelte
+  client:load
   code={code}
-  highlightedLines={highlightedLines}
-  language={language}
-  filename={filename}
   copyTitle={intl.formatMessage({ id: `blogPost.copyButton.title` })}
   copyTooltipTitle={intl.formatMessage({ id: `blogPost.copyButton.success` })}
+  filename={filename}
+  highlightedLines={highlightedLines}
+  language={language}
 />

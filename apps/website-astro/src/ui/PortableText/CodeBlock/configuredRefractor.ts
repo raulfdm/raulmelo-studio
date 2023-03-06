@@ -1,4 +1,3 @@
-import { refractor } from 'refractor';
 import bash from 'refractor/lang/bash';
 import css from 'refractor/lang/css';
 import cssExtras from 'refractor/lang/css-extras';
@@ -24,6 +23,7 @@ import rust from 'refractor/lang/rust';
 import tsx from 'refractor/lang/tsx';
 import typescript from 'refractor/lang/typescript';
 import yaml from 'refractor/lang/yaml';
+import { refractor } from 'refractor/lib/core';
 
 refractor.register(bash);
 refractor.register(css);
