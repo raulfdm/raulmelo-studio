@@ -6,11 +6,13 @@ import { refractor } from './configuredRefractor';
 export function highlight(code: string, language: string, markers?: string) {
   const codeLanguage = refractor.registered(language) ? language : `plaintext`;
 
-  const tree = refractor.highlight(code, codeLanguage);
+  let tree = refractor.highlight(code, codeLanguage);
 
   const lines = getLines(markers);
 
-  addMarkers(tree.children, { markers: lines });
+  if (lines.length !== 0) {
+    tree = addMarkers(tree.children, { markers: lines }) as any;
+  }
 
   return {
     html: toHtml(tree),

@@ -1,3 +1,9 @@
+/** TODO: Fix any's
+ *
+ *
+ * This code was copied from:
+ * https://github.com/rexxars/react-refractor/blob/2a3476e55a4aaf979c7deec9f73babefcc9b7bbf/src/addMarkers.js
+ */
 import {
   type RefractorElement,
   type RefractorRoot,
