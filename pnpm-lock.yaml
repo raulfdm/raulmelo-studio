@@ -289,6 +289,7 @@ importers:
       '@typescript-eslint/parser': 5.54.0
       '@xstate/cli': 0.4.2
       '@xstate/react': 3.2.1
+      '@xstate/svelte': 2.0.1
       algoliasearch: 4.14.3
       astro: 2.0.16
       astro-portabletext: 0.8.0
@@ -343,6 +344,7 @@ importers:
       '@types/react-dom': 18.0.11
       '@typescript-eslint/parser': 5.54.0_ycpbpc6yetojsgtrx3mwntkhsu
       '@xstate/react': 3.2.1_o53l3h553defh3ruq4yellezcm
+      '@xstate/svelte': 2.0.1_tlv77om7iuxziqpoh3bqvceit4
       algoliasearch: 4.14.3
       astro: 2.0.16
       astro-portabletext: 0.8.0
@@ -378,7 +380,7 @@ importers:
       '@types/flat': 5.0.2
       '@types/lodash.defaultsdeep': 4.6.7
       '@types/negotiator': 0.6.1
-      '@xstate/cli': 0.4.2_prettier@2.8.4
+      '@xstate/cli': 0.4.2_prettier@2.8.1
 
   apps/website-remix:
     specifiers:
@@ -9697,6 +9699,21 @@ packages:
       - supports-color
     dev: true
 
+  /@xstate/cli/0.4.2_prettier@2.8.1:
+    resolution: {integrity: sha512-lxj7YrpCl3azlzHO98oBp+qklKUvkw3AjWG815pVyNNf5Wm7JunYtPkGiqif6wCg1K/7V0x8cMdLzxhFkKBk9w==}
+    hasBin: true
+    dependencies:
+      '@babel/core': 7.21.0
+      '@xstate/machine-extractor': 0.9.0_xstate@4.37.0
+      '@xstate/tools-shared': 2.0.2_zrhzzrj2kqlcfr3recrjhrbbuu
+      chokidar: 3.5.3
+      commander: 8.3.0
+      xstate: 4.37.0
+    transitivePeerDependencies:
+      - prettier
+      - supports-color
+    dev: true
+
   /@xstate/cli/0.4.2_prettier@2.8.3:
     resolution: {integrity: sha512-lxj7YrpCl3azlzHO98oBp+qklKUvkw3AjWG815pVyNNf5Wm7JunYtPkGiqif6wCg1K/7V0x8cMdLzxhFkKBk9w==}
     hasBin: true
@@ -9835,6 +9852,22 @@ packages:
       xstate: 4.36.0
     dev: false
 
+  /@xstate/svelte/2.0.1_tlv77om7iuxziqpoh3bqvceit4:
+    resolution: {integrity: sha512-A4QSCt4EpbyzbPIPGCRLoRn50VUq6gXcmJPIwgBaCTsTRsPsp8KSvltDqS2msBKEDr4FHWXEXOC4QVGDWFL5dg==}
+    peerDependencies:
+      '@xstate/fsm': ^2.0.0
+      svelte: ^3.24.1
+      xstate: ^4.35.0
+    peerDependenciesMeta:
+      '@xstate/fsm':
+        optional: true
+      xstate:
+        optional: true
+    dependencies:
+      svelte: 3.55.1
+      xstate: 4.37.0
+    dev: false
+
   /@xstate/tools-shared/2.0.1_zrhzzrj2kqlcfr3recrjhrbbuu:
     resolution: {integrity: sha512-AAl5d2TWcUf7U/hiJhafuennvfERA2pqlQ94Whiyyjd/QFkdFtmnxR9sX/ogWMK5oGv4exO7+3E6zt7LXRgnzQ==}
     peerDependencies:
@@ -9872,6 +9905,19 @@ packages:
       xstate: 4.37.0
     transitivePeerDependencies:
       - supports-color
+
+  /@xstate/tools-shared/2.0.2_zrhzzrj2kqlcfr3recrjhrbbuu:
+    resolution: {integrity: sha512-Lg8RD19Jq62M8KsnSF8Tenqo0a8/j7eqzHCpxG7ewc9PklkOcLvOWN4rrGTtYG5zkxJNQTXq8kt2x0TsWwnumQ==}
+    peerDependencies:
+      prettier: ^2.3.1
+      xstate: ^4
+    dependencies:
+      '@xstate/machine-extractor': 0.9.0_xstate@4.37.0
+      prettier: 2.8.1
+      xstate: 4.37.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
 
   /@xtuc/ieee754/1.2.0:
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
