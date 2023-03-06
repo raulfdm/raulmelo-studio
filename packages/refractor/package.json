@@ -6,6 +6,7 @@
   "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
+    "dev": "pnpm vite build --watch",
     "build": "pnpm run build:lib && pnpm run build:types",
     "build:lib": "vite build",
     "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist"
