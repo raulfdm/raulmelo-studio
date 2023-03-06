@@ -9,7 +9,7 @@
   import { getPathnameWithoutLocale } from '@/infrastructure/utils/url';
   import { type SupportedLanguages } from '@raulmelo/core/config';
 
-  const [popperRef, popperContent, getInstance] = createPopperActions();
+  const [popperRef, popperContent] = createPopperActions();
 
   const popperOptions = {
     placement: `bottom-end`,
