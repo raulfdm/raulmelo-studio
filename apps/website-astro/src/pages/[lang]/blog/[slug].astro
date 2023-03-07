@@ -20,19 +20,6 @@ const { lang, slug } = Astro.params as {
   lang: SupportedLanguages;
 };
 
-export async function getStaticPaths() {
-  const posts = await queryPosts(`all`);
-
-  return posts.map((post) => ({
-    params: {
-      slug: post.slug,
-      lang: post.language,
-    },
-  }));
-}
-
-export const prerender = true;
-
 const post = await queryPostBySlug(slug);
 
 if (isNil(post) || isEmpty(post)) {

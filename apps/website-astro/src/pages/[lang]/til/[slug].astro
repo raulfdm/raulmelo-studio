@@ -1,6 +1,6 @@
 ---
 import { type SupportedLanguages } from '@raulmelo/core/config';
-import { queryTilBySlug, queryTils } from '@raulmelo/core/domains';
+import { queryTilBySlug } from '@raulmelo/core/domains';
 import { getEstimatedReadingTime, isEmpty, isNil } from '@raulmelo/core/utils';
 import { ProseContainer } from '@raulmelo/ui';
 
@@ -16,19 +16,6 @@ const { lang, slug } = Astro.params as {
   slug: string;
   lang: SupportedLanguages;
 };
-
-export async function getStaticPaths() {
-  const tils = await queryTils(`all`);
-
-  return tils.map((til) => ({
-    params: {
-      slug: til.slug,
-      lang: til.language,
-    },
-  }));
-}
-
-export const prerender = true;
 
 const til = await queryTilBySlug(slug);
 
