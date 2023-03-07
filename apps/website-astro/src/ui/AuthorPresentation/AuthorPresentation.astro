@@ -1,0 +1,27 @@
+---
+import { Image } from '@astrojs/image/components';
+import { type SupportedLanguages } from '@raulmelo/core/config';
+import { querySiteData } from '@raulmelo/core/domains';
+
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+
+import AuthorPresentation from './AuthorPresentation.svelte';
+
+const { lang } = Astro.params as { lang: SupportedLanguages };
+const siteData = await querySiteData();
+const intl = getIntl(lang);
+---
+
+<AuthorPresentation lang={lang} siteData={siteData}>
+  <Image
+    slot="img"
+    class="object-cover rounded-full"
+    src={siteData.personalInformation.profilePic.url}
+    alt={intl.formatMessage({
+      id: `authorPresentation.profileImageAlt`,
+    })}
+    loading="eager"
+    width={128}
+    height={128}
+  />
+</AuthorPresentation>

@@ -1,5 +1,4 @@
 <script lang="ts">
-  // import { Image } from '@astrojs/image/components';
   import { type SupportedLanguages } from '@raulmelo/core/config';
   import { type QuerySiteDataReturnType } from '@raulmelo/core/domains';
 
@@ -13,7 +12,7 @@
   } from '@tabler/icons-svelte';
   import DevToIcon from '@/ui/Icons/DevTo.svelte';
 
-  import IconWrapper from './IconWrapper.svelte';
+  import IconWrapper from '../../pages/[lang]/_ui/IconWrapper.svelte';
 
   export let lang: SupportedLanguages;
   export let siteData: QuerySiteDataReturnType;

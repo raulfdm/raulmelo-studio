@@ -1,0 +1,102 @@
+---
+import { type SupportedLanguages } from '@raulmelo/core/config';
+import {
+  queryAllTags,
+  queryTagBySlug,
+  sortPostsByPublishedDate,
+} from '@raulmelo/core/domains';
+import { isEmpty } from '@raulmelo/core/utils';
+
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { getPostUrl, getTilUrl } from '@/infrastructure/utils/url';
+import { AuthorPresentation } from '@/ui/AuthorPresentation';
+import Layout from '@/ui/layouts/Layout.astro';
+import PostBasic from '@/ui/PostBasic.astro';
+
+export const prerender = true;
+
+const { lang, tag } = Astro.params as { lang: SupportedLanguages; tag: string };
+
+export async function getStaticPaths() {
+  const allTags = await queryAllTags();
+
+  /**
+   * Without this generation, when I'm in `/tag/css` for instance
+   * and want to access `/pt/tag/css`, it'll redirect to a 404 page.
+   *
+   * If I switch "fallback" to true, the problem will be fixed only locally
+   * or running in server (not in serverless) and it'll also leads in the first
+   * render of TagPage having "tag" prop as undefined.
+   *
+   * In this way I generate the same page for both lang and I don't have to do
+   * any workaround.
+   */
+  const allSupportedLanguages: SupportedLanguages[] = [`en`, `pt`];
+
+  // const { posts, tag } = await getAllTagsToRender(tag, lang);
+
+  return allSupportedLanguages.map((lang) => {
+    return allTags.map((tag) => {
+      return {
+        params: {
+          tag: tag.slug,
+          lang,
+        },
+      };
+    });
+  });
+}
+
+const remoteTag = await queryTagBySlug(tag, lang);
+
+const posts = sortPostsByPublishedDate(remoteTag.posts);
+
+const intl = getIntl(lang);
+
+const pageTitle = intl.formatMessage(
+  { id: `tag.title` },
+  {
+    tag: remoteTag.name,
+  },
+);
+const description = intl.formatMessage(
+  { id: `tag.description` },
+  { tag: remoteTag.name },
+);
+---
+
+<Layout
+  title={pageTitle}
+  seo={{
+    description: description,
+  }}
+>
+  <AuthorPresentation />
+
+  <h2
+    class="mb-4 font-sans text-xl font-extrabold col-span-full lg:text-2xl lg:mb-8"
+  >
+    {pageTitle}
+  </h2>
+  {
+    isEmpty(posts) ? (
+      <p class="text-lg col-span-full">
+        {intl.formatMessage({ id: `tag.empty` })}
+      </p>
+    ) : (
+      <ul class="pb-5 space-y-6 md:pb-10 col-span-full">
+        {posts.map((post) => {
+          const getUrl = post._type === `post` ? getPostUrl : getTilUrl;
+
+          return (
+            <PostBasic
+              titleClassName="text-xl lg:text-2xl"
+              {...(post as any)}
+              url={getUrl(post.slug, lang)}
+            />
+          );
+        })}
+      </ul>
+    )
+  }
+</Layout>
