@@ -41,7 +41,7 @@
     use:popperRef
     type="button"
     title={copyTitle}
-    class="absolute p-1 text-gray-500 transition-colors focus:outline-white top-1 right-1 hover:text-gray-300"
+    class="absolute z-10 p-1 text-gray-500 transition-colors rounded focus:outline-white top-1 right-1 hover:text-gray-300"
     style="background-color: var(--syntax-bg);"
     on:click={onCopyCode}
   >
