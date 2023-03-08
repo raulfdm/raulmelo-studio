@@ -7,59 +7,84 @@
   import { type SupportedLanguages } from '@raulmelo/core/config';
   import { Disclosure, DisclosurePanel } from '@rgossiaux/svelte-headlessui';
   import classNames from 'classnames';
-  import { fly, fade } from 'svelte/transition';
   import { useSideMenuLinks } from './links';
   import { clickAway } from '@/infrastructure/directives/clickAway';
 
   import SideMenuList from './SideMenuList.svelte';
   import SideMenuListItem from './SideMenuListItem.svelte';
+  import { timeline } from 'motion';
 
   export let lang: SupportedLanguages;
 
   const links = useSideMenuLinks(lang);
   const intl = getIntl(lang);
+
+  let mainPanelEl: HTMLElement;
+  let overlayEl: HTMLElement;
+
+  sideMenuStore.subscribe(async (isOpen) => {
+    if (mainPanelEl && overlayEl) {
+      if (isOpen) {
+        timeline([
+          [
+            overlayEl,
+            {
+              opacity: 0.7,
+              backgroundColor: 'rgba(0, 0, 0)',
+            },
+          ],
+          [mainPanelEl, { transform: `translate3d(0%, 0, 0)` }, { at: 0.2 }],
+        ]);
+      } else {
+        timeline([
+          [mainPanelEl, { transform: `translate3d(100%, 0, 0)` }],
+          [
+            overlayEl,
+            {
+              opacity: 0,
+            },
+            { at: 0.2 },
+          ],
+        ]);
+      }
+    }
+  });
+
+  function setMainPanelElement(node: HTMLElement) {
+    mainPanelEl = node;
+  }
+
+  function setOverlayElement(node: HTMLElement) {
+    overlayEl = node;
+  }
 </script>
 
-<Disclosure
-  class={classNames([
-    'absolute top-0 bottom-0 left-0 right-0',
-    $sideMenuStore ? 'z-20' : '-z-20',
-  ])}
->
-  {#if $sideMenuStore === true}
-    <div
-      transition:fly={{ x: 400, opacity: 1, duration: 200 }}
-      class="relative bottom-0 right-0 z-20 h-full"
-    >
-      <DisclosurePanel
-        static
-        as="nav"
-        use={[clickAway]}
-        on:click_away={closeSideMenu}
-        class={classNames([
-          'ml-auto',
-          'h-full min-w-full sm:min-w-min sm:w-full sm:max-w-xs',
-          'bg-white pt-16 dark:bg-blue-800',
-          'transition-theme ease',
-        ])}
-      >
-        <SideMenuList>
-          {#each links as link}
-            <SideMenuListItem
-              {...link}
-              itemLabel={intl.formatMessage({ id: link.itemLabel })}
-            />
-          {/each}
-        </SideMenuList>
-      </DisclosurePanel>
-    </div>
+<Disclosure>
+  <DisclosurePanel
+    static
+    as="nav"
+    open
+    use={[setMainPanelElement]}
+    class={classNames([
+      'fixed bottom-0 right-0 z-20 h-full min-w-full duration-200 transform',
+      'bg-white top-16 dark:bg-blue-800 sm:min-w-min sm:w-full sm:max-w-xs transition-theme ease',
+    ])}
+    style="transform: translate3d(100%, 0, 0);"
+  >
+    <SideMenuList>
+      {#each links as link}
+        <SideMenuListItem
+          {...link}
+          itemLabel={intl.formatMessage({ id: link.itemLabel })}
+        />
+      {/each}
+    </SideMenuList>
+  </DisclosurePanel>
 
-    <div transition:fade={{ duration: 200 }} class="z-10">
-      <DisclosurePanel
-        static
-        as="div"
-        class="absolute inset-0 bg-[black] pointer-events-none opacity-70 top-16"
-      />
-    </div>
-  {/if}
+  <DisclosurePanel
+    static
+    as="div"
+    use={[setOverlayElement]}
+    class="absolute inset-0 bg-[black] pointer-events-none top-16 z-10 opacity-0"
+  />
 </Disclosure>

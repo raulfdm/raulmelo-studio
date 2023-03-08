@@ -303,6 +303,7 @@ importers:
       flat: 5.0.2
       framer-motion: 10.0.1
       lodash.defaultsdeep: 4.6.1
+      motion: 10.15.5
       negotiator: 0.6.3
       query-string: 8.1.0
       react: 18.2.0
@@ -357,6 +358,7 @@ importers:
       flat: 5.0.2
       framer-motion: 10.0.1_biqbaboplfbrettd7655fr4n2y
       lodash.defaultsdeep: 4.6.1
+      motion: 10.15.5
       negotiator: 0.6.3
       query-string: 8.1.0
       react: 18.2.0
@@ -378,7 +380,7 @@ importers:
       '@types/flat': 5.0.2
       '@types/lodash.defaultsdeep': 4.6.7
       '@types/negotiator': 0.6.1
-      '@xstate/cli': 0.4.2_prettier@2.8.4
+      '@xstate/cli': 0.4.2_prettier@2.8.1
 
   apps/website-remix:
     specifiers:
@@ -4635,6 +4637,13 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@motionone/svelte/10.15.5:
+    resolution: {integrity: sha512-Xyxtgp7BlVnSBwcoFmXGHUVnpNktzeXsEifu2NJJWc7VGuxutDsBZxNdz80qvpLIC5MeBa1wh7GGegZzTm1msg==}
+    dependencies:
+      '@motionone/dom': 10.15.5
+      tslib: 2.5.0
+    dev: false
+
   /@motionone/types/10.15.1:
     resolution: {integrity: sha512-iIUd/EgUsRZGrvW0jqdst8st7zKTzS9EsKkP+6c6n4MPZoQHwiHuVtTQLD6Kp0bsBLhNzKIBlHXponn/SDT4hA==}
     dev: false
@@ -4644,6 +4653,13 @@ packages:
     dependencies:
       '@motionone/types': 10.15.1
       hey-listen: 1.0.8
+      tslib: 2.5.0
+    dev: false
+
+  /@motionone/vue/10.15.5:
+    resolution: {integrity: sha512-cUENrLYAolUacHvCgU+8wF9OgSlVutfWbHMLERI/bElCJ+e2YVQvG/CpGhIM5fYOOJzuvg2T2wHmLLmvJoavEw==}
+    dependencies:
+      '@motionone/dom': 10.15.5
       tslib: 2.5.0
     dev: false
 
@@ -9714,6 +9730,21 @@ packages:
       - supports-color
     dev: true
 
+  /@xstate/cli/0.4.2_prettier@2.8.1:
+    resolution: {integrity: sha512-lxj7YrpCl3azlzHO98oBp+qklKUvkw3AjWG815pVyNNf5Wm7JunYtPkGiqif6wCg1K/7V0x8cMdLzxhFkKBk9w==}
+    hasBin: true
+    dependencies:
+      '@babel/core': 7.21.0
+      '@xstate/machine-extractor': 0.9.0_xstate@4.37.0
+      '@xstate/tools-shared': 2.0.2_zrhzzrj2kqlcfr3recrjhrbbuu
+      chokidar: 3.5.3
+      commander: 8.3.0
+      xstate: 4.37.0
+    transitivePeerDependencies:
+      - prettier
+      - supports-color
+    dev: true
+
   /@xstate/cli/0.4.2_prettier@2.8.3:
     resolution: {integrity: sha512-lxj7YrpCl3azlzHO98oBp+qklKUvkw3AjWG815pVyNNf5Wm7JunYtPkGiqif6wCg1K/7V0x8cMdLzxhFkKBk9w==}
     hasBin: true
@@ -9905,6 +9936,19 @@ packages:
       xstate: 4.37.0
     transitivePeerDependencies:
       - supports-color
+
+  /@xstate/tools-shared/2.0.2_zrhzzrj2kqlcfr3recrjhrbbuu:
+    resolution: {integrity: sha512-Lg8RD19Jq62M8KsnSF8Tenqo0a8/j7eqzHCpxG7ewc9PklkOcLvOWN4rrGTtYG5zkxJNQTXq8kt2x0TsWwnumQ==}
+    peerDependencies:
+      prettier: ^2.3.1
+      xstate: ^4
+    dependencies:
+      '@xstate/machine-extractor': 0.9.0_xstate@4.37.0
+      prettier: 2.8.1
+      xstate: 4.37.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
 
   /@xtuc/ieee754/1.2.0:
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -19723,6 +19767,17 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /motion/10.15.5:
+    resolution: {integrity: sha512-ejP6KioN4pigTGxL93APzOnvtLklParL59UQB2T3HWXQBxFcIp5/7YXFmkgiA6pNKKzjvnLhnonRBN5iSFMnNw==}
+    dependencies:
+      '@motionone/animation': 10.15.1
+      '@motionone/dom': 10.15.5
+      '@motionone/svelte': 10.15.5
+      '@motionone/types': 10.15.1
+      '@motionone/utils': 10.15.1
+      '@motionone/vue': 10.15.5
+    dev: false
 
   /move-concurrently/1.0.1:
     resolution: {integrity: sha512-hdrFxZOycD/g6A6SoI2bB5NA/5NEqD0569+S47WZhPvm46sD50ZHdYaFmnua5lndde9rCHGjmfK7Z8BuCt/PcQ==}
