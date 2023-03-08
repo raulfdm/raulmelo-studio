@@ -63,30 +63,4 @@
   </nav>
 </div>
 
-<SideMenu {lang} />
-
-<!-- 
-
-      <ThemeSwitch
-        label={intl.formatMessage({
-          id: `menu.themeButtonAriaLabel`,
-        })}
-      />
-      <LanguageSwitch
-        {lang}
-        {pathname}
-        label={intl.formatMessage({
-          id: `menu.languageButtonAriaLabel`,
-        })}
-      />
-      <MenuButton
-        onClick={sideMenu.toggle}
-        aria-label={intl.formatMessage({
-          id: `menu.sideMenuButtonAriaLabel`,
-        })}
-        data-testid="side-menu-button"
-      >
-        <Icon class="w-6" />
-      </MenuButton>
-
- -->
+<SideMenu {lang} {pathname} />

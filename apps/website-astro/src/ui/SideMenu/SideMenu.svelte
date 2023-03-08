@@ -15,8 +15,9 @@
   import { timeline } from 'motion';
 
   export let lang: SupportedLanguages;
+  export let pathname: string;
 
-  const links = useSideMenuLinks(lang);
+  const links = useSideMenuLinks(lang, pathname);
   const intl = getIntl(lang);
 
   let mainPanelEl: HTMLElement;

@@ -2,10 +2,10 @@ import { type SupportedLanguages } from '@raulmelo/core/config';
 
 import { getPathnameWithLocale } from '@/infrastructure/utils/url';
 
-export function useSideMenuLinks(lang: SupportedLanguages) {
+export function useSideMenuLinks(lang: SupportedLanguages, pathname: string) {
   return [
     {
-      href: `/`,
+      href: ``,
       localeId: `sideMenu.home`,
       prefetch: true,
     },
@@ -49,11 +49,14 @@ export function useSideMenuLinks(lang: SupportedLanguages) {
       noLocale = false,
       prefetch = false,
     }) => {
+      const nextHref = noLocale ? href : getPathnameWithLocale(href, lang);
+
       return {
         itemLabel: localeId,
-        href: noLocale ? href : getPathnameWithLocale(href, lang),
+        href: nextHref,
         newWindow,
         prefetch,
+        isActive: pathname === nextHref,
       };
     },
   );

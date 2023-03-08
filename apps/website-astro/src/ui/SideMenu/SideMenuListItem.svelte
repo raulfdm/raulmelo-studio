@@ -6,6 +6,7 @@
   export let itemLabel: SideMenuLink['itemLabel'];
   export let newWindow: SideMenuLink['newWindow'];
   export let prefetch: SideMenuLink['prefetch'];
+  export let isActive: SideMenuLink['isActive'];
 
   const extraProps = newWindow
     ? {
@@ -25,6 +26,7 @@
   <a
     {href}
     class="relative mx-5 text-xl font-black cursor-pointer sm:text-lg"
+    class:active={isActive}
     {...extraProps}
   >
     {itemLabel}
@@ -33,3 +35,9 @@
     {/if}
   </a>
 </li>
+
+<style lang="postcss">
+  .active {
+    @apply border-b-2 sm:pl-3 sm:border-l-2 sm:border-b-0 border-secondary border-opacity-80 transition-theme;
+  }
+</style>

@@ -63,3 +63,10 @@ export function getPathnameWithLocale(
 
   return `/${locale}${pathname}`;
 }
+
+export function sanitizeUrl(url: string): string {
+  const nextUrl = new URL(url);
+  nextUrl.pathname = nextUrl.pathname.replaceAll(`//`, `/`);
+
+  return nextUrl.href;
+}

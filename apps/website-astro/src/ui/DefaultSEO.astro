@@ -3,6 +3,8 @@ import { type SupportedLanguages } from '@raulmelo/core/config';
 import { querySiteData } from '@raulmelo/core/domains';
 import { type Link, type Meta, type Props as SeoProps, SEO } from 'astro-seo';
 
+import { sanitizeUrl } from '@/infrastructure/utils/url';
+
 export type Props = {
   lang: SupportedLanguages;
   title?: string;
@@ -125,7 +127,7 @@ const articleJsonLD = nextArticle
   twitter={defaultTwitter}
   extend={{
     link: [
-      { rel: `manifest`, href: `${Astro.site}/site.webmanifest` },
+      { rel: `manifest`, href: sanitizeUrl(`${Astro.site}/site.webmanifest`) },
       {
         rel: `mask-icon`,
         href: `/safari-pinned-tab.svg`,

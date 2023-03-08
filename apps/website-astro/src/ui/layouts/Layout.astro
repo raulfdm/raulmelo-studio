@@ -13,6 +13,7 @@ import '@raulmelo/styles/lib/styles.css';
 
 import { type SupportedLanguages } from '@raulmelo/core/config';
 
+import { sanitizeUrl } from '@/infrastructure/utils/url';
 import DefaultSEO, { type Props as SeoProps } from '@/ui/DefaultSEO.astro';
 import { MenuBar } from '@/ui/MenuBar';
 
@@ -29,7 +30,11 @@ const nextLang = lang || langFromParams;
     <!-- Base -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href={`${Astro.site}/favicon.svg`} />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href={sanitizeUrl(`${Astro.site}/favicon.svg`)}
+    />
     <meta name="generator" content={Astro.generator} />
     <!-- Base-end -->
 
