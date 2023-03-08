@@ -51,6 +51,11 @@ export function useSideMenuLinks(lang: SupportedLanguages, pathname: string) {
     }) => {
       const nextHref = noLocale ? href : getPathnameWithLocale(href, lang);
 
+      console.log({
+        href,
+        nextHref,
+        pathname,
+      });
       return {
         itemLabel: localeId,
         href: nextHref,
