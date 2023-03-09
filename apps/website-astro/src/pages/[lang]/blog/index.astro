@@ -1,11 +1,12 @@
 ---
-import { queryPosts, type SupportedLanguages } from '@raulmelo/core/domains';
+import { type SupportedLanguages } from '@raulmelo/core/config';
+import { queryPosts } from '@raulmelo/core/domains';
 
 import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import Layout from '@/ui/layouts/Layout.astro';
 
-import { Posts } from './_ui/Posts';
+import Posts from './_ui/Posts.svelte';
 
 export const prerender = true;
 export const getStaticPaths = languageGetStaticPaths;

@@ -10,8 +10,8 @@ export type Props = {
 };
 
 import { type SupportedLanguages } from '@raulmelo/core/config';
+import { IconArrowNarrowRight } from '@tabler/icons-svelte';
 
-import ArrowRightIcon from '@/ui/Icons/ArrowRight.astro';
 import PostBasic, { type Props as PostBasicProps } from '@/ui/PostBasic.astro';
 
 const { title, checkAllLink, posts } = Astro.props;
@@ -41,6 +41,6 @@ const { title, checkAllLink, posts } = Astro.props;
     class="inline-flex mt-6 text-lg underline cursor-pointer text-secondary"
   >
     {checkAllLink.text}
-    <ArrowRightIcon class="w-6 ml-2" />
+    <IconArrowNarrowRight class="w-6 ml-2" />
   </a>
 </section>

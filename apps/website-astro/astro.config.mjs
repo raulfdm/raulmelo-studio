@@ -2,13 +2,21 @@ import image from '@astrojs/image';
 import prefetch from '@astrojs/prefetch';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
+import svelte from '@astrojs/svelte';
 import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel/serverless';
 import { defineConfig } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 
+let site = `https://localhost:3000`;
+
+if (process.env.VERCEL_URL) {
+  site = `https://${process.env.VERCEL_URL}`;
+}
+
+// https://astro.build/config
 export default defineConfig({
-  site: `https://raulmelo.dev`,
+  site,
   integrations: [
     tailwind(),
     react(),
@@ -36,6 +44,7 @@ export default defineConfig({
       ],
     }),
     prefetch(),
+    svelte(),
   ],
   output: `server`,
   adapter: vercel({}),

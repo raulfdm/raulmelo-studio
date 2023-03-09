@@ -9,30 +9,16 @@ import { getTagUrl } from '@/infrastructure/utils/url';
 import PostLayout from '@/ui/layouts/PostLayout.astro';
 import PortableText from '@/ui/PortableText/PortableText.astro';
 import PostHeading from '@/ui/PostHeading.astro';
-import ShareContent from '@/ui/ShareContent.astro';
-import Tag from '@/ui/Tag.astro';
-import Tags from '@/ui/Tags.astro';
+import { ShareContent } from '@/ui/ShareContent';
+import { Tag, Tags } from '@/ui/Tags';
 
 import FeaturedImage from './_ui/FeaturedImage.astro';
-import SeriesSection from './_ui/SeriesSection.astro';
+import SeriesSection from './_ui/SeriesSection.svelte';
 
 const { lang, slug } = Astro.params as {
   slug: string;
   lang: SupportedLanguages;
 };
-
-export async function getStaticPaths() {
-  const posts = await queryPosts(`all`);
-
-  return posts.map((post) => ({
-    params: {
-      slug: post.slug,
-      lang: post.language,
-    },
-  }));
-}
-
-export const prerender = true;
 
 const post = await queryPostBySlug(slug);
 

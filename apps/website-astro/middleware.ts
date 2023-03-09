@@ -61,7 +61,7 @@ export function getLanguageFromAcceptLanguage(acceptLanguageHeader: string) {
 }
 
 function normalizePathname(pathname: string) {
-  return pathname.replaceAll(`//`, `/`);
+  return pathname.replaceAll(`//`, `/`).replace(/\/$/g, ``);
 }
 
 export const config = {

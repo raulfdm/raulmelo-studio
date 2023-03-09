@@ -1,2 +1,3 @@
-export * from './SideMenu';
-export * from './useSideMenu';
+import SideMenu from './SideMenu.svelte';
+
+export { SideMenu };

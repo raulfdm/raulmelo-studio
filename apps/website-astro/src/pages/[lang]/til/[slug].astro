@@ -1,6 +1,6 @@
 ---
 import { type SupportedLanguages } from '@raulmelo/core/config';
-import { queryTilBySlug, queryTils } from '@raulmelo/core/domains';
+import { queryTilBySlug } from '@raulmelo/core/domains';
 import { getEstimatedReadingTime, isEmpty, isNil } from '@raulmelo/core/utils';
 import { ProseContainer } from '@raulmelo/ui';
 
@@ -9,27 +9,13 @@ import { getTagUrl } from '@/infrastructure/utils/url';
 import PostLayout from '@/ui/layouts/PostLayout.astro';
 import PortableText from '@/ui/PortableText/PortableText.astro';
 import PostHeading from '@/ui/PostHeading.astro';
-import ShareContent from '@/ui/ShareContent.astro';
-import Tag from '@/ui/Tag.astro';
-import Tags from '@/ui/Tags.astro';
+import { ShareContent } from '@/ui/ShareContent';
+import { Tag, Tags } from '@/ui/Tags';
 
 const { lang, slug } = Astro.params as {
   slug: string;
   lang: SupportedLanguages;
 };
-
-export async function getStaticPaths() {
-  const tils = await queryTils(`all`);
-
-  return tils.map((til) => ({
-    params: {
-      slug: til.slug,
-      lang: til.language,
-    },
-  }));
-}
-
-export const prerender = true;
 
 const til = await queryTilBySlug(slug);
 

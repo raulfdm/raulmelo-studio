@@ -1,0 +1,69 @@
+---
+import { type SupportedLanguages } from '@raulmelo/core/config';
+import {
+  queryTagBySlug,
+  sortPostsByPublishedDate,
+} from '@raulmelo/core/domains';
+import { isEmpty } from '@raulmelo/core/utils';
+
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { getPostUrl, getTilUrl } from '@/infrastructure/utils/url';
+import { AuthorPresentation } from '@/ui/AuthorPresentation';
+import Layout from '@/ui/layouts/Layout.astro';
+import PostBasic from '@/ui/PostBasic.astro';
+
+const { lang, tag } = Astro.params as { lang: SupportedLanguages; tag: string };
+
+const remoteTag = await queryTagBySlug(tag, lang);
+
+const posts = sortPostsByPublishedDate(remoteTag.posts);
+
+const intl = getIntl(lang);
+
+const pageTitle = intl.formatMessage(
+  { id: `tag.title` },
+  {
+    tag: remoteTag.name,
+  },
+);
+const description = intl.formatMessage(
+  { id: `tag.description` },
+  { tag: remoteTag.name },
+);
+---
+
+<Layout
+  title={pageTitle}
+  seo={{
+    description: description,
+  }}
+>
+  <AuthorPresentation />
+
+  <h2
+    class="mb-4 font-sans text-xl font-extrabold col-span-full lg:text-2xl lg:mb-8"
+  >
+    {pageTitle}
+  </h2>
+  {
+    isEmpty(posts) ? (
+      <p class="text-lg col-span-full">
+        {intl.formatMessage({ id: `tag.empty` })}
+      </p>
+    ) : (
+      <ul class="pb-5 space-y-6 md:pb-10 col-span-full">
+        {posts.map((post) => {
+          const getUrl = post._type === `post` ? getPostUrl : getTilUrl;
+
+          return (
+            <PostBasic
+              titleClassName="text-xl lg:text-2xl"
+              {...(post as any)}
+              url={getUrl(post.slug, lang)}
+            />
+          );
+        })}
+      </ul>
+    )
+  }
+</Layout>

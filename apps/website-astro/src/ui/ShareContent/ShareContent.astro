@@ -1,0 +1,8 @@
+---
+import ShareContent from './ShareContent.svelte';
+import { type ShareContentProps } from './types';
+
+type Props = ShareContentProps;
+---
+
+<ShareContent {...Astro.props} appUrl={Astro.request.url} />

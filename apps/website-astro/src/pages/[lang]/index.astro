@@ -3,7 +3,7 @@ import {
   type SupportedLanguages,
   supportedLanguagesSchema,
 } from '@raulmelo/core/config';
-import { queryPostsAndTils, querySiteData } from '@raulmelo/core/domains';
+import { queryPostsAndTils } from '@raulmelo/core/domains';
 
 import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
@@ -12,9 +12,9 @@ import {
   getPostUrl,
   getTilUrl,
 } from '@/infrastructure/utils/url';
+import { AuthorPresentation } from '@/ui/AuthorPresentation';
 import Layout from '@/ui/layouts/Layout.astro';
 
-import AuthorPresentation from './_ui/AuthorPresentation.astro';
 import PostSection from './_ui/PostSection.astro';
 
 const { lang } = Astro.params as { lang: SupportedLanguages };
@@ -34,8 +34,7 @@ if (!success) {
 }
 
 const NUMBER_OF_POSTS = 2;
-const [siteData, { posts, tils }] = await Promise.all([
-  querySiteData(),
+const [{ posts, tils }] = await Promise.all([
   queryPostsAndTils(lang, NUMBER_OF_POSTS),
 ]);
 
@@ -43,7 +42,7 @@ const intl = getIntl(lang);
 ---
 
 <Layout title="Home page">
-  <AuthorPresentation siteData={siteData} lang={lang} />
+  <AuthorPresentation />
 
   <PostSection
     title={intl.formatMessage({

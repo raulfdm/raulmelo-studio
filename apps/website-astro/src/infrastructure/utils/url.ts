@@ -61,5 +61,16 @@ export function getPathnameWithLocale(
     return pathname;
   }
 
-  return `/${locale}${pathname}`;
+  return removeTrailingSlash(`/${locale}${pathname}`);
+}
+
+export function sanitizeUrl(url: string): string {
+  const nextUrl = new URL(url);
+  nextUrl.pathname = nextUrl.pathname.replaceAll(`//`, `/`);
+
+  return nextUrl.href;
+}
+
+function removeTrailingSlash(pathname: string): string {
+  return pathname.replace(/\/$/, ``);
 }
