@@ -271,6 +271,8 @@ importers:
       '@astrojs/svelte': 2.1.0
       '@astrojs/tailwind': 3.1.0
       '@astrojs/vercel': 3.2.0
+      '@fontsource/fira-code': 4.5.13
+      '@fontsource/inter': 4.5.15
       '@formatjs/intl': 2.6.7
       '@formatjs/intl-localematcher': 0.2.32
       '@headlessui/react': 1.7.12
@@ -330,6 +332,8 @@ importers:
       '@astrojs/svelte': 2.1.0_cwwjeimflajokwv4ietebda644
       '@astrojs/tailwind': 3.1.0_5fkwwuzubt6borit3q7k7y2k74
       '@astrojs/vercel': 3.2.0_astro@2.1.2+react@18.2.0
+      '@fontsource/fira-code': 4.5.13
+      '@fontsource/inter': 4.5.15
       '@formatjs/intl': 2.6.7_typescript@4.9.5
       '@formatjs/intl-localematcher': 0.2.32
       '@headlessui/react': 1.7.12_biqbaboplfbrettd7655fr4n2y
@@ -3088,7 +3092,7 @@ packages:
       '@lezer/common': 1.0.2
     dev: false
 
-  /@codemirror/autocomplete/6.4.0_4brt7ssv37vk5p4hmzax5oqmt4:
+  /@codemirror/autocomplete/6.4.0_lc2v3dpzp2l5pdzwtgfaudkm3e:
     resolution: {integrity: sha512-HLF2PnZAm1s4kGs30EiqKMgD7XsYaQ0XJnMR0rofEWQ5t5D60SfqpDIkIh1ze5tiEbyUWm8+VJ6W1/erVvBMIA==}
     peerDependencies:
       '@codemirror/language': ^6.0.0
@@ -3098,21 +3102,7 @@ packages:
     dependencies:
       '@codemirror/language': 6.6.0
       '@codemirror/state': 6.2.0
-      '@codemirror/view': 6.9.1
-      '@lezer/common': 1.0.2
-    dev: false
-
-  /@codemirror/autocomplete/6.4.2_4brt7ssv37vk5p4hmzax5oqmt4:
-    resolution: {integrity: sha512-8WE2xp+D0MpWEv5lZ6zPW1/tf4AGb358T5GWYiKEuCP8MvFfT3tH2mIF9Y2yr2e3KbHuSvsVhosiEyqCpiJhZQ==}
-    peerDependencies:
-      '@codemirror/language': ^6.0.0
-      '@codemirror/state': ^6.0.0
-      '@codemirror/view': ^6.0.0
-      '@lezer/common': ^1.0.0
-    dependencies:
-      '@codemirror/language': 6.6.0
-      '@codemirror/state': 6.2.0
-      '@codemirror/view': 6.9.1
+      '@codemirror/view': 6.9.2
       '@lezer/common': 1.0.2
     dev: false
 
@@ -4091,6 +4081,14 @@ packages:
       '@floating-ui/dom': 1.2.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /@fontsource/fira-code/4.5.13:
+    resolution: {integrity: sha512-T1IG6/2AXSwEKwlrEm3kyIL3RQTMblPyj68HgnBGl0IBGFxgS5LZ7StRdDo/QimJ4Tz6FQGHuy1Y/ShNxaUefA==}
+    dev: false
+
+  /@fontsource/inter/4.5.15:
+    resolution: {integrity: sha512-FzleM9AxZQK2nqsTDtBiY0PMEVWvnKnuu2i09+p6DHvrHsuucoV2j0tmw+kAT3L4hvsLdAIDv6MdGehsPIdT+Q==}
     dev: false
 
   /@formatjs/ecma402-abstract/1.14.3:
@@ -6225,7 +6223,7 @@ packages:
       react: ^18
       styled-components: ^5.2
     dependencies:
-      '@codemirror/autocomplete': 6.4.0_4brt7ssv37vk5p4hmzax5oqmt4
+      '@codemirror/autocomplete': 6.4.0_lc2v3dpzp2l5pdzwtgfaudkm3e
       '@codemirror/commands': 6.2.0
       '@codemirror/lang-javascript': 6.1.2
       '@codemirror/language': 6.4.0
@@ -6262,7 +6260,7 @@ packages:
       react: ^18
       styled-components: ^5.2
     dependencies:
-      '@codemirror/autocomplete': 6.4.2_4brt7ssv37vk5p4hmzax5oqmt4
+      '@codemirror/autocomplete': 6.4.2_lc2v3dpzp2l5pdzwtgfaudkm3e
       '@codemirror/commands': 6.2.1
       '@codemirror/lang-javascript': 6.1.4
       '@codemirror/language': 6.6.0
@@ -9337,7 +9335,7 @@ packages:
       '@codemirror/state': '>=6.0.0'
       '@codemirror/view': '>=6.0.0'
     dependencies:
-      '@codemirror/autocomplete': 6.4.0_4brt7ssv37vk5p4hmzax5oqmt4
+      '@codemirror/autocomplete': 6.4.0_lc2v3dpzp2l5pdzwtgfaudkm3e
       '@codemirror/commands': 6.2.0
       '@codemirror/language': 6.4.0
       '@codemirror/lint': 6.2.0
@@ -9357,7 +9355,7 @@ packages:
       '@codemirror/state': '>=6.0.0'
       '@codemirror/view': '>=6.0.0'
     dependencies:
-      '@codemirror/autocomplete': 6.4.2_4brt7ssv37vk5p4hmzax5oqmt4
+      '@codemirror/autocomplete': 6.4.2_lc2v3dpzp2l5pdzwtgfaudkm3e
       '@codemirror/commands': 6.2.1
       '@codemirror/language': 6.6.0
       '@codemirror/lint': 6.2.0

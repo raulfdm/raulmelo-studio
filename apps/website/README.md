@@ -24,7 +24,7 @@ NEXT_PUBLIC_ALGOLIA_INDEX_NAME=xxx
 ### Fonts
 
 - Fira Code 400,600
-- Proxima Nova 300, 400, 700, 800, 900
+- Inter 300, 400, 700, 800, 900
 
 ### Theming
 
