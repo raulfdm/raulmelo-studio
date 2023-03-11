@@ -40,7 +40,9 @@ const config = {
     svelte(),
   ],
   output: `server`,
-  adapter: vercel({}),
+  adapter: vercel({
+    analytics: true,
+  }),
   vite: {
     ssr: {
       external: [`@raulmelo/core`, `@raulmelo/ui`, `@formatjs/intl`],
