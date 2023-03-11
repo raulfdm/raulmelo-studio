@@ -264,6 +264,7 @@ importers:
   apps/website-astro:
     specifiers:
       '@astrojs/image': 0.16.0
+      '@astrojs/partytown': 1.1.0
       '@astrojs/prefetch': 0.2.0
       '@astrojs/react': 2.1.0
       '@astrojs/rss': 2.2.0
@@ -325,6 +326,7 @@ importers:
       zod: 3.21.4
     dependencies:
       '@astrojs/image': 0.16.0_astro@2.1.2+sharp@0.31.3
+      '@astrojs/partytown': 1.1.0
       '@astrojs/prefetch': 0.2.0
       '@astrojs/react': 2.1.0_3xleytyzprlgycb2ded54tx72i
       '@astrojs/rss': 2.2.0
@@ -384,7 +386,7 @@ importers:
       '@types/flat': 5.0.2
       '@types/lodash.defaultsdeep': 4.6.7
       '@types/negotiator': 0.6.1
-      '@xstate/cli': 0.4.2_prettier@2.8.4
+      '@xstate/cli': 0.4.2_prettier@2.8.1
 
   apps/website-remix:
     specifiers:
@@ -1039,6 +1041,13 @@ packages:
       vfile: 5.3.7
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@astrojs/partytown/1.1.0:
+    resolution: {integrity: sha512-2cO2MuK8KEWRIsYyAkxopSL7Q5aB3ra+HTkk0umNUwAKVEZWZdDtYifdztU7WFYIlV/6t+2191MvBTqTcnenJQ==}
+    dependencies:
+      '@builder.io/partytown': 0.7.5
+      mrmime: 1.0.1
     dev: false
 
   /@astrojs/prefetch/0.2.0:
@@ -3068,6 +3077,11 @@ packages:
   /@bcoe/v8-coverage/0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
+
+  /@builder.io/partytown/0.7.5:
+    resolution: {integrity: sha512-Zbr2Eo0AQ4yzmQr/36/h+6LKjmdVBB3Q5cGzO6rtlIKB/IOpbQVUZW+XAnhpJmJr9sIF97OZjgbhG9k7Sjn4yw==}
+    hasBin: true
+    dev: false
 
   /@cnakazawa/watch/1.0.4:
     resolution: {integrity: sha512-v9kIhKwjeZThiWrLmj0y17CWoyddASLj9O2yvbZkbvw/N3rWOYy9zkV66ursAoVr0mV15bL8g0c4QZUE6cdDoQ==}
@@ -10011,6 +10025,21 @@ packages:
       - supports-color
     dev: true
 
+  /@xstate/cli/0.4.2_prettier@2.8.1:
+    resolution: {integrity: sha512-lxj7YrpCl3azlzHO98oBp+qklKUvkw3AjWG815pVyNNf5Wm7JunYtPkGiqif6wCg1K/7V0x8cMdLzxhFkKBk9w==}
+    hasBin: true
+    dependencies:
+      '@babel/core': 7.21.0
+      '@xstate/machine-extractor': 0.9.0_xstate@4.37.0
+      '@xstate/tools-shared': 2.0.2_zrhzzrj2kqlcfr3recrjhrbbuu
+      chokidar: 3.5.3
+      commander: 8.3.0
+      xstate: 4.37.0
+    transitivePeerDependencies:
+      - prettier
+      - supports-color
+    dev: true
+
   /@xstate/cli/0.4.2_prettier@2.8.3:
     resolution: {integrity: sha512-lxj7YrpCl3azlzHO98oBp+qklKUvkw3AjWG815pVyNNf5Wm7JunYtPkGiqif6wCg1K/7V0x8cMdLzxhFkKBk9w==}
     hasBin: true
@@ -10202,6 +10231,19 @@ packages:
       xstate: 4.37.0
     transitivePeerDependencies:
       - supports-color
+
+  /@xstate/tools-shared/2.0.2_zrhzzrj2kqlcfr3recrjhrbbuu:
+    resolution: {integrity: sha512-Lg8RD19Jq62M8KsnSF8Tenqo0a8/j7eqzHCpxG7ewc9PklkOcLvOWN4rrGTtYG5zkxJNQTXq8kt2x0TsWwnumQ==}
+    peerDependencies:
+      prettier: ^2.3.1
+      xstate: ^4
+    dependencies:
+      '@xstate/machine-extractor': 0.9.0_xstate@4.37.0
+      prettier: 2.8.1
+      xstate: 4.37.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
 
   /@xtuc/ieee754/1.2.0:
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
