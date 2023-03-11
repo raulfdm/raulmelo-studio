@@ -1,33 +1,13 @@
 ---
+import '@fontsource/fira-code';
+
 import Layout, { type Props as LayoutProps } from './Layout.astro';
 
 type Props = LayoutProps;
 
 const { title, seo } = Astro.props;
-const { links = [], ...restSeo } = seo || {};
 ---
 
-<Layout
-  title={title}
-  seo={{
-    ...restSeo,
-    links: [
-      {
-        rel: `preconnect`,
-        href: `https://fonts.gstatic.com`,
-        crossorigin: `true`,
-      },
-      {
-        rel: `preconnect`,
-        href: `https://fonts.googleapis.com`,
-      },
-      {
-        rel: `stylesheet`,
-        href: `https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap`,
-      },
-      ...links,
-    ],
-  }}
->
+<Layout title={title} seo={seo}>
   <slot />
 </Layout>
