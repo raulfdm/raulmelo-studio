@@ -44,7 +44,7 @@ const seoTwitterInfo = siteData.socials.find(
 )!;
 
 const imageUrl = image ? image.url! : siteData.site.seoImage.url;
-const nextTitle = title || siteData.personalInformation.fullName;
+const nextTitle = title || langSeo.title;
 const nextDescription = description || langSeo.description;
 const nextImage = image || {
   url: siteData.site.seoImage.url,
@@ -119,7 +119,7 @@ const articleJsonLD = nextArticle
 <SEO
   nofollow={nofollow}
   noindex={noindex}
-  titleDefault={langSeo.title}
+  title={nextTitle}
   titleTemplate={`%s · ${siteData.personalInformation.fullName}`}
   description={nextDescription}
   canonical={Astro.url.href}
