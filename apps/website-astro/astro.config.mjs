@@ -1,4 +1,5 @@
 import image from '@astrojs/image';
+import partytown from '@astrojs/partytown';
 import prefetch from '@astrojs/prefetch';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
@@ -11,6 +12,7 @@ import robotsTxt from 'astro-robots-txt';
 // https://astro.build/config
 const config = {
   integrations: [
+    partytown(),
     tailwind(),
     react(),
     image({
@@ -51,7 +53,9 @@ const config = {
   },
 };
 
-if (process.env.VERCEL_URL) {
+if (process.env.VERCEL_ENV === `production`) {
+  config.site = `https://raulmelo-astro.vercel.app`;
+} else if (process.env.VERCEL_URL) {
   config.site = `https://${process.env.VERCEL_URL}`;
 }
 

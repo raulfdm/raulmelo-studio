@@ -127,7 +127,10 @@ const articleJsonLD = nextArticle
   twitter={defaultTwitter}
   extend={{
     link: [
-      { rel: `manifest`, href: sanitizeUrl(`${Astro.site}/site.webmanifest`) },
+      {
+        rel: `manifest`,
+        href: sanitizeUrl(`${Astro.site ?? ``}/site.webmanifest`),
+      },
       {
         rel: `mask-icon`,
         href: `/safari-pinned-tab.svg`,

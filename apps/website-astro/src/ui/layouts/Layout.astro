@@ -22,6 +22,8 @@ import { sanitizeUrl } from '@/infrastructure/utils/url';
 import DefaultSEO, { type Props as SeoProps } from '@/ui/DefaultSEO.astro';
 import { MenuBar } from '@/ui/MenuBar';
 
+import GoogleAnalytics from '../GoogleAnalytics.astro';
+
 const { title, seo, lang } = Astro.props;
 
 const { lang: langFromParams } = Astro.params as { lang: SupportedLanguages };
@@ -32,13 +34,14 @@ const nextLang = lang || langFromParams;
 <!DOCTYPE html>
 <html lang={nextLang}>
   <head>
+    <GoogleAnalytics />
     <!-- Base -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link
       rel="icon"
       type="image/svg+xml"
-      href={sanitizeUrl(`${Astro.site}/favicon.ico`)}
+      href={sanitizeUrl(`${Astro.site ?? ``}/favicon.ico`)}
     />
     <meta name="generator" content={Astro.generator} />
     <!-- Base-end -->
