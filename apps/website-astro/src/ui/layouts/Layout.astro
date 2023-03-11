@@ -7,6 +7,11 @@ export type Props = {
   lang?: SupportedLanguages;
 };
 
+import '@fontsource/inter/300.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/inter/800.css';
+import '@fontsource/inter/900.css';
 import '@raulmelo/ui/styles/prism.css';
 import '@raulmelo/ui/styles/style.css';
 import '@raulmelo/styles/lib/styles.css';
@@ -41,11 +46,6 @@ const nextLang = lang || langFromParams;
     <!-- SEO -->
     <DefaultSEO title={title} lang={nextLang} {...seo} />
     <!-- SEO-end -->
-
-    <!-- Proxima Nova Font -->
-    <link rel="stylesheet" href="https://use.typekit.net/rsd6fwc.css" />
-    <!-- Proxima Nova Font-end -->
-
     <!-- Theme Script -->
     <script is:inline>
       const theme = (() => {
