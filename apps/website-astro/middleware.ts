@@ -67,6 +67,6 @@ function normalizePathname(pathname: string) {
 export const config = {
   matcher: [
     // eslint-disable-next-line @typescript-eslint/quotes
-    '/((?!api|favicon.ico|assets|_astro|_image|_next|build|@fs|@vite).*)',
+    '/((?!api|favicon|assets|_astro|_image|_next|build|@fs|@vite|_vercel|site.webmanifest).*)',
   ],
 };
