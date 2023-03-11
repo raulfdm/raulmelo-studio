@@ -53,7 +53,9 @@ const config = {
   },
 };
 
-if (process.env.VERCEL_URL) {
+if (process.env.VERCEL_ENV === `production`) {
+  config.site = `https://raulmelo-astro.vercel.app`;
+} else if (process.env.VERCEL_URL) {
   config.site = `https://${process.env.VERCEL_URL}`;
 }
 
