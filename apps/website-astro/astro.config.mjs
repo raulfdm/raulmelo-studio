@@ -8,15 +8,8 @@ import vercel from '@astrojs/vercel/serverless';
 import { defineConfig } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 
-let site = `http://localhost:3000`;
-
-if (process.env.VERCEL_URL) {
-  site = `https://${process.env.VERCEL_URL}`;
-}
-
 // https://astro.build/config
-export default defineConfig({
-  site,
+const config = {
   integrations: [
     tailwind(),
     react(),
@@ -54,4 +47,10 @@ export default defineConfig({
       noExternal: [`@raulmelo/styles`],
     },
   },
-});
+};
+
+if (process.env.VERCEL_URL) {
+  config.site = `https://${process.env.VERCEL_URL}`;
+}
+
+export default defineConfig(config);
