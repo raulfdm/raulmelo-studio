@@ -9,6 +9,8 @@
   import { getPathnameWithoutLocale } from '@/infrastructure/utils/url';
   import { type SupportedLanguages } from '@raulmelo/core/config';
 
+  export let ariaLabel: string;
+
   const [popperRef, popperContent] = createPopperActions();
 
   const popperOptions = {
@@ -36,7 +38,11 @@
 </script>
 
 <Popover>
-  <PopoverButton use={[popperRef]} class="flex p-2 place-content-center">
+  <PopoverButton
+    use={[popperRef]}
+    class="flex p-2 place-content-center"
+    aria-label={ariaLabel}
+  >
     <IconWorld class="w-6" />
   </PopoverButton>
   <PopoverPanel

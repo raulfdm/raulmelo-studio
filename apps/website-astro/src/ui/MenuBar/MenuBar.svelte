@@ -50,9 +50,17 @@
     <section
       class="flex items-center justify-end col-span-2 space-x-3 md:col-end-9 lg:col-end-13"
     >
-      <MenuBarThemeSwitch />
+      <MenuBarThemeSwitch
+        ariaLabel={intl.formatMessage({
+          id: `menu.themeButtonAriaLabel`,
+        })}
+      />
       {#if !shouldHideLanguage()}
-        <MenuBarLanguageSwitch />
+        <MenuBarLanguageSwitch
+          ariaLabel={intl.formatMessage({
+            id: `menu.languageButtonAriaLabel`,
+          })}
+        />
       {/if}
       <MenuBarSideMenuButton
         ariaLabel={intl.formatMessage({

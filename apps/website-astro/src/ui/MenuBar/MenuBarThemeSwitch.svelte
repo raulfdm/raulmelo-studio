@@ -3,6 +3,8 @@
   import { IconMoon, IconSun } from '@tabler/icons-svelte';
   import MenuBarButton from './MenuBarButton.svelte';
 
+  export let ariaLabel: string;
+
   let theme = 'light';
   $: nextTheme = theme === 'light' ? 'dark' : 'light';
 
@@ -25,7 +27,11 @@
   }
 </script>
 
-<MenuBarButton on:click={handleClick} data-testid="theme-switch">
+<MenuBarButton
+  on:click={handleClick}
+  data-testid="theme-switch"
+  aria-label={ariaLabel}
+>
   {#if theme === 'light'}
     <IconMoon class="w-6" />
   {:else}
