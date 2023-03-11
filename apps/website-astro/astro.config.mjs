@@ -8,7 +8,7 @@ import vercel from '@astrojs/vercel/serverless';
 import { defineConfig } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 
-let site = `https://localhost:3000`;
+let site = `http://localhost:3000`;
 
 if (process.env.VERCEL_URL) {
   site = `https://${process.env.VERCEL_URL}`;
