@@ -388,11 +388,11 @@ importers:
       '@types/flat': 5.0.2
       '@types/lodash.defaultsdeep': 4.6.7
       '@types/negotiator': 0.6.1
-      '@xstate/cli': 0.4.2_prettier@2.8.1
+      '@xstate/cli': 0.4.2_prettier@2.8.4
 
   apps/website-remix:
     specifiers:
-      '@formatjs/intl': 2.6.3
+      '@formatjs/intl': 2.6.7
       '@headlessui/react': 1.7.7
       '@portabletext/react': 2.0.0
       '@raulmelo/core': workspace:*
@@ -448,7 +448,7 @@ importers:
       vitest: 0.27.2
       xstate: 4.35.2
     dependencies:
-      '@formatjs/intl': 2.6.3_typescript@4.9.4
+      '@formatjs/intl': 2.6.7_typescript@4.9.4
       '@headlessui/react': 1.7.7_biqbaboplfbrettd7655fr4n2y
       '@portabletext/react': 2.0.0_react@18.2.0
       '@raulmelo/core': link:../../packages/core
@@ -4201,7 +4201,25 @@ packages:
       '@formatjs/intl-displaynames': 6.2.3
       '@formatjs/intl-listformat': 7.1.7
       intl-messageformat: 10.2.5
-      tslib: 2.4.1
+      tslib: 2.5.0
+      typescript: 4.9.4
+    dev: false
+
+  /@formatjs/intl/2.6.7_typescript@4.9.4:
+    resolution: {integrity: sha512-9FvEJfUMzlmP5ZBK3EE0928kVsZmD5aeWXg+faP8+mKIvG3c0hkLEXQ2MiUrXQt4rsEzOPbYVtBdthzSM0e2fw==}
+    peerDependencies:
+      typescript: ^4.7
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@formatjs/ecma402-abstract': 1.14.3
+      '@formatjs/fast-memoize': 1.2.8
+      '@formatjs/icu-messageformat-parser': 2.3.0
+      '@formatjs/intl-displaynames': 6.2.6
+      '@formatjs/intl-listformat': 7.1.9
+      intl-messageformat: 10.3.1
+      tslib: 2.5.0
       typescript: 4.9.4
     dev: false
 
@@ -10027,21 +10045,6 @@ packages:
       - supports-color
     dev: true
 
-  /@xstate/cli/0.4.2_prettier@2.8.1:
-    resolution: {integrity: sha512-lxj7YrpCl3azlzHO98oBp+qklKUvkw3AjWG815pVyNNf5Wm7JunYtPkGiqif6wCg1K/7V0x8cMdLzxhFkKBk9w==}
-    hasBin: true
-    dependencies:
-      '@babel/core': 7.21.0
-      '@xstate/machine-extractor': 0.9.0_xstate@4.37.0
-      '@xstate/tools-shared': 2.0.2_zrhzzrj2kqlcfr3recrjhrbbuu
-      chokidar: 3.5.3
-      commander: 8.3.0
-      xstate: 4.37.0
-    transitivePeerDependencies:
-      - prettier
-      - supports-color
-    dev: true
-
   /@xstate/cli/0.4.2_prettier@2.8.3:
     resolution: {integrity: sha512-lxj7YrpCl3azlzHO98oBp+qklKUvkw3AjWG815pVyNNf5Wm7JunYtPkGiqif6wCg1K/7V0x8cMdLzxhFkKBk9w==}
     hasBin: true
@@ -10233,19 +10236,6 @@ packages:
       xstate: 4.37.0
     transitivePeerDependencies:
       - supports-color
-
-  /@xstate/tools-shared/2.0.2_zrhzzrj2kqlcfr3recrjhrbbuu:
-    resolution: {integrity: sha512-Lg8RD19Jq62M8KsnSF8Tenqo0a8/j7eqzHCpxG7ewc9PklkOcLvOWN4rrGTtYG5zkxJNQTXq8kt2x0TsWwnumQ==}
-    peerDependencies:
-      prettier: ^2.3.1
-      xstate: ^4
-    dependencies:
-      '@xstate/machine-extractor': 0.9.0_xstate@4.37.0
-      prettier: 2.8.1
-      xstate: 4.37.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
 
   /@xtuc/ieee754/1.2.0:
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
