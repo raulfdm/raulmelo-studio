@@ -4,6 +4,7 @@ import { deskTool } from 'sanity/desk';
 import { media } from 'sanity-plugin-media';
 
 import { deskStructure } from './deskStructure';
+import { defaultDocumentNode } from './previewDocumentNode';
 import { schema } from './schemas';
 
 export const sanityBaseConfig: Config = {
@@ -13,6 +14,7 @@ export const sanityBaseConfig: Config = {
 
   plugins: [
     deskTool({
+      defaultDocumentNode,
       structure: deskStructure,
     }),
     media(),
