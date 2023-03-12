@@ -1,5 +1,33 @@
----
-import { DotDivider } from '@raulmelo/ui';
----
+<div class="divider" role="separator" data-testid="dot-divider">
+  <div class="dot" aria-hidden="true"></div>
+  <div class="dot" aria-hidden="true"></div>
+  <div class="dot" aria-hidden="true"></div>
+</div>
 
-<DotDivider />
+<style lang="postcss">
+  .divider {
+    @apply flex justify-center space-x-3;
+    @apply my-[3.111em] md:my-[2.8em] lg:my-[3em];
+  }
+  .dot {
+    @apply w-1.5 h-1.5 lg:w-2 lg:h-2;
+    @apply rounded-full;
+
+    --hr-color: var(--color-secondary);
+    background-color: var(--hr-color);
+
+    /* IE and Legacy Edge */
+    @media screen and (-ms-high-contrast: active) {
+      --hr-color: windowText;
+    }
+    /* Using the new standards for forced colors, currently supported in Chromium Edge */
+    @media screen and (forced-colors: active) {
+      --hr-color: CanvasText;
+    }
+
+    /* For all variants, we need this: */
+    & + * {
+      margin-top: 0;
+    }
+  }
+</style>

@@ -2,7 +2,7 @@
 import { type SupportedLanguages } from '@raulmelo/core/config';
 import { queryPostBySlug } from '@raulmelo/core/domains';
 import { getEstimatedReadingTime, isEmpty, isNil } from '@raulmelo/core/utils';
-import { DotDivider, ProseContainer } from '@raulmelo/ui';
+import { ProseContainer } from '@raulmelo/ui';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { getTagUrl } from '@/infrastructure/utils/url';
@@ -14,6 +14,7 @@ import { Tag, Tags } from '@/ui/Tags';
 
 import FeaturedImage from './_ui/FeaturedImage.astro';
 import SeriesSection from './_ui/SeriesSection.svelte';
+import Divider from '@/ui/PortableText/Divider.astro';
 
 const { lang, slug } = Astro.params as {
   slug: string;
@@ -112,7 +113,7 @@ const intl = getIntl(lang);
     {
       post.series ? (
         <>
-          <DotDivider />
+          <Divider />
           <SeriesSection
             series={post.series}
             currentPostId={post._id}
