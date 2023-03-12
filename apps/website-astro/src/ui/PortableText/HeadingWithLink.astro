@@ -1,0 +1,53 @@
+---
+import { IconHash } from '@tabler/icons-svelte';
+import slugify from 'slugify';
+
+const { node } = Astro.props as {
+  node: {
+    style: 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+    children: {
+      text: string;
+    }[];
+  };
+};
+
+const Component = node.style as any;
+
+const [child] = node.children;
+
+const slug = slugify(child.text, {
+  lower: true,
+  strict: true,
+});
+
+/**
+ * This is just to stop weird errors about "props not being passed
+ * to the component"
+ */
+const iconProps = {} as any;
+---
+
+<Component id={slug} class="heading">
+  {child.text}
+  <a href={`#${slug}`} class="grid place-items-center"
+    ><IconHash {...iconProps} /></a
+  >
+</Component>
+
+<style>
+  .heading {
+    display: flex;
+  }
+
+  .heading a {
+    font-size: 0.9em;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(-0.2ex);
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .heading:hover a {
+    opacity: 1;
+  }
+</style>

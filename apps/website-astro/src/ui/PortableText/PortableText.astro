@@ -6,6 +6,7 @@ import CodeBlock from './CodeBlock.astro';
 import CodePen from './CodePen.astro';
 import Divider from './Divider.astro';
 import Gif from './Gif.astro';
+import HeadingWithLink from './HeadingWithLink.astro';
 import Highlight from './Highlight.astro';
 import Image from './Image.astro';
 import ImageSlider from './ImageSlider.astro';
@@ -41,6 +42,11 @@ const components = {
     internalLink: InternalLink,
   },
   block: {
+    h2: HeadingWithLink,
+    h3: HeadingWithLink,
+    h4: HeadingWithLink,
+    h5: HeadingWithLink,
+    h6: HeadingWithLink,
     bigQuote: BigQuote,
   },
 } as any;
