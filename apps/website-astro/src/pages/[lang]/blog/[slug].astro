@@ -1,13 +1,13 @@
 ---
 import { type SupportedLanguages } from '@raulmelo/core/config';
-import { queryPostBySlug, queryPosts } from '@raulmelo/core/domains';
+import { queryPostBySlug } from '@raulmelo/core/domains';
 import { getEstimatedReadingTime, isEmpty, isNil } from '@raulmelo/core/utils';
 import { DotDivider, ProseContainer } from '@raulmelo/ui';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { getTagUrl } from '@/infrastructure/utils/url';
 import PostLayout from '@/ui/layouts/PostLayout.astro';
-import PortableText from '@/ui/PortableText/PortableText.astro';
+import { PortableText } from '@/ui/PortableText';
 import PostHeading from '@/ui/PostHeading.astro';
 import { ShareContent } from '@/ui/ShareContent';
 import { Tag, Tags } from '@/ui/Tags';
