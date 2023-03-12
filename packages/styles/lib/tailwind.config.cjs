@@ -17,6 +17,7 @@ module.exports = {
     },
     fontFamily: {
       sans: ['"proxima-nova"', ...defaultTheme.fontFamily.sans],
+      code: ['"Fira Code"', ...defaultTheme.fontFamily.mono],
     },
     extend: {
       colors: {
