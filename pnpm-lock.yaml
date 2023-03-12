@@ -157,7 +157,7 @@ importers:
   apps/website:
     specifiers:
       '@babel/eslint-parser': 7.19.1
-      '@headlessui/react': 1.7.5
+      '@headlessui/react': 1.7.13
       '@next/bundle-analyzer': 13.0.7
       '@popperjs/core': 2.11.6
       '@portabletext/react': 2.0.0
@@ -208,7 +208,7 @@ importers:
       typescript: 4.9.4
       xstate: 4.35.0
     dependencies:
-      '@headlessui/react': 1.7.5_biqbaboplfbrettd7655fr4n2y
+      '@headlessui/react': 1.7.13_biqbaboplfbrettd7655fr4n2y
       '@popperjs/core': 2.11.6
       '@portabletext/react': 2.0.0_react@18.2.0
       '@raulmelo/core': link:../../packages/core
@@ -276,7 +276,7 @@ importers:
       '@fontsource/inter': 4.5.15
       '@formatjs/intl': 2.6.7
       '@formatjs/intl-localematcher': 0.2.32
-      '@headlessui/react': 1.7.12
+      '@headlessui/react': 1.7.13
       '@raulmelo/core': workspace:*
       '@raulmelo/refractor': workspace:*
       '@raulmelo/sanity-core': workspace:*
@@ -339,7 +339,7 @@ importers:
       '@fontsource/inter': 4.5.15
       '@formatjs/intl': 2.6.7_typescript@4.9.5
       '@formatjs/intl-localematcher': 0.2.32
-      '@headlessui/react': 1.7.12_biqbaboplfbrettd7655fr4n2y
+      '@headlessui/react': 1.7.13_biqbaboplfbrettd7655fr4n2y
       '@raulmelo/core': link:../../packages/core
       '@raulmelo/refractor': link:../../packages/refractor
       '@raulmelo/sanity-core': link:../../packages/sanity-core
@@ -388,12 +388,12 @@ importers:
       '@types/flat': 5.0.2
       '@types/lodash.defaultsdeep': 4.6.7
       '@types/negotiator': 0.6.1
-      '@xstate/cli': 0.4.2_prettier@2.8.1
+      '@xstate/cli': 0.4.2_prettier@2.8.4
 
   apps/website-remix:
     specifiers:
       '@formatjs/intl': 2.6.3
-      '@headlessui/react': 1.7.7
+      '@headlessui/react': 1.7.13
       '@portabletext/react': 2.0.0
       '@raulmelo/core': workspace:*
       '@raulmelo/sanity-core': workspace:*
@@ -449,7 +449,7 @@ importers:
       xstate: 4.35.2
     dependencies:
       '@formatjs/intl': 2.6.3_typescript@4.9.4
-      '@headlessui/react': 1.7.7_biqbaboplfbrettd7655fr4n2y
+      '@headlessui/react': 1.7.13_biqbaboplfbrettd7655fr4n2y
       '@portabletext/react': 2.0.0_react@18.2.0
       '@raulmelo/core': link:../../packages/core
       '@raulmelo/sanity-core': link:../../packages/sanity-core
@@ -4227,32 +4227,8 @@ packages:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
     dev: true
 
-  /@headlessui/react/1.7.12_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-FhSx5V+Qp0GvbTpaxyS+ymGDDNntCacClWsk/d8Upbr19g3AsPbjfPk4+m2CgJGcuCB5Dz7LpUIOAbvQTyjL2g==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      react: ^16 || ^17 || ^18
-      react-dom: ^16 || ^17 || ^18
-    dependencies:
-      client-only: 0.0.1
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    dev: false
-
-  /@headlessui/react/1.7.5_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-UZSxOfA0CYKO7QDT5OGlFvesvlR1SKkawwSjwQJwt7XQItpzRKdE3ZUQxHcg4LEz3C0Wler2s9psdb872ynwrQ==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      react: ^16 || ^17 || ^18
-      react-dom: ^16 || ^17 || ^18
-    dependencies:
-      client-only: 0.0.1
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    dev: false
-
-  /@headlessui/react/1.7.7_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-BqDOd/tB9u2tA0T3Z0fn18ktw+KbVwMnkxxsGPIH2hzssrQhKB5n/6StZOyvLYP/FsYtvuXfi9I0YowKPv2c1w==}
+  /@headlessui/react/1.7.13_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-9n+EQKRtD9266xIHXdY5MfiXPDfYwl7zBM7KOx2Ae3Gdgxy8QML1FkCMjq6AsOf0l6N9uvI4HcFtuFlenaldKg==}
     engines: {node: '>=10'}
     peerDependencies:
       react: ^16 || ^17 || ^18
@@ -10027,21 +10003,6 @@ packages:
       - supports-color
     dev: true
 
-  /@xstate/cli/0.4.2_prettier@2.8.1:
-    resolution: {integrity: sha512-lxj7YrpCl3azlzHO98oBp+qklKUvkw3AjWG815pVyNNf5Wm7JunYtPkGiqif6wCg1K/7V0x8cMdLzxhFkKBk9w==}
-    hasBin: true
-    dependencies:
-      '@babel/core': 7.21.0
-      '@xstate/machine-extractor': 0.9.0_xstate@4.37.0
-      '@xstate/tools-shared': 2.0.2_zrhzzrj2kqlcfr3recrjhrbbuu
-      chokidar: 3.5.3
-      commander: 8.3.0
-      xstate: 4.37.0
-    transitivePeerDependencies:
-      - prettier
-      - supports-color
-    dev: true
-
   /@xstate/cli/0.4.2_prettier@2.8.3:
     resolution: {integrity: sha512-lxj7YrpCl3azlzHO98oBp+qklKUvkw3AjWG815pVyNNf5Wm7JunYtPkGiqif6wCg1K/7V0x8cMdLzxhFkKBk9w==}
     hasBin: true
@@ -10233,19 +10194,6 @@ packages:
       xstate: 4.37.0
     transitivePeerDependencies:
       - supports-color
-
-  /@xstate/tools-shared/2.0.2_zrhzzrj2kqlcfr3recrjhrbbuu:
-    resolution: {integrity: sha512-Lg8RD19Jq62M8KsnSF8Tenqo0a8/j7eqzHCpxG7ewc9PklkOcLvOWN4rrGTtYG5zkxJNQTXq8kt2x0TsWwnumQ==}
-    peerDependencies:
-      prettier: ^2.3.1
-      xstate: ^4
-    dependencies:
-      '@xstate/machine-extractor': 0.9.0_xstate@4.37.0
-      prettier: 2.8.1
-      xstate: 4.37.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
 
   /@xtuc/ieee754/1.2.0:
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
