@@ -1,4 +1,4 @@
-import { Highlight, HighlightIcon } from '@raulmelo/ui';
+import { HighlightIcon } from '@raulmelo/ui';
 import { type ReactNode } from 'react';
 
 export const highlightMarkerField = {
@@ -11,7 +11,7 @@ export const highlightMarkerField = {
       </div>
     ),
     render: ({ children }: { children: ReactNode }) => {
-      return <Highlight>{children}</Highlight>;
+      return <span>`{children}`</span>;
     },
   },
 };
