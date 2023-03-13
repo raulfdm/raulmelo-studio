@@ -12,4 +12,5 @@ export const sanityClient = createClient({
   apiVersion: `v1`,
   useCdn: true,
   token: import.meta.env.SANITY_TOKEN,
+  allowReconfigure: true,
 });

@@ -8,12 +8,17 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (
 ) => {
   switch (schemaType) {
     case `post`:
+    case `til`:
       return S.document().views([
         S.view.form(),
         S.view
           .component(Iframe)
           .options({
             url: (doc: SanityDocument) => getPreviewUrl(doc),
+            reload: {
+              button: true,
+              revision: 600, // delay (in ms) before the automatic reload on document revision
+            },
           })
           .title(`Preview`),
       ]);

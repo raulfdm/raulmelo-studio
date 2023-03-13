@@ -8,58 +8,80 @@ import { supportedLanguagesSchema } from '@/config';
 type QueryTilBySlugParams = {
   slug: string;
   client: SanityClient;
+  preview?: boolean;
 };
 
-export async function queryTilBySlug({ slug, client }: QueryTilBySlugParams) {
-  const result = await client.fetch(tilBySlugQuery, {
+export async function queryTilBySlug({
+  slug,
+  client,
+  preview = false,
+}: QueryTilBySlugParams) {
+  const extendedClient = client.withConfig({ useCdn: !preview });
+
+  const query = getQuery(preview);
+
+  const result = await extendedClient.fetch(query, {
     slug,
+    preview,
   });
 
-  return tilBySlugSchema.parse(result);
+  const parseResult = tilBySlugSchema.safeParse(result);
+
+  if (!parseResult.success) {
+    return null;
+  }
+
+  return parseResult.data;
 }
 
 export type QueryTilBySlugReturnType = Awaited<
   ReturnType<typeof queryTilBySlug>
 >;
 
-const tilBySlugQuery = groq`
-*[_type=="til" && slug.current == $slug && !(_id in path('drafts.**'))][0]{
-  _id,
-  publishedAt,
-  title,
-  language,
-  content[]{
-    ...,
-    "image": image.asset ->{
-      url,
-      "width": metadata.dimensions.width,
-      "height": metadata.dimensions.height,
-    },
-    markDefs[]{
+function getQuery(preview: boolean) {
+  const previewCondition = preview
+    ? `(_id in path('drafts.**'))`
+    : `!(_id in path('drafts.**'))`;
+
+  return groq`
+  *[_type=="til" && slug.current == $slug && ${previewCondition}][0]{
+    _id,
+    publishedAt,
+    title,
+    language,
+    content[]{
       ...,
-      _type == "internalLink" => {
-      ...,
-      "itemMeta": @.item -> {
-        "slug": slug.current,
-        _type
+      "image": image.asset ->{
+        url,
+        "width": metadata.dimensions.width,
+        "height": metadata.dimensions.height,
       },
-    },
-    _type == "detailedImage" => {
+      markDefs[]{
         ...,
-        "image": @.image -> {
-          ...
+        _type == "internalLink" => {
+        ...,
+        "itemMeta": @.item -> {
+          "slug": slug.current,
+          _type
+        },
+      },
+      _type == "detailedImage" => {
+          ...,
+          "image": @.image -> {
+            ...
+          }
         }
       }
+    },
+    "slug": slug.current,
+    "tags": tags[]->{
+      _id,
+      name,
+      "slug": slug.current 
     }
-  },
-  "slug": slug.current,
-  "tags": tags[]->{
-    _id,
-    name,
-    "slug": slug.current 
   }
+  `;
 }
-`;
 
 const tagSchema = z.object({
   _id: z.string(),
