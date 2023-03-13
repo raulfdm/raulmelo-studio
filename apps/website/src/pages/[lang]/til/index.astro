@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { sanityClient } from '@/infrastructure/sanity/client';
 import Layout from '@/ui/layouts/Layout.astro';
 
 import Tils from './_ui/Tils.svelte';
@@ -14,7 +15,10 @@ export const getStaticPaths = languageGetStaticPaths;
 
 const { lang } = Astro.params as { lang: SupportedLanguages };
 
-const tils = await queryTils(lang as SupportedLanguages);
+const tils = await queryTils({
+  language: lang,
+  client: sanityClient,
+});
 
 const intl = getIntl(lang);
 

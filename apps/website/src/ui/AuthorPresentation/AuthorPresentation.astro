@@ -4,11 +4,14 @@ import { type SupportedLanguages } from '@raulmelo/core/config';
 import { querySiteData } from '@raulmelo/core/domains';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { sanityClient } from '@/infrastructure/sanity/client';
 
 import AuthorPresentation from './AuthorPresentation.svelte';
 
 const { lang } = Astro.params as { lang: SupportedLanguages };
-const siteData = await querySiteData();
+const siteData = await querySiteData({
+  client: sanityClient,
+});
 const intl = getIntl(lang);
 ---
 

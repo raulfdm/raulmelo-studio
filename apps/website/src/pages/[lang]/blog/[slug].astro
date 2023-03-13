@@ -5,6 +5,7 @@ import { getEstimatedReadingTime, isEmpty, isNil } from '@raulmelo/core/utils';
 import { DotDivider, ProseContainer } from '@raulmelo/ui';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { sanityClient } from '@/infrastructure/sanity/client';
 import { getTagUrl } from '@/infrastructure/utils/url';
 import PostLayout from '@/ui/layouts/PostLayout.astro';
 import { PortableText } from '@/ui/PortableText';
@@ -20,7 +21,11 @@ const { lang, slug } = Astro.params as {
   lang: SupportedLanguages;
 };
 
-const post = await queryPostBySlug(slug);
+const post = await queryPostBySlug({
+  slug,
+  client: sanityClient,
+  preview: Astro.url.searchParams.get(`preview`) !== null,
+});
 
 if (isNil(post) || isEmpty(post)) {
   return {

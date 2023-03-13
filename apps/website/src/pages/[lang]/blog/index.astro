@@ -4,6 +4,7 @@ import { queryPosts } from '@raulmelo/core/domains';
 
 import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { sanityClient } from '@/infrastructure/sanity/client';
 import Layout from '@/ui/layouts/Layout.astro';
 
 import Posts from './_ui/Posts.svelte';
@@ -13,7 +14,10 @@ export const getStaticPaths = languageGetStaticPaths;
 
 const { lang } = Astro.params as { lang: SupportedLanguages };
 
-const posts = await queryPosts(lang as SupportedLanguages);
+const posts = await queryPosts({
+  language: lang,
+  client: sanityClient,
+});
 
 const intl = getIntl(lang);
 ---
