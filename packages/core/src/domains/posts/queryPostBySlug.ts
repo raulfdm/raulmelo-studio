@@ -1,10 +1,16 @@
 import type { PortableTextBlock } from '@portabletext/types';
+import { type SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import { client, supportedLanguagesSchema } from '@/config';
+import { supportedLanguagesSchema } from '@/config';
 
-export async function queryPostBySlug(slug: string) {
+type QueryPostBySlugParams = {
+  slug: string;
+  client: SanityClient;
+};
+
+export async function queryPostBySlug({ slug, client }: QueryPostBySlugParams) {
   const result = await client.fetch(postQuery, {
     slug,
   });

@@ -1,9 +1,14 @@
+import { type SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import { client, supportedLanguagesSchema } from '@/config';
+import { supportedLanguagesSchema } from '@/config';
 
-export async function querySiteData() {
+type QuerySiteDataParams = {
+  client: SanityClient;
+};
+
+export async function querySiteData({ client }: QuerySiteDataParams) {
   const [defaultSeoPt, defaultSeoEn, personalInformation, site, socials] =
     await Promise.all([
       client.fetch(defaultSeoQuery, { language: 'pt' }),
