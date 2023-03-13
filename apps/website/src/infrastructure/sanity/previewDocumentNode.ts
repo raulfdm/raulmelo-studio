@@ -40,5 +40,5 @@ function getPreviewUrl(doc: SanityDocument) {
     url += `/til`;
   }
 
-  return `${url}/${docSlug.current}`;
+  return `${url}/${docSlug.current}?preview=true`;
 }

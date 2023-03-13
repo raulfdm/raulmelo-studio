@@ -3,7 +3,7 @@ import { createClient } from '@sanity/client';
 import { config } from './config';
 
 if (!import.meta.env.SANITY_TOKEN) {
-  throw new Error(`Sanity token is missing`);
+  console.warn(`Sanity token is missing`);
 }
 
 export const sanityClient = createClient({

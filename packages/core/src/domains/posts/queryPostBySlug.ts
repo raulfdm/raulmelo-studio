@@ -8,11 +8,17 @@ import { supportedLanguagesSchema } from '@/config';
 type QueryPostBySlugParams = {
   slug: string;
   client: SanityClient;
+  preview?: boolean;
 };
 
-export async function queryPostBySlug({ slug, client }: QueryPostBySlugParams) {
-  const result = await client.fetch(postQuery, {
+export async function queryPostBySlug({
+  slug,
+  client,
+  preview = false,
+}: QueryPostBySlugParams) {
+  const result = await client.fetch(query, {
     slug,
+    preview,
   });
 
   return blogPostBySlugSchema.parse(result);
@@ -22,8 +28,11 @@ export type QueryPostBySlugReturnType = Awaited<
   ReturnType<typeof queryPostBySlug>
 >;
 
-const postQuery = groq`
-*[_type=="post" && slug.current == $slug && !(_id in path('drafts.**'))][0]{
+const query = groq`
+*[_type=="post" && slug.current == $slug] | coalesce(
+  *[$preview == true && _id in path('drafts.**')][0],
+  *[_id == ^._id][0],
+)[0]{
   _id,
   content[]{
     ...,
