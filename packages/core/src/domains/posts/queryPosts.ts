@@ -1,14 +1,18 @@
+import { type SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
 import {
-  client,
   SUPPORTED_LANGUAGES,
   supportedLanguagesSchema,
   type SupportedLanguagesWithAll,
 } from '@/config';
 
-export async function queryPosts(language: SupportedLanguagesWithAll) {
+type QueryPostsParams = {
+  language: SupportedLanguagesWithAll;
+  client: SanityClient;
+};
+export async function queryPosts({ language, client }: QueryPostsParams) {
   const languages = language === 'all' ? SUPPORTED_LANGUAGES : [language];
 
   const result = await client.fetch(postQuery, { languages });

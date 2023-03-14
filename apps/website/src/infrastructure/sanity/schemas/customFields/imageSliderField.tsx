@@ -5,6 +5,8 @@ import {
 } from '@raulmelo/core/utils';
 import { ImageSlider, ViewCarouselIcon } from '@raulmelo/ui';
 
+import { sanityClient } from '../../client';
+
 export const imageSliderField = {
   type: `object`,
   name: `imageSlider`,
@@ -68,7 +70,7 @@ export const imageSliderField = {
 
       function prepareImages(sanityImage: SanityImageSliderImage) {
         const { image, ...props } = sanityImage;
-        const remoteImage = imgUrlFor(image);
+        const remoteImage = imgUrlFor(sanityClient, image);
 
         return {
           src: remoteImage.url(),

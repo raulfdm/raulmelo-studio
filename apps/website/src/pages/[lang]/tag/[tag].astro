@@ -7,6 +7,7 @@ import {
 import { isEmpty } from '@raulmelo/core/utils';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { sanityClient } from '@/infrastructure/sanity/client';
 import { getPostUrl, getTilUrl } from '@/infrastructure/utils/url';
 import { AuthorPresentation } from '@/ui/AuthorPresentation';
 import Layout from '@/ui/layouts/Layout.astro';
@@ -14,7 +15,11 @@ import PostBasic from '@/ui/PostBasic.astro';
 
 const { lang, tag } = Astro.params as { lang: SupportedLanguages; tag: string };
 
-const remoteTag = await queryTagBySlug(tag, lang);
+const remoteTag = await queryTagBySlug({
+  slug: tag,
+  language: lang,
+  client: sanityClient,
+});
 
 const posts = sortPostsByPublishedDate(remoteTag.posts);
 

@@ -11,7 +11,8 @@
     "build:xstate": "xstate typegen \"src/**/*.ts?(x)\"",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint \"src/**/*.{ts,astro,tsx}\""
+    "lint": "eslint \"src/**/*.{ts,astro,tsx}\"",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@astrojs/image": "0.16.0",
@@ -62,6 +63,7 @@
     "react-instantsearch-hooks-web": "6.41.0",
     "react-popper": "2.3.0",
     "sanity": "3.6.0",
+    "sanity-plugin-iframe-pane": "2.2.0",
     "sanity-plugin-media": "2.0.5",
     "sharp": "0.31.3",
     "slugify": "1.6.5",

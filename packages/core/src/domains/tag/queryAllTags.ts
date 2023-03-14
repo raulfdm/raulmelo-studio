@@ -1,9 +1,12 @@
+import { type SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import { client } from '@/config';
+type QueryAllTagsParams = {
+  client: SanityClient;
+};
 
-export async function queryAllTags() {
+export async function queryAllTags({ client }: QueryAllTagsParams) {
   const result = await client.fetch(allTagsQuery);
 
   return tagsSchema.parse(result);

@@ -1,3 +1,4 @@
+import { type SanityClient } from '@sanity/client';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -12,13 +13,17 @@ type IRssConfig = Omit<QueryRssDataReturnType, 'posts' | 'tils'>;
 
 interface IConfig {
   outdir: string;
+  client: SanityClient;
 }
 
 export async function generateRssFeed(config: IConfig): Promise<void> {
-  const { outdir } = config;
+  const { outdir, client } = config;
 
   for await (const language of ['en', 'pt'] as const) {
-    const { tils, posts, ...restData } = await queryRssData(language);
+    const { tils, posts, ...restData } = await queryRssData({
+      language,
+      client,
+    });
 
     const rssConfig: IRssConfig = {
       ...restData,

@@ -1,15 +1,61 @@
 import type { PortableTextBlock } from '@portabletext/types';
+import { type SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import { client, supportedLanguagesSchema } from '@/config';
+import { supportedLanguagesSchema } from '@/config';
 
-export async function queryPostBySlug(slug: string) {
-  const result = await client.fetch(postQuery, {
+type QueryPostBySlugParams = {
+  slug: string;
+  client: SanityClient;
+  preview?: boolean;
+};
+
+export async function queryPostBySlug({
+  slug,
+  client,
+  preview = false,
+}: QueryPostBySlugParams) {
+  const extendedClient = client.withConfig({ useCdn: !preview });
+
+  const result = await extendedClient.fetch<BlogPost[]>(postQuery, {
     slug,
+    preview,
   });
 
-  return blogPostBySlugSchema.parse(result);
+  const { draft, published } = getPublishedAndDraft(result);
+
+  const parseResult =
+    preview && draft
+      ? blogPostBySlugSchema.safeParse(draft)
+      : blogPostBySlugSchema.safeParse(published);
+
+  if (!parseResult.success) {
+    console.error(parseResult.error.toString());
+    return null;
+  }
+
+  return parseResult.data;
+}
+
+function getPublishedAndDraft(posts: BlogPost[]) {
+  const result: {
+    published: null | BlogPost;
+    draft: null | BlogPost;
+  } = {
+    published: null,
+    draft: null,
+  };
+
+  for (const post of posts) {
+    if (post._id.startsWith('drafts.')) {
+      result.draft = post;
+    } else {
+      result.published = post;
+    }
+  }
+
+  return result;
 }
 
 export type QueryPostBySlugReturnType = Awaited<
@@ -17,7 +63,7 @@ export type QueryPostBySlugReturnType = Awaited<
 >;
 
 const postQuery = groq`
-*[_type=="post" && slug.current == $slug && !(_id in path('drafts.**'))][0]{
+*[_type=="post" && slug.current == $slug]{
   _id,
   content[]{
     ...,
@@ -117,3 +163,5 @@ const blogPostBySlugSchema = z.object({
   title: z.string(),
   unsplash: unsplashSchema.optional(),
 });
+
+type BlogPost = z.infer<typeof blogPostBySlugSchema>;
