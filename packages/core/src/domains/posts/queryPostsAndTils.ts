@@ -1,16 +1,19 @@
+import { type SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import {
-  client,
-  type SupportedLanguages,
-  supportedLanguagesSchema,
-} from '@/config';
+import { type SupportedLanguages, supportedLanguagesSchema } from '@/config';
 
-export async function queryPostsAndTils(
-  locale: SupportedLanguages,
+type QueryPostsAndTilsParams = {
+  locale: SupportedLanguages;
+  numberOfPosts?: number;
+  client: SanityClient;
+};
+export async function queryPostsAndTils({
+  locale,
   numberOfPosts = 2,
-) {
+  client,
+}: QueryPostsAndTilsParams) {
   const params = {
     start: 0,
     end: numberOfPosts - 1,

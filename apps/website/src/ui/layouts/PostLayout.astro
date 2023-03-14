@@ -4,11 +4,23 @@ import '@fontsource/fira-code/600.css';
 
 import Layout, { type Props as LayoutProps } from './Layout.astro';
 
-type Props = LayoutProps;
+type Props = LayoutProps & {
+  contentId: string;
+};
 
-const { title, seo } = Astro.props;
+const { title, seo, contentId } = Astro.props;
 ---
 
 <Layout title={title} seo={seo}>
+  {
+    contentId.startsWith(`draft`) && (
+      <div
+        slot="banner"
+        class="bg-secondary text-center absolute top-[64px] left-0 right-0 text-gray-900 font-bold text-lg"
+      >
+        Preview version
+      </div>
+    )
+  }
   <slot />
 </Layout>

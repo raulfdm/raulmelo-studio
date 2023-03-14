@@ -5,6 +5,7 @@ import { getEstimatedReadingTime, isEmpty, isNil } from '@raulmelo/core/utils';
 import { ProseContainer } from '@raulmelo/ui';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { sanityClient } from '@/infrastructure/sanity/client';
 import { getTagUrl } from '@/infrastructure/utils/url';
 import PostLayout from '@/ui/layouts/PostLayout.astro';
 import { PortableText } from '@/ui/PortableText';
@@ -17,10 +18,14 @@ const { lang, slug } = Astro.params as {
   lang: SupportedLanguages;
 };
 
-const til = await queryTilBySlug(slug);
+const til = await queryTilBySlug({
+  slug,
+  client: sanityClient,
+  preview: Astro.url.searchParams.get(`preview`) !== null,
+});
 
 // https://github.com/vercel/next.js/issues/16681#issuecomment-792314687
-if (isNil(til) || isEmpty(til)) {
+if (til === null || isNil(til) || isEmpty(til)) {
   return Astro.redirect(`/404`);
 }
 
@@ -30,6 +35,7 @@ const intl = getIntl(lang);
 ---
 
 <PostLayout
+  contentId={til._id}
   title={til.title}
   seo={{
     description: til.title,
@@ -40,7 +46,10 @@ const intl = getIntl(lang);
     },
   }}
 >
-  <section class="w-full col-span-full lg:col-start-2 lg:col-end-12">
+  <section
+    class="w-full col-span-full lg:col-start-2 lg:col-end-12"
+    data-id={til._id}
+  >
     <PostHeading
       title={til.title}
       publishedDateLabel={intl.formatMessage(
