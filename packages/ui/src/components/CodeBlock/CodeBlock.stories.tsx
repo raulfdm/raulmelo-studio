@@ -1,4 +1,3 @@
-import { proseDecorator } from '../../infrastructure/decorators';
 import { CodeBlock } from './CodeBlock';
 
 export default {
@@ -14,7 +13,6 @@ export default {
       defaultValue: 'javascript',
     },
   },
-  decorators: [proseDecorator],
 };
 
 const languages = {

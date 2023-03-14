@@ -2,20 +2,19 @@
 import { type SupportedLanguages } from '@raulmelo/core/config';
 import { queryPostBySlug } from '@raulmelo/core/domains';
 import { getEstimatedReadingTime, isEmpty, isNil } from '@raulmelo/core/utils';
-import { ProseContainer } from '@raulmelo/ui';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { getTagUrl } from '@/infrastructure/utils/url';
 import PostLayout from '@/ui/layouts/PostLayout.astro';
 import { PortableText } from '@/ui/PortableText';
+import Divider from '@/ui/PortableText/Divider.astro';
 import PostHeading from '@/ui/PostHeading.astro';
 import { ShareContent } from '@/ui/ShareContent';
 import { Tag, Tags } from '@/ui/Tags';
 
 import FeaturedImage from './_ui/FeaturedImage.astro';
 import SeriesSection from './_ui/SeriesSection.svelte';
-import Divider from '@/ui/PortableText/Divider.astro';
 
 const { lang, slug } = Astro.params as {
   slug: string;
@@ -111,9 +110,9 @@ const intl = getIntl(lang);
         />
       ) : null
     }
-    <ProseContainer class="mt-8">
+    <article class="mt-8 prose-container">
       <PortableText value={post.content} />
-    </ProseContainer>
+    </article>
     {
       post.series ? (
         <>

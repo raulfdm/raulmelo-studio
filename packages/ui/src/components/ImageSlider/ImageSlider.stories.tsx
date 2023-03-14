@@ -1,4 +1,3 @@
-import { proseDecorator } from '../../infrastructure/decorators';
 import { ImageSlider } from './ImageSlider';
 
 export default {
@@ -23,7 +22,6 @@ export default {
       ],
     },
   },
-  decorators: [proseDecorator],
 };
 
 const Template = (args) => <ImageSlider {...args} />;
