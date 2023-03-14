@@ -27,10 +27,8 @@ const post = await queryPostBySlug({
   preview: Astro.url.searchParams.get(`preview`) !== null,
 });
 
-if (isNil(post) || isEmpty(post)) {
-  return {
-    notFound: true,
-  };
+if (post === null || isNil(post) || isEmpty(post)) {
+  return Astro.redirect(`/404`);
 }
 
 const estimatedReadingTime = getEstimatedReadingTime(post.content);
@@ -39,6 +37,7 @@ const intl = getIntl(lang);
 ---
 
 <PostLayout
+  contentId={post._id}
   title={post.title}
   seo={{
     /**

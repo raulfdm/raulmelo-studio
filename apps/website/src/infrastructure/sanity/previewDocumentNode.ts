@@ -9,6 +9,7 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (
   switch (schemaType) {
     case `post`:
     case `til`:
+    case `uses`:
       return S.document().views([
         S.view.form(),
         S.view

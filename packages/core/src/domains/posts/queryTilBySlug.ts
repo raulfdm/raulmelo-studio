@@ -18,70 +18,88 @@ export async function queryTilBySlug({
 }: QueryTilBySlugParams) {
   const extendedClient = client.withConfig({ useCdn: !preview });
 
-  const query = getQuery(preview);
-
   const result = await extendedClient.fetch(query, {
     slug,
     preview,
   });
 
-  const parseResult = tilBySlugSchema.safeParse(result);
+  const { draft, published } = getPublishedAndDraft(result);
+
+  const parseResult =
+    preview && draft
+      ? tilBySlugSchema.safeParse(draft)
+      : tilBySlugSchema.safeParse(published);
 
   if (!parseResult.success) {
+    console.error(parseResult.error.toString());
     return null;
   }
 
   return parseResult.data;
 }
 
+function getPublishedAndDraft(posts: TilPost[]) {
+  const result: {
+    published: null | TilPost;
+    draft: null | TilPost;
+  } = {
+    published: null,
+    draft: null,
+  };
+
+  for (const post of posts) {
+    if (post._id.startsWith('drafts.')) {
+      result.draft = post;
+    } else {
+      result.published = post;
+    }
+  }
+
+  return result;
+}
+
 export type QueryTilBySlugReturnType = Awaited<
   ReturnType<typeof queryTilBySlug>
 >;
 
-function getQuery(preview: boolean) {
-  const previewCondition = preview
-    ? `(_id in path('drafts.**'))`
-    : `!(_id in path('drafts.**'))`;
-
-  return groq`
-  *[_type=="til" && slug.current == $slug && ${previewCondition}][0]{
-    _id,
-    publishedAt,
-    title,
-    language,
-    content[]{
+const query = groq`
+*[_type=="til" && slug.current == $slug]{
+  _id,
+  publishedAt,
+  title,
+  language,
+  content[]{
+    ...,
+    "image": image.asset ->{
+      url,
+      "width": metadata.dimensions.width,
+      "height": metadata.dimensions.height,
+    },
+    markDefs[]{
       ...,
-      "image": image.asset ->{
-        url,
-        "width": metadata.dimensions.width,
-        "height": metadata.dimensions.height,
+      _type == "internalLink" => {
+      ...,
+      "itemMeta": @.item -> {
+        "slug": slug.current,
+        _type
       },
-      markDefs[]{
+    },
+    _type == "detailedImage" => {
         ...,
-        _type == "internalLink" => {
-        ...,
-        "itemMeta": @.item -> {
-          "slug": slug.current,
-          _type
-        },
-      },
-      _type == "detailedImage" => {
-          ...,
-          "image": @.image -> {
-            ...
-          }
+        "image": @.image -> {
+          ...
         }
       }
-    },
-    "slug": slug.current,
-    "tags": tags[]->{
-      _id,
-      name,
-      "slug": slug.current 
     }
+  },
+  "slug": slug.current,
+  "tags": tags[]->{
+    _id,
+    name,
+    "slug": slug.current 
   }
-  `;
 }
+`;
 
 const tagSchema = z.object({
   _id: z.string(),
@@ -98,3 +116,5 @@ const tilBySlugSchema = z.object({
   content: z.any().transform((value) => value as PortableTextBlock),
   tags: z.array(tagSchema).optional(),
 });
+
+type TilPost = z.infer<typeof tilBySlugSchema>;

@@ -20,6 +20,7 @@ export type GetUsesReturnType = Awaited<ReturnType<typeof getUses>>;
 
 const getUsesQuery = groq`
 *[_type=="uses" && language == $language][0]{
+  _id,
   language,
   title,
   _createdAt,
@@ -50,6 +51,7 @@ const usesSeoSchema = z.object({
 });
 
 const usesSchema = z.object({
+  _id: z.string(),
   language: supportedLanguagesSchema,
   _createdAt: z.string(),
   _updatedAt: z.string(),
