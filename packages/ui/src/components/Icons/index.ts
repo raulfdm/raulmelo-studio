@@ -11,7 +11,6 @@ export * from './DevTo';
 export * from './Gif';
 export * from './Github';
 export * from './Globe';
-export * from './Highlight';
 export * from './Image';
 export * from './LinkedIn';
 export * from './Medium';
