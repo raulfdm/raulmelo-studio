@@ -1,4 +1,4 @@
-import { IconProps } from './types';
+export type IconProps = React.ComponentPropsWithoutRef<'svg'>;
 
 export const ExternalLinkIcon = ({ width, ...props }: IconProps) => {
   return (

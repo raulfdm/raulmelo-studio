@@ -1,8 +1,9 @@
-import { memoizeAndRemoveStyle } from '@raulmelo/sanity-core';
-import { BigQuote, ExternalLinkIcon, LinkIcon } from '@raulmelo/ui';
+import { BigQuote } from '@raulmelo/ui';
 import { defineField } from 'sanity';
 
 import { highlightMarkerField } from './highlightMarkerField';
+import { ExternalLinkIcon } from './Icons/ExternalLinkIcon';
+import { LinkIcon } from './Icons/LinkIcon';
 import { strikeThroughMarkerField } from './strikeThroughMarkerField';
 
 export const blockContentField = defineField({
@@ -43,7 +44,7 @@ export const blockContentField = defineField({
         {
           title: `Big Quote`,
           value: `bigQuote`,
-          component: memoizeAndRemoveStyle(BigQuote),
+          component: BigQuote,
         },
       ],
       lists: [
