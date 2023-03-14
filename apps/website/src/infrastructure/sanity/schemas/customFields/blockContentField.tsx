@@ -1,4 +1,3 @@
-import { BigQuote } from '@raulmelo/ui';
 import { defineField } from 'sanity';
 
 import { highlightMarkerField } from './highlightMarkerField';
@@ -44,7 +43,9 @@ export const blockContentField = defineField({
         {
           title: `Big Quote`,
           value: `bigQuote`,
-          component: BigQuote,
+          component: ({ children }) => (
+            <blockquote className="text-2xl">{children}</blockquote>
+          ),
         },
       ],
       lists: [
