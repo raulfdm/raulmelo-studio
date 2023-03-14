@@ -8,7 +8,7 @@ import vercel from '@astrojs/vercel/serverless';
 import { defineConfig } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 
-// https://astro.build/config
+/** @type {Parameters<typeof defineConfig>[0];} */
 const config = {
   integrations: [
     partytown(),
@@ -35,12 +35,7 @@ const config = {
   }),
   vite: {
     ssr: {
-      external: [
-        `@raulmelo/core`,
-        `@raulmelo/ui`,
-        // `@formatjs/intl`
-      ],
-      //   noExternal: [`@raulmelo/styles`],
+      external: [`@raulmelo/core`, `@raulmelo/ui`],
     },
   },
 };
