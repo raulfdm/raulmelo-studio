@@ -8,7 +8,6 @@ export * from './Close';
 export * from './Code';
 export * from './CodePen';
 export * from './DevTo';
-export * from './Gif';
 export * from './Github';
 export * from './Globe';
 export * from './Image';

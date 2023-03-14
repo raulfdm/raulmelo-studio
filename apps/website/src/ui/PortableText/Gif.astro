@@ -1,14 +1,23 @@
 ---
-import { Gif } from '@raulmelo/ui';
+import { Image } from '@astrojs/image/components';
 
 type Props = {
   node: {
     caption: string;
     src: string;
     width?: number;
+    height?: number;
   };
 };
-const { node } = Astro.props;
+const { caption, src, width = 300, height } = Astro.props.node;
 ---
 
-<Gif {...node} />
+<figure
+  class="relative mx-auto flex flex-col"
+  style={{
+    maxWidth: width ? `${width}px` : `fit-content`,
+  }}
+>
+  <Image alt={caption} width={width} height={height ?? width} src={src} />
+  {caption && <figcaption class="text-center w-full">{caption}</figcaption>}
+</figure>
