@@ -1,11 +1,16 @@
 import type { PortableTextBlock } from '@portabletext/types';
+import { type SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import { client, supportedLanguagesSchema } from '@/config';
+import { supportedLanguagesSchema } from '@/config';
 import { contentBlockToMarkdown } from '@/utils';
 
-export async function queryAlgoliaData() {
+type QueryAlgoliaDataParams = {
+  client: SanityClient;
+};
+
+export async function queryAlgoliaData({ client }: QueryAlgoliaDataParams) {
   const posts = await client.fetch(algoliaPostsQuery);
   const tils = await client.fetch(algoliaTilsQuery);
 

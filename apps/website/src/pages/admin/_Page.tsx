@@ -1,8 +1,8 @@
-import { defineConfig,Studio } from 'sanity';
+import { defineConfig, Studio } from 'sanity';
 
-import { sanityBaseConfig } from '@/infrastructure/sanity';
+import { sanityStudioConfig } from '@/infrastructure/sanity';
 
-const config = defineConfig(sanityBaseConfig);
+const config = defineConfig(sanityStudioConfig);
 
 export function Page() {
   return <Studio config={config} />;

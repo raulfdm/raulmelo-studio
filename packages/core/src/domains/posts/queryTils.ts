@@ -1,15 +1,20 @@
 import type { PortableTextBlock } from '@portabletext/types';
+import { type SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
 import {
-  client,
   SUPPORTED_LANGUAGES_WITH_ALL,
   supportedLanguagesSchema,
   type SupportedLanguagesWithAll,
 } from '@/config';
 
-export async function queryTils(language: SupportedLanguagesWithAll) {
+type QueryTilsParams = {
+  language: SupportedLanguagesWithAll;
+  client: SanityClient;
+};
+
+export async function queryTils({ language, client }: QueryTilsParams) {
   const languages =
     language === 'all' ? SUPPORTED_LANGUAGES_WITH_ALL : [language];
 

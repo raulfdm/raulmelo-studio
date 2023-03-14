@@ -1,13 +1,13 @@
+import { type SanityClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
-
-import { sanityConfig } from '@/config';
 
 import { isNil } from './ramda';
 
-const builder = imageUrlBuilder(sanityConfig);
-
-export function imgUrlFor(source: SanityImageSource) {
-  return builder.image(source);
+export function imgUrlFor(
+  sanityConfig: SanityClient,
+  source: SanityImageSource,
+) {
+  return imageUrlBuilder(sanityConfig).image(source);
 }
 
 // TODO: unit test it

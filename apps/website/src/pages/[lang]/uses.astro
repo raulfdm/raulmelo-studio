@@ -6,6 +6,7 @@ import { ProseContainer } from '@raulmelo/ui';
 
 import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { sanityClient } from '@/infrastructure/sanity/client';
 import PostLayout from '@/ui/layouts/PostLayout.astro';
 import { PortableText } from '@/ui/PortableText';
 import PostHeading from '@/ui/PostHeading.astro';
@@ -19,7 +20,7 @@ const { lang } = Astro.params as {
   lang: SupportedLanguages;
 };
 
-const uses = await getUses(lang as SupportedLanguages);
+const uses = await getUses({ language: lang, client: sanityClient });
 
 if (isNil(uses) || isEmpty(uses)) {
   return Astro.redirect(`/404`);
@@ -29,6 +30,7 @@ const intl = getIntl(lang);
 ---
 
 <PostLayout
+  contentId={uses._id}
   title={uses.title}
   seo={{
     title: uses.seo.title,

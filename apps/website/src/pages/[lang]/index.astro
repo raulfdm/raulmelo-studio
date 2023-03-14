@@ -7,6 +7,7 @@ import { queryPostsAndTils } from '@raulmelo/core/domains';
 
 import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { sanityClient } from '@/infrastructure/sanity/client';
 import {
   getPathnameWithLocale,
   getPostUrl,
@@ -35,7 +36,11 @@ if (!success) {
 
 const NUMBER_OF_POSTS = 2;
 const [{ posts, tils }] = await Promise.all([
-  queryPostsAndTils(lang, NUMBER_OF_POSTS),
+  queryPostsAndTils({
+    locale: lang,
+    numberOfPosts: NUMBER_OF_POSTS,
+    client: sanityClient,
+  }),
 ]);
 
 const intl = getIntl(lang);

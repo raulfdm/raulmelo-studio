@@ -1,16 +1,20 @@
+import { type SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import {
-  client,
-  type SupportedLanguages,
-  supportedLanguagesSchema,
-} from '@/config';
+import { type SupportedLanguages, supportedLanguagesSchema } from '@/config';
 
-export async function queryTagBySlug(
-  slug: string,
-  language: SupportedLanguages,
-) {
+type QueryTagBySlugParams = {
+  slug: string;
+  language: SupportedLanguages;
+  client: SanityClient;
+};
+
+export async function queryTagBySlug({
+  client,
+  language,
+  slug,
+}: QueryTagBySlugParams) {
   const result = await client.fetch(tagsBySlugQuery, {
     slug,
     language,

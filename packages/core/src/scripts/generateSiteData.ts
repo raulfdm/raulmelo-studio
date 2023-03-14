@@ -1,3 +1,4 @@
+import { type SanityClient } from '@sanity/client';
 import * as fs from 'fs';
 
 import { querySiteData } from '@/domains';
@@ -5,13 +6,16 @@ import { querySiteData } from '@/domains';
 interface IConfig {
   outdir: string;
   fileName?: string;
+  client: SanityClient;
 }
 
 export async function generateSiteData(config: IConfig): Promise<void> {
   const { outdir, fileName = 'site-data' } = config;
 
   try {
-    const { personalInformation, ...rest } = await querySiteData();
+    const { personalInformation, ...rest } = await querySiteData({
+      client: config.client,
+    });
 
     const { profilePic, ...restPersonalInfo } = personalInformation;
     /**

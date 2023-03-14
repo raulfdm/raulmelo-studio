@@ -1,13 +1,15 @@
+import { type SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import {
-  client,
-  type SupportedLanguages,
-  supportedLanguagesSchema,
-} from '@/config';
+import { type SupportedLanguages, supportedLanguagesSchema } from '@/config';
 
-export async function queryRssData(language: SupportedLanguages) {
+type QueryRssDataParams = {
+  language: SupportedLanguages;
+  client: SanityClient;
+};
+
+export async function queryRssData({ language, client }: QueryRssDataParams) {
   const result = await client.fetch(rssQuery, { language: language });
 
   return rssSchema.parse(result);

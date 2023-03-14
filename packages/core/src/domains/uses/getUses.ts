@@ -1,14 +1,16 @@
 import type { PortableTextBlock } from '@portabletext/types';
+import { type SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import {
-  client,
-  type SupportedLanguages,
-  supportedLanguagesSchema,
-} from '@/config';
+import { type SupportedLanguages, supportedLanguagesSchema } from '@/config';
 
-export async function getUses(language: SupportedLanguages) {
+type GetUsesParams = {
+  language: SupportedLanguages;
+  client: SanityClient;
+};
+
+export async function getUses({ language, client }: GetUsesParams) {
   const result = await client.fetch(getUsesQuery, { language });
 
   return usesSchema.parse(result);
@@ -18,6 +20,7 @@ export type GetUsesReturnType = Awaited<ReturnType<typeof getUses>>;
 
 const getUsesQuery = groq`
 *[_type=="uses" && language == $language][0]{
+  _id,
   language,
   title,
   _createdAt,
@@ -48,6 +51,7 @@ const usesSeoSchema = z.object({
 });
 
 const usesSchema = z.object({
+  _id: z.string(),
   language: supportedLanguagesSchema,
   _createdAt: z.string(),
   _updatedAt: z.string(),
