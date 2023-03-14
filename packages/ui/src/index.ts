@@ -4,7 +4,6 @@ export * from './components/BigQuote';
 export * from './components/CodeBlock';
 export * from './components/CodePenIframe';
 export * from './components/Gif';
-export * from './components/Headings';
 export * from './components/Icons';
 export * from './components/ImageSlider';
 export * from './components/PageContainer';

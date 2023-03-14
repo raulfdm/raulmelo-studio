@@ -1,19 +1,11 @@
 import { memoizeAndRemoveStyle } from '@raulmelo/sanity-core';
-import {
-  BigQuote,
-  ExternalLinkIcon,
-  H2,
-  H3,
-  H4,
-  H5,
-  H6,
-  LinkIcon,
-} from '@raulmelo/ui';
+import { BigQuote, ExternalLinkIcon, LinkIcon } from '@raulmelo/ui';
+import { defineField } from 'sanity';
 
 import { highlightMarkerField } from './highlightMarkerField';
 import { strikeThroughMarkerField } from './strikeThroughMarkerField';
 
-export const blockContentField = {
+export const blockContentField = defineField({
   title: `Block Content`,
   name: `blockContent`,
   type: `array`,
@@ -30,45 +22,28 @@ export const blockContentField = {
         {
           title: `H2`,
           value: `h2`,
-          blockEditor: {
-            render: memoizeAndRemoveStyle(H2),
-          },
         },
         {
           title: `H3`,
           value: `h3`,
-          blockEditor: {
-            render: memoizeAndRemoveStyle(H3),
-          },
         },
         {
           title: `H4`,
           value: `h4`,
-          blockEditor: {
-            render: memoizeAndRemoveStyle(H4),
-          },
         },
         {
           title: `H5`,
           value: `h5`,
-          blockEditor: {
-            render: memoizeAndRemoveStyle(H5),
-          },
         },
         {
           title: `H6`,
           value: `h6`,
-          blockEditor: {
-            render: memoizeAndRemoveStyle(H6),
-          },
         },
         { title: `Quote`, value: `blockquote` },
         {
           title: `Big Quote`,
           value: `bigQuote`,
-          blockEditor: {
-            render: memoizeAndRemoveStyle(BigQuote),
-          },
+          component: memoizeAndRemoveStyle(BigQuote),
         },
       ],
       lists: [
@@ -157,4 +132,4 @@ export const blockContentField = {
       type: `divider`,
     },
   ],
-};
+});
