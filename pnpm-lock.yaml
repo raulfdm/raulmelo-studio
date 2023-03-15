@@ -365,7 +365,6 @@ importers:
 
   packages/sanity-core:
     specifiers:
-      '@raulmelo/ui': workspace:*
       '@tabler/icons-react': 2.10.0
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.11
@@ -376,7 +375,6 @@ importers:
       vite: 4.1.4
       vite-plugin-dts: 2.1.0
     dependencies:
-      '@raulmelo/ui': link:../ui
       '@tabler/icons-react': 2.10.0_react@18.2.0
     devDependencies:
       '@types/react': 18.0.28
@@ -431,7 +429,6 @@ importers:
       react-dom: 18.2.0
       react-popper: 2.3.0
       react-refractor: 2.1.7
-      react-twitter-widgets: 1.11.0
       refractor: 4.8.1
       storybook-css-modules-preset: 1.1.1
       tailwindcss: 3.2.7
@@ -444,7 +441,6 @@ importers:
       '@raulmelo/core': link:../core
       classnames: 2.3.2
       react-refractor: 2.1.7_react@18.2.0
-      react-twitter-widgets: 1.11.0_react@18.2.0
       refractor: 4.8.1
     devDependencies:
       '@popperjs/core': 2.11.6
@@ -12984,10 +12980,6 @@ packages:
       json5: 2.2.3
     dev: true
 
-  /loadjs/4.2.0:
-    resolution: {integrity: sha512-AgQGZisAlTPbTEzrHPb6q+NYBMD+DP9uvGSIjSUM5uG+0jG15cb8axWpxuOIqrmQjn6scaaH8JwloiP27b2KXA==}
-    dev: false
-
   /local-pkg/0.4.3:
     resolution: {integrity: sha512-SFppqq5p42fe2qcZQqqEOiVRXl+WCP1MdT6k7BDEW1j++sp5fIY+/fdRQitvKgB5BrBcmrs5m/L0v2FrU5MY1g==}
     engines: {node: '>=14'}
@@ -16178,15 +16170,6 @@ packages:
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-    dev: false
-
-  /react-twitter-widgets/1.11.0_react@18.2.0:
-    resolution: {integrity: sha512-PMCLJQc30iqy01y1b2+HnMfCX+ZkOxWaPKJb4BhHgOgjSjoZb68K5T0nq3q+3YbX9K7OH0bhptgDihtBG/BqRQ==}
-    peerDependencies:
-      react: ^16.8.0 || ^17 || ^18
-    dependencies:
-      loadjs: 4.2.0
-      react: 18.2.0
     dev: false
 
   /react-virtuoso/2.19.1_biqbaboplfbrettd7655fr4n2y:

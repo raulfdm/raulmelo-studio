@@ -11,6 +11,7 @@ export const youtubeVideoField = defineField({
       name: 'videoId',
       type: 'string',
       title: 'The video ID',
+      validation: (Rule) => Rule.required(),
       preview: {
         select: {
           videoId: 'videoId',

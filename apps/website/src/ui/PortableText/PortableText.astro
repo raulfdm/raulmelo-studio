@@ -13,7 +13,7 @@ import ImageSlider from './ImageSlider.astro';
 import InternalLink from './InternalLink.astro';
 import Strikethrough from './Strikethrough.astro';
 import { Tweet } from './Tweet';
-import YoutubeVideo from './Youtube.astro';
+import { YouTube } from './YouTube';
 
 type PortableTextProps = Parameters<typeof PortableText>[0];
 
@@ -34,7 +34,7 @@ const components = {
     code: CodeBlock,
     codePen: CodePen,
     tweet: Tweet,
-    youtubeVideo: YoutubeVideo,
+    youtubeVideo: YouTube,
   },
   mark: {
     strikethrough: Strikethrough,

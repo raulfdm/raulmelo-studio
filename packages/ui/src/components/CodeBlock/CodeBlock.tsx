@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { usePopper } from 'react-popper';
 import { createMachine } from 'xstate';
 
-import { ClipboardIcon } from '../Icons/Clipboard';
 import { ConfiguredRefractor } from './ConfiguredRefractor';
 
 interface ICodeBlockProps {
@@ -100,7 +99,8 @@ export function CodeBlock({
         }}
         onClick={onCopyCode}
       >
-        <ClipboardIcon />
+        {/* <ClipboardIcon /> */}
+        COPY
       </button>
       <span
         ref={setTooltipElement as never}
