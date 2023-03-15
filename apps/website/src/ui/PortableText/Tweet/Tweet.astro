@@ -1,0 +1,18 @@
+---
+import Tweet from './Tweet.svelte';
+
+type Props = {
+  node: {
+    tweetId: string;
+  };
+};
+
+const { tweetId } = Astro.props.node;
+---
+
+<!-- It's marked to "load" because this component is wrapped
+by an observer already. Once it enters the viewport, it will
+load the tweet. So we don't need to add a second layer of
+observability.
+-->
+<Tweet client:load tweetId={tweetId} />

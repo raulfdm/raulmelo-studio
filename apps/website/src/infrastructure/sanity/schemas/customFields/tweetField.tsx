@@ -1,6 +1,8 @@
-import { Tweet, TwitterIcon } from '@raulmelo/ui';
+import { defineField } from 'sanity';
 
-export const tweetField = {
+import { TwitterIcon } from './Icons/TwitterIcon';
+
+export const tweetField = defineField({
   type: `object`,
   name: `tweet`,
   title: `Tweet`,
@@ -10,14 +12,14 @@ export const tweetField = {
       name: `tweetId`,
       type: `string`,
       title: `The tweet ID`,
+      preview: {
+        select: {
+          tweetId: `tweetId`,
+        },
+        prepare({ tweetId }) {
+          return tweetId;
+        },
+      },
     },
   ],
-  components: {
-    preview: Tweet,
-  },
-  preview: {
-    select: {
-      tweetId: `tweetId`,
-    },
-  },
-};
+});
