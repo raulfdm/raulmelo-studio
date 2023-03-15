@@ -1,8 +1,7 @@
+import { IconExternalLink, IconLink } from '@tabler/icons-react';
 import { defineField } from 'sanity';
 
 import { highlightMarkerField } from './highlightMarkerField';
-import { ExternalLinkIcon } from './Icons/ExternalLinkIcon';
-import { LinkIcon } from './Icons/LinkIcon';
 import { strikeThroughMarkerField } from './strikeThroughMarkerField';
 
 export const blockContentField = defineField({
@@ -68,7 +67,7 @@ export const blockContentField = defineField({
             name: `internalLink`,
             type: `object`,
             title: `Internal Link`,
-            icon: () => <LinkIcon width={20} />,
+            icon: () => <IconLink size={20} />,
             fields: [
               {
                 name: `item`,
@@ -88,7 +87,7 @@ export const blockContentField = defineField({
             title: `URL`,
             name: `link`,
             type: `object`,
-            icon: () => <ExternalLinkIcon width={20} />,
+            icon: () => <IconExternalLink size={20} />,
             fields: [
               {
                 title: `URL`,
