@@ -1,6 +1,5 @@
+import { IconHighlight } from '@tabler/icons-react';
 import { type BlockDecoratorDefinition } from 'sanity';
-
-import { HighlightIcon } from './Icons/HighlightIcon';
 
 export const highlightMarkerField: BlockDecoratorDefinition = {
   title: `Highlight`,
@@ -17,7 +16,7 @@ export const highlightMarkerField: BlockDecoratorDefinition = {
   },
   icon: () => (
     <div style={{ height: `25px`, display: `grid`, placeItems: `center` }}>
-      <HighlightIcon width={16} />
+      <IconHighlight size={16} />
     </div>
   ),
 };
