@@ -2,7 +2,6 @@ export * from './ChevronDown';
 export * from './ChevronLeft';
 export * from './ChevronRight';
 export * from './Code';
-export * from './CodePen';
 export * from './Image';
 export * from './Twitter';
 export * from './ViewCarousel';
