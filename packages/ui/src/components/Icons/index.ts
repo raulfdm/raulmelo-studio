@@ -3,6 +3,5 @@ export * from './ChevronLeft';
 export * from './ChevronRight';
 export * from './Code';
 export * from './Image';
-export * from './Twitter';
 export * from './ViewCarousel';
 export * from './YouTube';
