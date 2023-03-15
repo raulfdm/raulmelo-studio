@@ -4,12 +4,11 @@
 
   import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
   import { getSocial } from '@/infrastructure/utils/seo';
-  import {
-    IconBrandGithub,
-    IconBrandMedium,
-    IconBrandLinkedin,
-    IconBrandTwitter,
-  } from '@tabler/icons-svelte';
+
+  import IconBrandGithub from '@tabler/icons-svelte/dist/svelte/icons/IconBrandGithub.svelte';
+  import IconBrandMedium from '@tabler/icons-svelte/dist/svelte/icons/IconArrowNarrowRight.svelte';
+  import IconBrandLinkedin from '@tabler/icons-svelte/dist/svelte/icons/IconBrandLinkedin.svelte';
+  import IconBrandTwitter from '@tabler/icons-svelte/dist/svelte/icons/IconBrandTwitter.svelte';
   import DevToIcon from '@/ui/Icons/DevTo.svelte';
 
   import IconWrapper from '../../pages/[lang]/_ui/IconWrapper.svelte';

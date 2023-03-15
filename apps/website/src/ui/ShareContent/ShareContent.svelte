@@ -1,6 +1,7 @@
 <script lang="ts">
   import qs from 'query-string';
-  import { IconBrandLinkedin, IconBrandTwitter } from '@tabler/icons-svelte';
+  import IconBrandLinkedin from '@tabler/icons-svelte/dist/svelte/icons/IconBrandLinkedin.svelte';
+  import IconBrandTwitter from '@tabler/icons-svelte/dist/svelte/icons/IconBrandTwitter.svelte';
   import { type ShareContentProps } from './types';
 
   export let titleLabel: ShareContentProps['titleLabel'];

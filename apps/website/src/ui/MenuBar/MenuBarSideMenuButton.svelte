@@ -1,6 +1,7 @@
 <script lang="ts">
   import MenuButton from './MenuBarButton.svelte';
-  import { IconMenu2, IconX } from '@tabler/icons-svelte';
+  import IconMenu2 from '@tabler/icons-svelte/dist/svelte/icons/IconMenu2.svelte';
+  import IconX from '@tabler/icons-svelte/dist/svelte/icons/IconX.svelte';
   import {
     sideMenuStore,
     toggleSideMenu,
