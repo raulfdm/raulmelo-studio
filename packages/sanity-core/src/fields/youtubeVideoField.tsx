@@ -1,23 +1,21 @@
-import { YouTubeIcon, YouTubeIframe } from '@raulmelo/ui';
+import { IconBrandYoutube } from '@tabler/icons-react';
+import { defineField } from 'sanity';
 
-export const youtubeVideoField = {
+export const youtubeVideoField = defineField({
   type: 'object',
   name: 'youtubeVideo',
   title: 'Youtube Video',
-  icon: () => <YouTubeIcon width={20} />,
+  icon: () => <IconBrandYoutube width={20} />,
   fields: [
     {
       name: 'videoId',
       type: 'string',
       title: 'The video ID',
+      preview: {
+        select: {
+          videoId: 'videoId',
+        },
+      },
     },
   ],
-  components: {
-    component: YouTubeIframe,
-  },
-  preview: {
-    select: {
-      videoId: 'videoId',
-    },
-  },
-};
+});

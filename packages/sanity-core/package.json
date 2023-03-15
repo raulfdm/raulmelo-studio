@@ -3,33 +3,28 @@
   "private": true,
   "version": "0.0.0-development",
   "type": "module",
-  "main": "dist/sanity-core.cjs",
   "module": "dist/sanity-core.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist/"
   ],
-  "exports": {
-    ".": {
-      "import": "./dist/sanity-core.js",
-      "require": "./dist/sanity-core.cjs"
-    }
-  },
   "scripts": {
     "build": "vite build"
   },
   "dependencies": {
-    "@raulmelo/ui": "workspace:*"
+    "@tabler/icons-react": "2.10.0"
   },
   "peerDependencies": {
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "sanity": "^3.6.0"
   },
   "devDependencies": {
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sanity": "3.6.0",
     "typescript": "4.9.5",
     "vite": "4.1.4",
     "vite-plugin-dts": "2.1.0"
