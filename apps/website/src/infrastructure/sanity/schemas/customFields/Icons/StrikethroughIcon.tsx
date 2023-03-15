@@ -1,4 +1,4 @@
-export type IconProps = React.ComponentPropsWithoutRef<'svg'>;
+type IconProps = React.ComponentPropsWithoutRef<'svg'>;
 
 export function StrikethroughIcon({ width = 48, ...props }: IconProps) {
   return (

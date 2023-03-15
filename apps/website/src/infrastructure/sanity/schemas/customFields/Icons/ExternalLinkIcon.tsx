@@ -1,6 +1,6 @@
-export type IconProps = React.ComponentPropsWithoutRef<'svg'>;
+type IconProps = React.ComponentPropsWithoutRef<'svg'>;
 
-export const ExternalLinkIcon = ({ width, ...props }: IconProps) => {
+export function ExternalLinkIcon({ width, ...props }: IconProps) {
   return (
     <svg
       width={width}
@@ -19,4 +19,4 @@ export const ExternalLinkIcon = ({ width, ...props }: IconProps) => {
       />
     </svg>
   );
-};
+}

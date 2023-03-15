@@ -1,4 +1,4 @@
-export type IconProps = React.ComponentPropsWithoutRef<'svg'>;
+type IconProps = React.ComponentPropsWithoutRef<'svg'>;
 
 export function GifIcon({ width, ...props }: IconProps) {
   return (
