@@ -1,18 +1,21 @@
-import { CodeBlock, CodeIcon, LANGUAGES_MAP } from '@raulmelo/ui';
+import { CODE_LANGUAGES_MAP } from '@raulmelo/refractor';
+import { IconCode } from '@tabler/icons-react';
+import { defineField } from 'sanity';
 
-export const codeField = {
+export const codeField = defineField({
   type: `object`,
   name: `code`,
   title: `Code Snippet`,
-  icon: () => <CodeIcon width={20} />,
+  icon: () => <IconCode width={20} />,
   fields: [
     {
       type: `string`,
       name: `language`,
       title: `Language`,
+      initialValue: `plaintext`,
+      validation: (Rule) => Rule.required(),
       options: {
-        initialValue: `plaintext`,
-        list: adaptMapToListValue(LANGUAGES_MAP),
+        list: adaptMapToListValue(CODE_LANGUAGES_MAP),
       },
     },
     {
@@ -29,34 +32,23 @@ export const codeField = {
     {
       type: `text`,
       name: `code`,
+      validation: (Rule) => Rule.required(),
     },
   ],
   components: {
-    preview: ({
-      code,
-      language,
-      filename,
-      highlightedLines,
-    }: {
-      code?: string;
-      filename: string;
-      highlightedLines: string;
-      language: string;
-    }) => {
-      const lang = LANGUAGES_MAP.get(language);
+    preview: ({ code, language }: any) => {
+      const lang = CODE_LANGUAGES_MAP.get(language);
 
       if (!code) {
         return null;
       }
 
-      const compProps = {
-        language: lang,
-        code,
-        filename,
-        highlightedLines,
-      };
-
-      return <CodeBlock {...compProps} />;
+      return (
+        <code>
+          <pre>{code}</pre>
+          <span>{lang}</span>
+        </code>
+      );
     },
   },
   preview: {
@@ -67,9 +59,9 @@ export const codeField = {
       highlightedLines: `highlightedLines`,
     },
   },
-};
+});
 
-function adaptMapToListValue(languages: typeof LANGUAGES_MAP) {
+function adaptMapToListValue(languages: typeof CODE_LANGUAGES_MAP) {
   const list: { title: string; value: string }[] = [];
 
   languages.forEach((value, key) => {

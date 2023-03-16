@@ -18,7 +18,7 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (
             url: (doc: SanityDocument) => getPreviewUrl(doc),
             reload: {
               button: true,
-              revision: 600, // delay (in ms) before the automatic reload on document revision
+              revision: 2000, // delay (in ms) before the automatic reload on document revision
             },
           })
           .title(`Preview`),
