@@ -9,8 +9,9 @@ import vercel from '@astrojs/vercel/serverless';
 import { defineConfig } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 
-// https://astro.build/config
+/** @type {import('astro').AstroUserConfig} */
 const config = {
+  site: `http://localhost:3000`,
   integrations: [
     partytown(),
     tailwind(),
@@ -54,7 +55,7 @@ const config = {
 };
 
 if (process.env.VERCEL_ENV === `production`) {
-  config.site = `https://raulmelo-astro.vercel.app`;
+  config.site = `https://raulmelo.dev`;
 } else if (process.env.VERCEL_URL) {
   config.site = `https://${process.env.VERCEL_URL}`;
 }
