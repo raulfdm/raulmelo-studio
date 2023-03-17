@@ -7,6 +7,7 @@
   import MenuBarThemeSwitch from './MenuBarThemeSwitch.svelte';
   import { SideMenu } from '../SideMenu';
   import MenuBarSideMenuButton from './MenuBarSideMenuButton.svelte';
+  import classNames from 'classnames';
 
   export let lang: SupportedLanguages;
   export let pathname: string;
@@ -33,7 +34,12 @@
 </script>
 
 <div
-  class="relative inset-x-0 z-40 h-16 mb-8 duration-200 bg-white shadow dark:bg-blue-800 transition-theme ease md:mb-12"
+  class={classNames([
+    'bg-white shadow dark:bg-blue-800',
+    'duration-200 ease transition-theme',
+    'inset-x-0 z-40 h-16 mb-8 md:mb-12',
+    'sticky top-0',
+  ])}
 >
   <nav class="items-center h-full grid-container">
     <section data-testid="menu-bar__logo" class="col-span-2">
