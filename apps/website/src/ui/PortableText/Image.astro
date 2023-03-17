@@ -3,10 +3,6 @@ import { Picture } from '@astrojs/image/components';
 import { imgUrlFor } from '@raulmelo/core/utils';
 
 import { sanityClient } from '@/infrastructure/sanity/client';
-import {
-  calculateAspectRatio,
-  scaleDownImageSize,
-} from '@/infrastructure/utils/image';
 
 type Props = {
   node: {
@@ -25,16 +21,29 @@ const {
 
 const { url, width, height, aspectRatio } = imgUrlFor(sanityClient, image);
 
-
+/**
+ * Sharp + vercel edge functions are throwing an error when trying to resize
+ * gifs.
+ *
+ * This is attempt to fix it.
+ */
+const isGif = image.url.endsWith(`.gif`);
+const isLarge = width > 768;
 ---
 
-<Picture
-class="object-cover mx-auto"
-src={url}
-aspectRatio={aspectRatio}
-widths={[200, 400, 640, 768, width]}
-sizes={`(max-width: ${width}px) 100vw, ${width}px`}
-alt={caption}
-width={width}
-height={height}
-/>
+{
+  isGif && isLarge ? (
+    <img src={url} alt={caption} />
+  ) : (
+    <Picture
+      class="object-cover mx-auto"
+      src={url}
+      aspectRatio={aspectRatio}
+      widths={[200, 400, 640, 768, width]}
+      sizes={`(max-width: ${width}px) 100vw, ${width}px`}
+      alt={caption}
+      width={width}
+      height={height}
+    />
+  )
+}
