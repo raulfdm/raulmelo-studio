@@ -23,18 +23,35 @@ const {
   node: { image, caption },
 } = Astro.props;
 
-const nextImageSize = scaleDownImageSize(image.width, image.height);
 const nextImage = imgUrlFor(sanityClient, image.url);
+const nextImageSize = scaleDownImageSize(image.width, image.height);
+const aspectRatio = calculateAspectRatio(
+  nextImageSize.width,
+  nextImageSize.height,
+);
+
+const maxWidth = nextImageSize.width;
+
+const isGif = image.url.endsWith(`.gif`);
 ---
 
-<Picture
-  class="object-cover mx-auto"
-  src={nextImage.url()}
-  aspectRatio={calculateAspectRatio(image.width, image.height)}
-  widths={[200, 400, 640, 768, 1037]}
-  sizes="(max-width: 1037px) 100vw, 1037px"
-  formats={[`avif`, `jpeg`, `png`, `webp`]}
-  alt={caption}
-  width={nextImageSize.width}
-  height={nextImageSize.height}
-/>
+{
+  isGif ? (
+    <img
+      src={nextImage.url()}
+      width={nextImageSize.width}
+      height={nextImageSize.height}
+    />
+  ) : (
+    <Picture
+      class="object-cover mx-auto"
+      src={nextImage.url()}
+      aspectRatio={aspectRatio}
+      widths={[200, 400, 640, 768, maxWidth]}
+      sizes={`(max-width: ${maxWidth}px) 100vw, ${maxWidth}px`}
+      alt={caption}
+      width={nextImageSize.width}
+      height={nextImageSize.height}
+    />
+  )
+}

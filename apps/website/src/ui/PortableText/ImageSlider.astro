@@ -8,6 +8,7 @@ import {
 import { ImageSlider } from '@raulmelo/ui';
 
 import { sanityClient } from '@/infrastructure/sanity/client';
+import { scaleDownImageSize } from '@/infrastructure/utils/image';
 
 type ImageNode = {
   alt: string;
@@ -35,12 +36,16 @@ const adaptedImages = images.map((img) => {
   const src = imgUrlFor(sanityClient, image).url();
 
   const imgDimensions = getImageDimensionsFromSanityImageUrl(src);
+  const { height, width } = scaleDownImageSize(
+    imgDimensions.width,
+    imgDimensions.height,
+  );
 
   return {
     alt,
     caption,
-    height: imgDimensions.height,
-    width: imgDimensions.width,
+    height,
+    width,
     src: `${src}?fit=crop&auto=format`,
   };
 });
