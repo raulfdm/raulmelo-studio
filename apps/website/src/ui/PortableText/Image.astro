@@ -33,7 +33,7 @@ const isLarge = width > 768;
 
 {
   isGif && isLarge ? (
-    <img src={url} alt={caption} />
+    <img src={url} alt={caption} loading="lazy" />
   ) : (
     <Picture
       class="object-cover mx-auto"
