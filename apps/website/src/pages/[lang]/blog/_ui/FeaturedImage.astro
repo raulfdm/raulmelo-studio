@@ -2,8 +2,10 @@
 import { Picture } from '@astrojs/image/components';
 import { type SupportedLanguages } from '@raulmelo/core/config';
 import { type QueryPostBySlugReturnType } from '@raulmelo/core/domains';
+import { imgUrlFor } from '@raulmelo/core/utils';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { sanityClient } from '@/infrastructure/sanity/client';
 
 type Props = {
   lang: SupportedLanguages;
@@ -12,6 +14,10 @@ type Props = {
 };
 
 const { lang, featuredImage, unsplash } = Astro.props;
+
+const nextImageUrl = imgUrlFor(sanityClient, featuredImage.url)
+  .auto(`format`)
+  .url();
 
 const intl = getIntl(lang);
 ---
@@ -24,7 +30,7 @@ const intl = getIntl(lang);
   <div class="aspect-w-12 aspect-h-6">
     <Picture
       fit="cover"
-      src={featuredImage.url}
+      src={nextImageUrl}
       alt={intl.formatMessage({ id: `blogPost.featuredImage` })}
       loading="eager"
       widths={[200, 400, 640, 768, 1037, 1248]}

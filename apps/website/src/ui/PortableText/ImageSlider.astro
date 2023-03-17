@@ -7,6 +7,8 @@ import {
 } from '@raulmelo/core/utils';
 import { ImageSlider } from '@raulmelo/ui';
 
+import { sanityClient } from '@/infrastructure/sanity/client';
+
 type ImageNode = {
   alt: string;
   caption: string;
@@ -29,7 +31,8 @@ const isImageEmpty = isNil(images) || isEmpty(images);
 
 const adaptedImages = images.map((img) => {
   const { alt, caption, image } = img;
-  const src = imgUrlFor(image).url();
+
+  const src = imgUrlFor(sanityClient, image).url();
 
   const imgDimensions = getImageDimensionsFromSanityImageUrl(src);
 

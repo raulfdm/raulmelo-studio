@@ -7,7 +7,7 @@ export function imgUrlFor(
   sanityConfig: SanityClient,
   source: SanityImageSource,
 ) {
-  return imageUrlBuilder(sanityConfig).image(source);
+  return imageUrlBuilder(sanityConfig).image(source).maxWidth(1300);
 }
 
 // TODO: unit test it
