@@ -7,7 +7,11 @@ export function imgUrlFor(
   sanityConfig: SanityClient,
   source: SanityImageSource,
 ) {
-  return imageUrlBuilder(sanityConfig).image(source).maxWidth(1300);
+  return imageUrlBuilder(sanityConfig)
+    .image(source)
+    .maxWidth(1300)
+    .fit('max')
+    .auto(`format`);
 }
 
 // TODO: unit test it

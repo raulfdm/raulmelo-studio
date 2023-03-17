@@ -1,3 +1,17 @@
+export function scaleDownImageSize(width: number, height: number) {
+  const maxWidth = 1300;
+
+  if (width <= maxWidth) {
+    return { width, height };
+  }
+
+  const ratio = maxWidth / width;
+  const newWidth = maxWidth;
+  const newHeight = Math.floor(height * ratio);
+
+  return { width: newWidth, height: newHeight };
+}
+
 export function calculateAspectRatio(
   width: number,
   height: number,

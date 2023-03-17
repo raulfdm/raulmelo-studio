@@ -6,6 +6,7 @@ import { imgUrlFor } from '@raulmelo/core/utils';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
+import { scaleDownImageSize } from '@/infrastructure/utils/image';
 
 type Props = {
   lang: SupportedLanguages;
@@ -15,9 +16,12 @@ type Props = {
 
 const { lang, featuredImage, unsplash } = Astro.props;
 
-const nextImageUrl = imgUrlFor(sanityClient, featuredImage.url)
-  .auto(`format`)
-  .url();
+const nextImageUrl = imgUrlFor(sanityClient, featuredImage.url).url();
+
+const nextImageSizes = scaleDownImageSize(
+  featuredImage.width,
+  featuredImage.height,
+);
 
 const intl = getIntl(lang);
 ---
@@ -36,8 +40,8 @@ const intl = getIntl(lang);
       widths={[200, 400, 640, 768, 1037, 1248]}
       sizes="(min-width: 1248px) 1248px, 100vw"
       aspectRatio={12 / 6}
-      width={featuredImage.width}
-      height={featuredImage.height}
+      width={nextImageSizes.width}
+      height={nextImageSizes.height}
     />
   </div>
 

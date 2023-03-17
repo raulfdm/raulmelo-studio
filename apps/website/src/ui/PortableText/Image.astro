@@ -1,7 +1,12 @@
 ---
 import { Picture } from '@astrojs/image/components';
+import { imgUrlFor } from '@raulmelo/core/utils';
 
-import { calculateAspectRatio } from '@/infrastructure/utils/image';
+import { sanityClient } from '@/infrastructure/sanity/client';
+import {
+  calculateAspectRatio,
+  scaleDownImageSize,
+} from '@/infrastructure/utils/image';
 
 type Props = {
   node: {
@@ -17,16 +22,19 @@ type Props = {
 const {
   node: { image, caption },
 } = Astro.props;
+
+const nextImageSize = scaleDownImageSize(image.width, image.height);
+const nextImage = imgUrlFor(sanityClient, image.url);
 ---
 
 <Picture
   class="object-cover mx-auto"
-  src={`${image.url}?auto=format&fit=max`}
+  src={nextImage.url()}
   aspectRatio={calculateAspectRatio(image.width, image.height)}
   widths={[200, 400, 640, 768, 1037]}
   sizes="(max-width: 1037px) 100vw, 1037px"
   formats={[`avif`, `jpeg`, `png`, `webp`]}
   alt={caption}
-  width={image.width}
-  height={image.height}
+  width={nextImageSize.width}
+  height={nextImageSize.height}
 />
