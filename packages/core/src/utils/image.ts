@@ -31,7 +31,7 @@ export function imgUrlFor(
 
     return {
       sanityImage,
-      url: source.url,
+      url: sanityImage.url(),
       width,
       height,
       aspectRatio: calculateAspectRatio(width, height),
@@ -46,9 +46,11 @@ export function imgUrlFor(
     sourceSize.height,
   );
 
+  const sanityImage = getFinalSanityImage(source, width, height);
+
   return {
-    sanityImage: getFinalSanityImage(source, width, height),
-    url,
+    sanityImage,
+    url: sanityImage.url(),
     width,
     height,
     aspectRatio: calculateAspectRatio(width, height),
