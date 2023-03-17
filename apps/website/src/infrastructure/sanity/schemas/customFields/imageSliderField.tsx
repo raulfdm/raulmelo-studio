@@ -70,10 +70,10 @@ export const imageSliderField = {
 
       function prepareImages(sanityImage: SanityImageSliderImage) {
         const { image, ...props } = sanityImage;
-        const remoteImage = imgUrlFor(sanityClient, image);
+        const { url } = imgUrlFor(sanityClient, image);
 
         return {
-          src: remoteImage.url(),
+          src: url,
           ...props,
         };
       }
