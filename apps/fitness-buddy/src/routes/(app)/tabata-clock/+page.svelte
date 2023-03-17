@@ -1,6 +1,6 @@
 <script lang="ts">
 	import TabataInputField from '$lib/components/TabataInputField.svelte';
-	import { IconPlayerPlay } from '@tabler/icons-svelte';
+	import IconPlayerPlay from '@tabler/icons-svelte/dist/svelte/icons/IconPlayerPlay.svelte';
 	import { tabataConfigService } from '$lib/stores/tabata-config';
 	import type { TabataConfigContext } from '$lib/stores/tabata-config';
 	import { secondsToMinutes } from '$lib/utils/secondsToMinutes';

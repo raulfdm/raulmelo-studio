@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { IconClipboard } from '@tabler/icons-svelte';
+  import IconClipboard from '@tabler/icons-svelte/dist/svelte/icons/IconClipboard.svelte';
   import classNames from 'classnames';
   import { createPopperActions } from 'svelte-popperjs';
   import { useMachine } from '@xstate/svelte';

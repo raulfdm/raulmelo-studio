@@ -1,6 +1,6 @@
 <script lang="ts">
   import classNames from 'classnames';
-  import { IconArrowNarrowRight } from '@tabler/icons-svelte';
+  import IconArrowNarrowRight from '@tabler/icons-svelte/dist/svelte/icons/IconArrowNarrowRight.svelte';
 
   export let slug: string;
   export let publishedAt: string;

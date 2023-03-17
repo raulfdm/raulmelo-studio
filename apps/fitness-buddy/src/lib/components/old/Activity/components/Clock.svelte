@@ -1,13 +1,10 @@
 <script lang="ts">
 	import { onDestroy, beforeUpdate, onMount } from 'svelte';
-
-	import {
-		IconPlayerPlay,
-		IconPlayerTrackNext,
-		IconPlayerTrackPrev,
-		IconPlayerPause,
-		IconTrash
-	} from '@tabler/icons-svelte';
+	import IconPlayerPlay from '@tabler/icons-svelte/dist/svelte/icons/IconArrowNarrowRight.svelte';
+	import IconPlayerTrackNext from '@tabler/icons-svelte/dist/svelte/icons/IconPlayerTrackNext.svelte';
+	import IconPlayerTrackPrev from '@tabler/icons-svelte/dist/svelte/icons/IconPlayerTrackPrev.svelte';
+	import IconPlayerPause from '@tabler/icons-svelte/dist/svelte/icons/IconArrowNarrowRight.svelte';
+	import IconTrash from '@tabler/icons-svelte/dist/svelte/icons/IconTrash.svelte';
 	import {
 		persistClockInfo,
 		continueTimer,

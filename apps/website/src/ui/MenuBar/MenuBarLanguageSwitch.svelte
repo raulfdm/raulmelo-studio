@@ -5,7 +5,7 @@
     PopoverPanel,
   } from '@rgossiaux/svelte-headlessui';
   import { createPopperActions } from 'svelte-popperjs';
-  import { IconWorld } from '@tabler/icons-svelte';
+  import IconWorld from '@tabler/icons-svelte/dist/svelte/icons/IconArrowNarrowRight.svelte';
   import { getPathnameWithoutLocale } from '@/infrastructure/utils/url';
   import { type SupportedLanguages } from '@raulmelo/core/config';
 

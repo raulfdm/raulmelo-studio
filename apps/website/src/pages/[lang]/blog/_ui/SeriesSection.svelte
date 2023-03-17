@@ -2,7 +2,7 @@
   import classNames from 'classnames';
   import { type PostBySlug } from './types';
 
-  import { IconChevronDown } from '@tabler/icons-svelte';
+  import IconChevronDown from '@tabler/icons-svelte/dist/svelte/icons/IconChevronDown.svelte';
 
   type Series = NonNullable<PostBySlug[`series`]>;
 

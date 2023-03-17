@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { IconMoon, IconSun } from '@tabler/icons-svelte';
+  import IconMoon from '@tabler/icons-svelte/dist/svelte/icons/IconMoon.svelte';
+  import IconSun from '@tabler/icons-svelte/dist/svelte/icons/IconSun.svelte';
   import MenuBarButton from './MenuBarButton.svelte';
 
   export let ariaLabel: string;
