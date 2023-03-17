@@ -4,12 +4,10 @@
 	import { tabataConfigService } from '$lib/stores/tabata-config';
 	import { useMachine } from '@xstate/svelte';
 	import { goto } from '$app/navigation';
-	import {
-		IconPlayerPlay,
-		IconPlayerPause,
-		IconPlayerTrackNext,
-		IconPlayerTrackPrev
-	} from '@tabler/icons-svelte';
+	import IconPlayerPlay from '@tabler/icons-svelte/dist/svelte/icons/IconPlayerPlay.svelte';
+	import IconPlayerPause from '@tabler/icons-svelte/dist/svelte/icons/IconPlayerPause.svelte';
+	import IconPlayerTrackNext from '@tabler/icons-svelte/dist/svelte/icons/IconPlayerTrackNext.svelte';
+	import IconPlayerTrackPrev from '@tabler/icons-svelte/dist/svelte/icons/IconPlayerTrackPrev.svelte';
 
 	if ($tabataConfigService.changed === false || $tabataConfigService.changed === undefined) {
 		goto('/tabata-clock');

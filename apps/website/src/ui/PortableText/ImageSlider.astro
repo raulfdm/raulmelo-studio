@@ -1,18 +1,17 @@
 ---
-import {
-  getImageDimensionsFromSanityImageUrl,
-  imgUrlFor,
-  isEmpty,
-  isNil,
-} from '@raulmelo/core/utils';
+import { imgUrlFor, isEmpty, isNil } from '@raulmelo/core/utils';
 import { ImageSlider } from '@raulmelo/ui';
+
+import { sanityClient } from '@/infrastructure/sanity/client';
 
 type ImageNode = {
   alt: string;
   caption: string;
   image: {
+    _type: 'image';
     asset: {
       _ref: string;
+      _type: 'reference';
     };
   };
 };
@@ -29,16 +28,15 @@ const isImageEmpty = isNil(images) || isEmpty(images);
 
 const adaptedImages = images.map((img) => {
   const { alt, caption, image } = img;
-  const src = imgUrlFor(image).url();
 
-  const imgDimensions = getImageDimensionsFromSanityImageUrl(src);
+  const { height, width, url } = imgUrlFor(sanityClient, image);
 
   return {
     alt,
     caption,
-    height: imgDimensions.height,
-    width: imgDimensions.width,
-    src: `${src}?fit=crop&auto=format`,
+    height,
+    width,
+    src: url,
   };
 });
 ---

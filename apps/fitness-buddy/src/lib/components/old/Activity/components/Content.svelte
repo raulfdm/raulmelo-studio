@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { IconBrandYoutube } from '@tabler/icons-svelte';
+	import IconBrandYoutube from '@tabler/icons-svelte/dist/svelte/icons/IconBrandYoutube.svelte';
 
 	import { activityStore } from '$lib/stores/old/activity';
 
