@@ -1,12 +1,12 @@
 import { type SanityClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
+import { type SanityImageObject } from '@sanity/image-url/lib/types/types';
 
 import { isNil } from './ramda';
 
-export function imgUrlFor(
-  sanityConfig: SanityClient,
-  source: SanityImageSource,
-) {
+type Source = SanityImageObject | string;
+
+export function imgUrlFor(sanityConfig: SanityClient, source: Source) {
   return imageUrlBuilder(sanityConfig)
     .image(source)
     .maxWidth(1300)
@@ -39,5 +39,4 @@ export function getImageDimensionsFromSanityImageUrl(url: string) {
   };
 }
 
-export type SanityImageSource =
-  import('@sanity/image-url/lib/types/types').SanityImageSource;
+export { type SanityImageObject };
