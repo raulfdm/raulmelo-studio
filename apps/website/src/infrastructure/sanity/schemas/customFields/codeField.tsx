@@ -13,7 +13,6 @@ export const codeField = defineField({
       name: `language`,
       title: `Language`,
       initialValue: `plaintext`,
-      validation: (Rule) => Rule.required(),
       options: {
         list: adaptMapToListValue(CODE_LANGUAGES_MAP),
       },
