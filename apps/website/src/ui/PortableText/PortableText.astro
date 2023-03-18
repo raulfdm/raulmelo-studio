@@ -3,17 +3,17 @@ import { PortableText } from 'astro-portabletext';
 
 import BigQuote from './BigQuote.astro';
 import CodeBlock from './CodeBlock.astro';
-import CodePen from './CodePen.astro';
+import { CodePen } from './CodePen';
 import Divider from './Divider.astro';
 import Gif from './Gif.astro';
 import HeadingWithLink from './HeadingWithLink.astro';
 import Highlight from './Highlight.astro';
 import Image from './Image.astro';
-import ImageSlider from './ImageSlider.astro';
+import { ImageSlider } from './ImageSlider';
 import InternalLink from './InternalLink.astro';
 import Strikethrough from './Strikethrough.astro';
-import Tweet from './Tweet.astro';
-import YoutubeVideo from './Youtube.astro';
+import { Tweet } from './Tweet';
+import { YouTube } from './YouTube';
 
 type PortableTextProps = Parameters<typeof PortableText>[0];
 
@@ -34,7 +34,7 @@ const components = {
     code: CodeBlock,
     codePen: CodePen,
     tweet: Tweet,
-    youtubeVideo: YoutubeVideo,
+    youtubeVideo: YouTube,
   },
   mark: {
     strikethrough: Strikethrough,

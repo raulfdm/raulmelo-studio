@@ -19,12 +19,18 @@ const { lang } = Astro.params as { lang: SupportedLanguages };
 const intl = getIntl(lang);
 ---
 
-<CodeBlockSvelte
-  client:load
-  code={code}
-  copyTitle={intl.formatMessage({ id: `blogPost.copyButton.title` })}
-  copyTooltipTitle={intl.formatMessage({ id: `blogPost.copyButton.success` })}
-  filename={filename}
-  highlightedLines={highlightedLines}
-  language={language}
-/>
+{
+  code && (
+    <CodeBlockSvelte
+      client:load
+      code={code}
+      copyTitle={intl.formatMessage({ id: `blogPost.copyButton.title` })}
+      copyTooltipTitle={intl.formatMessage({
+        id: `blogPost.copyButton.success`,
+      })}
+      filename={filename}
+      highlightedLines={highlightedLines}
+      language={language}
+    />
+  )
+}

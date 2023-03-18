@@ -4,6 +4,7 @@
 
   import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
   import { getSocial } from '@/infrastructure/utils/seo';
+
   import IconBrandGithub from '@tabler/icons-svelte/dist/svelte/icons/IconBrandGithub.svelte';
   import IconBrandMedium from '@tabler/icons-svelte/dist/svelte/icons/IconBrandMedium.svelte';
   import IconBrandLinkedin from '@tabler/icons-svelte/dist/svelte/icons/IconBrandLinkedin.svelte';

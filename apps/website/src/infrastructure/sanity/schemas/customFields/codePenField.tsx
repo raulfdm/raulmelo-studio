@@ -1,15 +1,22 @@
-import { CodePenIcon, CodePenIframe } from '@raulmelo/ui';
+import { IconBrandCodepen } from '@tabler/icons-react';
+import { defineField } from 'sanity';
 
-export const codePenField = {
+export const codePenField = defineField({
   type: `object`,
   name: `codePen`,
   title: `CodePen`,
-  icon: () => <CodePenIcon width={20} />,
+  icon: () => <IconBrandCodepen size={20} />,
   fields: [
     {
       name: `directUrl`,
       type: `url`,
       title: `CodePen URL`,
+      validation: (Rule) => Rule.uri({ scheme: [`https`] }).required(),
+      preview: {
+        select: {
+          directUrl: `directUrl`,
+        },
+      },
     },
     {
       name: `height`,
@@ -17,12 +24,4 @@ export const codePenField = {
       title: `Iframe height`,
     },
   ],
-  components: {
-    component: CodePenIframe,
-  },
-  preview: {
-    select: {
-      directUrl: `directUrl`,
-    },
-  },
-};
+});

@@ -1,23 +1,24 @@
-import { Tweet, TwitterIcon } from '@raulmelo/ui';
+import { IconBrandTwitter } from '@tabler/icons-react';
+import { defineField } from 'sanity';
 
-export const tweetField = {
+export const tweetField = defineField({
   type: `object`,
   name: `tweet`,
   title: `Tweet`,
-  icon: () => <TwitterIcon width={20} />,
+  icon: () => <IconBrandTwitter size={20} />,
   fields: [
     {
       name: `tweetId`,
       type: `string`,
       title: `The tweet ID`,
+      preview: {
+        select: {
+          tweetId: `tweetId`,
+        },
+        prepare({ tweetId }) {
+          return tweetId;
+        },
+      },
     },
   ],
-  components: {
-    preview: Tweet,
-  },
-  preview: {
-    select: {
-      tweetId: `tweetId`,
-    },
-  },
-};
+});

@@ -2,7 +2,6 @@
 import { type SupportedLanguages } from '@raulmelo/core/config';
 import { queryTilBySlug } from '@raulmelo/core/domains';
 import { getEstimatedReadingTime, isEmpty, isNil } from '@raulmelo/core/utils';
-import { ProseContainer } from '@raulmelo/ui';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
@@ -74,9 +73,9 @@ const intl = getIntl(lang);
         },
       )}
     />
-    <ProseContainer class="mt-8">
+    <article class="mt-8 prose-container">
       <PortableText value={til.content} />
-    </ProseContainer>
+    </article>
 
     <hr class="mt-10 mb-6" />
 

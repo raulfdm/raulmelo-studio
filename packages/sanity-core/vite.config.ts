@@ -1,9 +1,8 @@
 import path from 'path';
 import { defineConfig } from 'vite';
-import dts from 'vite-plugin-dts'
+import dts from 'vite-plugin-dts';
 
 function isExternal(id: string) {
-  
   return !id.startsWith('.') && !path.isAbsolute(id);
 }
 
@@ -13,7 +12,7 @@ export default defineConfig({
     outDir: 'dist',
     lib: {
       entry: './src/index.ts',
-      formats: ['cjs', 'es'],
+      formats: ['es'],
     },
     rollupOptions: {
       external: isExternal,

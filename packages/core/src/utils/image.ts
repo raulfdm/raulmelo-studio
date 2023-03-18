@@ -13,7 +13,7 @@ type Source =
       height: number;
     };
 
-type ImageUrlForReturnType = {
+export type ImageUrlForReturnType = {
   sanityImage: ImageUrlBuilder;
   url: string;
   width: number;

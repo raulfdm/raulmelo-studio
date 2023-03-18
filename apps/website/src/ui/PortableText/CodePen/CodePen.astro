@@ -1,0 +1,15 @@
+---
+import CodePen from './CodePen.svelte';
+
+type Props = {
+  node: {
+    directUrl: string;
+    src?: string;
+    height?: string;
+  };
+};
+
+const { node } = Astro.props;
+---
+
+<CodePen {...node} client:visible />

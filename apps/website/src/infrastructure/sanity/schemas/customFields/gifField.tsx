@@ -1,6 +1,8 @@
-import { Gif, GifIcon } from '@raulmelo/ui';
+import { defineField } from 'sanity';
 
-export const gifField = {
+import { GifIcon } from './Icons/GifIcon';
+
+export const gifField = defineField({
   type: `object`,
   name: `gif`,
   title: `GIF`,
@@ -24,7 +26,9 @@ export const gifField = {
     },
   ],
   components: {
-    preview: Gif,
+    preview: ({ src, caption }: any) => {
+      return <img src={src} alt={caption} />;
+    },
   },
   preview: {
     select: {
@@ -34,4 +38,4 @@ export const gifField = {
       height: `height`,
     },
   },
-};
+});

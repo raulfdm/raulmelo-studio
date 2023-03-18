@@ -1,5 +1,6 @@
 ---
-import { LinkedInIcon, TwitterIcon } from '@raulmelo/ui';
+import IconBrandLinkedin from '@tabler/icons-svelte/dist/svelte/icons/IconBrandLinkedin.svelte';
+import IconBrandTwitter from '@tabler/icons-svelte/dist/svelte/icons/IconBrandTwitter.svelte';
 import qs from 'query-string';
 
 type Props = {
@@ -43,7 +44,7 @@ const twitterUrl = `https://twitter.com/share?${qs.stringify(
         target="_blank"
         rel="noopener"
       >
-        <LinkedInIcon className="w-6 md:w-8" />
+        <IconBrandLinkedin class="w-6 md:w-8" />
       </a>
     </li>
 
@@ -55,7 +56,7 @@ const twitterUrl = `https://twitter.com/share?${qs.stringify(
         target="_blank"
         rel="noopener"
       >
-        <TwitterIcon className="w-6 md:w-8" />
+        <IconBrandTwitter class="w-6 md:w-8" />
       </a>
     </li>
   </ul>

@@ -1,6 +1,4 @@
 ---
-import { BigQuote } from '@raulmelo/ui';
-
 type Props = {
   node: {
     children: { text: string }[];
@@ -10,4 +8,9 @@ type Props = {
 const [child] = Astro.props.node.children;
 ---
 
-<BigQuote>{child.text}</BigQuote>
+<blockquote
+  data-testid="big-quote"
+  class="border-none text-xl md:text-2xl lg:text-3xl font-black tracking-normal"
+>
+  {child.text}
+</blockquote>

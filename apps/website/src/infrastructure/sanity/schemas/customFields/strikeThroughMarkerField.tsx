@@ -1,17 +1,15 @@
-import { StrikethroughIcon } from '@raulmelo/ui';
-import { type ReactNode } from 'react';
+import { IconStrikethrough } from '@tabler/icons-react';
+import { type BlockDecoratorDefinition } from 'sanity';
 
-export const strikeThroughMarkerField = {
+export const strikeThroughMarkerField: BlockDecoratorDefinition = {
   title: `Strike Through`,
   value: `strikethrough`,
-  blockEditor: {
-    icon: () => (
-      <div style={{ height: `25px`, display: `grid`, placeItems: `center` }}>
-        <StrikethroughIcon width={20} />
-      </div>
-    ),
-    render: ({ children }: { children: ReactNode }) => {
-      return <s>{children}</s>;
-    },
+  component: ({ children, ...props }) => {
+    return <s {...props}>{children}</s>;
   },
+  icon: () => (
+    <div style={{ height: `25px`, display: `grid`, placeItems: `center` }}>
+      <IconStrikethrough size={20} />
+    </div>
+  ),
 };

@@ -1,18 +1,20 @@
-import { DividerIcon, DotDivider } from '@raulmelo/ui';
+import { IconDots } from '@tabler/icons-react';
+import { defineField } from 'sanity';
 
-export const dividerField = {
+export const dividerField = defineField({
   name: `divider`,
   type: `object`,
   title: `Section Divider`,
-  icon: () => <DividerIcon width={20} />,
+  icon: () => <IconDots size={20} />,
   fields: [
     {
       initialValue: true,
       name: `hr`,
       type: `boolean`,
+      readOnly: true,
     },
   ],
   components: {
-    preview: DotDivider,
+    preview: () => <hr />,
   },
-};
+});
