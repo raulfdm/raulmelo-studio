@@ -1,0 +1,16 @@
+---
+type Props = {
+  node: {
+    children: { text: string }[];
+    markDef: {
+      id: string;
+    };
+  };
+};
+
+const { children, markDef } = Astro.props.node;
+const [child] = children;
+const { id } = markDef;
+---
+
+<a href={`#${id}`}>{child.text}</a>
