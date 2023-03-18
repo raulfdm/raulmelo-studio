@@ -1,10 +1,10 @@
-import { ImageIcon } from '@raulmelo/ui';
+import { IconPhoto } from '@tabler/icons-react';
 
 export const detailedImageField = {
   type: `object`,
   name: `detailedImage`,
   title: `Image`,
-  icon: () => <ImageIcon width={20} />,
+  icon: () => <IconPhoto size={20} />,
   fields: [
     { type: `image`, name: `image`, title: `Image` },
     {
