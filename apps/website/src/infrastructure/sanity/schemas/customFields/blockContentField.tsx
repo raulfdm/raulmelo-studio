@@ -1,4 +1,4 @@
-import { IconExternalLink, IconLink } from '@tabler/icons-react';
+import { IconExternalLink, IconHash, IconLink } from '@tabler/icons-react';
 import { defineField } from 'sanity';
 
 import { highlightMarkerField } from './highlightMarkerField';
@@ -93,12 +93,28 @@ export const blockContentField = defineField({
                 title: `URL`,
                 name: `href`,
                 type: `url`,
+                validation: (Rule) => Rule.uri({ scheme: [`http`, `https`] }),
               },
               {
                 title: `Open in new window`,
                 name: `blank`,
                 type: `boolean`,
-                initialValue: false,
+                initialValue: true,
+              },
+            ],
+          },
+          {
+            title: `Page Link`,
+            name: `pageLink`,
+            type: `object`,
+            icon: () => <IconHash />,
+            fields: [
+              {
+                title: `Heading ID`,
+                name: `id`,
+                type: `string`,
+                description: `The ID of the heading you want to link to`,
+                validation: (Rule) => Rule.required(),
               },
             ],
           },
