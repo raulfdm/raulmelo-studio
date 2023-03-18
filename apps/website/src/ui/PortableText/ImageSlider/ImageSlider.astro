@@ -1,0 +1,61 @@
+---
+import { getImage } from '@astrojs/image';
+import { imgUrlFor } from '@raulmelo/core/utils';
+
+import { sanityClient } from '@/infrastructure/sanity/client';
+
+import ImageSlider from './ImageSlider.svelte';
+
+type ImageNode = {
+  alt: string;
+  caption: string;
+
+  image: {
+    _type: 'image';
+    asset: {
+      _ref: string;
+      _type: 'reference';
+    };
+  };
+};
+
+type Props = {
+  node: {
+    id: {
+      current: string;
+    };
+    images: ImageNode[];
+  };
+};
+
+const { images, id } = Astro.props.node;
+
+const adaptedImages = await Promise.all(
+  images.filter(inProgressImage).map(async (img, index) => {
+    const { alt, caption, image } = img;
+
+    const { height, width, url } = imgUrlFor(sanityClient, image);
+    const imgIndex = index + 1;
+
+    const optimizedImg = (await getImage({
+      src: url,
+      width,
+      height,
+      alt: caption || alt,
+    })) as { width: number; height: number; alt: string; src: string };
+
+    return {
+      id: `${id.current}_${imgIndex}`,
+      index: imgIndex,
+      caption,
+      ...optimizedImg,
+    };
+  }),
+);
+
+function inProgressImage({ image }: ImageNode) {
+  return image !== undefined;
+}
+---
+
+<ImageSlider client:load images={adaptedImages} />
