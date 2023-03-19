@@ -300,7 +300,6 @@ importers:
   packages/core:
     specifiers:
       '@babel/eslint-parser': 7.21.3
-      '@portabletext/react': 2.0.2
       '@portabletext/types': 2.0.2
       '@sanity/block-content-to-markdown': 0.0.5
       '@sanity/client': 5.3.0
@@ -314,8 +313,6 @@ importers:
       eslint-plugin-simple-import-sort: 10.0.0
       groq: 3.7.0
       ramda: 0.28.0
-      react: 18.2.0
-      react-dom: 18.2.0
       typescript: 5.0.2
       vite: 4.2.0
       vitest: 0.29.3
@@ -325,12 +322,9 @@ importers:
       '@sanity/client': 5.3.0
       '@sanity/image-url': 1.0.2
       groq: 3.7.0
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
       zod: 3.21.4
     devDependencies:
       '@babel/eslint-parser': 7.21.3_pxuto7xgangxlusvzceggvrmde
-      '@portabletext/react': 2.0.2_react@18.2.0
       '@portabletext/types': 2.0.2
       '@types/node': 18.15.3
       '@types/ramda': 0.28.23
@@ -2341,17 +2335,6 @@ packages:
       '@portabletext/types': 1.0.3
       react: 18.2.0
 
-  /@portabletext/react/2.0.2_react@18.2.0:
-    resolution: {integrity: sha512-8b325SwY4vAFP1Fu7coJUx/eOoenm197VnCWauJSH0zawwz6n8ouhFc5se1FKPpPPbJMqH3C+RGv2FOWQfB51A==}
-    engines: {node: ^14.13.1 || >=16.0.0}
-    peerDependencies:
-      react: ^17 || ^18
-    dependencies:
-      '@portabletext/toolkit': 2.0.1
-      '@portabletext/types': 2.0.2
-      react: 18.2.0
-    dev: true
-
   /@portabletext/toolkit/1.0.8:
     resolution: {integrity: sha512-SNO8at5crqySCeYa19/mdcZoZvGCINGc/eAX4FwYt02cEzb48hf013BuA9LbEQuTOgpMKxnyeRGpEzxmowmEug==}
     engines: {node: ^14.13.1 || >=16.0.0}
@@ -2363,6 +2346,7 @@ packages:
     engines: {node: ^14.13.1 || >=16.0.0}
     dependencies:
       '@portabletext/types': 2.0.2
+    dev: false
 
   /@portabletext/types/1.0.3:
     resolution: {integrity: sha512-SDDsdury2SaTI2D5Ea6o+Y39SSZMYHRMWJHxkxYl3yzFP0n/0EknOhoXcoaV+bxGr2dTTqZi2TOEj+uWYuavSw==}
