@@ -7,6 +7,7 @@ import { sanityClient } from '@/infrastructure/sanity/client';
 type Props = {
   node: {
     caption: string;
+    customWidth?: number;
     image: {
       url: string;
       width: number;
@@ -16,10 +17,15 @@ type Props = {
 };
 
 const {
-  node: { image, caption },
+  node: { image, caption, customWidth },
 } = Astro.props;
 
 const { url, width, height, aspectRatio } = imgUrlFor(sanityClient, image);
+
+const finalWidth = customWidth || width;
+const finalHeight = customWidth
+  ? calculateCustomHeight(height, width, finalWidth)
+  : height;
 
 /**
  * Sharp + vercel edge functions are throwing an error when trying to resize
@@ -28,7 +34,17 @@ const { url, width, height, aspectRatio } = imgUrlFor(sanityClient, image);
  * This is attempt to fix it.
  */
 const isGif = image.url.endsWith(`.gif`);
-const isLarge = width > 768;
+const isLarge = finalWidth > 768;
+
+function calculateCustomHeight(
+  height: number,
+  width: number,
+  customWidth: number,
+): number {
+  const aspectRatio = height / width;
+  const customHeight = aspectRatio * customWidth;
+  return customHeight;
+}
 ---
 
 {
@@ -39,11 +55,11 @@ const isLarge = width > 768;
       class="object-cover mx-auto"
       src={url}
       aspectRatio={aspectRatio}
-      widths={[200, 400, 640, 768, width]}
-      sizes={`(max-width: ${width}px) 100vw, ${width}px`}
+      widths={[200, 400, 640, 768, finalWidth]}
+      sizes={`(max-width: ${finalWidth}px) 100vw, ${finalWidth}px`}
       alt={caption}
-      width={width}
-      height={height}
+      width={finalWidth}
+      height={finalHeight}
     />
   )
 }
