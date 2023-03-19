@@ -15,6 +15,10 @@ export function contentBlockToMarkdown(body: PortableTextBlock) {
         code: ({ node }: any) => {
           return node.code;
         },
+        callout: ({ node }: any) => {
+          return `${node.title ?? ''}
+          ${contentBlockToMarkdown(node.content)}`.trim();
+        },
       },
       marks: {
         highlight: ({ children }: any) => children,
