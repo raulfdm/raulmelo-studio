@@ -1,4 +1,5 @@
 import { blockContentField } from './blockContentField';
+import { calloutField } from './calloutField';
 import { codeField } from './codeField';
 import { codePenField } from './codePenField';
 import { dividerField } from './dividerField';
@@ -18,4 +19,5 @@ export const customFields = [
   imageSliderField,
   languageField,
   tweetField,
+  calloutField,
 ];

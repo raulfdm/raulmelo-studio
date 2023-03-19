@@ -1,0 +1,97 @@
+---
+type Props = {
+  node: {
+    type?: CalloutType;
+    title?: string;
+    content: PortableTextTextBlock;
+  };
+};
+
+import { IconInfoCircle, IconNotes } from '@tabler/icons-react';
+import { type PortableTextTextBlock } from 'sanity';
+
+import PortableText from '../PortableText.astro';
+import { type CalloutType } from './types';
+
+const { content, type, title } = Astro.props.node;
+
+const nextType = type || `info`;
+
+const calloutMap: Record<
+  CalloutType,
+  {
+    css: {
+      container: string;
+      title: string;
+      icon: string;
+    };
+    Icon: any;
+  }
+> = {
+  info: {
+    css: {
+      container: `bg-sky-100 dark:bg-sky-900 border-sky-900 dark:border-sky-50`,
+      title: `text-sky-900 dark:text-sky-50`,
+      icon: `text-sky-900 dark:text-sky-100`,
+    },
+    Icon: IconInfoCircle,
+  },
+  note: {
+    css: {
+      container: `bg-emerald-100 dark:bg-emerald-900 border-emerald-900 dark:border-emerald-50`,
+      title: `text-emerald-900 dark:text-emerald-50`,
+      icon: `text-emerald-900 dark:text-emerald-100`,
+    },
+    Icon: IconNotes,
+  },
+};
+
+const currentCallout = calloutMap[nextType];
+---
+
+<aside
+  class="relative lg:-mx-8 flex rounded-lg border-l-2 m-2 md:m-4 lg:m-6"
+  class:list={[currentCallout.css.container]}
+>
+  <div
+    class="absolute top left-0 p-1.5 rounded-full callout-icon hidden lg:block"
+    class:list={[currentCallout.css.icon]}
+  >
+    <currentCallout.Icon size={32} />
+  </div>
+
+  <div class="prose-lg w-full callout-content px-8 py-6">
+    {
+      title ? (
+        <strong
+          class="text-md md:text-md font-bold block mb-4"
+          class:list={[currentCallout.css.title]}
+        >
+          {title}
+        </strong>
+      ) : null
+    }
+
+    <PortableText value={content} />
+  </div>
+</aside>
+
+<style lang="postcss" is:global>
+  .callout-icon {
+    transform: translate(-24px, -18px);
+    @apply bg-white dark:bg-blue-900;
+  }
+
+  .callout {
+    @apply border-l-2;
+  }
+
+  .callout-content > *:last-child {
+    margin-bottom: 0;
+  }
+
+  .callout-content > p:first-child,
+  .callout-content > *:nth-child(2) {
+    margin-top: 0;
+  }
+</style>

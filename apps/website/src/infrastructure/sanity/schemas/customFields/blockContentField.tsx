@@ -125,6 +125,9 @@ export const blockContentField = defineField({
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
     {
+      type: `callout`,
+    },
+    {
       type: `detailedImage`,
     },
     {
