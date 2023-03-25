@@ -166,7 +166,7 @@ importers:
       '@astrojs/vercel': 3.2.1
       '@fontsource/fira-code': 4.5.13
       '@fontsource/inter': 4.5.15
-      '@formatjs/intl': 2.6.7
+      '@formatjs/intl': 2.6.9
       '@formatjs/intl-localematcher': 0.2.32
       '@raulmelo/core': workspace:*
       '@raulmelo/refractor': workspace:*
@@ -230,7 +230,7 @@ importers:
       '@astrojs/vercel': 3.2.1_astro@2.1.3+react@18.2.0
       '@fontsource/fira-code': 4.5.13
       '@fontsource/inter': 4.5.15
-      '@formatjs/intl': 2.6.7_typescript@4.9.5
+      '@formatjs/intl': 2.6.9_typescript@4.9.5
       '@formatjs/intl-localematcher': 0.2.32
       '@raulmelo/core': link:../../packages/core
       '@raulmelo/refractor': link:../../packages/refractor
@@ -2007,8 +2007,8 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@formatjs/fast-memoize/1.2.8:
-    resolution: {integrity: sha512-PemNUObyoIZcqdQ1ixTPugzAzhEj7j6AHIyrq/qR6x5BFTvOQeXHYsVZUqBEFduAIscUaDfou+U+xTqOiunJ3Q==}
+  /@formatjs/fast-memoize/2.0.1:
+    resolution: {integrity: sha512-M2GgV+qJn5WJQAYewz7q2Cdl6fobQa69S1AzSM2y0P68ZDbK5cWrJIcPCO395Of1ksftGZoOt4LYCO/j9BKBSA==}
     dependencies:
       tslib: 2.5.0
     dev: false
@@ -2050,8 +2050,8 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@formatjs/intl/2.6.7_typescript@4.9.5:
-    resolution: {integrity: sha512-9FvEJfUMzlmP5ZBK3EE0928kVsZmD5aeWXg+faP8+mKIvG3c0hkLEXQ2MiUrXQt4rsEzOPbYVtBdthzSM0e2fw==}
+  /@formatjs/intl/2.6.9_typescript@4.9.5:
+    resolution: {integrity: sha512-EtcMZ9O24YSASu/jGOaTQtArx7XROjlKiO4KmkxJ/3EyAQLCr5hrS+KKvNud0a7GIwBucOb3IFrZ7WiSm2A/Cw==}
     peerDependencies:
       typescript: ^4.7
     peerDependenciesMeta:
@@ -2059,11 +2059,11 @@ packages:
         optional: true
     dependencies:
       '@formatjs/ecma402-abstract': 1.14.3
-      '@formatjs/fast-memoize': 1.2.8
+      '@formatjs/fast-memoize': 2.0.1
       '@formatjs/icu-messageformat-parser': 2.3.0
       '@formatjs/intl-displaynames': 6.2.6
       '@formatjs/intl-listformat': 7.1.9
-      intl-messageformat: 10.3.1
+      intl-messageformat: 10.3.3
       tslib: 2.5.0
       typescript: 4.9.5
     dev: false
@@ -6694,11 +6694,11 @@ packages:
       side-channel: 1.0.4
     dev: true
 
-  /intl-messageformat/10.3.1:
-    resolution: {integrity: sha512-mqHc6arhbogrdImIsEscdjWnJcg2bvg3MiyGXDsTSGmPbbM2KtRUe7oNgDUbkM3HMn4KbyOct2JyJScmwRgGSQ==}
+  /intl-messageformat/10.3.3:
+    resolution: {integrity: sha512-un/f07/g2e/3Q8e1ghDKET+el22Bi49M7O/rHxd597R+oLpPOMykSv5s51cABVfu3FZW+fea4hrzf2MHu1W4hw==}
     dependencies:
       '@formatjs/ecma402-abstract': 1.14.3
-      '@formatjs/fast-memoize': 1.2.8
+      '@formatjs/fast-memoize': 2.0.1
       '@formatjs/icu-messageformat-parser': 2.3.0
       tslib: 2.5.0
     dev: false
@@ -7090,7 +7090,7 @@ packages:
   /jsonfile/4.0.0:
     resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
     optionalDependencies:
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
     dev: true
 
   /jsonfile/6.1.0:
@@ -7098,7 +7098,7 @@ packages:
     dependencies:
       universalify: 2.0.0
     optionalDependencies:
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
     dev: true
 
   /jsx-ast-utils/3.3.3:
@@ -7168,7 +7168,7 @@ packages:
     resolution: {integrity: sha512-Kx8hMakjX03tiGTLAIdJ+lL0htKnXjEZN6hk/tozf/WOuYGdZBJrZ+rCJRbVCugsjB3jMLn9746NsQIf5VjBMw==}
     engines: {node: '>=4'}
     dependencies:
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
       parse-json: 4.0.0
       pify: 3.0.0
       strip-bom: 3.0.0
