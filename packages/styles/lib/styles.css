@@ -36,6 +36,10 @@
     @apply antialiased;
   }
 
+  .prose-container :where(strong):not(:where([class~='not-prose'] *)) {
+    @apply text-primary font-bold !important;
+  }
+
   .prose-container blockquote {
     @apply text-primary;
   }
