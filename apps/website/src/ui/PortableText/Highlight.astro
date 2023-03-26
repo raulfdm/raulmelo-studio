@@ -8,13 +8,10 @@ type Props = {
 const [child] = Astro.props.node.children;
 ---
 
-<span class="font-bold text-secondary font-code whitespace-normal higlight">
-  {child.text}
-</span>
-
-<style>
-  .highlight::before,
-  .highlight::after {
-    content: '`';
-  }
-</style>
+<span
+  class:list={[
+    'font-bold text-secondary border italic font-code whitespace-normal',
+    'border-secondary bg-[hsl(335, 78%, 90%)]',
+    'px-2 rounded-md',
+  ]}>{child.text}</span
+>
