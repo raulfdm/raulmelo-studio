@@ -33,6 +33,12 @@ export const codeField = defineField({
       name: `code`,
       validation: (Rule) => Rule.required(),
     },
+    {
+      type: `boolean`,
+      name: `showLineNumbers`,
+      title: `Show Line Numbers`,
+      initialValue: true,
+    },
   ],
   components: {
     preview: ({ code, language }: any) => {
