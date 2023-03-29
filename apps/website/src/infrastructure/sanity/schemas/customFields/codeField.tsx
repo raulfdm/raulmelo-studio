@@ -1,4 +1,4 @@
-import { CODE_LANGUAGES_MAP } from '@raulmelo/refractor';
+import { CODE_LANGUAGES_MAP } from '@raulmelo/code-highlight';
 import { IconCode } from '@tabler/icons-react';
 import { defineField } from 'sanity';
 
