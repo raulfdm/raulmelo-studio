@@ -36,7 +36,7 @@ const config = {
   }),
   vite: {
     ssr: {
-      external: [`@raulmelo/core`],
+      external: [`@raulmelo/core`, `@raulmelo/code-highlight`],
     },
   },
 };
