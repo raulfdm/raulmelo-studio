@@ -1,3 +1,23 @@
+import type { Root } from 'hast';
+
+export function markHighlightedLines(tree: Root, highlightedLines: string) {
+  const linesToMark = getLinesToMark(highlightedLines);
+
+  if (linesToMark.length === 0) {
+    return tree;
+  }
+
+  for (const lineToMark of linesToMark) {
+    const line = tree.children[lineToMark];
+
+    if (line && 'properties' in line) {
+      line.properties!.dataHighlightLine = true;
+    }
+  }
+
+  return tree;
+}
+
 export function getLinesToMark(lines?: string): number[] {
   if (!lines || !lines.trim()) {
     return [];
