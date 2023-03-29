@@ -57,7 +57,7 @@
   }
 
   .actions {
-    @apply bg-neutral-200 dark:bg-gray-800;
+    @apply bg-neutral-300 dark:bg-gray-800;
     @apply rounded-t-lg py-2 px-[var(--padding)];
     @apply justify-between items-center flex;
     @apply border-b border-b-neutral-200 dark:border-b-gray-700;
@@ -73,10 +73,9 @@
   }
 
   pre {
-    @apply dark:bg-gray-800;
+    @apply bg-neutral-100 dark:bg-gray-800;
     @apply rounded-t-none;
     @apply px-0 m-0;
-    @apply bg-neutral-100;
   }
 
   code {
@@ -85,11 +84,5 @@
 
   code .line {
     @apply h-7 relative;
-  }
-
-  :global(:where(code.showLines) .line::before) {
-    content: attr(data-line-number);
-    @apply font-code select-none text-right flex-shrink-0 inline-block;
-    @apply min-w-[calc(30px_+var(--padding))] pr-[var(--padding)];
   }
 </style>
