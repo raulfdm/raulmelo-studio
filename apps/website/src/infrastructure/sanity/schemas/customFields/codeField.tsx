@@ -1,4 +1,4 @@
-import { CODE_LANGUAGES_MAP } from '@raulmelo/refractor';
+import { CODE_LANGUAGES_MAP } from '@raulmelo/code-highlight';
 import { IconCode } from '@tabler/icons-react';
 import { defineField } from 'sanity';
 
@@ -32,6 +32,12 @@ export const codeField = defineField({
       type: `text`,
       name: `code`,
       validation: (Rule) => Rule.required(),
+    },
+    {
+      type: `boolean`,
+      name: `showLineNumbers`,
+      title: `Show Line Numbers`,
+      initialValue: true,
     },
   ],
   components: {

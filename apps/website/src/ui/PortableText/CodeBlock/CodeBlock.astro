@@ -1,0 +1,60 @@
+---
+import '@raulmelo/code-highlight/styles/starry-theme.css';
+
+import { type SupportedLanguages } from '@raulmelo/core/config';
+import { highlight } from '@raulmelo/code-highlight';
+
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+
+import CodeBlockSvelte from './CodeBlock.svelte';
+
+type Props = {
+  node: {
+    code: string;
+    highlightedLines: string;
+    language?: string;
+    filename?: string;
+    showLineNumbers?: boolean;
+  };
+};
+
+const {
+  code,
+  highlightedLines,
+  language,
+  filename,
+  showLineNumbers = true,
+} = Astro.props.node;
+const { lang } = Astro.params as { lang: SupportedLanguages };
+
+const intl = getIntl(lang);
+---
+
+{
+  code && (
+    <CodeBlockSvelte
+      client:load
+      code={code}
+      codeHtml={highlight(code, { language, highlightedLines })}
+      copyTitle={intl.formatMessage({ id: `blogPost.copyButton.title` })}
+      filename={filename}
+      highlightedLines={highlightedLines}
+      language={language}
+      showLineNumbers={showLineNumbers}
+    />
+  )
+}
+
+<!-- TODO: These global styles are not working well on svelte side. Have to investigate why. -->
+<style is:global>
+  .line[data-highlight-line] {
+    @apply bg-neutral-200 dark:bg-gray-700;
+    @apply -mx-[var(--padding)] px-[var(--padding)];
+  }
+
+  :where(code.showLines) .line::before {
+    content: attr(data-line-number);
+    @apply font-code select-none text-right flex-shrink-0 inline-block;
+    @apply min-w-[calc(30px_+var(--padding))] pr-[var(--padding)];
+  }
+</style>

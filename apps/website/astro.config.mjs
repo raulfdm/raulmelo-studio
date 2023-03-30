@@ -7,6 +7,12 @@ import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel/serverless';
 import { defineConfig } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
+import { resolve } from 'import-meta-resolve';
+
+const vscodeOnigurumaPath = new URL(
+  'onig.wasm',
+  await resolve('vscode-oniguruma', import.meta.url),
+).pathname;
 
 /** @type {import('astro').AstroUserConfig} */
 const config = {
@@ -33,10 +39,11 @@ const config = {
   output: `server`,
   adapter: vercel({
     analytics: true,
+    includeFiles: [vscodeOnigurumaPath],
   }),
   vite: {
     ssr: {
-      external: [`@raulmelo/core`],
+      external: [`@raulmelo/core`, `@raulmelo/code-highlight`],
     },
   },
 };

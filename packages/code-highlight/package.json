@@ -1,0 +1,31 @@
+{
+  "name": "@raulmelo/code-highlight",
+  "version": "1.0.0",
+  "description": "Server Side Code Highlighting powered by Starry Night",
+  "main": "dist/code-highlight.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "scripts": {
+    "test": "vitest",
+    "dev": "pnpm vite build --watch",
+    "build": "pnpm run build:lib && pnpm run build:types",
+    "build:lib": "vite build",
+    "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist"
+  },
+  "peerDependencies": {
+    "vscode-oniguruma": ">=1.7.0"
+  },
+  "dependencies": {
+    "@types/hast": "2.3.4",
+    "@wooorm/starry-night": "2.0.0",
+    "hast-util-to-html": "8.0.4"
+  },
+  "devDependencies": {
+    "typescript": "5.0.2",
+    "vite": "4.2.0",
+    "vitest": "0.29.3"
+  }
+}

@@ -1,4 +1,6 @@
-import path from 'path';
+/// <reference types="vitest" />
+
+import path from 'node:path';
 import { defineConfig } from 'vite';
 
 function isExternal(id: string) {
@@ -7,6 +9,7 @@ function isExternal(id: string) {
 
 export default defineConfig({
   build: {
+    target: 'node18',
     outDir: 'dist',
     sourcemap: true,
     emptyOutDir: false,

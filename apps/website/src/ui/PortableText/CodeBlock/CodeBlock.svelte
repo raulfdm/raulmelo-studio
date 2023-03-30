@@ -1,35 +1,24 @@
 <script lang="ts">
   import IconClipboard from '@tabler/icons-svelte/dist/svelte/icons/IconClipboard.svelte';
-  import classNames from 'classnames';
-  import { createPopperActions } from 'svelte-popperjs';
+  import IconClipboardCheck from '@tabler/icons-svelte/dist/svelte/icons/IconClipboardCheck.svelte';
   import { useMachine } from '@xstate/svelte';
   import { copyMachine } from './copyMachine';
-  import { highlight } from '@raulmelo/refractor';
 
   export let code: string;
-  export let language = 'plaintext';
-  export let filename: string | undefined = undefined;
+  export let codeHtml: string;
   export let copyTitle = 'Copy code';
-  export let copyTooltipTitle = 'Copied!';
+  export let filename: string | undefined = undefined;
   export let highlightedLines: string | undefined = undefined;
+  export let language = 'plaintext';
+  export let showLineNumbers: boolean;
 
-  const [popperRef, popperContent] = createPopperActions({
-    placement: 'bottom-end',
-  });
-  const extraOpts = {
-    modifiers: [
-      {
-        name: 'offset',
-        options: {
-          offset: [0, 8],
-        },
+  const { state, send } = useMachine(copyMachine, {
+    actions: {
+      copyCode: () => {
+        navigator.clipboard.writeText(code);
       },
-    ],
-  };
-
-  const { state, send } = useMachine(copyMachine);
-
-  const { classLang, html } = highlight(code, language, highlightedLines);
+    },
+  });
 
   function onCopyCode() {
     send({ type: 'COPY', code });
@@ -37,38 +26,63 @@
 </script>
 
 <div class="relative code-snippet">
-  <button
-    use:popperRef
-    type="button"
-    title={copyTitle}
-    class="absolute z-10 p-1 text-gray-500 transition-colors rounded focus:outline-white top-1 right-1 hover:text-gray-300"
-    style="background-color: var(--syntax-bg);"
-    on:click={onCopyCode}
-  >
-    <IconClipboard />
-  </button>
-  {#if $state.matches('copied')}
-    <span
-      use:popperContent={extraOpts}
-      style="fontFamily: 'monospace';"
-      class={classNames(
-        'px-2 py-1 text-sm font-bold bg-green-600 rounded text-gray-50 transition-all',
-        {
-          'opacity-0': $state.matches('notCopied'),
-          'opacity-100': $state.matches('copied'),
-        },
-      )}
-    >
-      {copyTooltipTitle}
-    </span>
-  {/if}
+  <div class="actions">
+    {#if filename}
+      <span class="filename">{filename}</span>
+    {/if}
 
-  {#if filename}
-    <div class="filename">
-      <span>{filename}</span>
-    </div>
-  {/if}
-  <pre class={`refractor ${classLang}`}><code class={classLang}
-      >{@html html}</code
-    ></pre>
+    <button
+      type="button"
+      title={copyTitle}
+      class="copy-btn focus:outline-white hover:text-gray-300"
+      on:click={onCopyCode}
+    >
+      {#if $state.matches('copied')}
+        <IconClipboardCheck />
+      {:else}
+        <IconClipboard />
+      {/if}
+    </button>
+  </div>
+
+  <pre><code class:showLines={showLineNumbers}>{@html codeHtml}</code></pre>
 </div>
+
+<style lang="postcss">
+  .code-snippet {
+    --padding: 20px;
+
+    @apply border border-neutral-200 dark:border-gray-700 rounded-lg;
+    @apply mb-8;
+  }
+
+  .actions {
+    @apply bg-neutral-300 dark:bg-gray-800;
+    @apply rounded-t-lg py-2 px-[var(--padding)];
+    @apply justify-between items-center flex;
+    @apply border-b border-b-neutral-200 dark:border-b-gray-700;
+  }
+
+  .filename {
+    @apply text-[14px] text-gray-800 dark:text-gray-200;
+  }
+
+  .copy-btn {
+    @apply p-0.5 text-gray-500 transition-colors rounded;
+    @apply ml-auto;
+  }
+
+  pre {
+    @apply bg-neutral-100 dark:bg-gray-800;
+    @apply rounded-t-none;
+    @apply px-0 m-0;
+  }
+
+  code {
+    @apply inline-grid w-full px-[var(--padding)] text-primary;
+  }
+
+  code .line {
+    @apply h-7 relative;
+  }
+</style>
