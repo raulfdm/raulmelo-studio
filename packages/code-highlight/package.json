@@ -15,9 +15,9 @@
     "build:lib": "vite build",
     "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "peerDependencies": {
+    "vscode-oniguruma": ">=1.7.0"
+  },
   "dependencies": {
     "@types/hast": "2.3.4",
     "@wooorm/starry-night": "2.0.0",
