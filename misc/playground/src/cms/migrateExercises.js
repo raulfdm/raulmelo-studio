@@ -1,23 +1,33 @@
-import sanityClient from '@sanity/client';
-import { config } from 'dotenv';
+import { createClient } from '@sanity/client';
+import * as dotenv from 'dotenv';
 import got from 'got';
 import groq from 'groq';
+import path from 'node:path';
+import * as url from 'node:url';
 
-config();
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
-const raulClient = sanityClient({
+dotenv.config({
+  path: path.resolve(__dirname, '../../.env'),
+});
+
+const raulClient = createClient({
   projectId: 'gc3hakk3',
   dataset: 'production',
   apiVersion: 'v1',
   useCdn: false,
 });
 
-const camilaClient = sanityClient({
-  projectId: '17miagfv',
+if (!process.env.SANITY_TOKEN) {
+  throw new Error('Missing Sanity token. Please add it to the .env file');
+}
+
+const newClient = createClient({
+  projectId: 'oy5o2ajk',
   dataset: 'production',
   apiVersion: 'v1',
   useCdn: false,
-  token: process.env.CAMILA_SANITY_TOKEN,
+  token: process.env.SANITY_TOKEN,
 });
 
 const query = groq`
@@ -33,6 +43,7 @@ const fails = [];
 
 try {
   const exercises = await raulClient.fetch(query);
+
   console.log('Number of exercises:', exercises.length);
 
   exercises.forEach((exercise) => {
@@ -41,7 +52,7 @@ try {
     }
   });
 
-  const transactions = camilaClient.transaction();
+  const transactions = newClient.transaction();
 
   console.log('Start the migration');
   for await (const exercise of exercises) {
@@ -53,10 +64,7 @@ try {
     try {
       const imageStream = got.stream(image.url);
       console.log('Uploading image');
-      const sanityImage = await camilaClient.assets.upload(
-        'image',
-        imageStream,
-      );
+      const sanityImage = await newClient.assets.upload('image', imageStream);
       console.log('Image uploaded');
 
       transactions.createOrReplace({

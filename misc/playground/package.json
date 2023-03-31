@@ -2,6 +2,11 @@
   "name": "playground",
   "private": true,
   "type": "module",
+  "scripts": {
+    "migrate:exercises": "node ./src/cms/migrateExercises.js",
+    "migrate:routines": "node ./src/cms/migrateRoutines.js",
+    "migrate:schemas": "node ./src/cms/migrateTrainingSchemas.js"
+  },
   "dependencies": {
     "@sanity/client": "5.3.0",
     "dotenv": "16.0.3",
