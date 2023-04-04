@@ -224,7 +224,7 @@ importers:
     dependencies:
       '@astrojs/image':
         specifier: 0.16.2
-        version: 0.16.2(astro@2.1.7)(sharp@0.32.0)
+        version: 0.16.2(astro@2.1.9)(sharp@0.32.0)
       '@astrojs/partytown':
         specifier: 1.1.1
         version: 1.1.1
@@ -239,13 +239,13 @@ importers:
         version: 2.3.1
       '@astrojs/svelte':
         specifier: 2.1.0
-        version: 2.1.0(astro@2.1.7)(svelte@3.57.0)(typescript@4.9.5)(vite@4.2.0)
+        version: 2.1.0(astro@2.1.9)(svelte@3.57.0)(typescript@4.9.5)(vite@4.2.0)
       '@astrojs/tailwind':
         specifier: 3.1.1
-        version: 3.1.1(astro@2.1.7)(tailwindcss@3.3.0)
+        version: 3.1.1(astro@2.1.9)(tailwindcss@3.3.0)
       '@astrojs/vercel':
         specifier: 3.2.1
-        version: 3.2.1(astro@2.1.7)(react@18.2.0)
+        version: 3.2.1(astro@2.1.9)(react@18.2.0)
       '@fontsource/fira-code':
         specifier: 4.5.13
         version: 4.5.13
@@ -307,8 +307,8 @@ importers:
         specifier: 4.16.0
         version: 4.16.0
       astro:
-        specifier: 2.1.7
-        version: 2.1.7(sharp@0.32.0)
+        specifier: 2.1.9
+        version: 2.1.9(sharp@0.32.0)
       astro-portabletext:
         specifier: 0.8.0
         version: 0.8.0
@@ -697,7 +697,7 @@ packages:
   /@astrojs/compiler@1.3.0:
     resolution: {integrity: sha512-VxSj3gh/UTB/27rkRCT7SvyGjWtuxUO7Jf7QqDduch7j/gr/uA5P/Q5I/4zIIrZjy2yQAKyKLoox2QI2mM/BSA==}
 
-  /@astrojs/image@0.16.2(astro@2.1.7)(sharp@0.32.0):
+  /@astrojs/image@0.16.2(astro@2.1.9)(sharp@0.32.0):
     resolution: {integrity: sha512-MWIPEgc2vbiNgbl0cmHYbaAZeXDNlFg5BAn0jQ4fQYYs8r44Fwr7p1DDwdZICc02EAKjAh6fLPFndBCkGA4+Qw==}
     peerDependencies:
       astro: ^2.1.6
@@ -707,7 +707,7 @@ packages:
         optional: true
     dependencies:
       '@altano/tiny-async-pool': 1.0.2
-      astro: 2.1.7(sharp@0.32.0)
+      astro: 2.1.9(sharp@0.32.0)
       http-cache-semantics: 4.1.1
       image-size: 1.0.2
       kleur: 4.1.5
@@ -734,13 +734,13 @@ packages:
       vscode-uri: 3.0.7
     dev: false
 
-  /@astrojs/markdown-remark@2.1.2(astro@2.1.7):
+  /@astrojs/markdown-remark@2.1.2(astro@2.1.9):
     resolution: {integrity: sha512-rYkmFEv2w7oEk6ZPgxHkhWzwcxSUGc1vJU0cbCu5sHF8iFNnc1cmMsjXWa5DrU5sCEf8VVYE1iFlbbnFzvHQJw==}
     peerDependencies:
       astro: ^2.1.5
     dependencies:
       '@astrojs/prism': 2.1.1
-      astro: 2.1.7(sharp@0.32.0)
+      astro: 2.1.9(sharp@0.32.0)
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.2
       rehype-raw: 6.1.1
@@ -803,7 +803,7 @@ packages:
       kleur: 4.1.5
     dev: false
 
-  /@astrojs/svelte@2.1.0(astro@2.1.7)(svelte@3.57.0)(typescript@4.9.5)(vite@4.2.0):
+  /@astrojs/svelte@2.1.0(astro@2.1.9)(svelte@3.57.0)(typescript@4.9.5)(vite@4.2.0):
     resolution: {integrity: sha512-upfkscrNuZbQvqVB5EG38FPJCgHCxO/LOJLAap75rO/++c1T7ztbVru4uSYVBRJkzTDuH3TS52T8kFTVgHXx/g==}
     engines: {node: '>=16.12.0'}
     peerDependencies:
@@ -811,7 +811,7 @@ packages:
       svelte: ^3.54.0
     dependencies:
       '@sveltejs/vite-plugin-svelte': 2.0.3(svelte@3.57.0)(vite@4.2.0)
-      astro: 2.1.7(sharp@0.32.0)
+      astro: 2.1.9(sharp@0.32.0)
       svelte: 3.57.0
       svelte2tsx: 0.5.23(svelte@3.57.0)(typescript@4.9.5)
     transitivePeerDependencies:
@@ -820,14 +820,14 @@ packages:
       - vite
     dev: false
 
-  /@astrojs/tailwind@3.1.1(astro@2.1.7)(tailwindcss@3.3.0):
+  /@astrojs/tailwind@3.1.1(astro@2.1.9)(tailwindcss@3.3.0):
     resolution: {integrity: sha512-Wx/ZtVnmtfqHWGVzvUEYZm8rufVKVgDIef0q6fzwUxoT1EpTTwBkTbpnzooogewMLOh2eTscasGe3Ih2HC1wVA==}
     peerDependencies:
       astro: ^2.1.3
       tailwindcss: ^3.0.24
     dependencies:
       '@proload/core': 0.3.3
-      astro: 2.1.7(sharp@0.32.0)
+      astro: 2.1.9(sharp@0.32.0)
       autoprefixer: 10.4.14(postcss@8.4.21)
       postcss: 8.4.21
       postcss-load-config: 4.0.1(postcss@8.4.21)
@@ -852,7 +852,7 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/vercel@3.2.1(astro@2.1.7)(react@18.2.0):
+  /@astrojs/vercel@3.2.1(astro@2.1.9)(react@18.2.0):
     resolution: {integrity: sha512-gU/sszKmUZ4eU5nZtC3UuXh6NPHNLeMMqbvZ4XI23EWsUms8HdKQllNlAngnLhBmqHLVz5uSQY6S2y6/CHNF0g==}
     peerDependencies:
       astro: ^2.1.3
@@ -860,7 +860,7 @@ packages:
       '@astrojs/webapi': 2.1.0
       '@vercel/analytics': 0.1.11(react@18.2.0)
       '@vercel/nft': 0.22.6
-      astro: 2.1.7(sharp@0.32.0)
+      astro: 2.1.9(sharp@0.32.0)
       fast-glob: 3.2.12
       set-cookie-parser: 2.5.1
       web-vitals: 3.3.0
@@ -1074,7 +1074,7 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
-      '@babel/types': 7.21.2
+      '@babel/types': 7.21.3
     dev: true
 
   /@babel/parser@7.21.3:
@@ -1133,7 +1133,7 @@ packages:
       '@babel/helper-module-imports': 7.18.6
       '@babel/helper-plugin-utils': 7.20.2
       '@babel/plugin-syntax-jsx': 7.18.6(@babel/core@7.21.0)
-      '@babel/types': 7.21.2
+      '@babel/types': 7.21.3
     dev: false
 
   /@babel/plugin-transform-react-jsx@7.21.0(@babel/core@7.21.3):
@@ -1147,7 +1147,7 @@ packages:
       '@babel/helper-module-imports': 7.18.6
       '@babel/helper-plugin-utils': 7.20.2
       '@babel/plugin-syntax-jsx': 7.18.6(@babel/core@7.21.3)
-      '@babel/types': 7.21.2
+      '@babel/types': 7.21.3
     dev: false
 
   /@babel/runtime@7.20.13:
@@ -1187,14 +1187,6 @@ packages:
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
-
-  /@babel/types@7.21.2:
-    resolution: {integrity: sha512-3wRZSs7jiFaB8AjxiiD+VqN5DTG2iRvJGQ+qYFrs/654lg6kGTQWIOFjlBo5RaXuAZjBmP3+OQH4dmhqiiyYxw==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/helper-string-parser': 7.19.4
-      '@babel/helper-validator-identifier': 7.19.1
-      to-fast-properties: 2.0.0
 
   /@babel/types@7.21.3:
     resolution: {integrity: sha512-sBGdETxC+/M4o/zKC0sl6sjWv62WFR/uzxrJ6uYyMLZOUlPnwzw0tKgVHOXxaAd5l2g8pEDM5RZ495GPQI77kg==}
@@ -4222,8 +4214,8 @@ packages:
     resolution: {integrity: sha512-YnSqj4E6vbF7wRk3gcxOPHBjenhfgaINEJlTsnu4sovAyfyGEdQksbioYKoZ+vERRDaYvEricfSzC6fc9lieww==}
     dev: false
 
-  /astro@2.1.7(sharp@0.32.0):
-    resolution: {integrity: sha512-Eaq8/mJTx+kbghfW5ZEJ8rKiEduo03Rn6R/fp/gJGpBSRm/0FiVxVsrpq5SV4kUPrttEi1zMEnEc2GP6JWfXeg==}
+  /astro@2.1.9(sharp@0.32.0):
+    resolution: {integrity: sha512-UkbG0lgue1b/t4yMI+AkAGEfdOwcPS2RUYQ/QIurtKjP6W5gtKQveRTBuHH7iwiBziH+z8Ecc5/OAALoXSvMlQ==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
     peerDependencies:
@@ -4234,7 +4226,7 @@ packages:
     dependencies:
       '@astrojs/compiler': 1.3.0
       '@astrojs/language-server': 0.28.3
-      '@astrojs/markdown-remark': 2.1.2(astro@2.1.7)
+      '@astrojs/markdown-remark': 2.1.2(astro@2.1.9)
       '@astrojs/telemetry': 2.1.0
       '@astrojs/webapi': 2.1.0
       '@babel/core': 7.21.3
@@ -4535,13 +4527,9 @@ packages:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
     dependencies:
       browserslist: 4.21.5
-      caniuse-lite: 1.0.30001464
+      caniuse-lite: 1.0.30001472
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
-    dev: false
-
-  /caniuse-lite@1.0.30001464:
-    resolution: {integrity: sha512-oww27MtUmusatpRpCGSOneQk2/l5czXANDSFvsc7VuOQ86s3ANhZetpwXNf1zY/zdfP63Xvjz325DAdAoES13g==}
     dev: false
 
   /caniuse-lite@1.0.30001466:
@@ -6313,7 +6301,7 @@ packages:
     resolution: {integrity: sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==}
     engines: {node: '>=12'}
     dependencies:
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
       jsonfile: 6.1.0
       universalify: 2.0.0
     dev: true
@@ -6322,7 +6310,7 @@ packages:
     resolution: {integrity: sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==}
     engines: {node: '>=6 <7 || >=8'}
     dependencies:
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
       jsonfile: 4.0.0
       universalify: 0.1.2
     dev: true
@@ -6613,10 +6601,6 @@ packages:
       p-cancelable: 3.0.0
       responselike: 3.0.0
     dev: false
-
-  /graceful-fs@4.2.10:
-    resolution: {integrity: sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==}
-    dev: true
 
   /graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
@@ -7475,7 +7459,7 @@ packages:
     resolution: {integrity: sha512-Kx8hMakjX03tiGTLAIdJ+lL0htKnXjEZN6hk/tozf/WOuYGdZBJrZ+rCJRbVCugsjB3jMLn9746NsQIf5VjBMw==}
     engines: {node: '>=4'}
     dependencies:
-      graceful-fs: 4.2.10
+      graceful-fs: 4.2.11
       parse-json: 4.0.0
       pify: 3.0.0
       strip-bom: 3.0.0
