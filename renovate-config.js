@@ -36,6 +36,7 @@ module.exports = {
       matchManagers: ['dockerfile'],
       enabled: false,
     },
+
     /**
      * Resolutions
      */
@@ -56,6 +57,11 @@ module.exports = {
     {
       matchPackageNames: ['react', 'react-dom'],
       groupName: 'React',
+    },
+    {
+      matchPackagePatterns: ['@astrojs/'],
+      matchPackageNames: ['astro'],
+      groupName: 'Astro',
     },
     {
       matchPackageNames: ['@types/react', '@types/react-dom'],
