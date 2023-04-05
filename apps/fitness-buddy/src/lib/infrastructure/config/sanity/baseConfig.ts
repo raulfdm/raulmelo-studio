@@ -1,5 +1,5 @@
 export const baseSanityConfig = {
-	projectId: `gc3hakk3`,
+	projectId: `oy5o2ajk`,
 	dataset: 'production',
 	apiVersion: 'v1'
 } as const;
