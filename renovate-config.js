@@ -64,6 +64,11 @@ module.exports = {
       groupName: 'Astro',
     },
     {
+      matchPackagePatterns: ['@sanity/'],
+      matchPackageNames: ['sanity'],
+      groupName: 'Sanity',
+    },
+    {
       matchPackageNames: ['@types/react', '@types/react-dom'],
       groupName: 'React Types',
     },
