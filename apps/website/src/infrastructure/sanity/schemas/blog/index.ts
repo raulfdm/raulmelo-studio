@@ -7,7 +7,6 @@ import { siteSettingsSchemaType } from './siteSettings';
 import { socialSchemaType } from './social';
 import { tagSchemaType } from './tag';
 import { tilSchemaType } from './til';
-import { usesSchemaType } from './uses';
 
 export const blogTypes = [
   defaultSeoSchemaType,
@@ -19,5 +18,4 @@ export const blogTypes = [
   socialSchemaType,
   tagSchemaType,
   tilSchemaType,
-  usesSchemaType,
 ];
