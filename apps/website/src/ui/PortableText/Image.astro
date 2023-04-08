@@ -1,6 +1,7 @@
 ---
 import { Picture } from '@astrojs/image/components';
 import { imgUrlFor } from '@raulmelo/core/utils';
+import classNames from 'classnames';
 
 import { sanityClient } from '@/infrastructure/sanity/client';
 
@@ -60,15 +61,22 @@ function calculateCustomHeight(
       class="rounded-md mx-auto"
     />
   ) : (
-    <Picture
-      class="object-cover mx-auto rounded-md"
-      src={url}
-      aspectRatio={aspectRatio}
-      widths={widths}
-      sizes={`(max-width: ${highestWidth}px) 100vw, ${finalWidth}px`}
-      alt={alt ?? caption}
-      width={finalWidth}
-      height={finalHeight}
-    />
+    <figure>
+      <Picture
+        class={classNames(`object-cover mx-auto rounded-md`, {
+          'mb-0': Boolean(caption),
+        })}
+        src={url}
+        aspectRatio={aspectRatio}
+        widths={widths}
+        sizes={`(max-width: ${highestWidth}px) 100vw, ${finalWidth}px`}
+        alt={alt ?? caption}
+        width={finalWidth}
+        height={finalHeight}
+      />
+      {caption ? (
+        <figcaption class="mt-2 lg:mt-4 text-center">{caption}</figcaption>
+      ) : null}
+    </figure>
   )
 }
