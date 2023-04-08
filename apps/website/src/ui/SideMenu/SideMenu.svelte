@@ -8,7 +8,6 @@
   import { Disclosure, DisclosurePanel } from '@rgossiaux/svelte-headlessui';
   import classNames from 'classnames';
   import { useSideMenuLinks } from './links';
-  import { clickAway } from '@/infrastructure/directives/clickAway';
 
   import SideMenuList from './SideMenuList.svelte';
   import SideMenuListItem from './SideMenuListItem.svelte';
@@ -26,27 +25,41 @@
   sideMenuStore.subscribe(async (isOpen) => {
     if (mainPanelEl && overlayEl) {
       if (isOpen) {
-        timeline([
+        document.body.style.overflow = 'hidden';
+
+        timeline(
           [
-            overlayEl,
-            {
-              opacity: 0.7,
-              backgroundColor: 'rgba(0, 0, 0)',
-            },
+            [
+              overlayEl,
+              {
+                opacity: 0.7,
+                backgroundColor: 'rgba(0, 0, 0)',
+              },
+            ],
+            [mainPanelEl, { transform: `translate3d(0%, 0, 0)` }, { at: 0.2 }],
           ],
-          [mainPanelEl, { transform: `translate3d(0%, 0, 0)` }, { at: 0.2 }],
-        ]);
+          {
+            duration: 0.3,
+          },
+        );
       } else {
-        timeline([
-          [mainPanelEl, { transform: `translate3d(100%, 0, 0)` }],
+        document.body.style.overflow = 'auto';
+
+        timeline(
           [
-            overlayEl,
-            {
-              opacity: 0,
-            },
-            { at: 0.2 },
+            [mainPanelEl, { transform: `translate3d(100%, 0, 0)` }],
+            [
+              overlayEl,
+              {
+                opacity: 0,
+              },
+              { at: 0.2 },
+            ],
           ],
-        ]);
+          {
+            duration: 0.3,
+          },
+        );
       }
     }
   });
@@ -58,7 +71,19 @@
   function setOverlayElement(node: HTMLElement) {
     overlayEl = node;
   }
+
+  function handleKeyDown(
+    event: KeyboardEvent & {
+      currentTarget: EventTarget & Window;
+    },
+  ) {
+    if (event.key === 'Escape') {
+      closeSideMenu();
+    }
+  }
 </script>
+
+<svelte:window on:keydown={handleKeyDown} />
 
 <Disclosure>
   <DisclosurePanel
@@ -86,6 +111,9 @@
     static
     as="div"
     use={[setOverlayElement]}
-    class="absolute inset-0 bg-[black] pointer-events-none top-16 z-10 opacity-0"
+    class={classNames('absolute inset-0 bg-[black] top-16 z-10 opacity-0', {
+      'pointer-events-none': $sideMenuStore === false,
+    })}
+    on:click={closeSideMenu}
   />
 </Disclosure>
