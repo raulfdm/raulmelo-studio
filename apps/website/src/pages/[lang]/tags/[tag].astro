@@ -29,23 +29,20 @@ const remoteTag = await queryTagBySlug({
 const posts = sortPostsByPublishedDate(remoteTag.posts);
 
 const intl = getIntl(lang);
-
-const pageTitle = intl.formatMessage(
-  { id: `tag.title` },
-  {
-    tag: remoteTag.name,
-  },
-);
-const description = intl.formatMessage(
-  { id: `tag.description` },
-  { tag: remoteTag.name },
-);
 ---
 
 <Layout
-  title={pageTitle}
+  title={intl.formatMessage(
+    { id: `tags.single.seo.title` },
+    {
+      tag: remoteTag.name,
+    },
+  )}
   seo={{
-    description: description,
+    description: intl.formatMessage(
+      { id: `tags.single.seo.description` },
+      { tag: remoteTag.name },
+    ),
   }}
 >
   <Breadcrumbs
@@ -68,14 +65,16 @@ const description = intl.formatMessage(
 
   <header class="mb-4 col-span-full lg:mb-8">
     <h2 class="font-sans text-xl font-extrabold lg:text-3xl">
-      {pageTitle}
+      {`"${remoteTag.name}"`}
     </h2>
-    <p>Here's some tags</p>
+    <p class="text-base md:text-lg lg:text-2lg">
+      {intl.formatMessage({ id: `tags.single.description` })}
+    </p>
   </header>
   {
     isEmpty(posts) ? (
       <p class="text-lg col-span-full">
-        {intl.formatMessage({ id: `tag.empty` })}
+        {intl.formatMessage({ id: `tags.single.empty` })}
       </p>
     ) : (
       <ul class="pb-5 space-y-6 md:pb-10 col-span-full">
