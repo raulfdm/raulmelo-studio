@@ -107,6 +107,10 @@ module.exports = {
       groupName: 'Next.JS',
     },
     {
+      matchPackagePatterns: ['react-instantsearch'],
+      groupName: 'InstantSearch',
+    },
+    {
       matchPackagePatterns: ['@typescript-eslint'],
       groupName: 'TS Lint',
     },
