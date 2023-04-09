@@ -8,8 +8,13 @@ import { isEmpty } from '@raulmelo/core/utils';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
-import { getPostUrl, getTilUrl } from '@/infrastructure/utils/url';
-import { AuthorPresentation } from '@/ui/AuthorPresentation';
+import {
+  getHomePageUrl,
+  getPostUrl,
+  getTagsHomeUrl,
+  getTilUrl,
+} from '@/infrastructure/utils/url';
+import { Breadcrumbs } from '@/ui/Breadcrumbs';
 import Layout from '@/ui/layouts/Layout.astro';
 import PostBasic from '@/ui/PostBasic.astro';
 
@@ -24,36 +29,52 @@ const remoteTag = await queryTagBySlug({
 const posts = sortPostsByPublishedDate(remoteTag.posts);
 
 const intl = getIntl(lang);
-
-const pageTitle = intl.formatMessage(
-  { id: `tag.title` },
-  {
-    tag: remoteTag.name,
-  },
-);
-const description = intl.formatMessage(
-  { id: `tag.description` },
-  { tag: remoteTag.name },
-);
 ---
 
 <Layout
-  title={pageTitle}
+  title={intl.formatMessage(
+    { id: `tags.single.seo.title` },
+    {
+      tag: remoteTag.name,
+    },
+  )}
   seo={{
-    description: description,
+    description: intl.formatMessage(
+      { id: `tags.single.seo.description` },
+      { tag: remoteTag.name },
+    ),
   }}
 >
-  <AuthorPresentation />
+  <Breadcrumbs
+    class="mb-4"
+    crumbs={[
+      {
+        label: intl.formatMessage({ id: `sideMenu.home` }),
+        href: getHomePageUrl(lang),
+      },
 
-  <h2
-    class="mb-4 font-sans text-xl font-extrabold col-span-full lg:text-2xl lg:mb-8"
-  >
-    {pageTitle}
-  </h2>
+      {
+        label: intl.formatMessage({ id: `sideMenu.tags` }),
+        href: getTagsHomeUrl(lang),
+      },
+      {
+        label: remoteTag.slug,
+      },
+    ]}
+  />
+
+  <header class="mb-4 col-span-full lg:mb-8">
+    <h2 class="font-sans text-xl font-extrabold lg:text-3xl">
+      {`"${remoteTag.name}"`}
+    </h2>
+    <p class="text-base md:text-lg lg:text-2lg">
+      {intl.formatMessage({ id: `tags.single.description` })}
+    </p>
+  </header>
   {
     isEmpty(posts) ? (
       <p class="text-lg col-span-full">
-        {intl.formatMessage({ id: `tag.empty` })}
+        {intl.formatMessage({ id: `tags.single.empty` })}
       </p>
     ) : (
       <ul class="pb-5 space-y-6 md:pb-10 col-span-full">

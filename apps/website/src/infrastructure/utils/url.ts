@@ -1,5 +1,29 @@
 import { type SupportedLanguages } from '@raulmelo/core/config';
 
+export function getHomePageUrl(locale: SupportedLanguages): string {
+  const nextUrl = `/`;
+
+  return getPathnameWithLocale(nextUrl, locale);
+}
+
+export function getBlogHomeUrl(locale: SupportedLanguages): string {
+  const nextUrl = `/blog`;
+
+  return getPathnameWithLocale(nextUrl, locale);
+}
+
+export function getTagsHomeUrl(locale: SupportedLanguages): string {
+  const nextUrl = `/tags`;
+
+  return getPathnameWithLocale(nextUrl, locale);
+}
+
+export function getTilHomeUrl(locale: SupportedLanguages): string {
+  const nextUrl = `/til`;
+
+  return getPathnameWithLocale(nextUrl, locale);
+}
+
 /**
  * TODO: Move those functions to core/domains/*
  */
@@ -9,29 +33,17 @@ export function getPostUrl(
 ): string {
   const nextUrl = `/blog/${postSlug}`;
 
-  // if (locale === `en`) {
-  //   return nextUrl;
-  // }
-
   return getPathnameWithLocale(nextUrl, locale);
 }
 
 export function getTagUrl(tagSlug: string, locale: SupportedLanguages): string {
   const nextUrl = `/tags/${tagSlug}`;
 
-  // if (locale === `en`) {
-  //   return nextUrl;
-  // }
-
   return getPathnameWithLocale(nextUrl, locale);
 }
 
 export function getTilUrl(slug: string, locale: SupportedLanguages): string {
   const nextUrl = `/til/${slug}`;
-
-  // if (locale === `en`) {
-  //   return nextUrl;
-  // }
 
   return getPathnameWithLocale(nextUrl, locale);
 }

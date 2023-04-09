@@ -5,6 +5,7 @@ export type Props = {
   title?: string;
   seo?: OmittedSeoProps;
   lang?: SupportedLanguages;
+  containerClass?: string;
 };
 
 import '@fontsource/inter/300.css';
@@ -16,6 +17,7 @@ import '@raulmelo/styles/lib/styles.css';
 
 import { type SupportedLanguages } from '@raulmelo/core/config';
 import { inject } from '@vercel/analytics';
+import classNames from 'classnames';
 
 import { sanitizeUrl } from '@/infrastructure/utils/url';
 import DefaultSEO, { type Props as SeoProps } from '@/ui/DefaultSEO.astro';
@@ -25,7 +27,7 @@ import GoogleAnalytics from '../GoogleAnalytics.astro';
 
 inject();
 
-const { title, seo, lang } = Astro.props;
+const { title, seo, lang, containerClass } = Astro.props;
 
 const { lang: langFromParams } = Astro.params as { lang: SupportedLanguages };
 
@@ -81,7 +83,7 @@ const nextLang = lang || langFromParams;
     <MenuBar lang={nextLang} pathname={Astro.url.pathname} client:load />
     <slot name="banner" />
 
-    <main class="grid-container">
+    <main class={classNames(`grid-container`, containerClass)}>
       <slot />
     </main>
   </body>

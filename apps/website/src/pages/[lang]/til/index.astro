@@ -6,6 +6,8 @@ import classNames from 'classnames';
 import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
+import { getHomePageUrl } from '@/infrastructure/utils/url';
+import { Breadcrumbs } from '@/ui/Breadcrumbs';
 import Layout from '@/ui/layouts/Layout.astro';
 
 import Tils from './_ui/Tils.svelte';
@@ -26,6 +28,19 @@ const baseColClass = `col-span-full lg:col-span-10`;
 ---
 
 <Layout title={intl.formatMessage({ id: `tilHome.title` })}>
+  <Breadcrumbs
+    class="col-span-full lg:col-span-10"
+    crumbs={[
+      {
+        label: intl.formatMessage({ id: `sideMenu.home` }),
+        href: getHomePageUrl(lang),
+      },
+      {
+        label: intl.formatMessage({ id: `sideMenu.til` }),
+      },
+    ]}
+  />
+
   <header class={baseColClass}>
     <h1 class="text-3xl font-extrabold md:text-4xl">
       {intl.formatMessage({ id: `tilHome.title` })}

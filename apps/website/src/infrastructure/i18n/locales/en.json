@@ -42,7 +42,17 @@
     "readMore": "Read more"
   },
   "tags": {
-    "description": "Explore the content by tag. Select a tag to view all related content."
+    "all": {
+      "description": "Explore the content by tag. Select a tag to view all related content."
+    },
+    "single": {
+      "empty": "No content for this tag... at least in this language",
+      "description": "Here's the content I've created for this tag",
+      "seo": {
+        "title": "All content for \"{tag}\"",
+        "description": "Check all content I've created related to \"{tag}\"."
+      }
+    }
   },
   "blogPost": {
     "publishedAt": "This article was published on {publishedDate}",
@@ -74,11 +84,6 @@
   },
   "series": {
     "sectionDescription": "{seriesAmount} Part Series"
-  },
-  "tag": {
-    "title": "All content for \"{tag}\"",
-    "description": "Check all blog posts I've written related to \"{tag}\".",
-    "empty": "No content for this tag... at least in this language."
   },
   "authorPresentation": {
     "profileImageAlt": "Author",
