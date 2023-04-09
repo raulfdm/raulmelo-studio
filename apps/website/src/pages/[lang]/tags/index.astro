@@ -35,7 +35,7 @@ const intl = getIntl(lang);
   <Tags class="col-span-12 gap-4">
     {
       allTags.map((tag) => (
-        <Tag class="space-x-0.5 text-base lg:text-lg">
+        <Tag class="space-x-0.5 text-base lg:text-lg hover:scale-105 transition-all">
           <a
             href={getTagUrl(tag.slug, lang)}
             class="flex flex-row items-center underline text-secondary"
@@ -47,6 +47,4 @@ const intl = getIntl(lang);
       ))
     }
   </Tags>
-
-  <!-- <Posts client:load lang={lang} posts={posts} /> -->
 </Layout>
