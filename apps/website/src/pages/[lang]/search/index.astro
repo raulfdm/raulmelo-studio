@@ -7,6 +7,8 @@ import { getServerState } from 'react-instantsearch-hooks-server';
 
 import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { getHomePageUrl } from '@/infrastructure/utils/url';
+import { Breadcrumbs } from '@/ui/Breadcrumbs';
 import Layout from '@/ui/layouts/Layout.astro';
 
 import { Search } from './_ui/Search';
@@ -33,6 +35,17 @@ const searchServerState = await getServerState(
 
 <Layout title={intl.formatMessage({ id: `search.pageTitle` })}>
   <!-- <NextSeo title={formatMessage(messages.pageTitle)} noindex /> -->
+  <Breadcrumbs
+    crumbs={[
+      {
+        label: intl.formatMessage({ id: `sideMenu.home` }),
+        href: getHomePageUrl(lang),
+      },
+      {
+        label: intl.formatMessage({ id: `sideMenu.search` }),
+      },
+    ]}
+  />
   <header class="mb-6 col-span-full">
     <h1 class="text-3xl font-extrabold md:text-4xl col-span-full">
       {intl.formatMessage({ id: `search.pageTitle` })}

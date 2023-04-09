@@ -5,6 +5,8 @@ import { queryPosts } from '@raulmelo/core/domains';
 import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
+import { getHomePageUrl } from '@/infrastructure/utils/url';
+import { Breadcrumbs } from '@/ui/Breadcrumbs';
 import Layout from '@/ui/layouts/Layout.astro';
 
 import Posts from './_ui/Posts.svelte';
@@ -23,6 +25,19 @@ const intl = getIntl(lang);
 ---
 
 <Layout title="Blog">
+  <Breadcrumbs
+    class="col-span-full lg:col-span-10"
+    crumbs={[
+      {
+        label: intl.formatMessage({ id: `sideMenu.home` }),
+        href: getHomePageUrl(lang),
+      },
+      {
+        label: intl.formatMessage({ id: `sideMenu.blog` }),
+      },
+    ]}
+  />
+
   <header class="col-span-full lg:col-span-10">
     <h1 class="text-3xl font-extrabold md:text-4xl">Blog</h1>
 

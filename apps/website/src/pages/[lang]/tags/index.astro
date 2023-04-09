@@ -6,7 +6,8 @@ import IconHash from '@tabler/icons-svelte/dist/svelte/icons/IconHash.svelte';
 import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
-import { getTagUrl } from '@/infrastructure/utils/url';
+import { getHomePageUrl, getTagUrl } from '@/infrastructure/utils/url';
+import { Breadcrumbs } from '@/ui/Breadcrumbs';
 import Layout from '@/ui/layouts/Layout.astro';
 import { Tag, Tags } from '@/ui/Tags';
 
@@ -24,6 +25,19 @@ const intl = getIntl(lang);
 ---
 
 <Layout title="Tags">
+  <Breadcrumbs
+    class="col-span-full lg:col-span-10"
+    crumbs={[
+      {
+        label: intl.formatMessage({ id: `sideMenu.home` }),
+        href: getHomePageUrl(lang),
+      },
+      {
+        label: intl.formatMessage({ id: `sideMenu.tags` }),
+      },
+    ]}
+  />
+
   <header class="col-span-full lg:col-span-10">
     <h1 class="text-3xl font-extrabold md:text-4xl">Tags</h1>
 
