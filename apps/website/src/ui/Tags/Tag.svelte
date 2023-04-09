@@ -1,15 +1,14 @@
 <script lang="ts">
   import classNames from 'classnames';
 
-  export let className: string;
+  let className = '';
+
+  export { className as class };
 </script>
 
 <li
   {...$$props}
-  class={classNames(
-    'flex flex-col items-center justify-center mr-4',
-    className,
-  )}
+  class={classNames('flex flex-col items-center justify-center', className)}
 >
   <slot />
 </li>
