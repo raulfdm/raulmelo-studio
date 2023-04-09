@@ -8,10 +8,10 @@ type Props = LayoutProps & {
   contentId: string;
 };
 
-const { title, seo, contentId } = Astro.props;
+const { title, seo, contentId, ...rest } = Astro.props;
 ---
 
-<Layout title={title} seo={seo}>
+<Layout title={title} seo={seo} {...rest}>
   {
     contentId.startsWith(`draft`) && (
       <div
