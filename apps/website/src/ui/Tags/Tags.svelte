@@ -1,12 +1,14 @@
 <script lang="ts">
   import classNames from 'classnames';
 
-  export let className: string;
+  let className = '';
+
+  export { className as class };
 </script>
 
 <ul
   {...$$props}
-  class={classNames([`flex flex-row flex-wrap text-base`, className])}
+  class={classNames([`flex flex-row flex-wrap text-base gap-2`, className])}
 >
   <slot />
 </ul>

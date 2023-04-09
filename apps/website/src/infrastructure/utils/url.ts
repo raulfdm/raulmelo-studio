@@ -17,7 +17,7 @@ export function getPostUrl(
 }
 
 export function getTagUrl(tagSlug: string, locale: SupportedLanguages): string {
-  const nextUrl = `/tag/${tagSlug}`;
+  const nextUrl = `/tags/${tagSlug}`;
 
   // if (locale === `en`) {
   //   return nextUrl;

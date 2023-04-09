@@ -1,0 +1,50 @@
+---
+import { type SupportedLanguages } from '@raulmelo/core/config';
+import { queryAllTags } from '@raulmelo/core/domains';
+import IconHash from '@tabler/icons-svelte/dist/svelte/icons/IconHash.svelte';
+
+import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { sanityClient } from '@/infrastructure/sanity/client';
+import { getTagUrl } from '@/infrastructure/utils/url';
+import Layout from '@/ui/layouts/Layout.astro';
+import { Tag, Tags } from '@/ui/Tags';
+
+export const prerender = true;
+export const getStaticPaths = languageGetStaticPaths;
+
+const { lang } = Astro.params as { lang: SupportedLanguages };
+
+const allTags = await queryAllTags({
+  client: sanityClient,
+  language: lang,
+});
+
+const intl = getIntl(lang);
+---
+
+<Layout title="Tags">
+  <header class="col-span-full lg:col-span-10">
+    <h1 class="text-3xl font-extrabold md:text-4xl">Tags</h1>
+
+    <p class="my-4 col-span-full lg:col-span-10 text-md md:text-lg">
+      {intl.formatMessage({ id: `tags.description` })}
+    </p>
+  </header>
+
+  <Tags class="col-span-12 gap-4">
+    {
+      allTags.map((tag) => (
+        <Tag class="space-x-0.5 text-base lg:text-lg hover:scale-105 transition-all">
+          <a
+            href={getTagUrl(tag.slug, lang)}
+            class="flex flex-row items-center underline text-secondary"
+          >
+            <IconHash class="w-5 h-5" />
+            {tag.name}
+          </a>
+        </Tag>
+      ))
+    }
+  </Tags>
+</Layout>
