@@ -1,0 +1,51 @@
+---
+import '@raulmelo/code-highlight/styles/starry-theme.css';
+
+import { CodeBlock } from '@/ui/PortableText/CodeBlock';
+import Layout from '@/ui/layouts/Layout.astro';
+import { highlight } from '@raulmelo/code-highlight';
+
+const snippets = [
+  {
+    title: 'Hello World',
+    language: 'html',
+    code: '<h1>Hello World</h1>',
+    id: '123',
+  },
+  {
+    title: 'Hello World CSS',
+    language: 'css',
+    code: 'h1 { color: red; }',
+    id: '456',
+  },
+  {
+    title: 'Hello World JS',
+    language: 'javascript',
+    code: "console.log('Hello World')",
+    id: '789',
+  },
+];
+---
+
+<Layout>
+  <section class="col-span-full">
+    <h1 class="text-4xl font-extrabold">Code Snippets</h1>
+  </section>
+
+  {
+    snippets.map((snippet) => (
+      <section class="col-span-full flex flex-col gap-2">
+        <a href={'/en/code-snippets/' + snippet.id}>
+          <h2 class="text-lg font-bold">{snippet.title}</h2>
+          <CodeBlock
+            node={{
+              language: snippet.language,
+              code: snippet.code,
+              highlightedLines: '',
+            }}
+          />
+        </a>
+      </section>
+    ))
+  }
+</Layout>
