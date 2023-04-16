@@ -6,6 +6,7 @@ import { Hits } from './Hits';
 import { PoweredByAlgolia } from './PoweredBy';
 import { SearchBox } from './SearchBox';
 import { searchClient } from './searchClient';
+import { clientEnv } from '@/infrastructure/env/client';
 
 type SearchProps = {
   lang: SupportedLanguages;
@@ -25,7 +26,7 @@ export function Search({
   return (
     <InstantSearch
       searchClient={searchClient}
-      indexName={import.meta.env.PUBLIC_ALGOLIA_INDEX_NAME}
+      indexName={clientEnv.PUBLIC_ALGOLIA_INDEX_NAME}
     >
       <SearchBox placeholder={inputSearchPlaceholder} />
       <Filters

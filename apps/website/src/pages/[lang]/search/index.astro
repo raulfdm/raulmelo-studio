@@ -71,5 +71,5 @@ const searchServerState = await getServerState(
     </p>
   </header>
 
-  <SearchSSR lang={lang} searchServerState={searchServerState} />
+  <SearchSSR lang={lang} searchServerState={searchServerState} client:load />
 </Layout>
