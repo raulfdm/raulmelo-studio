@@ -30,6 +30,11 @@ const { title, seo, lang, containerClass } = Astro.props;
 const { lang: langFromParams } = Astro.params as { lang: SupportedLanguages };
 
 const nextLang = lang || langFromParams;
+
+/**
+ * Not sure if this hack will work.
+ */
+process.env.VERCEL_ANALYTICS_ID = import.meta.env.VERCEL_ANALYTICS_ID;
 ---
 
 <!DOCTYPE html>
@@ -78,7 +83,7 @@ const nextLang = lang || langFromParams;
   <body
     class="relative min-h-screen pb-12 duration-200 bg-white dark:bg-blue-900 text-primary transition-theme ease md:pb-16"
   >
-    <Analytics client:only="react" debug />
+    <Analytics client:only="react" />
 
     <MenuBar lang={nextLang} pathname={Astro.url.pathname} client:load />
     <slot name="banner" />
