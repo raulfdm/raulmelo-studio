@@ -16,7 +16,7 @@ import '@fontsource/inter/900.css';
 import '@raulmelo/styles/lib/styles.css';
 
 import { type SupportedLanguages } from '@raulmelo/core/config';
-import { inject } from '@vercel/analytics';
+import { Analytics } from '@vercel/analytics/react';
 import classNames from 'classnames';
 
 import { sanitizeUrl } from '@/infrastructure/utils/url';
@@ -24,8 +24,6 @@ import DefaultSEO, { type Props as SeoProps } from '@/ui/DefaultSEO.astro';
 import { MenuBar } from '@/ui/MenuBar';
 
 import GoogleAnalytics from '../GoogleAnalytics.astro';
-
-inject();
 
 const { title, seo, lang, containerClass } = Astro.props;
 
@@ -80,6 +78,8 @@ const nextLang = lang || langFromParams;
   <body
     class="relative min-h-screen pb-12 duration-200 bg-white dark:bg-blue-900 text-primary transition-theme ease md:pb-16"
   >
+    <Analytics client:only="react" debug />
+
     <MenuBar lang={nextLang} pathname={Astro.url.pathname} client:load />
     <slot name="banner" />
 
