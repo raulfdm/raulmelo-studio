@@ -8,6 +8,13 @@ import vercel from '@astrojs/vercel/serverless';
 import { defineConfig } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 import { resolve } from 'import-meta-resolve';
+import { loadEnv } from 'vite';
+
+const { VERCEL_ENV, VERCEL_URL } = loadEnv(
+  import.meta.env.MODE,
+  process.cwd(),
+  '',
+);
 
 const vscodeOnigurumaPath = new URL(
   'onig.wasm',
@@ -48,10 +55,10 @@ const config = {
   },
 };
 
-if (process.env.VERCEL_ENV === `production`) {
+if (VERCEL_ENV === `production`) {
   config.site = `https://raulmelo.dev`;
-} else if (process.env.VERCEL_URL) {
-  config.site = `https://${process.env.VERCEL_URL}`;
+} else if (VERCEL_URL) {
+  config.site = `https://${VERCEL_URL}`;
 }
 
 export default defineConfig(config);
