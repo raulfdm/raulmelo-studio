@@ -46,16 +46,18 @@ module.exports = {
     },
     {
       matchPackageNames: ['@types/node'],
-      allowedVersions: '<17',
-    },
-    {
-      matchPackageNames: ['eslint'],
+      allowedVersions: '<19',
     },
     /**
      * Grouping packages to reduce the number of PRs
      */
     {
-      matchPackageNames: ['react', 'react-dom'],
+      matchPackageNames: [
+        'react',
+        'react-dom',
+        '@types/react',
+        '@types/react-dom',
+      ],
       groupName: 'React',
     },
     {
@@ -69,13 +71,9 @@ module.exports = {
       groupName: 'Sanity',
     },
     {
-      matchPackageNames: ['@types/react', '@types/react-dom'],
-      groupName: 'React Types',
-    },
-    {
       matchPackagePatterns: ['eslint'],
       groupName: 'eslint',
-      excludePackagePatterns: ['eslint-config-next', '@typescript-eslint'],
+      excludePackagePatterns: ['@typescript-eslint'],
     },
     {
       matchPackagePatterns: ['babel'],
@@ -88,44 +86,34 @@ module.exports = {
     },
     {
       matchPackagePatterns: ['svelte'],
-      groupName: 'Svelte Packages',
+      excludeDepNames: ['@tabler/icons-svelte'],
+      groupName: 'Svelte',
+    },
+    {
+      matchPackagePatterns: ['@tabler/icons'],
+      groupName: 'Tabler Icons',
     },
     {
       matchPackagePatterns: ['sanity', 'groq'],
       groupName: 'sanity',
     },
     {
-      matchPackagePatterns: ['@storybook'],
-      groupName: 'Storybook',
+      matchPackageNames: ['vite', 'vitest'],
+      matchPackagePatterns: ['vite-plugin-*'],
+      groupName: 'Vite',
     },
     {
-      matchPackageNames: [
-        'eslint-config-next',
-        'next',
-        '@next/bundle-analyzer',
-      ],
-      groupName: 'Next.JS',
-    },
-    {
-      matchPackagePatterns: ['react-instantsearch'],
-      groupName: 'InstantSearch',
+      matchPackagePatterns: ['react-instantsearch', 'algoliasearch'],
+      groupName: 'Algolia',
     },
     {
       matchPackagePatterns: ['@typescript-eslint'],
-      groupName: 'TS Lint',
+      groupName: 'ESLint TS',
     },
     {
-      matchPackagePatterns: ['@remix-run', 'remix'],
-      groupName: 'Remix',
-    },
-    {
-      groupName: 'Tailwind',
-      matchPackagePatterns: [
-        'tailwindcss',
-        '@tailwindcss/forms',
-        '@tailwindcss/aspect-ratio',
-        '@tailwindcss/typography',
-      ],
+      groupName: 'Tailwind ecosystem',
+      matchPackagePatterns: ['tailwindcss', '@tailwindcss/*'],
+      matchPackageNames: ['postcss', 'autoprefixer'],
     },
   ],
 };
