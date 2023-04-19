@@ -44,8 +44,8 @@ importers:
         specifier: 3.7.0
         version: 3.7.0(@babel/runtime@7.21.0)(@codemirror/lint@6.2.0)(@codemirror/state@6.2.0)(@codemirror/theme-one-dark@6.1.1)(@lezer/common@1.0.2)(codemirror@6.0.1)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@5.3.9)
       '@tabler/icons-svelte':
-        specifier: 2.10.0
-        version: 2.10.0(svelte@3.58.0)
+        specifier: 2.16.0
+        version: 2.16.0(svelte@3.58.0)
       '@xstate/cli':
         specifier: 0.4.2
         version: 0.4.2(prettier@2.8.7)
@@ -280,11 +280,11 @@ importers:
         specifier: 3.8.0
         version: 3.8.0(@babel/runtime@7.21.0)(@codemirror/lint@6.2.0)(@codemirror/state@6.2.0)(@codemirror/theme-one-dark@6.1.1)(@lezer/common@1.0.2)(codemirror@6.0.1)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@5.3.9)
       '@tabler/icons-react':
-        specifier: 2.11.0
-        version: 2.11.0(react@18.2.0)
+        specifier: 2.16.0
+        version: 2.16.0(react@18.2.0)
       '@tabler/icons-svelte':
-        specifier: 2.11.0
-        version: 2.11.0(svelte@3.58.0)
+        specifier: 2.16.0
+        version: 2.16.0(svelte@3.58.0)
       '@types/react':
         specifier: 18.0.35
         version: 18.0.35
@@ -529,8 +529,8 @@ importers:
   packages/sanity-core:
     dependencies:
       '@tabler/icons-react':
-        specifier: 2.11.0
-        version: 2.11.0(react@18.2.0)
+        specifier: 2.16.0
+        version: 2.16.0(react@18.2.0)
     devDependencies:
       '@types/react':
         specifier: 18.0.35
@@ -3007,40 +3007,27 @@ packages:
       defer-to-connect: 2.0.1
     dev: false
 
-  /@tabler/icons-react@2.11.0(react@18.2.0):
-    resolution: {integrity: sha512-Mbie8IFLrtI0sGm802Bmierle0ixIi7FVczShoLjPZwRM0da1HcD588TF7oMuQ09zd241BY+L7M/f0Q6lquBng==}
+  /@tabler/icons-react@2.16.0(react@18.2.0):
+    resolution: {integrity: sha512-WwVjPzwvChmaQfhOjaVPyUjHeUosP2G1kqG6RfSkOWWiGx46nfZG7ekuBDidXuvMdTP1o2iC9JJIGm6mz3k5Uw==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@tabler/icons': 2.11.0
+      '@tabler/icons': 2.16.0
       prop-types: 15.8.1
       react: 18.2.0
     dev: false
 
-  /@tabler/icons-svelte@2.10.0(svelte@3.58.0):
-    resolution: {integrity: sha512-z245D7S6NbaSS+kyLaS1DEGF7Ri3daNuUVnHt1xVMlGOAShX/sxFenVcLp1DnQVL2QA7XDZ65Ecn5gq2CJQ5eQ==}
+  /@tabler/icons-svelte@2.16.0(svelte@3.58.0):
+    resolution: {integrity: sha512-gOhGl8c53ao7Y7ZsjRNCRMogTVlzGf8B7qkzX+52CVeGCYBR1wIu2cDIz9Nq51lVTmZBzr5Ogr5Bv89H2a7heg==}
     peerDependencies:
       svelte: ^3.49.0
     dependencies:
-      '@tabler/icons': 2.10.0
+      '@tabler/icons': 2.16.0
       svelte: 3.58.0
     dev: false
 
-  /@tabler/icons-svelte@2.11.0(svelte@3.58.0):
-    resolution: {integrity: sha512-qjLachNPPErdsn1uY3xmNXMRxp+VSUppNXNG4eZUuzuYEeLo0fnmAWsfdZ8bXaGYcuP6/oQxSgeYyc9sRlnFGw==}
-    peerDependencies:
-      svelte: ^3.49.0
-    dependencies:
-      '@tabler/icons': 2.11.0
-      svelte: 3.58.0
-    dev: false
-
-  /@tabler/icons@2.10.0:
-    resolution: {integrity: sha512-rj9xrHTSw7bPpylx8g9xhhUgO9NYKX1wGnGrMaFS5CQ9KS+jhwhKFqbZaQKhXNhpvI0cLEEW6GaRXdrC3iBs1A==}
-    dev: false
-
-  /@tabler/icons@2.11.0:
-    resolution: {integrity: sha512-KPESQnvHoSpbAdgzDdrSmeZ9AE8fSU12fU3Cag79uXJCUkC8f741fcvPJPsFMDe0S96VSq3mMYF8JnA7a570uQ==}
+  /@tabler/icons@2.16.0:
+    resolution: {integrity: sha512-1kaPH5APIWGtXe0W0eQ9g4MdfaQJ2gh95TAa94lNAqRR0JeC3fkD0yXGCcUiNK4GnGDv3UtPSCd3dbdKTe1b2A==}
     dev: false
 
   /@tailwindcss/aspect-ratio@0.4.2(tailwindcss@3.3.1):
