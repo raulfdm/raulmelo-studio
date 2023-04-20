@@ -13,7 +13,7 @@ import { loadEnv } from 'vite';
 const { VERCEL_ENV, VERCEL_URL } = loadEnv(
   import.meta.env.MODE,
   process.cwd(),
-  '',
+  ``,
 );
 
 console.log(`IDS`, {
@@ -23,9 +23,19 @@ console.log(`IDS`, {
   PROCESS_PUBLIC_VERCEL_ANALYTICS_ID: process.env.PUBLIC_VERCEL_ANALYTICS_ID,
 });
 
+import.meta.env.PUBLIC_VERCEL_ANALYTICS_ID =
+  process.env.PUBLIC_VERCEL_ANALYTICS_ID;
+
+console.log(`IDS 2`, {
+  VERCEL_ANALYTICS_ID: import.meta.env.VERCEL_ANALYTICS_ID,
+  PUBLIC_VERCEL_ANALYTICS_ID: import.meta.env.PUBLIC_VERCEL_ANALYTICS_ID,
+  PROCESS_VERCEL_ANALYTICS_ID: process.env.VERCEL_ANALYTICS_ID,
+  PROCESS_PUBLIC_VERCEL_ANALYTICS_ID: process.env.PUBLIC_VERCEL_ANALYTICS_ID,
+});
+
 const vscodeOnigurumaPath = new URL(
-  'onig.wasm',
-  await resolve('vscode-oniguruma', import.meta.url),
+  `onig.wasm`,
+  await resolve(`vscode-oniguruma`, import.meta.url),
 ).pathname;
 
 /** @type {import('astro').AstroUserConfig} */
