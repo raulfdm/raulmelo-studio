@@ -29,6 +29,13 @@ const { title, seo, lang, containerClass } = Astro.props;
 const { lang: langFromParams } = Astro.params as { lang: SupportedLanguages };
 
 const nextLang = lang || langFromParams;
+
+console.log(`IDS`, {
+  VERCEL_ANALYTICS_ID: import.meta.env.VERCEL_ANALYTICS_ID,
+  PUBLIC_VERCEL_ANALYTICS_ID: import.meta.env.PUBLIC_VERCEL_ANALYTICS_ID,
+  PROCESS_VERCEL_ANALYTICS_ID: process.env.VERCEL_ANALYTICS_ID,
+  PROCESS_PUBLIC_VERCEL_ANALYTICS_ID: process.env.PUBLIC_VERCEL_ANALYTICS_ID,
+});
 ---
 
 <!DOCTYPE html>
