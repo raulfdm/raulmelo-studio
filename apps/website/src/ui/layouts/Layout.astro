@@ -29,15 +29,6 @@ const { title, seo, lang, containerClass } = Astro.props;
 const { lang: langFromParams } = Astro.params as { lang: SupportedLanguages };
 
 const nextLang = lang || langFromParams;
-
-import.meta.env.PUBLIC_VERCEL_ANALYTICS_ID = process.env.VERCEL_ANALYTICS_ID;
-
-console.log(`IDS`, {
-  VERCEL_ANALYTICS_ID: import.meta.env.VERCEL_ANALYTICS_ID, // EXISTE
-  PUBLIC_VERCEL_ANALYTICS_ID: import.meta.env.PUBLIC_VERCEL_ANALYTICS_ID,
-  PROCESS_VERCEL_ANALYTICS_ID: process.env.VERCEL_ANALYTICS_ID, // EXISTE
-  PROCESS_PUBLIC_VERCEL_ANALYTICS_ID: process.env.PUBLIC_VERCEL_ANALYTICS_ID,
-});
 ---
 
 <!DOCTYPE html>
@@ -89,22 +80,10 @@ console.log(`IDS`, {
     <script>
       import { webVitals } from '@/infrastructure/vitals';
 
-      console.log(`IDS`, {
-        VERCEL_ANALYTICS_ID: import.meta.env.VERCEL_ANALYTICS_ID, // EXISTE
-        PUBLIC_VERCEL_ANALYTICS_ID: import.meta.env.PUBLIC_VERCEL_ANALYTICS_ID,
-        PROCESS_VERCEL_ANALYTICS_ID: process.env.VERCEL_ANALYTICS_ID, // EXISTE
-        PROCESS_PUBLIC_VERCEL_ANALYTICS_ID:
-          process.env.PUBLIC_VERCEL_ANALYTICS_ID,
-      });
-
-      const analyticsId =
-        import.meta.env.VERCEL_ANALYTICS_ID ||
-        import.meta.env.PUBLIC_VERCEL_ANALYTICS_ID;
-
       webVitals({
         path: location.pathname,
         params: location.search,
-        analyticsId,
+        analyticsId: import.meta.env.VERCEL_ANALYTICS_ID,
       });
     </script>
 

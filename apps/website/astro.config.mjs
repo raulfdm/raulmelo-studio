@@ -10,27 +10,11 @@ import robotsTxt from 'astro-robots-txt';
 import { resolve } from 'import-meta-resolve';
 import { loadEnv } from 'vite';
 
-const { VERCEL_ENV, VERCEL_URL } = loadEnv(
+const { VERCEL_ENV, VERCEL_URL, VERCEL_ANALYTICS_ID } = loadEnv(
   import.meta.env.MODE,
   process.cwd(),
   ``,
 );
-
-console.log(`IDS`, {
-  VERCEL_ANALYTICS_ID: import.meta.env.VERCEL_ANALYTICS_ID,
-  PUBLIC_VERCEL_ANALYTICS_ID: import.meta.env.PUBLIC_VERCEL_ANALYTICS_ID,
-  PROCESS_VERCEL_ANALYTICS_ID: process.env.VERCEL_ANALYTICS_ID,
-  PROCESS_PUBLIC_VERCEL_ANALYTICS_ID: process.env.PUBLIC_VERCEL_ANALYTICS_ID,
-});
-
-import.meta.env.PUBLIC_VERCEL_ANALYTICS_ID = process.env.VERCEL_ANALYTICS_ID;
-
-console.log(`IDS 2`, {
-  VERCEL_ANALYTICS_ID: import.meta.env.VERCEL_ANALYTICS_ID,
-  PUBLIC_VERCEL_ANALYTICS_ID: import.meta.env.PUBLIC_VERCEL_ANALYTICS_ID,
-  PROCESS_VERCEL_ANALYTICS_ID: process.env.VERCEL_ANALYTICS_ID,
-  PROCESS_PUBLIC_VERCEL_ANALYTICS_ID: process.env.PUBLIC_VERCEL_ANALYTICS_ID,
-});
 
 const vscodeOnigurumaPath = new URL(
   `onig.wasm`,
@@ -65,6 +49,15 @@ const config = {
     includeFiles: [vscodeOnigurumaPath],
   }),
   vite: {
+    /**
+     * A workaround for enabling Speed Analytics.
+     *
+     * Vercel injects the `VERCEL_ANALYTICS_ID` env variable but this one is never exposed
+     * to the client due to the Astro's restriction of exposing only the `PUBLIC_*` prefixed env vars.
+     */
+    define: {
+      'import.meta.env.VERCEL_ANALYTICS_ID': VERCEL_ANALYTICS_ID,
+    },
     ssr: {
       external: [`@raulmelo/core`, `@raulmelo/code-highlight`],
     },
