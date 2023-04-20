@@ -1,7 +1,7 @@
 import { createClient } from '@sanity/client';
 
-import { config } from './config';
 import { serverEnv } from '../env/server';
+import { config } from './config';
 
 export const sanityClient = createClient({
   dataset: config.dataset,

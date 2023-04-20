@@ -1,12 +1,13 @@
 import { type SupportedLanguages } from '@raulmelo/core/config';
 import { InstantSearch } from 'react-instantsearch-hooks-web';
 
+import { clientEnv } from '@/infrastructure/env/client';
+
 import { Filters } from './Filters';
 import { Hits } from './Hits';
 import { PoweredByAlgolia } from './PoweredBy';
 import { SearchBox } from './SearchBox';
 import { searchClient } from './searchClient';
-import { clientEnv } from '@/infrastructure/env/client';
 
 type SearchProps = {
   lang: SupportedLanguages;
