@@ -16,6 +16,13 @@ const { VERCEL_ENV, VERCEL_URL } = loadEnv(
   '',
 );
 
+console.log(`IDS`, {
+  VERCEL_ANALYTICS_ID: import.meta.env.VERCEL_ANALYTICS_ID,
+  PUBLIC_VERCEL_ANALYTICS_ID: import.meta.env.PUBLIC_VERCEL_ANALYTICS_ID,
+  PROCESS_VERCEL_ANALYTICS_ID: process.env.VERCEL_ANALYTICS_ID,
+  PROCESS_PUBLIC_VERCEL_ANALYTICS_ID: process.env.PUBLIC_VERCEL_ANALYTICS_ID,
+});
+
 const vscodeOnigurumaPath = new URL(
   'onig.wasm',
   await resolve('vscode-oniguruma', import.meta.url),
