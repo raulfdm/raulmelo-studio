@@ -23,8 +23,7 @@ console.log(`IDS`, {
   PROCESS_PUBLIC_VERCEL_ANALYTICS_ID: process.env.PUBLIC_VERCEL_ANALYTICS_ID,
 });
 
-import.meta.env.PUBLIC_VERCEL_ANALYTICS_ID =
-  process.env.PUBLIC_VERCEL_ANALYTICS_ID;
+import.meta.env.PUBLIC_VERCEL_ANALYTICS_ID = process.env.VERCEL_ANALYTICS_ID;
 
 console.log(`IDS 2`, {
   VERCEL_ANALYTICS_ID: import.meta.env.VERCEL_ANALYTICS_ID,
