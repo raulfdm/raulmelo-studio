@@ -16,7 +16,6 @@ import '@fontsource/inter/900.css';
 import '@raulmelo/styles/lib/styles.css';
 
 import { type SupportedLanguages } from '@raulmelo/core/config';
-import { Analytics } from '@vercel/analytics/react';
 import classNames from 'classnames';
 
 import { sanitizeUrl } from '@/infrastructure/utils/url';
@@ -30,11 +29,6 @@ const { title, seo, lang, containerClass } = Astro.props;
 const { lang: langFromParams } = Astro.params as { lang: SupportedLanguages };
 
 const nextLang = lang || langFromParams;
-
-/**
- * Not sure if this hack will work.
- */
-process.env.VERCEL_ANALYTICS_ID = import.meta.env.VERCEL_ANALYTICS_ID;
 ---
 
 <!DOCTYPE html>
@@ -83,7 +77,19 @@ process.env.VERCEL_ANALYTICS_ID = import.meta.env.VERCEL_ANALYTICS_ID;
   <body
     class="relative min-h-screen pb-12 duration-200 bg-white dark:bg-blue-900 text-primary transition-theme ease md:pb-16"
   >
-    <Analytics client:only="react" />
+    <script>
+      import { webVitals } from '@/infrastructure/vitals';
+
+      const analyticsId =
+        import.meta.env.VERCEL_ANALYTICS_ID ||
+        import.meta.env.PUBLIC_VERCEL_ANALYTICS_ID;
+
+      webVitals({
+        path: location.pathname,
+        params: location.search,
+        analyticsId,
+      });
+    </script>
 
     <MenuBar lang={nextLang} pathname={Astro.url.pathname} client:load />
     <slot name="banner" />
