@@ -13,12 +13,12 @@ import { loadEnv } from 'vite';
 const { VERCEL_ENV, VERCEL_URL } = loadEnv(
   import.meta.env.MODE,
   process.cwd(),
-  '',
+  ``,
 );
 
 const vscodeOnigurumaPath = new URL(
-  'onig.wasm',
-  await resolve('vscode-oniguruma', import.meta.url),
+  `onig.wasm`,
+  await resolve(`vscode-oniguruma`, import.meta.url),
 ).pathname;
 
 /** @type {import('astro').AstroUserConfig} */

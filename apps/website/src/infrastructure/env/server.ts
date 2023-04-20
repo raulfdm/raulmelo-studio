@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 const serverEnvSchema = z.object({
-  APP_ENV: z.enum(['local', 'preview', 'production']),
+  APP_ENV: z.enum([`local`, `preview`, `production`]),
   SANITY_TOKEN: z.string(),
 });
 
