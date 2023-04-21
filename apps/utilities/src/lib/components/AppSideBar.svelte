@@ -47,6 +47,19 @@
         },
       ],
     },
+    {
+      title: 'Miscellaneous',
+      items: [
+        {
+          title: 'Rule of Three',
+          href: '/tools/rule-of-three',
+        },
+        {
+          title: 'Average',
+          href: '/tools/average',
+        },
+      ],
+    },
   ];
 
   $: classesActive = (href: string) =>
