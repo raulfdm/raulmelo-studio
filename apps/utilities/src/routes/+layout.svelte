@@ -1,14 +1,16 @@
 <script lang="ts">
+  import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
+  import '@skeletonlabs/skeleton/styles/all.css';
   import '../app.css';
+
+  import { AppShell } from '@skeletonlabs/skeleton';
+  import AppSideBar from '$lib/components/AppSideBar.svelte';
 </script>
 
-<main class="container p-4 mx-auto">
-  <slot />
-</main>
+<AppShell>
+  <svelte:fragment slot="sidebarLeft">
+    <AppSideBar />
+  </svelte:fragment>
 
-<style global>
-  html,
-  body {
-    @apply h-full;
-  }
-</style>
+  <slot />
+</AppShell>
