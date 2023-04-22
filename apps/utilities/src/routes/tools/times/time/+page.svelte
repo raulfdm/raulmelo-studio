@@ -37,7 +37,7 @@
 
 <h2 class="my-6 text-2xl font-bold">Time</h2>
 
-<label class="label max-w-xs">
+<label class="max-w-xs label">
   <span>Base Time</span>
   <input
     class="input"
@@ -84,7 +84,7 @@
 <div class="mt-4">
   <legend class="text-base font-bold">Time to {$state.context.type}</legend>
 
-  <div class="flex gap-2 max-w-lg">
+  <div class="flex max-w-lg gap-2">
     <label class="label">
       <span>Hours</span>
       <input
@@ -132,13 +132,3 @@
   <span class="text-lg font-bold">Time:</span>
   <span>{$state.context.result}</span>
 </div>
-
-<style>
-  .splitTime {
-    @apply flex flex-col;
-  }
-
-  .splitTime input {
-    @apply px-2 py-1.5 border border-black w-20;
-  }
-</style>
