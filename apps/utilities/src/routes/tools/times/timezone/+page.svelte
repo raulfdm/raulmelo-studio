@@ -1,4 +1,11 @@
 <script lang="ts">
+  import {
+    Autocomplete,
+    type AutocompleteOption,
+    type PopupSettings,
+    popup,
+  } from '@skeletonlabs/skeleton';
+
   import utcPlugin from 'dayjs/plugin/utc';
   import timezonePlugin from 'dayjs/plugin/timezone';
   import dayjs from 'dayjs';
@@ -9,12 +16,14 @@
 
   let baseTime = dayjs(new Date()).format('YYYY-MM-DDTHH:mm');
   const timezones = Object.keys(Timezones);
-  let selectedTimezone = timezones[0];
+
+  let selectedTimezone = '';
 
   let finalTime = '';
 
-  function selectTimezone(event: Event) {
-    selectedTimezone = (event.target as HTMLInputElement).value;
+  function onSelectTimezone(event: CustomEvent) {
+    selectedTimezone = event.detail.label;
+
     if (selectedTimezone) {
       finalTime = dayjs(baseTime)
         .tz(selectedTimezone)
@@ -23,6 +32,18 @@
       finalTime = '';
     }
   }
+
+  const timeZoneOptions: AutocompleteOption[] = timezones.map((tz) => ({
+    label: tz,
+    value: tz,
+    keywords: tz.split('/').join(', '),
+  }));
+
+  const popupSettings: PopupSettings = {
+    event: 'focus',
+    target: 'popupAutocomplete',
+    placement: 'bottom',
+  };
 </script>
 
 <h2 class="my-6">Timezones</h2>
@@ -41,19 +62,26 @@
   <label class="label" for="timezone">
     <span>Base Time</span>
     <input
-      list="timezones"
-      type="text"
+      class="input autocomplete"
+      type="search"
       name="timezone"
+      bind:value={selectedTimezone}
       id="timezone"
-      class="input"
-      on:change={selectTimezone}
+      placeholder="Search..."
+      use:popup={popupSettings}
     />
-    <datalist id="timezones">
-      {#each timezones as timezone}
-        <option value={timezone}>{timezone}</option>
-      {/each}
-    </datalist>
   </label>
+  <div
+    class="w-full max-w-sm p-4 mt-2 overflow-y-auto card max-h-48"
+    data-popup="popupAutocomplete"
+  >
+    <Autocomplete
+      duration={0}
+      bind:input={selectedTimezone}
+      options={timeZoneOptions}
+      on:selection={onSelectTimezone}
+    />
+  </div>
 </div>
 
 <hr class="my-4 border-black border-dashed" />
