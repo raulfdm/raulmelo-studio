@@ -30,7 +30,7 @@
 </script>
 
 <PageLayout title="Rule of Three">
-  <div class="flex flex-col max-w-lg gap-4 mx-auto mt-4">
+  <div class="flex flex-col max-w-lg gap-4 mt-4">
     <div class="row">
       <div class="input-group input-group-divider grid-cols-[auto_1fr_auto]">
         <div class="input-group-shim">X</div>
