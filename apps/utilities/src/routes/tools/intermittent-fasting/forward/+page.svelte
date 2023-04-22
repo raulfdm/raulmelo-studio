@@ -1,5 +1,4 @@
 <script lang="ts">
-  import PageTitle from '$lib/components/PageTitle.svelte';
   import { createLocalStorage } from '$lib/utils/localStorage';
   import dayjs from 'dayjs';
   import { onMount } from 'svelte';
@@ -42,7 +41,7 @@
 <h2>Forward ⏭️</h2>
 
 <div class="mt-4">
-  <label class="label max-w-xs">
+  <label class="max-w-xs label">
     <span>Last meal time</span>
     <input
       class="input"
@@ -52,7 +51,7 @@
     />
   </label>
 
-  <div class="table-container mt-4 max-w-xs">
+  <div class="max-w-xs mt-4 table-container">
     <table class="table table-hover table-compact">
       <thead>
         <tr>
