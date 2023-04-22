@@ -70,56 +70,59 @@
   });
 </script>
 
-<h2 class="my-6 text-2xl font-bold">Subtracting</h2>
+<h2>Subtracting</h2>
 
-<div class="flex flex-col">
-  <div class="flex gap-2 mb-6">
-    <label for="time" class="text-lg font-bold">Date</label>
+<div class="flex flex-col gap-4 mt-8 max-w-md">
+  <label class="label max-w-xs">
+    <span>Date</span>
     <input
+      class="input"
       id="time"
       type="date"
       value={$state.context.date}
       on:input={handleChangeDate}
     />
-  </div>
+  </label>
 
-  <div class="flex flex-wrap gap-2">
-    <div class="flex gap-2">
-      <label for="day" class="text-lg font-bold">Days</label>
+  <div class="flex gap-6">
+    <label class="label">
+      <span>Days</span>
       <input
+        class="input"
         id="day"
-        class="px-2"
         type="number"
         min="1"
         on:input={handleChange}
         on:focus={handleFocus('day')}
         value={$state.context.daysToSubtract}
       />
-    </div>
-    <div class="flex gap-2">
-      <label for="weeks" class="text-lg font-bold">Weeks</label>
+    </label>
+
+    <label class="label">
+      <span>Weeks</span>
       <input
+        class="input"
         id="weeks"
-        class="px-2"
         type="number"
         min="1"
         on:input={handleChange}
         on:focus={handleFocus('weeks')}
         value={$state.context.weeksToSubtract}
       />
-    </div>
-    <div class="flex gap-2">
-      <label for="month" class="text-lg font-bold">Month</label>
+    </label>
+
+    <label class="label">
+      <span>Month</span>
       <input
+        class="input"
         id="month"
-        class="px-2"
         type="number"
         min="1"
         on:input={handleChange}
         on:focus={handleFocus('month')}
         value={$state.context.monthsToSubtract}
       />
-    </div>
+    </label>
   </div>
 </div>
 
@@ -128,9 +131,9 @@
 />
 
 <div>
-  <span class="font-bold">Future date:</span>
+  <span class="font-bold">Past date:</span>
   {#if $state.context.nextDate !== undefined}
-    <span>{$state.context.nextDate} </span>
-    in {$label}
+    <span>{$state.context.nextDate} - </span>
+    {$label} ago
   {/if}
 </div>
