@@ -1,5 +1,6 @@
 <script lang="ts">
-  import PageTitle from '$lib/components/PageTitle.svelte';
+  import PageLayout from '$lib/components/PageLayout.svelte';
+  import IconTrash from '@tabler/icons-svelte/dist/svelte/icons/IconTrash.svelte';
 
   type Numbers = (number | null)[];
 
@@ -40,41 +41,33 @@
   }
 </script>
 
-<PageTitle>Average</PageTitle>
-
-<div class="flex flex-col mt-6">
-  <div class="flex flex-wrap gap-4">
-    {#each numbers as number, index}
-      <div>
-        <input type="number" bind:value={number} class="h-8" />
-        <button
-          class="px-2 py-1 text-white bg-blue-600 rounded"
-          on:click={() => deleteNumber(index)}>Del</button
+<PageLayout title="Average">
+  <div class="flex flex-col mt-6">
+    <div class="flex flex-wrap gap-4">
+      {#each numbers as number, index}
+        <div
+          class="input-group input-group-divider grid-cols-[1fr_auto] max-w-[140px]"
         >
+          <input type="number" bind:value={number} />
+          <button
+            class="variant-filled-secondary"
+            on:click={() => deleteNumber(index)}><IconTrash /></button
+          >
+        </div>
+      {/each}
+    </div>
+
+    <div class="mt-4">
+      <button on:click={addNumber} class="btn variant-filled">Add</button>
+    </div>
+
+    <hr class="my-4" />
+
+    <div>
+      Average ({validNumbersLength}):
+      <div class="text-2xl font-bold">
+        {average}
       </div>
-    {/each}
-  </div>
-
-  <div class="mt-4">
-    <button
-      on:click={addNumber}
-      class="px-4 py-2 text-pink-600 bg-pink-100 border border-pink-500 rounded"
-      >Add</button
-    >
-  </div>
-
-  <hr class="my-4" />
-
-  <div class="">
-    Average ({validNumbersLength}):
-    <div class="text-2xl font-bold">
-      {average}
     </div>
   </div>
-</div>
-
-<style>
-  input {
-    @apply py-0.5 px-2 border;
-  }
-</style>
+</PageLayout>
