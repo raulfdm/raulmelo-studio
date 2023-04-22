@@ -3,8 +3,19 @@
   import '@skeletonlabs/skeleton/styles/all.css';
   import '../app.css';
 
-  import { AppBar, AppShell } from '@skeletonlabs/skeleton';
+  import {
+    computePosition,
+    autoUpdate,
+    flip,
+    shift,
+    offset,
+    arrow,
+  } from '@floating-ui/dom';
+
+  import { AppBar, AppShell, storePopup } from '@skeletonlabs/skeleton';
   import AppSideBar from '$lib/components/AppSideBar.svelte';
+
+  storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 </script>
 
 <AppShell>
