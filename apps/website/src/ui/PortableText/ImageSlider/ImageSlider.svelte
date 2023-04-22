@@ -17,9 +17,9 @@
 </script>
 
 {#if !isImageEmpty}
-  <div class="carousel w-full">
+  <div class="w-full carousel">
     {#each images as { id, caption, alt, src, width, height }}
-      <div {id} class="carousel-item w-full relative">
+      <div {id} class="relative w-full carousel-item">
         <figure>
           <img {src} {alt} {width} {height} />
           {#if caption}
@@ -32,7 +32,7 @@
     {/each}
   </div>
 
-  <div class="flex justify-center w-full py-2 gap-2">
+  <div class="flex justify-center w-full gap-2 py-2">
     {#each images as { id, index }}
       <a
         href={`#${id}`}
@@ -69,19 +69,9 @@
     @apply flex overflow-x-scroll;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    &-vertical {
-      @apply flex-col overflow-y-scroll;
-      scroll-snap-type: y mandatory;
-    }
     &-item {
       @apply box-content flex flex-none;
       scroll-snap-align: start;
-    }
-    &-center .carousel-item {
-      scroll-snap-align: center;
-    }
-    &-end .carousel-item {
-      scroll-snap-align: end;
     }
 
     -ms-overflow-style: none;
