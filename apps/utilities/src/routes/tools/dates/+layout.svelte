@@ -1,7 +1,7 @@
 <script lang="ts">
-  import PageTitle from '$lib/components/PageTitle.svelte';
+  import PageLayout from '$lib/components/PageLayout.svelte';
 </script>
 
-<PageTitle>Manipulate Date</PageTitle>
-
-<slot />
+<PageLayout title="Manipulate Date">
+  <slot />
+</PageLayout>

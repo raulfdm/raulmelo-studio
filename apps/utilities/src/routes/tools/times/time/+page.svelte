@@ -37,47 +37,58 @@
 
 <h2 class="my-6 text-2xl font-bold">Time</h2>
 
-<div class="flex gap-2">
-  <label for="time" class="text-lg font-bold">Base Time</label>
-  <input id="time" type="time" value={time} on:input={handleTimeChange} />
-</div>
+<label class="max-w-xs label">
+  <span>Base Time</span>
+  <input
+    class="input"
+    id="time"
+    type="time"
+    value={time}
+    on:input={handleTimeChange}
+  />
+</label>
 
 <fieldset class="mt-4">
   <legend class="text-base font-bold">Type:</legend>
 
-  <div>
-    <input
-      type="radio"
-      id="add"
-      name="type"
-      value="add"
-      checked={$state.context.type === 'add'}
-      on:change={() => send({ type: 'TYPE_CHANGE', payload: { type: 'add' } })}
-    />
-    <label for="add">Add</label>
-  </div>
-
-  <div>
-    <input
-      type="radio"
-      id="subtract"
-      name="type"
-      value="subtract"
-      checked={$state.context.type === 'subtract'}
-      on:change={() =>
-        send({ type: 'TYPE_CHANGE', payload: { type: 'subtract' } })}
-    />
-    <label for="subtract">Subtract</label>
+  <div class="flex gap-4">
+    <label class="flex items-center space-x-2" for="add">
+      <input
+        class="radio"
+        type="radio"
+        id="add"
+        name="type"
+        value="add"
+        checked={$state.context.type === 'add'}
+        on:change={() =>
+          send({ type: 'TYPE_CHANGE', payload: { type: 'add' } })}
+      />
+      <p>Add</p>
+    </label>
+    <label class="flex items-center space-x-2" for="subtract">
+      <input
+        class="radio"
+        type="radio"
+        id="subtract"
+        name="type"
+        value="subtract"
+        checked={$state.context.type === 'subtract'}
+        on:change={() =>
+          send({ type: 'TYPE_CHANGE', payload: { type: 'subtract' } })}
+      />
+      <p>Subtract</p>
+    </label>
   </div>
 </fieldset>
 
 <div class="mt-4">
   <legend class="text-base font-bold">Time to {$state.context.type}</legend>
 
-  <div class="flex gap-2">
-    <fieldset class="splitTime">
-      <label for="hours" class="text-sm font-bold">Hours</label>
+  <div class="flex max-w-lg gap-2">
+    <label class="label">
+      <span>Hours</span>
       <input
+        class="input"
         id="hours"
         type="number"
         min="0"
@@ -85,10 +96,12 @@
         on:focus={selectInputContent}
         on:input={handleTimeToField('hours')}
       />
-    </fieldset>
-    <fieldset class="splitTime">
-      <label for="minute" class="text-sm font-bold">Minutes</label>
+    </label>
+
+    <label class="label">
+      <span>Minutes</span>
       <input
+        class="input"
         id="minute"
         type="number"
         min="0"
@@ -96,10 +109,12 @@
         on:focus={selectInputContent}
         on:input={handleTimeToField('minutes')}
       />
-    </fieldset>
-    <fieldset class="splitTime">
-      <label for="seconds" class="text-sm font-bold">Seconds</label>
+    </label>
+
+    <label class="label">
+      <span>Seconds</span>
       <input
+        class="input"
         id="seconds"
         type="number"
         min="0"
@@ -107,7 +122,7 @@
         on:focus={selectInputContent}
         on:input={handleTimeToField('seconds')}
       />
-    </fieldset>
+    </label>
   </div>
 </div>
 
@@ -117,13 +132,3 @@
   <span class="text-lg font-bold">Time:</span>
   <span>{$state.context.result}</span>
 </div>
-
-<style>
-  .splitTime {
-    @apply flex flex-col;
-  }
-
-  .splitTime input {
-    @apply px-2 py-1.5 border border-black w-20;
-  }
-</style>

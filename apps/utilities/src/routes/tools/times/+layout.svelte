@@ -1,7 +1,7 @@
 <script lang="ts">
-  import PageTitle from '$lib/components/PageTitle.svelte';
+  import PageLayout from '$lib/components/PageLayout.svelte';
 </script>
 
-<PageTitle>Manipulating Time</PageTitle>
-
-<slot />
+<PageLayout title="Manipulating Time">
+  <slot />
+</PageLayout>
