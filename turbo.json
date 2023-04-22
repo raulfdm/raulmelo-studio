@@ -2,7 +2,7 @@
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "typegen"],
       "outputs": [
         "dist/**",
         "build/**",
@@ -12,8 +12,12 @@
       ]
     },
     "dev": {
-      "outputs": ["dist/**"],
-      "dependsOn": ["^build"]
+      "outputs": [],
+      "dependsOn": ["typegen"]
+    },
+    "typegen": {
+      "inputs": ["src/**/*.tsx", "src/**/*.ts"],
+      "outputs": ["src/**/*.typegen.ts", ".svelte-kit"]
     },
     "lint": {
       "outputs": []

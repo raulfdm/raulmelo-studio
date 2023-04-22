@@ -6,9 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "pnpm run build:xstate && pnpm run build:astro",
-    "build:astro": "astro build",
-    "build:xstate": "xstate typegen \"src/**/*.ts?(x)\"",
+    "build": "astro build",
+    "typegen": "xstate typegen \"src/**/*.ts?(x)\"",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint \"src/**/*.{ts,astro,tsx}\"",
