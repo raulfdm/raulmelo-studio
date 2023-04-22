@@ -25,28 +25,35 @@
   }
 </script>
 
-<h2 class="my-6 text-2xl font-bold">Timezones</h2>
+<h2 class="my-6">Timezones</h2>
 
-<div class="flex gap-2">
-  <label for="time" class="text-lg font-bold">Base Time</label>
-  <input id="time" type="datetime-local" bind:value={baseTime} />
-</div>
+<div class="max-w-xs">
+  <label class="label" for="time">
+    <span>Base Time</span>
+    <input
+      class="input"
+      id="time"
+      type="datetime-local"
+      bind:value={baseTime}
+    />
+  </label>
 
-<div class="flex gap-2">
-  <label for="timezone" class="text-lg font-bold">TimeZone</label>
-  <input
-    list="timezones"
-    type="text"
-    name="timezone"
-    id="timezone"
-    class="px-2"
-    on:change={selectTimezone}
-  />
-  <datalist id="timezones">
-    {#each timezones as timezone}
-      <option value={timezone}>{timezone}</option>
-    {/each}
-  </datalist>
+  <label class="label" for="timezone">
+    <span>Base Time</span>
+    <input
+      list="timezones"
+      type="text"
+      name="timezone"
+      id="timezone"
+      class="input"
+      on:change={selectTimezone}
+    />
+    <datalist id="timezones">
+      {#each timezones as timezone}
+        <option value={timezone}>{timezone}</option>
+      {/each}
+    </datalist>
+  </label>
 </div>
 
 <hr class="my-4 border-black border-dashed" />
