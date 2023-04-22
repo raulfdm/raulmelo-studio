@@ -1,13 +1,24 @@
 <script lang="ts">
-  import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
+  import '@skeletonlabs/skeleton/themes/theme-modern.css';
   import '@skeletonlabs/skeleton/styles/all.css';
   import '../app.css';
 
-  import { AppShell } from '@skeletonlabs/skeleton';
+  import { AppBar, AppShell } from '@skeletonlabs/skeleton';
   import AppSideBar from '$lib/components/AppSideBar.svelte';
 </script>
 
 <AppShell>
+  <svelte:fragment slot="header">
+    <AppBar
+      gridColumns="grid-cols-1"
+      slotDefault="place-self-center"
+      slotTrail="place-content-end"
+      background="bg-surface-100-800-token"
+      class="shadow-lg"
+    >
+      <h2>Damn Useful Utilities</h2>
+    </AppBar>
+  </svelte:fragment>
   <svelte:fragment slot="sidebarLeft">
     <AppSideBar />
   </svelte:fragment>
