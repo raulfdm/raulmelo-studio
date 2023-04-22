@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { BreadcrumbType } from './types';
+  import type { BreadcrumbType } from './types';
 
   export let crumb: BreadcrumbType;
 </script>

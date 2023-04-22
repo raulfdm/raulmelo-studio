@@ -8,8 +8,6 @@
   export let codeHtml: string;
   export let copyTitle = 'Copy code';
   export let filename: string | undefined = undefined;
-  export let highlightedLines: string | undefined = undefined;
-  export let language = 'plaintext';
   export let showLineNumbers: boolean;
 
   const { state, send } = useMachine(copyMachine, {
@@ -80,9 +78,5 @@
 
   code {
     @apply inline-grid w-full px-[var(--padding)] text-primary;
-  }
-
-  code .line {
-    @apply h-7 relative;
   }
 </style>
