@@ -10,10 +10,6 @@
     'intermittent-fasting__forward',
   );
 
-  const localStorageBackward = createLocalStorage<string>(
-    'intermittent-fasting__backward',
-  );
-
   onMount(() => {
     forwardValue = localStorageForward.read();
   });
