@@ -36,39 +36,37 @@
   }
 </script>
 
-<section class="mt-8">
-  <h2 class="text-2xl font-bold">Backwards</h2>
+<h2>Backwards ⏮️</h2>
 
-  <div class="mt-4">
-    <div class="flex gap-2">
-      <label for="time" class="text-lg font-bold">Desired time to eat</label>
-      <input id="time" type="datetime-local" bind:value={backwardValue} />
-    </div>
+<div class="mt-4">
+  <label class="label max-w-xs">
+    <span>Desired time to eat</span>
+    <input
+      class="input"
+      id="time"
+      type="datetime-local"
+      bind:value={backwardValue}
+    />
+  </label>
 
-    <table class="mt-4">
+  <div class="table-container mt-4 max-w-xs">
+    <table class="table table-hover table-compact">
       <thead>
         <tr>
-          <th>Fasting (hours)</th>
-          <th>Time to stop eating</th>
+          <th class="table-cell-fit">Fasting (hours)</th>
+          <th class="table-cell-fit">Time to Eat</th>
         </tr>
       </thead>
       <tbody>
         {#if backwardValues.length > 0}
           {#each backwardValues as [hour, result]}
             <tr>
-              <td>{hour}</td>
-              <td>{result}</td>
+              <td class="table-cell-fit">{hour}</td>
+              <td class="table-cell-fit">{result}</td>
             </tr>
           {/each}
         {/if}
       </tbody>
     </table>
   </div>
-</section>
-
-<style>
-  td,
-  th {
-    @apply border p-2 text-center;
-  }
-</style>
+</div>

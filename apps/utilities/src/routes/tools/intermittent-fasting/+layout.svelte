@@ -1,7 +1,7 @@
 <script lang="ts">
-  import PageTitle from '$lib/components/PageTitle.svelte';
+  import PageLayout from '$lib/components/PageLayout.svelte';
 </script>
 
-<PageTitle>Intermittent Fasting</PageTitle>
-
-<slot />
+<PageLayout title="Intermittent Fasting">
+  <slot />
+</PageLayout>

@@ -39,39 +39,37 @@
   }
 </script>
 
-<section>
-  <h2 class="text-2xl font-bold">Forward</h2>
+<h2>Forward ⏭️</h2>
 
-  <div class="mt-4">
-    <div class="flex gap-2">
-      <label for="time" class="text-lg font-bold">Last mean time</label>
-      <input id="time" type="datetime-local" bind:value={forwardValue} />
-    </div>
+<div class="mt-4">
+  <label class="label max-w-xs">
+    <span>Last meal time</span>
+    <input
+      class="input"
+      id="time"
+      type="datetime-local"
+      bind:value={forwardValue}
+    />
+  </label>
 
-    <table class="mt-4">
+  <div class="table-container mt-4 max-w-xs">
+    <table class="table table-hover table-compact">
       <thead>
         <tr>
-          <th>Fasting (hours)</th>
-          <th>Time to Eat</th>
+          <th class="table-cell-fit">Fasting (hours)</th>
+          <th class="table-cell-fit">Time to Eat</th>
         </tr>
       </thead>
       <tbody>
         {#if forwardValues.length > 0}
           {#each forwardValues as [hour, result]}
             <tr>
-              <td>{hour}</td>
-              <td>{result}</td>
+              <td class="table-cell-fit">{hour}</td>
+              <td class="table-cell-fit">{result}</td>
             </tr>
           {/each}
         {/if}
       </tbody>
     </table>
   </div>
-</section>
-
-<style>
-  td,
-  th {
-    @apply border p-2 text-center;
-  }
-</style>
+</div>
