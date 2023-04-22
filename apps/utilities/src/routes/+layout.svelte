@@ -12,5 +12,7 @@
     <AppSideBar />
   </svelte:fragment>
 
-  <slot />
+  <main class="p-4">
+    <slot />
+  </main>
 </AppShell>
