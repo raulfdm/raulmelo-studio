@@ -1,7 +1,7 @@
 <script lang="ts">
+  import '../app.css';
   import '@skeletonlabs/skeleton/themes/theme-modern.css';
   import '@skeletonlabs/skeleton/styles/all.css';
-  import '../app.css';
 
   import {
     computePosition,
@@ -12,29 +12,56 @@
     arrow,
   } from '@floating-ui/dom';
 
-  import { AppBar, AppShell, storePopup } from '@skeletonlabs/skeleton';
+  import {
+    AppBar,
+    AppShell,
+    Drawer,
+    drawerStore,
+    storePopup,
+  } from '@skeletonlabs/skeleton';
   import AppSideBar from '$lib/components/AppSideBar.svelte';
 
   storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
+
+  function drawerOpen(): void {
+    drawerStore.open({});
+  }
+
+  function drawerClose(): void {
+    drawerStore.close();
+  }
 </script>
 
-<AppShell>
+<AppShell slotSidebarLeft="w-0 md:w-64 lg:w-96 max-w-fit" slotPageContent="p-4">
   <svelte:fragment slot="header">
     <AppBar
-      gridColumns="grid-cols-1"
       slotDefault="place-self-center"
       slotTrail="place-content-end"
       background="bg-surface-100-800-token"
       class="shadow-lg"
     >
-      <h2>Damn Useful Utilities</h2>
+      <svelte:fragment slot="lead">
+        <div class="flex items-center">
+          <button class="md:hidden btn btn-sm" on:click={drawerOpen}>
+            <span>
+              <svg viewBox="0 0 100 80" class="fill-token w-4 h-4">
+                <rect width="100" height="20" />
+                <rect y="30" width="100" height="20" />
+                <rect y="60" width="100" height="20" />
+              </svg>
+            </span>
+          </button>
+          <h2>Damn Useful Utilities</h2>
+        </div>
+      </svelte:fragment>
     </AppBar>
   </svelte:fragment>
   <svelte:fragment slot="sidebarLeft">
-    <AppSideBar />
+    <Drawer>
+      <AppSideBar onSideMenuItemClick={drawerClose} />
+    </Drawer>
+    <AppSideBar onSideMenuItemClick={drawerClose} />
   </svelte:fragment>
 
-  <main class="p-4">
-    <slot />
-  </main>
+  <slot />
 </AppShell>

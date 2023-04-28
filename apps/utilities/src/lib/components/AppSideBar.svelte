@@ -1,5 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
+  export let onSideMenuItemClick: () => void;
 
   const sideList: {
     title: string;
@@ -77,7 +78,10 @@
       <ul>
         {#each items as item}
           <li>
-            <a href={item.href} class={classesActive(item.href)}>{item.title}</a
+            <a
+              href={item.href}
+              class={classesActive(item.href)}
+              on:click={onSideMenuItemClick}>{item.title}</a
             >
           </li>
         {/each}
