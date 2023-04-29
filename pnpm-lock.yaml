@@ -87,11 +87,11 @@ importers:
         version: 3.21.4
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: 2.0.0
-        version: 2.0.0(@sveltejs/kit@1.15.7)
+        specifier: 2.0.1
+        version: 2.0.1(@sveltejs/kit@1.15.8)
       '@sveltejs/kit':
-        specifier: 1.15.7
-        version: 1.15.7(svelte@3.58.0)(vite@4.3.1)
+        specifier: 1.15.8
+        version: 1.15.8(svelte@3.58.0)(vite@4.3.1)
       '@tailwindcss/aspect-ratio':
         specifier: 0.4.2
         version: 0.4.2(tailwindcss@3.3.1)
@@ -178,11 +178,11 @@ importers:
         version: 4.37.1
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: 2.0.0
-        version: 2.0.0(@sveltejs/kit@1.15.7)
+        specifier: 2.0.1
+        version: 2.0.1(@sveltejs/kit@1.15.8)
       '@sveltejs/kit':
-        specifier: 1.15.7
-        version: 1.15.7(svelte@3.58.0)(vite@4.3.1)
+        specifier: 1.15.8
+        version: 1.15.8(svelte@3.58.0)(vite@4.3.1)
       '@typescript-eslint/eslint-plugin':
         specifier: 5.59.1
         version: 5.59.1(@typescript-eslint/parser@5.59.1)(eslint@8.36.0)(typescript@5.0.4)
@@ -872,7 +872,7 @@ packages:
       dset: 3.1.2
       is-docker: 3.0.0
       is-wsl: 2.2.0
-      undici: 5.21.0
+      undici: 5.22.0
       which-pm-runs: 1.1.0
     transitivePeerDependencies:
       - supports-color
@@ -3141,17 +3141,17 @@ packages:
       svelte: 3.58.0
     dev: false
 
-  /@sveltejs/adapter-auto@2.0.0(@sveltejs/kit@1.15.7):
-    resolution: {integrity: sha512-b+gkHFZgD771kgV3aO4avHFd7y1zhmMYy9i6xOK7m/rwmwaRO8gnF5zBc0Rgca80B2PMU1bKNxyBTHA14OzUAQ==}
+  /@sveltejs/adapter-auto@2.0.1(@sveltejs/kit@1.15.8):
+    resolution: {integrity: sha512-anxxYMcQy7HWSKxN4YNaVcgNzCHtNFwygq72EA1Xv7c+5gSECOJ1ez1PYoLciPiFa7A3XBvMDQXUFJ2eqLDtAA==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
-      '@sveltejs/kit': 1.15.7(svelte@3.58.0)(vite@4.3.1)
-      import-meta-resolve: 2.2.2
+      '@sveltejs/kit': 1.15.8(svelte@3.58.0)(vite@4.3.1)
+      import-meta-resolve: 3.0.0
     dev: true
 
-  /@sveltejs/kit@1.15.7(svelte@3.58.0)(vite@4.3.1):
-    resolution: {integrity: sha512-dgdKExsMJ16X3q8tEcuDlv+QIWAlJcf7IqCU2HWV13nmtTzwSA2n4VtEx9Gy5OGhH0SUAGNIupmlf0TdFSMXbw==}
+  /@sveltejs/kit@1.15.8(svelte@3.58.0)(vite@4.3.1):
+    resolution: {integrity: sha512-xPIF3UbFEA5BBZWFTGGUtSZ0O3DAtmzIp/yZZVdLIfzZ9+geKG3iGSVFnOUdYstjU7JcvJg12UC5MD5xoED59A==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -3159,7 +3159,7 @@ packages:
       svelte: ^3.54.0
       vite: ^4.0.0
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 2.0.3(svelte@3.58.0)(vite@4.3.1)
+      '@sveltejs/vite-plugin-svelte': 2.1.1(svelte@3.58.0)(vite@4.3.1)
       '@types/cookie': 0.5.1
       cookie: 0.5.0
       devalue: 4.3.0
@@ -3172,7 +3172,7 @@ packages:
       sirv: 2.0.2
       svelte: 3.58.0
       tiny-glob: 0.2.9
-      undici: 5.20.0
+      undici: 5.22.0
       vite: 4.3.1(@types/node@18.15.13)
     transitivePeerDependencies:
       - supports-color
@@ -3195,6 +3195,26 @@ packages:
       vitefu: 0.2.4(vite@4.3.1)
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@sveltejs/vite-plugin-svelte@2.1.1(svelte@3.58.0)(vite@4.3.1):
+    resolution: {integrity: sha512-7YeBDt4us0FiIMNsVXxyaP4Hwyn2/v9x3oqStkHU3ZdIc5O22pGwUwH33wUqYo+7Itdmo8zxJ45Qvfm3H7UUjQ==}
+    engines: {node: ^14.18.0 || >= 16}
+    peerDependencies:
+      svelte: ^3.54.0
+      vite: ^4.0.0
+    dependencies:
+      debug: 4.3.4(supports-color@5.5.0)
+      deepmerge: 4.3.1
+      kleur: 4.1.5
+      magic-string: 0.30.0
+      svelte: 3.58.0
+      svelte-hmr: 0.15.1(svelte@3.58.0)
+      vite: 4.3.1(@types/node@18.15.13)
+      vitefu: 0.2.4(vite@4.3.1)
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
 
   /@szmarczak/http-timer@5.0.1:
     resolution: {integrity: sha512-+PmQX0PiAYPMeVYe237LJAYvOMYW1j2rH5YROyS3b4CTVJum34HfRvKvAzozHAQG0TnHNdUfY9nCeUyRAs//cw==}
@@ -7078,6 +7098,10 @@ packages:
 
   /import-meta-resolve@2.2.2:
     resolution: {integrity: sha512-f8KcQ1D80V7RnqVm+/lirO9zkOxjGxhaTC1IPrBGd3MEfNgmNG67tSUO9gTi2F3Blr2Az6g1vocaxzkVnWl9MA==}
+
+  /import-meta-resolve@3.0.0:
+    resolution: {integrity: sha512-4IwhLhNNA8yy445rPjD/lWh++7hMDOml2eHtd58eG7h+qK3EryMuuRbsHGPikCoAgIkkDnckKfWSk2iDla/ejg==}
+    dev: true
 
   /imurmurhash@0.1.4:
     resolution: {integrity: sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==}
@@ -11754,13 +11778,13 @@ packages:
     engines: {node: '>=12.18'}
     dependencies:
       busboy: 1.6.0
+    dev: false
 
-  /undici@5.21.0:
-    resolution: {integrity: sha512-HOjK8l6a57b2ZGXOcUsI5NLfoTrfmbOl90ixJDl0AEFG4wgHNDQxtZy15/ZQp7HhjkpaGlp/eneMgtsu1dIlUA==}
-    engines: {node: '>=12.18'}
+  /undici@5.22.0:
+    resolution: {integrity: sha512-fR9RXCc+6Dxav4P9VV/sp5w3eFiSdOjJYsbtWfd4s5L5C4ogyuVpdKIVHeW0vV1MloM65/f7W45nR9ZxwVdyiA==}
+    engines: {node: '>=14.0'}
     dependencies:
       busboy: 1.6.0
-    dev: false
 
   /unherit@3.0.1:
     resolution: {integrity: sha512-akOOQ/Yln8a2sgcLj4U0Jmx0R5jpIg2IUyRrWOzmEbjBtGzBdHtSeFKgoEcoH4KYIG/Pb8GQ/BwtYm0GCq1Sqg==}
