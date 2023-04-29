@@ -27,7 +27,7 @@ const slug = slugify(child.text, {
 const iconProps = {} as any;
 ---
 
-<Component id={slug} class="flex items-center heading">
+<Component id={slug} class="flex items-center heading font-title">
   {child.text}
   <a href={`#${slug}`} class="grid place-items-center"
     ><IconHash {...iconProps} /></a

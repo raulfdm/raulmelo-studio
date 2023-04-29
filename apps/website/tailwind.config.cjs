@@ -1,5 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/quotes, @typescript-eslint/no-var-requires
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/quotes */
+
 const defaultPreset = require('@raulmelo/styles/lib/tailwind.config.cjs');
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -8,11 +11,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: [
-          `InterVariable`,
-          `Inter`,
-          ...defaultPreset.theme.fontFamily.sans,
-        ],
+        title: [`"Paytone One"`, ...defaultTheme.fontFamily.sans],
+        sans: [`Outfit`, ...defaultTheme.fontFamily.sans],
+        code: [`"Fira Code"`, ...defaultTheme.fontFamily.mono],
       },
     },
   },

@@ -1,5 +1,4 @@
 const colors = require('tailwindcss/colors');
-const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   darkMode: 'class',
@@ -14,10 +13,6 @@ module.exports = {
       '2xl': ['2.369rem', { lineHeight: 1.3 }],
       '3xl': ['3.157rem', { lineHeight: 1.3 }],
       '4xl': ['4.209rem', { lineHeight: 1.3 }],
-    },
-    fontFamily: {
-      sans: ['"proxima-nova"', ...defaultTheme.fontFamily.sans],
-      code: ['"Fira Code"', ...defaultTheme.fontFamily.mono],
     },
     extend: {
       colors: {
