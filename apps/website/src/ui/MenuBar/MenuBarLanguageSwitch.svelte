@@ -5,7 +5,7 @@
     PopoverPanel,
   } from '@rgossiaux/svelte-headlessui';
   import { createPopperActions } from 'svelte-popperjs';
-  import IconWorld from '@tabler/icons-svelte/dist/svelte/icons/IconWorld.svelte';
+  import IconLanguage from '@tabler/icons-svelte/dist/svelte/icons/IconLanguage.svelte';
   import { getPathnameWithoutLocale } from '@/infrastructure/utils/url';
   import { type SupportedLanguages } from '@raulmelo/core/config';
 
@@ -43,7 +43,7 @@
     class="flex p-2 place-content-center"
     aria-label={ariaLabel}
   >
-    <IconWorld class="w-6" />
+    <IconLanguage class="w-6" />
   </PopoverButton>
   <PopoverPanel
     use={[[popperContent, popperOptions]]}
