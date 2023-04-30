@@ -1,14 +1,21 @@
 <script lang="ts">
+  import classNames from 'classnames';
   import type { BreadcrumbType } from './types';
 
   export let crumb: BreadcrumbType;
+
+  const isLink = 'href' in crumb;
 </script>
 
-<li class="flex items-center">
+<li
+  class={classNames('flex items-center', !isLink && 'truncate text-ellipsis')}
+>
   {#if 'href' in crumb}
     <a href={crumb.href}>{crumb.label}</a>
   {:else}
-    {crumb.label}
+    <span class="truncate text-ellipsis" title={crumb.label}>
+      {crumb.label}
+    </span>
   {/if}
 </li>
 
