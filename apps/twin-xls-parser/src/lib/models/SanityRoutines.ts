@@ -25,7 +25,7 @@ export class SanityRoutines {
 					_type: 'trainingRoutine',
 					routine: {
 						_id: routine.id,
-						name: `TEST_${routine.title}`,
+						name: routine.title,
 						description: routine.subtitle,
 						date: routine.date,
 						training: routine.exercises
