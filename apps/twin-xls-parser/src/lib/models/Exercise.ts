@@ -11,11 +11,11 @@ export class Exercise {
 	#name: string;
 	#series: number;
 	#reps: string;
-	#advancedTechnique: string | null = null;
+	#advancedTechnique: string = undefined;
 	#rest: number | null = null;
 
 	set name(name: string) {
-		this.#name = name;
+		this.#name = name.trim();
 	}
 
 	get name() {
@@ -32,7 +32,7 @@ export class Exercise {
 	set advancedTechnique(advancedTechnique: string) {
 		if (advancedTechnique !== null && advancedTechnique.includes('Descanso')) {
 			const [rest] = advancedTechnique.match(/\d+/) || [];
-			this.#advancedTechnique = null;
+			this.#advancedTechnique = undefined;
 			this.#rest = parseInt(rest as string);
 		} else if (advancedTechnique) {
 			this.#advancedTechnique = advancedTechniquesMap.get(advancedTechnique);
