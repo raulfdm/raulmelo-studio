@@ -12,7 +12,7 @@ export class RemoteExercise {
 			name: string;
 		}[];
 
-		data.forEach((e) => this.#exercisesMap.set(e.name, e._id));
+		data.forEach((e) => this.#exercisesMap.set(e.name.trim().toLowerCase(), e._id));
 
 		this.#filled = true;
 	}
@@ -22,6 +22,6 @@ export class RemoteExercise {
 			throw new Error('RemoteExercise not filled');
 		}
 
-		return this.#exercisesMap.get(name);
+		return this.#exercisesMap.get(name.trim().toLowerCase());
 	}
 }
