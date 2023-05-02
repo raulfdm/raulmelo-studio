@@ -2,6 +2,7 @@ import type { StructureBuilder } from 'sanity/desk';
 import { exerciseSchema } from './schemas/exercise';
 import { measurementSchema } from './schemas/measurements';
 import { trainingSchema } from './schemas/training';
+import { trainingRoutineSchema } from './schemas/routine';
 
 export function deskStructure(S: StructureBuilder) {
 	return S.list()
@@ -9,6 +10,7 @@ export function deskStructure(S: StructureBuilder) {
 		.id(`trainingPlanner`)
 		.items([
 			S.listItem().title(`Exercises`).child(S.documentTypeList(exerciseSchema.name)),
+			S.listItem().title(`Training Routine`).child(S.documentTypeList(trainingRoutineSchema.name)),
 			S.listItem()
 				.title(`Measurements`)
 				.child(
