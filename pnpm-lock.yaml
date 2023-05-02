@@ -51,7 +51,7 @@ importers:
         version: 0.4.2(prettier@2.8.7)
       '@xstate/svelte':
         specifier: 2.0.1
-        version: 2.0.1(svelte@3.58.0)(xstate@4.37.1)
+        version: 2.0.1(svelte@3.58.0)(xstate@4.37.2)
       cookie:
         specifier: 0.5.0
         version: 0.5.0
@@ -80,8 +80,8 @@ importers:
         specifier: 9.0.0
         version: 9.0.0
       xstate:
-        specifier: 4.37.1
-        version: 4.37.1
+        specifier: 4.37.2
+        version: 4.37.2
       zod:
         specifier: 3.21.4
         version: 3.21.4
@@ -159,8 +159,8 @@ importers:
   apps/utilities:
     dependencies:
       '@floating-ui/dom':
-        specifier: 1.2.6
-        version: 1.2.6
+        specifier: 1.2.7
+        version: 1.2.7
       '@skeletonlabs/skeleton':
         specifier: 1.2.0
         version: 1.2.0
@@ -172,10 +172,10 @@ importers:
         version: 0.5.3(tailwindcss@3.3.1)
       '@xstate/svelte':
         specifier: 2.0.1
-        version: 2.0.1(svelte@3.58.0)(xstate@4.37.1)
+        version: 2.0.1(svelte@3.58.0)(xstate@4.37.2)
       xstate:
-        specifier: 4.37.1
-        version: 4.37.1
+        specifier: 4.37.2
+        version: 4.37.2
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: 2.0.1
@@ -307,11 +307,11 @@ importers:
         specifier: 5.59.1
         version: 5.59.1(eslint@8.36.0)(typescript@4.9.5)
       '@xstate/react':
-        specifier: 3.2.1
-        version: 3.2.1(@types/react@18.0.38)(react@18.2.0)(xstate@4.37.1)
+        specifier: 3.2.2
+        version: 3.2.2(@types/react@18.0.38)(react@18.2.0)(xstate@4.37.2)
       '@xstate/svelte':
         specifier: 2.0.1
-        version: 2.0.1(svelte@3.58.0)(xstate@4.37.1)
+        version: 2.0.1(svelte@3.58.0)(xstate@4.37.2)
       algoliasearch:
         specifier: 4.17.0
         version: 4.17.0
@@ -409,8 +409,8 @@ importers:
         specifier: 3.3.1
         version: 3.3.1
       xstate:
-        specifier: 4.37.1
-        version: 4.37.1
+        specifier: 4.37.2
+        version: 4.37.2
       zod:
         specifier: 3.21.4
         version: 3.21.4
@@ -2053,8 +2053,8 @@ packages:
   /@floating-ui/core@1.2.6:
     resolution: {integrity: sha512-EvYTiXet5XqweYGClEmpu3BoxmsQ4hkj3QaYA6qEnigCWffTP3vNRwBReTdrwDwo7OoJ3wM8Uoe9Uk4n+d4hfg==}
 
-  /@floating-ui/dom@1.2.6:
-    resolution: {integrity: sha512-02vxFDuvuVPs22iJICacezYJyf7zwwOCWkPNkWNBr1U0Qt1cKFYzWvxts0AmqcOQGwt/3KJWcWIgtbUU38keyw==}
+  /@floating-ui/dom@1.2.7:
+    resolution: {integrity: sha512-DyqylONj1ZaBnzj+uBnVfzdjjCkFCL2aA9ESHLyUOGSqb03RpbLMImP1ekIQXYs4KLk9jAjJfZAU8hXfWSahEg==}
     dependencies:
       '@floating-ui/core': 1.2.6
 
@@ -2064,7 +2064,7 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
-      '@floating-ui/dom': 1.2.6
+      '@floating-ui/dom': 1.2.7
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
@@ -3986,16 +3986,16 @@ packages:
     hasBin: true
     dependencies:
       '@babel/core': 7.21.0
-      '@xstate/machine-extractor': 0.9.0(xstate@4.37.1)
-      '@xstate/tools-shared': 2.0.2(prettier@2.8.7)(xstate@4.37.1)
+      '@xstate/machine-extractor': 0.9.0(xstate@4.37.2)
+      '@xstate/tools-shared': 2.0.2(prettier@2.8.7)(xstate@4.37.2)
       chokidar: 3.5.3
       commander: 8.3.0
-      xstate: 4.37.1
+      xstate: 4.37.2
     transitivePeerDependencies:
       - prettier
       - supports-color
 
-  /@xstate/machine-extractor@0.9.0(xstate@4.37.1):
+  /@xstate/machine-extractor@0.9.0(xstate@4.37.2):
     resolution: {integrity: sha512-QtjlBHdIp6OwwsSpbAwa4U2/WzijnW+EMu2Tgj20t94zMlQFtbOE2l5dnI4u/DWJBK+/S9zj39qIAmdlQFx8/w==}
     peerDependencies:
       xstate: ^4
@@ -4004,16 +4004,16 @@ packages:
       '@babel/traverse': 7.21.3
       '@babel/types': 7.21.3
       recast: 0.21.5
-      xstate: 4.37.1
+      xstate: 4.37.2
     transitivePeerDependencies:
       - supports-color
 
-  /@xstate/react@3.2.1(@types/react@18.0.38)(react@18.2.0)(xstate@4.37.1):
-    resolution: {integrity: sha512-L/mqYRxyBWVdIdSaXBHacfvS8NKn3sTKbPb31aRADbE9spsJ1p+tXil0GVQHPlzrmjGeozquLrxuYGiXsFNU7g==}
+  /@xstate/react@3.2.2(@types/react@18.0.38)(react@18.2.0)(xstate@4.37.2):
+    resolution: {integrity: sha512-feghXWLedyq8JeL13yda3XnHPZKwYDN5HPBLykpLeuNpr9178tQd2/3d0NrH6gSd0sG5mLuLeuD+ck830fgzLQ==}
     peerDependencies:
       '@xstate/fsm': ^2.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      xstate: ^4.36.0
+      xstate: ^4.37.2
     peerDependenciesMeta:
       '@xstate/fsm':
         optional: true
@@ -4023,12 +4023,12 @@ packages:
       react: 18.2.0
       use-isomorphic-layout-effect: 1.1.2(@types/react@18.0.38)(react@18.2.0)
       use-sync-external-store: 1.2.0(react@18.2.0)
-      xstate: 4.37.1
+      xstate: 4.37.2
     transitivePeerDependencies:
       - '@types/react'
     dev: false
 
-  /@xstate/svelte@2.0.1(svelte@3.58.0)(xstate@4.37.1):
+  /@xstate/svelte@2.0.1(svelte@3.58.0)(xstate@4.37.2):
     resolution: {integrity: sha512-A4QSCt4EpbyzbPIPGCRLoRn50VUq6gXcmJPIwgBaCTsTRsPsp8KSvltDqS2msBKEDr4FHWXEXOC4QVGDWFL5dg==}
     peerDependencies:
       '@xstate/fsm': ^2.0.0
@@ -4041,18 +4041,18 @@ packages:
         optional: true
     dependencies:
       svelte: 3.58.0
-      xstate: 4.37.1
+      xstate: 4.37.2
     dev: false
 
-  /@xstate/tools-shared@2.0.2(prettier@2.8.7)(xstate@4.37.1):
+  /@xstate/tools-shared@2.0.2(prettier@2.8.7)(xstate@4.37.2):
     resolution: {integrity: sha512-Lg8RD19Jq62M8KsnSF8Tenqo0a8/j7eqzHCpxG7ewc9PklkOcLvOWN4rrGTtYG5zkxJNQTXq8kt2x0TsWwnumQ==}
     peerDependencies:
       prettier: ^2.3.1
       xstate: ^4
     dependencies:
-      '@xstate/machine-extractor': 0.9.0(xstate@4.37.1)
+      '@xstate/machine-extractor': 0.9.0(xstate@4.37.2)
       prettier: 2.8.7
-      xstate: 4.37.1
+      xstate: 4.37.2
     transitivePeerDependencies:
       - supports-color
 
@@ -9819,7 +9819,7 @@ packages:
       '@babel/runtime': 7.21.0
       '@emotion/cache': 11.10.5
       '@emotion/react': 11.10.5(@babel/core@7.21.4)(@types/react@18.0.38)(react@18.2.0)
-      '@floating-ui/dom': 1.2.6
+      '@floating-ui/dom': 1.2.7
       '@types/react-transition-group': 4.4.5
       memoize-one: 6.0.0
       prop-types: 15.8.1
@@ -12462,8 +12462,8 @@ packages:
   /xregexp@2.0.0:
     resolution: {integrity: sha512-xl/50/Cf32VsGq/1R8jJE5ajH1yMCQkpmoS10QbFZWl2Oor4H0Me64Pu2yxvsRWK3m6soJbmGfzSR7BYmDcWAA==}
 
-  /xstate@4.37.1:
-    resolution: {integrity: sha512-MuB7s01nV5vG2CzaBg2msXLGz7JuS+x/NBkQuZAwgEYCnWA8iQMiRz2VGxD3pcFjZAOih3fOgDD3kDaFInEx+g==}
+  /xstate@4.37.2:
+    resolution: {integrity: sha512-Qm337O49CRTZ3PRyRuK6b+kvI+D3JGxXIZCTul+xEsyFCVkTFDt5jixaL1nBWcUBcaTQ9um/5CRGVItPi7fveg==}
 
   /xtend@4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
