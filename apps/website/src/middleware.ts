@@ -2,7 +2,14 @@ import { match } from '@formatjs/intl-localematcher';
 import type { SupportedLanguages } from '@raulmelo/core/config';
 import Negotiator from 'negotiator';
 
-export default function middleware(request: Request) {
+type OnRequestArgs = {
+  locals: any;
+  request: Request;
+};
+
+type Next = () => Promise<Response>;
+
+export function onRequest({ request }: OnRequestArgs, next: Next) {
   const url = new URL(request.url);
 
   if (skipMiddleware(request.url)) {
@@ -25,8 +32,12 @@ export default function middleware(request: Request) {
 
     return Response.redirect(nextUrl);
   }
+
+  return next();
 }
 
+const supportedLocales = [`en`, `pt`];
+const defaultLocale = `en`;
 const passThroughRoutes = [`/cv`, `/admin`];
 
 function skipMiddleware(url: string) {
@@ -43,10 +54,7 @@ function skipMiddleware(url: string) {
   return shouldSkip;
 }
 
-export const supportedLocales = [`en`, `pt`];
-const defaultLocale = `en`;
-
-export function getLanguageFromAcceptLanguage(acceptLanguageHeader: string) {
+function getLanguageFromAcceptLanguage(acceptLanguageHeader: string) {
   const languages = new Negotiator({
     headers: {
       'accept-language': acceptLanguageHeader,
@@ -63,10 +71,3 @@ export function getLanguageFromAcceptLanguage(acceptLanguageHeader: string) {
 function normalizePathname(pathname: string) {
   return pathname.replaceAll(`//`, `/`).replace(/\/$/g, ``);
 }
-
-export const config = {
-  matcher: [
-    // eslint-disable-next-line @typescript-eslint/quotes
-    '/((?!api|favicon|assets|_astro|_image|_next|build|@fs|@vite|_vercel|site.webmanifest|~partytown).*)',
-  ],
-};

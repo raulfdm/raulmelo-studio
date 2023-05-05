@@ -24,6 +24,9 @@ const vscodeOnigurumaPath = new URL(
 /** @type {import('astro').AstroUserConfig} */
 const config = {
   site: `http://localhost:3000`,
+  experimental: {
+    middleware: true,
+  },
   integrations: [
     partytown(),
     tailwind(),
