@@ -13,7 +13,7 @@ export function onRequest({ request }: OnRequestArgs, next: Next) {
   const url = new URL(request.url);
 
   if (skipMiddleware(request.url)) {
-    return;
+    return next();
   }
 
   const pathnameIsMissingLocale = supportedLocales.every(
