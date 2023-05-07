@@ -11,6 +11,7 @@
 
   export let lang: SupportedLanguages;
   export let pathname: string;
+  export let themeHint: string | undefined;
 
   const intl = getIntl(lang);
 
@@ -57,6 +58,7 @@
       class="flex items-center justify-end col-span-2 space-x-3 md:col-end-9 lg:col-end-13"
     >
       <MenuBarThemeSwitch
+        {themeHint}
         ariaLabel={intl.formatMessage({
           id: `menu.themeButtonAriaLabel`,
         })}

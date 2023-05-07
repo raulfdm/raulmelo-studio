@@ -5,15 +5,18 @@
   import MenuBarButton from './MenuBarButton.svelte';
 
   export let ariaLabel: string;
+  export let themeHint: string | undefined;
 
-  let theme = 'light';
+  let theme = themeHint ?? 'light';
   $: nextTheme = theme === 'light' ? 'dark' : 'light';
 
   /**
    * Bit flaky but it's working for now.
    */
   onMount(() => {
-    theme = (localStorage.getItem(`theme`) as 'light' | 'dark') ?? 'light';
+    if (localStorage.getItem(`theme`)) {
+      theme = localStorage.getItem(`theme`) as 'light' | 'dark';
+    }
   });
 
   function handleClick() {
