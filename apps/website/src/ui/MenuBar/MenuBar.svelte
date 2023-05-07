@@ -4,13 +4,13 @@
   import { type SupportedLanguages } from '@raulmelo/core/config';
   import Logo from '../Logo.svelte';
   import MenuBarLanguageSwitch from './MenuBarLanguageSwitch.svelte';
-  import MenuBarThemeSwitch from './MenuBarThemeSwitch.svelte';
   import { SideMenu } from '../SideMenu';
   import MenuBarSideMenuButton from './MenuBarSideMenuButton.svelte';
   import classNames from 'classnames';
 
   export let lang: SupportedLanguages;
   export let pathname: string;
+  export let themeHint: string | undefined;
 
   const intl = getIntl(lang);
 
@@ -56,11 +56,6 @@
     <section
       class="flex items-center justify-end col-span-2 space-x-3 md:col-end-9 lg:col-end-13"
     >
-      <MenuBarThemeSwitch
-        ariaLabel={intl.formatMessage({
-          id: `menu.themeButtonAriaLabel`,
-        })}
-      />
       {#if !shouldHideLanguage()}
         <MenuBarLanguageSwitch
           ariaLabel={intl.formatMessage({
@@ -77,4 +72,4 @@
   </nav>
 </div>
 
-<SideMenu {lang} {pathname} />
+<SideMenu {lang} {pathname} {themeHint} />

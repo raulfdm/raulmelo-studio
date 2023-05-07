@@ -9,11 +9,12 @@
   import classNames from 'classnames';
   import { useSideMenuLinks } from './links';
 
-  import SideMenuList from './SideMenuList.svelte';
   import SideMenuListItem from './SideMenuListItem.svelte';
   import { timeline } from 'motion';
+  import SideMenuThemeSwitch from './SideMenuThemeSwitch.svelte';
 
   export let lang: SupportedLanguages;
+  export let themeHint: string | undefined;
   export let pathname: string;
 
   const links = useSideMenuLinks(lang, pathname);
@@ -94,17 +95,28 @@
     class={classNames([
       'fixed bottom-0 right-0 z-20 h-full min-w-full duration-200 transform',
       'bg-white top-16 dark:bg-blue-800 sm:min-w-min sm:w-full sm:max-w-xs transition-theme ease',
+      'flex flex-col',
+      'pt-6 pb-16',
     ])}
     style="transform: translate3d(100%, 0, 0);"
   >
-    <SideMenuList>
+    <ul class="flex flex-col flex-1">
       {#each links as link}
         <SideMenuListItem
           {...link}
           itemLabel={intl.formatMessage({ id: link.itemLabel })}
         />
       {/each}
-    </SideMenuList>
+    </ul>
+    <div class="px-4 py-2">
+      <SideMenuThemeSwitch
+        {themeHint}
+        title={intl.formatMessage({ id: 'sideMenu.theme.title' })}
+        darkThemeTitle={intl.formatMessage({ id: 'sideMenu.theme.dark' })}
+        lightThemeTitle={intl.formatMessage({ id: 'sideMenu.theme.light' })}
+        systemThemeTitle={intl.formatMessage({ id: 'sideMenu.theme.system' })}
+      />
+    </div>
   </DisclosurePanel>
 
   <DisclosurePanel

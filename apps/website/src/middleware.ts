@@ -1,12 +1,28 @@
 import { match } from '@formatjs/intl-localematcher';
 import type { SupportedLanguages } from '@raulmelo/core/config';
-import type { APIContext, MiddlewareNext, MiddlewareNextResponse } from 'astro';
+import type { MiddlewareResponseHandler } from 'astro';
+import { sequence } from 'astro/middleware';
 import Negotiator from 'negotiator';
 
-export async function onRequest(
-  { request, redirect }: APIContext,
-  next: MiddlewareNext<MiddlewareNextResponse>,
-) {
+const themeHintHandler: MiddlewareResponseHandler = async (
+  { request, locals },
+  next,
+) => {
+  if (request.headers.get(`sec-ch-prefers-color-scheme`)) {
+    locals.themeHint = request.headers.get(`sec-ch-prefers-color-scheme`);
+  }
+
+  const response = await next();
+
+  response.headers.set(`Accept-CH`, `Sec-CH-Prefers-Color-Scheme`);
+
+  return response;
+};
+
+const languageHandler: MiddlewareResponseHandler = async (
+  { request, redirect },
+  next,
+): Promise<Response> => {
   const url = new URL(request.url);
 
   if (skipMiddleware(request.url)) {
@@ -31,7 +47,9 @@ export async function onRequest(
   }
 
   return next();
-}
+};
+
+export const onRequest = sequence(languageHandler, themeHintHandler);
 
 const supportedLocales = [`en`, `pt`];
 const defaultLocale = `en`;

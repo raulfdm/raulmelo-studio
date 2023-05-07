@@ -15,7 +15,7 @@ import '@fontsource/inter/800.css';
 import '@fontsource/inter/900.css';
 import '@raulmelo/styles/lib/styles.css';
 
-import { type SupportedLanguages } from '@raulmelo/core/config';
+import type { SupportedLanguages } from '@raulmelo/core/config';
 import classNames from 'classnames';
 
 import { sanitizeUrl } from '@/infrastructure/utils/url';
@@ -94,7 +94,13 @@ const nextLang = lang || langFromParams;
       }
     </script>
 
-    <MenuBar lang={nextLang} pathname={Astro.url.pathname} client:load />
+    <MenuBar
+      lang={nextLang}
+      pathname={Astro.url.pathname}
+      client:load
+      themeHint={Astro.locals.themeHint}
+    />
+
     <slot name="banner" />
 
     <main class={classNames(`grid-container`, containerClass)}>
