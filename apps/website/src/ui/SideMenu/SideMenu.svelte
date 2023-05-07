@@ -111,6 +111,7 @@
     <div class="px-4 py-2">
       <SideMenuThemeSwitch
         {themeHint}
+        title={intl.formatMessage({ id: 'sideMenu.theme.title' })}
         darkThemeTitle={intl.formatMessage({ id: 'sideMenu.theme.dark' })}
         lightThemeTitle={intl.formatMessage({ id: 'sideMenu.theme.light' })}
         systemThemeTitle={intl.formatMessage({ id: 'sideMenu.theme.system' })}
