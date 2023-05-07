@@ -1,15 +1,12 @@
 import { match } from '@formatjs/intl-localematcher';
 import type { SupportedLanguages } from '@raulmelo/core/config';
+import type { APIContext, MiddlewareNext, MiddlewareNextResponse } from 'astro';
 import Negotiator from 'negotiator';
 
-type OnRequestArgs = {
-  locals: any;
-  request: Request;
-};
-
-type Next = () => Promise<Response>;
-
-export function onRequest({ request }: OnRequestArgs, next: Next) {
+export async function onRequest(
+  { request, redirect }: APIContext,
+  next: MiddlewareNext<MiddlewareNextResponse>,
+) {
   const url = new URL(request.url);
 
   if (skipMiddleware(request.url)) {
@@ -30,7 +27,7 @@ export function onRequest({ request }: OnRequestArgs, next: Next) {
 
     const nextUrl = new URL(normalizedPathname, request.url).toString();
 
-    return Response.redirect(nextUrl);
+    return redirect(nextUrl);
   }
 
   return next();
