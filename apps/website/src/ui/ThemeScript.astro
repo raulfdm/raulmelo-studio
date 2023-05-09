@@ -1,0 +1,119 @@
+---
+/**
+ * This script should be used in the head element of the document.
+ * That will ensure that the page gets the right theme as soon as possible.
+ */
+---
+
+<script is:inline>
+  const initialTheme = (function getInitialTheme() {
+    const themeHint = document
+      .querySelector(`html`)
+      ?.getAttribute(`data-theme-hint`);
+
+    if (typeof localStorage !== `undefined` && localStorage.getItem(`theme`)) {
+      return localStorage.getItem(`theme`);
+    }
+
+    if (themeHint) {
+      return themeHint;
+    }
+
+    if (window.matchMedia(`(prefers-color-scheme: dark)`).matches) {
+      return `dark`;
+    }
+
+    return `light`;
+  })();
+
+  function createThemeHandler() {
+    const darkModeMediaQuery = window.matchMedia(
+      `(prefers-color-scheme: dark)`,
+    );
+
+    const api = {
+      handleLightTheme,
+      handleDarkTheme,
+      handleSystemTheme,
+      switchTheme,
+    };
+
+    return api;
+
+    function handleLightTheme() {
+      document.documentElement.classList.remove(`dark`);
+    }
+
+    function handleDarkTheme() {
+      document.documentElement.classList.add(`dark`);
+    }
+
+    function handleSystemTheme() {
+      addChangeListener();
+
+      /**
+       * I have to run this to instantly apply the matched theme.
+       */
+      mediaThemeToggle();
+    }
+
+    function addChangeListener() {
+      darkModeMediaQuery?.addEventListener(`change`, mediaThemeToggle);
+    }
+
+    function removeThemeChangeListener() {
+      darkModeMediaQuery?.removeEventListener(`change`, mediaThemeToggle);
+    }
+
+    function mediaThemeToggle() {
+      if (darkModeMediaQuery.matches) {
+        handleDarkTheme();
+      } else {
+        handleLightTheme();
+      }
+    }
+
+    function switchTheme(nextTheme) {
+      window.__theme = nextTheme;
+      localStorage.setItem(`theme`, nextTheme);
+      dispatchThemeEvent(nextTheme);
+
+      if (nextTheme === `system`) {
+        // add eventListener for system theme change
+        return handleSystemTheme();
+      } else {
+        removeThemeChangeListener();
+      }
+
+      if (nextTheme === `dark`) {
+        return handleDarkTheme();
+      }
+
+      if (nextTheme === `light`) {
+        return handleLightTheme();
+      }
+
+      throw new Error(`Unknown theme: ${nextTheme}`);
+    }
+
+    function dispatchThemeEvent(theme) {
+      const themeChangeEvent = new CustomEvent(`themechange`, {
+        detail: {
+          theme,
+        },
+      });
+
+      window.dispatchEvent(themeChangeEvent);
+    }
+  }
+
+  const themeHandler = createThemeHandler();
+
+  window.__handleSystemTheme = themeHandler.handleSystemTheme;
+  window.__switchTheme = themeHandler.switchTheme;
+  window.__handleDarkTheme = themeHandler.handleDarkTheme;
+  window.__handleLightTheme = themeHandler.handleLightTheme;
+
+  window.__theme = initialTheme;
+  window.__switchTheme(initialTheme);
+</script>
