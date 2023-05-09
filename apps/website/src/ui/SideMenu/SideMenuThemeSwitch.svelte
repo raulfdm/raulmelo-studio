@@ -4,74 +4,33 @@
   import IconDeviceDesktop from '@tabler/icons-svelte/dist/svelte/icons/IconDeviceDesktop.svelte';
   import { onMount } from 'svelte';
 
-  type Theme = 'light' | 'dark' | 'system';
-
-  export let themeHint: string | undefined;
   export let title: string;
   export let darkThemeTitle: string;
   export let lightThemeTitle: string;
   export let systemThemeTitle: string;
 
-  let theme: Theme = themeHint || 'system';
+  let theme: Theme = 'system';
 
-  if (localStorage.getItem(`theme`)) {
-    theme = localStorage.getItem(`theme`) as 'light' | 'dark';
-  }
+  onMount(() => {
+    theme = window.__theme;
+    /**
+     * This custom event is dispatched by the ThemeScript.astro
+     */
+    window.addEventListener('themechange', changeTheme);
 
-  $: {
-    if (typeof window !== 'undefined') {
-      switch (theme) {
-        case 'light':
-          handleLightTheme();
-          break;
-        case 'dark':
-          handleDarkTheme();
-          break;
-        case 'system':
-          handleSystemTheme();
-          break;
-        default:
-          break;
-      }
-    }
-  }
-
-  function handleLightTheme() {
-    document.documentElement.classList.remove(`dark`);
-  }
-
-  function handleDarkTheme() {
-    document.documentElement.classList.add(`dark`);
-  }
-
-  function handleSystemTheme() {
-    if (typeof window !== 'undefined') {
-      const darkModeMediaQuery = window.matchMedia(
-        '(prefers-color-scheme: dark)',
-      );
-
-      darkModeMediaQuery?.addEventListener('change', themeLogic);
-
-      /**
-       * I have to run this to instantly apply the matched theme.
-       */
-      themeLogic();
-
-      function themeLogic() {
-        if (darkModeMediaQuery.matches) {
-          handleDarkTheme();
-        } else {
-          handleLightTheme();
-        }
-      }
-    }
-  }
-
-  function handleNextTheme(nextTheme: Theme) {
     return () => {
-      theme = nextTheme;
-      localStorage.setItem(`theme`, nextTheme);
+      window.removeEventListener('themechange', changeTheme);
     };
+  });
+
+  function changeTheme(
+    event: CustomEvent<{
+      detail: {
+        theme: Theme;
+      };
+    }>,
+  ) {
+    theme = event.detail.theme;
   }
 </script>
 
@@ -80,7 +39,7 @@
   <div class="flex gap-1">
     <button
       class:active={theme === 'light'}
-      on:click={handleNextTheme('light')}
+      on:click={() => window.__switchTheme('light')}
       title={lightThemeTitle}
       aria-label={lightThemeTitle}
     >
@@ -88,7 +47,7 @@
     </button>
     <button
       class:active={theme === 'system'}
-      on:click={handleNextTheme('system')}
+      on:click={() => window.__switchTheme('system')}
       title={systemThemeTitle}
       aria-label={systemThemeTitle}
     >
@@ -96,7 +55,7 @@
     </button>
     <button
       class:active={theme === 'dark'}
-      on:click={handleNextTheme('dark')}
+      on:click={() => window.__switchTheme('dark')}
       title={darkThemeTitle}
       aria-label={darkThemeTitle}
     >
