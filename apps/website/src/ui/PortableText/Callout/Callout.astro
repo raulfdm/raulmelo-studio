@@ -7,11 +7,15 @@ type Props = {
   };
 };
 
-import { IconInfoCircle, IconNotes } from '@tabler/icons-react';
-import { type PortableTextTextBlock } from 'sanity';
+import {
+  IconAlertOctagon,
+  IconInfoHexagon,
+  IconNotes,
+} from '@tabler/icons-react';
+import type { PortableTextTextBlock } from 'sanity';
 
 import PortableText from '../PortableText.astro';
-import { type CalloutType } from './types';
+import type { CalloutType } from './types';
 
 const { content, type, title } = Astro.props.node;
 
@@ -30,19 +34,27 @@ const calloutMap: Record<
 > = {
   info: {
     css: {
-      container: `bg-sky-100 dark:bg-sky-900 border-sky-900 dark:border-sky-50`,
+      container: `bg-sky-100 dark:bg-sky-600 dark:bg-opacity-20 border-sky-900 dark:border-sky-50`,
       title: `text-sky-900 dark:text-sky-50`,
       icon: `text-sky-900 dark:text-sky-100`,
     },
-    Icon: IconInfoCircle,
+    Icon: IconInfoHexagon,
   },
   note: {
     css: {
-      container: `bg-emerald-100 dark:bg-emerald-900 border-emerald-900 dark:border-emerald-50`,
+      container: `bg-emerald-100 dark:bg-emerald-600 dark:bg-opacity-20 border-emerald-900 dark:border-emerald-50`,
       title: `text-emerald-900 dark:text-emerald-50`,
       icon: `text-emerald-900 dark:text-emerald-100`,
     },
     Icon: IconNotes,
+  },
+  warn: {
+    css: {
+      container: `bg-amber-100 dark:bg-amber-600 dark:bg-opacity-20 border-amber-900 dark:border-amber-50`,
+      title: `text-amber-900 dark:text-amber-50`,
+      icon: `text-amber-900 dark:text-amber-100`,
+    },
+    Icon: IconAlertOctagon,
   },
 };
 
@@ -50,7 +62,7 @@ const currentCallout = calloutMap[nextType];
 ---
 
 <aside
-  class="relative lg:-mx-8 flex rounded-lg border-l-2 mt-6 lg:m-6 lg:mt-8"
+  class="relative flex mt-6 border-l-2 rounded-lg lg:-mx-8 lg:m-6 lg:mt-8"
   class:list={[currentCallout.css.container]}
 >
   <div
@@ -60,11 +72,11 @@ const currentCallout = calloutMap[nextType];
     <currentCallout.Icon size={32} />
   </div>
 
-  <div class="prose-lg w-full callout-content px-8 py-6">
+  <div class="w-full px-8 py-6 prose-lg callout-content">
     {
       title ? (
         <strong
-          class="text-md md:text-md font-bold block mb-4"
+          class="block mb-4 font-bold text-md md:text-md"
           class:list={[currentCallout.css.title]}
         >
           {title}
