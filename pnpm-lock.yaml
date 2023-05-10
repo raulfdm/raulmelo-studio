@@ -318,7 +318,7 @@ importers:
     dependencies:
       '@astrojs/image':
         specifier: 0.16.7
-        version: 0.16.7(astro@2.4.1)(sharp@0.32.0)
+        version: 0.16.7(astro@2.4.1)(sharp@0.32.1)
       '@astrojs/partytown':
         specifier: 1.2.0
         version: 1.2.0
@@ -399,7 +399,7 @@ importers:
         version: 4.17.0
       astro:
         specifier: 2.4.1
-        version: 2.4.1(sharp@0.32.0)
+        version: 2.4.1(sharp@0.32.1)
       astro-portabletext:
         specifier: 0.8.0
         version: 0.8.0
@@ -461,8 +461,8 @@ importers:
         specifier: 2.0.5
         version: 2.0.5(@babel/core@7.21.8)(@sanity/color@2.2.5)(@sanity/icons@2.3.1)(@types/react@18.0.38)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.8.0)(styled-components@5.3.10)
       sharp:
-        specifier: 0.32.0
-        version: 0.32.0
+        specifier: 0.32.1
+        version: 0.32.1
       slugify:
         specifier: 1.6.6
         version: 1.6.6
@@ -811,7 +811,7 @@ packages:
     resolution: {integrity: sha512-aXAxapNWZwGN41P+Am/ma/2kAzKOhMNaY6YuvLkUHFv+UZkmDHD6F0fE1sQA2Up0bLjgPQa1VQzoAaii5tZWaA==}
     dev: false
 
-  /@astrojs/image@0.16.7(astro@2.4.1)(sharp@0.32.0):
+  /@astrojs/image@0.16.7(astro@2.4.1)(sharp@0.32.1):
     resolution: {integrity: sha512-8X1DnMh3lUTA7BNt7dF0rfWTXNwvLoPWWXtLi+TdO3CW1SvdY9LJRuCEWwHfnKzcQ0EC2TfLwjukpbtJuCRxjw==}
     peerDependencies:
       astro: ^2.3.4
@@ -821,13 +821,13 @@ packages:
         optional: true
     dependencies:
       '@altano/tiny-async-pool': 1.0.2
-      astro: 2.4.1(sharp@0.32.0)
+      astro: 2.4.1(sharp@0.32.1)
       http-cache-semantics: 4.1.1
       image-size: 1.0.2
       kleur: 4.1.5
       magic-string: 0.27.0
       mime: 3.0.0
-      sharp: 0.32.0
+      sharp: 0.32.1
     dev: false
 
   /@astrojs/language-server@1.0.4:
@@ -855,7 +855,7 @@ packages:
       astro: ^2.4.0
     dependencies:
       '@astrojs/prism': 2.1.1
-      astro: 2.4.1(sharp@0.32.0)
+      astro: 2.4.1(sharp@0.32.1)
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.2
       rehype-raw: 6.1.1
@@ -926,7 +926,7 @@ packages:
       svelte: ^3.54.0
     dependencies:
       '@sveltejs/vite-plugin-svelte': 2.1.1(svelte@3.58.0)(vite@4.3.4)
-      astro: 2.4.1(sharp@0.32.0)
+      astro: 2.4.1(sharp@0.32.1)
       svelte: 3.58.0
       svelte2tsx: 0.5.23(svelte@3.58.0)(typescript@5.0.4)
     transitivePeerDependencies:
@@ -942,7 +942,7 @@ packages:
       tailwindcss: ^3.0.24
     dependencies:
       '@proload/core': 0.3.3
-      astro: 2.4.1(sharp@0.32.0)
+      astro: 2.4.1(sharp@0.32.1)
       autoprefixer: 10.4.14(postcss@8.4.23)
       postcss: 8.4.23
       postcss-load-config: 4.0.1(postcss@8.4.23)
@@ -975,7 +975,7 @@ packages:
       '@astrojs/webapi': 2.1.1
       '@vercel/analytics': 0.1.11(react@18.2.0)
       '@vercel/nft': 0.22.6
-      astro: 2.4.1(sharp@0.32.0)
+      astro: 2.4.1(sharp@0.32.1)
       fast-glob: 3.2.12
       set-cookie-parser: 2.6.0
       web-vitals: 3.3.1
@@ -4545,7 +4545,7 @@ packages:
     resolution: {integrity: sha512-YnSqj4E6vbF7wRk3gcxOPHBjenhfgaINEJlTsnu4sovAyfyGEdQksbioYKoZ+vERRDaYvEricfSzC6fc9lieww==}
     dev: false
 
-  /astro@2.4.1(sharp@0.32.0):
+  /astro@2.4.1(sharp@0.32.1):
     resolution: {integrity: sha512-qNYXxjtJm0+FHr+MtHXhV/WEMkoulAoCsvtdyJrQiuk9raodPo2xNHgP1WPZUtmFlPN2ezZ2XGDUK1zmFZgRLg==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
@@ -4595,7 +4595,7 @@ packages:
       rehype: 12.0.1
       semver: 7.5.0
       server-destroy: 1.0.1
-      sharp: 0.32.0
+      sharp: 0.32.1
       shiki: 0.14.2
       slash: 4.0.0
       string-width: 5.1.2
@@ -8618,8 +8618,8 @@ packages:
       semver: 7.5.0
     dev: false
 
-  /node-addon-api@6.0.0:
-    resolution: {integrity: sha512-GyHvgPvUXBvAkXa0YvYnhilSB1A+FRYMpIVggKzPZqdaZfevZOuzfWzyvgzOwRLHBeo/MMswmJFsrNF4Nw1pmA==}
+  /node-addon-api@6.1.0:
+    resolution: {integrity: sha512-+eawOlIgy680F0kBzPUNFhMZGtJ1YmqM6l4+Crf4IkImjYrO/mqPwRMh352g23uIaQKFItcQ64I7KMaJxHgAVA==}
     dev: false
 
   /node-fetch@2.6.9:
@@ -10896,16 +10896,16 @@ packages:
   /shallowequal@1.1.0:
     resolution: {integrity: sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==}
 
-  /sharp@0.32.0:
-    resolution: {integrity: sha512-yLAypVcqj1toSAqRSwbs86nEzfyZVDYqjuUX8grhFpeij0DDNagKJXELS/auegDBRDg1XBtELdOGfo2X1cCpeA==}
+  /sharp@0.32.1:
+    resolution: {integrity: sha512-kQTFtj7ldpUqSe8kDxoGLZc1rnMFU0AO2pqbX6pLy3b7Oj8ivJIdoKNwxHVQG2HN6XpHPJqCSM2nsma2gOXvOg==}
     engines: {node: '>=14.15.0'}
     requiresBuild: true
     dependencies:
       color: 4.2.3
       detect-libc: 2.0.1
-      node-addon-api: 6.0.0
+      node-addon-api: 6.1.0
       prebuild-install: 7.1.1
-      semver: 7.3.8
+      semver: 7.5.0
       simple-get: 4.0.1
       tar-fs: 2.1.1
       tunnel-agent: 0.6.0
