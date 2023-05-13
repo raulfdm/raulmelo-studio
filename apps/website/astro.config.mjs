@@ -18,7 +18,7 @@ const { VERCEL_ENV, VERCEL_URL } = loadEnv(
 
 const vscodeOnigurumaPath = new URL(
   `onig.wasm`,
-  await resolve(`vscode-oniguruma`, import.meta.url),
+  resolve(`vscode-oniguruma`, import.meta.url),
 ).pathname;
 
 /** @type {import('astro').AstroUserConfig} */
