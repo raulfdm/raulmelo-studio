@@ -13,8 +13,7 @@ const algoliaClient = algolia(
 
 export const post: APIRoute = async function post({ request }) {
   try {
-    const { authorization } =
-      (await safeParseBody<{ authorization?: string }>(request)) || {};
+    const authorization = request.headers.get(`authorization`);
 
     if (!authorization) {
       throw new Error(`Authorization code is required`);
@@ -28,6 +27,8 @@ export const post: APIRoute = async function post({ request }) {
     const index = algoliaClient.initIndex(clientEnv.PUBLIC_ALGOLIA_INDEX_NAME);
     await index.saveObjects(algoliaData);
 
+    console.log(`Algolia data updated`);
+
     return {
       body: JSON.stringify({
         message: `success`,
@@ -35,7 +36,8 @@ export const post: APIRoute = async function post({ request }) {
       }),
     };
   } catch (error) {
-    console.log(error);
+    console.error(`Something went wrong while updating the indexes:`, error);
+
     if (error instanceof Error) {
       if (error.message.includes(`Authorization code is required`)) {
         return {
@@ -63,11 +65,3 @@ export const post: APIRoute = async function post({ request }) {
     };
   }
 };
-
-function safeParseBody<T>(request: Request): Promise<T | null> {
-  try {
-    return request.json() as Promise<T>;
-  } catch (error) {
-    return Promise.resolve(null);
-  }
-}
