@@ -86,7 +86,7 @@ module.exports = {
     },
     {
       matchPackagePatterns: ['svelte'],
-      excludeDepNames: ['@tabler/icons-svelte'],
+      excludeDepNames: ['@tabler/icons-svelte', '@astrojs/svelte'],
       groupName: 'Svelte',
     },
     {
