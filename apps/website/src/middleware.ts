@@ -53,7 +53,7 @@ export const onRequest = sequence(languageHandler, themeHintHandler);
 
 const supportedLocales = [`en`, `pt`];
 const defaultLocale = `en`;
-const passThroughRoutes = [`/cv`, `/admin`];
+const passThroughRoutes = [`/cv`, `/admin`, `/_image`];
 
 function skipMiddleware(url: string) {
   let shouldSkip = false;

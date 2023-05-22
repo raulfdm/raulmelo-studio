@@ -24,8 +24,10 @@ const vscodeOnigurumaPath = new URL(
 /** @type {import('astro').AstroUserConfig} */
 const config = {
   site: `http://localhost:3000`,
+  output: `hybrid`,
   experimental: {
     middleware: true,
+    hybridOutput: true,
   },
   integrations: [
     partytown(),
@@ -46,7 +48,6 @@ const config = {
     prefetch(),
     svelte(),
   ],
-  output: `server`,
   adapter: vercel({
     analytics: true,
     includeFiles: [vscodeOnigurumaPath],
