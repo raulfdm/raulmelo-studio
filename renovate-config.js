@@ -13,30 +13,10 @@ module.exports = {
    * Renovate options
    */
   baseBranches: ['main'],
-  recreateClosed: true,
+  // recreateClosed: true,
   gitAuthor: 'Renovate Bot <bot@renovateapp.com>',
-  includeForks: true,
   pruneStaleBranches: true,
   packageRules: [
-    {
-      description: 'lockFileMaintenance',
-      matchUpdateTypes: [
-        'pin',
-        'digest',
-        'patch',
-        'minor',
-        'major',
-        'lockFileMaintenance',
-      ],
-      dependencyDashboardApproval: false,
-      stabilityDays: 3,
-    },
-    {
-      matchPackageNames: ['node'],
-      matchManagers: ['dockerfile'],
-      enabled: false,
-    },
-
     /**
      * Resolutions
      */
@@ -45,7 +25,7 @@ module.exports = {
       enabled: false,
     },
     {
-      matchPackageNames: ['@types/node'],
+      matchPackageNames: ['@types/node', 'node'],
       allowedVersions: '<19',
     },
     /**
@@ -61,59 +41,60 @@ module.exports = {
       groupName: 'React',
     },
     {
-      matchPackagePatterns: ['@astrojs/'],
+      matchPackagePrefixes: ['@astrojs'],
       matchPackageNames: ['astro'],
       groupName: 'Astro',
     },
     {
-      matchPackagePatterns: ['@sanity/'],
+      matchPackagePrefixes: ['@sanity'],
       matchPackageNames: ['sanity'],
       groupName: 'Sanity',
     },
     {
-      matchPackagePatterns: ['eslint'],
+      matchPackagePrefixes: ['eslint'],
       groupName: 'eslint',
-      excludePackagePatterns: ['@typescript-eslint'],
     },
     {
-      matchPackagePatterns: ['babel'],
+      matchPackagePrefixes: ['@babel'],
       groupName: 'babel',
     },
     {
-      matchPackagePatterns: ['@xstate'],
+      matchPackagePrefixes: ['@xstate'],
       matchPackageNames: ['xstate'],
-      groupName: 'XState packages',
+      groupName: 'XState',
     },
     {
-      matchPackagePatterns: ['svelte'],
-      excludeDepNames: ['@tabler/icons-svelte', '@astrojs/svelte'],
+      matchPackagePrefixes: ['@svelte'],
+      matchPackageNames: ['svelte'],
       groupName: 'Svelte',
     },
     {
-      matchPackagePatterns: ['@tabler/icons'],
+      matchPackagePrefixes: ['@tabler/icons'],
       groupName: 'Tabler Icons',
     },
     {
-      matchPackagePatterns: ['sanity', 'groq'],
-      groupName: 'sanity',
+      matchPackagePrefixes: ['@sanity', 'sanity-'],
+      matchPackageNames: ['sanity', 'groq'],
+      groupName: 'Sanity',
     },
     {
       matchPackageNames: ['vite', 'vitest'],
-      matchPackagePatterns: ['vite-plugin-*'],
+      matchPackagePrefixes: ['vite-plugin'],
       groupName: 'Vite',
     },
     {
-      matchPackagePatterns: ['react-instantsearch', 'algoliasearch'],
+      matchPackagePrefixes: ['react-instantsearch'],
+      matchPackageNames: ['algoliasearch'],
       groupName: 'Algolia',
     },
     {
-      matchPackagePatterns: ['@typescript-eslint'],
+      matchPackagePrefixes: ['@typescript-eslint'],
       groupName: 'ESLint TS',
     },
     {
       groupName: 'Tailwind ecosystem',
-      matchPackagePatterns: ['tailwindcss', '@tailwindcss/*'],
-      matchPackageNames: ['postcss', 'autoprefixer'],
+      matchPackagePrefixes: ['@tailwindcss'],
+      matchPackageNames: ['postcss', 'autoprefixer', 'tailwindcss'],
     },
   ],
 };
