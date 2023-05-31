@@ -42,7 +42,7 @@ module.exports = {
     },
     {
       matchPackagePrefixes: ['@astrojs'],
-      matchPackageNames: ['astro'],
+      matchPackageNames: ['astro', 'prettier-plugin-astro'],
       groupName: 'Astro',
     },
     {
