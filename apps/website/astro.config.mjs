@@ -25,9 +25,6 @@ const vscodeOnigurumaPath = new URL(
 const config = {
   site: `http://localhost:3000`,
   output: `server`,
-  experimental: {
-    middleware: true,
-  },
   integrations: [
     partytown(),
     tailwind(),
