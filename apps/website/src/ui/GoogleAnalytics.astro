@@ -2,8 +2,7 @@
 <script
   async
   src="https://www.googletagmanager.com/gtag/js?id=G-HY7TYWWEKD"
-  type="text/partytown"
-></script>
+  type="text/partytown"></script>
 <script type="text/partytown">
   window.dataLayer = window.dataLayer || [];
   function gtag() {
@@ -11,5 +10,7 @@
   }
   gtag(`js`, new Date());
 
-  gtag(`config`, `G-HY7TYWWEKD`);
+  gtag(`config`, `G-HY7TYWWEKD`, {
+    anonymize_ip: true,
+  });
 </script>
