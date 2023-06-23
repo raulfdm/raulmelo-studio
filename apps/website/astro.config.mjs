@@ -56,7 +56,7 @@ const config = {
 };
 
 if (VERCEL_ENV === `production`) {
-  config.site = `https://raulmelo.dev`;
+  config.site = `https://www.raulmelo.me`;
 } else if (VERCEL_URL) {
   config.site = `https://${VERCEL_URL}`;
 }
