@@ -43,6 +43,13 @@ jobs:
 
       - name: Build dependent packages
         run: pnpm run build --filter website...
+        env:
+          APP_ENV: ${{ secrets.APP_ENV }}
+          ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+          SANITY_TOKEN: ${{ secrets.SANITY_TOKEN }}
+          PUBLIC_ALGOLIA_APP_ID: ${{ secrets.PUBLIC_ALGOLIA_APP_ID }}
+          PUBLIC_ALGOLIA_SEARCH_KEY: ${{ secrets.PUBLIC_ALGOLIA_SEARCH_KEY }}
+          PUBLIC_ALGOLIA_INDEX_NAME: ${{ secrets.PUBLIC_ALGOLIA_INDEX_NAME }}
 
       - name: Lint Projects
         run: pnpm run lint --filter website
