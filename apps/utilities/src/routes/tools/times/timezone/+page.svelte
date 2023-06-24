@@ -40,7 +40,7 @@
   }));
 
   const popupSettings: PopupSettings = {
-    event: 'focus',
+    event: 'focus-click',
     target: 'popupAutocomplete',
     placement: 'bottom',
   };
