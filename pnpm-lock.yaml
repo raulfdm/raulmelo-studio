@@ -54,8 +54,8 @@ importers:
         specifier: 2.22.0
         version: 2.22.0(svelte@3.59.1)
       '@xstate/cli':
-        specifier: 0.5.1
-        version: 0.5.1
+        specifier: 0.5.2
+        version: 0.5.2
       '@xstate/svelte':
         specifier: 2.0.1
         version: 2.0.1(svelte@3.59.1)(xstate@4.37.2)
@@ -276,8 +276,8 @@ importers:
         specifier: 5.59.9
         version: 5.59.9(eslint@8.40.0)(typescript@5.0.4)
       '@xstate/cli':
-        specifier: 0.5.1
-        version: 0.5.1
+        specifier: 0.5.2
+        version: 0.5.2
       autoprefixer:
         specifier: 10.4.14
         version: 10.4.14(postcss@8.4.24)
@@ -301,10 +301,10 @@ importers:
         version: 3.59.1
       svelte-check:
         specifier: 3.3.2
-        version: 3.3.2(@babel/core@7.21.8)(postcss@8.4.24)(svelte@3.59.1)
+        version: 3.3.2(@babel/core@7.22.5)(postcss@8.4.24)(svelte@3.59.1)
       svelte-preprocess:
         specifier: 5.0.4
-        version: 5.0.4(@babel/core@7.21.8)(postcss@8.4.24)(svelte@3.59.1)(typescript@5.0.4)
+        version: 5.0.4(@babel/core@7.22.5)(postcss@8.4.24)(svelte@3.59.1)(typescript@5.0.4)
       tailwindcss:
         specifier: 3.3.2
         version: 3.3.2
@@ -511,8 +511,8 @@ importers:
         specifier: 0.6.1
         version: 0.6.1
       '@xstate/cli':
-        specifier: 0.5.1
-        version: 0.5.1
+        specifier: 0.5.2
+        version: 0.5.2
       import-meta-resolve:
         specifier: 3.0.0
         version: 3.0.0
@@ -1025,6 +1025,7 @@ packages:
       semver: 6.3.0
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /@babel/core@7.22.5:
     resolution: {integrity: sha512-SBuTAjg91A3eKOvD+bPEz3LlhHZRNu1nFOVts9lzDJTXshHTjII0BAtDS3Y2DAkdZdDKWVZGVwkDfc4Clxn1dg==}
@@ -1089,6 +1090,7 @@ packages:
       browserslist: 4.21.9
       lru-cache: 5.1.1
       semver: 6.3.0
+    dev: false
 
   /@babel/helper-compilation-targets@7.22.5(@babel/core@7.22.5):
     resolution: {integrity: sha512-Ji+ywpHeuqxB8WDxraCiqR0xfhYjiDE/e6k7FuIaANnoOFxAHskHChz4vA1mJC9Lbm01s1PVAGhQY4FUKSkGZw==}
@@ -4068,13 +4070,13 @@ packages:
     engines: {node: '>=10.0.0'}
     dev: false
 
-  /@xstate/cli@0.5.1:
-    resolution: {integrity: sha512-wKOF3JoUJj3IoCZAWfUcFrDoutmFHG+yRLSMyYwGHq9gqlJoAeaQoC/1mJVke0gIxNpHTaa9u4QOiVZArhSV0g==}
+  /@xstate/cli@0.5.2:
+    resolution: {integrity: sha512-KA0BJMd80Z3lp1MmVqlUpHkjLkKcq4Z09P19It4iJ6IX8Hzwo5lmRTZwX938UCiAjWWSA2jl6nfrJnfBR21riA==}
     hasBin: true
     dependencies:
-      '@babel/core': 7.21.8
-      '@xstate/machine-extractor': 0.9.2(xstate@4.37.2)
-      '@xstate/tools-shared': 3.0.0(xstate@4.37.2)
+      '@babel/core': 7.22.5
+      '@xstate/machine-extractor': 0.10.0(xstate@4.37.2)
+      '@xstate/tools-shared': 3.0.1(xstate@4.37.2)
       chokidar: 3.5.3
       commander: 8.3.0
       prettier: 2.8.8
@@ -4082,8 +4084,8 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@xstate/machine-extractor@0.9.2(xstate@4.37.2):
-    resolution: {integrity: sha512-AjSVpvEodvXWxaIpb5fDu0SMxvApmWZUuCVAuggLrkskco+nxtb8pxkjy+HqF2DwrmSirjrRrSRBT+rlERkUtA==}
+  /@xstate/machine-extractor@0.10.0(xstate@4.37.2):
+    resolution: {integrity: sha512-jsnYU9Y0DfFQCisY0IGxjmFrU6y3aqdBXBNohasxHiKHfuItkk4AUAQ+07MykJ+RiczXIYqYQNu5DvZAfCqKCA==}
     peerDependencies:
       xstate: ^4
     dependencies:
@@ -4147,12 +4149,12 @@ packages:
       xstate: 4.37.2
     dev: false
 
-  /@xstate/tools-shared@3.0.0(xstate@4.37.2):
-    resolution: {integrity: sha512-j0OyuX/GmuT2vP7XwB76uUkhmtnsDeoL6ApR+J/XiU198lbR/6QBbmxyzJGXVT9eRde48WEsDnn1IoN3E07KFw==}
+  /@xstate/tools-shared@3.0.1(xstate@4.37.2):
+    resolution: {integrity: sha512-XW00KB72i4XiQPiB0e4P7Fsn9TvYBxqVR0HNGGEkmvQ7l8FZM2FpzBDAriVH67XRUgI1crfNyisxXmGlpB5WYg==}
     peerDependencies:
       xstate: ^4
     dependencies:
-      '@xstate/machine-extractor': 0.9.2(xstate@4.37.2)
+      '@xstate/machine-extractor': 0.10.0(xstate@4.37.2)
       xstate: 4.37.2
     transitivePeerDependencies:
       - supports-color
@@ -4703,7 +4705,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001472
+      caniuse-lite: 1.0.30001505
       electron-to-chromium: 1.4.435
       node-releases: 2.0.12
       update-browserslist-db: 1.0.11(browserslist@4.21.5)
@@ -11497,33 +11499,6 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  /svelte-check@3.3.2(@babel/core@7.21.8)(postcss@8.4.24)(svelte@3.59.1):
-    resolution: {integrity: sha512-67j3rI0LDc2DvL0ON/2pvCasVVD3nHDrTkZNr4eITNfo2oFXdw7SIyMOiFj4swu+pjmFQAigytBK1IWyik8dBw==}
-    hasBin: true
-    peerDependencies:
-      svelte: ^3.55.0
-    dependencies:
-      '@jridgewell/trace-mapping': 0.3.18
-      chokidar: 3.5.3
-      fast-glob: 3.2.12
-      import-fresh: 3.3.0
-      picocolors: 1.0.0
-      sade: 1.8.1
-      svelte: 3.59.1
-      svelte-preprocess: 5.0.4(@babel/core@7.21.8)(postcss@8.4.24)(svelte@3.59.1)(typescript@5.0.4)
-      typescript: 5.0.4
-    transitivePeerDependencies:
-      - '@babel/core'
-      - coffeescript
-      - less
-      - postcss
-      - postcss-load-config
-      - pug
-      - sass
-      - stylus
-      - sugarss
-    dev: true
-
   /svelte-check@3.3.2(@babel/core@7.22.5)(postcss@8.4.24)(svelte@3.59.1):
     resolution: {integrity: sha512-67j3rI0LDc2DvL0ON/2pvCasVVD3nHDrTkZNr4eITNfo2oFXdw7SIyMOiFj4swu+pjmFQAigytBK1IWyik8dBw==}
     hasBin: true
@@ -11620,55 +11595,6 @@ packages:
       '@popperjs/core': 2.11.8
       svelte: 3.59.2
     dev: false
-
-  /svelte-preprocess@5.0.4(@babel/core@7.21.8)(postcss@8.4.24)(svelte@3.59.1)(typescript@5.0.4):
-    resolution: {integrity: sha512-ABia2QegosxOGsVlsSBJvoWeXy1wUKSfF7SWJdTjLAbx/Y3SrVevvvbFNQqrSJw89+lNSsM58SipmZJ5SRi5iw==}
-    engines: {node: '>= 14.10.0'}
-    requiresBuild: true
-    peerDependencies:
-      '@babel/core': ^7.10.2
-      coffeescript: ^2.5.1
-      less: ^3.11.3 || ^4.0.0
-      postcss: ^7 || ^8
-      postcss-load-config: ^2.1.0 || ^3.0.0 || ^4.0.0
-      pug: ^3.0.0
-      sass: ^1.26.8
-      stylus: ^0.55.0
-      sugarss: ^2.0.0 || ^3.0.0 || ^4.0.0
-      svelte: ^3.23.0 || ^4.0.0-next.0 || ^4.0.0
-      typescript: '>=3.9.5 || ^4.0.0 || ^5.0.0'
-    peerDependenciesMeta:
-      '@babel/core':
-        optional: true
-      coffeescript:
-        optional: true
-      less:
-        optional: true
-      postcss:
-        optional: true
-      postcss-load-config:
-        optional: true
-      pug:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      typescript:
-        optional: true
-    dependencies:
-      '@babel/core': 7.21.8
-      '@types/pug': 2.0.6
-      detect-indent: 6.1.0
-      magic-string: 0.27.0
-      postcss: 8.4.24
-      sorcery: 0.11.0
-      strip-indent: 3.0.0
-      svelte: 3.59.1
-      typescript: 5.0.4
-    dev: true
 
   /svelte-preprocess@5.0.4(@babel/core@7.22.5)(postcss@8.4.24)(svelte@3.59.1)(typescript@5.0.4):
     resolution: {integrity: sha512-ABia2QegosxOGsVlsSBJvoWeXy1wUKSfF7SWJdTjLAbx/Y3SrVevvvbFNQqrSJw89+lNSsM58SipmZJ5SRi5iw==}
