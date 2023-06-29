@@ -1,14 +1,18 @@
 <script lang="ts">
   import classNames from 'classnames';
-  import { type PostBySlug } from './types';
+  import type { PostBySlug } from './types';
 
   import IconChevronDown from '@tabler/icons-svelte/dist/svelte/icons/IconChevronDown.svelte';
+  import { getPostUrl } from '@/infrastructure/utils/url';
 
-  type Series = NonNullable<PostBySlug[`series`]>;
+  type Post = NonNullable<PostBySlug>;
+
+  type Series = Post['series'];
 
   export let currentPostId: string;
-  export let series: Series;
+  export let series: NonNullable<Series>;
   export let seriesLabel: string;
+  export let language: Post['language'];
 </script>
 
 <section>
@@ -44,7 +48,10 @@
             )}
             data-testid={`post_${_id}`}
           >
-            <a href={slug} class="block px-4 py-3 no-underline">
+            <a
+              href={getPostUrl(slug, language)}
+              class="block px-4 py-3 no-underline"
+            >
               {seriesCopy}
             </a>
           </li>
