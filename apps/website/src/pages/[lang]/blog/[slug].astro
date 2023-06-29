@@ -1,5 +1,5 @@
 ---
-import { type SupportedLanguages } from '@raulmelo/core/config';
+import type { SupportedLanguages } from '@raulmelo/core/config';
 import { queryPostBySlug } from '@raulmelo/core/domains';
 import { getEstimatedReadingTime, isEmpty, isNil } from '@raulmelo/core/utils';
 
@@ -119,7 +119,8 @@ const intl = getIntl(lang);
     {
       post.series ? (
         <SeriesSection
-          series={post.series}
+          language={post.language}
+          series={post.series!}
           currentPostId={post._id}
           seriesLabel={intl.formatMessage(
             {
@@ -140,6 +141,7 @@ const intl = getIntl(lang);
         <>
           <Divider />
           <SeriesSection
+            language={post.language}
             series={post.series}
             currentPostId={post._id}
             seriesLabel={intl.formatMessage(
