@@ -4,7 +4,7 @@ import { updateSchedule } from './updateSchedule';
 
 describe('fn: updateSchedule', () => {
 	it('updates all routines with the column name', () => {
-		const weekRoutine = createWeeklyRoutines();
+		const weekRoutine = createWeeklyRoutines('2023-01-01', '2023-01-08');
 
 		updateSchedule(rowsMock, weekRoutine);
 
