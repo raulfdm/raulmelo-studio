@@ -42,8 +42,20 @@ module.exports = {
     },
     {
       matchPackagePrefixes: ['@astrojs'],
-      matchPackageNames: ['astro', 'prettier-plugin-astro'],
+      matchPackageNames: [
+        'astro',
+        'prettier-plugin-astro',
+        'eslint-plugin-astro',
+      ],
       groupName: 'Astro',
+    },
+    /**
+     * TODO: remove when the problem is fixed
+     * @see https://github.com/withastro/astro/issues/7517
+     */
+    {
+      matchPackageNames: ['@astrojs/image'],
+      allowedVersions: ['<0.17'],
     },
     {
       matchPackagePrefixes: ['@sanity'],
