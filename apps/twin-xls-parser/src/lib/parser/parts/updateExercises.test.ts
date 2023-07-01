@@ -5,7 +5,7 @@ import { updateSchedule } from './updateSchedule';
 
 describe('fn: updateExercises', () => {
 	it('updates all exercise correctly', () => {
-		const weekRoutine = createWeeklyRoutines();
+		const weekRoutine = createWeeklyRoutines('2023-01-01', '2023-01-07');
 		updateSchedule(rowsMock, weekRoutine);
 
 		updateExercises(rowsMock, weekRoutine);

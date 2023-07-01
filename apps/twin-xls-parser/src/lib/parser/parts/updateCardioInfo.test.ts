@@ -4,7 +4,7 @@ import { updateCardioInfo } from './updateCardioInfo';
 
 describe('fn: updateCardioInfo', () => {
 	it('update all weekly routines with the cardio information', () => {
-		const weekRoutine = createWeeklyRoutines();
+		const weekRoutine = createWeeklyRoutines('2023-01-01', '2023-01-07');
 
 		updateCardioInfo(rowsMock, weekRoutine);
 
