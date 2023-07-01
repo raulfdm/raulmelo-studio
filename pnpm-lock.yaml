@@ -553,8 +553,8 @@ importers:
         specifier: 2.3.4
         version: 2.3.4
       '@wooorm/starry-night':
-        specifier: 2.0.0
-        version: 2.0.0
+        specifier: 2.1.1
+        version: 2.1.1
       hast-util-to-html:
         specifier: 8.0.4
         version: 8.0.4
@@ -567,10 +567,10 @@ importers:
         version: 5.1.6
       vite:
         specifier: 4.3.9
-        version: 4.3.9(@types/node@18.16.19)
+        version: 4.3.9(@types/node@20.3.3)
       vitest:
         specifier: 0.32.2
-        version: 0.32.2(jsdom@20.0.3)
+        version: 0.32.2
 
   packages/core:
     dependencies:
@@ -3705,8 +3705,8 @@ packages:
       - typescript
     dev: true
 
-  /@wooorm/starry-night@2.0.0:
-    resolution: {integrity: sha512-7CUPjVkpjCmjCzQ34TrDcHqUMpriqVEJZLVL+PUDsL3yWxHO6COg6xgzdpg6clvr+6jbjb8ZV4NxlozdWiyJ4A==}
+  /@wooorm/starry-night@2.1.1:
+    resolution: {integrity: sha512-6WL3NW7ImGbmZ4qu8StJOkSS7ee2ZwbqtCfaQogCLWKJPbg989dmZLXcdTW9GNc/XI1nCiVyjR1Z0yRoChqLRA==}
     dependencies:
       '@types/hast': 2.3.4
       import-meta-resolve: 2.2.2
@@ -5082,6 +5082,18 @@ packages:
         optional: true
     dependencies:
       ms: 2.1.3
+
+  /debug@4.3.4:
+    resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
+    engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+    dependencies:
+      ms: 2.1.2
+    dev: true
 
   /debug@4.3.4(supports-color@5.5.0):
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
@@ -12024,7 +12036,7 @@ packages:
     hasBin: true
     dependencies:
       cac: 6.7.14
-      debug: 4.3.4(supports-color@5.5.0)
+      debug: 4.3.4
       mlly: 1.4.0
       pathe: 1.1.1
       picocolors: 1.0.0
@@ -12140,6 +12152,71 @@ packages:
         optional: true
     dependencies:
       vite: 4.3.9(@types/node@18.16.19)
+
+  /vitest@0.32.2:
+    resolution: {integrity: sha512-hU8GNNuQfwuQmqTLfiKcqEhZY72Zxb7nnN07koCUNmntNxbKQnVbeIS6sqUgR3eXSlbOpit8+/gr1KpqoMgWCQ==}
+    engines: {node: '>=v14.18.0'}
+    hasBin: true
+    peerDependencies:
+      '@edge-runtime/vm': '*'
+      '@vitest/browser': '*'
+      '@vitest/ui': '*'
+      happy-dom: '*'
+      jsdom: '*'
+      playwright: '*'
+      safaridriver: '*'
+      webdriverio: '*'
+    peerDependenciesMeta:
+      '@edge-runtime/vm':
+        optional: true
+      '@vitest/browser':
+        optional: true
+      '@vitest/ui':
+        optional: true
+      happy-dom:
+        optional: true
+      jsdom:
+        optional: true
+      playwright:
+        optional: true
+      safaridriver:
+        optional: true
+      webdriverio:
+        optional: true
+    dependencies:
+      '@types/chai': 4.3.5
+      '@types/chai-subset': 1.3.3
+      '@types/node': 20.3.3
+      '@vitest/expect': 0.32.2
+      '@vitest/runner': 0.32.2
+      '@vitest/snapshot': 0.32.2
+      '@vitest/spy': 0.32.2
+      '@vitest/utils': 0.32.2
+      acorn: 8.9.0
+      acorn-walk: 8.2.0
+      cac: 6.7.14
+      chai: 4.3.7
+      concordance: 5.0.4
+      debug: 4.3.4
+      local-pkg: 0.4.3
+      magic-string: 0.30.0
+      pathe: 1.1.1
+      picocolors: 1.0.0
+      std-env: 3.3.3
+      strip-literal: 1.0.1
+      tinybench: 2.5.0
+      tinypool: 0.5.0
+      vite: 4.3.9(@types/node@20.3.3)
+      vite-node: 0.32.2(@types/node@20.3.3)
+      why-is-node-running: 2.2.2
+    transitivePeerDependencies:
+      - less
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    dev: true
 
   /vitest@0.32.2(jsdom@20.0.3):
     resolution: {integrity: sha512-hU8GNNuQfwuQmqTLfiKcqEhZY72Zxb7nnN07koCUNmntNxbKQnVbeIS6sqUgR3eXSlbOpit8+/gr1KpqoMgWCQ==}
