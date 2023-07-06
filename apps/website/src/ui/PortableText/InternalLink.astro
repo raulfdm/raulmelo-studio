@@ -25,7 +25,11 @@ type Props = {
 };
 
 const { children, markDef } = Astro.props.node;
-const { _type, slug } = markDef.itemMeta;
+/**
+ * TODO: FIX THIS CONDITION.
+ * Isn't working when a internal link is referenced in a "quote" (info, etc.).
+ */
+const { _type, slug } = markDef.itemMeta || {};
 const { lang } = Astro.params as { lang: SupportedLanguages };
 
 const content = children[0].text;
