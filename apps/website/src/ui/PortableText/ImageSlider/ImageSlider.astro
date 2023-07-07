@@ -4,7 +4,7 @@ import { imgUrlFor } from '@raulmelo/core/utils';
 
 import { sanityClient } from '@/infrastructure/sanity/client';
 
-import ImageSlider from './ImageSlider.svelte';
+import ImageSliderComponent from './ImageSlider.svelte';
 
 type ImageNode = {
   alt: string;
@@ -58,4 +58,4 @@ function inProgressImage({ image }: ImageNode) {
 }
 ---
 
-<ImageSlider client:load images={adaptedImages} />
+<ImageSliderComponent client:load images={adaptedImages} />

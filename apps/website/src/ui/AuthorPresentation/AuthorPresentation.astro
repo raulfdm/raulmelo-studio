@@ -6,7 +6,7 @@ import { querySiteData } from '@raulmelo/core/domains';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 
-import AuthorPresentation from './AuthorPresentation.svelte';
+import AuthorPresentationComponent from './AuthorPresentation.svelte';
 
 const { lang } = Astro.params as { lang: SupportedLanguages };
 const siteData = await querySiteData({
@@ -15,7 +15,7 @@ const siteData = await querySiteData({
 const intl = getIntl(lang);
 ---
 
-<AuthorPresentation lang={lang} siteData={siteData}>
+<AuthorPresentationComponent lang={lang} siteData={siteData}>
   <Image
     slot="img"
     class="object-cover rounded-full"
@@ -27,4 +27,4 @@ const intl = getIntl(lang);
     width={128}
     height={128}
   />
-</AuthorPresentation>
+</AuthorPresentationComponent>
