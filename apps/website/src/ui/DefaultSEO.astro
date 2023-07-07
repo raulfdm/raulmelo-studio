@@ -1,5 +1,5 @@
 ---
-import { type SupportedLanguages } from '@raulmelo/core/config';
+import type { SupportedLanguages } from '@raulmelo/core/config';
 import { querySiteData } from '@raulmelo/core/domains';
 import { type Link, type Meta, type Props as SeoProps, SEO } from 'astro-seo';
 
@@ -165,10 +165,8 @@ const articleJsonLD = nextArticle
   }}
 />
 
-<script type="application/ld+json" set:html={JSON.stringify(logoJsonLD)}
-></script>
-<script type="application/ld+json" set:html={JSON.stringify(socialJsonLD)}
-></script>
+<script type="application/ld+json" set:html={JSON.stringify(logoJsonLD)} />
+<script type="application/ld+json" set:html={JSON.stringify(socialJsonLD)} />
 {
   articleJsonLD && (
     <script

@@ -4,7 +4,7 @@
     sideMenuStore,
     closeSideMenu,
   } from '@/infrastructure/stores/sideMenu';
-  import { type SupportedLanguages } from '@raulmelo/core/config';
+  import type { SupportedLanguages } from '@raulmelo/core/config';
   import { Disclosure, DisclosurePanel } from '@rgossiaux/svelte-headlessui';
   import classNames from 'classnames';
   import { useSideMenuLinks } from './links';

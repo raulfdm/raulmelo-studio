@@ -12,4 +12,12 @@ interface Window {
   __switchTheme: (nextTheme: Theme) => void;
 }
 
+declare module 'astro' {
+  declare namespace App {
+    export interface Locals {
+      themeHint: Theme;
+    }
+  }
+}
+
 export {};

@@ -1,5 +1,5 @@
 import { IconHighlight } from '@tabler/icons-react';
-import { type BlockDecoratorDefinition } from 'sanity';
+import type { BlockDecoratorDefinition } from 'sanity';
 
 export const highlightMarkerField: BlockDecoratorDefinition = {
   title: `Highlight`,

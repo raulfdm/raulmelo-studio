@@ -1,7 +1,7 @@
 <script lang="ts">
   import classNames from 'classnames';
   import Breadcrumb from './Breadcrumb.svelte';
-  import { type BreadcrumbType } from './types';
+  import type { BreadcrumbType } from './types';
 
   export let crumbs: BreadcrumbType[];
   let className = '';

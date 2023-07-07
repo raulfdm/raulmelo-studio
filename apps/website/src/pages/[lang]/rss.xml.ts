@@ -1,7 +1,7 @@
 import rss from '@astrojs/rss';
 import { supportedLanguagesSchema } from '@raulmelo/core/config';
 import { queryRssData, sortPostsByPublishedDate } from '@raulmelo/core/domains';
-import { type APIRoute } from 'astro';
+import type { APIRoute } from 'astro';
 
 import { sanityClient } from '@/infrastructure/sanity/client';
 

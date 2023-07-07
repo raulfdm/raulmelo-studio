@@ -1,7 +1,7 @@
 <script lang="ts">
   import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
   import { getPathnameWithLocale } from '@/infrastructure/utils/url';
-  import { type SupportedLanguages } from '@raulmelo/core/config';
+  import type { SupportedLanguages } from '@raulmelo/core/config';
   import Logo from '../Logo.svelte';
   import MenuBarLanguageSwitch from './MenuBarLanguageSwitch.svelte';
   import { SideMenu } from '../SideMenu';
