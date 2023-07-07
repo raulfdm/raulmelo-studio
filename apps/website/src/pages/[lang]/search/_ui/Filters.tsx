@@ -1,9 +1,9 @@
-import { type SupportedLanguages } from '@raulmelo/core/config';
+import type { SupportedLanguages } from '@raulmelo/core/config';
 import { isEmpty } from '@raulmelo/core/utils';
 import classNames from 'classnames';
 import { useRefinementList } from 'react-instantsearch-hooks-web';
 
-import { type RefinementListProps } from './types';
+import type { RefinementListProps } from './types';
 
 export function Filters({
   languageTitle,

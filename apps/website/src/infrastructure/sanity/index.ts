@@ -1,5 +1,5 @@
 import { visionTool } from '@sanity/vision';
-import { type Config } from 'sanity';
+import type { Config } from 'sanity';
 import { deskTool } from 'sanity/desk';
 import { media } from 'sanity-plugin-media';
 

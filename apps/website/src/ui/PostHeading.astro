@@ -1,7 +1,10 @@
 ---
-import { type QueryPostBySlugReturnType } from '@raulmelo/core/domains';
+import type { QueryPostBySlugReturnType } from '@raulmelo/core/domains';
 
-type Props = Pick<QueryPostBySlugReturnType, `title` | `subtitle`> & {
+type Props = Pick<
+  NonNullable<QueryPostBySlugReturnType>,
+  `title` | `subtitle`
+> & {
   publishedDateLabel?: string;
   readingTimeLabel?: string;
 };

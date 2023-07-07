@@ -1,15 +1,15 @@
 ---
-import CodePen from './CodePen.svelte';
+import CustomCodePen from './CodePen.svelte';
 
 type Props = {
   node: {
     directUrl: string;
-    src?: string;
-    height?: string;
+    src: string | undefined;
+    height: string | undefined;
   };
 };
 
 const { node } = Astro.props;
 ---
 
-<CodePen {...node} client:visible />
+<CustomCodePen {...node} client:visible />

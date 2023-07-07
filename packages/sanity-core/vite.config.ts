@@ -7,7 +7,11 @@ function isExternal(id: string) {
 }
 
 export default defineConfig({
-  plugins: [dts()],
+  plugins: [
+    dts({
+      entryRoot: 'src',
+    }),
+  ],
   build: {
     outDir: 'dist',
     lib: {

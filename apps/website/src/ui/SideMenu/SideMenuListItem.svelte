@@ -1,7 +1,7 @@
 <script lang="ts">
   import IconExternalLink from '@tabler/icons-svelte/dist/svelte/icons/IconExternalLink.svelte';
   import classNames from 'classnames';
-  import { type SideMenuLink } from './links';
+  import type { SideMenuLink } from './links';
 
   export let href: SideMenuLink['href'];
   export let itemLabel: SideMenuLink['itemLabel'];

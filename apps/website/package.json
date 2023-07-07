@@ -10,8 +10,10 @@
     "typegen": "xstate typegen \"src/**/*.ts?(x)\"",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint \"src/**/*.{ts,astro,tsx}\"",
-    "typecheck": "tsc --noEmit"
+    "lint": "run-s lint:*",
+    "lint:astro": "astro check",
+    "lint:tsc": "tsc --noEmit",
+    "lint:eslint": "eslint \"src/**/*.{ts,astro,tsx}\""
   },
   "dependencies": {
     "@astrojs/image": "0.16.9",
@@ -76,11 +78,13 @@
     "zod": "3.21.4"
   },
   "devDependencies": {
+    "@astrojs/ts-plugin": "1.0.10",
     "@types/flat": "5.0.2",
     "@types/lodash.defaultsdeep": "4.6.7",
     "@types/negotiator": "0.6.1",
     "@xstate/cli": "0.5.2",
     "import-meta-resolve": "3.0.0",
+    "npm-run-all": "4.1.5",
     "postcss-load-config": "4.0.1",
     "prettier": "2.8.8",
     "prettier-plugin-astro": "0.10.0",

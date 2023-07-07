@@ -1,16 +1,18 @@
 ---
 import { Picture } from '@astrojs/image/components';
-import { type SupportedLanguages } from '@raulmelo/core/config';
-import { type QueryPostBySlugReturnType } from '@raulmelo/core/domains';
+import type { SupportedLanguages } from '@raulmelo/core/config';
+import type { QueryPostBySlugReturnType } from '@raulmelo/core/domains';
 import { imgUrlFor } from '@raulmelo/core/utils';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 
+type Post = NonNullable<QueryPostBySlugReturnType>;
+
 type Props = {
   lang: SupportedLanguages;
-  featuredImage: NonNullable<QueryPostBySlugReturnType[`featuredImage`]>;
-  unsplash?: QueryPostBySlugReturnType[`unsplash`];
+  featuredImage: NonNullable<Post[`featuredImage`]>;
+  unsplash?: Post['unsplash'];
 };
 
 const { lang, featuredImage, unsplash } = Astro.props;

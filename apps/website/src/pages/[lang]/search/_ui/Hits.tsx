@@ -1,11 +1,11 @@
-import { type SupportedLanguages } from '@raulmelo/core/config';
+import type { SupportedLanguages } from '@raulmelo/core/config';
 import classNames from 'classnames';
 import { Hits as HitsComp } from 'react-instantsearch-hooks-web';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { getPostUrl, getTilUrl } from '@/infrastructure/utils/url';
 
-import { type HitAlgolia } from './types';
+import type { HitAlgolia } from './types';
 
 type HitsProps = {
   lang: SupportedLanguages;

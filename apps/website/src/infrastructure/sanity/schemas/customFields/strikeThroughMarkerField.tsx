@@ -1,5 +1,5 @@
 import { IconStrikethrough } from '@tabler/icons-react';
-import { type BlockDecoratorDefinition } from 'sanity';
+import type { BlockDecoratorDefinition } from 'sanity';
 
 export const strikeThroughMarkerField: BlockDecoratorDefinition = {
   title: `Strike Through`,

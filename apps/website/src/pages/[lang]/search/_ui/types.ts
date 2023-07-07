@@ -1,4 +1,4 @@
-import { type AlgoliaObject } from '@raulmelo/core/domains';
+import type { AlgoliaObject } from '@raulmelo/core/domains';
 
 export type HitAlgolia = AlgoliaObject;
 
