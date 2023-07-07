@@ -8,9 +8,10 @@ const themeHintHandler: MiddlewareResponseHandler = async (
   { request, locals },
   next,
 ) => {
-  if (request.headers.get(`sec-ch-prefers-color-scheme`)) {
-    locals.themeHint = request.headers.get(`sec-ch-prefers-color-scheme`);
-  }
+  const chColorScheme =
+    (request.headers.get(`sec-ch-prefers-color-scheme`) as Theme) || `system`;
+
+  locals.themeHint = chColorScheme;
 
   const response = await next();
 
