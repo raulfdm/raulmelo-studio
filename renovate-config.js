@@ -71,6 +71,10 @@ module.exports = {
       groupName: 'babel',
     },
     {
+      matchPackagePrefixes: ['@fontsource'],
+      groupName: 'Fountsource (website)',
+    },
+    {
       matchPackagePrefixes: ['@xstate'],
       matchPackageNames: ['xstate'],
       groupName: 'XState',
