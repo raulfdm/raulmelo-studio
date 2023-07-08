@@ -97,6 +97,20 @@ const query = groq`
     _id,
     name,
     "slug": slug.current 
+  },
+
+  "relatedPosts": relatedPosts[] -> {
+    _type,
+    _id,
+    title,
+    "lang": language,
+    "slug": slug.current,
+    publishedAt,
+    "tags": tags[]->{
+      _id,
+      name,
+      "slug": slug.current
+    },
   }
 }
 `;
@@ -107,6 +121,16 @@ const tagSchema = z.object({
   slug: z.string(),
 });
 
+const relatedPostSchema = z.object({
+  _id: z.string(),
+  _type: z.enum(['post', 'til']),
+  lang: supportedLanguagesSchema,
+  publishedAt: z.string(),
+  slug: z.string(),
+  tags: z.array(tagSchema).optional(),
+  title: z.string(),
+});
+
 const tilBySlugSchema = z.object({
   _id: z.string(),
   publishedAt: z.string(),
@@ -115,6 +139,7 @@ const tilBySlugSchema = z.object({
   slug: z.string(),
   content: z.any().transform((value) => value as PortableTextBlock),
   tags: z.array(tagSchema).optional(),
+  relatedPosts: z.array(relatedPostSchema).default([]),
 });
 
 type TilPost = z.infer<typeof tilBySlugSchema>;
