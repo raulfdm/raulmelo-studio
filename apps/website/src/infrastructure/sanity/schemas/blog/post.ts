@@ -23,6 +23,10 @@ export const postSchemaType = defineType({
       name: `reference`,
       title: `References`,
     },
+    {
+      name: `series`,
+      title: `Series`,
+    },
   ],
   fields: [
     defineField({
@@ -69,12 +73,6 @@ export const postSchemaType = defineType({
       type: `date`,
     }),
     defineField({
-      group: `meta`,
-      name: `seriesCopy`,
-      title: `Series Copy`,
-      type: `string`,
-    }),
-    defineField({
       type: `blockContent`,
       group: `post`,
       name: `content`,
@@ -103,10 +101,45 @@ export const postSchemaType = defineType({
     }),
     defineField({
       group: `reference`,
-      name: `postSeries`,
-      title: `Post Series`,
-      type: `reference`,
-      to: [{ type: `postSeries` }],
+      name: `relatedPosts`,
+      title: `Related Posts`,
+      type: `array`,
+      of: [
+        {
+          type: `reference`,
+          to: [
+            {
+              type: `post`,
+            },
+            { type: `til` },
+          ],
+          options: {
+            filter: ({
+              document,
+            }: {
+              document: {
+                _type: string;
+                _id: string;
+              };
+            }) => {
+              const { _type, _id } = document;
+
+              /**
+               * Don't want to allow selecting drafts
+               */
+              if (_id.includes(`drafts`)) {
+                return false;
+              }
+
+              return _type === `post` || _type === `til`;
+            },
+          },
+        },
+      ],
+      validation: (Rule) => [
+        Rule.unique().error(`You can't select the same post twice`),
+        Rule.max(2).error(`Too many related posts. You should select only 2`),
+      ],
     }),
     defineField({
       group: `media`,
@@ -121,6 +154,20 @@ export const postSchemaType = defineType({
         },
         { name: `url`, type: `string`, title: `URL` },
       ],
+    }),
+
+    defineField({
+      group: `series`,
+      name: `postSeries`,
+      title: `Post Series`,
+      type: `reference`,
+      to: [{ type: `postSeries` }],
+    }),
+    defineField({
+      group: `series`,
+      name: `seriesCopy`,
+      title: `Series Copy`,
+      type: `string`,
     }),
   ],
 
