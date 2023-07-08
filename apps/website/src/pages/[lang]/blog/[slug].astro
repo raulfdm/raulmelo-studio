@@ -8,12 +8,15 @@ import { sanityClient } from '@/infrastructure/sanity/client';
 import {
   getBlogHomeUrl,
   getHomePageUrl,
+  getPostUrl,
   getTagUrl,
+  getTilUrl,
 } from '@/infrastructure/utils/url';
 import { Breadcrumbs } from '@/ui/Breadcrumbs';
 import PostLayout from '@/ui/layouts/PostLayout.astro';
 import { PortableText } from '@/ui/PortableText';
 import Divider from '@/ui/PortableText/Divider.astro';
+import PostBasic from '@/ui/PostBasic.astro';
 import PostHeading from '@/ui/PostHeading.astro';
 import { ShareContent } from '@/ui/ShareContent';
 import { Tag, Tags } from '@/ui/Tags';
@@ -187,6 +190,39 @@ const intl = getIntl(lang);
         twitter={{ text: post.description }}
         linkedIn={{ title: post.title, summary: post.description }}
       />
+
+      {
+        post.relatedPosts.length > 0 ? (
+          <section class="mt-4">
+            <span class="block mb-4 font-extrabold text-md md:text-lg lg:text-xl md:mb-6">
+              Related Posts
+            </span>
+
+            <ul class="grid grid-cols-1 gap-6 ipad-pro:grid-cols-2">
+              {post.relatedPosts.map((post) => {
+                const url =
+                  post._type === `post`
+                    ? getPostUrl(post.slug, lang)
+                    : getTilUrl(post.slug, lang);
+
+                return (
+                  <li>
+                    <PostBasic
+                      class="p-6 transition-all bg-white rounded-sm shadow dark:bg-blue-800 hover:shadow-lg dark:hover:bg-blue-700"
+                      titleClassName="text-xl"
+                      lang={lang}
+                      title={post.title}
+                      url={url}
+                      tags={post.tags || []}
+                      publishedAt={post.publishedAt}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        ) : null
+      }
     </footer>
   </section>
 </PostLayout>
