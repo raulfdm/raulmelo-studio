@@ -115,6 +115,20 @@ const postQuery = groq`
       "slug": slug.current,
       publishedAt
     },
+  },
+
+  "relatedPosts": relatedPosts[] -> {
+    _type,
+    _id,
+    title,
+    "lang": language,
+    "slug": slug.current,
+    publishedAt,
+    "tags": tags[]->{
+      _id,
+      name,
+      "slug": slug.current
+    },
   }
 }
 `;
@@ -148,6 +162,16 @@ const seriesSchema = z.object({
   posts: z.array(seriesPostSchema),
 });
 
+const relatedPostSchema = z.object({
+  _id: z.string(),
+  _type: z.enum(['post', 'til']),
+  lang: supportedLanguagesSchema,
+  publishedAt: z.string(),
+  slug: z.string(),
+  tags: z.array(postTagSchema).optional(),
+  title: z.string(),
+});
+
 const blogPostBySlugSchema = z.object({
   _id: z.string(),
   content: z.any().transform((value) => value as PortableTextBlock),
@@ -162,6 +186,7 @@ const blogPostBySlugSchema = z.object({
   tags: z.array(postTagSchema).optional(),
   title: z.string(),
   unsplash: unsplashSchema.optional(),
+  relatedPosts: z.array(relatedPostSchema).default([]),
 });
 
 type BlogPost = z.infer<typeof blogPostBySlugSchema>;
