@@ -19,7 +19,7 @@ export const post: APIRoute = async function post({ request }) {
       throw new Error(`Authorization code is required`);
     }
 
-    if (authorization !== serverEnv.ALGOLIA_ADMIN_KEY) {
+    if (authorization !== serverEnv.API_TOKEN) {
       throw new Error(`Unauthorized`);
     }
 
