@@ -8,12 +8,16 @@ const themeHintHandler: MiddlewareResponseHandler = async (
   { request, locals },
   next,
 ) => {
+  const response = await next();
+
+  if (skipMiddleware(request.url)) {
+    return response;
+  }
+
   const chColorScheme =
     (request.headers.get(`sec-ch-prefers-color-scheme`) as Theme) || `system`;
 
   locals.themeHint = chColorScheme;
-
-  const response = await next();
 
   response.headers.set(`Accept-CH`, `Sec-CH-Prefers-Color-Scheme`);
 
@@ -54,7 +58,7 @@ export const onRequest = sequence(languageHandler, themeHintHandler);
 
 const supportedLocales = [`en`, `pt`];
 const defaultLocale = `en`;
-const passThroughRoutes = [`/cv`, `/admin`, `/_image`];
+const passThroughRoutes = [`/cv`, `/admin`, `/_image`, `/api`];
 
 function skipMiddleware(url: string) {
   let shouldSkip = false;

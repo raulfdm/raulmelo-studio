@@ -19,7 +19,7 @@ export const post: APIRoute = async function post({ request }) {
       throw new Error(`Authorization code is required`);
     }
 
-    if (authorization !== serverEnv.ALGOLIA_ADMIN_KEY) {
+    if (authorization !== serverEnv.API_TOKEN) {
       throw new Error(`Unauthorized`);
     }
 
@@ -29,39 +29,43 @@ export const post: APIRoute = async function post({ request }) {
 
     console.log(`Algolia data updated`);
 
-    return {
-      body: JSON.stringify({
-        message: `success`,
-        date: new Date().toISOString(),
-      }),
-    };
+    return send({
+      message: `success`,
+      date: new Date().toISOString(),
+    });
   } catch (error) {
     console.error(`Something went wrong while updating the indexes:`, error);
 
     if (error instanceof Error) {
       if (error.message.includes(`Authorization code is required`)) {
-        return {
-          body: JSON.stringify({
+        return send(
+          {
             message: `Authorization code is required`,
-          }),
-          status: 400,
-        };
+          },
+          {
+            status: 400,
+          },
+        );
       }
 
       if (error.message.includes(`Unauthorized`)) {
-        return {
-          body: JSON.stringify({
+        return send(
+          {
             message: `Unauthorized`,
-          }),
-          status: 401,
-        };
+          },
+          {
+            status: 401,
+          },
+        );
       }
     }
 
-    return {
-      body: JSON.stringify({
-        message: `Something went wrong`,
-      }),
-    };
+    return send({
+      message: `Something went wrong`,
+    });
   }
 };
+
+function send<T extends object>(body: T, init?: ResponseInit) {
+  return new Response(JSON.stringify(body), init);
+}
