@@ -12,6 +12,12 @@ export function getBlogHomeUrl(locale: SupportedLanguages): string {
   return getPathnameWithLocale(nextUrl, locale);
 }
 
+export function getSnippetsHomeUrl(locale: SupportedLanguages): string {
+  const nextUrl = `/snippets`;
+
+  return getPathnameWithLocale(nextUrl, locale);
+}
+
 export function getTagsHomeUrl(locale: SupportedLanguages): string {
   const nextUrl = `/tags`;
 
@@ -38,6 +44,15 @@ export function getPostUrl(
 
 export function getTagUrl(tagSlug: string, locale: SupportedLanguages): string {
   const nextUrl = `/tags/${tagSlug}`;
+
+  return getPathnameWithLocale(nextUrl, locale);
+}
+
+export function getSnippetUrl(
+  snippetSlug: string,
+  locale: SupportedLanguages,
+): string {
+  const nextUrl = `/snippets/${snippetSlug}`;
 
   return getPathnameWithLocale(nextUrl, locale);
 }

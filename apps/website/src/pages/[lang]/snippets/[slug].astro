@@ -1,0 +1,97 @@
+---
+import type { SupportedLanguages } from '@raulmelo/core/config';
+import { queryCodeSnippetsBySlug } from '@raulmelo/core/domains';
+
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { sanityClient } from '@/infrastructure/sanity/client';
+import {
+  getHomePageUrl,
+  getSnippetsHomeUrl,
+  getTagUrl,
+} from '@/infrastructure/utils/url';
+import { Breadcrumbs } from '@/ui/Breadcrumbs';
+import PostLayout from '@/ui/layouts/PostLayout.astro';
+import CodeBlock from '@/ui/PortableText/CodeBlock/CodeBlock.astro';
+import ShareContent from '@/ui/ShareContent.astro';
+import { Tag, Tags } from '@/ui/Tags';
+
+const { lang, slug } = Astro.params as {
+  lang: SupportedLanguages;
+  slug: string;
+};
+
+const intl = getIntl(lang);
+
+const snippet = await queryCodeSnippetsBySlug({ client: sanityClient, slug });
+console.log(snippet);
+---
+
+<PostLayout
+  title="Code Snippets"
+  containerClass="flex flex-col"
+  contentId={snippet._id}
+>
+  <Breadcrumbs
+    class="mb-4"
+    crumbs={[
+      {
+        label: intl.formatMessage({ id: `sideMenu.home` }),
+        href: getHomePageUrl(lang),
+      },
+      {
+        label: intl.formatMessage({ id: `sideMenu.snippets` }),
+        href: getSnippetsHomeUrl(lang),
+      },
+      {
+        label: snippet.title,
+      },
+    ]}
+  />
+  <header class="col-span-full lg:col-span-10">
+    <h1 class="text-3xl font-extrabold md:text-4xl">{snippet.title}</h1>
+
+    <p class="my-4 col-span-full lg:col-span-10 text-md md:text-lg">
+      {snippet.description}
+    </p>
+  </header>
+
+  <article class="prose-container">
+    {
+      snippet.snippets.map((s) => {
+        return <CodeBlock node={s} />;
+      })
+    }
+  </article>
+
+  <hr class="mt-10 mb-6" />
+
+  <footer class="flex flex-wrap justify-between">
+    {
+      snippet.tags ? (
+        <div class="mb-4 mr-4">
+          <span class="block mb-4 font-extrabold text-md md:text-lg lg:text-xl md:mb-6">
+            Tags
+          </span>
+          <Tags>
+            {snippet.tags.map((tag) => (
+              <Tag class="text-base lg:text-lg">
+                <a
+                  href={getTagUrl(tag.slug, lang)}
+                  class="underline text-secondary"
+                >
+                  #{tag.name}
+                </a>
+              </Tag>
+            ))}
+          </Tags>
+        </div>
+      ) : null
+    }
+
+    <ShareContent
+      titleLabel={intl.formatMessage({ id: `blogPost.share` })}
+      twitter={{ text: snippet.description }}
+      linkedIn={{ title: snippet.title, summary: snippet.description }}
+    />
+  </footer>
+</PostLayout>
