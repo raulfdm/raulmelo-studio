@@ -6,7 +6,7 @@
   import MenuBarLanguageSwitch from './MenuBarLanguageSwitch.svelte';
   import { SideMenu } from '../SideMenu';
   import MenuBarSideMenuButton from './MenuBarSideMenuButton.svelte';
-  import classNames from 'classnames';
+  import { mergeClasses } from '@/infrastructure/utils/misc';
 
   export let lang: SupportedLanguages;
   export let pathname: string;
@@ -34,7 +34,7 @@
 </script>
 
 <div
-  class={classNames([
+  class={mergeClasses([
     'bg-white shadow dark:bg-blue-800',
     'duration-200 ease transition-theme',
     'inset-x-0 z-40 h-16 mb-8 md:mb-12',

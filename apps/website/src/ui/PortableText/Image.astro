@@ -1,9 +1,9 @@
 ---
 import { Picture } from '@astrojs/image/components';
 import { imgUrlFor } from '@raulmelo/core/utils';
-import classNames from 'classnames';
 
 import { sanityClient } from '@/infrastructure/sanity/client';
+import { mergeClasses } from '@/infrastructure/utils/misc';
 
 type Props = {
   node: {
@@ -58,12 +58,12 @@ function calculateCustomHeight(
       src={url}
       alt={alt ?? caption}
       loading="lazy"
-      class="rounded-md mx-auto"
+      class="mx-auto rounded-md"
     />
   ) : (
     <figure>
       <Picture
-        class={classNames(`object-cover mx-auto rounded-md`, {
+        class={mergeClasses(`object-cover mx-auto rounded-md`, {
           'mb-0': Boolean(caption),
         })}
         src={url}
@@ -75,7 +75,7 @@ function calculateCustomHeight(
         height={finalHeight}
       />
       {caption ? (
-        <figcaption class="mt-2 lg:mt-4 text-center">{caption}</figcaption>
+        <figcaption class="mt-2 text-center lg:mt-4">{caption}</figcaption>
       ) : null}
     </figure>
   )

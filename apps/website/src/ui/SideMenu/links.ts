@@ -20,6 +20,11 @@ export function useSideMenuLinks(lang: SupportedLanguages, pathname: string) {
       prefetch: true,
     },
     {
+      href: `/snippets`,
+      localeId: `sideMenu.snippets`,
+      prefetch: true,
+    },
+    {
       href: `/tags`,
       localeId: `sideMenu.tags`,
       prefetch: true,

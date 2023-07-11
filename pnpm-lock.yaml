@@ -158,7 +158,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: 4.4.2
-        version: 4.4.2
+        version: 4.4.2(@types/node@18.16.19)
       vitest:
         specifier: 0.33.0
         version: 0.33.0(jsdom@20.0.3)
@@ -237,7 +237,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: 4.4.2
-        version: 4.4.2
+        version: 4.4.2(@types/node@18.16.19)
       vitest:
         specifier: 0.33.0
         version: 0.33.0(jsdom@20.0.3)
@@ -316,7 +316,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: 4.4.2
-        version: 4.4.2
+        version: 4.4.2(@types/node@18.16.19)
 
   apps/website:
     dependencies:
@@ -479,6 +479,9 @@ importers:
       sveltekit-embed:
         specifier: 0.0.12
         version: 0.0.12
+      tailwind-merge:
+        specifier: 1.13.2
+        version: 1.13.2
       tailwindcss:
         specifier: 3.3.2
         version: 3.3.2
@@ -536,7 +539,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: 4.4.2
-        version: 4.4.2
+        version: 4.4.2(@types/node@18.16.19)
 
   misc/playground:
     dependencies:
@@ -573,7 +576,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: 4.4.2
-        version: 4.4.2
+        version: 4.4.2(@types/node@18.16.19)
       vitest:
         specifier: 0.33.0
         version: 0.33.0(jsdom@20.0.3)
@@ -662,7 +665,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: 4.4.2
-        version: 4.4.2
+        version: 4.4.2(@types/node@18.16.19)
       vite-plugin-dts:
         specifier: 3.1.1
         version: 3.1.1(typescript@5.1.6)
@@ -3150,7 +3153,7 @@ packages:
       sirv: 2.0.3
       svelte: 4.0.1
       undici: 5.22.1
-      vite: 4.4.2
+      vite: 4.4.2(@types/node@18.16.19)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3166,7 +3169,7 @@ packages:
       '@sveltejs/vite-plugin-svelte': 2.4.2(svelte@4.0.1)(vite@4.4.2)
       debug: 4.3.4(supports-color@5.5.0)
       svelte: 4.0.1
-      vite: 4.4.2
+      vite: 4.4.2(@types/node@18.16.19)
     transitivePeerDependencies:
       - supports-color
 
@@ -3184,7 +3187,7 @@ packages:
       magic-string: 0.30.0
       svelte: 4.0.1
       svelte-hmr: 0.15.2(svelte@4.0.1)
-      vite: 4.4.2
+      vite: 4.4.2(@types/node@18.16.19)
       vitefu: 0.2.4(vite@4.4.2)
     transitivePeerDependencies:
       - supports-color
@@ -3785,7 +3788,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.19.6(@babel/core@7.22.5)
       magic-string: 0.27.0
       react-refresh: 0.14.0
-      vite: 4.4.2
+      vite: 4.4.2(@types/node@18.16.19)
     transitivePeerDependencies:
       - supports-color
 
@@ -4344,7 +4347,7 @@ packages:
       typescript: 5.1.6
       unist-util-visit: 4.1.2
       vfile: 5.3.7
-      vite: 4.4.2
+      vite: 4.4.2(@types/node@18.16.19)
       vitefu: 0.2.4(vite@4.4.2)
       yargs-parser: 21.1.1
       zod: 3.21.4
@@ -10452,7 +10455,7 @@ packages:
       use-device-pixel-ratio: 1.1.2(react@18.2.0)
       use-hot-module-reload: 1.0.3(react@18.2.0)
       use-sync-external-store: 1.2.0(react@18.2.0)
-      vite: 4.4.2
+      vite: 4.4.2(@types/node@18.16.19)
       yargs: 17.7.2
     transitivePeerDependencies:
       - '@types/node'
@@ -11273,6 +11276,10 @@ packages:
       tslib: 2.6.0
     dev: false
 
+  /tailwind-merge@1.13.2:
+    resolution: {integrity: sha512-R2/nULkdg1VR/EL4RXg4dEohdoxNUJGLMnWIQnPKL+O9Twu7Cn3Rxi4dlXkDzZrEGtR+G+psSXFouWlpTyLhCQ==}
+    dev: false
+
   /tailwindcss@3.3.2:
     resolution: {integrity: sha512-9jPkMiIBXvPc2KywkraqsUfbfj+dHDb+JPWtSJa9MLFdrPyazI7q6WX2sUrm7R9eVR7qqv3Pas7EvQFzxKnI6w==}
     engines: {node: '>=14.0.0'}
@@ -11982,7 +11989,7 @@ packages:
       vue-tsc: 1.8.3(typescript@5.1.6)
     optionalDependencies:
       rollup: 3.26.0
-      vite: 4.4.2
+      vite: 4.4.2(@types/node@18.16.19)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -11993,40 +12000,6 @@ packages:
       - supports-color
       - terser
     dev: true
-
-  /vite@4.4.2:
-    resolution: {integrity: sha512-zUcsJN+UvdSyHhYa277UHhiJ3iq4hUBwHavOpsNUGsTgjBeoBlK8eDt+iT09pBq0h9/knhG/SPrZiM7cGmg7NA==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': '>= 14'
-      less: '*'
-      lightningcss: ^1.21.0
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      lightningcss:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      esbuild: 0.18.11
-      postcss: 8.4.24
-      rollup: 3.26.0
-    optionalDependencies:
-      fsevents: 2.3.2
 
   /vite@4.4.2(@types/node@18.16.19):
     resolution: {integrity: sha512-zUcsJN+UvdSyHhYa277UHhiJ3iq4hUBwHavOpsNUGsTgjBeoBlK8eDt+iT09pBq0h9/knhG/SPrZiM7cGmg7NA==}
@@ -12058,11 +12031,10 @@ packages:
     dependencies:
       '@types/node': 18.16.19
       esbuild: 0.18.11
-      postcss: 8.4.25
+      postcss: 8.4.24
       rollup: 3.26.0
     optionalDependencies:
       fsevents: 2.3.2
-    dev: true
 
   /vitefu@0.2.4(vite@4.4.2):
     resolution: {integrity: sha512-fanAXjSaf9xXtOOeno8wZXIhgia+CZury481LsDaV++lSvcU2R9Ch2bPh3PYFyoHW+w9LqAeYRISVQjUIew14g==}
@@ -12072,7 +12044,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.4.2
+      vite: 4.4.2(@types/node@18.16.19)
 
   /vitest@0.33.0(jsdom@20.0.3):
     resolution: {integrity: sha512-1CxaugJ50xskkQ0e969R/hW47za4YXDUfWJDxip1hwbnhUjYolpfUn2AMOulqG/Dtd9WYAtkHmM/m3yKVrEejQ==}

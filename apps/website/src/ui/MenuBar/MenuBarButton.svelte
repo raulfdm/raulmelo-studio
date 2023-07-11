@@ -1,5 +1,5 @@
 <script lang="ts">
-  import classNames from 'classnames';
+  import { mergeClasses } from '@/infrastructure/utils/misc';
 
   let className = '';
 
@@ -11,7 +11,7 @@
   on:keydown
   on:keyup
   {...$$restProps}
-  class={classNames(`flex p-2 place-content-center`, className)}
+  class={mergeClasses(`flex p-2 place-content-center`, className)}
 >
   <slot />
 </button>

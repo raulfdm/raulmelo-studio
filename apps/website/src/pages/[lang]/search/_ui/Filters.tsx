@@ -1,7 +1,8 @@
 import type { SupportedLanguages } from '@raulmelo/core/config';
 import { isEmpty } from '@raulmelo/core/utils';
-import classNames from 'classnames';
 import { useRefinementList } from 'react-instantsearch-hooks-web';
+
+import { mergeClasses } from '@/infrastructure/utils/misc';
 
 import type { RefinementListProps } from './types';
 
@@ -93,7 +94,7 @@ function GenericRefinement({ title, refine, items, renderLabelText }: any) {
               <li key={item.label}>
                 <label className="flex items-center space-x-2 cursor-pointer">
                   <input
-                    className={classNames(
+                    className={mergeClasses(
                       `rounded checked:bg-secondary hover:checked:bg-secondary focus:checked:bg-secondary focus:checked:ring-secondary focus:ring-secondary`,
                       `search__checkbox`,
                     )}

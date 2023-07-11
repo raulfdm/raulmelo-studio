@@ -1,5 +1,5 @@
 <script lang="ts">
-  import classNames from 'classnames';
+  import { mergeClasses } from '@/infrastructure/utils/misc';
   import type { PostBySlug } from './types';
 
   import IconChevronDown from '@tabler/icons-svelte/dist/svelte/icons/IconChevronDown.svelte';
@@ -22,7 +22,7 @@
   >
     <div>
       <div
-        class={classNames([
+        class={mergeClasses([
           `flex content-between cursor-pointer px-4 py-3`,
           `text-lg font-bold md:text-xl duration-300 transition-spacing`,
           `pb-2.5 border-b border-gray-100 dark:border-gray-600`,
@@ -39,7 +39,7 @@
       <ul class="pb-0 m-0" data-testid="series-post-list">
         {#each series.posts as { _id, seriesCopy, slug }}
           <li
-            class={classNames(
+            class={mergeClasses(
               `cursor-pointer m-0 font-sans text-sm md:text-base`,
               {
                 'bg-green-400 hover:bg-green-400 hover:bg-opacity-50':
@@ -59,7 +59,7 @@
       </ul>
 
       <div
-        class={classNames([
+        class={mergeClasses([
           `flex content-between cursor-pointer px-4 py-3`,
           `font-sans text-base md:text-md duration-300 transition-spacing`,
           `pt-2.5 border-t border-gray-100 dark:border-gray-600`,

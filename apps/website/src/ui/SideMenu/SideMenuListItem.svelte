@@ -1,6 +1,6 @@
 <script lang="ts">
   import IconExternalLink from '@tabler/icons-svelte/dist/svelte/icons/IconExternalLink.svelte';
-  import classNames from 'classnames';
+  import { mergeClasses } from '@/infrastructure/utils/misc';
   import type { SideMenuLink } from './links';
 
   export let href: SideMenuLink['href'];
@@ -26,7 +26,7 @@
 <li class="px-4 py-2 text-center sm:text-left">
   <a
     {href}
-    class={classNames([
+    class={mergeClasses([
       'relative mx-5 text-xl font-black cursor-pointer sm:text-lg',
       isActive &&
         'border-b-2 sm:pl-3 sm:border-l-2 sm:border-b-0 border-secondary border-opacity-80 transition-theme',
