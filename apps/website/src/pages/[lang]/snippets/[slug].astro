@@ -50,12 +50,22 @@ console.log(snippet);
   <header class="col-span-full lg:col-span-10">
     <h1 class="text-3xl font-extrabold md:text-4xl">{snippet.title}</h1>
 
-    <p class="my-4 col-span-full lg:col-span-10 text-md md:text-lg">
-      {snippet.description}
+    <p class="mt-6 text-base text-right lg:text-md">
+      {
+        intl.formatDate(new Date(snippet.publishedAt), {
+          year: `numeric`,
+          month: `short`,
+          day: `2-digit`,
+        })
+      }
     </p>
   </header>
 
   <article class="prose-container">
+    <p class="my-4 col-span-full lg:col-span-10 text-md md:text-lg">
+      {snippet.description}
+    </p>
+
     {
       snippet.snippets.map((s) => {
         return <CodeBlock node={s} />;
