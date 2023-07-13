@@ -21,7 +21,7 @@ export function useSideMenuLinks(lang: SupportedLanguages, pathname: string) {
     },
     {
       href: `/snippets`,
-      localeId: `sideMenu.snippets`,
+      localeId: `sideMenu.codeSnippets`,
       prefetch: true,
     },
     {

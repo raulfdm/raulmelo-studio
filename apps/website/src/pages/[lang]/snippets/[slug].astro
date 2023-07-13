@@ -23,7 +23,6 @@ const { lang, slug } = Astro.params as {
 const intl = getIntl(lang);
 
 const snippet = await queryCodeSnippetsBySlug({ client: sanityClient, slug });
-console.log(snippet);
 ---
 
 <PostLayout
@@ -39,7 +38,7 @@ console.log(snippet);
         href: getHomePageUrl(lang),
       },
       {
-        label: intl.formatMessage({ id: `sideMenu.snippets` }),
+        label: intl.formatMessage({ id: `sideMenu.codeSnippets` }),
         href: getSnippetsHomeUrl(lang),
       },
       {
