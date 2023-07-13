@@ -4,8 +4,8 @@ import type { SupportedLanguages } from '@raulmelo/core/config';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { mergeClasses } from '@/infrastructure/utils/misc';
 import { getTagUrl } from '@/infrastructure/utils/url';
+import { ContentTypeTag } from '@/ui/ContentTypeTag';
 
-import ContentTypeTag from './ContentTypeTag.astro';
 import { Tag, Tags } from './Tags';
 
 export type Props = {

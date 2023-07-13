@@ -7,7 +7,7 @@ import {
   getSnippetUrl,
   getTilUrl,
 } from '@/infrastructure/utils/url';
-import ContentTypeTag from '@/ui/ContentTypeTag.astro';
+import { ContentTypeTag } from '@/ui/ContentTypeTag';
 
 import type { HitAlgolia } from './types';
 
