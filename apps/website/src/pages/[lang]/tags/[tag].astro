@@ -11,6 +11,7 @@ import { sanityClient } from '@/infrastructure/sanity/client';
 import {
   getHomePageUrl,
   getPostUrl,
+  getSnippetUrl,
   getTagsHomeUrl,
   getTilUrl,
 } from '@/infrastructure/utils/url';
@@ -26,9 +27,29 @@ const remoteTag = await queryTagBySlug({
   client: sanityClient,
 });
 
-const posts = sortPostsByPublishedDate(remoteTag.posts);
+const allContent = sortPostsByPublishedDate([
+  ...remoteTag.posts,
+  ...remoteTag.tils,
+  ...remoteTag.codeSnippets,
+]);
 
 const intl = getIntl(lang);
+
+function getUrlFn(type: `post` | `til` | `codeSnippet`) {
+  if (type === `post`) {
+    return getPostUrl;
+  }
+
+  if (type === `til`) {
+    return getTilUrl;
+  }
+
+  if (type === `codeSnippet`) {
+    return getSnippetUrl;
+  }
+
+  throw new Error(`Invalid type: "${type}"`);
+}
 ---
 
 <Layout
@@ -72,20 +93,20 @@ const intl = getIntl(lang);
     </p>
   </header>
   {
-    isEmpty(posts) ? (
+    isEmpty(allContent) ? (
       <p class="text-lg col-span-full">
         {intl.formatMessage({ id: `tags.single.empty` })}
       </p>
     ) : (
       <ul class="pb-5 space-y-6 md:pb-10 col-span-full">
-        {posts.map((post) => {
-          const getUrl = post._type === `post` ? getPostUrl : getTilUrl;
+        {allContent.map((content) => {
+          const urlFn = getUrlFn(content._type);
 
           return (
             <PostBasic
               titleClassName="text-xl lg:text-2xl"
-              {...(post as any)}
-              url={getUrl(post.slug, lang)}
+              {...(content as any)}
+              url={urlFn(content.slug, lang)}
             />
           );
         })}

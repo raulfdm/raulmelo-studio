@@ -4,6 +4,7 @@ import type { SupportedLanguages } from '@raulmelo/core/config';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { mergeClasses } from '@/infrastructure/utils/misc';
 import { getTagUrl } from '@/infrastructure/utils/url';
+import { ContentTypeTag } from '@/ui/ContentTypeTag';
 
 import { Tag, Tags } from './Tags';
 
@@ -12,7 +13,7 @@ export type Props = {
   title: string;
   subtitle?: string;
   url: string;
-  _type?: `post` | `til`;
+  _type?: `post` | `til` | `codeSnippet`;
   class?: string;
   publishedAt: string;
   titleClassName?: string;
@@ -56,21 +57,7 @@ const intl = getIntl(lang);
           })
         }
       </time>
-      {
-        _type ? (
-          <span
-            class={mergeClasses(
-              {
-                'bg-indigo-600': _type === `post`,
-                'bg-yellow-600': _type === `til`,
-              },
-              `px-2 rounded-sm min-w-[40px] text-center font-bold text-gray-50 uppercase`,
-            )}
-          >
-            {_type}
-          </span>
-        ) : null
-      }
+      {_type ? <ContentTypeTag type={_type} /> : null}
     </span>
   </div>
   {
