@@ -2,7 +2,7 @@
 import { mergeClasses } from '@/infrastructure/utils/misc';
 
 export type Props = {
-  type: 'post' | 'til' | 'codeSnippets';
+  type: 'post' | 'til' | 'codeSnippet';
 };
 
 const { type } = Astro.props;
@@ -13,7 +13,7 @@ const { type } = Astro.props;
     {
       'bg-indigo-600': type === `post`,
       'bg-yellow-600': type === `til`,
-      'bg-lime-600': type === `codeSnippets`,
+      'bg-lime-600': type === `codeSnippet`,
     },
     `px-2 rounded-sm min-w-[40px] text-center font-bold text-gray-50 uppercase`,
   )}

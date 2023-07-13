@@ -64,7 +64,7 @@ const tagsBySlugQuery = groq`
       name
     }
   },
-  "codeSnippets": *[_type=="codeSnippets" && references(^._id) && !(_id in path('drafts.**'))] | order(publishedAt desc){
+  "codeSnippets": *[_type=="codeSnippet" && references(^._id) && !(_id in path('drafts.**'))] | order(publishedAt desc){
     ...,
     "slug": slug.current,
     "tags": tags[]->{
@@ -111,7 +111,7 @@ const tagPostSchema = tagCommonSchema.extend({
 export type QueryTagBySlugPost = z.infer<typeof tagPostSchema>;
 
 const codeSnippetsSchema = z.object({
-  _type: z.literal('codeSnippets'),
+  _type: z.literal('codeSnippet'),
   _id: z.string(),
   title: z.string(),
   slug: z.string(),

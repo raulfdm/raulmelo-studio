@@ -3,7 +3,7 @@ import { defineField, defineType } from 'sanity';
 import { codeField } from '../customFields/codeField';
 
 export const codeSnippetsSchema = defineType({
-  name: `codeSnippets`,
+  name: `codeSnippet`,
   title: `Code Snippets`,
   type: `document`,
   groups: [

@@ -142,7 +142,7 @@ const algoliaObjectSchema = z.object({
   _type: z.union([
     z.literal('post'),
     z.literal('til'),
-    z.literal('codeSnippets'),
+    z.literal('codeSnippet'),
   ]),
   excerpt: z.string(),
   date_timestamp: z.string(),
@@ -168,7 +168,7 @@ function snippetsToAlgoliaObjectAdapter(
     excerpt: description,
     date_timestamp: getDateTimestamp(publishedAt),
     tags: tags || [],
-    _type: 'codeSnippets',
+    _type: 'codeSnippet',
     publishedAt,
     ...rest,
   };
