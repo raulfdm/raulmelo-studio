@@ -23,7 +23,7 @@ const hrefFuncMap: {
 } = {
   post: getPostUrl,
   til: getTilUrl,
-  codeSnippets: getSnippetUrl,
+  codeSnippet: getSnippetUrl,
 };
 export function Hits({ lang }: HitsProps) {
   return (
