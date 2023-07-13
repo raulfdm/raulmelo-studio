@@ -24,6 +24,7 @@ export function contentBlockToMarkdown(body: PortableTextBlock) {
         highlight: ({ children }: any) => children,
         strikethrough: ({ children }: any) => children,
         internalLink: ({ children }: any) => children,
+        pageLink: ({ children }: any) => children,
       },
     },
   });
