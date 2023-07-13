@@ -1,5 +1,5 @@
 <script lang="ts">
-  import classNames from 'classnames';
+  import { mergeClasses } from '@/infrastructure/utils/misc';
 
   let className = '';
 
@@ -8,7 +8,7 @@
 
 <ul
   {...$$props}
-  class={classNames([`flex flex-row flex-wrap text-base gap-2`, className])}
+  class={mergeClasses([`flex flex-row flex-wrap text-base gap-2`, className])}
 >
   <slot />
 </ul>

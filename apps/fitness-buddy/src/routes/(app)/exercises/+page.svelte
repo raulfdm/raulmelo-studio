@@ -19,8 +19,6 @@
 
 	$: {
 		searchResults = fuse.search(searchQuery);
-
-		console.log(searchResults);
 	}
 
 	function handleExerciseClick(exercise: ExerciseItem) {
@@ -58,7 +56,7 @@
 		>
 			{#each searchResults as { item: exercise }}
 				<button on:click={() => handleExerciseClick(exercise)} class="hover:bg-primary">
-					<h2 class="m-4 font-semibold text-left ">
+					<h2 class="m-4 font-semibold text-left">
 						{exercise.name}
 					</h2>
 				</button>

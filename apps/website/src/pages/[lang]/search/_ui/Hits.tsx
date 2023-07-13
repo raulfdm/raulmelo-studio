@@ -1,8 +1,8 @@
 import type { SupportedLanguages } from '@raulmelo/core/config';
-import classNames from 'classnames';
 import { Hits as HitsComp } from 'react-instantsearch-hooks-web';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { mergeClasses } from '@/infrastructure/utils/misc';
 import { getPostUrl, getTilUrl } from '@/infrastructure/utils/url';
 
 import type { HitAlgolia } from './types';
@@ -61,7 +61,7 @@ function Hit({ _type, href, title, publishedAt, subtitle, lang }: HitProps) {
         </span>
         {_type ? (
           <span
-            className={classNames(
+            className={mergeClasses(
               {
                 'bg-indigo-600': _type === `post`,
                 'bg-yellow-600': _type === `til`,

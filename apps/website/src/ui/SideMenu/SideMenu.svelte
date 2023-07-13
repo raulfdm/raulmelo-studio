@@ -6,7 +6,7 @@
   } from '@/infrastructure/stores/sideMenu';
   import type { SupportedLanguages } from '@raulmelo/core/config';
   import { Disclosure, DisclosurePanel } from '@rgossiaux/svelte-headlessui';
-  import classNames from 'classnames';
+  import { mergeClasses } from '@/infrastructure/utils/misc';
   import { useSideMenuLinks } from './links';
 
   import SideMenuListItem from './SideMenuListItem.svelte';
@@ -92,7 +92,7 @@
     as="nav"
     open
     use={[setMainPanelElement]}
-    class={classNames([
+    class={mergeClasses([
       'fixed bottom-0 right-0 z-20 h-full min-w-full duration-200 transform',
       'bg-white top-16 dark:bg-blue-800 sm:min-w-min sm:w-full sm:max-w-xs transition-theme ease',
       'flex flex-col',
@@ -123,7 +123,7 @@
     static
     as="div"
     use={[setOverlayElement]}
-    class={classNames('absolute inset-0 bg-[black] top-16 z-10 opacity-0', {
+    class={mergeClasses('absolute inset-0 bg-[black] top-16 z-10 opacity-0', {
       'pointer-events-none': $sideMenuStore === false,
     })}
     on:click={closeSideMenu}

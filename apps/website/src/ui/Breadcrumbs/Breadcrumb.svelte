@@ -1,5 +1,5 @@
 <script lang="ts">
-  import classNames from 'classnames';
+  import { mergeClasses } from '@/infrastructure/utils/misc';
   import type { BreadcrumbType } from './types';
 
   export let crumb: BreadcrumbType;
@@ -8,7 +8,7 @@
 </script>
 
 <li
-  class={classNames('flex items-center', !isLink && 'truncate text-ellipsis')}
+  class={mergeClasses('flex items-center', !isLink && 'truncate text-ellipsis')}
 >
   {#if 'href' in crumb}
     <a href={crumb.href}>{crumb.label}</a>

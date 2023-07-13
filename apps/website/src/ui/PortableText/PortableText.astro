@@ -1,5 +1,6 @@
 ---
-import { PortableText } from 'astro-portabletext';
+import { PortableText as OriginalPortableText } from 'astro-portabletext';
+import type { PortableTextProps } from 'astro-portabletext/types';
 
 import BigQuote from './BigQuote.astro';
 import { Callout } from './Callout';
@@ -16,8 +17,6 @@ import PageLink from './PageLink.astro';
 import Strikethrough from './Strikethrough.astro';
 import { Tweet } from './Tweet';
 import { YouTube } from './YouTube';
-
-type PortableTextProps = Parameters<typeof PortableText>[0];
 
 export interface Props {
   value: PortableTextProps[`value`];
@@ -53,7 +52,7 @@ const components = {
     h6: HeadingWithLink,
     bigQuote: BigQuote,
   },
-} as any;
+} as PortableTextProps[`components`];
 
 const portableTextProps = {
   value: value,
@@ -61,4 +60,4 @@ const portableTextProps = {
 };
 ---
 
-<PortableText {...portableTextProps} />
+<OriginalPortableText {...portableTextProps} />

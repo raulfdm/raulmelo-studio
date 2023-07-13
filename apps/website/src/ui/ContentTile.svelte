@@ -1,5 +1,5 @@
 <script lang="ts">
-  import classNames from 'classnames';
+  import { mergeClasses } from '@/infrastructure/utils/misc';
   import IconArrowNarrowRight from '@tabler/icons-svelte/dist/svelte/icons/IconArrowNarrowRight.svelte';
 
   export let slug: string;
@@ -22,7 +22,7 @@
 >
   <a href={urlBuilder(slug)} class="relative inline-block cursor-pointer">
     <h3
-      class={classNames(`text-lg font-black md:text-xl`, {
+      class={mergeClasses(`text-lg font-black md:text-xl`, {
         'text-secondary': isFocused,
       })}
     >
@@ -47,7 +47,7 @@
       </p>
     {/if}
     <span
-      class={classNames(`flex mt-3 font-bold`, {
+      class={mergeClasses(`flex mt-3 font-bold`, {
         'font-extrabold text-secondary': isFocused,
       })}
     >

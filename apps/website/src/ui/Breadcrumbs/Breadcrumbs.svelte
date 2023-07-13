@@ -1,5 +1,5 @@
 <script lang="ts">
-  import classNames from 'classnames';
+  import { mergeClasses } from '@/infrastructure/utils/misc';
   import Breadcrumb from './Breadcrumb.svelte';
   import type { BreadcrumbType } from './types';
 
@@ -9,7 +9,7 @@
   export { className as class };
 </script>
 
-<div class={classNames('py-2', className)}>
+<div class={mergeClasses('py-2', className)}>
   <ul class="flex items-center whitespace-nowrap min-h-min">
     {#each crumbs as crumb}
       <Breadcrumb {crumb} />

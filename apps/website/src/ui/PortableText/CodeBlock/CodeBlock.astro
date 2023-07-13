@@ -11,7 +11,7 @@ import CodeBlockSvelte from './CodeBlock.svelte';
 type Props = {
   node: {
     code: string;
-    highlightedLines: string;
+    highlightedLines?: string;
     language?: string;
     filename?: string;
     showLineNumbers?: boolean;

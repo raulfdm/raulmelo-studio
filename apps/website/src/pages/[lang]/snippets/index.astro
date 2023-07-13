@@ -1,0 +1,70 @@
+---
+import type { SupportedLanguages } from '@raulmelo/core/config';
+import { queryCodeSnippets } from '@raulmelo/core/domains';
+
+import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { sanityClient } from '@/infrastructure/sanity/client';
+import { getHomePageUrl, getSnippetUrl } from '@/infrastructure/utils/url';
+import { Breadcrumbs } from '@/ui/Breadcrumbs';
+import ContentTile from '@/ui/ContentTile.svelte';
+import Layout from '@/ui/layouts/Layout.astro';
+import Divider from '@/ui/PortableText/Divider.astro';
+
+const { lang } = Astro.params as { lang: SupportedLanguages };
+
+const intl = getIntl(lang);
+
+const snippets = await queryCodeSnippets({ client: sanityClient });
+---
+
+<Layout
+  title={intl.formatMessage({ id: `codeSnippets.title` })}
+  containerClass="flex flex-col"
+>
+  <Breadcrumbs
+    class="col-span-full lg:col-span-10"
+    crumbs={[
+      {
+        label: intl.formatMessage({ id: `sideMenu.home` }),
+        href: getHomePageUrl(lang),
+      },
+      {
+        label: intl.formatMessage({ id: `sideMenu.codeSnippets` }),
+      },
+    ]}
+  />
+
+  <header class="col-span-full lg:col-span-10">
+    <h1 class="text-3xl font-extrabold md:text-4xl">Code Snippets</h1>
+
+    <p class="my-4 col-span-full lg:col-span-10 text-md md:text-lg">
+      {intl.formatMessage({ id: `codeSnippets.description` })}
+    </p>
+  </header>
+
+  <Divider />
+
+  <ul class="space-y-10 col-span-full">
+    {
+      snippets.map((snippet) => {
+        return (
+          <li>
+            <ContentTile
+              client:load
+              formatDate={(date) =>
+                intl.formatDate(date, {
+                  month: `long`,
+                  day: `numeric`,
+                  year: `numeric`,
+                })
+              }
+              readMoreLabel={intl.formatMessage({ id: `tilHome.readMore` })}
+              urlBuilder={(slug) => getSnippetUrl(slug, lang)}
+              {...snippet}
+            />
+          </li>
+        );
+      })
+    }
+  </ul>
+</Layout>

@@ -1,3 +1,4 @@
+import { codeSnippetsSchema } from './codeSnippets';
 import { defaultSeoSchemaType } from './defaultSeo';
 import { personalInfoSchemaType } from './personalInfo';
 import { postSchemaType } from './post';
@@ -9,6 +10,7 @@ import { tagSchemaType } from './tag';
 import { tilSchemaType } from './til';
 
 export const blogTypes = [
+  codeSnippetsSchema,
   defaultSeoSchemaType,
   personalInfoSchemaType,
   postSchemaType,
