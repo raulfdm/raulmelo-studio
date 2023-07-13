@@ -2,12 +2,12 @@ import type { SupportedLanguages } from '@raulmelo/core/config';
 import { Hits as HitsComp } from 'react-instantsearch-hooks-web';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
-import { mergeClasses } from '@/infrastructure/utils/misc';
 import {
   getPostUrl,
   getSnippetUrl,
   getTilUrl,
 } from '@/infrastructure/utils/url';
+import ContentTypeTag from '@/ui/ContentTypeTag.astro';
 
 import type { HitAlgolia } from './types';
 
@@ -73,20 +73,7 @@ function Hit({ _type, href, title, publishedAt, subtitle, lang }: HitProps) {
             })}
           </time>
         </span>
-        {_type ? (
-          <span
-            className={mergeClasses(
-              {
-                'bg-indigo-600': _type === `post`,
-                'bg-yellow-600': _type === `til`,
-                'bg-lime-600': _type === `codeSnippets`,
-              },
-              `px-2 rounded-sm min-w-[40px] text-center font-bold text-gray-50 uppercase`,
-            )}
-          >
-            {_type}
-          </span>
-        ) : null}
+        {_type ? <ContentTypeTag type={_type} /> : null}
       </div>
       {subtitle && (
         <p className="text-lg lg:text-md text-primary dark:text-gray-200 text-opacity-80 dark:text-opacity-100">
