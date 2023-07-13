@@ -6,17 +6,25 @@ import { z } from 'zod';
 import { supportedLanguagesSchema } from '@/config';
 import { contentBlockToMarkdown } from '@/utils';
 
+import { queryCodeSnippets } from '../codeSnippets';
+import { type QueryCodeSnippetsReturnType } from '../codeSnippets';
+
 type QueryAlgoliaDataParams = {
   client: SanityClient;
 };
 
-export async function queryAlgoliaData({ client }: QueryAlgoliaDataParams) {
+export async function queryAlgoliaData({
+  client,
+}: QueryAlgoliaDataParams): Promise<AlgoliaObject[]> {
   const posts = await client.fetch(algoliaPostsQuery);
   const tils = await client.fetch(algoliaTilsQuery);
+  const snippets = await queryCodeSnippets({ client });
 
-  const content = [...posts, ...tils].map(objectCreator);
-
-  return content;
+  return [
+    ...snippets.map(snippetsToAlgoliaObjectAdapter),
+    ...tils.map(objectCreator),
+    ...posts.map(objectCreator),
+  ];
 
   function objectCreator(data: AlgoliaContent): AlgoliaObject {
     const { _id, content, _type, publishedAt, tags, ...rest } = data;
@@ -131,7 +139,11 @@ export type AlgoliaContent = AlgoliaPosts | AlgoliaTils;
 const algoliaObjectSchema = z.object({
   _id: z.string(),
   objectID: z.string(),
-  _type: z.union([z.literal('post'), z.literal('til')]),
+  _type: z.union([
+    z.literal('post'),
+    z.literal('til'),
+    z.literal('codeSnippets'),
+  ]),
   excerpt: z.string(),
   date_timestamp: z.string(),
   title: z.string(),
@@ -144,3 +156,22 @@ const algoliaObjectSchema = z.object({
     .shape.featuredImage.optional(),
 });
 export type AlgoliaObject = z.infer<typeof algoliaObjectSchema>;
+
+function snippetsToAlgoliaObjectAdapter(
+  codeSnippet: QueryCodeSnippetsReturnType[number],
+): AlgoliaObject {
+  const { _id, publishedAt, tags, description, ...rest } = codeSnippet;
+
+  const result: AlgoliaObject = {
+    _id,
+    objectID: `Content_${_id}`,
+    excerpt: description,
+    date_timestamp: getDateTimestamp(publishedAt),
+    tags: tags || [],
+    _type: 'codeSnippets',
+    publishedAt,
+    ...rest,
+  };
+
+  return result;
+}
