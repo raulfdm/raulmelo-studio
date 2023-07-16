@@ -1,3 +1,3 @@
-import baseConfig from '@raulmelo/eslint-config';
+import fullConfig from '@raulmelo/eslint-config/full';
 
-export default [...baseConfig];
+export default fullConfig;
