@@ -2,8 +2,17 @@
   "name": "@raulmelo/eslint-config",
   "type": "module",
   "exports": {
-    ".": {
-      "import": "./eslint.config.js"
+    "./full": {
+      "import": "./lib/full.js"
+    },
+    "./vite": {
+      "import": "./lib/vite.js"
+    },
+    "./typescript": {
+      "import": "./lib/typescript.js"
+    },
+    "./javascript": {
+      "import": "./lib/javascript.js"
     }
   },
   "scripts": {
