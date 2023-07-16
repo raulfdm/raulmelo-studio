@@ -1,0 +1,28 @@
+{
+  "name": "@raulmelo/eslint-config",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./eslint.config.js"
+    }
+  },
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "peerDependencies": {
+    "eslint": "^8.40.0",
+    "typescript": "^5.1.0"
+  },
+  "dependencies": {
+    "@eslint/js": "8.45.0",
+    "@typescript-eslint/eslint-plugin": "5.60.1",
+    "@typescript-eslint/parser": "5.60.1",
+    "eslint-plugin-simple-import-sort": "10.0.0",
+    "eslint-plugin-vitest": "0.2.6",
+    "globals": "13.20.0"
+  },
+  "devDependencies": {
+    "eslint": "8.44.0",
+    "typescript": "5.1.6"
+  }
+}
