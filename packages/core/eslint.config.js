@@ -1,10 +1,8 @@
-import fullConfig from '@raulmelo/eslint-config/full';
+import { defineConfig } from '@raulmelo/eslint-config';
 import pluginNode from 'eslint-plugin-node';
 import globals from 'globals';
 
-/** @type {import('eslint').Linter.FlatConfig[]} */
-export default [
-  ...fullConfig,
+export default defineConfig([
   {
     plugins: {
       node: pluginNode,
@@ -15,4 +13,4 @@ export default [
       },
     },
   },
-];
+]);

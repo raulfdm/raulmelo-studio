@@ -1,3 +1,3 @@
-import fullConfig from '@raulmelo/eslint-config/full';
+import { defineConfig } from '@raulmelo/eslint-config';
 
-export default fullConfig;
+export default defineConfig();
