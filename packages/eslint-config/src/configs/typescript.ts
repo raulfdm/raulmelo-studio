@@ -1,18 +1,22 @@
-import tsPlugin from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
-import tslintRecommended from '@typescript-eslint/eslint-plugin/dist/configs/recommended-type-checked.js';
 import type { Linter } from 'eslint';
 
+import { FlatCompat } from '@eslint/eslintrc';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+  resolvePluginsRelativeTo: __dirname,
+});
+
 export const typescriptConfig: Linter.FlatConfig[] = [
-  tslintRecommended,
-  {
-    files: ['**/*.ts', '**/*.tsx'],
-    plugins: {
-      '@typescript-eslint': tsPlugin,
-    },
-    languageOptions: {
-      parser: tsParser as unknown as Linter.ParserModule,
-    },
+  ...compat.config({
+    extends: ['plugin:@typescript-eslint/recommended'],
+    parser: '@typescript-eslint/parser',
+    plugins: ['@typescript-eslint'],
     rules: {
       '@typescript-eslint/consistent-type-assertions': 'error',
       '@typescript-eslint/consistent-type-imports': [
@@ -26,5 +30,5 @@ export const typescriptConfig: Linter.FlatConfig[] = [
       ],
       'no-duplicate-imports': 'error',
     },
-  },
+  }),
 ];

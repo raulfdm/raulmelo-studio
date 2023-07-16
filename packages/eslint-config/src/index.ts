@@ -12,7 +12,7 @@ type Options = {
 };
 
 export function defineConfig(
-  config: Linter.FlatConfig[],
+  config: Linter.FlatConfig[] = [],
   options?: Options,
 ): Linter.FlatConfig[] {
   /**
@@ -20,10 +20,10 @@ export function defineConfig(
    */
   if (!options) {
     return [
-      ...baseConfig,
-      javascriptConfig,
-      ...typescriptConfig,
-      vitestConfig,
+      ...maybeArray(baseConfig),
+      ...maybeArray(javascriptConfig),
+      ...maybeArray(typescriptConfig),
+      ...maybeArray(vitestConfig),
       ...config,
     ];
   }
@@ -33,16 +33,20 @@ export function defineConfig(
   const newConfig: Linter.FlatConfig[] = [...baseConfig];
 
   if (js) {
-    newConfig.push(javascriptConfig);
+    newConfig.push(...maybeArray(javascriptConfig));
   }
 
   if (ts) {
-    newConfig.push(...typescriptConfig);
+    newConfig.push(...maybeArray(typescriptConfig));
   }
 
   if (vitest) {
-    newConfig.push(vitestConfig);
+    newConfig.push(...maybeArray(vitestConfig));
   }
 
   return [...newConfig, ...config];
+}
+
+function maybeArray<T>(value: T | T[]): T[] {
+  return Array.isArray(value) ? value : [value];
 }

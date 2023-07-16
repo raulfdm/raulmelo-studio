@@ -635,6 +635,9 @@ importers:
 
   packages/eslint-config:
     dependencies:
+      '@eslint/eslintrc':
+        specifier: 2.1.0
+        version: 2.1.0
       '@eslint/js':
         specifier: 8.45.0
         version: 8.45.0
@@ -650,6 +653,9 @@ importers:
       eslint-plugin-vitest:
         specifier: 0.2.6
         version: 0.2.6(eslint@8.45.0)(typescript@5.1.6)
+      eslint-plugin-vitest-globals:
+        specifier: 1.4.0
+        version: 1.4.0
       globals:
         specifier: 13.20.0
         version: 13.20.0
@@ -6304,6 +6310,10 @@ packages:
       - ts-node
     dev: true
 
+  /eslint-plugin-vitest-globals@1.4.0:
+    resolution: {integrity: sha512-WE+YlK9X9s4vf5EaYRU0Scw7WItDZStm+PapFSYlg2ABNtaQ4zIG7wEqpoUB3SlfM+SgkhgmzR0TeJOO5k3/Nw==}
+    dev: false
+
   /eslint-plugin-vitest@0.2.6(eslint@8.45.0)(typescript@5.1.6):
     resolution: {integrity: sha512-PnH4qdqzmAYu78kBnSh5Oi6L1jCtc0orJMWxFeM6k6eW2aEmi0c4Y855v6Qh//7ruU3JzN/aeZrBSVBZMP525Q==}
     engines: {node: 14.x || >= 16}
@@ -8674,7 +8684,7 @@ packages:
   /mlly@1.4.0:
     resolution: {integrity: sha512-ua8PAThnTwpprIaU47EPeZ/bPUVp2QYBbWMphUQpVdBI3Lgqzm5KZQ45Agm3YJedHXaIHl6pBGabaLSUPPSptg==}
     dependencies:
-      acorn: 8.9.0
+      acorn: 8.10.0
       pathe: 1.1.1
       pkg-types: 1.0.3
       ufo: 1.1.2
