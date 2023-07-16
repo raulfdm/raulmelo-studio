@@ -1,7 +1,7 @@
+import type { Linter } from 'eslint';
 import simpleSortPlugin from 'eslint-plugin-simple-import-sort';
 
-/** @type {import('eslint').Linter.FlatConfig[]} */
-export default [
+export const baseConfig = [
   {
     ignores: ['dist/**', 'bin/**', 'cache/**', '**/*.d.ts'],
   },
@@ -14,4 +14,4 @@ export default [
       'simple-import-sort/exports': 'error',
     },
   },
-];
+] satisfies Linter.FlatConfig[]

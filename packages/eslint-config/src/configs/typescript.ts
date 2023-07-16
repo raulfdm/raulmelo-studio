@@ -1,14 +1,14 @@
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
+import type { Linter } from 'eslint';
 
-/** @type {import('eslint').Linter.FlatConfig} */
-export default {
+export const typescriptConfig: Linter.FlatConfig = {
   files: ['**/*.ts', '**/*.tsx'],
   plugins: {
     '@typescript-eslint': tsPlugin,
   },
   languageOptions: {
-    parser: tsParser,
+    parser: tsParser as unknown as Linter.ParserModule,
   },
   rules: {
     '@typescript-eslint/consistent-type-assertions': 'error',

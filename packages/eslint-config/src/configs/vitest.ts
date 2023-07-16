@@ -1,8 +1,8 @@
+import type { Linter } from 'eslint';
 import vitestPlugin from 'eslint-plugin-vitest';
 import globals from 'globals';
 
-/** @type {import('eslint').Linter.FlatConfig} */
-export default {
+export const vitestConfig = {
   files: [
     '**/*.test.ts',
     '**/*.test.tsx',
@@ -22,4 +22,4 @@ export default {
       it: 'readonly',
     },
   },
-};
+} satisfies Linter.FlatConfig;

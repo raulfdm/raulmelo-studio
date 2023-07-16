@@ -1,22 +1,21 @@
 {
   "name": "@raulmelo/eslint-config",
   "type": "module",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "types": "./types/index.d.ts",
   "exports": {
-    "./full": {
-      "import": "./lib/full.js"
-    },
-    "./vite": {
-      "import": "./lib/vite.js"
-    },
-    "./typescript": {
-      "import": "./lib/typescript.js"
-    },
-    "./javascript": {
-      "import": "./lib/javascript.js"
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./types/index.d.ts"
     }
   },
   "scripts": {
-    "lint": "eslint ."
+    "prepare": "turbo run build --filter eslint-config",
+    "lint": "eslint .",
+    "build": "tsc --build"
   },
   "peerDependencies": {
     "eslint": "^8.40.0",
@@ -31,6 +30,9 @@
     "globals": "13.20.0"
   },
   "devDependencies": {
+    "@types/eslint": "8.44.0",
+    "@types/eslint__js": "8.42.0",
+    "@types/node": "18",
     "eslint": "8.45.0",
     "typescript": "5.1.6"
   }
