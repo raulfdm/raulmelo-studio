@@ -10,10 +10,24 @@ type Options = {
   js?: boolean;
   ts?: boolean;
 };
+
 export function defineConfig(
   config: Linter.FlatConfig[],
-  options: Options = {},
+  options?: Options,
 ): Linter.FlatConfig[] {
+  /**
+   * If no options are passed, returns "full config"
+   */
+  if (!options) {
+    return [
+      ...baseConfig,
+      javascriptConfig,
+      typescriptConfig,
+      vitestConfig,
+      ...config,
+    ];
+  }
+
   const { vitest = false, js = false, ts = false } = options;
 
   const newConfig: Linter.FlatConfig[] = [...baseConfig];
