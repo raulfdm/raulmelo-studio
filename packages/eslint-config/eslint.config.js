@@ -1,3 +1,3 @@
-import fullConfig from './lib/full.js';
+import { defineConfig } from './dist/index.js';
 
-export default fullConfig;
+export default defineConfig();

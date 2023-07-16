@@ -13,7 +13,7 @@
     "lint": "run-s lint:*",
     "lint:astro": "astro check",
     "lint:tsc": "tsc --noEmit",
-    "lint:eslint": "eslint \"src/**/*.{ts,astro,tsx}\""
+    "lint:eslint": "eslint src"
   },
   "dependencies": {
     "@astrojs/image": "0.16.9",
@@ -39,7 +39,6 @@
     "@tabler/icons-svelte": "2.23.0",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
-    "@typescript-eslint/parser": "6.0.0",
     "@xstate/react": "3.2.2",
     "@xstate/svelte": "2.0.1",
     "algoliasearch": "4.18.0",
@@ -50,7 +49,6 @@
     "classnames": "2.3.2",
     "eslint": "8.45.0",
     "eslint-plugin-astro": "0.27.2",
-    "eslint-plugin-simple-import-sort": "10.0.0",
     "flat": "5.0.2",
     "humanize-string": "3.0.0",
     "lodash.defaultsdeep": "4.6.1",
@@ -82,9 +80,11 @@
   },
   "devDependencies": {
     "@astrojs/ts-plugin": "1.0.10",
+    "@raulmelo/eslint-config": "workspace:*",
     "@types/flat": "5.0.2",
     "@types/lodash.defaultsdeep": "4.6.7",
     "@types/negotiator": "0.6.1",
+    "@typescript-eslint/parser": "6.0.0",
     "@xstate/cli": "0.5.2",
     "import-meta-resolve": "3.0.0",
     "npm-run-all": "4.1.5",

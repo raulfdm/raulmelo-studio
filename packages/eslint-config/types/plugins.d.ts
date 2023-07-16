@@ -11,3 +11,10 @@ declare module 'eslint-plugin-vitest' {
   const vitestPlugin: Linter.Plugin;
   export default vitestPlugin;
 }
+
+declare module '@typescript-eslint/eslint-plugin/dist/configs/recommended-type-checked.js' {
+  import type { Linter } from 'eslint';
+
+  const tslintRecommended: Linter.FlatConfig;
+  export default tslintRecommended;
+}

@@ -22,7 +22,7 @@ export function defineConfig(
     return [
       ...baseConfig,
       javascriptConfig,
-      typescriptConfig,
+      ...typescriptConfig,
       vitestConfig,
       ...config,
     ];
@@ -37,7 +37,7 @@ export function defineConfig(
   }
 
   if (ts) {
-    newConfig.push(typescriptConfig);
+    newConfig.push(...typescriptConfig);
   }
 
   if (vitest) {
