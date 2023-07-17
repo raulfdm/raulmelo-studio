@@ -14,7 +14,24 @@ const compat = new FlatCompat({
 
 export const baseConfig = [
   {
-    ignores: ['dist/**', 'bin/**', 'cache/**', '**/*.d.ts', '**/*.typegen.ts'],
+    ignores: [
+      '.DS_Store',
+      '.env.*',
+      '**/*.d.ts',
+      '**/*.typegen.ts',
+      'bin/**',
+      'build/**',
+      'cache/**',
+      'dist/**',
+      'node_modules/**',
+      '.turbo/**',
+      '.history/**',
+      '.svelte-kit/**',
+      '.vercel/**',
+      'package-lock.json',
+      'pnpm-lock.yaml',
+      'yarn.lock',
+    ],
   },
   ...compat.config({
     plugins: ['simple-import-sort'],
