@@ -1,8 +1,8 @@
-import type { Linter } from 'eslint';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import { FlatCompat } from '@eslint/eslintrc';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import type { Linter } from 'eslint';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,13 +21,16 @@ export const typescriptConfig: Linter.FlatConfig[] = [
       '@typescript-eslint/consistent-type-assertions': 'error',
       '@typescript-eslint/consistent-type-imports': [
         'error',
-        { disallowTypeAnnotations: false, fixStyle: 'inline-type-imports' },
+        {
+          disallowTypeAnnotations: false,
+        },
       ],
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': [
         'warn',
         { destructuredArrayIgnorePattern: '^_', varsIgnorePattern: '^Props' },
       ],
+      '@typescript-eslint/no-import-type-side-effects': 'error',
       'no-duplicate-imports': 'error',
     },
   }),

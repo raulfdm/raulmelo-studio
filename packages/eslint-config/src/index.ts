@@ -1,7 +1,11 @@
+import { FlatCompat } from '@eslint/eslintrc';
 import type { Linter } from 'eslint';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 import { baseConfig } from './configs/base.js';
 import { javascriptConfig } from './configs/javascript.js';
+import type { FlatCompatObj } from './configs/type.js';
 import { typescriptConfig } from './configs/typescript.js';
 import { vitestConfig } from './configs/vitest.js';
 
@@ -45,6 +49,18 @@ export function defineConfig(
   }
 
   return [...newConfig, ...config];
+}
+
+export function getFlatCompat(): FlatCompatObj {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+
+  const compat = new FlatCompat({
+    baseDirectory: __dirname,
+    resolvePluginsRelativeTo: __dirname,
+  });
+
+  return compat;
 }
 
 function maybeArray<T>(value: T | T[]): T[] {
