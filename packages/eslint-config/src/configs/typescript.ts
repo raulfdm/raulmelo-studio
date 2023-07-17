@@ -31,7 +31,6 @@ export const typescriptConfig: Linter.FlatConfig[] = [
         { destructuredArrayIgnorePattern: '^_', varsIgnorePattern: '^Props' },
       ],
       '@typescript-eslint/no-import-type-side-effects': 'error',
-      'no-duplicate-imports': 'error',
     },
   }),
 ];

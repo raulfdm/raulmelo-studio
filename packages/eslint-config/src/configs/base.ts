@@ -23,4 +23,21 @@ export const baseConfig = [
       'simple-import-sort/exports': 'error',
     },
   }),
+  ...compat.config({
+    extends: ['plugin:import/recommended'],
+    plugins: ['import'],
+    rules: {
+      'import/no-duplicates': [
+        'error',
+        {
+          'prefer-inline': true,
+        },
+      ],
+      'import/no-unresolved': 'off',
+      'import/namespace': 'off',
+      'import/default': 'off',
+      'import/no-named-as-default-member': 'off',
+      'import/no-named-as-default': 'off',
+    },
+  }),
 ] satisfies EslintConfigType;
