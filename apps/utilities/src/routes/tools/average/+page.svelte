@@ -1,6 +1,7 @@
 <script lang="ts">
-  import PageLayout from '$lib/components/PageLayout.svelte';
   import IconTrash from '@tabler/icons-svelte/dist/svelte/icons/IconTrash.svelte';
+
+  import PageLayout from '$lib/components/PageLayout.svelte';
 
   type Numbers = (number | null)[];
 

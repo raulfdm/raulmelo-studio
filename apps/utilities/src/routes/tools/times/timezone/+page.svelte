@@ -2,13 +2,13 @@
   import {
     Autocomplete,
     type AutocompleteOption,
-    type PopupSettings,
     popup,
+    type PopupSettings,
   } from '@skeletonlabs/skeleton';
-
-  import utcPlugin from 'dayjs/plugin/utc';
-  import timezonePlugin from 'dayjs/plugin/timezone';
   import dayjs from 'dayjs';
+  import timezonePlugin from 'dayjs/plugin/timezone';
+  import utcPlugin from 'dayjs/plugin/utc';
+
   import { Timezones } from '$lib/utils/timezones';
 
   dayjs.extend(utcPlugin);

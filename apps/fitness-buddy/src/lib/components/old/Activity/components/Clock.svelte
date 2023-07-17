@@ -1,21 +1,21 @@
 <script lang="ts">
-	import { onDestroy, beforeUpdate, onMount } from 'svelte';
+	import IconPlayerPause from '@tabler/icons-svelte/dist/svelte/icons/IconPlayerPause.svelte';
 	import IconPlayerPlay from '@tabler/icons-svelte/dist/svelte/icons/IconPlayerPlay.svelte';
 	import IconPlayerTrackNext from '@tabler/icons-svelte/dist/svelte/icons/IconPlayerTrackNext.svelte';
 	import IconPlayerTrackPrev from '@tabler/icons-svelte/dist/svelte/icons/IconPlayerTrackPrev.svelte';
-	import IconPlayerPause from '@tabler/icons-svelte/dist/svelte/icons/IconPlayerPause.svelte';
 	import IconTrash from '@tabler/icons-svelte/dist/svelte/icons/IconTrash.svelte';
-	import {
-		persistClockInfo,
-		continueTimer,
-		canRewind,
-		canFastForward,
-		readTrainingStore,
-		clockMachine
-	} from '$lib/stores/old/clockMachine';
-	import type { ClockMachineState } from '$lib/stores/old/clockMachine';
-	import { activityStore } from '$lib/stores/old/activity';
 	import { useMachine } from '@xstate/svelte';
+	import { beforeUpdate, onDestroy, onMount } from 'svelte';
+
+	import { activityStore } from '$lib/stores/old/activity';
+	import type { ClockMachineState } from '$lib/stores/old/clockMachine';
+	import {
+		canFastForward,
+		canRewind,
+		clockMachine,
+		continueTimer,
+		persistClockInfo,
+		readTrainingStore	} from '$lib/stores/old/clockMachine';
 
 	const clockMachineService = useMachine(clockMachine, {} as any);
 

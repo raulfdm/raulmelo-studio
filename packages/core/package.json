@@ -35,7 +35,7 @@
   "scripts": {
     "clean": "scripty",
     "build": "scripty",
-    "lint": "scripty",
+    "lint": "eslint .",
     "dev": "scripty",
     "test": "scripty"
   },
@@ -47,15 +47,13 @@
     "zod": "3.21.4"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "7.22.7",
     "@portabletext/types": "2.0.5",
+    "@raulmelo/eslint-config": "workspace:*",
     "@types/node": "18.16.19",
     "@types/ramda": "0.29.3",
-    "@typescript-eslint/parser": "5.60.1",
-    "eslint": "8.44.0",
+    "eslint": "8.45.0",
     "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-react": "7.32.2",
-    "eslint-plugin-simple-import-sort": "10.0.0",
+    "globals": "13.20.0",
     "ramda": "0.29.0",
     "typescript": "5.1.6",
     "vite": "4.4.2",

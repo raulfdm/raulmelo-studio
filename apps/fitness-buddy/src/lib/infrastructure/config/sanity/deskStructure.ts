@@ -1,8 +1,9 @@
 import type { StructureBuilder } from 'sanity/desk';
+
 import { exerciseSchema } from './schemas/exercise';
 import { measurementSchema } from './schemas/measurements';
-import { trainingSchema } from './schemas/training';
 import { trainingRoutineSchema } from './schemas/routine';
+import { trainingSchema } from './schemas/training';
 
 export function deskStructure(S: StructureBuilder) {
 	return S.list()

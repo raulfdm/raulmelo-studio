@@ -1,0 +1,45 @@
+{
+  "name": "@raulmelo/eslint-config",
+  "type": "module",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./types/index.d.ts"
+    }
+  },
+  "scripts": {
+    "prepare": "turbo run build --filter eslint-config",
+    "lint": "eslint .",
+    "build": "run-s build:*",
+    "build:lib": "tsc --build"
+  },
+  "peerDependencies": {
+    "eslint": "^8.40.0",
+    "typescript": "^5.1.0"
+  },
+  "dependencies": {
+    "@eslint/eslintrc": "2.1.0",
+    "@eslint/js": "8.45.0",
+    "@typescript-eslint/eslint-plugin": "6.0.0",
+    "@typescript-eslint/parser": "6.0.0",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-simple-import-sort": "10.0.0",
+    "eslint-plugin-vitest": "0.2.6",
+    "eslint-plugin-vitest-globals": "1.4.0",
+    "globals": "13.20.0"
+  },
+  "devDependencies": {
+    "@types/eslint": "8.44.0",
+    "@types/eslint__js": "8.42.0",
+    "@types/node": "18",
+    "eslint": "8.45.0",
+    "npm-run-all": "4.1.5",
+    "typescript": "5.1.6"
+  }
+}

@@ -1,13 +1,13 @@
 import type { PortableTextBlock } from '@portabletext/types';
-import { type SanityClient } from '@sanity/client';
+import type { SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
 import { supportedLanguagesSchema } from '@/config';
 import { contentBlockToMarkdown } from '@/utils';
 
+import type { QueryCodeSnippetsReturnType } from '../codeSnippets';
 import { queryCodeSnippets } from '../codeSnippets';
-import { type QueryCodeSnippetsReturnType } from '../codeSnippets';
 
 type QueryAlgoliaDataParams = {
   client: SanityClient;

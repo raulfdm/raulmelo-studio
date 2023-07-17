@@ -3,8 +3,6 @@ import type { SupportedLanguages } from '@raulmelo/core/config';
 
 const { lang } = Astro.params as { lang: SupportedLanguages };
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 const redirectTo = `/${lang ?? `en`}/blog/uses`;
 
 return Astro.redirect(redirectTo);

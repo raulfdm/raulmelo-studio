@@ -1,5 +1,6 @@
 import groq from 'groq';
 import { z } from 'zod';
+
 import { sanityApiClient } from '../config/sanity/client';
 
 const query = groq`

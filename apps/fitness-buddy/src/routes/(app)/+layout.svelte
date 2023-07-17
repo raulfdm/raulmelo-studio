@@ -1,11 +1,11 @@
 <script lang="ts">
+	import '$lib/styles/app.css';
+
 	import BeepAudio from '$lib/components/BeepAudio.svelte';
+	import Actvity from '$lib/components/old/Activity/index.svelte';
 	import SideNav from '$lib/components/SideNav.svelte';
 	import TopBar from '$lib/components/TopBar.svelte';
-	import Actvity from '$lib/components/old/Activity/index.svelte';
 	import { sideNavService, toggleSideNav } from '$lib/stores/sideNav';
-
-	import '$lib/styles/app.css';
 
 	let isMenuOpen = sideNavService.getSnapshot().matches('open');
 

@@ -1,7 +1,8 @@
 <script lang="ts">
+	import CardioCard from '$lib/components/CardioCard.svelte';
 	import ContentTitle from '$lib/components/ContentTitle.svelte';
 	import TrainingInfo from '$lib/components/old/Activity/components/TrainingInfo.svelte';
-	import CardioCard from '$lib/components/CardioCard.svelte';
+
 	import type { PageData } from './$types';
 
 	export let data: PageData;

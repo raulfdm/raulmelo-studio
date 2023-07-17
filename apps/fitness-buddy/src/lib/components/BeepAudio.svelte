@@ -1,6 +1,6 @@
 <script lang="ts">
   import audioUrl from '$lib/assets/beep.wav';
-  import { audioStore, audioActions } from '$lib/stores/audio';
+  import { audioActions,audioStore } from '$lib/stores/audio';
 
   let audio: HTMLAudioElement;
 

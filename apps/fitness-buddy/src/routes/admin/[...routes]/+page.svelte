@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { workspaceConfig } from '$lib/infrastructure/config/sanity/workspaceConfig';
 	import { defineConfig, renderStudio } from 'sanity';
 	import { onMount } from 'svelte';
+
+	import { workspaceConfig } from '$lib/infrastructure/config/sanity/workspaceConfig';
 
 	const config = defineConfig(workspaceConfig);
 

@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { createLocalStorage } from '$lib/utils/localStorage';
   import dayjs from 'dayjs';
   import { onMount } from 'svelte';
+
+  import { createLocalStorage } from '$lib/utils/localStorage';
 
   let backwardValue: string | null = null;
   let backwardValues: [number, string][] = [];
