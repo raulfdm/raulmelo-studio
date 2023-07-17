@@ -1,6 +1,6 @@
 import { defineConfig } from '@raulmelo/eslint-config';
-import astroParser from 'astro-eslint-parser';
 import tslintParser from '@typescript-eslint/parser';
+import astroParser from 'astro-eslint-parser';
 import astroPlugin from 'eslint-plugin-astro';
 
 export default defineConfig([
