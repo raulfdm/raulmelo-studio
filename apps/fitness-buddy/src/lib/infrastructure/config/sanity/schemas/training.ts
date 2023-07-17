@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity';
+
 import { trainingRoutineSchema } from './routine';
 
 export const trainingSchema = defineType({

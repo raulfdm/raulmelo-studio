@@ -1,10 +1,11 @@
 <script lang="ts">
-	import TabataInputField from '$lib/components/TabataInputField.svelte';
 	import IconPlayerPlay from '@tabler/icons-svelte/dist/svelte/icons/IconPlayerPlay.svelte';
-	import { tabataConfigService } from '$lib/stores/tabata-config';
+
+	import TabataInputField from '$lib/components/TabataInputField.svelte';
 	import type { TabataConfigContext } from '$lib/stores/tabata-config';
-	import { secondsToMinutes } from '$lib/utils/secondsToMinutes';
+	import { tabataConfigService } from '$lib/stores/tabata-config';
 	import { createLocalStorage } from '$lib/utils/localStorage';
+	import { secondsToMinutes } from '$lib/utils/secondsToMinutes';
 
 	const tabataLocalStorage = createLocalStorage<TabataConfigContext>('tabata_clock_config');
 

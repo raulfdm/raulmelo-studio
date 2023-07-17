@@ -1,8 +1,10 @@
 <script lang="ts">
-	import Fuse from 'fuse.js';
-	import type { PageData } from './$types';
-	import type { ExerciseItem } from '$lib/infrastructure/models/getAllExercises';
 	import IconBrandYoutube from '@tabler/icons-svelte/dist/svelte/icons/IconBrandYoutube.svelte';
+	import Fuse from 'fuse.js';
+
+	import type { ExerciseItem } from '$lib/infrastructure/models/getAllExercises';
+
+	import type { PageData } from './$types';
 
 	export let data: PageData;
 

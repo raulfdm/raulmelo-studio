@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { toggleSideNav } from '$lib/stores/sideNav';
 	import IconMenu2 from '@tabler/icons-svelte/dist/svelte/icons/IconMenu2.svelte';
+
+	import { toggleSideNav } from '$lib/stores/sideNav';
 </script>
 
 <header class="fixed px-4 navbar bg-primary text-base-100">

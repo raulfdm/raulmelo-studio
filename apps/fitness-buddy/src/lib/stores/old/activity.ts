@@ -1,5 +1,6 @@
-import type { ITraining } from '$lib/infrastructure/models/getSheet';
 import { writable } from 'svelte/store';
+
+import type { ITraining } from '$lib/infrastructure/models/getSheet';
 
 export type ITab = 'clock' | 'clockConfig' | 'content' | 'drop-set-calculator';
 

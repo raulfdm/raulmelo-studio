@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { toggleSideNav } from '$lib/stores/sideNav';
-	import IconClock from '@tabler/icons-svelte/dist/svelte/icons/IconClock.svelte';
 	import IconAxe from '@tabler/icons-svelte/dist/svelte/icons/IconAxe.svelte';
-	import IconYoga from '@tabler/icons-svelte/dist/svelte/icons/IconYoga.svelte';
+	import IconClock from '@tabler/icons-svelte/dist/svelte/icons/IconClock.svelte';
 	import IconUser from '@tabler/icons-svelte/dist/svelte/icons/IconUser.svelte';
+	import IconYoga from '@tabler/icons-svelte/dist/svelte/icons/IconYoga.svelte';
+
 	import { page } from '$app/stores';
+	import { toggleSideNav } from '$lib/stores/sideNav';
 
 	function onLinkClick() {
 		toggleSideNav();

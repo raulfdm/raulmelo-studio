@@ -1,13 +1,14 @@
 <script lang="ts">
-	import { createTabataClock } from '$lib/stores/tabata-clock';
-	import { secondsToMinutes } from '$lib/utils/secondsToMinutes';
-	import { tabataConfigService } from '$lib/stores/tabata-config';
-	import { useMachine } from '@xstate/svelte';
-	import { goto } from '$app/navigation';
-	import IconPlayerPlay from '@tabler/icons-svelte/dist/svelte/icons/IconPlayerPlay.svelte';
 	import IconPlayerPause from '@tabler/icons-svelte/dist/svelte/icons/IconPlayerPause.svelte';
+	import IconPlayerPlay from '@tabler/icons-svelte/dist/svelte/icons/IconPlayerPlay.svelte';
 	import IconPlayerTrackNext from '@tabler/icons-svelte/dist/svelte/icons/IconPlayerTrackNext.svelte';
 	import IconPlayerTrackPrev from '@tabler/icons-svelte/dist/svelte/icons/IconPlayerTrackPrev.svelte';
+	import { useMachine } from '@xstate/svelte';
+
+	import { goto } from '$app/navigation';
+	import { createTabataClock } from '$lib/stores/tabata-clock';
+	import { tabataConfigService } from '$lib/stores/tabata-config';
+	import { secondsToMinutes } from '$lib/utils/secondsToMinutes';
 
 	if ($tabataConfigService.changed === false || $tabataConfigService.changed === undefined) {
 		goto('/tabata-clock');

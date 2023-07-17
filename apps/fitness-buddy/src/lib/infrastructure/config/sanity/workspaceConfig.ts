@@ -1,11 +1,11 @@
+import { visionTool } from '@sanity/vision';
 import type { Config } from 'sanity';
 import { deskTool } from 'sanity/desk';
 import { media } from 'sanity-plugin-media';
-import { visionTool } from '@sanity/vision';
 
+import { baseSanityConfig } from './baseConfig';
 import { deskStructure } from './deskStructure';
 import { schema } from './schemas';
-import { baseSanityConfig } from './baseConfig';
 
 export const workspaceConfig: Config = {
 	projectId: baseSanityConfig.projectId,
