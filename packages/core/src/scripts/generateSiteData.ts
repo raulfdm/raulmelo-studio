@@ -1,4 +1,4 @@
-import { type SanityClient } from '@sanity/client';
+import type { SanityClient } from '@sanity/client';
 import * as fs from 'fs';
 
 import { querySiteData } from '@/domains';

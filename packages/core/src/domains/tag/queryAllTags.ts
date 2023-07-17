@@ -1,8 +1,8 @@
-import { type SanityClient } from '@sanity/client';
+import type { SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import { type SupportedLanguages } from '@/config';
+import type { SupportedLanguages } from '@/config';
 
 type QueryAllTagsParams = {
   client: SanityClient;

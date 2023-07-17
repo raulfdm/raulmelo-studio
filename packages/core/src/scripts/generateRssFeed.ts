@@ -1,8 +1,8 @@
-import { type SanityClient } from '@sanity/client';
+import type { SanityClient } from '@sanity/client';
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { type SupportedLanguages } from '@/config';
+import type { SupportedLanguages } from '@/config';
 import {
   queryRssData,
   type QueryRssDataReturnType,

@@ -1,4 +1,4 @@
-import { type SanityClient } from '@sanity/client';
+import type { SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
