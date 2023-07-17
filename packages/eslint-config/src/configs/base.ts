@@ -14,7 +14,7 @@ const compat = new FlatCompat({
 
 export const baseConfig = [
   {
-    ignores: ['dist/**', 'bin/**', 'cache/**', '**/*.d.ts'],
+    ignores: ['dist/**', 'bin/**', 'cache/**', '**/*.d.ts', '**/*.typegen.ts'],
   },
   ...compat.config({
     plugins: ['simple-import-sort'],
