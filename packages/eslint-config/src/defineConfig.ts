@@ -2,6 +2,7 @@ import type { Linter } from 'eslint';
 
 import { baseConfig } from './configs/base.js';
 import { javascriptConfig } from './configs/javascript.js';
+import { prettierConfig } from './configs/prettier.js';
 import { typescriptConfig } from './configs/typescript.js';
 import { vitestConfig } from './configs/vitest.js';
 import { maybeArray } from './utils.js';
@@ -10,6 +11,7 @@ type Options = {
   vitest?: boolean;
   js?: boolean;
   ts?: boolean;
+  prettier?: boolean;
 };
 
 export function defineConfig(
@@ -26,12 +28,13 @@ export function defineConfig(
       ...maybeArray(typescriptConfig),
       ...maybeArray(vitestConfig),
       ...config,
+      ...maybeArray(prettierConfig),
     ];
   }
 
-  const { vitest = false, js = false, ts = false } = options;
+  const { vitest = false, js = false, ts = false, prettier = false } = options;
 
-  const newConfig: Linter.FlatConfig[] = [...baseConfig];
+  const newConfig: Linter.FlatConfig[] = [...maybeArray(baseConfig)];
 
   if (js) {
     newConfig.push(...maybeArray(javascriptConfig));
@@ -45,5 +48,14 @@ export function defineConfig(
     newConfig.push(...maybeArray(vitestConfig));
   }
 
-  return [...newConfig, ...config];
+  newConfig.push(...config);
+
+  /**
+   * Prettier always must be the last config
+   */
+  if (prettier) {
+    newConfig.push(...maybeArray(prettierConfig));
+  }
+
+  return newConfig;
 }
