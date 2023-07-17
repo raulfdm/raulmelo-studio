@@ -15,3 +15,5 @@ declare module '@eslint/eslintrc' {
 
   export class FlatCompat extends FlatCompatClass {}
 }
+
+declare module 'eslint-config-prettier' {}
