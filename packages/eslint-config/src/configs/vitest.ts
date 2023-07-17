@@ -1,7 +1,3 @@
-import type { Linter } from 'eslint';
-import vitestPlugin from 'eslint-plugin-vitest';
-import globals from 'globals';
-
 import { FlatCompat } from '@eslint/eslintrc';
 import path from 'path';
 import { fileURLToPath } from 'url';
