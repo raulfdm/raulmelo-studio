@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { timeMachine } from '$lib/machines/time';
   import { useMachine } from '@xstate/svelte';
   import dayjs from 'dayjs';
+
+  import { timeMachine } from '$lib/machines/time';
 
   const { state, send } = useMachine(timeMachine);
 

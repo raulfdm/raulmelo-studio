@@ -1,5 +1,5 @@
-import { assign, createMachine } from 'xstate';
 import dayjs from 'dayjs';
+import { assign, createMachine } from 'xstate';
 
 type Context = {
   date: string | undefined;

@@ -1,5 +1,6 @@
-import dayjs, { Dayjs } from 'dayjs';
-import { createMachine, assign } from 'xstate';
+import type { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
+import { assign,createMachine } from 'xstate';
 
 type HourMachineContext = {
   baseTime: Date;

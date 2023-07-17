@@ -4,14 +4,13 @@
   import '@skeletonlabs/skeleton/styles/all.css';
 
   import {
-    computePosition,
-    autoUpdate,
-    flip,
-    shift,
-    offset,
     arrow,
+    autoUpdate,
+    computePosition,
+    flip,
+    offset,
+    shift,
   } from '@floating-ui/dom';
-
   import {
     AppBar,
     AppShell,
@@ -19,6 +18,7 @@
     drawerStore,
     storePopup,
   } from '@skeletonlabs/skeleton';
+
   import AppSideBar from '$lib/components/AppSideBar.svelte';
 
   storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });

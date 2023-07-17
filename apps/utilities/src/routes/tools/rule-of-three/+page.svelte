@@ -1,8 +1,9 @@
 <script lang="ts">
   import { useMachine } from '@xstate/svelte';
-  import { ruleOfThreeMachine } from '$lib/machines/ruleOfThree';
-  import type { RuleOfThreeMode } from '$lib/machines/ruleOfThree';
+
   import PageLayout from '$lib/components/PageLayout.svelte';
+  import type { RuleOfThreeMode } from '$lib/machines/ruleOfThree';
+  import { ruleOfThreeMachine } from '$lib/machines/ruleOfThree';
 
   const { send, state } = useMachine(ruleOfThreeMachine);
 
