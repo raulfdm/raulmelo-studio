@@ -13,7 +13,7 @@
     }
   },
   "scripts": {
-    "prepare": "turbo run build --filter eslint-config",
+    "prepare": "turbo --filter eslint-config build --output-logs errors-only",
     "lint": "eslint .",
     "build": "run-s build:*",
     "build:lib": "tsc --build"

@@ -9,6 +9,7 @@
   ],
   "type": "module",
   "scripts": {
+    "prepare": "turbo --filter code-highlight build --output-logs errors-only",
     "test": "vitest",
     "dev": "pnpm vite build --watch",
     "build": "pnpm run build:lib && pnpm run build:types",

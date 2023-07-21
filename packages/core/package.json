@@ -33,6 +33,7 @@
   },
   "types": "./index.d.ts",
   "scripts": {
+    "prepare": "turbo --filter='core' build --output-logs errors-only",
     "clean": "scripty",
     "build": "scripty",
     "lint": "eslint .",
