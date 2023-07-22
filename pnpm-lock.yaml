@@ -248,8 +248,8 @@ importers:
         specifier: 1.4.4
         version: 1.4.4
       '@skeletonlabs/skeleton':
-        specifier: 1.8.0
-        version: 1.8.0
+        specifier: 1.10.0
+        version: 1.10.0(svelte@4.0.1)
       '@tabler/icons-svelte':
         specifier: 2.23.0
         version: 2.23.0(svelte@4.0.1)
@@ -3496,11 +3496,13 @@ packages:
     engines: {node: '>=14.16'}
     dev: false
 
-  /@skeletonlabs/skeleton@1.8.0:
-    resolution: {integrity: sha512-dO4ukU34MGUY1yA1Gln+YUFEEew25AHm6GMpbzCOX8p8b9NmVBWiSuF3me9jnbrV15TGJxmUGzdiRN/70b4KIg==}
+  /@skeletonlabs/skeleton@1.10.0(svelte@4.0.1):
+    resolution: {integrity: sha512-6Cy1dzF6b2tMGxjFe60WOulN53tfvWMH+SDYoPMzNsRoa20vjlBMjLInWPJGn4dMuSJMiDrR9apniv16m0c9Rg==}
+    peerDependencies:
+      svelte: ^3.56.0 || ^4.0.0
     dependencies:
       esm-env: 1.0.0
-      svelte: 3.58.0
+      svelte: 4.0.1
     dev: false
 
   /@sveltejs/adapter-auto@2.1.0(@sveltejs/kit@1.21.0):
@@ -12029,11 +12031,6 @@ packages:
       pascal-case: 3.1.2
       svelte: 4.0.1
       typescript: 5.1.6
-    dev: false
-
-  /svelte@3.58.0:
-    resolution: {integrity: sha512-brIBNNB76mXFmU/Kerm4wFnkskBbluBDCjx/8TcpYRb298Yh2dztS2kQ6bhtjMcvUhd5ynClfwpz5h2gnzdQ1A==}
-    engines: {node: '>= 8'}
     dev: false
 
   /svelte@4.0.1:
