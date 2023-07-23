@@ -1,11 +1,13 @@
 import type { PortableTextBlock } from '@portabletext/types';
 
-import { contentBlockToMarkdown } from './contentBlockToMarkdown';
+import { contentBlockToRawText } from './contentBlockToRawText';
 
 const AVERAGE_WORD_READING = 200;
 
-export function getEstimatedReadingTime(body: PortableTextBlock): number {
-  const markdownContent = contentBlockToMarkdown(body);
+export async function getEstimatedReadingTime(
+  body: PortableTextBlock,
+): Promise<number> {
+  const markdownContent = await contentBlockToRawText(body);
   const allWords = markdownContent.split(' ').filter(isValidWord);
   const numberOfWords = allWords.length;
 
@@ -15,6 +17,8 @@ export function getEstimatedReadingTime(body: PortableTextBlock): number {
 }
 
 function isValidWord(word: string): boolean {
+  word = word.trim();
+
   if (!word) {
     return false;
   }

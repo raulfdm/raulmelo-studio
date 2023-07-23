@@ -1,5 +1,5 @@
 import { queryPostBySlug, queryTilBySlug } from '@raulmelo/core/domains';
-import { contentBlockToMarkdown } from '@raulmelo/core/utils';
+import { contentBlockToRawText } from '@raulmelo/core/utils';
 import type { APIRoute } from 'astro';
 import { z } from 'zod';
 import { fromZodError } from 'zod-validation-error';
@@ -66,9 +66,9 @@ export const post: APIRoute = async function post({ request }) {
   ]);
 
   if (post) {
-    textContent = contentBlockToMarkdown(post.content);
+    textContent = await contentBlockToRawText(post.content);
   } else if (til) {
-    textContent = contentBlockToMarkdown(til.content);
+    textContent = await contentBlockToRawText(til.content);
   } else {
     return new Response(
       JSON.stringify({

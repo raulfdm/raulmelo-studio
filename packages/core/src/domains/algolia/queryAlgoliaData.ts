@@ -4,7 +4,7 @@ import groq from 'groq';
 import { z } from 'zod';
 
 import { supportedLanguagesSchema } from '@/config';
-import { contentBlockToMarkdown } from '@/utils';
+import { contentBlockToRawText } from '@/utils';
 
 import type { QueryCodeSnippetsReturnType } from '../codeSnippets';
 import { queryCodeSnippets } from '../codeSnippets';
@@ -22,16 +22,16 @@ export async function queryAlgoliaData({
 
   return [
     ...snippets.map(snippetsToAlgoliaObjectAdapter),
-    ...tils.map(objectCreator),
-    ...posts.map(objectCreator),
+    ...tils.map(async (til: any) => await objectCreator(til)),
+    ...posts.map(async (post: any) => await objectCreator(post)),
   ];
 
-  function objectCreator(data: AlgoliaContent): AlgoliaObject {
+  async function objectCreator(data: AlgoliaContent): Promise<AlgoliaObject> {
     const { _id, content, _type, publishedAt, tags, ...rest } = data;
     const result: AlgoliaObject = {
       _id,
       objectID: `Content_${_id}`,
-      excerpt: getExcerpt(contentBlockToMarkdown(content)),
+      excerpt: getExcerpt(await contentBlockToRawText(content)),
       date_timestamp: getDateTimestamp(publishedAt),
       tags: tags || [],
       _type,
