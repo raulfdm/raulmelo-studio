@@ -1,3 +1,4 @@
+import { documentInternationalization } from '@sanity/document-internationalization';
 import { visionTool } from '@sanity/vision';
 import type { Config } from 'sanity';
 import { deskTool } from 'sanity/desk';
@@ -17,6 +18,13 @@ export const sanityStudioConfig: Config = {
     deskTool({
       defaultDocumentNode,
       structure: deskStructure,
+    }),
+    documentInternationalization({
+      supportedLanguages: [
+        { id: 'en', title: 'English' },
+        { id: 'pt', title: 'Portuguese' },
+      ],
+      schemaTypes: ['post', 'til'],
     }),
     media(),
     visionTool({
