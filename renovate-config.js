@@ -112,5 +112,9 @@ module.exports = {
       matchPackagePrefixes: ['@tailwindcss'],
       matchPackageNames: ['postcss', 'autoprefixer', 'tailwindcss'],
     },
+    {
+      matchPackageNames: ['daisyui'],
+      allowedVersions: '<3',
+    },
   ],
 };
