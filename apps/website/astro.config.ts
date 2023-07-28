@@ -27,6 +27,9 @@ const vscodeOnigurumaPath = new URL(
 const config = {
   site: `http://localhost:3000`,
   output: `server`,
+  // build: {
+  //   split: true,
+  // },
   integrations: [
     partytown(),
     tailwind() as any,
@@ -50,19 +53,15 @@ const config = {
     analytics: true,
     includeFiles: [vscodeOnigurumaPath],
   }) as any,
-  build: {
-    client: 'server',
-  },
   vite: {
     build: {
       rollupOptions: {
-        logLevel: 'debug',
         external: getExternals(),
       },
     },
-    // ssr: {
-    //   external: getExternals(),
-    // },
+    ssr: {
+      // external: getExternals(),
+    },
   },
 } satisfies AstroUserConfig;
 
@@ -73,11 +72,14 @@ if (VERCEL_ENV === `production`) {
 }
 
 function getExternals() {
-  const notExternals = [
+  const noExternals = [
     '@astrojs/image',
     'astro-portabletext',
     'astro-seo',
     'sharp',
+    //  Failed to resolve module specifier "". Relative references must start with either "/", "./", or "../".
+    'motion',
+    'web-vitals',
   ];
 
   const dependenciesOfDependencies = [
@@ -100,7 +102,7 @@ function getExternals() {
   ]
     .sort((a, b) => a.localeCompare(b))
     .filter((dep) => !dep.includes('svelte'))
-    .filter((dep) => !notExternals.includes(dep));
+    .filter((dep) => !noExternals.includes(dep));
 
   return allDependencies;
 }
