@@ -59,9 +59,6 @@ const config = {
         external: getExternals(),
       },
     },
-    ssr: {
-      // external: getExternals(),
-    },
   },
 } satisfies AstroUserConfig;
 
