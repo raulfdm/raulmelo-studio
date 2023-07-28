@@ -5,6 +5,7 @@ import react from '@astrojs/react';
 import svelte from '@astrojs/svelte';
 import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel/serverless';
+import type { AstroUserConfig } from 'astro';
 import { defineConfig } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 import { resolve } from 'import-meta-resolve';
@@ -21,13 +22,12 @@ const vscodeOnigurumaPath = new URL(
   resolve(`vscode-oniguruma`, import.meta.url),
 ).pathname;
 
-/** @type {import('astro').AstroUserConfig} */
 const config = {
   site: `http://localhost:3000`,
   output: `server`,
   integrations: [
     partytown(),
-    tailwind(),
+    tailwind() as any,
     react(),
     image({
       serviceEntryPoint: `@astrojs/image/sharp`,
@@ -47,13 +47,13 @@ const config = {
   adapter: vercel({
     analytics: true,
     includeFiles: [vscodeOnigurumaPath],
-  }),
+  }) as any,
   vite: {
     ssr: {
       external: [`@raulmelo/core`, `@raulmelo/code-highlight`],
     },
   },
-};
+} satisfies AstroUserConfig;
 
 if (VERCEL_ENV === `production`) {
   config.site = `https://www.raulmelo.me`;
