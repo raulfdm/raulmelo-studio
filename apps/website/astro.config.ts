@@ -51,7 +51,7 @@ const config = {
   ],
   adapter: vercel({
     analytics: true,
-    includeFiles: [vscodeOnigurumaPath],
+    includeFiles: [vscodeOnigurumaPath, './node_modules'],
   }) as any,
   vite: {
     build: {
