@@ -8,7 +8,6 @@ import vercel from '@astrojs/vercel/serverless';
 import type { AstroUserConfig } from 'astro';
 import { defineConfig } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
-import { resolve } from 'import-meta-resolve';
 import { loadEnv } from 'vite';
 
 const { VERCEL_ENV, VERCEL_URL } = loadEnv(
@@ -16,11 +15,6 @@ const { VERCEL_ENV, VERCEL_URL } = loadEnv(
   process.cwd(),
   ``,
 );
-
-const vscodeOnigurumaPath = new URL(
-  `onig.wasm`,
-  resolve(`vscode-oniguruma`, import.meta.url),
-).pathname;
 
 const config = {
   site: `http://localhost:3000`,
@@ -49,7 +43,6 @@ const config = {
   ],
   adapter: vercel({
     analytics: true,
-    includeFiles: [vscodeOnigurumaPath, './node_modules'],
   }) as any,
   vite: {},
 } satisfies AstroUserConfig;
