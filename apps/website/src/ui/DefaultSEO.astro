@@ -44,7 +44,7 @@ const seoTwitterInfo = siteData.socials.find(
   (social) => social.name === `Twitter`,
 )!;
 
-const imageUrl = image ? image.url! : siteData.site.seoImage.url;
+const imageUrl = (image ? image.url! : siteData.site.seoImage.url) as string;
 const nextTitle = title || langSeo.title;
 const nextDescription = description || langSeo.description;
 const nextImage = image || {
