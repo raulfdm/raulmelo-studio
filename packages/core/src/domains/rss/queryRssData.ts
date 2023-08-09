@@ -23,13 +23,13 @@ const rssQuery = groq`
   description,
   language,
   "siteUrl": *[_type=="siteSettings"][0].url,
-  "tils": *[_type=='til' && language == $language && !(_id in path('drafts.**'))] | order(publishedAt desc){
+  "tils": *[_type=='til' && language == $language] | order(publishedAt desc){
     "slug": slug.current,
     publishedAt,
     title,
     "urlPrefix": "til"
   },
-  "posts": *[_type=='post' && language == $language && !(_id in path('drafts.**'))] | order(publishedAt desc){
+  "posts": *[_type=='post' && language == $language] | order(publishedAt desc){
     "slug": slug.current,
     publishedAt,
     title,
@@ -40,7 +40,7 @@ const rssQuery = groq`
 `;
 
 const dataPostSchema = z.object({
-  description: z.string().optional(),
+  description: z.string().nullable(),
   publishedAt: z.string(),
   slug: z.string(),
   title: z.string(),

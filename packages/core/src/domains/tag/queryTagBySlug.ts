@@ -27,11 +27,11 @@ export type QueryTagBySlugReturnType = Awaited<
 >;
 
 const tagsBySlugQuery = groq`
-*[_type == "tag" && slug.current == $slug && !(_id in path('drafts.**'))][0]{
+*[_type == "tag" && slug.current == $slug][0]{
   _id,
   name,
   "slug": slug.current,
-  "posts": *[_type=='post' && references(^._id) && language == $language && !(_id in path('drafts.**'))] | order(publishedAt desc){
+  "posts": *[_type=='post' && references(^._id) && language == $language] | order(publishedAt desc){
     _id,
     _type,
     publishedAt,
@@ -51,7 +51,7 @@ const tagsBySlugQuery = groq`
       "height": metadata.dimensions.height,
     }
   },
-  "tils": *[_type=='til' && references(^._id) && language == $language && !(_id in path('drafts.**'))] | order(publishedAt desc){
+  "tils": *[_type=='til' && references(^._id) && language == $language] | order(publishedAt desc){
     _id,
     _type,
     publishedAt,
@@ -64,7 +64,7 @@ const tagsBySlugQuery = groq`
       name
     }
   },
-  "codeSnippets": *[_type=="codeSnippet" && references(^._id) && !(_id in path('drafts.**'))] | order(publishedAt desc){
+  "codeSnippets": *[_type=="codeSnippet" && references(^._id)] | order(publishedAt desc){
     ...,
     "slug": slug.current,
     "tags": tags[]->{
@@ -94,7 +94,7 @@ const tagCommonSchema = z.object({
   slug: z.string(),
   title: z.string(),
   language: supportedLanguagesSchema,
-  tags: z.array(tagSchema).optional(),
+  tags: z.array(tagSchema).nullable(),
 });
 
 const tagTilSchema = tagCommonSchema.extend({
@@ -104,9 +104,9 @@ export type QueryTagBySlugTil = z.infer<typeof tagTilSchema>;
 
 const tagPostSchema = tagCommonSchema.extend({
   _type: z.literal('post'),
-  subtitle: z.string().optional(),
+  subtitle: z.string().nullable(),
   description: z.string(),
-  featuredImage: featuredImageSchema.optional(),
+  featuredImage: featuredImageSchema.nullable(),
 });
 export type QueryTagBySlugPost = z.infer<typeof tagPostSchema>;
 
@@ -117,7 +117,7 @@ const codeSnippetsSchema = z.object({
   slug: z.string(),
   publishedAt: z.string(),
   description: z.string(),
-  tags: z.array(tagSchema).optional().default([]),
+  tags: z.array(tagSchema).nullable().default([]),
 });
 
 const tagBySlugPost = z.object({

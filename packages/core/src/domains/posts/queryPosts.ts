@@ -23,7 +23,7 @@ export async function queryPosts({ language, client }: QueryPostsParams) {
 export type QueryPostsReturnType = Awaited<ReturnType<typeof queryPosts>>;
 
 const postQuery = groq`
-*[_type == "post" && language in $languages && !(_id in path('drafts.**'))] | order(publishedAt desc){
+*[_type == "post" && language in $languages] | order(publishedAt desc){
   _id,
   language,
   "slug": slug.current,
@@ -55,7 +55,7 @@ const blogPagePostSchema = z.object({
   slug: z.string(),
   publishedAt: z.string(),
   title: z.string(),
-  subtitle: z.string().optional(),
+  subtitle: z.string().nullable(),
   description: z.string(),
   featuredImage: z
     .object({
@@ -63,7 +63,7 @@ const blogPagePostSchema = z.object({
       height: z.number(),
       url: z.string(),
     })
-    .optional(),
+    .nullable(),
   tags: z
     .array(
       z.object({
@@ -72,14 +72,14 @@ const blogPagePostSchema = z.object({
         _id: z.string(),
       }),
     )
-    .optional(),
+    .nullable(),
   series: z
     .object({
       slug: z.string(),
       name: z.string(),
       _id: z.string(),
     })
-    .optional(),
+    .nullable(),
 });
 
 const blogPostPageListSchema = z.array(blogPagePostSchema);

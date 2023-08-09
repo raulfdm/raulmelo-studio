@@ -16,19 +16,17 @@ export async function queryPostBySlug({
   client,
   preview = false,
 }: QueryPostBySlugParams) {
-  const extendedClient = client.withConfig({ useCdn: !preview });
+  const extendedClient = client.withConfig({
+    useCdn: preview === false,
+    perspective: preview ? 'previewDrafts' : 'published',
+  });
 
-  const result = await extendedClient.fetch<BlogPost[]>(postQuery, {
+  const [post] = await extendedClient.fetch<BlogPost[]>(postQuery, {
     slug,
     preview,
   });
 
-  const { draft, published } = getPublishedAndDraft(result);
-
-  const parseResult =
-    preview && draft
-      ? blogPostBySlugSchema.safeParse(draft)
-      : blogPostBySlugSchema.safeParse(published);
+  const parseResult = blogPostBySlugSchema.safeParse(post);
 
   if (!parseResult.success) {
     console.error(parseResult.error.toString());
@@ -36,26 +34,6 @@ export async function queryPostBySlug({
   }
 
   return parseResult.data;
-}
-
-function getPublishedAndDraft(posts: BlogPost[]) {
-  const result: {
-    published: null | BlogPost;
-    draft: null | BlogPost;
-  } = {
-    published: null,
-    draft: null,
-  };
-
-  for (const post of posts) {
-    if (post._id.startsWith('drafts.')) {
-      result.draft = post;
-    } else {
-      result.published = post;
-    }
-  }
-
-  return result;
 }
 
 export type QueryPostBySlugReturnType = Awaited<
@@ -168,7 +146,7 @@ const relatedPostSchema = z.object({
   lang: supportedLanguagesSchema,
   publishedAt: z.string(),
   slug: z.string(),
-  tags: z.array(postTagSchema).optional(),
+  tags: z.array(postTagSchema).nullable(),
   title: z.string(),
 });
 
@@ -176,17 +154,20 @@ const blogPostBySlugSchema = z.object({
   _id: z.string(),
   content: z.any().transform((value) => value as PortableTextBlock),
   description: z.string(),
-  featuredImage: featuredImageSchema.optional(),
-  imageCaption: z.string().optional(),
+  featuredImage: featuredImageSchema.nullable(),
+  imageCaption: z.string().nullable(),
   language: supportedLanguagesSchema,
   publishedAt: z.string(),
-  series: seriesSchema.optional(),
+  series: seriesSchema.nullable(),
   slug: z.string(),
-  subtitle: z.string().optional(),
-  tags: z.array(postTagSchema).optional(),
+  subtitle: z.string().nullable(),
+  tags: z.array(postTagSchema).nullable(),
   title: z.string(),
-  unsplash: unsplashSchema.optional(),
-  relatedPosts: z.array(relatedPostSchema).default([]),
+  unsplash: unsplashSchema.nullable(),
+  relatedPosts: z
+    .array(relatedPostSchema)
+    .nullable()
+    .transform((value) => value ?? []),
 });
 
 type BlogPost = z.infer<typeof blogPostBySlugSchema>;

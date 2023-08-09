@@ -26,7 +26,7 @@ export async function queryTils({ language, client }: QueryTilsParams) {
 export type QueryTilsReturnType = z.infer<typeof tilsSchema>;
 
 const tilQuery = groq`
-*[_type == "til" && language in $languages && !(_id in path('drafts.**'))] | order(publishedAt desc){
+*[_type == "til" && language in $languages] | order(publishedAt desc){
   _id,
   publishedAt,
   title,
@@ -66,7 +66,7 @@ const tilSchema = z.object({
   language: supportedLanguagesSchema,
   content: z.any().transform((value) => value as PortableTextBlock),
   slug: z.string(),
-  tags: z.array(tilTagSchema).optional(),
+  tags: z.array(tilTagSchema).nullable(),
 });
 
 const tilsSchema = z.array(tilSchema);

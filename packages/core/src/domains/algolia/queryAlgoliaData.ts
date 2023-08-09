@@ -16,14 +16,14 @@ type QueryAlgoliaDataParams = {
 export async function queryAlgoliaData({
   client,
 }: QueryAlgoliaDataParams): Promise<AlgoliaObject[]> {
-  const posts = await client.fetch(algoliaPostsQuery);
-  const tils = await client.fetch(algoliaTilsQuery);
+  const allPosts = await client.fetch(algoliaPostsQuery);
+  const allTils = await client.fetch(algoliaTilsQuery);
   const snippets = await queryCodeSnippets({ client });
 
   return [
     ...snippets.map(snippetsToAlgoliaObjectAdapter),
-    ...tils.map(async (til: any) => await objectCreator(til)),
-    ...posts.map(async (post: any) => await objectCreator(post)),
+    ...allTils.map(async (til: any) => await objectCreator(til)),
+    ...allPosts.map(async (post: any) => await objectCreator(post)),
   ];
 
   async function objectCreator(data: AlgoliaContent): Promise<AlgoliaObject> {
@@ -61,7 +61,7 @@ function getDateTimestamp(date: string): string {
 }
 
 const algoliaPostsQuery = groq`
-*[_type== "post" && !(_id in path('drafts.**'))] | order(publishedAt desc){
+*[_type== "post"] | order(publishedAt desc){
   _id,
   title,
   subtitle,
@@ -84,7 +84,7 @@ const algoliaPostsQuery = groq`
 `;
 
 const algoliaTilsQuery = groq`
-*[_type== "til" && !(_id in path('drafts.**'))] | order(publishedAt desc){
+*[_type== "til"] | order(publishedAt desc){
   _id,
   title,
   publishedAt,
