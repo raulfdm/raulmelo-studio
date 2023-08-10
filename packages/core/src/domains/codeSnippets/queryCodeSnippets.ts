@@ -17,7 +17,7 @@ export type QueryCodeSnippetsReturnType = Awaited<
 >;
 
 const codeSnippetsQuery = groq`
-*[_type=="codeSnippet" && !(_id in path('drafts.**'))] | order(publishedAt desc){  
+*[_type=="codeSnippet"] | order(publishedAt desc){  
   ...,
   "slug": slug.current,
   "tags": tags[]->{
@@ -42,7 +42,7 @@ const CodeSnippet = z.object({
         _id: z.string(),
       }),
     )
-    .optional(),
+    .nullable(),
 });
 
 const CodeSnippetList = z.array(CodeSnippet);

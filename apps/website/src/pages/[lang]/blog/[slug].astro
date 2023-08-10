@@ -54,12 +54,14 @@ const intl = getIntl(lang);
      * - parsing: "the description will be \"like this\""
      */
     description: `${post.description}`,
-    image: post.featuredImage && {
-      url: post.featuredImage.url,
-      width: post.featuredImage.width,
-      height: post.featuredImage.height,
-      alt: intl.formatMessage({ id: `blogPost.featuredImage` }),
-    },
+    image: post.featuredImage
+      ? {
+          url: post.featuredImage.url,
+          width: post.featuredImage.width,
+          height: post.featuredImage.height,
+          alt: intl.formatMessage({ id: `blogPost.featuredImage` }),
+        }
+      : undefined,
     article: {
       publishedTime: post.publishedAt,
       modifiedTime: post.publishedAt,
@@ -96,7 +98,7 @@ const intl = getIntl(lang);
 
     <PostHeading
       title={post.title}
-      subtitle={post.subtitle}
+      subtitle={post.subtitle || undefined}
       publishedDateLabel={intl.formatMessage(
         {
           id: `blogPost.publishedAt`,

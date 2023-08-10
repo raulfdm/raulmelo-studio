@@ -11,10 +11,10 @@ import CodeBlockSvelte from './CodeBlock.svelte';
 type Props = {
   node: {
     code: string;
-    highlightedLines?: string;
-    language?: string;
-    filename?: string;
-    showLineNumbers?: boolean;
+    filename: string | null;
+    highlightedLines: string | null;
+    language: string | null;
+    showLineNumbers: boolean | null;
   };
 };
 
@@ -35,10 +35,13 @@ const intl = getIntl(lang);
     <CodeBlockSvelte
       client:load
       code={code}
-      codeHtml={highlight(code, { language, highlightedLines })}
+      codeHtml={highlight(code, {
+        language: language ?? undefined,
+        highlightedLines: highlightedLines ?? undefined,
+      })}
       copyTitle={intl.formatMessage({ id: `blogPost.copyButton.title` })}
       filename={filename}
-      showLineNumbers={showLineNumbers}
+      showLineNumbers={Boolean(showLineNumbers)}
     />
   )
 }

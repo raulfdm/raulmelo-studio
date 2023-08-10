@@ -15,7 +15,7 @@ export async function queryAllTags({ client, language }: QueryAllTagsParams) {
   const allTagsQuery = groq`
     *[
       _type == "tag"
-      && !(_id in path('drafts.**'))
+     
       && count(*[_type == "post" && references(^._id) ${langQuery}]) > 0
     ] | order(slug.current asc) {
       "slug": slug.current,

@@ -16,19 +16,17 @@ export async function queryTilBySlug({
   client,
   preview = false,
 }: QueryTilBySlugParams) {
-  const extendedClient = client.withConfig({ useCdn: !preview });
+  const extendedClient = client.withConfig({
+    useCdn: preview === false,
+    perspective: preview ? 'previewDrafts' : 'published',
+  });
 
-  const result = await extendedClient.fetch(query, {
+  const [til] = await extendedClient.fetch(query, {
     slug,
     preview,
   });
 
-  const { draft, published } = getPublishedAndDraft(result);
-
-  const parseResult =
-    preview && draft
-      ? tilBySlugSchema.safeParse(draft)
-      : tilBySlugSchema.safeParse(published);
+  const parseResult = tilBySlugSchema.safeParse(til);
 
   if (!parseResult.success) {
     console.error(parseResult.error.toString());
@@ -36,26 +34,6 @@ export async function queryTilBySlug({
   }
 
   return parseResult.data;
-}
-
-function getPublishedAndDraft(posts: TilPost[]) {
-  const result: {
-    published: null | TilPost;
-    draft: null | TilPost;
-  } = {
-    published: null,
-    draft: null,
-  };
-
-  for (const post of posts) {
-    if (post._id.startsWith('drafts.')) {
-      result.draft = post;
-    } else {
-      result.published = post;
-    }
-  }
-
-  return result;
 }
 
 export type QueryTilBySlugReturnType = Awaited<
@@ -127,7 +105,7 @@ const relatedPostSchema = z.object({
   lang: supportedLanguagesSchema,
   publishedAt: z.string(),
   slug: z.string(),
-  tags: z.array(tagSchema).optional(),
+  tags: z.array(tagSchema).nullable(),
   title: z.string(),
 });
 
@@ -138,8 +116,9 @@ const tilBySlugSchema = z.object({
   language: supportedLanguagesSchema,
   slug: z.string(),
   content: z.any().transform((value) => value as PortableTextBlock),
-  tags: z.array(tagSchema).optional(),
-  relatedPosts: z.array(relatedPostSchema).default([]),
+  tags: z.array(tagSchema).nullable(),
+  relatedPosts: z
+    .array(relatedPostSchema)
+    .nullable()
+    .transform((value) => value ?? []),
 });
-
-type TilPost = z.infer<typeof tilBySlugSchema>;

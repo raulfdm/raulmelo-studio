@@ -35,13 +35,12 @@ if (!success) {
 }
 
 const NUMBER_OF_POSTS = 2;
-const [{ posts, tils }] = await Promise.all([
-  queryPostsAndTils({
-    locale: lang,
-    numberOfPosts: NUMBER_OF_POSTS,
-    client: sanityClient,
-  }),
-]);
+
+const { posts, tils } = await queryPostsAndTils({
+  locale: lang,
+  numberOfPosts: NUMBER_OF_POSTS,
+  client: sanityClient,
+});
 
 const intl = getIntl(lang);
 ---
@@ -60,7 +59,7 @@ const intl = getIntl(lang);
           publishedAt: post.publishedAt,
           tags: post.tags,
           url: getPostUrl(post.slug, lang),
-        } as any),
+        }) as any,
     )}
     checkAllLink={{
       href: getPathnameWithLocale(`/blog`, lang),
@@ -85,7 +84,7 @@ const intl = getIntl(lang);
         ({
           ...til,
           url: getTilUrl(til.slug, lang),
-        } as any),
+        }) as any,
     )}
     checkAllLink={{
       href: getPathnameWithLocale(`/til`, lang),

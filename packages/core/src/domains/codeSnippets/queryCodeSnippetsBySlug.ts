@@ -21,7 +21,7 @@ export type QueryCodeSnippetsBySlugReturnType = Awaited<
 >;
 
 const codeSnippetsQuery = groq`
-*[_type=="codeSnippet" && !(_id in path('drafts.**')) && slug.current == $slug][0]{  
+*[_type=="codeSnippet" && slug.current == $slug][0]{  
   ...,
   "slug": slug.current,
   "tags": tags[]->{
@@ -43,8 +43,8 @@ const CodeSnippet = z.object({
       language: z.string(),
       code: z.string(),
       showLineNumbers: z.boolean(),
-      fileName: z.string().optional(),
-      highlightedLines: z.string().optional(),
+      fileName: z.string().nullable(),
+      highlightedLines: z.string().nullable(),
     }),
   ),
   tags: z
@@ -55,5 +55,5 @@ const CodeSnippet = z.object({
         _id: z.string(),
       }),
     )
-    .optional(),
+    .nullable(),
 });

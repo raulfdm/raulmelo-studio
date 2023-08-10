@@ -35,7 +35,7 @@ export type QueryPostsAndTilsReturnType = Awaited<
 >;
 
 const postQuery = groq`
-*[_type == "post" && language == $language && !(_id in path('drafts.**'))] |order(publishedAt desc)[$start..$end]{
+*[_type == "post" && language == $language] |order(publishedAt desc)[$start..$end]{
   _id,
   "slug": slug.current,
   publishedAt,
@@ -57,7 +57,7 @@ const postQuery = groq`
 `;
 
 const tilQuery = groq`
-*[_type == "til" && language == $language && !(_id in path('drafts.**'))] |order(publishedAt desc)[$start..$end]{
+*[_type == "til" && language == $language] |order(publishedAt desc)[$start..$end]{
   _id,
   title,
   publishedAt,
@@ -89,10 +89,10 @@ const postSchema = z.object({
   publishedAt: z.string(),
   title: z.string(),
   language: supportedLanguagesSchema,
-  subtitle: z.string().optional(),
+  subtitle: z.string().nullable(),
   description: z.string(),
-  featuredImage: featuredImageSchema.optional(),
-  tags: z.array(tagSchema).optional(),
+  featuredImage: featuredImageSchema.nullable(),
+  tags: z.array(tagSchema).nullable(),
 });
 
 const tilSchema = z.object({
@@ -101,7 +101,7 @@ const tilSchema = z.object({
   language: supportedLanguagesSchema,
   publishedAt: z.string(),
   slug: z.string(),
-  tags: z.array(tagSchema).optional(),
+  tags: z.array(tagSchema).nullable(),
 });
 
 const postsAndTilsSchema = z.object({
