@@ -67,7 +67,17 @@ const snippet = await queryCodeSnippetsBySlug({ client: sanityClient, slug });
 
     {
       snippet.snippets.map((s) => {
-        return <CodeBlock node={s} />;
+        return (
+          <CodeBlock
+            node={{
+              code: s.code,
+              filename: s.fileName,
+              highlightedLines: s.highlightedLines,
+              language: s.language,
+              showLineNumbers: s.showLineNumbers,
+            }}
+          />
+        );
       })
     }
   </article>

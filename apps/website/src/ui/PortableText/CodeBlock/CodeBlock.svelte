@@ -7,7 +7,7 @@
   export let code: string;
   export let codeHtml: string;
   export let copyTitle = 'Copy code';
-  export let filename: string | undefined = undefined;
+  export let filename: string | null = null;
   export let showLineNumbers: boolean;
 
   const { state, send } = useMachine(copyMachine, {

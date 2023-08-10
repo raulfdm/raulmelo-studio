@@ -1,12 +1,10 @@
 ---
 import type { QueryPostBySlugReturnType } from '@raulmelo/core/domains';
 
-type Props = Pick<
-  NonNullable<QueryPostBySlugReturnType>,
-  `title` | `subtitle`
-> & {
+type Props = Pick<NonNullable<QueryPostBySlugReturnType>, `title`> & {
   publishedDateLabel?: string;
   readingTimeLabel?: string;
+  subtitle?: string;
 };
 
 const { title, subtitle, publishedDateLabel, readingTimeLabel } = Astro.props;
