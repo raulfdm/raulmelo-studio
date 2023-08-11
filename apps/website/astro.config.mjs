@@ -25,6 +25,10 @@ const vscodeOnigurumaPath = new URL(
 const config = {
   site: `http://localhost:3000`,
   output: `server`,
+  redirects: {
+    '/en/uses': '/en/blog/uses',
+    '/pt/uses': '/pt/blog/uses',
+  },
   integrations: [
     partytown(),
     tailwind(),
