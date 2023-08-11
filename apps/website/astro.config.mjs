@@ -9,6 +9,7 @@ import { defineConfig } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 import { resolve } from 'import-meta-resolve';
 import { loadEnv } from 'vite';
+import million from 'million/compiler';
 
 const { VERCEL_ENV, VERCEL_URL } = loadEnv(
   import.meta.env.MODE,
@@ -54,6 +55,7 @@ const config = {
     includeFiles: [vscodeOnigurumaPath],
   }),
   vite: {
+    plugins: [million.vite({ mode: 'react', server: true, auto: true })],
     ssr: {
       external: [`@raulmelo/core`, `@raulmelo/code-highlight`],
     },
