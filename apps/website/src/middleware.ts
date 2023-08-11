@@ -3,6 +3,20 @@ import type { SupportedLanguages } from '@raulmelo/core/config';
 import { defineMiddleware, sequence } from 'astro/middleware';
 import Negotiator from 'negotiator';
 
+const redirectHandlers = defineMiddleware(({ redirect, request }, next) => {
+  const url = new URL(request.url);
+
+  const locale = getLanguageFromAcceptLanguage(
+    request.headers.get(`accept-language`) || ``,
+  );
+
+  if (url.pathname === `/uses`) {
+    return redirect(`/${locale}/blog/uses/`);
+  }
+
+  return next();
+});
+
 const themeHintHandler = defineMiddleware(async ({ request, locals }, next) => {
   const response = await next();
 
@@ -52,7 +66,11 @@ const languageHandler = defineMiddleware(
   },
 );
 
-export const onRequest = sequence(languageHandler, themeHintHandler);
+export const onRequest = sequence(
+  redirectHandlers,
+  languageHandler,
+  themeHintHandler,
+);
 
 const supportedLocales = [`en`, `pt`];
 const defaultLocale = `en`;
