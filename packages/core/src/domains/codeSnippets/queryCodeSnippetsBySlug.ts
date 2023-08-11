@@ -43,8 +43,8 @@ const CodeSnippet = z.object({
       language: z.string(),
       code: z.string(),
       showLineNumbers: z.boolean(),
-      fileName: z.string().nullable(),
-      highlightedLines: z.string().nullable(),
+      fileName: z.string().optional(),
+      highlightedLines: z.string().optional(),
     }),
   ),
   tags: z
