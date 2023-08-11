@@ -1,13 +1,9 @@
 import { match } from '@formatjs/intl-localematcher';
 import type { SupportedLanguages } from '@raulmelo/core/config';
-import type { MiddlewareResponseHandler } from 'astro';
-import { sequence } from 'astro/middleware';
+import { defineMiddleware, sequence } from 'astro/middleware';
 import Negotiator from 'negotiator';
 
-const themeHintHandler: MiddlewareResponseHandler = async (
-  { request, locals },
-  next,
-) => {
+const themeHintHandler = defineMiddleware(async ({ request, locals }, next) => {
   const response = await next();
 
   if (skipMiddleware(request.url)) {
@@ -22,37 +18,39 @@ const themeHintHandler: MiddlewareResponseHandler = async (
   response.headers.set(`Accept-CH`, `Sec-CH-Prefers-Color-Scheme`);
 
   return response;
-};
+});
 
-const languageHandler: MiddlewareResponseHandler = async (
-  { request, redirect },
-  next,
-): Promise<Response> => {
-  const url = new URL(request.url);
+const languageHandler = defineMiddleware(
+  async ({ request, redirect }, next): Promise<Response> => {
+    const url = new URL(request.url);
 
-  if (skipMiddleware(request.url)) {
-    return next();
-  }
+    if (skipMiddleware(request.url)) {
+      return next();
+    }
 
-  const pathnameIsMissingLocale = supportedLocales.every(
-    (locale) =>
-      !url.pathname.startsWith(`/${locale}/`) && url.pathname !== `/${locale}`,
-  );
-
-  if (pathnameIsMissingLocale) {
-    const locale = getLanguageFromAcceptLanguage(
-      request.headers.get(`accept-language`) || ``,
+    const pathnameIsMissingLocale = supportedLocales.every(
+      (locale) =>
+        !url.pathname.startsWith(`/${locale}/`) &&
+        url.pathname !== `/${locale}`,
     );
 
-    const normalizedPathname = normalizePathname(`/${locale}/${url.pathname}`);
+    if (pathnameIsMissingLocale) {
+      const locale = getLanguageFromAcceptLanguage(
+        request.headers.get(`accept-language`) || ``,
+      );
 
-    const nextUrl = new URL(normalizedPathname, request.url).toString();
+      const normalizedPathname = normalizePathname(
+        `/${locale}/${url.pathname}`,
+      );
 
-    return redirect(nextUrl);
-  }
+      const nextUrl = new URL(normalizedPathname, request.url).toString();
 
-  return next();
-};
+      return redirect(nextUrl);
+    }
+
+    return next();
+  },
+);
 
 export const onRequest = sequence(languageHandler, themeHintHandler);
 

@@ -1,9 +1,0 @@
----
-import type { SupportedLanguages } from '@raulmelo/core/config';
-
-const { lang } = Astro.params as { lang: SupportedLanguages };
-
-const redirectTo = `/${lang ?? `en`}/blog/uses`;
-
-return Astro.redirect(redirectTo);
----
