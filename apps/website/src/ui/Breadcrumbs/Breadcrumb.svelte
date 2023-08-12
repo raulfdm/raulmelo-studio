@@ -8,7 +8,7 @@
 </script>
 
 <li
-  class={mergeClasses('flex items-center', !isLink && 'truncate text-ellipsis')}
+  class={mergeClasses('flex items-center', !isLink && 'truncate text-ellipsis overflow-hidden')}
 >
   {#if 'href' in crumb}
     <a href={crumb.href}>{crumb.label}</a>
