@@ -16,8 +16,6 @@ However, the core technologies here are:
 
 - [pnpm + pnp workspaces](https://pnpm.io/) - Maintain this Monorepo;
 - [TypeScript](https://www.typescriptlang.org/) - core programming language;
-- [BabelJS](https://babeljs.io/) - for transpiling the code;
-- [scripty](https://www.npmjs.com/package/scripty) - Run npm scripts with bash files;
 - [vitejs](https://vitejs.dev/) - for bundling packages;
 - [vitest](https://vitest.dev/) - For unit testing;
 - [PostCSS](https://postcss.org/) and [TailwindCSS](https://tailwindcss.com/) - for styles;
