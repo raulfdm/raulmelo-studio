@@ -1,9 +1,8 @@
 ---
-import { Picture } from '@astrojs/image/components';
+import { Image as AstroImage } from 'astro:assets';
 import { imgUrlFor } from '@raulmelo/core/utils';
 
 import { sanityClient } from '@/infrastructure/sanity/client';
-import { mergeClasses } from '@/infrastructure/utils/misc';
 
 type Props = {
   node: {
@@ -22,24 +21,12 @@ const {
   node: { image, caption, customWidth, alt },
 } = Astro.props;
 
-const { url, width, height, aspectRatio } = imgUrlFor(sanityClient, image);
+const { url, width, height } = imgUrlFor(sanityClient, image);
 
 const finalWidth = customWidth || width;
 const finalHeight = customWidth
   ? calculateCustomHeight(height, width, finalWidth)
   : height;
-
-const widths = [200, 400, 640, 768, finalWidth].sort((a, b) => a - b);
-const highestWidth = widths[widths.length - 1];
-
-/**
- * Sharp + vercel edge functions are throwing an error when trying to resize
- * gifs.
- *
- * This is attempt to fix it.
- */
-const isGif = image.url.endsWith(`.gif`);
-const isLarge = finalWidth > 768;
 
 function calculateCustomHeight(
   height: number,
@@ -52,31 +39,16 @@ function calculateCustomHeight(
 }
 ---
 
-{
-  isGif && isLarge ? (
-    <img
-      src={url}
-      alt={alt ?? caption}
-      loading="lazy"
-      class="mx-auto rounded-md"
-    />
-  ) : (
-    <figure>
-      <Picture
-        class={mergeClasses(`object-cover mx-auto rounded-md`, {
-          'mb-0': Boolean(caption),
-        })}
-        src={url}
-        aspectRatio={aspectRatio}
-        widths={widths}
-        sizes={`(max-width: ${highestWidth}px) 100vw, ${finalWidth}px`}
-        alt={alt ?? caption}
-        width={finalWidth}
-        height={finalHeight}
-      />
-      {caption ? (
-        <figcaption class="mt-2 text-center lg:mt-4">{caption}</figcaption>
-      ) : null}
-    </figure>
-  )
-}
+<figure class="flex items-center flex-col">
+  <AstroImage
+    src={url}
+    alt={alt ?? caption}
+    width={finalWidth}
+    height={finalHeight}
+  />
+  {
+    caption ? (
+      <figcaption class="mt-2 text-center lg:mt-4">{caption}</figcaption>
+    ) : null
+  }
+</figure>

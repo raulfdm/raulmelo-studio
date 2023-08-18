@@ -1,5 +1,5 @@
 ---
-import { Picture } from '@astrojs/image/components';
+import { Image } from 'astro:assets';
 import type { SupportedLanguages } from '@raulmelo/core/config';
 import type { QueryPostBySlugReturnType } from '@raulmelo/core/domains';
 import { imgUrlFor } from '@raulmelo/core/utils';
@@ -28,14 +28,10 @@ const intl = getIntl(lang);
   aria-label={intl.formatMessage({ id: `blogPost.featuredImage` })}
 >
   <div class="aspect-w-12 aspect-h-6">
-    <Picture
-      fit="cover"
+    <Image
       src={url}
       alt={intl.formatMessage({ id: `blogPost.featuredImage` })}
       loading="eager"
-      widths={[200, 400, 640, 768, 1037, 1248]}
-      sizes="(min-width: 1248px) 1248px, 100vw"
-      aspectRatio={12 / 6}
       width={width}
       height={height}
     />

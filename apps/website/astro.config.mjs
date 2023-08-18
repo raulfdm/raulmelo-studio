@@ -1,15 +1,14 @@
-import image from '@astrojs/image';
 import partytown from '@astrojs/partytown';
 import prefetch from '@astrojs/prefetch';
 import react from '@astrojs/react';
 import svelte from '@astrojs/svelte';
 import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel/serverless';
-import { defineConfig } from 'astro/config';
+import { defineConfig, sharpImageService } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 import { resolve } from 'import-meta-resolve';
-import { loadEnv } from 'vite';
 import million from 'million/compiler';
+import { loadEnv } from 'vite';
 
 const { VERCEL_ENV, VERCEL_URL } = loadEnv(
   import.meta.env.MODE,
@@ -26,6 +25,12 @@ const vscodeOnigurumaPath = new URL(
 const config = {
   site: `http://localhost:3000`,
   output: `server`,
+  experimental: {
+    assets: true,
+  },
+  image: {
+    service: sharpImageService(),
+  },
   redirects: {
     '/uses': '/en/blog/uses',
     '/pt/uses': '/pt/blog/uses',
@@ -35,9 +40,6 @@ const config = {
     partytown(),
     tailwind(),
     react(),
-    image({
-      serviceEntryPoint: `@astrojs/image/sharp`,
-    }),
     robotsTxt({
       policy: [
         {
