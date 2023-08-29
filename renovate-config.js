@@ -49,14 +49,6 @@ module.exports = {
       ],
       groupName: 'Astro',
     },
-    /**
-     * TODO: remove when the problem is fixed
-     * @see https://github.com/withastro/astro/issues/7517
-     */
-    {
-      matchPackageNames: ['@astrojs/image'],
-      allowedVersions: ['<0.17'],
-    },
     {
       matchPackagePrefixes: ['@sanity'],
       matchPackageNames: ['sanity'],
