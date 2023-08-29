@@ -1,11 +1,10 @@
-import image from '@astrojs/image';
 import partytown from '@astrojs/partytown';
 import prefetch from '@astrojs/prefetch';
 import react from '@astrojs/react';
 import svelte from '@astrojs/svelte';
 import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel/serverless';
-import { defineConfig } from 'astro/config';
+import { defineConfig, sharpImageService } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 import { resolve } from 'import-meta-resolve';
 import million from 'million/compiler';
@@ -17,27 +16,38 @@ const { VERCEL_ENV, VERCEL_URL } = loadEnv(
   ``,
 );
 
+const assetsDomains: string[] = [
+  `res.cloudinary.com`,
+  `miro.medium.com`,
+  `media.giphy.com`,
+  `cdn.sanity.io`,
+  `sanity.io`,
+];
+
 const vscodeOnigurumaPath = new URL(
   `onig.wasm`,
   resolve(`vscode-oniguruma`, import.meta.url),
 ).pathname;
 
-/** @type {import('astro').AstroUserConfig} */
-const config = {
-  site: `http://localhost:3000`,
+const config = defineConfig({
+  experimental: {
+    assets: true,
+  },
+  site: getWebsiteUrl(),
   output: `server`,
   redirects: {
     '/uses': '/en/blog/uses',
     '/pt/uses': '/pt/blog/uses',
     '/en/uses': '/en/blog/uses',
   },
+  image: {
+    domains: assetsDomains,
+    service: sharpImageService(),
+  },
   integrations: [
     partytown(),
     tailwind(),
     react(),
-    image({
-      serviceEntryPoint: `@astrojs/image/sharp`,
-    }),
     robotsTxt({
       policy: [
         {
@@ -53,6 +63,11 @@ const config = {
   adapter: vercel({
     analytics: true,
     includeFiles: [vscodeOnigurumaPath],
+    imageService: true,
+    imagesConfig: {
+      domains: assetsDomains,
+      sizes: [320, 640, 768, 1024, 1280],
+    },
   }),
   vite: {
     plugins: [million.vite({ mode: 'react', server: true, auto: true })],
@@ -60,12 +75,16 @@ const config = {
       external: [`@raulmelo/core`, `@raulmelo/code-highlight`],
     },
   },
-};
+});
 
-if (VERCEL_ENV === `production`) {
-  config.site = `https://www.raulmelo.me`;
-} else if (VERCEL_URL) {
-  config.site = `https://${VERCEL_URL}`;
+function getWebsiteUrl() {
+  if (VERCEL_ENV === `production`) {
+    return `https://www.raulmelo.me`;
+  } else if (VERCEL_URL) {
+    return `https://${VERCEL_URL}`;
+  } else {
+    return `http://localhost:3000`;
+  }
 }
 
-export default defineConfig(config);
+export default config;
