@@ -624,8 +624,8 @@ importers:
         version: 3.21.4
     devDependencies:
       '@portabletext/types':
-        specifier: 2.0.5
-        version: 2.0.5
+        specifier: 2.0.6
+        version: 2.0.6
       '@raulmelo/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
@@ -1476,6 +1476,20 @@ packages:
       '@codemirror/state': 6.2.1
       '@codemirror/view': 6.16.0
       '@lezer/common': 1.0.3
+    dev: false
+
+  /@codemirror/autocomplete@6.9.0(@codemirror/language@6.8.0)(@codemirror/state@6.2.1)(@codemirror/view@6.16.0)(@lezer/common@1.0.4):
+    resolution: {integrity: sha512-Fbwm0V/Wn3BkEJZRhr0hi5BhCo5a7eBL6LYaliPjOSwCyfOpnjXY59HruSxOUNV+1OYer0Tgx1zRNQttjXyDog==}
+    peerDependencies:
+      '@codemirror/language': ^6.0.0
+      '@codemirror/state': ^6.0.0
+      '@codemirror/view': ^6.0.0
+      '@lezer/common': ^1.0.0
+    dependencies:
+      '@codemirror/language': 6.8.0
+      '@codemirror/state': 6.2.1
+      '@codemirror/view': 6.16.0
+      '@lezer/common': 1.0.4
     dev: false
 
   /@codemirror/autocomplete@6.9.0(@codemirror/language@6.9.0)(@codemirror/state@6.2.1)(@codemirror/view@6.17.0)(@lezer/common@1.0.4):
@@ -2631,15 +2645,9 @@ packages:
       '@portabletext/types': 2.0.6
     dev: false
 
-  /@portabletext/types@2.0.5:
-    resolution: {integrity: sha512-AceKp/Y6UIzvUe/T675oPKlO2Dnt1BVIiUpwhcplPzLeYqaYaWYvb7ricVyWj7j0rukYRgBRQdrTBvgo9E1D+g==}
-    engines: {node: ^14.13.1 || >=16.0.0 || >=18.0.0}
-    dev: true
-
   /@portabletext/types@2.0.6:
     resolution: {integrity: sha512-6iqorcsQ0Z1/4Y7PWLvoknyiUv0DngSPao+q5UIE0+0gT2cZwFdItUyLZRheG85AisSEvacHEEnvN+TT8mxXVg==}
     engines: {node: ^14.13.1 || >=16.0.0 || >=18.0.0}
-    dev: false
 
   /@reduxjs/toolkit@1.9.2(react-redux@7.2.9)(react@18.2.0):
     resolution: {integrity: sha512-5ZAZ7hwAKWSii5T6NTPmgIBUqyVdlDs+6JjThz6J6dmHLDm6zCzv2OjHIFAi3Vvs1qjmXU0bm6eBojukYXjVMQ==}
@@ -3153,7 +3161,7 @@ packages:
       react: ^18
       styled-components: ^5.2
     dependencies:
-      '@codemirror/autocomplete': 6.9.0(@codemirror/language@6.9.0)(@codemirror/state@6.2.1)(@codemirror/view@6.17.0)(@lezer/common@1.0.4)
+      '@codemirror/autocomplete': 6.9.0(@codemirror/language@6.8.0)(@codemirror/state@6.2.1)(@codemirror/view@6.16.0)(@lezer/common@1.0.4)
       '@codemirror/commands': 6.2.4
       '@codemirror/lang-javascript': 6.1.9
       '@codemirror/language': 6.8.0
@@ -3996,7 +4004,7 @@ packages:
       '@codemirror/state': '>=6.0.0'
       '@codemirror/view': '>=6.0.0'
     dependencies:
-      '@codemirror/autocomplete': 6.9.0(@codemirror/language@6.9.0)(@codemirror/state@6.2.1)(@codemirror/view@6.17.0)(@lezer/common@1.0.4)
+      '@codemirror/autocomplete': 6.9.0(@codemirror/language@6.8.0)(@codemirror/state@6.2.1)(@codemirror/view@6.16.0)(@lezer/common@1.0.4)
       '@codemirror/commands': 6.2.4
       '@codemirror/language': 6.8.0
       '@codemirror/lint': 6.4.1
