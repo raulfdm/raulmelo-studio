@@ -16,6 +16,14 @@ const { VERCEL_ENV, VERCEL_URL } = loadEnv(
   ``,
 );
 
+const assetsDomains: string[] = [
+  `res.cloudinary.com`,
+  `miro.medium.com`,
+  `media.giphy.com`,
+  `cdn.sanity.io`,
+  `sanity.io`,
+];
+
 const vscodeOnigurumaPath = new URL(
   `onig.wasm`,
   resolve(`vscode-oniguruma`, import.meta.url),
@@ -33,13 +41,7 @@ const config = defineConfig({
     '/en/uses': '/en/blog/uses',
   },
   image: {
-    domains: [
-      `res.cloudinary.com`,
-      `miro.medium.com`,
-      `media.giphy.com`,
-      `cdn.sanity.io`,
-      `sanity.io`,
-    ],
+    domains: assetsDomains,
     service: sharpImageService(),
   },
   integrations: [
@@ -63,13 +65,7 @@ const config = defineConfig({
     includeFiles: [vscodeOnigurumaPath],
     imageService: true,
     imagesConfig: {
-      domains: [
-        `res.cloudinary.com`,
-        `miro.medium.com`,
-        `media.giphy.com`,
-        `cdn.sanity.io`,
-        `sanity.io`,
-      ],
+      domains: assetsDomains,
       sizes: [320, 640, 768, 1024, 1280],
     },
   }),
