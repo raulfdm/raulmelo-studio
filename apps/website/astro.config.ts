@@ -23,7 +23,10 @@ const vscodeOnigurumaPath = new URL(
 ).pathname;
 
 const config = defineConfig({
-  site: `http://localhost:3000`,
+  experimental: {
+    assets: true,
+  },
+  site: getWebsiteUrl(),
   output: `server`,
   redirects: {
     '/uses': '/en/blog/uses',
@@ -53,6 +56,16 @@ const config = defineConfig({
     analytics: true,
     includeFiles: [vscodeOnigurumaPath],
     imageService: true,
+    imagesConfig: {
+      domains: [
+        `res.cloudinary.com`,
+        `miro.medium.com`,
+        `media.giphy.com`,
+        `cdn.sanity.io`,
+        `sanity.io`,
+      ],
+      sizes: [320, 640, 768, 1024, 1280],
+    },
   }),
   vite: {
     plugins: [million.vite({ mode: 'react', server: true, auto: true })],
@@ -62,10 +75,14 @@ const config = defineConfig({
   },
 });
 
-if (VERCEL_ENV === `production`) {
-  config.site = `https://www.raulmelo.me`;
-} else if (VERCEL_URL) {
-  config.site = `https://${VERCEL_URL}`;
+function getWebsiteUrl() {
+  if (VERCEL_ENV === `production`) {
+    return `https://www.raulmelo.me`;
+  } else if (VERCEL_URL) {
+    return `https://${VERCEL_URL}`;
+  } else {
+    return `http://localhost:3000`;
+  }
 }
 
 export default config;
