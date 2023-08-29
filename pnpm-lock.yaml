@@ -48,8 +48,8 @@ importers:
         specifier: 3.15.1
         version: 3.15.1(@babel/runtime@7.22.11)(@codemirror/lint@6.4.1)(@codemirror/state@6.2.1)(@codemirror/theme-one-dark@6.1.2)(@lezer/common@1.0.4)(codemirror@6.0.1)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@5.3.11)
       '@tabler/icons-svelte':
-        specifier: 2.30.0
-        version: 2.30.0(svelte@4.2.0)
+        specifier: 2.32.0
+        version: 2.32.0(svelte@4.2.0)
       '@xstate/cli':
         specifier: 0.5.2
         version: 0.5.2
@@ -257,8 +257,8 @@ importers:
         specifier: 1.10.0
         version: 1.10.0(svelte@4.2.0)
       '@tabler/icons-svelte':
-        specifier: 2.30.0
-        version: 2.30.0(svelte@4.2.0)
+        specifier: 2.32.0
+        version: 2.32.0(svelte@4.2.0)
       '@tailwindcss/forms':
         specifier: 0.5.4
         version: 0.5.4(tailwindcss@3.3.3)
@@ -712,8 +712,8 @@ importers:
   packages/sanity-core:
     dependencies:
       '@tabler/icons-react':
-        specifier: 2.30.0
-        version: 2.30.0(react@18.2.0)
+        specifier: 2.32.0
+        version: 2.32.0(react@18.2.0)
     devDependencies:
       '@types/react':
         specifier: 18.2.20
@@ -1476,6 +1476,20 @@ packages:
       '@codemirror/state': 6.2.1
       '@codemirror/view': 6.16.0
       '@lezer/common': 1.0.3
+    dev: false
+
+  /@codemirror/autocomplete@6.9.0(@codemirror/language@6.8.0)(@codemirror/state@6.2.1)(@codemirror/view@6.16.0)(@lezer/common@1.0.4):
+    resolution: {integrity: sha512-Fbwm0V/Wn3BkEJZRhr0hi5BhCo5a7eBL6LYaliPjOSwCyfOpnjXY59HruSxOUNV+1OYer0Tgx1zRNQttjXyDog==}
+    peerDependencies:
+      '@codemirror/language': ^6.0.0
+      '@codemirror/state': ^6.0.0
+      '@codemirror/view': ^6.0.0
+      '@lezer/common': ^1.0.0
+    dependencies:
+      '@codemirror/language': 6.8.0
+      '@codemirror/state': 6.2.1
+      '@codemirror/view': 6.16.0
+      '@lezer/common': 1.0.4
     dev: false
 
   /@codemirror/autocomplete@6.9.0(@codemirror/language@6.9.0)(@codemirror/state@6.2.1)(@codemirror/view@6.17.0)(@lezer/common@1.0.4):
@@ -3153,7 +3167,7 @@ packages:
       react: ^18
       styled-components: ^5.2
     dependencies:
-      '@codemirror/autocomplete': 6.9.0(@codemirror/language@6.9.0)(@codemirror/state@6.2.1)(@codemirror/view@6.17.0)(@lezer/common@1.0.4)
+      '@codemirror/autocomplete': 6.9.0(@codemirror/language@6.8.0)(@codemirror/state@6.2.1)(@codemirror/view@6.16.0)(@lezer/common@1.0.4)
       '@codemirror/commands': 6.2.4
       '@codemirror/lang-javascript': 6.1.9
       '@codemirror/language': 6.8.0
@@ -3317,16 +3331,6 @@ packages:
       defer-to-connect: 2.0.1
     dev: false
 
-  /@tabler/icons-react@2.30.0(react@18.2.0):
-    resolution: {integrity: sha512-aYggXusHW133L4KujJkVf4GIIrjg7tIRHgNf/n37mnoHqMjwNP+PjmVdrBM1Z8Ywx9PKFRlrwM0eUMDcG+I4HA==}
-    peerDependencies:
-      react: ^16.5.1 || ^17.0.0 || ^18.0.0
-    dependencies:
-      '@tabler/icons': 2.30.0
-      prop-types: 15.8.1
-      react: 18.2.0
-    dev: false
-
   /@tabler/icons-react@2.32.0(react@18.2.0):
     resolution: {integrity: sha512-B6op3r/up+QRiB3CQOo8wqF5FNv+hG8dEWmBnO1v5KRjubGKLFRpBldQ6rjqfsdg/QW+jvcZQ5OMEEcA0tOPIA==}
     peerDependencies:
@@ -3337,15 +3341,6 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@tabler/icons-svelte@2.30.0(svelte@4.2.0):
-    resolution: {integrity: sha512-JugP1BpvVCxkSuIFQmOwB+FfVI8KLi0i6MxdclloI4xNUXU0JPlFkuNxy+j7iJUqUsUxPUspFWxzfbnAoL5JXw==}
-    peerDependencies:
-      svelte: '>=3 <5'
-    dependencies:
-      '@tabler/icons': 2.30.0
-      svelte: 4.2.0
-    dev: false
-
   /@tabler/icons-svelte@2.32.0(svelte@4.2.0):
     resolution: {integrity: sha512-hqJnogb6uRuVdq6iVgaItR2+VRixtGgPHiLh/TSx7R1Uljz8VwL+CLibaAJkg53KZBhlTrq3nqpUvoAPJBJhPw==}
     peerDependencies:
@@ -3353,10 +3348,6 @@ packages:
     dependencies:
       '@tabler/icons': 2.32.0
       svelte: 4.2.0
-    dev: false
-
-  /@tabler/icons@2.30.0:
-    resolution: {integrity: sha512-tvtmkI4ALjKThVVORh++sB9JnkFY7eGInKxNy+Df7WVQiF7T85tlvGADzlgX4Ic+CK5MIUzZ0jhOlQ/RRlgXpg==}
     dev: false
 
   /@tabler/icons@2.32.0:
@@ -3996,7 +3987,7 @@ packages:
       '@codemirror/state': '>=6.0.0'
       '@codemirror/view': '>=6.0.0'
     dependencies:
-      '@codemirror/autocomplete': 6.9.0(@codemirror/language@6.9.0)(@codemirror/state@6.2.1)(@codemirror/view@6.17.0)(@lezer/common@1.0.4)
+      '@codemirror/autocomplete': 6.9.0(@codemirror/language@6.8.0)(@codemirror/state@6.2.1)(@codemirror/view@6.16.0)(@lezer/common@1.0.4)
       '@codemirror/commands': 6.2.4
       '@codemirror/language': 6.8.0
       '@codemirror/lint': 6.4.1
