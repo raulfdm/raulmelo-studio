@@ -52,6 +52,7 @@ const config = defineConfig({
   adapter: vercel({
     analytics: true,
     includeFiles: [vscodeOnigurumaPath],
+    imageService: true,
   }),
   vite: {
     plugins: [million.vite({ mode: 'react', server: true, auto: true })],
