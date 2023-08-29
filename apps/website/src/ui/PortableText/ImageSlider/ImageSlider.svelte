@@ -1,15 +1,13 @@
 <script lang="ts">
+  import type { GetImageResult } from 'astro';
   import { isEmpty, isNil } from '@raulmelo/core/utils';
 
-  export let images: {
+  export let images: ({
     id: string;
     index: number;
-    alt: string;
     caption: string;
-    height: number;
-    width: number;
-    src: string;
-  }[] = [];
+    alt: string;
+  } & GetImageResult)[] = [];
 
   let activeIndex = 1;
 
@@ -18,10 +16,10 @@
 
 {#if !isImageEmpty}
   <div class="w-full carousel">
-    {#each images as { id, caption, alt, src, width, height }}
+    {#each images as { id, caption, src, alt, attributes }}
       <div {id} class="relative w-full carousel-item">
         <figure>
-          <img {src} {alt} {width} {height} />
+          <img {src} {alt} {...attributes} />
           {#if caption}
             <figcaption class="text-center" data-testid="caption">
               {caption || alt}

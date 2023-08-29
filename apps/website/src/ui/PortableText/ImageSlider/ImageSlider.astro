@@ -1,5 +1,5 @@
 ---
-import { getImage } from '@astrojs/image';
+import { getImage } from 'astro:assets';
 import { imgUrlFor } from '@raulmelo/core/utils';
 
 import { sanityClient } from '@/infrastructure/sanity/client';
@@ -37,17 +37,18 @@ const adaptedImages = await Promise.all(
     const { height, width, url } = imgUrlFor(sanityClient, image);
     const imgIndex = index + 1;
 
-    const optimizedImg = (await getImage({
+    const optimizedImg = await getImage({
       src: url,
       width,
       height,
       alt: caption || alt,
-    })) as { width: number; height: number; alt: string; src: string };
+    });
 
     return {
       id: `${id.current}_${imgIndex}`,
       index: imgIndex,
       caption,
+      alt: caption || alt,
       ...optimizedImg,
     };
   }),

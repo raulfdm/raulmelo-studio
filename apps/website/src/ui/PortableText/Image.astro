@@ -1,5 +1,5 @@
 ---
-import { Picture } from '@astrojs/image/components';
+import { Image as AstroImage } from 'astro:assets';
 import { imgUrlFor } from '@raulmelo/core/utils';
 
 import { sanityClient } from '@/infrastructure/sanity/client';
@@ -62,14 +62,11 @@ function calculateCustomHeight(
     />
   ) : (
     <figure>
-      <Picture
+      <AstroImage
         class={mergeClasses(`object-cover mx-auto rounded-md`, {
           'mb-0': Boolean(caption),
         })}
         src={url}
-        aspectRatio={aspectRatio}
-        widths={widths}
-        sizes={`(max-width: ${highestWidth}px) 100vw, ${finalWidth}px`}
         alt={alt ?? caption}
         width={finalWidth}
         height={finalHeight}
