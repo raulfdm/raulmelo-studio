@@ -22,8 +22,7 @@ const vscodeOnigurumaPath = new URL(
   resolve(`vscode-oniguruma`, import.meta.url),
 ).pathname;
 
-/** @type {import('astro').AstroUserConfig} */
-const config = {
+const config = defineConfig({
   site: `http://localhost:3000`,
   output: `server`,
   redirects: {
@@ -60,7 +59,7 @@ const config = {
       external: [`@raulmelo/core`, `@raulmelo/code-highlight`],
     },
   },
-};
+});
 
 if (VERCEL_ENV === `production`) {
   config.site = `https://www.raulmelo.me`;
@@ -68,4 +67,4 @@ if (VERCEL_ENV === `production`) {
   config.site = `https://${VERCEL_URL}`;
 }
 
-export default defineConfig(config);
+export default config;
