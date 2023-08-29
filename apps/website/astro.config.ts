@@ -1,11 +1,10 @@
-import image from '@astrojs/image';
 import partytown from '@astrojs/partytown';
 import prefetch from '@astrojs/prefetch';
 import react from '@astrojs/react';
 import svelte from '@astrojs/svelte';
 import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel/serverless';
-import { defineConfig } from 'astro/config';
+import { defineConfig, sharpImageService } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 import { resolve } from 'import-meta-resolve';
 import million from 'million/compiler';
@@ -33,13 +32,20 @@ const config = defineConfig({
     '/pt/uses': '/pt/blog/uses',
     '/en/uses': '/en/blog/uses',
   },
+  image: {
+    domains: [
+      `res.cloudinary.com`,
+      `miro.medium.com`,
+      `media.giphy.com`,
+      `cdn.sanity.io`,
+      `sanity.io`,
+    ],
+    service: sharpImageService(),
+  },
   integrations: [
     partytown(),
     tailwind(),
     react(),
-    image({
-      serviceEntryPoint: `@astrojs/image/sharp`,
-    }),
     robotsTxt({
       policy: [
         {

@@ -1,4 +1,4 @@
-/// <reference types="@astrojs/image/client" />
+/// <reference types="astro/client-image" />
 
 declare global {
   export type Theme = `light` | `dark` | `system`;
