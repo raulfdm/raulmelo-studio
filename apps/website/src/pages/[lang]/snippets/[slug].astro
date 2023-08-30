@@ -71,8 +71,8 @@ const snippet = await queryCodeSnippetsBySlug({ client: sanityClient, slug });
           <CodeBlock
             node={{
               code: s.code,
-              filename: s.fileName,
-              highlightedLines: s.highlightedLines,
+              filename: s.fileName ?? null,
+              highlightedLines: s.highlightedLines ?? null,
               language: s.language,
               showLineNumbers: s.showLineNumbers,
             }}
