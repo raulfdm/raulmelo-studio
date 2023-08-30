@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "prepare": "pnpm turbo run typegen --filter website --output-logs errors-only",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",

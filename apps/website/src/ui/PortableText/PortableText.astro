@@ -1,6 +1,9 @@
 ---
 import { PortableText as OriginalPortableText } from 'astro-portabletext';
-import type { PortableTextProps } from 'astro-portabletext/types';
+import type {
+  PortableTextProps,
+  SomePortableTextComponents,
+} from 'astro-portabletext/types';
 
 import BigQuote from './BigQuote.astro';
 import { Callout } from './Callout';
@@ -52,7 +55,7 @@ const components = {
     h6: HeadingWithLink,
     bigQuote: BigQuote,
   },
-} as PortableTextProps[`components`];
+} as unknown as SomePortableTextComponents;
 
 const portableTextProps = {
   value: value,
