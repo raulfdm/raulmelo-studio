@@ -7,7 +7,7 @@ import vercel from '@astrojs/vercel/serverless';
 import { defineConfig, sharpImageService } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 import { resolve } from 'import-meta-resolve';
-// import million from 'million/compiler';
+import million from 'million/compiler';
 import { loadEnv } from 'vite';
 
 const { VERCEL_ENV, VERCEL_URL } = loadEnv(
@@ -74,7 +74,9 @@ const config = defineConfig({
     /**
      * TODO: got broken after migrating to v3
      */
-    // plugins: [million.vite({ mode: 'react', server: true, auto: true })],
+    plugins: [
+      million.vite({ mode: 'react', server: true, auto: true, mute: true }),
+    ],
     ssr: {
       external: [`@raulmelo/core`, `@raulmelo/code-highlight`],
     },
