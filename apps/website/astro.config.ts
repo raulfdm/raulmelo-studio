@@ -30,9 +30,6 @@ const vscodeOnigurumaPath = new URL(
 ).pathname;
 
 const config = defineConfig({
-  experimental: {
-    assets: true,
-  },
   site: getWebsiteUrl(),
   output: `server`,
   redirects: {
@@ -61,6 +58,7 @@ const config = defineConfig({
     svelte(),
   ],
   adapter: vercel({
+    functionPerRoute: true,
     analytics: true,
     includeFiles: [vscodeOnigurumaPath],
     imageService: true,
