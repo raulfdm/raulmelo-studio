@@ -4,6 +4,12 @@ declare global {
   export type Theme = `light` | `dark` | `system`;
 }
 
+declare namespace App {
+  interface Locals {
+    themeHint: Theme;
+  }
+}
+
 interface Window {
   __theme: Theme;
   __handleLightTheme: () => void;
@@ -11,13 +17,3 @@ interface Window {
   __handleSystemTheme: () => void;
   __switchTheme: (nextTheme: Theme) => void;
 }
-
-declare module 'astro' {
-  declare namespace App {
-    export interface Locals {
-      themeHint: Theme;
-    }
-  }
-}
-
-export {};

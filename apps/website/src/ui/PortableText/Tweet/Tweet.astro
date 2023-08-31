@@ -1,5 +1,5 @@
 ---
-import Tweet from './Tweet.svelte';
+import TweetComponent from './Tweet.svelte';
 
 type Props = {
   node: {
@@ -15,4 +15,4 @@ by an observer already. Once it enters the viewport, it will
 load the tweet. So we don't need to add a second layer of
 observability.
 -->
-<Tweet client:load tweetId={tweetId} />
+<TweetComponent client:load tweetId={tweetId} />
