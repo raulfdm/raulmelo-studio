@@ -7,7 +7,7 @@ import vercel from '@astrojs/vercel/serverless';
 import { defineConfig, sharpImageService } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 import { resolve } from 'import-meta-resolve';
-import million from 'million/compiler';
+// import million from 'million/compiler';
 import { loadEnv } from 'vite';
 
 const { VERCEL_ENV, VERCEL_URL } = loadEnv(
@@ -33,9 +33,12 @@ const config = defineConfig({
   site: getWebsiteUrl(),
   output: `server`,
   redirects: {
-    '/uses': '/en/blog/uses',
-    '/pt/uses': '/pt/blog/uses',
-    '/en/uses': '/en/blog/uses',
+    /**
+     * TODO: got broken after migrating to v3
+     */
+    // '/uses': '/en/blog/uses',
+    // '/pt/uses': '/pt/blog/uses',
+    // '/en/uses': '/en/blog/uses',
   },
   image: {
     domains: assetsDomains,
@@ -68,7 +71,10 @@ const config = defineConfig({
     },
   }),
   vite: {
-    plugins: [million.vite({ mode: 'react', server: true, auto: true })],
+    /**
+     * TODO: got broken after migrating to v3
+     */
+    // plugins: [million.vite({ mode: 'react', server: true, auto: true })],
     ssr: {
       external: [`@raulmelo/core`, `@raulmelo/code-highlight`],
     },
