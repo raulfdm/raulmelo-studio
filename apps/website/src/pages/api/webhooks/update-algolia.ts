@@ -11,7 +11,7 @@ const algoliaClient = algolia(
   serverEnv.ALGOLIA_ADMIN_KEY,
 );
 
-export const post: APIRoute = async function post({ request }) {
+export const POST: APIRoute = async function POST({ request }) {
   try {
     const authorization = request.headers.get(`authorization`);
 
