@@ -9,7 +9,7 @@ import robotsTxt from 'astro-robots-txt';
 import { resolve } from 'import-meta-resolve';
 import { loadEnv } from 'vite';
 
-const { VERCEL_ENV, VERCEL_URL } = loadEnv(
+const { VERCEL_ENV, VERCEL_URL, ...rest } = loadEnv(
   import.meta.env.MODE,
   process.cwd(),
   ``,
@@ -79,7 +79,7 @@ function getWebsiteUrl() {
   } else if (VERCEL_URL) {
     return `https://${VERCEL_URL}`;
   } else {
-    return `http://localhost:3000`;
+    return `http://localhost:4321`;
   }
 }
 
