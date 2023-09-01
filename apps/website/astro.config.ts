@@ -9,7 +9,7 @@ import robotsTxt from 'astro-robots-txt';
 import { resolve } from 'import-meta-resolve';
 import { loadEnv } from 'vite';
 
-const { VERCEL_ENV, VERCEL_URL, ...rest } = loadEnv(
+const { VERCEL_ENV, VERCEL_URL } = loadEnv(
   import.meta.env.MODE,
   process.cwd(),
   ``,
