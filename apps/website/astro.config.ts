@@ -32,12 +32,9 @@ const config = defineConfig({
   site: getWebsiteUrl(),
   output: `server`,
   redirects: {
-    /**
-     * TODO: got broken after migrating to v3
-     */
-    // '/uses': '/en/blog/uses',
-    // '/pt/uses': '/pt/blog/uses',
-    // '/en/uses': '/en/blog/uses',
+    '/uses': '/en/blog/uses',
+    '/pt/uses': '/pt/blog/uses',
+    '/en/uses': '/en/blog/uses',
   },
   image: {
     domains: assetsDomains,
