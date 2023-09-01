@@ -57,7 +57,7 @@ const config = defineConfig({
     svelte(),
   ],
   adapter: vercel({
-    functionPerRoute: true,
+    functionPerRoute: false,
     analytics: true,
     includeFiles: [vscodeOnigurumaPath],
     imageService: true,
