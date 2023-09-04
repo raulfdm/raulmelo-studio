@@ -343,13 +343,13 @@ importers:
         version: 3.0.0
       '@astrojs/svelte':
         specifier: 4.0.0
-        version: 4.0.0(astro@0.0.0-fix-mime-20230904023307)(svelte@4.2.0)(typescript@5.2.2)(vite@4.4.9)
+        version: 4.0.0(astro@3.0.8)(svelte@4.2.0)(typescript@5.2.2)(vite@4.4.9)
       '@astrojs/tailwind':
         specifier: 5.0.0
-        version: 5.0.0(astro@0.0.0-fix-mime-20230904023307)(tailwindcss@3.3.3)
+        version: 5.0.0(astro@3.0.8)(tailwindcss@3.3.3)
       '@astrojs/vercel':
-        specifier: 4.0.2
-        version: 4.0.2(astro@0.0.0-fix-mime-20230904023307)
+        specifier: 4.0.3
+        version: 4.0.3(astro@3.0.8)
       '@fontsource/fira-code':
         specifier: 5.0.8
         version: 5.0.8
@@ -382,7 +382,7 @@ importers:
         version: 6.4.9
       '@sanity/document-internationalization':
         specifier: 2.0.1
-        version: 2.0.1(@babel/core@7.22.11)(@sanity/ui@1.8.1)(react-dom@18.2.0)(react-fast-compare@3.2.2)(react-is@18.2.0)(react@18.2.0)(rxjs@7.8.1)(sanity@3.15.1)(styled-components@5.3.11)
+        version: 2.0.1(@babel/core@7.22.11)(@sanity/ui@1.8.2)(react-dom@18.2.0)(react-fast-compare@3.2.2)(react-is@18.2.0)(react@18.2.0)(rxjs@7.8.1)(sanity@3.15.1)(styled-components@5.3.11)
       '@sanity/vision':
         specifier: 3.15.1
         version: 3.15.1(@babel/runtime@7.22.11)(@codemirror/lint@6.4.1)(@codemirror/state@6.2.1)(@codemirror/theme-one-dark@6.1.2)(@lezer/common@1.0.4)(codemirror@6.0.1)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@5.3.11)
@@ -408,8 +408,8 @@ importers:
         specifier: 4.19.1
         version: 4.19.1
       astro:
-        specifier: 0.0.0-fix-mime-20230904023307
-        version: 0.0.0-fix-mime-20230904023307
+        specifier: 3.0.8
+        version: 3.0.8
       astro-portabletext:
         specifier: 0.9.4
         version: 0.9.4
@@ -949,13 +949,13 @@ packages:
       - typescript
     dev: true
 
-  /@astrojs/markdown-remark@3.0.0(astro@0.0.0-fix-mime-20230904023307):
+  /@astrojs/markdown-remark@3.0.0(astro@3.0.8):
     resolution: {integrity: sha512-s8I49Je4++ImgYAgwL32HgN8m6we2qz3RtBpN4AjObMODPwDylmzUHZksD8Toy31q/P59ED3MuwphqOGm9l03w==}
     peerDependencies:
       astro: ^3.0.0
     dependencies:
       '@astrojs/prism': 3.0.0
-      astro: 0.0.0-fix-mime-20230904023307
+      astro: 3.0.8
       github-slugger: 2.0.0
       import-meta-resolve: 3.0.0
       rehype-raw: 6.1.1
@@ -1020,7 +1020,7 @@ packages:
       kleur: 4.1.5
     dev: false
 
-  /@astrojs/svelte@4.0.0(astro@0.0.0-fix-mime-20230904023307)(svelte@4.2.0)(typescript@5.2.2)(vite@4.4.9):
+  /@astrojs/svelte@4.0.0(astro@3.0.8)(svelte@4.2.0)(typescript@5.2.2)(vite@4.4.9):
     resolution: {integrity: sha512-HTn6p2U8GnbiDFxfyaUUCPLGW1P/RAEC0jeg4Zk0IGQd1szSvHwuZst99/k8oRoIytH5eLWSRuiYMI4j5vdA6w==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -1028,7 +1028,7 @@ packages:
       svelte: ^3.55.0 || ^4.0.0
     dependencies:
       '@sveltejs/vite-plugin-svelte': 2.4.5(svelte@4.2.0)(vite@4.4.9)
-      astro: 0.0.0-fix-mime-20230904023307
+      astro: 3.0.8
       svelte: 4.2.0
       svelte2tsx: 0.6.21(svelte@4.2.0)(typescript@5.2.2)
     transitivePeerDependencies:
@@ -1037,13 +1037,13 @@ packages:
       - vite
     dev: false
 
-  /@astrojs/tailwind@5.0.0(astro@0.0.0-fix-mime-20230904023307)(tailwindcss@3.3.3):
+  /@astrojs/tailwind@5.0.0(astro@3.0.8)(tailwindcss@3.3.3):
     resolution: {integrity: sha512-bMZZNNm/SW+ijUKMQDhdiuNWDdR3CubEKUHb2Ran4Arx1ikWn/kKIkFDXUV+MUnsLa7s19x9VMRlARRyKbqMkQ==}
     peerDependencies:
       astro: ^3.0.0
       tailwindcss: ^3.0.24
     dependencies:
-      astro: 0.0.0-fix-mime-20230904023307
+      astro: 3.0.8
       autoprefixer: 10.4.15(postcss@8.4.29)
       postcss: 8.4.29
       postcss-load-config: 4.0.1(postcss@8.4.29)
@@ -1078,15 +1078,15 @@ packages:
       vscode-languageserver-textdocument: 1.0.8
     dev: true
 
-  /@astrojs/vercel@4.0.2(astro@0.0.0-fix-mime-20230904023307):
-    resolution: {integrity: sha512-zt+NQlLXoJLr90kCpnc/HdpT0k1T6lodA/eGXSn+ZMuZFBqrmsrGqpQtK8Sn4r4RvkOhltG7XThDAT88dQtIEg==}
+  /@astrojs/vercel@4.0.3(astro@3.0.8):
+    resolution: {integrity: sha512-sK+y3RZ0g277fhnC/zZ8QS7OMZQx2y43fHYpgW5ERhrw8+RLOBSEi9AmUlCQYymHvqpJ7RYwUwEym6inAGhlEg==}
     peerDependencies:
-      astro: ^3.0.5
+      astro: ^3.0.6
     dependencies:
       '@astrojs/internal-helpers': 0.2.0
       '@vercel/analytics': 1.0.2
       '@vercel/nft': 0.23.1
-      astro: 0.0.0-fix-mime-20230904023307
+      astro: 3.0.8
       esbuild: 0.19.2
       fast-glob: 3.3.1
       set-cookie-parser: 2.6.0
@@ -2731,7 +2731,7 @@ packages:
     dependencies:
       diff-match-patch: 1.0.5
 
-  /@sanity/document-internationalization@2.0.1(@babel/core@7.22.11)(@sanity/ui@1.8.1)(react-dom@18.2.0)(react-fast-compare@3.2.2)(react-is@18.2.0)(react@18.2.0)(rxjs@7.8.1)(sanity@3.15.1)(styled-components@5.3.11):
+  /@sanity/document-internationalization@2.0.1(@babel/core@7.22.11)(@sanity/ui@1.8.2)(react-dom@18.2.0)(react-fast-compare@3.2.2)(react-is@18.2.0)(react@18.2.0)(rxjs@7.8.1)(sanity@3.15.1)(styled-components@5.3.11):
     resolution: {integrity: sha512-pfLx7rfu2rfTn9xRm4hTpKGSK2HwE8oTA91CNfxWrRjvfgF/pgJ2nzTTEbLZ1FfIn/EEQ+MgQwrS2GqbE3uhfw==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -2742,12 +2742,12 @@ packages:
     dependencies:
       '@sanity/icons': 2.4.1(react@18.2.0)
       '@sanity/incompatible-plugin': 1.0.4(react-dom@18.2.0)(react@18.2.0)
-      '@sanity/ui': 1.8.1(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@5.3.11)
+      '@sanity/ui': 1.8.2(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@5.3.11)
       '@sanity/uuid': 3.0.2
       react: 18.2.0
       sanity: 3.15.1(@types/react@18.2.21)(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.11)
-      sanity-plugin-internationalized-array: 1.10.1(@sanity/ui@1.8.1)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.15.1)(styled-components@5.3.11)
-      sanity-plugin-utils: 1.6.2(@babel/core@7.22.11)(@sanity/ui@1.8.1)(react-dom@18.2.0)(react-fast-compare@3.2.2)(react-is@18.2.0)(react@18.2.0)(rxjs@7.8.1)(sanity@3.15.1)
+      sanity-plugin-internationalized-array: 1.10.1(@sanity/ui@1.8.2)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.15.1)(styled-components@5.3.11)
+      sanity-plugin-utils: 1.6.2(@babel/core@7.22.11)(@sanity/ui@1.8.2)(react-dom@18.2.0)(react-fast-compare@3.2.2)(react-is@18.2.0)(react@18.2.0)(rxjs@7.8.1)(sanity@3.15.1)
       styled-components: 5.3.11(@babel/core@7.22.11)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)
     transitivePeerDependencies:
       - '@babel/core'
@@ -3006,8 +3006,8 @@ packages:
       react-refractor: 2.1.7(react@18.2.0)
       styled-components: 5.3.11(@babel/core@7.22.11)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)
 
-  /@sanity/ui@1.8.1(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@5.3.11):
-    resolution: {integrity: sha512-ui20lmSeUTgwrFiybUBnO95HyJMEzdQJbvEoUN25fE0hcRHA0oQDG48281TUcPMDVPLDwSn9JYYpCbrA8/PZoA==}
+  /@sanity/ui@1.8.2(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@5.3.11):
+    resolution: {integrity: sha512-XWtVdIG1PWBEiNPcObRfXsX/EPhiPCHMmfdn+frPIVLTLnoQnNju3W9UQAWec+BwjXBCpPtfc36AoiQSDUkxzw==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       react: ^18
@@ -4494,14 +4494,14 @@ packages:
     resolution: {integrity: sha512-7gq6lhibCM8FuzZIJlbLLWP5EJ9KL2/4XqeFrAg9O6ZK2xMFxJ5ubKf+a0VJwwTu8W8Xr421CmpiXu6Hq7n/7Q==}
     dev: false
 
-  /astro@0.0.0-fix-mime-20230904023307:
-    resolution: {integrity: sha512-qwDARXoFXDdbpABVBqf4KSeuxvRtP+SgmWSOzSGK7wVKOhk2oRFLMkH0FtSuD8eHvkTnv3p4TTMqnytUSx/+BQ==}
+  /astro@3.0.8:
+    resolution: {integrity: sha512-behNlLMlT8yWLlVvKKB2ufbSwxiqYUKqw31LSQx+lNQ8/lBvxemyjSBDMlBbGVCWEfg67B2bqWIrCweHSWb01Q==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
       '@astrojs/compiler': 2.0.1
       '@astrojs/internal-helpers': 0.2.0
-      '@astrojs/markdown-remark': 3.0.0(astro@0.0.0-fix-mime-20230904023307)
+      '@astrojs/markdown-remark': 3.0.0(astro@3.0.8)
       '@astrojs/telemetry': 3.0.1
       '@babel/core': 7.22.11
       '@babel/generator': 7.22.10
@@ -6981,7 +6981,7 @@ packages:
     resolution: {integrity: sha512-Nz7FfPBuljzsN3tCQ4kCBKqdNhQE2l0Tn+X1ubgKBPRoiDIu1mL08Cfw4k7q71+Duyaw7DXDN+VTAp4Vh3oCOw==}
     dependencies:
       '@types/hast': 2.3.5
-      '@types/unist': 2.0.7
+      '@types/unist': 2.0.6
       hastscript: 7.2.0
       property-information: 6.2.0
       vfile: 5.3.7
@@ -7060,7 +7060,7 @@ packages:
       '@types/hast': 2.3.5
       comma-separated-tokens: 2.0.3
       hast-util-parse-selector: 3.1.1
-      property-information: 6.2.0
+      property-information: 6.3.0
       space-separated-tokens: 2.0.2
     dev: false
 
@@ -9649,6 +9649,10 @@ packages:
     resolution: {integrity: sha512-kma4U7AFCTwpqq5twzC1YVIDXSqg6qQK6JN0smOw8fgRy1OkMi0CYSzFmsy6dnqSenamAtj0CyXMUJ1Mf6oROg==}
     dev: false
 
+  /property-information@6.3.0:
+    resolution: {integrity: sha512-gVNZ74nqhRMiIUYWGQdosYetaKc83x8oT41a0LlV3AAFCAZwCpg4vmGkq8t34+cUhp3cnM4XDiU/7xlgK7HGrg==}
+    dev: false
+
   /psl@1.9.0:
     resolution: {integrity: sha512-E/ZsdU4HLs/68gYzgGTkMicWTLPdAftJLfJFlLUAAKZGkStNU72sZjT66SnMDVOfOWY/YAoiD7Jxa9iHvngcag==}
 
@@ -10442,7 +10446,7 @@ packages:
       - react-is
     dev: false
 
-  /sanity-plugin-internationalized-array@1.10.1(@sanity/ui@1.8.1)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.15.1)(styled-components@5.3.11):
+  /sanity-plugin-internationalized-array@1.10.1(@sanity/ui@1.8.2)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.15.1)(styled-components@5.3.11):
     resolution: {integrity: sha512-rGf96PdLkj00jC7/UlRVVk7Z9MpN9399bNby0wGm3CLxYYrQjj4A6oZChYHWTwc4RIhBUQqXJXNe9K1xjlVa6Q==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -10454,7 +10458,7 @@ packages:
       '@sanity/icons': 2.4.1(react@18.2.0)
       '@sanity/incompatible-plugin': 1.0.4(react-dom@18.2.0)(react@18.2.0)
       '@sanity/language-filter': 3.2.1(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.15.1)(styled-components@5.3.11)
-      '@sanity/ui': 1.8.1(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@5.3.11)
+      '@sanity/ui': 1.8.2(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@5.3.11)
       fast-deep-equal: 3.1.3
       lodash.get: 4.4.2
       react: 18.2.0
@@ -10553,7 +10557,7 @@ packages:
       - react-native
     dev: false
 
-  /sanity-plugin-utils@1.6.2(@babel/core@7.22.11)(@sanity/ui@1.8.1)(react-dom@18.2.0)(react-fast-compare@3.2.2)(react-is@18.2.0)(react@18.2.0)(rxjs@7.8.1)(sanity@3.15.1):
+  /sanity-plugin-utils@1.6.2(@babel/core@7.22.11)(@sanity/ui@1.8.2)(react-dom@18.2.0)(react-fast-compare@3.2.2)(react-is@18.2.0)(react@18.2.0)(rxjs@7.8.1)(sanity@3.15.1):
     resolution: {integrity: sha512-zn4sKLaLG5ZcibPNB8RfTjU32sear2XIHPxIoIWJCHXO3yD+JEq+/MvkwW7CnfdEcZeXPfb5DEx1CGjIQwO3Iw==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -10565,7 +10569,7 @@ packages:
     dependencies:
       '@sanity/icons': 2.4.1(react@18.2.0)
       '@sanity/incompatible-plugin': 1.0.4(react-dom@18.2.0)(react@18.2.0)
-      '@sanity/ui': 1.8.1(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@5.3.11)
+      '@sanity/ui': 1.8.2(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@5.3.11)
       react: 18.2.0
       react-fast-compare: 3.2.2
       rxjs: 7.8.1
@@ -12050,7 +12054,7 @@ packages:
   /unist-util-position@4.0.4:
     resolution: {integrity: sha512-kUBE91efOWfIVBo8xzh/uZQ7p9ffYRtUbMRZBNFYwf0RK8koUMx6dGUfwylLOKmaT2cs4wSW96QoYUSXAyEtpg==}
     dependencies:
-      '@types/unist': 2.0.7
+      '@types/unist': 2.0.6
     dev: false
 
   /unist-util-stringify-position@3.0.3:
