@@ -343,13 +343,13 @@ importers:
         version: 3.0.0
       '@astrojs/svelte':
         specifier: 4.0.0
-        version: 4.0.0(astro@3.0.5)(svelte@4.2.0)(typescript@5.2.2)(vite@4.4.9)
+        version: 4.0.0(astro@0.0.0-fix-mime-20230904023307)(svelte@4.2.0)(typescript@5.2.2)(vite@4.4.9)
       '@astrojs/tailwind':
         specifier: 5.0.0
-        version: 5.0.0(astro@3.0.5)(tailwindcss@3.3.3)
+        version: 5.0.0(astro@0.0.0-fix-mime-20230904023307)(tailwindcss@3.3.3)
       '@astrojs/vercel':
         specifier: 4.0.2
-        version: 4.0.2(astro@3.0.5)
+        version: 4.0.2(astro@0.0.0-fix-mime-20230904023307)
       '@fontsource/fira-code':
         specifier: 5.0.8
         version: 5.0.8
@@ -408,8 +408,8 @@ importers:
         specifier: 4.19.1
         version: 4.19.1
       astro:
-        specifier: 3.0.5
-        version: 3.0.5
+        specifier: 0.0.0-fix-mime-20230904023307
+        version: 0.0.0-fix-mime-20230904023307
       astro-portabletext:
         specifier: 0.9.4
         version: 0.9.4
@@ -949,13 +949,13 @@ packages:
       - typescript
     dev: true
 
-  /@astrojs/markdown-remark@3.0.0(astro@3.0.5):
+  /@astrojs/markdown-remark@3.0.0(astro@0.0.0-fix-mime-20230904023307):
     resolution: {integrity: sha512-s8I49Je4++ImgYAgwL32HgN8m6we2qz3RtBpN4AjObMODPwDylmzUHZksD8Toy31q/P59ED3MuwphqOGm9l03w==}
     peerDependencies:
       astro: ^3.0.0
     dependencies:
       '@astrojs/prism': 3.0.0
-      astro: 3.0.5
+      astro: 0.0.0-fix-mime-20230904023307
       github-slugger: 2.0.0
       import-meta-resolve: 3.0.0
       rehype-raw: 6.1.1
@@ -1020,7 +1020,7 @@ packages:
       kleur: 4.1.5
     dev: false
 
-  /@astrojs/svelte@4.0.0(astro@3.0.5)(svelte@4.2.0)(typescript@5.2.2)(vite@4.4.9):
+  /@astrojs/svelte@4.0.0(astro@0.0.0-fix-mime-20230904023307)(svelte@4.2.0)(typescript@5.2.2)(vite@4.4.9):
     resolution: {integrity: sha512-HTn6p2U8GnbiDFxfyaUUCPLGW1P/RAEC0jeg4Zk0IGQd1szSvHwuZst99/k8oRoIytH5eLWSRuiYMI4j5vdA6w==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -1028,7 +1028,7 @@ packages:
       svelte: ^3.55.0 || ^4.0.0
     dependencies:
       '@sveltejs/vite-plugin-svelte': 2.4.5(svelte@4.2.0)(vite@4.4.9)
-      astro: 3.0.5
+      astro: 0.0.0-fix-mime-20230904023307
       svelte: 4.2.0
       svelte2tsx: 0.6.21(svelte@4.2.0)(typescript@5.2.2)
     transitivePeerDependencies:
@@ -1037,13 +1037,13 @@ packages:
       - vite
     dev: false
 
-  /@astrojs/tailwind@5.0.0(astro@3.0.5)(tailwindcss@3.3.3):
+  /@astrojs/tailwind@5.0.0(astro@0.0.0-fix-mime-20230904023307)(tailwindcss@3.3.3):
     resolution: {integrity: sha512-bMZZNNm/SW+ijUKMQDhdiuNWDdR3CubEKUHb2Ran4Arx1ikWn/kKIkFDXUV+MUnsLa7s19x9VMRlARRyKbqMkQ==}
     peerDependencies:
       astro: ^3.0.0
       tailwindcss: ^3.0.24
     dependencies:
-      astro: 3.0.5
+      astro: 0.0.0-fix-mime-20230904023307
       autoprefixer: 10.4.15(postcss@8.4.29)
       postcss: 8.4.29
       postcss-load-config: 4.0.1(postcss@8.4.29)
@@ -1052,8 +1052,8 @@ packages:
       - ts-node
     dev: false
 
-  /@astrojs/telemetry@3.0.0:
-    resolution: {integrity: sha512-RhFlEXTiT0gbWX1osMuPS9IWm1SwhQmCZVAdAixrPyZ0xiLlHfw3Nkw3z6IYuzX3hqbx24G4XmkT/akBMBqxPg==}
+  /@astrojs/telemetry@3.0.1:
+    resolution: {integrity: sha512-7zJMuikRDQ0LLLivteu0+y4pqdgznrChFiRrY3qmKlOEkLWD1T3u1a5M970lvpErP7Vgh4P298JBPjv8LTj+sw==}
     engines: {node: '>=18.14.1'}
     dependencies:
       ci-info: 3.8.0
@@ -1078,7 +1078,7 @@ packages:
       vscode-languageserver-textdocument: 1.0.8
     dev: true
 
-  /@astrojs/vercel@4.0.2(astro@3.0.5):
+  /@astrojs/vercel@4.0.2(astro@0.0.0-fix-mime-20230904023307):
     resolution: {integrity: sha512-zt+NQlLXoJLr90kCpnc/HdpT0k1T6lodA/eGXSn+ZMuZFBqrmsrGqpQtK8Sn4r4RvkOhltG7XThDAT88dQtIEg==}
     peerDependencies:
       astro: ^3.0.5
@@ -1086,7 +1086,7 @@ packages:
       '@astrojs/internal-helpers': 0.2.0
       '@vercel/analytics': 1.0.2
       '@vercel/nft': 0.23.1
-      astro: 3.0.5
+      astro: 0.0.0-fix-mime-20230904023307
       esbuild: 0.19.2
       fast-glob: 3.3.1
       set-cookie-parser: 2.6.0
@@ -4494,15 +4494,15 @@ packages:
     resolution: {integrity: sha512-7gq6lhibCM8FuzZIJlbLLWP5EJ9KL2/4XqeFrAg9O6ZK2xMFxJ5ubKf+a0VJwwTu8W8Xr421CmpiXu6Hq7n/7Q==}
     dev: false
 
-  /astro@3.0.5:
-    resolution: {integrity: sha512-g6WOl39HyzQJhPSkcO+Tvm3aZ2ZumfAPnxyhnFKmFRDOI78a59iW9EdRl9TbLH6Cinj2CQiOBATfGiR2FU4EXg==}
+  /astro@0.0.0-fix-mime-20230904023307:
+    resolution: {integrity: sha512-qwDARXoFXDdbpABVBqf4KSeuxvRtP+SgmWSOzSGK7wVKOhk2oRFLMkH0FtSuD8eHvkTnv3p4TTMqnytUSx/+BQ==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
       '@astrojs/compiler': 2.0.1
       '@astrojs/internal-helpers': 0.2.0
-      '@astrojs/markdown-remark': 3.0.0(astro@3.0.5)
-      '@astrojs/telemetry': 3.0.0
+      '@astrojs/markdown-remark': 3.0.0(astro@0.0.0-fix-mime-20230904023307)
+      '@astrojs/telemetry': 3.0.1
       '@babel/core': 7.22.11
       '@babel/generator': 7.22.10
       '@babel/parser': 7.22.14
@@ -12264,7 +12264,7 @@ packages:
   /vfile-location@4.1.0:
     resolution: {integrity: sha512-YF23YMyASIIJXpktBa4vIGLJ5Gs88UB/XePgqPmTa7cDA+JeO3yclbpheQYCHjVHBn/yePzrXuygIL+xbvRYHw==}
     dependencies:
-      '@types/unist': 2.0.7
+      '@types/unist': 2.0.8
       vfile: 5.3.7
     dev: false
 
