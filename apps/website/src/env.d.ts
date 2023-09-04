@@ -1,7 +1,13 @@
-/// <reference types="astro/client-image" />
+/// <reference types="astro/client" />
 
 declare global {
   export type Theme = `light` | `dark` | `system`;
+}
+
+declare namespace App {
+  interface Locals {
+    themeHint: Theme;
+  }
 }
 
 interface Window {
@@ -11,13 +17,3 @@ interface Window {
   __handleSystemTheme: () => void;
   __switchTheme: (nextTheme: Theme) => void;
 }
-
-declare module 'astro' {
-  declare namespace App {
-    export interface Locals {
-      themeHint: Theme;
-    }
-  }
-}
-
-export {};

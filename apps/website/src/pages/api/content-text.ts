@@ -11,7 +11,7 @@ const ContentSchema = z.object({
   slug: z.string(),
 });
 
-export const post: APIRoute = async function post({ request }) {
+export const POST: APIRoute = async function POST({ request }) {
   const authorization = request.headers.get(`authorization`);
 
   if (!authorization) {

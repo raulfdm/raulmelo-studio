@@ -7,7 +7,6 @@ import vercel from '@astrojs/vercel/serverless';
 import { defineConfig, sharpImageService } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 import { resolve } from 'import-meta-resolve';
-import million from 'million/compiler';
 import { loadEnv } from 'vite';
 
 const { VERCEL_ENV, VERCEL_URL } = loadEnv(
@@ -30,9 +29,6 @@ const vscodeOnigurumaPath = new URL(
 ).pathname;
 
 const config = defineConfig({
-  experimental: {
-    assets: true,
-  },
   site: getWebsiteUrl(),
   output: `server`,
   redirects: {
@@ -61,6 +57,7 @@ const config = defineConfig({
     svelte(),
   ],
   adapter: vercel({
+    functionPerRoute: false,
     analytics: true,
     includeFiles: [vscodeOnigurumaPath],
     imageService: true,
@@ -70,7 +67,6 @@ const config = defineConfig({
     },
   }),
   vite: {
-    plugins: [million.vite({ mode: 'react', server: true, auto: true })],
     ssr: {
       external: [`@raulmelo/core`, `@raulmelo/code-highlight`],
     },
@@ -83,7 +79,7 @@ function getWebsiteUrl() {
   } else if (VERCEL_URL) {
     return `https://${VERCEL_URL}`;
   } else {
-    return `http://localhost:3000`;
+    return `http://localhost:4321`;
   }
 }
 

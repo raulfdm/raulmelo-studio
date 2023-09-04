@@ -1,5 +1,6 @@
 ---
-import YouTube from './YouTube.svelte';
+import YouTubeComponent from './YouTube.svelte';
+
 type Props = {
   node: {
     videoId: string;
@@ -9,4 +10,4 @@ type Props = {
 const { videoId } = Astro.props.node;
 ---
 
-<YouTube client:load youTubeId={videoId} />
+<YouTubeComponent client:load youTubeId={videoId} />

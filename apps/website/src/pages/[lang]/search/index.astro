@@ -36,6 +36,7 @@ const searchServerState = await getServerState(
 <Layout title={intl.formatMessage({ id: `search.pageTitle` })}>
   <!-- <NextSeo title={formatMessage(messages.pageTitle)} noindex /> -->
   <Breadcrumbs
+    class="col-span-full lg:col-span-10"
     crumbs={[
       {
         label: intl.formatMessage({ id: `sideMenu.home` }),
