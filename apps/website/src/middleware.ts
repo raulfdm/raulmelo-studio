@@ -11,7 +11,9 @@ const themeHintHandler = defineMiddleware(async ({ request, locals }, next) => {
   }
 
   const chColorScheme =
-    (request.headers.get(`sec-ch-prefers-color-scheme`) as Theme) || `system`;
+    (request.headers.get(
+      `sec-ch-prefers-color-scheme`,
+    ) as App.Locals['themeHint']) || `system`;
 
   locals.themeHint = chColorScheme;
 
