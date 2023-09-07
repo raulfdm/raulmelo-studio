@@ -1,17 +1,16 @@
 import { createStarryNight } from '@wooorm/starry-night';
-
 import etc from '@wooorm/starry-night/lang/etc.js';
+import sourceGoMod from '@wooorm/starry-night/lang/go.mod.js';
 import sourceAstro from '@wooorm/starry-night/lang/source.astro.js';
 import sourceCss from '@wooorm/starry-night/lang/source.css.js';
 import sourceDiff from '@wooorm/starry-night/lang/source.diff.js';
 import sourceGfm from '@wooorm/starry-night/lang/source.gfm.js';
 import sourceGo from '@wooorm/starry-night/lang/source.go.js';
-import sourceGoMod from '@wooorm/starry-night/lang/go.mod.js';
 import sourceGraphQL from '@wooorm/starry-night/lang/source.graphql.js';
 import sourceJs from '@wooorm/starry-night/lang/source.js.js';
 import sourceMiniYaml from '@wooorm/starry-night/lang/source.miniyaml.js';
-import sourceRegex from '@wooorm/starry-night/lang/source.regexp.js';
 import sourceRegexExtended from '@wooorm/starry-night/lang/source.regexp.extended.js';
+import sourceRegex from '@wooorm/starry-night/lang/source.regexp.js';
 import sourceRegexPosix from '@wooorm/starry-night/lang/source.regexp.posix.js';
 import sourceRust from '@wooorm/starry-night/lang/source.rust.js';
 import sourceShell from '@wooorm/starry-night/lang/source.shell.js';

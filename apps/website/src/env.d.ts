@@ -1,8 +1,6 @@
 /// <reference types="astro/client" />
 
-declare global {
-  export type Theme = `light` | `dark` | `system`;
-}
+type Theme = `light` | `dark` | `system`;
 
 declare namespace App {
   interface Locals {
