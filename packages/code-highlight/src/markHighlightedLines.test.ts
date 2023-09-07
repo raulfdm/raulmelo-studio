@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
-import { getLinesToMark } from './markHighlightedLines';
+import { getLinesToMark } from './markHighlightedLines.js';
 
 describe('getLinesToMark', () => {
   it('should return empty array if no lines are passed', () => {

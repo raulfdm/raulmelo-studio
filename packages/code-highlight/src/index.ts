@@ -1,8 +1,8 @@
 import { toHtml } from 'hast-util-to-html';
 
-import { addLineNumber } from './addLineNumber';
-import { starryNight } from './configuredStarry';
-import { markHighlightedLines } from './markHighlightedLines';
+import { addLineNumber } from './addLineNumber.js';
+import { starryNight } from './configuredStarry.js';
+import { markHighlightedLines } from './markHighlightedLines.js';
 
 type CodeHighlightOptions = {
   language?: string;
@@ -29,4 +29,4 @@ export function highlight(
   return toHtml(withHighlightedLines);
 }
 
-export { CODE_LANGUAGES_MAP } from './configuredStarry';
+export { CODE_LANGUAGES_MAP } from './configuredStarry.js';

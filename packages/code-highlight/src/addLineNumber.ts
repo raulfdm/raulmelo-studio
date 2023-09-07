@@ -2,7 +2,7 @@
  * Code copied from:
  * https://github.com/wooorm/starry-night/blob/c0ad62b27a2276ce520248697ebf96a53fa98c2e/readme.md#example-adding-line-numbers
  */
-import type { Root, RootContent, ElementContent, Element } from 'hast';
+import type { Element, ElementContent, Root, RootContent } from 'hast';
 
 export function addLineNumber(tree: Root): Root {
   const replacement: RootContent[] = [];
