@@ -1,18 +1,29 @@
 {
   "compilerOptions": {
-    "target": "ES2022", /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
-    "module": "Node16", /* Specify what module code is generated. */
-    "esModuleInterop": true, /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
+    // add Bun type definitions
+    "types": [
+      "bun-types"
+    ],
+    // enable latest features
+    "lib": [
+      "esnext"
+    ],
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "moduleDetection": "force",
+    // best practices
     "forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
+    "skipLibCheck": true, /* Skip type checking all .d.ts files. */
+    "esModuleInterop": true, /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
     "strict": true, /* Enable all strict type-checking options. */
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
-    "declaration": true,
-    "outDir": "dist",
-    "declarationDir": "dist",
+    "noEmit": true,
     "baseUrl": ".",
   },
   "include": [
     "src/**/*",
-    "types/**/*"
+    "types/**/*",
+    "scripts/**/*",
   ]
 }

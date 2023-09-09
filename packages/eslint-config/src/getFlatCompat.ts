@@ -2,7 +2,7 @@ import { FlatCompat } from '@eslint/eslintrc';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import type { FlatCompatObj } from './configs/type.js';
+import type { FlatCompatObj } from './configs/type.ts';
 
 export function getFlatCompat(): FlatCompatObj {
   const __filename = fileURLToPath(import.meta.url);
