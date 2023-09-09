@@ -2,13 +2,19 @@
   "name": "root",
   "private": true,
   "type": "module",
+  "packageManager": "yarn@1.22.19",
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "misc/*"
+  ],
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "check": "turbo run check",
-    "deploy": "turbo run deploy",
-    "test": "turbo run test",
+    "build": "turbo run build --skip-infer",
+    "dev": "turbo run dev --skip-infer",
+    "lint": "turbo run lint --skip-infer",
+    "check": "turbo run check --skip-infer",
+    "deploy": "turbo run deploy --skip-infer",
+    "test": "turbo run test --skip-infer",
     "clean": "rm -rf node_modules && pnpm -r exec rm -rf node_modules"
   },
   "devDependencies": {
