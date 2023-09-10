@@ -2,7 +2,7 @@
   "name": "@raulmelo/code-highlight",
   "version": "1.0.0",
   "description": "Server Side Code Highlighting powered by Starry Night",
-  "main": "dist/code-highlight.js",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -11,10 +11,10 @@
   "scripts": {
     "prepare": "turbo --filter code-highlight build --output-logs errors-only",
     "test": "vitest",
-    "dev": "pnpm vite build --watch",
-    "build": "pnpm run build:lib && pnpm run build:types",
-    "build:lib": "vite build",
-    "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist"
+    "dev": "bun scripts/dev.ts",
+    "build": "bun run build:lib && bun run build:types",
+    "build:lib": "bun scripts/build.ts",
+    "build:types": "tsc -p tsconfig.build.json"
   },
   "peerDependencies": {
     "vscode-oniguruma": ">=1.7.0"
@@ -25,6 +25,7 @@
     "hast-util-to-html": "8.0.4"
   },
   "devDependencies": {
+    "@tsconfig/bun": "1.0.0",
     "typescript": "5.2.2",
     "vite": "4.4.9",
     "vitest": "0.34.3"

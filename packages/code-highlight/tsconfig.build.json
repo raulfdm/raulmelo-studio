@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "declarationDir": "./dist",
+    "declarationMap": true,
+  },
+  "exclude": [
+    "scripts",
+    "vite.config.ts",
+    "dist"
+  ]
+}

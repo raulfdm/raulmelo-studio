@@ -1,22 +1,6 @@
 {
+  "extends": "@tsconfig/bun/tsconfig.json",
   "compilerOptions": {
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "importHelpers": true,
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "target": "ESNext",
-    "declaration": true,
-    "declarationDir": "./dist",
-    "emitDeclarationOnly": true,
-    "skipLibCheck": true,
     "baseUrl": ".",
-    "allowSyntheticDefaultImports": true,
-    "declarationMap": true,
   },
-  "exclude": [
-    "dist",
-    "node_modules",
-    "vite.config.ts"
-  ]
 }
