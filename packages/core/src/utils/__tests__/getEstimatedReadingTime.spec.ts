@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'bun:test';
+
 import { getEstimatedReadingTime } from '../getEstimatedReadingTime';
 import { mockAllBlocks } from './__fixtures__/allBlocks';
 import { mockRealPostBlocks } from './__fixtures__/fullPost';
