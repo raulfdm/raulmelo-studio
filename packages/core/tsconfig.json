@@ -1,21 +1,29 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "jsx": "preserve",
-    "forceConsistentCasingInFileNames": true,
-    "importHelpers": true,
-    "moduleResolution": "node",
+    "lib": [
+      "ESNext"
+    ],
+    "module": "esnext",
     "target": "esnext",
-    "declaration": true,
-    "declarationDir": "./dist",
-    "emitDeclarationOnly": true,
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "composite": true,
+    "strict": true,
+    "downlevelIteration": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
+    "jsx": "preserve",
     "allowSyntheticDefaultImports": true,
-    "declarationMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
+    "types": [
+      "bun-types" // add Bun global
+    ],
+    "baseUrl": ".",
     "paths": {
       "@/config": [
-        "src/config/index.ts"
+        "./src/config/index.ts"
       ],
       "@/utils": [
         "./src/utils/index.ts"
@@ -25,14 +33,12 @@
       ],
       "@/scripts/*": [
         "./src/scripts/index.ts"
-      ]
+      ],
     }
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "src/**/*.spec.ts",
-    "src/**/*.test.*",
-    "vite.config.ts"
+  "include": [
+    "src/**/*",
+    "scripts/**/*",
+    "package.json"
   ]
 }

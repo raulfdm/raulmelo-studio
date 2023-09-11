@@ -35,7 +35,7 @@
   "scripts": {
     "prepare": "turbo --filter='core' build --output-logs errors-only",
     "clean": "rm -rf dist/",
-    "build": "bun run clean && echo lol && bun tsc",
+    "build": "bun run clean && bun scripts/build.ts",
     "lint": "eslint .",
     "dev": "echo dev",
     "test": "vitest"
