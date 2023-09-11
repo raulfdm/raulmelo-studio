@@ -35,9 +35,9 @@
   "scripts": {
     "prepare": "turbo --filter='core' build --output-logs errors-only",
     "clean": "rm -rf dist/",
-    "build": "bun run clean && bun vite build && bun tsc",
+    "build": "bun run clean && echo lol && bun tsc",
     "lint": "eslint .",
-    "dev": "scripty",
+    "dev": "echo dev",
     "test": "vitest"
   },
   "dependencies": {
@@ -53,15 +53,12 @@
     "@raulmelo/eslint-config": "workspace:*",
     "@types/node": "18.16.19",
     "@types/ramda": "0.29.3",
+    "@tsconfig/bun": "1.0.0",
     "eslint": "8.48.0",
     "eslint-plugin-node": "11.1.0",
     "globals": "13.21.0",
     "ramda": "0.29.0",
     "typescript": "5.2.2",
-    "vite": "4.4.9",
-    "vitest": "0.34.3"
-  },
-  "scripty": {
-    "path": "./scripts"
+    "bun-types": "1.0.1"
   }
 }
