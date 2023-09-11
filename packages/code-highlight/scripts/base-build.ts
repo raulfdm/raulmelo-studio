@@ -2,8 +2,8 @@ import pkgJson from '../package.json';
 
 export async function build() {
   const external = [
-    ...Object.keys(pkgJson.peerDependencies),
     ...Object.keys(pkgJson.dependencies),
+    ...Object.keys(pkgJson.devDependencies),
   ];
 
   await Bun.build({

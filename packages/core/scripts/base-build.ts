@@ -3,7 +3,10 @@ import { readableStreamToText } from 'bun';
 import pkgJson from '../package.json';
 
 export async function build() {
-  const external = Object.keys(pkgJson.dependencies);
+  const external = [
+    ...Object.keys(pkgJson.dependencies),
+    ...Object.keys(pkgJson.devDependencies),
+  ];
 
   const build = await Bun.build({
     entrypoints: [

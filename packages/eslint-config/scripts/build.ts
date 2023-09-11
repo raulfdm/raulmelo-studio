@@ -1,17 +1,15 @@
-import dts from 'bun-plugin-dts';
-
 import pkgJson from '../package.json';
 
-const externals = [
+const external = [
   ...Object.keys(pkgJson.dependencies),
-  ...Object.keys(pkgJson.peerDependencies),
+  ...Object.keys(pkgJson.devDependencies),
 ];
 
 const build = await Bun.build({
   entrypoints: ['./src/index.ts'],
   outdir: './dist',
   target: 'node',
-  external: externals,
+  external,
   sourcemap: 'external',
   format: 'esm',
 });
