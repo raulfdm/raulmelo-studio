@@ -10,11 +10,9 @@
   "type": "module",
   "scripts": {
     "prepare": "turbo --filter code-highlight build --output-logs errors-only",
-    "test": "vitest",
+    "test": "bun test",
     "dev": "bun scripts/dev.ts",
-    "build": "bun run build:lib && bun run build:types",
-    "build:lib": "bun scripts/build.ts",
-    "build:types": "tsc -p tsconfig.build.json"
+    "build": "bun scripts/build.ts"
   },
   "peerDependencies": {
     "vscode-oniguruma": ">=1.7.0"
@@ -26,8 +24,7 @@
   },
   "devDependencies": {
     "@tsconfig/bun": "1.0.0",
-    "typescript": "5.2.2",
-    "vite": "4.4.9",
-    "vitest": "0.34.3"
+    "bun-types": "1.0.1",
+    "typescript": "5.2.2"
   }
 }
