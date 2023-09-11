@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "prepare": "turbo --filter sanity-core build --output-logs errors-only",
-    "build": "vite build"
+    "build": "bun scripts/build.ts"
   },
   "dependencies": {
     "@tabler/icons-react": "2.32.0"
@@ -23,11 +23,10 @@
   "devDependencies": {
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
+    "bun-types": "1.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sanity": "3.15.1",
-    "typescript": "5.2.2",
-    "vite": "4.4.9",
-    "vite-plugin-dts": "3.5.2"
+    "typescript": "5.2.2"
   }
 }
