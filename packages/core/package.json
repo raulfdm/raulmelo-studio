@@ -37,7 +37,7 @@
     "clean": "rm -rf dist/",
     "build": "bun run clean && bun scripts/build.ts",
     "lint": "eslint .",
-    "dev": "echo dev",
+    "dev": "bun scripts/dev.ts",
     "test": "bun test"
   },
   "dependencies": {
