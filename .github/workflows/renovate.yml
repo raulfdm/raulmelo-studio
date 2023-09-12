@@ -1,9 +1,6 @@
 name: Renovate
 on:
   workflow_dispatch:
-    secrets:
-      RENOVATE_TOKEN:
-        required: true
     inputs: {}
   schedule:
     # The "*" (#42, asterisk) character has special semantics in YAML, so this
