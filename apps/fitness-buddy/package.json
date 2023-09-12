@@ -59,5 +59,10 @@
 		"tslib": "2.6.2",
 		"typescript": "5.2.2",
 		"vite": "4.4.9"
+	},
+	"lint-staged": {
+		"*.{js,ts,jsx,tsx,svelte}": [
+			"bun run format"
+		]
 	}
 }
