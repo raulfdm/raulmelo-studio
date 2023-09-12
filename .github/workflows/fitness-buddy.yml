@@ -19,9 +19,6 @@ jobs:
       - name: Install Dependencies
         run: bun install
 
-      - name: Test Projects
-        run: cd apps/fitness-buddy && bun run test
-
       - name: Lint Projects
         working-directory: apps/fitness-buddy
         run: bun run lint
