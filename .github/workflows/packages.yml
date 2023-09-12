@@ -8,7 +8,6 @@ on:
 
 env:
   CI: true
-  PNPM_CACHE_FOLDER: .pnpm-store
 
 jobs:
   build:
@@ -17,38 +16,14 @@ jobs:
       - name: Git files setup
         uses: actions/checkout@v3
 
-      - name: Node Setup
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - uses: pnpm/action-setup@v2.2.4
-        name: Install pnpm
-        with:
-          version: 8
-          run_install: false
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
       - name: Install Dependencies
-        run: pnpm install --no-frozen-lockfile
-
-      - name: Lint Projects
-        run: pnpm run lint --filter="./packages/*"
-
-      - name: Test Projects
-        run: pnpm run test --filter="./packages/*"
+        run: bun install --frozen-lockfile
 
       - name: Build Projects
-        run: pnpm run build --filter="./packages/*"
+        run: bun run build --filter="./packages/*"
+
+      - name: Lint Projects
+        run: bun run lint --filter="./packages/*"
+
+      - name: Test Projects
+        run: bun run test --filter="./packages/*"
