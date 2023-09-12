@@ -18,7 +18,10 @@ jobs:
 
       - name: Install Dependencies
         # BUG: https://github.com/oven-sh/bun/issues/4447#issuecomment-1712927579
-        run: bun install --frozen-lockfile && bun run postinstall
+        run: bun install --frozen-lockfile
+
+      - name: Build dependants
+        run: bun run build --filter=fitness-buddy^...
 
       - name: Lint Projects
         working-directory: apps/fitness-buddy
