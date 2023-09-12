@@ -17,10 +17,10 @@ jobs:
       - uses: oven-sh/setup-bun@v1
 
       - name: Install Dependencies
-        # BUG: https://github.com/oven-sh/bun/issues/4447#issuecomment-1712927579
         run: bun install --frozen-lockfile
 
       - name: Build dependants
+        # BUG: https://github.com/oven-sh/bun/issues/4447#issuecomment-1712927579
         run: bun run build --filter=fitness-buddy^...
 
       - name: Lint Projects
