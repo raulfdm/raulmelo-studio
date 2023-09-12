@@ -16,6 +16,8 @@ jobs:
       - name: Git files setup
         uses: actions/checkout@v3
 
+      - uses: oven-sh/setup-bun@v1
+
       - name: Install Dependencies
         run: bun install --frozen-lockfile
 
