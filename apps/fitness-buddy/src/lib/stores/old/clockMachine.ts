@@ -1,4 +1,4 @@
-import { assign,createMachine } from 'xstate';
+import { assign, createMachine } from 'xstate';
 
 import { browser } from '$app/environment';
 import { audioActions } from '$lib/stores/audio';
