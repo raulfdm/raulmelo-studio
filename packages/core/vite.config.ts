@@ -2,6 +2,7 @@
 
 import path from 'path';
 import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 
 const aliases = {
   '@/utils': path.resolve(__dirname, './src/utils'),
@@ -31,6 +32,8 @@ function isExternal(id: string) {
   );
 }
 
+console.log(process.env);
+
 const config = defineConfig({
   test: {
     globals: true,
@@ -39,15 +42,12 @@ const config = defineConfig({
   resolve: {
     alias: aliases,
   },
+  plugins: [dts()],
   build: {
     outDir: 'dist',
     sourcemap: true,
-    emptyOutDir: false,
+    emptyOutDir: process.env.NODE_ENV === 'production',
     lib: {
-      fileName: (format, entry) => {
-        const extension = format === 'cjs' ? 'cjs' : 'js';
-        return `${entry}/index.${extension}`;
-      },
       entry: {
         domains: path.resolve(__dirname, 'src/domains/index.ts'),
         scripts: path.resolve(__dirname, 'src/scripts/index.ts'),
