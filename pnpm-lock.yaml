@@ -618,12 +618,18 @@ importers:
       '@raulmelo/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
+      '@raulmelo/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       '@types/node':
         specifier: 18.17.15
         version: 18.17.15
       '@types/ramda':
         specifier: 0.29.3
         version: 0.29.3
+      concurrently:
+        specifier: 8.2.0
+        version: 8.2.0
       eslint:
         specifier: 8.48.0
         version: 8.48.0
@@ -642,6 +648,9 @@ importers:
       vite:
         specifier: 4.4.9
         version: 4.4.9(@types/node@18.17.15)
+      vite-plugin-dts:
+        specifier: 3.5.3
+        version: 3.5.3(@types/node@18.17.15)(typescript@5.2.2)(vite@4.4.9)
       vitest:
         specifier: 0.34.4
         version: 0.34.4(jsdom@20.0.3)
@@ -727,7 +736,7 @@ importers:
         version: 4.4.9(@types/node@18.17.15)
       vite-plugin-dts:
         specifier: 3.5.3
-        version: 3.5.3(typescript@5.2.2)(vite@4.4.9)
+        version: 3.5.3(@types/node@18.17.15)(typescript@5.2.2)(vite@4.4.9)
 
   packages/styles:
     dependencies:
@@ -746,6 +755,12 @@ importers:
       tailwindcss:
         specifier: 3.3.3
         version: 3.3.3
+
+  packages/tsconfig:
+    dependencies:
+      '@tsconfig/node18':
+        specifier: 18.2.2
+        version: 18.2.2
 
 packages:
 
@@ -2188,24 +2203,24 @@ packages:
       - supports-color
     dev: false
 
-  /@microsoft/api-extractor-model@7.27.6:
+  /@microsoft/api-extractor-model@7.27.6(@types/node@18.17.15):
     resolution: {integrity: sha512-eiCnlayyum1f7fS2nA9pfIod5VCNR1G+Tq84V/ijDrKrOFVa598BLw145nCsGDMoFenV6ajNi2PR5WCwpAxW6Q==}
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.59.7
+      '@rushstack/node-core-library': 3.59.7(@types/node@18.17.15)
     transitivePeerDependencies:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor@7.36.4:
+  /@microsoft/api-extractor@7.36.4(@types/node@18.17.15):
     resolution: {integrity: sha512-21UECq8C/8CpHT23yiqTBQ10egKUacIpxkPyYR7hdswo/M5yTWdBvbq+77YC9uPKQJOUfOD1FImBQ1DzpsdeQQ==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.27.6
+      '@microsoft/api-extractor-model': 7.27.6(@types/node@18.17.15)
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.59.7
+      '@rushstack/node-core-library': 3.59.7(@types/node@18.17.15)
       '@rushstack/rig-package': 0.4.1
       '@rushstack/ts-command-line': 4.15.2
       colors: 1.2.5
@@ -2420,7 +2435,7 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@rushstack/node-core-library@3.59.7:
+  /@rushstack/node-core-library@3.59.7(@types/node@18.17.15):
     resolution: {integrity: sha512-ln1Drq0h+Hwa1JVA65x5mlSgUrBa1uHL+V89FqVWQgXd1vVIMhrtqtWGQrhTnFHxru5ppX+FY39VWELF/FjQCw==}
     peerDependencies:
       '@types/node': '*'
@@ -2428,6 +2443,7 @@ packages:
       '@types/node':
         optional: true
     dependencies:
+      '@types/node': 18.17.15
       colors: 1.2.5
       fs-extra: 7.0.1
       import-lazy: 4.0.0
@@ -2988,6 +3004,10 @@ packages:
   /@trysound/sax@0.2.0:
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
+    dev: false
+
+  /@tsconfig/node18@18.2.2:
+    resolution: {integrity: sha512-d6McJeGsuoRlwWZmVIeE8CUA27lu6jLjvv1JzqmpsytOYYbVi1tHZEnwCNVOXnj4pyLvneZlFlpXUK+X9wBWyw==}
     dev: false
 
   /@types/argparse@1.0.38:
@@ -11597,7 +11617,7 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-dts@3.5.3(typescript@5.2.2)(vite@4.4.9):
+  /vite-plugin-dts@3.5.3(@types/node@18.17.15)(typescript@5.2.2)(vite@4.4.9):
     resolution: {integrity: sha512-h94j/+SR1PhLR9jnEtcjZILagE2QZBAV8V1y3T2Ujcet1VI0Et4dZSU1W8fbnp6obB7B3/b8hArqdi2/9HuH+w==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -11607,7 +11627,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      '@microsoft/api-extractor': 7.36.4
+      '@microsoft/api-extractor': 7.36.4(@types/node@18.17.15)
       '@rollup/pluginutils': 5.0.4
       '@vue/language-core': 1.8.11(typescript@5.2.2)
       debug: 4.3.4(supports-color@5.5.0)
