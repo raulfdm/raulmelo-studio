@@ -14,11 +14,11 @@ Each project/package uses different technologies because they have different pur
 
 However, the core technologies here are:
 
-- [pnpm + pnp workspaces](https://pnpm.io/) - Maintain this Monorepo;
+- [pnpm + pnpm workspaces](https://pnpm.io/) - Maintain this Monorepo;
 - [TypeScript](https://www.typescriptlang.org/) - core programming language;
 - [vitejs](https://vitejs.dev/) - for bundling packages;
 - [vitest](https://vitest.dev/) - For unit testing;
-- [PostCSS](https://postcss.org/) and [TailwindCSS](https://tailwindcss.com/) - for styles;
+- [TailwindCSS](https://tailwindcss.com/) - for styles;
 
 ## Structure
 
@@ -26,14 +26,6 @@ I've decided to divide this project into 2 types of projects:
 
 1. `apps`: anything I don't need to publish or use as a package
 1. `packages`: npm packages and modules used cross packages and projects
-
-## Scripts
-
-I might need to run a specific workflow for each package/app. Doing that with npm script will be hard, I've introduced the package `scripty`.
-
-This helper allows me to use an executable file (e.g. `bash` or `node exec`) to determine what needs to happen.
-
-Then I have per package/app script which calls whatever they need in other to make it work (e.g. `nextjs cli`, `svelte cli`, etc.). For some commands, they can refer to a common script (e.g. `lint` and `test`) in the root level script if they don't need to do anything special for these commands.
 
 ## Pipeline
 
