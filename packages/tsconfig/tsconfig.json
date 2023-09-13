@@ -3,6 +3,11 @@
   "compilerOptions": {
     "jsx": "preserve",
     "allowSyntheticDefaultImports": true,
+    "verbatimModuleSyntax": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "sourceMap": true,
     /* I'll never transpile code with TypeScript so it can be bundler */
     "moduleResolution": "bundler",
     "module": "ESNext",
