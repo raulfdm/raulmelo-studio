@@ -12,9 +12,7 @@
     "prepare": "turbo --filter code-highlight build --output-logs errors-only",
     "test": "vitest",
     "dev": "pnpm vite build --watch",
-    "build": "pnpm run build:lib && pnpm run build:types",
-    "build:lib": "vite build",
-    "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist"
+    "build": "vite build"
   },
   "peerDependencies": {
     "vscode-oniguruma": ">=1.7.0"
@@ -25,8 +23,10 @@
     "hast-util-to-html": "8.0.4"
   },
   "devDependencies": {
+    "@raulmelo/tsconfig": "workspace:*",
     "typescript": "5.2.2",
     "vite": "4.4.9",
+    "vite-plugin-dts": "3.5.3",
     "vitest": "0.34.4"
   }
 }
