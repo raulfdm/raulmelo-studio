@@ -1,13 +1,13 @@
 {
   "name": "utilities",
-  "version": "0.0.1",
+  "version": "1.0.0-development",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "concurrently \"pnpm run typegen\" \"pnpm vite dev\"",
     "build": "pnpm run typegen && vite build",
     "preview": "vite preview",
-    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check": "pnpm run typegen && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "lint": "eslint .",
     "typegen": "xstate typegen \"src/**/*.ts?(x)\" && svelte-kit sync"
   },
