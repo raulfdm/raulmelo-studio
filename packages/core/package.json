@@ -15,30 +15,29 @@
   ],
   "exports": {
     "./domains": {
-      "require": "./dist/domains/index.cjs",
-      "default": "./dist/domains/index.js"
+      "default": "./dist/domains.js",
+      "types": "./dist/domains/index.d.ts"
     },
     "./utils": {
-      "require": "./dist/utils/index.cjs",
-      "default": "./dist/utils/index.js"
+      "default": "./dist/utils.js",
+      "types": "./dist/utils/index.d.ts"
     },
     "./config": {
-      "require": "./dist/config/index.cjs",
-      "default": "./dist/config/index.js"
+      "default": "./dist/config.js",
+      "types": "./dist/config/index.d.ts"
     },
     "./scripts": {
-      "require": "./dist/scripts/index.cjs",
-      "default": "./dist/scripts/index.js"
+      "default": "./dist/scripts.js",
+      "types": "./dist/scripts/index.d.ts"
     }
   },
   "types": "./index.d.ts",
   "scripts": {
     "prepare": "turbo --filter='core' build --output-logs errors-only",
-    "clean": "scripty",
-    "build": "scripty",
+    "build": "vite build",
     "lint": "eslint .",
-    "dev": "scripty",
-    "test": "scripty"
+    "dev": "vite build --watch",
+    "test": "vitest"
   },
   "dependencies": {
     "@sanity/block-content-to-markdown": "0.0.5",
@@ -51,17 +50,17 @@
   "devDependencies": {
     "@portabletext/types": "2.0.6",
     "@raulmelo/eslint-config": "workspace:*",
+    "@raulmelo/tsconfig": "workspace:*",
     "@types/node": "18.17.15",
     "@types/ramda": "0.29.3",
+    "concurrently": "8.2.0",
     "eslint": "8.48.0",
     "eslint-plugin-node": "11.1.0",
     "globals": "13.21.0",
     "ramda": "0.29.0",
     "typescript": "5.2.2",
     "vite": "4.4.9",
+    "vite-plugin-dts": "3.5.3",
     "vitest": "0.34.4"
-  },
-  "scripty": {
-    "path": "./scripts"
   }
 }
