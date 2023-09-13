@@ -10,7 +10,7 @@
     "deploy": "turbo run deploy",
     "test": "turbo run test",
     "clean": "rm -rf node_modules && pnpm -r exec rm -rf node_modules",
-    "clean:deep": "rm -rf node_modules && pnpm -r exec rm -rf node_modules .svelte-kit .turbo dist"
+    "clean:deep": "rm -rf node_modules && pnpm -r exec rm -rf node_modules .svelte-kit .turbo dist .vercel"
   },
   "devDependencies": {
     "@raulmelo/eslint-config": "workspace:*",
