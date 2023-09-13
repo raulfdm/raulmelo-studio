@@ -1,20 +1,21 @@
 {
 	"name": "fitness-buddy",
-	"version": "0.0.1",
+	"version": "1.0.0-development",
 	"private": true,
+	"type": "module",
 	"scripts": {
 		"dev": "run-p dev:*",
 		"dev:svelte": "vite dev --host",
 		"dev:typegen": "pnpm run typegen --watch",
-		"build": "scripty",
+		"build": "svelte-kit sync && vite build",
 		"preview": "vite preview",
 		"sync": "svelte-kit sync",
-		"check": "scripty",
-		"check:watch": "scripty",
+		"check": "pnpm run typegen && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"test:unit": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
-		"typegen": "scripty"
+		"typegen": "xstate typegen \"src/**/*.ts?(x)\""
 	},
 	"dependencies": {
 		"@raulmelo/sanity-core": "workspace:*",
@@ -61,6 +62,5 @@
 		"typescript": "5.2.2",
 		"vite": "4.4.9",
 		"vitest": "0.34.4"
-	},
-	"type": "module"
+	}
 }

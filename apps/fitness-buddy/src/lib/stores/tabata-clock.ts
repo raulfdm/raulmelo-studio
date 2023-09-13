@@ -1,4 +1,4 @@
-import { assign,createMachine } from 'xstate';
+import { assign, createMachine } from 'xstate';
 
 import type { TabataConfigContext } from './tabata-config';
 

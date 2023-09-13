@@ -1,14 +1,15 @@
 {
   "name": "utilities",
-  "version": "0.0.1",
+  "version": "1.0.0-development",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "scripty",
-    "build": "scripty",
+    "dev": "concurrently \"pnpm run typegen\" \"pnpm vite dev\"",
+    "build": "pnpm run typegen && vite build",
     "preview": "vite preview",
-    "check": "scripty",
-    "check:watch": "scripty",
+    "check": "pnpm run typegen && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "lint": "eslint .",
-    "typegen": "scripty"
+    "typegen": "xstate typegen \"src/**/*.ts?(x)\" && svelte-kit sync"
   },
   "dependencies": {
     "@floating-ui/dom": "1.5.2",
@@ -16,6 +17,7 @@
     "@tabler/icons-svelte": "2.32.0",
     "@tailwindcss/forms": "0.5.6",
     "@xstate/svelte": "2.1.0",
+    "dayjs": "1.11.9",
     "xstate": "4.38.2"
   },
   "devDependencies": {
@@ -26,7 +28,7 @@
     "@typescript-eslint/parser": "6.6.0",
     "@xstate/cli": "0.5.2",
     "autoprefixer": "10.4.15",
-    "dayjs": "1.11.9",
+    "concurrently": "8.2.0",
     "eslint": "8.45.0",
     "eslint-plugin-svelte3": "4.0.0",
     "postcss": "8.4.29",
@@ -38,6 +40,5 @@
     "tslib": "2.6.2",
     "typescript": "5.2.2",
     "vite": "4.4.9"
-  },
-  "type": "module"
+  }
 }

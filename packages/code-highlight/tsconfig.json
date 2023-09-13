@@ -1,17 +1,9 @@
 {
+  "extends": "@raulmelo/tsconfig",
   "compilerOptions": {
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "importHelpers": true,
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "target": "ESNext",
     "declaration": true,
     "declarationDir": "./dist",
-    "emitDeclarationOnly": true,
-    "skipLibCheck": true,
     "baseUrl": ".",
-    "allowSyntheticDefaultImports": true,
     "declarationMap": true,
   },
   "exclude": [
