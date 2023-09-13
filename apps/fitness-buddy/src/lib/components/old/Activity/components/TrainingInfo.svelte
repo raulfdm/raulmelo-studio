@@ -39,6 +39,8 @@
 	on:keydown={() => {
 		activityActions.open(training._key);
 	}}
+	role="button"
+	tabindex="0"
 >
 	<header class="flex">
 		<h2 class="text-base font-semibold">{training.exercise.name}</h2>
