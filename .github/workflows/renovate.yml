@@ -12,10 +12,11 @@ jobs:
     environment: Raul Melo
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3.6.0
 
       - name: Self-hosted Renovate
-        uses: renovatebot/github-action@v38.1.13
+        uses: renovatebot/github-action@v39.0.5
         with:
           configurationFile: renovate-config.cjs
           token: ${{ secrets.RENOVATE_TOKEN }}
