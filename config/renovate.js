@@ -4,7 +4,7 @@ module.exports = {
    * https://docs.renovatebot.com/self-hosted-configuration
    */
   username: 'renovate-release',
-  onboarding: true,
+  onboarding: false,
   platform: 'github',
   repositories: ['raulfdm/raulmelo-studio'],
   // branchConcurrentLimit: 10,
