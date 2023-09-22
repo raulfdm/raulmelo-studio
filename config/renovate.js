@@ -3,8 +3,12 @@ module.exports = {
    * Self-hosted Options
    * https://docs.renovatebot.com/self-hosted-configuration
    */
+  /**
+   * Prevent the need to have a renovate.json
+   */
+  onboarding: false,
+  requireConfig: 'optional',
   username: 'renovate-release',
-  onboarding: true,
   platform: 'github',
   repositories: ['raulfdm/raulmelo-studio'],
   // branchConcurrentLimit: 10,
