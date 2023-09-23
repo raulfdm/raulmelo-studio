@@ -8,11 +8,11 @@
 	import { beforeUpdate, onDestroy, onMount } from 'svelte';
 
 	import { activityStore } from '$lib/stores/old/activity';
-	import type { ClockMachineState } from '$lib/stores/old/clockMachine';
 	import {
 		canFastForward,
 		canRewind,
 		clockMachine,
+		type ClockMachineState,
 		continueTimer,
 		persistClockInfo,
 		readTrainingStore	} from '$lib/stores/old/clockMachine';

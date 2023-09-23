@@ -2,8 +2,7 @@
 	import { browser } from '$app/environment';
 	import { body } from '$lib/utils/dom';
 
-	import type { ITab } from '../../../stores/old/activity';
-	import { activityActions,activityStore } from '../../../stores/old/activity';
+	import { activityActions, type ITab } from '../../../stores/old/activity';
 	import Clock from './components/Clock.svelte';
 	import Content from './components/Content.svelte';
 	import DropSetCalculator from './components/DropSetCalculator.svelte';
