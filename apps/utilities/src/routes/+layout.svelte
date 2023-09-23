@@ -1,7 +1,5 @@
 <script lang="ts">
   import '../app.css';
-  import '@skeletonlabs/skeleton/themes/theme-modern.css';
-  import '@skeletonlabs/skeleton/styles/all.css';
 
   import {
     arrow,
@@ -15,9 +13,14 @@
     AppBar,
     AppShell,
     Drawer,
-    drawerStore,
+    getDrawerStore,
     storePopup,
+    initializeStores
   } from '@skeletonlabs/skeleton';
+
+  initializeStores();
+
+  const drawerStore = getDrawerStore();
 
   import AppSideBar from '$lib/components/AppSideBar.svelte';
 
