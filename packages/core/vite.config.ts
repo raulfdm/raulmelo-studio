@@ -32,8 +32,6 @@ function isExternal(id: string) {
   );
 }
 
-console.log(process.env);
-
 const config = defineConfig({
   test: {
     globals: true,

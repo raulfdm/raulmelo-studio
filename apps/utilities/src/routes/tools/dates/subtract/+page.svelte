@@ -1,8 +1,7 @@
 <script lang="ts">
   import { useMachine, useSelector } from '@xstate/svelte';
 
-  import type { SubtractDateInputTypes } from '$lib/machines/subtractDate';
-  import { subtractDateMachine } from '$lib/machines/subtractDate';
+  import { type SubtractDateInputTypes,subtractDateMachine } from '$lib/machines/subtractDate';
 
   const { state, send, service } = useMachine(subtractDateMachine);
 
