@@ -2,8 +2,7 @@
   import { useMachine } from '@xstate/svelte';
 
   import PageLayout from '$lib/components/PageLayout.svelte';
-  import type { RuleOfThreeMode } from '$lib/machines/ruleOfThree';
-  import { ruleOfThreeMachine } from '$lib/machines/ruleOfThree';
+  import { ruleOfThreeMachine, type RuleOfThreeMode } from '$lib/machines/ruleOfThree';
 
   const { send, state } = useMachine(ruleOfThreeMachine);
 

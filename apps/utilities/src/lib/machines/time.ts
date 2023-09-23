@@ -1,6 +1,5 @@
-import type { Dayjs } from 'dayjs';
-import dayjs from 'dayjs';
-import { assign,createMachine } from 'xstate';
+import dayjs, { type Dayjs } from 'dayjs';
+import { assign, createMachine } from 'xstate';
 
 type HourMachineContext = {
   baseTime: Date;
@@ -48,7 +47,7 @@ export const timeMachine = createMachine(
       context: {} as HourMachineContext,
       events: {} as TimeMachineEvents,
     },
-    tsTypes: {} as import("./time.typegen").Typegen0,
+    tsTypes: {} as import('./time.typegen').Typegen0,
     states: {
       start: {
         on: {

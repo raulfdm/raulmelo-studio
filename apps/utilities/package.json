@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "check": "pnpm run typegen && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "lint": "eslint .",
+    "format": "prettier --plugin-search-dir . --write .",
     "typegen": "xstate typegen \"src/**/*.ts?(x)\" && svelte-kit sync"
   },
   "dependencies": {
