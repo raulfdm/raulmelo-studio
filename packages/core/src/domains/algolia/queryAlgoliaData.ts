@@ -6,8 +6,10 @@ import { z } from 'zod';
 import { supportedLanguagesSchema } from '@/config';
 import { contentBlockToRawText } from '@/utils';
 
-import type { QueryCodeSnippetsReturnType } from '../codeSnippets';
-import { queryCodeSnippets } from '../codeSnippets';
+import {
+  queryCodeSnippets,
+  type QueryCodeSnippetsReturnType,
+} from '../codeSnippets';
 
 type QueryAlgoliaDataParams = {
   client: SanityClient;
