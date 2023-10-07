@@ -2,6 +2,10 @@
   "name": "root",
   "private": true,
   "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
