@@ -2,16 +2,21 @@
   "name": "@raulmelo/code-highlight",
   "version": "1.0.0-development",
   "description": "Server Side Code Highlighting powered by Starry Night",
-  "main": "dist/code-highlight.js",
-  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/src/index.d.ts"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/src/index.d.ts",
   "files": [
     "dist"
   ],
   "type": "module",
   "scripts": {
     "prepare": "turbo --filter code-highlight build --output-logs errors-only",
-    "test": "vitest",
-    "dev": "pnpm vite build --watch",
+    "test": "bun test",
     "build": "bun run build:lib && bun run build:types",
     "build:lib": "bun scripts/build.ts",
     "build:types": "tsc -p tsconfig.types.json"

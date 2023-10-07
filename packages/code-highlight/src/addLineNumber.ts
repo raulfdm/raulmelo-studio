@@ -15,7 +15,7 @@ export function addLineNumber(tree: Root): Root {
   while (++index < tree.children.length) {
     const child = tree.children[index];
 
-    if (child.type === 'text') {
+    if (child && child.type === 'text') {
       let textStart = 0;
       let match = search.exec(child.value);
 

@@ -41,13 +41,18 @@ export function getLinesToMark(lines?: string): number[] {
 
   for (const line of allLines) {
     const [initial, end] = line.split(`-`);
-    const initialParsed = parseInt(initial, 10);
+
+    if (!initial && !end) {
+      throw new Error('Invalid line number');
+    }
+
+    const initialParsed = parseInt(initial!, 10);
 
     if (!end) {
       result.push(initialParsed);
     }
 
-    const endParsed = parseInt(end, 10);
+    const endParsed = parseInt(end!, 10);
 
     for (let i = initialParsed; i <= endParsed; i++) {
       result.push(i);
