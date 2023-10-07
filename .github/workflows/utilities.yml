@@ -19,7 +19,7 @@ jobs:
         run: bun install
 
       - name: Test Projects
-        run: pnpm run check --filter utilities
+        run: bun run check --filter utilities
 
       - name: Lint Projects
-        run: pnpm run lint --filter utilities
+        run: bun run lint --filter utilities
