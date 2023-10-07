@@ -1,11 +1,11 @@
 import type { Linter } from 'eslint';
 
-import { baseConfig } from './configs/base.js';
-import { javascriptConfig } from './configs/javascript.js';
-import { prettierConfig } from './configs/prettier.js';
-import { typescriptConfig } from './configs/typescript.js';
-import { vitestConfig } from './configs/vitest.js';
-import { maybeArray } from './utils.js';
+import { baseConfig } from './configs/base.ts';
+import { javascriptConfig } from './configs/javascript.ts';
+import { prettierConfig } from './configs/prettier.ts';
+import { typescriptConfig } from './configs/typescript.ts';
+import { vitestConfig } from './configs/vitest.ts';
+import { maybeArray } from './utils.ts';
 
 type Options = {
   vitest?: boolean;
