@@ -1,6 +1,7 @@
-import { FlatCompat } from '@eslint/eslintrc';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+
+import { FlatCompat } from '@eslint/eslintrc';
 
 import type { FlatCompatObj } from './configs/type.ts';
 
