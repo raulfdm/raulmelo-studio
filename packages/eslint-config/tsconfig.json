@@ -1,18 +1,35 @@
 {
   "compilerOptions": {
-    "target": "ES2022", /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
-    "module": "Node16", /* Specify what module code is generated. */
-    "esModuleInterop": true, /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
-    "forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
-    "strict": true, /* Enable all strict type-checking options. */
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+    "allowImportingTsExtensions": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "composite": true,
+    "downlevelIteration": true,
+    "forceConsistentCasingInFileNames": true,
     "declaration": true,
-    "outDir": "dist",
-    "declarationDir": "dist",
-    "baseUrl": ".",
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "lib": [
+      "ESNext"
+    ],
+    "module": "ESNext",
+    "moduleDetection": "force",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+    "noUncheckedIndexedAccess": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "esnext",
+    "types": [
+      "bun-types"
+    ],
+    "verbatimModuleSyntax": true
   },
   "include": [
     "src/**/*",
-    "types/**/*"
+    "types/**/*",
+    "scripts/**/*",
+    "package.json"
   ]
 }
