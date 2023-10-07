@@ -1,14 +1,38 @@
 {
-  "extends": "@raulmelo/tsconfig",
   "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "composite": true,
+    "downlevelIteration": true,
+    "forceConsistentCasingInFileNames": true,
     "declaration": true,
-    "declarationDir": "./dist",
-    "baseUrl": ".",
     "declarationMap": true,
+    "esModuleInterop": true,
+    "lib": [
+      "ESNext"
+    ],
+    "module": "ESNext",
+    "moduleDetection": "force",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+    "noUncheckedIndexedAccess": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "esnext",
+    "types": [
+      "bun-types"
+    ],
+    "verbatimModuleSyntax": true
   },
+  "include": [
+    "src/**/*",
+    "types/**/*",
+    "scripts/**/*",
+    "package.json"
+  ],
   "exclude": [
-    "dist",
-    "node_modules",
-    "vite.config.ts"
+    "tsconfig.types.json"
   ]
 }

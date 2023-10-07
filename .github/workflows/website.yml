@@ -12,45 +12,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Git files setup
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Node Setup
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - uses: pnpm/action-setup@v2.2.4
-        name: Install pnpm
-        with:
-          version: 8
-          run_install: false
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+      - uses: oven-sh/setup-bun@v1
 
       - name: Install Dependencies
-        run: pnpm i --filter ./ --filter website... --no-frozen-lockfile
+        run: bun install
 
       # I don't need to add build check because this project will be build in Vercel's infrastructure.
       # If something went wrong while building it, then it will fail there.
 
       - name: Prepare website to be lint # Needed to be able to run lint propely
         run: |
-          pnpm turbo build --filter=website^...
-          pnpm turbo typegen --filter=website
+          bun run build --filter=website^...
+          bun run typegen --filter=website
 
       - name: Lint Projects
-        run: pnpm run lint --filter website
+        run: bun run lint --filter website
 
       - name: Test Projects
-        run: pnpm run test --filter website
+        run: bun run test --filter website

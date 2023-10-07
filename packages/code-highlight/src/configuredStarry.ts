@@ -1,30 +1,33 @@
 import { createStarryNight } from '@wooorm/starry-night';
-import etc from '@wooorm/starry-night/lang/etc.js';
-import sourceGoMod from '@wooorm/starry-night/lang/go.mod.js';
-import sourceAstro from '@wooorm/starry-night/lang/source.astro.js';
-import sourceCss from '@wooorm/starry-night/lang/source.css.js';
-import sourceDiff from '@wooorm/starry-night/lang/source.diff.js';
-import sourceGfm from '@wooorm/starry-night/lang/source.gfm.js';
-import sourceGo from '@wooorm/starry-night/lang/source.go.js';
-import sourceGraphQL from '@wooorm/starry-night/lang/source.graphql.js';
-import sourceJs from '@wooorm/starry-night/lang/source.js.js';
-import sourceMiniYaml from '@wooorm/starry-night/lang/source.miniyaml.js';
-import sourceRegexExtended from '@wooorm/starry-night/lang/source.regexp.extended.js';
-import sourceRegex from '@wooorm/starry-night/lang/source.regexp.js';
-import sourceRegexPosix from '@wooorm/starry-night/lang/source.regexp.posix.js';
-import sourceRust from '@wooorm/starry-night/lang/source.rust.js';
-import sourceShell from '@wooorm/starry-night/lang/source.shell.js';
-import sourceSvelte from '@wooorm/starry-night/lang/source.svelte.js';
-import sourceSy from '@wooorm/starry-night/lang/source.sy.js';
-import sourceTs from '@wooorm/starry-night/lang/source.ts.js';
-import sourceTsx from '@wooorm/starry-night/lang/source.tsx.js';
-import textHtmlBasic from '@wooorm/starry-night/lang/text.html.basic.js';
-import textXML from '@wooorm/starry-night/lang/text.xml.js';
-import textXMLSVG from '@wooorm/starry-night/lang/text.xml.svg.js';
+import etc from '@wooorm/starry-night/etc';
+import sourceGoMod from '@wooorm/starry-night/go.mod';
+// @ts-ignore
+import sourceAstro from '@wooorm/starry-night/source.astro';
+import sourceCss from '@wooorm/starry-night/source.css';
+import sourceDiff from '@wooorm/starry-night/source.diff';
+import sourceGfm from '@wooorm/starry-night/text.md';
+import sourceGo from '@wooorm/starry-night/source.go';
+import sourceGraphQL from '@wooorm/starry-night/source.graphql';
+import sourceJs from '@wooorm/starry-night/source.js';
+import sourceMiniYaml from '@wooorm/starry-night/source.miniyaml';
+import sourceRegexExtended from '@wooorm/starry-night/source.regexp.extended';
+import sourceRegex from '@wooorm/starry-night/source.regexp';
+import sourceRegexPosix from '@wooorm/starry-night/source.regexp.posix';
+import sourceRust from '@wooorm/starry-night/source.rust';
+import sourceShell from '@wooorm/starry-night/source.shell';
+import sourceSvelte from '@wooorm/starry-night/source.svelte';
+import sourceSy from '@wooorm/starry-night/source.sy';
+import sourceTs from '@wooorm/starry-night/source.ts';
+import sourceTsx from '@wooorm/starry-night/source.tsx';
+import textHtmlBasic from '@wooorm/starry-night/text.html.basic';
+import textXML from '@wooorm/starry-night/text.xml';
+import textXMLSVG from '@wooorm/starry-night/text.xml.svg';
 
 export const CODE_LANGUAGES_MAP = new Map<string, string>();
 
-export const starryNight = await createStarryNight([
+type StarryNight = Awaited<ReturnType<typeof createStarryNight>>;
+
+export const starryNight: StarryNight = await createStarryNight([
   etc,
   sourceAstro,
   sourceCss,

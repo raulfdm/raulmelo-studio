@@ -2,31 +2,40 @@
   "name": "@raulmelo/code-highlight",
   "version": "1.0.0-development",
   "description": "Server Side Code Highlighting powered by Starry Night",
-  "main": "dist/code-highlight.js",
-  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/src/index.d.ts"
+    },
+    "./styles": {
+      "import": "./styles/starry-theme.css"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/src/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "styles"
   ],
   "type": "module",
   "scripts": {
     "prepare": "turbo --filter code-highlight build --output-logs errors-only",
-    "test": "vitest",
-    "dev": "pnpm vite build --watch",
-    "build": "vite build"
+    "test": "bun test",
+    "build": "bun run build:lib && bun run build:types",
+    "build:lib": "bun scripts/build.ts",
+    "build:types": "tsc -p tsconfig.types.json"
   },
   "peerDependencies": {
     "vscode-oniguruma": ">=1.7.0"
   },
   "dependencies": {
-    "@types/hast": "3.0.0",
-    "@wooorm/starry-night": "2.1.1",
+    "@types/hast": "3.0.1",
+    "@wooorm/starry-night": "3.0.0",
     "hast-util-to-html": "9.0.0"
   },
   "devDependencies": {
     "@raulmelo/tsconfig": "workspace:*",
-    "typescript": "5.2.2",
-    "vite": "4.4.9",
-    "vite-plugin-dts": "3.5.4",
-    "vitest": "0.34.5"
+    "bun-types": "1.0.4",
+    "typescript": "5.2.2"
   }
 }

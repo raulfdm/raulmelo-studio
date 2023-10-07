@@ -1,2 +1,2 @@
-export { defineConfig } from './defineConfig.js';
-export { getFlatCompat } from './getFlatCompat.js';
+export { defineConfig } from './defineConfig.ts';
+export { getFlatCompat } from './getFlatCompat.ts';

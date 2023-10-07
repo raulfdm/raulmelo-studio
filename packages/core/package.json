@@ -15,29 +15,29 @@
   ],
   "exports": {
     "./domains": {
-      "default": "./dist/domains.js",
-      "types": "./dist/domains/index.d.ts"
+      "default": "./dist/domains/index.js",
+      "types": "./dist/src/domains/index.d.ts"
     },
     "./utils": {
-      "default": "./dist/utils.js",
-      "types": "./dist/utils/index.d.ts"
+      "default": "./dist/utils/index.js",
+      "types": "./dist/src/utils/index.d.ts"
     },
     "./config": {
-      "default": "./dist/config.js",
-      "types": "./dist/config/index.d.ts"
+      "default": "./dist/config/index.js",
+      "types": "./dist/src/config/index.d.ts"
     },
     "./scripts": {
-      "default": "./dist/scripts.js",
-      "types": "./dist/scripts/index.d.ts"
+      "default": "./dist/scripts/index.js",
+      "types": "./dist/src/scripts/index.d.ts"
     }
   },
   "types": "./index.d.ts",
   "scripts": {
     "prepare": "turbo --filter='core' build --output-logs errors-only",
-    "build": "vite build",
-    "lint": "eslint .",
-    "dev": "vite build --watch",
-    "test": "vitest"
+    "build": "bun run build:lib && bun run build:types",
+    "build:lib": "bun scripts/build.ts",
+    "build:types": "tsc -p tsconfig.types.json",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@sanity/block-content-to-markdown": "0.0.5",

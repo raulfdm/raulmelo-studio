@@ -60,7 +60,11 @@ export async function generateRssFeed(config: IConfig): Promise<void> {
 function getRssXml(content: QueryRssDataReturnType['posts'], rss: IRssConfig) {
   const rssItemsXml = content.map(getRssItem).join('');
 
-  const latestPostDate = humanizeDate(content[0].publishedAt);
+  if (content.length === 0) {
+    throw new Error('No content to generate RSS feed');
+  }
+
+  const latestPostDate = humanizeDate(content[0]!.publishedAt);
 
   return `<?xml version="1.0" ?>
   <rss

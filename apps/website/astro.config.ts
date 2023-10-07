@@ -58,7 +58,12 @@ const config = defineConfig({
   ],
   adapter: vercel({
     functionPerRoute: false,
-    analytics: true,
+    webAnalytics: {
+      enabled: true,
+    },
+    speedInsights: {
+      enabled: true,
+    },
     includeFiles: [vscodeOnigurumaPath],
     imageService: true,
     imagesConfig: {

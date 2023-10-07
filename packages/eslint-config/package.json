@@ -6,18 +6,19 @@
     "dist",
     "types"
   ],
-  "types": "./dist/index.d.ts",
+  "types": "./dist/src/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.js",
-      "types": "./types/index.d.ts"
+      "types": "./dist/src/index.d.ts"
     }
   },
   "scripts": {
     "prepare": "turbo --filter eslint-config build --output-logs errors-only",
     "lint": "eslint .",
     "build": "run-s build:*",
-    "build:lib": "tsc --build"
+    "build:lib": "bun run scripts/build.ts",
+    "build:types": "tsc -p tsconfig.types.json"
   },
   "peerDependencies": {
     "eslint": "^8.40.0",
@@ -39,6 +40,7 @@
     "@types/eslint": "8.44.2",
     "@types/eslint__js": "8.42.0",
     "@types/node": "18",
+    "bun-types": "1.0.5-canary.20231007T140129",
     "eslint": "8.49.0",
     "npm-run-all": "4.1.5",
     "typescript": "5.2.2"

@@ -6,11 +6,11 @@
 	"scripts": {
 		"dev": "run-p dev:*",
 		"dev:svelte": "vite dev --host",
-		"dev:typegen": "pnpm run typegen --watch",
+		"dev:typegen": "bun run typegen --watch",
 		"build": "svelte-kit sync && vite build",
 		"preview": "vite preview",
 		"sync": "svelte-kit sync",
-		"check": "pnpm run typegen && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check": "bun run typegen && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"test:unit": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
@@ -38,7 +38,7 @@
 	},
 	"devDependencies": {
 		"@raulmelo/eslint-config": "workspace:*",
-		"@sveltejs/adapter-auto": "2.1.0",
+		"@sveltejs/adapter-vercel": "3.0.3",
 		"@sveltejs/kit": "1.25.0",
 		"@tailwindcss/aspect-ratio": "0.4.2",
 		"@types/cookie": "0.5.2",

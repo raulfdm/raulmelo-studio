@@ -2,6 +2,10 @@
   "name": "root",
   "private": true,
   "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
@@ -9,8 +13,8 @@
     "check": "turbo run check",
     "deploy": "turbo run deploy",
     "test": "turbo run test",
-    "clean": "rm -rf node_modules && pnpm -r exec rm -rf node_modules",
-    "clean:deep": "rm -rf node_modules && pnpm -r exec rm -rf node_modules .svelte-kit .turbo dist .vercel"
+    "clean": "bun x rimraf node_modules **/node_modules",
+    "clean:deep": "bun x rimraf node_modules **/node_modules **/.svelte-kit **/.turbo **/dist **/.vercel"
   },
   "devDependencies": {
     "@raulmelo/eslint-config": "workspace:*",
@@ -18,13 +22,7 @@
     "husky": "8.0.3",
     "prettier": "3.0.3",
     "rimraf": "5.0.1",
-    "turbo": "1.10.13",
+    "turbo": "1.10.15",
     "typescript": "5.2.2"
-  },
-  "pnpm": {
-    "overrides": {
-      "semver": ">=6.3.1",
-      "vscode-oniguruma": ">=2"
-    }
   }
 }
