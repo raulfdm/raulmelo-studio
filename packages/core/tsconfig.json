@@ -8,7 +8,9 @@
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "lib": [
-      "ESNext"
+      "ESNext",
+      "dom",
+      "dom.iterable"
     ],
     "module": "ESNext",
     "moduleDetection": "force",
@@ -42,7 +44,8 @@
     "src/**/*",
     "types/**/*",
     "scripts/**/*",
-    "package.json"
+    "package.json",
+    "types/**/*"
   ],
   "exclude": [
     "tsconfig.types.json",
