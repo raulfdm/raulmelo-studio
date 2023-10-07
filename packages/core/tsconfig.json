@@ -1,15 +1,31 @@
 {
-  "extends": "@raulmelo/tsconfig",
   "compilerOptions": {
-    "declaration": true,
-    "declarationDir": "./dist",
-    "noEmit": false,
-    "emitDeclarationOnly": true,
-    "baseUrl": ".",
-    "declarationMap": true,
+    "allowImportingTsExtensions": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "composite": true,
+    "downlevelIteration": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "lib": [
+      "ESNext"
+    ],
+    "module": "ESNext",
+    "moduleDetection": "force",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+    "noUncheckedIndexedAccess": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "esnext",
+    "types": [
+      "bun-types"
+    ],
+    "verbatimModuleSyntax": true,
     "paths": {
       "@/config": [
-        "src/config/index.ts"
+        "./src/config/index.ts"
       ],
       "@/utils": [
         "./src/utils/index.ts"
@@ -22,7 +38,14 @@
       ]
     }
   },
+  "include": [
+    "src/**/*",
+    "types/**/*",
+    "scripts/**/*",
+    "package.json"
+  ],
   "exclude": [
+    "tsconfig.types.json",
     "node_modules",
     "dist",
     "src/**/*.spec.ts",
