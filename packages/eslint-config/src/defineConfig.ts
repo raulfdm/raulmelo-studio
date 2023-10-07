@@ -4,11 +4,9 @@ import { baseConfig } from './configs/base.ts';
 import { javascriptConfig } from './configs/javascript.ts';
 import { prettierConfig } from './configs/prettier.ts';
 import { typescriptConfig } from './configs/typescript.ts';
-import { vitestConfig } from './configs/vitest.ts';
 import { maybeArray } from './utils.ts';
 
 type Options = {
-  vitest?: boolean;
   js?: boolean;
   ts?: boolean;
   prettier?: boolean;
@@ -26,13 +24,12 @@ export function defineConfig(
       ...maybeArray(baseConfig),
       ...maybeArray(javascriptConfig),
       ...maybeArray(typescriptConfig),
-      ...maybeArray(vitestConfig),
       ...config,
       ...maybeArray(prettierConfig),
     ];
   }
 
-  const { vitest = false, js = false, ts = false, prettier = false } = options;
+  const { js = false, ts = false, prettier = false } = options;
 
   const newConfig: Linter.FlatConfig[] = [...maybeArray(baseConfig)];
 
@@ -42,10 +39,6 @@ export function defineConfig(
 
   if (ts) {
     newConfig.push(...maybeArray(typescriptConfig));
-  }
-
-  if (vitest) {
-    newConfig.push(...maybeArray(vitestConfig));
   }
 
   newConfig.push(...config);

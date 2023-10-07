@@ -16,7 +16,6 @@ However, the core technologies here are:
 
 - [TypeScript](https://www.typescriptlang.org/) - core programming language;
 - [vitejs](https://vitejs.dev/) - for bundling packages;
-- [vitest](https://vitest.dev/) - For unit testing;
 - [TailwindCSS](https://tailwindcss.com/) - for styles;
 
 ## Structure

@@ -1,7 +1,5 @@
-beforeAll(() => {
-	vi.useFakeTimers().setSystemTime(new Date('2023-01-01'));
-});
+import { beforeAll, setSystemTime } from 'bun:test';
 
-afterAll(() => {
-	vi.useRealTimers();
+beforeAll(() => {
+	setSystemTime(new Date('2023-01-01'));
 });

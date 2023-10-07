@@ -90,7 +90,7 @@ module.exports = {
       groupName: 'Sanity',
     },
     {
-      matchPackageNames: ['vite', 'vitest'],
+      matchPackageNames: ['vite'],
       matchPackagePrefixes: ['vite-plugin'],
       groupName: 'Vite',
     },

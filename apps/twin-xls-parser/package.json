@@ -4,15 +4,14 @@
 	"type": "module",
 	"private": true,
 	"scripts": {
-		"test": "vitest",
-		"coverage": "vitest run --coverage",
+		"test": "bun test --setup config/test-setup.ts",
+		"coverage": "bun test --coverage",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"test:unit": "vitest",
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"dependencies": {
@@ -27,6 +26,7 @@
 		"@typescript-eslint/eslint-plugin": "6.7.0",
 		"@typescript-eslint/parser": "6.7.0",
 		"autoprefixer": "10.4.16",
+		"bun-types": "latest",
 		"daisyui": "2.52.0",
 		"eslint": "8.49.0",
 		"eslint-config-prettier": "9.0.0",
@@ -42,7 +42,6 @@
 		"tailwindcss": "3.3.3",
 		"tslib": "2.6.2",
 		"typescript": "5.2.2",
-		"vite": "4.4.9",
-		"vitest": "0.34.5"
+		"vite": "4.4.9"
 	}
 }

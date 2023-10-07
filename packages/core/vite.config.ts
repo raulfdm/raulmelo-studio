@@ -1,5 +1,3 @@
-/// <reference types="vitest" />
-
 import path from 'path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
@@ -33,10 +31,6 @@ function isExternal(id: string) {
 }
 
 const config = defineConfig({
-  test: {
-    globals: true,
-    include: ['**/?(*.){test,spec}.?(c|m)[jt]s?(x)'],
-  },
   resolve: {
     alias: aliases,
   },
