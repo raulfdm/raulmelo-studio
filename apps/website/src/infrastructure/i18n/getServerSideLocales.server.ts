@@ -3,7 +3,7 @@ import {
   type SupportedLanguages,
   supportedLanguagesSchema,
 } from '@raulmelo/core/config';
-import flat from 'flat';
+import { flatten } from 'flat';
 
 import enLocales from './locales/en.json';
 import ptLocales from './locales/pt.json';
@@ -18,14 +18,14 @@ const serverIntl: Record<SupportedLanguages, IntlShape<SupportedLanguages>> = {
   en: createIntl(
     {
       locale: `en`,
-      messages: flat(enLocales),
+      messages: flatten(enLocales),
     },
     enCache,
   ),
   pt: createIntl(
     {
       locale: `pt`,
-      messages: flat(ptLocales),
+      messages: flatten(ptLocales),
     },
     ptCache,
   ),
