@@ -12,6 +12,11 @@ const result = await Bun.build({
   format: 'esm',
   external: [...Object.keys(pkg.dependencies)],
   splitting: true,
+  /**
+   * This property solves this problem:
+   * https://github.com/oven-sh/bun/issues/5344
+   */
+  minify: true,
 });
 
 if (result.success === false) {

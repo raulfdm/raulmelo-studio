@@ -3,7 +3,6 @@ import etc from '@wooorm/starry-night/etc';
 import sourceGoMod from '@wooorm/starry-night/go.mod';
 // @ts-ignore
 import sourceAstro from '@wooorm/starry-night/source.astro';
-console.log(sourceAstro);
 import sourceCss from '@wooorm/starry-night/source.css';
 import sourceDiff from '@wooorm/starry-night/source.diff';
 import sourceGfm from '@wooorm/starry-night/text.md';
