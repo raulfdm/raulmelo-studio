@@ -14,9 +14,8 @@
     AppShell,
     Drawer,
     getDrawerStore,
-    storePopup,
-    initializeStores
-  } from '@skeletonlabs/skeleton';
+    initializeStores,
+    storePopup  } from '@skeletonlabs/skeleton';
 
   initializeStores();
 
