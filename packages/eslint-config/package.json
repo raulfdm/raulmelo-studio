@@ -6,18 +6,19 @@
     "dist",
     "types"
   ],
-  "types": "./dist/index.d.ts",
+  "types": "./dist/src/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.js",
-      "types": "./types/index.d.ts"
+      "types": "./dist/src/index.d.ts"
     }
   },
   "scripts": {
     "prepare": "turbo --filter eslint-config build --output-logs errors-only",
     "lint": "eslint .",
     "build": "run-s build:*",
-    "build:lib": "bun run scripts/build.ts"
+    "build:lib": "bun run scripts/build.ts",
+    "build:types": "tsc -p tsconfig.types.json"
   },
   "peerDependencies": {
     "eslint": "^8.40.0",
