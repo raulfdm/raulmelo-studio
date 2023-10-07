@@ -14,7 +14,6 @@ Each project/package uses different technologies because they have different pur
 
 However, the core technologies here are:
 
-- [pnpm + pnpm workspaces](https://pnpm.io/) - Maintain this Monorepo;
 - [TypeScript](https://www.typescriptlang.org/) - core programming language;
 - [vitejs](https://vitejs.dev/) - for bundling packages;
 - [vitest](https://vitest.dev/) - For unit testing;
