@@ -1,0 +1,21 @@
+name: 'PNPM + Bun setup'
+description: 'Shared action to install PNPM and Bun'
+runs:
+  using: 'composite'
+  steps:
+    - name: Git files setup
+      uses: actions/checkout@v4
+
+    - uses: oven-sh/setup-bun@v1
+
+    - uses: pnpm/action-setup@v2.4.0
+      name: Install pnpm
+      with:
+        version: 8.9.2
+        run_install: true
+
+    - name: Node Setup
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
+        cache: 'pnpm'
