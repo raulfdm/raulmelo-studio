@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "prepare": "turbo --filter sanity-core build --output-logs errors-only",
-    "build": "bun run build:lib && bun run build:types",
+    "build": "pnpm run build:lib && pnpm run build:types",
     "build:lib": "bun scripts/build.ts",
     "build:types": "tsc -p tsconfig.types.json"
   },
@@ -29,6 +29,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sanity": "3.17.0",
-    "typescript": "5.2.2"
+    "typescript": "5.2.2",
+    "bun-types": "1.0.6"
   }
 }
