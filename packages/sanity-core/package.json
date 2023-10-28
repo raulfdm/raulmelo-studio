@@ -3,16 +3,18 @@
   "private": true,
   "version": "1.0.0-development",
   "type": "module",
-  "module": "dist/sanity-core.js",
-  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/src/index.js",
+      "types": "./dist/src/index.d.ts"
+    }
+  },
   "files": [
     "dist/"
   ],
   "scripts": {
     "prepare": "turbo --filter sanity-core build --output-logs errors-only",
-    "build": "pnpm run build:lib && pnpm run build:types",
-    "build:lib": "bun scripts/build.ts",
-    "build:types": "tsc -p tsconfig.types.json"
+    "build": "tsc -p tsconfig.build.json"
   },
   "dependencies": {
     "@tabler/icons-react": "2.38.0"
@@ -29,7 +31,6 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sanity": "3.17.0",
-    "typescript": "5.2.2",
-    "bun-types": "1.0.6"
+    "typescript": "5.2.2"
   }
 }
