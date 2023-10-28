@@ -11,6 +11,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Git files setup
+        uses: actions/checkout@v4
+
       - name: Setup environment
         uses: ./.github/actions/pnpm-bun-setup
 
