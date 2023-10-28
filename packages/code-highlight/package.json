@@ -23,7 +23,7 @@
     "test": "bun test",
     "build": "bun run build:lib && bun run build:types",
     "build:lib": "bun scripts/build.ts",
-    "build:types": "tsc -p tsconfig.types.json"
+    "build:types": "tsc -p tsconfig.build.json"
   },
   "peerDependencies": {
     "vscode-oniguruma": ">=1.7.0"
@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@raulmelo/tsconfig": "workspace:*",
-    "bun-types": "1.0.4",
+    "bun-types": "1.0.6",
     "typescript": "5.2.2"
   }
 }

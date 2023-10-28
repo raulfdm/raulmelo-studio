@@ -1,13 +1,14 @@
 {
-  "extends": "@raulmelo/tsconfig/tsconfig.lib.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
+    "outDir": "dist",
+    "noEmit": false,
     "types": [
       "bun-types"
     ],
+    "rootDir": "src"
   },
   "include": [
     "src/**/*",
-    "scripts/**/*",
-    "package.json"
   ],
 }
