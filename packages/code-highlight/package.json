@@ -4,7 +4,7 @@
   "description": "Server Side Code Highlighting powered by Starry Night",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
+      "import": "./dist/src/index.js",
       "types": "./dist/src/index.d.ts"
     },
     "./styles": {
@@ -21,9 +21,7 @@
   "scripts": {
     "prepare": "turbo --filter code-highlight build --output-logs errors-only",
     "test": "bun test",
-    "build": "bun run build:lib && bun run build:types",
-    "build:lib": "bun scripts/build.ts",
-    "build:types": "tsc -p tsconfig.build.json"
+    "build": "tsc -p tsconfig.build.json"
   },
   "peerDependencies": {
     "vscode-oniguruma": ">=1.7.0"
