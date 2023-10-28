@@ -580,8 +580,8 @@ importers:
         specifier: workspace:*
         version: link:../tsconfig
       bun-types:
-        specifier: 1.0.4
-        version: 1.0.4
+        specifier: 1.0.6
+        version: 1.0.6
       typescript:
         specifier: 5.2.2
         version: 5.2.2
@@ -742,11 +742,7 @@ importers:
         specifier: 3.3.3
         version: 3.3.3
 
-  packages/tsconfig:
-    dependencies:
-      '@tsconfig/node18':
-        specifier: 18.2.2
-        version: 18.2.2
+  packages/tsconfig: {}
 
 packages:
 
@@ -3133,10 +3129,6 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: false
 
-  /@tsconfig/node18@18.2.2:
-    resolution: {integrity: sha512-d6McJeGsuoRlwWZmVIeE8CUA27lu6jLjvv1JzqmpsytOYYbVi1tHZEnwCNVOXnj4pyLvneZlFlpXUK+X9wBWyw==}
-    dev: false
-
   /@types/babel__core@7.20.1:
     resolution: {integrity: sha512-aACu/U/omhdk15O4Nfb+fHgH/z3QsfQzpnvRZhYhThms83ZnAOZz7zZAWO7mn2yyNQaA4xTO8GLK3uqFU4bYYw==}
     dependencies:
@@ -4462,10 +4454,6 @@ packages:
     resolution: {integrity: sha512-9q/rDEGSb/Qsvv2qvzIzdluL5k7AaJOTrw23z9reQthrbF7is4CtlT0DXyO1oei2DCp4uojjzQ7igaSHp1kAEQ==}
     engines: {node: '>=0.2.0'}
     dev: false
-
-  /bun-types@1.0.4:
-    resolution: {integrity: sha512-MIXp8MXPqzjjDrBs2fNzODFgFB+Mkl/OdTsPjYaefRoBt+Bk8VEJc3S1bbs6pvBi/wCpPf/ZSmzfIyZ5w4gAMg==}
-    dev: true
 
   /bun-types@1.0.5-canary.20231007T140129:
     resolution: {integrity: sha512-2Aw8MljYv9M8fzxB2z5ER19vVOQVWxLF2na7mDwAUJlGnr9nbKf+tCgqEaEq4AvaqRNHXZldVCERD9JfanXtbg==}
