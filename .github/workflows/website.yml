@@ -14,21 +14,19 @@ jobs:
       - name: Git files setup
         uses: actions/checkout@v4
 
-      - uses: oven-sh/setup-bun@v1
-
-      - name: Install Dependencies
-        run: bun install
+      - name: Setup environment
+        uses: ./.github/actions/pnpm-bun-setup
 
       # I don't need to add build check because this project will be build in Vercel's infrastructure.
       # If something went wrong while building it, then it will fail there.
 
       - name: Prepare website to be lint # Needed to be able to run lint propely
         run: |
-          bun run build --filter=website^...
-          bun run typegen --filter=website
+          pnpm run build --filter=website^...
+          pnpm run typegen --filter=website
 
       - name: Lint Projects
-        run: bun run lint --filter website
+        run: pnpm run lint --filter website
 
       - name: Test Projects
-        run: bun run test --filter website
+        run: pnpm run test --filter website
