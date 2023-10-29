@@ -16,16 +16,14 @@ jobs:
       - name: Git files setup
         uses: actions/checkout@v4
 
-      - uses: oven-sh/setup-bun@v1
-
-      - name: Install Dependencies
-        run: bun install
+      - name: Setup environment
+        uses: ./.github/actions/pnpm-bun-setup
 
       - name: Lint Projects
-        run: bun run lint --filter="./packages/*"
+        run: pnpm run lint --filter="./packages/*"
 
       - name: Test Projects
-        run: bun run test --filter="./packages/*"
+        run: pnpm run test --filter="./packages/*"
 
       - name: Build Projects
-        run: bun run build --filter="./packages/*"
+        run: pnpm run build --filter="./packages/*"

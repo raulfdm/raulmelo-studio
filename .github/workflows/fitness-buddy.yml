@@ -3,9 +3,9 @@ name: Fitness Buddy
 on:
   push:
     paths:
+      - '.github/workflows/fitness-buddy.yml'
       - 'apps/fitness-buddy/**'
       - 'packages/core/**'
-      - '.github/workflows/fitness-buddy.yml'
 
 jobs:
   build:
@@ -14,10 +14,8 @@ jobs:
       - name: Git files setup
         uses: actions/checkout@v4
 
-      - uses: oven-sh/setup-bun@v1
-
-      - name: Install Dependencies
-        run: bun install
+      - name: Setup environment
+        uses: ./.github/actions/pnpm-bun-setup
 
       - name: Lint Projects
-        run: bun run lint --filter=fitness-buddy
+        run: pnpm run lint --filter=fitness-buddy

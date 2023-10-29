@@ -9,7 +9,7 @@ import { contentBlockToRawText } from '@/utils';
 import {
   queryCodeSnippets,
   type QueryCodeSnippetsReturnType,
-} from '../codeSnippets';
+} from '../codeSnippets/index.js';
 
 type QueryAlgoliaDataParams = {
   client: SanityClient;

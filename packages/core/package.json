@@ -2,41 +2,32 @@
   "private": true,
   "name": "@raulmelo/core",
   "version": "1.0.0-development",
-  "license": "MIT",
   "type": "module",
   "files": [
     "dist",
-    "index.d.ts",
-    "config.d.ts",
-    "domains.d.ts",
-    "utils.d.ts",
-    "scripts.d.ts",
     "types"
   ],
   "exports": {
     "./domains": {
-      "default": "./dist/domains/index.js",
+      "default": "./dist/src/domains/index.js",
       "types": "./dist/src/domains/index.d.ts"
     },
     "./utils": {
-      "default": "./dist/utils/index.js",
+      "default": "./dist/src/utils/index.js",
       "types": "./dist/src/utils/index.d.ts"
     },
     "./config": {
-      "default": "./dist/config/index.js",
+      "default": "./dist/src/config/index.js",
       "types": "./dist/src/config/index.d.ts"
     },
     "./scripts": {
-      "default": "./dist/scripts/index.js",
+      "default": "./dist/src/scripts/index.js",
       "types": "./dist/src/scripts/index.d.ts"
     }
   },
-  "types": "./index.d.ts",
   "scripts": {
     "prepare": "turbo --filter='core' build --output-logs errors-only",
-    "build": "bun run build:lib && bun run build:types",
-    "build:lib": "bun scripts/build.ts",
-    "build:types": "tsc -p tsconfig.types.json",
+    "build": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -53,11 +44,16 @@
     "@raulmelo/tsconfig": "workspace:*",
     "@types/node": "18.17.15",
     "@types/ramda": "0.29.3",
+    "bun-types": "1.0.6",
     "concurrently": "8.2.0",
     "eslint": "8.49.0",
     "eslint-plugin-node": "11.1.0",
     "globals": "13.22.0",
     "ramda": "0.29.0",
+    "tsc-alias": "1.8.8",
     "typescript": "5.2.2"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }

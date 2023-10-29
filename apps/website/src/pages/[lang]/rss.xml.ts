@@ -17,7 +17,7 @@ export const get: APIRoute = async ({ params }) => {
   }
 
   const { tils, posts, ...restData } = await queryRssData({
-    language: lang,
+    language: langParseResult.data,
     client: sanityClient,
   });
 

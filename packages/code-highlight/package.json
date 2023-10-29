@@ -2,9 +2,10 @@
   "name": "@raulmelo/code-highlight",
   "version": "1.0.0-development",
   "description": "Server Side Code Highlighting powered by Starry Night",
+  "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
+      "import": "./dist/src/index.js",
       "types": "./dist/src/index.d.ts"
     },
     "./styles": {
@@ -17,13 +18,10 @@
     "dist",
     "styles"
   ],
-  "type": "module",
   "scripts": {
     "prepare": "turbo --filter code-highlight build --output-logs errors-only",
     "test": "bun test",
-    "build": "bun run build:lib && bun run build:types",
-    "build:lib": "bun scripts/build.ts",
-    "build:types": "tsc -p tsconfig.types.json"
+    "build": "tsc -p tsconfig.build.json"
   },
   "peerDependencies": {
     "vscode-oniguruma": ">=1.7.0"
@@ -35,7 +33,10 @@
   },
   "devDependencies": {
     "@raulmelo/tsconfig": "workspace:*",
-    "bun-types": "1.0.4",
+    "bun-types": "1.0.6",
     "typescript": "5.2.2"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }

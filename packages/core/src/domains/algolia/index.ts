@@ -1,1 +1,1 @@
-export * from './queryAlgoliaData';
+export * from './queryAlgoliaData.js';

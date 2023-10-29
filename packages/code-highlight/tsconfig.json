@@ -1,38 +1,15 @@
 {
+  "extends": "@raulmelo/tsconfig/tsconfig.lib.json",
   "compilerOptions": {
-    "allowImportingTsExtensions": true,
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "composite": true,
-    "downlevelIteration": true,
-    "forceConsistentCasingInFileNames": true,
-    "declaration": true,
-    "declarationMap": true,
-    "esModuleInterop": true,
-    "lib": [
-      "ESNext"
-    ],
-    "module": "ESNext",
-    "moduleDetection": "force",
-    "moduleResolution": "Bundler",
-    "noEmit": true,
-    "noUncheckedIndexedAccess": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "esnext",
     "types": [
       "bun-types"
-    ],
-    "verbatimModuleSyntax": true
+    ]
   },
   "include": [
-    "src/**/*",
-    "types/**/*",
-    "scripts/**/*",
-    "package.json"
+    "."
   ],
   "exclude": [
-    "tsconfig.types.json"
+    "dist/**/*",
+    "node_modules/**/*"
   ]
 }
