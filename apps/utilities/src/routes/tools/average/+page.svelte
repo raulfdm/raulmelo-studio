@@ -1,4 +1,5 @@
 <script lang="ts">
+  // @ts-ignore
   import IconTrash from '@tabler/icons-svelte/dist/svelte/icons/IconTrash.svelte';
 
   import PageLayout from '$lib/components/PageLayout.svelte';
