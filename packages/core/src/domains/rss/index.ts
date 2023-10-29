@@ -1,1 +1,1 @@
-export * from './queryRssData';
+export * from './queryRssData.js';

@@ -1,6 +1,6 @@
 import type { PortableTextBlock } from '@portabletext/types';
 
-import { contentBlockToRawText } from './contentBlockToRawText';
+import { contentBlockToRawText } from './contentBlockToRawText.js';
 
 const AVERAGE_WORD_READING = 200;
 

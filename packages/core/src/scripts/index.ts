@@ -1,2 +1,2 @@
-export * from './generateRssFeed';
-export * from './generateSiteData';
+export * from './generateRssFeed.js';
+export * from './generateSiteData.js';

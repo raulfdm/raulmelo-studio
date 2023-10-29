@@ -3,7 +3,7 @@ import imageUrlBuilder from '@sanity/image-url';
 import type { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder';
 import type { SanityImageObject } from '@sanity/image-url/lib/types/types';
 
-import { isNil } from './ramda';
+import { isNil } from './ramda.js';
 
 type Source =
   | SanityImageObject

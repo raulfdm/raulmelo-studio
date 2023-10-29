@@ -27,7 +27,7 @@
   },
   "scripts": {
     "prepare": "turbo --filter='core' build --output-logs errors-only",
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -50,6 +50,7 @@
     "eslint-plugin-node": "11.1.0",
     "globals": "13.22.0",
     "ramda": "0.29.0",
+    "tsc-alias": "1.8.8",
     "typescript": "5.2.2"
   },
   "volta": {

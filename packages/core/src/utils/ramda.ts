@@ -1,3 +1,6 @@
+/**
+ * For those modules we don't need to import with file extension.
+ */
 import Rhead from 'ramda/src/head';
 import RisEmpty from 'ramda/src/isEmpty';
 import RisNil from 'ramda/src/isNil';
