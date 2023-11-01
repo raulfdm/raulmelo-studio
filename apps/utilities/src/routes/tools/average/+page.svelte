@@ -1,4 +1,5 @@
 <script lang="ts">
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   import IconTrash from '@tabler/icons-svelte/dist/svelte/icons/IconTrash.svelte';
 
