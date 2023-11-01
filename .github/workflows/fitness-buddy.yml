@@ -3,9 +3,10 @@ name: Fitness Buddy
 on:
   push:
     paths:
-      - '.github/workflows/fitness-buddy.yml'
-      - 'apps/fitness-buddy/**'
-      - 'packages/core/**'
+      - .github/workflows/fitness-buddy.yml
+      - .github/actions/pnpm-bun-setup/action.yml
+      - apps/fitness-buddy/**
+      - packages/core/**
 
 jobs:
   build:

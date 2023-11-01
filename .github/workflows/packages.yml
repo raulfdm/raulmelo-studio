@@ -3,8 +3,9 @@ name: Packages
 on:
   push:
     paths:
-      - packages/**
       - .github/workflows/packages.yml
+      - .github/actions/pnpm-bun-setup/action.yml
+      - packages/**
 
 env:
   CI: true

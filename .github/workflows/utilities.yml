@@ -3,8 +3,9 @@ name: Website - Utilities
 on:
   push:
     paths:
-      - 'apps/utilities/**'
-      - '.github/workflows/utilities.yml'
+      - .github/workflows/utilities.yml
+      - .github/actions/pnpm-bun-setup/action.yml
+      - apps/utilities/**
 
 jobs:
   build:
