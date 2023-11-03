@@ -390,8 +390,8 @@ importers:
         specifier: 6.7.0
         version: 6.7.0
       '@sanity/document-internationalization':
-        specifier: 2.0.1
-        version: 2.0.1(@babel/core@7.23.2)(@sanity/ui@1.8.3)(react-dom@18.2.0)(react-fast-compare@3.2.2)(react-is@18.2.0)(react@18.2.0)(rxjs@7.8.1)(sanity@3.19.0)(styled-components@5.3.11)
+        specifier: 2.0.2
+        version: 2.0.2(@babel/core@7.23.2)(@sanity/ui@1.8.3)(react-dom@18.2.0)(react-fast-compare@3.2.2)(react-is@18.2.0)(react@18.2.0)(rxjs@7.8.1)(sanity@3.19.0)(styled-components@5.3.11)
       '@sanity/vision':
         specifier: 3.19.0
         version: 3.19.0(@babel/runtime@7.23.2)(@codemirror/lint@6.4.2)(@codemirror/state@6.3.1)(@codemirror/theme-one-dark@6.1.2)(@lezer/common@1.1.0)(codemirror@6.0.1)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@5.3.11)
@@ -1105,7 +1105,7 @@ packages:
       '@babel/helpers': 7.23.1
       '@babel/parser': 7.23.0
       '@babel/template': 7.22.15
-      '@babel/traverse': 7.23.0(supports-color@5.5.0)
+      '@babel/traverse': 7.23.2(supports-color@5.5.0)
       '@babel/types': 7.23.0
       convert-source-map: 2.0.0
       debug: 4.3.4(supports-color@5.5.0)
@@ -1127,7 +1127,7 @@ packages:
       '@babel/helpers': 7.23.2
       '@babel/parser': 7.23.0
       '@babel/template': 7.22.15
-      '@babel/traverse': 7.23.2
+      '@babel/traverse': 7.23.2(supports-color@5.5.0)
       '@babel/types': 7.23.0
       convert-source-map: 2.0.0
       debug: 4.3.4(supports-color@5.5.0)
@@ -1244,7 +1244,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/template': 7.22.15
-      '@babel/traverse': 7.23.2
+      '@babel/traverse': 7.23.2(supports-color@5.5.0)
       '@babel/types': 7.23.0
     transitivePeerDependencies:
       - supports-color
@@ -1254,7 +1254,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/template': 7.22.15
-      '@babel/traverse': 7.23.2
+      '@babel/traverse': 7.23.2(supports-color@5.5.0)
       '@babel/types': 7.23.0
     transitivePeerDependencies:
       - supports-color
@@ -1339,24 +1339,7 @@ packages:
       '@babel/parser': 7.23.0
       '@babel/types': 7.23.0
 
-  /@babel/traverse@7.23.0(supports-color@5.5.0):
-    resolution: {integrity: sha512-t/QaEvyIoIkwzpiZ7aoSKK8kObQYeF7T2v+dazAYCb8SXtp58zEVkWW7zAnju8FNKNdr4ScAOEDmMItbyOmEYw==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/code-frame': 7.22.13
-      '@babel/generator': 7.23.0
-      '@babel/helper-environment-visitor': 7.22.20
-      '@babel/helper-function-name': 7.23.0
-      '@babel/helper-hoist-variables': 7.22.5
-      '@babel/helper-split-export-declaration': 7.22.6
-      '@babel/parser': 7.23.0
-      '@babel/types': 7.23.0
-      debug: 4.3.4(supports-color@5.5.0)
-      globals: 11.12.0
-    transitivePeerDependencies:
-      - supports-color
-
-  /@babel/traverse@7.23.2:
+  /@babel/traverse@7.23.2(supports-color@5.5.0):
     resolution: {integrity: sha512-azpe59SQ48qG6nu2CzcMLbxUudtN+dOM9kDbUqGq3HXUJRlo7i8fvPoxQUzYgLZ4cMVmuZgm8vvBpNeRhd6XSw==}
     engines: {node: '>=6.9.0'}
     dependencies:
@@ -2460,7 +2443,7 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
-      '@babel/traverse': 7.23.2
+      '@babel/traverse': 7.23.2(supports-color@5.5.0)
       chalk: 4.1.2
       esbuild: 0.19.4
       esbuild-register: 3.5.0(esbuild@0.19.4)
@@ -2493,8 +2476,8 @@ packages:
     dependencies:
       '@sanity/diff-match-patch': 3.1.1
 
-  /@sanity/document-internationalization@2.0.1(@babel/core@7.23.2)(@sanity/ui@1.8.3)(react-dom@18.2.0)(react-fast-compare@3.2.2)(react-is@18.2.0)(react@18.2.0)(rxjs@7.8.1)(sanity@3.19.0)(styled-components@5.3.11):
-    resolution: {integrity: sha512-pfLx7rfu2rfTn9xRm4hTpKGSK2HwE8oTA91CNfxWrRjvfgF/pgJ2nzTTEbLZ1FfIn/EEQ+MgQwrS2GqbE3uhfw==}
+  /@sanity/document-internationalization@2.0.2(@babel/core@7.23.2)(@sanity/ui@1.8.3)(react-dom@18.2.0)(react-fast-compare@3.2.2)(react-is@18.2.0)(react@18.2.0)(rxjs@7.8.1)(sanity@3.19.0)(styled-components@5.3.11):
+    resolution: {integrity: sha512-ICFz7yeUrUwdVSFC7VvxLkaSwPtYj8ZDutoIldWHg8JmJZYV3Fokg466t0XxdWYmanjuZPnhj+8eVv5kLrP4Vg==}
     engines: {node: '>=14'}
     peerDependencies:
       '@sanity/ui': ^1.2.2
@@ -2502,7 +2485,7 @@ packages:
       sanity: ^3.0.0
       styled-components: ^5.3.6
     dependencies:
-      '@sanity/icons': 2.4.1(react@18.2.0)
+      '@sanity/icons': 2.6.0(react@18.2.0)
       '@sanity/incompatible-plugin': 1.0.4(react-dom@18.2.0)(react@18.2.0)
       '@sanity/ui': 1.8.3(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@5.3.11)
       '@sanity/uuid': 3.0.2
@@ -2554,15 +2537,6 @@ packages:
     resolution: {integrity: sha512-5wVG/vIiGuGrSmq+Bl3PY7XDgQrGv0fyHdJI64FSulnr2wH3NMqZ6C59UFxnrZ93sr7kOt0zQFoNv2lkPBi0Cg==}
     peerDependencies:
       react: ^16.9 || ^17 || ^18
-    dependencies:
-      react: 18.2.0
-    dev: false
-
-  /@sanity/icons@2.4.1(react@18.2.0):
-    resolution: {integrity: sha512-/yxcIT0k1RxStI/pP/oHM44fHI6Oxiygf0jPcdV06Ce0xfFo+51UEqJSfE8hQ3fh+uFkat8ZZObZjq5v1ceJzw==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      react: ^18
     dependencies:
       react: 18.2.0
     dev: false
@@ -2632,7 +2606,7 @@ packages:
       '@sanity/icons': 2.6.0(react@18.2.0)
       '@sanity/incompatible-plugin': 1.0.4(react-dom@18.2.0)(react@18.2.0)
       '@sanity/ui': 1.8.3(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@5.3.11)
-      '@sanity/util': 3.18.1
+      '@sanity/util': 3.19.0
       react: 18.2.0
       sanity: 3.19.0(@types/react@18.2.33)(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.11)
       styled-components: 5.3.11(@babel/core@7.23.2)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)
@@ -2699,15 +2673,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@sanity/types@3.18.1:
-    resolution: {integrity: sha512-EKtWxRiCsgCy1QDhBAbwHNt15wL0l+XYJc5VeQzdxb7RJnq0ZzfqV5uhtzqr1G5nDyhSHdgLO4UhysUn63SfuA==}
-    dependencies:
-      '@sanity/client': 6.7.0
-      '@types/react': 18.2.33
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
   /@sanity/types@3.19.0:
     resolution: {integrity: sha512-g6DVsQ6rlfuUE8Kh4svcfIjr70HM5W2qXBec1sOmMXtYdyoELe1SAU2xF3MyDL4h5Pbyu2FsqS60HymVvZn7Uw==}
     dependencies:
@@ -2756,17 +2721,6 @@ packages:
       react-is: 18.2.0
       react-refractor: 2.1.7(react@18.2.0)
       styled-components: 5.3.11(@babel/core@7.23.2)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)
-
-  /@sanity/util@3.18.1:
-    resolution: {integrity: sha512-hLbNTChCtZ4d0UHNSGMthXtHaBlwuvfb5vJCByC3aNE2erj+EU212Em10+0wiiBTcWUaUCRs53zGClWhoa7iHQ==}
-    engines: {node: '>=18'}
-    dependencies:
-      '@sanity/types': 3.18.1
-      get-random-values-esm: 1.0.0
-      moment: 2.29.4
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
 
   /@sanity/util@3.19.0:
     resolution: {integrity: sha512-DUO208dOeWPo0ayFpBbFVw735nEgEjPDruFO185sg7x/j2aU/EYpXCCzvHZIKlP0qm7DOZKu9GI4m8chr5aN0Q==}
@@ -3617,7 +3571,7 @@ packages:
       xstate: ^4
     dependencies:
       '@babel/parser': 7.23.0
-      '@babel/traverse': 7.23.2
+      '@babel/traverse': 7.23.2(supports-color@5.5.0)
       '@babel/types': 7.23.0
       recast: 0.23.4
       xstate: 4.38.3
@@ -3988,7 +3942,7 @@ packages:
       '@babel/generator': 7.23.0
       '@babel/parser': 7.23.0
       '@babel/plugin-transform-react-jsx': 7.22.15(@babel/core@7.23.2)
-      '@babel/traverse': 7.23.2
+      '@babel/traverse': 7.23.2(supports-color@5.5.0)
       '@babel/types': 7.23.0
       '@types/babel__core': 7.20.1
       acorn: 8.10.0
@@ -9868,7 +9822,7 @@ packages:
       sanity: ^3.0.0
       styled-components: ^5.3.6
     dependencies:
-      '@sanity/icons': 2.4.1(react@18.2.0)
+      '@sanity/icons': 2.6.0(react@18.2.0)
       '@sanity/incompatible-plugin': 1.0.4(react-dom@18.2.0)(react@18.2.0)
       '@sanity/language-filter': 3.2.1(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.19.0)(styled-components@5.3.11)
       '@sanity/ui': 1.8.3(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@5.3.11)
@@ -9980,7 +9934,7 @@ packages:
       rxjs: ^7.0.0
       sanity: ^3
     dependencies:
-      '@sanity/icons': 2.4.1(react@18.2.0)
+      '@sanity/icons': 2.6.0(react@18.2.0)
       '@sanity/incompatible-plugin': 1.0.4(react-dom@18.2.0)(react@18.2.0)
       '@sanity/ui': 1.8.3(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@5.3.11)
       react: 18.2.0
@@ -10715,7 +10669,7 @@ packages:
       react-is: '>= 16.8.0'
     dependencies:
       '@babel/helper-module-imports': 7.22.15
-      '@babel/traverse': 7.23.0(supports-color@5.5.0)
+      '@babel/traverse': 7.23.2(supports-color@5.5.0)
       '@emotion/is-prop-valid': 1.2.1
       '@emotion/stylis': 0.8.5
       '@emotion/unitless': 0.7.5
@@ -10740,7 +10694,7 @@ packages:
       react-is: '>= 16.8.0'
     dependencies:
       '@babel/helper-module-imports': 7.22.15
-      '@babel/traverse': 7.23.0(supports-color@5.5.0)
+      '@babel/traverse': 7.23.2(supports-color@5.5.0)
       '@emotion/is-prop-valid': 1.2.1
       '@emotion/stylis': 0.8.5
       '@emotion/unitless': 0.7.5
