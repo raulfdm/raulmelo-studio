@@ -650,8 +650,8 @@ importers:
   packages/eslint-config:
     dependencies:
       '@eslint/eslintrc':
-        specifier: 2.1.2
-        version: 2.1.2
+        specifier: 2.1.3
+        version: 2.1.3
       '@eslint/js':
         specifier: 8.52.0
         version: 8.52.0
@@ -2009,6 +2009,23 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
+
+  /@eslint/eslintrc@2.1.3:
+    resolution: {integrity: sha512-yZzuIG+jnVu6hNSzFEN07e8BxF3uAzYtQb6uDkaYZLo6oYZDCq454c5kB8zxnzfCYyP4MIuyBn10L0DqwujTmA==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    dependencies:
+      ajv: 6.12.6
+      debug: 4.3.4(supports-color@5.5.0)
+      espree: 9.6.1
+      globals: 13.23.0
+      ignore: 5.2.4
+      import-fresh: 3.3.0
+      js-yaml: 4.1.0
+      minimatch: 3.1.2
+      strip-json-comments: 3.1.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
 
   /@eslint/js@8.52.0:
     resolution: {integrity: sha512-mjZVbpaeMZludF2fsWLD0Z9gCref1Tk4i9+wddjRvpUNqqcndPkBD09N/Mapey0b3jaXbLm2kICwFv2E64QinA==}
@@ -3560,7 +3577,7 @@ packages:
       isomorphic-fetch: 3.0.0
       prettier: 2.8.8
       xstate: 4.38.3
-      xstate-beta: /xstate@5.0.0-beta.38
+      xstate-beta: /xstate@5.0.0-beta.40
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -12244,8 +12261,8 @@ packages:
   /xstate@5.0.0-beta.33:
     resolution: {integrity: sha512-zHwbY2d2GGrsIySUCybrlq6YAPGM20yKpvliroDqfSbwa255Z1d7RYLkbbxiLx8SnEwDpWVple7JTXkjOw3JLA==}
 
-  /xstate@5.0.0-beta.38:
-    resolution: {integrity: sha512-8hOXlbfcbLbSFgX20E0mwPPImFPtnRG+NhkupB9TtfYaPk7HyHi4BSDdN7gpoyBbvDm5VbqRwYVquR58WbhCVA==}
+  /xstate@5.0.0-beta.40:
+    resolution: {integrity: sha512-q3tGXbfaHC785Eol2YFU3NmYfRy3XIA/pN2m2rK2oHY5t70SCUO0TvmLqxheE5sB4yJI+47U6XX7pdCtCVA3hg==}
 
   /xtend@4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
