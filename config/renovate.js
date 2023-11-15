@@ -45,7 +45,7 @@ module.exports = {
       groupName: 'React',
     },
     {
-      matchPackagePrefixes: ['@astrojs'],
+      matchPackagePrefixes: ['@astrojs/'],
       matchPackageNames: [
         'astro',
         'prettier-plugin-astro',
@@ -53,30 +53,23 @@ module.exports = {
       ],
       groupName: 'Astro',
     },
+
     {
-      matchPackagePrefixes: ['@sanity'],
-      matchPackageNames: ['sanity'],
-      groupName: 'Sanity',
+      matchPackagePrefixes: ['eslint', '@typescript-eslint/'],
+      matchPackageNames: ['eslint', '@types/eslint__js', '@types/eslint'],
+      groupName: 'ESlint',
     },
     {
-      matchPackagePrefixes: ['eslint'],
-      groupName: 'eslint',
-    },
-    {
-      matchPackagePrefixes: ['@babel'],
-      groupName: 'babel',
-    },
-    {
-      matchPackagePrefixes: ['@fontsource'],
+      matchPackagePrefixes: ['@fontsource/'],
       groupName: 'Fountsource (website)',
     },
     {
-      matchPackagePrefixes: ['@xstate'],
+      matchPackagePrefixes: ['@xstate/'],
       matchPackageNames: ['xstate'],
       groupName: 'XState',
     },
     {
-      matchPackagePrefixes: ['@svelte'],
+      matchPackagePrefixes: ['@sveltejs/'],
       matchPackageNames: ['svelte'],
       groupName: 'Svelte',
     },
@@ -85,12 +78,12 @@ module.exports = {
       groupName: 'Tabler Icons',
     },
     {
-      matchPackagePrefixes: ['@sanity', 'sanity-'],
+      matchPackagePrefixes: ['@sanity/', 'sanity-'],
       matchPackageNames: ['sanity', 'groq'],
       groupName: 'Sanity',
     },
     {
-      matchPackageNames: ['vite'],
+      matchPackageNames: ['vite', 'vitest'],
       matchPackagePrefixes: ['vite-plugin'],
       groupName: 'Vite',
     },
@@ -100,17 +93,21 @@ module.exports = {
       groupName: 'Algolia',
     },
     {
-      matchPackagePrefixes: ['@typescript-eslint'],
-      groupName: 'ESLint TS',
-    },
-    {
       groupName: 'Tailwind ecosystem',
-      matchPackagePrefixes: ['@tailwindcss'],
+      matchPackagePrefixes: ['@tailwindcss/'],
       matchPackageNames: ['postcss', 'autoprefixer', 'tailwindcss'],
     },
     {
       matchPackageNames: ['daisyui'],
       allowedVersions: '<3',
+    },
+    {
+      groupName: 'Lodash',
+      matchPackagePrefixes: ['lodash.', '@types/lodash'],
+    },
+    {
+      groupName: '@types',
+      matchPackagePrefixes: ['@types/'],
     },
   ],
 };
