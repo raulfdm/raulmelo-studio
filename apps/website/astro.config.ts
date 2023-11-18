@@ -29,6 +29,13 @@ const vscodeOnigurumaPath = new URL(
 ).pathname;
 
 const config = defineConfig({
+  experimental: {
+    i18n: {
+      defaultLocale: 'en',
+      locales: ['en', 'pt'],
+      routingStrategy: 'prefix-always',
+    },
+  },
   site: getWebsiteUrl(),
   output: `server`,
   redirects: {
