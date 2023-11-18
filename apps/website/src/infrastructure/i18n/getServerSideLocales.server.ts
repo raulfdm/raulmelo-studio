@@ -1,8 +1,5 @@
 import { createIntl, createIntlCache, type IntlShape } from '@formatjs/intl';
-import {
-  type SupportedLanguages,
-  supportedLanguagesSchema,
-} from '@raulmelo/core/config';
+import type { SupportedLanguages } from '@raulmelo/core/config';
 import { flatten } from 'flat';
 
 import enLocales from './locales/en.json';
@@ -34,12 +31,6 @@ const serverIntl: Record<SupportedLanguages, IntlShape<SupportedLanguages>> = {
 export function getIntl(
   locale: SupportedLanguages,
 ): IntlShape<SupportedLanguages> {
-  const { success } = supportedLanguagesSchema.safeParse(locale);
-
-  if (!success) {
-    throw new Error(`Invalid locale: ${locale}`);
-  }
-
   return serverIntl[locale];
 }
 
