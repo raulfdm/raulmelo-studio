@@ -2,7 +2,7 @@
   import type { SupportedLanguages } from '@raulmelo/core/config';
   import type { QueryTilsReturnType } from '@raulmelo/core/domains';
 
-  import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+  import { getIntl } from '@/infrastructure/i18n';
   import { getTilUrl } from '@/infrastructure/utils/url';
   import ContentTile from '@/ui/ContentTile.svelte';
 

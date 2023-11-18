@@ -2,7 +2,7 @@
 import type { SupportedLanguages } from '@raulmelo/core/config';
 import { queryCodeSnippetsBySlug } from '@raulmelo/core/domains';
 
-import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { getIntl } from '@/infrastructure/i18n';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import {
   getHomePageUrl,

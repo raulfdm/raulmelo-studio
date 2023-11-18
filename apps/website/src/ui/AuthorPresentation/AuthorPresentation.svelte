@@ -2,7 +2,7 @@
   import type { SupportedLanguages } from '@raulmelo/core/config';
   import type { QuerySiteDataReturnType } from '@raulmelo/core/domains';
 
-  import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+  import { getIntl } from '@/infrastructure/i18n';
   import { getSocial } from '@/infrastructure/utils/seo';
 
   import IconBrandGithub from '@tabler/icons-svelte/dist/svelte/icons/IconBrandGithub.svelte';

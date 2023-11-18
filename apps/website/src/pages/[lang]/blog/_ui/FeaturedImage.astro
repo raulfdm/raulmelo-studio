@@ -4,7 +4,7 @@ import type { QueryPostBySlugReturnType } from '@raulmelo/core/domains';
 import { imgUrlFor } from '@raulmelo/core/utils';
 import { Image } from 'astro:assets';
 
-import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { getIntl } from '@/infrastructure/i18n';
 import { sanityClient } from '@/infrastructure/sanity/client';
 
 type Post = NonNullable<QueryPostBySlugReturnType>;

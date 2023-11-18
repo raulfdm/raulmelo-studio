@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+  import { getIntl } from '@/infrastructure/i18n';
   import {
     sideMenuStore,
     closeSideMenu,

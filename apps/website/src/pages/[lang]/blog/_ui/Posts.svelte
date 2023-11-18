@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+  import { getIntl } from '@/infrastructure/i18n';
   import ContentTile from '@/ui/ContentTile.svelte';
   import type { SupportedLanguages } from '@raulmelo/core/config';
   import type { QueryPostsAndTilsReturnType } from '@raulmelo/core/domains';

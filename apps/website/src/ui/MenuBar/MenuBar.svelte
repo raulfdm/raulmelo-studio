@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+  import { getIntl } from '@/infrastructure/i18n';
   import { getPathnameWithLocale } from '@/infrastructure/utils/url';
   import type { SupportedLanguages } from '@raulmelo/core/config';
   import Logo from '../Logo.svelte';
