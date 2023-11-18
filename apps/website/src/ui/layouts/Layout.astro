@@ -47,7 +47,7 @@ const lang = preferredLocaleOrFallback(Astro.preferredLocale);
     <!-- Base-end -->
 
     <!-- SEO -->
-    <DefaultSEO title={title} lang={nextLang} {...seo} />
+    <DefaultSEO title={title} lang={lang} {...seo} />
     <!-- SEO-end -->
     <!-- Theme Script -->
     <ThemeScript />
@@ -74,7 +74,7 @@ const lang = preferredLocaleOrFallback(Astro.preferredLocale);
     </script>
 
     <MenuBar
-      lang={nextLang}
+      lang={lang}
       pathname={Astro.url.pathname}
       client:load
       themeHint={Astro.locals.themeHint}
