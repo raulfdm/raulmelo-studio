@@ -3,7 +3,6 @@ import type { SupportedLanguages } from '@raulmelo/core/config';
 import { queryTilBySlug } from '@raulmelo/core/domains';
 import { getEstimatedReadingTime, isEmpty, isNil } from '@raulmelo/core/utils';
 
-import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import {
   getHomePageUrl,
@@ -19,11 +18,14 @@ import PostBasic from '@/ui/PostBasic.astro';
 import PostHeading from '@/ui/PostHeading.astro';
 import { ShareContent } from '@/ui/ShareContent';
 import { Tag, Tags } from '@/ui/Tags';
+import { preferredLocaleOrFallback, getIntl } from '@/infrastructure/i18n';
 
-const { lang, slug } = Astro.params as {
+const { slug } = Astro.params as {
   slug: string;
   lang: SupportedLanguages;
 };
+
+const lang = preferredLocaleOrFallback(Astro.preferredLocale);
 
 const til = await queryTilBySlug({
   slug,
