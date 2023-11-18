@@ -1,7 +1,4 @@
-import { match } from '@formatjs/intl-localematcher';
-import type { SupportedLanguages } from '@raulmelo/core/config';
 import { defineMiddleware, sequence } from 'astro/middleware';
-import Negotiator from 'negotiator';
 
 const themeHintHandler = defineMiddleware(async ({ request, locals }, next) => {
   const response = (await next()) as Response;
@@ -22,42 +19,8 @@ const themeHintHandler = defineMiddleware(async ({ request, locals }, next) => {
   return response;
 });
 
-const languageHandler = defineMiddleware(
-  async ({ request, redirect }, next): Promise<Response> => {
-    const url = new URL(request.url);
+export const onRequest = sequence(themeHintHandler);
 
-    if (skipMiddleware(request.url)) {
-      return next() as Promise<Response>;
-    }
-
-    const pathnameIsMissingLocale = supportedLocales.every(
-      (locale) =>
-        !url.pathname.startsWith(`/${locale}/`) &&
-        url.pathname !== `/${locale}`,
-    );
-
-    if (pathnameIsMissingLocale) {
-      const locale = getLanguageFromAcceptLanguage(
-        request.headers.get(`accept-language`) || ``,
-      );
-
-      const normalizedPathname = normalizePathname(
-        `/${locale}/${url.pathname}`,
-      );
-
-      const nextUrl = new URL(normalizedPathname, request.url).toString();
-
-      return redirect(nextUrl);
-    }
-
-    return next() as Promise<Response>;
-  },
-);
-
-export const onRequest = sequence(languageHandler, themeHintHandler);
-
-const supportedLocales = [`en`, `pt`];
-const defaultLocale = `en`;
 const passThroughRoutes = [`/cv`, `/admin`, `/_image`, `/api`];
 
 function skipMiddleware(url: string) {
@@ -72,22 +35,4 @@ function skipMiddleware(url: string) {
   }
 
   return shouldSkip;
-}
-
-function getLanguageFromAcceptLanguage(acceptLanguageHeader: string) {
-  const languages = new Negotiator({
-    headers: {
-      'accept-language': acceptLanguageHeader,
-    },
-  }).languages(supportedLocales);
-
-  return match(
-    languages,
-    supportedLocales,
-    defaultLocale,
-  ) as SupportedLanguages;
-}
-
-function normalizePathname(pathname: string) {
-  return pathname.replaceAll(`//`, `/`).replace(/\/$/g, ``);
 }
