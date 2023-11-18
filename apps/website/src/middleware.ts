@@ -4,7 +4,7 @@ import { defineMiddleware, sequence } from 'astro/middleware';
 import Negotiator from 'negotiator';
 
 const themeHintHandler = defineMiddleware(async ({ request, locals }, next) => {
-  const response = await next();
+  const response = (await next()) as Response;
 
   if (skipMiddleware(request.url)) {
     return response;
@@ -27,7 +27,7 @@ const languageHandler = defineMiddleware(
     const url = new URL(request.url);
 
     if (skipMiddleware(request.url)) {
-      return next();
+      return next() as Promise<Response>;
     }
 
     const pathnameIsMissingLocale = supportedLocales.every(
@@ -50,7 +50,7 @@ const languageHandler = defineMiddleware(
       return redirect(nextUrl);
     }
 
-    return next();
+    return next() as Promise<Response>;
   },
 );
 
