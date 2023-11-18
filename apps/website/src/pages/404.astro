@@ -1,16 +1,9 @@
 ---
-import { getLangFromURL } from '@/infrastructure/i18n/getLangFromURL';
-import { getLanguageFromAcceptLanguage } from '@/infrastructure/i18n/getLanguageFromAcceptLanguage.server';
-import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
+import { getIntl, preferredLocaleOrFallback } from '@/infrastructure/i18n';
+
 import Layout from '@/ui/layouts/Layout.astro';
 
-let lang = getLangFromURL(Astro.request.url);
-
-if (lang === null) {
-  lang = getLanguageFromAcceptLanguage(
-    Astro.request.headers.get(`Accept-Language`) || ``,
-  );
-}
+const lang = preferredLocaleOrFallback(Astro.preferredLocale);
 
 const intl = getIntl(lang);
 ---
