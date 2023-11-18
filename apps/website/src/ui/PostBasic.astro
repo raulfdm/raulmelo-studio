@@ -1,7 +1,7 @@
 ---
 import type { SupportedLanguages } from '@raulmelo/core/config';
 
-import { getIntl } from '@/infrastructure/i18n';
+import { getIntl, preferredLocaleOrFallback } from '@/infrastructure/i18n';
 import { mergeClasses } from '@/infrastructure/utils/misc';
 import { getTagUrl } from '@/infrastructure/utils/url';
 import { ContentTypeTag } from '@/ui/ContentTypeTag';
@@ -34,7 +34,7 @@ const {
   ...props
 } = Astro.props;
 
-const { lang } = Astro.params as { lang: SupportedLanguages };
+const lang = preferredLocaleOrFallback(Astro.preferredLocale);
 
 const intl = getIntl(lang);
 ---

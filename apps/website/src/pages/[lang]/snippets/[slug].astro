@@ -1,8 +1,7 @@
 ---
-import type { SupportedLanguages } from '@raulmelo/core/config';
 import { queryCodeSnippetsBySlug } from '@raulmelo/core/domains';
 
-import { getIntl } from '@/infrastructure/i18n';
+import { getIntl, preferredLocaleOrFallback } from '@/infrastructure/i18n';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import {
   getHomePageUrl,
@@ -15,10 +14,10 @@ import CodeBlock from '@/ui/PortableText/CodeBlock/CodeBlock.astro';
 import ShareContent from '@/ui/ShareContent.astro';
 import { Tag, Tags } from '@/ui/Tags';
 
-const { lang, slug } = Astro.params as {
-  lang: SupportedLanguages;
+const { slug } = Astro.params as {
   slug: string;
 };
+const lang = preferredLocaleOrFallback(Astro.preferredLocale);
 
 const intl = getIntl(lang);
 

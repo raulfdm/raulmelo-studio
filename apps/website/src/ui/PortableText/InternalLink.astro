@@ -1,7 +1,6 @@
 ---
-import type { SupportedLanguages } from '@raulmelo/core/config';
-
 import { getPostUrl, getTilUrl } from '@/infrastructure/utils/url';
+import { preferredLocaleOrFallback } from '@/infrastructure/i18n';
 
 /**
  * This component is a bit problematic.
@@ -30,7 +29,7 @@ const { children, markDef } = Astro.props.node;
  * Isn't working when a internal link is referenced in a "quote" (info, etc.).
  */
 const { _type, slug } = markDef.itemMeta || {};
-const { lang } = Astro.params as { lang: SupportedLanguages };
+const lang = preferredLocaleOrFallback(Astro.preferredLocale);
 
 const content = children[0].text;
 

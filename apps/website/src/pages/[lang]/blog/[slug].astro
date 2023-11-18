@@ -1,9 +1,8 @@
 ---
-import type { SupportedLanguages } from '@raulmelo/core/config';
 import { queryPostBySlug } from '@raulmelo/core/domains';
 import { getEstimatedReadingTime, isEmpty, isNil } from '@raulmelo/core/utils';
 
-import { getIntl } from '@/infrastructure/i18n';
+import { getIntl, preferredLocaleOrFallback } from '@/infrastructure/i18n';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import {
   getBlogHomeUrl,
@@ -24,9 +23,9 @@ import { Tag, Tags } from '@/ui/Tags';
 import FeaturedImage from './_ui/FeaturedImage.astro';
 import SeriesSection from './_ui/SeriesSection.svelte';
 
-const { lang, slug } = Astro.params as {
+const lang = preferredLocaleOrFallback(Astro.preferredLocale);
+const { slug } = Astro.params as {
   slug: string;
-  lang: SupportedLanguages;
 };
 
 const post = await queryPostBySlug({

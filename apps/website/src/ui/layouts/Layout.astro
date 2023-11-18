@@ -24,16 +24,15 @@ import { MenuBar } from '@/ui/MenuBar';
 
 import GoogleAnalytics from '../GoogleAnalytics.astro';
 import ThemeScript from '../ThemeScript.astro';
+import { preferredLocaleOrFallback } from '@/infrastructure/i18n';
 
-const { title, seo, lang, containerClass } = Astro.props;
+const { title, seo, containerClass } = Astro.props;
 
-const { lang: langFromParams } = Astro.params as { lang: SupportedLanguages };
-
-const nextLang = lang || langFromParams;
+const lang = preferredLocaleOrFallback(Astro.preferredLocale);
 ---
 
-<!DOCTYPE html>
-<html lang={nextLang} data-theme-hint={Astro.locals.themeHint}>
+<!doctype html>
+<html lang={lang} data-theme-hint={Astro.locals.themeHint}>
   <head>
     <GoogleAnalytics />
     <!-- Base -->

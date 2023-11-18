@@ -1,10 +1,9 @@
 ---
-import type { SupportedLanguages } from '@raulmelo/core/config';
 import { queryAllTags } from '@raulmelo/core/domains';
 import IconHash from '@tabler/icons-svelte/dist/svelte/icons/IconHash.svelte';
 
 import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
-import { getIntl } from '@/infrastructure/i18n';
+import { getIntl, preferredLocaleOrFallback } from '@/infrastructure/i18n';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { getHomePageUrl, getTagUrl } from '@/infrastructure/utils/url';
 import { Breadcrumbs } from '@/ui/Breadcrumbs';
@@ -12,9 +11,10 @@ import Layout from '@/ui/layouts/Layout.astro';
 import { Tag, Tags } from '@/ui/Tags';
 
 export const prerender = true;
+
 export const getStaticPaths = languageGetStaticPaths;
 
-const { lang } = Astro.params as { lang: SupportedLanguages };
+const lang = preferredLocaleOrFallback(Astro.preferredLocale);
 
 const allTags = await queryAllTags({
   client: sanityClient,

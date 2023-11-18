@@ -1,12 +1,11 @@
 ---
 import './_ui/Search.css';
 
-import type { SupportedLanguages } from '@raulmelo/core/config';
 import { renderToString } from 'react-dom/server';
 import { getServerState } from 'react-instantsearch-hooks-server';
 
 import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
-import { getIntl } from '@/infrastructure/i18n';
+import { getIntl, preferredLocaleOrFallback } from '@/infrastructure/i18n';
 import { getHomePageUrl } from '@/infrastructure/utils/url';
 import { Breadcrumbs } from '@/ui/Breadcrumbs';
 import Layout from '@/ui/layouts/Layout.astro';
@@ -14,7 +13,7 @@ import Layout from '@/ui/layouts/Layout.astro';
 import { Search } from './_ui/Search';
 import { SearchSSR } from './_ui/SearchSSR';
 
-const { lang } = Astro.params as { lang: SupportedLanguages };
+const lang = preferredLocaleOrFallback(Astro.preferredLocale);
 
 export const prerender = true;
 export const getStaticPaths = languageGetStaticPaths;
