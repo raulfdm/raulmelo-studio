@@ -188,8 +188,8 @@ importers:
         specifier: 10.4.16
         version: 10.4.16(postcss@8.4.31)
       bun-types:
-        specifier: 1.0.7
-        version: 1.0.7
+        specifier: 1.0.13
+        version: 1.0.13
       daisyui:
         specifier: 2.52.0
         version: 2.52.0(autoprefixer@10.4.16)(postcss@8.4.31)
@@ -248,8 +248,8 @@ importers:
         specifier: 2.40.0
         version: 2.40.0(svelte@4.2.5)
       '@tailwindcss/forms':
-        specifier: 0.5.6
-        version: 0.5.6(tailwindcss@3.3.5)
+        specifier: 0.5.7
+        version: 0.5.7(tailwindcss@3.3.5)
       '@xstate/svelte':
         specifier: 2.1.0
         version: 2.1.0(svelte@4.2.5)(xstate@4.38.3)
@@ -267,8 +267,8 @@ importers:
         specifier: 2.4.0
         version: 2.4.0(svelte@4.2.5)
       '@skeletonlabs/tw-plugin':
-        specifier: 0.2.3
-        version: 0.2.3(tailwindcss@3.3.5)
+        specifier: 0.2.4
+        version: 0.2.4(tailwindcss@3.3.5)
       '@sveltejs/adapter-auto':
         specifier: 2.1.1
         version: 2.1.1(@sveltejs/kit@1.27.6)
@@ -360,8 +360,8 @@ importers:
         specifier: 5.0.15
         version: 5.0.15
       '@formatjs/intl':
-        specifier: 2.9.6
-        version: 2.9.6(typescript@5.2.2)
+        specifier: 2.9.9
+        version: 2.9.9(typescript@5.2.2)
       '@formatjs/intl-localematcher':
         specifier: 0.4.2
         version: 0.4.2
@@ -494,12 +494,9 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
-      react-instantsearch-hooks-server:
-        specifier: 6.47.3
-        version: 6.47.3(algoliasearch@4.20.0)(react-dom@18.2.0)(react@18.2.0)
-      react-instantsearch-hooks-web:
-        specifier: 6.47.3
-        version: 6.47.3(algoliasearch@4.20.0)(react-dom@18.2.0)(react@18.2.0)
+      react-instantsearch:
+        specifier: 7.3.0
+        version: 7.3.0(algoliasearch@4.20.0)(react-dom@18.2.0)(react@18.2.0)
       react-popper:
         specifier: 2.3.0
         version: 2.3.0(@popperjs/core@2.11.8)(react-dom@18.2.0)(react@18.2.0)
@@ -580,8 +577,8 @@ importers:
         specifier: workspace:*
         version: link:../tsconfig
       bun-types:
-        specifier: 1.0.7
-        version: 1.0.7
+        specifier: 1.0.13
+        version: 1.0.13
       typescript:
         specifier: 5.2.2
         version: 5.2.2
@@ -623,8 +620,8 @@ importers:
         specifier: 0.29.8
         version: 0.29.8
       bun-types:
-        specifier: 1.0.7
-        version: 1.0.7
+        specifier: 1.0.13
+        version: 1.0.13
       concurrently:
         specifier: 8.2.2
         version: 8.2.2
@@ -684,8 +681,8 @@ importers:
         specifier: '18'
         version: 18.17.15
       bun-types:
-        specifier: 1.0.7
-        version: 1.0.7
+        specifier: 1.0.13
+        version: 1.0.13
       eslint:
         specifier: 8.52.0
         version: 8.52.0
@@ -730,8 +727,8 @@ importers:
         specifier: 0.4.2
         version: 0.4.2(tailwindcss@3.3.5)
       '@tailwindcss/forms':
-        specifier: 0.5.6
-        version: 0.5.6(tailwindcss@3.3.5)
+        specifier: 0.5.7
+        version: 0.5.7(tailwindcss@3.3.5)
       '@tailwindcss/typography':
         specifier: 0.5.10
         version: 0.5.10(tailwindcss@3.3.5)
@@ -2020,10 +2017,10 @@ packages:
     resolution: {integrity: sha512-/IoWYEXl8lqJEx50JqNPT+bI4VNwxb/bg2oOfvG8PiEsDsmHRFvWBVHlohBNn1+QdBf+KbAjU/gb4vlGOSsVWw==}
     dev: false
 
-  /@formatjs/ecma402-abstract@1.17.3:
-    resolution: {integrity: sha512-2Q4hmKQ6CM30mRG/YMdSBW8LXf32BfuOb1FZgG+uVWPC/SQMoiVFz5JaeOukt96v6TZ4ddE+bHCmd611PW38QA==}
+  /@formatjs/ecma402-abstract@1.18.0:
+    resolution: {integrity: sha512-PEVLoa3zBevWSCZzPIM/lvPCi8P5l4G+NXQMc/CjEiaCWgyHieUoo0nM7Bs0n/NbuQ6JpXEolivQ9pKSBHaDlA==}
     dependencies:
-      '@formatjs/intl-localematcher': 0.5.0
+      '@formatjs/intl-localematcher': 0.5.2
       tslib: 2.6.2
     dev: false
 
@@ -2033,34 +2030,34 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@formatjs/icu-messageformat-parser@2.7.1:
-    resolution: {integrity: sha512-ErnXyRdk8AlpGcKskKVYn23aAlWXhI1kt5ek2o3pJwVeMTcrosSESQ8baztdTtJjfQHlB4NBeocfRA5C6DKv2g==}
+  /@formatjs/icu-messageformat-parser@2.7.3:
+    resolution: {integrity: sha512-X/jy10V9S/vW+qlplqhMUxR8wErQ0mmIYSq4mrjpjDl9mbuGcCILcI1SUYkL5nlM4PJqpc0KOS0bFkkJNPxYRw==}
     dependencies:
-      '@formatjs/ecma402-abstract': 1.17.3
-      '@formatjs/icu-skeleton-parser': 1.6.3
+      '@formatjs/ecma402-abstract': 1.18.0
+      '@formatjs/icu-skeleton-parser': 1.7.0
       tslib: 2.6.2
     dev: false
 
-  /@formatjs/icu-skeleton-parser@1.6.3:
-    resolution: {integrity: sha512-Viggz4Pic7oC4uR8z2VroL8H9boiUTTB0TqEsiRb6DHZv7QEcg1BoVQZBkBdLmvxhBS7nwBNrTdbaiW8GOV58Q==}
+  /@formatjs/icu-skeleton-parser@1.7.0:
+    resolution: {integrity: sha512-Cfdo/fgbZzpN/jlN/ptQVe0lRHora+8ezrEeg2RfrNjyp+YStwBy7cqDY8k5/z2LzXg6O0AdzAV91XS0zIWv+A==}
     dependencies:
-      '@formatjs/ecma402-abstract': 1.17.3
+      '@formatjs/ecma402-abstract': 1.18.0
       tslib: 2.6.2
     dev: false
 
-  /@formatjs/intl-displaynames@6.6.2:
-    resolution: {integrity: sha512-8wenvLpInbVEPoVDHiG1QC/dE16io3fptVanMr2jKUqr3938UziygflnUqPlG7U6AHRbU7geCFthfZt8x2NpsA==}
+  /@formatjs/intl-displaynames@6.6.4:
+    resolution: {integrity: sha512-ET8KQ+L9Q0K8x1SnJQa4DNssUcbATlMopWqYvGGR8yAvw5qwAQc1fv+DshCoZNIE9pbcue0IGC4kWNAkWqlFag==}
     dependencies:
-      '@formatjs/ecma402-abstract': 1.17.3
-      '@formatjs/intl-localematcher': 0.5.0
+      '@formatjs/ecma402-abstract': 1.18.0
+      '@formatjs/intl-localematcher': 0.5.2
       tslib: 2.6.2
     dev: false
 
-  /@formatjs/intl-listformat@7.5.1:
-    resolution: {integrity: sha512-J6heE28cikJ2cUZ7Mvmets418lE96k5OcbgDYQkXDFHVbRnUKCHQwRAXKRCPFEGDrEmcvtqUj7NmZEJYbsJdqQ==}
+  /@formatjs/intl-listformat@7.5.3:
+    resolution: {integrity: sha512-l7EOr0Yh1m8KagytukB90yw81uyzrM7amKFrgxXqphz4KeSIL0KPa68lPsdtZ+JmQB73GaDQRwLOwUKFZ1VZPQ==}
     dependencies:
-      '@formatjs/ecma402-abstract': 1.17.3
-      '@formatjs/intl-localematcher': 0.5.0
+      '@formatjs/ecma402-abstract': 1.18.0
+      '@formatjs/intl-localematcher': 0.5.2
       tslib: 2.6.2
     dev: false
 
@@ -2070,26 +2067,26 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@formatjs/intl-localematcher@0.5.0:
-    resolution: {integrity: sha512-K1Xpg/8oyfCMxisJQa/fILoeoeyndcM0wcN8QiNG/uM5OAe1BcO1+2yd0gIboDI2tRJEsUi/sSBEYPbgkIdq4A==}
+  /@formatjs/intl-localematcher@0.5.2:
+    resolution: {integrity: sha512-txaaE2fiBMagLrR4jYhxzFO6wEdEG4TPMqrzBAcbr4HFUYzH/YC+lg6OIzKCHm8WgDdyQevxbAAV1OgcXctuGw==}
     dependencies:
       tslib: 2.6.2
     dev: false
 
-  /@formatjs/intl@2.9.6(typescript@5.2.2):
-    resolution: {integrity: sha512-pHvVycu4g1S8zsZhYm0naf/ODCsDXHw00ITMMUM9TK9MYa8zGkf4W5gdItVbUX7elYN3JdDwp0d5fLNBBljhgQ==}
+  /@formatjs/intl@2.9.9(typescript@5.2.2):
+    resolution: {integrity: sha512-JI3CNgL2Zdg5lv9ncT2sYKqbAj2RGrCbdzaCckIxMPxn4QuHuOVvYUGmBAXVusBmfG/0sxLmMrnwnBioz+QKdA==}
     peerDependencies:
       typescript: '5'
     peerDependenciesMeta:
       typescript:
         optional: true
     dependencies:
-      '@formatjs/ecma402-abstract': 1.17.3
+      '@formatjs/ecma402-abstract': 1.18.0
       '@formatjs/fast-memoize': 2.2.0
-      '@formatjs/icu-messageformat-parser': 2.7.1
-      '@formatjs/intl-displaynames': 6.6.2
-      '@formatjs/intl-listformat': 7.5.1
-      intl-messageformat: 10.5.5
+      '@formatjs/icu-messageformat-parser': 2.7.3
+      '@formatjs/intl-displaynames': 6.6.4
+      '@formatjs/intl-listformat': 7.5.3
+      intl-messageformat: 10.5.8
       tslib: 2.6.2
       typescript: 5.2.2
     dev: false
@@ -2974,8 +2971,8 @@ packages:
       svelte: 4.2.5
     dev: true
 
-  /@skeletonlabs/tw-plugin@0.2.3(tailwindcss@3.3.5):
-    resolution: {integrity: sha512-sOavIPm6NlE0h4dmTZ4NDMe8ryqb1wh2hd59V9oP1qf2H1O6cwfKkiBUyLQLedw+suCey/FJ3MHpScTBMejNxQ==}
+  /@skeletonlabs/tw-plugin@0.2.4(tailwindcss@3.3.5):
+    resolution: {integrity: sha512-DmOFMV6jhhvnub/TANB62nJJqxfMBby5Kxwe/Mn3DTxHuJLZj8B47Ta2K5sl/or2B8MaMfny8ocvPAzd6lrMtQ==}
     peerDependencies:
       tailwindcss: '>=3.0.0'
     dependencies:
@@ -3096,8 +3093,8 @@ packages:
     dependencies:
       tailwindcss: 3.3.5
 
-  /@tailwindcss/forms@0.5.6(tailwindcss@3.3.5):
-    resolution: {integrity: sha512-Fw+2BJ0tmAwK/w01tEFL5TiaJBX1NLT1/YbWgvm7ws3Qcn11kiXxzNTEQDMs5V3mQemhB56l3u0i9dwdzSQldA==}
+  /@tailwindcss/forms@0.5.7(tailwindcss@3.3.5):
+    resolution: {integrity: sha512-QE7X69iQI+ZXwldE+rzasvbJiyV/ju1FGHH0Qn2W3FKbuYtqp8LKcy6iSw79fVUT5/Vvf+0XgLCeYVG+UV6hOw==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
@@ -3784,7 +3781,7 @@ packages:
       isomorphic-fetch: 3.0.0
       prettier: 2.8.8
       xstate: 4.38.3
-      xstate-beta: /xstate@5.0.0-beta.44
+      xstate-beta: /xstate@5.0.0-beta.38
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -3894,8 +3891,8 @@ packages:
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
 
-  /algoliasearch-helper@3.14.0(algoliasearch@4.20.0):
-    resolution: {integrity: sha512-gXDXzsSS0YANn5dHr71CUXOo84cN4azhHKUbg71vAWnH+1JBiR4jf7to3t3JHXknXkbV0F7f055vUSBKrltHLQ==}
+  /algoliasearch-helper@3.15.0(algoliasearch@4.20.0):
+    resolution: {integrity: sha512-DGUnK3TGtDQsaUE4ayF/LjSN0DGsuYThB8WBgnnDY0Wq04K6lNVruO3LfqJOgSfDiezp+Iyt8Tj4YKHi+/ivSA==}
     peerDependencies:
       algoliasearch: '>= 3.1 < 6'
     dependencies:
@@ -4455,8 +4452,8 @@ packages:
     engines: {node: '>=0.2.0'}
     dev: false
 
-  /bun-types@1.0.7:
-    resolution: {integrity: sha512-zlIp+SCutbbugs6xDy+3WC3KO3zKySpF/bRfiTk/VJUdKt+WHAzlCtLplS7XglRYDFzhRhlzXMW/R5BHkw+u2Q==}
+  /bun-types@1.0.13:
+    resolution: {integrity: sha512-QQH6NLAOU+2tWgQuDSAYBFy+kQwVhPJLB0Q38QLjCmFUZJEYCiiq7tzvU784LAIX2onzO6gr+gIGXt8yCt0cJw==}
     dev: true
 
   /bundle-name@3.0.0:
@@ -6873,8 +6870,8 @@ packages:
     resolution: {integrity: sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==}
     dev: false
 
-  /instantsearch.js@4.56.8(algoliasearch@4.20.0):
-    resolution: {integrity: sha512-40DJ5l70ZzVzWPK3qrHTKlJLaHGq1PRZpzfL6281P2mz8G19WOHQHKAP4Zh6a4lOZaRtJQUiPjQwqCHSurXZ5g==}
+  /instantsearch.js@4.60.0(algoliasearch@4.20.0):
+    resolution: {integrity: sha512-u/xeCT1DaxPioJnSm3hV4lNAojlhbjGrpX5fHO6+RJjpDFv/MgYxiIOdaIRowmt5F0v/3QCm+Un5f4jy1/+emA==}
     peerDependencies:
       algoliasearch: '>= 3.1 < 6'
     dependencies:
@@ -6886,7 +6883,7 @@ packages:
       '@types/hogan.js': 3.0.3
       '@types/qs': 6.9.9
       algoliasearch: 4.20.0
-      algoliasearch-helper: 3.14.0(algoliasearch@4.20.0)
+      algoliasearch-helper: 3.15.0(algoliasearch@4.20.0)
       hogan.js: 3.0.2
       htm: 3.1.1
       preact: 10.18.1
@@ -6911,12 +6908,12 @@ packages:
       side-channel: 1.0.4
     dev: false
 
-  /intl-messageformat@10.5.5:
-    resolution: {integrity: sha512-sF+cJCfMn+kGcSeGGRcB1UpBH0/+Ko2KByHj2RpL2qIkRvsrnuDl8zufEkvk+GPosk932C6W1Kq24xWaw+2jDA==}
+  /intl-messageformat@10.5.8:
+    resolution: {integrity: sha512-NRf0jpBWV0vd671G5b06wNofAN8tp7WWDogMZyaU8GUAsmbouyvgwmFJI7zLjfAMpm3zK+vSwRP3jzaoIcMbaA==}
     dependencies:
-      '@formatjs/ecma402-abstract': 1.17.3
+      '@formatjs/ecma402-abstract': 1.18.0
       '@formatjs/fast-memoize': 2.2.0
-      '@formatjs/icu-messageformat-parser': 2.7.1
+      '@formatjs/icu-messageformat-parser': 2.7.3
       tslib: 2.6.2
     dev: false
 
@@ -9399,51 +9396,33 @@ packages:
       react: 18.2.0
     dev: false
 
-  /react-instantsearch-hooks-server@6.47.3(algoliasearch@4.20.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-dW0iU8GeEhv3E8e12TGKsT+JxOqClCLtVOfEltAiiywjaAnrHdfQZKjzqimVHfE26ncpkz4nJNi5p3YJy0Lgyg==}
-    deprecated: package has moved to react-instantsearch
-    peerDependencies:
-      algoliasearch: '>= 3.1 < 5'
-      react: '>= 16.8.0 < 19'
-      react-dom: '>= 16.8.0 < 19'
-    dependencies:
-      '@babel/runtime': 7.23.2
-      algoliasearch: 4.20.0
-      instantsearch.js: 4.56.8(algoliasearch@4.20.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-instantsearch-hooks: 6.47.3(algoliasearch@4.20.0)(react@18.2.0)
-    dev: false
-
-  /react-instantsearch-hooks-web@6.47.3(algoliasearch@4.20.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-JTkPm11xwCX9eO4FgeeJ4v4O98wz1L7cAa2LkspgzDD1MPjMLtmiRVzvGxuYnOayQTtfC5+0GOBwuJEN8TDI8A==}
-    deprecated: package has moved to react-instantsearch
-    peerDependencies:
-      algoliasearch: '>= 3.1 < 5'
-      react: '>= 16.8.0 < 19'
-      react-dom: '>= 16.8.0 < 19'
-    dependencies:
-      '@babel/runtime': 7.23.2
-      algoliasearch: 4.20.0
-      instantsearch.js: 4.56.8(algoliasearch@4.20.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-instantsearch-hooks: 6.47.3(algoliasearch@4.20.0)(react@18.2.0)
-    dev: false
-
-  /react-instantsearch-hooks@6.47.3(algoliasearch@4.20.0)(react@18.2.0):
-    resolution: {integrity: sha512-QuGSwZ664MHrzvndXGnsyPhpKHywGqyDgqOVorYpEE24Y063OPv5XtmJaZqn27MIvvByUormTb6dbPgbjqkd8w==}
-    deprecated: package has moved to react-instantsearch-core
+  /react-instantsearch-core@7.3.0(algoliasearch@4.20.0)(react@18.2.0):
+    resolution: {integrity: sha512-v66mG+Io/Mmd5LQaoQXxGD/acHnLIM1Cq/uzlcC0VbFji7JXoJhChRPUcA+z5fGDaidBxdJOPRtQjJpTQ+/h8g==}
     peerDependencies:
       algoliasearch: '>= 3.1 < 5'
       react: '>= 16.8.0 < 19'
     dependencies:
       '@babel/runtime': 7.23.2
       algoliasearch: 4.20.0
-      algoliasearch-helper: 3.14.0(algoliasearch@4.20.0)
-      instantsearch.js: 4.56.8(algoliasearch@4.20.0)
+      algoliasearch-helper: 3.15.0(algoliasearch@4.20.0)
+      instantsearch.js: 4.60.0(algoliasearch@4.20.0)
       react: 18.2.0
       use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
+
+  /react-instantsearch@7.3.0(algoliasearch@4.20.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-X0ZKDMP7DDKkRqnM99JbpsqASXDBVCUSpEYmPPhDx/PFGUzOu9yAFNCBkpJxfIf2A3nL/Z1QQDXuUYRdBgVCsg==}
+    peerDependencies:
+      algoliasearch: '>= 3.1 < 5'
+      react: '>= 16.8.0 < 19'
+      react-dom: '>= 16.8.0 < 19'
+    dependencies:
+      '@babel/runtime': 7.23.2
+      algoliasearch: 4.20.0
+      instantsearch.js: 4.60.0(algoliasearch@4.20.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-instantsearch-core: 7.3.0(algoliasearch@4.20.0)(react@18.2.0)
     dev: false
 
   /react-is@16.13.1:
@@ -12477,8 +12456,8 @@ packages:
   /xstate@4.38.3:
     resolution: {integrity: sha512-SH7nAaaPQx57dx6qvfcIgqKRXIh4L0A1iYEqim4s1u7c9VoCgzZc+63FY90AKU4ZzOC2cfJzTnpO4zK7fCUzzw==}
 
-  /xstate@5.0.0-beta.44:
-    resolution: {integrity: sha512-cqYg51v1UrWRDoho/EolyEu85YyzaS+tI3C+VJUuSId6++WwrT6NiVxolG5cd0uG5jyjB3+Xje7erfYIQOcpLw==}
+  /xstate@5.0.0-beta.38:
+    resolution: {integrity: sha512-8hOXlbfcbLbSFgX20E0mwPPImFPtnRG+NhkupB9TtfYaPk7HyHi4BSDdN7gpoyBbvDm5VbqRwYVquR58WbhCVA==}
 
   /xtend@4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
