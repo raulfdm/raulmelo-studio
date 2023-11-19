@@ -1,6 +1,6 @@
 import type { SupportedLanguages } from '@raulmelo/core/config';
 import { isEmpty } from '@raulmelo/core/utils';
-import { useRefinementList } from 'react-instantsearch-hooks-web';
+import { useRefinementList } from 'react-instantsearch';
 
 import { mergeClasses } from '@/infrastructure/utils/misc';
 

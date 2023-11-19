@@ -1,5 +1,5 @@
 import type { SupportedLanguages } from '@raulmelo/core/config';
-import { Hits as HitsComp } from 'react-instantsearch-hooks-web';
+import { Hits as HitsComp } from 'react-instantsearch';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import {

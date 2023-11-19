@@ -2,7 +2,7 @@ import type { SupportedLanguages } from '@raulmelo/core/config';
 import {
   type InstantSearchServerState,
   InstantSearchSSRProvider,
-} from 'react-instantsearch-hooks-web';
+} from 'react-instantsearch';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 
