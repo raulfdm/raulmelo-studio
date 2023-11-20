@@ -1,5 +1,6 @@
-import { IconBrandTwitter } from '@tabler/icons-react';
 import { defineField } from 'sanity';
+
+import { IconBrandTwitter } from '@/ui/icons-react';
 
 export const tweetField = defineField({
   type: `object`,

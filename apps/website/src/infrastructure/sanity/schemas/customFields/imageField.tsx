@@ -1,4 +1,4 @@
-import { IconPhoto } from '@tabler/icons-react';
+import { IconPhoto } from '@/ui/icons-react';
 
 export const detailedImageField = {
   type: `object`,

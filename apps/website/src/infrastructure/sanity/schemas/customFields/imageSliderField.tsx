@@ -1,5 +1,6 @@
-import { IconSlideshow } from '@tabler/icons-react';
 import { defineField } from 'sanity';
+
+import { IconSlideshow } from '@/ui/icons-react';
 
 export const imageSliderField = defineField({
   type: `object`,

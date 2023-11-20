@@ -1,6 +1,6 @@
-import { IconSpeakerphone } from '@tabler/icons-react';
 import { defineField } from 'sanity';
 
+import { IconSpeakerphone } from '@/ui/icons-react';
 import { calloutTypes } from '@/ui/PortableText/Callout/types';
 
 export const calloutField = defineField({

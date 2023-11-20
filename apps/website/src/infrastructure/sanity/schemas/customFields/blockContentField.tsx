@@ -1,5 +1,6 @@
-import { IconExternalLink, IconHash, IconLink } from '@tabler/icons-react';
 import { defineField } from 'sanity';
+
+import { IconExternalLink, IconHash, IconLink } from '@/ui/icons-react';
 
 import { highlightMarkerField } from './highlightMarkerField';
 import { strikeThroughMarkerField } from './strikeThroughMarkerField';
