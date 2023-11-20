@@ -1,7 +1,7 @@
 <script lang="ts">
+  import { IconMenu2, IconX } from '../icons';
   import MenuButton from './MenuBarButton.svelte';
-  import IconMenu2 from '@tabler/icons-svelte/dist/svelte/icons/IconMenu2.svelte';
-  import IconX from '@tabler/icons-svelte/dist/svelte/icons/IconX.svelte';
+
   import {
     sideMenuStore,
     toggleSideMenu,
@@ -16,8 +16,8 @@
   data-testid="side-menu-button"
 >
   {#if $sideMenuStore === false}
-    <IconMenu2 class="w-6" />
+    <IconMenu2 class="w-6" stroke={1.5} />
   {:else}
-    <IconX class="w-6" />
+    <IconX class="w-6" stroke={1.5} />
   {/if}
 </MenuButton>

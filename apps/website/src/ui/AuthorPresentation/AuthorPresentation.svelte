@@ -5,13 +5,15 @@
   import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
   import { getSocial } from '@/infrastructure/utils/seo';
 
-  import IconBrandGithub from '@tabler/icons-svelte/dist/svelte/icons/IconBrandGithub.svelte';
-  import IconBrandMedium from '@tabler/icons-svelte/dist/svelte/icons/IconBrandMedium.svelte';
-  import IconBrandLinkedin from '@tabler/icons-svelte/dist/svelte/icons/IconBrandLinkedin.svelte';
-  import IconBrandTwitter from '@tabler/icons-svelte/dist/svelte/icons/IconBrandTwitter.svelte';
   import DevToIcon from '@/ui/Icons/DevTo.svelte';
 
   import IconWrapper from '../../pages/[lang]/_ui/IconWrapper.svelte';
+  import {
+    IconBrandGithub,
+    IconBrandLinkedin,
+    IconBrandMedium,
+    IconBrandTwitter,
+  } from '../icons';
 
   export let lang: SupportedLanguages;
   export let siteData: QuerySiteDataReturnType;
@@ -53,7 +55,7 @@
           id: `authorPresentation.devToLinkTitle`,
         })}
       >
-        <DevToIcon size={32} />
+        <DevToIcon size={32} stroke={1.5} />
       </IconWrapper>
       <IconWrapper
         href={medium.url}
@@ -62,7 +64,7 @@
           id: `authorPresentation.mediumLinkTitle`,
         })}
       >
-        <IconBrandMedium size={32} />
+        <IconBrandMedium size={32} stroke={1.5} />
       </IconWrapper>
       <IconWrapper
         href={github.url}
@@ -71,7 +73,7 @@
           id: `authorPresentation.githubLinkTitle`,
         })}
       >
-        <IconBrandGithub size={32} />
+        <IconBrandGithub size={32} stroke={1.5} />
       </IconWrapper>
       <IconWrapper
         href={twitter.url}
@@ -80,7 +82,7 @@
           id: `authorPresentation.twitterLinkTitle`,
         })}
       >
-        <IconBrandTwitter size={32} />
+        <IconBrandTwitter size={32} stroke={1.5} />
       </IconWrapper>
       <IconWrapper
         href={linkedIn.url}
@@ -89,7 +91,7 @@
           id: `authorPresentation.linkedInLinkTitle`,
         })}
       >
-        <IconBrandLinkedin size={32} />
+        <IconBrandLinkedin size={32} stroke={1.5} />
       </IconWrapper>
     </section>
   </aside>

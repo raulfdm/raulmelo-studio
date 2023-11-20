@@ -1,8 +1,6 @@
 <script lang="ts">
-  import IconMoon from '@tabler/icons-svelte/dist/svelte/icons/IconMoon.svelte';
-  import IconSun from '@tabler/icons-svelte/dist/svelte/icons/IconSun.svelte';
-  import IconDeviceDesktop from '@tabler/icons-svelte/dist/svelte/icons/IconDeviceDesktop.svelte';
   import { onMount } from 'svelte';
+  import { IconDeviceDesktop, IconMoon, IconSun } from '../icons';
 
   export let title: string;
   export let darkThemeTitle: string;
@@ -43,7 +41,7 @@
       title={lightThemeTitle}
       aria-label={lightThemeTitle}
     >
-      <IconSun />
+      <IconSun stroke={1.5} />
     </button>
     <button
       class:active={theme === 'system'}
@@ -51,7 +49,7 @@
       title={systemThemeTitle}
       aria-label={systemThemeTitle}
     >
-      <IconDeviceDesktop />
+      <IconDeviceDesktop stroke={1.5} />
     </button>
     <button
       class:active={theme === 'dark'}
@@ -59,7 +57,7 @@
       title={darkThemeTitle}
       aria-label={darkThemeTitle}
     >
-      <IconMoon />
+      <IconMoon stroke={1.5} />
     </button>
   </div>
 </div>

@@ -2,8 +2,8 @@
   import { mergeClasses } from '@/infrastructure/utils/misc';
   import type { PostBySlug } from './types';
 
-  import IconChevronDown from '@tabler/icons-svelte/dist/svelte/icons/IconChevronDown.svelte';
   import { getPostUrl } from '@/infrastructure/utils/url';
+  import { IconChevronDown } from '@/ui/icons';
 
   type Post = NonNullable<PostBySlug>;
 
@@ -32,7 +32,7 @@
       >
         <span class="flex-1">{series.name}</span>
         <button class="flex items-center justify-center w-7 h-7">
-          <IconChevronDown className="w-5" />
+          <IconChevronDown className="w-5" stroke={1.5} />
         </button>
       </div>
 
