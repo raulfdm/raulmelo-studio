@@ -1,7 +1,7 @@
 <script lang="ts">
   import { mergeClasses } from '@/infrastructure/utils/misc';
   import type { SideMenuLink } from './links';
-  import { IconExternalLink } from '../icons';
+  import { IconExternalLink } from '../icons-svelte';
 
   export let href: SideMenuLink['href'];
   export let itemLabel: SideMenuLink['itemLabel'];

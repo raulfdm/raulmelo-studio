@@ -1,7 +1,7 @@
 <script lang="ts">
   import { useMachine } from '@xstate/svelte';
   import { copyMachine } from './copyMachine';
-  import { IconClipboard, IconClipboardCheck } from '@/ui/icons';
+  import { IconClipboard, IconClipboardCheck } from '@/ui/icons-svelte';
 
   export let code: string;
   export let codeHtml: string;

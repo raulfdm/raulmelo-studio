@@ -13,7 +13,7 @@
     IconBrandLinkedin,
     IconBrandMedium,
     IconBrandTwitter,
-  } from '../icons';
+  } from '../icons-svelte';
 
   export let lang: SupportedLanguages;
   export let siteData: QuerySiteDataReturnType;

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { IconDeviceDesktop, IconMoon, IconSun } from '../icons';
+  import { IconDeviceDesktop, IconMoon, IconSun } from '../icons-svelte';
 
   export let title: string;
   export let darkThemeTitle: string;

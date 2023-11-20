@@ -8,7 +8,7 @@
 
   import { getPathnameWithoutLocale } from '@/infrastructure/utils/url';
   import type { SupportedLanguages } from '@raulmelo/core/config';
-  import { IconLanguage } from '../icons';
+  import { IconLanguage } from '../icons-svelte';
 
   export let ariaLabel: string;
 

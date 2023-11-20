@@ -3,7 +3,7 @@
   import type { PostBySlug } from './types';
 
   import { getPostUrl } from '@/infrastructure/utils/url';
-  import { IconChevronDown } from '@/ui/icons';
+  import { IconChevronDown } from '@/ui/icons-svelte';
 
   type Post = NonNullable<PostBySlug>;
 

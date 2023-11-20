@@ -2,7 +2,7 @@
   import qs from 'query-string';
 
   import type { ShareContentProps } from './types';
-  import { IconBrandLinkedin, IconBrandTwitter } from '../icons';
+  import { IconBrandLinkedin, IconBrandTwitter } from '../icons-svelte';
 
   export let titleLabel: ShareContentProps['titleLabel'];
   export let linkedIn: ShareContentProps['linkedIn'];

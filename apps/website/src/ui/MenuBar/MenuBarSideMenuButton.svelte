@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { IconMenu2, IconX } from '../icons';
+  import { IconMenu2, IconX } from '../icons-svelte';
   import MenuButton from './MenuBarButton.svelte';
 
   import {

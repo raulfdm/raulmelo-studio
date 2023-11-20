@@ -9,7 +9,7 @@ import { getHomePageUrl, getTagUrl } from '@/infrastructure/utils/url';
 import { Breadcrumbs } from '@/ui/Breadcrumbs';
 import Layout from '@/ui/layouts/Layout.astro';
 import { Tag, Tags } from '@/ui/Tags';
-import { IconHash } from '@/ui/icons';
+import { IconHash } from '@/ui/icons-svelte';
 
 export const prerender = true;
 export const getStaticPaths = languageGetStaticPaths;
@@ -62,3 +62,4 @@ const intl = getIntl(lang);
     }
   </Tags>
 </Layout>
+ @/ui/icons-svelte

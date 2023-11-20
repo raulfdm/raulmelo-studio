@@ -1,6 +1,6 @@
 <script lang="ts">
   import { mergeClasses } from '@/infrastructure/utils/misc';
-  import { IconArrowNarrowRight } from './icons';
+  import { IconArrowNarrowRight } from './icons-svelte';
 
   export let slug: string;
   export let publishedAt: string;
