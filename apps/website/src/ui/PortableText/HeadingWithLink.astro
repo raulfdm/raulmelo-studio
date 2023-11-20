@@ -1,6 +1,7 @@
 ---
-import IconHash from '@tabler/icons-svelte/dist/svelte/icons/IconHash.svelte';
 import slugify from 'slugify';
+
+import { IconHash } from '../icons-svelte';
 
 const { node } = Astro.props as {
   node: {
@@ -30,7 +31,7 @@ const iconProps = {} as any;
 <Component id={slug} class="flex items-center heading">
   {child.text}
   <a href={`#${slug}`} class="grid place-items-center"
-    ><IconHash {...iconProps} /></a
+    ><IconHash stroke={1.5} {...iconProps} /></a
   >
 </Component>
 

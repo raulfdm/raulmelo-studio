@@ -1,6 +1,7 @@
 import { CODE_LANGUAGES_MAP } from '@raulmelo/code-highlight';
-import { IconCode } from '@tabler/icons-react';
 import { defineField } from 'sanity';
+
+import { IconCode } from '@/ui/icons-react';
 
 export const codeField = defineField({
   type: `object`,

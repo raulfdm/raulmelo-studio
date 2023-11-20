@@ -1,5 +1,6 @@
-import { IconDots } from '@tabler/icons-react';
 import { defineField } from 'sanity';
+
+import { IconDots } from '@/ui/icons-react';
 
 export const dividerField = defineField({
   name: `divider`,

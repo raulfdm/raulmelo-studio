@@ -27,7 +27,7 @@
   },
   "scripts": {
     "prepare": "turbo --filter='core' build --output-logs errors-only",
-    "build": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
+    "build": "vite build",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -51,7 +51,10 @@
     "globals": "13.23.0",
     "ramda": "0.29.1",
     "tsc-alias": "1.8.8",
-    "typescript": "5.2.2"
+    "typescript": "5.2.2",
+    "vite": "4.5.0",
+    "vite-plugin-dts": "3.6.3",
+    "vite-tsconfig-paths": "4.2.1"
   },
   "volta": {
     "extends": "../../package.json"

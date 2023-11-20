@@ -1,7 +1,7 @@
 ---
-import IconBrandLinkedin from '@tabler/icons-svelte/dist/svelte/icons/IconBrandLinkedin.svelte';
-import IconBrandTwitter from '@tabler/icons-svelte/dist/svelte/icons/IconBrandTwitter.svelte';
 import qs from 'query-string';
+
+import { IconBrandLinkedin, IconBrandTwitter } from './icons-svelte';
 
 type Props = {
   titleLabel: string;
@@ -44,7 +44,7 @@ const twitterUrl = `https://twitter.com/share?${qs.stringify(
         target="_blank"
         rel="noopener"
       >
-        <IconBrandLinkedin class="w-full h-full" />
+        <IconBrandLinkedin class="w-full h-full" stroke={1.5} />
       </a>
     </li>
 
@@ -56,8 +56,9 @@ const twitterUrl = `https://twitter.com/share?${qs.stringify(
         target="_blank"
         rel="noopener"
       >
-        <IconBrandTwitter class="w-full h-full" />
+        <IconBrandTwitter class="w-full h-full" stroke={1.5} />
       </a>
     </li>
   </ul>
 </div>
+ ./icons-svelte

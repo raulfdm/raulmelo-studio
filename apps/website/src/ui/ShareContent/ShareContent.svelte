@@ -1,8 +1,8 @@
 <script lang="ts">
   import qs from 'query-string';
-  import IconBrandLinkedin from '@tabler/icons-svelte/dist/svelte/icons/IconBrandLinkedin.svelte';
-  import IconBrandTwitter from '@tabler/icons-svelte/dist/svelte/icons/IconBrandTwitter.svelte';
+
   import type { ShareContentProps } from './types';
+  import { IconBrandLinkedin, IconBrandTwitter } from '../icons-svelte';
 
   export let titleLabel: ShareContentProps['titleLabel'];
   export let linkedIn: ShareContentProps['linkedIn'];
@@ -24,8 +24,8 @@
   )}`;
 </script>
 
-<div>
-  <span class="block mb-4 font-extrabold text-md md:text-lg lg:text-xl md:mb-6">
+<div class="flex flex-col gap-2">
+  <span class="block font-extrabold text-md md:text-lg lg:text-xl">
     {titleLabel}
   </span>
   <ul class="flex space-x-4 text-secondary">
@@ -37,7 +37,7 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <IconBrandLinkedin class="w-6 md:w-8" />
+        <IconBrandLinkedin size={32} stroke={1.5} />
       </a>
     </li>
 
@@ -49,7 +49,7 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <IconBrandTwitter />
+        <IconBrandTwitter size={32} stroke={1.5} />
       </a>
     </li>
   </ul>

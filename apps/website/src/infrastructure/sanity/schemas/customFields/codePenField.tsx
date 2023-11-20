@@ -1,5 +1,6 @@
-import { IconBrandCodepen } from '@tabler/icons-react';
 import { defineField } from 'sanity';
+
+import { IconBrandCodepen } from '@/ui/icons-react';
 
 export const codePenField = defineField({
   type: `object`,

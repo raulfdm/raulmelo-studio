@@ -1,13 +1,13 @@
 ---
 import type { SupportedLanguages } from '@raulmelo/core/config';
 import { queryAllTags } from '@raulmelo/core/domains';
-import IconHash from '@tabler/icons-svelte/dist/svelte/icons/IconHash.svelte';
 
 import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { getHomePageUrl, getTagUrl } from '@/infrastructure/utils/url';
 import { Breadcrumbs } from '@/ui/Breadcrumbs';
+import { IconHash } from '@/ui/icons-svelte';
 import Layout from '@/ui/layouts/Layout.astro';
 import { Tag, Tags } from '@/ui/Tags';
 
@@ -54,7 +54,7 @@ const intl = getIntl(lang);
             href={getTagUrl(tag.slug, lang)}
             class="flex flex-row items-center underline text-secondary"
           >
-            <IconHash class="w-5 h-5" />
+            <IconHash class="w-5 h-5" stroke={1.5} />
             {tag.name}
           </a>
         </Tag>
@@ -62,3 +62,4 @@ const intl = getIntl(lang);
     }
   </Tags>
 </Layout>
+ @/ui/icons-svelte

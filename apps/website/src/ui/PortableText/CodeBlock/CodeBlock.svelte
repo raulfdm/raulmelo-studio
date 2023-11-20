@@ -1,8 +1,7 @@
 <script lang="ts">
-  import IconClipboard from '@tabler/icons-svelte/dist/svelte/icons/IconClipboard.svelte';
-  import IconClipboardCheck from '@tabler/icons-svelte/dist/svelte/icons/IconClipboardCheck.svelte';
   import { useMachine } from '@xstate/svelte';
   import { copyMachine } from './copyMachine';
+  import { IconClipboard, IconClipboardCheck } from '@/ui/icons-svelte';
 
   export let code: string;
   export let codeHtml: string;
@@ -36,9 +35,9 @@
       on:click={onCopyCode}
     >
       {#if $state.matches('copied')}
-        <IconClipboardCheck />
+        <IconClipboardCheck stroke={1.5} />
       {:else}
-        <IconClipboard />
+        <IconClipboard stroke={1.5} />
       {/if}
     </button>
   </div>

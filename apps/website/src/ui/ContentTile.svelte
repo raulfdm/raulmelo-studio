@@ -1,6 +1,6 @@
 <script lang="ts">
   import { mergeClasses } from '@/infrastructure/utils/misc';
-  import IconArrowNarrowRight from '@tabler/icons-svelte/dist/svelte/icons/IconArrowNarrowRight.svelte';
+  import { IconArrowNarrowRight } from './icons-svelte';
 
   export let slug: string;
   export let publishedAt: string;
@@ -52,7 +52,7 @@
       })}
     >
       {readMoreLabel}
-      <IconArrowNarrowRight class="w-4 ml-2" />
+      <IconArrowNarrowRight class="w-4 ml-2" stroke={1.5} />
     </span>
   </a>
 </article>
