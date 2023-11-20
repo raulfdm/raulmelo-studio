@@ -33,7 +33,7 @@ export default defineConfig({
 
 function isExternal(id: string) {
   const isAlias = id.startsWith('@/');
-  const isRamda = id.startsWith('ramda/');
+  const isRamda = id.startsWith('ramda');
 
   return !isRamda && !isAlias && !id.startsWith('.') && !path.isAbsolute(id);
 }
