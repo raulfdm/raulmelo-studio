@@ -8,12 +8,15 @@
 </script>
 
 <li
-  class={mergeClasses('flex items-center', !isLink && 'truncate text-ellipsis overflow-hidden')}
+  class={mergeClasses(
+    'flex items-center',
+    !isLink && 'truncate text-ellipsis overflow-hidden',
+  )}
 >
   {#if 'href' in crumb}
     <a href={crumb.href}>{crumb.label}</a>
   {:else}
-    <span class="truncate text-ellipsis" title={crumb.label}>
+    <span class="font-semibold truncate text-ellipsis" title={crumb.label}>
       {crumb.label}
     </span>
   {/if}
