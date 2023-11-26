@@ -564,8 +564,8 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
       '@wooorm/starry-night':
-        specifier: 3.0.0
-        version: 3.0.0
+        specifier: 3.1.0
+        version: 3.1.0
       hast-util-to-html:
         specifier: 9.0.0
         version: 9.0.0
@@ -3844,16 +3844,10 @@ packages:
     resolution: {integrity: sha512-QmoQMK/iV6UxHlgS9y8BaknO3Ph/iFriWBhkknh/ZIm//9/HyzKMzP+tirDeCgWJfpTlLH4wAI58ObkB6O4GfQ==}
     dev: false
 
-  /@types/hast@2.3.7:
-    resolution: {integrity: sha512-EVLigw5zInURhzfXUM65eixfadfsHKomGKUakToXo84t8gGIJuTcD2xooM2See7GyQ7DRtYjhCHnSUQez8JaLw==}
-    dependencies:
-      '@types/unist': 2.0.9
-
   /@types/hast@2.3.8:
     resolution: {integrity: sha512-aMIqAlFd2wTIDZuvLbhUT+TGvMxrNC8ECUIVtH6xxy0sQLs3iu6NO8Kp/VT5je7i5ufnebXzdV1dNDMnvaH6IQ==}
     dependencies:
       '@types/unist': 2.0.10
-    dev: false
 
   /@types/hast@3.0.2:
     resolution: {integrity: sha512-B5hZHgHsXvfCoO3xgNJvBnX7N8p86TqQeGKXcokW4XXi+qY4vxxPSFYofytvVmpFxzPv7oxDQzjg5Un5m2/xiw==}
@@ -4034,7 +4028,6 @@ packages:
 
   /@types/unist@2.0.10:
     resolution: {integrity: sha512-IfYcSBWE3hLpBg8+X2SEa8LVkJdJEkT2Ese2aaLs3ptGdVtABxndrMaxuFlQ1qdFf9Q5rDvDpxI3WwgvKFAsQA==}
-    dev: false
 
   /@types/unist@2.0.9:
     resolution: {integrity: sha512-zC0iXxAv1C1ERURduJueYzkzZ2zaGyc+P2c95hgkikHPr3z8EdUZOlgEQ5X0DRmwDZn+hekycQnoeiiRVrmilQ==}
@@ -4436,11 +4429,11 @@ packages:
     resolution: {integrity: sha512-8PGwybFwM4x8pcfgqEQFy70NaQxASvOC5DJwLQfpArw1UDfUXrJkdxD3BhVTMS+0Lef/TU7YO0Jvr0jJY8T+mw==}
     dev: true
 
-  /@wooorm/starry-night@3.0.0:
-    resolution: {integrity: sha512-9bS69LSlh7btL0zP4nkgt2m+yfVCimBmCHfzhDuqC/gYK592n205YKNED/Ax9HwaqtjmZN0LzpAKJjppGFvzKw==}
+  /@wooorm/starry-night@3.1.0:
+    resolution: {integrity: sha512-EHhyqD62/BZzceh0r38gqdna/9ljRTfbzg/qYdiaEkK8FFNUi2sCb2nBs7AUqHGZKxu+cFe8QFFcld+SzSSK/g==}
     dependencies:
       '@types/hast': 3.0.3
-      import-meta-resolve: 3.0.0
+      import-meta-resolve: 4.0.0
       vscode-oniguruma: 2.0.1
       vscode-textmate: 9.0.0
     dev: false
@@ -4463,7 +4456,7 @@ packages:
       isomorphic-fetch: 3.0.0
       prettier: 2.8.8
       xstate: 4.38.3
-      xstate-beta: /xstate@5.0.0-beta.44
+      xstate-beta: /xstate@5.0.0-beta.47
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -7409,7 +7402,7 @@ packages:
   /hastscript@6.0.0:
     resolution: {integrity: sha512-nDM6bvd7lIqDUiYEiu5Sl/+6ReP0BMk/2f4U/Rooccxkj0P5nm+acM5PrGJ/t5I8qPGiqZSE6hVAwZEdZIvP4w==}
     dependencies:
-      '@types/hast': 2.3.7
+      '@types/hast': 2.3.8
       comma-separated-tokens: 1.0.8
       hast-util-parse-selector: 2.2.5
       property-information: 5.6.0
@@ -7602,7 +7595,6 @@ packages:
 
   /import-meta-resolve@4.0.0:
     resolution: {integrity: sha512-okYUR7ZQPH+efeuMJGlq4f8ubUgO50kByRPyt/Cy1Io4PSRsPjxME+YlVaCOx+NIToW7hCsZNFJyTPFFKepRSA==}
-    dev: true
 
   /imurmurhash@0.1.4:
     resolution: {integrity: sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==}
@@ -13471,8 +13463,8 @@ packages:
   /xstate@4.38.3:
     resolution: {integrity: sha512-SH7nAaaPQx57dx6qvfcIgqKRXIh4L0A1iYEqim4s1u7c9VoCgzZc+63FY90AKU4ZzOC2cfJzTnpO4zK7fCUzzw==}
 
-  /xstate@5.0.0-beta.44:
-    resolution: {integrity: sha512-cqYg51v1UrWRDoho/EolyEu85YyzaS+tI3C+VJUuSId6++WwrT6NiVxolG5cd0uG5jyjB3+Xje7erfYIQOcpLw==}
+  /xstate@5.0.0-beta.47:
+    resolution: {integrity: sha512-bbBVZ9cC3j0+BN+hjJ9DlfplFfgg9gXYy4+uivarCSl0nzur7KNAeYYjgtKNUD2ShCGi+KOXbrNSDDkxxoQk1w==}
 
   /xtend@4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
