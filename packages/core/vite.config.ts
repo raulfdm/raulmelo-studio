@@ -9,7 +9,9 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 export default defineConfig({
   plugins: [
-    tsPaths(),
+    tsPaths({
+      root: __dirname,
+    }),
     dts({
       tsconfigPath: './tsconfig.build.json',
     }),
