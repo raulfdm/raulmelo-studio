@@ -33,6 +33,10 @@
           title: 'Subtract',
           href: '/tools/dates/subtract',
         },
+        {
+          title: 'Difference',
+          href: '/tools/dates/diff',
+        },
       ],
     },
     {
@@ -70,7 +74,7 @@
 <section class="p-4 pb-20 space-y-4 overflow-y-auto">
   {#each sideList as { items, title }, index}
     <div
-      class="text-primary-700 dark:text-primary-500 font-bold uppercase px-4"
+      class="px-4 font-bold uppercase text-primary-700 dark:text-primary-500"
     >
       {title}
     </div>
