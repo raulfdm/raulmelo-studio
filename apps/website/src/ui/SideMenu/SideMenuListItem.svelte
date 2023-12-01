@@ -9,17 +9,15 @@
   export let prefetch: SideMenuLink['prefetch'];
   export let isActive: SideMenuLink['isActive'];
 
-  const extraProps = newWindow
+  const extraProps: { [key: string]: string } = newWindow
     ? {
         target: '_blank',
         rel: 'noopener noreferrer',
       }
-    : {
-        rel: '',
-      };
+    : {};
 
   if (prefetch) {
-    extraProps['rel'] = `prefetch ${extraProps.rel}`.trim();
+    extraProps['data-astro-prefetch'] = '';
   }
 </script>
 

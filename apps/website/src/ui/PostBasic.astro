@@ -40,7 +40,11 @@ const intl = getIntl(lang);
 ---
 
 <section class={props.class}>
-  <a href={url} class="relative inline-block cursor-pointer" rel="prefetch">
+  <a
+    href={url}
+    class="relative inline-block cursor-pointer"
+    data-astro-prefetch="viewport"
+  >
     <h3 class={mergeClasses([`font-extrabold`, titleClassName])}>
       {title}
     </h3>

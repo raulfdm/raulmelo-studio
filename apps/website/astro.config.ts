@@ -1,5 +1,4 @@
 import partytown from '@astrojs/partytown';
-import prefetch from '@astrojs/prefetch';
 import react from '@astrojs/react';
 import svelte from '@astrojs/svelte';
 import tailwind from '@astrojs/tailwind';
@@ -29,6 +28,7 @@ const vscodeOnigurumaPath = new URL(
 ).pathname;
 
 const config = defineConfig({
+  prefetch: true,
   site: getWebsiteUrl(),
   output: `server`,
   redirects: {
@@ -53,7 +53,6 @@ const config = defineConfig({
         },
       ],
     }),
-    prefetch(),
     svelte(),
   ],
   adapter: vercel({
