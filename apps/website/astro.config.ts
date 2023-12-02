@@ -1,11 +1,10 @@
+import node from '@astrojs/node';
 import partytown from '@astrojs/partytown';
 import react from '@astrojs/react';
 import svelte from '@astrojs/svelte';
 import tailwind from '@astrojs/tailwind';
-import vercel from '@astrojs/vercel/serverless';
 import { defineConfig, sharpImageService } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
-import { resolve } from 'import-meta-resolve';
 import { loadEnv } from 'vite';
 
 const { VERCEL_ENV, VERCEL_URL } = loadEnv(
@@ -22,15 +21,9 @@ const assetsDomains: string[] = [
   `sanity.io`,
 ];
 
-const vscodeOnigurumaPath = new URL(
-  `onig.wasm`,
-  resolve(`vscode-oniguruma`, import.meta.url),
-).pathname;
-
 const config = defineConfig({
   prefetch: true,
   site: getWebsiteUrl(),
-  output: `server`,
   redirects: {
     '/uses': '/en/blog/uses',
     '/pt/uses': '/pt/blog/uses',
@@ -55,20 +48,9 @@ const config = defineConfig({
     }),
     svelte(),
   ],
-  adapter: vercel({
-    functionPerRoute: false,
-    webAnalytics: {
-      enabled: true,
-    },
-    speedInsights: {
-      enabled: true,
-    },
-    includeFiles: [vscodeOnigurumaPath],
-    imageService: true,
-    imagesConfig: {
-      domains: assetsDomains,
-      sizes: [320, 640, 768, 1024, 1280],
-    },
+  output: `server`,
+  adapter: node({
+    mode: 'standalone',
   }),
   vite: {
     ssr: {
