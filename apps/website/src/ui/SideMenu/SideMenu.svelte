@@ -12,6 +12,7 @@
   import SideMenuListItem from './SideMenuListItem.svelte';
   import { timeline } from 'motion';
   import SideMenuThemeSwitch from './SideMenuThemeSwitch.svelte';
+  import { onMount } from 'svelte';
 
   export let lang: SupportedLanguages;
   export let themeHint: string | undefined;
@@ -82,6 +83,13 @@
       closeSideMenu();
     }
   }
+
+  onMount(() => {
+    document.addEventListener('astro:after-swap', closeSideMenu);
+
+    return () =>
+      document.removeEventListener('astro:after-swap', closeSideMenu);
+  });
 </script>
 
 <svelte:window on:keydown={handleKeyDown} />

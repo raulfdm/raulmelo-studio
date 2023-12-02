@@ -16,6 +16,7 @@ import '@fontsource/inter/900.css';
 import '@raulmelo/styles/lib/styles.css';
 
 import type { SupportedLanguages } from '@raulmelo/core/config';
+import { ViewTransitions } from 'astro:transitions';
 
 import { mergeClasses } from '@/infrastructure/utils/misc';
 import { sanitizeUrl } from '@/infrastructure/utils/url';
@@ -32,7 +33,7 @@ const { lang: langFromParams } = Astro.params as { lang: SupportedLanguages };
 const nextLang = lang || langFromParams;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang={nextLang} data-theme-hint={Astro.locals.themeHint}>
   <head>
     <GoogleAnalytics />
@@ -53,6 +54,7 @@ const nextLang = lang || langFromParams;
     <!-- Theme Script -->
     <ThemeScript />
     <!-- Theme Script-end -->
+    <ViewTransitions />
   </head>
   <body
     class="relative min-h-screen pb-12 duration-200 bg-white dark:bg-blue-900 text-primary transition-theme ease md:pb-16"
@@ -79,6 +81,7 @@ const nextLang = lang || langFromParams;
       pathname={Astro.url.pathname}
       client:load
       themeHint={Astro.locals.themeHint}
+      transition:persist={false}
     />
 
     <slot name="banner" />
