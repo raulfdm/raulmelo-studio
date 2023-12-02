@@ -5,12 +5,14 @@ FROM base AS builder
 # Set working directory
 WORKDIR /app
 
+# Copy everything
 COPY . .
 
+# Prune unused files
 RUN turbo prune website --docker
 
-# Add lockfile and package.json's of isolated subworkspace
-FROM base AS installer
+# ----------------------- #
+FROM base AS prod-deps
 
 # Set working directory
 WORKDIR /app
@@ -18,11 +20,17 @@ WORKDIR /app
 # First install the dependencies (as they change less often)
 # COPY .gitignore .gitignore
 COPY --from=builder /app/out/full/ .
-RUN pnpm install -F website...
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install -F website...
 
 # Build the project
 RUN pnpm turbo run build --filter=website...
 
-# FROM base AS runner
+FROM base AS runner
 
-# WORKDIR /app
+WORKDIR /app
+
+EXPOSE 4321
+
+COPY --from=installer . .
+
+CMD ["pnpm", "-F", "website", "run", "start"]
