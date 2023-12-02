@@ -1,11 +1,12 @@
 import { createMachine } from 'xstate';
 
 export const copyMachine = createMachine({
-  predictableActionArguments: true,
-  preserveActionOrder: true,
-  tsTypes: {} as import('./copyMachine.typegen').Typegen0,
-  schema: {
-    events: {} as { type: 'COPY'; code: string },
+  types: {} as {
+    events: { type: 'COPY'; code: string };
+    actions: {
+      type: 'onCodeCopy';
+      code: string;
+    };
   },
   initial: `notCopied`,
   states: {
@@ -13,7 +14,7 @@ export const copyMachine = createMachine({
       on: {
         COPY: {
           target: `copied`,
-          actions: [`copyCode`],
+          actions: [`onCodeCopy`],
         },
       },
     },

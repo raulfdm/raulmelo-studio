@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { useMachine } from '@xstate/svelte';
+  import { useActor } from '@xstate/svelte';
   import { copyMachine } from './copyMachine';
   import { IconClipboard, IconClipboardCheck } from '@/ui/icons-svelte';
 
@@ -9,13 +9,15 @@
   export let filename: string | null = null;
   export let showLineNumbers: boolean;
 
-  const { state, send } = useMachine(copyMachine, {
-    actions: {
-      copyCode: () => {
-        navigator.clipboard.writeText(code);
+  const { snapshot, send } = useActor(
+    copyMachine.provide({
+      actions: {
+        onCodeCopy: async ({ event }) => {
+          await navigator.clipboard.writeText(event.code);
+        },
       },
-    },
-  });
+    }),
+  );
 
   function onCopyCode() {
     send({ type: 'COPY', code });
@@ -34,7 +36,7 @@
       class="copy-btn focus:outline-white hover:text-gray-300"
       on:click={onCopyCode}
     >
-      {#if $state.matches('copied')}
+      {#if $snapshot.matches('copied')}
         <IconClipboardCheck stroke={1.5} />
       {:else}
         <IconClipboard stroke={1.5} />
