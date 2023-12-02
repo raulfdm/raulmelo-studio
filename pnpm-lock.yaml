@@ -419,9 +419,6 @@ importers:
       '@xstate/cli':
         specifier: 0.5.11
         version: 0.5.11
-      '@xstate/react':
-        specifier: 4.0.0
-        version: 4.0.0(@types/react@18.2.38)(react@18.2.0)(xstate@5.0.0)
       '@xstate/svelte':
         specifier: 3.0.0
         version: 3.0.0(svelte@4.2.5)(xstate@5.0.0)
@@ -4239,23 +4236,6 @@ packages:
       xstate: 4.38.3
     transitivePeerDependencies:
       - supports-color
-
-  /@xstate/react@4.0.0(@types/react@18.2.38)(react@18.2.0)(xstate@5.0.0):
-    resolution: {integrity: sha512-+vINFFBX5JWed/xD2/kNZ0SYbWyeSHgwsJkdLBeHp+Rnbf7QSLWxs3zAXcWPBdPuAgF/suo4E0GaiGZzaxumMQ==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      xstate: ^5.0.0
-    peerDependenciesMeta:
-      xstate:
-        optional: true
-    dependencies:
-      react: 18.2.0
-      use-isomorphic-layout-effect: 1.1.2(@types/react@18.2.38)(react@18.2.0)
-      use-sync-external-store: 1.2.0(react@18.2.0)
-      xstate: 5.0.0
-    transitivePeerDependencies:
-      - '@types/react'
-    dev: false
 
   /@xstate/svelte@2.1.0(svelte@4.2.5)(xstate@4.38.3):
     resolution: {integrity: sha512-cot553w2v4MdmDLkRBLhEjGO5LlnlPcpZ9RT7jFqpn+h0rpmjtkva6zjIZddPrxEOM6DVHDwzYbpDe+BErElQg==}
