@@ -419,12 +419,9 @@ importers:
       '@xstate/cli':
         specifier: 0.5.11
         version: 0.5.11
-      '@xstate/react':
-        specifier: 3.2.2
-        version: 3.2.2(@types/react@18.2.38)(react@18.2.0)(xstate@4.38.3)
       '@xstate/svelte':
-        specifier: 2.1.0
-        version: 2.1.0(svelte@4.2.5)(xstate@4.38.3)
+        specifier: 3.0.0
+        version: 3.0.0(svelte@4.2.5)(xstate@5.0.0)
       algoliasearch:
         specifier: 4.20.0
         version: 4.20.0
@@ -546,8 +543,8 @@ importers:
         specifier: 3.5.0
         version: 3.5.0
       xstate:
-        specifier: 4.38.3
-        version: 4.38.3
+        specifier: 5.0.0
+        version: 5.0.0
       zod:
         specifier: 3.22.4
         version: 3.22.4
@@ -4222,7 +4219,7 @@ packages:
       isomorphic-fetch: 3.0.0
       prettier: 2.8.8
       xstate: 4.38.3
-      xstate-beta: /xstate@5.0.0-beta.44
+      xstate-beta: /xstate@5.0.0-beta.54
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -4240,26 +4237,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@xstate/react@3.2.2(@types/react@18.2.38)(react@18.2.0)(xstate@4.38.3):
-    resolution: {integrity: sha512-feghXWLedyq8JeL13yda3XnHPZKwYDN5HPBLykpLeuNpr9178tQd2/3d0NrH6gSd0sG5mLuLeuD+ck830fgzLQ==}
-    peerDependencies:
-      '@xstate/fsm': ^2.0.0
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      xstate: ^4.37.2
-    peerDependenciesMeta:
-      '@xstate/fsm':
-        optional: true
-      xstate:
-        optional: true
-    dependencies:
-      react: 18.2.0
-      use-isomorphic-layout-effect: 1.1.2(@types/react@18.2.38)(react@18.2.0)
-      use-sync-external-store: 1.2.0(react@18.2.0)
-      xstate: 4.38.3
-    transitivePeerDependencies:
-      - '@types/react'
-    dev: false
-
   /@xstate/svelte@2.1.0(svelte@4.2.5)(xstate@4.38.3):
     resolution: {integrity: sha512-cot553w2v4MdmDLkRBLhEjGO5LlnlPcpZ9RT7jFqpn+h0rpmjtkva6zjIZddPrxEOM6DVHDwzYbpDe+BErElQg==}
     peerDependencies:
@@ -4274,6 +4251,19 @@ packages:
     dependencies:
       svelte: 4.2.5
       xstate: 4.38.3
+    dev: false
+
+  /@xstate/svelte@3.0.0(svelte@4.2.5)(xstate@5.0.0):
+    resolution: {integrity: sha512-wiAkjROowxMJIfQPztJ5BD3FLOW1ZBSb7cVDRi4zxSjaqIRZlAZcMCabv0ihtprEtNEtOlzj0gwnyy8VAagHng==}
+    peerDependencies:
+      svelte: ^3.24.1 || ^4
+      xstate: ^5.0.0
+    peerDependenciesMeta:
+      xstate:
+        optional: true
+    dependencies:
+      svelte: 4.2.5
+      xstate: 5.0.0
     dev: false
 
   /@xstate/tools-shared@4.0.5(prettier@2.8.8)(xstate@4.38.3):
@@ -13228,8 +13218,12 @@ packages:
   /xstate@4.38.3:
     resolution: {integrity: sha512-SH7nAaaPQx57dx6qvfcIgqKRXIh4L0A1iYEqim4s1u7c9VoCgzZc+63FY90AKU4ZzOC2cfJzTnpO4zK7fCUzzw==}
 
-  /xstate@5.0.0-beta.44:
-    resolution: {integrity: sha512-cqYg51v1UrWRDoho/EolyEu85YyzaS+tI3C+VJUuSId6++WwrT6NiVxolG5cd0uG5jyjB3+Xje7erfYIQOcpLw==}
+  /xstate@5.0.0:
+    resolution: {integrity: sha512-FIKtRv8eQB+3dRLdnzdxlQ/sRjcqiN31JaskeHbcyRBaEvcwcjbakYZ5PVV9v4K0szbe793SUN/04J6/g5GrEA==}
+    dev: false
+
+  /xstate@5.0.0-beta.54:
+    resolution: {integrity: sha512-BTnCPBQ2iTKe4uCnHEe1hNx6VTbXU+5mQGybSQHOjTLiBi4Ryi+tL9T6N1tmqagvM8rfl4XRfvndogfWCWcdpw==}
 
   /xtend@4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
