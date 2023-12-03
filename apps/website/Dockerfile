@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN pnpm install -F website
+RUN pnpm install -F website...
 
 RUN pnpm run build --filter=website...
 
