@@ -7,11 +7,11 @@ import { defineConfig, sharpImageService } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 import { loadEnv } from 'vite';
 
-const { VERCEL_ENV, VERCEL_URL } = loadEnv(
-  import.meta.env.MODE,
-  process.cwd(),
-  ``,
-);
+// const { VERCEL_ENV, VERCEL_URL } = loadEnv(
+//   import.meta.env.MODE,
+//   process.cwd(),
+//   ``,
+// );
 
 const assetsDomains: string[] = [
   `res.cloudinary.com`,
@@ -23,7 +23,8 @@ const assetsDomains: string[] = [
 
 const config = defineConfig({
   prefetch: true,
-  site: getWebsiteUrl(),
+  site: 'http://localhost:4321',
+  // site: getWebsiteUrl(),
   redirects: {
     '/uses': '/en/blog/uses',
     '/pt/uses': '/pt/blog/uses',
@@ -59,14 +60,14 @@ const config = defineConfig({
   },
 });
 
-function getWebsiteUrl() {
-  if (VERCEL_ENV === `production`) {
-    return `https://www.raulmelo.me`;
-  } else if (VERCEL_URL) {
-    return `https://${VERCEL_URL}`;
-  } else {
-    return `http://localhost:4321`;
-  }
-}
+// function getWebsiteUrl() {
+//   if (VERCEL_ENV === `production`) {
+//     return `https://www.raulmelo.me`;
+//   } else if (VERCEL_URL) {
+//     return `https://${VERCEL_URL}`;
+//   } else {
+//     return `http://localhost:4321`;
+//   }
+// }
 
 export default config;
