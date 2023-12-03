@@ -6,7 +6,7 @@
   "scripts": {
     "prepare": "turbo run typegen --filter website --output-logs errors-only",
     "dev": "astro dev",
-    "start": "bun ./dist/server/entry.mjs",
+    "start": "HOST=0.0.0.0 PORT=8080 bun ./dist/server/entry.mjs",
     "build": "astro build",
     "typegen": "xstate typegen \"src/**/*.ts?(x)\"",
     "preview": "astro preview",
