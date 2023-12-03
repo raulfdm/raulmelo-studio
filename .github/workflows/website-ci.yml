@@ -1,4 +1,4 @@
-name: Website
+name: Website - CI
 
 on:
   push:
@@ -18,13 +18,9 @@ jobs:
       - name: Setup environment
         uses: ./.github/actions/pnpm-bun-setup
 
-      # I don't need to add build check because this project will be build in Vercel's infrastructure.
-      # If something went wrong while building it, then it will fail there.
-
-      - name: Prepare website to be lint # Needed to be able to run lint propely
+      - name: Build
         run: |
-          pnpm run build --filter=website^...
-          pnpm run typegen --filter=website
+          pnpm run build --filter=website
 
       - name: Lint Projects
         run: pnpm run lint --filter website
