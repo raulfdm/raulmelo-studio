@@ -4,7 +4,7 @@ import { queryPostBySlug } from '@raulmelo/core/domains';
 import { getEstimatedReadingTime, isEmpty, isNil } from '@raulmelo/core/utils';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
-import { sanityClient } from '@/infrastructure/sanity/client';
+import { getSanityClient } from '@/infrastructure/sanity/client';
 import {
   getBlogHomeUrl,
   getHomePageUrl,
@@ -31,7 +31,7 @@ const { lang, slug } = Astro.params as {
 
 const post = await queryPostBySlug({
   slug,
-  client: sanityClient,
+  client: getSanityClient(),
   preview: Astro.url.searchParams.get(`preview`) !== null,
 });
 

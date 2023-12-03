@@ -3,7 +3,7 @@ import type { SupportedLanguages } from '@raulmelo/core/config';
 import { queryCodeSnippetsBySlug } from '@raulmelo/core/domains';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
-import { sanityClient } from '@/infrastructure/sanity/client';
+import { getSanityClient } from '@/infrastructure/sanity/client';
 import {
   getHomePageUrl,
   getSnippetsHomeUrl,
@@ -22,7 +22,10 @@ const { lang, slug } = Astro.params as {
 
 const intl = getIntl(lang);
 
-const snippet = await queryCodeSnippetsBySlug({ client: sanityClient, slug });
+const snippet = await queryCodeSnippetsBySlug({
+  client: getSanityClient(),
+  slug,
+});
 ---
 
 <PostLayout

@@ -3,7 +3,7 @@ import { supportedLanguagesSchema } from '@raulmelo/core/config';
 import { queryRssData, sortPostsByPublishedDate } from '@raulmelo/core/domains';
 import type { APIRoute } from 'astro';
 
-import { sanityClient } from '@/infrastructure/sanity/client';
+import { getSanityClient } from '@/infrastructure/sanity/client';
 
 export const get: APIRoute = async ({ params }) => {
   const { lang } = params as { lang: string };
@@ -18,7 +18,7 @@ export const get: APIRoute = async ({ params }) => {
 
   const { tils, posts, ...restData } = await queryRssData({
     language: langParseResult.data,
-    client: sanityClient,
+    client: getSanityClient(),
   });
 
   const allPosts = sortPostsByPublishedDate([...tils, ...posts]);

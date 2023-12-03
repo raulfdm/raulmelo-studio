@@ -7,4 +7,6 @@ export const clientEnvSchema = z.object({
   PUBLIC_VERCEL_ANALYTICS_ID: z.string().optional(),
 });
 
-export const clientEnv = clientEnvSchema.parse(import.meta.env);
+export function getClientEnv() {
+  return clientEnvSchema.parse(import.meta.env);
+}

@@ -2,7 +2,7 @@
 import { imgUrlFor } from '@raulmelo/core/utils';
 import { Image as AstroImage } from 'astro:assets';
 
-import { sanityClient } from '@/infrastructure/sanity/client';
+import { getSanityClient } from '@/infrastructure/sanity/client';
 import { mergeClasses } from '@/infrastructure/utils/misc';
 
 type Props = {
@@ -22,7 +22,7 @@ const {
   node: { image, caption, customWidth, alt },
 } = Astro.props;
 
-const { url, width, height } = imgUrlFor(sanityClient, image);
+const { url, width, height } = imgUrlFor(getSanityClient(), image);
 
 const finalWidth = customWidth || width;
 const finalHeight = customWidth

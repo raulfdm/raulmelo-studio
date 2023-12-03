@@ -5,9 +5,8 @@ import {
 } from '@raulmelo/core/config';
 import { queryPostsAndTils } from '@raulmelo/core/domains';
 
-import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
-import { sanityClient } from '@/infrastructure/sanity/client';
+import { getSanityClient } from '@/infrastructure/sanity/client';
 import {
   getPathnameWithLocale,
   getPostUrl,
@@ -19,10 +18,6 @@ import Layout from '@/ui/layouts/Layout.astro';
 import PostSection from './_ui/PostSection.astro';
 
 const { lang } = Astro.params as { lang: SupportedLanguages };
-
-export const prerender = true;
-
-export const getStaticPaths = languageGetStaticPaths;
 
 const { success } = supportedLanguagesSchema.safeParse(lang);
 
@@ -39,7 +34,7 @@ const NUMBER_OF_POSTS = 2;
 const { posts, tils } = await queryPostsAndTils({
   locale: lang,
   numberOfPosts: NUMBER_OF_POSTS,
-  client: sanityClient,
+  client: getSanityClient(),
 });
 
 const intl = getIntl(lang);

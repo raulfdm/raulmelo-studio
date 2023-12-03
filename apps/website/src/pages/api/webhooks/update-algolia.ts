@@ -2,16 +2,19 @@ import { queryAlgoliaData } from '@raulmelo/core/domains';
 import algolia from 'algoliasearch';
 import type { APIRoute } from 'astro';
 
-import { clientEnv } from '@/infrastructure/env/client';
-import { serverEnv } from '@/infrastructure/env/server';
-import { sanityClient } from '@/infrastructure/sanity/client';
-
-const algoliaClient = algolia(
-  clientEnv.PUBLIC_ALGOLIA_APP_ID,
-  serverEnv.ALGOLIA_ADMIN_KEY,
-);
+import { getClientEnv } from '@/infrastructure/env/client';
+import { getServerEnv } from '@/infrastructure/env/server';
+import { getSanityClient } from '@/infrastructure/sanity/client';
 
 export const POST: APIRoute = async function POST({ request }) {
+  const serverEnv = getServerEnv();
+  const clientEnv = getClientEnv();
+
+  const algoliaClient = algolia(
+    clientEnv.PUBLIC_ALGOLIA_APP_ID,
+    serverEnv.ALGOLIA_ADMIN_KEY,
+  );
+
   try {
     const authorization = request.headers.get(`authorization`);
 
@@ -23,7 +26,7 @@ export const POST: APIRoute = async function POST({ request }) {
       throw new Error(`Unauthorized`);
     }
 
-    const algoliaData = await queryAlgoliaData({ client: sanityClient });
+    const algoliaData = await queryAlgoliaData({ client: getSanityClient() });
     const index = algoliaClient.initIndex(clientEnv.PUBLIC_ALGOLIA_INDEX_NAME);
     await index.saveObjects(algoliaData);
 

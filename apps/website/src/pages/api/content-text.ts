@@ -4,14 +4,16 @@ import type { APIRoute } from 'astro';
 import { z } from 'zod';
 import { fromZodError } from 'zod-validation-error';
 
-import { serverEnv } from '@/infrastructure/env/server';
-import { sanityClient } from '@/infrastructure/sanity/client';
+import { getServerEnv } from '@/infrastructure/env/server';
+import { getSanityClient } from '@/infrastructure/sanity/client';
 
 const ContentSchema = z.object({
   slug: z.string(),
 });
 
 export const POST: APIRoute = async function POST({ request }) {
+  const serverEnv = getServerEnv();
+
   const authorization = request.headers.get(`authorization`);
 
   if (!authorization) {
@@ -57,6 +59,7 @@ export const POST: APIRoute = async function POST({ request }) {
   }
 
   const { slug } = result.data;
+  const sanityClient = getSanityClient();
 
   let textContent = ``;
 

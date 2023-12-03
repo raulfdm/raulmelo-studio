@@ -2,7 +2,7 @@
 import { imgUrlFor } from '@raulmelo/core/utils';
 import { getImage } from 'astro:assets';
 
-import { sanityClient } from '@/infrastructure/sanity/client';
+import { getSanityClient } from '@/infrastructure/sanity/client';
 
 import ImageSliderComponent from './ImageSlider.svelte';
 
@@ -34,7 +34,7 @@ const adaptedImages = await Promise.all(
   images.filter(inProgressImage).map(async (img, index) => {
     const { alt, caption, image } = img;
 
-    const { height, width, url } = imgUrlFor(sanityClient, image);
+    const { height, width, url } = imgUrlFor(getSanityClient(), image);
     const imgIndex = index + 1;
 
     const optimizedImg = await getImage({

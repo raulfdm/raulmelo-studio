@@ -7,4 +7,6 @@ const serverEnvSchema = z.object({
   API_TOKEN: z.string(),
 });
 
-export const serverEnv = serverEnvSchema.parse(import.meta.env);
+export function getServerEnv() {
+  return serverEnvSchema.parse(import.meta.env);
+}

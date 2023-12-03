@@ -3,7 +3,7 @@ import type { SupportedLanguages } from '@raulmelo/core/config';
 import { queryCodeSnippets } from '@raulmelo/core/domains';
 
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
-import { sanityClient } from '@/infrastructure/sanity/client';
+import { getSanityClient } from '@/infrastructure/sanity/client';
 import { getHomePageUrl, getSnippetUrl } from '@/infrastructure/utils/url';
 import { Breadcrumbs } from '@/ui/Breadcrumbs';
 import ContentTile from '@/ui/ContentTile.svelte';
@@ -14,7 +14,7 @@ const { lang } = Astro.params as { lang: SupportedLanguages };
 
 const intl = getIntl(lang);
 
-const snippets = await queryCodeSnippets({ client: sanityClient });
+const snippets = await queryCodeSnippets({ client: getSanityClient() });
 ---
 
 <Layout

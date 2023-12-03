@@ -1,7 +1,7 @@
 import type { SupportedLanguages } from '@raulmelo/core/config';
 import { InstantSearch } from 'react-instantsearch';
 
-import { clientEnv } from '@/infrastructure/env/client';
+import { getClientEnv } from '@/infrastructure/env/client';
 
 import { Filters } from './Filters';
 import { Hits } from './Hits';
@@ -27,7 +27,7 @@ export function Search({
   return (
     <InstantSearch
       searchClient={searchClient}
-      indexName={clientEnv.PUBLIC_ALGOLIA_INDEX_NAME}
+      indexName={getClientEnv().PUBLIC_ALGOLIA_INDEX_NAME}
       future={{
         preserveSharedStateOnUnmount: true,
       }}

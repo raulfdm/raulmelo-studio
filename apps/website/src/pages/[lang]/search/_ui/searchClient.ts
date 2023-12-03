@@ -1,6 +1,8 @@
 import algoliaSearch from 'algoliasearch/lite';
 
-import { clientEnv } from '@/infrastructure/env/client';
+import { getClientEnv } from '@/infrastructure/env/client';
+
+const clientEnv = getClientEnv();
 
 export const searchClient = algoliaSearch(
   clientEnv.PUBLIC_ALGOLIA_APP_ID,

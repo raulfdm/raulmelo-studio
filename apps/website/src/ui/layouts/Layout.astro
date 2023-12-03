@@ -60,8 +60,10 @@ const nextLang = lang || langFromParams;
     class="relative min-h-screen pb-12 duration-200 bg-white dark:bg-blue-900 text-primary transition-theme ease md:pb-16"
   >
     <script>
-      import { clientEnv } from '@/infrastructure/env/client';
+      import { getClientEnv } from '@/infrastructure/env/client';
       import { webVitals } from '@/infrastructure/vitals';
+
+      const clientEnv = getClientEnv();
 
       if (clientEnv.PUBLIC_VERCEL_ANALYTICS_ID) {
         webVitals({

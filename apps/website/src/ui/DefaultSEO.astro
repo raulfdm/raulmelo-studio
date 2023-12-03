@@ -3,7 +3,7 @@ import type { SupportedLanguages } from '@raulmelo/core/config';
 import { querySiteData } from '@raulmelo/core/domains';
 import { type Link, type Meta, type Props as SeoProps, SEO } from 'astro-seo';
 
-import { sanityClient } from '@/infrastructure/sanity/client';
+import { getSanityClient } from '@/infrastructure/sanity/client';
 import { sanitizeUrl } from '@/infrastructure/utils/url';
 
 export type Props = {
@@ -34,7 +34,7 @@ const {
   noindex = false,
 } = Astro.props;
 
-const siteData = await querySiteData({ client: sanityClient });
+const siteData = await querySiteData({ client: getSanityClient() });
 
 const langSeo = siteData.defaultSeo[lang] as NonNullable<
   (typeof siteData.defaultSeo)[`en` | `pt`]

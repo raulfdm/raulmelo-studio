@@ -2,9 +2,8 @@
 import type { SupportedLanguages } from '@raulmelo/core/config';
 import { queryTils } from '@raulmelo/core/domains';
 
-import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
-import { sanityClient } from '@/infrastructure/sanity/client';
+import { getSanityClient } from '@/infrastructure/sanity/client';
 import { mergeClasses } from '@/infrastructure/utils/misc';
 import { getHomePageUrl } from '@/infrastructure/utils/url';
 import { Breadcrumbs } from '@/ui/Breadcrumbs';
@@ -12,14 +11,11 @@ import Layout from '@/ui/layouts/Layout.astro';
 
 import Tils from './_ui/Tils.svelte';
 
-export const prerender = true;
-export const getStaticPaths = languageGetStaticPaths;
-
 const { lang } = Astro.params as { lang: SupportedLanguages };
 
 const tils = await queryTils({
   language: lang,
-  client: sanityClient,
+  client: getSanityClient(),
 });
 
 const intl = getIntl(lang);
