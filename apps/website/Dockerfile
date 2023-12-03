@@ -1,4 +1,4 @@
-FROM docker.io/library/raulmelo-node-18-pnpm-8.11-bun-1.0.14 AS base
+FROM raulmelo-node-18-pnpm-8.11.0-bun-1.0.15 AS base
 
 FROM base AS prunne
 
