@@ -23,13 +23,11 @@
     "test": "bun test",
     "build": "tsc -p tsconfig.build.json"
   },
-  "peerDependencies": {
-    "vscode-oniguruma": ">=1.7.0"
-  },
   "dependencies": {
     "@types/hast": "3.0.3",
     "@wooorm/starry-night": "3.1.0",
-    "hast-util-to-html": "9.0.0"
+    "hast-util-to-html": "9.0.0",
+    "vscode-oniguruma": "2.0.1"
   },
   "devDependencies": {
     "@raulmelo/tsconfig": "workspace:*",
