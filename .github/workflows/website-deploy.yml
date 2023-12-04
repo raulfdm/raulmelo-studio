@@ -18,13 +18,13 @@ jobs:
         with:
           version: 0.1.131
 
-      - run: flyctl deploy --remote-only
+      - run: flyctl deploy
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+          ALGOLIA_ADMIN_KEY: ${{secrets.ALGOLIA_ADMIN_KEY}}
+          API_TOKEN: ${{secrets.API_TOKEN}}
           APP_ENV: production
+          PUBLIC_ALGOLIA_APP_ID: ${{secrets.PUBLIC_ALGOLIA_APP_ID}}
           PUBLIC_ALGOLIA_INDEX_NAME: ${{secrets.PUBLIC_ALGOLIA_INDEX_NAME}}
           PUBLIC_ALGOLIA_SEARCH_KEY: ${{secrets.PUBLIC_ALGOLIA_SEARCH_KEY}}
-          PUBLIC_ALGOLIA_APP_ID: ${{secrets.PUBLIC_ALGOLIA_APP_ID}}
-          ALGOLIA_ADMIN_KEY: ${{secrets.ALGOLIA_ADMIN_KEY}}
           SANITY_TOKEN: ${{secrets.SANITY_TOKEN}}
-          API_TOKEN: ${{secrets.API_TOKEN}}
