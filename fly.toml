@@ -6,6 +6,9 @@
 app = "raulmelo-studio-fragrant-dust-2943"
 primary_region = "gig"
 
+[deploy]
+strategy = "bluegreen"
+
 [build]
 dockerfile = "./apps/website/Dockerfile"
 build-target = "runner"
