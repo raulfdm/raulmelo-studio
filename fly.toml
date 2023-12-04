@@ -8,6 +8,7 @@ primary_region = "gig"
 
 [build]
 dockerfile = "./apps/website/Dockerfile"
+build-target = "runner"
 
 [http_service]
 internal_port = 8080
