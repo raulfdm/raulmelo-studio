@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "prepare": "turbo --filter sanity-core build --output-logs errors-only",
-    "build": "tsc -p tsconfig.build.json"
+    "build": "bun tsc -p tsconfig.build.json"
   },
   "dependencies": {
     "@tabler/icons-react": "2.42.0"

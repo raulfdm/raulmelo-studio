@@ -21,7 +21,7 @@
   "scripts": {
     "prepare": "turbo --filter code-highlight build --output-logs errors-only",
     "test": "bun test",
-    "build": "tsc -p tsconfig.build.json"
+    "build": "bun tsc -p tsconfig.build.json"
   },
   "dependencies": {
     "@types/hast": "3.0.3",

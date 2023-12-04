@@ -18,7 +18,7 @@
     "lint": "eslint .",
     "build": "run-s build:*",
     "build:lib": "bun run scripts/build.ts",
-    "build:types": "tsc -p tsconfig.types.json"
+    "build:types": "bun tsc -p tsconfig.types.json"
   },
   "peerDependencies": {
     "eslint": "^8.40.0",
