@@ -31,6 +31,10 @@ const config = defineConfig({
   prefetch: true,
   site: getWebsiteUrl(),
   output: `server`,
+  experimental: {
+    contentCollectionCache: true,
+    optimizeHoistedScript: true,
+  },
   redirects: {
     '/uses': '/en/blog/uses',
     '/pt/uses': '/pt/blog/uses',
@@ -71,8 +75,10 @@ const config = defineConfig({
     },
   }),
   vite: {
-    ssr: {
-      external: [`@raulmelo/core`, `@raulmelo/code-highlight`],
+    build: {
+      rollupOptions: {
+        external: ['prettier'],
+      },
     },
   },
 });

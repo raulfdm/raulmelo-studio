@@ -16,7 +16,6 @@ import '@fontsource/inter/900.css';
 import '@raulmelo/styles/lib/styles.css';
 
 import type { SupportedLanguages } from '@raulmelo/core/config';
-import { ViewTransitions } from 'astro:transitions';
 
 import { mergeClasses } from '@/infrastructure/utils/misc';
 import { sanitizeUrl } from '@/infrastructure/utils/url';
@@ -54,7 +53,6 @@ const nextLang = lang || langFromParams;
     <!-- Theme Script -->
     <ThemeScript />
     <!-- Theme Script-end -->
-    <ViewTransitions />
   </head>
   <body
     class="relative min-h-screen pb-12 duration-200 bg-white dark:bg-blue-900 text-primary transition-theme ease md:pb-16"
