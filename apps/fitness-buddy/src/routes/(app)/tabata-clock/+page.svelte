@@ -2,7 +2,7 @@
 	import IconPlayerPlay from '@tabler/icons-svelte/dist/svelte/icons/IconPlayerPlay.svelte';
 
 	import TabataInputField from '$lib/components/TabataInputField.svelte';
-	import { type TabataConfigContext,tabataConfigService } from '$lib/stores/tabata-config';
+	import { type TabataConfigContext, tabataConfigService } from '$lib/stores/tabata-config';
 	import { createLocalStorage } from '$lib/utils/localStorage';
 	import { secondsToMinutes } from '$lib/utils/secondsToMinutes';
 

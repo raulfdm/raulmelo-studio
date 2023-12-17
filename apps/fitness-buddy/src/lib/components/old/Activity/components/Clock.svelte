@@ -15,7 +15,8 @@
 		type ClockMachineState,
 		continueTimer,
 		persistClockInfo,
-		readTrainingStore	} from '$lib/stores/old/clockMachine';
+		readTrainingStore
+	} from '$lib/stores/old/clockMachine';
 
 	const clockMachineService = useMachine(clockMachine, {} as any);
 

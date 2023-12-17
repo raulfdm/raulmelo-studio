@@ -1,76 +1,66 @@
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 45 45"
-  stroke="#db2777"
-  class="w-20"
->
-  <g
-    fill="none"
-    fill-rule="evenodd"
-    transform="translate(1 1)"
-    stroke-width="2"
-  >
-    <circle cx="22" cy="22" r="6" stroke-opacity="0">
-      <animate
-        attributeName="r"
-        begin="1s"
-        dur="2s"
-        values="6;22"
-        calcMode="linear"
-        repeatCount="indefinite"
-      />
-      <animate
-        attributeName="stroke-opacity"
-        begin="1s"
-        dur="2s"
-        values="1;0"
-        calcMode="linear"
-        repeatCount="indefinite"
-      />
-      <animate
-        attributeName="stroke-width"
-        begin="1s"
-        dur="2s"
-        values="2;0"
-        calcMode="linear"
-        repeatCount="indefinite"
-      />
-    </circle>
-    <circle cx="22" cy="22" r="6" stroke-opacity="0">
-      <animate
-        attributeName="r"
-        begin="2s"
-        dur="2s"
-        values="6;22"
-        calcMode="linear"
-        repeatCount="indefinite"
-      />
-      <animate
-        attributeName="stroke-opacity"
-        begin="2s"
-        dur="2s"
-        values="1;0"
-        calcMode="linear"
-        repeatCount="indefinite"
-      />
-      <animate
-        attributeName="stroke-width"
-        begin="2s"
-        dur="2s"
-        values="2;0"
-        calcMode="linear"
-        repeatCount="indefinite"
-      />
-    </circle>
-    <circle cx="22" cy="22" r="8">
-      <animate
-        attributeName="r"
-        begin="0s"
-        dur="1s"
-        values="6;1;2;3;4;5;6"
-        calcMode="linear"
-        repeatCount="indefinite"
-      />
-    </circle>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" stroke="#db2777" class="w-20">
+	<g fill="none" fill-rule="evenodd" transform="translate(1 1)" stroke-width="2">
+		<circle cx="22" cy="22" r="6" stroke-opacity="0">
+			<animate
+				attributeName="r"
+				begin="1s"
+				dur="2s"
+				values="6;22"
+				calcMode="linear"
+				repeatCount="indefinite"
+			/>
+			<animate
+				attributeName="stroke-opacity"
+				begin="1s"
+				dur="2s"
+				values="1;0"
+				calcMode="linear"
+				repeatCount="indefinite"
+			/>
+			<animate
+				attributeName="stroke-width"
+				begin="1s"
+				dur="2s"
+				values="2;0"
+				calcMode="linear"
+				repeatCount="indefinite"
+			/>
+		</circle>
+		<circle cx="22" cy="22" r="6" stroke-opacity="0">
+			<animate
+				attributeName="r"
+				begin="2s"
+				dur="2s"
+				values="6;22"
+				calcMode="linear"
+				repeatCount="indefinite"
+			/>
+			<animate
+				attributeName="stroke-opacity"
+				begin="2s"
+				dur="2s"
+				values="1;0"
+				calcMode="linear"
+				repeatCount="indefinite"
+			/>
+			<animate
+				attributeName="stroke-width"
+				begin="2s"
+				dur="2s"
+				values="2;0"
+				calcMode="linear"
+				repeatCount="indefinite"
+			/>
+		</circle>
+		<circle cx="22" cy="22" r="8">
+			<animate
+				attributeName="r"
+				begin="0s"
+				dur="1s"
+				values="6;1;2;3;4;5;6"
+				calcMode="linear"
+				repeatCount="indefinite"
+			/>
+		</circle>
+	</g>
 </svg>
