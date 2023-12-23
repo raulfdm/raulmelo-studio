@@ -15,7 +15,6 @@
   import { onMount } from 'svelte';
 
   export let lang: SupportedLanguages;
-  export let themeHint: string | undefined;
   export let pathname: string;
 
   const links = useSideMenuLinks(lang, pathname);
@@ -98,7 +97,6 @@
   <DisclosurePanel
     static
     as="nav"
-    open
     use={[setMainPanelElement]}
     class={mergeClasses([
       'fixed bottom-0 right-0 z-20 h-full min-w-full duration-200 transform',
@@ -118,7 +116,6 @@
     </ul>
     <div class="px-4 py-2">
       <SideMenuThemeSwitch
-        {themeHint}
         title={intl.formatMessage({ id: 'sideMenu.theme.title' })}
         darkThemeTitle={intl.formatMessage({ id: 'sideMenu.theme.dark' })}
         lightThemeTitle={intl.formatMessage({ id: 'sideMenu.theme.light' })}

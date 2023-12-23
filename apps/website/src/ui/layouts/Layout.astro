@@ -61,7 +61,6 @@ const nextLang = lang || langFromParams;
       lang={nextLang}
       pathname={Astro.url.pathname}
       client:load
-      themeHint={Astro.locals.themeHint}
       transition:persist={false}
     />
 

@@ -10,7 +10,6 @@
 
   export let lang: SupportedLanguages;
   export let pathname: string;
-  export let themeHint: string | undefined;
 
   const intl = getIntl(lang);
 
@@ -72,4 +71,4 @@
   </nav>
 </div>
 
-<SideMenu {lang} {pathname} {themeHint} />
+<SideMenu {lang} {pathname} />
