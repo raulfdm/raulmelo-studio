@@ -188,8 +188,8 @@ importers:
         specifier: 10.4.16
         version: 10.4.16(postcss@8.4.31)
       bun-types:
-        specifier: 1.0.14
-        version: 1.0.14
+        specifier: 1.0.19
+        version: 1.0.19
       daisyui:
         specifier: 2.52.0
         version: 2.52.0(autoprefixer@10.4.16)(postcss@8.4.31)
@@ -571,8 +571,8 @@ importers:
         specifier: workspace:*
         version: link:../tsconfig
       bun-types:
-        specifier: 1.0.14
-        version: 1.0.14
+        specifier: 1.0.19
+        version: 1.0.19
       typescript:
         specifier: 5.2.2
         version: 5.2.2
@@ -614,8 +614,8 @@ importers:
         specifier: 0.29.9
         version: 0.29.9
       bun-types:
-        specifier: 1.0.14
-        version: 1.0.14
+        specifier: 1.0.19
+        version: 1.0.19
       concurrently:
         specifier: 8.2.2
         version: 8.2.2
@@ -684,8 +684,8 @@ importers:
         specifier: '18'
         version: 18.17.15
       bun-types:
-        specifier: 1.0.14
-        version: 1.0.14
+        specifier: 1.0.19
+        version: 1.0.19
       eslint:
         specifier: 8.54.0
         version: 8.54.0
@@ -3576,6 +3576,12 @@ packages:
     resolution: {integrity: sha512-WUtIVRUZ9i5dYXefDEAI7sh9/O7jGvHg7Df/5O/gtH3Yabe5odI3UWopVR1qbPXQtvOxWu3mM4XxlYeZtMWF4g==}
     dev: true
 
+  /@types/ws@8.5.10:
+    resolution: {integrity: sha512-vmQSUcfalpIq0R9q7uTo2lXs6eGIpt9wtnLdMv9LVpIjCA/+ufZRozlVoVelIYixx1ugCBKDhn89vnsEGOCx9A==}
+    dependencies:
+      '@types/node': 18.18.13
+    dev: true
+
   /@typescript-eslint/eslint-plugin@6.12.0(@typescript-eslint/parser@6.12.0)(eslint@8.54.0)(typescript@5.2.2):
     resolution: {integrity: sha512-XOpZ3IyJUIV1b15M7HVOpgQxPPF7lGXgsfcEIu3yDxFPaf/xZKt7s9QO/pbk7vpWQyVulpJbu4E5LwpZiQo4kA==}
     engines: {node: ^16.0.0 || >=18.0.0}
@@ -4614,8 +4620,12 @@ packages:
     engines: {node: '>=0.2.0'}
     dev: false
 
-  /bun-types@1.0.14:
-    resolution: {integrity: sha512-hLVfM2fk8xSJeobfuPGilfvxM5gLtEy1bn7RJhrtw3u4OaC0kieXKYFFTVHU8jZ3hj8YyPLIFClIUodkFSrMBQ==}
+  /bun-types@1.0.19:
+    resolution: {integrity: sha512-7P5/r+twssrkDQ6HMit2GARMBbAxz1tLLEcMgQOCZeCX9BzNtabktjPCu+DmcvDYDnL/Ke75pmKg9CNBTlCzlQ==}
+    dependencies:
+      '@types/node': 18.18.13
+      '@types/ws': 8.5.10
+      undici-types: 5.26.5
     dev: true
 
   /bundle-name@3.0.0:
