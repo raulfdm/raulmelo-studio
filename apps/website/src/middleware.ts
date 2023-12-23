@@ -4,10 +4,8 @@ import { defineMiddleware, sequence } from 'astro/middleware';
 import Negotiator from 'negotiator';
 
 const themeHintHandler = defineMiddleware(async ({ request, locals }, next) => {
-  const response = (await next()) as Response;
-
   if (skipMiddleware(request.url)) {
-    return response;
+    return next();
   }
 
   const chColorScheme =
@@ -16,6 +14,8 @@ const themeHintHandler = defineMiddleware(async ({ request, locals }, next) => {
     ) as App.Locals['themeHint']) || `system`;
 
   locals.themeHint = chColorScheme;
+
+  const response = await next();
 
   response.headers.set(`Accept-CH`, `Sec-CH-Prefers-Color-Scheme`);
 
