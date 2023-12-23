@@ -11,6 +11,7 @@
   class={mergeClasses(
     'flex items-center',
     !isLink && 'truncate text-ellipsis overflow-hidden',
+    'has-[a]:hover:underline',
   )}
 >
   {#if 'href' in crumb}
@@ -23,18 +24,11 @@
 </li>
 
 <style>
-  li {
-    & > a {
-      &:hover {
-        @apply underline;
-      }
-    }
-    & + *:before {
-      content: '';
-      @apply ml-2 mr-3 block h-1.5 w-1.5 rotate-45 transform opacity-40;
-      border-top: 1px solid;
-      border-right: 1px solid;
-      background-color: transparent;
-    }
+  li:before {
+    content: '';
+    @apply ml-2 mr-3 block h-1.5 w-1.5 rotate-45 transform opacity-40;
+    border-top: 1px solid;
+    border-right: 1px solid;
+    background-color: transparent;
   }
 </style>
