@@ -71,13 +71,6 @@ const config = defineConfig({
       sizes: [320, 640, 768, 1024, 1280],
     },
   }),
-  vite: {
-    resolve: {
-      alias: {
-        prettier: 'prettier/standalone',
-      },
-    },
-  },
 });
 
 function getWebsiteUrl() {
