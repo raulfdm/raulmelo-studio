@@ -72,9 +72,9 @@ const config = defineConfig({
     },
   }),
   vite: {
-    build: {
-      rollupOptions: {
-        external: ['prettier'],
+    resolve: {
+      alias: {
+        prettier: 'prettier/standalone',
       },
     },
   },
