@@ -1,6 +1,7 @@
 import type { PortableTextBlock } from '@portabletext/types';
 import toMarkdown from '@sanity/block-content-to-markdown';
 import Prettier from 'prettier/standalone';
+import markdownPlugin from 'prettier/plugins/markdown';
 
 function customToMarkdown(portableText: PortableTextBlock) {
   return toMarkdown(portableText, {
@@ -44,6 +45,7 @@ export async function contentBlockToRawText(
 
   const formattedContent = await Prettier.format(content, {
     parser: 'markdown',
+    plugins: [markdownPlugin],
   });
 
   return formattedContent
