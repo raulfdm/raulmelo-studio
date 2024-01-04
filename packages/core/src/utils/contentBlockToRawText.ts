@@ -1,7 +1,7 @@
 import type { PortableTextBlock } from '@portabletext/types';
 import toMarkdown from '@sanity/block-content-to-markdown';
-import Prettier from 'prettier/standalone';
 import markdownPlugin from 'prettier/plugins/markdown';
+import Prettier from 'prettier/standalone';
 
 function customToMarkdown(portableText: PortableTextBlock) {
   return toMarkdown(portableText, {

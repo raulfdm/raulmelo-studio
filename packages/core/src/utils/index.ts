@@ -1,3 +1,4 @@
+export * from './contentBlockToMarkdown.js';
 export * from './contentBlockToRawText.js';
 export * from './getEstimatedReadingTime.js';
 export * from './image.js';
