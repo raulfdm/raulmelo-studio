@@ -34,7 +34,7 @@ jobs:
           netlify deploy \
             --dir apps/utilities/build \
             --site ${{ secrets.NETLIFY_SITE_ID_UTILITIES }} \
-            --filter raulfdm-utilities \
+            --filter utilities \
             --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} \
             $additional_flags \
             > deploy_output.txt
