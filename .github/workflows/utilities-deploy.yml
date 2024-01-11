@@ -12,16 +12,11 @@ jobs:
   utilities:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout to repository
-        uses: actions/checkout@v4.1.1
+      - name: Git files setup
+        uses: actions/checkout@v4
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: 1.0.20
-
-      - name: Install dependencies
-        run: bun install --no-cache
+      - name: Setup environment
+        uses: ./.github/actions/pnpm-bun-setup
 
       - name: Add Netlify CLI globally
         run: bun add -g netlify-cli@17.10.1
@@ -29,7 +24,7 @@ jobs:
       - name: Build utilities
         env:
           NETLIFY: true
-        run: bun run build --filter=utilities
+        run: pnpm run build --filter=utilities
 
       - name: Deploy to Netlify
         id: netlify_deploy
