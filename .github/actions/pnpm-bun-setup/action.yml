@@ -3,7 +3,7 @@ description: 'Shared action to install PNPM and Bun'
 runs:
   using: 'composite'
   steps:
-    - uses: oven-sh/setup-bun@v1
+    - uses: oven-sh/setup-bun@v1.0.22
 
     - uses: pnpm/action-setup@v2.4.0
       name: Install pnpm
