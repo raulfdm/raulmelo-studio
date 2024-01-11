@@ -1,0 +1,83 @@
+name: Utilities deployment
+
+on: [push]
+
+permissions:
+  pull-requests: write
+
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+
+jobs:
+  utilities:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout to repository
+        uses: actions/checkout@v4.1.1
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: 1.0.20
+
+      - name: Install dependencies
+        run: bun install --no-cache
+
+      - name: Add Netlify CLI globally
+        run: bun add -g netlify-cli@17.10.1
+
+      - name: Build utilities
+        env:
+          NETLIFY: true
+        run: bun run build --filter=utilities
+
+      - name: Deploy to Netlify
+        id: netlify_deploy
+        run: |
+          additional_flags=""
+          if [ "$BRANCH_NAME" = "main" ]; then additional_flags="--prod"; fi
+          netlify deploy \
+            --dir apps/utilities/build \
+            --site ${{ secrets.NETLIFY_SITE_ID_UTILITIES }} \
+            --filter raulfdm-utilities \
+            --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} \
+            $additional_flags \
+            > deploy_output.txt
+
+      - name: Generate URL Preview
+        id: url_preview
+        if: ${{ env.BRANCH_NAME != 'main' }}
+        run: |
+          NETLIFY_PREVIEW_URL=$(cat deploy_output.txt | grep "Utilities draft URL: " | cut -d' ' -f4)
+          echo "NETLIFY_PREVIEW_URL=$NETLIFY_PREVIEW_URL" >> "$GITHUB_OUTPUT"
+
+      - name: Comment URL Preview on PR
+        uses: actions/github-script@v7
+        if: ${{ env.BRANCH_NAME != 'main' }}
+        env:
+          NETLIFY_PREVIEW_URL: ${{ steps.url_preview.outputs.NETLIFY_PREVIEW_URL }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            async function comment(){
+              const result = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                commit_sha: context.sha,
+              })
+
+              const issueNumber = result.data[0].number
+
+              if(issueNumber){
+                await github.rest.issues.createComment({
+                  issue_number: issueNumber,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: 'Preview URL: ' + process.env.NETLIFY_PREVIEW_URL
+                })
+              }else{
+                console.log('No PR found for commit ' + context.sha)
+              }
+            }
+
+            comment()
