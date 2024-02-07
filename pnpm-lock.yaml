@@ -42,8 +42,8 @@ importers:
         specifier: 3.26.1
         version: 3.26.1(@babel/runtime@7.23.6)(@codemirror/lint@6.4.2)(@codemirror/state@6.3.3)(@codemirror/theme-one-dark@6.1.2)(@lezer/common@1.1.2)(codemirror@6.0.1)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.3)
       '@tabler/icons-svelte':
-        specifier: 2.42.0
-        version: 2.42.0(svelte@4.2.8)
+        specifier: 2.47.0
+        version: 2.47.0(svelte@4.2.8)
       '@xstate/cli':
         specifier: 0.5.13
         version: 0.5.13
@@ -245,8 +245,8 @@ importers:
         specifier: 1.5.3
         version: 1.5.3
       '@tabler/icons-svelte':
-        specifier: 2.42.0
-        version: 2.42.0(svelte@4.2.8)
+        specifier: 2.47.0
+        version: 2.47.0(svelte@4.2.8)
       '@tailwindcss/forms':
         specifier: 0.5.7
         version: 0.5.7(tailwindcss@3.3.5)
@@ -393,11 +393,11 @@ importers:
         specifier: 3.26.1
         version: 3.26.1(@babel/runtime@7.23.6)(@codemirror/lint@6.4.2)(@codemirror/state@6.3.3)(@codemirror/theme-one-dark@6.1.2)(@lezer/common@1.1.2)(codemirror@6.0.1)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@5.3.11)
       '@tabler/icons-react':
-        specifier: 2.44.0
-        version: 2.44.0(react@18.2.0)
+        specifier: 2.47.0
+        version: 2.47.0(react@18.2.0)
       '@tabler/icons-svelte':
-        specifier: 2.44.0
-        version: 2.44.0(svelte@4.2.8)
+        specifier: 2.47.0
+        version: 2.47.0(svelte@4.2.8)
       '@types/flat':
         specifier: 5.0.5
         version: 5.0.5
@@ -699,8 +699,8 @@ importers:
   packages/sanity-core:
     dependencies:
       '@tabler/icons-react':
-        specifier: 2.42.0
-        version: 2.42.0(react@18.2.0)
+        specifier: 2.47.0
+        version: 2.47.0(react@18.2.0)
     devDependencies:
       '@raulmelo/tsconfig':
         specifier: workspace:*
@@ -3557,50 +3557,27 @@ packages:
       - supports-color
     dev: false
 
-  /@tabler/icons-react@2.42.0(react@18.2.0):
-    resolution: {integrity: sha512-2APr++u24P2mx9vJymJQJORRpu2Qej0rPrtAvgXu8YomHjLXVP+O1VtToSGyoSPH1ysA569XbxrwzOau9Ne12A==}
+  /@tabler/icons-react@2.47.0(react@18.2.0):
+    resolution: {integrity: sha512-iqly2FvCF/qUbgmvS8E40rVeYY7laltc5GUjRxQj59DuX0x/6CpKHTXt86YlI2whg4czvd/c8Ce8YR08uEku0g==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@tabler/icons': 2.42.0
+      '@tabler/icons': 2.47.0
       prop-types: 15.8.1
       react: 18.2.0
     dev: false
 
-  /@tabler/icons-react@2.44.0(react@18.2.0):
-    resolution: {integrity: sha512-10qwrqJ/QBNgY4YYer9PjWmCwm3wv9aVK8kGAkFKkwu6UJURVLZ2ea+oFh5j6vSXnA1zMtUG+X8anR5fZ67Isw==}
-    peerDependencies:
-      react: ^16.5.1 || ^17.0.0 || ^18.0.0
-    dependencies:
-      '@tabler/icons': 2.44.0
-      prop-types: 15.8.1
-      react: 18.2.0
-    dev: false
-
-  /@tabler/icons-svelte@2.42.0(svelte@4.2.8):
-    resolution: {integrity: sha512-w+Yo6R7xLBOgyFApAk5SctfFA7TQ+pRvVh+nTHUFJTjn4NZ0PA04lZyldSn1SMww5NT1jqRGdhsVpnn37of3FQ==}
+  /@tabler/icons-svelte@2.47.0(svelte@4.2.8):
+    resolution: {integrity: sha512-xL2NyCUUhBQv0lXylgNCpfHtMW4Ihu0hCacaYXeX+NiS1LO0geqXk/0lkrBH+u/ZLX6vyqUYNFjawjzmxthFjw==}
     peerDependencies:
       svelte: '>=3 <5'
     dependencies:
-      '@tabler/icons': 2.42.0
+      '@tabler/icons': 2.47.0
       svelte: 4.2.8
     dev: false
 
-  /@tabler/icons-svelte@2.44.0(svelte@4.2.8):
-    resolution: {integrity: sha512-aEaYhxwix8ciP/lt1vAOVpyKHf9IYYmGJI+R2ITqi7J26kSsfG3OxMqMgtmqpHdTnetM2Agdix/Ld5OlujQ6Gg==}
-    peerDependencies:
-      svelte: '>=3 <5'
-    dependencies:
-      '@tabler/icons': 2.44.0
-      svelte: 4.2.8
-    dev: false
-
-  /@tabler/icons@2.42.0:
-    resolution: {integrity: sha512-ynV4iaC1c1mUhuAr9HRaoq8KrWYmZ0bJEpOh7qTBE+OfdDsdvQUe+0S7FW+DHkJ4RuxQMdO8djrZK7HrUw9YMA==}
-    dev: false
-
-  /@tabler/icons@2.44.0:
-    resolution: {integrity: sha512-WPPtihDcAwEm1QZM9MXQw6+r/R2/qx7KMU1eegsi9DsqBLAb0W2kbt6e/syvd6j9c+6XNpRVBW1ziGqSWQAWOg==}
+  /@tabler/icons@2.47.0:
+    resolution: {integrity: sha512-4w5evLh+7FUUiA1GucvGj2ReX2TvOjEr4ejXdwL/bsjoSkof6r1gQmzqI+VHrE2CpJpB3al7bCTulOkFa/RcyA==}
     dev: false
 
   /@tailwindcss/aspect-ratio@0.4.2(tailwindcss@3.3.5):
