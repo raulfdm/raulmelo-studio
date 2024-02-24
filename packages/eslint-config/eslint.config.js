@@ -24,7 +24,6 @@ export default function createConfig(tsconfigRootDir) {
         '.vercel/**',
         'package-lock.json',
         'pnpm-lock.yaml',
-        'yarn.lock',
       ],
     },
     eslint.configs.recommended,
@@ -47,7 +46,7 @@ export default function createConfig(tsconfigRootDir) {
      * Custom ts rules
      */
     {
-      files: ['*.ts', '*.tsx'],
+      files: ['**/*.ts', '**/*.tsx'],
       rules: {
         '@typescript-eslint/consistent-type-assertions': 'error',
         '@typescript-eslint/consistent-type-imports': [
