@@ -63,7 +63,6 @@ function customToMarkdown(
         },
         callout: ({
           node,
-          ...props
         }: {
           node: {
             title?: string;
