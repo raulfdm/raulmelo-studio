@@ -1,34 +1,34 @@
 {
-	"name": "root",
-	"private": true,
-	"type": "module",
-	"scripts": {
-		"build": "turbo run build",
-		"dev": "turbo run dev",
-		"lint": "turbo run lint",
-		"check": "turbo run check",
-		"deploy": "turbo run deploy",
-		"test": "turbo run test",
-		"typegen": "turbo run typegen",
-		"clean": "rm -rf node_modules **/node_modules",
-		"clean:deep": "rm -rf node_modules **/node_modules **/.svelte-kit **/.turbo **/dist **/.vercel"
-	},
-	"devDependencies": {
-		"@raulmelo/eslint-config": "workspace:*",
-		"eslint": "8.54.0",
-		"husky": "8.0.3",
-		"prettier": "3.0.3",
-		"rimraf": "5.0.5",
-		"turbo": "1.10.16",
-		"typescript": "5.2.2"
-	},
-	"packageManager": "pnpm@8.12.1",
-	"engines": {
-		"node": "18.19.0",
-		"pnpm": "8.12.1"
-	},
-	"volta": {
-		"node": "18.19.0",
-		"pnpm": "8.12.1"
-	}
+  "name": "root",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "check": "turbo run check",
+    "deploy": "turbo run deploy",
+    "test": "turbo run test",
+    "typegen": "turbo run typegen",
+    "clean": "rm -rf node_modules **/node_modules",
+    "clean:deep": "rm -rf node_modules **/node_modules **/.svelte-kit **/.turbo **/dist **/.vercel"
+  },
+  "devDependencies": {
+    "@raulmelo/eslint-config": "workspace:*",
+    "eslint": "8.54.0",
+    "husky": "8.0.3",
+    "prettier": "3.0.3",
+    "rimraf": "5.0.5",
+    "turbo": "1.10.16",
+    "typescript": "5.2.2"
+  },
+  "packageManager": "pnpm@8.15.3",
+  "engines": {
+    "node": "18",
+    "pnpm": "8"
+  },
+  "volta": {
+    "node": "18.19.0",
+    "pnpm": "8.15.3"
+  }
 }
