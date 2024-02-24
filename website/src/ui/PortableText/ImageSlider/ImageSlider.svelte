@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { GetImageResult } from 'astro';
-  import { isEmpty, isNil } from '@raulmelo/core/utils';
+  import isEmpty from 'ramda/src/isEmpty';
+  import isNil from 'ramda/src/isNil';
 
   export let images: ({
     id: string;
