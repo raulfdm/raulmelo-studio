@@ -2,7 +2,7 @@ import type { SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import { type SupportedLanguages, supportedLanguagesSchema } from '@/config';
+import { SupportedLanguages } from '@/infrastructure/config/types/language';
 
 type QueryRssDataParams = {
   language: SupportedLanguages;
@@ -49,7 +49,7 @@ const dataPostSchema = z.object({
 
 const rssSchema = z.object({
   description: z.string(),
-  language: supportedLanguagesSchema,
+  language: SupportedLanguages,
   siteUrl: z.string(),
   tils: z.array(dataPostSchema),
   posts: z.array(dataPostSchema),

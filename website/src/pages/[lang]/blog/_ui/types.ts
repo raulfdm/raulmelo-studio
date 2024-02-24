@@ -1,3 +1,3 @@
-import type { QueryPostBySlugReturnType } from '@raulmelo/core/domains';
+import type { QueryPostBySlugReturnType } from '@/infrastructure/api/modules/posts';
 
 export type PostBySlug = QueryPostBySlugReturnType;

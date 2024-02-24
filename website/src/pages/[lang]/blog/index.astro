@@ -1,7 +1,6 @@
 ---
+import { queryPosts } from '@/infrastructure/api/modules/posts';
 import type { SupportedLanguages } from '@/infrastructure/config/types/language';
-import { queryPosts } from '@raulmelo/core/domains';
-
 import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';

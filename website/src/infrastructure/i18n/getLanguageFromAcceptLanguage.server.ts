@@ -1,6 +1,7 @@
 import { match } from '@formatjs/intl-localematcher';
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import Negotiator from 'negotiator';
+
+import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 
 export const supportedLocales = [`en`, `pt`];
 const defaultLocale = `en`;

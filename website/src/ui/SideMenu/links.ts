@@ -1,5 +1,4 @@
 import type { SupportedLanguages } from '@/infrastructure/config/types/language';
-
 import { getPathnameWithLocale } from '@/infrastructure/utils/url';
 
 export function useSideMenuLinks(lang: SupportedLanguages, pathname: string) {

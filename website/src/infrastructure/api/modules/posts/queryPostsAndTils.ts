@@ -2,7 +2,7 @@ import type { SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import { type SupportedLanguages, supportedLanguagesSchema } from '@/config';
+import { SupportedLanguages } from '@/infrastructure/config/types/language';
 
 type QueryPostsAndTilsParams = {
   locale: SupportedLanguages;
@@ -88,7 +88,7 @@ const postSchema = z.object({
   slug: z.string(),
   publishedAt: z.string(),
   title: z.string(),
-  language: supportedLanguagesSchema,
+  language: SupportedLanguages,
   subtitle: z.string().nullable(),
   description: z.string(),
   featuredImage: featuredImageSchema.nullable(),
@@ -98,7 +98,7 @@ const postSchema = z.object({
 const tilSchema = z.object({
   _id: z.string(),
   title: z.string(),
-  language: supportedLanguagesSchema,
+  language: SupportedLanguages,
   publishedAt: z.string(),
   slug: z.string(),
   tags: z.array(tagSchema).nullable(),

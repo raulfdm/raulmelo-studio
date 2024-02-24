@@ -1,4 +1,4 @@
-import type { QuerySiteDataReturnType } from '@raulmelo/core/domains';
+import type { QuerySiteDataReturnType } from '../api/modules/siteData';
 
 type Social = QuerySiteDataReturnType[`socials`][0];
 

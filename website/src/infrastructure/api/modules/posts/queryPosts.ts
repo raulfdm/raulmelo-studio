@@ -4,9 +4,9 @@ import { z } from 'zod';
 
 import {
   SUPPORTED_LANGUAGES,
-  supportedLanguagesSchema,
+  SupportedLanguages,
   type SupportedLanguagesWithAll,
-} from '@/config';
+} from '@/infrastructure/config/types/language';
 
 type QueryPostsParams = {
   language: SupportedLanguagesWithAll;
@@ -51,7 +51,7 @@ const postQuery = groq`
 
 const blogPagePostSchema = z.object({
   _id: z.string(),
-  language: supportedLanguagesSchema,
+  language: SupportedLanguages,
   slug: z.string(),
   publishedAt: z.string(),
   title: z.string(),

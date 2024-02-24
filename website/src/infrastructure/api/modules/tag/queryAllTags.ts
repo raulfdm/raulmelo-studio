@@ -2,7 +2,7 @@ import type { SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import type { SupportedLanguages } from '@/config';
+import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 
 type QueryAllTagsParams = {
   client: SanityClient;

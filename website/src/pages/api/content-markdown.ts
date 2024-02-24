@@ -1,11 +1,14 @@
-import { queryPostBySlug, queryTilBySlug } from '@raulmelo/core/domains';
-import { contentBlockToMarkdown } from '@raulmelo/core/utils';
 import type { APIRoute } from 'astro';
 import { z } from 'zod';
 import { fromZodError } from 'zod-validation-error';
 
+import {
+  queryPostBySlug,
+  queryTilBySlug,
+} from '@/infrastructure/api/modules/posts';
 import { serverEnv } from '@/infrastructure/env/server';
 import { sanityClient } from '@/infrastructure/sanity/client';
+import { contentBlockToMarkdown } from '@/infrastructure/utils/contentBlockToMarkdown';
 
 const ContentSchema = z.object({
   slug: z.string(),

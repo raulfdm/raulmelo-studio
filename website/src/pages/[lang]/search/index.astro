@@ -1,10 +1,10 @@
 ---
 import './_ui/Search.css';
 
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import { renderToString } from 'react-dom/server';
 import { getServerState } from 'react-instantsearch';
 
+import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { getHomePageUrl } from '@/infrastructure/utils/url';

@@ -1,8 +1,8 @@
 ---
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
-import { querySiteData } from '@raulmelo/core/domains';
 import { type Link, type Meta, type Props as SeoProps, SEO } from 'astro-seo';
 
+import { querySiteData } from '@/infrastructure/api/modules/siteData';
+import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { sanitizeUrl } from '@/infrastructure/utils/url';
 

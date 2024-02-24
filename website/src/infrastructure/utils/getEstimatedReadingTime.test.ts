@@ -1,8 +1,8 @@
-import { describe, it, expect } from 'vitest';
+import { describe, expect,it } from 'vitest';
 
-import { getEstimatedReadingTime } from './getEstimatedReadingTime';
 import { mockAllBlocks } from './__fixtures__/allBlocks';
 import { mockRealPostBlocks } from './__fixtures__/fullPost';
+import { getEstimatedReadingTime } from './getEstimatedReadingTime';
 
 describe('fn: getEstimatedReadingTime', () => {
   it('return the correct reading time', async () => {

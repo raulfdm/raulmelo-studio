@@ -2,7 +2,7 @@ import type { SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import { supportedLanguagesSchema } from '@/config';
+import { SupportedLanguages } from '@/infrastructure/config/types/language';
 
 type QuerySiteDataParams = {
   client: SanityClient;
@@ -101,6 +101,6 @@ const siteSettings = z.object({
 const siteDataSchema = z.object({
   personalInformation: personalInfoSchema,
   site: siteSettings,
-  defaultSeo: z.record(supportedLanguagesSchema, defaultSeoSchema),
+  defaultSeo: z.record(SupportedLanguages, defaultSeoSchema),
   socials: z.array(socialSchema),
 });

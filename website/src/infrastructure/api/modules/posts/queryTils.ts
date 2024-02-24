@@ -5,9 +5,9 @@ import { z } from 'zod';
 
 import {
   SUPPORTED_LANGUAGES_WITH_ALL,
-  supportedLanguagesSchema,
+  SupportedLanguages,
   type SupportedLanguagesWithAll,
-} from '@/config';
+} from '@/infrastructure/config/types/language';
 
 type QueryTilsParams = {
   language: SupportedLanguagesWithAll;
@@ -63,7 +63,7 @@ const tilSchema = z.object({
   _id: z.string(),
   publishedAt: z.string(),
   title: z.string(),
-  language: supportedLanguagesSchema,
+  language: SupportedLanguages,
   content: z.any().transform((value) => value as PortableTextBlock),
   slug: z.string(),
   tags: z.array(tilTagSchema).nullable(),

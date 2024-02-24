@@ -1,5 +1,5 @@
 ---
-import type { QueryPostBySlugReturnType } from '@raulmelo/core/domains';
+import type { QueryPostBySlugReturnType } from '@/infrastructure/api/modules/posts';
 
 type Props = Pick<NonNullable<QueryPostBySlugReturnType>, `title`> & {
   publishedDateLabel?: string;

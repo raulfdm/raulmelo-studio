@@ -1,9 +1,9 @@
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import {
   type InstantSearchServerState,
   InstantSearchSSRProvider,
 } from 'react-instantsearch';
 
+import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 
 import { Search } from './Search';

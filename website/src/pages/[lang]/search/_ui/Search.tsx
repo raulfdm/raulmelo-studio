@@ -1,6 +1,6 @@
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import { InstantSearch } from 'react-instantsearch';
 
+import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import { clientEnv } from '@/infrastructure/env/client';
 
 import { Filters } from './Filters';

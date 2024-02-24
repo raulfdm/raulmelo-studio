@@ -1,7 +1,8 @@
 import { match } from '@formatjs/intl-localematcher';
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import { defineMiddleware, sequence } from 'astro/middleware';
 import Negotiator from 'negotiator';
+
+import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 
 const themeHintHandler = defineMiddleware(async ({ request, locals }, next) => {
   if (skipMiddleware(request.url)) {

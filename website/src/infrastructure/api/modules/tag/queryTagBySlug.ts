@@ -2,7 +2,7 @@ import type { SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import { type SupportedLanguages, supportedLanguagesSchema } from '@/config';
+import { SupportedLanguages } from '@/infrastructure/config/types/language';
 
 type QueryTagBySlugParams = {
   slug: string;
@@ -93,7 +93,7 @@ const tagCommonSchema = z.object({
   publishedAt: z.string(),
   slug: z.string(),
   title: z.string(),
-  language: supportedLanguagesSchema,
+  language: SupportedLanguages,
   tags: z.array(tagSchema).nullable(),
 });
 

@@ -3,7 +3,7 @@ import type { SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import { supportedLanguagesSchema } from '@/config';
+import { SupportedLanguages } from '@/infrastructure/config/types/language';
 
 type QueryTilBySlugParams = {
   slug: string;
@@ -102,7 +102,7 @@ const tagSchema = z.object({
 const relatedPostSchema = z.object({
   _id: z.string(),
   _type: z.enum(['post', 'til']),
-  lang: supportedLanguagesSchema,
+  lang: SupportedLanguages,
   publishedAt: z.string(),
   slug: z.string(),
   tags: z.array(tagSchema).nullable(),
@@ -113,7 +113,7 @@ const tilBySlugSchema = z.object({
   _id: z.string(),
   publishedAt: z.string(),
   title: z.string(),
-  language: supportedLanguagesSchema,
+  language: SupportedLanguages,
   slug: z.string(),
   content: z.any().transform((value) => value as PortableTextBlock),
   tags: z.array(tagSchema).nullable(),
