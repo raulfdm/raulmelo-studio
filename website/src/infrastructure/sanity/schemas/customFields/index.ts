@@ -8,6 +8,7 @@ import { detailedImageField } from './imageField';
 import { imageSliderField } from './imageSliderField';
 import { languageField } from './languageField';
 import { tweetField } from './tweetField';
+import { youtubeVideoField } from './youtubeVideoField';
 
 export const customFields = [
   blockContentField,
@@ -20,4 +21,5 @@ export const customFields = [
   languageField,
   tweetField,
   calloutField,
+  youtubeVideoField,
 ];
