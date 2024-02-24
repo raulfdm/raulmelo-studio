@@ -1,10 +1,12 @@
 ---
+import isEmpty from 'ramda/src/isEmpty';
+import isNil from 'ramda/src/isNil';
+
 import { queryTilBySlug } from '@/infrastructure/api/modules/posts';
 import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { getEstimatedReadingTime } from '@/infrastructure/utils/getEstimatedReadingTime';
-import { isEmpty,isNil } from '@/infrastructure/utils/ramda';
 import {
   getHomePageUrl,
   getPostUrl,

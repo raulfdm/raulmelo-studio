@@ -2,8 +2,7 @@ import type { SanityClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
 import type { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder';
 import type { SanityImageObject } from '@sanity/image-url/lib/types/types';
-
-import { isNil } from './ramda.js';
+import isNil from 'ramda/src/isNil';
 
 type Source =
   | SanityImageObject
