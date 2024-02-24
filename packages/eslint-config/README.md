@@ -8,19 +8,16 @@
 2. in your `eslint.config.js`, add the following:
 
 ```js
-import fullConfig from '@raulmelo/eslint-config/full';
+import * as path from 'node:path';
+import * as url from 'node:url';
+
+import createConfig from '@raulmelo/eslint-config';
+
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default [
-  ...fullConfig,
+  ...createConfig(__dirname),
   // other configs
 ];
-```
-
-In case you don't want to add everything, you could select what you want to have:
-
-```js
-import baseConfig from '@raulmelo/eslint-config/base';
-import typeScriptConfig from '@raulmelo/eslint-config/typescript';
-
-export default [...baseConfig, typeScriptConfig];
 ```

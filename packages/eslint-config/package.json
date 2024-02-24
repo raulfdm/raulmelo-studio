@@ -3,45 +3,35 @@
   "type": "module",
   "version": "1.0.0-development",
   "files": [
-    "dist",
-    "types"
+    "eslint.config.js"
   ],
-  "types": "./dist/src/index.d.ts",
+  "module": "eslint.config.js",
+  "types": "./eslint.config.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/src/index.d.ts"
+      "import": "./eslint.config.js",
+      "types": "./eslint.config.d.ts"
     }
   },
   "scripts": {
     "prepare": "turbo --filter eslint-config build --output-logs errors-only",
     "lint": "eslint .",
-    "build": "run-s build:*",
-    "build:lib": "bun run scripts/build.ts",
-    "build:types": "tsc -p tsconfig.types.json"
+    "build": "tsc"
   },
   "peerDependencies": {
-    "eslint": "^8.40.0",
-    "typescript": "^5.1.0"
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.0"
   },
   "dependencies": {
-    "@eslint/eslintrc": "2.1.4",
-    "@eslint/js": "8.54.0",
-    "@typescript-eslint/eslint-plugin": "6.12.0",
-    "@typescript-eslint/parser": "6.12.0",
-    "eslint-config-prettier": "9.0.0",
-    "eslint-plugin-import": "2.29.0",
-    "eslint-plugin-simple-import-sort": "10.0.0",
-    "globals": "13.23.0"
+    "@eslint/js": "8.57.0",
+    "eslint-config-prettier": "9.1.0",
+    "typescript-eslint": "7.0.2"
   },
   "devDependencies": {
-    "@types/bun": "1.0.1",
-    "@types/eslint": "8.44.7",
-    "@types/eslint__js": "8.42.3",
-    "@types/node": "18",
-    "eslint": "8.54.0",
+    "@types/node": "18.17.15",
+    "eslint": "8.57.0",
     "npm-run-all": "4.1.5",
-    "typescript": "5.2.2"
+    "typescript": "5.3.3"
   },
   "engines": {
     "node": "18",
