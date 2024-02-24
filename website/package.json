@@ -15,7 +15,8 @@
     "lint": "run-s lint:*",
     "lint:astro": "astro check",
     "lint:tsc": "tsc --noEmit",
-    "lint:eslint": "eslint src"
+    "lint:eslint": "ESLINT_USE_FLAT_CONFIG=true eslint src",
+    "lint:eslint:astro": "ESLINT_USE_FLAT_CONFIG=false eslint src --config .eslintrc.cjs"
   },
   "dependencies": {
     "@astrojs/check": "0.3.4",
@@ -109,8 +110,8 @@
     "extends": "../../package.json"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "3.0.2",
     "@tailwindcss/typography": "0.5.10",
+    "@typescript-eslint/eslint-plugin": "7.0.2",
     "@typescript-eslint/parser": "6.15.0"
   }
 }
