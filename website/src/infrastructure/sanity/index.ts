@@ -33,8 +33,5 @@ export const sanityStudioConfig: Config = {
     }),
   ],
   title: `Raul's CMS`,
-  /**
-   * TODO: fix fitness types to use `defineField`
-   */
-  schema: schema as any,
+  schema: schema as TODO,
 };

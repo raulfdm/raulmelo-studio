@@ -45,8 +45,6 @@ function getUrlFn(type: `post` | `til` | `codeSnippet`) {
   if (type === `codeSnippet`) {
     return getSnippetUrl;
   }
-
-  throw new Error(`Invalid type: "${type}"`);
 }
 ---
 
@@ -99,6 +97,10 @@ function getUrlFn(type: `post` | `til` | `codeSnippet`) {
       <ul class="pb-5 space-y-6 md:pb-10 col-span-full">
         {allContent.map((content) => {
           const urlFn = getUrlFn(content._type);
+
+          if (!urlFn) {
+            return null;
+          }
 
           return (
             <PostBasic

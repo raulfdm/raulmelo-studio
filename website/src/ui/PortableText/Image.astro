@@ -60,7 +60,7 @@ function calculateCustomHeight(
   ) : (
     <figure>
       <AstroImage
-        class={mergeClasses(`object-cover mx-auto rounded-md`, {
+        class:list={mergeClasses(`object-cover mx-auto rounded-md`, {
           'mb-0': Boolean(caption),
         })}
         src={url}

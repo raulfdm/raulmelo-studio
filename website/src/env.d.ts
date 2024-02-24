@@ -15,3 +15,5 @@ interface Window {
   __handleSystemTheme: () => void;
   __switchTheme: (nextTheme: Theme) => void;
 }
+
+declare type TODO = any;

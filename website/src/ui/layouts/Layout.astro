@@ -41,7 +41,7 @@ const nextLang = lang || langFromParams;
     <link
       rel="icon"
       type="image/svg+xml"
-      href={sanitizeUrl(`${Astro.site ?? ``}/favicon.ico`)}
+      href={sanitizeUrl(`${Astro.site?.href ?? ``}/favicon.ico`)}
     />
     <meta name="generator" content={Astro.generator} />
     <!-- Base-end -->
@@ -60,7 +60,7 @@ const nextLang = lang || langFromParams;
 
     <slot name="banner" />
 
-    <main class={mergeClasses(`grid-container`, containerClass)}>
+    <main class:list={mergeClasses(`grid-container`, containerClass)}>
       <slot />
     </main>
   </body>

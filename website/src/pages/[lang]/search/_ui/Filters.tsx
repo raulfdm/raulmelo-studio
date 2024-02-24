@@ -77,7 +77,8 @@ function TagsRefinement({ title }: { title: string }) {
   );
 }
 
-function GenericRefinement({ title, refine, items, renderLabelText }: any) {
+//
+function GenericRefinement({ title, refine, items, renderLabelText }: TODO) {
   return isEmpty(items) ? null : (
     <div className="search__refinementWrapper">
       <h3 className="text-lg font-bold">{title}</h3>

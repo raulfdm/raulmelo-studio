@@ -131,7 +131,7 @@ const articleJsonLD = nextArticle
     link: [
       {
         rel: `manifest`,
-        href: sanitizeUrl(`${Astro.site ?? ``}/site.webmanifest`),
+        href: sanitizeUrl(`${Astro.site?.href ?? ``}/site.webmanifest`),
       },
       {
         rel: `mask-icon`,
