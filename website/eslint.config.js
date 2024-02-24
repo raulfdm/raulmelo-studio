@@ -5,6 +5,10 @@ import astroPlugin from 'eslint-plugin-astro';
 
 export default defineConfig([
   {
+    // TODO: update this
+    ignores: ['**/*.cjs'],
+  },
+  {
     files: ['**/*.astro'],
     plugins: {
       astro: astroPlugin,
