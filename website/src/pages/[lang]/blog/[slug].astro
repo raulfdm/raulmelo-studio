@@ -127,7 +127,7 @@ const intl = getIntl(lang);
       post.series ? (
         <SeriesSection
           language={post.language}
-          series={post.series!}
+          series={post.series}
           currentPostId={post._id}
           seriesLabel={intl.formatMessage(
             {

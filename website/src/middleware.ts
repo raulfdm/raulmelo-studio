@@ -28,7 +28,7 @@ const languageHandler = defineMiddleware(
     const url = new URL(request.url);
 
     if (skipMiddleware(request.url)) {
-      return next() as Promise<Response>;
+      return next();
     }
 
     const pathnameIsMissingLocale = supportedLocales.every(
@@ -51,7 +51,7 @@ const languageHandler = defineMiddleware(
       return redirect(nextUrl);
     }
 
-    return next() as Promise<Response>;
+    return next();
   },
 );
 

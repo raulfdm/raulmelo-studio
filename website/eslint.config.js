@@ -1,24 +1,39 @@
-import { defineConfig } from '@raulmelo/eslint-config';
-import tslintParser from '@typescript-eslint/parser';
-import astroParser from 'astro-eslint-parser';
-import astroPlugin from 'eslint-plugin-astro';
+// @ts-check
+import * as path from 'node:path';
+import * as url from 'node:url';
 
-export default defineConfig([
-  {
-    // TODO: update this
-    ignores: ['**/*.cjs'],
-  },
-  {
-    files: ['**/*.astro'],
-    plugins: {
-      astro: astroPlugin,
-    },
-    languageOptions: {
-      parser: astroParser,
-      parserOptions: {
-        parser: tslintParser,
-        extraFileExtensions: [`.astro`],
+import createConfig from '@raulmelo/eslint-config';
+import { FlatCompat } from '@eslint/eslintrc';
+
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const compat = new FlatCompat({
+  baseDirectory: __dirname, // optional; default: process.cwd()
+  resolvePluginsRelativeTo: __dirname, // optional
+});
+
+export default [
+  ...createConfig(__dirname),
+  ...compat.config({
+    extends: ['plugin:astro/recommended'],
+    overrides: [
+      {
+        // Define the configuration for `.astro` file.
+        files: ['*.astro'],
+        // Allows Astro components to be parsed.
+        parser: 'astro-eslint-parser',
+        // Parse the script in `.astro` as TypeScript by adding the following configuration.
+        // It's the setting you need when using TypeScript.
+        parserOptions: {
+          parser: '@typescript-eslint/parser',
+          extraFileExtensions: ['.astro'],
+        },
+        rules: {
+          // override/add rules settings here, such as:
+          // "astro/no-set-html-directive": "error"
+        },
       },
-    },
-  },
-]);
+    ],
+  }),
+];
