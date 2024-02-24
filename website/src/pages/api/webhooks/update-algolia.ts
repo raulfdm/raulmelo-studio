@@ -1,7 +1,7 @@
-import { queryAlgoliaData } from '@raulmelo/core/domains';
 import algolia from 'algoliasearch';
 import type { APIRoute } from 'astro';
 
+import { queryAlgoliaData } from '@/infrastructure/api/modules/algolia';
 import { clientEnv } from '@/infrastructure/env/client';
 import { serverEnv } from '@/infrastructure/env/server';
 import { sanityClient } from '@/infrastructure/sanity/client';

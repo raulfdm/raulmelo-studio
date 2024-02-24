@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { SupportedLanguages } from '@raulmelo/core/config';
-  import type { QueryTilsReturnType } from '@raulmelo/core/domains';
+  import type { QueryTilsReturnType } from '@/infrastructure/api/modules/posts';
+  import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 
   import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
   import { getTilUrl } from '@/infrastructure/utils/url';

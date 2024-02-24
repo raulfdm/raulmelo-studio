@@ -1,10 +1,6 @@
 ---
-import {
-  type SupportedLanguages,
-  supportedLanguagesSchema,
-} from '@raulmelo/core/config';
-import { queryPostsAndTils } from '@raulmelo/core/domains';
-
+import { queryPostsAndTils } from '@/infrastructure/api/modules/posts';
+import { SupportedLanguages } from '@/infrastructure/config/types/language';
 import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
@@ -24,7 +20,7 @@ export const prerender = true;
 
 export const getStaticPaths = languageGetStaticPaths;
 
-const { success } = supportedLanguagesSchema.safeParse(lang);
+const { success } = SupportedLanguages.safeParse(lang);
 
 /**
  * Didn't get yet why but "lang" could be `favicon.ico`. If that's the case

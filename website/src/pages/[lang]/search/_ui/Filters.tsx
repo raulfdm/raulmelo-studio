@@ -1,7 +1,7 @@
-import type { SupportedLanguages } from '@raulmelo/core/config';
-import { isEmpty } from '@raulmelo/core/utils';
+import isEmpty from 'ramda/src/isEmpty';
 import { useRefinementList } from 'react-instantsearch';
 
+import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import { mergeClasses } from '@/infrastructure/utils/misc';
 
 import type { RefinementListProps } from './types';
@@ -77,14 +77,17 @@ function TagsRefinement({ title }: { title: string }) {
   );
 }
 
-function GenericRefinement({ title, refine, items, renderLabelText }: any) {
+//
+function GenericRefinement({ title, refine, items, renderLabelText }: TODO) {
   return isEmpty(items) ? null : (
     <div className="search__refinementWrapper">
       <h3 className="text-lg font-bold">{title}</h3>
 
       <ul className="flex flex-col space-y-2">
         {items
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
           .sort(sortOptionByLabel)
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
           .map((item: { value: string; label: string; count: number }) => {
             function handleClick() {
               refine(item.value);

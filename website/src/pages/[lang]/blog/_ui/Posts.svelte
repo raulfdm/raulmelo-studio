@@ -1,9 +1,9 @@
 <script lang="ts">
   import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
   import ContentTile from '@/ui/ContentTile.svelte';
-  import type { SupportedLanguages } from '@raulmelo/core/config';
-  import type { QueryPostsAndTilsReturnType } from '@raulmelo/core/domains';
+  import type { SupportedLanguages } from '@/infrastructure/config/types/language';
   import { getPostUrl } from '@/infrastructure/utils/url';
+  import type { QueryPostsAndTilsReturnType } from '@/infrastructure/api/modules/posts';
 
   export let posts:
     | QueryPostsAndTilsReturnType[`posts`]

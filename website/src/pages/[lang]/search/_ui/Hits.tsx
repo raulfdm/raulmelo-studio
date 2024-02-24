@@ -1,6 +1,6 @@
-import type { SupportedLanguages } from '@raulmelo/core/config';
 import { Hits as HitsComp } from 'react-instantsearch';
 
+import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import {
   getPostUrl,

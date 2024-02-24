@@ -1,11 +1,9 @@
 ---
-import type { SupportedLanguages } from '@raulmelo/core/config';
-import {
-  queryTagBySlug,
-  sortPostsByPublishedDate,
-} from '@raulmelo/core/domains';
-import { isEmpty } from '@raulmelo/core/utils';
+import isEmpty from 'ramda/src/isEmpty';
 
+import { sortPostsByPublishedDate } from '@/infrastructure/api/modules/posts';
+import { queryTagBySlug } from '@/infrastructure/api/modules/tag';
+import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import {
@@ -47,8 +45,6 @@ function getUrlFn(type: `post` | `til` | `codeSnippet`) {
   if (type === `codeSnippet`) {
     return getSnippetUrl;
   }
-
-  throw new Error(`Invalid type: "${type}"`);
 }
 ---
 
@@ -101,6 +97,10 @@ function getUrlFn(type: `post` | `til` | `codeSnippet`) {
       <ul class="pb-5 space-y-6 md:pb-10 col-span-full">
         {allContent.map((content) => {
           const urlFn = getUrlFn(content._type);
+
+          if (!urlFn) {
+            return null;
+          }
 
           return (
             <PostBasic

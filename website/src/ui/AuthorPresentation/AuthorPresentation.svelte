@@ -1,6 +1,5 @@
 <script lang="ts">
-  import type { SupportedLanguages } from '@raulmelo/core/config';
-  import type { QuerySiteDataReturnType } from '@raulmelo/core/domains';
+  import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 
   import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
   import { getSocial } from '@/infrastructure/utils/seo';
@@ -14,6 +13,7 @@
     IconBrandMedium,
     IconBrandTwitter,
   } from '../icons-svelte';
+  import type { QuerySiteDataReturnType } from '@/infrastructure/api/modules/siteData';
 
   export let lang: SupportedLanguages;
   export let siteData: QuerySiteDataReturnType;

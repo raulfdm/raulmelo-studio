@@ -13,10 +13,9 @@ import '@fontsource/inter/400.css';
 import '@fontsource/inter/700.css';
 import '@fontsource/inter/800.css';
 import '@fontsource/inter/900.css';
-import '@raulmelo/styles/lib/styles.css';
+import '../styles/app.css';
 
-import type { SupportedLanguages } from '@raulmelo/core/config';
-
+import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import { mergeClasses } from '@/infrastructure/utils/misc';
 import { sanitizeUrl } from '@/infrastructure/utils/url';
 import DefaultSEO, { type Props as SeoProps } from '@/ui/DefaultSEO.astro';
@@ -42,7 +41,7 @@ const nextLang = lang || langFromParams;
     <link
       rel="icon"
       type="image/svg+xml"
-      href={sanitizeUrl(`${Astro.site ?? ``}/favicon.ico`)}
+      href={sanitizeUrl(`${Astro.site?.href ?? ``}/favicon.ico`)}
     />
     <meta name="generator" content={Astro.generator} />
     <!-- Base-end -->
@@ -61,7 +60,7 @@ const nextLang = lang || langFromParams;
 
     <slot name="banner" />
 
-    <main class={mergeClasses(`grid-container`, containerClass)}>
+    <main class:list={mergeClasses(`grid-container`, containerClass)}>
       <slot />
     </main>
   </body>

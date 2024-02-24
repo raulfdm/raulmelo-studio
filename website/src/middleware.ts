@@ -1,7 +1,8 @@
 import { match } from '@formatjs/intl-localematcher';
-import type { SupportedLanguages } from '@raulmelo/core/config';
 import { defineMiddleware, sequence } from 'astro/middleware';
 import Negotiator from 'negotiator';
+
+import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 
 const themeHintHandler = defineMiddleware(async ({ request, locals }, next) => {
   if (skipMiddleware(request.url)) {
@@ -27,7 +28,7 @@ const languageHandler = defineMiddleware(
     const url = new URL(request.url);
 
     if (skipMiddleware(request.url)) {
-      return next() as Promise<Response>;
+      return next();
     }
 
     const pathnameIsMissingLocale = supportedLocales.every(
@@ -50,7 +51,7 @@ const languageHandler = defineMiddleware(
       return redirect(nextUrl);
     }
 
-    return next() as Promise<Response>;
+    return next();
   },
 );
 

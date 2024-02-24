@@ -7,7 +7,7 @@
   import { createPopperActions } from 'svelte-popperjs';
 
   import { getPathnameWithoutLocale } from '@/infrastructure/utils/url';
-  import type { SupportedLanguages } from '@raulmelo/core/config';
+  import type { SupportedLanguages } from '@/infrastructure/config/types/language';
   import { IconLanguage } from '../icons-svelte';
 
   export let ariaLabel: string;

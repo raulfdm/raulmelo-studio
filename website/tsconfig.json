@@ -5,15 +5,7 @@
     "moduleResolution": "bundler",
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@/ui": [
-        "./src/ui"
-      ],
-      "@/infrastructure": [
-        "./src/infrastructure"
-      ]
+      "@/*": ["./src/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react",
@@ -21,11 +13,8 @@
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"
-      },
-    ],
+      }
+    ]
   },
-  "include": [
-    "src",
-    "scripts"
-  ]
+  "include": ["src", "scripts"]
 }

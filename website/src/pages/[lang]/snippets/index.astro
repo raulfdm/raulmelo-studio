@@ -1,7 +1,6 @@
 ---
-import type { SupportedLanguages } from '@raulmelo/core/config';
-import { queryCodeSnippets } from '@raulmelo/core/domains';
-
+import { queryCodeSnippets } from '@/infrastructure/api/modules/codeSnippets';
+import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { getHomePageUrl, getSnippetUrl } from '@/infrastructure/utils/url';

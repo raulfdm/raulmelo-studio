@@ -1,7 +1,6 @@
 ---
-import type { SupportedLanguages } from '@raulmelo/core/config';
-import { queryTils } from '@raulmelo/core/domains';
-
+import { queryTils } from '@/infrastructure/api/modules/posts';
+import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
@@ -41,7 +40,7 @@ const baseColClass = `col-span-full lg:col-span-10`;
     ]}
   />
 
-  <header class={baseColClass}>
+  <header class:list={baseColClass}>
     <h1 class="text-3xl font-extrabold md:text-4xl">
       {intl.formatMessage({ id: `tilHome.title` })}
     </h1>
@@ -50,11 +49,11 @@ const baseColClass = `col-span-full lg:col-span-10`;
     </p>
   </header>
 
-  <p class={mergeClasses([baseColClass, `my-4 text-md md:text-lg`])}>
+  <p class:list={mergeClasses([baseColClass, `my-4 text-md md:text-lg`])}>
     {intl.formatMessage({ id: `tilHome.description` })}
   </p>
 
-  <section class={mergeClasses([baseColClass, `mt-5`])}>
+  <section class:list={mergeClasses([baseColClass, `mt-5`])}>
     {
       tils.length > 0 ? (
         <Tils client:load tils={tils} lang={lang} />

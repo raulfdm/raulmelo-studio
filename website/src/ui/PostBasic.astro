@@ -1,6 +1,5 @@
 ---
-import type { SupportedLanguages } from '@raulmelo/core/config';
-
+import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { mergeClasses } from '@/infrastructure/utils/misc';
 import { getTagUrl } from '@/infrastructure/utils/url';
@@ -39,13 +38,13 @@ const { lang } = Astro.params as { lang: SupportedLanguages };
 const intl = getIntl(lang);
 ---
 
-<section class={props.class}>
+<section class:list={props.class}>
   <a
     href={url}
     class="relative inline-block cursor-pointer"
     data-astro-prefetch="viewport"
   >
-    <h3 class={mergeClasses([`font-extrabold`, titleClassName])}>
+    <h3 class:list={mergeClasses([`font-extrabold`, titleClassName])}>
       {title}
     </h3>
   </a>

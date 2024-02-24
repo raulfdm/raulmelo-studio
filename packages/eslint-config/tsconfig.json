@@ -1,32 +1,15 @@
 {
   "compilerOptions": {
-    "allowImportingTsExtensions": true,
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "composite": true,
-    "downlevelIteration": true,
-    "forceConsistentCasingInFileNames": true,
     "declaration": true,
-    "declarationMap": true,
-    "esModuleInterop": true,
-    "lib": [
-      "ESNext"
-    ],
-    "module": "ESNext",
-    "moduleDetection": "force",
-    "moduleResolution": "Bundler",
-    "noEmit": true,
-    "noUncheckedIndexedAccess": true,
-    "resolveJsonModule": true,
+    "emitDeclarationOnly": true,
+    "outDir": "./",
+    "baseUrl": ".",
+    "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
-    "target": "esnext",
-    "verbatimModuleSyntax": true
+    "esModuleInterop": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext"
   },
-  "include": [
-    "src/**/*",
-    "types/**/*",
-    "scripts/**/*",
-    "package.json"
-  ]
+  "include": ["./eslint.config.js"],
+  "exclude": ["node_modules"]
 }
