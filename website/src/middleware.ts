@@ -1,5 +1,5 @@
 import { match } from '@formatjs/intl-localematcher';
-import type { SupportedLanguages } from '@raulmelo/core/config';
+import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import { defineMiddleware, sequence } from 'astro/middleware';
 import Negotiator from 'negotiator';
 

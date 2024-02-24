@@ -1,4 +1,4 @@
-import type { SupportedLanguages } from '@raulmelo/core/config';
+import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 
 import { getPathnameWithLocale } from '@/infrastructure/utils/url';
 

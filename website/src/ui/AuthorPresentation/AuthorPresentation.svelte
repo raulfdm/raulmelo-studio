@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { SupportedLanguages } from '@raulmelo/core/config';
+  import type { SupportedLanguages } from '@/infrastructure/config/types/language';
   import type { QuerySiteDataReturnType } from '@raulmelo/core/domains';
 
   import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';

@@ -1,5 +1,5 @@
 import { match } from '@formatjs/intl-localematcher';
-import type { SupportedLanguages } from '@raulmelo/core/config';
+import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import Negotiator from 'negotiator';
 
 export const supportedLocales = [`en`, `pt`];
