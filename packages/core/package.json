@@ -1,67 +1,64 @@
 {
-  "private": true,
-  "name": "@raulmelo/core",
-  "version": "1.0.0-development",
-  "type": "module",
-  "files": [
-    "dist",
-    "types"
-  ],
-  "exports": {
-    "./domains": {
-      "default": "./dist/src/domains/index.js",
-      "types": "./dist/src/domains/index.d.ts"
-    },
-    "./utils": {
-      "default": "./dist/src/utils/index.js",
-      "types": "./dist/src/utils/index.d.ts"
-    },
-    "./config": {
-      "default": "./dist/src/config/index.js",
-      "types": "./dist/src/config/index.d.ts"
-    },
-    "./scripts": {
-      "default": "./dist/src/scripts/index.js",
-      "types": "./dist/src/scripts/index.d.ts"
-    }
-  },
-  "scripts": {
-    "prepare": "turbo --filter='core' build --output-logs errors-only",
-    "build": "vite build",
-    "lint": "eslint ."
-  },
-  "dependencies": {
-    "@sanity/block-content-to-markdown": "0.0.5",
-    "@sanity/client": "6.12.1",
-    "@sanity/image-url": "1.0.2",
-    "groq": "3.26.1",
-    "prettier": "3.0.3",
-    "zod": "3.22.4"
-  },
-  "devDependencies": {
-    "@portabletext/types": "2.0.8",
-    "@raulmelo/eslint-config": "workspace:*",
-    "@raulmelo/tsconfig": "workspace:*",
-    "@types/bun": "1.0.1",
-    "@types/node": "18.18.13",
-    "@types/ramda": "0.29.9",
-    "concurrently": "8.2.2",
-    "eslint": "8.54.0",
-    "eslint-plugin-node": "11.1.0",
-    "globals": "13.23.0",
-    "ramda": "0.29.1",
-    "tsc-alias": "1.8.8",
-    "typescript": "5.2.2",
-    "vite": "5.0.5",
-    "vite-plugin-dts": "3.6.4",
-    "vite-tsconfig-paths": "4.2.2"
-  },
-  "engines": {
-    "node": "18",
-    "pnpm": "8"
-  },
-  "packageManager": "pnpm@8.12.1",
-  "volta": {
-    "extends": "../../package.json"
-  }
+	"private": true,
+	"name": "@raulmelo/core",
+	"version": "1.0.0-development",
+	"type": "module",
+	"files": ["dist", "types"],
+	"exports": {
+		"./domains": {
+			"default": "./dist/src/domains/index.js",
+			"types": "./dist/src/domains/index.d.ts"
+		},
+		"./utils": {
+			"default": "./dist/src/utils/index.js",
+			"types": "./dist/src/utils/index.d.ts"
+		},
+		"./config": {
+			"default": "./dist/src/config/index.js",
+			"types": "./dist/src/config/index.d.ts"
+		},
+		"./scripts": {
+			"default": "./dist/src/scripts/index.js",
+			"types": "./dist/src/scripts/index.d.ts"
+		}
+	},
+	"scripts": {
+		"prepare": "turbo --filter='core' build --output-logs errors-only",
+		"build": "vite build",
+		"lint": "eslint ."
+	},
+	"dependencies": {
+		"@sanity/block-content-to-markdown": "0.0.5",
+		"@sanity/client": "6.12.1",
+		"@sanity/image-url": "1.0.2",
+		"groq": "3.26.1",
+		"prettier": "3.0.3",
+		"zod": "3.22.4"
+	},
+	"devDependencies": {
+		"@portabletext/types": "2.0.8",
+		"@raulmelo/eslint-config": "workspace:*",
+		"@raulmelo/tsconfig": "workspace:*",
+		"@types/bun": "1.0.1",
+		"@types/node": "18.18.13",
+		"@types/ramda": "0.29.9",
+		"concurrently": "8.2.2",
+		"eslint": "8.54.0",
+		"eslint-plugin-node": "11.1.0",
+		"globals": "13.23.0",
+		"ramda": "0.29.1",
+		"tsc-alias": "1.8.8",
+		"typescript": "5.2.2",
+		"vite": "5.0.5",
+		"vite-plugin-dts": "3.6.4",
+		"vite-tsconfig-paths": "4.2.2"
+	},
+	"engines": {
+		"node": "18.19.0",
+		"pnpm": "8.12.1"
+	},
+	"packageManager": "pnpm@8.12.1",
+	"volta": {
+		"extends": "../../package.json"
+	}
 }

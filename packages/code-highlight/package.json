@@ -1,47 +1,44 @@
 {
-  "name": "@raulmelo/code-highlight",
-  "version": "1.0.0-development",
-  "description": "Server Side Code Highlighting powered by Starry Night",
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": "./dist/src/index.js",
-      "types": "./dist/src/index.d.ts"
-    },
-    "./styles": {
-      "import": "./styles/starry-theme.css"
-    }
-  },
-  "main": "./dist/index.js",
-  "types": "./dist/src/index.d.ts",
-  "files": [
-    "dist",
-    "styles"
-  ],
-  "scripts": {
-    "prepare": "turbo --filter code-highlight build --output-logs errors-only",
-    "test": "bun test",
-    "build": "tsc -p tsconfig.build.json"
-  },
-  "peerDependencies": {
-    "vscode-oniguruma": ">=1.7.0"
-  },
-  "dependencies": {
-    "@types/hast": "3.0.3",
-    "@wooorm/starry-night": "3.1.0",
-    "hast-util-to-html": "9.0.0"
-  },
-  "devDependencies": {
-    "@raulmelo/tsconfig": "workspace:*",
-    "@types/bun": "1.0.1",
-    "typescript": "5.2.2"
-  },
-  "engines": {
-    "node": "18",
-    "pnpm": "8"
-  },
-  "packageManager": "pnpm@8.12.1",
-  "volta": {
-    "extends": "../../package.json"
-  }
+	"name": "@raulmelo/code-highlight",
+	"version": "1.0.0-development",
+	"description": "Server Side Code Highlighting powered by Starry Night",
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./dist/src/index.js",
+			"types": "./dist/src/index.d.ts"
+		},
+		"./styles": {
+			"import": "./styles/starry-theme.css"
+		}
+	},
+	"main": "./dist/index.js",
+	"types": "./dist/src/index.d.ts",
+	"files": ["dist", "styles"],
+	"scripts": {
+		"prepare": "turbo --filter code-highlight build --output-logs errors-only",
+		"test": "bun test",
+		"build": "tsc -p tsconfig.build.json"
+	},
+	"peerDependencies": {
+		"vscode-oniguruma": ">=1.7.0"
+	},
+	"dependencies": {
+		"@types/hast": "3.0.3",
+		"@wooorm/starry-night": "3.1.0",
+		"hast-util-to-html": "9.0.0"
+	},
+	"devDependencies": {
+		"@raulmelo/tsconfig": "workspace:*",
+		"@types/bun": "1.0.1",
+		"typescript": "5.2.2"
+	},
+	"engines": {
+		"node": "18.19.0",
+		"pnpm": "8.12.1"
+	},
+	"packageManager": "pnpm@8.12.1",
+	"volta": {
+		"extends": "../../package.json"
+	}
 }
