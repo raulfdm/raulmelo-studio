@@ -1,12 +1,6 @@
 name: Website
 
-on:
-  push:
-    paths:
-      - .github/workflows/website.yml
-      - .github/actions/pnpm-bun-setup/action.yml
-      - apps/website/**
-      - packages/**
+on: [push]
 
 jobs:
   build:
