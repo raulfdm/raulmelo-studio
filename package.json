@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "prepare": "husky",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
@@ -15,10 +16,10 @@
   },
   "devDependencies": {
     "eslint": "8.57.0",
-    "husky": "8.0.3",
+    "husky": "9.0.11",
     "prettier": "3.2.5",
     "rimraf": "5.0.5",
-    "turbo": "1.12.4",
+    "turbo": "1.13.0",
     "typescript": "5.3.3"
   },
   "packageManager": "pnpm@8.15.4",
@@ -27,7 +28,7 @@
     "pnpm": "8"
   },
   "volta": {
-    "node": "18.19.0",
+    "node": "18.19.1",
     "pnpm": "8.15.4"
   }
 }
