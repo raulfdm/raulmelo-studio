@@ -33,7 +33,6 @@ const config = defineConfig({
   output: `server`,
   experimental: {
     contentCollectionCache: true,
-    optimizeHoistedScript: true,
   },
   redirects: {
     '/uses': '/en/blog/uses',
