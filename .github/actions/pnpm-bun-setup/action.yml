@@ -5,16 +5,16 @@ runs:
   steps:
     - uses: oven-sh/setup-bun@v1
       with:
-        bun-version: 1.0.22
+        bun-version: 1.0.35
 
     - uses: pnpm/action-setup@v3.0.0
       name: Install pnpm
       with:
-        version: 8.15.4
+        version: 8.15.5
         run_install: true
 
     - name: Node Setup
       uses: actions/setup-node@v4
       with:
-        node-version: 18
+        node-version: 20
         cache: 'pnpm'
