@@ -40,7 +40,7 @@ const rssQuery = groq`
 `;
 
 const dataPostSchema = z.object({
-  description: z.string().nullable(),
+  description: z.string().optional(),
   publishedAt: z.string(),
   slug: z.string(),
   title: z.string(),
