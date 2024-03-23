@@ -69,6 +69,13 @@ const config = defineConfig({
       domains: assetsDomains,
       sizes: [320, 640, 768, 1024, 1280],
     },
+    isr: {
+      // caches all pages on first request and saves for X time
+      get expiration() {
+        const oneDayInSeconds = 60 * 60 * 24;
+        return oneDayInSeconds;
+      },
+    },
   }),
 });
 

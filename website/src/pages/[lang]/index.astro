@@ -1,7 +1,6 @@
 ---
 import { queryPostsAndTils } from '@/infrastructure/api/modules/posts';
 import { SupportedLanguages } from '@/infrastructure/config/types/language';
-import { languageGetStaticPaths } from '@/infrastructure/getStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import {
@@ -15,10 +14,6 @@ import Layout from '@/ui/layouts/Layout.astro';
 import PostSection from './_ui/PostSection.astro';
 
 const { lang } = Astro.params as { lang: SupportedLanguages };
-
-export const prerender = true;
-
-export const getStaticPaths = languageGetStaticPaths;
 
 const { success } = SupportedLanguages.safeParse(lang);
 

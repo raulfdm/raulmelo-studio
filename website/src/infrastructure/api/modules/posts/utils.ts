@@ -1,3 +1,7 @@
+/**
+ * Sort all posts (or contents) by their published date in descending order.
+ * This is useful when mixing the content (post + tils) into a single list.
+ */
 export function sortPostsByPublishedDate<
   T extends {
     publishedAt: Date | string;
