@@ -46,8 +46,14 @@ export default function createConfig(tsconfigRootDir) {
      * Custom ts rules
      */
     {
-      files: ['**/*.ts', '**/*.tsx'],
+      files: ['**/*.ts', '**/*.tsx', '**/*.astro'],
+
       rules: {
+        '@typescript-eslint/no-import-type-side-effects': 'error',
+        '@typescript-eslint/no-explicit-any': 'warn',
+        '@typescript-eslint/no-unsafe-call': 'warn',
+        '@typescript-eslint/no-unsafe-member-access': 'warn',
+
         '@typescript-eslint/consistent-type-assertions': 'error',
         '@typescript-eslint/consistent-type-imports': [
           'error',
@@ -57,11 +63,9 @@ export default function createConfig(tsconfigRootDir) {
         ],
         'no-unused-vars': 'off',
         '@typescript-eslint/no-unused-vars': [
-          'warn',
+          'error',
           { destructuredArrayIgnorePattern: '^_', varsIgnorePattern: '^Props' },
         ],
-        '@typescript-eslint/no-import-type-side-effects': 'error',
-        '@typescript-eslint/no-explicit-any': 'warn',
         '@typescript-eslint/no-unsafe-assignment': 'warn',
       },
     },

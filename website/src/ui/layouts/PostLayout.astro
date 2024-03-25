@@ -4,9 +4,9 @@ import '@fontsource/fira-code/600.css';
 
 import Layout, { type Props as LayoutProps } from './Layout.astro';
 
-type Props = LayoutProps & {
+export interface Props extends LayoutProps {
   contentId: string;
-};
+}
 
 const { title, seo, contentId, ...rest } = Astro.props;
 ---

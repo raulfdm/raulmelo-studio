@@ -1,5 +1,5 @@
 import type { SanityDocument } from 'sanity';
-import type { DefaultDocumentNodeResolver } from 'sanity/desk';
+import type { DefaultDocumentNodeResolver } from 'sanity/structure';
 import { Iframe } from 'sanity-plugin-iframe-pane';
 
 export const defaultDocumentNode: DefaultDocumentNodeResolver = (
@@ -14,7 +14,7 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (
         S.view
           .component(Iframe)
           .options({
-            url: (doc: SanityDocument) => getPreviewUrl(doc),
+            url: (doc: ExtendedSanityDocument) => getPreviewUrl(doc),
             reload: {
               button: true,
             },
@@ -26,7 +26,13 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (
   }
 };
 
-function getPreviewUrl(doc: SanityDocument) {
+interface ExtendedSanityDocument extends SanityDocument {
+  slug: { current?: string };
+  language: string;
+  _type: string;
+}
+
+function getPreviewUrl(doc: ExtendedSanityDocument) {
   let url = window.location.origin;
   const docSlug = doc?.slug as { current?: string };
 

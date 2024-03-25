@@ -17,7 +17,9 @@ export const tweetField = defineField({
           tweetId: `tweetId`,
         },
         prepare({ tweetId }) {
-          return tweetId;
+          return {
+            title: `Tweet ID: ${tweetId}`,
+          };
         },
       },
     },

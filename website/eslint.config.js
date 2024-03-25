@@ -1,6 +1,7 @@
 // @ts-check
 import * as path from 'node:path';
 import * as url from 'node:url';
+import eslintPluginAstro from 'eslint-plugin-astro';
 
 import createConfig from '@raulmelo/eslint-config';
 
@@ -9,9 +10,8 @@ const __dirname = path.dirname(__filename);
 
 const sharedConfigs = createConfig(__dirname);
 
+/** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
   ...sharedConfigs,
-  {
-    ignores: ['**/*.astro'],
-  },
+  ...eslintPluginAstro.configs['flat/recommended'],
 ];

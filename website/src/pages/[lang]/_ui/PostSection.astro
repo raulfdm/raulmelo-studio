@@ -1,5 +1,5 @@
 ---
-export type Props = {
+export interface Props {
   title: string;
   checkAllLink: {
     href: string;
@@ -7,7 +7,7 @@ export type Props = {
   };
   lang: SupportedLanguages;
   posts: PostBasicProps[];
-};
+}
 
 import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import { IconArrowNarrowRight } from '@/ui/icons-svelte';

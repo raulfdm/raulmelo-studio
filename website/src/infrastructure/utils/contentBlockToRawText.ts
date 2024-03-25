@@ -17,8 +17,8 @@ function customToMarkdown(portableText: PortableTextBlock) {
         tweet: () => undefined,
         code: () => undefined,
         callout: ({ node }: TODO) => {
-          return `${node.title ?? ''}\n${customToMarkdown(
-            node.content,
+          return `${node?.title ?? ''}\n${customToMarkdown(
+            node?.content as PortableTextBlock,
           )}`.trim();
         },
       },
@@ -58,7 +58,7 @@ export async function contentBlockToRawText(
     .replace(/\\/gim, '')
     .replace(/-/gim, ' ')
     .replace(/[()]/gim, '')
-    .replace(/[\[\]]/gim, '')
+    .replace(/[[\]]/gim, '')
     .replace(/#/gim, '')
     .replace(/[.\b]/gim, '');
 }

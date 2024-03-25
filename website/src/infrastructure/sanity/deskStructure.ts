@@ -1,4 +1,4 @@
-import type { StructureBuilder } from 'sanity/desk';
+import type { StructureBuilder } from 'sanity/structure';
 
 export function deskStructure(S: StructureBuilder) {
   const typeIdsToIgnore = [`siteSettings`, `personalInfo`, `media.tag`];

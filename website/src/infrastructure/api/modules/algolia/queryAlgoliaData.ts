@@ -15,17 +15,16 @@ type QueryAlgoliaDataParams = {
   client: SanityClient;
 };
 
-export async function queryAlgoliaData({
-  client,
-}: QueryAlgoliaDataParams): Promise<AlgoliaObject[]> {
-  const allPosts = await client.fetch(algoliaPostsQuery);
-  const allTils = await client.fetch(algoliaTilsQuery);
+export async function queryAlgoliaData({ client }: QueryAlgoliaDataParams) {
+  const allPosts = await client.fetch<AlgoliaPost[]>(algoliaPostsQuery);
+  const allTils = await client.fetch<AlgoliaTil[]>(algoliaTilsQuery);
+
   const snippets = await queryCodeSnippets({ client });
 
   return [
     ...snippets.map(snippetsToAlgoliaObjectAdapter),
-    ...allTils.map(async (til: any) => await objectCreator(til)),
-    ...allPosts.map(async (post: any) => await objectCreator(post)),
+    ...allTils.map(async (til) => await objectCreator(til)),
+    ...allPosts.map(async (post) => await objectCreator(post)),
   ];
 
   async function objectCreator(data: AlgoliaContent): Promise<AlgoliaObject> {
@@ -122,21 +121,23 @@ const commonContentSchema = z.object({
 
 const algoliaPostsSchema = commonContentSchema.extend({
   _type: z.literal('post'),
-  featuredImage: z.object({
-    height: z.number(),
-    url: z.string(),
-    width: z.number(),
-  }),
+  featuredImage: z
+    .object({
+      height: z.number(),
+      url: z.string(),
+      width: z.number(),
+    })
+    .optional(),
   subtitle: z.string().optional(),
 });
-export type AlgoliaPosts = z.infer<typeof algoliaPostsSchema>;
+export type AlgoliaPost = z.infer<typeof algoliaPostsSchema>;
 
 const algoliaTilsSchema = commonContentSchema.extend({
   _type: z.literal('til'),
 });
-export type AlgoliaTils = z.infer<typeof algoliaTilsSchema>;
+export type AlgoliaTil = z.infer<typeof algoliaTilsSchema>;
 
-export type AlgoliaContent = AlgoliaPosts | AlgoliaTils;
+export type AlgoliaContent = AlgoliaPost | AlgoliaTil;
 
 const algoliaObjectSchema = z.object({
   _id: z.string(),
