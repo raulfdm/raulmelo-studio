@@ -2,6 +2,7 @@ import { CODE_LANGUAGES_MAP } from '@raulmelo/code-highlight';
 import { defineField } from 'sanity';
 
 import { IconCode } from '@/ui/icons-react';
+import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 
 export const codeField = defineField({
   type: `object`,
@@ -42,7 +43,13 @@ export const codeField = defineField({
     },
   ],
   components: {
-    preview: ({ code, language }: any) => {
+    preview: ({
+      code,
+      language,
+    }: {
+      code?: string;
+      language: SupportedLanguages;
+    }) => {
       const lang = CODE_LANGUAGES_MAP.get(language);
 
       if (!code) {

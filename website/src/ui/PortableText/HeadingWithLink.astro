@@ -12,7 +12,7 @@ const { node } = Astro.props as {
   };
 };
 
-const Component = node.style as any;
+const Component = node.style;
 
 const [child] = node.children;
 
@@ -25,7 +25,7 @@ const slug = slugify(child.text, {
  * This is just to stop weird errors about "props not being passed
  * to the component"
  */
-const iconProps = {} as any;
+const iconProps = {};
 ---
 
 <Component id={slug} class="flex items-center heading">

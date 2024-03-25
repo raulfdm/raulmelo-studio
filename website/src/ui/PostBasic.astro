@@ -7,20 +7,22 @@ import { ContentTypeTag } from '@/ui/ContentTypeTag';
 
 import { Tag, Tags } from './Tags';
 
-export type Props = {
+export interface Props {
   lang: SupportedLanguages;
   title: string;
-  subtitle?: string;
+  subtitle: string | null;
   url: string;
   _type?: `post` | `til` | `codeSnippet`;
   class?: string;
   publishedAt: string;
   titleClassName?: string;
-  tags: {
-    name: string;
-    slug: string;
-  }[];
-};
+  tags:
+    | {
+        name: string;
+        slug: string;
+      }[]
+    | null;
+}
 
 const {
   publishedAt,

@@ -43,15 +43,11 @@ const intl = getIntl(lang);
     title={intl.formatMessage({
       id: `home.posts.title`,
     })}
-    posts={posts.map(
-      (post) =>
-        ({
-          ...post,
-          publishedAt: post.publishedAt,
-          tags: post.tags,
-          url: getPostUrl(post.slug, lang),
-        }) as any,
-    )}
+    posts={posts.map((post) => ({
+      ...post,
+      url: getPostUrl(post.slug, lang),
+      lang,
+    }))}
     checkAllLink={{
       href: getPathnameWithLocale(`/blog`, lang),
       text: intl.formatMessage({
@@ -70,13 +66,12 @@ const intl = getIntl(lang);
     title={intl.formatMessage({
       id: `home.tils.title`,
     })}
-    posts={tils.map(
-      (til) =>
-        ({
-          ...til,
-          url: getTilUrl(til.slug, lang),
-        }) as any,
-    )}
+    posts={tils.map((til) => ({
+      ...til,
+      lang,
+      url: getTilUrl(til.slug, lang),
+      subtitle: null,
+    }))}
     checkAllLink={{
       href: getPathnameWithLocale(`/til`, lang),
       text: intl.formatMessage({

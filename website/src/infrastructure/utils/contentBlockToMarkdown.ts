@@ -84,10 +84,10 @@ function customToMarkdown(
         },
       },
       marks: {
-        highlight: ({ children }: any) => `\`${children}\``,
-        strikethrough: ({ children }: any) => `~~${children}~~`,
-        internalLink: ({ children }: any) => children,
-        pageLink: ({ children }: any) => children,
+        highlight: ({ children }: TODO) => `\`${children}\``,
+        strikethrough: ({ children }: TODO) => `~~${children}~~`,
+        internalLink: ({ children }: TODO) => children as unknown,
+        pageLink: ({ children }: TODO) => children as unknown,
       },
     },
   });

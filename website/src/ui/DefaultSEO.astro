@@ -6,7 +6,7 @@ import type { SupportedLanguages } from '@/infrastructure/config/types/language'
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { sanitizeUrl } from '@/infrastructure/utils/url';
 
-export type Props = {
+export interface Props {
   lang: SupportedLanguages;
   title?: string;
   description?: string;
@@ -20,7 +20,7 @@ export type Props = {
   metas?: Partial<Meta>[];
   nofollow?: boolean;
   noindex?: boolean;
-};
+}
 
 const {
   title,
@@ -44,7 +44,7 @@ const seoTwitterInfo = siteData.socials.find(
   (social) => social.name === `Twitter`,
 )!;
 
-const imageUrl = (image ? image.url! : siteData.site.seoImage.url) as string;
+const imageUrl = (image ? image!.url! : siteData.site.seoImage.url) as string;
 const nextTitle = title || langSeo.title;
 const nextDescription = description || langSeo.description;
 const nextImage = image || {
@@ -79,7 +79,7 @@ const defaultTwitter = {
   card: `summary_large_image`,
   creator: seoTwitterInfo.username,
   description: nextDescription,
-  image: nextImage.url,
+  image: nextImage?.url,
   site: siteData.site.url,
 } satisfies SeoProps[`twitter`];
 
@@ -108,7 +108,7 @@ const articleJsonLD = nextArticle
         '@id': Astro.url.href,
       },
       headline: nextTitle,
-      image: [nextImage.url],
+      image: [nextImage?.url].filter(Boolean),
       dateModified: nextArticle.modifiedTime,
       author: [
         { '@type': `Person`, name: siteData.personalInformation.fullName },
