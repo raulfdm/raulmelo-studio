@@ -1,7 +1,7 @@
 import { documentInternationalization } from '@sanity/document-internationalization';
 import { visionTool } from '@sanity/vision';
 import type { Config } from 'sanity';
-import { deskTool } from 'sanity/desk';
+import { structureTool } from 'sanity/structure';
 import { media } from 'sanity-plugin-media';
 
 import { config } from './config';
@@ -15,7 +15,7 @@ export const sanityStudioConfig: Config = {
   basePath: `/admin`,
 
   plugins: [
-    deskTool({
+    structureTool({
       defaultDocumentNode,
       structure: deskStructure,
     }),

@@ -43,13 +43,11 @@ export const codeField = defineField({
     },
   ],
   components: {
-    preview: ({
-      code,
-      language,
-    }: {
-      code?: string;
-      language: SupportedLanguages;
-    }) => {
+    preview: (props: unknown) => {
+      const { code, language } = props as {
+        code: string;
+        language: SupportedLanguages;
+      };
       const lang = CODE_LANGUAGES_MAP.get(language);
 
       if (!code) {
