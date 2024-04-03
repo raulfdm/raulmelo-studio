@@ -11,7 +11,7 @@
     IconBrandGithub,
     IconBrandLinkedin,
     IconBrandMedium,
-    IconBrandTwitter,
+    IconBrandX,
   } from '../icons-svelte';
   import type { QuerySiteDataReturnType } from '@/infrastructure/api/modules/siteData';
 
@@ -82,7 +82,7 @@
           id: `authorPresentation.twitterLinkTitle`,
         })}
       >
-        <IconBrandTwitter size={32} stroke={1.5} />
+        <IconBrandX size={32} stroke={1.5} />
       </IconWrapper>
       <IconWrapper
         href={linkedIn.url}

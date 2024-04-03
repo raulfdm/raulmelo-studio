@@ -1,12 +1,12 @@
 import { defineField } from 'sanity';
 
-import { IconBrandTwitter } from '@/ui/icons-react';
+import { IconBrandX } from '@/ui/icons-react';
 
 export const tweetField = defineField({
   type: `object`,
   name: `tweet`,
   title: `Tweet`,
-  icon: () => <IconBrandTwitter size={20} />,
+  icon: () => <IconBrandX size={20} />,
   fields: [
     {
       name: `tweetId`,

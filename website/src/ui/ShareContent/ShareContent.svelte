@@ -2,7 +2,7 @@
   import qs from 'query-string';
 
   import type { ShareContentProps } from './types';
-  import { IconBrandLinkedin, IconBrandTwitter } from '../icons-svelte';
+  import { IconBrandLinkedin, IconBrandX } from '../icons-svelte';
 
   export let titleLabel: ShareContentProps['titleLabel'];
   export let linkedIn: ShareContentProps['linkedIn'];
@@ -49,7 +49,7 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <IconBrandTwitter size={32} stroke={1.5} />
+        <IconBrandX size={32} stroke={1.5} />
       </a>
     </li>
   </ul>

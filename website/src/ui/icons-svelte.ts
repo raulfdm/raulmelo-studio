@@ -2,7 +2,7 @@ import IconArrowNarrowRight from '@tabler/icons-svelte/dist/svelte/icons/IconArr
 import IconBrandGithub from '@tabler/icons-svelte/dist/svelte/icons/IconBrandGithub.svelte';
 import IconBrandLinkedin from '@tabler/icons-svelte/dist/svelte/icons/IconBrandLinkedin.svelte';
 import IconBrandMedium from '@tabler/icons-svelte/dist/svelte/icons/IconBrandMedium.svelte';
-import IconBrandTwitter from '@tabler/icons-svelte/dist/svelte/icons/IconBrandTwitter.svelte';
+import IconBrandX from '@tabler/icons-svelte/dist/svelte/icons/IconBrandX.svelte';
 import IconChevronDown from '@tabler/icons-svelte/dist/svelte/icons/IconChevronDown.svelte';
 import IconClipboard from '@tabler/icons-svelte/dist/svelte/icons/IconClipboard.svelte';
 import IconClipboardCheck from '@tabler/icons-svelte/dist/svelte/icons/IconClipboardCheck.svelte';
@@ -20,7 +20,7 @@ export {
   IconBrandGithub,
   IconBrandLinkedin,
   IconBrandMedium,
-  IconBrandTwitter,
+  IconBrandX,
   IconChevronDown,
   IconClipboard,
   IconClipboardCheck,

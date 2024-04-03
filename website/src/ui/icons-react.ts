@@ -1,7 +1,7 @@
 import {
   IconAlertOctagon,
   IconBrandCodepen,
-  IconBrandTwitter,
+  IconBrandX,
   IconCode,
   IconDots,
   IconExternalLink,
@@ -19,7 +19,7 @@ import {
 export {
   IconAlertOctagon,
   IconBrandCodepen,
-  IconBrandTwitter,
+  IconBrandX,
   IconCode,
   IconDots,
   IconExternalLink,
