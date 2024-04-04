@@ -193,8 +193,8 @@ importers:
         specifier: 4.5.9
         version: 4.5.9(@types/node@20.11.30)(typescript@5.4.3)
       astro-portabletext:
-        specifier: 0.9.6
-        version: 0.9.6
+        specifier: 0.9.7
+        version: 0.9.7
       astro-robots-txt:
         specifier: 1.0.0
         version: 1.0.0
@@ -3643,6 +3643,18 @@ packages:
       '@portabletext/types': 2.0.8
     dev: false
 
+  /@portabletext/toolkit@2.0.13:
+    resolution: {integrity: sha512-RH/jzwlWcsDPnpJBO1xEByUnweVVciD1OVLGyRUA8P++XedAc+fxY3RlUkgi5FyDEyEdisPflKtUU/GAXtMSig==}
+    engines: {node: ^14.13.1 || >=16.0.0}
+    dependencies:
+      '@portabletext/types': 2.0.11
+    dev: false
+
+  /@portabletext/types@2.0.11:
+    resolution: {integrity: sha512-79Bj/tffVOV9mpMzQFLPMrxPpUXh4OKlUBG8eDJBirH/x1o28Qu8Tg2nO84/KAPmlCm4rC/TOGvDxqsP0apg5A==}
+    engines: {node: ^14.13.1 || >=16.0.0 || >=18.0.0}
+    dev: false
+
   /@portabletext/types@2.0.8:
     resolution: {integrity: sha512-eiq9/kMX2bYezS4/kLFk3xNnruCFjCDdw6aYEv5ECHVKkYROiuLd3/AsP5d7tWF3+kPPy6tB0Wq8aqDG/URHGA==}
     engines: {node: ^14.13.1 || >=16.0.0 || >=18.0.0}
@@ -5442,11 +5454,11 @@ packages:
       - supports-color
     dev: false
 
-  /astro-portabletext@0.9.6:
-    resolution: {integrity: sha512-v8YKRgjCpaxr94NefXRsH5ti9YoXqCrYah46epdJ4AdwtvIiLZA8vONFQjk5Y2cJ2UEEeGd+/8lo+tWmlo3aPw==}
+  /astro-portabletext@0.9.7:
+    resolution: {integrity: sha512-kU2C0FQ+DE2DkoTkPDNbJXH/+V/9ioDy4udQp2uT3qsGqQaKDhVBbkWcVuCVgxB006cq71SUbj6svEtiFzKLCg==}
     dependencies:
-      '@portabletext/toolkit': 2.0.10
-      '@portabletext/types': 2.0.8
+      '@portabletext/toolkit': 2.0.13
+      '@portabletext/types': 2.0.11
     dev: false
 
   /astro-robots-txt@1.0.0:
