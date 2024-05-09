@@ -5,12 +5,12 @@ runs:
   steps:
     - uses: oven-sh/setup-bun@v1
       with:
-        bun-version: 1.0.35
+        bun-version: 1.1.7
 
     - uses: pnpm/action-setup@v3.0.0
       name: Install pnpm
       with:
-        version: 8.15.5
+        version: 9.1.0
         run_install: true
 
     - name: Node Setup
