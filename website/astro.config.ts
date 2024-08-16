@@ -16,7 +16,6 @@ const { VERCEL_ENV, VERCEL_URL } = loadEnv(
 
 const assetsDomains: string[] = [
   `res.cloudinary.com`,
-  `miro.medium.com`,
   `media.giphy.com`,
   `cdn.sanity.io`,
   `sanity.io`,

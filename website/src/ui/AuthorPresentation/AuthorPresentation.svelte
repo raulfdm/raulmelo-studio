@@ -10,7 +10,6 @@
   import {
     IconBrandGithub,
     IconBrandLinkedin,
-    IconBrandMedium,
     IconBrandX,
   } from '../icons-svelte';
   import type { QuerySiteDataReturnType } from '@/infrastructure/api/modules/siteData';
@@ -26,7 +25,6 @@
   const twitter = getSocial(`twitter`, siteData);
   const linkedIn = getSocial(`linkedin`, siteData);
   const devTo = getSocial(`dev.to`, siteData);
-  const medium = getSocial(`medium`, siteData);
 </script>
 
 <header
@@ -56,15 +54,6 @@
         })}
       >
         <DevToIcon size={32} stroke={1.5} />
-      </IconWrapper>
-      <IconWrapper
-        href={medium.url}
-        data-testid="author__linkedInUrl"
-        title={intl.formatMessage({
-          id: `authorPresentation.mediumLinkTitle`,
-        })}
-      >
-        <IconBrandMedium size={32} stroke={1.5} />
       </IconWrapper>
       <IconWrapper
         href={github.url}
