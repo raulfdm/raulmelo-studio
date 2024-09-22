@@ -121,8 +121,8 @@ importers:
         specifier: 2.11.8
         version: 2.11.8
       '@portabletext/types':
-        specifier: 2.0.8
-        version: 2.0.8
+        specifier: 2.0.13
+        version: 2.0.13
       '@raulmelo/code-highlight':
         specifier: workspace:*
         version: link:../packages/code-highlight
@@ -2040,10 +2040,6 @@ packages:
 
   '@portabletext/types@2.0.13':
     resolution: {integrity: sha512-5xk5MSyQU9CrDho3Rsguj38jhijhD36Mk8S6mZo3huv6PM+t4M/5kJN2KFIxgvt4ONpvOEs1pVIZAV0cL0Vi+Q==}
-    engines: {node: ^14.13.1 || >=16.0.0 || >=18.0.0}
-
-  '@portabletext/types@2.0.8':
-    resolution: {integrity: sha512-eiq9/kMX2bYezS4/kLFk3xNnruCFjCDdw6aYEv5ECHVKkYROiuLd3/AsP5d7tWF3+kPPy6tB0Wq8aqDG/URHGA==}
     engines: {node: ^14.13.1 || >=16.0.0 || >=18.0.0}
 
   '@reduxjs/toolkit@1.9.7':
@@ -9068,20 +9064,18 @@ snapshots:
   '@portabletext/react@3.0.11(react@18.2.0)':
     dependencies:
       '@portabletext/toolkit': 2.0.10
-      '@portabletext/types': 2.0.8
+      '@portabletext/types': 2.0.13
       react: 18.2.0
 
   '@portabletext/toolkit@2.0.10':
     dependencies:
-      '@portabletext/types': 2.0.8
+      '@portabletext/types': 2.0.13
 
   '@portabletext/toolkit@2.0.15':
     dependencies:
       '@portabletext/types': 2.0.13
 
   '@portabletext/types@2.0.13': {}
-
-  '@portabletext/types@2.0.8': {}
 
   '@reduxjs/toolkit@1.9.7(react-redux@7.2.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)':
     dependencies:
