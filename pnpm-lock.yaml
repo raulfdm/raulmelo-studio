@@ -95,7 +95,7 @@ importers:
         version: 4.0.5
       '@astrojs/svelte':
         specifier: 5.2.0
-        version: 5.2.0(astro@4.5.9(@types/node@20.12.11)(typescript@5.4.3))(svelte@4.2.12)(typescript@5.4.3)(vite@5.2.14(@types/node@20.12.11))
+        version: 5.2.0(astro@4.5.9(@types/node@20.12.11)(typescript@5.4.3))(svelte@4.2.19)(typescript@5.4.3)(vite@5.2.14(@types/node@20.12.11))
       '@astrojs/tailwind':
         specifier: 5.1.0
         version: 5.1.0(astro@4.5.9(@types/node@20.12.11)(typescript@5.4.3))(tailwindcss@3.4.1)
@@ -131,7 +131,7 @@ importers:
         version: link:../packages/eslint-config
       '@rgossiaux/svelte-headlessui':
         specifier: 2.0.0
-        version: 2.0.0(svelte@4.2.12)
+        version: 2.0.0(svelte@4.2.19)
       '@sanity/block-content-to-markdown':
         specifier: 0.0.5
         version: 0.0.5
@@ -152,7 +152,7 @@ importers:
         version: 2.47.0(react@18.2.0)
       '@tabler/icons-svelte':
         specifier: 2.47.0
-        version: 2.47.0(svelte@4.2.12)
+        version: 2.47.0(svelte@4.2.19)
       '@tailwindcss/aspect-ratio':
         specifier: 0.4.2
         version: 0.4.2(tailwindcss@3.4.1)
@@ -185,7 +185,7 @@ importers:
         version: 0.5.17
       '@xstate/svelte':
         specifier: 3.0.2
-        version: 3.0.2(svelte@4.2.12)(xstate@5.9.1)
+        version: 3.0.2(svelte@4.2.19)(xstate@5.9.1)
       algoliasearch:
         specifier: 4.22.1
         version: 4.22.1
@@ -245,7 +245,7 @@ importers:
         version: 0.13.0
       prettier-plugin-svelte:
         specifier: 3.2.2
-        version: 3.2.2(prettier@3.2.5)(svelte@4.2.12)
+        version: 3.2.2(prettier@3.2.5)(svelte@4.2.19)
       query-string:
         specifier: 9.0.0
         version: 9.0.0
@@ -280,11 +280,11 @@ importers:
         specifier: 1.6.6
         version: 1.6.6
       svelte:
-        specifier: 4.2.12
-        version: 4.2.12
+        specifier: 4.2.19
+        version: 4.2.19
       svelte-popperjs:
         specifier: 1.3.2
-        version: 1.3.2(@popperjs/core@2.11.8)(svelte@4.2.12)
+        version: 1.3.2(@popperjs/core@2.11.8)(svelte@4.2.19)
       sveltekit-embed:
         specifier: 0.0.12
         version: 0.0.12
@@ -1957,9 +1957,6 @@ packages:
 
   '@jridgewell/sourcemap-codec@1.4.15':
     resolution: {integrity: sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==}
-
-  '@jridgewell/trace-mapping@0.3.20':
-    resolution: {integrity: sha512-R8LcPeWZol2zR8mmH3JeKQ6QRCFb7XgUhV9ZlGhHLGyg4wpPiPZNQOOWhFZhxKw8u//yTbNGI42Bx/3paXEQ+Q==}
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
@@ -6339,8 +6336,8 @@ packages:
       svelte: ^3.55 || ^4.0.0-next.0 || ^4.0 || ^5.0.0-next.0
       typescript: ^4.9.4 || ^5.0.0
 
-  svelte@4.2.12:
-    resolution: {integrity: sha512-d8+wsh5TfPwqVzbm4/HCXC783/KPHV60NvwitJnyTA5lWn1elhXMNWhXGCJ7PwPa8qFUnyJNIyuIRt2mT0WMug==}
+  svelte@4.2.19:
+    resolution: {integrity: sha512-IY1rnGr6izd10B0A8LqsBfmlT5OILVuZ7XsI0vdGPEvuonFV7NYEUK4dAkm9Zg2q0Um92kYjTpS1CAP3Nh/KWw==}
     engines: {node: '>=16'}
 
   sveltekit-embed@0.0.12:
@@ -7250,8 +7247,8 @@ snapshots:
 
   '@ampproject/remapping@2.2.1':
     dependencies:
-      '@jridgewell/gen-mapping': 0.3.3
-      '@jridgewell/trace-mapping': 0.3.20
+      '@jridgewell/gen-mapping': 0.3.5
+      '@jridgewell/trace-mapping': 0.3.25
 
   '@asamuzakjp/dom-selector@2.0.2':
     dependencies:
@@ -7350,12 +7347,12 @@ snapshots:
       fast-xml-parser: 4.3.5
       kleur: 4.1.5
 
-  '@astrojs/svelte@5.2.0(astro@4.5.9(@types/node@20.12.11)(typescript@5.4.3))(svelte@4.2.12)(typescript@5.4.3)(vite@5.2.14(@types/node@20.12.11))':
+  '@astrojs/svelte@5.2.0(astro@4.5.9(@types/node@20.12.11)(typescript@5.4.3))(svelte@4.2.19)(typescript@5.4.3)(vite@5.2.14(@types/node@20.12.11))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.12)(vite@5.2.14(@types/node@20.12.11))
+      '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.19)(vite@5.2.14(@types/node@20.12.11))
       astro: 4.5.9(@types/node@20.12.11)(typescript@5.4.3)
-      svelte: 4.2.12
-      svelte2tsx: 0.6.27(svelte@4.2.12)(typescript@5.4.3)
+      svelte: 4.2.19
+      svelte2tsx: 0.6.27(svelte@4.2.19)(typescript@5.4.3)
       typescript: 5.4.3
     transitivePeerDependencies:
       - supports-color
@@ -7487,7 +7484,7 @@ snapshots:
     dependencies:
       '@babel/types': 7.24.0
       '@jridgewell/gen-mapping': 0.3.3
-      '@jridgewell/trace-mapping': 0.3.20
+      '@jridgewell/trace-mapping': 0.3.25
       jsesc: 2.5.2
 
   '@babel/generator@7.24.1':
@@ -8952,7 +8949,7 @@ snapshots:
     dependencies:
       '@jridgewell/set-array': 1.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
-      '@jridgewell/trace-mapping': 0.3.20
+      '@jridgewell/trace-mapping': 0.3.25
 
   '@jridgewell/gen-mapping@0.3.5':
     dependencies:
@@ -8967,11 +8964,6 @@ snapshots:
   '@jridgewell/set-array@1.2.1': {}
 
   '@jridgewell/sourcemap-codec@1.4.15': {}
-
-  '@jridgewell/trace-mapping@0.3.20':
-    dependencies:
-      '@jridgewell/resolve-uri': 3.1.1
-      '@jridgewell/sourcemap-codec': 1.4.15
 
   '@jridgewell/trace-mapping@0.3.25':
     dependencies:
@@ -9108,9 +9100,9 @@ snapshots:
       react-lifecycles-compat: 3.0.4
       react-style-proptype: 3.2.2
 
-  '@rgossiaux/svelte-headlessui@2.0.0(svelte@4.2.12)':
+  '@rgossiaux/svelte-headlessui@2.0.0(svelte@4.2.19)':
     dependencies:
-      svelte: 4.2.12
+      svelte: 4.2.19
 
   '@rollup/pluginutils@4.2.1':
     dependencies:
@@ -9592,24 +9584,24 @@ snapshots:
 
   '@sinclair/typebox@0.27.8': {}
 
-  '@sveltejs/vite-plugin-svelte-inspector@2.0.0(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.2.14(@types/node@20.12.11)))(svelte@4.2.12)(vite@5.2.14(@types/node@20.12.11))':
+  '@sveltejs/vite-plugin-svelte-inspector@2.0.0(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.19)(vite@5.2.14(@types/node@20.12.11)))(svelte@4.2.19)(vite@5.2.14(@types/node@20.12.11))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.12)(vite@5.2.14(@types/node@20.12.11))
+      '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.19)(vite@5.2.14(@types/node@20.12.11))
       debug: 4.3.4
-      svelte: 4.2.12
+      svelte: 4.2.19
       vite: 5.2.14(@types/node@20.12.11)
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.2.14(@types/node@20.12.11))':
+  '@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.19)(vite@5.2.14(@types/node@20.12.11))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 2.0.0(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.12)(vite@5.2.14(@types/node@20.12.11)))(svelte@4.2.12)(vite@5.2.14(@types/node@20.12.11))
+      '@sveltejs/vite-plugin-svelte-inspector': 2.0.0(@sveltejs/vite-plugin-svelte@3.0.2(svelte@4.2.19)(vite@5.2.14(@types/node@20.12.11)))(svelte@4.2.19)(vite@5.2.14(@types/node@20.12.11))
       debug: 4.3.4
       deepmerge: 4.3.1
       kleur: 4.1.5
       magic-string: 0.30.7
-      svelte: 4.2.12
-      svelte-hmr: 0.15.3(svelte@4.2.12)
+      svelte: 4.2.19
+      svelte-hmr: 0.15.3(svelte@4.2.19)
       vite: 5.2.14(@types/node@20.12.11)
       vitefu: 0.2.5(vite@5.2.14(@types/node@20.12.11))
     transitivePeerDependencies:
@@ -9621,10 +9613,10 @@ snapshots:
       prop-types: 15.8.1
       react: 18.2.0
 
-  '@tabler/icons-svelte@2.47.0(svelte@4.2.12)':
+  '@tabler/icons-svelte@2.47.0(svelte@4.2.19)':
     dependencies:
       '@tabler/icons': 2.47.0
-      svelte: 4.2.12
+      svelte: 4.2.19
 
   '@tabler/icons@2.47.0': {}
 
@@ -10126,9 +10118,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@xstate/svelte@3.0.2(svelte@4.2.12)(xstate@5.9.1)':
+  '@xstate/svelte@3.0.2(svelte@4.2.19)(xstate@5.9.1)':
     dependencies:
-      svelte: 4.2.12
+      svelte: 4.2.19
     optionalDependencies:
       xstate: 5.9.1
 
@@ -10893,7 +10885,7 @@ snapshots:
   css-tree@2.3.1:
     dependencies:
       mdn-data: 2.0.30
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
 
   cssesc@3.0.0: {}
 
@@ -13383,10 +13375,10 @@ snapshots:
       prettier: 3.2.5
       sass-formatter: 0.7.9
 
-  prettier-plugin-svelte@3.2.2(prettier@3.2.5)(svelte@4.2.12):
+  prettier-plugin-svelte@3.2.2(prettier@3.2.5)(svelte@4.2.19):
     dependencies:
       prettier: 3.2.5
-      svelte: 4.2.12
+      svelte: 4.2.19
 
   prettier@2.8.8: {}
 
@@ -14550,27 +14542,27 @@ snapshots:
     dependencies:
       react: 18.2.0
 
-  svelte-hmr@0.15.3(svelte@4.2.12):
+  svelte-hmr@0.15.3(svelte@4.2.19):
     dependencies:
-      svelte: 4.2.12
+      svelte: 4.2.19
 
-  svelte-popperjs@1.3.2(@popperjs/core@2.11.8)(svelte@4.2.12):
+  svelte-popperjs@1.3.2(@popperjs/core@2.11.8)(svelte@4.2.19):
     dependencies:
       '@popperjs/core': 2.11.8
-      svelte: 4.2.12
+      svelte: 4.2.19
 
-  svelte2tsx@0.6.27(svelte@4.2.12)(typescript@5.4.3):
+  svelte2tsx@0.6.27(svelte@4.2.19)(typescript@5.4.3):
     dependencies:
       dedent-js: 1.0.1
       pascal-case: 3.1.2
-      svelte: 4.2.12
+      svelte: 4.2.19
       typescript: 5.4.3
 
-  svelte@4.2.12:
+  svelte@4.2.19:
     dependencies:
       '@ampproject/remapping': 2.2.1
       '@jridgewell/sourcemap-codec': 1.4.15
-      '@jridgewell/trace-mapping': 0.3.20
+      '@jridgewell/trace-mapping': 0.3.25
       '@types/estree': 1.0.5
       acorn: 8.11.3
       aria-query: 5.3.0
