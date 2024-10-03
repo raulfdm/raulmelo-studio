@@ -10,6 +10,11 @@
   "pruneStaleBranches": true,
   "packageRules": [
     {
+      "postUpgradeTasks": {
+        "commands": ["pnpm install --merge-git-branch-lockfiles"]
+      }
+    },
+    {
       "matchPackageNames": ["ansi-regex", "glob-parent"],
       "enabled": false
     },
