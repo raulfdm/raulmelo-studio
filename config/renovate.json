@@ -8,6 +8,7 @@
   "baseBranches": ["main"],
   "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
   "pruneStaleBranches": true,
+  "allowedPostUpgradeCommands": ["^pnpm install --merge-git-branch-lockfiles$"],
   "packageRules": [
     {
       "postUpgradeTasks": {
