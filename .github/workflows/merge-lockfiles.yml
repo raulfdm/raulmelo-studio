@@ -1,0 +1,38 @@
+name: Merge pnpm-lock.yaml after PR
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  merge-lockfile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git files setup
+        uses: actions/checkout@v4
+
+      - name: Setup environment
+        uses: ./.github/actions/pnpm-bun-setup
+
+      # Check if the lockfile has changed
+      - name: Check for lockfile changes
+        id: check_lockfile
+        run: |
+          if git diff --quiet pnpm-lock.yaml; then
+            echo "Lockfile unchanged."
+            echo "::set-output name=lockfile_changed::false"
+          else
+            echo "Lockfile changed."
+            echo "::set-output name=lockfile_changed::true"
+          fi
+
+      - name: Commit and push lockfile changes
+        if: ${{ steps.check_lockfile.outputs.lockfile_changed == 'true' }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add pnpm-lock.yaml pnpm-lock.*.yaml
+          git commit -m "Update pnpm-lock.yaml after merge"
+          git push origin main
