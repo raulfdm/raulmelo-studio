@@ -184,8 +184,8 @@ importers:
         specifier: 0.5.17
         version: 0.5.17
       '@xstate/svelte':
-        specifier: 3.0.2
-        version: 3.0.2(svelte@4.2.19)(xstate@5.9.1)
+        specifier: 3.0.5
+        version: 3.0.5(svelte@4.2.19)(xstate@5.18.2)
       algoliasearch:
         specifier: 4.22.1
         version: 4.22.1
@@ -316,8 +316,8 @@ importers:
         specifier: 3.5.2
         version: 3.5.2
       xstate:
-        specifier: 5.9.1
-        version: 5.9.1
+        specifier: 5.18.2
+        version: 5.18.2
       zod:
         specifier: 3.22.4
         version: 3.22.4
@@ -2957,11 +2957,11 @@ packages:
     peerDependencies:
       xstate: ^4
 
-  '@xstate/svelte@3.0.2':
-    resolution: {integrity: sha512-yBOmyVq/b87OHh2qRY8aMm7lusW+kMWMC9JIZwID9/FyX4kMQYtwkqg3NE7G+L7sbNQ2BTARA0KU4d7sC7BRyw==}
+  '@xstate/svelte@3.0.5':
+    resolution: {integrity: sha512-Pdtnv+9eXmv5lTdvbuYcHmLj+GLerw5vYQ/r/3esQG5RIQoOUdP3L6akHob84jNoBf07aU8wr9RkvILda5RDGg==}
     peerDependencies:
       svelte: ^3.24.1 || ^4
-      xstate: ^5.4.1
+      xstate: ^5.18.2
     peerDependenciesMeta:
       xstate:
         optional: true
@@ -3947,6 +3947,7 @@ packages:
   eslint@8.57.0:
     resolution: {integrity: sha512-dZ6+mexnaTIbSBZWgou51U6OmzIhYM2VcNdtiTtI7qPNZm35Akpr0f6vtw3w1Kmn5PYo+tZVfh13WrhpS6oLqQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   espree@9.6.1:
@@ -7487,9 +7488,6 @@ packages:
   xstate@5.18.2:
     resolution: {integrity: sha512-hab5VOe29D0agy8/7dH1lGw+7kilRQyXwpaChoMu4fe6rDP+nsHYhDYKfS2O4iXE7myA98TW6qMEudj/8NXEkA==}
 
-  xstate@5.9.1:
-    resolution: {integrity: sha512-85edx7iMqRJSRlEPevDwc98EWDYUlT5zEQ54AXuRVR+G76gFbcVTAUdtAeqOVxy8zYnUr9FBB5114iK6enljjw==}
-
   xtend@4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
     engines: {node: '>=0.4'}
@@ -10656,11 +10654,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@xstate/svelte@3.0.2(svelte@4.2.19)(xstate@5.9.1)':
+  '@xstate/svelte@3.0.5(svelte@4.2.19)(xstate@5.18.2)':
     dependencies:
       svelte: 4.2.19
     optionalDependencies:
-      xstate: 5.9.1
+      xstate: 5.18.2
 
   '@xstate/tools-shared@4.1.0(prettier@2.8.8)(xstate@4.38.3)':
     dependencies:
@@ -16072,8 +16070,6 @@ snapshots:
   xstate@5.0.0-beta.54: {}
 
   xstate@5.18.2: {}
-
-  xstate@5.9.1: {}
 
   xtend@4.0.2: {}
 
