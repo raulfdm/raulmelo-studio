@@ -121,8 +121,8 @@ importers:
         specifier: 2.11.8
         version: 2.11.8
       '@portabletext/types':
-        specifier: 2.0.8
-        version: 2.0.8
+        specifier: 2.0.13
+        version: 2.0.13
       '@raulmelo/code-highlight':
         specifier: workspace:*
         version: link:../packages/code-highlight
@@ -2188,10 +2188,6 @@ packages:
     resolution: {integrity: sha512-5xk5MSyQU9CrDho3Rsguj38jhijhD36Mk8S6mZo3huv6PM+t4M/5kJN2KFIxgvt4ONpvOEs1pVIZAV0cL0Vi+Q==}
     engines: {node: ^14.13.1 || >=16.0.0 || >=18.0.0}
 
-  '@portabletext/types@2.0.8':
-    resolution: {integrity: sha512-eiq9/kMX2bYezS4/kLFk3xNnruCFjCDdw6aYEv5ECHVKkYROiuLd3/AsP5d7tWF3+kPPy6tB0Wq8aqDG/URHGA==}
-    engines: {node: ^14.13.1 || >=16.0.0 || >=18.0.0}
-
   '@reduxjs/toolkit@1.9.7':
     resolution: {integrity: sha512-t7v8ZPxhhKgOKtU+uyJT13lu4vL7az5aFi4IdoDs/eS548edn2M8Ik9h8fxgvMjGoAUVFSt6ZC1P5cWmQ014QQ==}
     peerDependencies:
@@ -3947,6 +3943,7 @@ packages:
   eslint@8.57.0:
     resolution: {integrity: sha512-dZ6+mexnaTIbSBZWgou51U6OmzIhYM2VcNdtiTtI7qPNZm35Akpr0f6vtw3w1Kmn5PYo+tZVfh13WrhpS6oLqQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   espree@9.6.1:
@@ -9543,7 +9540,7 @@ snapshots:
   '@portabletext/react@3.0.11(react@18.2.0)':
     dependencies:
       '@portabletext/toolkit': 2.0.15
-      '@portabletext/types': 2.0.8
+      '@portabletext/types': 2.0.13
       react: 18.2.0
 
   '@portabletext/toolkit@2.0.15':
@@ -9551,8 +9548,6 @@ snapshots:
       '@portabletext/types': 2.0.13
 
   '@portabletext/types@2.0.13': {}
-
-  '@portabletext/types@2.0.8': {}
 
   '@reduxjs/toolkit@1.9.7(react-redux@7.2.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)':
     dependencies:
