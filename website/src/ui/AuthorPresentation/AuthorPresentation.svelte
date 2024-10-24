@@ -7,11 +7,7 @@
   import DevToIcon from '@/ui/Icons/DevTo.svelte';
 
   import IconWrapper from '../../pages/[lang]/_ui/IconWrapper.svelte';
-  import {
-    IconBrandGithub,
-    IconBrandLinkedin,
-    IconBrandX,
-  } from '../icons-svelte';
+  import { IconBrandGithub, IconBrandLinkedin } from '../icons-svelte';
   import type { QuerySiteDataReturnType } from '@/infrastructure/api/modules/siteData';
 
   export let lang: SupportedLanguages;
@@ -63,15 +59,6 @@
         })}
       >
         <IconBrandGithub size={32} stroke={1.5} />
-      </IconWrapper>
-      <IconWrapper
-        href={twitter.url}
-        data-testid="author__twitterUrl"
-        title={intl.formatMessage({
-          id: `authorPresentation.twitterLinkTitle`,
-        })}
-      >
-        <IconBrandX size={32} stroke={1.5} />
       </IconWrapper>
       <IconWrapper
         href={linkedIn.url}
