@@ -8,7 +8,7 @@
 
   import { getPathnameWithoutLocale } from '@/infrastructure/utils/url';
   import type { SupportedLanguages } from '@/infrastructure/config/types/language';
-  import { IconLanguage } from '../icons-svelte';
+  import { LanguagesIcon } from 'lucide-svelte';
 
   export let ariaLabel: string;
 
@@ -44,7 +44,7 @@
     class="flex p-2 place-content-center"
     aria-label={ariaLabel}
   >
-    <IconLanguage class="w-6" stroke={1.5} />
+    <LanguagesIcon class="w-6" stroke="1.5" />
   </PopoverButton>
   <PopoverPanel
     use={[[popperContent, popperOptions]]}

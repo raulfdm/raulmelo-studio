@@ -3,7 +3,7 @@
   import type { PostBySlug } from './types';
 
   import { getPostUrl } from '@/infrastructure/utils/url';
-  import { IconChevronDown } from '@/ui/icons-svelte';
+  import { ChevronDownIcon } from 'lucide-svelte';
 
   type Post = NonNullable<PostBySlug>;
 
@@ -32,7 +32,7 @@
       >
         <span class="flex-1">{series.name}</span>
         <button class="flex items-center justify-center w-7 h-7">
-          <IconChevronDown className="w-5" stroke={1.5} />
+          <ChevronDownIcon className="w-5" stroke="1.5" />
         </button>
       </div>
 

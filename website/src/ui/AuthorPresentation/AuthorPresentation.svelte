@@ -7,7 +7,7 @@
   import DevToIcon from '@/ui/Icons/DevTo.svelte';
 
   import IconWrapper from '../../pages/[lang]/_ui/IconWrapper.svelte';
-  import { IconBrandGithub, IconBrandLinkedin } from '../icons-svelte';
+  import { GithubIcon, LinkedinIcon } from 'lucide-svelte';
   import type { QuerySiteDataReturnType } from '@/infrastructure/api/modules/siteData';
 
   export let lang: SupportedLanguages;
@@ -49,7 +49,7 @@
           id: `authorPresentation.devToLinkTitle`,
         })}
       >
-        <DevToIcon size={32} stroke={1.5} />
+        <DevToIcon size={32} stroke="1.5" />
       </IconWrapper>
       <IconWrapper
         href={github.url}
@@ -58,7 +58,7 @@
           id: `authorPresentation.githubLinkTitle`,
         })}
       >
-        <IconBrandGithub size={32} stroke={1.5} />
+        <GithubIcon size={32} stroke="1.5" />
       </IconWrapper>
       <IconWrapper
         href={linkedIn.url}
@@ -67,7 +67,7 @@
           id: `authorPresentation.linkedInLinkTitle`,
         })}
       >
-        <IconBrandLinkedin size={32} stroke={1.5} />
+        <LinkedinIcon size={32} stroke="1.5" />
       </IconWrapper>
     </section>
   </aside>
