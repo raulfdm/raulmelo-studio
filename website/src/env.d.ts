@@ -17,4 +17,4 @@ interface Window {
   __switchTheme: (nextTheme: Theme) => void;
 }
 
-declare type TODO = any;
+declare type TODO<T extends string = ''> = any;
