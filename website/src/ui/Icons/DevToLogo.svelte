@@ -1,4 +1,5 @@
 <script lang="ts">
+  export type { SVGAttributes } from 'svelte/elements';
   export let size = 24;
 </script>
 
