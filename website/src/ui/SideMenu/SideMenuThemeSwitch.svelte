@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { ComputerIcon, SunIcon, MoonIcon } from 'lucide-svelte';
+  import { LaptopIcon, SunIcon, MoonIcon } from 'lucide-svelte';
 
   export let title: string;
   export let darkThemeTitle: string;
@@ -49,7 +49,7 @@
       title={systemThemeTitle}
       aria-label={systemThemeTitle}
     >
-      <ComputerIcon stroke="1.5" />
+      <LaptopIcon stroke="1.5" />
     </button>
     <button
       class:active={theme === 'dark'}

@@ -2,7 +2,8 @@
   import qs from 'query-string';
 
   import type { ShareContentProps } from './types';
-  import { LinkedinIcon, TwitterIcon } from 'lucide-svelte';
+  import LinkedinLogo from '@/ui/Icons/LinkedinLogo.svelte';
+  import XLogo from '@/ui/Icons/XLogo.svelte';
 
   export let titleLabel: ShareContentProps['titleLabel'];
   export let linkedIn: ShareContentProps['linkedIn'];
@@ -37,7 +38,7 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <LinkedinIcon size={32} stroke="1.5" />
+        <LinkedinLogo size={32} stroke="1.5" />
       </a>
     </li>
 
@@ -49,7 +50,7 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <TwitterIcon size={32} stroke="1.5" />
+        <XLogo size={32} stroke="1.5" />
       </a>
     </li>
   </ul>

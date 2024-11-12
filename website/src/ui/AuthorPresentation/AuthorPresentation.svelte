@@ -4,10 +4,11 @@
   import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
   import { getSocial } from '@/infrastructure/utils/seo';
 
-  import DevToIcon from '@/ui/Icons/DevTo.svelte';
+  import DevToLogo from '@/ui/Icons/DevToLogo.svelte';
 
   import IconWrapper from '../../pages/[lang]/_ui/IconWrapper.svelte';
-  import { GithubIcon, LinkedinIcon } from 'lucide-svelte';
+  import LinkedinIcon from '@/ui/Icons/LinkedinLogo.svelte';
+  import GithubIcon from '@/ui/Icons/GithubLogo.svelte';
   import type { QuerySiteDataReturnType } from '@/infrastructure/api/modules/siteData';
 
   export let lang: SupportedLanguages;
@@ -49,7 +50,7 @@
           id: `authorPresentation.devToLinkTitle`,
         })}
       >
-        <DevToIcon size={32} stroke="1.5" />
+        <DevToLogo size={28} stroke="1.5" />
       </IconWrapper>
       <IconWrapper
         href={github.url}
@@ -58,7 +59,7 @@
           id: `authorPresentation.githubLinkTitle`,
         })}
       >
-        <GithubIcon size={32} stroke="1.5" />
+        <GithubIcon size={28} stroke="1.5" />
       </IconWrapper>
       <IconWrapper
         href={linkedIn.url}
@@ -67,7 +68,7 @@
           id: `authorPresentation.linkedInLinkTitle`,
         })}
       >
-        <LinkedinIcon size={32} stroke="1.5" />
+        <LinkedinIcon size={28} stroke="1.5" />
       </IconWrapper>
     </section>
   </aside>
