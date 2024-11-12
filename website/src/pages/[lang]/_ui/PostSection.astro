@@ -10,7 +10,7 @@ export interface Props {
 }
 
 import type { SupportedLanguages } from '@/infrastructure/config/types/language';
-import { IconArrowNarrowRight } from '@/ui/icons-svelte';
+import { ArrowRightIcon } from 'lucide-svelte';
 import PostBasic, { type Props as PostBasicProps } from '@/ui/PostBasic.astro';
 
 const { title, checkAllLink, posts } = Astro.props;
@@ -37,10 +37,10 @@ const { title, checkAllLink, posts } = Astro.props;
   </ul>
   <a
     href={checkAllLink.href}
-    class="inline-flex mt-6 text-lg underline cursor-pointer text-secondary"
+    class="inline-flex mt-6 text-lg underline cursor-pointer text-secondary items-center"
     data-astro-prefetch
   >
     {checkAllLink.text}
-    <IconArrowNarrowRight class="w-6 ml-2" stroke={1.5} />
+    <ArrowRightIcon class="w-6 ml-2" stroke="1.5" />
   </a>
 </section>

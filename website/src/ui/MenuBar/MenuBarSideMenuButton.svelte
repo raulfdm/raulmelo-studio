@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { IconMenu2, IconX } from '../icons-svelte';
+  import { XIcon, MenuIcon } from 'lucide-svelte';
   import MenuButton from './MenuBarButton.svelte';
 
   import {
@@ -16,8 +16,8 @@
   data-testid="side-menu-button"
 >
   {#if $sideMenuStore === false}
-    <IconMenu2 class="w-6" stroke={1.5} />
+    <MenuIcon class="w-6" stroke="1.5" />
   {:else}
-    <IconX class="w-6" stroke={1.5} />
+    <XIcon class="w-6" stroke="1.5" />
   {/if}
 </MenuButton>

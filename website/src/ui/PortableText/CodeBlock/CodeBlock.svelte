@@ -1,7 +1,7 @@
 <script lang="ts">
   import { useActor } from '@xstate/svelte';
   import { copyMachine } from './copyMachine';
-  import { IconClipboard, IconClipboardCheck } from '@/ui/icons-svelte';
+  import { ClipboardIcon, ClipboardCheckIcon } from 'lucide-svelte';
 
   export let code: string;
   export let codeHtml: string;
@@ -37,9 +37,9 @@
       on:click={onCopyCode}
     >
       {#if $snapshot.matches('copied')}
-        <IconClipboardCheck stroke={1.5} />
+        <ClipboardCheckIcon stroke="1.5" />
       {:else}
-        <IconClipboard stroke={1.5} />
+        <ClipboardIcon stroke="1.5" />
       {/if}
     </button>
   </div>

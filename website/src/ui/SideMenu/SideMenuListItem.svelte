@@ -1,7 +1,7 @@
 <script lang="ts">
   import { mergeClasses } from '@/infrastructure/utils/misc';
   import type { SideMenuLink } from './links';
-  import { IconExternalLink } from '../icons-svelte';
+  import { ExternalLinkIcon } from 'lucide-svelte';
 
   export let href: SideMenuLink['href'];
   export let itemLabel: SideMenuLink['itemLabel'];
@@ -33,7 +33,7 @@
   >
     {itemLabel}
     {#if newWindow}
-      <IconExternalLink class="absolute top-0 w-4 -right-6" />
+      <ExternalLinkIcon class="absolute top-0 w-4 -right-6" />
     {/if}
   </a>
 </li>

@@ -10,8 +10,5 @@ const __dirname = path.dirname(__filename);
 
 const sharedConfigs = createConfig(__dirname);
 
-/** @type {import('eslint').Linter.FlatConfig[]} */
-export default [
-  ...sharedConfigs,
-  ...eslintPluginAstro.configs['flat/recommended'],
-];
+/** @type {import('eslint').Linter.Config[]} */
+export default [...sharedConfigs, ...eslintPluginAstro.configs.recommended];

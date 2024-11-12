@@ -26,12 +26,12 @@ export const sanityStudioConfig: Config = {
       ],
       schemaTypes: ['post', 'til'],
     }),
-    media(),
+    media() as TODO<'No idea why there is a mismatch'>,
     visionTool({
       defaultApiVersion: `v1`,
       defaultDataset: config.dataset,
     }),
   ],
   title: `Raul's CMS`,
-  schema: schema as TODO,
+  schema: schema,
 };

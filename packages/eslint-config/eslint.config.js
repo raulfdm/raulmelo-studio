@@ -46,7 +46,7 @@ export default function createConfig(tsconfigRootDir) {
      * Custom ts rules
      */
     {
-      files: ['**/*.ts', '**/*.tsx', '**/*.astro'],
+      files: ['**/*.ts', '**/*.tsx'],
 
       rules: {
         '@typescript-eslint/no-import-type-side-effects': 'error',

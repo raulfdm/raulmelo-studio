@@ -1,7 +1,7 @@
 ---
 import slugify from 'slugify';
 
-import { IconHash } from '../icons-svelte';
+import { HashIcon } from 'lucide-svelte';
 
 const { node } = Astro.props as {
   node: {
@@ -31,7 +31,7 @@ const iconProps = {};
 <Component id={slug} class="flex items-center heading">
   {child.text}
   <a href={`#${slug}`} class="grid place-items-center"
-    ><IconHash stroke={1.5} {...iconProps} /></a
+    ><HashIcon stroke="1.5" {...iconProps} /></a
   >
 </Component>
 
