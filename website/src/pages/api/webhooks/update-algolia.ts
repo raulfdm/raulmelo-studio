@@ -1,4 +1,4 @@
-import algolia from 'algoliasearch';
+import { algoliasearch } from 'algoliasearch';
 import type { APIRoute } from 'astro';
 
 import { queryAlgoliaData } from '@/infrastructure/api/modules/algolia';
@@ -6,7 +6,7 @@ import { clientEnv } from '@/infrastructure/env/client';
 import { serverEnv } from '@/infrastructure/env/server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 
-const algoliaClient = algolia(
+const algoliaClient = algoliasearch(
   clientEnv.PUBLIC_ALGOLIA_APP_ID,
   serverEnv.ALGOLIA_ADMIN_KEY,
 );
@@ -24,8 +24,11 @@ export const POST: APIRoute = async function POST({ request }) {
     }
 
     const algoliaData = await queryAlgoliaData({ client: sanityClient });
-    const index = algoliaClient.initIndex(clientEnv.PUBLIC_ALGOLIA_INDEX_NAME);
-    await index.saveObjects(algoliaData);
+
+    algoliaClient.saveObjects({
+      indexName: clientEnv.PUBLIC_ALGOLIA_INDEX_NAME,
+      objects: algoliaData as never,
+    });
 
     console.log(`Algolia data updated`);
 

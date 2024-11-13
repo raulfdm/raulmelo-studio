@@ -52,7 +52,7 @@ const searchServerState = await getServerState(
         intl.formatMessage(
           { id: `search.paragraph` },
           {
-            a: function Anchor(chunks: never) {
+            a: function Anchor(chunks) {
               return (
                 <a
                   class="underline text-secondary"
