@@ -34,23 +34,10 @@ export default tseslint.config(
   {
     files: ['**/*.ts', '**/*.tsx'],
     rules: {
-      // '@typescript-eslint/no-import-type-side-effects': 'error',
-      // '@typescript-eslint/no-explicit-any': 'warn',
-      // '@typescript-eslint/no-unsafe-call': 'warn',
-      // '@typescript-eslint/no-unsafe-member-access': 'warn',
-      // '@typescript-eslint/consistent-type-assertions': 'error',
-      // '@typescript-eslint/consistent-type-imports': [
-      //   'error',
-      //   {
-      //     disallowTypeAnnotations: false,
-      //   },
-      // ],
-      // 'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': [
         'error',
         { destructuredArrayIgnorePattern: '^_', varsIgnorePattern: '^Props' },
       ],
-      // '@typescript-eslint/no-unsafe-assignment': 'warn',
     },
   },
   ...eslintPluginAstro.configs.recommended,
