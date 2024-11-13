@@ -10,7 +10,7 @@
   import { useSideMenuLinks } from './links';
 
   import SideMenuListItem from './SideMenuListItem.svelte';
-  import { timeline } from 'motion';
+  import { animate } from 'motion';
   import SideMenuThemeSwitch from './SideMenuThemeSwitch.svelte';
   import { onMount } from 'svelte';
 
@@ -24,43 +24,45 @@
   let overlayEl: HTMLElement;
 
   sideMenuStore.subscribe(async (isOpen) => {
+    const baseOption = {
+      duration: 0.2,
+    } as const;
+
     if (mainPanelEl && overlayEl) {
       if (isOpen) {
         document.body.style.overflow = 'hidden';
-
-        timeline(
+        const sequence = [
           [
-            [
-              overlayEl,
-              {
-                opacity: 0.7,
-                backgroundColor: 'rgba(0, 0, 0)',
-              },
-            ],
-            [mainPanelEl, { transform: `translate3d(0%, 0, 0)` }, { at: 0.2 }],
+            overlayEl,
+            {
+              opacity: 0.7,
+              backgroundColor: 'rgba(0, 0, 0)',
+            },
+            baseOption,
           ],
-          {
-            duration: 0.3,
-          },
-        );
+          [
+            mainPanelEl,
+            { transform: `translate3d(0%, 0, 0)` },
+            { at: 0.2, ...baseOption },
+          ],
+        ];
+
+        animate(sequence as never);
       } else {
         document.body.style.overflow = 'auto';
 
-        timeline(
+        const sequence = [
+          [mainPanelEl, { transform: `translate3d(100%, 0, 0)` }, baseOption],
           [
-            [mainPanelEl, { transform: `translate3d(100%, 0, 0)` }],
-            [
-              overlayEl,
-              {
-                opacity: 0,
-              },
-              { at: 0.2 },
-            ],
+            overlayEl,
+            {
+              opacity: 0,
+            },
+            { at: 0.2, ...baseOption },
           ],
-          {
-            duration: 0.3,
-          },
-        );
+        ];
+
+        animate(sequence as never);
       }
     }
   });
