@@ -1,14 +1,57 @@
 // @ts-check
-import * as path from 'node:path';
-import * as url from 'node:url';
 import eslintPluginAstro from 'eslint-plugin-astro';
 
-import createConfig from '@raulmelo/eslint-config';
+import eslint from '@eslint/js';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import tseslint from 'typescript-eslint';
 
-const __filename = url.fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const sharedConfigs = createConfig(__dirname);
-
-/** @type {import('eslint').Linter.Config[]} */
-export default [...sharedConfigs, ...eslintPluginAstro.configs.recommended];
+export default tseslint.config(
+  {
+    ignores: [
+      '.DS_Store',
+      '.env.*',
+      '**/*.d.ts',
+      '**/*.typegen.ts',
+      'bin/**',
+      'build/**',
+      'cache/**',
+      'dist/**',
+      'node_modules/**',
+      '.turbo/**',
+      '.history/**',
+      '.svelte-kit/**',
+      '.vercel/**',
+      'package-lock.json',
+      'pnpm-lock.yaml',
+    ],
+  },
+  eslint.configs.recommended,
+  eslintConfigPrettier,
+  ...tseslint.configs.recommended,
+  /**
+   * Custom ts rules
+   */
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    rules: {
+      // '@typescript-eslint/no-import-type-side-effects': 'error',
+      // '@typescript-eslint/no-explicit-any': 'warn',
+      // '@typescript-eslint/no-unsafe-call': 'warn',
+      // '@typescript-eslint/no-unsafe-member-access': 'warn',
+      // '@typescript-eslint/consistent-type-assertions': 'error',
+      // '@typescript-eslint/consistent-type-imports': [
+      //   'error',
+      //   {
+      //     disallowTypeAnnotations: false,
+      //   },
+      // ],
+      // 'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { destructuredArrayIgnorePattern: '^_', varsIgnorePattern: '^Props' },
+      ],
+      // '@typescript-eslint/no-unsafe-assignment': 'warn',
+    },
+  },
+  ...eslintPluginAstro.configs.recommended,
+);
