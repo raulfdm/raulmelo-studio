@@ -1,21 +1,3 @@
-import {
-  IconAlertOctagon,
-  IconBrandCodepen,
-  IconBrandX,
-  IconCode,
-  IconDots,
-  IconExternalLink,
-  IconHash,
-  IconHighlight,
-  IconInfoHexagon,
-  IconLink,
-  IconNotes,
-  IconPhoto,
-  IconSlideshow,
-  IconSpeakerphone,
-  IconStrikethrough,
-} from '@tabler/icons-react';
-
 export {
   IconAlertOctagon,
   IconBrandCodepen,
@@ -32,4 +14,4 @@ export {
   IconSlideshow,
   IconSpeakerphone,
   IconStrikethrough,
-};
+} from '@tabler/icons-react';
