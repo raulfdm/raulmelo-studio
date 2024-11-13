@@ -1,20 +1,18 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "verbatimModuleSyntax": true,
-    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
-    "jsx": "react-jsx",
-    "jsxImportSource": "react",
-    "skipLibCheck": true,
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"
       }
     ]
   },
-  "include": ["src", "scripts"]
+  "include": ["src", "scripts", "eslint.config.js"]
 }

@@ -26,6 +26,7 @@ export const gifField = defineField({
     },
   ],
   components: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     preview: ({ src, caption }: any) => {
       return <img src={src} alt={caption} />;
     },

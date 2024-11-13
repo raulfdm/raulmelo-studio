@@ -13,6 +13,7 @@ import { IconAlertOctagon, IconInfoHexagon, IconNotes } from '@/ui/icons-react';
 
 import PortableText from '../PortableText.astro';
 import type { CalloutType } from './types';
+import type { Icon } from '@tabler/icons-react';
 
 const { content, type, title } = Astro.props.node;
 
@@ -26,7 +27,7 @@ const calloutMap: Record<
       title: string;
       icon: string;
     };
-    Icon: any;
+    Icon: Icon;
   }
 > = {
   info: {

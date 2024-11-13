@@ -77,7 +77,6 @@ function TagsRefinement({ title }: { title: string }) {
   );
 }
 
-//
 function GenericRefinement({ title, refine, items, renderLabelText }: TODO) {
   return isEmpty(items) ? null : (
     <div className="search__refinementWrapper">
@@ -85,9 +84,7 @@ function GenericRefinement({ title, refine, items, renderLabelText }: TODO) {
 
       <ul className="flex flex-col space-y-2">
         {items
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
           .sort(sortOptionByLabel)
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
           .map((item: { value: string; label: string; count: number }) => {
             function handleClick() {
               refine(item.value);
