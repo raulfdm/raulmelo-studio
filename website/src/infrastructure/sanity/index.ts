@@ -33,5 +33,5 @@ export const sanityStudioConfig: Config = {
     }),
   ],
   title: `Raul's CMS`,
-  schema: schema,
+  schema: schema as never,
 };
