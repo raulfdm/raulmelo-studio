@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 import type { PortableTextBlock } from '@portabletext/types';
 import toMarkdown from '@sanity/block-content-to-markdown';
 import markdownPlugin from 'prettier/plugins/markdown';

@@ -132,6 +132,7 @@ const algoliaPostsSchema = commonContentSchema.extend({
 });
 export type AlgoliaPost = z.infer<typeof algoliaPostsSchema>;
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const algoliaTilsSchema = commonContentSchema.extend({
   _type: z.literal('til'),
 });
@@ -139,6 +140,7 @@ export type AlgoliaTil = z.infer<typeof algoliaTilsSchema>;
 
 export type AlgoliaContent = AlgoliaPost | AlgoliaTil;
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const algoliaObjectSchema = z.object({
   _id: z.string(),
   objectID: z.string(),
