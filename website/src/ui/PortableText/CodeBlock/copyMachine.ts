@@ -1,13 +1,16 @@
-import { createMachine } from 'xstate';
+import { assertEvent, setup } from 'xstate';
 
-export const copyMachine = createMachine({
-  types: {} as {
-    events: { type: 'COPY'; code: string };
-    actions: {
-      type: 'onCodeCopy';
-      code: string;
-    };
+export const copyMachine = setup({
+  types: {
+    events: {} as { type: 'COPY'; code: string },
   },
+  actions: {
+    onCodeCopy: ({ event }) => {
+      assertEvent(event, 'COPY');
+      navigator.clipboard.writeText(event.code);
+    },
+  },
+}).createMachine({
   initial: `notCopied`,
   states: {
     notCopied: {

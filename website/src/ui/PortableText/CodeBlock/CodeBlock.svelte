@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { useActor } from '@xstate/svelte';
+  import { useMachine } from '@xstate/svelte';
   import { copyMachine } from './copyMachine';
   import { ClipboardIcon, ClipboardCheckIcon } from 'lucide-svelte';
 
@@ -9,15 +9,7 @@
   export let filename: string | null = null;
   export let showLineNumbers: boolean;
 
-  const { snapshot, send } = useActor(
-    copyMachine.provide({
-      actions: {
-        onCodeCopy: async ({ event }) => {
-          await navigator.clipboard.writeText(event.code);
-        },
-      },
-    }),
-  );
+  const { snapshot, send } = useMachine(copyMachine);
 
   function onCopyCode() {
     send({ type: 'COPY', code });
