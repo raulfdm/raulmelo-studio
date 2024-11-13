@@ -24,16 +24,17 @@
     "build": "tsc -p tsconfig.build.json"
   },
   "peerDependencies": {
-    "vscode-oniguruma": ">=1.7.0"
+    "vscode-oniguruma": ">=2.0.1"
   },
   "dependencies": {
-    "@wooorm/starry-night": "3.2.0",
+    "@wooorm/starry-night": "3.5.0",
     "hast-util-to-html": "9.0.3"
   },
   "devDependencies": {
     "@types/bun": "1.1.10",
     "@types/hast": "3.0.4",
-    "typescript": "catalog:"
+    "typescript": "5.6.3",
+    "vscode-oniguruma": "2.0.1"
   },
   "engines": {
     "node": "20",
