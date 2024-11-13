@@ -16,7 +16,7 @@
     },
     {
       "matchPackageNames": ["@types/node", "node"],
-      "allowedVersions": "<19"
+      "allowedVersions": "<21"
     },
     {
       "matchPackageNames": [
@@ -28,8 +28,8 @@
       "groupName": "React"
     },
     {
-      "matchPackagePrefixes": ["@astrojs/"],
       "matchPackageNames": [
+        "@astrojs/*",
         "astro",
         "prettier-plugin-astro",
         "eslint-plugin-astro"
@@ -37,47 +37,52 @@
       "groupName": "Astro"
     },
     {
-      "matchPackagePrefixes": ["eslint", "@typescript-eslint/"],
-      "matchPackageNames": ["eslint", "@types/eslint__js", "@types/eslint"],
+      "matchPackageNames": [
+        "eslint",
+
+        "@typescript-eslint/*",
+        "@types/eslint__js",
+        "@types/eslint"
+      ],
       "groupName": "ESlint"
     },
     {
-      "matchPackagePrefixes": ["@fontsource/"],
+      "matchPackageNames": ["@fontsource/*"],
       "groupName": "Fountsource (website)"
     },
     {
-      "matchPackagePrefixes": ["@xstate/"],
-      "matchPackageNames": ["xstate"],
+      "matchPackageNames": ["xstate", "@xstate/*"],
       "groupName": "XState"
     },
     {
-      "matchPackagePrefixes": ["@sveltejs/"],
-      "matchPackageNames": ["svelte"],
+      "matchPackageNames": ["svelte", "@sveltejs/*"],
       "groupName": "Svelte"
     },
     {
-      "matchPackagePrefixes": ["@tabler/icons"],
+      "matchPackageNames": ["@tabler/*"],
       "groupName": "Tabler Icons"
     },
     {
-      "matchPackagePrefixes": ["@sanity/", "sanity-"],
-      "matchPackageNames": ["sanity", "groq"],
+      "matchPackageNames": ["sanity", "groq", "@sanity/*"],
       "groupName": "Sanity"
     },
     {
-      "matchPackageNames": ["vite", "vitest"],
-      "matchPackagePrefixes": ["vite-plugin"],
+      "matchPackageNames": ["vite", "vitest", "vite-plugin-*"],
       "groupName": "Vite"
     },
     {
-      "matchPackagePrefixes": ["react-instantsearch"],
-      "matchPackageNames": ["algoliasearch"],
+      "matchPackageNames": ["algoliasearch", "react-instantsearch*"],
       "groupName": "Algolia"
     },
     {
       "groupName": "Tailwind ecosystem",
-      "matchPackagePrefixes": ["@tailwindcss/"],
-      "matchPackageNames": ["postcss", "autoprefixer", "tailwindcss"]
+
+      "matchPackageNames": [
+        "postcss",
+        "autoprefixer",
+        "tailwindcss",
+        "@tailwindcss/*"
+      ]
     },
     {
       "matchPackageNames": ["daisyui"],
@@ -85,11 +90,7 @@
     },
     {
       "groupName": "Lodash",
-      "matchPackagePrefixes": ["lodash.", "@types/lodash"]
-    },
-    {
-      "groupName": "@types",
-      "matchPackagePrefixes": ["@types/"]
+      "matchPackageNames": ["lodash", "lodash*", "lodash-es", "@types/lodash"]
     }
   ]
 }
