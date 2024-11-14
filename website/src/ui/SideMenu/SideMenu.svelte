@@ -68,14 +68,6 @@
     }
   });
 
-  function setMainPanelElement(node: HTMLElement) {
-    mainPanelEl = node;
-  }
-
-  function setOverlayElement(node: HTMLElement) {
-    overlayEl = node;
-  }
-
   function handleKeyDown(
     event: KeyboardEvent & {
       currentTarget: EventTarget & Window;
@@ -92,25 +84,13 @@
     return () =>
       document.removeEventListener('astro:after-swap', closeSideMenu);
   });
-
-  function myaction(node: HTMLDivElement) {
-    // the node has been mounted in the DOM
-
-    console.log(node);
-    $effect(() => {
-      // setup goes here
-
-      return () => {
-        // teardown goes here
-      };
-    });
-  }
 </script>
 
 <svelte:window onkeydown={handleKeyDown} />
 
 <nav
-  use:myaction
+  bind:this={mainPanelEl}
+  style="transform: translate3d(100%, 0, 0);"
   class={mergeClasses([
     'fixed bottom-0 right-0 z-20 h-full min-w-full duration-200 transform',
     'bg-white top-16 dark:bg-blue-800 sm:min-w-min sm:w-full sm:max-w-xs transition-theme ease',
@@ -136,15 +116,11 @@
   </div>
 </nav>
 
-<!-- 
-style="transform: translate3d(100%, 0, 0);"
-
--->
-
-<!-- <div
-  use={[setOverlayElement]}
+<div
+  bind:this={overlayEl}
   class={mergeClasses('absolute inset-0 bg-[black] top-16 z-10 opacity-0', {
     'pointer-events-none': $sideMenuStore === false,
   })}
-  on:click={closeSideMenu}
-/> -->
+  onclick={closeSideMenu}
+  role="presentation"
+></div>
