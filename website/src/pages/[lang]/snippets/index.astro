@@ -50,15 +50,15 @@ const snippets = await queryCodeSnippets({ client: sanityClient });
           <li>
             <ContentTile
               client:load
-              formatDate={(date) =>
-                intl.formatDate(date as string, {
+              formatDate={(date: string) =>
+                intl.formatDate(date, {
                   month: `long`,
                   day: `numeric`,
                   year: `numeric`,
                 })
               }
               readMoreLabel={intl.formatMessage({ id: `tilHome.readMore` })}
-              urlBuilder={(slug) => getSnippetUrl(slug as string, lang)}
+              urlBuilder={(slug: string) => getSnippetUrl(slug, lang)}
               {...snippet}
             />
           </li>
