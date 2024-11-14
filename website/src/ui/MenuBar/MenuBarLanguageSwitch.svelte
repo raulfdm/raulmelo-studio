@@ -1,31 +1,11 @@
 <script lang="ts">
-  import {
-    Popover,
-    PopoverButton,
-    PopoverPanel,
-  } from '@rgossiaux/svelte-headlessui';
-  import { createPopperActions } from 'svelte-popperjs';
+  import { Popover } from 'bits-ui';
 
   import { getPathnameWithoutLocale } from '@/infrastructure/utils/url';
   import type { SupportedLanguages } from '@/infrastructure/config/types/language';
   import { LanguagesIcon } from 'lucide-svelte';
 
   export let ariaLabel: string;
-
-  const [popperRef, popperContent] = createPopperActions();
-
-  const popperOptions = {
-    placement: `bottom-end`,
-    modifiers: [
-      {
-        name: `offset`,
-        options: {
-          offset: [0, 12],
-        },
-      },
-      { name: `arrow`, options: { /*  element: arrowElement, */ padding: 5 } },
-    ],
-  };
 
   function changeLocale(lang: SupportedLanguages) {
     return () => {
@@ -38,42 +18,31 @@
   }
 </script>
 
-<Popover>
-  <PopoverButton
-    use={[popperRef]}
-    class="flex p-2 place-content-center"
-    aria-label={ariaLabel}
-  >
+<Popover.Root>
+  <Popover.Trigger class="flex p-2 place-content-center">
     <LanguagesIcon class="w-6" stroke="1.5" />
-  </PopoverButton>
-  <PopoverPanel
-    use={[[popperContent, popperOptions]]}
+  </Popover.Trigger>
+  <Popover.Content
+    sideOffset={8}
     class="z-10 flex flex-col bg-white border divide-y divide-gray-200 rounded shadow-sm max-w-min dark:border-gray-400 dark:divide-gray-500 dark:bg-blue-800"
   >
-    <div
-      class="z-20 w-4 h-4 bg-white border-t border-l rounded-sm dark:bg-blue-800 dark:border-gray-400 -top-2 arrow"
-      data-popper-arrow
-    />
+    <Popover.Arrow class="arrow" />
 
-    <PopoverButton
-      class="flex-1 px-6 py-2 font-sans text-base text-center cursor-pointer whitespace-nowrap disabled:cursor-not-allowed disabled:font-semibold disabled:text-secondary"
+    <button
+      class="language-button"
       aria-label="Switch to English"
-      on:click={changeLocale(`en`)}
+      on:click={changeLocale(`en`)}>English</button
     >
-      English
-    </PopoverButton>
-    <PopoverButton
-      class="flex-1 px-6 py-2 font-sans text-base text-center cursor-pointer whitespace-nowrap disabled:cursor-not-allowed disabled:font-semibold disabled:text-secondary"
+    <button
+      class="language-button"
       aria-label="Mudar para Português"
-      on:click={changeLocale(`pt`)}
+      on:click={changeLocale(`pt`)}>Português</button
     >
-      Português
-    </PopoverButton>
-  </PopoverPanel>
-</Popover>
+  </Popover.Content>
+</Popover.Root>
 
 <style lang="postcss">
-  .arrow {
-    transform: translate3d(93px, 0px, 0px) rotate(45deg) !important;
+  .language-button {
+    @apply flex-1 px-6 py-2 font-sans text-base text-center cursor-pointer whitespace-nowrap disabled:cursor-not-allowed disabled:font-semibold disabled:text-secondary;
   }
 </style>
