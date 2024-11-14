@@ -49,7 +49,6 @@ const snippets = await queryCodeSnippets({ client: sanityClient });
         return (
           <li>
             <ContentTile
-              client:load
               formatDate={(date: string) =>
                 intl.formatDate(date, {
                   month: `long`,
