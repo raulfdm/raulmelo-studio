@@ -5,7 +5,6 @@
     closeSideMenu,
   } from '@/infrastructure/stores/sideMenu';
   import type { SupportedLanguages } from '@/infrastructure/config/types/language';
-  import { Disclosure, DisclosurePanel } from '@rgossiaux/svelte-headlessui';
   import { mergeClasses } from '@/infrastructure/utils/misc';
   import { useSideMenuLinks } from './links';
 
@@ -14,8 +13,10 @@
   import SideMenuThemeSwitch from './SideMenuThemeSwitch.svelte';
   import { onMount } from 'svelte';
 
-  export let lang: SupportedLanguages;
-  export let pathname: string;
+  const { lang, pathname } = $props<{
+    lang: SupportedLanguages;
+    pathname: string;
+  }>();
 
   const links = useSideMenuLinks(lang, pathname);
   const intl = getIntl(lang);
@@ -91,48 +92,59 @@
     return () =>
       document.removeEventListener('astro:after-swap', closeSideMenu);
   });
+
+  function myaction(node: HTMLDivElement) {
+    // the node has been mounted in the DOM
+
+    console.log(node);
+    $effect(() => {
+      // setup goes here
+
+      return () => {
+        // teardown goes here
+      };
+    });
+  }
 </script>
 
 <svelte:window on:keydown={handleKeyDown} />
 
-<Disclosure>
-  <DisclosurePanel
-    static
-    as="nav"
-    use={[setMainPanelElement]}
-    class={mergeClasses([
-      'fixed bottom-0 right-0 z-20 h-full min-w-full duration-200 transform',
-      'bg-white top-16 dark:bg-blue-800 sm:min-w-min sm:w-full sm:max-w-xs transition-theme ease',
-      'flex flex-col',
-      'pt-6 pb-16',
-    ])}
-    style="transform: translate3d(100%, 0, 0);"
-  >
-    <ul class="flex flex-col flex-1">
-      {#each links as link}
-        <SideMenuListItem
-          {...link}
-          itemLabel={intl.formatMessage({ id: link.itemLabel })}
-        />
-      {/each}
-    </ul>
-    <div class="px-4 py-2">
-      <SideMenuThemeSwitch
-        title={intl.formatMessage({ id: 'sideMenu.theme.title' })}
-        darkThemeTitle={intl.formatMessage({ id: 'sideMenu.theme.dark' })}
-        lightThemeTitle={intl.formatMessage({ id: 'sideMenu.theme.light' })}
-        systemThemeTitle={intl.formatMessage({ id: 'sideMenu.theme.system' })}
+<nav
+  use:myaction
+  class={mergeClasses([
+    'fixed bottom-0 right-0 z-20 h-full min-w-full duration-200 transform',
+    'bg-white top-16 dark:bg-blue-800 sm:min-w-min sm:w-full sm:max-w-xs transition-theme ease',
+    'flex flex-col',
+    'pt-6 pb-16',
+  ])}
+>
+  <ul class="flex flex-col flex-1">
+    {#each links as link}
+      <SideMenuListItem
+        {...link}
+        itemLabel={intl.formatMessage({ id: link.itemLabel })}
       />
-    </div>
-  </DisclosurePanel>
+    {/each}
+  </ul>
+  <div class="px-4 py-2">
+    <SideMenuThemeSwitch
+      title={intl.formatMessage({ id: 'sideMenu.theme.title' })}
+      darkThemeTitle={intl.formatMessage({ id: 'sideMenu.theme.dark' })}
+      lightThemeTitle={intl.formatMessage({ id: 'sideMenu.theme.light' })}
+      systemThemeTitle={intl.formatMessage({ id: 'sideMenu.theme.system' })}
+    />
+  </div>
+</nav>
 
-  <DisclosurePanel
-    static
-    as="div"
-    use={[setOverlayElement]}
-    class={mergeClasses('absolute inset-0 bg-[black] top-16 z-10 opacity-0', {
-      'pointer-events-none': $sideMenuStore === false,
-    })}
-    on:click={closeSideMenu}
-  />
-</Disclosure>
+<!-- 
+style="transform: translate3d(100%, 0, 0);"
+
+-->
+
+<!-- <div
+  use={[setOverlayElement]}
+  class={mergeClasses('absolute inset-0 bg-[black] top-16 z-10 opacity-0', {
+    'pointer-events-none': $sideMenuStore === false,
+  })}
+  on:click={closeSideMenu}
+/> -->
