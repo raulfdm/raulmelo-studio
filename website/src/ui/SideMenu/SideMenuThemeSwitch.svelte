@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { LaptopIcon, SunIcon, MoonIcon } from 'lucide-svelte';
+  import { mergeClasses } from '@/infrastructure/utils/misc';
 
   interface Props {
     title: string;
@@ -41,7 +42,7 @@
   <span class="text-center">{title}</span>
   <div class="flex gap-1">
     <button
-      class:active={theme === 'light'}
+      class={mergeClasses('theme-option', theme === 'light' && 'active')}
       onclick={() => window.__switchTheme('light')}
       title={lightThemeTitle}
       aria-label={lightThemeTitle}
@@ -49,7 +50,7 @@
       <SunIcon stroke="1.5" />
     </button>
     <button
-      class:active={theme === 'system'}
+      class={mergeClasses('theme-option', theme === 'system' && 'active')}
       onclick={() => window.__switchTheme('system')}
       title={systemThemeTitle}
       aria-label={systemThemeTitle}
@@ -57,7 +58,7 @@
       <LaptopIcon stroke="1.5" />
     </button>
     <button
-      class:active={theme === 'dark'}
+      class={mergeClasses('theme-option', theme === 'dark' && 'active')}
       onclick={() => window.__switchTheme('dark')}
       title={darkThemeTitle}
       aria-label={darkThemeTitle}
@@ -68,15 +69,15 @@
 </div>
 
 <style lang="postcss">
-  button {
+  .theme-option {
     @apply rounded-full p-2 border-opacity-50 text-opacity-50;
+    @apply hover:bg-gray-100;
+  }
+  .theme-option.active {
+    @apply text-secondary;
+  }
 
-    &:hover {
-      @apply bg-gray-100 dark:bg-gray-700;
-    }
-
-    &.active {
-      @apply text-secondary;
-    }
+  :global(html.dark .theme-option) {
+    @apply hover:bg-gray-700;
   }
 </style>
