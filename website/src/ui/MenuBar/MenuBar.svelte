@@ -8,8 +8,12 @@
   import MenuBarSideMenuButton from './MenuBarSideMenuButton.svelte';
   import { mergeClasses } from '@/infrastructure/utils/misc';
 
-  export let lang: SupportedLanguages;
-  export let pathname: string;
+  interface Props {
+    lang: SupportedLanguages;
+    pathname: string;
+  }
+
+  let { lang, pathname }: Props = $props();
 
   const intl = getIntl(lang);
 

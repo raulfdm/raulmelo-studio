@@ -1,9 +1,13 @@
 <script lang="ts">
   import { Tweet } from 'sveltekit-embed';
 
-  export let tweetId: string;
+  interface Props {
+    tweetId: string;
+  }
 
-  $: tweetLink = `https://twitter.com/twitter/status/${tweetId}`;
+  let { tweetId }: Props = $props();
+
+  let tweetLink = $derived(`https://twitter.com/twitter/status/${tweetId}`);
 </script>
 
 <Tweet {tweetLink} />

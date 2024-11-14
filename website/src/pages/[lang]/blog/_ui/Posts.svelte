@@ -5,10 +5,14 @@
   import { getPostUrl } from '@/infrastructure/utils/url';
   import type { QueryPostsAndTilsReturnType } from '@/infrastructure/api/modules/posts';
 
-  export let posts:
-    | QueryPostsAndTilsReturnType[`posts`]
-    | QueryPostsAndTilsReturnType[`tils`];
-  export let lang: SupportedLanguages;
+  interface Props {
+    posts:
+      | QueryPostsAndTilsReturnType[`posts`]
+      | QueryPostsAndTilsReturnType[`tils`];
+    lang: SupportedLanguages;
+  }
+
+  let { posts, lang }: Props = $props();
 
   const intl = getIntl(lang);
   const title = intl.formatMessage({ id: `blog.title.latests` });

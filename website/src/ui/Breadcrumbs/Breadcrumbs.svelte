@@ -3,10 +3,12 @@
   import Breadcrumb from './Breadcrumb.svelte';
   import type { BreadcrumbType } from './types';
 
-  export let crumbs: BreadcrumbType[];
-  let className = '';
+  interface Props {
+    crumbs: BreadcrumbType[];
+    class?: string;
+  }
 
-  export { className as class };
+  let { crumbs, class: className = '' }: Props = $props();
 </script>
 
 <div class={mergeClasses('py-2 col-span-full', className)}>

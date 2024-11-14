@@ -11,8 +11,13 @@
   import GithubIcon from '@/ui/Icons/GithubLogo.svelte';
   import type { QuerySiteDataReturnType } from '@/infrastructure/api/modules/siteData';
 
-  export let lang: SupportedLanguages;
-  export let siteData: QuerySiteDataReturnType;
+  interface Props {
+    lang: SupportedLanguages;
+    siteData: QuerySiteDataReturnType;
+    img?: import('svelte').Snippet;
+  }
+
+  let { lang, siteData, img }: Props = $props();
 
   const defaultSeo = siteData.defaultSeo[lang];
 
@@ -73,6 +78,6 @@
     </section>
   </aside>
   <figure class="relative w-20 h-20 rounded md:w-32 md:h-32">
-    <slot name="img" />
+    {@render img?.()}
   </figure>
 </header>

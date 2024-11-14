@@ -1,13 +1,19 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { LaptopIcon, SunIcon, MoonIcon } from 'lucide-svelte';
+  import { mergeClasses } from '@/infrastructure/utils/misc';
 
-  export let title: string;
-  export let darkThemeTitle: string;
-  export let lightThemeTitle: string;
-  export let systemThemeTitle: string;
+  interface Props {
+    title: string;
+    darkThemeTitle: string;
+    lightThemeTitle: string;
+    systemThemeTitle: string;
+  }
 
-  let theme: Theme = 'system';
+  let { title, darkThemeTitle, lightThemeTitle, systemThemeTitle }: Props =
+    $props();
+
+  let theme: Theme = $state('system');
 
   onMount(() => {
     theme = window.__theme;
@@ -36,24 +42,24 @@
   <span class="text-center">{title}</span>
   <div class="flex gap-1">
     <button
-      class:active={theme === 'light'}
-      on:click={() => window.__switchTheme('light')}
+      class={mergeClasses('theme-option', theme === 'light' && 'active')}
+      onclick={() => window.__switchTheme('light')}
       title={lightThemeTitle}
       aria-label={lightThemeTitle}
     >
       <SunIcon stroke="1.5" />
     </button>
     <button
-      class:active={theme === 'system'}
-      on:click={() => window.__switchTheme('system')}
+      class={mergeClasses('theme-option', theme === 'system' && 'active')}
+      onclick={() => window.__switchTheme('system')}
       title={systemThemeTitle}
       aria-label={systemThemeTitle}
     >
       <LaptopIcon stroke="1.5" />
     </button>
     <button
-      class:active={theme === 'dark'}
-      on:click={() => window.__switchTheme('dark')}
+      class={mergeClasses('theme-option', theme === 'dark' && 'active')}
+      onclick={() => window.__switchTheme('dark')}
       title={darkThemeTitle}
       aria-label={darkThemeTitle}
     >
@@ -63,15 +69,15 @@
 </div>
 
 <style lang="postcss">
-  button {
+  .theme-option {
     @apply rounded-full p-2 border-opacity-50 text-opacity-50;
+    @apply hover:bg-gray-100;
+  }
+  .theme-option.active {
+    @apply text-secondary;
+  }
 
-    &:hover {
-      @apply bg-gray-100 dark:bg-gray-700;
-    }
-
-    &.active {
-      @apply text-secondary;
-    }
+  :global(html.dark .theme-option) {
+    @apply hover:bg-gray-700;
   }
 </style>

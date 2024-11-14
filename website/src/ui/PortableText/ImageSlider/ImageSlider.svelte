@@ -3,14 +3,18 @@
   import isEmpty from 'ramda/src/isEmpty';
   import isNil from 'ramda/src/isNil';
 
-  export let images: ({
-    id: string;
-    index: number;
-    caption: string;
-    alt: string;
-  } & GetImageResult)[] = [];
+  interface Props {
+    images?: ({
+      id: string;
+      index: number;
+      caption: string;
+      alt: string;
+    } & GetImageResult)[];
+  }
 
-  let activeIndex = 1;
+  let { images = [] }: Props = $props();
+
+  let activeIndex = $state(1);
 
   const isImageEmpty = isNil(images) || isEmpty(images);
 </script>
@@ -37,7 +41,7 @@
         href={`#${id}`}
         class="sliderItem"
         class:active={activeIndex === index}
-        on:click={() => (activeIndex = index)}
+        onclick={() => (activeIndex = index)}
       >
         {index}
       </a>

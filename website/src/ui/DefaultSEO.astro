@@ -165,13 +165,22 @@ const articleJsonLD = nextArticle
   }}
 />
 
-<script type="application/ld+json" set:html={JSON.stringify(logoJsonLD)} />
-<script type="application/ld+json" set:html={JSON.stringify(socialJsonLD)} />
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(logoJsonLD)}
+  is:inline
+/>
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(socialJsonLD)}
+  is:inline
+/>
 {
   articleJsonLD && (
     <script
       type="application/ld+json"
       set:html={JSON.stringify(articleJsonLD)}
+      is:inline
     />
   )
 }

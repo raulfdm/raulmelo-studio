@@ -9,10 +9,14 @@
 
   type Series = Post['series'];
 
-  export let currentPostId: string;
-  export let series: NonNullable<Series>;
-  export let seriesLabel: string;
-  export let language: Post['language'];
+  interface Props {
+    currentPostId: string;
+    series: NonNullable<Series>;
+    seriesLabel: string;
+    language: Post['language'];
+  }
+
+  let { currentPostId, series, seriesLabel, language }: Props = $props();
 </script>
 
 <section>

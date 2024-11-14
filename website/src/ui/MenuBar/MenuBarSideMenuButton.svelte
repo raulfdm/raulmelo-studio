@@ -7,7 +7,11 @@
     toggleSideMenu,
   } from '@/infrastructure/stores/sideMenu';
 
-  export let ariaLabel: string;
+  interface Props {
+    ariaLabel: string;
+  }
+
+  let { ariaLabel }: Props = $props();
 </script>
 
 <MenuButton

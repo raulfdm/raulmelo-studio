@@ -1,17 +1,24 @@
 <script lang="ts">
+  import { createBubbler } from 'svelte/legacy';
+
+  const bubble = createBubbler();
   import { mergeClasses } from '@/infrastructure/utils/misc';
 
-  let className = '';
+  interface Props {
+    class?: string;
+    children?: import('svelte').Snippet;
+    [key: string]: any;
+  }
 
-  export { className as class };
+  let { class: className = '', children, ...rest }: Props = $props();
 </script>
 
 <button
-  on:click
-  on:keydown
-  on:keyup
-  {...$$restProps}
+  onclick={bubble('click')}
+  onkeydown={bubble('keydown')}
+  onkeyup={bubble('keyup')}
+  {...rest}
   class={mergeClasses(`flex p-2 place-content-center`, className)}
 >
-  <slot />
+  {@render children?.()}
 </button>

@@ -6,8 +6,12 @@
   import { getTilUrl } from '@/infrastructure/utils/url';
   import ContentTile from '@/ui/ContentTile.svelte';
 
-  export let tils: QueryTilsReturnType;
-  export let lang: SupportedLanguages;
+  interface Props {
+    tils: QueryTilsReturnType;
+    lang: SupportedLanguages;
+  }
+
+  let { tils, lang }: Props = $props();
   const intl = getIntl(lang);
 </script>
 
