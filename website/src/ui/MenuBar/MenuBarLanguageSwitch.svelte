@@ -28,7 +28,7 @@
   </Popover.Trigger>
   <Popover.Content
     sideOffset={8}
-    class="z-10 flex flex-col bg-white border divide-y divide-gray-200 rounded shadow-sm max-w-min dark:border-gray-400 dark:divide-gray-500 dark:bg-blue-800"
+    class="z-40 flex flex-col bg-white border divide-y divide-gray-200 rounded shadow-sm max-w-min dark:border-gray-400 dark:divide-gray-500 dark:bg-blue-800"
   >
     <Popover.Arrow class="arrow" />
 
@@ -47,6 +47,18 @@
 
 <style lang="postcss">
   .language-button {
-    @apply flex-1 px-6 py-2 font-sans text-base text-center cursor-pointer whitespace-nowrap disabled:cursor-not-allowed disabled:font-semibold disabled:text-secondary;
+    @apply flex-1;
+    @apply px-6 py-2;
+    @apply font-sans text-base text-center;
+    @apply whitespace-nowrap;
+    @apply disabled:font-semibold disabled:text-secondary;
+    @apply cursor-pointer disabled:cursor-not-allowed;
+  }
+
+  :global(.arrow) {
+    --arrow-size: 16px;
+
+    @apply border border-gray-200 border-b-0 border-r-0;
+    bottom: calc(100% - 8px);
   }
 </style>
