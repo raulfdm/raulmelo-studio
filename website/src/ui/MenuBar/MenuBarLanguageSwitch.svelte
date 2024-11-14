@@ -54,11 +54,4 @@
     @apply disabled:font-semibold disabled:text-secondary;
     @apply cursor-pointer disabled:cursor-not-allowed;
   }
-
-  :global(.arrow) {
-    --arrow-size: 16px;
-
-    @apply border border-gray-200 border-b-0 border-r-0;
-    bottom: calc(100% - 8px);
-  }
 </style>
