@@ -1,7 +1,11 @@
 <script lang="ts">
   import { YouTube } from 'sveltekit-embed';
 
-  export let youTubeId: string;
+  interface Props {
+    youTubeId: string;
+  }
+
+  let { youTubeId }: Props = $props();
 </script>
 
 <YouTube {youTubeId} />

@@ -3,11 +3,21 @@
   import { copyMachine } from './copyMachine';
   import { ClipboardIcon, ClipboardCheckIcon } from 'lucide-svelte';
 
-  export let code: string;
-  export let codeHtml: string;
-  export let copyTitle = 'Copy code';
-  export let filename: string | null = null;
-  export let showLineNumbers: boolean;
+  interface Props {
+    code: string;
+    codeHtml: string;
+    copyTitle?: string;
+    filename?: string | null;
+    showLineNumbers: boolean;
+  }
+
+  let {
+    code,
+    codeHtml,
+    copyTitle = 'Copy code',
+    filename = null,
+    showLineNumbers,
+  }: Props = $props();
 
   const { snapshot, send } = useMachine(copyMachine);
 
@@ -26,7 +36,7 @@
       type="button"
       title={copyTitle}
       class="copy-btn focus:outline-white hover:text-gray-300"
-      on:click={onCopyCode}
+      onclick={onCopyCode}
     >
       {#if $snapshot.matches('copied')}
         <ClipboardCheckIcon stroke="1.5" />

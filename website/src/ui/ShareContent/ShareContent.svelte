@@ -5,10 +5,14 @@
   import LinkedinLogo from '@/ui/Icons/LinkedinLogo.svelte';
   import XLogo from '@/ui/Icons/XLogo.svelte';
 
-  export let titleLabel: ShareContentProps['titleLabel'];
-  export let linkedIn: ShareContentProps['linkedIn'];
-  export let twitter: ShareContentProps['twitter'];
-  export let appUrl: string;
+  interface Props {
+    titleLabel: ShareContentProps['titleLabel'];
+    linkedIn: ShareContentProps['linkedIn'];
+    twitter: ShareContentProps['twitter'];
+    appUrl: string;
+  }
+
+  let { titleLabel, linkedIn, twitter, appUrl }: Props = $props();
 
   const linkIdUrl = `https://www.linkedin.com/shareArticle?${qs.stringify(
     { url: appUrl, ...linkedIn },

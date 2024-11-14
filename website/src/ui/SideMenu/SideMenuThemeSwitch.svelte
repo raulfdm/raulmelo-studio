@@ -2,12 +2,17 @@
   import { onMount } from 'svelte';
   import { LaptopIcon, SunIcon, MoonIcon } from 'lucide-svelte';
 
-  export let title: string;
-  export let darkThemeTitle: string;
-  export let lightThemeTitle: string;
-  export let systemThemeTitle: string;
+  interface Props {
+    title: string;
+    darkThemeTitle: string;
+    lightThemeTitle: string;
+    systemThemeTitle: string;
+  }
 
-  let theme: Theme = 'system';
+  let { title, darkThemeTitle, lightThemeTitle, systemThemeTitle }: Props =
+    $props();
+
+  let theme: Theme = $state('system');
 
   onMount(() => {
     theme = window.__theme;
@@ -37,7 +42,7 @@
   <div class="flex gap-1">
     <button
       class:active={theme === 'light'}
-      on:click={() => window.__switchTheme('light')}
+      onclick={() => window.__switchTheme('light')}
       title={lightThemeTitle}
       aria-label={lightThemeTitle}
     >
@@ -45,7 +50,7 @@
     </button>
     <button
       class:active={theme === 'system'}
-      on:click={() => window.__switchTheme('system')}
+      onclick={() => window.__switchTheme('system')}
       title={systemThemeTitle}
       aria-label={systemThemeTitle}
     >
@@ -53,7 +58,7 @@
     </button>
     <button
       class:active={theme === 'dark'}
-      on:click={() => window.__switchTheme('dark')}
+      onclick={() => window.__switchTheme('dark')}
       title={darkThemeTitle}
       aria-label={darkThemeTitle}
     >

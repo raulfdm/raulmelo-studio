@@ -2,23 +2,35 @@
   import { mergeClasses } from '@/infrastructure/utils/misc';
   import { ArrowRightIcon } from 'lucide-svelte';
 
-  export let slug: string;
-  export let publishedAt: string;
-  export let title: string;
-  export let urlBuilder: (slug: string) => string;
-  export let readMoreLabel: string;
-  export let formatDate: (publishedAt: string) => string;
+  interface Props {
+    slug: string;
+    publishedAt: string;
+    title: string;
+    urlBuilder: (slug: string) => string;
+    readMoreLabel: string;
+    formatDate: (publishedAt: string) => string;
+    description?: string;
+    subtitle?: string;
+  }
 
-  export let description = '';
-  export let subtitle = '';
+  let {
+    slug,
+    publishedAt,
+    title,
+    urlBuilder,
+    readMoreLabel,
+    formatDate,
+    description = '',
+    subtitle = '',
+  }: Props = $props();
 
-  let isFocused = false;
+  let isFocused = $state(false);
 </script>
 
 <article
   class="mb-3"
-  on:mouseenter={() => (isFocused = true)}
-  on:mouseleave={() => (isFocused = false)}
+  onmouseenter={() => (isFocused = true)}
+  onmouseleave={() => (isFocused = false)}
 >
   <a href={urlBuilder(slug)} class="relative inline-block cursor-pointer">
     <h3

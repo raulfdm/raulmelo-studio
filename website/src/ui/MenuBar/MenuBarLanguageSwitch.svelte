@@ -5,7 +5,11 @@
   import type { SupportedLanguages } from '@/infrastructure/config/types/language';
   import { LanguagesIcon } from 'lucide-svelte';
 
-  export let ariaLabel: string;
+  interface Props {
+    ariaLabel: string;
+  }
+
+  let { ariaLabel }: Props = $props();
 
   function changeLocale(lang: SupportedLanguages) {
     return () => {
@@ -31,12 +35,12 @@
     <button
       class="language-button"
       aria-label="Switch to English"
-      on:click={changeLocale(`en`)}>English</button
+      onclick={changeLocale(`en`)}>English</button
     >
     <button
       class="language-button"
       aria-label="Mudar para Português"
-      on:click={changeLocale(`pt`)}>Português</button
+      onclick={changeLocale(`pt`)}>Português</button
     >
   </Popover.Content>
 </Popover.Root>

@@ -1,9 +1,13 @@
 <script lang="ts">
   import { CodePen } from 'sveltekit-embed';
 
-  export let directUrl: string;
-  export let src: string | undefined;
-  export let height: string | undefined;
+  interface Props {
+    directUrl: string;
+    src: string | undefined;
+    height: string | undefined;
+  }
+
+  let { directUrl, src, height }: Props = $props();
 
   const nextUrl = src || directUrl;
   const codePenId = nextUrl.split('/').at(-1)!;

@@ -3,18 +3,24 @@
   import type { SideMenuLink } from './links';
   import { ExternalLinkIcon } from 'lucide-svelte';
 
-  export let href: SideMenuLink['href'];
-  export let itemLabel: SideMenuLink['itemLabel'];
-  export let newWindow: SideMenuLink['newWindow'];
-  export let prefetch: SideMenuLink['prefetch'];
-  export let isActive: SideMenuLink['isActive'];
+  interface Props {
+    href: SideMenuLink['href'];
+    itemLabel: SideMenuLink['itemLabel'];
+    newWindow: SideMenuLink['newWindow'];
+    prefetch: SideMenuLink['prefetch'];
+    isActive: SideMenuLink['isActive'];
+  }
 
-  const extraProps: { [key: string]: string } = newWindow
-    ? {
-        target: '_blank',
-        rel: 'noopener noreferrer',
-      }
-    : {};
+  let { href, itemLabel, newWindow, prefetch, isActive }: Props = $props();
+
+  const extraProps: { [key: string]: string } = $state(
+    newWindow
+      ? {
+          target: '_blank',
+          rel: 'noopener noreferrer',
+        }
+      : {},
+  );
 
   if (prefetch) {
     extraProps['data-astro-prefetch'] = '';

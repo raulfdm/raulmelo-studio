@@ -2,7 +2,11 @@
   import { mergeClasses } from '@/infrastructure/utils/misc';
   import type { BreadcrumbType } from './types';
 
-  export let crumb: BreadcrumbType;
+  interface Props {
+    crumb: BreadcrumbType;
+  }
+
+  let { crumb }: Props = $props();
 
   const isLink = 'href' in crumb;
 </script>
