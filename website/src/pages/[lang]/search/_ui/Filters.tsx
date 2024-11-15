@@ -1,10 +1,10 @@
-import isEmpty from 'ramda/src/isEmpty';
 import { useRefinementList } from 'react-instantsearch';
 
 import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import { mergeClasses } from '@/infrastructure/utils/misc';
 
 import type { RefinementListProps } from './types';
+import { isEmpty } from '@/infrastructure/utils/isEmpty';
 
 export function Filters({
   languageTitle,

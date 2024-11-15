@@ -1,7 +1,4 @@
 ---
-import isEmpty from 'ramda/src/isEmpty';
-import isNil from 'ramda/src/isNil';
-
 import { queryPostBySlug } from '@/infrastructure/api/modules/posts';
 import type { SupportedLanguages } from '@/infrastructure/config/types/language';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
@@ -25,6 +22,8 @@ import { Tag, Tags } from '@/ui/Tags';
 
 import FeaturedImage from './_ui/FeaturedImage.astro';
 import SeriesSection from './_ui/SeriesSection.svelte';
+import { isNil } from '@/infrastructure/utils/isNil';
+import { isEmpty } from '@/infrastructure/utils/isEmpty';
 
 const { lang, slug } = Astro.params as {
   slug: string;
