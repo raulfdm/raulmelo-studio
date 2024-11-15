@@ -1,7 +1,7 @@
 <script lang="ts">
+  import { isEmpty } from '@/infrastructure/utils/isEmpty';
   import { isNil } from '@/infrastructure/utils/isNil';
   import type { GetImageResult } from 'astro';
-  import isEmpty from 'ramda/src/isEmpty';
 
   interface Props {
     images?: ({
