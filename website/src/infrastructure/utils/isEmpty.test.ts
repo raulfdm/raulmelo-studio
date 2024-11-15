@@ -9,6 +9,8 @@ describe('fn: isEmpty', () => {
     expect(isEmpty([])).toBe(true);
     expect(isEmpty({})).toBe(true);
     expect(isEmpty(Uint8Array.from([]))).toBe(true);
+    expect(isEmpty(new Map())).toBe(true);
+    expect(isEmpty(new Set())).toBe(true);
   });
 
   it('should return false for non-empty values', () => {
@@ -18,5 +20,8 @@ describe('fn: isEmpty', () => {
     expect(isEmpty(1)).toBe(false);
     expect(isEmpty([1])).toBe(false);
     expect(isEmpty({ a: 1 })).toBe(false);
+    expect(isEmpty(Uint8Array.from([1]))).toBe(false);
+    expect(isEmpty(new Map([['a', 1]]))).toBe(false);
+    expect(isEmpty(new Set([1]))).toBe(false);
   });
 });
