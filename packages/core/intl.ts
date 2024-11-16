@@ -1,11 +1,22 @@
 import { z } from 'zod';
 
-export const SupportedLanguage = ['en', 'pt'] as const;
-export type SupportedLanguage = (typeof SupportedLanguage)[number];
+/**
+ * Basic array of supported languages.
+ */
+export const SupportedLanguages = ['en', 'pt'] as const;
 
-export const SupportedLanguages = z.enum(SupportedLanguage);
-export type SupportedLanguages = z.infer<typeof SupportedLanguages>;
+/**
+ * Supported language schema
+ */
+export const SupportedLanguage = z.enum(SupportedLanguages);
+/**
+ * Supported language type
+ */
+export type SupportedLanguage = z.infer<typeof SupportedLanguage>;
 
+/**
+ * Supported language containing names
+ */
 export const SupportedLanguageNames: Record<
   SupportedLanguage,
   {
