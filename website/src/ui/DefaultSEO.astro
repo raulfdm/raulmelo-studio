@@ -37,7 +37,7 @@ const {
 const siteData = await querySiteData({ client: sanityClient });
 
 const langSeo = siteData.defaultSeo[lang] as NonNullable<
-  (typeof siteData.defaultSeo)[`en` | `pt`]
+  (typeof siteData.defaultSeo)[SupportedLanguage]
 >;
 
 const seoTwitterInfo = siteData.socials.find(

@@ -3,7 +3,7 @@ import { flatten } from 'flat';
 
 import enLocales from './locales/en.json';
 import ptLocales from './locales/pt.json';
-import { SupportedLanguage } from '@raulmelo/core/intl';
+import { SupportedLanguage, SupportedLanguagesEnum } from '@raulmelo/core/intl';
 
 /**
  * Caches prevent memory leaks and improve performance by caching
@@ -14,14 +14,14 @@ const ptCache = createIntlCache();
 const serverIntl: Record<SupportedLanguage, IntlShape<SupportedLanguage>> = {
   en: createIntl(
     {
-      locale: `en`,
+      locale: SupportedLanguagesEnum.ENGLISH,
       messages: flatten(enLocales),
     },
     enCache,
   ),
   pt: createIntl(
     {
-      locale: `pt`,
+      locale: SupportedLanguagesEnum.PORTUGUESE,
       messages: flatten(ptLocales),
     },
     ptCache,

@@ -84,7 +84,7 @@ export function getPathnameWithLocale(
 ) {
   const hasLocale = pathname.startsWith(`/${locale}`);
 
-  if (/* locale === `en` || */ hasLocale) {
+  if (/* locale === SupportedLanguagesEnum.ENGLISH || */ hasLocale) {
     return pathname;
   }
 
