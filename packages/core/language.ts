@@ -1,7 +1,7 @@
-const acceptedLanguagesCode = ['en', 'pt'] as const;
-type AcceptedLanguagesCode = (typeof acceptedLanguagesCode)[number];
+export const acceptedLanguagesCode = ['en', 'pt'] as const;
+export type AcceptedLanguagesCode = (typeof acceptedLanguagesCode)[number];
 
-class Language {
+export class Language {
   code: AcceptedLanguagesCode;
   name: string;
 
@@ -22,6 +22,10 @@ class Languages {
 
   public get allLanguages() {
     return [this.#en, this.#pt];
+  }
+
+  public get allLanguagesCodes(): AcceptedLanguagesCode[] {
+    return this.allLanguages.map((lang) => lang.code);
   }
 
   public getLanguageByCode(code: AcceptedLanguagesCode) {
