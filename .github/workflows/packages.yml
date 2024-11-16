@@ -13,13 +13,13 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup environment
-        uses: ./.github/actions/pnpm-bun-setup
+        uses: ./.github/actions/bun
 
       - name: Lint Projects
-        run: pnpm run lint --filter="./packages/*"
+        run: bun run lint --filter="./packages/*"
 
       - name: Test Projects
-        run: pnpm run test --filter="./packages/*"
+        run: bun run test --filter="./packages/*"
 
       - name: Build Projects
-        run: pnpm run build --filter="./packages/*"
+        run: bun run build --filter="./packages/*"
