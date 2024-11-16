@@ -1,4 +1,6 @@
-export const languageField = {
+import {defineField} from 'sanity'
+
+export const languageField = defineField({
   title: `Language`,
   type: `string`,
   name: `language`,
@@ -10,4 +12,4 @@ export const languageField = {
       {title: `Português`, value: `pt`},
     ],
   },
-}
+})
