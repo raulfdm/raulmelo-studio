@@ -34,6 +34,6 @@ export const SupportedLanguageNames: Record<
   },
   pt: {
     code: SupportedLanguagesEnum.PORTUGUESE,
-    name: 'Portuguese',
+    name: 'Português',
   },
 };
