@@ -1,36 +1,24 @@
-export const acceptedLanguagesCode = ['en', 'pt'] as const;
-export type AcceptedLanguagesCode = (typeof acceptedLanguagesCode)[number];
+import { z } from 'zod';
 
-export class Language {
-  code: AcceptedLanguagesCode;
-  name: string;
+export const SupportedLanguage = ['en', 'pt'] as const;
+export type SupportedLanguage = (typeof SupportedLanguage)[number];
 
-  constructor(languageCode: AcceptedLanguagesCode, name: string) {
-    this.code = languageCode;
-    this.name = name;
+export const SupportedLanguages = z.enum(SupportedLanguage);
+export type SupportedLanguages = z.infer<typeof SupportedLanguages>;
+
+export const SupportedLanguageNames: Record<
+  SupportedLanguage,
+  {
+    code: SupportedLanguage;
+    name: string;
   }
-}
-
-class Languages {
-  #en: Language;
-  #pt: Language;
-
-  constructor() {
-    this.#en = new Language('en', 'English');
-    this.#pt = new Language('pt', 'Portuguese');
-  }
-
-  public get allLanguages() {
-    return [this.#en, this.#pt];
-  }
-
-  public get allLanguagesCodes() {
-    return this.allLanguages.map((lang) => lang.code);
-  }
-
-  public getLanguageByCode(code: AcceptedLanguagesCode) {
-    return this.allLanguages.find((lang) => lang.code === code);
-  }
-}
-
-export const LANGUAGES = new Languages();
+> = {
+  en: {
+    code: 'en',
+    name: 'English',
+  },
+  pt: {
+    code: 'pt',
+    name: 'Portuguese',
+  },
+};
