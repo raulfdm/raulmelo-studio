@@ -1,9 +1,9 @@
 import { createIntl, createIntlCache, type IntlShape } from '@formatjs/intl';
 import { flatten } from 'flat';
 
-import { SupportedLanguages } from '../config/types/language';
 import enLocales from './locales/en.json';
 import ptLocales from './locales/pt.json';
+import { SupportedLanguage } from '@raulmelo/core/intl';
 
 /**
  * Caches prevent memory leaks and improve performance by caching
@@ -11,7 +11,7 @@ import ptLocales from './locales/pt.json';
 const enCache = createIntlCache();
 const ptCache = createIntlCache();
 
-const serverIntl: Record<SupportedLanguages, IntlShape<SupportedLanguages>> = {
+const serverIntl: Record<SupportedLanguage, IntlShape<SupportedLanguage>> = {
   en: createIntl(
     {
       locale: `en`,
@@ -29,9 +29,9 @@ const serverIntl: Record<SupportedLanguages, IntlShape<SupportedLanguages>> = {
 };
 
 export function getIntl(
-  locale: SupportedLanguages,
-): IntlShape<SupportedLanguages> {
-  const { success } = SupportedLanguages.safeParse(locale);
+  locale: SupportedLanguage,
+): IntlShape<SupportedLanguage> {
+  const { success } = SupportedLanguage.safeParse(locale);
 
   if (!success) {
     throw new Error(`Invalid locale: ${locale}`);

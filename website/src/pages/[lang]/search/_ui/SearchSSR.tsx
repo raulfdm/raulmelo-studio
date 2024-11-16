@@ -3,13 +3,13 @@ import {
   InstantSearchSSRProvider,
 } from 'react-instantsearch';
 
-import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
+import type { SupportedLanguage } from '@raulmelo/core/intl';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 
 import { Search } from './Search';
 
 type Props = {
-  lang: AcceptedLanguagesCode;
+  lang: SupportedLanguage;
   searchServerState: InstantSearchServerState;
 };
 

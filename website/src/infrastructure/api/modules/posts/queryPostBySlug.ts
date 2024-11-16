@@ -3,7 +3,7 @@ import type { SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import { SupportedLanguages } from '@/infrastructure/config/types/language';
+import { SupportedLanguage } from '@raulmelo/core/intl';
 
 type QueryPostBySlugParams = {
   slug: string;
@@ -143,7 +143,7 @@ const seriesSchema = z.object({
 const relatedPostSchema = z.object({
   _id: z.string(),
   _type: z.enum(['post', 'til']),
-  lang: SupportedLanguages,
+  lang: SupportedLanguage,
   publishedAt: z.string(),
   slug: z.string(),
   tags: z.array(postTagSchema).nullable(),
@@ -156,7 +156,7 @@ const blogPostBySlugSchema = z.object({
   description: z.string(),
   featuredImage: featuredImageSchema.nullable(),
   imageCaption: z.string().nullable(),
-  language: SupportedLanguages,
+  language: SupportedLanguage,
   publishedAt: z.string(),
   series: seriesSchema.nullable(),
   slug: z.string(),

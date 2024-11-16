@@ -3,17 +3,18 @@ import groq from 'groq';
 import { z } from 'zod';
 
 import {
-  SUPPORTED_LANGUAGES,
-  SupportedLanguages,
-  type SupportedLanguagesWithAll,
+  SUPPORTED_LANGUAGES_WITH_ALL,
+  type SupportedLanguageOrAll,
 } from '@/infrastructure/config/types/language';
+import { SupportedLanguage } from '@raulmelo/core/intl';
 
 type QueryPostsParams = {
-  language: SupportedLanguagesWithAll;
+  language: SupportedLanguageOrAll;
   client: SanityClient;
 };
 export async function queryPosts({ language, client }: QueryPostsParams) {
-  const languages = language === 'all' ? SUPPORTED_LANGUAGES : [language];
+  const languages =
+    language === 'all' ? SUPPORTED_LANGUAGES_WITH_ALL : [language];
 
   const result = await client.fetch(postQuery, { languages });
 
@@ -51,7 +52,7 @@ const postQuery = groq`
 
 const blogPagePostSchema = z.object({
   _id: z.string(),
-  language: SupportedLanguages,
+  language: SupportedLanguage,
   slug: z.string(),
   publishedAt: z.string(),
   title: z.string(),

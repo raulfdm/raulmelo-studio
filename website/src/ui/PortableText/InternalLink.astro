@@ -1,5 +1,5 @@
 ---
-import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
+import type { SupportedLanguage } from '@raulmelo/core/intl';
 import { getPostUrl, getTilUrl } from '@/infrastructure/utils/url';
 
 /**
@@ -29,7 +29,7 @@ const { children, markDef } = Astro.props.node;
  * Isn't working when a internal link is referenced in a "quote" (info, etc.).
  */
 const { _type, slug } = markDef.itemMeta || {};
-const { lang } = Astro.params as { lang: AcceptedLanguagesCode };
+const { lang } = Astro.params as { lang: SupportedLanguage };
 
 const content = children[0].text;
 

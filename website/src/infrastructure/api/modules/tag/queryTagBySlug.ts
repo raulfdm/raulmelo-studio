@@ -1,12 +1,11 @@
+import { SupportedLanguage } from '@raulmelo/core/intl';
 import type { SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import { SupportedLanguages } from '@/infrastructure/config/types/language';
-
 type QueryTagBySlugParams = {
   slug: string;
-  language: SupportedLanguages;
+  language: SupportedLanguage;
   client: SanityClient;
 };
 
@@ -93,7 +92,7 @@ const tagCommonSchema = z.object({
   publishedAt: z.string(),
   slug: z.string(),
   title: z.string(),
-  language: SupportedLanguages,
+  language: SupportedLanguage,
   tags: z.array(tagSchema).nullable(),
 });
 

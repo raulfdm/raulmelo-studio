@@ -2,13 +2,13 @@ import rss from '@astrojs/rss';
 import type { APIRoute } from 'astro';
 
 import { queryRssData } from '@/infrastructure/api/modules/rss';
-import { SupportedLanguages } from '@/infrastructure/config/types/language';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { sortPostsByPublishedDate } from '@/infrastructure/api/modules/posts';
+import { SupportedLanguage } from '@raulmelo/core/intl';
 
 export const GET: APIRoute = async ({ params }) => {
   const { lang } = params as { lang: string };
-  const langParseResult = SupportedLanguages.safeParse(lang);
+  const langParseResult = SupportedLanguage.safeParse(lang);
 
   if (!langParseResult.success) {
     return new Response(null, {

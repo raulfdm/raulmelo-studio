@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
+  import type { SupportedLanguage } from '@raulmelo/core/intl';
 
   import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
   import { getSocial } from '@/infrastructure/utils/seo';
@@ -12,7 +12,7 @@
   import type { QuerySiteDataReturnType } from '@/infrastructure/api/modules/siteData';
 
   interface Props {
-    lang: AcceptedLanguagesCode;
+    lang: SupportedLanguage;
     siteData: QuerySiteDataReturnType;
     img?: import('svelte').Snippet;
   }

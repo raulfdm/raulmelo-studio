@@ -1,7 +1,7 @@
 import { match } from '@formatjs/intl-localematcher';
 import { defineMiddleware, sequence } from 'astro/middleware';
 import Negotiator from 'negotiator';
-import { LANGUAGES, type AcceptedLanguagesCode } from '@raulmelo/core/language';
+import { SupportedLanguage, SupportedLanguages } from '@raulmelo/core/intl';
 
 const themeHintHandler = defineMiddleware(async ({ request, locals }, next) => {
   if (skipMiddleware(request.url)) {
@@ -30,7 +30,7 @@ const languageHandler = defineMiddleware(
       return next();
     }
 
-    const pathnameIsMissingLocale = LANGUAGES.allLanguagesCodes.every(
+    const pathnameIsMissingLocale = SupportedLanguages.every(
       (locale) =>
         !url.pathname.startsWith(`/${locale}/`) &&
         url.pathname !== `/${locale}`,
@@ -56,7 +56,7 @@ const languageHandler = defineMiddleware(
 
 export const onRequest = sequence(languageHandler, themeHintHandler);
 
-const defaultLocale: AcceptedLanguagesCode = `en`;
+const defaultLocale: SupportedLanguage = `en`;
 const passThroughRoutes = [`/cv`, `/admin`, `/_image`, `/api`];
 
 function skipMiddleware(url: string) {
@@ -78,13 +78,13 @@ function getLanguageFromAcceptLanguage(acceptLanguageHeader: string) {
     headers: {
       'accept-language': acceptLanguageHeader,
     },
-  }).languages(LANGUAGES.allLanguagesCodes);
+  }).languages(SupportedLanguages as unknown as string[]);
 
   return match(
     languages,
-    LANGUAGES.allLanguagesCodes,
+    SupportedLanguages,
     defaultLocale,
-  ) as AcceptedLanguagesCode;
+  ) as SupportedLanguage;
 }
 
 function normalizePathname(pathname: string) {

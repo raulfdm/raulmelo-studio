@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { QueryTilsReturnType } from '@/infrastructure/api/modules/posts';
-  import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
+  import type { SupportedLanguage } from '@raulmelo/core/intl';
 
   import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
   import { getTilUrl } from '@/infrastructure/utils/url';
@@ -8,7 +8,7 @@
 
   interface Props {
     tils: QueryTilsReturnType;
-    lang: AcceptedLanguagesCode;
+    lang: SupportedLanguage;
   }
 
   let { tils, lang }: Props = $props();

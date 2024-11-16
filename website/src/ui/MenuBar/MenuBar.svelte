@@ -1,7 +1,7 @@
 <script lang="ts">
   import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
   import { getPathnameWithLocale } from '@/infrastructure/utils/url';
-  import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
+  import type { SupportedLanguage } from '@raulmelo/core/intl';
   import Logo from '../Logo.svelte';
   import MenuBarLanguageSwitch from './MenuBarLanguageSwitch.svelte';
   import { SideMenu } from '../SideMenu';
@@ -9,7 +9,7 @@
   import { mergeClasses } from '@/infrastructure/utils/misc';
 
   interface Props {
-    lang: AcceptedLanguagesCode;
+    lang: SupportedLanguage;
     pathname: string;
   }
 

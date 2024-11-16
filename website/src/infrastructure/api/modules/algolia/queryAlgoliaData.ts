@@ -3,7 +3,7 @@ import type { SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import { SupportedLanguages } from '@/infrastructure/config/types/language.js';
+import { SupportedLanguage } from '@raulmelo/core/intl';
 import { contentBlockToRawText } from '@/infrastructure/utils/contentBlockToRawText.js';
 
 import {
@@ -104,7 +104,7 @@ const algoliaTilsQuery = groq`
 const commonContentSchema = z.object({
   _id: z.string(),
   content: z.any().transform((value) => value as PortableTextBlock),
-  language: SupportedLanguages,
+  language: SupportedLanguage,
   publishedAt: z.string(),
   slug: z.string(),
   tags: z

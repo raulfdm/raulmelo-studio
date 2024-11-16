@@ -1,6 +1,9 @@
 import { useRefinementList } from 'react-instantsearch';
 
-import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
+import {
+  type SupportedLanguage,
+  SupportedLanguageNames,
+} from '@raulmelo/core/intl';
 import { mergeClasses } from '@/infrastructure/utils/misc';
 
 import type { RefinementListProps } from './types';
@@ -25,11 +28,6 @@ export function Filters({
 }
 
 function LanguageRefinement({ title }: { title: string }) {
-  const langMap: Record<SupportedLanguages, string> = {
-    pt: `Português`,
-    en: `English`,
-  };
-
   const { items, refine } = useRefinementList({
     attribute: `language`,
     operator: `or`,
@@ -39,7 +37,7 @@ function LanguageRefinement({ title }: { title: string }) {
     <GenericRefinement
       items={items}
       refine={refine}
-      renderLabelText={(t: SupportedLanguages) => langMap[t]}
+      renderLabelText={(t: SupportedLanguage) => SupportedLanguageNames[t].name}
       title={title}
     />
   );

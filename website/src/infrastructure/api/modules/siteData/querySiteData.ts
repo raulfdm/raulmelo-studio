@@ -1,8 +1,7 @@
+import { SupportedLanguage } from '@raulmelo/core/intl';
 import type { SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
-
-import { SupportedLanguages } from '@/infrastructure/config/types/language';
 
 type QuerySiteDataParams = {
   client: SanityClient;
@@ -101,6 +100,6 @@ const siteSettings = z.object({
 const siteDataSchema = z.object({
   personalInformation: personalInfoSchema,
   site: siteSettings,
-  defaultSeo: z.record(SupportedLanguages, defaultSeoSchema),
+  defaultSeo: z.record(SupportedLanguage, defaultSeoSchema),
   socials: z.array(socialSchema),
 });

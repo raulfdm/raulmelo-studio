@@ -4,7 +4,7 @@ import './_ui/Search.css';
 import { renderToString } from 'react-dom/server';
 import { getServerState } from 'react-instantsearch';
 
-import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
+import type { SupportedLanguage } from '@raulmelo/core/intl';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { getHomePageUrl } from '@/infrastructure/utils/url';
 import { Breadcrumbs } from '@/ui/Breadcrumbs';
@@ -13,7 +13,7 @@ import Layout from '@/ui/layouts/Layout.astro';
 import { Search } from './_ui/Search';
 import { SearchSSR } from './_ui/SearchSSR';
 
-const { lang } = Astro.params as { lang: AcceptedLanguagesCode };
+const { lang } = Astro.params as { lang: SupportedLanguage };
 
 const intl = getIntl(lang);
 

@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 
 import type { QueryPostBySlugReturnType } from '@/infrastructure/api/modules/posts';
-import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
+import type { SupportedLanguage } from '@raulmelo/core/intl';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { imgUrlFor } from '@/infrastructure/utils/image';
@@ -10,7 +10,7 @@ import { imgUrlFor } from '@/infrastructure/utils/image';
 type Post = NonNullable<QueryPostBySlugReturnType>;
 
 type Props = {
-  lang: AcceptedLanguagesCode;
+  lang: SupportedLanguage;
   featuredImage: NonNullable<Post[`featuredImage`]>;
   unsplash?: Post['unsplash'];
 };

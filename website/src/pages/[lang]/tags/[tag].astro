@@ -1,7 +1,7 @@
 ---
 import { sortPostsByPublishedDate } from '@/infrastructure/api/modules/posts';
 import { queryTagBySlug } from '@/infrastructure/api/modules/tag';
-import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
+import type { SupportedLanguage } from '@raulmelo/core/intl';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { isEmpty } from '@/infrastructure/utils/isEmpty';
@@ -17,7 +17,7 @@ import Layout from '@/ui/layouts/Layout.astro';
 import PostBasic from '@/ui/PostBasic.astro';
 
 const { lang, tag } = Astro.params as {
-  lang: AcceptedLanguagesCode;
+  lang: SupportedLanguage;
   tag: string;
 };
 

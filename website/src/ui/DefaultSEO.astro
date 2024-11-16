@@ -2,12 +2,12 @@
 import { type Link, type Meta, type Props as SeoProps, SEO } from 'astro-seo';
 
 import { querySiteData } from '@/infrastructure/api/modules/siteData';
-import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
+import type { SupportedLanguage } from '@raulmelo/core/intl';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { sanitizeUrl } from '@/infrastructure/utils/url';
 
 export interface Props {
-  lang: AcceptedLanguagesCode;
+  lang: SupportedLanguage;
   title?: string;
   description?: string;
   image?: NonNullable<SeoProps[`openGraph`]>[`image`];

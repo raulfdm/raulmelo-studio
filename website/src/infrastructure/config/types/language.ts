@@ -1,10 +1,10 @@
 import {
-  acceptedLanguagesCode,
-  type AcceptedLanguagesCode,
-} from '@raulmelo/core/language';
+  SupportedLanguages,
+  type SupportedLanguage,
+} from '@raulmelo/core/intl';
 
-export type AcceptedLanguagesWithAll = AcceptedLanguagesCode | 'all';
-export const ACCEPTED_LANGUAGES_WITH_ALL = [
+export type SupportedLanguageOrAll = SupportedLanguage | 'all';
+export const SUPPORTED_LANGUAGES_WITH_ALL = [
   'all',
-  ...acceptedLanguagesCode,
+  ...SupportedLanguages,
 ] as const;

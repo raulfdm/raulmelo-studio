@@ -1,7 +1,7 @@
 import { match } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 
-import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
+import type { SupportedLanguage } from '@raulmelo/core/intl';
 
 export const supportedLocales = [`en`, `pt`];
 const defaultLocale = `en`;
@@ -13,9 +13,5 @@ export function getLanguageFromAcceptLanguage(acceptLanguageHeader: string) {
     },
   }).languages(supportedLocales);
 
-  return match(
-    languages,
-    supportedLocales,
-    defaultLocale,
-  ) as SupportedLanguages;
+  return match(languages, supportedLocales, defaultLocale) as SupportedLanguage;
 }
