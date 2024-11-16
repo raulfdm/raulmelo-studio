@@ -9,11 +9,15 @@ type Props = {
 
 import type { PortableTextTextBlock } from 'sanity';
 
-import { IconAlertOctagon, IconInfoHexagon, IconNotes } from '@/ui/icons-react';
+import {
+  AlertOctagonIcon,
+  BadgeInfoIcon,
+  NotepadTextIcon,
+  type Icon,
+} from 'lucide-svelte';
 
 import PortableText from '../PortableText.astro';
 import type { CalloutType } from './types';
-import type { Icon } from '@tabler/icons-react';
 
 const { content, type, title } = Astro.props.node;
 
@@ -36,7 +40,7 @@ const calloutMap: Record<
       title: `text-sky-900 dark:text-sky-50`,
       icon: `text-sky-900 dark:text-sky-100`,
     },
-    Icon: IconInfoHexagon,
+    Icon: BadgeInfoIcon,
   },
   note: {
     css: {
@@ -44,7 +48,7 @@ const calloutMap: Record<
       title: `text-emerald-900 dark:text-emerald-50`,
       icon: `text-emerald-900 dark:text-emerald-100`,
     },
-    Icon: IconNotes,
+    Icon: NotepadTextIcon,
   },
   warn: {
     css: {
@@ -52,7 +56,7 @@ const calloutMap: Record<
       title: `text-amber-900 dark:text-amber-50`,
       icon: `text-amber-900 dark:text-amber-100`,
     },
-    Icon: IconAlertOctagon,
+    Icon: AlertOctagonIcon,
   },
 };
 
@@ -67,7 +71,7 @@ const currentCallout = calloutMap[nextType];
     class="absolute top left-0 p-1.5 rounded-full callout-icon hidden lg:block"
     class:list={[currentCallout.css.icon]}
   >
-    <currentCallout.Icon size={32} stroke="1.5" />
+    <currentCallout.Icon size={32} strokeWidth={1.5} />
   </div>
 
   <div class="w-full px-8 py-6 prose-lg callout-content">
