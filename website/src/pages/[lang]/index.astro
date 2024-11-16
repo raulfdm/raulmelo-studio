@@ -13,6 +13,10 @@ import Layout from '@/ui/layouts/Layout.astro';
 
 import PostSection from './_ui/PostSection.astro';
 
+import { hola } from '@raulmelo/core';
+
+hola();
+
 const { lang } = Astro.params as { lang: SupportedLanguages };
 
 const { success } = SupportedLanguages.safeParse(lang);
