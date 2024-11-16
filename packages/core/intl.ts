@@ -1,9 +1,16 @@
 import { z } from 'zod';
 
+export const SupportedLanguagesEnum = {
+  ENGLISH: 'en',
+  PORTUGUESE: 'pt',
+} as const;
 /**
  * Basic array of supported languages.
  */
-export const SupportedLanguages = ['en', 'pt'] as const;
+export const SupportedLanguages = [
+  SupportedLanguagesEnum.ENGLISH,
+  SupportedLanguagesEnum.PORTUGUESE,
+] as const;
 
 /**
  * Supported language zod schema and type.
@@ -22,11 +29,11 @@ export const SupportedLanguageNames: Record<
   }
 > = {
   en: {
-    code: 'en',
+    code: SupportedLanguagesEnum.ENGLISH,
     name: 'English',
   },
   pt: {
-    code: 'pt',
+    code: SupportedLanguagesEnum.PORTUGUESE,
     name: 'Portuguese',
   },
 };
