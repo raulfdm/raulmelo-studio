@@ -2,7 +2,7 @@
   import { Popover } from 'bits-ui';
 
   import { getPathnameWithoutLocale } from '@/infrastructure/utils/url';
-  import type { SupportedLanguages } from '@/infrastructure/config/types/language';
+  import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
   import { LanguagesIcon } from 'lucide-svelte';
 
   interface Props {
@@ -11,7 +11,7 @@
 
   let { ariaLabel }: Props = $props();
 
-  function changeLocale(lang: SupportedLanguages) {
+  function changeLocale(lang: AcceptedLanguagesCode) {
     return () => {
       const pathnameWithoutLocale = getPathnameWithoutLocale(
         window.location.pathname,

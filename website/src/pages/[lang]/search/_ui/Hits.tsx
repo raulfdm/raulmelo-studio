@@ -1,6 +1,6 @@
 import { Hits as HitsComp } from 'react-instantsearch';
 
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
+import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import {
   getPostUrl,
@@ -12,13 +12,13 @@ import { ContentTypeTag } from '@/ui/ContentTypeTag';
 import type { HitAlgolia } from './types';
 
 type HitsProps = {
-  lang: SupportedLanguages;
+  lang: AcceptedLanguagesCode;
 };
 
 const hrefFuncMap: {
   [key in HitAlgolia['_type']]: (
     slug: string,
-    lang: SupportedLanguages,
+    lang: AcceptedLanguagesCode,
   ) => string;
 } = {
   post: getPostUrl,

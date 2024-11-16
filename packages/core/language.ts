@@ -24,7 +24,7 @@ class Languages {
     return [this.#en, this.#pt];
   }
 
-  public get allLanguagesCodes(): AcceptedLanguagesCode[] {
+  public get allLanguagesCodes() {
     return this.allLanguages.map((lang) => lang.code);
   }
 

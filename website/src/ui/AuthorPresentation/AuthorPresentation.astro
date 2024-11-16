@@ -2,13 +2,13 @@
 import { Image } from 'astro:assets';
 
 import { querySiteData } from '@/infrastructure/api/modules/siteData';
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
+import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 
 import AuthorPresentationComponent from './AuthorPresentation.svelte';
 
-const { lang } = Astro.params as { lang: SupportedLanguages };
+const { lang } = Astro.params as { lang: AcceptedLanguagesCode };
 const siteData = await querySiteData({
   client: sanityClient,
 });

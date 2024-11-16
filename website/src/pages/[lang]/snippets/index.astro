@@ -1,6 +1,6 @@
 ---
 import { queryCodeSnippets } from '@/infrastructure/api/modules/codeSnippets';
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
+import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { getHomePageUrl, getSnippetUrl } from '@/infrastructure/utils/url';
@@ -9,7 +9,7 @@ import ContentTile from '@/ui/ContentTile.svelte';
 import Layout from '@/ui/layouts/Layout.astro';
 import Divider from '@/ui/PortableText/Divider.astro';
 
-const { lang } = Astro.params as { lang: SupportedLanguages };
+const { lang } = Astro.params as { lang: AcceptedLanguagesCode };
 
 const intl = getIntl(lang);
 

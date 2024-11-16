@@ -1,7 +1,10 @@
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
+import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
 import { getPathnameWithLocale } from '@/infrastructure/utils/url';
 
-export function useSideMenuLinks(lang: SupportedLanguages, pathname: string) {
+export function useSideMenuLinks(
+  lang: AcceptedLanguagesCode,
+  pathname: string,
+) {
   return [
     {
       href: ``,

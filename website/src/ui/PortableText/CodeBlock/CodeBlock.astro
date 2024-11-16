@@ -3,7 +3,7 @@ import '@raulmelo/code-highlight/styles';
 
 import { highlight } from '@raulmelo/code-highlight';
 
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
+import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 
 import CodeBlockSvelte from './CodeBlock.svelte';
@@ -25,7 +25,7 @@ const {
   filename,
   showLineNumbers = true,
 } = Astro.props.node;
-const { lang } = Astro.params as { lang: SupportedLanguages };
+const { lang } = Astro.params as { lang: AcceptedLanguagesCode };
 
 const intl = getIntl(lang);
 ---

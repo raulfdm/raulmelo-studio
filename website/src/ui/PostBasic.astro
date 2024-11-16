@@ -1,5 +1,5 @@
 ---
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
+import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { mergeClasses } from '@/infrastructure/utils/misc';
 import { getTagUrl } from '@/infrastructure/utils/url';
@@ -8,7 +8,7 @@ import { ContentTypeTag } from '@/ui/ContentTypeTag';
 import { Tag, Tags } from './Tags';
 
 export interface Props {
-  lang: SupportedLanguages;
+  lang: AcceptedLanguagesCode;
   title: string;
   subtitle: string | null;
   url: string;
@@ -35,7 +35,7 @@ const {
   ...props
 } = Astro.props;
 
-const { lang } = Astro.params as { lang: SupportedLanguages };
+const { lang } = Astro.params as { lang: AcceptedLanguagesCode };
 
 const intl = getIntl(lang);
 ---

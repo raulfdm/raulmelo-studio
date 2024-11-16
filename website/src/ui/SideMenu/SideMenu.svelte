@@ -4,7 +4,7 @@
     sideMenuStore,
     closeSideMenu,
   } from '@/infrastructure/stores/sideMenu';
-  import type { SupportedLanguages } from '@/infrastructure/config/types/language';
+  import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
   import { mergeClasses } from '@/infrastructure/utils/misc';
   import { useSideMenuLinks } from './links';
 
@@ -14,7 +14,7 @@
   import { onMount } from 'svelte';
 
   const { lang, pathname } = $props<{
-    lang: SupportedLanguages;
+    lang: AcceptedLanguagesCode;
     pathname: string;
   }>();
 

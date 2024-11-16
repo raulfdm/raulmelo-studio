@@ -3,20 +3,20 @@ import type { SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
+import { acceptedLanguagesCode } from '@raulmelo/core/language';
 import {
-  SUPPORTED_LANGUAGES_WITH_ALL,
-  SupportedLanguages,
-  type SupportedLanguagesWithAll,
+  ACCEPTED_LANGUAGES_WITH_ALL,
+  type AcceptedLanguagesWithAll,
 } from '@/infrastructure/config/types/language';
 
 type QueryTilsParams = {
-  language: SupportedLanguagesWithAll;
+  language: AcceptedLanguagesWithAll;
   client: SanityClient;
 };
 
 export async function queryTils({ language, client }: QueryTilsParams) {
   const languages =
-    language === 'all' ? SUPPORTED_LANGUAGES_WITH_ALL : [language];
+    language === 'all' ? ACCEPTED_LANGUAGES_WITH_ALL : [language];
 
   const result = await client.fetch(tilQuery, { languages });
 
@@ -63,7 +63,7 @@ const tilSchema = z.object({
   _id: z.string(),
   publishedAt: z.string(),
   title: z.string(),
-  language: SupportedLanguages,
+  language: z.enum(acceptedLanguagesCode),
   content: z.any().transform((value) => value as PortableTextBlock),
   slug: z.string(),
   tags: z.array(tilTagSchema).nullable(),

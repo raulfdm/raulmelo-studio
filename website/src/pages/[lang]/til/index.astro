@@ -1,6 +1,6 @@
 ---
 import { queryTils } from '@/infrastructure/api/modules/posts';
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
+import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { mergeClasses } from '@/infrastructure/utils/misc';
@@ -10,7 +10,7 @@ import Layout from '@/ui/layouts/Layout.astro';
 
 import Tils from './_ui/Tils.svelte';
 
-const { lang } = Astro.params as { lang: SupportedLanguages };
+const { lang } = Astro.params as { lang: AcceptedLanguagesCode };
 
 const tils = await queryTils({
   language: lang,

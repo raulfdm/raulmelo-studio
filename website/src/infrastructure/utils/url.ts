@@ -1,4 +1,4 @@
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
+import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
 
 export function getHomePageUrl(locale: SupportedLanguages): string {
   const nextUrl = `/`;

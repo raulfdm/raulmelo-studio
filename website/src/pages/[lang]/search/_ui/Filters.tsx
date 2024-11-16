@@ -1,6 +1,6 @@
 import { useRefinementList } from 'react-instantsearch';
 
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
+import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
 import { mergeClasses } from '@/infrastructure/utils/misc';
 
 import type { RefinementListProps } from './types';

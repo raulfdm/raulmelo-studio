@@ -1,6 +1,6 @@
 ---
 import { queryTilBySlug } from '@/infrastructure/api/modules/posts';
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
+import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { getEstimatedReadingTime } from '@/infrastructure/utils/getEstimatedReadingTime';
@@ -23,7 +23,7 @@ import { isEmpty } from '@/infrastructure/utils/isEmpty';
 
 const { lang, slug } = Astro.params as {
   slug: string;
-  lang: SupportedLanguages;
+  lang: AcceptedLanguagesCode;
 };
 
 const til = await queryTilBySlug({

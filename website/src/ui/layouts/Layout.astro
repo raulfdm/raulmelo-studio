@@ -15,7 +15,7 @@ import '@fontsource/inter/800.css';
 import '@fontsource/inter/900.css';
 import '../styles/app.css';
 
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
+import type { AcceptedLanguagesCode } from '@raulmelo/core/language';
 import { mergeClasses } from '@/infrastructure/utils/misc';
 import { sanitizeUrl } from '@/infrastructure/utils/url';
 import DefaultSEO, { type Props as SeoProps } from '@/ui/DefaultSEO.astro';
@@ -26,7 +26,9 @@ import ThemeScript from '../ThemeScript.astro';
 
 const { title, seo, lang, containerClass } = Astro.props;
 
-const { lang: langFromParams } = Astro.params as { lang: SupportedLanguages };
+const { lang: langFromParams } = Astro.params as {
+  lang: AcceptedLanguagesCode;
+};
 
 const nextLang = lang || langFromParams;
 ---
