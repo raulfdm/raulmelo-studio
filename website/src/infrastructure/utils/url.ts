@@ -1,30 +1,30 @@
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
+import type { SupportedLanguage } from '@raulmelo/core/intl';
 
-export function getHomePageUrl(locale: SupportedLanguages): string {
+export function getHomePageUrl(locale: SupportedLanguage): string {
   const nextUrl = `/`;
 
   return getPathnameWithLocale(nextUrl, locale);
 }
 
-export function getBlogHomeUrl(locale: SupportedLanguages): string {
+export function getBlogHomeUrl(locale: SupportedLanguage): string {
   const nextUrl = `/blog`;
 
   return getPathnameWithLocale(nextUrl, locale);
 }
 
-export function getSnippetsHomeUrl(locale: SupportedLanguages): string {
+export function getSnippetsHomeUrl(locale: SupportedLanguage): string {
   const nextUrl = `/snippets`;
 
   return getPathnameWithLocale(nextUrl, locale);
 }
 
-export function getTagsHomeUrl(locale: SupportedLanguages): string {
+export function getTagsHomeUrl(locale: SupportedLanguage): string {
   const nextUrl = `/tags`;
 
   return getPathnameWithLocale(nextUrl, locale);
 }
 
-export function getTilHomeUrl(locale: SupportedLanguages): string {
+export function getTilHomeUrl(locale: SupportedLanguage): string {
   const nextUrl = `/til`;
 
   return getPathnameWithLocale(nextUrl, locale);
@@ -35,14 +35,14 @@ export function getTilHomeUrl(locale: SupportedLanguages): string {
  */
 export function getPostUrl(
   postSlug: string,
-  locale: SupportedLanguages,
+  locale: SupportedLanguage,
 ): string {
   const nextUrl = `/blog/${postSlug}`;
 
   return getPathnameWithLocale(nextUrl, locale);
 }
 
-export function getTagUrl(tagSlug: string, locale: SupportedLanguages): string {
+export function getTagUrl(tagSlug: string, locale: SupportedLanguage): string {
   const nextUrl = `/tags/${tagSlug}`;
 
   return getPathnameWithLocale(nextUrl, locale);
@@ -50,14 +50,14 @@ export function getTagUrl(tagSlug: string, locale: SupportedLanguages): string {
 
 export function getSnippetUrl(
   snippetSlug: string,
-  locale: SupportedLanguages,
+  locale: SupportedLanguage,
 ): string {
   const nextUrl = `/snippets/${snippetSlug}`;
 
   return getPathnameWithLocale(nextUrl, locale);
 }
 
-export function getTilUrl(slug: string, locale: SupportedLanguages): string {
+export function getTilUrl(slug: string, locale: SupportedLanguage): string {
   const nextUrl = `/til/${slug}`;
 
   return getPathnameWithLocale(nextUrl, locale);
@@ -80,11 +80,11 @@ export function getPathnameWithoutLocale(pathname: string): string {
 
 export function getPathnameWithLocale(
   pathname: string,
-  locale: SupportedLanguages,
+  locale: SupportedLanguage,
 ) {
   const hasLocale = pathname.startsWith(`/${locale}`);
 
-  if (/* locale === `en` || */ hasLocale) {
+  if (/* locale === SupportedLanguagesEnum.ENGLISH || */ hasLocale) {
     return pathname;
   }
 

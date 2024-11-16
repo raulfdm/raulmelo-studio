@@ -1,11 +1,11 @@
-import { SupportedLanguages } from '../config/types/language';
+import { SupportedLanguage } from '@raulmelo/core/intl';
 
-export function getLangFromURL(url: string): null | SupportedLanguages {
+export function getLangFromURL(url: string): SupportedLanguage | null {
   const pathname = new URL(url).pathname;
 
   const [_, locale] = pathname.split(`/`);
 
-  const result = SupportedLanguages.safeParse(locale);
+  const result = SupportedLanguage.safeParse(locale);
 
   if (!result.success) {
     return null;

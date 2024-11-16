@@ -1,7 +1,7 @@
 <script lang="ts">
   import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
   import ContentTile from '@/ui/ContentTile.svelte';
-  import type { SupportedLanguages } from '@/infrastructure/config/types/language';
+  import type { SupportedLanguage } from '@raulmelo/core/intl';
   import { getPostUrl } from '@/infrastructure/utils/url';
   import type { QueryPostsAndTilsReturnType } from '@/infrastructure/api/modules/posts';
 
@@ -9,7 +9,7 @@
     posts:
       | QueryPostsAndTilsReturnType[`posts`]
       | QueryPostsAndTilsReturnType[`tils`];
-    lang: SupportedLanguages;
+    lang: SupportedLanguage;
   }
 
   let { posts, lang }: Props = $props();

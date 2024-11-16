@@ -1,9 +1,8 @@
 import type { PortableTextBlock } from '@portabletext/types';
+import { SupportedLanguage } from '@raulmelo/core/intl';
 import type { SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
-
-import { SupportedLanguages } from '@/infrastructure/config/types/language';
 
 type QueryTilBySlugParams = {
   slug: string;
@@ -102,7 +101,7 @@ const tagSchema = z.object({
 const relatedPostSchema = z.object({
   _id: z.string(),
   _type: z.enum(['post', 'til']),
-  lang: SupportedLanguages,
+  lang: SupportedLanguage,
   publishedAt: z.string(),
   slug: z.string(),
   tags: z.array(tagSchema).nullable(),
@@ -113,7 +112,7 @@ const tilBySlugSchema = z.object({
   _id: z.string(),
   publishedAt: z.string(),
   title: z.string(),
-  language: SupportedLanguages,
+  language: SupportedLanguage,
   slug: z.string(),
   content: z.any().transform((value) => value as PortableTextBlock),
   tags: z.array(tagSchema).nullable(),

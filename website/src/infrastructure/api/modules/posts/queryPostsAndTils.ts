@@ -1,11 +1,10 @@
+import { SupportedLanguage } from '@raulmelo/core/intl';
 import type { SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import { SupportedLanguages } from '@/infrastructure/config/types/language';
-
 type QueryPostsAndTilsParams = {
-  locale: SupportedLanguages;
+  locale: SupportedLanguage;
   numberOfPosts?: number;
   client: SanityClient;
 };
@@ -88,7 +87,7 @@ const postSchema = z.object({
   slug: z.string(),
   publishedAt: z.string(),
   title: z.string(),
-  language: SupportedLanguages,
+  language: SupportedLanguage,
   subtitle: z.string().nullable(),
   description: z.string(),
   featuredImage: featuredImageSchema.nullable(),
@@ -98,7 +97,7 @@ const postSchema = z.object({
 const tilSchema = z.object({
   _id: z.string(),
   title: z.string(),
-  language: SupportedLanguages,
+  language: SupportedLanguage,
   publishedAt: z.string(),
   slug: z.string(),
   tags: z.array(tagSchema).nullable(),

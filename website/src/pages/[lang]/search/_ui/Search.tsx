@@ -1,6 +1,6 @@
 import { InstantSearch } from 'react-instantsearch';
 
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
+import type { SupportedLanguage } from '@raulmelo/core/intl';
 import { clientEnv } from '@/infrastructure/env/client';
 
 import { Filters } from './Filters';
@@ -10,7 +10,7 @@ import { SearchBox } from './SearchBox';
 import { searchClient } from './searchClient';
 
 type SearchProps = {
-  lang: SupportedLanguages;
+  lang: SupportedLanguage;
   tagsTitle: string;
   typeTitle: string;
   languageTitle: string;

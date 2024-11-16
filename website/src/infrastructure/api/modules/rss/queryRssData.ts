@@ -1,11 +1,10 @@
+import { SupportedLanguage } from '@raulmelo/core/intl';
 import type { SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import { SupportedLanguages } from '@/infrastructure/config/types/language';
-
 type QueryRssDataParams = {
-  language: SupportedLanguages;
+  language: SupportedLanguage;
   client: SanityClient;
 };
 
@@ -49,7 +48,7 @@ const dataPostSchema = z.object({
 
 const rssSchema = z.object({
   description: z.string(),
-  language: SupportedLanguages,
+  language: SupportedLanguage,
   siteUrl: z.string(),
   tils: z.array(dataPostSchema),
   posts: z.array(dataPostSchema),

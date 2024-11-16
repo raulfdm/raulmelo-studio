@@ -1,8 +1,7 @@
+import { SupportedLanguage, SupportedLanguages } from '@raulmelo/core/intl';
 import type { SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
-
-import { SupportedLanguages } from '@/infrastructure/config/types/language';
 
 type QuerySiteDataParams = {
   client: SanityClient;
@@ -11,8 +10,9 @@ type QuerySiteDataParams = {
 export async function querySiteData({ client }: QuerySiteDataParams) {
   const [defaultSeoPt, defaultSeoEn, personalInformation, site, socials] =
     await Promise.all([
-      client.fetch(defaultSeoQuery, { language: 'pt' }),
-      client.fetch(defaultSeoQuery, { language: 'en' }),
+      ...SupportedLanguages.map((language) =>
+        client.fetch(defaultSeoQuery, { language }),
+      ),
       client.fetch(personalInfoQuery),
       client.fetch(siteSettingsQuery),
       client.fetch(socialsQuery),
@@ -101,6 +101,6 @@ const siteSettings = z.object({
 const siteDataSchema = z.object({
   personalInformation: personalInfoSchema,
   site: siteSettings,
-  defaultSeo: z.record(SupportedLanguages, defaultSeoSchema),
+  defaultSeo: z.record(SupportedLanguage, defaultSeoSchema),
   socials: z.array(socialSchema),
 });

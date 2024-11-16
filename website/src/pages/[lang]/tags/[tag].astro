@@ -1,7 +1,7 @@
 ---
 import { sortPostsByPublishedDate } from '@/infrastructure/api/modules/posts';
 import { queryTagBySlug } from '@/infrastructure/api/modules/tag';
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
+import type { SupportedLanguage } from '@raulmelo/core/intl';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { isEmpty } from '@/infrastructure/utils/isEmpty';
@@ -16,7 +16,10 @@ import { Breadcrumbs } from '@/ui/Breadcrumbs';
 import Layout from '@/ui/layouts/Layout.astro';
 import PostBasic from '@/ui/PostBasic.astro';
 
-const { lang, tag } = Astro.params as { lang: SupportedLanguages; tag: string };
+const { lang, tag } = Astro.params as {
+  lang: SupportedLanguage;
+  tag: string;
+};
 
 const remoteTag = await queryTagBySlug({
   slug: tag,

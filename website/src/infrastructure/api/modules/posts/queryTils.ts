@@ -5,12 +5,12 @@ import { z } from 'zod';
 
 import {
   SUPPORTED_LANGUAGES_WITH_ALL,
-  SupportedLanguages,
-  type SupportedLanguagesWithAll,
+  type SupportedLanguageOrAll,
 } from '@/infrastructure/config/types/language';
+import { SupportedLanguage } from '@raulmelo/core/intl';
 
 type QueryTilsParams = {
-  language: SupportedLanguagesWithAll;
+  language: SupportedLanguageOrAll;
   client: SanityClient;
 };
 
@@ -63,7 +63,7 @@ const tilSchema = z.object({
   _id: z.string(),
   publishedAt: z.string(),
   title: z.string(),
-  language: SupportedLanguages,
+  language: SupportedLanguage,
   content: z.any().transform((value) => value as PortableTextBlock),
   slug: z.string(),
   tags: z.array(tilTagSchema).nullable(),

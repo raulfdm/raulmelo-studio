@@ -1,6 +1,6 @@
 ---
 import { queryAllTags } from '@/infrastructure/api/modules/tag';
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
+import type { SupportedLanguage } from '@raulmelo/core/intl';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { getHomePageUrl, getTagUrl } from '@/infrastructure/utils/url';
@@ -9,7 +9,7 @@ import { HashIcon } from 'lucide-svelte';
 import Layout from '@/ui/layouts/Layout.astro';
 import { Tag, Tags } from '@/ui/Tags';
 
-const { lang } = Astro.params as { lang: SupportedLanguages };
+const { lang } = Astro.params as { lang: SupportedLanguage };
 
 const allTags = await queryAllTags({
   client: sanityClient,

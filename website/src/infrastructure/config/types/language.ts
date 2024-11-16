@@ -1,14 +1,10 @@
-import { z } from 'zod';
+import {
+  SupportedLanguages,
+  type SupportedLanguage,
+} from '@raulmelo/core/intl';
 
-export const SUPPORTED_LANGUAGES = ['en', 'pt'] as const;
-export const SupportedLanguages = z.enum(SUPPORTED_LANGUAGES);
-export type SupportedLanguages = z.infer<typeof SupportedLanguages>;
-
+export type SupportedLanguageOrAll = SupportedLanguage | 'all';
 export const SUPPORTED_LANGUAGES_WITH_ALL = [
-  ...SUPPORTED_LANGUAGES,
   'all',
+  ...SupportedLanguages,
 ] as const;
-export const SupportedLanguagesWithAll = z.enum(SUPPORTED_LANGUAGES_WITH_ALL);
-export type SupportedLanguagesWithAll = z.infer<
-  typeof SupportedLanguagesWithAll
->;

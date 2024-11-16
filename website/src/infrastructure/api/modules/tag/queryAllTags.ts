@@ -2,11 +2,11 @@ import type { SanityClient } from '@sanity/client';
 import groq from 'groq';
 import { z } from 'zod';
 
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
+import type { SupportedLanguage } from '@raulmelo/core/intl';
 
 type QueryAllTagsParams = {
   client: SanityClient;
-  language?: SupportedLanguages;
+  language?: SupportedLanguage;
 };
 
 export async function queryAllTags({ client, language }: QueryAllTagsParams) {

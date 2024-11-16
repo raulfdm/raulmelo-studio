@@ -1,7 +1,10 @@
-import type { SupportedLanguages } from '@/infrastructure/config/types/language';
+import {
+  SupportedLanguagesEnum,
+  type SupportedLanguage,
+} from '@raulmelo/core/intl';
 import { getPathnameWithLocale } from '@/infrastructure/utils/url';
 
-export function useSideMenuLinks(lang: SupportedLanguages, pathname: string) {
+export function useSideMenuLinks(lang: SupportedLanguage, pathname: string) {
   return [
     {
       href: ``,
@@ -46,7 +49,8 @@ export function useSideMenuLinks(lang: SupportedLanguages, pathname: string) {
       newWindow: true,
     },
     {
-      href: lang === `en` ? `/rss.xml` : `/rss-pt.xml`,
+      href:
+        lang === SupportedLanguagesEnum.ENGLISH ? `/rss.xml` : `/rss-pt.xml`,
       localeId: `sideMenu.rss`,
       newWindow: true,
     },

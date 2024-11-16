@@ -2,13 +2,12 @@ import {CODE_LANGUAGES_MAP} from '@raulmelo/code-highlight'
 import {defineField} from 'sanity'
 
 import {CodeIcon} from 'lucide-react'
-import {SupportedLanguages} from '../../TO_BE_EXTERNAL'
 
 export const codeField = defineField({
   type: `object`,
   name: `code`,
   title: `Code Snippet`,
-  icon: () => <CodeIcon width={20} />,
+  icon: (() => <CodeIcon width={20} />) as never,
   fields: [
     {
       type: `string`,
@@ -43,10 +42,10 @@ export const codeField = defineField({
     },
   ],
   components: {
-    preview: (props: unknown) => {
+    preview: ((props: unknown) => {
       const {code, language} = props as {
         code: string
-        language: SupportedLanguages
+        language: string
       }
       const lang = CODE_LANGUAGES_MAP.get(language)
 
@@ -60,7 +59,7 @@ export const codeField = defineField({
           <span>{lang}</span>
         </code>
       )
-    },
+    }) as never,
   },
   preview: {
     select: {

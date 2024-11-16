@@ -2,7 +2,10 @@
   import { Popover } from 'bits-ui';
 
   import { getPathnameWithoutLocale } from '@/infrastructure/utils/url';
-  import type { SupportedLanguages } from '@/infrastructure/config/types/language';
+  import {
+    SupportedLanguagesEnum,
+    type SupportedLanguage,
+  } from '@raulmelo/core/intl';
   import { LanguagesIcon } from 'lucide-svelte';
 
   interface Props {
@@ -11,7 +14,7 @@
 
   let { ariaLabel }: Props = $props();
 
-  function changeLocale(lang: SupportedLanguages) {
+  function changeLocale(lang: SupportedLanguage) {
     return () => {
       const pathnameWithoutLocale = getPathnameWithoutLocale(
         window.location.pathname,
@@ -35,12 +38,13 @@
     <button
       class="language-button"
       aria-label="Switch to English"
-      onclick={changeLocale(`en`)}>English</button
+      onclick={changeLocale(SupportedLanguagesEnum.ENGLISH)}>English</button
     >
     <button
       class="language-button"
       aria-label="Mudar para Português"
-      onclick={changeLocale(`pt`)}>Português</button
+      onclick={changeLocale(SupportedLanguagesEnum.PORTUGUESE)}
+      >Português</button
     >
   </Popover.Content>
 </Popover.Root>
