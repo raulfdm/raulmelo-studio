@@ -2,6 +2,10 @@
   "name": "root",
   "private": true,
   "type": "module",
+  "workspaces": [
+    "packages/*",
+    "website"
+  ],
   "scripts": {
     "prepare": "husky",
     "build": "turbo run build",
