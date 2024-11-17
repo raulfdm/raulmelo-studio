@@ -1,6 +1,9 @@
 name: Bun Update Lock File
 
-on: [push]
+on:
+  push:
+    branches:
+      - 'renovate/**'
 
 env:
   CI: true
