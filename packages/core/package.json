@@ -4,10 +4,14 @@
   "exports": {
     "./intl": {
       "import": "./intl.ts"
+    },
+    "./sanity": {
+      "import": "./sanity.ts",
+      "require": "./sanity.ts"
     }
   },
   "scripts": {
-    "lint": "tsc --noEmit"
+    "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
     "typescript": "5.6.3",

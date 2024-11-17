@@ -1,6 +1,9 @@
-name: CI
+name: CMS Deploy
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 env:
   CI: true
@@ -16,4 +19,6 @@ jobs:
         uses: ./.github/actions/bun
 
       - name: CI checks
-        run: bun turbo lint test build
+        run: bun turbo deploy --filter=cms
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}

@@ -1,4 +1,4 @@
-name: CI
+name: Bun Update Lock File
 
 on: [push]
 
@@ -16,4 +16,4 @@ jobs:
         uses: ./.github/actions/bun
 
       - name: CI checks
-        run: bun turbo lint test build
+        run: bun run ./scripts/bun-update-lock.ts

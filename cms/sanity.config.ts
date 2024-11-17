@@ -7,13 +7,16 @@ import {schema} from './schema'
 import {deskStructure} from './desk/deskStructure'
 import {defaultDocumentNode} from './desk/previewDocumentNode'
 import {SupportedLanguageNames} from '@raulmelo/core/intl'
+import {createConfig} from '@raulmelo/core/sanity'
+
+const sanityConfig = createConfig()
 
 export default defineConfig({
   name: 'default',
   title: 'raulmelo-cms',
 
-  projectId: 'gc3hakk3',
-  dataset: 'production',
+  projectId: sanityConfig.projectId,
+  dataset: sanityConfig.dataset,
 
   plugins: [
     structureTool({
