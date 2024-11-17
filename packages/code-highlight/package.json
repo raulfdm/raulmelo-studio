@@ -21,7 +21,8 @@
   "scripts": {
     "prepare": "turbo --filter @raulmelo/code-highlight build --output-logs errors-only",
     "test": "bun test",
-    "build": "tsc -p tsconfig.build.json"
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.build.json --noEmit"
   },
   "peerDependencies": {
     "vscode-oniguruma": ">=2.0.1"

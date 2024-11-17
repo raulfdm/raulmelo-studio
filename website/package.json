@@ -10,10 +10,8 @@
     "test": "vitest",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "run-s lint:*",
-    "lint:astro": "astro check",
-    "lint:tsc": "tsc --noEmit",
-    "lint:eslint": "eslint src"
+    "lint": "eslint src",
+    "typecheck": "astro check"
   },
   "dependencies": {
     "@fontsource/fira-code": "5.1.0",
