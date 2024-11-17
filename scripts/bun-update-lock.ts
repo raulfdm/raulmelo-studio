@@ -9,7 +9,11 @@ if (!process.env.GITHUB_REF_NAME.includes('renovate')) {
 
 await $`bun i`;
 
-await $`git status`;
+await $`git add bun.lockb`;
+
+await $`git commit -m "chore: update bun.lock"`;
+
+await $`git push origin HEAD`;
 
 function invariant<T>(
   value: T | undefined | null,
