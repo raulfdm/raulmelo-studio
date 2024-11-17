@@ -9,6 +9,9 @@ if (!process.env.GITHUB_REF_NAME.includes('renovate')) {
 
 await $`bun i`;
 
+await $`git config --global user.email "bun-bot@raulmelo.me"`;
+await $`git config --global user.name "Bun Bot"`;
+
 await $`git add bun.lockb`;
 
 await $`git commit -m "chore: update bun.lock"`;
