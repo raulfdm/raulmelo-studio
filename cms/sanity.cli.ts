@@ -1,9 +1,13 @@
+import {createConfig} from '@raulmelo/core/sanity'
 import {defineCliConfig} from 'sanity/cli'
 
+const sanityConfig = createConfig()
+
 export default defineCliConfig({
+  studioHost: sanityConfig.studioHost,
   api: {
-    projectId: 'gc3hakk3',
-    dataset: 'production',
+    projectId: sanityConfig.projectId,
+    dataset: sanityConfig.dataset,
   },
   /**
    * Enable auto-updates for studios.
