@@ -9,7 +9,7 @@ if (!process.env.GITHUB_REF_NAME.includes('renovate')) {
 
 await $`bun i`;
 
-await $`ls -la`;
+await $`git status`;
 
 function invariant<T>(
   value: T | undefined | null,
