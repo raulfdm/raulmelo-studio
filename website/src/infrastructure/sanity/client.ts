@@ -1,14 +1,17 @@
 import { createClient } from '@sanity/client';
+import { createConfig } from '@raulmelo/core/sanity';
 
-import { serverEnv } from '../env/server';
-import { config } from './config';
+const sanityConfig = createConfig();
 
 export const sanityClient = createClient({
-  dataset: config.dataset,
-  projectId: config.projectId,
-  apiVersion: `v2021-10-21`,
-  perspective: 'published',
+  dataset: sanityConfig.dataset,
+  projectId: sanityConfig.projectId,
+  apiVersion: sanityConfig.apiVersion,
+  perspective: sanityConfig.perspective,
   useCdn: true,
-  token: serverEnv.SANITY_TOKEN,
+  token: sanityConfig.secrets({
+    ...process.env,
+    ...import.meta.env,
+  }).SANITY_TOKEN,
   allowReconfigure: true,
 });
