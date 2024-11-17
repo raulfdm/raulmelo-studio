@@ -25,7 +25,8 @@
     },
     "deploy": {
       "dependsOn": ["^build"],
-      "outputs": []
+      "outputs": [],
+      "env": ["SANITY_AUTH_TOKEN"]
     }
   }
 }

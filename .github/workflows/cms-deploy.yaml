@@ -21,4 +21,4 @@ jobs:
       - name: CI checks
         run: bun turbo deploy --filter=cms
         env:
-          SANITY_AUTH_TOKEN: ${{ env.SANITY_AUTH_TOKEN }}
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
