@@ -1,4 +1,5 @@
 import { $ } from 'bun';
+
 // GITHUB_REF_NAME: e.g., renovate/bits-ui-1.x
 invariant(process.env.GITHUB_REF_NAME, 'GITHUB_REF_NAME is not defined');
 
@@ -9,14 +10,21 @@ if (!process.env.GITHUB_REF_NAME.includes('renovate')) {
 
 await $`bun i`;
 
-await $`git config --global user.email "bun-bot@raulmelo.me"`;
-await $`git config --global user.name "Bun Bot"`;
+const gitStatus = await $`git status`;
 
-await $`git add bun.lockb`;
+if (gitStatus.text().includes('modified:   bun.lockb')) {
+  await $`git config --global user.email "bun-bot@raulmelo.me"`;
+  await $`git config --global user.name "Bun Bot"`;
 
-await $`git commit -m "chore: update bun.lock"`;
+  await $`git add bun.lockb`;
 
-await $`git push origin HEAD`;
+  await $`git commit -m "chore: update bun.lock"`;
+
+  await $`git push origin HEAD`;
+} else {
+  console.log('bun.lockb is not modified');
+  process.exit(0);
+}
 
 function invariant<T>(
   value: T | undefined | null,

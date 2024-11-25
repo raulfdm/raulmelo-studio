@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - 'renovate/**'
+  pull_request:
+    branches:
+      - 'renovate/**'
+    types:
+      - synchronize
+      - edited
 
 env:
   CI: true
