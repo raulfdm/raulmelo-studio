@@ -2,7 +2,7 @@ import partytown from '@astrojs/partytown';
 import react from '@astrojs/react';
 import svelte from '@astrojs/svelte';
 import tailwind from '@astrojs/tailwind';
-import vercel from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel';
 import { defineConfig, sharpImageService } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 import { resolve } from 'import-meta-resolve';
@@ -30,9 +30,6 @@ const config = defineConfig({
   prefetch: true,
   site: getWebsiteUrl(),
   output: `server`,
-  experimental: {
-    contentCollectionCache: true,
-  },
   redirects: {
     '/uses': '/en/blog/uses',
     '/pt/uses': '/pt/blog/uses',
@@ -58,10 +55,6 @@ const config = defineConfig({
     svelte(),
   ],
   adapter: vercel({
-    functionPerRoute: false,
-    speedInsights: {
-      enabled: true,
-    },
     includeFiles: [vscodeOnigurumaPath],
     imageService: true,
     imagesConfig: {
