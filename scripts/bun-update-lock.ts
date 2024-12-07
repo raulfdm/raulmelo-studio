@@ -3,6 +3,11 @@ import { $ } from 'bun';
 // GITHUB_REF_NAME: e.g., renovate/bits-ui-1.x
 invariant(process.env.GITHUB_REF_NAME, 'GITHUB_REF_NAME is not defined');
 
+if (!process.env.GITHUB_REF_NAME.includes('renovate')) {
+  console.log('Not a renovate branch, skipping');
+  process.exit(0);
+}
+
 await $`bun i`;
 
 const gitStatus = await $`git status`;
