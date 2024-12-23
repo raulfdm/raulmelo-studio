@@ -24,12 +24,14 @@ export const tilSchemaType = defineType({
       group: `meta`,
       type: `language`,
       name: `language`,
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       group: `post`,
       name: `title`,
       title: `Title`,
       type: `string`,
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       group: `meta`,
@@ -40,17 +42,20 @@ export const tilSchemaType = defineType({
         source: `title`,
         maxLength: 96,
       },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       group: `meta`,
       name: `publishedAt`,
       title: `Published at`,
       type: `date`,
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       group: `post`,
       type: `blockContent`,
       name: `content`,
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       group: `references`,
