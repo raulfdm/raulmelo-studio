@@ -14,7 +14,7 @@
 <li
   class={mergeClasses(
     'flex items-center',
-    !isLink && 'truncate text-ellipsis overflow-hidden',
+    isLink === false ? 'truncate text-ellipsis overflow-hidden' : 'min-w-fit',
     'has-[a]:hover:underline',
   )}
 >
