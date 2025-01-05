@@ -8,4 +8,15 @@ export default defineConfig({
   output: 'server',
   adapter: vercel(),
   i18n: i18nConfig,
+  vite: {
+    server: {
+      watch: {
+        ignored: [
+          '**/.history/**/*',
+          '**/playwright-report/**/*',
+          '**/test-results/**/*',
+        ],
+      },
+    },
+  },
 });
