@@ -3,17 +3,21 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --host",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "vitest"
+    "test": "vitest",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
     "@astrojs/vercel": "8.0.1",
     "astro": "5.1.1"
   },
   "devDependencies": {
+    "@playwright/test": "1.49.1",
+    "@types/bun": "latest",
     "vitest": "2.1.8"
   },
   "packageManager": "bun@1.1.42"
