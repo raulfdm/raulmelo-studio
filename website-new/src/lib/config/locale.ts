@@ -1,6 +1,6 @@
 import type { AstroUserConfig } from 'astro';
 
-const ACCEPTED_LOCALES = ['en', 'pt-br'] as const;
+const ACCEPTED_LOCALES = ['en', 'pt-br', 'pt'] as const;
 type Locale = (typeof ACCEPTED_LOCALES)[number];
 
 export const i18nConfig = {
