@@ -5,6 +5,17 @@ import { i18nConfig } from './src/lib/config/locale';
 
 // https://astro.build/config
 export default defineConfig({
+  get site() {
+    let site;
+
+    if (process.env.VERCEL_URL) {
+      site = process.env.VERCEL_URL;
+    } else {
+      return `http://localhost:4321`;
+    }
+
+    return site;
+  },
   output: 'server',
   adapter: vercel(),
   i18n: i18nConfig,
@@ -20,3 +31,5 @@ export default defineConfig({
     },
   },
 });
+
+function getSite() {}
