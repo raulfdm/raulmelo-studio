@@ -17,7 +17,7 @@ jobs:
         uses: ./.github/actions/bun
 
       - name: Install Playwright Browsers
-        run: bunx playwright install --with-deps
+        run: bun playwright install --with-deps
 
       - name: Run Playwright tests
         run: bun turbo test:e2e
