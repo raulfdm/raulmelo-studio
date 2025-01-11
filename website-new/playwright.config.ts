@@ -30,13 +30,15 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+      },
     },
   ],
   // Run your local dev server before starting the tests.
-  webServer: {
-    command: 'bun run dev',
-    url: 'http://127.0.0.1:4321',
-    reuseExistingServer: !process.env.CI,
-  },
+  webServer: process.env.CI
+    ? {
+        command: 'bun run dev',
+      }
+    : undefined,
 });

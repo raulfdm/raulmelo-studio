@@ -15,29 +15,6 @@ export const i18nConfig = {
   routing: 'manual',
 } as const satisfies AstroUserConfig['i18n'];
 
-export function getValidLocale(locale = ''): Locale | null {
-  locale = locale.toLowerCase();
-  return ACCEPTED_LOCALES.includes(locale as Locale)
-    ? (locale as Locale)
-    : null;
-}
-
-export function getValidLocaleFromLocaleList(
-  localeList: string[] = [],
-): Locale | null {
-  for (let locale of localeList) {
-    if (typeof locale !== 'string') {
-      continue;
-    }
-
-    locale = locale.toLowerCase();
-
-    const validLocale = getValidLocale(locale);
-
-    if (validLocale) {
-      return validLocale;
-    }
-  }
-
-  return null;
+export function isAcceptedLocale(locale: string): locale is Locale {
+  return ACCEPTED_LOCALES.includes(locale as Locale);
 }
