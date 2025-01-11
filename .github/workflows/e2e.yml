@@ -3,7 +3,11 @@ name: Playwright Tests
 on:
   push:
     branches: [main]
+    paths:
+      - 'website-new/**'
   pull_request:
+    paths:
+      - 'website-new/**'
 
 jobs:
   test:
