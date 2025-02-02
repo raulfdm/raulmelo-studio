@@ -21,11 +21,17 @@ const { lang, tag } = Astro.params as {
   tag: string;
 };
 
-const remoteTag = await queryTagBySlug({
+const remoteTagResult = await queryTagBySlug({
   slug: tag,
   language: lang,
   client: sanityClient,
 });
+
+if (remoteTagResult.error) {
+  return Astro.rewrite('/404');
+}
+
+const remoteTag = remoteTagResult.data;
 
 const allContent = sortPostsByPublishedDate([
   ...remoteTag.posts,

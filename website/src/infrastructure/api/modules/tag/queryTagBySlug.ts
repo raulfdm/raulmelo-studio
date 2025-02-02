@@ -19,7 +19,7 @@ export async function queryTagBySlug({
     language,
   });
 
-  return tagBySlugPost.parse(result);
+  return tagBySlugPost.safeParse(result);
 }
 export type QueryTagBySlugReturnType = Awaited<
   ReturnType<typeof queryTagBySlug>
