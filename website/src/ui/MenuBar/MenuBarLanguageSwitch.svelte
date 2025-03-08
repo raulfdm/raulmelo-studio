@@ -31,7 +31,7 @@
   </Popover.Trigger>
   <Popover.Content
     sideOffset={8}
-    class="z-40 flex flex-col bg-white border divide-y divide-gray-200 rounded shadow-sm max-w-min dark:border-gray-400 dark:divide-gray-500 dark:bg-blue-800"
+    class="z-40 flex flex-col bg-white border divide-y divide-gray-200 rounded-sm shadow-xs max-w-min dark:border-gray-400 dark:divide-gray-500 dark:bg-blue-800"
   >
     <Popover.Arrow class="arrow" />
 

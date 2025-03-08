@@ -21,7 +21,7 @@
 
 <section>
   <div
-    class="relative my-8 duration-200 bg-white rounded shadow dark:bg-blue-800 transition-theme ease"
+    class="relative my-8 duration-200 bg-white rounded-sm shadow-sm dark:bg-blue-800 transition-theme ease"
     data-testid="series-menu"
   >
     <div>

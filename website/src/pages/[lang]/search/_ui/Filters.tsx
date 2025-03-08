@@ -93,7 +93,7 @@ function GenericRefinement({ title, refine, items, renderLabelText }: TODO) {
                 <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     className={mergeClasses(
-                      `rounded checked:bg-secondary hover:checked:bg-secondary focus:checked:bg-secondary focus:checked:ring-secondary focus:ring-secondary`,
+                      `rounded-sm checked:bg-secondary hover:checked:bg-secondary focus:checked:bg-secondary focus:checked:ring-secondary focus:ring-secondary`,
                       `search__checkbox`,
                     )}
                     type="checkbox"

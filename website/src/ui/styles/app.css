@@ -1,6 +1,53 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@config '../../../tailwind.config.cjs';
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@utility grid-container {
+  @apply w-full;
+  @apply grid-cols-4;
+  @apply px-4;
+  @apply gap-4;
+  @apply grid;
+  @apply mx-auto;
+
+  @apply md:max-w-5xl;
+  @apply md:grid-cols-6;
+
+  @apply lg:max-w-7xl;
+  @apply lg:grid-cols-12;
+}
+
+@utility prose-container {
+  @apply prose dark:prose-dark;
+  @apply prose-lg md:prose-xl;
+  @apply max-w-full;
+
+  :global(a code) {
+    /* Tailwind Typography + Tailwind 2 has a problem with specificity */
+    /* Applying this style does not gain precedence enough to override Prose styles */
+    /* So I have to set it manually. Let's see on Tailwind v3 */
+    /* @apply dark:text-secondary !important; */
+    color: var(--color-secondary);
+  }
+}
 
 @layer base {
   * {
@@ -38,7 +85,7 @@
   }
 
   .prose-container :where(strong):not(:where([class~='not-prose'] *)) {
-    @apply text-primary font-bold !important;
+    @apply text-primary! font-bold!;
   }
 
   .prose-container blockquote {
@@ -51,36 +98,5 @@
 
   *:focus {
     @apply focus:outline-black dark:focus:outline-white outline-dotted outline-2;
-  }
-}
-
-@layer components {
-  .grid-container {
-    @apply w-full;
-    @apply grid-cols-4;
-    @apply px-4;
-    @apply gap-4;
-    @apply grid;
-    @apply mx-auto;
-
-    @apply md:max-w-5xl;
-    @apply md:grid-cols-6;
-
-    @apply lg:max-w-7xl;
-    @apply lg:grid-cols-12;
-  }
-
-  .prose-container {
-    @apply prose dark:prose-dark;
-    @apply prose-lg md:prose-xl;
-    @apply max-w-full;
-
-    :global(a code) {
-      /* Tailwind Typography + Tailwind 2 has a problem with specificity */
-      /* Applying this style does not gain precedence enough to override Prose styles */
-      /* So I have to set it manually. Let's see on Tailwind v3 */
-      /* @apply dark:text-secondary !important; */
-      color: var(--color-secondary);
-    }
   }
 }

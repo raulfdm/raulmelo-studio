@@ -18,7 +18,7 @@ export function ContentTypeTag({ type }: Props) {
           'bg-yellow-700': type === `til`,
           'bg-cyan-700': type === `codeSnippet`,
         },
-        `px-1.5 py-0.5 rounded-sm min-w-[40px] text-center font-bold text-gray-50 uppercase`,
+        `px-1.5 py-0.5 rounded-xs min-w-[40px] text-center font-bold text-gray-50 uppercase`,
       )}
     >
       {humanizeString(type)}

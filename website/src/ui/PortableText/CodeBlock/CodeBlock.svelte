@@ -56,7 +56,7 @@
         'focus:outline-white hover:text-gray-300',
         'p-0.5 text-gray-500',
         'transition-colors',
-        'rounded',
+        'rounded-sm',
         'ml-auto',
       )}
       onclick={onCopyCode}
