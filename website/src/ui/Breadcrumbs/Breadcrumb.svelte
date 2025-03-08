@@ -27,7 +27,8 @@
   {/if}
 </li>
 
-<style>
+<style lang="postcss">
+  @reference '../styles/app.css';
   li:before {
     content: '';
     @apply ml-2 mr-3 block h-1.5 w-1.5 rotate-45 transform opacity-40;

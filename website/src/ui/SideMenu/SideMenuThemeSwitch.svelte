@@ -69,8 +69,9 @@
 </div>
 
 <style lang="postcss">
+  @reference '../styles/app.css';
   .theme-option {
-    @apply rounded-full p-2 border-opacity-50 text-opacity-50;
+    @apply rounded-full p-2 border-black/50 text-black/50;
     @apply hover:bg-gray-100;
   }
   .theme-option.active {

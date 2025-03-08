@@ -50,6 +50,8 @@
 {/if}
 
 <style lang="postcss">
+  @reference '../../styles/app.css';
+
   figure {
     @apply mb-2;
   }

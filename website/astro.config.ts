@@ -1,7 +1,7 @@
 import partytown from '@astrojs/partytown';
 import react from '@astrojs/react';
 import svelte from '@astrojs/svelte';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 import vercel from '@astrojs/vercel';
 import { defineConfig, sharpImageService } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
@@ -27,6 +27,9 @@ const vscodeOnigurumaPath = new URL(
 ).pathname;
 
 const config = defineConfig({
+  vite: {
+    plugins: [tailwindcss()],
+  },
   prefetch: true,
   site: getWebsiteUrl(),
   output: `server`,
@@ -41,7 +44,6 @@ const config = defineConfig({
   },
   integrations: [
     partytown(),
-    tailwind(),
     react(),
     robotsTxt({
       policy: [

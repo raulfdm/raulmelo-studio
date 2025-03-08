@@ -48,6 +48,7 @@ const intl = getIntl(lang);
 
 <!-- TODO: These global styles are not working well on svelte side. Have to investigate why. -->
 <style is:global>
+  @reference '../../styles/app.css';
   .line[data-highlight-line] {
     @apply bg-neutral-200 dark:bg-gray-700;
     @apply -mx-[var(--padding)] px-[var(--padding)];

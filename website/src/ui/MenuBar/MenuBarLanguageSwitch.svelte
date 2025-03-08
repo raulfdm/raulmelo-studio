@@ -50,6 +50,8 @@
 </Popover.Root>
 
 <style lang="postcss">
+  @reference '../styles/app.css';
+
   .language-button {
     @apply flex-1;
     @apply px-6 py-2;
