@@ -1,1 +1,38 @@
 @import 'tailwindcss';
+
+@theme {
+  /* Custom Palette
+    @see https://tailwindcss.com/docs/colors#using-a-custom-palette
+  */
+  --color-*: initial;
+
+  --color-black: oklch(16.03% 0.0439 248.66);
+  --color-black-800: oklch(37.63% 0.0267 246.43);
+  --color-black-600: oklch(55.45% 0.0177 248.15);
+  --color-black-400: oklch(71.33% 0.0104 252.84);
+
+  --color-light-blue: oklch(74.46% 0.1397 223.9);
+  --color-light-blue-800: oklch(77.9% 0.1361 218.4);
+  --color-light-blue-600: oklch(83.18% 0.1014 218.3);
+  --color-light-blue-400: oklch(88.85% 0.068 217.39);
+
+  --color-blue: oklch(51.25% 0.262103 263.1424);
+  --color-blue-800: oklch(59.57% 0.2104 265.21);
+  --color-blue-600: oklch(69.12% 0.1546 268.63);
+  --color-blue-400: oklch(79.5% 0.0998 270.8);
+
+  --color-green: oklch(88.47% 0.1765 166.02);
+  --color-green-800: oklch(90.44% 0.1396 167.05);
+  --color-green-600: oklch(92.6% 0.1073 167.34);
+  --color-green-400: oklch(94.99% 0.0686 168.36);
+
+  --color-pink: oklch(72.82% 0.1845 346.66);
+  --color-pink-800: oklch(77.82% 0.1499 345.96);
+  --color-pink-600: oklch(83.1% 0.1122 344.47);
+  --color-pink-400: oklch(88.6% 0.0757 344.92);
+
+  --color-purple: oklch(61.53% 0.2149 291.98);
+  --color-purple-800: oklch(69.09% 0.1724 294.52);
+  --color-purple-600: oklch(76.59% 0.1286 296.53);
+  --color-purple-400: oklch(84.6% 0.0845 298.33);
+}
