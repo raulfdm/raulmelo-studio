@@ -21,7 +21,9 @@ export default defineConfig({
     return site;
   },
   output: 'server',
-  adapter: vercel(),
+  adapter: vercel({
+    skewProtection: true,
+  }),
   i18n: i18nConfig,
   vite: {
     plugins: [tailwindcss()],
