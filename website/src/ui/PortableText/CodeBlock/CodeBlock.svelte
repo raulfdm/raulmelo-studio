@@ -73,7 +73,7 @@
     class={mergeClasses(
       'bg-neutral-100 dark:bg-gray-800',
       'rounded-t-none',
-      'px-0 m-0',
+      'px-0 m-0!',
     )}><code
       class:showLines={showLineNumbers}
       class={mergeClasses(
