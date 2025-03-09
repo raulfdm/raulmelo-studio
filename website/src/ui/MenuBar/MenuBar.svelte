@@ -38,7 +38,7 @@
 
 <div
   class={mergeClasses([
-    'bg-white shadow dark:bg-blue-800',
+    'bg-white shadow-sm dark:bg-blue-800',
     'duration-200 ease transition-theme',
     'inset-x-0 z-40 h-16 mb-8 md:mb-12',
     'sticky top-0',

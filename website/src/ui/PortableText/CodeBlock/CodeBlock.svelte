@@ -56,7 +56,7 @@
         'focus:outline-white hover:text-gray-300',
         'p-0.5 text-gray-500',
         'transition-colors',
-        'rounded',
+        'rounded-sm',
         'ml-auto',
       )}
       onclick={onCopyCode}
@@ -73,7 +73,7 @@
     class={mergeClasses(
       'bg-neutral-100 dark:bg-gray-800',
       'rounded-t-none',
-      'px-0 m-0',
+      'px-0 m-0!',
     )}><code
       class:showLines={showLineNumbers}
       class={mergeClasses(

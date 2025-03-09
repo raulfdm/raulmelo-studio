@@ -77,7 +77,7 @@
       </IconWrapper>
     </section>
   </aside>
-  <figure class="relative w-20 h-20 rounded md:w-32 md:h-32">
+  <figure class="relative w-20 h-20 rounded-sm md:w-32 md:h-32">
     {@render img?.()}
   </figure>
 </header>
