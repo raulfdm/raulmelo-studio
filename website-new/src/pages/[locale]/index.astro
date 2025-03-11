@@ -1,8 +1,81 @@
 ---
-import Welcome from '../../components/Welcome.astro';
 import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout>
-  <Welcome />
+  <h1 class="font-lato text-3xl font-light">
+    We design experiences that <strong class="font-bold">move businesses</strong
+    > to the future.
+  </h1>
+
+  <section class="flex flex-col gap-5 px-12 py-3">
+    <h2 class="font-lato text-center text-2xl font-bold">
+      Últimas publicações
+    </h2>
+
+    <nav class="flex flex-col gap-5">
+      <a href="#" class="font-lato flex flex-col gap-2">
+        <span class="font-inter text-light-blue -mb-2 text-xs">26 de Julho</span
+        >
+        <h3 class="text-xl leading-none font-bold">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </h3>
+        <p class="text-xs">
+          Nam ut ante id ligula luctus suscipit ac vitae dolor. Vestibulum
+          blandit justo justo, ut pretium turpis placerat ac. Etiam volutpat vel
+          leo eu suscipit. Proin sodales risus in enim scelerisque vestibulum.
+        </p>
+        <div class="flex items-center justify-between text-sm">
+          <span class="rounded-xl border border-black px-2 py-0.5"
+            >Technology</span
+          >
+          <span class="text-light-blue">7 min read</span>
+        </div>
+      </a>
+
+      <a href="#" class="font-lato flex flex-col gap-2">
+        <span class="font-inter text-light-blue -mb-2 text-xs">26 de Julho</span
+        >
+        <h3 class="text-xl leading-none font-bold">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </h3>
+        <p class="text-xs">
+          Nam ut ante id ligula luctus suscipit ac vitae dolor. Vestibulum
+          blandit justo justo, ut pretium turpis placerat ac. Etiam volutpat vel
+          leo eu suscipit. Proin sodales risus in enim scelerisque vestibulum.
+        </p>
+        <div class="flex items-center justify-between text-xs">
+          <span class="rounded-xl border border-black px-2 py-0.5"
+            >Technology</span
+          >
+          <span class="text-light-blue">7 min read</span>
+        </div>
+      </a>
+
+      <a href="#" class="font-lato flex flex-col gap-2">
+        <span class="font-inter text-light-blue -mb-2 text-xs">26 de Julho</span
+        >
+        <h3 class="text-xl leading-none font-bold">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </h3>
+        <p class="text-xs">
+          Nam ut ante id ligula luctus suscipit ac vitae dolor. Vestibulum
+          blandit justo justo, ut pretium turpis placerat ac. Etiam volutpat vel
+          leo eu suscipit. Proin sodales risus in enim scelerisque vestibulum.
+        </p>
+        <div class="flex items-center justify-between text-xs">
+          <span class="rounded-xl border border-black px-2 py-0.5"
+            >Technology</span
+          >
+          <span class="text-light-blue">7 min read</span>
+        </div>
+      </a>
+
+      <a
+        href="blog"
+        class="mx-auto max-w-fit rounded-2xl border border-black px-2 py-0.5 text-center text-sm"
+        >Ver todas as publicações</a
+      >
+    </nav>
+  </section>
 </Layout>
