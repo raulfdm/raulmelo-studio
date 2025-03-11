@@ -1,4 +1,5 @@
 ---
+import Footer from '../components/footer.astro';
 import '../styles/global.css';
 ---
 
@@ -11,8 +12,9 @@ import '../styles/global.css';
     <meta name="generator" content={Astro.generator} />
     <title>Astro Basics</title>
   </head>
-  <body>
+  <body class="page-y-offset">
     <slot />
+    <Footer />
   </body>
 </html>
 

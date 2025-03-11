@@ -1,0 +1,24 @@
+---
+import logo from '../assets/logo-1.svg';
+import iconGithub from '../assets/icon-github.svg';
+import iconLinkedIn from '../assets/icon-linkedin.svg';
+---
+
+<footer class="page-x-offset flex flex-col gap-14">
+  <ul class="flex gap-6 items-center">
+    <li class="h-6 w-6">
+      <a href="#" class="text-black">
+        <img src={iconGithub.src} alt="github" />
+      </a>
+    </li>
+    <li class="h-6 w-6">
+      <a href="#">
+        <img src={iconLinkedIn.src} alt="LinkedIn" />
+      </a>
+    </li>
+  </ul>
+  <div class="flex justify-between items-center">
+    <img src={logo.src} alt="logo" />
+    <span class="text-sm flex-1">© Raul Melo Inc, all rights reserved.</span>
+  </div>
+</footer>
