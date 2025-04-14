@@ -1,4 +1,9 @@
 @import 'tailwindcss';
+@import '@fontsource-variable/inter';
+
+@import '@fontsource/lato/300.css'; /* light */
+@import '@fontsource/lato/400.css'; /* normal */
+@import '@fontsource/lato/700.css'; /* bold */
 
 @theme {
   /* Custom Palette
@@ -35,4 +40,34 @@
   --color-purple-800: oklch(69.09% 0.1724 294.52);
   --color-purple-600: oklch(76.59% 0.1286 296.53);
   --color-purple-400: oklch(84.6% 0.0845 298.33);
+
+  --base-sans-font:
+    ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-inter: 'Inter Variable', var(--base-sans-font);
+  --font-lato: 'Lato', var(--base-sans-font);
+
+  --font-sans: var(--font-inter);
+
+  --sm-page-offset: 16px;
+  --md-page-offset: 24px;
+}
+
+/* @screen (--) */
+
+@layer utilities {
+  .page-container {
+    padding-inline: var(--md-page-offset);
+
+    @variant md {
+      padding-inline: var(--md-page-offset);
+    }
+  }
+}
+
+@layer base {
+  body {
+    font-family: var(--font-lato);
+    color: var(--color-black);
+  }
 }
