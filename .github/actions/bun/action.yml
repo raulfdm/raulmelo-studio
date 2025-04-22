@@ -3,9 +3,9 @@ description: 'Shared action to install PNPM and Bun'
 runs:
   using: 'composite'
   steps:
-    - uses: oven-sh/setup-bun@v1
+    - uses: oven-sh/setup-bun@v2
       with:
-        bun-version: 1.2.4
+        bun-version: 1.2.10
 
     - name: Install dependencies
       run: bun install
