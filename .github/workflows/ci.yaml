@@ -17,3 +17,5 @@ jobs:
 
       - name: CI checks
         run: bun turbo lint test build
+        env:
+          APP_ENV: local
