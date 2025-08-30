@@ -11,29 +11,30 @@
     "build": "sanity build",
     "deploy": "sanity deploy",
     "deploy-graphql": "sanity graphql deploy",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint ."
   },
   "keywords": [
     "sanity"
   ],
   "dependencies": {
-    "@raulmelo/core": "workspace:*",
     "@icons-pack/react-simple-icons": "10.1.0",
-    "@sanity/document-internationalization": "3.1.0",
-    "@sanity/vision": "3.64.1",
+    "@raulmelo/core": "workspace:*",
+    "@sanity/document-internationalization": "4.0.0",
+    "@sanity/vision": "4.6.0",
     "lucide-react": "0.460.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "sanity": "3.64.1",
-    "sanity-plugin-iframe-pane": "3.1.6",
-    "sanity-plugin-media": "2.3.2",
-    "styled-components": "6.1.13"
+    "sanity": "4.6.0",
+    "sanity-plugin-iframe-pane": "4.0.0",
+    "sanity-plugin-media": "4.0.0",
+    "styled-components": "6.1.19"
   },
   "devDependencies": {
-    "@sanity/eslint-config-studio": "4.0.0",
+    "@sanity/eslint-config-studio": "5.0.2",
     "@types/react": "18.3.12",
-    "eslint": "8.6.0",
-    "prettier": "3.3.3",
+    "eslint": "9.34.0",
+    "prettier": "3.6.2",
     "typescript": "5.8.2"
   },
   "prettier": {
