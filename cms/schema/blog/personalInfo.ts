@@ -4,7 +4,6 @@ export const personalInfoSchemaType = defineType({
   name: `personalInfo`,
   title: `Personal Information`,
   type: `document`,
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   __experimental_actions: [`create`, `update`, /*'delete',*/ `publish`],
   fields: [
