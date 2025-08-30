@@ -1,14 +1,13 @@
 import type { APIRoute } from 'astro';
-import { z } from 'zod';
-import { fromZodError } from 'zod-validation-error';
+import { z } from 'zod/v4';
 
 import {
   queryPostBySlug,
   queryTilBySlug,
 } from '@/infrastructure/api/modules/posts';
-import { serverEnv } from '@/infrastructure/env/server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { contentBlockToMarkdown } from '@/infrastructure/utils/contentBlockToMarkdown';
+import { config } from '@/infrastructure/config/server';
 
 const ContentSchema = z.object({
   slug: z.string(),
@@ -26,7 +25,7 @@ export const POST: APIRoute = async function POST({ request }) {
     );
   }
 
-  if (authorization !== serverEnv.API_TOKEN) {
+  if (authorization !== config.site.apiToken) {
     return new Response(
       JSON.stringify({
         error: `Unauthorized`,
@@ -53,7 +52,7 @@ export const POST: APIRoute = async function POST({ request }) {
   if (!result.success) {
     return new Response(
       JSON.stringify({
-        error: fromZodError(result.error).message,
+        error: z.formatError(result.error),
       }),
       { status: 400 },
     );

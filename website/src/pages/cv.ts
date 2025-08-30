@@ -1,8 +1,6 @@
+import { config } from '@/infrastructure/config/server';
 import type { APIContext } from 'astro';
 
 export function GET({ redirect }: APIContext) {
-  return redirect(
-    `https://docs.google.com/document/d/1xk0ChmPckqW85xtM1Hizx2tVbo2B61xjcpz-_dAH3f8`,
-    307,
-  );
+  return redirect(config.cvURL, 307);
 }

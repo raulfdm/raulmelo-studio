@@ -12,6 +12,7 @@ import Layout from '@/ui/layouts/Layout.astro';
 
 import { Search } from './_ui/Search';
 import { SearchSSR } from './_ui/SearchSSR';
+import { config } from '@/infrastructure/config/server';
 
 const { lang } = Astro.params as { lang: SupportedLanguage };
 
@@ -24,6 +25,9 @@ const searchServerState = await getServerState(
     languageTitle: intl.formatMessage({ id: `search.filters.lang` }),
     typeTitle: intl.formatMessage({ id: `search.filters.type` }),
     inputSearchPlaceholder: intl.formatMessage({ id: `search.input` }),
+    appId: config.algolia.appId,
+    indexName: config.algolia.indexName,
+    searchKey: config.algolia.searchKey,
   }),
   { renderToString },
 );
@@ -68,5 +72,12 @@ const searchServerState = await getServerState(
     </p>
   </header>
 
-  <SearchSSR lang={lang} searchServerState={searchServerState} client:load />
+  <SearchSSR
+    appId={config.algolia.appId}
+    indexName={config.algolia.indexName}
+    searchKey={config.algolia.searchKey}
+    lang={lang}
+    searchServerState={searchServerState}
+    client:load
+  />
 </Layout>

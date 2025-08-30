@@ -6,18 +6,24 @@ import {
 import type { SupportedLanguage } from '@raulmelo/core/intl';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 
-import { Search } from './Search';
+import { Search, type SearchProps } from './Search';
 
-type Props = {
+interface SearchSsrProps
+  extends Pick<SearchProps, 'appId' | 'indexName' | 'searchKey'> {
   lang: SupportedLanguage;
   searchServerState: InstantSearchServerState;
-};
+}
 
-export function SearchSSR({ lang, searchServerState }: Props) {
+export function SearchSSR({
+  lang,
+  searchServerState,
+  ...rest
+}: SearchSsrProps) {
   const intl = getIntl(lang);
   return (
     <InstantSearchSSRProvider {...searchServerState}>
       <Search
+        {...rest}
         lang={lang}
         tagsTitle={intl.formatMessage({ id: `search.filters.tags` })}
         languageTitle={intl.formatMessage({ id: `search.filters.lang` })}
