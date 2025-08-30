@@ -8,6 +8,15 @@
     "website-new",
     "cms"
   ],
+  "packageManager": "bun@1.2.21",
+  "catalog": {
+    "@types/bun": "1.2.21",
+    "eslint": "9.34.0",
+    "prettier": "3.6.2",
+    "typescript": "5.9.2",
+    "vitest": "3.2.4",
+    "zod": "3.25.76"
+  },
   "scripts": {
     "prepare": "husky",
     "build": "turbo run build",
@@ -20,10 +29,7 @@
   },
   "devDependencies": {
     "husky": "9.1.7",
-    "prettier": "3.4.2",
-    "rimraf": "6.0.1",
-    "turbo": "2.4.4",
-    "typescript": "5.8.2"
-  },
-  "packageManager": "bun@1.2.10"
+    "prettier": "catalog:",
+    "turbo": "2.4.4"
+  }
 }
