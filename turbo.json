@@ -10,7 +10,8 @@
         "functions/**",
         ".vercel",
         ".astro"
-      ]
+      ],
+      "env": ["APP_ENV", "API_TOKEN", "ALGOLIA_ADMIN_KEY", "SANITY_TOKEN"]
     },
     "dev": {
       "outputs": []
@@ -29,7 +30,7 @@
     "deploy": {
       "dependsOn": ["^build"],
       "outputs": [],
-      "env": ["SANITY_AUTH_TOKEN"]
+      "env": ["APP_ENV", "API_TOKEN", "ALGOLIA_ADMIN_KEY", "SANITY_TOKEN"]
     }
   }
 }

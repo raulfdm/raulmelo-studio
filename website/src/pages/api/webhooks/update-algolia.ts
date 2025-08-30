@@ -2,13 +2,12 @@ import { algoliasearch } from 'algoliasearch';
 import type { APIRoute } from 'astro';
 
 import { queryAlgoliaData } from '@/infrastructure/api/modules/algolia';
-import { clientEnv } from '@/infrastructure/env/client';
-import { serverEnv } from '@/infrastructure/env/server';
 import { sanityClient } from '@/infrastructure/sanity/client';
+import { config } from '@/infrastructure/config/server';
 
 const algoliaClient = algoliasearch(
-  clientEnv.PUBLIC_ALGOLIA_APP_ID,
-  serverEnv.ALGOLIA_ADMIN_KEY,
+  config.algolia.appId,
+  config.algolia.adminKey,
 );
 
 export const POST: APIRoute = async function POST({ request }) {
@@ -19,14 +18,14 @@ export const POST: APIRoute = async function POST({ request }) {
       throw new Error(`Authorization code is required`);
     }
 
-    if (authorization !== serverEnv.API_TOKEN) {
+    if (authorization !== config.site.apiToken) {
       throw new Error(`Unauthorized`);
     }
 
     const algoliaData = await queryAlgoliaData({ client: sanityClient });
 
     algoliaClient.saveObjects({
-      indexName: clientEnv.PUBLIC_ALGOLIA_INDEX_NAME,
+      indexName: config.algolia.indexName,
       objects: algoliaData as never,
     });
 

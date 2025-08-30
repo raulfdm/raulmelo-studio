@@ -1,3 +1,6 @@
+import { loadEnv } from 'vite';
+import fs from 'node:fs';
+import path from 'node:path';
 import partytown from '@astrojs/partytown';
 import react from '@astrojs/react';
 import svelte from '@astrojs/svelte';
@@ -6,40 +9,29 @@ import vercel from '@astrojs/vercel';
 import { defineConfig, sharpImageService } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 import { resolve } from 'import-meta-resolve';
-import { loadEnv } from 'vite';
+import { createConfig } from './src/infrastructure/config/create-config';
 
-const { VERCEL_ENV, VERCEL_URL } = loadEnv(
-  import.meta.env.MODE,
-  process.cwd(),
-  ``,
-);
+const config = createConfig(loadEnv(import.meta.env.MODE!, process.cwd(), ''));
 
-const assetsDomains: string[] = [
-  `res.cloudinary.com`,
-  `media.giphy.com`,
-  `cdn.sanity.io`,
-  `sanity.io`,
-];
+const configFiles = fs
+  .readdirSync('./config', { withFileTypes: true })
+  .map((f) => path.resolve(process.cwd(), `./config/${f.name}`));
 
 const vscodeOnigurumaPath = new URL(
   `onig.wasm`,
   resolve(`vscode-oniguruma`, import.meta.url),
 ).pathname;
 
-const config = defineConfig({
+export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
   prefetch: true,
-  site: getWebsiteUrl(),
-  output: `server`,
-  redirects: {
-    '/uses': '/en/blog/uses',
-    '/pt/uses': '/pt/blog/uses',
-    '/en/uses': '/en/blog/uses',
-  },
+  site: config.site.url,
+  output: 'server',
+  redirects: config.site.redirects,
   image: {
-    domains: assetsDomains,
+    domains: config.site.assetsDomains,
     service: sharpImageService(),
   },
   integrations: [
@@ -57,30 +49,12 @@ const config = defineConfig({
     svelte(),
   ],
   adapter: vercel({
-    includeFiles: [vscodeOnigurumaPath],
+    includeFiles: [vscodeOnigurumaPath, ...configFiles],
     imageService: true,
     imagesConfig: {
-      domains: assetsDomains,
+      domains: config.site.assetsDomains,
       sizes: [320, 640, 768, 1024, 1280],
     },
-    isr: {
-      // caches all pages on first request and saves for X time
-      get expiration() {
-        const oneDayInSeconds = 60 * 60 * 24;
-        return oneDayInSeconds;
-      },
-    },
+    isr: config.site.isr,
   }),
 });
-
-function getWebsiteUrl() {
-  if (VERCEL_ENV === `production`) {
-    return `https://www.raulmelo.me`;
-  } else if (VERCEL_URL) {
-    return `https://${VERCEL_URL}`;
-  } else {
-    return `http://localhost:4321`;
-  }
-}
-
-export default config;

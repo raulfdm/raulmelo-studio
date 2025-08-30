@@ -1,0 +1,32 @@
+# schema: website/src/infrastructure/config/schema.ts
+cvURL: https://docs.google.com/document/d/1xk0ChmPckqW85xtM1Hizx2tVbo2B61xjcpz-_dAH3f8
+
+env: ${APP_ENV}
+
+sanity:
+  projectId: gc3hakk3
+  dataset: production
+  apiVersion: v2021-10-21
+  perspective: published
+  studioHost: raulmelo
+  token: ${SANITY_TOKEN}
+
+algolia:
+  indexName: posts
+  searchKey: b4d091d98c581808423583d794c6a855
+  appId: HVJ4S2JQGD
+  adminKey: ${ALGOLIA_ADMIN_KEY}
+
+site:
+  apiToken: ${API_TOKEN}
+  assetsDomains:
+    - res.cloudinary.com
+    - media.giphy.com
+    - cdn.sanity.io
+    - sanity.io
+  isr:
+    expiration: 86.400 # 24 hours in milliseconds
+  redirects:
+    /uses: /en/blog/uses
+    /pt/uses: /pt/blog/uses
+    /en/uses: /en/blog/uses
