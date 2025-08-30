@@ -19,3 +19,7 @@ jobs:
         run: bun turbo lint test build
         env:
           APP_ENV: local
+          # Those values are required but for CI it does not matter
+          ALGOLIA_ADMIN_KEY: xxx
+          SANITY_TOKEN: xxx
+          API_TOKEN: xxx
