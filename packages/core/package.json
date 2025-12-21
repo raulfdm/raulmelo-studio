@@ -3,21 +3,28 @@
   "type": "module",
   "exports": {
     "./intl": {
-      "import": "./intl.ts"
+      "types": "./dist/intl.d.ts",
+      "default": "./dist/intl.js"
     },
     "./sanity": {
-      "import": "./sanity.ts",
-      "require": "./sanity.ts"
+      "types": "./dist/sanity.d.ts",
+      "default": "./dist/sanity.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "prepare": "turbo --filter @raulmelo/core build --output-logs errors-only",
+    "typecheck": "tsc --noEmit",
+    "build": "tsdown"
   },
   "peerDependencies": {
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@types/bun": "catalog:",
-    "zod": "catalog:"
+    "tsdown": "catalog:"
   }
 }

@@ -25,5 +25,8 @@ jobs:
       - name: Setup environment
         uses: ./.github/actions/bun
 
+      - name: Install Dependencies
+        run: pnpm install
+
       - name: CI checks
         run: bun run ./scripts/bun-update-lock.ts

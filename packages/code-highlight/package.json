@@ -5,15 +5,13 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/src/index.js",
-      "types": "./dist/src/index.d.ts"
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
     },
     "./styles": {
       "import": "./styles/starry-theme.css"
     }
   },
-  "main": "./dist/index.js",
-  "types": "./dist/src/index.d.ts",
   "files": [
     "dist",
     "styles"
@@ -21,7 +19,7 @@
   "scripts": {
     "prepare": "turbo --filter @raulmelo/code-highlight build --output-logs errors-only",
     "test": "bun test",
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsdown",
     "typecheck": "tsc -p tsconfig.build.json --noEmit"
   },
   "peerDependencies": {
@@ -34,6 +32,7 @@
   "devDependencies": {
     "@types/bun": "catalog:",
     "@types/hast": "3.0.4",
+    "tsdown": "catalog:",
     "typescript": "catalog:",
     "vscode-oniguruma": "2.0.1"
   }
