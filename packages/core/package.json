@@ -11,6 +11,9 @@
       "import": "./dist/sanity.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prepare": "turbo --filter @raulmelo/core build --output-logs errors-only",
     "typecheck": "tsc --noEmit",
