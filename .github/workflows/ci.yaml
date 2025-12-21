@@ -19,7 +19,7 @@ jobs:
         run: pnpm install
 
       - name: CI checks
-        run: bun turbo lint test build...
+        run: pnpm turbo lint test build
         env:
           APP_ENV: local
           # Those values are required but for CI it does not matter
