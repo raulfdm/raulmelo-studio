@@ -20,6 +20,9 @@ jobs:
       - name: Setup environment
         uses: ./.github/actions/bun
 
+      - name: Install Dependencies
+        run: pnpm install
+
       - name: Install Playwright Browsers
         run: bun playwright install --with-deps
 

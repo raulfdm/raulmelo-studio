@@ -18,6 +18,9 @@ jobs:
       - name: Setup environment
         uses: ./.github/actions/bun
 
+      - name: Install Dependencies
+        run: pnpm install
+
       - name: CI checks
         run: bun turbo deploy --filter=cms
         env:
