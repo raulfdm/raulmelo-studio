@@ -5,8 +5,8 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/src/index.js",
-      "types": "./dist/src/index.d.ts"
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js"
     },
     "./styles": {
       "import": "./styles/starry-theme.css"
@@ -34,6 +34,7 @@
   "devDependencies": {
     "@types/bun": "catalog:",
     "@types/hast": "3.0.4",
+    "tsdown": "catalog:",
     "typescript": "catalog:",
     "vscode-oniguruma": "2.0.1"
   }
