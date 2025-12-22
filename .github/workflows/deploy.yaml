@@ -39,15 +39,13 @@ jobs:
           echo "sha_tag=$SHA_TAG" >> $GITHUB_OUTPUT
         shell: bash
 
-      - name: LS
-        run: ls -la
-
       - name: Build and push image
         uses: docker/build-push-action@v6
         with:
           context: .
           file: ./website/Dockerfile
           push: true
+          platforms: linux/amd64,linux/arm64
           tags: |
             ${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.sha_tag }}
             ${{ env.IMAGE_NAME }}:latest
