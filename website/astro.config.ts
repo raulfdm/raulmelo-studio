@@ -22,6 +22,9 @@ export default defineConfig({
     domains: config.site.assetsDomains,
     service: sharpImageService(),
   },
+  server:{
+    host: true,
+  },
   integrations: [
     partytown(),
     react(),

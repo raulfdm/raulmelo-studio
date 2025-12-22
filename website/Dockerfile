@@ -8,21 +8,16 @@ RUN corepack enable
 FROM base AS development
 WORKDIR /app
 
-ARG APP_ENV=production
-ARG ALGOLIA_ADMIN_KEY=xx
-ARG SANITY_TOKEN=xx
-ARG API_TOKEN=xx
-
 COPY . .
 
 RUN pnpm install
-RUN pnpm turbo run build --filter=website...
+RUN APP_ENV=production ALGOLIA_ADMIN_KEY=xx SANITY_TOKEN=xx API_TOKEN=xx pnpm turbo run build --filter=website...
 RUN pnpm --filter=website --prod deploy ./pruned
 
 ## Prod layer
 FROM base AS production
 WORKDIR /app
-EXPOSE 3000
+EXPOSE 4321
 
 COPY --from=development /app/pruned .
 CMD ["node", "./dist/server/entry.mjs"]
