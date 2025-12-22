@@ -52,15 +52,13 @@ jobs:
             ${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.sha_tag }}
             ${{ env.IMAGE_NAME }}:latest
 
-      - name: Trigger Dokploy Deployment
+      - name: Trigger Deployment
         run: |
           curl -X 'POST' \
-          '${{ secrets.DOKPLOY_SERVER_URL }}/api/application.deploy' \
+          'https://raulmelo.dev/api/application.deploy' \
           -H 'accept: application/json' \
-          -H 'x-api-key: ${{ secrets.DOKPLOY_API_KEY }}' \
+          -H 'x-api-key: ${{ secrets.WEBSITE_DEPLOY_API_KEY }}' \
           -H 'Content-Type: application/json' \
           -d '{
-              "json":{
-                  "applicationId": "${{ secrets.DOKPLOY_APP_ID }}"
-              }
+            "applicationId": "${{ secrets.WEBSITE_DEPLOY_APP_ID }}"
           }'
