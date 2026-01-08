@@ -16,7 +16,7 @@ const Component = node.style;
 
 const [child] = node.children;
 
-// @ts-expect-error
+// @ts-expect-error - Sometimes links has no direct text but children with text.
 const heading = child.text || child.children?.[0]?.text
 
 if(!heading){
