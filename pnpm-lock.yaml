@@ -3,7 +3,6 @@ lockfileVersion: '9.0'
 settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
-  injectWorkspacePackages: true
 
 catalogs:
   default:
@@ -394,7 +393,7 @@ importers:
         version: 1.3.2(@types/react@19.2.7)
       prettier-plugin-tailwindcss:
         specifier: 0.6.14
-        version: 0.6.14(prettier-plugin-astro@0.14.1)(prettier-plugin-svelte@3.3.3(prettier@3.6.2)(svelte@5.22.6))(prettier@3.6.2)
+        version: 0.6.14(prettier-plugin-astro@0.14.1)(prettier-plugin-svelte@3.3.3(prettier@3.7.4)(svelte@5.22.6))(prettier@3.7.4)
       tailwindcss:
         specifier: 4.1.12
         version: 4.1.12
@@ -18532,12 +18531,18 @@ snapshots:
       prettier: 3.6.2
       svelte: 5.22.6
 
-  prettier-plugin-tailwindcss@0.6.14(prettier-plugin-astro@0.14.1)(prettier-plugin-svelte@3.3.3(prettier@3.6.2)(svelte@5.22.6))(prettier@3.6.2):
+  prettier-plugin-svelte@3.3.3(prettier@3.7.4)(svelte@5.22.6):
     dependencies:
-      prettier: 3.6.2
+      prettier: 3.7.4
+      svelte: 5.22.6
+    optional: true
+
+  prettier-plugin-tailwindcss@0.6.14(prettier-plugin-astro@0.14.1)(prettier-plugin-svelte@3.3.3(prettier@3.7.4)(svelte@5.22.6))(prettier@3.7.4):
+    dependencies:
+      prettier: 3.7.4
     optionalDependencies:
       prettier-plugin-astro: 0.14.1
-      prettier-plugin-svelte: 3.3.3(prettier@3.6.2)(svelte@5.22.6)
+      prettier-plugin-svelte: 3.3.3(prettier@3.7.4)(svelte@5.22.6)
 
   prettier@3.6.2: {}
 
