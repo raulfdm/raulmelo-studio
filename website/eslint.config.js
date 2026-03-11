@@ -4,8 +4,9 @@ import eslintPluginAstro from 'eslint-plugin-astro';
 import eslint from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import tseslint from 'typescript-eslint';
+import {defineConfig} from 'eslint/config'
 
-export default tseslint.config(
+export default defineConfig(
   {
     ignores: [
       '.DS_Store',
