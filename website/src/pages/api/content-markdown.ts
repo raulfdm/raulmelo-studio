@@ -60,17 +60,15 @@ export const POST: APIRoute = async function POST({ request }) {
 
   const { slug } = result.data;
 
-  let textContent = ``;
-
   const [post, til] = await Promise.all([
     queryPostBySlug({ slug, client: sanityClient, preview: true }),
     queryTilBySlug({ slug, client: sanityClient, preview: true }),
   ]);
 
   if (post) {
-    textContent = await contentBlockToMarkdown(post.content, { sanityClient });
+    return new Response(await contentBlockToMarkdown(post.content, { sanityClient }));
   } else if (til) {
-    textContent = await contentBlockToMarkdown(til.content, { sanityClient });
+    return new Response(await contentBlockToMarkdown(til.content, { sanityClient }));
   } else {
     return new Response(
       JSON.stringify({
@@ -79,6 +77,4 @@ export const POST: APIRoute = async function POST({ request }) {
       { status: 404 },
     );
   }
-
-  return new Response(textContent);
 };
