@@ -59,15 +59,17 @@ export const POST: APIRoute = async function POST({ request }) {
 
   const { slug } = result.data;
 
+  let textContent = ``;
+
   const [post, til] = await Promise.all([
     queryPostBySlug({ slug, client: sanityClient, preview: true }),
     queryTilBySlug({ slug, client: sanityClient, preview: true }),
   ]);
 
   if (post) {
-    return new Response(await contentBlockToRawText(post.content));
+    textContent = await contentBlockToRawText(post.content);
   } else if (til) {
-    return new Response(await contentBlockToRawText(til.content));
+    textContent = await contentBlockToRawText(til.content);
   } else {
     return new Response(
       JSON.stringify({
@@ -76,4 +78,6 @@ export const POST: APIRoute = async function POST({ request }) {
       { status: 404 },
     );
   }
+
+  return new Response(textContent);
 };

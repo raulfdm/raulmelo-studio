@@ -98,7 +98,7 @@ function GenericRefinement({ title, refine, items, renderLabelText }: TODO) {
                     )}
                     type="checkbox"
                     onClick={handleClick}
-                    onKeyDown={createEnterHandler(handleClick)}
+                    onKeyPress={createEnterHandler(handleClick)}
                   />
                   <span className="text-lg">
                     {renderLabelText(item.label)} {`(${item.count})`}
