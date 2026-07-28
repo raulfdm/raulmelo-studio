@@ -16,7 +16,6 @@ export async function queryTilBySlug({
   preview = false,
 }: QueryTilBySlugParams) {
   const extendedClient = client.withConfig({
-    useCdn: preview === false,
     perspective: preview ? 'previewDrafts' : 'published',
   });
 

@@ -4,21 +4,16 @@ import type { APIRoute } from 'astro';
 import { queryRssData } from '@/infrastructure/api/modules/rss';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { sortPostsByPublishedDate } from '@/infrastructure/api/modules/posts';
-import { SupportedLanguage } from '@raulmelo/core/intl';
+import type { SupportedLanguage } from '@raulmelo/core/intl';
+import { getLanguageStaticPaths } from '@/infrastructure/i18n/getLanguageStaticPaths';
+
+export const getStaticPaths = getLanguageStaticPaths;
 
 export const GET: APIRoute = async ({ params }) => {
-  const { lang } = params as { lang: string };
-  const langParseResult = SupportedLanguage.safeParse(lang);
-
-  if (!langParseResult.success) {
-    return new Response(null, {
-      status: 404,
-      statusText: `Not found`,
-    });
-  }
+  const { lang } = params as { lang: SupportedLanguage };
 
   const { tils, posts, ...restData } = await queryRssData({
-    language: langParseResult.data,
+    language: lang,
     client: sanityClient,
   });
 

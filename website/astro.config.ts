@@ -6,7 +6,6 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, sharpImageService } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 import { createConfig } from './src/infrastructure/config/create-config';
-import node from '@astrojs/node';
 
 const config = createConfig(loadEnv(import.meta.env.MODE!, process.cwd(), ''));
 
@@ -16,8 +15,16 @@ export default defineConfig({
   },
   prefetch: true,
   site: config.site.url,
-  output: 'server',
-  redirects: config.site.redirects,
+  output: 'static',
+  redirects: {
+    ...config.site.redirects,
+    /**
+     * Both used to be runtime `Astro.redirect` routes. On a static build they
+     * become pre-rendered pages that bounce the visitor via `meta refresh`.
+     */
+    '/cv': config.cvURL,
+    '/admin': `https://${config.sanity.studioHost}.sanity.studio/structure`,
+  },
   image: {
     domains: config.site.assetsDomains,
     service: sharpImageService(),
@@ -39,7 +46,4 @@ export default defineConfig({
     }),
     svelte(),
   ],
-  adapter: node({
-    mode: 'standalone',
-  }),
 });

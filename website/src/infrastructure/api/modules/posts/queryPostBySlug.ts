@@ -17,7 +17,6 @@ export async function queryPostBySlug({
   preview = false,
 }: QueryPostBySlugParams) {
   const extendedClient = client.withConfig({
-    useCdn: preview === false,
     perspective: preview ? 'previewDrafts' : 'published',
   });
 

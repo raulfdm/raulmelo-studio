@@ -1,0 +1,48 @@
+# Serves the statically built site. Everything in here used to be handled by
+# `src/middleware.ts`, which a static build can no longer run.
+#
+# `handle` blocks are used rather than bare directives because they are
+# mutually exclusive and evaluated top to bottom - otherwise Caddy's fixed
+# directive order runs `try_files` before `redir` and the language negotiation
+# below never sees `/`.
+:4321 {
+	root * /srv
+	encode zstd gzip
+
+	# `/` used to be redirected to the visitor's language by the Astro
+	# middleware reading Accept-Language. Browsers list their preferred
+	# language first, so matching the leading tag is a fair stand-in.
+	handle / {
+		@pt header_regexp Accept-Language ^\s*pt\b
+		redir @pt /pt 302
+		redir * /en 302
+	}
+
+	handle {
+		# Immutable, content-hashed assets.
+		@hashed path /_astro/*
+		header @hashed Cache-Control "public, max-age=31536000, immutable"
+
+		# Go's mime table has no entry for .md, so the per-post Markdown
+		# exports would otherwise be served without a Content-Type.
+		@markdown path *.md
+		header @markdown Content-Type "text/markdown; charset=utf-8"
+
+		# Astro emits `some/page/index.html` but links to `/some/page`. Matching
+		# the index file *before* the bare path matters: file_server would
+		# otherwise see a directory and 301 to a trailing slash on every link.
+		try_files {path}/index.html {path} {path}.html
+
+		file_server
+	}
+
+	handle_errors {
+		# Locale-less paths (`/blog`) used to be rewritten to `/en/blog` by the
+		# middleware. Anything already carrying a locale is a genuine 404.
+		@no_locale not path_regexp ^/(en|pt)(/|$)
+		redir @no_locale /en{uri} 302
+
+		rewrite * /404.html
+		file_server
+	}
+}

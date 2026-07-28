@@ -1,6 +1,7 @@
 ---
 import { queryPosts } from '@/infrastructure/api/modules/posts';
 import type { SupportedLanguage } from '@raulmelo/core/intl';
+import { getLanguageStaticPaths } from '@/infrastructure/i18n/getLanguageStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { getHomePageUrl } from '@/infrastructure/utils/url';
@@ -8,6 +9,8 @@ import { Breadcrumbs } from '@/ui/Breadcrumbs';
 import Layout from '@/ui/layouts/Layout.astro';
 
 import Posts from './_ui/Posts.svelte';
+
+export const getStaticPaths = getLanguageStaticPaths;
 
 const { lang } = Astro.params as { lang: SupportedLanguage };
 

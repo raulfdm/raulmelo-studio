@@ -1,7 +1,7 @@
 ---
 import { sortPostsByPublishedDate } from '@/infrastructure/api/modules/posts';
-import { queryTagBySlug } from '@/infrastructure/api/modules/tag';
-import type { SupportedLanguage } from '@raulmelo/core/intl';
+import { queryAllTags, queryTagBySlug } from '@/infrastructure/api/modules/tag';
+import { SupportedLanguages, type SupportedLanguage } from '@raulmelo/core/intl';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { isEmpty } from '@/infrastructure/utils/isEmpty';
@@ -16,6 +16,18 @@ import { Breadcrumbs } from '@/ui/Breadcrumbs';
 import Layout from '@/ui/layouts/Layout.astro';
 import PostBasic from '@/ui/PostBasic.astro';
 
+export async function getStaticPaths() {
+  const perLanguage = await Promise.all(
+    SupportedLanguages.map(async (lang) => {
+      const tags = await queryAllTags({ client: sanityClient, language: lang });
+
+      return tags.map((tag) => ({ params: { lang, tag: tag.slug } }));
+    }),
+  );
+
+  return perLanguage.flat();
+}
+
 const { lang, tag } = Astro.params as {
   lang: SupportedLanguage;
   tag: string;
@@ -28,7 +40,7 @@ const remoteTagResult = await queryTagBySlug({
 });
 
 if (remoteTagResult.error) {
-  return Astro.rewrite('/404');
+  throw new Error(`No tag found for "${lang}/tags/${tag}".`);
 }
 
 const remoteTag = remoteTagResult.data;

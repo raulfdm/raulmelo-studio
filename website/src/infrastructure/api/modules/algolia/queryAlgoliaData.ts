@@ -23,8 +23,7 @@ export async function queryAlgoliaData({ client }: QueryAlgoliaDataParams) {
 
   return [
     ...snippets.map(snippetsToAlgoliaObjectAdapter),
-    ...allTils.map(async (til) => await objectCreator(til)),
-    ...allPosts.map(async (post) => await objectCreator(post)),
+    ...(await Promise.all([...allTils, ...allPosts].map(objectCreator))),
   ];
 
   async function objectCreator(data: AlgoliaContent): Promise<AlgoliaObject> {
