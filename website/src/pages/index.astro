@@ -1,1 +1,31 @@
-<h1>this page shouldn't exist</h1>
+---
+import { SupportedLanguages } from '@raulmelo/core/intl';
+
+/**
+ * The reverse proxy redirects `/` to the best matching language before this
+ * page is ever served. It only exists as a fallback for `astro dev`/`preview`
+ * and for the case the proxy rule ever goes missing.
+ */
+const defaultLang = SupportedLanguages[0];
+---
+
+<!doctype html>
+<html lang={defaultLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content={`0; url=/${defaultLang}`} />
+    <link rel="canonical" href={`/${defaultLang}`} />
+    <meta name="robots" content="noindex" />
+    <title>Redirecting…</title>
+    <script is:inline define:vars={{ languages: SupportedLanguages }}>
+      const preferred = (navigator.languages || [navigator.language || ``])
+        .map((tag) => String(tag).split(`-`)[0].toLowerCase())
+        .find((tag) => languages.includes(tag));
+
+      window.location.replace(`/${preferred || languages[0]}`);
+    </script>
+  </head>
+  <body>
+    <a href={`/${defaultLang}`}>Continue to raulmelo.me</a>
+  </body>
+</html>

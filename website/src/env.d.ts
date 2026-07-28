@@ -3,12 +3,6 @@
 
 type Theme = `light` | `dark` | `system`;
 
-declare namespace App {
-  interface Locals {
-    themeHint: Theme;
-  }
-}
-
 interface Window {
   __theme: Theme;
   __handleLightTheme: () => void;

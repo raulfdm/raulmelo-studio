@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-
 type Props = {
   node: {
     caption: string;
@@ -10,6 +8,13 @@ type Props = {
   };
 };
 const { caption, src, width = 300, height } = Astro.props.node;
+
+/**
+ * Deliberately a plain `<img>` rather than `astro:assets`. These GIFs are
+ * hosted on third party services (Giphy, GitHub camo), so optimising them at
+ * build time both re-encodes something already optimised and lets a single
+ * rotten URL fail the entire build.
+ */
 ---
 
 <figure
@@ -18,6 +23,13 @@ const { caption, src, width = 300, height } = Astro.props.node;
     maxWidth: width ? `${width}px` : `fit-content`,
   }}
 >
-  <Image alt={caption} width={width} height={height ?? width} src={src} />
+  <img
+    alt={caption ?? ``}
+    width={width}
+    height={height ?? width}
+    src={src}
+    loading="lazy"
+    decoding="async"
+  />
   {caption && <figcaption class="text-center w-full">{caption}</figcaption>}
 </figure>

@@ -7,16 +7,8 @@
 
 <script is:inline>
   const initialTheme = (function getInitialTheme() {
-    const themeHint = document
-      .querySelector(`html`)
-      ?.getAttribute(`data-theme-hint`);
-
     if (typeof localStorage !== `undefined` && localStorage.getItem(`theme`)) {
       return localStorage.getItem(`theme`);
-    }
-
-    if (themeHint) {
-      return themeHint;
     }
 
     if (window.matchMedia(`(prefers-color-scheme: dark)`).matches) {

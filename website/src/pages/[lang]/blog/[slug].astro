@@ -1,6 +1,9 @@
 ---
-import { queryPostBySlug } from '@/infrastructure/api/modules/posts';
-import type { SupportedLanguage } from '@raulmelo/core/intl';
+import {
+  queryPostBySlug,
+  queryPosts,
+} from '@/infrastructure/api/modules/posts';
+import { SupportedLanguages, type SupportedLanguage } from '@raulmelo/core/intl';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { getEstimatedReadingTime } from '@/infrastructure/utils/getEstimatedReadingTime';
@@ -25,6 +28,18 @@ import SeriesSection from './_ui/SeriesSection.svelte';
 import { isNil } from '@/infrastructure/utils/isNil';
 import { isEmpty } from '@/infrastructure/utils/isEmpty';
 
+export async function getStaticPaths() {
+  const perLanguage = await Promise.all(
+    SupportedLanguages.map(async (lang) => {
+      const posts = await queryPosts({ language: lang, client: sanityClient });
+
+      return posts.map((post) => ({ params: { lang, slug: post.slug } }));
+    }),
+  );
+
+  return perLanguage.flat();
+}
+
 const { lang, slug } = Astro.params as {
   slug: string;
   lang: SupportedLanguage;
@@ -33,11 +48,11 @@ const { lang, slug } = Astro.params as {
 const post = await queryPostBySlug({
   slug,
   client: sanityClient,
-  preview: Astro.url.searchParams.get(`preview`) !== null,
+  preview: false,
 });
 
 if (post === null || isNil(post) || isEmpty(post)) {
-  return Astro.redirect(`/404`);
+  throw new Error(`No published post found for "${lang}/blog/${slug}".`);
 }
 
 const estimatedReadingTime = await getEstimatedReadingTime(post.content);

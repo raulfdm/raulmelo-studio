@@ -41,14 +41,14 @@ const adaptedImages = await Promise.all(
       src: url,
       width,
       height,
-      alt: caption || alt,
+      alt: caption || alt || ``,
     });
 
     return {
       id: `${id.current}_${imgIndex}`,
       index: imgIndex,
       caption,
-      alt: caption || alt,
+      alt: caption || alt || ``,
       ...optimizedImg,
     };
   }),

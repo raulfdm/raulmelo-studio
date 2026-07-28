@@ -10,6 +10,9 @@ sanity:
   perspective: published
   studioHost: raulmelo
   token: ${SANITY_TOKEN}
+  # Sanity is only queried while the static site is being built, so the CDN
+  # buys nothing and its quota is the one that runs out on the free plan.
+  useCdn: false
 
 algolia:
   indexName: posts
@@ -18,14 +21,11 @@ algolia:
   adminKey: ${ALGOLIA_ADMIN_KEY}
 
 site:
-  apiToken: ${API_TOKEN}
   assetsDomains:
     - res.cloudinary.com
     - media.giphy.com
     - cdn.sanity.io
     - sanity.io
-  isr:
-    expiration: 86.400 # 24 hours in milliseconds
   redirects:
     /uses: /en/blog/uses
     /pt/uses: /pt/blog/uses

@@ -21,15 +21,7 @@ export const configSchema = z.object({
   }),
   site: z.object({
     url: z.string(),
-    apiToken: z.string(),
     assetsDomains: z.array(z.string()).default([]),
-    /**
-     * Incremental Static Regeneration (ISR) configuration.
-     * @see https://docs.astro.build/en/guides/integrations-guide/vercel/#isr
-     */
-    isr: z.object({
-      expiration: z.number(),
-    }),
     redirects: z
       .record(
         z.string(), // Source path
