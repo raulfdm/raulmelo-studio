@@ -19,9 +19,9 @@ jobs:
         uses: ./.github/actions/mise
 
       - name: Install Dependencies
-        run: mise exec -- pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: CI checks
-        run: mise exec -- bun turbo deploy --filter=cms
+        run: bun turbo deploy --filter=cms
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}

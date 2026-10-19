@@ -4,12 +4,12 @@
 
 ## Development setup
 
-Install [mise](https://mise.jdx.dev/), then run these commands from the repository root:
+Install [mise](https://mise.jdx.dev/), then [activate it in your shell](https://mise.jdx.dev/getting-started.html#activate-mise). For zsh, add `eval "$(mise activate zsh)"` to `~/.zshrc` and open a new terminal. From the repository root, run:
 
 ```sh
 mise install
-mise exec -- pnpm install --frozen-lockfile
-mise exec -- pnpm dev
+pnpm install --frozen-lockfile
+pnpm dev
 ```
 
 `mise.toml` pins Node.js, pnpm, and Bun for local development, CI, and Docker builds.

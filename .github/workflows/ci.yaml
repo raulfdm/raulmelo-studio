@@ -16,10 +16,10 @@ jobs:
         uses: ./.github/actions/mise
 
       - name: Install Dependencies
-        run: mise exec -- pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: CI checks
-        run: mise exec -- pnpm turbo lint test build
+        run: pnpm turbo lint test build
         env:
           APP_ENV: local
           # The build now generates every page, so it needs real read access to

@@ -79,10 +79,10 @@ jobs:
         uses: ./.github/actions/mise
 
       - name: Install Dependencies
-        run: mise exec -- pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Rebuild the Algolia index
-        run: mise exec -- pnpm --filter website reindex:algolia
+        run: pnpm --filter website reindex:algolia
         env:
           APP_ENV: production
           SANITY_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}

@@ -6,16 +6,16 @@ RUN mise trust && mise install
 
 # Prune stage - Create a pruned monorepo with only website and its dependencies
 FROM base AS prepare
-RUN mise exec -- npm install --global turbo@2.4.4
+RUN npm install --global turbo@2.4.4 && mise reshim
 COPY . .
 ## Prune only website-related dependencies
-RUN mise exec -- turbo prune website --docker
+RUN turbo prune website --docker
 
 ## Builder stage - Build the website and its dependencies
 FROM base AS builder
 ## Copy only package.json and lockfile files so we can install dependencies
 COPY --from=prepare /app/out/json .
-RUN mise exec -- pnpm install --frozen-lockfile --ignore-scripts
+RUN pnpm install --frozen-lockfile --ignore-scripts
 ## Now we can copy the full source code and build the website
 COPY --from=prepare /app/out/full .
 ## The site is generated statically, so every page is fetched from Sanity right
@@ -27,7 +27,7 @@ RUN --mount=type=secret,id=sanity_token \
     APP_ENV=production \
     SANITY_TOKEN="$(cat /run/secrets/sanity_token)" \
     ALGOLIA_ADMIN_KEY=xx \
-    mise exec -- pnpm turbo run build --filter=website...
+    pnpm turbo run build --filter=website...
 
 # Runner stage - Serve the generated files
 FROM caddy:2-alpine AS runner

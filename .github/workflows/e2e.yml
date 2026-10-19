@@ -21,13 +21,13 @@ jobs:
         uses: ./.github/actions/mise
 
       - name: Install Dependencies
-        run: mise exec -- pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Install Playwright Browsers
-        run: mise exec -- pnpm --filter astro-latest exec playwright install --with-deps
+        run: pnpm --filter astro-latest exec playwright install --with-deps
 
       - name: Run Playwright tests
-        run: mise exec -- pnpm turbo test:e2e
+        run: pnpm turbo test:e2e
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
