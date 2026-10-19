@@ -18,16 +18,16 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup environment
-        uses: ./.github/actions/bun
+        uses: ./.github/actions/mise
 
       - name: Install Dependencies
-        run: pnpm install
+        run: mise exec -- pnpm install --frozen-lockfile
 
       - name: Install Playwright Browsers
-        run: bun playwright install --with-deps
+        run: mise exec -- bun playwright install --with-deps
 
       - name: Run Playwright tests
-        run: bun turbo test:e2e
+        run: mise exec -- bun turbo test:e2e
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}

@@ -13,16 +13,16 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup environment
-        uses: ./.github/actions/bun
+        uses: ./.github/actions/mise
 
       - name: Install Dependencies
-        run: pnpm install
+        run: mise exec -- pnpm install --frozen-lockfile
 
       - name: CI checks
-        run: pnpm turbo lint test build
+        run: mise exec -- pnpm turbo lint test build
         env:
           APP_ENV: local
           # The build now generates every page, so it needs real read access to
           # Sanity. ALGOLIA_ADMIN_KEY is only read by the reindex script.
-          SANITY_TOKEN: ${{ secrets.SANITY_TOKEN }}
+          SANITY_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
           ALGOLIA_ADMIN_KEY: xxx

@@ -16,12 +16,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup environment
-        uses: ./.github/actions/bun
+        uses: ./.github/actions/mise
 
       - name: Install Dependencies
-        run: pnpm install
+        run: mise exec -- pnpm install --frozen-lockfile
 
       - name: CI checks
-        run: bun turbo deploy --filter=cms
+        run: mise exec -- bun turbo deploy --filter=cms
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
