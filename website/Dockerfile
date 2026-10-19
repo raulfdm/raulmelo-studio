@@ -8,11 +8,12 @@ RUN corepack enable
 FROM base AS prepare
 WORKDIR /app
 
-## We need to install turbo globally
-RUN pnpm add -g turbo@2.4.4
+## Install Turbo without invoking pnpm before the repository's pinned version
+## is available in the image.
+RUN npm install --global turbo@2.4.4
 COPY . .
 ## Prune only website-related dependencies
-RUN pnpm turbo prune --scope=website --docker
+RUN turbo prune website --docker
 
 ## Builder stage - Build the website and its dependencies
 FROM base AS builder
