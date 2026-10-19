@@ -15,7 +15,6 @@ import sourceRegexPosix from '@wooorm/starry-night/source.regexp.posix';
 import sourceRust from '@wooorm/starry-night/source.rust';
 import sourceShell from '@wooorm/starry-night/source.shell';
 import sourceSvelte from '@wooorm/starry-night/source.svelte';
-import sourceSy from '@wooorm/starry-night/source.sy';
 import sourceTs from '@wooorm/starry-night/source.ts';
 import sourceTsx from '@wooorm/starry-night/source.tsx';
 import textHtmlBasic from '@wooorm/starry-night/text.html.basic';
@@ -44,7 +43,12 @@ export const starryNight: StarryNight = await createStarryNight([
   sourceRust,
   sourceShell,
   sourceSvelte,
-  sourceSy,
+  /**
+   * `source.sy` is deliberately absent: nothing maps to it in
+   * CODE_LANGUAGES_MAP, and loading it makes `source.regexp` fail to compile
+   * ("invalid code point value"), silently dropping highlighting on every
+   * regex code block.
+   */
   sourceTs,
   sourceTsx,
   textHtmlBasic,

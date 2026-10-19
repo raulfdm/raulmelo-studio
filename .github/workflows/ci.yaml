@@ -22,7 +22,7 @@ jobs:
         run: pnpm turbo lint test build
         env:
           APP_ENV: local
-          # Those values are required but for CI it does not matter
+          # The build now generates every page, so it needs real read access to
+          # Sanity. ALGOLIA_ADMIN_KEY is only read by the reindex script.
+          SANITY_TOKEN: ${{ secrets.SANITY_TOKEN }}
           ALGOLIA_ADMIN_KEY: xxx
-          SANITY_TOKEN: xxx
-          API_TOKEN: xxx

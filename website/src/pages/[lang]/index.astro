@@ -1,6 +1,7 @@
 ---
 import { queryPostsAndTils } from '@/infrastructure/api/modules/posts';
-import { SupportedLanguage } from '@raulmelo/core/intl';
+import type { SupportedLanguage } from '@raulmelo/core/intl';
+import { getLanguageStaticPaths } from '@/infrastructure/i18n/getLanguageStaticPaths';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import {
@@ -13,17 +14,9 @@ import Layout from '@/ui/layouts/Layout.astro';
 
 import PostSection from './_ui/PostSection.astro';
 
+export const getStaticPaths = getLanguageStaticPaths;
+
 const { lang } = Astro.params as { lang: SupportedLanguage };
-
-const { success } = SupportedLanguage.safeParse(lang);
-
-/**
- * Didn't get yet why but "lang" could be `favicon.ico`. If that's the case
- * we just redirect to the root path.
- */
-if (!success) {
-  return Astro.redirect(Astro.request.url);
-}
 
 const NUMBER_OF_POSTS = 2;
 

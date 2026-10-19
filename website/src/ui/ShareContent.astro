@@ -18,13 +18,13 @@ type Props = {
 const { linkedIn, twitter, titleLabel } = Astro.props;
 
 const linkIdUrl = `https://www.linkedin.com/shareArticle?${qs.stringify(
-  { url: Astro.request.url, ...linkedIn },
+  { url: Astro.url.href, ...linkedIn },
   { encode: true, strict: true },
 )}`;
 
 const twitterUrl = `https://twitter.com/share?${qs.stringify(
   {
-    url: Astro.request.url,
+    url: Astro.url.href,
     via: `raul_fdm`,
     ...twitter,
   },

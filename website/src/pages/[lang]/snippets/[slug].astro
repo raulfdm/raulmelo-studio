@@ -1,6 +1,9 @@
 ---
-import { queryCodeSnippetsBySlug } from '@/infrastructure/api/modules/codeSnippets';
-import type { SupportedLanguage } from '@raulmelo/core/intl';
+import {
+  queryCodeSnippets,
+  queryCodeSnippetsBySlug,
+} from '@/infrastructure/api/modules/codeSnippets';
+import { SupportedLanguages, type SupportedLanguage } from '@raulmelo/core/intl';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import {
@@ -13,6 +16,18 @@ import PostLayout from '@/ui/layouts/PostLayout.astro';
 import CodeBlock from '@/ui/PortableText/CodeBlock/CodeBlock.astro';
 import ShareContent from '@/ui/ShareContent.astro';
 import { Tag, Tags } from '@/ui/Tags';
+
+/**
+ * Snippets aren't language scoped, only their surrounding chrome is, so every
+ * snippet is emitted once per supported language.
+ */
+export async function getStaticPaths() {
+  const snippets = await queryCodeSnippets({ client: sanityClient });
+
+  return SupportedLanguages.flatMap((lang) =>
+    snippets.map((snippet) => ({ params: { lang, slug: snippet.slug } })),
+  );
+}
 
 const { lang, slug } = Astro.params as {
   lang: SupportedLanguage;

@@ -1,6 +1,9 @@
 ---
-import { queryTilBySlug } from '@/infrastructure/api/modules/posts';
-import type { SupportedLanguage } from '@raulmelo/core/intl';
+import {
+  queryTilBySlug,
+  queryTils,
+} from '@/infrastructure/api/modules/posts';
+import { SupportedLanguages, type SupportedLanguage } from '@raulmelo/core/intl';
 import { getIntl } from '@/infrastructure/i18n/getServerSideLocales.server';
 import { sanityClient } from '@/infrastructure/sanity/client';
 import { getEstimatedReadingTime } from '@/infrastructure/utils/getEstimatedReadingTime';
@@ -21,6 +24,18 @@ import { Tag, Tags } from '@/ui/Tags';
 import { isNil } from '@/infrastructure/utils/isNil';
 import { isEmpty } from '@/infrastructure/utils/isEmpty';
 
+export async function getStaticPaths() {
+  const perLanguage = await Promise.all(
+    SupportedLanguages.map(async (lang) => {
+      const tils = await queryTils({ language: lang, client: sanityClient });
+
+      return tils.map((til) => ({ params: { lang, slug: til.slug } }));
+    }),
+  );
+
+  return perLanguage.flat();
+}
+
 const { lang, slug } = Astro.params as {
   slug: string;
   lang: SupportedLanguage;
@@ -29,12 +44,11 @@ const { lang, slug } = Astro.params as {
 const til = await queryTilBySlug({
   slug,
   client: sanityClient,
-  preview: Astro.url.searchParams.get(`preview`) !== null,
+  preview: false,
 });
 
-// https://github.com/vercel/next.js/issues/16681#issuecomment-792314687
 if (til === null || isNil(til) || isEmpty(til)) {
-  return Astro.redirect(`/404`);
+  throw new Error(`No published TIL found for "${lang}/til/${slug}".`);
 }
 
 const estimatedReadingTime = await getEstimatedReadingTime(til.content);

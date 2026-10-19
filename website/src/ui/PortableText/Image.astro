@@ -64,7 +64,7 @@ function calculateCustomHeight(
           'mb-0': Boolean(caption),
         })}
         src={url}
-        alt={alt ?? caption}
+        alt={alt ?? caption ?? ``}
         width={finalWidth}
         height={finalHeight}
       />

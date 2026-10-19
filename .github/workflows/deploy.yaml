@@ -46,6 +46,10 @@ jobs:
           file: ./website/Dockerfile
           push: true
           platforms: linux/amd64,linux/arm64
+          # The site is now generated at image build time, so the build needs
+          # real read access to Sanity.
+          secrets: |
+            sanity_token=${{ secrets.SANITY_TOKEN }}
           tags: |
             ${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.sha_tag }}
             ${{ env.IMAGE_NAME }}:latest
@@ -60,3 +64,26 @@ jobs:
           -d '{
             "applicationId": "${{ secrets.WEBSITE_DEPLOY_APP_ID }}"
           }'
+
+  # Replaces the `/api/webhooks/update-algolia` endpoint, which the static
+  # build can no longer host.
+  reindex-algolia:
+    needs: ci
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup environment
+        uses: ./.github/actions/bun
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Rebuild the Algolia index
+        run: pnpm --filter website reindex:algolia
+        env:
+          APP_ENV: production
+          SANITY_TOKEN: ${{ secrets.SANITY_TOKEN }}
+          ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}

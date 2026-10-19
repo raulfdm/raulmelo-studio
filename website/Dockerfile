@@ -23,24 +23,20 @@ COPY --from=prepare /app/out/json .
 RUN pnpm install --frozen-lockfile --ignore-scripts
 ## Now we can copy the full source code and build the website
 COPY --from=prepare /app/out/full .
-## ... and build the website
-RUN APP_ENV=production ALGOLIA_ADMIN_KEY=xx SANITY_TOKEN=xx API_TOKEN=xx pnpm turbo run build --filter=website...
+## The site is generated statically, so every page is fetched from Sanity right
+## here. Unlike the old server build, a real SANITY_TOKEN is required.
+## ALGOLIA_ADMIN_KEY only has to satisfy config validation - the Algolia index
+## is rebuilt from CI, not from this image.
+RUN --mount=type=secret,id=sanity_token \
+    APP_ENV=production \
+    SANITY_TOKEN="$(cat /run/secrets/sanity_token)" \
+    ALGOLIA_ADMIN_KEY=xx \
+    pnpm turbo run build --filter=website...
 
-# Runner stage - Run the website
-FROM base AS runner
-WORKDIR /app
+# Runner stage - Serve the generated files
+FROM caddy:2-alpine AS runner
 
-## Copy only package.json and lockfile files so we can install PRODUCTION dependencies
-COPY --from=prepare /app/out/json .
-## Copy the built website
-COPY --from=builder /app/website/dist ./website/dist
-## Can't forget the config!
-COPY --from=builder /app/website/config ./website/config
-## Install PRODUCTION dependencies
-RUN pnpm install --frozen-lockfile --ignore-scripts --prod
-## Expose the port the website will run on
+COPY --from=builder /app/website/dist /srv
+COPY --from=builder /app/website/Caddyfile /etc/caddy/Caddyfile
+
 EXPOSE 4321
-## App expects to be in the website directory so the config can be loaded properly (layerfig limitation)
-WORKDIR /app/website
-## Now we can run the website
-CMD ["node", "./dist/server/entry.mjs"]

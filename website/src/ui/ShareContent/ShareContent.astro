@@ -5,4 +5,4 @@ import type { ShareContentProps } from './types';
 type Props = ShareContentProps;
 ---
 
-<ShareContentComponent {...Astro.props} appUrl={Astro.request.url} />
+<ShareContentComponent {...Astro.props} appUrl={Astro.url.href} />
