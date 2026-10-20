@@ -27,10 +27,17 @@ COPY --from=prepare /app/out/full .
 ## Sanity content can change without a source change, so rebuild pages on every run.
 ARG CONTENT_BUILD_ID=local
 RUN --mount=type=secret,id=sanity_token \
+    --mount=type=secret,id=turbo_api \
+    --mount=type=secret,id=turbo_team \
+    --mount=type=secret,id=turbo_token \
     : "$CONTENT_BUILD_ID" && \
     APP_ENV=production \
+    CONTENT_BUILD_ID="$CONTENT_BUILD_ID" \
     SANITY_TOKEN="$(cat /run/secrets/sanity_token)" \
     ALGOLIA_ADMIN_KEY=xx \
+    TURBO_API="$(cat /run/secrets/turbo_api)" \
+    TURBO_TEAM="$(cat /run/secrets/turbo_team)" \
+    TURBO_TOKEN="$(cat /run/secrets/turbo_token)" \
     bun run --bun turbo run build --filter=website...
 
 # Runner stage - Serve the generated files

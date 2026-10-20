@@ -7,6 +7,9 @@ on:
 
 env:
   CI: true
+  TURBO_API: https://turbo-cache.raulmelo.dev
+  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
 jobs:
   build:
