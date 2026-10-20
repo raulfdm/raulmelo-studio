@@ -5,9 +5,21 @@ on:
     branches: [main]
     paths:
       - 'website-new/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - 'mise.toml'
+      - '.github/actions/**'
+      - 'scripts/bin/**'
   pull_request:
     paths:
       - 'website-new/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - 'mise.toml'
+      - '.github/actions/**'
+      - 'scripts/bin/**'
 
 jobs:
   test:
@@ -24,10 +36,10 @@ jobs:
         uses: ./.github/actions/pnpm-install
 
       - name: Install Playwright Browsers
-        run: pnpm --filter astro-latest exec playwright install --with-deps
+        run: bun run --bun --cwd website-new playwright install --with-deps
 
       - name: Run Playwright tests
-        run: pnpm turbo test:e2e
+        run: bun run --bun turbo test:e2e
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}

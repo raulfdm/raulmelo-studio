@@ -2,20 +2,20 @@
   "name": "raulmelo.me",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@10.28.0",
+  "packageManager": "pnpm@12.14.0",
   "scripts": {
-    "prepare": "husky",
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "deploy": "turbo run deploy",
-    "test": "turbo run test",
+    "prepare": "bun run --bun husky",
+    "build": "bun run --bun turbo run build",
+    "dev": "bun run --bun turbo run dev",
+    "lint": "bun run --bun turbo run lint",
+    "deploy": "bun run --bun turbo run deploy",
+    "test": "bun run --bun turbo run test",
     "clean": "rm -rf node_modules **/node_modules",
     "clean:deep": "rm -rf node_modules **/node_modules **/.svelte-kit **/.turbo **/dist **/.vercel"
   },
   "devDependencies": {
     "husky": "9.1.7",
     "prettier": "catalog:",
-    "turbo": "2.4.4"
+    "turbo": "2.11.9"
   }
 }

@@ -12,7 +12,10 @@ pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-`mise.toml` pins Node.js, pnpm, and Bun for local development, CI, and Docker builds.
+`mise.toml` pins pnpm and Bun for local development, CI, and Docker builds.
+The repository's `node` command is a small compatibility wrapper that runs Bun
+for dependency scripts that still invoke `node`. Development and build environments
+do not install Node.js.
 The root `packageManager` field remains for tools such as Turbo that inspect it;
 update it alongside the pnpm version in `mise.toml`.
 
