@@ -42,3 +42,7 @@ minimumReleaseAgeExclude:
   - '@sanity/vision@6.20.0'
   - sanity@6.20.0
   - groq@6.20.0
+patchedDependencies:
+  # Sanity CLI streams the Studio upload, but get-it 9 rejects Node streams.
+  # Remove when the CLI sends a supported request body upstream.
+  '@sanity/cli@8.20.0': patches/@sanity__cli@8.20.0.patch
