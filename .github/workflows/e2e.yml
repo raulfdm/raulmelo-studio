@@ -1,25 +1,6 @@
 name: Playwright Tests
 
-on:
-  push:
-    branches: [main]
-    paths:
-      - 'website-new/**'
-      - 'package.json'
-      - 'pnpm-lock.yaml'
-      - 'pnpm-workspace.yaml'
-      - 'mise.toml'
-      - '.github/actions/**'
-      - 'scripts/bin/**'
-  pull_request:
-    paths:
-      - 'website-new/**'
-      - 'package.json'
-      - 'pnpm-lock.yaml'
-      - 'pnpm-workspace.yaml'
-      - 'mise.toml'
-      - '.github/actions/**'
-      - 'scripts/bin/**'
+on: workflow_dispatch
 
 env:
   TURBO_API: https://turbo-cache.raulmelo.dev
