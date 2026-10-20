@@ -2,6 +2,20 @@
 
 > A monorepo for handling my website infra
 
+## Development setup
+
+Install [mise](https://mise.jdx.dev/), then [activate it in your shell](https://mise.jdx.dev/getting-started.html#activate-mise). For zsh, add `eval "$(mise activate zsh)"` to `~/.zshrc` and open a new terminal. From the repository root, run:
+
+```sh
+mise install
+pnpm install --frozen-lockfile
+pnpm dev
+```
+
+`mise.toml` pins Node.js, pnpm, and Bun for local development, CI, and Docker builds.
+The root `packageManager` field remains for tools such as Turbo that inspect it;
+update it alongside the pnpm version in `mise.toml`.
+
 | CI/CD                                                                                                                                                                       |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [![CI](https://github.com/raulfdm/raulmelo-studio/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/raulfdm/raulmelo-studio/actions/workflows/ci.yaml)   |

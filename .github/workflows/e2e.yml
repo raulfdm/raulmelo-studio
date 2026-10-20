@@ -18,16 +18,16 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup environment
-        uses: ./.github/actions/bun
+        uses: ./.github/actions/mise
 
       - name: Install Dependencies
-        run: pnpm install
+        uses: ./.github/actions/pnpm-install
 
       - name: Install Playwright Browsers
-        run: bun playwright install --with-deps
+        run: pnpm --filter astro-latest exec playwright install --with-deps
 
       - name: Run Playwright tests
-        run: bun turbo test:e2e
+        run: pnpm turbo test:e2e
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}

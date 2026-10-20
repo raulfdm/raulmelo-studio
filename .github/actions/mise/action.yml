@@ -1,0 +1,8 @@
+name: 'Mise setup'
+description: 'Install the runtimes declared in mise.toml'
+runs:
+  using: 'composite'
+  steps:
+    - uses: jdx/mise-action@v5
+      with:
+        version: 2026.10.7
