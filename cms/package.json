@@ -9,7 +9,7 @@
     "dev": "sanity dev",
     "start": "sanity start",
     "build": "sanity build",
-    "deploy": "sanity deploy",
+    "deploy": "node ./node_modules/sanity-deploy-cli/bin/run.js deploy",
     "deploy-graphql": "sanity graphql deploy",
     "typecheck": "tsc --noEmit",
     "lint": "eslint ."
@@ -36,6 +36,7 @@
     "@types/react": "19.3.0",
     "eslint": "catalog:",
     "prettier": "catalog:",
+    "sanity-deploy-cli": "npm:@sanity/cli@7.18.0",
     "typescript": "catalog:"
   },
   "prettier": {
