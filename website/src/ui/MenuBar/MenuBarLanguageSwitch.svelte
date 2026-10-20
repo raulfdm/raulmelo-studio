@@ -6,7 +6,7 @@
     SupportedLanguagesEnum,
     type SupportedLanguage,
   } from '@raulmelo/core/intl';
-  import { LanguagesIcon } from 'lucide-svelte';
+  import { LanguagesIcon } from '@lucide/svelte';
 
   interface Props {
     ariaLabel: string;

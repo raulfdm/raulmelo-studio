@@ -1,7 +1,7 @@
 <script lang="ts">
   import { mergeClasses } from '@/infrastructure/utils/misc';
   import type { SideMenuLink } from './links';
-  import { ExternalLinkIcon } from 'lucide-svelte';
+  import { ExternalLinkIcon } from '@lucide/svelte';
 
   interface Props {
     href: SideMenuLink['href'];

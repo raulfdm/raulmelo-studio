@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Git files setup
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Setup environment
         uses: ./.github/actions/mise
@@ -19,7 +19,7 @@ jobs:
         uses: ./.github/actions/pnpm-install
 
       - name: CI checks
-        run: bun run --bun turbo lint test build
+        run: bun run --bun turbo lint typecheck test build
         env:
           APP_ENV: local
           # The build now generates every page, so it needs real read access to

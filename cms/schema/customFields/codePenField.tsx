@@ -1,12 +1,12 @@
 import {defineField} from 'sanity'
 
-import {SiCodepen} from '@icons-pack/react-simple-icons'
+import {CodeIcon} from 'lucide-react'
 
 export const codePenField = defineField({
   type: `object`,
   name: `codePen`,
   title: `CodePen`,
-  icon: () => <SiCodepen size={20} />,
+  icon: () => <CodeIcon size={20} />,
   fields: [
     {
       name: `directUrl`,

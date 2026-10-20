@@ -1,7 +1,7 @@
 <script lang="ts">
   import { useMachine } from '@xstate/svelte';
   import { copyMachine } from './copyMachine';
-  import { ClipboardIcon, ClipboardCheckIcon } from 'lucide-svelte';
+  import { ClipboardIcon, ClipboardCheckIcon } from '@lucide/svelte';
   import { mergeClasses } from '@/infrastructure/utils/misc';
 
   interface Props {

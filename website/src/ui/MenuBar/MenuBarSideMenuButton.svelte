@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { XIcon, MenuIcon } from 'lucide-svelte';
+  import { XIcon, MenuIcon } from '@lucide/svelte';
   import MenuButton from './MenuBarButton.svelte';
 
   import {

@@ -1,5 +1,5 @@
 import type { PortableTextBlock } from '@portabletext/types';
-import toMarkdown from '@sanity/block-content-to-markdown';
+import { portableTextToMarkdown } from '@portabletext/markdown';
 import type { SanityClient } from '@sanity/client';
 import markdownPlugin from 'prettier/plugins/markdown';
 import Prettier from 'prettier/standalone';
@@ -9,22 +9,21 @@ import { imgUrlFor } from './image';
 type Options = { sanityClient: SanityClient };
 
 function customToMarkdown(
-  portableText: PortableTextBlock,
+  portableText: PortableTextBlock | PortableTextBlock[],
   { sanityClient }: Options,
 ) {
-  return toMarkdown(portableText, {
-    serializers: {
+  return portableTextToMarkdown(
+    Array.isArray(portableText) ? portableText : [portableText],
+    {
       types: {
-        gif: () => undefined,
+        gif: () => '',
         divider: () => '---',
-        youtubeVideo: () => undefined,
-        codePen: () => undefined,
-        imageSlider: () => undefined,
-        tweet: () => undefined,
-        detailedImage: ({
-          node: { alt, caption, image },
-        }: {
-          node: {
+        youtubeVideo: () => '',
+        codePen: () => '',
+        imageSlider: () => '',
+        tweet: () => '',
+        detailedImage: ({ value }) => {
+          const { alt, caption, image } = value as {
             alt?: string;
             caption?: string;
             image: {
@@ -33,17 +32,17 @@ function customToMarkdown(
               };
             };
           };
-        }) => {
           const finalAlt = alt || caption || 'Image description';
           const url = imgUrlFor(sanityClient, image).url;
 
           return `![${finalAlt}](${url})`;
         },
-        code: ({
-          node,
-        }: {
-          node: { code: string; filename?: string; language?: string };
-        }) => {
+        code: ({ value }) => {
+          const node = value as {
+            code: string;
+            filename?: string;
+            language?: string;
+          };
           const result = [];
           if (node.filename) {
             result.push(`**${node.filename}**\n`);
@@ -61,15 +60,12 @@ function customToMarkdown(
 
           return result.join('\n');
         },
-        callout: ({
-          node,
-        }: {
-          node: {
+        callout: ({ value }) => {
+          const node = value as {
             title?: string;
             type: string;
             content: PortableTextBlock;
           };
-        }) => {
           const result: string[] = [];
 
           if (node.title) {
@@ -84,17 +80,17 @@ function customToMarkdown(
         },
       },
       marks: {
-        highlight: ({ children }: TODO) => `\`${children}\``,
-        strikethrough: ({ children }: TODO) => `~~${children}~~`,
-        internalLink: ({ children }: TODO) => children as unknown,
-        pageLink: ({ children }: TODO) => children as unknown,
+        highlight: ({ children }) => `\`${children}\``,
+        strikethrough: ({ children }) => `~~${children}~~`,
+        internalLink: ({ children }) => children,
+        pageLink: ({ children }) => children,
       },
     },
-  });
+  );
 }
 
 export async function contentBlockToMarkdown(
-  portableText: PortableTextBlock,
+  portableText: PortableTextBlock | PortableTextBlock[],
   { sanityClient }: Options,
 ) {
   const content = customToMarkdown(portableText, { sanityClient });

@@ -21,12 +21,16 @@
       "outputs": []
     },
     "typecheck": {
-      "outputs": []
+      "dependsOn": ["^build"],
+      "outputs": [],
+      "env": ["APP_ENV", "API_TOKEN", "ALGOLIA_ADMIN_KEY", "SANITY_TOKEN"]
     },
     "test": {
       "inputs": ["src/**/*.tsx", "src/**/*.ts"]
     },
-    "test:e2e": {},
+    "test:e2e": {
+      "env": ["CI"]
+    },
 
     "deploy": {
       "dependsOn": ["^build"],
