@@ -15,7 +15,7 @@
     "dist"
   ],
   "scripts": {
-    "prepare": "turbo --filter @raulmelo/core build --output-logs errors-only",
+    "prepare": "bun run --bun turbo --filter @raulmelo/core build --output-logs errors-only",
     "typecheck": "tsc --noEmit",
     "build": "tsdown"
   },

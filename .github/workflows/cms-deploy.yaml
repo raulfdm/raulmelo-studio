@@ -22,6 +22,6 @@ jobs:
         uses: ./.github/actions/pnpm-install
 
       - name: CI checks
-        run: bun turbo deploy --filter=cms
+        run: bun run --bun turbo deploy --filter=cms
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}

@@ -17,7 +17,7 @@
     "styles"
   ],
   "scripts": {
-    "prepare": "turbo --filter @raulmelo/code-highlight build --output-logs errors-only",
+    "prepare": "bun run --bun turbo --filter @raulmelo/code-highlight build --output-logs errors-only",
     "test": "bun test",
     "build": "tsdown",
     "typecheck": "tsc -p tsconfig.build.json --noEmit"
