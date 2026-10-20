@@ -38,7 +38,8 @@ export default defineConfig({
   // Run your local dev server before starting the tests.
   webServer: process.env.CI
     ? {
-        command: 'bun run dev',
+        command: 'bun run dev --ignore-lock',
+        url: 'http://127.0.0.1:4321',
       }
     : undefined,
 });

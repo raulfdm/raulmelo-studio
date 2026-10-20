@@ -79,7 +79,7 @@ function createLine(children: ElementContent[], line: number): Element {
   return {
     type: 'element',
     tagName: 'span',
-    properties: { className: 'line', dataLineNumber: line },
+    properties: { className: ['line'], dataLineNumber: line },
     children,
   };
 }

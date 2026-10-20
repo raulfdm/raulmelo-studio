@@ -9,6 +9,7 @@
       "import": "./dist/index.mjs"
     },
     "./styles": {
+      "types": "./styles/index.d.ts",
       "import": "./styles/starry-theme.css"
     }
   },
@@ -26,12 +27,12 @@
     "vscode-oniguruma": ">=2.0.1"
   },
   "dependencies": {
-    "@wooorm/starry-night": "3.10.0",
+    "@wooorm/starry-night": "3.11.0",
     "hast-util-to-html": "9.0.5"
   },
   "devDependencies": {
     "@types/bun": "catalog:",
-    "@types/hast": "3.0.4",
+    "@types/hast": "3.0.5",
     "tsdown": "catalog:",
     "typescript": "catalog:",
     "vscode-oniguruma": "2.0.1"

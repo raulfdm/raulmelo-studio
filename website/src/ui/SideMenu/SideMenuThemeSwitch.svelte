@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { LaptopIcon, SunIcon, MoonIcon } from 'lucide-svelte';
+  import { LaptopIcon, SunIcon, MoonIcon } from '@lucide/svelte';
   import { mergeClasses } from '@/infrastructure/utils/misc';
 
   interface Props {

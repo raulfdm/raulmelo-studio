@@ -3,7 +3,7 @@
   import type { PostBySlug } from './types';
 
   import { getPostUrl } from '@/infrastructure/utils/url';
-  import { ChevronDownIcon } from 'lucide-svelte';
+  import { ChevronDownIcon } from '@lucide/svelte';
 
   type Post = NonNullable<PostBySlug>;
 

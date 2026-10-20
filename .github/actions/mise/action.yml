@@ -3,7 +3,7 @@ description: 'Install the runtimes declared in mise.toml'
 runs:
   using: 'composite'
   steps:
-    - uses: jdx/mise-action@v5
+    - uses: jdx/mise-action@fc42bcc7ddbf51124c30f95a877a0c5168a3bfde # v5.2.1
       with:
         version: 2026.10.15
     - name: Use Bun for Node-compatible package scripts

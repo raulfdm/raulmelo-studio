@@ -4,9 +4,9 @@ packages:
   - packages/*
   - cms
 
-# Bun 1.4.3 exposes Node-compatible APIs; pnpm's native CLI cannot detect
-# that version when no Node.js runtime is installed. This is for engine checks.
-nodeVersion: 24.3.0
+# Bun 1.4.3 reports Node 26.3.0 compatibility; pnpm's native CLI cannot
+# detect that version when no Node.js runtime is installed. This is for engine checks.
+nodeVersion: 26.3.0
 autoInstallPeers: true
 strictPeerDependencies: false
 savePrefix: ''
@@ -14,14 +14,26 @@ engineStrict: true
 
 catalog:
   '@types/bun': 1.4.3
-  eslint: 9.34.0
+  eslint: 10.13.0
   prettier: 3.9.10
-  typescript: 5.9.2
-  tsdown: 0.18.2
-  vitest: 3.2.4
-  zod: 3.25.76
+  typescript: 6.0.3
+  tsdown: 0.23.1
+  vitest: 5.0.5
+  zod: 4.6.7
 
 allowBuilds:
   '@tailwindcss/oxide': true
   esbuild: true
   sharp: true
+minimumReleaseAgeExclude:
+  - '@lucide/svelte@1.60.0'
+  - '@sanity/access-ui@6.20.0'
+  - '@sanity/diff@6.20.0'
+  - '@sanity/mutator@6.20.0'
+  - '@sanity/schema@6.20.0'
+  - '@sanity/types@6.20.0'
+  - '@sanity/util@6.20.0'
+  - '@sanity/validation@6.20.0'
+  - '@sanity/vision@6.20.0'
+  - sanity@6.20.0
+  - groq@6.20.0

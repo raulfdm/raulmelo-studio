@@ -10,11 +10,10 @@ type Props = {
 import type { PortableTextTextBlock } from 'sanity';
 
 import {
-  AlertOctagonIcon,
+  OctagonAlertIcon,
   BadgeInfoIcon,
   NotepadTextIcon,
-  type Icon,
-} from 'lucide-svelte';
+} from '@lucide/svelte';
 
 import PortableText from '../PortableText.astro';
 import type { CalloutType } from './types';
@@ -31,7 +30,6 @@ const calloutMap: Record<
       title: string;
       icon: string;
     };
-    Icon: typeof Icon;
   }
 > = {
   info: {
@@ -40,7 +38,6 @@ const calloutMap: Record<
       title: `text-sky-900 dark:text-sky-50`,
       icon: `text-sky-900 dark:text-sky-100`,
     },
-    Icon: BadgeInfoIcon,
   },
   note: {
     css: {
@@ -48,7 +45,6 @@ const calloutMap: Record<
       title: `text-emerald-900 dark:text-emerald-50`,
       icon: `text-emerald-900 dark:text-emerald-100`,
     },
-    Icon: NotepadTextIcon,
   },
   warn: {
     css: {
@@ -56,7 +52,6 @@ const calloutMap: Record<
       title: `text-amber-900 dark:text-amber-50`,
       icon: `text-amber-900 dark:text-amber-100`,
     },
-    Icon: AlertOctagonIcon,
   },
 };
 
@@ -71,20 +66,20 @@ const currentCallout = calloutMap[nextType];
     class="absolute top left-0 p-1.5 rounded-full callout-icon hidden lg:block"
     class:list={[currentCallout.css.icon]}
   >
-    <currentCallout.Icon size={32} strokeWidth={1.5} />
+    {nextType === 'info' && <BadgeInfoIcon size={32} strokeWidth={1.5} />}
+    {nextType === 'note' && <NotepadTextIcon size={32} strokeWidth={1.5} />}
+    {nextType === 'warn' && <OctagonAlertIcon size={32} strokeWidth={1.5} />}
   </div>
 
   <div class="w-full px-8 py-6 prose-lg callout-content">
-    {
-      title ? (
-        <strong
-          class="block mb-4 font-bold text-md md:text-md"
-          class:list={[currentCallout.css.title]}
-        >
-          {title}
-        </strong>
-      ) : null
-    }
+    {title ? (
+      <strong
+        class="block mb-4 font-bold text-md md:text-md"
+        class:list={[currentCallout.css.title]}
+      >
+        {title}
+      </strong>
+    ) : null}
 
     <PortableText value={content} />
   </div>

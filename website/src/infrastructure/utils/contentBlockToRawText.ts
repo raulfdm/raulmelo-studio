@@ -1,45 +1,51 @@
 import type { PortableTextBlock } from '@portabletext/types';
-import toMarkdown from '@sanity/block-content-to-markdown';
+import { portableTextToMarkdown } from '@portabletext/markdown';
 import markdownPlugin from 'prettier/plugins/markdown';
 import Prettier from 'prettier/standalone';
 
-function customToMarkdown(portableText: PortableTextBlock) {
-  return toMarkdown(portableText, {
-    serializers: {
+function customToMarkdown(
+  portableText: PortableTextBlock | PortableTextBlock[],
+): string {
+  return portableTextToMarkdown(
+    Array.isArray(portableText) ? portableText : [portableText],
+    {
+      unknownType: () => '',
       types: {
-        gif: () => undefined,
-        divider: () => undefined,
-        detailedImage: () => undefined,
-        youtubeVideo: () => undefined,
-        codePen: () => undefined,
-        imageSlider: () => undefined,
-        tweet: () => undefined,
-        code: () => undefined,
-        callout: ({ node }: TODO) => {
+        gif: () => '',
+        divider: () => '',
+        detailedImage: () => '',
+        youtubeVideo: () => '',
+        codePen: () => '',
+        imageSlider: () => '',
+        tweet: () => '',
+        code: () => '',
+        callout: ({ value }): string => {
+          const node = value as {
+            title?: string;
+            content: PortableTextBlock | PortableTextBlock[];
+          };
           return `${node?.title ?? ''}\n${customToMarkdown(
-            node?.content as PortableTextBlock,
+            node.content,
           )}`.trim();
         },
       },
       marks: {
-        highlight: ({ children }: TODO) => children,
-        strikethrough: ({ children }: TODO) => children,
-        internalLink: ({ children }: TODO) => children,
-        pageLink: ({ children }: TODO) => children,
-        link: () => undefined,
-        strong: ({ children }: TODO) => children,
-        underline: ({ children }: TODO) => children,
-        em: ({ children }: TODO) => children,
+        highlight: ({ children }) => children,
+        strikethrough: ({ children }) => children,
+        internalLink: ({ children }) => children,
+        pageLink: ({ children }) => children,
+        link: ({ children }) => children,
+        strong: ({ children }) => children,
+        underline: ({ children }) => children,
+        em: ({ children }) => children,
       },
-      list: ({ children }: { children: string[] }) => {
-        return children.filter((child) => child.trim() !== '*').join('\n');
-      },
+      listItem: ({ children }) => children ?? '',
     },
-  });
+  );
 }
 
 export async function contentBlockToRawText(
-  body: PortableTextBlock,
+  body: PortableTextBlock | PortableTextBlock[],
 ): Promise<string> {
   const content = customToMarkdown(body);
 

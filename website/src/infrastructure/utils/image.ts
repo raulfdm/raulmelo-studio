@@ -1,7 +1,6 @@
 import type { SanityClient } from '@sanity/client';
-import imageUrlBuilder from '@sanity/image-url';
-import type { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder';
-import type { SanityImageObject } from '@sanity/image-url/lib/types/types';
+import { createImageUrlBuilder } from '@sanity/image-url';
+import type { ImageUrlBuilder, SanityImageObject } from '@sanity/image-url';
 import { isNil } from './isNil';
 
 type Source =
@@ -37,7 +36,7 @@ export function imgUrlFor(
     };
   }
 
-  const url = imageUrlBuilder(sanityConfig).image(source).url();
+  const url = createImageUrlBuilder(sanityConfig).image(source).url();
   const sourceSize = getImageDimensionsFromSanityImageUrl(url);
 
   const { width, height } = scaleDownImageSize(
@@ -60,7 +59,7 @@ export function imgUrlFor(
     width: number,
     height: number,
   ) {
-    return imageUrlBuilder(sanityConfig)
+    return createImageUrlBuilder(sanityConfig)
       .image(imageSource)
       .auto('format')
       .width(width)

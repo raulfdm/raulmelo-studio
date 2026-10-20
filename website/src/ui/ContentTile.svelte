@@ -1,6 +1,6 @@
 <script lang="ts">
   import { mergeClasses } from '@/infrastructure/utils/misc';
-  import { ArrowRightIcon } from 'lucide-svelte';
+  import { ArrowRightIcon } from '@lucide/svelte';
 
   interface Props {
     slug: string;
