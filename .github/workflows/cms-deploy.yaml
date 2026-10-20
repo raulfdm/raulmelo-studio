@@ -7,10 +7,13 @@ on:
 
 env:
   CI: true
+  TURBO_API: https://turbo-cache.raulmelo.dev
+  TURBO_TEAM: raulmelo.me
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Git files setup
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

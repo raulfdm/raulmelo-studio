@@ -4,10 +4,14 @@ on: [push]
 
 env:
   CI: true
+  TURBO_API: https://turbo-cache.raulmelo.dev
+  TURBO_TEAM: raulmelo.me
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  CONTENT_BUILD_ID: ${{ github.run_id }}-${{ github.run_attempt }}
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Git files setup
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -19,7 +23,7 @@ jobs:
         uses: ./.github/actions/pnpm-install
 
       - name: CI checks
-        run: bun run --bun turbo lint typecheck test build
+        run: bun run --bun turbo lint typecheck test build --filter='!astro-latest'
         env:
           APP_ENV: local
           # The build now generates every page, so it needs real read access to

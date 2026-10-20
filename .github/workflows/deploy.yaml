@@ -7,13 +7,21 @@ on:
 
 concurrency:
   group: ${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
-permissions: "write-all"
+permissions:
+  contents: read
+  packages: write
+
+env:
+  TURBO_API: https://turbo-cache.raulmelo.dev
+  TURBO_TEAM: raulmelo.me
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
 jobs:
   ci:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
     env:
       NODE_ENV: production
       IMAGE_NAME: ghcr.io/${{ github.repository }}
@@ -54,13 +62,16 @@ jobs:
           # real read access to Sanity.
           secrets: |
             sanity_token=${{ secrets.SANITY_AUTH_TOKEN }}
+            turbo_api=${{ env.TURBO_API }}
+            turbo_team=${{ env.TURBO_TEAM }}
+            turbo_token=${{ env.TURBO_TOKEN }}
           tags: |
             ${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.sha_tag }}
             ${{ env.IMAGE_NAME }}:latest
 
       - name: Trigger Deployment
         run: |
-          curl -X 'POST' \
+          curl --fail-with-body --show-error --silent --connect-timeout 10 --max-time 120 -X 'POST' \
           'https://raulmelo.dev/api/application.deploy' \
           -H 'accept: application/json' \
           -H 'x-api-key: ${{ secrets.WEBSITE_DEPLOY_API_KEY }}' \
@@ -73,7 +84,8 @@ jobs:
   # build can no longer host.
   reindex-algolia:
     needs: ci
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
 
     steps:
       - name: Checkout code
