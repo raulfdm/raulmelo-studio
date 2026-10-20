@@ -20,7 +20,7 @@ env:
 
 jobs:
   ci:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 45
     env:
       NODE_ENV: production
@@ -84,7 +84,7 @@ jobs:
   # build can no longer host.
   reindex-algolia:
     needs: ci
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
 
     steps:
