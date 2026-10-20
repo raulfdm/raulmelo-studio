@@ -1,5 +1,6 @@
-# Build with the same runtimes used locally and in CI.
-FROM ghcr.io/jdx/mise:2026.10.15-debian AS base
+# The website output is static, so build it once on the runner's native CPU.
+# Caddy remains multi-platform in the final stage.
+FROM --platform=$BUILDPLATFORM ghcr.io/jdx/mise:2026.10.15-debian AS base
 WORKDIR /app
 COPY mise.toml ./
 RUN mise trust && mise install
@@ -23,7 +24,10 @@ COPY --from=prepare /app/out/full .
 ## sanity_token; the website reads it through SANITY_TOKEN.
 ## ALGOLIA_ADMIN_KEY only has to satisfy config validation - the Algolia index
 ## is rebuilt from CI, not from this image.
+## Sanity content can change without a source change, so rebuild pages on every run.
+ARG CONTENT_BUILD_ID=local
 RUN --mount=type=secret,id=sanity_token \
+    : "$CONTENT_BUILD_ID" && \
     APP_ENV=production \
     SANITY_TOKEN="$(cat /run/secrets/sanity_token)" \
     ALGOLIA_ADMIN_KEY=xx \

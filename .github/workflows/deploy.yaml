@@ -46,6 +46,10 @@ jobs:
           file: ./website/Dockerfile
           push: true
           platforms: linux/amd64,linux/arm64
+          cache-from: type=gha,scope=website
+          cache-to: type=gha,scope=website,mode=max,ignore-error=true
+          build-args: |
+            CONTENT_BUILD_ID=${{ github.run_id }}-${{ github.run_attempt }}
           # The site is now generated at image build time, so the build needs
           # real read access to Sanity.
           secrets: |
