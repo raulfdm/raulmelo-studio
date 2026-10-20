@@ -4,6 +4,14 @@ packages:
   - packages/*
   - cms
 
+# Bun 1.4.3 exposes Node-compatible APIs; pnpm's native CLI cannot detect
+# that version when no Node.js runtime is installed. This is for engine checks.
+nodeVersion: 24.3.0
+autoInstallPeers: true
+strictPeerDependencies: false
+savePrefix: ''
+engineStrict: true
+
 catalog:
   '@types/bun': 1.4.3
   eslint: 9.34.0
