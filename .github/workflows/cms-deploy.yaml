@@ -19,7 +19,7 @@ jobs:
         uses: ./.github/actions/mise
 
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+        uses: ./.github/actions/pnpm-install
 
       - name: CI checks
         run: bun turbo deploy --filter=cms

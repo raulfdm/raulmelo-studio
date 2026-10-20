@@ -79,7 +79,7 @@ jobs:
         uses: ./.github/actions/mise
 
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+        uses: ./.github/actions/pnpm-install
 
       - name: Rebuild the Algolia index
         run: pnpm --filter website reindex:algolia

@@ -21,7 +21,7 @@ jobs:
         uses: ./.github/actions/mise
 
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+        uses: ./.github/actions/pnpm-install
 
       - name: Install Playwright Browsers
         run: pnpm --filter astro-latest exec playwright install --with-deps
