@@ -5,7 +5,7 @@ runs:
   steps:
     - uses: jdx/mise-action@fc42bcc7ddbf51124c30f95a877a0c5168a3bfde # v5.2.1
       with:
-        version: 2026.10.15
+        version: 2026.10.18
     - name: Use Bun for Node-compatible package scripts
       shell: bash
       run: echo "$GITHUB_WORKSPACE/scripts/bin" >> "$GITHUB_PATH"
