@@ -29,15 +29,6 @@ const finalHeight = customWidth
   ? calculateCustomHeight(height, width, finalWidth)
   : height;
 
-/**
- * Sharp + vercel edge functions are throwing an error when trying to resize
- * gifs.
- *
- * This is attempt to fix it.
- */
-const isGif = image.url.endsWith(`.gif`);
-const isLarge = finalWidth > 768;
-
 function calculateCustomHeight(
   height: number,
   width: number,
@@ -49,28 +40,19 @@ function calculateCustomHeight(
 }
 ---
 
-{
-  isGif && isLarge ? (
-    <img
-      src={url}
-      alt={alt ?? caption}
-      loading="lazy"
-      class="mx-auto rounded-md"
-    />
-  ) : (
-    <figure>
-      <AstroImage
-        class:list={mergeClasses(`object-cover mx-auto rounded-md`, {
-          'mb-0': Boolean(caption),
-        })}
-        src={url}
-        alt={alt ?? caption ?? ``}
-        width={finalWidth}
-        height={finalHeight}
-      />
-      {caption ? (
-        <figcaption class="mt-2 text-center lg:mt-4">{caption}</figcaption>
-      ) : null}
-    </figure>
-  )
-}
+<figure>
+  <AstroImage
+    class:list={mergeClasses(`object-cover mx-auto rounded-md`, {
+      'mb-0': Boolean(caption),
+    })}
+    src={url}
+    alt={alt ?? caption ?? ``}
+    width={finalWidth}
+    height={finalHeight}
+  />
+  {
+    caption ? (
+      <figcaption class="mt-2 text-center lg:mt-4">{caption}</figcaption>
+    ) : null
+  }
+</figure>
