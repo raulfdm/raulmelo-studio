@@ -1,6 +1,13 @@
 name: CI
 
-on: [push]
+# Pushes to main are built by the Deployment workflow, and every full build
+# fetches the whole site from Sanity. So the build runs once per pull request
+# update, not on every push to every branch.
+on:
+  pull_request:
+  push:
+    branches:
+      - main
 
 env:
   CI: true
@@ -22,8 +29,19 @@ jobs:
       - name: Install Dependencies
         uses: ./.github/actions/pnpm-install
 
+      # Saved by the Deployment workflow; restoring it here means the build
+      # reuses already-downloaded images instead of fetching them from Sanity.
+      - name: Restore Astro images
+        if: github.event_name == 'pull_request'
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: website/node_modules/.astro
+          key: astro-assets-${{ github.run_id }}
+          restore-keys: |
+            astro-assets-
+
       - name: CI checks
-        run: bun run --bun turbo lint typecheck test build --filter='!astro-latest'
+        run: bun run --bun turbo lint typecheck test ${{ github.event_name == 'pull_request' && 'build' || '' }} --filter='!astro-latest'
         env:
           APP_ENV: local
           # The build now generates every page, so it needs real read access to

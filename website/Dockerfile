@@ -25,8 +25,13 @@ COPY --from=prepare /app/out/full .
 ## ALGOLIA_ADMIN_KEY only has to satisfy config validation - the Algolia index
 ## is rebuilt from CI, not from this image.
 ## Sanity content can change without a source change, so rebuild pages on every run.
+## The image cache lives in a cache mount so remote images (mostly Sanity's) are
+## downloaded once instead of on every build: this layer is rebuilt every run,
+## and Sanity bills that traffic against the project's bandwidth quota. CI
+## carries the mount between runners with buildkit-cache-dance.
 ARG CONTENT_BUILD_ID=local
-RUN --mount=type=secret,id=sanity_token \
+RUN --mount=type=cache,id=astro-assets,target=/app/website/node_modules/.astro \
+    --mount=type=secret,id=sanity_token \
     --mount=type=secret,id=turbo_api \
     --mount=type=secret,id=turbo_team \
     --mount=type=secret,id=turbo_token \

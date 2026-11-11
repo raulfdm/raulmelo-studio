@@ -1,4 +1,5 @@
 ---
+import { getImage } from 'astro:assets';
 import { type Link, type Meta, type Props as SeoProps, SEO } from 'astro-seo';
 
 import { querySiteData } from '@/infrastructure/api/modules/siteData';
@@ -44,15 +45,52 @@ const seoTwitterInfo = siteData.socials.find(
   (social) => social.name === `Twitter`,
 )!;
 
-const imageUrl = (image ? image!.url! : siteData.site.seoImage.url) as string;
+const socialImage = await getSocialImage(
+  image?.url && image.width && image.height
+    ? { url: `${image.url}`, width: image.width, height: image.height }
+    : siteData.site.seoImage,
+);
+const imageUrl = socialImage.url;
 const nextTitle = title || langSeo.title;
 const nextDescription = description || langSeo.description;
-const nextImage = image || {
-  url: siteData.site.seoImage.url,
-  width: 1024,
-  height: 512,
-  alt: siteData.personalInformation.fullName,
+const nextImage = {
+  alt: image?.alt ?? siteData.personalInformation.fullName,
+  ...socialImage,
 };
+
+/**
+ * Crawlers fetch the social preview image of every page they read. Pointing
+ * them at Sanity serves the full-size original (up to ~6000px, several MB)
+ * straight out of the project's bandwidth quota, so emit a 1200px JPEG copy
+ * next to the page instead.
+ */
+async function getSocialImage(source: {
+  url: string;
+  width: number;
+  height: number;
+}) {
+  const width = Math.min(1200, source.width);
+  const height = Math.round((source.height * width) / source.width);
+  const src = new URL(source.url);
+  src.search = new URLSearchParams({
+    w: `${width}`,
+    h: `${height}`,
+    fm: `jpg`,
+  }).toString();
+
+  const optimized = await getImage({
+    src: src.href,
+    width,
+    height,
+    format: `jpg`,
+  });
+
+  return {
+    url: new URL(optimized.src, Astro.site).href,
+    width,
+    height,
+  };
+}
 
 const nextArticle = article
   ? ({
